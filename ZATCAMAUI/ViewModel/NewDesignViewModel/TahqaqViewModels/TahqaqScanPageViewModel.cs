@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
+using Greensoft.TlvLib;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -21,20 +22,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         string sellerName;
         public string SellerName { get { return sellerName; } set { sellerName = value; RaisePropertyChanged(); } }
-
         string vatNumber;
         public string VatNumber { get { return vatNumber; } set { vatNumber = value; RaisePropertyChanged(); } }
-
         string timeStamp;
         public string TimeStamp { get { return timeStamp; } set { timeStamp = value; RaisePropertyChanged(); } }
-
-        string invoiceAmount;
-        public string InvoiceAmount { get { return invoiceAmount; } set { invoiceAmount = value; RaisePropertyChanged(); } }
-
+        double invoiceAmount;
+        public double InvoiceAmount { get { return invoiceAmount; } set { invoiceAmount = value; RaisePropertyChanged(); } }
         string vatAmount;
         public string VatAmount { get { return vatAmount; } set { vatAmount = value; RaisePropertyChanged(); } }
 
-        public bool FromCheckWithCode { get; set; }
+
+        ITahqaqServices _tahqaqServices;
+        public TahqaqScanPageViewModel(INavigationService navigationService, IDialogService dialogService, ITahqaqServices tahqaqServices) : base(navigationService, dialogService)
+        {
+            _tahqaqServices = tahqaqServices;
+            eInvoiceQRModel = new EInvoiceQRModel();
+
+        }
 
         string _RegisterStatus;
         public string RegisterStatus { get { return _RegisterStatus; } set { _RegisterStatus = value; RaisePropertyChanged(); } }
@@ -64,6 +68,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         bool _IsClearedStatusVisible;
         public bool IsClearedStatusVisible { get { return _IsClearedStatusVisible; } set { _IsClearedStatusVisible = value; RaisePropertyChanged(); } }
 
+
+
         bool _IsAnalyzing = true;
         public bool IsAnalyzing
         {
@@ -88,27 +94,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
         }
 
-        int NoofTags;
 
-        int tag = 0;
-
-        ITahqaqServices _tahqaqServices;
-        public TahqaqScanPageViewModel(INavigationService navigationService, IDialogService dialogService, ITahqaqServices tahqaqServices) : base(navigationService, dialogService)
-        {
-            _tahqaqServices = tahqaqServices;
-            eInvoiceQRModel = new EInvoiceQRModel();
-
-        }
-
-        #region Commands
         public ICommand ScanCommand
         {
             get
             {
                 return new Command(() =>
-
                 {
-
                     IsAnalyzing = false;
                     IsScanning = false;
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -119,8 +111,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                         IsLoading = false;
 
                     });
-
-
                 });
             }
         }
@@ -137,6 +127,335 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 });
             }
+        }
+
+        public bool IsBase64(string base64String)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(base64String)
+                    || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
+                    return false;
+
+                Convert.FromBase64String(base64String);
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+
+            }
+        }
+
+        int NoofTags;
+
+        public ICommand ScanEnvoiceQrCommand
+        {
+            get
+            {
+                return new Command(() =>
+
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        try
+                        {
+
+                            IsLoading = true;
+
+                            string code = scanCode;
+
+                            if (code == "-1")
+                            {
+                                return;
+                            }
+
+                            if (!IsBase64(code))
+                            {
+                                eInvoiceQRModel.InvalidData = code;
+                                await AddQRLog(eInvoiceQRModel);
+                                IsLoading = false;
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                                return;
+                            }
+                            byte[] byteList = Convert.FromBase64String(code);
+                            MemoryStream stream = new MemoryStream(byteList);
+
+
+
+
+                            TlvEncoding.ProcessTlvStream(stream,
+                            (tag, data) =>
+                            {
+                                var messageAsText = Encoding.UTF8.GetString(data);
+                                SetDataToModel(int.Parse(tag.ToString()), messageAsText);
+                                NoofTags = (int)tag;
+                            });
+                            /* 
+                             *  int currentPosition = 1;
+                                 int TagIndex = 0;
+                                int noOfTags = 0;
+
+                             * while (currentPosition < byteList.Length)
+                                 {
+                                     // Read Length
+                                     int msgLength = byteList[TagIndex + 1];
+
+                                     int nextTagPositionIndex = TagIndex + msgLength + 2;
+
+                                     var message = byteList.Take(currentPosition + 1);
+
+                                     currentPosition++;
+
+
+                                     if (nextTagPositionIndex == currentPosition)
+                                     {
+                                           noOfTags++;
+                                         var messageAsText = Encoding.UTF8.GetString(message.Skip(TagIndex + 1).Take(nextTagPositionIndex).ToArray());
+                                         TagIndex = currentPosition;
+                                         currentPosition++;
+
+                                         SetDataToModel(noOfTags, messageAsText);
+                                         NoofTags = noOfTags;
+                                     }
+                                 }*/
+
+                            var res = qrValidation(eInvoiceQRModel);
+
+                            if (string.IsNullOrWhiteSpace(res))
+                            {
+                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false;
+                                await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
+
+                            }
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+
+                            }
+                            await AddQRLog(eInvoiceQRModel);
+
+                            IsLoading = false;
+                        }
+                        catch (Exception exp)
+                        {
+                            IsLoading = false;
+                            IsScanning = false;
+                        }
+                        finally
+                        {
+                            IsLoading = false;
+                            IsScanning = false;
+                        }
+                    });
+
+
+                });
+            }
+        }
+
+        int tag = 0;
+
+        private void SetDataToModel(int tagNumber, string messageAsText)
+        {
+            tag = tagNumber;
+            switch (tagNumber)
+            {
+                case 1:
+                    {
+                        eInvoiceQRModel.sellerName = new string(messageAsText.Trim().Where(c => !char.IsControl(c)).ToArray());
+                        SellerName = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
+                        Debug.WriteLine($"Seller Name {messageAsText}");
+                        break;
+                    }
+
+
+                case 2:
+                    {
+                        eInvoiceQRModel.vatNumber = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
+                        VatNumber = messageAsText.TrimStart().Trim();
+                        Debug.WriteLine($"Vat No {messageAsText.TrimStart()}");
+                        break;
+                    }
+
+
+                case 3:
+                    {
+                        eInvoiceQRModel.timeStamp = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
+
+
+                    }
+                    break;
+
+                case 4:
+                    {
+                        eInvoiceQRModel.invoiceAmount = messageAsText.Trim();
+                        Debug.WriteLine($"invoice Amount {messageAsText}");
+                        InvoiceAmount = double.Parse(messageAsText.Trim());
+                    }
+                    break;
+
+                case 5:
+                    {
+                        eInvoiceQRModel.vatAmount = messageAsText.Trim().Replace(" ", "");
+                        Debug.WriteLine($"vat Amount {messageAsText.Trim()}");
+                        VatAmount = messageAsText.Trim();
+                        break;
+                    }
+
+
+                case 6:
+                    {
+                        eInvoiceQRModel.invoiceHash = messageAsText.Trim();
+                        Debug.WriteLine($"invoic eHash {messageAsText}");
+                        break;
+                    }
+
+
+                case 7:
+                    {
+                        eInvoiceQRModel.ecdsapublicKey = messageAsText.Trim();
+                        Debug.WriteLine($"ecdsapublicKey {messageAsText}");
+                    }
+                    break;
+
+                case 8:
+                    {
+                        eInvoiceQRModel.signature = messageAsText.Trim();
+                    }
+                    break;
+
+                case 9:
+                    {
+                        eInvoiceQRModel.caSignature = messageAsText.Trim();
+                    }
+                    break;
+
+                default:
+                    {
+                        //statements;
+                    }
+                    break;
+            }
+        }
+
+
+        string qrValidation(EInvoiceQRModel qRcodeModelDetails)
+        {
+            var result = "";
+            if (String.IsNullOrEmpty(qRcodeModelDetails.sellerName))
+            {
+                result = "Empty Seller Name";
+            }
+            else if (string.IsNullOrEmpty(qRcodeModelDetails.vatNumber))
+            {
+                result = "Empty Vat Number";
+            }
+            else if (validateNumbers(qRcodeModelDetails.vatNumber) == false)
+            {
+                result = "VAT numbers is not Valid ";
+            }
+            else if (qRcodeModelDetails.vatNumber.Replace(" ", "").Length - 1 > 15)
+            {
+                result = "VAT numbers more  than 10 digit";
+            }
+            else if (qRcodeModelDetails.invoiceAmount.Contains(" "))
+            {
+                result = "invoiceAmount is contains white Spaces";
+            }
+            else if (validateNumbers(qRcodeModelDetails.vatAmount) == false)
+            {
+                result = "VAT Amount not Valid ";
+            }
+            else if (checkValidDate(qRcodeModelDetails.timeStamp.Replace(" ", "")) == false)
+            {
+
+                result = "Date is not Valid";
+            }
+
+            return result;
+        }
+
+        bool validateNumbers(string value)
+        {
+            string pattern = @"(\\.[0-9]+)?$";
+            bool result = false;
+            Regex regExp = new Regex(pattern);
+            result = !regExp.IsMatch(value) ? false : true;
+            return result;
+        }
+
+        bool compareTwoDates(string dateValue)
+        {
+
+            var now = DateTime.Now;
+            var tempDate = DateTime.Parse(dateValue);
+            if (tempDate.Date < now.Date)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        bool checkValidDate(string dateValue)
+        {
+            try
+            {
+                var culture = CultureInfo.InvariantCulture;
+                DateTime myDate = DateTime.Now;
+                DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
+
+                if (DateTime.TryParse(dateValue, culture, styles, out myDate))
+                {
+                    var olddate = DateTime.Parse(dateValue);
+                    var olldkind = olddate.Kind;
+                    var newkind = myDate.Kind;
+
+                    if (dateValue.Contains("Z"))
+                    {
+                        myDate = myDate.ToUniversalTime();
+                        olddate = myDate;
+                    }
+                    TimeStamp = olddate.ToString("dd/MM/yyyy HH:mm");
+                    return true;
+
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+
+        async Task<Location> GetCurrentLocation()
+        {
+            try
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
+                var cts = new CancellationTokenSource();
+                var location = await Geolocation.GetLocationAsync(request, cts.Token);
+
+                return location;
+            }
+            catch (FeatureNotSupportedException)
+            {
+            }
+            catch (FeatureNotEnabledException )
+            {
+            }
+            catch (PermissionException )
+            {
+            }
+            catch (Exception)
+            {
+            }
+            return new Location(54.9221801757813, -1.61353372482901);
         }
 
         public ICommand EnterCodeCommand
@@ -172,7 +491,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                     try
                     {
-                        if (!string.IsNullOrEmpty(scanCode))
+                        if (!String.IsNullOrEmpty(scanCode))
                         {
 
                             FromCheckWithCode = true;
@@ -193,7 +512,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 });
             }
         }
-
+        public bool FromCheckWithCode { get; set; }
         public override ICommand BackCommand
         {
             get
@@ -222,318 +541,52 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
         }
 
-        public override ICommand CloseMsgViewCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    IsShowMsgView = false;
-                    IsValidationError = false;
-                    IsScanning = true;
-                });
-            }
-        }
 
-        public ICommand ScanEnvoiceQrCommand
-        {
-            get
-            {
-                return new Command(() =>
-
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        try
-                        {
-
-                            IsLoading = true;
-
-                            string code = scanCode;
-
-                            if (code == "-1")
-                            {
-                                return;
-                            }
-
-                            if (!IsBase64(code))
-                            {
-                                eInvoiceQRModel.InvalidData = code;
-                                await AddQRLog(eInvoiceQRModel);
-                                IsLoading = false;
-                                IsShowMsgView = true;
-                                MessageTxt = AppResources.InvalidQrMessage;
-                                return;
-                            }
-                            byte[] byteList = Convert.FromBase64String(code);
-                            int currentPosition = 1;
-                            int TagIndex = 0;
-                            int noOfTags = 0;
-                            while (currentPosition < byteList.Length)
-                            {
-                                // Read Length
-                                int msgLength = byteList[TagIndex + 1];
-
-                                int nextTagPositionIndex = TagIndex + msgLength + 2;
-
-                                var message = byteList.Take(currentPosition + 1);
-
-                                currentPosition++;
-
-                                if (nextTagPositionIndex == currentPosition)
-                                {
-                                    noOfTags++;
-                                    var messageAsText = Encoding.UTF8.GetString(message.Skip(TagIndex + 1).Take(nextTagPositionIndex).ToArray());
-                                    TagIndex = currentPosition;
-                                    currentPosition++;
-
-                                    SetDataToModel(noOfTags, messageAsText);
-                                    NoofTags = noOfTags;
-                                }
-                            }
-
-                            var res = qrValidation(eInvoiceQRModel);
-
-                            if (string.IsNullOrWhiteSpace(res))
-                            {
-                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false;
-                                await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
-
-                            }
-                            else
-                            {
-                                IsShowMsgView = true;
-                                MessageTxt = AppResources.InvalidQrMessage;
-
-                            }
-                            await AddQRLog(eInvoiceQRModel);
-
-                            IsLoading = false;
-                        }
-                        catch (Exception)
-                        {
-                            IsLoading = false;
-                            IsScanning = false;
-                        }
-                        finally
-                        {
-                            IsLoading = false;
-                            IsScanning = false;
-                        }
-                    });
-
-
-                });
-            }
-        }
-        #endregion Commands
-
-        #region Methods
-        private bool IsBase64(string base64String)
+        public async Task GetQrData(string vatId)
         {
             try
             {
-                if (string.IsNullOrEmpty(base64String)
-               || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
-                    return false;
-
-
-                Convert.FromBase64String(base64String);
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        private void SetDataToModel(int tagNumber, string messageAsText)
-        {
-            tag = tagNumber;
-            switch (tagNumber)
-            {
-                case 1:
-                    {
-                        eInvoiceQRModel.sellerName = messageAsText.Trim();
-                        SellerName = messageAsText.Trim();
-                        Debug.WriteLine($"Seller Name {messageAsText}");
-                        break;
-                    }
-
-
-                case 2:
-                    {
-                        eInvoiceQRModel.vatNumber = messageAsText.Trim();
-                        VatNumber = messageAsText.Trim();
-                        Debug.WriteLine($"Vat No {messageAsText}");
-                        break;
-                    }
-
-
-                case 3:
-                    {
-                        eInvoiceQRModel.timeStamp = messageAsText.Trim();
-
-                    }
-                    break;
-
-                case 4:
-                    {
-                        eInvoiceQRModel.invoiceAmount = messageAsText.Trim();
-                        Debug.WriteLine($"invoice Amount {messageAsText}");
-                        InvoiceAmount = messageAsText.Trim();
-                    }
-                    break;
-
-                case 5:
-                    {
-                        eInvoiceQRModel.vatAmount = messageAsText.Trim();
-                        Debug.WriteLine($"vat Amount {messageAsText}");
-                        VatAmount = messageAsText.Trim();
-                        break;
-                    }
-
-
-                case 6:
-                    {
-                        eInvoiceQRModel.invoiceHash = messageAsText.Trim();
-                        Debug.WriteLine($"invoic eHash {messageAsText}");
-                        break;
-                    }
-
-
-                case 7:
-                    {
-                        eInvoiceQRModel.ecdsapublicKey = messageAsText.Trim();
-                        Debug.WriteLine($"ecdsapublicKey {messageAsText}");
-                    }
-                    break;
-
-                case 8:
-                    {
-                        eInvoiceQRModel.signature = messageAsText.Trim();
-                    }
-                    break;
-
-                case 9:
-                    {
-                        eInvoiceQRModel.caSignature = messageAsText.Trim();
-                    }
-                    break;
-
-                default:
-                    {
-                    }
-                    break;
-            }
-        }
-
-        private string qrValidation(EInvoiceQRModel qRcodeModelDetails)
-        {
-            var result = "";
-            if (string.IsNullOrEmpty(qRcodeModelDetails.sellerName))
-            {
-                result = "Empty Seller Name";
-            }
-            else if (string.IsNullOrEmpty(qRcodeModelDetails.vatNumber))
-            {
-                result = "Empty Vat Number";
-            }
-            else if (validateNumbers(qRcodeModelDetails.vatNumber) == false)
-            {
-                result = "VAT numbers is not Valid ";
-            }
-            else if (qRcodeModelDetails.vatNumber.Length > 15)
-            {
-                result = "VAT numbers more  than 10 digit";
-            }
-            else if (qRcodeModelDetails.invoiceAmount.Contains(" "))
-            {
-                result = "invoiceAmount is contains white Spaces";
-            }
-            else if (validateNumbers(qRcodeModelDetails.vatAmount) == false)
-            {
-                result = "VAT Amount not Valid ";
-            }
-            else if (double.Parse(qRcodeModelDetails.vatAmount ?? "0") < 0)
-            {
-                result = "VAT Amount is Negative ";
-            }
-            else if (checkValidDate(qRcodeModelDetails.timeStamp) == false)
-            {
-
-                result = "Date is not Valid";
-            }
-
-            return result;
-        }
-
-        private bool validateNumbers(string value)
-        {
-            string pattern = @"(\\.[0-9]+)?$";
-            bool result = false;
-            Regex regExp = new Regex(pattern);
-            result = !regExp.IsMatch(value) ? false : true;
-            return result;
-        }
-
-        private bool checkValidDate(string dateValue)
-        {
-            try
-            {
-                var culture = CultureInfo.InvariantCulture;
-                DateTime myDate = DateTime.Now;
-                DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
-
-                if (DateTime.TryParse(dateValue, culture, styles, out myDate))
+                IsLoading = true;
+                if (NetworkCheck.IsInternet())
                 {
-                    var olddate = DateTime.Parse(dateValue);
-                    var olldkind = olddate.Kind;
-                    var newkind = myDate.Kind;
 
-                    if (dateValue.Contains("Z"))
+                    var data = await _tahqaqServices.GetEInvoiceData(vatId);
+                    if (data.IsSuccessStatusCode)
                     {
-                        myDate = myDate.ToUniversalTime();
-                        olddate = myDate;
+                        RegisterStatus = AppResources.Registered;
+                        IsShowSubmitReport = false;
                     }
-                    TimeStamp = olddate.ToString("dd/MM/yyyy HH:mm");
-                    return true;
+                    else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        RegisterStatus = AppResources.NotRegistered;
+                        IsShowSubmitReport = true;
+                    }
+                    else
+                    {
+                        RegisterStatus = AppResources.unableToVerify;
+                    }
+
 
                 }
-                return false;
+                else
+                {
+                    RegisterStatus = AppResources.unableToVerify;
+                }
+
+                IsLoading = false;
             }
             catch (Exception)
             {
-                return false;
+
             }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
 
-        private async Task<Location> GetCurrentLocation()
-        {
-            try
-            {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
-                var cts = new CancellationTokenSource();
-                var location = await Geolocation.GetLocationAsync(request, cts.Token);
-
-                return location;
-            }
-            catch (FeatureNotSupportedException)
-            {
-            }
-            catch (FeatureNotEnabledException)
-            {
-            }
-            catch (PermissionException)
-            {
-            }
-            catch (Exception)
-            {
-            }
-            return new Location(54.9221801757813, -1.61353372482901);
-        }
-
-        private async Task GetQrDataEradApi(string TinNo)
+        public async Task GetQrDataEradApi(string TinNo)
         {
             try
             {
@@ -553,7 +606,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                             {
                                 RegistredStatusWithDisplaQRRslt();
                             }
-                            if (NoofTags == 5 && EInvEnfStatus == 1)
+                            else if (NoofTags == 5 && EInvEnfStatus == 1)
                             {
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.InvalidQrMessage;
@@ -569,13 +622,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 IsClearedStatusVisible = true;
 
                             }
-                            if (NoofTags == 8)
-                            {
-                                RegistredStatusWithDisplaQRRslt();
-                            }
                             else
                             {
-                                RegistredStatusWithDisplaQRRslt();
+                                if (NoofTags == 8)
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                }
+                                else
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                }
                             }
                         }
                         else
@@ -624,7 +680,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             IsShowScanView = false;
         }
 
-        private async Task AddQRLog(EInvoiceQRModel eInvoiceQRModel)
+        public async Task AddQRLog(EInvoiceQRModel eInvoiceQRModel)
         {
             IsLoading = true;
             var location = await GetCurrentLocation();
@@ -633,16 +689,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 eInvoiceQRModel.latitude = location.Latitude.ToString();
                 eInvoiceQRModel.longitude = location.Longitude.ToString();
             }
-            var model = new List<EInvoiceQRModel>
-            {
-                eInvoiceQRModel
-            };
-            await _tahqaqServices.AddQrData(model);
+            var model = new List<EInvoiceQRModel>();
+            model.Add(eInvoiceQRModel);
+            var data = await _tahqaqServices.AddQrData(model);
             IsLoading = false;
         }
 
-        private ZXing.Result Result { get; set; }
 
+        public ZXing.Result Result { get; set; }
         public async Task CheckQr()
         {
             IsLoading = true;
@@ -661,6 +715,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 ScanLocation = $"{location.Latitude},{location.Longitude}"
             };
             var data = await _tahqaqServices.ScanQrCheck(model);
+            Debug.WriteLine(data.IsSuccessStatusCode);
 
             if (data.IsSuccessStatusCode)
             {
@@ -684,7 +739,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             IsLoading = false;
             IsScanning = false;
         }
-        #endregion Methods
 
+        public override ICommand CloseMsgViewCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsShowMsgView = false;
+                    IsValidationError = false;
+                    IsScanning = true;
+                });
+            }
+        }
     }
+
 }

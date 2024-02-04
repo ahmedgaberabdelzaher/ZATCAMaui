@@ -3429,6 +3429,7 @@
 		<PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
 		<PackageReference Include="Syncfusion.Maui.Cards" Version="24.2.3" />
 		<PackageReference Include="Onion.Maui.GoogleMaps" Version="5.0.1" />
+		<PackageReference Include="TlvLib" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
