@@ -170,7 +170,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DpEStartDate_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DpEStartDate_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -186,7 +186,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DpEStartDate_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DpEStartDate_CancelButtonClicked(object sender, EventArgs e)
         {
 
         }
@@ -208,7 +208,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private void btnExporter_Clicked(object sender, EventArgs e)
         {
-            if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
             Models.VATRegistrationDetails vatReg = null;
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
@@ -1530,12 +1530,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
-        private void DDlIDType_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DDlIDType_OkButtonClicked(object sender, EventArgs e)
         {
 
         }
 
-        private void DDlIDType_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DDlIDType_CancelButtonClicked(object sender, EventArgs e)
         {
 
         }
@@ -1988,15 +1988,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
 
         }
-        private void DDlIDTypeSR_OkayButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DDlIDTypeSR_OkayButtonClicked(object sender, EventArgs e)
         {
             try
             {
+                var picker = (SfPicker)sender;
                 viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                 viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
                 if (!viewModel.TxtIDTypeSR.Equals(AppResources.ZZGCCID))
                 {
-                    if (string.IsNullOrEmpty(((SignUpIdType)e.NewValue).Name) || string.IsNullOrWhiteSpace(((SignUpIdType)e.NewValue).Name))
+                  
+                    if (picker.Columns[0].SelectedIndex == 0)
                     {
                         FrmContactDBO.IsVisible = false;
                         btnSR.IsVisible = false;
@@ -2021,7 +2023,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DDlIDTypeFR_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DDlIDTypeFR_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -2069,12 +2071,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DDlIDTypeFR_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DDlIDTypeFR_CancelButtonClicked(object sender, EventArgs e)
         {
 
         }
 
-        private void IDTypeSR_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void IDTypeSR_CancelButtonClicked(object sender, EventArgs e)
         {
 
         }
@@ -2902,7 +2904,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             SignUpDOB.IsOpen = true;
         }
 
-        private async void DOB_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private async void DOB_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -2928,7 +2930,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DOB_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DOB_CancelButtonClicked(object sender, EventArgs e)
         {
 
         }
@@ -3182,7 +3184,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void ContactDOBPicker_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void ContactDOBPicker_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -3200,7 +3202,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void ContactDOBPicker_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void ContactDOBPicker_CancelButtonClicked(object sender, EventArgs e)
         {
 
         }

@@ -25,9 +25,9 @@
             </ResourceDictionary.MergedDictionaries>-->
             <converters:ZakatForm5TabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <Style x:Key="BackgroundWhiteBtn" TargetType="buttons:SfButton">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="BorderWidth" Value="1" />
-                <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+                <Setter Property="Background" Value="White" />
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="CornerRadius" Value="20" />
             </Style>
@@ -39,9 +39,9 @@
 
             </Style>
             <Style x:Name="SelectedBtn" TargetType="buttons:SfButton">
-                <Setter Property="BackgroundColor" Value="AliceBlue" />
+                <Setter Property="Background" Value="AliceBlue" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                <Setter Property="BorderColor" Value="AliceBlue" />
+                <Setter Property="Stroke" Value="AliceBlue" />
             </Style>
             <Style x:Key="circleFrame" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}" />

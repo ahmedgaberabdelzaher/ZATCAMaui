@@ -504,19 +504,15 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
         }
 
-        private void NormalCalendar_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void NormalCalendar_OkButtonClicked(object sender, EventArgs e)
         {
             
         }
-        private void EndDateNormalCalendar_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void EndDateNormalCalendar_OkButtonClicked(object sender, EventArgs e)
         {
             
         }
-        private void NormalCalendar_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
-        {
-            
-        }
-        private void EndDateNormalCalendar_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void EndDateNormalCalendar_CancelButtonClicked(object sender, EventArgs e)
         {
          
         }
@@ -524,6 +520,10 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         void SubmitClicked(object sender, EventArgs e)
         {
             
+        }
+
+        void NormalCalendar_CancelButtonClicked(System.Object sender, System.EventArgs e)
+        {
         }
     }
 }

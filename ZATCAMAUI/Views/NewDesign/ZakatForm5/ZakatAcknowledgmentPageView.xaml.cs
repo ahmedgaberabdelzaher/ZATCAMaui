@@ -6,6 +6,7 @@ using System.Resources;
 using ZATCAMAUI.Models.Form5Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using Application = Microsoft.Maui.Controls.Application;
+using Page = Microsoft.Maui.Controls.Page;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
 {

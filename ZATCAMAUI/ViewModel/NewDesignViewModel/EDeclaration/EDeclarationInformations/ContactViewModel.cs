@@ -9,6 +9,7 @@ using ZATCAMAUI.Core.Helper;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
 using ZATCAMAUI.Models.BaseModels;
+using Result = ZATCAMAUI.Models.EDeclerationsModel.SubmitModels.Result;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {

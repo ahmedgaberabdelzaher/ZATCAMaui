@@ -16,6 +16,7 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     x:Name="ESTActivityItemPage"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"

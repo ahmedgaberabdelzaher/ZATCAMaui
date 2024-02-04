@@ -27,13 +27,13 @@
             <Color x:Key="ShadowLvl0">#EFEFEF</Color>
             <!--<Color x:Key="ShadowLvl1"> "{StaticResource NeutralBlack}" </Color>
             <Color x:Key="ShadowLvl2"> "{StaticResource NeutralBlack}</Color>-->
-            <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
+            <Style x:Key="GreyBorderFrameWithShadow" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="CornerRadius" Value="14" />
-                <Setter Property="HasShadow" Value="True" />
-                <Setter Property="BorderWidth" Value="1" />
-                <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
-                <Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
+                <!--<Setter Property="HasShadow" Value="True" />-->
+                <Setter Property="StrokeThickness" Value="1" />
+                <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
+                <!--<Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />-->
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>

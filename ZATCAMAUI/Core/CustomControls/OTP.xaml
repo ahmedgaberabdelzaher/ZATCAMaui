@@ -70,7 +70,7 @@
                             </Grid.ColumnDefinitions>
                             <Grid.Resources>
                                 <ResourceDictionary>
-                                    <Style TargetType="custom:BorderlessEntry">
+                                    <Style TargetType="custom:GAZTBorderlessEntry">
                                         <Setter Property="Keyboard" Value="Numeric" />
                                         <Setter Property="FontAttributes" Value="Bold" />
                                         <Setter Property="FontSize" Value="Small" />
@@ -85,10 +85,9 @@
                                     </Style>
                                     <Style TargetType="inputLayout:SfTextInputLayout">
                                         <Setter Property="ContainerType" Value="Outlined" />
-                                        <Setter Property="UnfocusedColor" Value="#B1B1B1" />
                                         <Setter Property="OutlineCornerRadius" Value="8" />
-                                        <Setter Property="FocusedColor" Value="{StaticResource Primary}" />
-                                        <Setter Property="Padding" Value="0" />
+                                        <Setter Property="Stroke" Value="{StaticResource Primary}" />
+                                        <!--<Setter Property="Padding" Value="0" />-->
                                         <Setter Property="Margin" Value="0" />
 
 

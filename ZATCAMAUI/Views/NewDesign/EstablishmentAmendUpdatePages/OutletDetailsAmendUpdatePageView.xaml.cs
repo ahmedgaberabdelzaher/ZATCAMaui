@@ -83,7 +83,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             try
             {
                 var index = OutletTabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
-                OutletTabScrollView.ScrollToAsync(OutletTabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
+                //TODO
+                var view = (Element)OutletTabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index);
+                OutletTabScrollView.ScrollToAsync(view, ScrollToPosition.MakeVisible, true);
             }
             catch (Exception)
             {

@@ -7,6 +7,7 @@ using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.CustomServices.Tawreed;
+using ZATCAMAUI.Models.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
@@ -454,17 +455,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string searchText;
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
 
-        public void SetUserData(string token)
+        public void SetUserData(object payload)
         {
 
-            var data = GetTokenData(token);
-            if (data != null)
+            if (payload != null)
             {
-                IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
-                // IamLoginPayloadData.TryGetValue("FirstName",out SubmitModel.travelerDeclaration.firstName);
-                NationalId = iamLoginPayloadData["NationlId"].ToString();
-                MobileNo = "+966" + iamLoginPayloadData["Mobile"].ToString();
-                IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());
+                var data = payload as CustomsNafathUserProfile;
+                NationalId = data.nationalid.ToString();
+                MobileNo = "+966" + data.mobilenumber.ToString();
+                IamRegisteredUserID = data.id;
             }
         }
 

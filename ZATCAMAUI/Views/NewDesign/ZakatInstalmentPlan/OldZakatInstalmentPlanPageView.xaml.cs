@@ -228,7 +228,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         private void Bills_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
-            OldResults3 dataItem = e.ItemData as OldResults3;
+            OldResults3 dataItem = e.DataItem as OldResults3;
 
             if (App.selectedZakatItem == "")
             {

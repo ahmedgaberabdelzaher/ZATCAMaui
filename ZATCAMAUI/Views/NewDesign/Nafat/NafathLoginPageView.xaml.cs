@@ -62,7 +62,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
                         url = modelSSOID.results[0].Murl;
                         Hybridview = new HybridWebView();
                         Hybridview.Url = url;
-                        RegnagaftGrid.Children.Add(Hybridview, 0, 0);
+                        RegnagaftGrid.Add(Hybridview, 0, 0);
                         Hybridview.RegisterAction(async (obj) =>
                         {
                             if (obj == "navigateToVATIndividualSignupPageSSO")

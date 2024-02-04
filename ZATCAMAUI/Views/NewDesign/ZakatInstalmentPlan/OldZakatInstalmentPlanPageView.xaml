@@ -902,7 +902,6 @@
                             <cards:SfCardView
                                 Padding="10"
                                 CornerRadius="20"
-                                HasShadow="False"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand">
 

@@ -41,7 +41,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             btnScan.Clicked += async (a, e) =>
             {
                 viewModel.IsShowScanView = true;
-                zxing.IsScanning = true;
                 MainGrid.Children.Add(zxing);
                 zxing.AutoFocus();
             };

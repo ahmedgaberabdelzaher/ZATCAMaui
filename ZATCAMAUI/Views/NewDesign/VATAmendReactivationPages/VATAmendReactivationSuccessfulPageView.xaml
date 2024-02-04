@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundColor="{StaticResource Primary}"

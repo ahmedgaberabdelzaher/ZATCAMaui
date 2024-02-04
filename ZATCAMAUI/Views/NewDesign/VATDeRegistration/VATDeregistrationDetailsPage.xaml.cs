@@ -809,7 +809,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                 viewModel.SelectedOutletOptionIndex = viewModel.AttachmentTypes.IndexOf(selectedItem);
                 viewModel.SelectedDocumentOption = selectedItem;
                 viewModel?.updateattachmentList();
-                selectedItem.TextCol = Color.White;
+                selectedItem.TextCol = Colors.White;
                 selectedItem.ImgSource = "vat_tile_listofsignup";
                 if (RemovedItem != null)
                 {

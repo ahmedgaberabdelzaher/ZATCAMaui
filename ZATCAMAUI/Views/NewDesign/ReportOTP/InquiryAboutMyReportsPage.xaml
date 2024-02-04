@@ -368,14 +368,14 @@
 
                                         <DataTrigger
                                             Binding="{Binding IsPhoneSelected}"
-                                            TargetType="custom:BorderlessEntry"
+                                            TargetType="custom:GAZTBorderlessEntry"
                                             Value="True">
                                             <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding IsPhoneSelected}"
-                                            TargetType="custom:BorderlessEntry"
+                                            TargetType="custom:GAZTBorderlessEntry"
                                             Value="False">
                                             <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}" />
                                         </DataTrigger>

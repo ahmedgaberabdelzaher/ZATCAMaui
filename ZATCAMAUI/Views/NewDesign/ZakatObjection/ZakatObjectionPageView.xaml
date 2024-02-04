@@ -2932,14 +2932,12 @@
                                 <busyindicator:SfBusyIndicator
                                     x:Name="busyindicatorForLanding"
                                     AnimationType="SingleCircle"
-                                    EnableAnimation="True"
                                     HorizontalOptions="CenterAndExpand"
-                                    IsBusy="True"
+                                    IsRunning="True"
                                     TextColor="{StaticResource Secondary}"
                                     TitlePlacement="Bottom"
                                     VerticalOptions="CenterAndExpand"
-                                    ViewBoxHeight="70"
-                                    ViewBoxWidth="70" />
+                                    SizeFactor="0.7"/>
                                 <!--  Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"  -->
                             </StackLayout>
                         </StackLayout>

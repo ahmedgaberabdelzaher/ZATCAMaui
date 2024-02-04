@@ -13,6 +13,7 @@ using Application = Microsoft.Maui.Controls.Application;
 using Syncfusion.Maui.ListView;
 using Syncfusion.Maui.Picker;
 using Entry = Microsoft.Maui.Controls.Entry;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {
@@ -312,7 +313,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         void SfListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
-            
+
         }
 
 
@@ -349,7 +350,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         }
         void GetSelectedDataTemplate(bool isIndex1 = false)
         {
-           
+
 
             if (viewModel.SelectedOutletOption.CardLabel.Equals(AppResources.TinDeregistrationCloseOutletsIndividually))
             {
@@ -376,7 +377,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             viewModel.NewAttachmentClicked();
             var view = sender as SfListView;
             view.SelectedItem = null;
-          
+
         }
         private void EntryMobileNo_Unfocused(object sender, FocusEventArgs e)
         {
@@ -707,7 +708,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             viewModel.PickerDobToDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                         }
-                       
+
                     }
                     else
                     {
@@ -721,7 +722,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             viewModel.PickerDobToDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                         }
-                      
+
                     }
                 }
             }
@@ -804,7 +805,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerDOBDateDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                     }
-                   
+
 
                 }
                 else
@@ -818,7 +819,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         viewModel.PickerDOBDateDisplay = string.Empty;// UtilityManager.HijriToGreg(viewModel.PickerDobToDisplay);
 
                     }
-                   
+
                 }
 
             }
@@ -1061,11 +1062,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         private void DpDOB_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
-          
+
         }
         private void DpDbo_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
-           
+
         }
 
         void BorderlessTINEntry_Unfocused(object sender, FocusEventArgs e)
@@ -1239,11 +1240,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             {
                 TINNumber.HasError = true;
                 viewModel.IsEnteredTINValid = false;
-                DateEntry23.TextColor = Color.LightGray;
+                DateEntry23.TextColor = Colors.LightGray;
             }
 
         }
-        private void DpDOB_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DpDOB_CancelButtonClicked(object sender, EventArgs e)
         {
             viewModel.PkrDBO = viewModel.PkrDBOPrev;
             if (!string.IsNullOrEmpty(viewModel.PkrDBOPrev))
@@ -1258,7 +1259,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 DpDbo.SelectedItem = todaycollection;
             }
         }
-        private void DpDbo_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DpDbo_CancelButtonClicked(object sender, EventArgs e)
         {
             viewModel.PkrDBO = viewModel.PkrDBOPrev;
             if (!string.IsNullOrEmpty(viewModel.PkrDBOPrev))
@@ -1273,7 +1274,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 DpDbo.SelectedItem = todaycollection;
             }
         }
-        private void DOBpicker_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void DOBpicker_OkButtonClicked(object sender, EventArgs e)
         {
             //  ValidateIDNumber();
         }
@@ -1339,18 +1340,19 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     case Device.iOS:
                         {
 
-                            DpDbo2.HeaderFontFamily = "Somar-SemiBold";
-                            DpDbo2.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            DpDbo2.SelectedItemFontFamily = "Somar-SemiBold";
-                            DpDbo2.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            DpDbo2.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo2.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo2.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo2.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Device.Android:
                         {
-                            DpDbo2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                            DpDbo2.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo2.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo2.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo2.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
                         }
                         break;
                 }
@@ -1372,18 +1374,19 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     case Device.iOS:
                         {
 
-                            DpDbo.HeaderFontFamily = "Somar-SemiBold";
-                            DpDbo.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            DpDbo.SelectedItemFontFamily = "Somar-SemiBold";
-                            DpDbo.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            DpDbo.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Device.Android:
                         {
-                            DpDbo.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                            DpDbo.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
                         }
                         break;
                 }
@@ -1405,18 +1408,19 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     case Device.iOS:
                         {
 
-                            DpDboHijri.HeaderFontFamily = "Somar-SemiBold";
-                            DpDboHijri.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            DpDboHijri.SelectedItemFontFamily = "Somar-SemiBold";
-                            DpDboHijri.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            DpDboHijri.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Device.Android:
                         {
-                            DpDboHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                            DpDboHijri.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
                         }
                         break;
                 }
@@ -1438,20 +1442,22 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     case Device.iOS:
                         {
 
-                            DpDboHijri2.HeaderFontFamily = "Somar-SemiBold";
-                            DpDboHijri2.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            DpDboHijri2.SelectedItemFontFamily = "Somar-SemiBold";
-                            DpDboHijri2.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            DpDboHijri2.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri2.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri2.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri2.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Device.Android:
                         {
-                            DpDboHijri2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                            DpDboHijri2.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri2.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri2.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri2.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
                         }
                         break;
+                   
                 }
             }
             catch (Exception)
@@ -1471,20 +1477,22 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     case Device.iOS:
                         {
 
-                            DpDbo3.HeaderFontFamily = "Somar-SemiBold";
-                            DpDbo3.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            DpDbo3.SelectedItemFontFamily = "Somar-SemiBold";
-                            DpDbo3.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            DpDbo3.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo3.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo3.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            DpDbo3.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Device.Android:
                         {
-                            DpDbo3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDbo3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                            DpDbo3.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo3.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo3.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDbo3.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
                         }
                         break;
+
                 }
             }
             catch (Exception)
@@ -1504,20 +1512,22 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     case Device.iOS:
                         {
 
-                            DpDboHijri3.HeaderFontFamily = "Somar-SemiBold";
-                            DpDboHijri3.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            DpDboHijri3.SelectedItemFontFamily = "Somar-SemiBold";
-                            DpDboHijri3.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            DpDboHijri3.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri3.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri3.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            DpDboHijri3.TextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Device.Android:
                         {
-                            DpDboHijri3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            DpDboHijri3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                            DpDboHijri3.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri3.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri3.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            DpDboHijri3.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
                         }
                         break;
+                   
                 }
             }
             catch (Exception)
@@ -1617,7 +1627,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
         }
 
-      
+
         private void DeleteAttachment_Tapped(object sender, EventArgs e)
         {
             try
@@ -1651,7 +1661,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             }
                         }
                     }
-                   
+
                     viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
                 }
             }
@@ -1758,7 +1768,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
         public void SetDefaultDateToPicker()
         {
-      
+
         }
     }
 }

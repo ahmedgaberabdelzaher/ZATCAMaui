@@ -9,13 +9,15 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
     public partial class NewPopupPageView : PopupPage
     {
         public ReturnTypes sSelectedTaxTypeForFilter { get; }
-
+        public ReturnTypes TaxTypePickerSelectedItem { get; set; }
+        public List<ReturnTypes> taxTypeForFilter { get; set; }
         public NewPopupPageView(List<ReturnTypes> taxTypeForFilter, ReturnTypes selectedTaxTypeForFilter)
         {
             InitializeComponent();
             //SetPickerFont();
             CloseWhenBackgroundIsClicked = false;
-            TaxTypePicker.ItemsSource = taxTypeForFilter;
+            TaxTypePicker.Columns[0].ItemsSource = taxTypeForFilter;
+            this.taxTypeForFilter = taxTypeForFilter;
             sSelectedTaxTypeForFilter = selectedTaxTypeForFilter;
         }
 
@@ -24,9 +26,10 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             base.OnAppearing();
             try
             {
-                var items = TaxTypePicker.ItemsSource as List<ReturnTypes>;
+                var items = TaxTypePicker.Columns[0].ItemsSource as List<ReturnTypes>;
                 var selectedItem = items.FirstOrDefault(x => x.Id == sSelectedTaxTypeForFilter.Id && x.TaxType == sSelectedTaxTypeForFilter.TaxType);
-                TaxTypePicker.SelectedItem = selectedItem;
+                TaxTypePickerSelectedItem = selectedItem;
+                //TaxTypePicker.SelectedItem = selectedItem;
             }
             catch (Exception)
             {
@@ -36,18 +39,12 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             await picker.TranslateTo(0, 500, 0);
             await picker.TranslateTo(0, 0, 250);
         }
-        //protected override void OnDisappearing()
-        //{
-        //    base.OnDisappearing();
-        //    TaxTypePicker.SelectedIndex = null;
-        //    TaxTypePicker.ItemsSource = null;
-        //}
 
         private async void Dissapear()
         {
             await picker.TranslateTo(0, 500, 250);
             await PopupNavigation.Instance.PopAsync(false);
-            MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", (ReturnTypes)TaxTypePicker.SelectedItem);
+            MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", TaxTypePickerSelectedItem);
         }
 
         private async void PopupClose_Clicked(object sender, EventArgs e)
@@ -55,7 +52,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
             await picker.TranslateTo(0, 500, 250);
             await PopupNavigation.Instance.PopAsync(false);
-            MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", (ReturnTypes)TaxTypePicker.SelectedItem);
+            MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", TaxTypePickerSelectedItem);
         }
 
 
@@ -65,22 +62,21 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             {
                 switch (Device.RuntimePlatform)
                 {
-
                     case Device.iOS:
                         {
-
-                            TaxTypePicker.HeaderFontFamily = "Somar-SemiBold";
-                            TaxTypePicker.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            TaxTypePicker.SelectedItemFontFamily = "Somar-SemiBold";
-                            TaxTypePicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            TaxTypePicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            TaxTypePicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            TaxTypePicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            TaxTypePicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Device.Android:
-
-                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        {
+                            TaxTypePicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            TaxTypePicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            TaxTypePicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            TaxTypePicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        }
                         break;
                 }
             }
@@ -96,8 +92,9 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
             try
             {
-                ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
-                TaxTypePicker.SelectedItem = selectedReturntype;
+                ReturnTypes selectedReturntype = this.taxTypeForFilter[e.NewValue];
+                //TaxTypePicker.SelectedItem = selectedReturntype;
+                TaxTypePickerSelectedItem = selectedReturntype;
             }
             catch (Exception)
             {

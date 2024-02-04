@@ -5,6 +5,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using Application = Microsoft.Maui.Controls.Application;
+using ListView = Microsoft.Maui.Controls.ListView;
 using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
@@ -42,7 +43,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
                     if (e.Item == null)
                     {
                         return;
-                    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+                    } ((ListView)sender).SelectedItem = null;
                 }
                 catch (Exception)
                 {
@@ -174,20 +175,20 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
                 if (selectedReturntype.Text == AppResources.UnSubmitted)
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Error"];
-                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ErrorBg"];
+                    ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["ErrorBg"];
 
 
                 }
                 else if (selectedReturntype.Text == AppResources.OverDue)
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Error"];
-                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ErrorBg"];
+                    ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["ErrorBg"];
 
                 }
                 else if (selectedReturntype.Text == AppResources.Submitted)
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Success"];
-                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["SuccessBg"];
+                    ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["SuccessBg"];
 
                 }
             }

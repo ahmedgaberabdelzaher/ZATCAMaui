@@ -120,7 +120,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             try
             {
                 var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
-                TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
+                //TODO
+                var view = (Element)TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index);
+                TabScrollView.ScrollToAsync(view, ScrollToPosition.MakeVisible, true);
             }
             catch (Exception)
             {

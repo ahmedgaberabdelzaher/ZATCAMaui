@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage
     x:Class="ZATCAMAUI.Views.NewDesign.VATReview.VatReviewPageView"
@@ -421,7 +421,7 @@
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             IsVisible="{Binding IsApplicationVisible}"
-                            Style="{d:StaticResource ValueLabelPrimary}"
+                            Style="{StaticResource ValueLabelPrimary}"
                             Text="{Binding ViewApplicationTypeText}">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ViewApplicationTapped}" />

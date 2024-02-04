@@ -11,6 +11,7 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"

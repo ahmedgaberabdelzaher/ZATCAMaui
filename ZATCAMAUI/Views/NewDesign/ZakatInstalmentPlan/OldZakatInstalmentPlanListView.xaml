@@ -195,11 +195,11 @@
                             VerticalOptions="StartAndExpand">
 
 
-                            <listView:SfListView.LayoutManager>
+                            <listView:SfListView.ItemsLayout>
 
                                 <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
 
-                            </listView:SfListView.LayoutManager>
+                            </listView:SfListView.ItemsLayout>
 
                         </listView:SfListView>
 

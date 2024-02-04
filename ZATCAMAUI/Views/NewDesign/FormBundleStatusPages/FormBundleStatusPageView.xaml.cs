@@ -136,7 +136,7 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             }
         }
 
-        private void BundleType_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void BundleType_OkButtonClicked(object sender, EventArgs e)
         {
 
         }
@@ -162,7 +162,7 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             }
         }
 
-        private void BundleNumber_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void BundleNumber_OkButtonClicked(object sender, EventArgs e)
         {
 
         }
@@ -180,7 +180,8 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
         {
             try
             {
-                (ListView)sender.SelectedItem = null;
+                var listView = (ListView)sender;
+                listView.SelectedItem = null;
             }
             catch (Exception)
             {

@@ -717,14 +717,14 @@
 
                                         <DataTrigger
                                             Binding="{Binding SubmitModel.travelerDeclaration.gender}"
-                                            TargetType="custom:BorderlessEntry"
+                                            TargetType="custom:GAZTBorderlessEntry"
                                             Value="1">
                                             <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTMaleLabel}" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitModel.travelerDeclaration.gender}"
-                                            TargetType="custom:BorderlessEntry"
+                                            TargetType="custom:GAZTBorderlessEntry"
                                             Value="2">
                                             <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTFemaleLabel}" />
                                         </DataTrigger>
