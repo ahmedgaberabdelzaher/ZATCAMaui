@@ -347,7 +347,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             IsLoading = true;
 
                             string code = scanCode;
-                        //   code = "ASVaYW1pbCBPcGVyYXRpb25zICYgTWFpbnRlbmFuY2UgQ28gTHRkAg8zMTAxMzY4NDAzMDAwMDMDEzIwMjMtMTItMThUMDY6NDM6MjUEBzExNzYuOTEFBjE1My41MQYsVDI2RjBMYzVvTHpGenZTVjNIU1JLQnIwNSsvQmRmRG93bzU1VjhHNitwOD0HYE1FUUNJRGVnSUw5MStMTHN1c3F5Ukd2djd5cUZ5ZEtsTmQ0UnhXZ3JLQ1c0Vmd5cUFpQk04SDhYaWlMclhrZTZzVm9LeUo0TXRuS2NCZDUyV281VlpRUHZtcVByT1E9PQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEouqS1tSXHqT8suzSdB7CJVLlQZnGe8B12TYwC8O4PqJJVEFHOHV3nzdenUmVyRzExqlrGHhfJ1yB+jrEECWyZg==";
+                           code = "ASVaYW1pbCBPcGVyYXRpb25zICYgTWFpbnRlbmFuY2UgQ28gTHRkAg8zMTAxMzY4NDAzMDAwMDMDEzIwMjMtMTItMThUMDY6NDM6MjUEBzExNzYuOTEFBjE1My41MQYsVDI2RjBMYzVvTHpGenZTVjNIU1JLQnIwNSsvQmRmRG93bzU1VjhHNitwOD0HYE1FUUNJRGVnSUw5MStMTHN1c3F5Ukd2djd5cUZ5ZEtsTmQ0UnhXZ3JLQ1c0Vmd5cUFpQk04SDhYaWlMclhrZTZzVm9LeUo0TXRuS2NCZDUyV281VlpRUHZtcVByT1E9PQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEouqS1tSXHqT8suzSdB7CJVLlQZnGe8B12TYwC8O4PqJJVEFHOHV3nzdenUmVyRzExqlrGHhfJ1yB+jrEECWyZg==";
                             if (code == "-1")
                             {
                                 return;

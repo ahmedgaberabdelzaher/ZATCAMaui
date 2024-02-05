@@ -148,6 +148,7 @@
 	  <None Remove="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 	  <None Remove="Views\NewDesign\Common\NativeNafath\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
+	  <None Remove="Models\EinvoiceModels\DPModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -298,6 +299,7 @@
 		<Folder Include="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 		<Folder Include="Views\NewDesign\Common\NativeNafath\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
+		<Folder Include="Models\EinvoiceModels\DPModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
