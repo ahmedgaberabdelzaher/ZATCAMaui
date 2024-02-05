@@ -584,7 +584,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 //TODO
                 // send the child to back because LowerChild() is not available in MAUI
                 loginGrid.Children.RemoveAt(loginGrid.Children.IndexOf(hybridWebView));
-                loginGrid.Insert(0, hybridWebView);
+                loginGrid.Insert(loginGrid.Children.Count, hybridWebView);
                 //loginGrid.LowerChild(hybridWebView);
             }
             catch (Exception)

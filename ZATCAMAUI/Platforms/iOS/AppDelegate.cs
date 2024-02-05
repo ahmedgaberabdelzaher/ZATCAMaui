@@ -24,8 +24,8 @@ public class AppDelegate : MauiUIApplicationDelegate
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
-            App iosapp = new App();
-            App.appObj = iosapp;
+            //App iosapp = new App();
+            //App.appObj = iosapp;
 
 
 

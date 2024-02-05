@@ -426,6 +426,7 @@ namespace ZATCAMAUI
                 }
 
                 InitializeComponent();
+                App.appObj = this;
                 onFontFamilyChanged();
                 if (PreviousIsArabic)
                 {

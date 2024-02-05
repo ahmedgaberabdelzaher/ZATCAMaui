@@ -75,7 +75,6 @@
 
 	<ItemGroup>
 	  <Compile Remove="Platforms\Android\DependencyServices\CustomPdfRenderer.cs" />
-	  <Compile Remove="MainPage.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -3468,9 +3467,6 @@
 	  </Compile>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <MauiXaml Remove="MainPage.xaml" />
-	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Core\CustomControls\EntryWithSAR.xaml">
 	    <Generator>MSBuild:Compile</Generator>

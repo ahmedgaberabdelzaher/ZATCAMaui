@@ -22,29 +22,29 @@ namespace ZATCAMAUI.Core.Helper
         public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
 
-        public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa";
-        public static string QABaseUrlForAuthentication = "https://loginqa.gazt.gov.sa:443";
+        public static string QABaseUrlForODataServices = "https://sapgatewayqa.zatca.gov.sa";
+        public static string QABaseUrlForAuthentication = "https://loginqa.zatca.gov.sa:443";
 
-        public static string UatBaseUrlForODataServices = "https://sapgatewayuat.gazt.gov.sa";
-        public static string UatBaseUrlForAuthentication = "https://loginu.gazt.gov.sa";
+        public static string UatBaseUrlForODataServices = "https://sapgatewayuat.zatca.gov.sa";
+        public static string UatBaseUrlForAuthentication = "https://loginu.zatca.gov.sa";
 
-        public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.gazt.gov.sa";
-        public static string PreProdBaseUrlForAuthentication = "https://logint.gazt.gov.sa";
+        public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.zatca.gov.sa";
+        public static string PreProdBaseUrlForAuthentication = "https://logint.zatca.gov.sa";
 
-        public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
-        public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
+        public static string ProdBaseUrlForODataServices = "https://sapgateway.zatca.gov.sa:443";
+        public static string ProdBaseUrlForAuthentication = "https://login.zatca.gov.sa:443";
 
         #region Cookie Info
 
         public static string DevDomainForCookies = "tstdp1as1.mygazt.gov.sa";
-        public static string QADomainForCookies = "loginqa.gazt.gov.sa";
-        public static string PreprodDomainForCookies = "logint.gazt.gov.sa";
-        public static string UatDomainForCookies = "loginu.gazt.gov.sa";
+        public static string QADomainForCookies = "loginqa.zatca.gov.sa";
+        public static string PreprodDomainForCookies = "logint.zatca.gov.sa";
+        public static string UatDomainForCookies = "loginu.zatca.gov.sa";
 
-        public static string ProdDomainForCookies = "login.gazt.gov.sa";
+        public static string ProdDomainForCookies = "login.zatca.gov.sa";
 
         public static string DevPartialDomainForCookies = ".mygazt.gov.sa";
-        public static string QAPrepprodProdPartialDomainForCookies = ".gazt.gov.sa";
+        public static string QAPrepprodProdPartialDomainForCookies = ".zatca.gov.sa";
 
         public static string LanguageCookieNameForLogin = "langMobile";
 
@@ -81,7 +81,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
 
         public static string GAZTSAMLLogoutService = BaseUrlOfODataServices + "/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165";
-        //https://sapgatewayqa.gazt.gov.sa/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165
+        //https://sapgatewayqa.zatca.gov.sa/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165
 
         public static string CaptchaAndGUID = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CREATE_CAPTCHA_SRV/HeaderSet";
         public static string ForgotPasswordServiceName = "ZDP_FRGT_USRNM_PWD_SRV";// service name has been used in Metadata in ForgotUserNamePassword Page
@@ -128,7 +128,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string GAZTGetEstimatedZAKATReturnInvoicePdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='";
 
         //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3300088482',Auditor='',Lang='EN',UserTin='330088482')?saml2=disabled&sap-language='EN'&$expand=listSet
-        //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz='3102289241',Langz='E')?&$expand=TPOC_LIST&saml2=enabled&$format=json
+        //https://sapgatewayqa.zatca.gov.sa/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz='3102289241',Langz='E')?&$expand=TPOC_LIST&saml2=enabled&$format=json
 
         #region CorrespondenceAPIs
         public static string GAZTGetCorrespondence = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/Corr_detSet?$format=json&saml2=enabled&$filter=Gpartz eq ";
@@ -173,16 +173,16 @@ namespace ZATCAMAUI.Core.Helper
 
         #region Tax Evasion New API - Pointing to Prod
 
-        public static string GAZTTaxEvasionGetCategories = "https://vat2.gazt.gov.sa/api/v4/list-categories";
-        public static string GAZTTaxEvasionSendSms = "https://vat2.gazt.gov.sa/api/v4/sendSms";
-        public static string GAZTTaxEvasionVerifySms = "https://vat2.gazt.gov.sa/api/v4/verifySms";
-        public static string GAZTTaxEvasionGetAllReports = "https://vat2.gazt.gov.sa/api/v4/get-reports";
-        public static string GAZTTaxEvasionGetUserByMobile = "https://vat2.gazt.gov.sa/api/v4/get-user-by-mobile";
-        public static string GAZTTaxEvasionGetAllRegions = "https://vat2.gazt.gov.sa/api/v4/list-regions";
-        public static string GAZTTaxEvasionGetAllCities = "https://vat2.gazt.gov.sa/api/v4/list-cities?region=";
-        public static string GAZTTaxEvasionGetAllCategories = "https://vat2.gazt.gov.sa/api/v4/list-categories";
-        public static string GAZTTaxEvasionCreateReport = "https://vat2.gazt.gov.sa/api/v4/add-report";
-        public static string GAZTTaxEvasionRegisterUser = "https://vat2.gazt.gov.sa/api/v4/user/register";
+        public static string GAZTTaxEvasionGetCategories = "https://vat2.zatca.gov.sa/api/v4/list-categories";
+        public static string GAZTTaxEvasionSendSms = "https://vat2.zatca.gov.sa/api/v4/sendSms";
+        public static string GAZTTaxEvasionVerifySms = "https://vat2.zatca.gov.sa/api/v4/verifySms";
+        public static string GAZTTaxEvasionGetAllReports = "https://vat2.zatca.gov.sa/api/v4/get-reports";
+        public static string GAZTTaxEvasionGetUserByMobile = "https://vat2.zatca.gov.sa/api/v4/get-user-by-mobile";
+        public static string GAZTTaxEvasionGetAllRegions = "https://vat2.zatca.gov.sa/api/v4/list-regions";
+        public static string GAZTTaxEvasionGetAllCities = "https://vat2.zatca.gov.sa/api/v4/list-cities?region=";
+        public static string GAZTTaxEvasionGetAllCategories = "https://vat2.zatca.gov.sa/api/v4/list-categories";
+        public static string GAZTTaxEvasionCreateReport = "https://vat2.zatca.gov.sa/api/v4/add-report";
+        public static string GAZTTaxEvasionRegisterUser = "https://vat2.zatca.gov.sa/api/v4/user/register";
 
         #endregion
 
@@ -418,16 +418,16 @@ namespace ZATCAMAUI.Core.Helper
         #endregion
 
         #region
-        //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/TabIdentificationSet(Euser='00001000000008337092',Fbguid='005056B1F8FB1EDB80ECD20B24BEA571')
+        //https://sapgatewayqa.zatca.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/TabIdentificationSet(Euser='00001000000008337092',Fbguid='005056B1F8FB1EDB80ECD20B24BEA571')
         public static string AccountStatementTabIdentification = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/TabIdentificationSet(";
 
-        //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/RevenueDropdownSet?$filter=Euser eq '00001000000008337092' and Fbguid eq '005056B1F8FB1EDB80ECD20B24BEA571' and TaxType eq 'D' and Langz eq 'E'
+        //https://sapgatewayqa.zatca.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/RevenueDropdownSet?$filter=Euser eq '00001000000008337092' and Fbguid eq '005056B1F8FB1EDB80ECD20B24BEA571' and TaxType eq 'D' and Langz eq 'E'
         public static string AccountStatementRevenueDropDownSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/RevenueDropdownSet?$filter=";
 
-        //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='00001000000008337102',Fbguid='005056B1F8FB1EDB80EE42BD20B90982',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
+        //https://sapgatewayqa.zatca.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='00001000000008337102',Fbguid='005056B1F8FB1EDB80EE42BD20B90982',StatementFilter='',FiscalYear='',TaxType='D',Lang='E')?&$expand=StatmenetLineItemsSet
         public static string AccountStatementGetHeaderSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/StatementHeaderSet(Euser='',";
 
-        //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/YearValueSet?$filter=Euser eq '00000000001008337188' and Fguid eq '005056B1F8FB1EDB80EED6C67D924B34' and TaxType eq 'D' and StatementFilter eq '01'
+        //https://sapgatewayqa.zatca.gov.sa/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/YearValueSet?$filter=Euser eq '00000000001008337188' and Fguid eq '005056B1F8FB1EDB80EED6C67D924B34' and TaxType eq 'D' and StatementFilter eq '01'
         public static string AccountStatementGetYearValues = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/YearValueSet?$filter=Euser eq '' and ";
 
         //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/zpdfDownloadSet(Euser='00000000000001088319',Fguid='005056B1365C1EDB82951CC479769E28',Taxtype='D',FiscalYear='2020',StatementFilter='04',FromDt=datetime'2020-8-1T00:00:00',ToDt=datetime'2020-10-31T00:00:00',Langz='E')/$value
@@ -459,8 +459,8 @@ namespace ZATCAMAUI.Core.Helper
         public static string GAZTChatPartialUrlen = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/en/index_PROD.html";
         public static string GAZTChatPartialUrlar = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/ar/index_PROD.html";
 
-        //public static string GAZTChatPartialUrlen = "https://tstchatbot.gazt.gov.sa/GaztTesting/en/index_test.html";
-        //public static string GAZTChatPartialUrlar = "https://tstchatbot.gazt.gov.sa/GaztTesting/ar/index_test.html";
+        //public static string GAZTChatPartialUrlen = "https://tstchatbot.zatca.gov.sa/GaztTesting/en/index_test.html";
+        //public static string GAZTChatPartialUrlar = "https://tstchatbot.zatca.gov.sa/GaztTesting/ar/index_test.html";
 
         public static string GAZTFAQEnUrl = "https://zatca.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
         public static string GAZTFAQARUrl = "https://zatca.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
@@ -468,8 +468,8 @@ namespace ZATCAMAUI.Core.Helper
         public static string GAZTSuggestURLen = "https://zatca.gov.sa/en/ContactUs/Pages/SuggestAndComplaintMV.aspx";
         public static string GAZTSuggestURLar = "https://zatca.gov.sa/ar/ContactUs/Pages/SuggestAndComplaintMV.aspx";
 
-        public static string GAZTVisitPortalUrlEN = "https://login.gazt.gov.sa/irj/portal?ume.logon.locale=en&login=X";
-        public static string GAZTVisitPortalUrlAR = "https://login.gazt.gov.sa/irj/portal?ume.logon.locale=ar&login=X";
+        public static string GAZTVisitPortalUrlEN = "https://login.zatca.gov.sa/irj/portal?ume.logon.locale=en&login=X";
+        public static string GAZTVisitPortalUrlAR = "https://login.zatca.gov.sa/irj/portal?ume.logon.locale=ar&login=X";
 
 
         public static string ZAtcaCustomsTarrifsEN = "https://www.customs.gov.sa/en/Integrated-Tariff-appview";

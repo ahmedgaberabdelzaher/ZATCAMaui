@@ -94,8 +94,8 @@ public class MainActivity : MauiAppCompatActivity
 
             PackageInfo info = PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;
-            App app = new App();
-            App.appObj = app;
+            //App app = new App();
+            //App.appObj = app;
             //Distribute.SetEnabledForDebuggableBuild(true);
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
