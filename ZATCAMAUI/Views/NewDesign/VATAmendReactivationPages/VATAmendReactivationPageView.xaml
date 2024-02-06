@@ -3482,11 +3482,13 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            AnimationType="SingleCircle"
                             HorizontalOptions="CenterAndExpand"
                             IsRunning="{Binding IsLoading}"
-                            SizeFactor="0.7"
-                            TextColor="{StaticResource Primary}"
+                            AnimationType="Cupertino"
+                            SizeFactor="0.6"
+                            WidthRequest="70"
+                            HeightRequest="70"
+                            IndicatorColor="{StaticResource Secondary}"
                             TitlePlacement="Bottom"
                             VerticalOptions="Center" />
                     </StackLayout>
