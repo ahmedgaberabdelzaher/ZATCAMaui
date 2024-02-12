@@ -484,6 +484,7 @@ namespace ZATCAMAUI.Core.Helper
 
         public static string TaxpayerSubsidyRequest = string.Empty;
         public static string GetVatEligilibilityDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV";
-
+        public static string GAZTVATSignUpValidateIdDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TP_NAME_SRV/taxpayer_nameSet";//CRPENTEST(Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
+        public static string GAZTSiguupValidateIDTypesDecl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/taxpayer_nameSet";//PENTEST Chnage
     }
 }

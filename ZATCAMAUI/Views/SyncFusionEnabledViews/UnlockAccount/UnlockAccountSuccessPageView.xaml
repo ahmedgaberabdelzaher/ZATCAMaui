@@ -3,8 +3,8 @@
     x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount.UnlockAccountSuccessPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:custom2="clr-namespace:ZATCAMAUI.Core.CustomControls"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid Margin="-10,-30,-10,-10" IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}">
@@ -39,7 +39,7 @@
                         FontFamily="{StaticResource SomarBold}"
                         FontSize="Large"
                         HorizontalTextAlignment="Center"
-                        Text="{x:Static custom2:AppResources.AccountUnlocked}"
+                        Text="{x:Static ResourceManager:AppResources.AccountUnlocked}"
                         TextColor="White" />
                     <Label
                         FontFamily="{StaticResource SomarSemiBold}"
@@ -61,7 +61,7 @@
                             FontSize="15"
                             HeightRequest="48"
                             StrokeThickness="0"
-                            Text="{x:Static custom2:AppResources.LogIn}"
+                            Text="{x:Static ResourceManager:AppResources.LogIn}"
                             TextColor="{DynamicResource Gray-White}"
                             VerticalOptions="End" />
                     </StackLayout>

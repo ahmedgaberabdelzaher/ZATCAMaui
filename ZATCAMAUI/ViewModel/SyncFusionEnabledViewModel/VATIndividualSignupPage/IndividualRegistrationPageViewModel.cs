@@ -3436,7 +3436,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                             IsResendOTPEnabled = false;
                             //TimerStart(TotalSec);
-                            ButtonDisableColor = Color.Gray;
+                            ButtonDisableColor = Colors.Gray;
                         }
 
                     }

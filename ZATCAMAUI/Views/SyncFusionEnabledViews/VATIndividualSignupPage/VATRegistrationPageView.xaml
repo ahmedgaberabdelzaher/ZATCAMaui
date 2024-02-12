@@ -664,24 +664,44 @@
                                                             Grid.Row="1"
                                                             Margin="2"
                                                             Background="White"
-                                                            CancelButtonBackgroundColor="#EAF7CC"
                                                             CancelButtonClicked="DpEStartDate_CancelButtonClicked"
-                                                            CancelButtonTextColor="{StaticResource Primary}"
                                                             Closed="DpEStartDate_Closed"
-                                                            ColumnHeaderBackgroundColor="White"
-                                                            ColumnHeaderHeight="50"
                                                             FlowDirection="RightToLeft"
-                                                            HeaderBackgroundColor="White"
-                                                            HeaderText="Date of Birth"
                                                             HorizontalOptions="FillAndExpand"
                                                             ItemHeight="45"
                                                             Mode="Dialog"
-                                                            OKButtonBackgroundColor="#EAF7CC"
-                                                            OKButtonTextColor="{StaticResource Primary}"
                                                             OkButtonClicked="DpEStartDate_OkButtonClicked"
                                                             SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
-                                                            SelectedItemTextColor="{StaticResource NeutralBlack}"
                                                             SelectionChanged="DpEStartDate_SelectionChanged">
+
+                                                            <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
+
+                                                                <custom:CustomDatePicker.SelectedTextStyle>
+                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                                </custom:CustomDatePicker.SelectedTextStyle>
+
+                                                                <custom:CustomDatePicker.HeaderView>
+
+                                                                    <syncfusion:PickerHeaderView Height="46" Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+
+                                                                </custom:CustomDatePicker.HeaderView>
+
+                                                                 <custom:CustomDatePicker.FooterView>
+
+                                                                    <syncfusion:PickerFooterView
+                                                                        Background="#EAF7CC"
+                                                                        Height="46">
+
+                                                                        <syncfusion:PickerFooterView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                        </syncfusion:PickerFooterView.TextStyle>
+
+                                                                    </syncfusion:PickerFooterView>
+
+                                                                 </custom:CustomDatePicker.FooterView>
+
                                                             <custom:CustomDatePicker.Behaviors>
                                                                 <behaviors:SfPickerBehavior />
                                                             </custom:CustomDatePicker.Behaviors>
@@ -1844,26 +1864,47 @@
                                                                 Grid.Row="1"
                                                                 Margin="2"
                                                                 Background="White"
-                                                                CancelButtonBackgroundColor="#EAF7CC"
                                                                 CancelButtonClicked="DOB_CancelButtonClicked"
-                                                                CancelButtonTextColor="{StaticResource Primary}"
                                                                 Closed="SignUpDOB_Closed"
-                                                                ColumnHeaderBackgroundColor="White"
-                                                                ColumnHeaderHeight="50"
                                                                 FlowDirection="RightToLeft"
-                                                                HeaderBackgroundColor="{StaticResource Primary}"
-                                                                HeaderText="Date of Birth"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 ItemHeight="45"
                                                                 Mode="Dialog"
-                                                                OKButtonBackgroundColor="#EAF7CC"
-                                                                OKButtonTextColor="{StaticResource Primary}"
                                                                 OkButtonClicked="DOB_OkButtonClicked"
-                                                                SelectedItem="{Binding TodayDate}"
-                                                                SelectedItemTextColor="{StaticResource NeutralBlack}">
+                                                                SelectedItem="{Binding TodayDate}">
+
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
+
+                                                                <custom:CustomDatePicker.SelectedTextStyle>
+                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                                </custom:CustomDatePicker.SelectedTextStyle>
+
+                                                                <custom:CustomDatePicker.HeaderView>
+
+                                                                    <syncfusion:PickerHeaderView Height="46" Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+
+                                                                </custom:CustomDatePicker.HeaderView>
+
+                                                                 <custom:CustomDatePicker.FooterView>
+
+                                                                    <syncfusion:PickerFooterView
+                                                                        Background="#EAF7CC"
+                                                                        Height="46">
+
+                                                                        <syncfusion:PickerFooterView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                        </syncfusion:PickerFooterView.TextStyle>
+
+                                                                    </syncfusion:PickerFooterView>
+
+                                                                 </custom:CustomDatePicker.FooterView>
+
                                                                 <custom:CustomDatePicker.Behaviors>
                                                                     <behaviors:SfPickerBehavior />
                                                                 </custom:CustomDatePicker.Behaviors>
+
                                                             </custom:CustomDatePicker>
                                                         </Grid>
                                                     </StackLayout>
@@ -2531,23 +2572,43 @@
                                                                 Grid.Row="1"
                                                                 Margin="2"
                                                                 Background="White"
-                                                                CancelButtonBackgroundColor="#EAF7CC"
                                                                 CancelButtonClicked="ContactDOBPicker_CancelButtonClicked"
-                                                                CancelButtonTextColor="{StaticResource Primary}"
                                                                 Closed="ContactDOBPicker_Closed"
-                                                                ColumnHeaderBackgroundColor="White"
-                                                                ColumnHeaderHeight="50"
                                                                 FlowDirection="RightToLeft"
-                                                                HeaderBackgroundColor="{StaticResource Primary}"
-                                                                HeaderText="Date of Birth"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 ItemHeight="45"
                                                                 Mode="Dialog"
-                                                                OKButtonBackgroundColor="#EAF7CC"
-                                                                OKButtonTextColor="{StaticResource Primary}"
                                                                 OkButtonClicked="ContactDOBPicker_OkButtonClicked"
-                                                                SelectedItem="{Binding TodayDate}"
-                                                                SelectedItemTextColor="{StaticResource NeutralBlack}">
+                                                                SelectedItem="{Binding TodayDate}">
+
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
+
+                                                                <custom:CustomDatePicker.SelectedTextStyle>
+                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                                </custom:CustomDatePicker.SelectedTextStyle>
+
+                                                                <custom:CustomDatePicker.HeaderView>
+
+                                                                    <syncfusion:PickerHeaderView Height="46" Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+
+                                                                </custom:CustomDatePicker.HeaderView>
+
+                                                                 <custom:CustomDatePicker.FooterView>
+
+                                                                    <syncfusion:PickerFooterView
+                                                                        Background="#EAF7CC"
+                                                                        Height="46">
+
+                                                                        <syncfusion:PickerFooterView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                        </syncfusion:PickerFooterView.TextStyle>
+
+                                                                    </syncfusion:PickerFooterView>
+
+                                                                 </custom:CustomDatePicker.FooterView>
+
                                                                 <custom:CustomDatePicker.Behaviors>
                                                                     <behaviors:SfPickerBehavior />
                                                                 </custom:CustomDatePicker.Behaviors>

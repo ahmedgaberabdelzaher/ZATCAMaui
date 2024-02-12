@@ -783,7 +783,7 @@
                             <ColumnDefinition Width="10*" />
                         </Grid.ColumnDefinitions>
 
-                        <custom:GAZtBorderlessEntry
+                        <custom:GAZTBorderlessEntry
                             Grid.Row="0"
                             Grid.Column="0"
                             BackgroundColor="White"
