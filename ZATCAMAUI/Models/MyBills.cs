@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Globalization;
+using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Mangers;
 
 namespace ZATCAMAUI.Models

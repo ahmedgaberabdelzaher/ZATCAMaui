@@ -1,4 +1,5 @@
-﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.ContactUsPage;
+﻿
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
 
 namespace ZATCAMAUI.Views.NewDesign.HomePages
 {

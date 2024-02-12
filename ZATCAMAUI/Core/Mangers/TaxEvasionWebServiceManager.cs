@@ -18,15 +18,15 @@ namespace ZATCAMAUI.Core.Mangers
         {
             TaxEvasionCategoriesModel categoriesModel = new TaxEvasionCategoriesModel();
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionGetCategories;
+                    string url = Constants.GAZTTaxEvasionGetCategories;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
@@ -44,7 +44,7 @@ namespace ZATCAMAUI.Core.Mangers
                     categoriesModel = JsonConvert.DeserializeObject<TaxEvasionCategoriesModel>(response);
                     return categoriesModel;
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -80,15 +80,15 @@ namespace ZATCAMAUI.Core.Mangers
             TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
             string response = string.Empty;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionSendSms;
+                    string url = Constants.GAZTTaxEvasionSendSms;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
@@ -103,7 +103,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Accept-Language", langVal);
 
                     var serilized = JsonConvert.SerializeObject(sendSmsModel);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     response = res.Content.ReadAsStringAsync().Result;
                     sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
@@ -129,15 +129,15 @@ namespace ZATCAMAUI.Core.Mangers
             TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
             string response = string.Empty;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionVerifySms;
+                    string url = Constants.GAZTTaxEvasionVerifySms;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
@@ -145,7 +145,7 @@ namespace ZATCAMAUI.Core.Mangers
                     requestMessage.Headers.Add("mobile", mobileNumber);
                     var serilized = JsonConvert.SerializeObject(verifySmsModel);
 
-                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
 
                     string langVal = "en";
                     if (App.IsArabic == true)
@@ -195,15 +195,15 @@ namespace ZATCAMAUI.Core.Mangers
             TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
             string response = string.Empty;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionGetAllReports;
+                    string url = Constants.GAZTTaxEvasionGetAllReports;
                     var uri = new Uri(url);
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
@@ -220,7 +220,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     requestMessage.Headers.Add("Accept-Language", langVal);
                     var serilized = JsonConvert.SerializeObject(mobileNumberModel);
-                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
                     response = res.Content.ReadAsStringAsync().Result;
 
@@ -248,15 +248,15 @@ namespace ZATCAMAUI.Core.Mangers
             TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
             string response = string.Empty;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionGetUserByMobile;
+                    string url = Constants.GAZTTaxEvasionGetUserByMobile;
                     var uri = new Uri(url);
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
@@ -274,7 +274,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     requestMessage.Headers.Add("Accept-Language", langVal);
                     var serilized = JsonConvert.SerializeObject(mobileNumberModel);
-                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
                     response = res.Content.ReadAsStringAsync().Result;
 
@@ -302,15 +302,15 @@ namespace ZATCAMAUI.Core.Mangers
             TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
             string response = string.Empty;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionRegisterUser;
+                    string url = Constants.GAZTTaxEvasionRegisterUser;
                     var uri = new Uri(url);
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
@@ -320,7 +320,7 @@ namespace ZATCAMAUI.Core.Mangers
                     requestMessage.Headers.Add("Accept", "application/json");
 
                     var serilized = JsonConvert.SerializeObject(registerUserModel);
-                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
                     response = res.Content.ReadAsStringAsync().Result;
 
@@ -330,7 +330,6 @@ namespace ZATCAMAUI.Core.Mangers
                     return registrationResponseModel;
                 }
                 catch (Exception)
-
                 {
 
 
@@ -349,15 +348,15 @@ namespace ZATCAMAUI.Core.Mangers
         {
             TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionGetAllRegions;
+                    string url = Constants.GAZTTaxEvasionGetAllRegions;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -375,7 +374,7 @@ namespace ZATCAMAUI.Core.Mangers
                     regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
                     return regionsModel;
                 }
-                catch (JsonReaderException)
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -392,7 +391,6 @@ namespace ZATCAMAUI.Core.Mangers
                     throw gex;
                 }
                 catch (Exception)
-
                 {
 
 
@@ -409,15 +407,15 @@ namespace ZATCAMAUI.Core.Mangers
         {
             TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionGetAllCities + Convert.ToString(regionId);
+                    string url = Constants.GAZTTaxEvasionGetAllCities + Convert.ToString(regionId);
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
@@ -436,7 +434,7 @@ namespace ZATCAMAUI.Core.Mangers
                     regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
                     return regionsModel;
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -453,8 +451,6 @@ namespace ZATCAMAUI.Core.Mangers
                     throw gex;
                 }
                 catch (Exception)
-
-
                 {
 
 
@@ -473,15 +469,15 @@ namespace ZATCAMAUI.Core.Mangers
             TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
             string response = string.Empty;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTTaxEvasionCreateReport;
+                    string url = Constants.GAZTTaxEvasionCreateReport;
                     var uri = new Uri(url);
 
                     using (var client = new HttpClient())
@@ -509,11 +505,11 @@ namespace ZATCAMAUI.Core.Mangers
                             foreach (var keyValuePair in values)
                             {
                                 multipartFormDataContent.Add(new StringContent(keyValuePair.Value),
-                                    string.Format("\"{0}\"", keyValuePair.Key));
+                                    String.Format("\"{0}\"", keyValuePair.Key));
                             }
                             foreach (UploadedDocumentsList uploadedDocumentsList in documentsLists)
                             {
-                                string base64Encoded = Convert.ToBase64String(uploadedDocumentsList.DocBinaryInBase64);
+                                string base64Encoded = System.Convert.ToBase64String(uploadedDocumentsList.DocBinaryInBase64);
 
 
                                 var valuesTmp = new[]
@@ -525,7 +521,7 @@ namespace ZATCAMAUI.Core.Mangers
                                 foreach (var keyValuePair in valuesTmp)
                                 {
                                     multipartFormDataContent.Add(new StringContent(keyValuePair.Value),
-                                        string.Format("\"{0}\"", keyValuePair.Key));
+                                        String.Format("\"{0}\"", keyValuePair.Key));
                                 }
                             }
                             string langVal = "en";
@@ -546,7 +542,6 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                 }
                 catch (Exception)
-
                 {
 
 
@@ -566,15 +561,15 @@ namespace ZATCAMAUI.Core.Mangers
         {
             VATSignUpCaseId vATSignUpCaseId = new VATSignUpCaseId();
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-                    string url = ZATCAConstants.GAZTGetVATSignUpCaseId;
+                    string url = Constants.GAZTGetVATSignUpCaseId;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
@@ -584,7 +579,7 @@ namespace ZATCAMAUI.Core.Mangers
                     vATSignUpCaseId = JsonConvert.DeserializeObject<VATSignUpCaseId>(response);
                     return vATSignUpCaseId;
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -601,7 +596,6 @@ namespace ZATCAMAUI.Core.Mangers
                     throw gex;
                 }
                 catch (Exception)
-
                 {
 
 
@@ -614,14 +608,14 @@ namespace ZATCAMAUI.Core.Mangers
             }
         }
 
-        public async static Task<string> GAZTVATSignUpValidateTinNumberStringResp(string Tin)
+        public async static Task<String> GAZTVATSignUpValidateTinNumberStringResp(string Tin)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 VATSignUp vATSignUp = new VATSignUp();
                 string IsIDTypeValidList = string.Empty;
                 string NewToken = string.Empty;
-                string SignUpCityList = string.Empty;
+                String SignUpCityList = string.Empty;
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
@@ -631,7 +625,7 @@ namespace ZATCAMAUI.Core.Mangers
                     string DBO = string.Empty;
                     char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    string url = ZATCAConstants.GAZTVATSignUpValidateId + "(Tin='" + Tin + "',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    String url = Constants.GAZTVATSignUpValidateId + "(Tin='" + Tin + "',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     var uri = new Uri(url);
                     HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
                     if (VATSignUpIdValidateObject != null)
@@ -647,9 +641,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
@@ -661,7 +655,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -691,14 +685,14 @@ namespace ZATCAMAUI.Core.Mangers
             }
         }
 
-        public async static Task<string> GAZTVATSignUpValidateIDTypesStringResp(string IDType, string IDNumber, string DBO)
+        public async static Task<String> GAZTVATSignUpValidateIDTypesStringResp(string IDType, string IDNumber, string DBO)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 VATSignUp vATSignUp = new VATSignUp();
                 string IsIDTypeValidList = string.Empty;
                 string NewToken = string.Empty;
-                string SignUpCityList = string.Empty;
+                String SignUpCityList = string.Empty;
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
@@ -706,7 +700,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    string url = ZATCAConstants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    String url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     var uri = new Uri(url);
                     HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
                     if (VATSignUpIdValidateObject != null)
@@ -722,9 +716,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
@@ -736,7 +730,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -763,11 +757,163 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
+        }
+
+        public async static Task<String> GAZTVATSignUpValidateIDDeclaration(string IDType, string IDNumber, string DBO)
+
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+
+            {
+
+                VATSignUp vATSignUp = new VATSignUp();
+
+                string IsIDTypeValidList = string.Empty;
+
+                string NewToken = string.Empty;
+
+                String SignUpCityList = string.Empty;
+
+                try
+
+                {
+
+                    //HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+
+                    //crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    char lang = WebServiceManager.GetLangZParameter();
+
+                    //HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    String url = Constants.GAZTVATSignUpValidateIdDeclaration + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+
+                    // For VAT register String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+
+                    if (VATSignUpIdValidateObject != null)
+
+                    {
+
+                        if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
+
+                        {
+
+                            App.IsSessionExpired = true;
+
+                            return null;
+
+                        }
+
+                        HttpHeaders headers = VATSignUpIdValidateObject.Headers;
+
+                        IEnumerable<string> values;
+
+                        if (headers.TryGetValues("token", out values))
+
+                        {
+
+                            NewToken = values.First();
+
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+
+                        {
+
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+
+                            {
+
+                                App.IsSessionExpired = true;
+
+                                return null;
+
+                            }
+
+                            App.Token = NewToken;
+
+                        }
+
+                        SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+
+                    }
+
+                    return SignUpCityList;
+
+                }
+
+                catch (JsonReaderException ex)
+
+                {
+
+                    throw new GAZTInvalidDataException();
+
+                }
+
+                catch (HttpRequestException ex)
+
+                {
+
+                    throw ex;
+
+                }
+
+                catch (GAZTSessionExpiredException gex)
+
+                {
+
+                    throw gex;
+
+                }
+
+                catch (GAZTException gex)
+
+                {
+
+                    throw gex;
+
+                }
+
+                catch (Exception ex)
+
+                {
+
+                    Console.WriteLine(ex.Message);
+
+                    Console.Write(ex.StackTrace.ToString());
+
+                    throw new GAZTNetworkConnectivityIssueException();
+
+                }
+
+            }
+
+            else
+
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+
         }
 
         public async static Task<VATSignUp> GAZTVATSignUpValidateIDTypes(string IDType, string IDNumber, string DBO)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 VATSignUp vATSignUp = new VATSignUp();
                 string IsIDTypeValidList = string.Empty;
@@ -779,7 +925,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    string url = ZATCAConstants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    String url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     var uri = new Uri(url);
                     HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
                     if (VATSignUpIdValidateObject != null)
@@ -795,16 +941,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+                        String SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
                         vATSignUp = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
                         if (vATSignUp != null)
                         {
@@ -817,7 +963,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return vATSignUp;
                 }
 
-                catch (JsonReaderException)
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -849,7 +995,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<VATSignUpData> GAZTGetVATSignUpCityListForSignup()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 VATSignUpData vATSignUpData = new VATSignUpData();
                 string NewToken = string.Empty;
@@ -862,10 +1008,17 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
-                    string url = ZATCAConstants.GAZTGetVATSignUpCityAndRegionList + "dropdown_headerSet(Spras='" + lang + "',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json";
+                    String url = Constants.GAZTGetVATSignUpCityAndRegionList + "dropdown_headerSet(Spras='" + lang + "',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json";
                     var uri = new Uri(url);
 
-                
+                    //using (var responseStream = await client.GetStreamAsync(uri))
+                    //{
+                    //    using (var textReader = new StreamReader(responseStream))
+                    //    using (var jsonReader = new JsonTextReader(textReader))
+                    //    {
+                    //        vATSignUpData = JsonSerializer.CreateDefault().Deserialize<VATSignUpData>(jsonReader);
+                    //    }
+                    //}
 
                     HttpResponseMessage VATSignUpCountryRegionCityList = await client.GetAsync(uri);
                     if (VATSignUpCountryRegionCityList != null)
@@ -877,9 +1030,9 @@ namespace ZATCAMAUI.Core.Mangers
                             NewToken = values.First();
                         }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
@@ -887,7 +1040,7 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
 
-                        string signUpData = await VATSignUpCountryRegionCityList.Content.ReadAsStringAsync();
+                        String signUpData = await VATSignUpCountryRegionCityList.Content.ReadAsStringAsync();
 
                         DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(VATSignUpData));
                         MemoryStream stream = new MemoryStream(Encoding.UTF8.GetBytes(signUpData));
@@ -926,16 +1079,22 @@ namespace ZATCAMAUI.Core.Mangers
                     throw new GAZTNetworkConnectivityIssueException();
                 }
 
+
+                //catch (Exception)
+                //{
+                //    return null;
+                //}
             }
             else
             {
+                //throw new GAZTNetworkConnectivityIssueException(AppResources.ZZInternetConnectionMessage);
                 throw new GAZTInternetException();
             }
         }
 
         public static async Task<string> GAZTCreateVATSignUpFirst(VATSignUpSubmit vATSignUpSubmit)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -944,7 +1103,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
                     VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
-                    string url = ZATCAConstants.GAZTGetCreateVATSignUp + LangZ;
+                    string url = Constants.GAZTGetCreateVATSignUp + LangZ;
                     var uri = new Uri(url);
 
                     try
@@ -963,7 +1122,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var serilized = JsonConvert.SerializeObject(vATSignUpSubmit);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     return detailJson;

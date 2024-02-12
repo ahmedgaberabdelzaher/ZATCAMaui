@@ -75,6 +75,7 @@
 
 	<ItemGroup>
 	  <Compile Remove="Platforms\Android\DependencyServices\CustomPdfRenderer.cs" />
+	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\MyCommitmentsPage\MyCommitmentsPageViewModel.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -3404,29 +3405,29 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="PancakeViewCompat" Version="7.0.0" />
 		<PackageReference Include="Plugin.MediaManager.Forms" Version="1.2.2" />
-		<PackageReference Include="Portable.JWT" Version="1.0.3" />
+		<PackageReference Include="Portable.JWT" Version="1.0.5" />
 		<PackageReference Include="Prism.Core" Version="8.1.97" />
-		<PackageReference Include="RGPopup.Maui" Version="1.0.3" />
-		<PackageReference Include="Syncfusion.Licensing" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Buttons" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Calendar" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Charts" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Core" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Expander" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Inputs" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.ListView" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Picker" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="24.2.3" />
-		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.2.3" />
+		<PackageReference Include="RGPopup.Maui" Version="1.0.4" />
+		<PackageReference Include="Syncfusion.Licensing" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Buttons" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Calendar" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Picker" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="24.2.4" />
+		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.2.4" />
 		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
 		<PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 		<PackageReference Include="AppDynamics.Agent" Version="2023.12.0" />
 		<PackageReference Include="AppDynamics.Agent.Maui" Version="2023.12.0" />
 		<PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
-		<PackageReference Include="Syncfusion.Maui.Cards" Version="24.2.3" />
+		<PackageReference Include="Syncfusion.Maui.Cards" Version="24.2.4" />
 		<PackageReference Include="Onion.Maui.GoogleMaps" Version="5.0.1" />
 		<PackageReference Include="TlvLib" Version="1.0.0" />
 	</ItemGroup>
@@ -3436,6 +3437,7 @@
 	  <Folder Include="Platforms\Android\xml\" />
 	  <Folder Include="Platforms\Android\Resources\drawable\" />
 	  <Folder Include="Resources\Images\" />
+	  <Folder Include="ViewModel\SyncFusionEnabledViewModel\MyCommitmentsPage\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -4158,10 +4160,70 @@
 	  <MauiXaml Update="Views\NewDesign\Zakaty\AboutZakatyView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\AboutUsPages\AboutUsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\AcknowledgementDetailsPages\AcknowledgementDetailsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\AddNotePages\AddNotePageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\AddPopPages\AddPopPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\AmendSalesDetailsPages\AmendSalesDetailsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\AttachmentPages\AttachmentPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\Common\EmailEntry.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\ContactUsPage\ContactUsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\CreditCarriedPages\CreditCarriedPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\DisplayNotesPages\DisplayNotesPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\FAQPage\FAQPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\ICRListPages\ICRListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\InternationalMobileNumber\InternationalMobileNumberCodePages.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\LoginPages\SessionTimeoutPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\PdfViewPages\PdfView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\PrivacyAndPolicyPages\PrivacyAndPolicyPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\SalesDetailsPages\SalesDetailsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\StandardTemplate\StandardTemplateOfCardView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\StylesTestUi\StyleTestUIPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATDeclarationPagesEX\VATReturnsPageViewEX.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\ConfirmationPopUpForVatRegistration.xaml">
@@ -4173,16 +4235,40 @@
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\IndividualRegistrationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\InternationalCodeSearchPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\NewAccountPopUpPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\RegistrationSuccessfulPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupTnCPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationMenuPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationSuccessfullPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\ZakatDeregistration\TINDeRegistrationPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\ZakatReturnDetailsPages\ZakatReturnDetailsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\ZakatReturnListPages\ZakatReturnListPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

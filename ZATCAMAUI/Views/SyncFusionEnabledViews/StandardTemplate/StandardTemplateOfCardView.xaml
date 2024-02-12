@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.StandardTemplate.StandardTemplateOfCardView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="LeftToRight"
+    mc:Ignorable="d">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="{StaticResource Primary}">
+                <StackLayout>
+                    <Grid Padding="0,10,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            FontSize="Large"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="VAT Return"
+                            TextColor="White"
+                            VerticalOptions="Center" />
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            Style="{StaticResource IconLabelStyle}"
+                            Text="{DynamicResource StyleReverseBack}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalOptions="EndAndExpand"
+                            Style="{StaticResource IconLabelStyle}"
+                            Text="{StaticResource Close}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+
+                    <yummy:PancakeView
+                        Padding="0"
+                        BackgroundColor="Black"
+                        CornerRadius="32,32,0,0">
+                        <Grid
+                            x:Name="VATRMainGrid"
+                            Margin="0"
+                            Padding="0,15,0,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10*" />
+                                <RowDefinition Height="90*" />
+
+                            </Grid.RowDefinitions>
+                            <ContentPresenter
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
+                        </Grid>
+                    </yummy:PancakeView>
+                </StackLayout>
+
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <StackLayout>
+
+
+
+            <ScrollView>
+                <Frame Style="{StaticResource InputTableFrameStyle}">
+                    <Grid Style="{StaticResource InputTableGridStyle}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,0,10,0"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarBold}"
+                            Style="{StaticResource ValueLabelBlack}"
+                            Text="Standard Rated Sales" />
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            Style="{StaticResource ImageStyleForInputTable}">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="UserIconFont"
+                                    Glyph="{x:Static FontImage:IconFonts.Information}"
+                                    Size="30"
+                                    Color="{StaticResource SecondaryNew}" />
+                            </Image.Source>
+                        </Image>
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Amount" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Adjustment" />
+
+
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,0,10,0"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarBold}"
+                            Style="{StaticResource ValueLabelBlack}"
+                            Text="Private HealthCare/Private Education" />
+                        <Image
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Style="{StaticResource ImageStyleForInputTable}">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="UserIconFont"
+                                    Glyph="{x:Static FontImage:IconFonts.Information}"
+                                    Size="30"
+                                    Color="{StaticResource SecondaryNew}" />
+                            </Image.Source>
+                        </Image>
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Amount" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Adjustment" />
+
+
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,0,10,0"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarBold}"
+                            Style="{StaticResource ValueLabelBlack}"
+                            Text="Zero Rated Domestic Sales" />
+                        <Image
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Style="{StaticResource ImageStyleForInputTable}">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="UserIconFont"
+                                    Glyph="{x:Static FontImage:IconFonts.Information}"
+                                    Size="30"
+                                    Color="{StaticResource SecondaryNew}" />
+                            </Image.Source>
+                        </Image>
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Amount" />
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Adjustment" />
+
+
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="8"
+                            Grid.Column="1"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+
+                        <Label
+                            Grid.Row="9"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,0,10,0"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarBold}"
+                            Style="{StaticResource ValueLabelBlack}"
+                            Text="Exports" />
+                        <Image
+                            Grid.Row="9"
+                            Grid.Column="1"
+                            Style="{StaticResource ImageStyleForInputTable}">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="UserIconFont"
+                                    Glyph="{x:Static FontImage:IconFonts.Information}"
+                                    Size="30"
+                                    Color="{StaticResource SecondaryNew}" />
+                            </Image.Source>
+                        </Image>
+                        <Label
+                            Grid.Row="10"
+                            Grid.Column="0"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Amount" />
+                        <Label
+                            Grid.Row="10"
+                            Grid.Column="1"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Adjustment" />
+
+
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="11"
+                            Grid.Column="0"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="11"
+                            Grid.Column="1"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+
+                        <Label
+                            Grid.Row="12"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="10,0,10,0"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarBold}"
+                            Style="{StaticResource ValueLabelBlack}"
+                            Text="Exempt Sales" />
+                        <Image
+                            Grid.Row="12"
+                            Grid.Column="1"
+                            Style="{StaticResource ImageStyleForInputTable}">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="UserIconFont"
+                                    Glyph="{x:Static FontImage:IconFonts.Information}"
+                                    Size="30"
+                                    Color="{StaticResource SecondaryNew}" />
+                            </Image.Source>
+                        </Image>
+                        <Label
+                            Grid.Row="13"
+                            Grid.Column="0"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Amount" />
+                        <Label
+                            Grid.Row="13"
+                            Grid.Column="1"
+                            Margin="10,0,10,-8"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="Adjustment" />
+
+
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="14"
+                            Grid.Column="0"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout
+                            Grid.Row="14"
+                            Grid.Column="1"
+                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Label Style="{StaticResource InputTableLableStyleForSAR}" Text="SAR" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </inputLayout:SfTextInputLayout>
+
+                        <BoxView
+                            Grid.Row="15"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Style="{StaticResource InputTableBoxViewStyle}" />
+
+                        <Label
+                            Grid.Row="16"
+                            Grid.Column="0"
+                            Margin="10,0,10,0"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarBold}"
+                            Style="{StaticResource ValueLabelBlack}"
+                            Text="Total Sales" />
+
+                        <StackLayout
+                            Grid.Row="17"
+                            Grid.Column="0"
+                            Margin="10,0,10,0">
+                            <Label
+                                Margin="0,0,0,-9"
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="Amount" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource SomarBold}"
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="500.00 SAR" />
+                        </StackLayout>
+
+                        <StackLayout
+                            Grid.Row="17"
+                            Grid.Column="1"
+                            Margin="10,0,10,0">
+                            <Label
+                                Margin="0,0,0,-9"
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="Amount" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource SomarBold}"
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="500.00 SAR" />
+                        </StackLayout>
+
+                        <yummy:PancakeView
+                            Grid.Row="18"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,0,0,0"
+                            Padding="0"
+                            BackgroundColor="#ADD8E6"
+                            CornerRadius="0,0,8,8">
+                            <StackLayout Margin="10,0,10,0" Padding="0">
+                                <Label
+                                    Margin="0,0,0,-9"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="VAT Amount" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontFamily="{StaticResource SomarBold}"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="500.00 SAR" />
+                            </StackLayout>
+                        </yummy:PancakeView>
+
+                    </Grid>
+
+                </Frame>
+            </ScrollView>
+
+            <StackLayout Margin="0,10,0,0" HeightRequest="100" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

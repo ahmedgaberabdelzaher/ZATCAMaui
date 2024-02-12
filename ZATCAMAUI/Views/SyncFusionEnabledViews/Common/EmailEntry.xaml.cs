@@ -1,0 +1,153 @@
+﻿using Syncfusion.Maui.Picker;
+using System.Globalization;
+using System.Resources;
+using System.Text.RegularExpressions;
+using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
+
+namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
+{
+    /// <summary>
+    /// View used to show the email entry with validation status.
+    /// </summary>
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class EmailEntry : ContentView
+    {
+        SFLoginPageViewModel viewModel;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailEntry" /> class.
+        /// </summary>
+        public EmailEntry()
+        {
+            InitializeComponent();
+            this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+            SetPickerFont();
+            SetLTR();
+            //TinsPicker
+
+        }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Device.RuntimePlatform)
+                {
+
+                    case Device.iOS:
+                        TinsPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                        TinsPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                        TinsPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                        TinsPicker.TextStyle.FontFamily = "Somar-SemiBold";
+                        break;
+                    case Device.Android:
+                        TinsPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        TinsPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        TinsPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        TinsPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
+        private void SetLTR()
+        {
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
+            }
+        }
+        private void TINs_Clicked(object sender, EventArgs e)
+        {
+            TinsPicker.IsOpen = true;
+        }
+        private void Email_UnFocused(object sender, FocusEventArgs e)
+        {
+            bool isNumber = false;
+            bool isEmailValid = false;
+            isNumber = IsEnglishNumber(email.Text);
+            if (!isNumber)
+            {
+                isEmailValid = CheckValidEmail(email.Text);
+                if (!isEmailValid)
+                {
+                    EmailInputLayout.HasError = true;
+                    //EmailInputLayout.ShowHint = true;
+                }
+                else
+                {
+                    EmailInputLayout.HasError = false;
+                    MessagingCenter.Send("TinList", "TinList");
+                }
+            }
+            else
+            {
+                EmailInputLayout.HasError = false;
+            }
+        }
+        private static bool CheckValidEmail(string email)
+        {
+            bool isEmailValid = false;
+            if (!string.IsNullOrEmpty(email))
+            {
+                var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+                isEmailValid = regex.IsMatch(email) && !email.EndsWith(".");
+            }
+            return isEmailValid;
+        }
+        public static bool IsEnglishNumber(string arText)
+        {
+            bool isAllNumeric = true;
+            if (!string.IsNullOrEmpty(arText))
+            {
+                foreach (char letter in arText.ToCharArray())
+                {
+                    if (!(letter >= 48 && letter <= 57))
+                    {
+                        isAllNumeric = false;
+                    }
+                }
+            }
+            return isAllNumeric;
+        }
+        private void TinsPicker_OkButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                TIN selectedtin = viewModel.TINs[TinsPicker.Columns[0].SelectedIndex];
+                //TinsPicker.SelectedItem = selectedtin;//TINID
+                viewModel.SelectedTinId = selectedtin;//selectedregion
+                viewModel.SelectedTinIdPrev = selectedtin;//selectedregion
+                viewModel.TINID = selectedtin.Tin;
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+        private void TinsPicker_CancelButtonClicked(object sender, EventArgs e)
+        {
+           // TinsPicker.SelectedItem = viewModel.SelectedTinIdPrev;//TINID
+            viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;//selectedregion
+            if (viewModel.SelectedTinIdPrev == null)
+            {
+                viewModel.TINID = string.Empty;
+            }
+        }
+    }
+}

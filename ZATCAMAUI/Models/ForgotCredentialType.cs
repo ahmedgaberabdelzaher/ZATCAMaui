@@ -1,4 +1,6 @@
 ﻿
+using ZATCAMAUI.Core.Enums;
+
 namespace ZATCAMAUI.Models
 {
 

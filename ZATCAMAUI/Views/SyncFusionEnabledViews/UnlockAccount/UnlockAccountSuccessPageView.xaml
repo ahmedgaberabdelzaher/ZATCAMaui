@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount.UnlockAccountSuccessPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom2="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid Margin="-10,-30,-10,-10" IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}">
+            <Grid IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="35*" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Aspect="AspectFill"
+                    HorizontalOptions="FillAndExpand"
+                    Source="partials_background"
+                    VerticalOptions="FillAndExpand" />
+
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Padding="40"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="CenterAndExpand">
+                    <Image Aspect="AspectFit" Source="Forget_ic_success.png" />
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static custom2:AppResources.AccountUnlocked}"
+                        TextColor="White" />
+                    <Label
+                        FontFamily="{StaticResource SomarSemiBold}"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding PasswordChangedSuccessfully}"
+                        TextColor="White" />
+                    <StackLayout
+                        Margin="0,100,0,0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="EndAndExpand">
+                        <buttons:SfButton
+                            x:Name="btnLogin"
+                            Background="{StaticResource Secondary}"
+                            Clicked="btnLogin_Clicked"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="15"
+                            HeightRequest="48"
+                            StrokeThickness="0"
+                            Text="{x:Static custom2:AppResources.LogIn}"
+                            TextColor="{DynamicResource Gray-White}"
+                            VerticalOptions="End" />
+                    </StackLayout>
+                </StackLayout>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

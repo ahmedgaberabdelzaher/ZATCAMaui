@@ -37,7 +37,7 @@ namespace ZATCAMAUI.Core.Mangers
             else
                 return 'E';
         }
-        public static string GetLangZParameterAREN()
+        public static String GetLangZParameterAREN()
         {
             if (App.IsArabic)
                 return "AR";
@@ -47,7 +47,7 @@ namespace ZATCAMAUI.Core.Mangers
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
             //Making Web Request  
-            HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(ZATCAConstants.GAZTSOAPWebRequestForAuthenticationService);
+            HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(Constants.GAZTSOAPWebRequestForAuthenticationService);
             //SOAPAction  
             Req.Headers.Add(@"SOAPAction:http://tempuri.org/IsAuthenticated");
             //Content_type  
@@ -62,11 +62,11 @@ namespace ZATCAMAUI.Core.Mangers
         //<Summary>
         public static async Task<bool> GAZTCheckConnectivity()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
-                    string url = ZATCAConstants.BaseUrlOfODataServices;
+                    String url = Constants.BaseUrlOfODataServices;
                     HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     return true;
                 }
@@ -83,15 +83,15 @@ namespace ZATCAMAUI.Core.Mangers
             }
         }
 
-        public static async Task<List<TIN>> GAZTGetAllTins(string Username)
+        public static async Task<List<TIN>> GAZTGetAllTins(String Username)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                string GAZTGetTINsResponseResult = string.Empty;
+                String GAZTGetTINsResponseResult = String.Empty;
                 List<TIN> TINs = null;
                 try
                 {
-                    string url = ZATCAConstants.GetAllTin + Username + "'" + "&$format=json";
+                    String url = Constants.GetAllTin + Username + "'" + "&$format=json";
 
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
@@ -140,12 +140,12 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static ObservableCollection<MyBills> GAZTGetMyBills(string Tin, string lang, string requestHeader)
+        public static ObservableCollection<MyBills> GAZTGetMyBills(String Tin, string lang, string requestHeader)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 ObservableCollection<MyBills> myBills = new ObservableCollection<MyBills>();
-                string MobileNumber = string.Empty;
+                String MobileNumber = string.Empty;
                 string PdfUrl = string.Empty;
                 string NewToken = string.Empty;
                 try
@@ -155,7 +155,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     client.DefaultRequestHeaders.Add("ServiceType", requestHeader);
 
-                    string url = ZATCAConstants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=enabled&$format=json&sap-language=" + lang;
+                    String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=enabled&$format=json&sap-language=" + lang;
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTMyBillsResponse = client.GetAsync(uri).Result;
                     if (GAZTMyBillsResponse != null)
@@ -171,16 +171,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string GAZTMyBillsResponseJSON = GAZTMyBillsResponse.Content.ReadAsStringAsync().Result;
+                        String GAZTMyBillsResponseJSON = GAZTMyBillsResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTMyBillsResponseJSON))
                         {
                             GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
@@ -222,9 +222,9 @@ namespace ZATCAMAUI.Core.Mangers
             }
         }
 
-        public static List<MyBillsFilterDropdown> GAZTGetMyBillsFilterDropdownValues(string Tin, string lang)
+        public static List<MyBillsFilterDropdown> GAZTGetMyBillsFilterDropdownValues(String Tin, string lang)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
 
                 List<MyBillsFilterDropdown> myBillsFilters = new List<MyBillsFilterDropdown>();
@@ -236,7 +236,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
-                    string url = ZATCAConstants.GetMyBillsFilterDropdown + "Spras eq'" + lang + "'&saml2=enabled&$format=json&sap-language=" + lang;
+                    String url = Constants.GetMyBillsFilterDropdown + "Spras eq'" + lang + "'&saml2=enabled&$format=json&sap-language=" + lang;
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTMyBillsFilterResponse = client.GetAsync(uri).Result;
                     if (GAZTMyBillsFilterResponse != null)
@@ -252,16 +252,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string GAZTMyBillsResponseJSON = GAZTMyBillsFilterResponse.Content.ReadAsStringAsync().Result;
+                        String GAZTMyBillsResponseJSON = GAZTMyBillsFilterResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTMyBillsResponseJSON))
                         {
                             GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
@@ -302,16 +302,16 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static ICR GAZTGetICRs(string Tin, string lang)
+        public static ICR GAZTGetICRs(String Tin, string lang)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 ICR myICRs = new ICR();
                 string NewToken = string.Empty;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GetMyICRs + lang + "',Gpart='',Euser='',Fbguid='" + App.LoginDataRetrieved.FbGuid + "',UserTin='" + "'" + ")?&saml2=enabled" + "&$expand=ICR_LISTSet,ICR_STATUSSet&sap-language=" + lang + "&$format=json";
+                    String url = Constants.GetMyICRs + lang + "',Gpart='',Euser='',Fbguid='" + App.LoginDataRetrieved.FbGuid + "',UserTin='" + "'" + ")?&saml2=enabled" + "&$expand=ICR_LISTSet,ICR_STATUSSet&sap-language=" + lang + "&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTMyICRsResponse = client.GetAsync(uri).Result;
@@ -329,16 +329,16 @@ namespace ZATCAMAUI.Core.Mangers
                             NewToken = values.First();
                             App.IsSessionExpired = false;
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string GAZTMyICRsResponseJSON = GAZTMyICRsResponse.Content.ReadAsStringAsync().Result;
+                        String GAZTMyICRsResponseJSON = GAZTMyICRsResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTMyICRsResponseJSON))
                         {
                             GAZTMyICRsResponseJSON = JObject.Parse(GAZTMyICRsResponseJSON)["d"].ToString();
@@ -379,7 +379,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static AllCertificate GAZTGetAllCertificate(string Lang, string Tin)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime dt = DateTime.Now;
                 AllCertificate allCertificate = new AllCertificate();
@@ -388,7 +388,7 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string uri = ZATCAConstants.GetAllCertificate + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'" + "2007-01-01T00%3A00%3A00'" + ",Enddaz=datetime'" + currentDate + "'" + ")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=enabled&$format=json";
+                    string uri = Constants.GetAllCertificate + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'" + "2007-01-01T00%3A00%3A00'" + ",Enddaz=datetime'" + currentDate + "'" + ")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetAllCertificateResponse = client.GetAsync(uri).Result;
                     if (GAZTGetAllCertificateResponse != null)
                     {
@@ -404,16 +404,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string GAZTGetAllCertificateResponseJSON = GAZTGetAllCertificateResponse.Content.ReadAsStringAsync().Result;
+                        String GAZTGetAllCertificateResponseJSON = GAZTGetAllCertificateResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTGetAllCertificateResponseJSON))
                         {
                             GAZTGetAllCertificateResponseJSON = JObject.Parse(GAZTGetAllCertificateResponseJSON)["d"].ToString();
@@ -437,7 +437,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(ForgotPasswordOTP forgotPasswordOTP)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -445,7 +445,7 @@ namespace ZATCAMAUI.Core.Mangers
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     ForgotPasswordOTP forgotPasswordResponse = new ForgotPasswordOTP();
-                    string url = ZATCAConstants.SendUserNameToEmail;
+                    string url = Constants.SendUserNameToEmail;
                     var uri = new Uri(url);
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
@@ -455,7 +455,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     var serilized = JsonConvert.SerializeObject(forgotPasswordOTP);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     forgotPasswordResponse = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
@@ -468,7 +468,7 @@ namespace ZATCAMAUI.Core.Mangers
                             string errorMessage = string.Empty;
                             errorMessage = errorMesg.error.innererror.errordetails[0].message;
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
@@ -497,7 +497,7 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<GenerateCaptchaGUID> GAZTCaptchaAndGUID(GenerateCaptchaGUID readCaptcha)
         {
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -505,7 +505,7 @@ namespace ZATCAMAUI.Core.Mangers
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     GenerateCaptchaGUID forgotPasswordCaptcha = new GenerateCaptchaGUID();
-                    string url = ZATCAConstants.CaptchaAndGUID;
+                    string url = Constants.CaptchaAndGUID;
                     var uri = new Uri(url);
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
@@ -515,7 +515,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     var serilized = JsonConvert.SerializeObject(readCaptcha);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     forgotPasswordCaptcha = JsonConvert.DeserializeObject<GenerateCaptchaGUID>(detailJson);
@@ -536,12 +536,12 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<ForgotPasswordOTP> GAZTForgotPasswordValidateOTP(ForgotPasswordOTP ValidateOTP)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-                    string url = ZATCAConstants.ValidateOTP;
+                    string url = Constants.ValidateOTP;
                     var uri = new Uri(url);
 
                     try
@@ -560,7 +560,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var serilized = JsonConvert.SerializeObject(ValidateOTP);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
@@ -578,7 +578,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<ForgotPasswordOTP> GAZTSendUserNameToEmail(ForgotPasswordOTP forgotUserOTP)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -586,7 +586,7 @@ namespace ZATCAMAUI.Core.Mangers
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-                    string url = ZATCAConstants.SendUserNameToEmail;
+                    string url = Constants.SendUserNameToEmail;
                     var uri = new Uri(url);
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
@@ -596,7 +596,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     var serilized = JsonConvert.SerializeObject(forgotUserOTP);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
@@ -616,12 +616,12 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<ForgotPasswordOTP> GAZTChangePassword(ForgotPasswordOTP forgotUserOTP)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-                    string url = ZATCAConstants.ChangePassword;
+                    string url = Constants.ChangePassword;
                     var uri = new Uri(url);
 
                     try
@@ -637,7 +637,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(forgotUserOTP);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
@@ -650,7 +650,7 @@ namespace ZATCAMAUI.Core.Mangers
                             string errorMessage = string.Empty;
                             errorMessage = errorMesg.error.innererror.errordetails[0].message;
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
@@ -674,14 +674,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<TINStatus> GAZTGetTinStatus(string lang, string Tin)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 TINStatus tINStatus = new TINStatus();
                 string NewToken = string.Empty;
                 try
                 {
-                    char _language = GetLangZParameter();
-                    string url = ZATCAConstants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=enabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+                    char _language = WebServiceManager.GetLangZParameter();
+                    String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=enabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
                     HttpResponseMessage GAZTTinStatus = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTTinStatus != null)
                     {
@@ -697,16 +697,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string TINStatusResponse = GAZTTinStatus.Content.ReadAsStringAsync().Result;
+                        String TINStatusResponse = GAZTTinStatus.Content.ReadAsStringAsync().Result;
                         tINStatus = JsonConvert.DeserializeObject<TINStatus>(TINStatusResponse);
                     }
                     return tINStatus;
@@ -730,9 +730,9 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async Task<VATLookUp> GAZTGetVATLookUp(string lang, string IdType, string IdNumber)
+        public static async Task<VATLookUp> GAZTGetVATLookUp(string lang, string IdType, String IdNumber)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 try
@@ -743,7 +743,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
-                    string url = ZATCAConstants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
+                    String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
                     if (GAZTVATLookUp != null)
@@ -760,15 +760,15 @@ namespace ZATCAMAUI.Core.Mangers
                             NewToken = values.First();
 
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
-                        string TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
+                        String TINStatusResponse = GAZTVATLookUp.Content.ReadAsStringAsync().Result;
                         vATLookUp = JsonConvert.DeserializeObject<VATLookUp>(TINStatusResponse);
                     }
                     return vATLookUp;
@@ -802,7 +802,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<VATDeclaration> GAZTGetVATReturns(string Fbguid, string Fbnumz, string EUser, string PeriodCode)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 string FbGuid = App.LoginDataRetrieved.FbGuid;
@@ -810,8 +810,8 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     VATDeclaration _vATDeclaration = new VATDeclaration();
                     char LangZ = GetLangZParameter();
-                    string Lang = UtilityManager.GetLanguageParameter();
-                    string url = ZATCAConstants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet,VATPERITEMSet&$format=json";
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet,VATPERITEMSet&$format=json";
                     HttpResponseMessage GAZTVATReturnStatus = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTVATReturnStatus != null)
                     {
@@ -826,9 +826,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token") || 0 == string.Compare(NewToken, ""))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
                                 throw new GAZTSessionExpiredException();
@@ -836,7 +836,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                             App.Token = NewToken;
                         }
-                        string VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
+                        String VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
                         _vATDeclaration = JsonConvert.DeserializeObject<VATDeclaration>(VATReturn);
                     }
                     return _vATDeclaration;
@@ -856,7 +856,7 @@ namespace ZATCAMAUI.Core.Mangers
         {
             VATDeclaration RequestVATDeclaration = new VATDeclaration();
             VATDeclaration _vATDeclarationD = new VATDeclaration();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -879,7 +879,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         char LangZ = GetLangZParameter();
                         string lang = UtilityManager.GetLanguageParameter();
-                        string url = ZATCAConstants.SaveVATDeclarationData;
+                        String url = Constants.SaveVATDeclarationData;
                         vATDeclaration.d.Langz = lang;
                         var uri = new Uri(url);
                         HttpClient client = new HttpClient(App.httpClientHandler);
@@ -891,7 +891,7 @@ namespace ZATCAMAUI.Core.Mangers
                         client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                         var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
-                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                         HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                         var detailJson = res.Content.ReadAsStringAsync().Result;
                         _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
@@ -950,7 +950,7 @@ namespace ZATCAMAUI.Core.Mangers
                             {
                                 ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
                                 ErrorMessageForVAT += " " + errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                                String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForVAT = WithReplacedString;
                             }
                         }
@@ -980,7 +980,7 @@ namespace ZATCAMAUI.Core.Mangers
         #region
         public static ObservableCollection<InternationalMobileData> GAZTGetMobileRegionDropdown()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 ObservableCollection<InternationalMobileData> internationalCodes = new ObservableCollection<InternationalMobileData>();
                 string NewToken = string.Empty;
@@ -990,7 +990,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    string url = ZATCAConstants.GAZTInternationalMobileData + " eq " + "'" + lang + "'" + "&$format=json";
+                    string url = Constants.GAZTInternationalMobileData + " eq " + "'" + lang + "'" + "&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -1009,16 +1009,16 @@ namespace ZATCAMAUI.Core.Mangers
                             NewToken = values.First();
                             App.IsSessionExpired = false;
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string GAZTInternationalNumberResponseJSON = GAZTInternationalMobileNumDataResponse.Content.ReadAsStringAsync().Result;
+                        String GAZTInternationalNumberResponseJSON = GAZTInternationalMobileNumDataResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTInternationalNumberResponseJSON))
                         {
                             GAZTInternationalNumberResponseJSON = JObject.Parse(GAZTInternationalNumberResponseJSON)["d"].ToString();
@@ -1061,13 +1061,13 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<List<IBANIDNumber>> GAZTGetIBANIdNumber(string IBANType)
         {
             List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    string url = ZATCAConstants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=enabled&sap-langauge='" + lang + "'&$format=json";
+                    String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=enabled&sap-langauge='" + lang + "'&$format=json";
                     HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
@@ -1083,16 +1083,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        String IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(IBANIdNumber))
                         {
                             IBANIdNumber = JObject.Parse(IBANIdNumber)["d"].ToString();
@@ -1117,15 +1117,15 @@ namespace ZATCAMAUI.Core.Mangers
         public static string GAZTCheckIBAN(string IBAN)
         {
             List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
-            string IbanNumber = string.Empty;
-            if (NetworkCheck.IsInternet())
+            String IbanNumber = string.Empty;
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GAZTCheckIBANNumber + IBAN + "')" + "?saml2=enabled&sap-langauge=" + lang + "&$format=json";
+                    String url = Constants.GAZTCheckIBANNumber + IBAN + "')" + "?saml2=enabled&sap-langauge=" + lang + "&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
                     if (GAZTValidateOTPResponse != null)
@@ -1141,16 +1141,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        String IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
                         try
                         {
                             if (!string.IsNullOrEmpty(IBANIdNumber))
@@ -1184,13 +1184,13 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<VATCalculationData> GAZTGetVATDeclaratinCalculationData(string periodKey, string TxnTp, string status, string FormBundleNumber, string Gpart)
         {
             VATCalculationData vATCalculationData = new VATCalculationData();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 try
                 {
                     char lang = GetLangZParameter();
-                    string url = ZATCAConstants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
@@ -1206,16 +1206,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string vATCalculationDataSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        String vATCalculationDataSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
                         vATCalculationData = JsonConvert.DeserializeObject<VATCalculationData>(vATCalculationDataSON);
                     }
                     return vATCalculationData;
@@ -1241,14 +1241,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachmentForFD(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
-                    string url = ZATCAConstants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
+                    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -1277,14 +1277,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<AttachmentRootOject> GAZTSaveVATDeclarationAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string contentType)//, string returnedFguid
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
-                    string url = ZATCAConstants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
+                    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -1314,7 +1314,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static string GAZTDeleteVATDeclarationAttachment(string fileName, string RetGuid)//, string returnedFguid
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string DeleteToken = string.Empty;
                 try
@@ -1323,7 +1323,7 @@ namespace ZATCAMAUI.Core.Mangers
                     char LangZ = GetLangZParameter();
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
-                    string url = ZATCAConstants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -1360,14 +1360,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<SadadNumber> GAZTGetVATDeclarationSADADNumber(string FormBundleID)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     SadadNumber sadadNumber = new SadadNumber();
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
-                    string url = ZATCAConstants.GAZTGetSADADNumber + lang + "'" + "&$format=json&$filter=Langu eq'" + LangZ + "'and Fbnum eq '" + FormBundleID + "'" + "";
+                    String url = Constants.GAZTGetSADADNumber + lang + "'" + "&$format=json&$filter=Langu eq'" + LangZ + "'and Fbnum eq '" + FormBundleID + "'" + "";
                     var response = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
@@ -1387,14 +1387,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<EstimatedZakatReturns> GAZTGetEstimateZakatReturnList()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 EstimatedZakatReturns zAKATICRList = new EstimatedZakatReturns();
                 string NewToken = string.Empty;
                 try
                 {
                     string _language = UtilityManager.GetLanguageParameter();
-                    string url = ZATCAConstants.GAZTGetZakatReturnList + App.TP.Userid + "'" + ",Auditor='" + "'" + ",Lang='" + _language + "'" + ",UserTin='" + App.TP.Userid + "'" + ")?saml2=enabled&sap-language='" + _language + "'" + "&$expand=listSet&$format=json";
+                    String url = Constants.GAZTGetZakatReturnList + App.TP.Userid + "'" + ",Auditor='" + "'" + ",Lang='" + _language + "'" + ",UserTin='" + App.TP.Userid + "'" + ")?saml2=enabled&sap-language='" + _language + "'" + "&$expand=listSet&$format=json";
                     HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTEstimateZakatReturnList != null)
                     {
@@ -1409,16 +1409,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+                        String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
                         zAKATICRList = JsonConvert.DeserializeObject<EstimatedZakatReturns>(EstimateZakatReturnList);
                     }
                     return zAKATICRList;
@@ -1437,7 +1437,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<VATDeclaration> GAZTSetVATReturnVoid(VATDeclaration vATDeclaration)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeclaration RequestVATDeclaration = null;
                 try
@@ -1456,7 +1456,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<VATDeclaration> GAZTSetVATReturnReset(VATDeclaration vATDeclaration)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 VATDeclaration RequestVATDeclaration = null;
                 try
@@ -1492,20 +1492,20 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<ZakatReturnDetails> GAZTGetZAKATReturn(string fbguid)
         {
             ZakatReturnDetails zakatReturnDetails = new ZakatReturnDetails();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 try
                 {
                     char lang = GetLangZParameter();// "E";
-                    string url = "";
+                    String url = "";
                     if (App.IsZakatLoadingFromMyReturns == true)
                     {
-                        url = ZATCAConstants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + App.TP.Tin + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+                        url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + App.TP.Tin + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
                     }
                     else
                     {
-                        url = ZATCAConstants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+                        url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
                     }
                     HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICallWithIncomingChannel(url, true, "123");
 
@@ -1532,9 +1532,9 @@ namespace ZATCAMAUI.Core.Mangers
 
                         }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
@@ -1542,7 +1542,7 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
 
-                        string _zakatReturnDetailsJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        String _zakatReturnDetailsJSON = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
                         zakatReturnDetails = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsJSON);
                         if (zakatReturnDetails == null || zakatReturnDetails.d == null)
                         {
@@ -1569,7 +1569,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<ZakatReturnDetails> GAZTSaveZakatReturnData(ZakatReturnDetails zakatReturnDetailsD, string OperationStatus)//, string returnedFguid
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -1578,7 +1578,7 @@ namespace ZATCAMAUI.Core.Mangers
                     zakatReturnDetailsD.d.Langz = UtilityManager.GetLanguageParameter();
                     ZakatReturnDetails _zakatReturnDetailsD = new ZakatReturnDetails();
                     string LangZ = GetLangZParameterAREN();
-                    string url = ZATCAConstants.GAZTSaveEstimatedZaktReturn + LangZ;
+                    String url = Constants.GAZTSaveEstimatedZaktReturn + LangZ;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var serilized = JsonConvert.SerializeObject(zakatReturnDetailsD);
@@ -1588,7 +1588,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsD = JsonConvert.DeserializeObject<ZakatReturnDetails>(_zakatReturnDetailsDesponsestr);
@@ -1617,14 +1617,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<List<ApplicableButton>> GAZTVATReturnGetApplicableButtons(string Fbnum, string Lang, string Operation, string Gpart, string Status, string TxnTp, string PeriodKey)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 List<ApplicableButton> VATApplicableButtons = new List<ApplicableButton>();
                 try
                 {
                     char LangZ = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=enabled&$expand=UI_BTNSet,IGRTSet&$format=json";
+                    String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=enabled&$expand=UI_BTNSet,IGRTSet&$format=json";
 
                     HttpResponseMessage ApplicableButtonsResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (ApplicableButtonsResponse != null)
@@ -1641,16 +1641,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string ApplicableButtonsResponseJSON = ApplicableButtonsResponse.Content.ReadAsStringAsync().Result;
+                        String ApplicableButtonsResponseJSON = ApplicableButtonsResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(ApplicableButtonsResponseJSON))
                         {
                             ApplicableButtonsResponseJSON = JObject.Parse(ApplicableButtonsResponseJSON)["d"].ToString();
@@ -1682,13 +1682,13 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<AttachmentRootOject> GAZTSaveEstimatedZAKATAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Dotyp, string ContentType)//, string returnedFguid
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
-                    string url = ZATCAConstants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=enabled";
+                    string url = Constants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=enabled";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -1717,7 +1717,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<EstimatedZAKATReturnsSADADNumber> GAZTGetEstimatedZakatReturnSADADNumber(string FBNumber, string FBGuid)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 EstimatedZAKATReturnsSADADNumber _estimatedZAKATReturnsSADADNumber = new EstimatedZAKATReturnsSADADNumber();
                 string NewToken = string.Empty;
@@ -1725,14 +1725,14 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url;
+                    String url;
                     if (App.IsZakatLoadingFromMyReturns == true)
                     {
-                        url = ZATCAConstants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + App.TP.Tin + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
+                        url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + App.TP.Tin + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
                     }
                     else
                     {
-                        url = ZATCAConstants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
+                        url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
                     }
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
@@ -1751,16 +1751,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+                        String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
                         _estimatedZAKATReturnsSADADNumber = JsonConvert.DeserializeObject<EstimatedZAKATReturnsSADADNumber>(EstimateZakatReturnList);
                     }
                     return _estimatedZAKATReturnsSADADNumber;
@@ -1782,7 +1782,7 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                string url = ZATCAConstants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='00000000000000000000'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=enabled&$expand=InvoiceSet";
+                String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='00000000000000000000'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=enabled&$expand=InvoiceSet";
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                 if (GAZTEstimateZakatReturnList != null)
@@ -1798,16 +1798,16 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         NewToken = values.First();
                     }
-                    if (!string.IsNullOrEmpty(NewToken))
+                    if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return null;
                         }
                         App.Token = NewToken;
                     }
-                    string EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+                    String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
                 }
                 return null;
             }
@@ -1818,7 +1818,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static string GAZTDeleteEstimatedZAKATRAttachment(string fileName, string DocumentID)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string DeleteToken = string.Empty;
                 try
@@ -1827,7 +1827,7 @@ namespace ZATCAMAUI.Core.Mangers
                     char LangZ = GetLangZParameter();
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
-                    string url = ZATCAConstants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled";
+                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
 
@@ -1862,7 +1862,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<string> GAZTEstimatedZAKATReturnInvoicePdf(string Cokey)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 string DeleteToken = string.Empty;
@@ -1871,7 +1871,7 @@ namespace ZATCAMAUI.Core.Mangers
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=enabled";
+                    String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=enabled";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTEstimateZakatReturnList != null)
@@ -1887,16 +1887,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
+                        String EstimateZakatReturnList = GAZTEstimateZakatReturnList.Content.ReadAsStringAsync().Result;
                         string PdfUrl = JsonConvert.DeserializeObject<string>(EstimateZakatReturnList);
                     }
                     return null;
@@ -1913,7 +1913,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static CorrespondenceRootObject GAZTGetZakatCorrespondece()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 CorrespondenceRootObject ZakatCorrespondenceList = new CorrespondenceRootObject();
                 string NewToken = string.Empty;
@@ -1923,7 +1923,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = DateTime.Now;
                     string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
-                    string url = ZATCAConstants.GAZTGetCorrespondence + "'" + App.TP.Tin + "' and Langz eq '" + lang + "' and UserTin eq '' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq '' and Auditor eq ''";
+                    String url = Constants.GAZTGetCorrespondence + "'" + App.TP.Tin + "' and Langz eq '" + lang + "' and UserTin eq '' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq '' and Auditor eq ''";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTZakatCorresList = client.GetAsync(uri).Result;
                     if (GAZTZakatCorresList != null)
@@ -1939,16 +1939,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string VAtCorrespondenceList = GAZTZakatCorresList.Content.ReadAsStringAsync().Result;
+                        String VAtCorrespondenceList = GAZTZakatCorresList.Content.ReadAsStringAsync().Result;
                         ZakatCorrespondenceList = JsonConvert.DeserializeObject<CorrespondenceRootObject>(VAtCorrespondenceList);
                     }
                     return ZakatCorrespondenceList;
@@ -1965,7 +1965,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static CorrespondenceRootObject GAZTGetVATCorrespondece()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 CorrespondenceRootObject VATCorrespondenceList = new CorrespondenceRootObject();
                 string NewToken = string.Empty;
@@ -1975,7 +1975,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = DateTime.Now;
                     string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
-                    string url = ZATCAConstants.GAZTGetCorrespondence + "'" + App.TP.Tin + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'VAT' and UserTin eq ''";
+                    String url = Constants.GAZTGetCorrespondence + "'" + App.TP.Tin + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'VAT' and UserTin eq ''";
                     ////client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTZakatCorresList = client.GetAsync(uri).Result;
@@ -1993,16 +1993,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string VAtCorrespondenceList = GAZTZakatCorresList.Content.ReadAsStringAsync().Result;
+                        String VAtCorrespondenceList = GAZTZakatCorresList.Content.ReadAsStringAsync().Result;
                         VATCorrespondenceList = JsonConvert.DeserializeObject<CorrespondenceRootObject>(VAtCorrespondenceList);
                     }
                     return VATCorrespondenceList;// tINStatus;
@@ -2019,7 +2019,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static CorrespondenceRootObject GAZTGetETCorrespondece()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 CorrespondenceRootObject ETReturnCorrespondenceList = new CorrespondenceRootObject();
                 string NewToken = string.Empty;
@@ -2029,7 +2029,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = DateTime.Now;
                     string CurrentTime = DateTimeNow.ToString("yyyy-MM-ddTHH:mm");
-                    string url = ZATCAConstants.GAZTGetCorrespondence + " '" + App.TP.Tin + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
+                    String url = Constants.GAZTGetCorrespondence + " '" + App.TP.Tin + "' and Langz eq '" + lang + "' and Begdaz eq datetime'2007-01-01T00:00' and Enddaz eq datetime'" + CurrentTime + "' and ObligFlagz eq 'I' and Auditor eq 'null' and TaxtpFg eq 'ET' and UserTin eq ''";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTETCorresList = client.GetAsync(uri).Result;
                     if (GAZTETCorresList != null)
@@ -2045,16 +2045,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string ETCorrespondenceList = GAZTETCorresList.Content.ReadAsStringAsync().Result;
+                        String ETCorrespondenceList = GAZTETCorresList.Content.ReadAsStringAsync().Result;
                         ETReturnCorrespondenceList = JsonConvert.DeserializeObject<CorrespondenceRootObject>(ETCorrespondenceList);
                     }
                     return ETReturnCorrespondenceList;
@@ -2071,7 +2071,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static CorrespondenceDetailsRootObject GAZTGetCorrespondeceDetails(CorrespondanceModel CorresModel)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 CorrespondenceDetailsRootObject CorrespondenceDetailsList = new CorrespondenceDetailsRootObject();
                 string NewToken = string.Empty;
@@ -2081,7 +2081,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     DateTime DateTimeNow = CorresModel.Txtco;
                     string CurrentTime = DateTimeNow.Year + "/" + DateTimeNow.Day + "/" + DateTimeNow.Month + " - " + DateTimeNow.Hour.ToString("D2") + ":" + DateTimeNow.Minute.ToString("D2") + ":" + DateTimeNow.Second.ToString("D2");
-                    string url = ZATCAConstants.GAZTGetCorrespondenceDetails + "'" + App.TP.Tin + "' and Cotyp eq '" + CorresModel.Cotype + "' and Fbnum eq '' and Cokey eq '" + CorresModel.Cokey + "' and Ltrno eq '" + CorresModel.RefNumber + "' and Txtdo eq '" + CurrentTime + "'and Langu eq '" + lang + "'";
+                    String url = Constants.GAZTGetCorrespondenceDetails + "'" + App.TP.Tin + "' and Cotyp eq '" + CorresModel.Cotype + "' and Fbnum eq '' and Cokey eq '" + CorresModel.Cokey + "' and Ltrno eq '" + CorresModel.RefNumber + "' and Txtdo eq '" + CurrentTime + "'and Langu eq '" + lang + "'";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTCorresDList = client.GetAsync(uri).Result;
                     if (GAZTCorresDList != null)
@@ -2097,16 +2097,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string ETCorrespondenceList = GAZTCorresDList.Content.ReadAsStringAsync().Result;
+                        String ETCorrespondenceList = GAZTCorresDList.Content.ReadAsStringAsync().Result;
                         CorrespondenceDetailsList = JsonConvert.DeserializeObject<CorrespondenceDetailsRootObject>(ETCorrespondenceList);
                     }
                     return CorrespondenceDetailsList;
@@ -2123,11 +2123,11 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static string GAZTSetFavCorrespondence(CorrespondenceFavoriteModel FavoriteCorrespondence)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
-                    string url = ZATCAConstants.GAZTSetFavCorrespondence;
+                    string url = Constants.GAZTSetFavCorrespondence;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -2135,7 +2135,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     var serilized = JsonConvert.SerializeObject(FavoriteCorrespondence);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     return null;
@@ -2152,14 +2152,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<FormBundleModel> GAZTGetFormBundleModel()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 FormBundleModel ReturnFormBundleList = new FormBundleModel();
                 string NewToken = string.Empty;
                 try
                 {
                     char lang = GetLangZParameter();
-                    string url = ZATCAConstants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'";
+                    String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'";
                     HttpResponseMessage GAZTFormBundleList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTFormBundleList != null)
                     {
@@ -2174,16 +2174,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string FormBundleList = await GAZTFormBundleList.Content.ReadAsStringAsync();
+                        String FormBundleList = await GAZTFormBundleList.Content.ReadAsStringAsync();
                         ReturnFormBundleList = JsonConvert.DeserializeObject<FormBundleModel>(FormBundleList);
                     }
                     return ReturnFormBundleList;
@@ -2200,14 +2200,14 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<FormBundleApplicationNumberModel> GAZTGetFormBundleApplicationNumberModel(string Fbtyp)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 FormBundleApplicationNumberModel ReturnFormBundleList = new FormBundleApplicationNumberModel();
                 string NewToken = string.Empty; string ApplicationNumber = Fbtyp;
                 try
                 {
                     char lang = GetLangZParameter();
-                    string url = ZATCAConstants.GAZTGetFormBunleAccountNumberModel + "'" + lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '" + ApplicationNumber + "'";
+                    String url = Constants.GAZTGetFormBunleAccountNumberModel + "'" + lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '" + ApplicationNumber + "'";
                     HttpResponseMessage GAZTFormBundleList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTFormBundleList != null)
                     {
@@ -2223,16 +2223,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string FormBundleList = await GAZTFormBundleList.Content.ReadAsStringAsync();
+                        String FormBundleList = await GAZTFormBundleList.Content.ReadAsStringAsync();
                         ReturnFormBundleList = JsonConvert.DeserializeObject<FormBundleApplicationNumberModel>(FormBundleList);
                     }
                     return ReturnFormBundleList;
@@ -2267,7 +2267,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<SignupCityRootObject> GAZTGetCityListForSignup()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 SignupCityRootObject SignupCityList = new SignupCityRootObject();
                 string NewToken = string.Empty;
@@ -2278,7 +2278,7 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    string url = ZATCAConstants.GAZTGetCityListForSignUp + "dropdown_headerSet(Spras='" + lang + "',Land1='SA',Bland='',Cityc='')?&$expand=city_dropdownSet&saml2=enabled&$format=json";
+                    String url = Constants.GAZTGetCityListForSignUp + "dropdown_headerSet(Spras='" + lang + "',Land1='SA',Bland='',Cityc='')?&$expand=city_dropdownSet&saml2=enabled&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTSignupCityList = await client.GetAsync(uri);
                     if (GAZTSignupCityList != null)
@@ -2289,16 +2289,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string SignUpCityList = await GAZTSignupCityList.Content.ReadAsStringAsync();
+                        String SignUpCityList = await GAZTSignupCityList.Content.ReadAsStringAsync();
                         SignupCityList = JsonConvert.DeserializeObject<SignupCityRootObject>(SignUpCityList);
                     }
                     return SignupCityList;
@@ -2335,7 +2335,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static async Task<List<IssuedByResponse>> GAZTGetIssuedByList()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 IssuedByRootObject SignupIssuedByListRoot = new IssuedByRootObject();
                 List<IssuedByResponse> SignupIssuedByList = new List<IssuedByResponse>();
@@ -2348,7 +2348,7 @@ namespace ZATCAMAUI.Core.Mangers
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    string url = ZATCAConstants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"" + lang + "\",\"Portal_usr\":\"1\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=enabled&$format=json";
+                    String url = Constants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"" + lang + "\",\"Portal_usr\":\"1\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=enabled&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTSignupIssuedByList = await client.GetAsync(uri);
@@ -2364,19 +2364,19 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string IssuedByList = await GAZTSignupIssuedByList.Content.ReadAsStringAsync();
+                        String IssuedByList = await GAZTSignupIssuedByList.Content.ReadAsStringAsync();
                         SignupIssuedByListRoot = JsonConvert.DeserializeObject<IssuedByRootObject>(IssuedByList);
                         SignupIssuedByList = JsonConvert.DeserializeObject<List<IssuedByResponse>>(SignupIssuedByListRoot.d.results[0].Response);
-                        var sortedIssuedByList = SignupIssuedByList.OrderBy(a => a.txt50).ToList();
+                        var sortedIssuedByList = SignupIssuedByList.OrderBy(a => a.txt50).ToList<IssuedByResponse>();
 
                         try
                         {
@@ -2426,7 +2426,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public async static Task<string> GAZTValidateIDTypes(string IDType, string IDNumber, string DBO)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
                 string IsIDTypeValidList = string.Empty;
@@ -2438,7 +2438,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    string url = ZATCAConstants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     var uri = new Uri(url);
                     HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
                     if (SignupIsIDTypeValidList != null)
@@ -2454,9 +2454,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
@@ -2498,7 +2498,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static CRValidationModelRootObject GAZTValidateCRNumber(string CRNumber)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 CRValidationModelRootObject CRValidationModelValid = new CRValidationModelRootObject();
                 string IsIDTypeValidList = string.Empty;
@@ -2507,7 +2507,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient();
-                    string url = ZATCAConstants.GAZTSiguupValidateCR + "(Crnum='" + CRNumber + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    String url = Constants.GAZTSiguupValidateCR + "(Crnum='" + CRNumber + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
                     var uri = new Uri(url);
                     HttpResponseMessage CRValidationModelList = client.GetAsync(uri).Result;
                     if (CRValidationModelList != null)
@@ -2523,9 +2523,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
@@ -2551,11 +2551,11 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static DuplicateSignUpModelRootObject GAZTValidateDuplicate(string IDNum, string IDType, string Institude, string Country, string crNum)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 DuplicateSignUpModelRootObject ValidateDuplicate = new DuplicateSignUpModelRootObject();
                 string IsIDTypeValidList = string.Empty;
-                string url = string.Empty;
+                String url = string.Empty;
                 string NewToken = string.Empty;
                 try
                 {
@@ -2563,11 +2563,11 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient();
                     if (!string.IsNullOrEmpty(crNum))
                     {
-                        url = ZATCAConstants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + "90702" + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
+                        url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + "90702" + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
                     }
                     else
                     {
-                        url = ZATCAConstants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + Institude + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
+                        url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + Institude + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
                     }
 
                     var uri = new Uri(url);
@@ -2585,16 +2585,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string ValidateDuplicateListResult = ValidateDuplicateList.Content.ReadAsStringAsync().Result;
+                        String ValidateDuplicateListResult = ValidateDuplicateList.Content.ReadAsStringAsync().Result;
                         ValidateDuplicate = JsonConvert.DeserializeObject<DuplicateSignUpModelRootObject>(ValidateDuplicateListResult);
                     }
                     return ValidateDuplicate;
@@ -2613,13 +2613,13 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public async static Task<string> GAZTSignUpFirstSubmitCGZTAcc(SignUpNextBodyModel SignUpModel)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     string LangZ = GetLangZParameterAREN();
                     string FirstSignupSubmit = string.Empty;
-                    string url = ZATCAConstants.GAZTSignUpFirstSubmit + LangZ;
+                    string url = Constants.GAZTSignUpFirstSubmit + LangZ;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -2627,7 +2627,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     FirstSignupSubmit = await res.Content.ReadAsStringAsync();
                     return FirstSignupSubmit;
@@ -2646,13 +2646,13 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static string GAZTSignUpFirstSubmit(SignUpNextBodyModel SignUpModel)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     string LangZ = GetLangZParameterAREN();
                     string FirstSignupSubmit = string.Empty;
-                    string url = ZATCAConstants.GAZTSignUpFirstSubmit + LangZ;
+                    string url = Constants.GAZTSignUpFirstSubmit + LangZ;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -2660,7 +2660,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
                     return FirstSignupSubmit;
@@ -2679,7 +2679,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public async static Task<string> GAZTCreateAccountSubmit(CreateGaztAccountModel SignUpModel)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -2687,13 +2687,13 @@ namespace ZATCAMAUI.Core.Mangers
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     string Langz = UtilityManager.GetLanguageParameter();
                     string FirstSignupSubmit = string.Empty;
-                    string url = ZATCAConstants.GAZTSignUpFirstSubmit + Langz;
+                    string url = Constants.GAZTSignUpFirstSubmit + Langz;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     if (res != null && res.Content != null)
                     {
@@ -2727,7 +2727,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static CaseGuidModelRootObject GAZTGetSignupGuid()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 CaseGuidModelRootObject GaztGuidModel = new CaseGuidModelRootObject();
                 string IsIDTypeValidList = string.Empty;
@@ -2740,7 +2740,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    string url = ZATCAConstants.GAZTSignUpGetGuid;
+                    String url = Constants.GAZTSignUpGetGuid;
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTGuidList = client.GetAsync(uri).Result;
                     if (GAZTGuidList != null)
@@ -2756,16 +2756,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string VGAZTGuidListResult = GAZTGuidList.Content.ReadAsStringAsync().Result;
+                        String VGAZTGuidListResult = GAZTGuidList.Content.ReadAsStringAsync().Result;
                         GaztGuidModel = JsonConvert.DeserializeObject<CaseGuidModelRootObject>(VGAZTGuidListResult);
                     }
                     return GaztGuidModel;
@@ -2805,7 +2805,7 @@ namespace ZATCAMAUI.Core.Mangers
             Cred.WSUserName = "GAZT@CRM";
             Cred.WSPassword = "gazt@123";
             TERFRegionRootObject Listobject = new TERFRegionRootObject();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 TERFRegionRootObject terfregion = new TERFRegionRootObject();
                 try
@@ -2818,7 +2818,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     var serilized = JsonConvert.SerializeObject(Cred);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = res.Content.ReadAsStringAsync().Result;
                     terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
@@ -2843,7 +2843,7 @@ namespace ZATCAMAUI.Core.Mangers
             Cred.WSPassword = "gazt@123";
             Cred.RegionCode = regioncode;
             TERFCityRetrieveRootObject Listobject = new TERFCityRetrieveRootObject();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 TERFCityRetrieveRootObject terfcity = new TERFCityRetrieveRootObject();
                 try
@@ -2855,7 +2855,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     var serilized = JsonConvert.SerializeObject(Cred);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = res.Content.ReadAsStringAsync().Result;
                     terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
@@ -2880,7 +2880,7 @@ namespace ZATCAMAUI.Core.Mangers
             Cred.WSPassword = "gazt@123";
             Cred.Channel = "2";
             TERFAQs Listobject = new TERFAQs();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 TERFAQs terffaq = new TERFAQs();
                 try
@@ -2888,11 +2888,11 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
-                    string url = ZATCAConstants.GAZTGetFAQ;
+                    string url = Constants.GAZTGetFAQ;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     var serilized = JsonConvert.SerializeObject(Cred);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = await res.Content.ReadAsStringAsync();
                     terffaq = JsonConvert.DeserializeObject<TERFAQs>(response);
@@ -2917,7 +2917,7 @@ namespace ZATCAMAUI.Core.Mangers
             Cred.ReporterMobileNumber = "05" + Cred.ReporterMobileNumber;
             string mobilenew1 = Cred.CompanyMobileNumber;
             Cred.CompanyMobileNumber = "05" + Cred.CompanyMobileNumber;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 TEReportResponsePostRootObject terfcity = new TEReportResponsePostRootObject();
                 try
@@ -2929,7 +2929,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     var serilized = JsonConvert.SerializeObject(Cred);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = res.Content.ReadAsStringAsync().Result;
                     terfcity = JsonConvert.DeserializeObject<TEReportResponsePostRootObject>(response);
@@ -2956,7 +2956,7 @@ namespace ZATCAMAUI.Core.Mangers
             Cred.MobileNumber = "05" + TPmobno;
             Cred.Channel = "2";
             ReportRetriveByMobNoRootObject Listobject = new ReportRetriveByMobNoRootObject();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
                 try
@@ -2968,7 +2968,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     var serilized = JsonConvert.SerializeObject(Cred);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = await res.Content.ReadAsStringAsync();
                     terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
@@ -2990,17 +2990,17 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<MyReturnsRootObject> GAZTGetReturnData(string lang, string TIN)
         {
             MyReturnsRootObject ReturnsdData = null;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
                 string NewToken = string.Empty;
                 try
                 {
-                    if (false == NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
                     {
                         throw new GAZTInternetException();
                     }
-                    string uri = ZATCAConstants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
+                    string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetDashboardResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
                     if (GAZTGetDashboardResponse != null)
                     {
@@ -3015,9 +3015,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException();
                             }
@@ -3063,18 +3063,18 @@ namespace ZATCAMAUI.Core.Mangers
         public static Dashboard GAZTGetAdditionalDashboardData(string lang, string TIN)
         {
             Dashboard dashboardData = null;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
                 string NewToken = string.Empty;
                 try
                 {
-                    if (!NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
                     {
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string uri = ZATCAConstants.GAZTGetTheSetOfUnpaidAmounts + "'" + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
+                    string uri = Constants.GAZTGetTheSetOfUnpaidAmounts + "'" + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetTheSetOfUnpaidAmountsResponse = client.GetAsync(uri).Result;
                     if (GAZTGetTheSetOfUnpaidAmountsResponse != null)
                     {
@@ -3089,9 +3089,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException();
                             }
@@ -3132,19 +3132,19 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<List<OverduePaymentAndUnSubmittedReturn>> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
         {
             List<OverduePaymentAndUnSubmittedReturn> overduePayments = null;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
                 string NewToken = string.Empty;
                 try
                 {
-                    if (!NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
                     {
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", "123");
-                    string uri = ZATCAConstants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
+                    string uri = Constants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = await GetServiceManager.MakeGetAPICall(uri, true, "123");
                     if (GAZTGetUnSubmittedReturnSetResponse != null)
                     {
@@ -3159,9 +3159,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException();
                             }
@@ -3203,17 +3203,17 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<List<OverduePaymentAndUnSubmittedReturn>> GAZTGetPaymentOverdueSetForDashboardData(string lang, string TIN)
         {
             List<OverduePaymentAndUnSubmittedReturn> paymentOverdueSet = null;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
                 string NewToken = string.Empty;
                 try
                 {
-                    if (!NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
                     {
                         throw new GAZTInternetException();
                     }
-                    string uri = ZATCAConstants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
+                    string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetPaymentOverdueSetResponse = await GetServiceManager.MakeGetAPICallWithIncomingChannel(uri, true, "123");
                     if (GAZTGetPaymentOverdueSetResponse != null)
                     {
@@ -3227,9 +3227,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException();
                             }
@@ -3250,7 +3250,7 @@ namespace ZATCAMAUI.Core.Mangers
                                     string errorMessage = string.Empty;
                                     errorMessage = errorMesg.error.innererror.errordetails[0].message;
                                     errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                    string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                    String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                     errorMessage = WithReplacedString;
                                     throw new GAZTErrorException(errorMessage);
                                 }
@@ -3286,9 +3286,9 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static string SFGAZTAuthenticateTIN(string UserName, string Password, string DeviceId, string CurrentAttempt, string lang)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                string AuthenticationResult = string.Empty;
+                string AuthenticationResult = String.Empty;
                 string Message = string.Empty;
                 try
                 {
@@ -3324,7 +3324,7 @@ namespace ZATCAMAUI.Core.Mangers
                                     var ServiceResult = rd.ReadToEnd();
                                     XmlDocument xmlDoc = new XmlDocument();
                                     xmlDoc.LoadXml(ServiceResult);
-                                    XmlNamespaceManager xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
+                                    XmlNamespaceManager xmlnsManager = new System.Xml.XmlNamespaceManager(xmlDoc.NameTable);
                                     xmlnsManager.AddNamespace("soap", "http://schemas.xmlsoap.org/soap/envelope/");
                                     xmlnsManager.AddNamespace("xsi", "http://www.w3.org/2001/XMLSchema-instance");
                                     xmlnsManager.AddNamespace("xsd", "http://www.w3.org/2001/XMLSchema");
@@ -3333,47 +3333,47 @@ namespace ZATCAMAUI.Core.Mangers
                                     App.Token = node.ChildNodes[0].InnerText;
                                     if (node.ChildNodes.Count == 5)
                                         NumberOfValiedAttempts = node.ChildNodes[4].InnerText;
-                                    if (0 == string.Compare(App.Token, "User does not exist"))
+                                    if ((0 == String.Compare(App.Token, "User does not exist")))
                                     {
                                         throw new GAZTUserDoesNotExistException();
                                     }
-                                    if (0 == string.Compare(App.Token, "User authentication failed"))
+                                    if ((0 == String.Compare(App.Token, "User authentication failed")))
                                     {
                                         throw new GAZTUserAuthenticationFailedException();
                                     }
-                                    if (0 == string.Compare(App.Token, "Authentication failed. Password locked"))
+                                    if ((0 == String.Compare(App.Token, "Authentication failed. Password locked")))
                                     {
                                         throw new GAZTPasswordLockedException();
                                     }
-                                    if (0 == string.Compare(App.Token, "User is not currently valid"))
+                                    if ((0 == String.Compare(App.Token, "User is not currently valid")))
                                     {
                                         throw new GAZTUserCurrentlyInvalidException();
                                     }
-                                    if (0 == string.Compare(App.Token, "User account locked"))
+                                    if ((0 == String.Compare(App.Token, "User account locked")))
                                     {
                                         throw new GAZTUserAccountLockedException();
                                     }
-                                    if (0 == string.Compare(App.Token, "Password is locked. Invalid attempts"))
+                                    if ((0 == String.Compare(App.Token, "Password is locked. Invalid attempts")))
                                     {
                                         throw new GAZTPasswordIsLockedDueToInvalidAttemptsException();
                                     }
-                                    if (0 == string.Compare(App.Token, "Taxpayer's account is not active with GAZT."))
+                                    if ((0 == String.Compare(App.Token, "Taxpayer's account is not active with GAZT.")))
                                     {
                                         throw new GAZTTaxpayersAccountInActiveWithGAZTException();
                                     }
-                                    if (0 == string.Compare(App.Token, "Wrong entering for the TIN or the Email"))
+                                    if ((0 == String.Compare(App.Token, "Wrong entering for the TIN or the Email")))
                                     {
                                         throw new GAZTWrongTINOrEmailException();
                                     }
-                                    if (0 == string.Compare(App.Token, "Wrong password"))
+                                    if ((0 == String.Compare(App.Token, "Wrong password")))
                                     {
                                         throw new GAZTWrongPasswordException();
                                     }
-                                    if (0 == string.Compare(App.Token, "The account is locked for 60 minutes after the last login attempt"))
+                                    if ((0 == String.Compare(App.Token, "The account is locked for 60 minutes after the last login attempt")))
                                     {
                                         throw new GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException();
                                     }
-                                    if (0 == string.Compare(App.Token, "Incomplete") || 0 == string.Compare(App.Token, "Deregister - Death") || 0 == string.Compare(App.Token, "Deregister - Bankruptcy") || 0 == string.Compare(App.Token, "Deregister - Liquidation") || 0 == string.Compare(App.Token, "Deregister - Merger") || 0 == string.Compare(App.Token, "Deregister - Acquisition") || 0 == string.Compare(App.Token, "Suspension - Bankruptcy") || 0 == string.Compare(App.Token, "Suspension - Liquidation/Close") || 0 == string.Compare(App.Token, "Deregister - Close") || 0 == string.Compare(App.Token, "Deregister - Company-Establish") || 0 == string.Compare(App.Token, "Suspension - Est. to Company"))
+                                    if ((0 == String.Compare(App.Token, "Incomplete")) || (0 == String.Compare(App.Token, "Deregister - Death")) || (0 == String.Compare(App.Token, "Deregister - Bankruptcy")) || (0 == String.Compare(App.Token, "Deregister - Liquidation")) || (0 == String.Compare(App.Token, "Deregister - Merger")) || (0 == String.Compare(App.Token, "Deregister - Acquisition")) || (0 == String.Compare(App.Token, "Suspension - Bankruptcy")) || (0 == String.Compare(App.Token, "Suspension - Liquidation/Close")) || (0 == String.Compare(App.Token, "Deregister - Close")) || (0 == String.Compare(App.Token, "Deregister - Company-Establish")) || (0 == String.Compare(App.Token, "Suspension - Est. to Company")))
                                     {
                                         throw new GAZTTaxpayersAccountNotActiveWithGAZTException();
                                     }
@@ -3415,39 +3415,58 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static string CreateSAMLLoginURL(string Euser, string DeviceId, string FcmId, string DeviceTyp, string Language)
         {
-            string FullUrl = ZATCAConstants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='" + DeviceId + "'" + ",FcmId='" +
+            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='" + DeviceId + "'" + ",FcmId='" +
                 FcmId + "'" + ",DeviceTyp='" + DeviceTyp + "')?sap-language=" + Language + "&$format=json";
             return FullUrl;
         }
 
         public static LoginModel SFGAZTGetLoginDataAndroid(string url)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                string GAZTGetTINsResponseResult = string.Empty;
+                String GAZTGetTINsResponseResult = String.Empty;
                 string NewToken = string.Empty;
                 try
                 {
-                    App.httpClientHandler = new HttpClientHandler();
-                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    try
+                    {
+                        App.httpClientHandler = new HttpClientHandler();
+                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    }
+                    catch (Exception)
+                    {
+
+
+
+                    }
 
                     CookieContainer cookieContainer = new CookieContainer();
 
-                    foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                    try
                     {
-                        Cookie cookie = new Cookie();
-                        cookie.Domain = ZATCAConstants.PartialDomainUrlForCookies;
-                        cookie.Comment = cookieModel.Comment;
-                        cookie.Version = cookieModel.Version;
-                        cookie.HttpOnly = cookieModel.IsHttpOnly;
-                        cookie.Path = cookieModel.Path;
-                        cookie.Name = cookieModel.CName;
-                        cookie.Value = cookieModel.CValue;
-                        cookie.Secure = cookieModel.Secure;
-                        cookieContainer.Add(cookie);
+                        foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                        {
+                            Cookie cookie = new Cookie();
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+                            cookie.Comment = cookieModel.Comment;
+                            cookie.Version = cookieModel.Version;
+                            cookie.HttpOnly = cookieModel.IsHttpOnly;
+                            cookie.Path = cookieModel.Path;
+                            cookie.Name = cookieModel.CName;
+                            cookie.Value = cookieModel.CValue;
+                            cookie.Secure = cookieModel.Secure;
+                            cookieContainer.Add(cookie);
+                        }
+
+                        App.httpClientHandler.CookieContainer = cookieContainer;
                     }
 
-                    App.httpClientHandler.CookieContainer = cookieContainer;
+                    catch (Exception)
+                    {
+
+
+
+                    }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     Uri uri = new Uri(url);
@@ -3472,16 +3491,16 @@ namespace ZATCAMAUI.Core.Mangers
                                 NewToken = values.First();
                             }
 
-                            if (!string.IsNullOrEmpty(NewToken))
+                            if ((!string.IsNullOrEmpty(NewToken)))
                             {
-                                if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                                 {
                                     throw new GAZTSessionExpiredException(string.Empty);
                                 }
                                 App.Token = NewToken;
                             }
 
-                            string GAZTGetTaxPayerProfileResponseJSONString = GAZTGetLoginDataResponseJSON.Content.ReadAsStringAsync().Result;
+                            String GAZTGetTaxPayerProfileResponseJSONString = GAZTGetLoginDataResponseJSON.Content.ReadAsStringAsync().Result;
                             if (!string.IsNullOrEmpty(GAZTGetTaxPayerProfileResponseJSONString))
                             {
                                 GAZTGetTaxPayerProfileResponseJSONString = JObject.Parse(GAZTGetTaxPayerProfileResponseJSONString)["d"].ToString();
@@ -3534,16 +3553,16 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new GAZTInternetException(string.Empty);
+                throw new GAZTInternetException(String.Empty);
             }
         }
 
 
         public static async Task<LoginModel> SFGAZTGetLoginData(string url)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                string GAZTGetTINsResponseResult = string.Empty;
+                String GAZTGetTINsResponseResult = String.Empty;
                 string NewToken = string.Empty;
                 try
                 {
@@ -3620,16 +3639,16 @@ namespace ZATCAMAUI.Core.Mangers
                                 NewToken = values.First();
                             }
 
-                            if (!string.IsNullOrEmpty(NewToken))
+                            if ((!string.IsNullOrEmpty(NewToken)))
                             {
-                                if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                                 {
                                     throw new GAZTSessionExpiredException(string.Empty);
                                 }
                                 App.Token = NewToken;
                             }
 
-                            string GAZTGetTaxPayerProfileResponseJSONString = GAZTGetLoginDataResponseJSON.Content.ReadAsStringAsync().Result;
+                            String GAZTGetTaxPayerProfileResponseJSONString = GAZTGetLoginDataResponseJSON.Content.ReadAsStringAsync().Result;
                             if (!string.IsNullOrEmpty(GAZTGetTaxPayerProfileResponseJSONString))
                             {
                                 GAZTGetTaxPayerProfileResponseJSONString = JObject.Parse(GAZTGetTaxPayerProfileResponseJSONString)["d"].ToString();
@@ -3682,21 +3701,21 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new GAZTInternetException(string.Empty);
+                throw new GAZTInternetException(String.Empty);
             }
         }
 
 
         public static List<TIN> SFGAZTGetAllTINs(string UserName)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                string GAZTGetTINsResponseResult = string.Empty;
+                String GAZTGetTINsResponseResult = String.Empty;
                 List<TIN> TINs = null;
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GetAllTin + UserName;
+                    string url = Constants.GetAllTin + UserName;
                     Uri uri = new Uri(url);
                     HttpResponseMessage GAZTGetTINsResponse = client.GetAsync(uri).Result;
                     if (GAZTGetTINsResponse != null)
@@ -3735,18 +3754,18 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new GAZTInternetException(string.Empty);
+                throw new GAZTInternetException(String.Empty);
             }
         }
 
         public static async Task GAZTLogOff()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                string GAZTGetLogoffResponseResult = string.Empty;
+                String GAZTGetLogoffResponseResult = String.Empty;
                 try
                 {
-                    string url = ZATCAConstants.GAZTSAMLLogoutService;
+                    String url = Constants.GAZTSAMLLogoutService;
                     HttpResponseMessage GAZTLogOffResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     App.LoginCookiesRetrieved = null;
 
@@ -3777,7 +3796,7 @@ namespace ZATCAMAUI.Core.Mangers
         public static TaxPayerProfile SFGAZTGetTaxPayerProfile(string TIN, string Lang)
         {
             TaxPayerProfile profile = null;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string MobileNumber = string.Empty;
                 string PdfUrl = string.Empty;
@@ -3805,7 +3824,7 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             else if (Device.RuntimePlatform == Device.Android)
                             {
-                                cookie.Domain = ZATCAConstants.PartialDomainUrlForCookies;
+                                cookie.Domain = Constants.PartialDomainUrlForCookies;
                             }
 
                             cookie.Comment = cookieModel.Comment;
@@ -3829,7 +3848,7 @@ namespace ZATCAMAUI.Core.Mangers
                     }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
+                    String url = Constants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
                     Uri uri = new Uri(url);
                     HttpResponseMessage GAZTGetTaxPayerProfileResponseJSON = client.GetAsync(uri).Result;
                     if (GAZTGetTaxPayerProfileResponseJSON != null)
@@ -3845,15 +3864,15 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException(string.Empty);
                             }
                             App.Token = NewToken;
                         }
-                        string GAZTGetTaxPayerProfileResponseJSONString = GAZTGetTaxPayerProfileResponseJSON.Content.ReadAsStringAsync().Result;
+                        String GAZTGetTaxPayerProfileResponseJSONString = GAZTGetTaxPayerProfileResponseJSON.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTGetTaxPayerProfileResponseJSONString))
                         {
                             GAZTGetTaxPayerProfileResponseJSONString = JObject.Parse(GAZTGetTaxPayerProfileResponseJSONString)["d"].ToString();
@@ -3894,7 +3913,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new GAZTInternetException(string.Empty);
+                throw new GAZTInternetException(String.Empty);
             }
             return profile;
         }
@@ -3905,7 +3924,7 @@ namespace ZATCAMAUI.Core.Mangers
             string tagName = "Gazt.gov.sa";
             string recepientNumber = "9665" + mobno;
             string message = messageforsms;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
@@ -3944,15 +3963,15 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new GAZTInternetException();
             }
         }
-        public static async Task<AttachmentDocumentModel> GAZTGetAllAttachments(string retGuid, string fbNum)
+        public static async Task<AttachmentDocumentModel> GAZTGetAllAttachments(String retGuid, String fbNum)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
-                string GAZTAttachmentsResponseResult = string.Empty;
+                String GAZTAttachmentsResponseResult = String.Empty;
                 AttachmentDocumentModel attachmentDocumentModel = null;
                 try
                 {
-                    string url = ZATCAConstants.GAZTGetAllAttachments + fbNum + "'" + " and RetGuid eq '" + retGuid + "'" + "&saml2=enabled&$format=json";
+                    string url = Constants.GAZTGetAllAttachments + fbNum + "'" + " and RetGuid eq '" + retGuid + "'" + "&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetAllAttachmentsResponse = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTGetAllAttachmentsResponse != null)
                     {
@@ -3995,14 +4014,14 @@ namespace ZATCAMAUI.Core.Mangers
         {
             ZakatRevokeValidateModel _zakatRevokeValidateModel = new ZakatRevokeValidateModel();
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
 
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = GetLangZParameter();
-                    string url = ZATCAConstants.ZakatValidateRevokeListUrl + "Fbnum='" + fbnum + "')?&$format=json";
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    String url = Constants.ZakatValidateRevokeListUrl + "Fbnum='" + fbnum + "')?&$format=json";
                     HttpResponseMessage _zakatRevokeValidateResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatRevokeValidateResponse != null)
                     {
@@ -4018,16 +4037,16 @@ namespace ZATCAMAUI.Core.Mangers
                             NewToken = values.First();
                             App.IsSessionExpired = false;
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string __zakatRevokeValidateResponseData = _zakatRevokeValidateResponse.Content.ReadAsStringAsync().Result;
+                        String __zakatRevokeValidateResponseData = _zakatRevokeValidateResponse.Content.ReadAsStringAsync().Result;
                         _zakatRevokeValidateModel = JsonConvert.DeserializeObject<ZakatRevokeValidateModel>(__zakatRevokeValidateResponseData);
 
                         if (!string.IsNullOrEmpty(__zakatRevokeValidateResponseData) && _zakatRevokeValidateModel.d == null)
@@ -4038,7 +4057,7 @@ namespace ZATCAMAUI.Core.Mangers
                                 string errorMessage = string.Empty;
                                 errorMessage = errorMesg.error.innererror.errordetails[0].message;
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
@@ -4068,14 +4087,14 @@ namespace ZATCAMAUI.Core.Mangers
         public static async Task<ZakatRevokeSendSMSModel> GAZTZakatRevokeSendOTP(string fbNum, string code)
         {
             ZakatRevokeSendSMSModel _zakatRevokeSendSMSModel = new ZakatRevokeSendSMSModel();
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
 
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = GetLangZParameter();
-                    string url = ZATCAConstants.ZakateRevokeSendOTPUrl + "Fbnum eq'" + fbNum + "'and Code eq'" + code + "'and  Tin eq '" + App.LoginDataRetrieved.TIN + "'&$format=json";
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    String url = Constants.ZakateRevokeSendOTPUrl + "Fbnum eq'" + fbNum + "'and Code eq'" + code + "'and  Tin eq '" + App.LoginDataRetrieved.TIN + "'&$format=json";
                     HttpResponseMessage _zakatRevokeSendSMSResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatRevokeSendSMSResponse != null)
                     {
@@ -4091,16 +4110,16 @@ namespace ZATCAMAUI.Core.Mangers
                             NewToken = values.First();
                             App.IsSessionExpired = false;
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
                             }
                             App.Token = NewToken;
                         }
-                        string _zakatRevokeSendSMSResponseData = _zakatRevokeSendSMSResponse.Content.ReadAsStringAsync().Result;
+                        String _zakatRevokeSendSMSResponseData = _zakatRevokeSendSMSResponse.Content.ReadAsStringAsync().Result;
                         _zakatRevokeSendSMSModel = JsonConvert.DeserializeObject<ZakatRevokeSendSMSModel>(_zakatRevokeSendSMSResponseData);
 
                         if (!string.IsNullOrEmpty(_zakatRevokeSendSMSResponseData) && _zakatRevokeSendSMSModel.d == null)
@@ -4111,7 +4130,7 @@ namespace ZATCAMAUI.Core.Mangers
                                 string errorMessage = string.Empty;
                                 errorMessage = errorMesg.error.innererror.errordetails[0].message;
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
@@ -4142,15 +4161,15 @@ namespace ZATCAMAUI.Core.Mangers
 
         #region Download File
 
-        public async static Task<bool> FileDownload(string url, string fileExtension)
+        public async static System.Threading.Tasks.Task<bool> FileDownload(string url, string fileExtension)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     string NewToken = string.Empty;
-                    char lang = GetLangZParameter();
-                    MemoryStream pdfStream = new MemoryStream();
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    System.IO.MemoryStream pdfStream = new MemoryStream();
                     var dependency = DependencyService.Get<IPrintService>();
 
 
@@ -4176,9 +4195,9 @@ namespace ZATCAMAUI.Core.Mangers
                         NewToken = values.First();
                         App.IsSessionExpired = false;
                     }
-                    if (!string.IsNullOrEmpty(NewToken))
+                    if ((!string.IsNullOrEmpty(NewToken)))
                     {
-                        if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                        if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                         {
                             App.IsSessionExpired = true;
                             return false;
@@ -4211,7 +4230,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<VATDeclaration> GAZTGetVRVATReturns(string Fbguid, string Fbnumz, string EUser, string PeriodCode)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 string FbGuid = App.LoginDataRetrieved.FbGuid;
@@ -4219,9 +4238,9 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     VATDeclaration _vATDeclaration = new VATDeclaration();
                     char LangZ = GetLangZParameter();
-                    string Lang = UtilityManager.GetLanguageParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + Fbnumz + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + "'" + ")?&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet,VATPERITEMSet&$format=json";
+                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + Fbnumz + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + "'" + ",Fbguid='" + "'" + ")?&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet,VATPERITEMSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATReturnStatus = await client.GetAsync(uri);
@@ -4238,16 +4257,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token") || 0 == string.Compare(NewToken, ""))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
                                 throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
-                        string VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
+                        String VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
                         _vATDeclaration = JsonConvert.DeserializeObject<VATDeclaration>(VATReturn);
                     }
                     return _vATDeclaration;
@@ -4266,7 +4285,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
         public static Task<TaxPayerProfile> GetTPProfileDataAPICall(string TIN)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string lang = string.Empty;
                 if (App.IsArabic) { lang = "A"; }
@@ -4294,7 +4313,7 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             else if (Device.RuntimePlatform == Device.Android)
                             {
-                                cookie.Domain = ZATCAConstants.PartialDomainUrlForCookies;
+                                cookie.Domain = Constants.PartialDomainUrlForCookies;
                             }
 
                             cookie.Comment = cookieModel.Comment;
@@ -4326,7 +4345,7 @@ namespace ZATCAMAUI.Core.Mangers
                 }
 
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                string URL = ZATCAConstants.TPProfileURL
+                string URL = Constants.TPProfileURL
                             + "(" + "Taxpayerz=" + "'" + TIN + "'"
                             + ",Langz=" + "'" + lang + "'"
                             + ",Euser=" + "'null'"
@@ -4347,13 +4366,13 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static Task<TaxPayerProfile> ChangeTPProfilePasswordAPICall(string oldPassword, string newPassword)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string lang = string.Empty;
                 if (App.IsArabic) { lang = "AR"; }
                 else { lang = "EN"; }
 
-                string URL = ZATCAConstants.GetTPProfileChangePWDURL
+                string URL = Constants.GetTPProfileChangePWDURL
                             + "(" + "Email=" + "'" + App.TP.Email + "'"
                             + ",PasswordOld=" + "'" + oldPassword + "'"
                             + ",PasswordNew=" + "'" + newPassword + "'"
@@ -4397,9 +4416,9 @@ namespace ZATCAMAUI.Core.Mangers
 
                         if (headers.TryGetValues("token", out values)) { NewToken = values.First(); }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 App.IsSessionExpired = true;
                                 return null;
@@ -4429,7 +4448,7 @@ namespace ZATCAMAUI.Core.Mangers
                         errorMessage = errorMesg.error.innererror.errordetails[0].message;
                         errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                        string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                         errorMessage = WithReplacedString;
                         throw new Exception(errorMessage);
                     }
@@ -4441,7 +4460,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<TaxPayerProfile> POSTTPProfileAPICalls(TPProfileAPIRequest TPProfileAPIRequestPOSTData, string APIType)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 TaxPayerProfile TP = null;
                 string GAZTTPProfileResponseJSON = string.Empty;
@@ -4452,7 +4471,7 @@ namespace ZATCAMAUI.Core.Mangers
                     if (App.IsArabic) { lang = "AR"; }
                     else { lang = "EN"; }
 
-                    string url = ZATCAConstants.TPProfileURL + "?sap-language=" + lang;
+                    string url = Constants.TPProfileURL + "?sap-language=" + lang;
                     var uri = new Uri(url);
 
                     try { App.httpClientHandler.CookieContainer = null; }
@@ -4467,7 +4486,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var serilized = JsonConvert.SerializeObject(TPProfileAPIRequestPOSTData);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
 
                     GAZTTPProfileResponseJSON = res.Content.ReadAsStringAsync().Result;
@@ -4491,7 +4510,7 @@ namespace ZATCAMAUI.Core.Mangers
                             errorMessage = errorMesg.error.innererror.errordetails[0].message;
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
 
                             throw new Exception(errorMessage);
@@ -4521,7 +4540,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<ASTabIdentification> GAZTGetAccountStatementsTabIdentification()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 string FbGuid = App.LoginDataRetrieved.FbGuid;
@@ -4529,9 +4548,9 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     ASTabIdentification _asTabIdentification = new ASTabIdentification();
                     char LangZ = GetLangZParameter();
-                    string Lang = UtilityManager.GetLanguageParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.AccountStatementTabIdentification + "Euser=''," + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "')?$format=json";
+                    String url = Constants.AccountStatementTabIdentification + "Euser=''," + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "')?$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -4551,16 +4570,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token") || 0 == string.Compare(NewToken, ""))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
                                 throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
-                        string data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
                         _asTabIdentification = JsonConvert.DeserializeObject<ASTabIdentification>(data);
                     }
                     return _asTabIdentification;
@@ -4580,7 +4599,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<ASRevenueDropDownSet> GAZTGetAccountStatementsRevenueDropDownSet(string taxType)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 string FbGuid = App.LoginDataRetrieved.FbGuid;
@@ -4588,9 +4607,9 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     ASRevenueDropDownSet _asTabIdentification = new ASRevenueDropDownSet();
                     char LangZ = GetLangZParameter();
-                    string Lang = UtilityManager.GetLanguageParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.AccountStatementRevenueDropDownSet + "Euser eq ''" + " and Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and Langz eq '" + LangZ + "'&$format=json";
+                    String url = Constants.AccountStatementRevenueDropDownSet + "Euser eq ''" + " and Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and Langz eq '" + LangZ + "'&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -4610,16 +4629,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token") || 0 == string.Compare(NewToken, ""))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
                                 throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
-                        string data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
                         _asTabIdentification = JsonConvert.DeserializeObject<ASRevenueDropDownSet>(data);
                     }
 
@@ -4640,7 +4659,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         public static async Task<ASYearValuesHeader> GAZTGetAccountStatementYearValuesHeaderSet(string statementFilter, string taxType)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
                 string FbGuid = App.LoginDataRetrieved.FbGuid;
@@ -4648,9 +4667,9 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     ASYearValuesHeader _asTabIdentification = new ASYearValuesHeader();
                     char LangZ = GetLangZParameter();
-                    string Lang = UtilityManager.GetLanguageParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.AccountStatementGetYearValues + "Fguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '" + statementFilter + "'" + "&$format=json";
+                    String url = Constants.AccountStatementGetYearValues + "Fguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and StatementFilter eq '" + statementFilter + "'" + "&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
@@ -4668,16 +4687,16 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token") || 0 == string.Compare(NewToken, ""))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
                                 throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
-                        string data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
                         _asTabIdentification = JsonConvert.DeserializeObject<ASYearValuesHeader>(data);
                     }
 
@@ -4711,7 +4730,7 @@ namespace ZATCAMAUI.Core.Mangers
 
             {
 
-                string url = ZATCAConstants.ValidatePaymentInformation + "?sap-language=" + UtilityManager.GetLanguageParameter() + "";
+                String url = Constants.ValidatePaymentInformation + "?sap-language=" + UtilityManager.GetLanguageParameter() + "";
 
 
 
@@ -4729,7 +4748,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
 
                 HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
 
@@ -4753,7 +4772,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                         errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                        string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
                         errorMessage = WithReplacedString;
 
@@ -4800,18 +4819,18 @@ namespace ZATCAMAUI.Core.Mangers
         public static DashboardInstalmentplan GAZTGetDashboardInstalmentPlanData(string lang, string TIN)
         {
             DashboardInstalmentplan dashboardInstalmentData = null;
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
                 string NewToken = string.Empty;
                 try
                 {
-                    if (!NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
                     {
                         throw new GAZTInternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string uri = ZATCAConstants.GetDashboardInstalmentPlanData + "='" + TIN + "',Lang='" + lang + "')" + "?$expand=INST_PLAN_itemSet&$format=json";
+                    String uri = Constants.GetDashboardInstalmentPlanData + "='" + TIN + "',Lang='" + lang + "')" + "?$expand=INST_PLAN_itemSet&$format=json";
 
                     HttpResponseMessage GAZTGetDashboardInstalmentResponse = new HttpResponseMessage();
                     try
@@ -4837,9 +4856,9 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             NewToken = values.First();
                         }
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
                         {
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
                                 throw new GAZTSessionExpiredException();
                             }
@@ -4853,7 +4872,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -4891,7 +4910,7 @@ namespace ZATCAMAUI.Core.Mangers
 
             CancelPaymentResponse paymentResponse = null;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
 
             {
 
@@ -4903,7 +4922,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 {
 
-                    if (!NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
 
                     {
 
@@ -4913,7 +4932,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    string uri = ZATCAConstants.CancelPaymentService + "'" + GUID + "',SRCID='" + type + "',CANC_RES='01')" + "?$format=json";
+                    String uri = Constants.CancelPaymentService + "'" + GUID + "',SRCID='" + type + "',CANC_RES='01')" + "?$format=json";
 
 
 
@@ -4964,11 +4983,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                         }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
 
                         {
 
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
 
                             {
 
@@ -4982,7 +5001,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                        string paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
+                        String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
 
                         paymentResponse = JsonConvert.DeserializeObject<CancelPaymentResponse>(paymentData);
 
@@ -5002,7 +5021,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
                                 errorMessage = WithReplacedString;
 
@@ -5018,7 +5037,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
 
                 {
 
@@ -5071,13 +5090,18 @@ namespace ZATCAMAUI.Core.Mangers
             return paymentResponse;
 
         }
-        public static async Task<ValidatePaymentResponse> GAZTValidateMyBillsPayment(string fbNum, string TIN, string devicetype, string sadadNo, string paymentType)
+
+
+
+
+
+        public static async Task<EGAZT.Models.PaymentModel.ValidatePaymentResponse> GAZTValidateMyBillsPayment(string fbNum, string TIN, string devicetype, string sadadNo, string paymentType)
 
         {
 
             ValidatePaymentResponse paymentResponse = null;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
 
             {
 
@@ -5089,7 +5113,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 {
 
-                    if (!NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
 
                     {
 
@@ -5101,7 +5125,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     // String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
 
-                    string uri = ZATCAConstants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='" + sadadNo + "',Pymntty='" + paymentType + "')" + "?$format=json";
+                    String uri = Constants.ValidatePaymentInformation + "(Fbnum='" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='" + sadadNo + "',Pymntty='" + paymentType + "')" + "?$format=json";
 
 
 
@@ -5116,6 +5140,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
 
                         GAZTValidatePaymentResponse = await client.GetAsync(uri);
+                        var data = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
 
                     }
 
@@ -5154,11 +5179,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                         }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
 
                         {
 
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
 
                             {
 
@@ -5172,7 +5197,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                        string paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
+                        String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
 
                         paymentResponse = JsonConvert.DeserializeObject<ValidatePaymentResponse>(paymentData);
 
@@ -5192,7 +5217,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
                                 errorMessage = WithReplacedString;
 
@@ -5208,7 +5233,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
 
                 {
 
@@ -5272,7 +5297,7 @@ namespace ZATCAMAUI.Core.Mangers
 
             MadaPaymentResponse paymentResponse = null;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
 
             {
 
@@ -5284,7 +5309,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 {
 
-                    if (!NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
 
                     {
 
@@ -5294,7 +5319,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    string uri = ZATCAConstants.UpdateMadaPaymentInformation + "'" + caseGuid + "',Srcid='" + devicetype + "')" + "?$format=json&sap-language=" + UtilityManager.GetLanguageParameter() + "";
+                    String uri = Constants.UpdateMadaPaymentInformation + "'" + caseGuid + "',Srcid='" + devicetype + "')" + "?$format=json&sap-language=" + UtilityManager.GetLanguageParameter() + "";
 
 
 
@@ -5343,11 +5368,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                         }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
 
                         {
 
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
 
                             {
 
@@ -5361,7 +5386,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                        string paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
+                        String paymentData = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
 
                         paymentResponse = JsonConvert.DeserializeObject<MadaPaymentResponse>(paymentData);
 
@@ -5385,7 +5410,7 @@ namespace ZATCAMAUI.Core.Mangers
                                 errorCode += errorMesg.error.innererror.errordetails[1].code;
 
 
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
                                 errorMessage = WithReplacedString;
 
@@ -5401,7 +5426,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException )
+                catch (JsonReaderException ex)
 
                 {
 
@@ -5474,7 +5499,7 @@ namespace ZATCAMAUI.Core.Mangers
 
             {
 
-                string url = ZATCAConstants.ApplePayGenerateGuid;
+                String url = Constants.ApplePayGenerateGuid;
 
                 var uri = new Uri(url);
 
@@ -5494,7 +5519,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
 
                 HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
 
@@ -5520,7 +5545,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                         errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                        string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
                         errorMessage = WithReplacedString;
 
@@ -5563,7 +5588,9 @@ namespace ZATCAMAUI.Core.Mangers
 
         }
 
-        public async static Task<ApplePayTokenResponse> GAZTUpdateApplePayGuid(ApplePayToken applePayDetails)
+
+
+        public async static Task<EGAZT.Models.PaymentModel.ApplePayTokenResponse> GAZTUpdateApplePayGuid(ApplePayToken applePayDetails)
 
         {
 
@@ -5603,7 +5630,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                string url = ZATCAConstants.UpdateApplePayGuid;
+                String url = Constants.UpdateApplePayGuid;
 
                 var uri = new Uri(url);
 
@@ -5621,7 +5648,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
 
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
 
@@ -5645,7 +5672,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                         errorMessage += errorMesg.error.innererror.errordetails[1].message;
 
-                        string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                        String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
 
                         errorMessage = WithReplacedString;
 
@@ -5699,7 +5726,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         {
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
 
             {
 
@@ -5715,11 +5742,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                     char LangZ = GetLangZParameter();
 
-                    string Lang = UtilityManager.GetLanguageParameter();
+                    String Lang = UtilityManager.GetLanguageParameter();
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    string isLoad = "";
+                    String isLoad = "";
 
                     if (!string.IsNullOrEmpty(statementFilter) && statementFilter == "10")
 
@@ -5732,7 +5759,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     }
 
-                    string url = ZATCAConstants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "',Load='" + isLoad + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
+                    String url = Constants.AccountStatementGetHeaderSet + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "',StatementFilter='" + statementFilter + "',FiscalYear='" + fiscalYear + "',TaxType='" + taxType + "',Lang='" + LangZ + "',Load='" + isLoad + "')?&$expand=StatmenetLineItemsSet,TaxRelationSet&$format=json";
 
 
 
@@ -5776,11 +5803,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                         }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
 
                         {
 
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token") || 0 == string.Compare(NewToken, ""))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
 
                             {
 
@@ -5796,7 +5823,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
 
-                        string data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
+                        String data = GAZTASTabIdentificationStatus.Content.ReadAsStringAsync().Result;
 
                         _asTabIdentification = JsonConvert.DeserializeObject<ASStatementHeaderSet>(data);
 
@@ -5841,7 +5868,7 @@ namespace ZATCAMAUI.Core.Mangers
 
             Dashboard dashboardData = null;
 
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
 
             {
 
@@ -5853,7 +5880,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 {
 
-                    if (! NetworkCheck.IsInternet())
+                    if (false == CrossConnectivity.Current.IsConnected)
 
                     {
 
@@ -5863,7 +5890,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    string uri = ZATCAConstants.GetDashboardData + TIN + "'" + "&saml2=enabled" + "&$format=json";
+                    string uri = Constants.GetDashboardData + TIN + "'" + "&saml2=enabled" + "&$format=json";
 
                     HttpResponseMessage GAZTGetDashboardResponse = new HttpResponseMessage();
 
@@ -5907,11 +5934,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                         }
 
-                        if (!string.IsNullOrEmpty(NewToken))
+                        if ((!string.IsNullOrEmpty(NewToken)))
 
                         {
 
-                            if (0 == string.Compare(NewToken, "Token has expaired") || 0 == string.Compare(NewToken, "Invalid Token"))
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
 
                             {
 
@@ -5941,7 +5968,7 @@ namespace ZATCAMAUI.Core.Mangers
                                     string errorMessage = string.Empty;
                                     errorMessage = errorMesg.error.innererror.errordetails[0].message;
                                     errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                    string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                    String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                     errorMessage = WithReplacedString;
                                     throw new GAZTErrorException(errorMessage);
                                 }
@@ -5954,7 +5981,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException)
+                catch (JsonReaderException ex)
 
                 {
 
@@ -6012,14 +6039,14 @@ namespace ZATCAMAUI.Core.Mangers
         //--CR6264
         public static async Task<ProfitGoods> SaveVAtProfitGoodsAsync(VATFoodResults modelDetails)
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
 
                     //ZakatInstalmentPlanResponse _zakatResponseObject = new ZakatInstalmentPlanResponse();
-                    string LangZ = GetLangZParameterAREN();
-                    string url = ZATCAConstants.TaxpayervatgoodsAmrgin;
+                    string LangZ = WebServiceManager.GetLangZParameterAREN();
+                    String url = Constants.TaxpayervatgoodsAmrgin;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var serilized = JsonConvert.SerializeObject(modelDetails);
@@ -6028,7 +6055,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsDesponsestr = JObject.Parse(_zakatReturnDetailsDesponsestr)["d"].ToString();
@@ -6044,12 +6071,12 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
                         if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                         {
-                            ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                            ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
-                            ErrorMessageForVAT = WithReplacedString;
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
                             //ErrorMessageForVAT
-                            throw new GAZTVATRegistrationInProcessException(ErrorMessageForVAT);
+                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
                         }
                     }
                     return profit;
@@ -6072,11 +6099,11 @@ namespace ZATCAMAUI.Core.Mangers
         //CR6094
         public static async Task<LoginSSOModelClass> LoginDataSSO()
         {
-            if (NetworkCheck.IsInternet())
+            if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
-                    string LangZAREN = GetLangZParameterAREN();
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
                     var guid = "";
                     if (App.GUIDFrSSO == "")
                     {
@@ -6090,7 +6117,7 @@ namespace ZATCAMAUI.Core.Mangers
                         guid = strings[1];
 
                     }
-                    string url = ZATCAConstants.GetLoginDetaialsSSO + guid + "'&$format=json&sap-language=" + LangZAREN;
+                    String url = Constants.GetLoginDetaialsSSO + guid + "'&$format=json&sap-language=" + LangZAREN;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
@@ -6113,12 +6140,12 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
                         if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                         {
-                            ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                            ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
-                            ErrorMessageForVAT = WithReplacedString;
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
                             //ErrorMessageForVAT
-                            throw new GAZTVATRegistrationInProcessException(ErrorMessageForVAT);
+                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
                         }
                     }
                     return SSOModel;
@@ -6138,5 +6165,77 @@ namespace ZATCAMAUI.Core.Mangers
 
         }
 
+        public async static Task<string> GAZTValidateIDTypesDelecration(string IDType, string IDNumber, string DBO)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    String url = Constants.GAZTSiguupValidateIDTypesDecl + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    var uri = new Uri(url);
+                    HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
+                    if (SignupIsIDTypeValidList != null)
+                    {
+                        if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = SignupIsIDTypeValidList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
+                    }
+                    return IsIDTypeValidList;
+                }
+
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
     }
 }

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.InternationalMobileNumber.InternationalMobileNumberCodePages"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    NavigationPage.HasNavigationBar="False">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary Source="..\Common\Styles.xaml" />
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView
+                    Title="{x:Static ResourceManager:AppResources.InternationalCountryCode}"
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
+                    FontSize="13">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.BackButtonClicked}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{DynamicResource StyleReverseBack}"
+                            TextColor="{StaticResource Primary}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar
+                x:Name="searchBar"
+                CancelButtonColor="Blue"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Start"
+                Placeholder="{x:Static ResourceManager:AppResources.InternationalCodeSearch}"
+                PlaceholderColor="Gray"
+                TextChanged="OnTextChanged"
+                VerticalOptions="CenterAndExpand" />
+            <ListView
+                x:Name="searchResults"
+                HorizontalOptions="Fill"
+                ItemTapped="List_ItemTapped"
+                ItemsSource="{Binding MobileCodes}"
+                VerticalOptions="CenterAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Padding="0"
+                                HasShadow="False"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand">
+                                <Grid Margin="20,0,20,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Row="0" Orientation="Horizontal">
+                                        <custom:CustomLabel
+                                            Margin="10,0,10,0"
+                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                            FontSize="Small"
+                                            HorizontalTextAlignment="Start"
+                                            LineBreakMode="WordWrap"
+                                            Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                            Text="{Binding Telefto}"
+                                            TextColor="{StaticResource PrimaryColor}" />
+                                        <custom:CustomLabel
+                                            Margin="30,0,30,0"
+                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                            FontSize="Small"
+                                            HorizontalTextAlignment="Start"
+                                            LineBreakMode="WordWrap"
+                                            Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                            Text="{Binding Landx}"
+                                            TextColor="{StaticResource PrimaryColor}"
+                                            VerticalOptions="Start" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

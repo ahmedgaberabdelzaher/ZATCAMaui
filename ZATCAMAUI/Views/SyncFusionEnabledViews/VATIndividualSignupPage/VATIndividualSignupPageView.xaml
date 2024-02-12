@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATIndividualSignupPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <!--  BackgroundColor="DarkGreen"  -->
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <Grid>
+            <yummy:PancakeView
+                Grid.Row="0"
+                Padding="0"
+                BackgroundColor="White"
+                CornerRadius="32,32,0,0">
+                <StackLayout Padding="20">
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            x:Name="Image_backArrow"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="Start"
+                            IsVisible="{Binding BackArrowVisible}"
+                            Style="{StaticResource IconLabelStyle}"
+                            Text="{StaticResource Back}"
+                            VerticalOptions="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HeightRequest="50"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="ic_logo_gazt.png"
+                            VerticalOptions="Start"
+                            WidthRequest="50" />
+                    </Grid>
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="22"
+                        Text="{x:Static ResourceManager:AppResources.ZTERNewAccount}"
+                        TextColor="{StaticResource PrimaryColor}" />
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="15"
+                        Text="{x:Static ResourceManager:AppResources.ZZZZSelectthetypeofEntity}" />
+                    <BoxView Margin="0,0,0,25" Style="{StaticResource lineSeperator}" />
+                    <Grid Padding="0">
+                        <!--  BackgroundColor="DarkGreen"  -->
+                        <Image
+                            x:Name="image_individual_tile"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Aspect="AspectFill"
+                            Source="{Binding ImageIndividualTile}" />
+                        <Frame
+                            Margin="5"
+                            BackgroundColor="Transparent"
+                            CornerRadius="5"
+                            HeightRequest="100">
+                            <!--  Text="Individual Registration"  -->
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70*" />
+                                    <RowDefinition Height="30*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="70*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    x:Name="image_individual_icon"
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="{Binding ImageIndividualIcon}"
+                                    VerticalOptions="FillAndExpand" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="{StaticResource SomarBold}"
+                                    FontSize="13"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZIndividualSignupinVAT}"
+                                    TextColor="{Binding IndividualTileColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </Grid>
+
+
+                    <!--  Establishment signup block  -->
+                    <Grid Padding="0">
+
+                        <Image
+                            x:Name="image_estimated_tile"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Aspect="AspectFill"
+                            Source="{Binding ImageEstimatedTile}" />
+                        <Frame
+                            Margin="5"
+                            BackgroundColor="Transparent"
+                            CornerRadius="5"
+                            HeightRequest="100">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="70*" />
+                                    <RowDefinition Height="30*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="70*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="{Binding ImageEstimatedIcon}"
+                                    VerticalOptions="FillAndExpand" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    FontFamily="{StaticResource SomarBold}"
+                                    FontSize="13"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZestablishmentsignup}"
+                                    TextColor="{Binding EstimatedTileColor}"
+                                    VerticalOptions="End" />
+                            </Grid>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EstablishmentSignupCommand}" />
+                            </Frame.GestureRecognizers>
+
+                        </Frame>
+
+                    </Grid>
+                    <!--  Establishment signup block  -->
+                </StackLayout>
+            </yummy:PancakeView>
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="Cupertino"
+                            HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
+                            IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="{Binding IsLoading}"
+                            SizeFactor="0.6"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="70" />
+
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -3,6 +3,7 @@ using RGPopup.Maui.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -1007,26 +1008,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             var filterItems = MyBills;
 
 
-                            //if (IsHijriCal)
-                            //{
-                            //    CultureInfo arCI = new CultureInfo("ar-SA");
-                            //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
-                            //        DateTimeStyles.AllowInnerWhite);
-                            //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
-                            //        DateTimeStyles.AllowInnerWhite);
-
-                            //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
-                            //}
-                            //else
-                            //{
-                            //    CultureInfo arCI = new CultureInfo("en-US");
-                            //    DateTime FormatedTxFromDate = DateTime.ParseExact(TPFromDate, "yyyy", arCI.DateTimeFormat,
-                            //        DateTimeStyles.AllowInnerWhite);
-                            //    DateTime FormatedTxToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
-                            //        DateTimeStyles.AllowInnerWhite);
-                            //    MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => p.FormatedFromTaxPeriod >= FormatedTxFromDate && p.FormatedToTaxPeriod <= FormatedTxToDate));
-                            //}
-
                             if (IsHijriCal)
                             {
                                 CultureInfo arCI = new CultureInfo("ar-SA");
@@ -1074,27 +1055,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     });
                     if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
 
-                        //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
                         return;
                     }
                     else if (string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount) || !string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
-                        //                _dialogService.ShowMessage(AppResources.AccountStatementsEnterAmount, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
                         return;
                     }
                     else if (!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) || string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate))
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTransactionDate));
-                        //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTransactionDate));
                         return;
                     }
                     else if (!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) || string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate))
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTaxPeriod));
-                        //_dialogService.ShowMessage(AppResources.AccountStatementsTaxPeriod, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTaxPeriod));
                         return;
                     }
                     isFromFilter = false;
@@ -1315,7 +1292,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (PickerModel != null)
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
 
 

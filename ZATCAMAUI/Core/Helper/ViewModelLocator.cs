@@ -9,7 +9,6 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Common;
-using ZATCAMAUI.ViewModel.NewDesignViewModel.ContactUsPage;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
@@ -46,17 +45,47 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
-using ZATCAMAUI.ViewModel.NewDesignViewModel.VATServicesPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatyViewModels;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.DisplayNotesPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.StylesTestUi;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage;
 using ZATCAMAUI.Views.NewDesign.AccountStatements;
 using ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages;
 using ZATCAMAUI.Views.NewDesign.Common;
@@ -117,10 +146,28 @@ using ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan;
 using ZATCAMAUI.Views.NewDesign.ZakatObjection;
 using ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages;
 using ZATCAMAUI.Views.NewDesign.Zakaty;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.AddNotePages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.ContactUsPage;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.CreditCarriedPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.DisplayNotesPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.FAQPage;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.ICRListPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.InternationalMobileNumber;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.PrivacyAndPolicyPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.StylesTestUi;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnListPages;
 
 namespace ZATCAMAUI.Core.Helper
 {
@@ -165,9 +212,7 @@ namespace ZATCAMAUI.Core.Helper
             SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
             SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebView>();
-            // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
-
-            //SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
@@ -266,51 +311,51 @@ namespace ZATCAMAUI.Core.Helper
             #region OldIOC
 
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
-            //SimpleIoc.Default.Register<PdfViewModel>();
-            //SimpleIoc.Default.Register<MyBillsViewModel>();
-            //SimpleIoc.Default.Register<VATLookupPageViewModel>();
-            //SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
-            //SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
-            //SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
-            //SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
-            //SimpleIoc.Default.Register<ICRListPageViewModel>();
-            //SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
-            //SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
-            //SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
-            //SimpleIoc.Default.Register<AttachmentPageViewModel>();
-            //SimpleIoc.Default.Register<AddNotePageViewModel>();
+            SimpleIoc.Default.Register<PdfViewModel>();
+            SimpleIoc.Default.Register<MyBillsViewModel>();
+            SimpleIoc.Default.Register<VATLookupPageViewModel>();
+            SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
+            SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
+            SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
+            SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
+            SimpleIoc.Default.Register<ICRListPageViewModel>();
+            SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
+            SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
+            SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
+            SimpleIoc.Default.Register<AttachmentPageViewModel>();
+            SimpleIoc.Default.Register<AddNotePageViewModel>();
             SimpleIoc.Default.Register<AddPopPageViewModel>();
-            //SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
+            SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
             SimpleIoc.Default.Register<FormBundleStatusPageViewModel>();
-            //SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
-            //SimpleIoc.Default.Register<SignUpFormPageViewModel>();
-            //SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
-            //SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
-            //SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
-            //SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
-            //SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
-            //SimpleIoc.Default.Register<TaxEvasionReportListPageViewModel>();
-            //SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
-            //SimpleIoc.Default.Register<ReturnsPageViewModel>();
-            //SimpleIoc.Default.Register<FAQPageViewModel>();
-            //SimpleIoc.Default.Register<AboutUsPageViewModel>();
-            //SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
-            //SimpleIoc.Default.Register<MyReturnsPageViewModel>();
+            SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
+            SimpleIoc.Default.Register<SignUpFormPageViewModel>();
+            SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportListPageViewModel>();
+            SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
+            SimpleIoc.Default.Register<ReturnsPageViewModel>();
+            SimpleIoc.Default.Register<FAQPageViewModel>();
+            SimpleIoc.Default.Register<AboutUsPageViewModel>();
+            SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
+            SimpleIoc.Default.Register<MyReturnsPageViewModel>();
             SimpleIoc.Default.Register<ContactUsPageViewModel>();
-            //SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
-            //SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
-            //SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
-            //SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
+            SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
+            SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<EstablishmentAmendUpdateSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
             SimpleIoc.Default.Register<VATAmendReactivationPageViewModel>();
-            //SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
-            //SimpleIoc.Default.Register<InternationalMobileNumberCodePagesViewModel>();
+            SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
+            SimpleIoc.Default.Register<InternationalMobileNumberCodePagesViewModel>();
 
             //AttachmentPopupPageView
-            //SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
             SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
-            //SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
+            SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
             SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
@@ -321,7 +366,7 @@ namespace ZATCAMAUI.Core.Helper
 
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
-            //SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
+            SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
             SimpleIoc.Default.Register<TINDeregestrationSuccessPageViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
 
@@ -1278,56 +1323,56 @@ namespace ZATCAMAUI.Core.Helper
 
 
         #region OldDesignViewModel
-        //public StyleTestUIPageViewModel StyleTestUIPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public StyleTestUIPageViewModel StyleTestUIPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
+                    return null;
+                }
+            }
 
 
-        //}
-        //public PdfViewModel pdfView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<PdfViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        }
+        public PdfViewModel pdfView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PdfViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public StyleTestUIPageViewModel StyleTestUIPage
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public StyleTestUIPageViewModel StyleTestUIPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
         public FinancialDetailAttachmentPopupPageViewModel FinancialDetailAttachmentPopupPageView
         {
             get
@@ -1344,39 +1389,39 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        //public VATIndividualSignupTnCPageViewModel VATIndividualSignupTnCPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<VATIndividualSignupTnCPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public VATIndividualSignupTnCPageViewModel VATIndividualSignupTnCPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATIndividualSignupTnCPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
 
-        //public InternationalMobileNumberCodePagesViewModel InternationalMobileNumberCodePages
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<InternationalMobileNumberCodePagesViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public InternationalMobileNumberCodePagesViewModel InternationalMobileNumberCodePages
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InternationalMobileNumberCodePagesViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
         public InternationalCodeSearchPageViewModel InternationalCodeSearchPage
         {
             get
@@ -1396,234 +1441,234 @@ namespace ZATCAMAUI.Core.Helper
         /// <summary>
         /// Returns the current instance of MyCertificateViewModel
         /// </summary>
-        //public MyBillsViewModel MyBillsView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<MyBillsViewModel>();
-        //            SimpleIoc.Default.Register<MyBillsViewModel>();
-        //            return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public MyBillsViewModel MyBillsView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<MyBillsViewModel>();
+                    SimpleIoc.Default.Register<MyBillsViewModel>();
+                    return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
 
-        //public VATLookupPageViewModel VATLookupPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<VATLookupPageViewModel>();
-        //            SimpleIoc.Default.Register<VATLookupPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<VATLookupPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
-
-
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public ZakatReturnListPageViewModel ZakatReturnListPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<ZakatReturnListPageViewModel>();
-        //            SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<ZakatReturnListPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public VATLookupPageViewModel VATLookupPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<VATLookupPageViewModel>();
+                    SimpleIoc.Default.Register<VATLookupPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<VATLookupPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public ZakatReturnDetailsPageViewModel ZakatReturnDetailsPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<ZakatReturnDetailsPageViewModel>();
-        //            SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<ZakatReturnDetailsPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public ZakatReturnListPageViewModel ZakatReturnListPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<ZakatReturnListPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<ZakatReturnListPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-
-        //public SalesDetailsPageViewModel SalesDetailsPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<SalesDetailsPageViewModel>();
-        //            SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<SalesDetailsPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
-
-
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public AmendSalesDetailsPageViewModel AmendSalesDetailsPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<AmendSalesDetailsPageViewModel>();
-        //            SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<AmendSalesDetailsPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public ZakatReturnDetailsPageViewModel ZakatReturnDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<ZakatReturnDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<ZakatReturnDetailsPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
 
-        //public ICRListPageViewModel ICRListPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<ICRListPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
-
-
-        //            return null;
-        //        }
-        //    }
-        //}
-
-        //public VATReturnsPageViewModelEX VATReturnsPageViewEX
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<VATReturnsPageViewModelEX>();
-        //            SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
-        //            return ServiceLocator.Current.GetInstance<VATReturnsPageViewModelEX>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public SalesDetailsPageViewModel SalesDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<SalesDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<SalesDetailsPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public AcknowledgementDetailsPageViewModel AcknowledgementDetailsPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<AcknowledgementDetailsPageViewModel>();
-        //            SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<AcknowledgementDetailsPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public AmendSalesDetailsPageViewModel AmendSalesDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<AmendSalesDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<AmendSalesDetailsPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public DisplayNotesPageViewModel DisplayNotesPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<DisplayNotesPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+
+        public ICRListPageViewModel ICRListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ICRListPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public AttachmentPageViewModel AttachmentPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<AttachmentPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+
+        public VATReturnsPageViewModelEX VATReturnsPageViewEX
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<VATReturnsPageViewModelEX>();
+                    SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
+                    return ServiceLocator.Current.GetInstance<VATReturnsPageViewModelEX>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public AddNotePageViewModel AddNotePageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<AddNotePageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public AcknowledgementDetailsPageViewModel AcknowledgementDetailsPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<AcknowledgementDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<AcknowledgementDetailsPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public CreditCarriedPageViewModel CreditCarriedPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<CreditCarriedPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public DisplayNotesPageViewModel DisplayNotesPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<DisplayNotesPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
+        public AttachmentPageViewModel AttachmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AttachmentPageViewModel>();
+                }
+                catch (Exception)
+                {
+
+
+                    return null;
+                }
+            }
+        }
+        public AddNotePageViewModel AddNotePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AddNotePageViewModel>();
+                }
+                catch (Exception)
+                {
+
+
+                    return null;
+                }
+            }
+        }
+        public CreditCarriedPageViewModel CreditCarriedPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CreditCarriedPageViewModel>();
+                }
+                catch (Exception)
+                {
+
+
+                    return null;
+                }
+            }
+        }
         public AddPopPageViewModel AddPopPageView
         {
             get
@@ -1657,112 +1702,112 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        //public TaxEvasionReportMobilePageViewModel TaxEvasionReportPhonePageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<TaxEvasionReportMobilePageViewModel>();
-        //            SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<TaxEvasionReportMobilePageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public TaxEvasionReportMobilePageViewModel TaxEvasionReportPhonePageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<TaxEvasionReportMobilePageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportMobilePageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public TaxEvasionReportTypePageViewModel TaxEvasionReportTypePageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<TaxEvasionReportTypePageViewModel>();
-        //            SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionReportTypePageViewModel TaxEvasionReportTypePageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<TaxEvasionReportTypePageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public TaxEvasionReportFormPageViewModel TaxEvasionReportFormPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<TaxEvasionReportFormPageViewModel>();
-        //            SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionReportFormPageViewModel TaxEvasionReportFormPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<TaxEvasionReportFormPageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public TaxEvasionFormPageViewModel TaxEvasionFormPage
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<TaxEvasionFormPageViewModel>();
-        //            SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionFormPageViewModel TaxEvasionFormPage
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<TaxEvasionFormPageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public TaxEvasionRegistrationViewModel TaxEvasionRegistrationFormPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<TaxEvasionRegistrationViewModel>();
-        //            SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
-        //            return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionRegistrationViewModel TaxEvasionRegistrationFormPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<TaxEvasionRegistrationViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
+                    return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public TaxEvasionReportAttachmentPageViewModel TaxEvasionAttachmentPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<TaxEvasionReportAttachmentPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionReportAttachmentPageViewModel TaxEvasionAttachmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportAttachmentPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
         public FormBundleStatusPageViewModel FormBundleStatusPageView
         {
             get
@@ -1779,86 +1824,86 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        //public SignUpTAndCPageViewModel SignUpTAndCPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<SignUpTAndCPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public SignUpTAndCPageViewModel SignUpTAndCPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SignUpTAndCPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public SignUpFormPageViewModel SignUpFormPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<SignUpFormPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public SignUpFormPageViewModel SignUpFormPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SignUpFormPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public TaxEvasionReportListPageViewModel TaxEvasionReportListPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<TaxEvasionReportListPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionReportListPageViewModel TaxEvasionReportListPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportListPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public CreateGaztAccountPageViewModel CreateGaztAccountPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<CreateGaztAccountPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public CreateGaztAccountPageViewModel CreateGaztAccountPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CreateGaztAccountPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public AccountCreatedPageViewModel AccountCreatedPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public AccountCreatedPageViewModel AccountCreatedPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
         public AccountCreatedSuccessfullyPageViewModel AccountCreatedSuccessfullyPageView
         {
             get
@@ -1895,86 +1940,86 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        //public ReturnsPageViewModel ReturnsPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<ReturnsPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public ReturnsPageViewModel ReturnsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReturnsPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public FAQPageViewModel FAQPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<FAQPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public FAQPageViewModel FAQPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FAQPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public AboutUsPageViewModel AboutUsPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<AboutUsPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public AboutUsPageViewModel AboutUsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AboutUsPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public PrivacyAndPolicyPageViewModel PrivacyAndPolicyPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<PrivacyAndPolicyPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public PrivacyAndPolicyPageViewModel PrivacyAndPolicyPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PrivacyAndPolicyPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public MyReturnsPageViewModel MyReturnsPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<MyReturnsPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public MyReturnsPageViewModel MyReturnsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyReturnsPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
         public ContactUsPageViewModel ContactUsPageView
         {
             get
@@ -1991,58 +2036,58 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        //public VATIndividualSignupPageViewModel VATIndividualSignupPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<VATIndividualSignupPageViewModel>();
-        //            SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<VATIndividualSignupPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public VATIndividualSignupPageViewModel VATIndividualSignupPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<VATIndividualSignupPageViewModel>();
+                    SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<VATIndividualSignupPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public IndividualRegistrationPageViewModel IndividualRegistrationPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            SimpleIoc.Default.Unregister<IndividualRegistrationPageViewModel>();
-        //            SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
-        //            return ServiceLocator.Current.GetInstance<IndividualRegistrationPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public IndividualRegistrationPageViewModel IndividualRegistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<IndividualRegistrationPageViewModel>();
+                    SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<IndividualRegistrationPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
-        //public RegistrationSuccessfulPageViewModel VATRegistrationSuccessfulPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+                    return null;
+                }
+            }
+        }
+        public RegistrationSuccessfulPageViewModel VATRegistrationSuccessfulPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
         public VATRegistrationPageViewModel VATRegistrationPageView
         {
             get
@@ -2098,22 +2143,22 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        //public VATRegistrationSuccessfullPageViewModel VATRegistrationSuccessfullPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<VATRegistrationSuccessfullPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public VATRegistrationSuccessfullPageViewModel VATRegistrationSuccessfullPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRegistrationSuccessfullPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
         public VATAmendReactivationSuccesssulPageViewModel VATAmendReactivationSuccesssulPageView
         {
             get
@@ -2180,22 +2225,22 @@ namespace ZATCAMAUI.Core.Helper
             }
         }
 
-        //public UnlockAccountSuccessPageViewModel UnlockAccountSuccessPageViewModel
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<UnlockAccountSuccessPageViewModel>();
-        //        }
-        //        catch (Exception)
-        //        {
+        public UnlockAccountSuccessPageViewModel UnlockAccountSuccessPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UnlockAccountSuccessPageViewModel>();
+                }
+                catch (Exception)
+                {
 
 
-        //            return null;
-        //        }
-        //    }
-        //}
+                    return null;
+                }
+            }
+        }
 
         public TINDeregestrationSuccessPageViewModel TINDeregestrationSuccessPageView
         {
@@ -2609,7 +2654,7 @@ namespace ZATCAMAUI.Core.Helper
 
             navigationService.Configure(App.GAZTNewDesignOnBoardingAnimationPageView, typeof(GAZTNewDesignOnBoardingAnimationPageView));
             navigationService.Configure(App.GAZTNewDesignVATReturnUpdatedUIPageView, typeof(GAZTNewDesignVATReturnUpdatedUIPageView));
-            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
+            navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
             navigationService.Configure(App.GAZTNewDesignForgotPasswordPageView, typeof(GAZTNewDesignForgotPasswordPageView));
             navigationService.Configure(App.GAZTNewDesignMyBillsPageView, typeof(GAZTNewDesignMyBillsPageView));
             navigationService.Configure(App.MyBillsSuccessPageView, typeof(MyBillsSuccessPageView));
@@ -2692,42 +2737,42 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
 
             //SYNCFUSION INTEGRATION
-            //navigationService.Configure(App.PdfView, typeof(PdfView));
-            //navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
-            //navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
-            //navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
-            //navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
-            //navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
-            //navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
+            navigationService.Configure(App.PdfView, typeof(PdfView));
+            navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
+            navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
+            navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
+            navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
+            navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
+            navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
             navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
-            //navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
-            //navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
-            //navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
-            //navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
+            navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
+            navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
+            navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
+            navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
             navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
-            //navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
             navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
-            //navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            //navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
-            //navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
-            //navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
+            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+            navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
+            navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
+            navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
 
-            //navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
-            //navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
-            //navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
-            //navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
-            //navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
-            //navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
+            navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
+            navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
+            navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
+            navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
+            navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
+            navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
             navigationService.Configure(App.VATAmendReactivationSuccessfulPageView, typeof(VATAmendReactivationSuccessfulPageView));
 
             navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
 
-            //navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
+            navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
             navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
 
-            //navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
+            navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
             navigationService.Configure(App.UnlockAccountTINPageView, typeof(UnlockAccountTINPageView));
-            //navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
+            navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
 
             navigationService.Configure(App.GAZTNewDesignRecoverUsername, typeof(GAZTNewDesignRecoverUsernamePageView));

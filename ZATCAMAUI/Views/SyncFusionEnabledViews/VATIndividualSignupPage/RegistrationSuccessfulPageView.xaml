@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage.RegistrationSuccessfulPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <!--  BackgroundColor="DarkGreen"  -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>-->
+            <Style TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="10" />
+                <Setter Property="WidthRequest" Value="10" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
+                    <Image Aspect="AspectFit" Source="Forget_ic_success.png" />
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static ResourceManager:AppResources.ZZZZRegistrationSuccessful}"
+                        TextColor="White" />
+                    <Label
+                        FontFamily="{StaticResource SomarSemiBold}"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsCitizen}"
+                        Text="{x:Static ResourceManager:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}"
+                        TextColor="White" />
+                    <Label
+                        FontFamily="{StaticResource SomarSemiBold}"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsGulf}"
+                        Text="{x:Static ResourceManager:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices1}"
+                        TextColor="White" />
+                </StackLayout>
+                <StackLayout
+                    x:Name="copyLabel"
+                    Padding="15"
+                    BackgroundColor="White"
+                    HorizontalOptions="Center"
+                    IsVisible="False"
+                    VerticalOptions="Center">
+
+                    <Label
+                        FontFamily="{StaticResource SomarSemiBold}"
+                        FontSize="15"
+                        Text="{x:Static ResourceManager:AppResources.CopiedSuccessMessage}" />
+
+                </StackLayout>
+                <yummy:PancakeView
+                    Padding="20"
+                    BackgroundColor="White"
+                    CornerRadius="20,20,0,0"
+                    VerticalOptions="EndAndExpand">
+                    <StackLayout>
+                        <Frame
+                            Margin="0,20,0,0"
+                            Padding="0"
+                            BorderColor="LightGray"
+                            CornerRadius="8"
+                            HasShadow="False">
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Label
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="11"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.TINS}"
+                                    TextColor="{StaticResource DarkGrayTextColor}"
+                                    VerticalOptions="Center" />
+                                <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                    <Label
+                                        x:Name="Label_Tin"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="15"
+                                        Text="{Binding TINnumber}"
+                                        TextColor="#010101" />
+                                    <Image x:Name="Image_Copy">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIconFont"
+                                                Glyph="{x:Static FontImage:IconFonts.ContentPaste}"
+                                                Size="25"
+                                                Color="{StaticResource SecondaryNew}" />
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="Image_Copy_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+
+                        <buttons:SfButton
+                            x:Name="btnDashboard"
+                            Grid.ColumnSpan="2"
+                            Margin="10,0,10,0"
+                            Background="Transparent"
+                            Command="{Binding btn_LoginScreen}"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="15"
+                            HeightRequest="46"
+                            Style="{StaticResource SfButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZZProceedtoHomescreen}"
+                            TextColor="{StaticResource Primary}"
+                            VerticalOptions="End" />
+                    </StackLayout>
+                </yummy:PancakeView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

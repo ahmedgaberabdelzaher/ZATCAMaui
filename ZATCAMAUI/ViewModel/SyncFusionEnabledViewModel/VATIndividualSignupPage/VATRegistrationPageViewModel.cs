@@ -25,6 +25,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #region Variable
 
+        //private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
+        //public ZakatForm5TabEnum currentTab
+        //{
+        //    get => _currentTab;
+        //    private set
+        //    {
+        //        _currentTab = value;
+        //        RaisePropertyChanged(nameof(currentTab));
+        //        CurrentIndex = (int)_currentTab;
+        //        RaisePropertyChanged(nameof(CurrentIndex));
+        //    }
+        //}
         private int _currenrIndex = 1;
         public int CurrentIndex
         {
@@ -638,8 +650,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _currentStep;
-        public string CurrentStep
+        private String _currentStep;
+        public String CurrentStep
         {
             get
             {
@@ -670,8 +682,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private List<string> _ListOfActionButtonsApplicableForRegistration;
-        public List<string> ListOfActionButtonsApplicableForRegistration
+        private List<String> _ListOfActionButtonsApplicableForRegistration;
+        public List<String> ListOfActionButtonsApplicableForRegistration
         {
             get
             {
@@ -727,8 +739,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
 
 
-        private double _minimumDisplayValueOfSlider1 = 0.0;
-        public double MinimumDisplayValueOfSlider1
+        private Double _minimumDisplayValueOfSlider1 = 0.0;
+        public Double MinimumDisplayValueOfSlider1
         {
             get
             {
@@ -743,8 +755,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private double _maximumDisplayValueOfSlider1 = 1.0;
-        public double MaximumDisplayValueOfSlider1
+        private Double _maximumDisplayValueOfSlider1 = 1.0;
+        public Double MaximumDisplayValueOfSlider1
         {
             get
             {
@@ -759,8 +771,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private double _maximumDisplayValueOfSlider2 = 1.0;
-        public double MaximumDisplayValueOfSlider2
+        private Double _maximumDisplayValueOfSlider2 = 1.0;
+        public Double MaximumDisplayValueOfSlider2
         {
             get
             {
@@ -775,8 +787,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private double _minimumDisplayValueOfSlider2 = 0.0;
-        public double MinimumDisplayValueOfSlider2
+        private Double _minimumDisplayValueOfSlider2 = 0.0;
+        public Double MinimumDisplayValueOfSlider2
         {
             get
             {
@@ -791,8 +803,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private double _maximumValueOfSlider2 = 1.0;
-        public double MaximumValueOfSlider2
+        private Double _maximumValueOfSlider2 = 1.0;
+        public Double MaximumValueOfSlider2
         {
             get
             {
@@ -807,8 +819,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private double _maximumValueOfSlider1 = 1.0;
-        public double MaximumValueOfSlider1
+        private Double _maximumValueOfSlider1 = 1.0;
+        public Double MaximumValueOfSlider1
         {
             get
             {
@@ -869,8 +881,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("SliderLable2");
             }
         }
-        private double _sliderCurrentValue1 = 0.0;
-        public double SliderCurrentValue1
+        private Double _sliderCurrentValue1 = 0.0;
+        public Double SliderCurrentValue1
         {
             get
             {
@@ -885,8 +897,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private double _sliderCurrentValue2 = 0.0;
-        public double SliderCurrentValue2
+        private Double _sliderCurrentValue2 = 0.0;
+        public Double SliderCurrentValue2
         {
             get
             {
@@ -944,7 +956,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
-                MessagingCenter.Send(this, "IsInstrunctionChecked", value);
+                MessagingCenter.Send<VATRegistrationPageViewModel, bool>(this, "IsInstrunctionChecked", value);
 
                 if (_isInstrunctionChecked == value) return;
 
@@ -1037,8 +1049,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _addressLineOne;
-        public string AddressLineOne
+        private String _addressLineOne;
+        public String AddressLineOne
         {
             get
             {
@@ -1053,8 +1065,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _addressLineTwo;
-        public string AddressLineTwo
+        private String _addressLineTwo;
+        public String AddressLineTwo
         {
             get
             {
@@ -1069,8 +1081,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _vatEligibleStartDate = string.Empty;
-        public string VatEligibleStartDate
+        private String _vatEligibleStartDate = string.Empty;
+        public String VatEligibleStartDate
         {
             get
             {
@@ -1085,8 +1097,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _gpartFR = string.Empty;
-        public string GpartFR
+        private String _gpartFR = string.Empty;
+        public String GpartFR
         {
             get
             {
@@ -1100,8 +1112,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("GpartFR");
             }
         }
-        private string _typeFR = string.Empty;
-        public string TypeFR
+        private String _typeFR = string.Empty;
+        public String TypeFR
         {
             get
             {
@@ -1116,8 +1128,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _idnumberFR = string.Empty;
-        public string IdnumberFR
+        private String _idnumberFR = string.Empty;
+        public String IdnumberFR
         {
             get
             {
@@ -1132,8 +1144,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _firstnmFR = string.Empty;
-        public string FirstnmFR
+        private String _firstnmFR = string.Empty;
+        public String FirstnmFR
         {
             get
             {
@@ -1148,8 +1160,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _lastnmFR = string.Empty;
-        public string LastnmFR
+        private String _lastnmFR = string.Empty;
+        public String LastnmFR
         {
             get
             {
@@ -1164,8 +1176,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _mobNumberFR = string.Empty;
-        public string MobNumberFR
+        private String _mobNumberFR = string.Empty;
+        public String MobNumberFR
         {
             get
             {
@@ -1180,8 +1192,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _idNumberSR = string.Empty;
-        public string IdNumberSR
+        private String _idNumberSR = string.Empty;
+        public String IdNumberSR
         {
             get
             {
@@ -1196,8 +1208,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _firstNameSR = string.Empty;
-        public string FirstNameSR
+        private String _firstNameSR = string.Empty;
+        public String FirstNameSR
         {
             get
             {
@@ -1212,8 +1224,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _smtpAddrFR = string.Empty;
-        public string SmtpAddrFR
+        private String _smtpAddrFR = string.Empty;
+        public String SmtpAddrFR
         {
             get
             {
@@ -1565,8 +1577,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _textQuestion3First = string.Empty;
-        public string TextQuestion3First
+        private String _textQuestion3First = string.Empty;
+        public String TextQuestion3First
         {
             get
             {
@@ -1597,8 +1609,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _textQuestion4First = string.Empty;
-        public string TextQuestion4First
+        private String _textQuestion4First = string.Empty;
+        public String TextQuestion4First
         {
             get
             {
@@ -1629,8 +1641,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _textQuestion3Second = string.Empty;
-        public string TextQuestion3Second
+        private String _textQuestion3Second = string.Empty;
+        public String TextQuestion3Second
         {
             get
             {
@@ -1661,8 +1673,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _textQuestion4Second = string.Empty;
-        public string TextQuestion4Second
+        private String _textQuestion4Second = string.Empty;
+        public String TextQuestion4Second
         {
             get
             {
@@ -1693,8 +1705,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _imageforTextQuestion3First = string.Empty;
-        public string ImageforTextQuestion3First
+        private String _imageforTextQuestion3First = string.Empty;
+        public String ImageforTextQuestion3First
         {
             get
             {
@@ -1708,8 +1720,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ImageforTextQuestion3First");
             }
         }
-        private string _imageforTextQuestion3Second = string.Empty;
-        public string ImageforTextQuestion3Second
+        private String _imageforTextQuestion3Second = string.Empty;
+        public String ImageforTextQuestion3Second
         {
             get
             {
@@ -1723,8 +1735,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ImageforTextQuestion3Second");
             }
         }
-        private string _imageforTextQuestion4First = string.Empty;
-        public string ImageforTextQuestion4First
+        private String _imageforTextQuestion4First = string.Empty;
+        public String ImageforTextQuestion4First
         {
             get
             {
@@ -1739,8 +1751,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _imageforTextQuestion4Second = string.Empty;
-        public string ImageforTextQuestion4Second
+        private String _imageforTextQuestion4Second = string.Empty;
+        public String ImageforTextQuestion4Second
         {
             get
             {
@@ -1762,8 +1774,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             ListOfActionButtonsApplicable = ListOfActionButtonsApplicableForRegistration;
         }
 
-        private List<string> _ListOfActionButtonsApplicable;
-        public List<string> ListOfActionButtonsApplicable
+        private List<String> _ListOfActionButtonsApplicable;
+        public List<String> ListOfActionButtonsApplicable
         {
             get
             {
@@ -1775,7 +1787,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
-
+        public bool isLoadedAlready { get; private set; }
         #endregion
 
         public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -1816,6 +1828,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 var Bdt = DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString() + "T00:00:00";
                 if (!string.IsNullOrEmpty(VatEligibleStartDate))
                 {
+                  
                     string[] date1 = VatEligibleStartDate.Split('/');
                     Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
 
@@ -1834,6 +1847,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
 
+                //Step 5
+                VATRegistrationDetailsData.d.Decfg = "1";
                 if (SelectedIdTypeSR != null)
                 {
                     VATRegistrationDetailsData.d.DecidTy = SelectedIdTypeSR.ID;
@@ -2001,7 +2016,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion3First = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion3FirstTextColor = (Color)Application.Current.Resources["Primary"];
+                    TextQuestion3FirstTextColor = (Color)App.Current.Resources["Primary"];
                 }
 
                 if (value2forimage3second == "1")
@@ -2012,7 +2027,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion3Second = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion3SecondTextColor = (Color)Application.Current.Resources["Primary"];
+                    TextQuestion3SecondTextColor = (Color)App.Current.Resources["Primary"];
                 }
 
                 if (value1forimage4first == "1")
@@ -2023,7 +2038,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion4First = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion4FirstTextColor = (Color)Application.Current.Resources["Primary"]; ;
+                    TextQuestion4FirstTextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
 
                 if (value2forimage4second == "1")
@@ -2034,7 +2049,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion4Second = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion4SecondTextColor = (Color)Application.Current.Resources["Primary"]; ;
+                    TextQuestion4SecondTextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
 
@@ -2064,34 +2079,34 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string GetLocalisedButtonString(string ButtonName)
+        private String GetLocalisedButtonString(String ButtonName)
         {
-            string LocalisedButtonString = string.Empty;
+            string LocalisedButtonString = String.Empty;
 
-
-            if (0 == string.Compare(ButtonName, "SaveasDraft"))
+            if (0 == String.Compare(ButtonName, "SaveasDraft"))
             {
                 LocalisedButtonString = AppResources.ZZSaveAsDraft;
             }
-            else if (0 == string.Compare(ButtonName, "Attachments"))
+            else if (0 == String.Compare(ButtonName, "Attachments"))
             {
                 LocalisedButtonString = AppResources.Attachments;
             }
-            else if (0 == string.Compare(ButtonName, "Void"))
+            else if (0 == String.Compare(ButtonName, "Void"))
             {
                 LocalisedButtonString = AppResources.ZZVoid;
-            }
+            }           
 
             return LocalisedButtonString;
         }
 
         public async Task onPageLoad()
         {
+            isLoadedAlready = true;
             try
             {
                 IsLoading = true;
                 GetSignUpIdType();
-                IsLoading = true;
+                //      IsLoading = true;
                 VATRegistrationDetailsData = null;
                 VATRegistrationOtherDetails = null;
                 ADDRESSSetData = null;
@@ -2104,14 +2119,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (vATRegistration != null && vATRegistration.d != null)
-
                     {
 
                         //step 4 and 5 data set
                         if (vATRegistration.d.CONTACT_PERSONSet != null)
                         {
                             GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
-                            //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                             idnumber = string.Empty;
                             idnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                             FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
@@ -2126,7 +2139,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
 
                         //Step 5
-
                         IsDeclarationChecked = true;
                         if (vATRegistration.d.AgrFg != null)
                         {
@@ -2187,7 +2199,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         else
                         {
                             ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                            ImporterTextColor = (Color)Application.Current.Resources["Primary"]; ;
+                            ImporterTextColor = (Color)App.Current.Resources["Primary"]; ;
                         }
                         if (VATRegistrationDetailsData.d.ExFg == "1")
                         {
@@ -2197,7 +2209,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         else
                         {
                             ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                            ExporterTextColor = (Color)Application.Current.Resources["Primary"]; ;
+                            ExporterTextColor = (Color)App.Current.Resources["Primary"]; ;
                         }
 
 
@@ -2270,12 +2282,19 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         IsLoading = false;
                         _navigationService.GoBack();
                     });
+                    //   await Task.Run(() =>
+                    //   {
+                    //  });
                 }
                 IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
+                //await Task.Run(() =>
+                //{
+
+                //});
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -2305,7 +2324,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         private void SetApplicableButtons()
         {
             //Parag
-            if (VATRegistrationOtherDetails.d.VR_UI_BTNSet != null && VATRegistrationOtherDetails.d.VR_UI_BTNSet.results != null)
+            if ((VATRegistrationOtherDetails.d.VR_UI_BTNSet != null) && (VATRegistrationOtherDetails.d.VR_UI_BTNSet.results != null))
             {
                 if (ListOfActionButtonsApplicableForRegistration != null && ListOfActionButtonsApplicableForRegistration.Count > 0)
                     ListOfActionButtonsApplicableForRegistration.Clear();
@@ -2318,9 +2337,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Buttons buttonEnumId = Buttons.None;
 
                     Enum.TryParse(button.Button, out buttonEnumId);
-                    string localisedString = GetLocalisedButtonString(buttonEnumId.ToString());
+                    String localisedString = GetLocalisedButtonString(buttonEnumId.ToString());
 
-                    if (false == string.IsNullOrEmpty(localisedString))
+                    if (false == String.IsNullOrEmpty(localisedString))
                         ListOfActionButtonsApplicableForRegistration.Add(localisedString);
 
 
@@ -2399,7 +2418,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     try
                     {
-                        string dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(vATcommencementData.d.VatTaxDt);
+                        String dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(vATcommencementData.d.VatTaxDt);
                         DateTime ChangedDate = new DateTime(2018, 1, 1, 0, 0, 0);
 
                         int Result = DateTime.Compare((DateTime)vATcommencementData.d.VatTaxDt, (DateTime)VatRegDate);

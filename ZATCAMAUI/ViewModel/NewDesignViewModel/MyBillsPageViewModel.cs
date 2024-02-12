@@ -4,6 +4,7 @@ using RGPopup.Maui.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;

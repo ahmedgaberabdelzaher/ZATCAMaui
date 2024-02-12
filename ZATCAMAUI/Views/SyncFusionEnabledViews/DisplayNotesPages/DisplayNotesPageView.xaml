@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.DisplayNotesPages.DisplayNotesPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="White"
+    FlowDirection="RightToLeft"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView
+                    Title=""
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    FontSize="13">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{DynamicResource StyleReverseBack}"
+                            TextColor="{StaticResource Primary}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout
+                Margin="10,10,10,0"
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <ListView
+                    x:Name="DisplayNotes"
+                    BackgroundColor="White"
+                    HasUnevenRows="True"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsDisplayNoteVisible}"
+                    ItemsSource="{Binding NoteList}"
+                    SeparatorVisibility="None"
+                    VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ContentView>
+                                    <Frame
+                                        Margin="0,0,0,10"
+                                        Padding="0,0,0,0"
+                                        BorderColor="#C9C9C9"
+                                        CornerRadius="0">
+                                        <StackLayout
+                                            Margin="1,2,1,2"
+                                            Padding="0"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal">
+                                            <Grid
+                                                BackgroundColor="White"
+                                                ColumnSpacing="0"
+                                                HorizontalOptions="FillAndExpand"
+                                                RowSpacing="2"
+                                                Style="{DynamicResource GridStyle}"
+                                                VerticalOptions="FillAndExpand">
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Margin="10,0,10,-7"
+                                                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"
+                                                    Text="{Binding Sect}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Margin="10,0,10,-3"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="11"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                                                    Text="{Binding Strline}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="0"
+                                                    Margin="10,0,10,-8"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="11"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
+                                                    Text="{Binding Namez}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="0"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    HorizontalTextAlignment="Start"
+                                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                FontSize="11"
+                                                                Text="{Binding Strdt}" />
+                                                            <Span Text="  " />
+                                                            <Span
+                                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                                FontSize="11"
+                                                                Text="{Binding Strtime}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <custom:CustomLabel
+                    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsNoDataLabelVisible}"
+                    Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"
+                    Text="{x:Static ResourceManager:AppResources.Nodataavailable}"
+                    VerticalOptions="Center" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
