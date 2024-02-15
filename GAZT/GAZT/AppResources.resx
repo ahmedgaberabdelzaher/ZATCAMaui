@@ -8681,8 +8681,8 @@ I acknowledge that the above bank account information is correct and assume full
 3. I promise that I provide recent statements to ZATCA for all banking activity accounts and my personal accounts.
 4. ZATCA has the right to modify the amount and the period of the installments as they consider appropriate.
 5. ZATCA has the right to cancel the installment plan in the case of proven yours appropriate financial to pay the full dues.
-6. ZATCA has the right to apply collection procedures in the case of installment plan cancellation.
-7. I declare, I will play minimum 20% of past total liabilities.</value>
+6. ZATCA has the right to apply collection procedures in the case of installment plan cancellation.</value>
+<!--7. I declare, I will play minimum 20% of past total liabilities.-->
   </data>
   <data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
     <value>Taxpayer Holding Financial Statement</value>
@@ -10544,5 +10544,155 @@ We regret that you are unable to use the service at this time. Please sign up fo
   </data>
     <data name="SecondaryNumber" xml:space="preserve">
     <value>Secondary Number</value>
+  </data>
+<!--  Bank Management CR6207-->
+  <data name="NDBankAccManagement" xml:space="preserve">
+    <value>Bank Accounts Management</value>
+  </data>
+  <data name="IBAN" xml:space="preserve">
+    <value>IBAN</value>
+  </data>
+  <data name="IBANAccName" xml:space="preserve">
+    <value>Account Owner Name</value>
+  </data>
+  <data name="IBANBankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="IBANIdNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+  <data name="IBANIdType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+  <data name="IBANRefNum" xml:space="preserve">
+    <value>Ref. Number</value>
+  </data>
+  <data name="IBANStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="IBANUpdate" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="NDBankAccAddNewIBan" xml:space="preserve">
+    <value>Add New IBAN</value>
+  </data>
+  <data name="NDBankAccOwnerName" xml:space="preserve">
+    <value>Account Owner Name</value>
+  </data>
+  <data name="NDBankAccIDType" xml:space="preserve">
+    <value>ID Type</value>
+  </data>
+  <data name="NDBankAccIBAN" xml:space="preserve">
+    <value>IBAN</value>
+  </data>
+  <data name="NDBankAccIdNumber" xml:space="preserve">
+    <value>ID Number</value>
+  </data>
+  <data name="NDBankAccBankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="NDIBANValidationforSA" xml:space="preserve">
+    <value>IBAN number should start with SA</value>
+  </data>
+  <data name="NDIBANValidationforLenght" xml:space="preserve">
+    <value>IBAN number must be 24 digits</value>
+  </data>
+  <data name="AddNewIban" xml:space="preserve">
+    <value>Add a new IBAN</value>
+  </data>
+  <data name="NDIBANIsActivated" xml:space="preserve">
+    <value>This IBAN is activated</value>
+  </data>
+  <data name="NDIBANIsDeActivated" xml:space="preserve">
+    <value>This IBAN is deactivated</value>
+  </data>
+  <data name="NDIBANSuccessMessage" xml:space="preserve">
+    <value>You can use the bank account for refund requests after it has been approved by ZATCA</value>
+  </data>
+  <data name="NDIBANIncomplete" xml:space="preserve">
+    <value>You have an incomplete IBAN account. Please complete the required information and ensure its accuracy in order to avoid any delay in your recovery procedures</value>
+  </data>
+  <data name="NDIBANCertifyAck" xml:space="preserve">
+    <value>I, the taxpayer "{0}" acknowledge and confirm that all information and data provided regarding my bank account is correct and valid and that the account is belongs to me directly or indirectly and I take full responsibility for any consequences that may result from intentional or unintentional mistake in the data entered and acknowledge and agree that ZATCA shall not be liable wholly or partially for any direct or indirect incidental or collateral or punitive, general or special mistake or damage arising from the same and ZATCA shall hold ZATCA harmless against any claim or liability for lost opportunity, loss or damage resulting from any of the information or data entered.</value>
+  </data>
+  <data name="IBANRefundInfo" xml:space="preserve">
+    <value>Refund amount will be transferred to banks that are licensed by the Saudi Central Bank only.</value>
+  </data>
+  <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
+    <value>You have exceeded the limit of allowable attachments</value>
+  </data>
+  <data name="IBanRefundsInfo" xml:space="preserve">
+    <value>You can choose the IBAN number you wish to have the refund to from the list below, please note that refund process will not be completed if the IBAN is not correct and match the bank account ID number and bank account name.</value>
+  </data>
+  <data name="PleaseGoToIBan" xml:space="preserve">
+    <value>To add or edit registered bank accounts data for ZATCA, please go to </value>
+  </data>
+  <data name="VisitIBanManagement" xml:space="preserve">
+    <value>Bank Accounts Management</value>
+  </data>
+  <data name="IBanActivate" xml:space="preserve">
+    <value>Activate</value>
+  </data>
+  <data name="IBanDeactivate" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="IBanInsertIDNumber" xml:space="preserve">
+    <value>Please select valid ID Number.</value>
+  </data>
+  <data name="IBanInsertIDType" xml:space="preserve">
+    <value>Please select valid Id Type.</value>
+  </data>
+  <data name="IBanInsertName" xml:space="preserve">
+    <value>Please insert your full name.</value>
+  </data>
+  <data name="IBanSelectBank" xml:space="preserve">
+    <value>Please select valid Bank.</value>
+  </data>
+  <data name="ZZIBANRequired" xml:space="preserve">
+    <value>Please Select Valid Iban.</value>
+  </data>
+  <data name="IBanSubmitSuccess" xml:space="preserve">
+    <value>You can use the bank account for refund requests after it has been approved by ZATCA</value>
+  </data>
+  <data name="VRSecurityBankGuarante" xml:space="preserve">
+    <value>I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes before {0}, bearing in mind that the request will be cancelled automatically in the event of non-compliance.</value>
+  </data>
+  <data name="IBanOtherBankName" xml:space="preserve">
+    <value>Other Bank Name</value>
+  </data>
+  <data name="IBanSelectedOtherBankName" xml:space="preserve">
+    <value>OTHER BANK NAME</value>
+  </data>
+  <data name="IBanCommercialIdShouldbe10" xml:space="preserve">
+    <value>•	Commercial Registration number should be 10 numbers only</value>
+  </data>
+  <data name="IBanCompanyIdStartswith7" xml:space="preserve">
+    <value>Company number should start with 7.</value>
+  </data>
+  <data name="IBanCompanyIdshouldbelessthan10" xml:space="preserve">
+    <value>Company number should be 10 numbers.</value>
+  </data>
+  <data name="IBANIdNumberInfo" xml:space="preserve">
+      <value>The {0} number should be associated with the Saudi IBAN.</value>
+  </data>
+   <data name="IBANAttachment1" xml:space="preserve">
+      <value>Attachment 1</value>
+  </data>
+   <data name="IBANAttachment2" xml:space="preserve">
+      <value>Attachment 2</value>
+  </data>
+    <data name="IBANAttachmentTitle" xml:space="preserve">
+    <value>1. File size should not be more than 10 MB.
+2. Choose only file with extension DOC, DOCX, GIF, JPEG, JPG, PDF, XLS, XLSX, XML.
+3. Maximum no. of allowed attachments are 1.</value>
+  </data>
+    <data name="IBANAttachmentErrorMsg" xml:space="preserve">
+      <value>Please Add Mandatory Attachments</value>
+  </data>
+    <data name="IBANIdNumberDynamic" xml:space="preserve">
+    <value>{0} Number</value>
+  </data>
+   <data name="IBanSubmitSuccess1" xml:space="preserve">
+    <value>The request has been approved by the Authority, you can use the bank account in refund requests.</value>
   </data>
 </root>

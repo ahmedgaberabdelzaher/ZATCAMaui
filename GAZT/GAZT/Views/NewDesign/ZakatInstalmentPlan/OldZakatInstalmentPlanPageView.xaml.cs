@@ -58,7 +58,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 outletDecisionOptionsListView.SelectedItem = viewModel.OutletDecisionOptions[0];
                 frequencyOptionsListView.SelectedItem = viewModel.ZakatAgreementOptions[0];
                 viewModel.setMoreOptioButtons();
-                downPaymentSlider.ValueChanged += (a,e)=>{ downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString()); };
+                //downPaymentSlider.ValueChanged += (a,e)=>{ downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString()); };
             }
             catch (Exception)
             {
@@ -305,7 +305,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     //viewModel.MaxAmount = Math.Round(totalAmountDue, 2);
                     viewModel.MaxAmountTitle = AppResources.ZakatMax + " " + String.Format("{0:N}", viewModel.MaxAmount);
                     viewModel.DownPaymentAmount = Math.Round(totalAmountDue * (20.0f / 100.0f), 2);
-                    downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
+                    //downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
                 catch (Exception )
                 {
@@ -648,7 +648,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
                 if (viewModel.DownPaymentAmount > 0)
                 {
-                   downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
+                   //downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
             }
             catch (Exception)
@@ -968,7 +968,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         void SfButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
+            //downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
         }
 
     }
