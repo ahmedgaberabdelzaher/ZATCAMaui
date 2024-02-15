@@ -373,6 +373,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a new IBAN.
+        /// </summary>
+        public static string AddNewIban {
+            get {
+                return ResourceManager.GetString("AddNewIban", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Report.
         /// </summary>
         public static string AddNewReport {
@@ -7582,6 +7591,269 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IBAN.
+        /// </summary>
+        public static string IBAN {
+            get {
+                return ResourceManager.GetString("IBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Owner Name.
+        /// </summary>
+        public static string IBANAccName {
+            get {
+                return ResourceManager.GetString("IBANAccName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate.
+        /// </summary>
+        public static string IBanActivate {
+            get {
+                return ResourceManager.GetString("IBanActivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment 1.
+        /// </summary>
+        public static string IBANAttachment1 {
+            get {
+                return ResourceManager.GetString("IBANAttachment1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment 2.
+        /// </summary>
+        public static string IBANAttachment2 {
+            get {
+                return ResourceManager.GetString("IBANAttachment2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Add Mandatory Attachments.
+        /// </summary>
+        public static string IBANAttachmentErrorMsg {
+            get {
+                return ResourceManager.GetString("IBANAttachmentErrorMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. File size should not be more than 10 MB.
+        ///2. Choose only file with extension DOC, DOCX, GIF, JPEG, JPG, PDF, XLS, XLSX, XML.
+        ///3. Maximum no. of allowed attachments are 1..
+        /// </summary>
+        public static string IBANAttachmentTitle {
+            get {
+                return ResourceManager.GetString("IBANAttachmentTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Name.
+        /// </summary>
+        public static string IBANBankName {
+            get {
+                return ResourceManager.GetString("IBANBankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to •	Commercial Registration number should be 10 numbers only.
+        /// </summary>
+        public static string IBanCommercialIdShouldbe10 {
+            get {
+                return ResourceManager.GetString("IBanCommercialIdShouldbe10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company number should be 10 numbers..
+        /// </summary>
+        public static string IBanCompanyIdshouldbelessthan10 {
+            get {
+                return ResourceManager.GetString("IBanCompanyIdshouldbelessthan10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company number should start with 7..
+        /// </summary>
+        public static string IBanCompanyIdStartswith7 {
+            get {
+                return ResourceManager.GetString("IBanCompanyIdStartswith7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deactivate.
+        /// </summary>
+        public static string IBanDeactivate {
+            get {
+                return ResourceManager.GetString("IBanDeactivate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Number.
+        /// </summary>
+        public static string IBANIdNumber {
+            get {
+                return ResourceManager.GetString("IBANIdNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Number.
+        /// </summary>
+        public static string IBANIdNumberDynamic {
+            get {
+                return ResourceManager.GetString("IBANIdNumberDynamic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The {0} number should be associated with the Saudi IBAN..
+        /// </summary>
+        public static string IBANIdNumberInfo {
+            get {
+                return ResourceManager.GetString("IBANIdNumberInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Type.
+        /// </summary>
+        public static string IBANIdType {
+            get {
+                return ResourceManager.GetString("IBANIdType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select valid ID Number..
+        /// </summary>
+        public static string IBanInsertIDNumber {
+            get {
+                return ResourceManager.GetString("IBanInsertIDNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select valid Id Type..
+        /// </summary>
+        public static string IBanInsertIDType {
+            get {
+                return ResourceManager.GetString("IBanInsertIDType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please insert your full name..
+        /// </summary>
+        public static string IBanInsertName {
+            get {
+                return ResourceManager.GetString("IBanInsertName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Bank Name.
+        /// </summary>
+        public static string IBanOtherBankName {
+            get {
+                return ResourceManager.GetString("IBanOtherBankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ref. Number.
+        /// </summary>
+        public static string IBANRefNum {
+            get {
+                return ResourceManager.GetString("IBANRefNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refund amount will be transferred to banks that are licensed by the Saudi Central Bank only..
+        /// </summary>
+        public static string IBANRefundInfo {
+            get {
+                return ResourceManager.GetString("IBANRefundInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can choose the IBAN number you wish to have the refund to from the list below, please note that refund process will not be completed if the IBAN is not correct and match the bank account ID number and bank account name..
+        /// </summary>
+        public static string IBanRefundsInfo {
+            get {
+                return ResourceManager.GetString("IBanRefundsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select valid Bank..
+        /// </summary>
+        public static string IBanSelectBank {
+            get {
+                return ResourceManager.GetString("IBanSelectBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OTHER BANK NAME.
+        /// </summary>
+        public static string IBanSelectedOtherBankName {
+            get {
+                return ResourceManager.GetString("IBanSelectedOtherBankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string IBANStatus {
+            get {
+                return ResourceManager.GetString("IBANStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use the bank account for refund requests after it has been approved by ZATCA.
+        /// </summary>
+        public static string IBanSubmitSuccess {
+            get {
+                return ResourceManager.GetString("IBanSubmitSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The request has been approved by the Authority, you can use the bank account in refund requests..
+        /// </summary>
+        public static string IBanSubmitSuccess1 {
+            get {
+                return ResourceManager.GetString("IBanSubmitSuccess1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string IBANUpdate {
+            get {
+                return ResourceManager.GetString("IBANUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Identity type.
         /// </summary>
         public static string Identitytype {
@@ -8551,6 +8823,69 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New IBAN.
+        /// </summary>
+        public static string NDBankAccAddNewIBan {
+            get {
+                return ResourceManager.GetString("NDBankAccAddNewIBan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Name.
+        /// </summary>
+        public static string NDBankAccBankName {
+            get {
+                return ResourceManager.GetString("NDBankAccBankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN.
+        /// </summary>
+        public static string NDBankAccIBAN {
+            get {
+                return ResourceManager.GetString("NDBankAccIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Number.
+        /// </summary>
+        public static string NDBankAccIdNumber {
+            get {
+                return ResourceManager.GetString("NDBankAccIdNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Type.
+        /// </summary>
+        public static string NDBankAccIDType {
+            get {
+                return ResourceManager.GetString("NDBankAccIDType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Accounts Management.
+        /// </summary>
+        public static string NDBankAccManagement {
+            get {
+                return ResourceManager.GetString("NDBankAccManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Owner Name.
+        /// </summary>
+        public static string NDBankAccOwnerName {
+            get {
+                return ResourceManager.GetString("NDBankAccOwnerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bill Date.
         /// </summary>
         public static string NDBillDate {
@@ -8979,6 +9314,69 @@ namespace EGAZT {
         public static string NDHijri {
             get {
                 return ResourceManager.GetString("NDHijri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I, the taxpayer &quot;{0}&quot; acknowledge and confirm that all information and data provided regarding my bank account is correct and valid and that the account is belongs to me directly or indirectly and I take full responsibility for any consequences that may result from intentional or unintentional mistake in the data entered and acknowledge and agree that ZATCA shall not be liable wholly or partially for any direct or indirect incidental or collateral or punitive, general or special mistake or damage arising fr [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string NDIBANCertifyAck {
+            get {
+                return ResourceManager.GetString("NDIBANCertifyAck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have an incomplete IBAN account. Please complete the required information and ensure its accuracy in order to avoid any delay in your recovery procedures.
+        /// </summary>
+        public static string NDIBANIncomplete {
+            get {
+                return ResourceManager.GetString("NDIBANIncomplete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This IBAN is activated.
+        /// </summary>
+        public static string NDIBANIsActivated {
+            get {
+                return ResourceManager.GetString("NDIBANIsActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This IBAN is deactivated.
+        /// </summary>
+        public static string NDIBANIsDeActivated {
+            get {
+                return ResourceManager.GetString("NDIBANIsDeActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can use the bank account for refund requests after it has been approved by ZATCA.
+        /// </summary>
+        public static string NDIBANSuccessMessage {
+            get {
+                return ResourceManager.GetString("NDIBANSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN number must be 24 digits.
+        /// </summary>
+        public static string NDIBANValidationforLenght {
+            get {
+                return ResourceManager.GetString("NDIBANValidationforLenght", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN number should start with SA.
+        /// </summary>
+        public static string NDIBANValidationforSA {
+            get {
+                return ResourceManager.GetString("NDIBANValidationforSA", resourceCulture);
             }
         }
         
@@ -10960,6 +11358,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To add or edit registered bank accounts data for ZATCA, please go to .
+        /// </summary>
+        public static string PleaseGoToIBan {
+            get {
+                return ResourceManager.GetString("PleaseGoToIBan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please re-verify.
         /// </summary>
         public static string PleaseReVerify {
@@ -12022,6 +12429,15 @@ namespace EGAZT {
         public static string RestrictedDisc {
             get {
                 return ResourceManager.GetString("RestrictedDisc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have exceeded the limit of allowable attachments.
+        /// </summary>
+        public static string ReturnAttachmentLimitMessage {
+            get {
+                return ResourceManager.GetString("ReturnAttachmentLimitMessage", resourceCulture);
             }
         }
         
@@ -16831,6 +17247,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank Accounts Management.
+        /// </summary>
+        public static string VisitIBanManagement {
+            get {
+                return ResourceManager.GetString("VisitIBanManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Visitor.
         /// </summary>
         public static string Visitor {
@@ -17364,6 +17789,15 @@ namespace EGAZT {
         public static string VRSECURITYAMOUNT {
             get {
                 return ResourceManager.GetString("VRSECURITYAMOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes before {0}, bearing in mind that the request will be cancelled automatically in the event of non-compliance..
+        /// </summary>
+        public static string VRSecurityBankGuarante {
+            get {
+                return ResourceManager.GetString("VRSecurityBankGuarante", resourceCulture);
             }
         }
         
@@ -24538,6 +24972,15 @@ namespace EGAZT {
         public static string ZZIBANisincorrect {
             get {
                 return ResourceManager.GetString("ZZIBANisincorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select Valid Iban..
+        /// </summary>
+        public static string ZZIBANRequired {
+            get {
+                return ResourceManager.GetString("ZZIBANRequired", resourceCulture);
             }
         }
         

@@ -8599,7 +8599,8 @@ info@zatca.gov.sa</value>
 - إلغاء خطة التقسيط الخاصة في حال تأخرت عن سداد قسطين بشكل متتابع.
 - تقدير المبلغ المالي وفترة الأقساط.
 - إلغاء خطة التقسيط في حال ثبوت القدرة المالية لسداد كامل المستحقات.
-4- أقر بسداد ما يقل عن 20% من قيمة إجمالي المديونيات السابقة.</value>
+<!--4- أقر بسداد ما يقل عن 20% من قيمة إجمالي المديونيات السابقة.-->
+</value>
     </data>
   <data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
     <value>بيانات المكلفين المالية القابضة</value>
@@ -10466,5 +10467,154 @@ info@zatca.gov.sa</value>
   </data>
      <data name="SecondaryNumber" xml:space="preserve">
     <value>الرقم الإضافي</value>
+  </data>
+  <data name="NDBankAccManagement" xml:space="preserve">
+    <value>إدارة بيانات الحساب البنكي</value>
+  </data>
+  <data name="IBAN" xml:space="preserve">
+    <value>رقم الأيبان</value>
+  </data>
+  <data name="IBANAccName" xml:space="preserve">
+    <value>اسم صاحب الحساب</value>
+  </data>
+  <data name="IBANBankName" xml:space="preserve">
+    <value>البنك</value>
+  </data>
+  <data name="IBANIdNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="IBANIdType" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="IBANRefNum" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+  </data>
+  <data name="IBANStatus" xml:space="preserve">
+    <value>حالة الحساب</value>
+  </data>
+  <data name="IBANUpdate" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="NDBankAccAddNewIBan" xml:space="preserve">
+    <value>إضافة رقم IBAN جديد</value>
+  </data>
+  <data name="NDBankAccOwnerName" xml:space="preserve">
+    <value>اسم مالك الحساب</value>
+  </data>
+  <data name="NDBankAccIDType" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="NDBankAccIBAN" xml:space="preserve">
+    <value>IBAN</value>
+  </data>
+  <data name="NDBankAccIdNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="NDBankAccBankName" xml:space="preserve">
+    <value>اسم البنك</value>
+  </data>
+  <data name="NDIBANValidationforSA" xml:space="preserve">
+    <value>رقم الآيبان يجب أن يبدأ بSA</value>
+  </data>
+  <data name="NDIBANValidationforLenght" xml:space="preserve">
+    <value>رقم الايبان يجب يتكون من 24 خانة.</value>
+  </data>
+  <data name="AddNewIban" xml:space="preserve">
+    <value>إضافة ايبان جديد</value>
+  </data>
+  <data name="NDIBANIsActivated" xml:space="preserve">
+    <value>تم تفعيل هذا الايبان بنجاح</value>
+  </data>
+  <data name="NDIBANIsDeActivated" xml:space="preserve">
+    <value>تم تعطيل هذا الايبان بنجاح</value>
+  </data>
+  <data name="NDIBANSuccessMessage" xml:space="preserve">
+    <value>يمكنكم استخدام الحساب البنكي في طلبات الاسترداد بعد اعتماده من قبل الهيئة.</value>
+  </data>
+  <data name="NDIBANIncomplete" xml:space="preserve">
+    <value>لديك حساب ايبان غير مكتمل المعلومات الرجاء اكمال المعلومات المطلوبة و التأكد من دقتها وذلك لتسهيل إجراءات الاسترداد الخاصة بكم</value>
+  </data>
+  <data name="NDIBANCertifyAck" xml:space="preserve">
+    <value>أقر وأتعهَد بصحَة كافَة المعلومات والبيانات المدخلة للحساب البنكي الخاص بي، وأنَه يعود لي أنا المكلف/ "{0}" بصفة مباشرة أو غير مباشرة، وبتحملي لكافة المسؤولية في حال ترتَب أثر من أي نوع نتيجة خطأ مقصود أو غير مقصود في البيانات المدخلة، وأن الهيئة غير مسؤولة سواء بشكل كامل أو جزئي عن أي خطأ أو ضرر مباشر أو غير مباشر، عرضي أو تبعي أو عقابي، خاصا كان أو عاما، كما أن الهيئة لا تتحمل أ َي مسؤولية عن أي فرصة ضائعة أو خسارة أو ضرر نتج عن أي من المعلومات أو البيانات المدخلة.</value>
+  </data>
+  <data name="IBANRefundInfo" xml:space="preserve">
+    <value>يتم التحويل على البنوك المرخصة من قبل البنك المركزي السعودي في إجراءات الاسترداد</value>
+  </data>
+  <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
+    <value>تجاوزت الحد المسموح لتحميل المرفقات</value>
+  </data>
+  <data name="IBanRefundsInfo" xml:space="preserve">
+    <value>الرجاء اختيار رقم الايبان الذي ترغب باسترداد المبلغ عليه من قائمة حساباتكم البنكية الموضحة أدناه. مع ملاحظة أنه لن نتمكن من إتمام إجراءات عملية الاسترداد إذا لم يكن رقم الحساب البنكي الدولي صحيح ومتطابق مع رقم معرف الحساب البنكي واسم الحساب البنكي</value>
+  </data>
+  <data name="PleaseGoToIBan" xml:space="preserve">
+    <value>  في حال رغبتكم بإضافة أو تعديل بيانات الحسابات البنكية المسجلة لدى الهيئة الرجاء الذهاب إلى</value>
+  </data>
+  <data name="VisitIBanManagement" xml:space="preserve">
+    <value>خدمة إدارة الحسابات البنكية</value>
+  </data>
+  <data name="IBanActivate" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="IBanDeactivate" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="IBanInsertIDNumber" xml:space="preserve">
+    <value>الرجاء اختيار رقم هوية صحيح</value>
+  </data>
+  <data name="IBanInsertIDType" xml:space="preserve">
+    <value>الرجاء اختيار نوع هوية صحيح</value>
+  </data>
+  <data name="IBanInsertName" xml:space="preserve">
+    <value>الرجاء إدخال الاسم الكامل</value>
+  </data>
+  <data name="IBanSelectBank" xml:space="preserve">
+    <value>الرجاء اختيار بنك صحيح</value>
+  </data>
+  <data name="ZZIBANRequired" xml:space="preserve">
+    <value>الرجاء اختيار ايبان صحيح</value>
+  </data>
+  <data name="IBanSubmitSuccess" xml:space="preserve">
+    <value>يمكنكم استخدام الحساب البنكي في طلبات الاسترداد بعد اعتماده من قبل الهيئة.</value>
+  </data>
+  <data name="VRSecurityBankGuarante" xml:space="preserve">
+    <value>اتعهد بأن أقدم أصل الضمان البنكي الى الهيئة العامة للزكاة والدخل قبل نهاية يوم {0}، علماً بأن الطلب سيتم إلغاؤه آلياً في حال عدم الالتزام بذلك.</value>
+  </data>
+  <data name="IBanOtherBankName" xml:space="preserve">
+    <value>اسم بنك آخر</value>
+  </data>
+  <data name="IBanSelectedOtherBankName" xml:space="preserve">
+    <value>اسم بنك آخر</value>
+  </data>
+  <data name="IBanCommercialIdShouldbe10" xml:space="preserve">
+    <value>رقم السجل التجاري يجب أن يتكون من 10 أرقام</value>
+  </data>
+  <data name="IBanCompanyIdStartswith7" xml:space="preserve">
+    <value>رقم الشركة يجب أن يبدأ برقم 7</value>
+  </data>
+  <data name="IBanCompanyIdshouldbelessthan10" xml:space="preserve">
+    <value>رقم الشركة خاطئ، يجب أن يتكون من 10 أرقام</value>
+  </data>
+  <data name="IBANIdNumberInfo" xml:space="preserve">
+      <value>يجب أن يكون الرقم {0} مرتبطًا برقم الحساب المصرفي الدولي السعودي.</value>
+  </data>
+   <data name="IBANAttachment1" xml:space="preserve">
+      <value>المرفقات 1</value>
+  </data>
+   <data name="IBANAttachment2" xml:space="preserve">
+      <value>المرفقات 2</value>
+  </data>
+    <data name="IBANAttachmentTitle" xml:space="preserve">
+    <value>1. يجب ألا يزيد حجم الملف عن 10 ميجابايت.
+2. اختر فقط الملف ذو الامتداد DOC، DOCX، GIF، JPEG، JPG، PDF، XLS، XLSX، XML.
+3. الحد الأقصى لا. عدد المرفقات المسموح بها هو 1.</value>
+  </data>
+    <data name="IBANAttachmentErrorMsg" xml:space="preserve">
+      <value>الرجاء إضافة المرفقات الإلزامية</value>
+  </data>
+  <data name="IBANIdNumberDynamic" xml:space="preserve">
+    <value>رقم {0}</value>
+  </data>
+    <data name="IBanSubmitSuccess1" xml:space="preserve">
+    <value> تم اعتماد الطلب من قبل الهيئة، يمكنكم استخدام الحساب البنكي في طلبات الاسترداد</value>
   </data>
 </root>

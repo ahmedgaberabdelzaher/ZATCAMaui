@@ -2343,7 +2343,7 @@
 
                         </Grid>
 
-                        <Grid
+                        <!--<Grid
                             Grid.Row="6"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
@@ -2409,7 +2409,7 @@
                                 </StackLayout>
                             </cards:SfCardView>
 
-                        </Grid>
+                        </Grid>-->
 
 
                         <Grid
