@@ -10473,4 +10473,13 @@ info@zatca.gov.sa</value>
      <data name="SecondaryNumber" xml:space="preserve">
     <value>الرقم الإضافي</value>
   </data>
+        <data name="IqamaType" xml:space="preserve">
+    <value>نوع الاقامه</value>
+  </data>
+     <data name="SpecialIqamawithexpirydate" xml:space="preserve">
+    <value>اقامه مميزه محدده المده</value>
+  </data>
+       <data name="SpecialIqamawithoutexpirydate" xml:space="preserve">
+    <value>اقامه مميزه غير محدده المده</value>
+  </data>
 </root>

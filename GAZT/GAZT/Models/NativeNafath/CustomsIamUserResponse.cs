@@ -24,19 +24,19 @@ namespace EGAZT.Models.NativeNafath
         public string dateOfBirthHijri { get; set; }
     }
 
-    public class Header
+    public class IamHeader
     {
         public string requestID { get; set; }
-        public Status status { get; set; }
+        public IamStatus status { get; set; }
     }
 
     public class CustomsIamUserResponse
     {
-        public Header header { get; set; }
+        public IamHeader header { get; set; }
         public CustomsIamUser data { get; set; }
     }
 
-    public class Status
+    public class IamStatus
     {
         public string code { get; set; }
         public string description { get; set; }

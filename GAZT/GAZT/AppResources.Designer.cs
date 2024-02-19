@@ -346,6 +346,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Four digits must be entered for the additional number..
+        /// </summary>
+        public static string additionalNoValidationMsg {
+            get {
+                return ResourceManager.GetString("additionalNoValidationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to + Add Entity Unified Number.
         /// </summary>
         public static string AddNewCR {
@@ -1168,6 +1177,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Four unique digits representing a residential or commercial building must be entered..
+        /// </summary>
+        public static string BuildingNoValidationMsg {
+            get {
+                return ResourceManager.GetString("BuildingNoValidationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Building number.
+        /// </summary>
+        public static string Buildingnumber {
+            get {
+                return ResourceManager.GetString("Buildingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calculate.
         /// </summary>
         public static string Calculate {
@@ -1524,6 +1551,15 @@ namespace EGAZT {
         public static string Citizen {
             get {
                 return ResourceManager.GetString("Citizen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City name.
+        /// </summary>
+        public static string Cityname {
+            get {
+                return ResourceManager.GetString("Cityname", resourceCulture);
             }
         }
         
@@ -3540,6 +3576,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to District name.
+        /// </summary>
+        public static string Districtname {
+            get {
+                return ResourceManager.GetString("Districtname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download Acknowledgement.
         /// </summary>
         public static string DownloadAcknowlwdgement {
@@ -4143,7 +4188,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entity.
+        ///   Looks up a localized string similar to Company.
         /// </summary>
         public static string Entity {
             get {
@@ -7948,6 +7993,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Iqama Type.
+        /// </summary>
+        public static string IqamaType {
+            get {
+                return ResourceManager.GetString("IqamaType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Description.
         /// </summary>
         public static string ItemDescription {
@@ -8412,6 +8466,15 @@ namespace EGAZT {
         public static string NationaID {
             get {
                 return ResourceManager.GetString("NationaID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National address.
+        /// </summary>
+        public static string nationaladdress {
+            get {
+                return ResourceManager.GetString("nationaladdress", resourceCulture);
             }
         }
         
@@ -10996,6 +11059,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Postal Code.
+        /// </summary>
+        public static string PostalCode {
+            get {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Five digits must be entered for the postal code..
+        /// </summary>
+        public static string PostalValidationMsg {
+            get {
+                return ResourceManager.GetString("PostalValidationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to - To enable the ZATCA to administer, and improve the site and the services ZATCA offers on the Site;.
         /// </summary>
         public static string PPSubTitle1 {
@@ -12251,6 +12332,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Secondary Number.
+        /// </summary>
+        public static string SecondaryNumber {
+            get {
+                return ResourceManager.GetString("SecondaryNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select.
         /// </summary>
         public static string Select {
@@ -12485,6 +12575,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Special Iqama with expiry date.
+        /// </summary>
+        public static string SpecialIqamawithexpirydate {
+            get {
+                return ResourceManager.GetString("SpecialIqamawithexpirydate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special Iqama without expiry date.
+        /// </summary>
+        public static string SpecialIqamawithoutexpirydate {
+            get {
+                return ResourceManager.GetString("SpecialIqamawithoutexpirydate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start chatting.
         /// </summary>
         public static string StartChatting {
@@ -12517,6 +12625,15 @@ namespace EGAZT {
         public static string Statementitems {
             get {
                 return ResourceManager.GetString("Statementitems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street name.
+        /// </summary>
+        public static string Streetname {
+            get {
+                return ResourceManager.GetString("Streetname", resourceCulture);
             }
         }
         
@@ -28525,100 +28642,6 @@ namespace EGAZT {
         public static string ZZZZZakatReturnSubmittedNew {
             get {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
-        /// </summary>
-        public static string BuildingNoValidationMsg
-        {
-            get {
-                return ResourceManager.GetString("BuildingNoValidationMsg", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
-        /// </summary>
-        public static string PostalValidationMsg
-        {
-            get
-            {
-                return ResourceManager.GetString("PostalValidationMsg", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
-        /// </summary>
-        public static string additionalNoValidationMsg
-        {
-            get
-            {
-                return ResourceManager.GetString("additionalNoValidationMsg", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
-        /// </summary>
-        public static string nationaladdress
-        {
-            get
-            {
-                return ResourceManager.GetString("nationaladdress", resourceCulture);
-            }
-        }
-
-
-        public static string Buildingnumber
-        {
-            get
-            {
-                return ResourceManager.GetString("Buildingnumber", resourceCulture);
-            }
-        }
-
-
-        public static string Streetname
-        {
-            get
-            {
-                return ResourceManager.GetString("Streetname", resourceCulture);
-            }
-        }
-
-
-        public static string Districtname
-        {
-            get
-            {
-                return ResourceManager.GetString("Districtname", resourceCulture);
-            }
-        }
-
-        public static string Cityname
-        {
-            get
-            {
-                return ResourceManager.GetString("Cityname", resourceCulture);
-            }
-        }
-
-        public static string PostalCode
-        {
-            get
-            {
-                return ResourceManager.GetString("PostalCode", resourceCulture);
-            }
-        }
-
-        public static string SecondaryNumber
-        {
-            get
-            {
-                return ResourceManager.GetString("SecondaryNumber", resourceCulture);
             }
         }
     }
