@@ -32,7 +32,8 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Rg.Plugins.Popup.Services;
 using static EGAZT.Models.NewYesorNoPageModel;
 using static EGAZT.Models.LoginSSOModel;
-
+using AppDynamics.Agent;
+using System.Security.Policy;
 
 namespace GAZT.Manager
 {
@@ -1164,6 +1165,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
                         String IBANIdNumber = GAZTValidateOTPResponse.Content.ReadAsStringAsync().Result;
+                        App.IBanValidatedResponse = IBANIdNumber;
                         try
                         {
                             if (!string.IsNullOrEmpty(IBANIdNumber))
@@ -1173,19 +1175,19 @@ namespace GAZT.Manager
                                 IbanNumber = IBANIdNumber;
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
-
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                             return null;
                         }
                     }
                     return IbanNumber;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
             }
@@ -4763,7 +4765,33 @@ namespace GAZT.Manager
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
 
-                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                var tracker = HTTPRequestTracker.Create(uri);
+                foreach (var header in ServerCorrelationHeaders.Generate)
+                {
+                    foreach (var value in header.Value)
+                    {
+                        client.DefaultRequestHeaders.Add(header.Key, value);
+                    }
+                }
+                HttpResponseMessage res = null;
+                try
+                {
+                    res = client.PostAsync(uri, contentPost).Result;
+                    if(res != null)
+                    {
+                        tracker.ResponseCode = (int)res.StatusCode;
+                        tracker.StatusLine = res.ReasonPhrase;
+                        tracker.ResponseHeaderFields = res.Headers;
+                        tracker.ReportDone();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    tracker.Exception = ex;
+                    tracker.ReportDone();
+                    throw ex;
+                }
+              
 
                 _paymentsubmitResponse = res.Content.ReadAsStringAsync().Result;
 
@@ -5138,21 +5166,45 @@ namespace GAZT.Manager
 
                     // String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
 
-                    String uri = Constants.ValidatePaymentInformation + "(Fbnum='" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='" + sadadNo + "',Pymntty='" + paymentType + "')" + "?$format=json";
-
-
-
-
-
-
-
+                    String url = Constants.ValidatePaymentInformation + "(Fbnum='" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='" + sadadNo + "',Pymntty='" + paymentType + "')" + "?$format=json";
+                    var uri = new Uri(url);
+                    var tracker = HTTPRequestTracker.Create(uri);
+                    foreach (var header in ServerCorrelationHeaders.Generate)
+                    {
+                        foreach (var value in header.Value)
+                        {
+                            client.DefaultRequestHeaders.Add(header.Key, value);
+                        }
+                    }
                     HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
+                    try
+                    {
+                        GAZTValidatePaymentResponse = await client.GetAsync(uri);
+                        if (GAZTValidatePaymentResponse != null)
+                        {
+                            tracker.ResponseCode = (int)GAZTValidatePaymentResponse.StatusCode;
+                            tracker.StatusLine = GAZTValidatePaymentResponse.ReasonPhrase;
+                            tracker.ResponseHeaderFields = GAZTValidatePaymentResponse.Headers;
+                            tracker.ReportDone();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        tracker.Exception = ex;
+                        tracker.ReportDone();
+                        throw ex;
+                    }
+
+
+
+
+
 
                     try
 
                     {
 
-                        GAZTValidatePaymentResponse = await client.GetAsync(uri);
+                        //GAZTValidatePaymentResponse = await client.GetAsync(uri);
                         var data = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
 
                     }
@@ -5332,28 +5384,55 @@ namespace GAZT.Manager
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    String uri = Constants.UpdateMadaPaymentInformation + "'" + caseGuid + "',Srcid='" + devicetype + "')" + "?$format=json&sap-language=" + UtilityManager.GetLanguageParameter() + "";
-
-
-
+                    String url = Constants.UpdateMadaPaymentInformation + "'" + caseGuid + "',Srcid='" + devicetype + "')" + "?$format=json&sap-language=" + UtilityManager.GetLanguageParameter() + "";
+                    var uri = new Uri(url);
+                    var tracker = HTTPRequestTracker.Create(uri);
+                    foreach (var header in ServerCorrelationHeaders.Generate)
+                    {
+                        foreach (var value in header.Value)
+                        {
+                            client.DefaultRequestHeaders.Add(header.Key, value);
+                        }
+                    }
                     HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
-
                     try
-
                     {
-
                         GAZTValidatePaymentResponse = await client.GetAsync(uri);
-
+                        if (GAZTValidatePaymentResponse != null)
+                        {
+                            tracker.ResponseCode = (int)GAZTValidatePaymentResponse.StatusCode;
+                            tracker.StatusLine = GAZTValidatePaymentResponse.ReasonPhrase;
+                            tracker.ResponseHeaderFields = GAZTValidatePaymentResponse.Headers;
+                            tracker.ReportDone();
+                        }
                     }
-
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
-
-
-
-
+                        tracker.Exception = ex;
+                        tracker.ReportDone();
+                        throw ex;
                     }
+
+
+
+                    //HttpResponseMessage GAZTValidatePaymentResponse = new HttpResponseMessage();
+
+                    //try
+
+                    //{
+
+                    //    GAZTValidatePaymentResponse = await client.GetAsync(uri);
+
+                    //}
+
+                    //catch (Exception)
+                    //{
+
+
+
+
+
+                    //}
 
                     if (GAZTValidatePaymentResponse != null)
 
@@ -5533,8 +5612,33 @@ namespace GAZT.Manager
 
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                HttpResponseMessage res = null;
+                var tracker = HTTPRequestTracker.Create(uri);
+                foreach (var header in ServerCorrelationHeaders.Generate)
+                {
+                    foreach (var value in header.Value)
+                    {
+                        client.DefaultRequestHeaders.Add(header.Key, value);
+                    }
+                }
+                try
+                {
+                     res = client.PostAsync(uri, contentPost).Result;
+                    if (res != null)
+                    {
+                        tracker.ResponseCode = (int)res.StatusCode;
+                        tracker.StatusLine = res.ReasonPhrase;
+                        tracker.ResponseHeaderFields = res.Headers;
+                        tracker.ReportDone();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    tracker.Exception = ex;
+                    tracker.ReportDone();
+                    throw ex;
+                }
 
-                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
 
                 _paymentsubmitResponse = res.Content.ReadAsStringAsync().Result;
 
@@ -5662,8 +5766,32 @@ namespace GAZT.Manager
 
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-
-                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                var tracker = HTTPRequestTracker.Create(uri);
+                HttpResponseMessage res = null;
+                foreach (var header in ServerCorrelationHeaders.Generate)
+                {
+                    foreach (var value in header.Value)
+                    {
+                        client.DefaultRequestHeaders.Add(header.Key, value);
+                    }
+                }
+                try
+                {
+                    res = client.PostAsync(uri, contentPost).Result;
+                    if (res != null)
+                    {
+                        tracker.ResponseCode = (int)res.StatusCode;
+                        tracker.StatusLine = res.ReasonPhrase;
+                        tracker.ResponseHeaderFields = res.Headers;
+                        tracker.ReportDone();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    tracker.Exception = ex;
+                    tracker.ReportDone();
+                    throw ex;
+                }
 
                 _paymentsubmitResponse = await res.Content.ReadAsStringAsync();
 
@@ -6250,5 +6378,6 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
     }
 }
