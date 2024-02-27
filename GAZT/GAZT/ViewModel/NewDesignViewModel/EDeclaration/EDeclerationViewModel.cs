@@ -142,7 +142,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             _navigationService.GoBack();
         }
 
-        public EDeclerationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService,declerationServices)
+        public EDeclerationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService,declerationServices,nativeNafath)
         {
         }
 

@@ -537,6 +537,66 @@
 
                         </StackLayout>
 
+                        
+                        <!--  ID Type Field  -->
+                        <StackLayout Spacing="0" >
+
+                            <!--  ID Type Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IqamaType}">
+                            
+                            </custom:CustomLabel>
+
+                            <!--  ID Type Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="{Binding IDNumberKeyboard}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.IqamaType}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription }"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                           <!--  ID ExpiryDate Field  -->
+                        <StackLayout Spacing="0" >
+
+                            <!--  ID ExpiryDate Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}">
+                            
+                            </custom:CustomLabel>
+
+                            <!--  ID Expiry Date Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="{Binding IDNumberKeyboard}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding EndDateString}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+
                         <!--  Gender Label  -->
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                             <custom:CustomLabel.FormattedText>
@@ -876,7 +936,7 @@
 
                                 <Grid>
 
-                                    <DatePicker
+                                  <DatePicker
                                         x:Name="EndDate"
                                         ClassId="enddateentry"
                                         Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"

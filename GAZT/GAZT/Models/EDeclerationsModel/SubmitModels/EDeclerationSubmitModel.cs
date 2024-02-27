@@ -106,6 +106,18 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         int _travelIssuerID;
         public int travelIssuerID { get { return _travelIssuerID; } set { _travelIssuerID = value; } }
 
+
+        bool _isPremiumResidency;
+        public bool isPremiumResidency { get { return _isPremiumResidency; } set { _isPremiumResidency = value; RaisePropertyChanged(); } }
+
+
+        string _premiumResidencyExpiryDate;
+        public string premiumResidencyExpiryDate { get { return _premiumResidencyExpiryDate; } set { _premiumResidencyExpiryDate = value; RaisePropertyChanged(); } }
+
+
+        string iqamaTypeDescription;
+        public string IqamaTypeDescription { get { return iqamaTypeDescription; } set { iqamaTypeDescription = value; RaisePropertyChanged(); } }
+
         /// <summary>
         // the same value as travelIssuerID
         /// </summary>
@@ -117,7 +129,14 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 
         public DateTime passIssuingDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
-        public DateTime passExpiryDate { get; set; }
+        DateTime _passExpiryDate;
+        public DateTime passExpiryDate { get { return _passExpiryDate; }
+            set {
+
+                _passExpiryDate = value;
+                RaisePropertyChanged();
+            } }
+
 
         public DateTime birthDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 

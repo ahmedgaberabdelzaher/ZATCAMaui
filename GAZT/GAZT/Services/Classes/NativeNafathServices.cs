@@ -19,16 +19,23 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.PostAsync($"{PageSettings.ZATCABaseURL}{version}/nafath/ZAKATY", body).ConfigureAwait(false);
             return response;
         }
-
+  
         public async Task<HttpResponseMessage> GetNafathStatus(string IqamaId, string transactionId, int randomNumber)
         {
             var body = new { id = IqamaId, transactionId = transactionId, randomNumber = randomNumber };
             var response = await HttpManager.PostAsync($"{PageSettings.ZATCABaseURL}{version}/nafath/ZAKATY/status", body).ConfigureAwait(false);
             return response;
         }
-        public async Task<Tuple<CustomsNafathUserProfileResponse, bool, string>> GetNfathProfile(string BDHjri, string ID)
+        public async Task<Tuple<CustomsIamUserResponse, bool, string>> GetNfathProfile(string BDHjri, string ID)
         {
-            var response = await HttpManager.GetAsync<CustomsNafathUserProfileResponse>($"{PageSettings.CustomBaseUrl}Userdata/GetIAMUser/{ID}/{BDHjri}",true).ConfigureAwait(false);
+            //https://test-api.zatca.gov.sa/test/third-party/v1/zatca-portal/iam-user?identity=1130174889&dateOfBirthHijri=1385-03-01
+            var response = await HttpManager.GetAsync<CustomsIamUserResponse>($"{PageSettings.ZATCABaseURL}{version}/zatca-portal/iam-user?identity={ID}&dateOfBirthHijri={BDHjri}",true).ConfigureAwait(false);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> PremiumResidencyType(PremiumResidencytypeBody model)
+        {
+             var response = await HttpManager.PostAsync($"{PageSettings.ZATCABaseURL}{version}/nic/individual/premium-residency/type", model).ConfigureAwait(false);
             return response;
         }
     }

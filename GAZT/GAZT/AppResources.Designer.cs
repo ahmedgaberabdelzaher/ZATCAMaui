@@ -7993,6 +7993,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Residency Type.
+        /// </summary>
+        public static string IqamaType {
+            get {
+                return ResourceManager.GetString("IqamaType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Description.
         /// </summary>
         public static string ItemDescription {
@@ -12035,6 +12044,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Residency.
+        /// </summary>
+        public static string Residency {
+            get {
+                return ResourceManager.GetString("Residency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have reached the maximum allowed items..
         /// </summary>
         public static string RestrictedDisc {
@@ -12562,6 +12580,24 @@ namespace EGAZT {
         public static string SortBy {
             get {
                 return ResourceManager.GetString("SortBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special Iqama with expiry date.
+        /// </summary>
+        public static string SpecialIqamawithexpirydate {
+            get {
+                return ResourceManager.GetString("SpecialIqamawithexpirydate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special Iqama without expiry date.
+        /// </summary>
+        public static string SpecialIqamawithoutexpirydate {
+            get {
+                return ResourceManager.GetString("SpecialIqamawithoutexpirydate", resourceCulture);
             }
         }
         

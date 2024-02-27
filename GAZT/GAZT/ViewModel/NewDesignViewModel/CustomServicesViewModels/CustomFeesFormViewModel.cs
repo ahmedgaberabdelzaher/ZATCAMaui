@@ -36,7 +36,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         double productValue;
         public double ProductValue { get { return productValue; } set { productValue = value; RaisePropertyChanged(); } }
 
-        public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)
+        public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService, declerationServices,nativeNafath)
         {
 
         }

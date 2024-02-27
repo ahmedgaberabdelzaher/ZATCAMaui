@@ -169,7 +169,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
-        public ListUserRequestsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices):base(navigationService, dialogService, declerationServices)
+        public ListUserRequestsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath):base(navigationService, dialogService, declerationServices,nativeNafath)
         {
         }
     }

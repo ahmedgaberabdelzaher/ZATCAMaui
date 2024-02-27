@@ -207,7 +207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                 if (submitRes.Item2)
                 {
                     var data = submitRes.Item1;
-                    if (data.code != 404)
+                    if (data.data != null&&data.data.id!=0)
                     {
                         var navigation = Application.Current.MainPage.Navigation;
                         var currentPage = navigation.NavigationStack.LastOrDefault();

@@ -909,7 +909,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
         #endregion 
 
-        public BaseProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices DeclerationServices) : base(navigationService, dialogService, DeclerationServices)
+        public BaseProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices DeclerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService, DeclerationServices,nativeNafath)
         {
 
 
