@@ -57,7 +57,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="18"
                     HorizontalOptions="Center"

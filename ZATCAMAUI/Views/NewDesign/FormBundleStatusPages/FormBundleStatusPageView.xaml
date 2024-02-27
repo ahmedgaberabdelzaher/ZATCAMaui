@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -57,6 +58,7 @@
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
+                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="8"
                             Stroke="{StaticResource Primary}"
                             Style="{StaticResource TextInputLayout}">
@@ -74,7 +76,7 @@
                                 <Image Source="arrowDropdown.png" />
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
-                        <Button BackgroundColor="Transparent" Clicked="OnBundleTypeClicked" />
+                        <buttons:SfButton Background="Transparent" Clicked="OnBundleTypeClicked" />
                         <syncfusion:SfPicker
                             x:Name="BundleType"
                             Margin="10,0,10,0"
@@ -158,6 +160,7 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                             IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="8"
                             Stroke="{StaticResource Primary}"
@@ -177,7 +180,7 @@
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
 
-                        <Button BackgroundColor="Transparent" Clicked="OnBundleNumberClicked" />
+                        <buttons:SfButton Background="Transparent" Clicked="OnBundleNumberClicked" />
 
                         <syncfusion:SfPicker
                             x:Name="BundleNumber"
@@ -287,7 +290,7 @@
                     <ColumnDefinition Width="15*" />
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel
+                <Label
                     Grid.Row="0"
                     Grid.Column="1"
                     HorizontalOptions="Center"

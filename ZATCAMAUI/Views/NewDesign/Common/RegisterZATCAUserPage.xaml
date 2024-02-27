@@ -58,7 +58,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"
@@ -126,6 +126,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
@@ -165,6 +166,7 @@
                             <!--  Email Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
+                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
@@ -202,6 +204,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">

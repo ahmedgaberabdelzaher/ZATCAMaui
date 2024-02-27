@@ -35,12 +35,12 @@
                 <TapGestureRecognizer Command="{Binding BackCommand}" />
             </StackLayout.GestureRecognizers>
         </StackLayout>
-        <custom:CustomLabel
+        <Label
             x:Name="titleTxt"
             Grid.Column="1"
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"
-            LineSpacing=".9"
+            LineHeight="0.9"
             Style="{StaticResource SectionTitleWhiteBold}"
             VerticalOptions="Center" />
     </Grid>

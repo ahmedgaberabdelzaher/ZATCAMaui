@@ -80,11 +80,11 @@ public static class MauiProgram
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(PdfWebViewRenderer));
+                  handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(RoundCornersEffect), typeof(RoundCornersEffectDroid));
 #elif IOS
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(CustomWebViewRenderer));
+                  handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(CustomButton), typeof(CustomButtonRenderer));
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
                   //handlers.AddCompatibilityRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer));
@@ -117,7 +117,7 @@ public static class MauiProgram
 
             return builder.Build();
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return null;
         }

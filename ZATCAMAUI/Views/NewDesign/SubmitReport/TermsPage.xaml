@@ -58,7 +58,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"
@@ -110,11 +110,11 @@
                                 WidthRequest="120" />
 
                             <!--  Circle button 2  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="2"
-                                BackgroundColor="Transparent"
-                                BorderColor="#0996D4"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#0996D4"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -122,13 +122,13 @@
                                 TextColor="#0996D4"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                             <!--  ReportDetails Label  -->
                             <Label
@@ -403,6 +403,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -479,6 +480,7 @@
                             <!--  Email Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
+                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
@@ -558,6 +560,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>

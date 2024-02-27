@@ -17,16 +17,24 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
 
         public UnlockAccountTINPageView()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
 
-            viewModel = App.Locator.UnlockAccountTINPageViewModel;
-            this.BindingContext = viewModel;
+                viewModel = App.Locator.UnlockAccountTINPageViewModel;
+                this.BindingContext = viewModel;
 
-            SetLTR();
-            ChangeAeroIcon();
-            OtpGAZTDarkGrayLabelStyleFourthEntry.Text = string.Empty;
-            viewModel.EnableTINView();
-            Task.Run(async () => { await viewModel.GetCaptchAndGUID(); });
+                SetLTR();
+                ChangeAeroIcon();
+                OtpGAZTDarkGrayLabelStyleFourthEntry.Text = string.Empty;
+                viewModel.EnableTINView();
+                Task.Run(async () => { await viewModel.GetCaptchAndGUID(); });
+            }
+            catch (Exception)
+            {
+
+            }
+            
         }
 
         public void ChangeAeroIcon()

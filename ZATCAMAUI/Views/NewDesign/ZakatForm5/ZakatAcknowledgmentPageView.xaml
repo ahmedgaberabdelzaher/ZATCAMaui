@@ -31,15 +31,15 @@
                 Margin="0,50,0,0"
                 Padding="20,0,20,0">
                 <Image Source="Forget_ic_success" />
-                <custom:CustomLabel
+                <Label
                     Margin="0,15,0,0"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     StyleId="OnBoardText"
                     Text="{x:Static ResourceManager:AppResources.NDReturnOfZakat}" />
-                <custom:CustomLabel
+                <Label
                     HorizontalTextAlignment="Center"
-                    LineSpacing="0.7"
+                    LineHeight="0.7"
                     Style="{StaticResource BodyLabelBlack}"
                     StyleId="OnBoardText"
                     Text="{x:Static ResourceManager:AppResources.FORM5BillAmtAboveObtainCertificate}"

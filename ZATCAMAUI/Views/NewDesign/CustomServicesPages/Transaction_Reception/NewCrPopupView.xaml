@@ -64,6 +64,7 @@
                         ContainerType="Outlined"
                         InputViewPadding="16,0,16,0"
                         LeadingViewPosition="Inside"
+                         IsHintAlwaysFloated="True"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
                         <custom:GAZTBorderlessEntry

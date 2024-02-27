@@ -323,9 +323,6 @@
                         SelectedItem="{Binding TodayDateNormal}"
                         Style="{StaticResource PickerStyle}">
 
-                        <custom:CustomDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                        </custom:CustomDatePicker.ColumnHeaderView>
 
                         <custom:CustomDatePicker.SelectedTextStyle>
                             <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
@@ -333,7 +330,9 @@
 
                         <custom:CustomDatePicker.HeaderView>
 
-                            <syncfusion:PickerHeaderView Background="{StaticResource SecondaryNew}" Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
+                            <syncfusion:PickerHeaderView Background="{StaticResource SecondaryNew}"
+                                                         Height="46"
+                                                         Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
 
                         </custom:CustomDatePicker.HeaderView>
 
@@ -342,6 +341,7 @@
 
                             <syncfusion:PickerFooterView
                                 Background="White"
+                                Height="46"
                                 CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
                                 OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
 
@@ -369,12 +369,11 @@
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="36"
                         Mode="Dialog"
-                        SelectedItem="{Binding TodayDateinHijri}"
-                        Style="{StaticResource PickerStyle}">
+                        SelectedItem="{Binding TodayDateinHijri}">
 
-                        <custom:CustomHijriDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+                         <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
 
                         <custom:CustomHijriDatePicker.HeaderView>
 
@@ -517,7 +516,6 @@
                         ItemHeight="36"
                         Mode="Dialog"
                         SelectedItem="{Binding TodayDateNormal}"
-                        SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
                         Style="{StaticResource PickerStyle}">
 
                         <custom:CustomDatePicker.SelectedTextStyle>
@@ -526,18 +524,18 @@
 
                         <custom:CustomDatePicker.HeaderView>
 
-                            <syncfusion:PickerHeaderView Background="{StaticResource SecondaryNew}" Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
+                            <syncfusion:PickerHeaderView Background="{StaticResource SecondaryNew}"
+                                                         Height="46"
+                                                         Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
 
                         </custom:CustomDatePicker.HeaderView>
 
-                        <custom:CustomDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                        </custom:CustomDatePicker.ColumnHeaderView>
 
                         <custom:CustomDatePicker.FooterView>
 
                             <syncfusion:PickerFooterView
                                 Background="White"
+                                Height="46"
                                 CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
                                 OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
 
@@ -564,9 +562,11 @@
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="36"
                         Mode="Dialog"
-                        SelectedItem="{Binding TodayDateinHijri}"
-                        SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
-                        Style="{StaticResource PickerStyle}">
+                        SelectedItem="{Binding TodayDateinHijri}">
+
+                         <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
 
                         <custom:CustomHijriDatePicker.SelectedTextStyle>
                             <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
@@ -580,10 +580,6 @@
                                 Text="{x:Static ResourceManager:AppResources.VREndDate}" />
 
                         </custom:CustomHijriDatePicker.HeaderView>
-
-                        <custom:CustomHijriDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                         <custom:CustomHijriDatePicker.FooterView>
 

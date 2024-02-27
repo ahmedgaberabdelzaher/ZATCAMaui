@@ -122,9 +122,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-
-
-
                     if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
                     {
                         throw new Exception(AppResources.NoTINsAvailable);
@@ -203,9 +200,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-
-
-
                     if (string.Equals(ex.Message, AppResources.NoBillsAvailable))
                     {
                         throw new Exception(AppResources.NoBillsAvailable);
@@ -284,9 +278,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-
-
-
                     if (string.Equals(ex.Message, AppResources.NoBillsAvailable))
                     {
                         throw new Exception(AppResources.NoBillsAvailable);

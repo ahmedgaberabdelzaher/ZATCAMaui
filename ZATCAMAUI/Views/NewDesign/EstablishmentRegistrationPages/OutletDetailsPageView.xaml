@@ -113,11 +113,12 @@
                     <inputLayout:SfTextInputLayout
                         Margin="0,-6,0,-6"
                         ContainerType="Outlined"
+                         IsHintAlwaysFloated="True"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
                         LeadingViewPosition="Inside"
                         Style="{StaticResource TextInputLayout}">
-                        <Entry
+                        <custom:GAZTBorderlessEntry
                             Margin="10"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="15"
@@ -372,11 +373,12 @@
                                 Grid.Column="0"
                                 Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -395,13 +397,14 @@
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="1"
                                 Grid.Column="1"
+                                 IsHintAlwaysFloated="True"
                                 Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -435,9 +438,10 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                             IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
-                            <Entry
+                            <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
@@ -470,9 +474,10 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                             IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
-                            <Entry
+                            <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
@@ -505,9 +510,10 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                             IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
-                            <Entry
+                            <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
@@ -541,6 +547,7 @@
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
+                             IsHintAlwaysFloated="True"
                             Style="{StaticResource TextInputLayout}">
                             <custom:GAZTBorderlessEntry
                                 Margin="10"
@@ -572,6 +579,7 @@
                         <inputLayout:SfTextInputLayout
                             Margin="0,-6,0,-6"
                             ContainerType="Outlined"
+                             IsHintAlwaysFloated="True"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
@@ -745,13 +753,14 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="0"
+                                     IsHintAlwaysFloated="True"
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
-                                    <Entry
+                                    <custom:GAZTBorderlessEntry
                                         Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
@@ -771,12 +780,13 @@
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     Margin="0,-6,0,-6"
+                                     IsHintAlwaysFloated="True"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
-                                    <Entry
+                                    <custom:GAZTBorderlessEntry
                                         Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
@@ -807,12 +817,13 @@
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout
                                 Margin="0,-6,0,-6"
+                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -841,13 +852,14 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout
+                                IsHintAlwaysFloated="True"
                                 Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -879,9 +891,10 @@
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -913,6 +926,7 @@
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -945,6 +959,7 @@
                             <inputLayout:SfTextInputLayout
                                 Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"

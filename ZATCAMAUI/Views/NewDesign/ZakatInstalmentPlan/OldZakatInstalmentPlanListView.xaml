@@ -1105,6 +1105,7 @@
                                                 Grid.Column="0"
                                                 ContainerType="Outlined"
                                                 HasError="False"
+                                                 IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1135,6 +1136,7 @@
                                                 Grid.Column="1"
                                                 ContainerType="Outlined"
                                                 HasError="False"
+                                                 IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1166,6 +1168,7 @@
                                                 Grid.Column="2"
                                                 ContainerType="Outlined"
                                                 HasError="False"
+                                                 IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1197,6 +1200,7 @@
                                                 Grid.Column="3"
                                                 ContainerType="Outlined"
                                                 HasError="False"
+                                                 IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>

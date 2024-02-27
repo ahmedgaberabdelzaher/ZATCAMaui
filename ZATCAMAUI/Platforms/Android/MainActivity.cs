@@ -14,6 +14,7 @@ using MediaManager;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 using Newtonsoft.Json;
 using RGPopup.Maui.Services;
+using Exception = System.Exception;
 using Instrumentation = AppDynamics.Agent.Instrumentation;
 
 namespace ZATCAMAUI.Platforms.Android;
@@ -103,19 +104,12 @@ public class MainActivity : MauiAppCompatActivity
             //LoadApplication(app);
             App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
-        catch (System.Exception ex)
+        catch (Exception)
         {
 
         }
     }
 
-    //private void RequestStorageAccess()
-    //{
-    //    if (!Android.OS.Environment.IsExternalStorageManager)
-    //    {
-    //        StartActivityForResult(new Intent(Android.Provider.Settings.ActionManageAllFilesAccessPermission), 3);
-    //    }
-    //}
 
     private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
     {

@@ -62,6 +62,7 @@
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,8,16,8"
                         LeadingViewPosition="Inside"
+                         IsHintAlwaysFloated="True"
                         OutlineCornerRadius="8"
                         Stroke="{StaticResource Primary}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -86,6 +87,7 @@
                         ContainerType="Outlined"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,8,16,8"
+                         IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="8"
                         Stroke="{StaticResource Primary}">
@@ -110,6 +112,7 @@
                         x:Name="Frm_confirmEmail"
                         Margin="0,-10,0,0"
                         ContainerType="Outlined"
+                         IsHintAlwaysFloated="True"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,8,16,8"
                         LeadingViewPosition="Inside"

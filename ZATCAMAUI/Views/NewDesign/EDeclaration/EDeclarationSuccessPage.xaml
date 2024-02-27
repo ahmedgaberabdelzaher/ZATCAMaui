@@ -27,7 +27,7 @@
             <Grid Padding="20,15" ColumnDefinitions="Auto">
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="CenterAndExpand"
@@ -40,11 +40,13 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <yummy:PancakeView Grid.Row="1"
+                               Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand"
+                               Padding="15">
 
                         <!--  Success icon  -->
                         <Image
@@ -74,7 +76,7 @@
 
                         <!--#region Disclaimer-->
                         <Frame
-                            Margin="0,0,0,5"
+                            Margin="0,10"
                             Padding="5"
                             BackgroundColor="#FCECCD"
                             BorderColor="#FCECCD"
@@ -137,9 +139,9 @@
                                 <!--  Horizontal Line  -->
                                 <BoxView
                                     BackgroundColor="#E6E6E6"
-                                    HeightRequest="2"
+                                    HeightRequest="1"
                                     HorizontalOptions="FillAndExpand"
-                                    WidthRequest="20" />
+                                    WidthRequest="350" />
 
                                 <!--#region Declaration Values-->
                                 <Grid
@@ -414,9 +416,9 @@
                                 <!--  Horizontal Line  -->
                                 <BoxView
                                     BackgroundColor="#E6E6E6"
-                                    HeightRequest="2"
+                                    HeightRequest="1"
                                     HorizontalOptions="FillAndExpand"
-                                    WidthRequest="20" />
+                                    WidthRequest="350" />
 
                                 <!--#region Total Product Fees Values-->
                                 <StackLayout x:Name="totalFeesList" BindableLayout.ItemsSource="{Binding TotalFeesList}">
@@ -534,9 +536,9 @@
                                 <!--  Horizontal Line  -->
                                 <BoxView
                                     BackgroundColor="#E6E6E6"
-                                    HeightRequest="2"
+                                    HeightRequest="1"
                                     HorizontalOptions="FillAndExpand"
-                                    WidthRequest="20" />
+                                    WidthRequest="350" />
 
                                 <!--#region Details Fees Values-->
                                 <StackLayout BindableLayout.ItemsSource="{Binding DetailsTotalFeesList}">
@@ -597,6 +599,7 @@
                             IsVisible="{Binding IsPaymentRequired}"
                             Stroke="#0996D4"
                             StrokeThickness="1"
+                            Margin="0,10"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
                             TextColor="White" />

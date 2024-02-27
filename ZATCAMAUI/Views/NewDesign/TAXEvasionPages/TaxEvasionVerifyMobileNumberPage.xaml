@@ -52,7 +52,7 @@
                                 <ColumnDefinition Width="15*" />
                             </Grid.ColumnDefinitions>
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 HorizontalOptions="Center"
@@ -169,6 +169,7 @@
                         x:Name="frmMobile"
                         ContainerType="Outlined"
                         FlowDirection="LeftToRight"
+                         IsHintAlwaysFloated="True"
                         HorizontalOptions="FillAndExpand"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="8"
@@ -191,7 +192,7 @@
                                 WidthRequest="80" />
 
                         </inputLayout:SfTextInputLayout.LeadingView>
-                        <Entry
+                        <custom:GAZTBorderlessEntry
                             x:Name="Mobile_Entry"
                             FlowDirection="LeftToRight"
                             FontSize="Medium"
@@ -202,10 +203,10 @@
                             Text="{Binding MobileNumber}"
                             TextColor="{StaticResource PrimaryColor}"
                             Unfocused="Mobile_Entry_Unfocused">
-                            <Entry.Behaviors>
+                            <custom:GAZTBorderlessEntry.Behaviors>
                                 <behaviors:OnlyNumericValuesBehaviour />
-                            </Entry.Behaviors>
-                        </Entry>
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
                 </StackLayout>
@@ -246,6 +247,7 @@
                             Grid.Column="0"
                             ContainerType="Outlined"
                             HasError="False"
+                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="8"
                             Stroke="{StaticResource Primary}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -278,6 +280,7 @@
                             ContainerType="Outlined"
                             HasError="False"
                             OutlineCornerRadius="8"
+                             IsHintAlwaysFloated="True"
                             Stroke="{StaticResource Primary}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <inputLayout:LabelStyle TextColor="#B00020" />
@@ -307,6 +310,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Column="2"
                             ContainerType="Outlined"
+                             IsHintAlwaysFloated="True"
                             HasError="False"
                             OutlineCornerRadius="8"
                             Stroke="{StaticResource Primary}">
@@ -339,6 +343,7 @@
                             Grid.Column="3"
                             ContainerType="Outlined"
                             HasError="False"
+                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="8"
                             Stroke="{StaticResource Primary}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>

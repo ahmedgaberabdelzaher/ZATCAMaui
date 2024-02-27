@@ -55,11 +55,11 @@
                     <TapGestureRecognizer Tapped="BackTapped" />
                 </StackLayout.GestureRecognizers>
             </StackLayout>
-            <custom:CustomLabel
+            <Label
                 Grid.Column="1"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                LineSpacing=".9"
+                LineHeight=".9"
                 Style="{StaticResource SectionTitleWhiteBold}"
                 Text="{x:Static ResourceManager:AppResources.InquiryaboutCustomsIssuesView}"
                 VerticalOptions="Center" />

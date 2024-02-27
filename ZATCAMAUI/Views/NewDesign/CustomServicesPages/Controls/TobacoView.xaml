@@ -36,6 +36,7 @@
                     ContainerType="Outlined"
                     HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
                     InputViewPadding="16,0,16,0"
+                     IsHintAlwaysFloated="True"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15"
                     Stroke="{StaticResource NeutralGreay}">
@@ -91,6 +92,7 @@
                         InputViewPadding="16,0,16,0"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
+                         IsHintAlwaysFloated="True"
                         Stroke="{StaticResource NeutralGreay}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -144,6 +146,7 @@
                         InputViewPadding="16,0,16,0"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
+                         IsHintAlwaysFloated="True"
                         Stroke="{StaticResource NeutralGreay}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -184,6 +187,7 @@
                         HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                         InputViewPadding="16,0,16,0"
                         LeadingViewPosition="Inside"
+                         IsHintAlwaysFloated="True"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>

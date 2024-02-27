@@ -323,6 +323,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         LeadingViewPosition="Inside"
+                                                         IsHintAlwaysFloated="True"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
@@ -353,6 +354,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         LeadingViewPosition="Inside"
+                                                         IsHintAlwaysFloated="True"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
@@ -377,6 +379,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         LeadingViewPosition="Inside"
+                                                         IsHintAlwaysFloated="True"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
@@ -401,6 +404,7 @@
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
+                                                         IsHintAlwaysFloated="True"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -426,6 +430,7 @@
                                                         InputViewPadding="16,0,16,0"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
+                                                         IsHintAlwaysFloated="True"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -452,6 +457,7 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                         IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
@@ -467,6 +473,7 @@
                                                     <inputLayout:SfTextInputLayout
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         LeadingViewPosition="Inside"
@@ -492,6 +499,7 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
+                                                         IsHintAlwaysFloated="True"
                                                         InputViewPadding="16,0,16,0"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
@@ -622,6 +630,7 @@
                                                             x:Name="FrmEStartDate"
                                                             Grid.Row="1"
                                                             Margin="0,-6,0,-6"
+                                                             IsHintAlwaysFloated="True"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
@@ -653,11 +662,11 @@
                                                                 </Image>
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>
-                                                        <Button
+                                                        <buttons:SfButton
                                                             x:Name="btn1"
                                                             Grid.Row="1"
                                                             Margin="0,0,0,0"
-                                                            BackgroundColor="Transparent"
+                                                            Background="Transparent"
                                                             Clicked="btn1_Clicked" />
                                                         <custom:CustomDatePicker
                                                             x:Name="DpEStartDate"
@@ -674,9 +683,6 @@
                                                             SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
                                                             SelectionChanged="DpEStartDate_SelectionChanged">
 
-                                                            <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -792,6 +798,7 @@
                                                         Grid.Row="1"
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
@@ -843,6 +850,7 @@
                                                             x:Name="FrmNewAccount"
                                                             Grid.Row="1"
                                                             Margin="0,-6,0,-6"
+                                                             IsHintAlwaysFloated="True"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
@@ -875,11 +883,11 @@
 
 
 
-                                                        <Button
+                                                        <buttons:SfButton
                                                             x:Name="NewAccount"
                                                             Grid.Row="1"
                                                             Margin="0,0,0,0"
-                                                            BackgroundColor="Transparent"
+                                                            Background="Transparent"
                                                             Clicked="NewAccount_Clicked"
                                                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                                     </Grid>
@@ -1457,6 +1465,7 @@
                                                             Grid.Row="1"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
@@ -1486,11 +1495,11 @@
                                                                 </Image>
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>
-                                                        <Button
+                                                        <buttons:SfButton
                                                             x:Name="NewAttachment"
                                                             Grid.Row="1"
                                                             Margin="0,0,0,0"
-                                                            BackgroundColor="Transparent"
+                                                            Background="Transparent"
                                                             Clicked="NewAttachment_Clicked"
                                                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                                     </Grid>
@@ -1594,6 +1603,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
+                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
@@ -1638,6 +1648,7 @@
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
                                                                 LeadingViewPosition="Inside"
+                                                                 IsHintAlwaysFloated="True"
                                                                 OutlineCornerRadius="8"
                                                                 Stroke="#003672"
                                                                 Style="{StaticResource TextInputLayout}">
@@ -1754,6 +1765,7 @@
                                                             ContainerType="Outlined"
                                                             HasError="{Binding FrameIDError}"
                                                             HorizontalOptions="FillAndExpand"
+                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
@@ -1817,6 +1829,7 @@
                                                                 x:Name="FrmDBO"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
+                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
@@ -1852,11 +1865,11 @@
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
 
-                                                            <Button
+                                                            <buttons:SfButton
                                                                 x:Name="btn4"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btnDate_Clicked" />
 
                                                             <custom:CustomDatePicker
@@ -1873,9 +1886,6 @@
                                                                 OkButtonClicked="DOB_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDate}">
 
-                                                                <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1917,6 +1927,7 @@
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
+                                                             IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -1945,6 +1956,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
+                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                                             LeadingViewPosition="Inside"
@@ -1977,6 +1989,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
+                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                                             LeadingViewPosition="Inside"
@@ -2005,6 +2018,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
+                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                                             LeadingViewPosition="Inside"
@@ -2369,6 +2383,7 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
+                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
@@ -2480,6 +2495,7 @@
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
+                                                             IsHintAlwaysFloated="True"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
                                                             Style="{StaticResource TextInputLayout}">
@@ -2530,6 +2546,7 @@
                                                                 x:Name="FrmContactDBO"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
+                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameContactDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
@@ -2560,11 +2577,11 @@
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
 
-                                                            <Button
+                                                            <buttons:SfButton
                                                                 x:Name="btnSR"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btn4_Clicked" />
 
                                                             <custom:CustomDatePicker
@@ -2581,9 +2598,6 @@
                                                                 OkButtonClicked="ContactDOBPicker_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDate}">
 
-                                                                <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -2633,6 +2647,7 @@
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
+                                                             IsHintAlwaysFloated="True"
                                                             Stroke="#003672"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -2775,7 +2790,7 @@
                     <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"

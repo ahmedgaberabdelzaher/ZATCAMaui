@@ -8,7 +8,7 @@
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
     TitleText="{x:Static ResourceManager:AppResources.GeneralServices}">
     <newdesign:BaseContentPage.PancakeView>
-        <Grid>
+        <Grid Padding="10">
             <controls:ServiceMenuControl />
         </Grid>
     </newdesign:BaseContentPage.PancakeView>

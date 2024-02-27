@@ -67,7 +67,7 @@
                 </StackLayout>
 
                 <!--  Reports Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"

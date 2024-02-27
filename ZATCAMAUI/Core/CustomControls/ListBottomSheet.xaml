@@ -25,7 +25,8 @@
         <!--  List of names inside frame  -->
         <yummy:PancakeView Padding="20" Style="{StaticResource CommonTopCurves}">
 
-            <StackLayout Spacing="0">
+            <Grid RowDefinitions="auto,*"
+                    Padding="10">
 
                 <!--  Search Entry  -->
                 <inputLayout:SfTextInputLayout
@@ -33,6 +34,7 @@
                     ContainerType="Outlined"
                     InputViewPadding="0"
                     LeadingViewPosition="Inside"
+                    IsHintAlwaysFloated="True"
                     OutlineCornerRadius="10"
                     Stroke="{StaticResource NeutralGreay}"
                     VerticalOptions="Start">
@@ -64,6 +66,7 @@
 
 
                 <CollectionView
+                    Grid.Row="1"
                     x:Name="itemList"
                     CollectionView.ItemsSource="{Binding BottomSheetList}"
                     VerticalScrollBarVisibility="Never">
@@ -91,19 +94,19 @@
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
-                                    Margin="0,0,0,10"
+                                    Margin="0,10,0,0"
                                     BackgroundColor="{StaticResource NeutralLightGrey}"
-                                    HeightRequest="2"
+                                    HeightRequest="1"
                                     IsVisible="{Binding HasLine, Converter={StaticResource RemoveLastLineConverter}, ConverterParameter={x:Reference itemList}}"
                                     VerticalOptions="Center"
-                                    WidthRequest="20" />
+                                    WidthRequest="350" />
 
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-            </StackLayout>
+            </Grid>
 
 
         </yummy:PancakeView>

@@ -57,7 +57,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"
@@ -77,11 +77,12 @@
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout Spacing="30">
+                    <StackLayout Spacing="30"
+                                 Padding="10">
 
                         <!--  Select Shipment Type Label  -->
                         <Label
-                            Margin="0,30,0,0"
+                            Margin="0,20,0,0"
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="24"
                             HorizontalOptions="StartAndExpand"
@@ -98,10 +99,10 @@
                             <!--  Express Card  -->
                             <Grid
                                 Padding="0"
-                                HeightRequest="110"
+                                HeightRequest="100"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="UnselectedCard.png" />
@@ -139,10 +140,10 @@
                             <Grid
                                 Grid.Column="1"
                                 Padding="0"
-                                HeightRequest="110"
+                                HeightRequest="100"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="UnselectedCard.png" />
@@ -180,10 +181,10 @@
                             <Grid
                                 Grid.Row="1"
                                 Padding="0"
-                                HeightRequest="110"
+                                HeightRequest="100"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="UnselectedCard.png" />
@@ -222,10 +223,10 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Padding="0"
-                                HeightRequest="110"
+                                HeightRequest="100"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="UnselectedCard.png" />
@@ -263,10 +264,10 @@
                             <Grid
                                 Grid.Row="2"
                                 Padding="0"
-                                HeightRequest="110"
+                                HeightRequest="100"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="UnselectedCard.png" />
@@ -298,7 +299,7 @@
                                     <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="2" />
                                 </Grid.GestureRecognizers>
 
-                            </Grid>
+                            </Grid> 
 
                         </Grid>
 

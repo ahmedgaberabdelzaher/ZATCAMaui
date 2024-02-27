@@ -1191,19 +1191,18 @@
                                         </custom:CustomDatePicker.SelectedTextStyle>
 
 
-                                        <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
-
                                         <custom:CustomDatePicker.HeaderView>
 
-                                            <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                            <syncfusion:PickerHeaderView Background="#EAF7CC"
+                                                                         Height="46"
+                                                                         Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                         </custom:CustomDatePicker.HeaderView>
 
                                         <custom:CustomDatePicker.FooterView>
 
-                                            <syncfusion:PickerFooterView Background="#EAF7CC">
+                                            <syncfusion:PickerFooterView Background="#EAF7CC"
+                                                                         Height="46">
 
                                                 <syncfusion:PickerFooterView.TextStyle>
                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1234,11 +1233,9 @@
                                             <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                         </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-
-                                        <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                        </custom:CustomHijriDatePicker.ColumnHeaderView>
-
+                                         <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
 
                                         <custom:CustomHijriDatePicker.HeaderView>
 
@@ -1290,9 +1287,10 @@
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
+                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <Entry
+                                        <custom:GAZTBorderlessEntry
                                             Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
@@ -1320,9 +1318,10 @@
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
+                                        IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <Entry
+                                        <custom:GAZTBorderlessEntry
                                             Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
@@ -1350,9 +1349,10 @@
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
+                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <Entry
+                                        <custom:GAZTBorderlessEntry
                                             Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
@@ -1380,10 +1380,11 @@
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
+                                         IsHintAlwaysFloated="True"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <Entry
+                                        <custom:GAZTBorderlessEntry
                                             Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
@@ -1411,9 +1412,10 @@
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
+                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <Entry
+                                        <custom:GAZTBorderlessEntry
                                             Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
@@ -1441,9 +1443,10 @@
                                     </custom:CustomLabel>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
+                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                        <Entry
+                                        <custom:GAZTBorderlessEntry
                                             Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="15"
@@ -1711,6 +1714,7 @@
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
+                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
                                     <custom:GAZTBorderlessEntry
@@ -1827,19 +1831,18 @@
                                     </custom:CustomDatePicker.SelectedTextStyle>
 
 
-                                    <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                    </custom:CustomDatePicker.ColumnHeaderView>
-
                                     <custom:CustomDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                        <syncfusion:PickerHeaderView Background="#EAF7CC"
+                                                                     Height="46"
+                                                                     Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                                     </custom:CustomDatePicker.HeaderView>
 
                                     <custom:CustomDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Background="#EAF7CC"
+                                                                     Height="46">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1870,11 +1873,9 @@
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                     </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
-
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -1960,19 +1961,18 @@
                                     </custom:CustomDatePicker.SelectedTextStyle>
 
 
-                                    <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                    </custom:CustomDatePicker.ColumnHeaderView>
-
                                     <custom:CustomDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                        <syncfusion:PickerHeaderView Background="#EAF7CC"
+                                                                     Height="46"
+                                                                     Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                                     </custom:CustomDatePicker.HeaderView>
 
                                     <custom:CustomDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46"
+                                                                     Background="#EAF7CC">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -2004,11 +2004,9 @@
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                     </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
-
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -2173,11 +2171,12 @@
                     <inputLayout:SfTextInputLayout
                         Margin="0,-6,0,-6"
                         ContainerType="Outlined"
+                         IsHintAlwaysFloated="True"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
                         LeadingViewPosition="Inside"
                         Style="{StaticResource TextInputLayout}">
-                        <Entry
+                        <custom:GAZTBorderlessEntry
                             Margin="10"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="15"

@@ -224,6 +224,7 @@
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
+                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="14"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -423,7 +424,7 @@
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"

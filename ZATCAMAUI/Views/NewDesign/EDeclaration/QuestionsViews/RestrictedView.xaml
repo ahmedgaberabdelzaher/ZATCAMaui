@@ -48,6 +48,7 @@
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
+            IsHintAlwaysFloated="True"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -80,6 +81,7 @@
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
+            IsHintAlwaysFloated="True"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -103,6 +105,10 @@
             <inputLayout:SfTextInputLayout.TrailingView>
                 <Image Aspect="AspectFit" Source="greyDropDown" />
             </inputLayout:SfTextInputLayout.TrailingView>
+
+              <inputLayout:SfTextInputLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenPurposesCommand}" />
+                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
         </inputLayout:SfTextInputLayout>
 
@@ -139,6 +145,7 @@
             ContainerBackground="White"
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
+            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -174,9 +181,9 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
             InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
+            IsHintAlwaysFloated="True"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -197,6 +204,12 @@
 
         </inputLayout:SfTextInputLayout>
 
+        <Label
+            Margin="3,-10,3,3"
+            FontSize="12"
+            Text="{x:Static ResourceManager:AppResources.NumberHint}"
+            TextColor="#58595B" />
+
     </StackLayout>
     <!--#endregion-->
 
@@ -216,6 +229,7 @@
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
+            IsHintAlwaysFloated="True"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -239,6 +253,10 @@
             <inputLayout:SfTextInputLayout.TrailingView>
                 <Image Aspect="AspectFit" Source="greyDropDown" />
             </inputLayout:SfTextInputLayout.TrailingView>
+
+              <inputLayout:SfTextInputLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenUnitsCommand}" />
+                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
         </inputLayout:SfTextInputLayout>
 
@@ -265,6 +283,7 @@
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
+            IsHintAlwaysFloated="True"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -288,6 +307,10 @@
             <inputLayout:SfTextInputLayout.TrailingView>
                 <Image Aspect="AspectFit" Source="greyDropDown" />
             </inputLayout:SfTextInputLayout.TrailingView>
+
+              <inputLayout:SfTextInputLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenCurrenciesCommand}" />
+                </inputLayout:SfTextInputLayout.GestureRecognizers>
 
         </inputLayout:SfTextInputLayout>
 
@@ -315,8 +338,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
             InputViewPadding="16,0,16,0"
+            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -339,6 +362,12 @@
                 <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
             </inputLayout:SfTextInputLayout.TrailingView>
         </inputLayout:SfTextInputLayout>
+
+         <Label
+            Margin="3,-10,3,3"
+            FontSize="12"
+            Text="{x:Static ResourceManager:AppResources.NumberHint}"
+            TextColor="#58595B" />
 
     </StackLayout>
     <!--#endregion TotalValue Field-->
@@ -464,9 +493,9 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
-                HelperText="{x:Static ResourceManager:AppResources.PDFFileHintTwo}"
                 InputViewPadding="16,0,16,0"
                 LeadingViewPosition="Inside"
+                IsHintAlwaysFloated="True"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}"
                 VerticalOptions="StartAndExpand">
@@ -491,9 +520,17 @@
 
             </inputLayout:SfTextInputLayout>
 
+             <Label
+                Margin="3,-10,3,3"
+                FontSize="12"
+                Text="{x:Static ResourceManager:AppResources.PDFFileHintTwo}"
+                TextColor="#58595B" />
+
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
             </StackLayout.GestureRecognizers>
+
+           
 
         </StackLayout>
 

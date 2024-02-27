@@ -159,7 +159,7 @@
                     <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel
+                <Label
                     x:Name="MenuTitleName"
                     Grid.Column="1"
                     HorizontalOptions="Center"

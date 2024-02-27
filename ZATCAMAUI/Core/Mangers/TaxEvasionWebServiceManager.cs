@@ -1105,16 +1105,7 @@ namespace ZATCAMAUI.Core.Mangers
                     VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
                     string url = ZATCAConstants.GAZTGetCreateVATSignUp + LangZ;
                     var uri = new Uri(url);
-
-                    try
-                    {
-                        App.httpClientHandler.CookieContainer = null;
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
+                    App.httpClientHandler.CookieContainer = null;
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -1127,9 +1118,9 @@ namespace ZATCAMAUI.Core.Mangers
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     return detailJson;
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
-                    throw ex;
+                    return null;
                 }
             }
             else

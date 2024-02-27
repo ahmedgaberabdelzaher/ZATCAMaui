@@ -369,6 +369,7 @@
                                                     <inputLayout:SfTextInputLayout
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.TinEntry1, Source={x:Reference VATRegistration}}"
@@ -384,9 +385,9 @@
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Gpartz}"
                                                             TextColor="#bbbbbb">
-                                                            <Entry.Behaviors>
+                                                            <custom:GAZTBorderlessEntry.Behaviors>
                                                                 <behaviors:OnlyNumericValuesBehaviour />
-                                                            </Entry.Behaviors>
+                                                            </custom:GAZTBorderlessEntry.Behaviors>
                                                         </custom:GAZTBorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
@@ -401,6 +402,7 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                         IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -423,6 +425,7 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry1, Source={x:Reference VATRegistration}}"
@@ -436,9 +439,9 @@
                                                             IsReadOnly="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding CrNo}">
-                                                            <Entry.Behaviors>
+                                                            <custom:GAZTBorderlessEntry.Behaviors>
                                                                 <behaviors:OnlyNumericValuesBehaviour />
-                                                            </Entry.Behaviors>
+                                                            </custom:GAZTBorderlessEntry.Behaviors>
                                                         </custom:GAZTBorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
 
@@ -446,6 +449,7 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry2, Source={x:Reference VATRegistration}}"
@@ -473,6 +477,7 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         LeadingViewPosition="Inside"
@@ -501,6 +506,7 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry1, Source={x:Reference VATRegistration}}"
@@ -519,6 +525,7 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry2, Source={x:Reference VATRegistration}}"
@@ -544,6 +551,7 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
+                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.SourceEntry, Source={x:Reference VATRegistration}}"
@@ -676,6 +684,7 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="FrmEStartDate"
                                                                 Grid.Row="1"
+                                                                 IsHintAlwaysFloated="True"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
@@ -739,11 +748,11 @@
                                                                 </StackLayout.GestureRecognizers>
 
                                                             </StackLayout>
-                                                            <Button
+                                                            <buttons:SfButton
                                                                 x:Name="btn1"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btn1_Clicked"
                                                                 IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
                                                                 IsVisible="false" />
@@ -764,9 +773,6 @@
                                                                 SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
                                                                 SelectionChanged="DpEStartDate_SelectionChanged">
 
-                                                                <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -774,13 +780,16 @@
 
                                                                 <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Background="White" Text="Date of Birth" />
+                                                                    <syncfusion:PickerHeaderView Background="White"
+                                                                                                 Height="46"
+                                                                                                 Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Background="#EAF7CC"
+                                                                                                 Height="46">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
@@ -892,6 +901,7 @@
                                                         <inputLayout:SfTextInputLayout
                                                             x:Name="FrmAttachmentOptional"
                                                             Grid.Row="1"
+                                                             IsHintAlwaysFloated="True"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
@@ -943,6 +953,7 @@
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
+                                                                 IsHintAlwaysFloated="True"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
                                                                 LeadingViewPosition="Inside"
@@ -971,11 +982,11 @@
                                                                     </Image>
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
-                                                            <Button
+                                                            <buttons:SfButton
                                                                 x:Name="NewAccount"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="NewAccount_Clicked"
                                                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                                 IsEnabled="{Binding BindingContext.TaxPayerDetails.NewIBANPicker, Source={x:Reference VATRegistration}}" />
@@ -1518,6 +1529,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
@@ -1546,11 +1558,11 @@
                                                                 </Image>
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>
-                                                        <Button
+                                                        <buttons:SfButton
                                                             x:Name="NewAttachment"
                                                             Grid.Row="1"
                                                             Margin="0,0,0,0"
-                                                            BackgroundColor="Transparent"
+                                                            Background="Transparent"
                                                             Clicked="NewAttachment_Clicked"
                                                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                             IsEnabled="{Binding IsFDChangeSectionEnabled}" />
@@ -1626,8 +1638,8 @@
                                                                     Style="{StaticResource CheckboxHeightWidth32}"
                                                                     VerticalOptions="CenterAndExpand" />
 
-                                                                <Button
-                                                                    BackgroundColor="Transparent"
+                                                                <buttons:SfButton
+                                                                    Background="Transparent"
                                                                     Clicked="AddNewRepresentative_Tapped"
                                                                     HorizontalOptions="CenterAndExpand"
                                                                     VerticalOptions="CenterAndExpand" />
@@ -1720,6 +1732,7 @@
                                                                     <inputLayout:SfTextInputLayout
                                                                         Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
+                                                                         IsHintAlwaysFloated="True"
                                                                         HasError="False"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
@@ -1738,9 +1751,9 @@
                                                                             Text="{Binding GpartFR}"
                                                                             TextChanged="EntryTINNumber_TextChanged"
                                                                             Unfocused="EntryTINNumber_Unfocused">
-                                                                            <Entry.Behaviors>
+                                                                            <custom:GAZTBorderlessEntry.Behaviors>
                                                                                 <behaviors:OnlyNumericValuesBehaviour />
-                                                                            </Entry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry.Behaviors>
                                                                         </custom:GAZTBorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
 
@@ -1762,6 +1775,7 @@
                                                                             Margin="0,-6,0,-6"
                                                                             ContainerType="Outlined"
                                                                             HasError="False"
+                                                                             IsHintAlwaysFloated="True"
                                                                             HorizontalOptions="FillAndExpand"
                                                                             InputViewPadding="16,0,16,0"
                                                                             LeadingViewPosition="Inside"
@@ -1863,6 +1877,7 @@
                                                                         ContainerType="Outlined"
                                                                         HasError="{Binding FrameIDError}"
                                                                         HorizontalOptions="FillAndExpand"
+                                                                         IsHintAlwaysFloated="True"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsEnabled="False"
                                                                         LeadingViewPosition="Inside"
@@ -1881,9 +1896,9 @@
                                                                             Text="{Binding IdnumberFR}"
                                                                             TextChanged="EntryIDNo_TextChanged"
                                                                             Unfocused="EntryIDNo_Unfocused">
-                                                                            <Entry.Behaviors>
+                                                                            <custom:GAZTBorderlessEntry.Behaviors>
                                                                                 <behaviors:OnlyNumericValuesBehaviour />
-                                                                            </Entry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry.Behaviors>
                                                                         </custom:GAZTBorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
                                                                 </StackLayout>
@@ -1908,6 +1923,7 @@
                                                                             Grid.Row="1"
                                                                             Margin="0,-6,0,-6"
                                                                             ContainerType="Outlined"
+                                                                             IsHintAlwaysFloated="True"
                                                                             HasError="{Binding FrameDOBError}"
                                                                             HorizontalOptions="FillAndExpand"
                                                                             InputViewPadding="16,0,16,0"
@@ -1940,10 +1956,10 @@
                                                                             </StackLayout>
                                                                         </inputLayout:SfTextInputLayout>
 
-                                                                        <Button
+                                                                        <buttons:SfButton
                                                                             Grid.Row="1"
                                                                             Margin="0,0,0,0"
-                                                                            BackgroundColor="Transparent"
+                                                                            Background="Transparent"
                                                                             Clicked="btnDate_Clicked" />
 
                                                                         <custom:CustomDatePicker
@@ -1957,9 +1973,7 @@
                                                                             OkButtonClicked="DOB_OkButtonClicked"
                                                                             SelectedItem="{Binding TodayDate}">
 
-                                                                            <custom:CustomDatePicker.ColumnHeaderView>
-                                                                                <syncfusion:PickerColumnHeaderView Height="50" Background="#EAF7CC" />
-                                                                            </custom:CustomDatePicker.ColumnHeaderView>
+
 
                                                                             <custom:CustomDatePicker.SelectedTextStyle>
                                                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1967,13 +1981,18 @@
 
                                                                             <custom:CustomDatePicker.HeaderView>
 
-                                                                                <syncfusion:PickerHeaderView Background="{StaticResource Primary}" Text="Date of Birth" />
+                                                                                <syncfusion:PickerHeaderView
+                                                                                     Height="46"
+                                                                                    Background="{StaticResource Primary}"
+                                                                                                             Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                             </custom:CustomDatePicker.HeaderView>
 
                                                                             <custom:CustomDatePicker.FooterView>
 
-                                                                                <syncfusion:PickerFooterView Background="#EAF7CC">
+                                                                                <syncfusion:PickerFooterView
+                                                                                    Height="46"
+                                                                                    Background="#EAF7CC">
 
                                                                                     <syncfusion:PickerFooterView.TextStyle>
                                                                                         <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
@@ -1997,6 +2016,7 @@
                                                                         Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
                                                                         HasError="False"
+                                                                         IsHintAlwaysFloated="True"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
                                                                         LeadingViewPosition="Inside"
@@ -2011,9 +2031,9 @@
                                                                             Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
                                                                             Style="{StaticResource DefaultEntry}"
                                                                             Text="{Binding FirstnmFR}">
-                                                                            <Entry.Behaviors>
+                                                                            <custom:GAZTBorderlessEntry.Behaviors>
                                                                                 <behaviors:AlphabetandArabicCharacters />
-                                                                            </Entry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry.Behaviors>
                                                                         </custom:GAZTBorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
                                                                 </StackLayout>
@@ -2027,6 +2047,7 @@
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsEnabled="False"
+                                                                         IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
                                                                         Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
@@ -2038,9 +2059,9 @@
                                                                             Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRSurName}"
                                                                             Style="{StaticResource DefaultEntry}"
                                                                             Text="{Binding LastnmFR}">
-                                                                            <Entry.Behaviors>
+                                                                            <custom:GAZTBorderlessEntry.Behaviors>
                                                                                 <behaviors:AlphabetandArabicCharacters />
-                                                                            </Entry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry.Behaviors>
                                                                         </custom:GAZTBorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
                                                                 </StackLayout>
@@ -2051,6 +2072,7 @@
                                                                         Grid.Row="13"
                                                                         Grid.Column="0"
                                                                         Grid.ColumnSpan="2"
+                                                                         IsHintAlwaysFloated="True"
                                                                         Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
                                                                         HorizontalOptions="FillAndExpand"
@@ -2099,9 +2121,9 @@
                                                                             Style="{StaticResource DefaultEntry}"
                                                                             Text="{Binding MobNumberFR}"
                                                                             Unfocused="EntryPhoneNumber_Unfocused_1">
-                                                                            <Entry.Behaviors>
+                                                                            <custom:GAZTBorderlessEntry.Behaviors>
                                                                                 <behaviors:OnlyNumericValuesBehaviour />
-                                                                            </Entry.Behaviors>
+                                                                            </custom:GAZTBorderlessEntry.Behaviors>
                                                                         </custom:GAZTBorderlessEntry>
                                                                     </inputLayout:SfTextInputLayout>
                                                                 </StackLayout>
@@ -2146,6 +2168,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding FinancialRepresentative.TinEntry}"
@@ -2164,9 +2187,9 @@
                                                                 Text="{Binding GpartFR}"
                                                                 TextChanged="EntryTINNumber_TextChanged"
                                                                 Unfocused="EntryTINNumber_Unfocused">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:OnlyNumericValuesBehaviour />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
 
@@ -2187,6 +2210,7 @@
                                                                 x:Name="FrmIDType"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
+                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
@@ -2305,6 +2329,7 @@
                                                             ContainerType="Outlined"
                                                             HasError="{Binding FrameIDError}"
                                                             HorizontalOptions="FillAndExpand"
+                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding FinancialRepresentative.IDNoEntry}"
                                                             LeadingViewPosition="Inside"
@@ -2324,9 +2349,9 @@
                                                                 Text="{Binding IdnumberFR}"
                                                                 TextChanged="EntryIDNo_TextChanged"
                                                                 Unfocused="EntryIDNo_Unfocused">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:OnlyNumericValuesBehaviour />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -2370,6 +2395,7 @@
                                                                 x:Name="FrmDBO"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
+                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
@@ -2403,11 +2429,11 @@
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
 
-                                                            <Button
+                                                            <buttons:SfButton
                                                                 x:Name="btn4"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btnDate_Clicked" />
 
                                                             <custom:CustomDatePicker
@@ -2422,9 +2448,6 @@
                                                                 Mode="Dialog"
                                                                 SelectedItem="{Binding TodayDate}">
 
-                                                                <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -2432,13 +2455,13 @@
 
                                                                 <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Background="{StaticResource Primary}" Text="Date of Birth" />
+                                                                    <syncfusion:PickerHeaderView Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Height="46"/>
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46"  Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
@@ -2462,6 +2485,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="False"
@@ -2478,9 +2502,9 @@
                                                                 Style="{StaticResource DefaultEntry}"
                                                                 Text="{Binding FirstnmFR}"
                                                                 Unfocused="EntryFirstName_Unfocused_1">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:AlphabetandArabicCharacters />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -2492,6 +2516,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="False"
@@ -2508,9 +2533,9 @@
                                                                 Style="{StaticResource DefaultEntry}"
                                                                 Text="{Binding LastnmFR}"
                                                                 Unfocused="EntryLastName_Unfocused_1">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:AlphabetandArabicCharacters />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -2521,6 +2546,7 @@
                                                             x:Name="FrmEmailAddress"
                                                             Grid.Row="13"
                                                             Grid.Column="0"
+                                                             IsHintAlwaysFloated="True"
                                                             Grid.ColumnSpan="2"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
@@ -2551,6 +2577,7 @@
                                                             Grid.Row="15"
                                                             Grid.Column="0"
                                                             Grid.ColumnSpan="2"
+                                                             IsHintAlwaysFloated="True"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
@@ -2572,9 +2599,9 @@
                                                                 Style="{StaticResource GAZTEntry}"
                                                                 Text="{Binding MobNumberFR}"
                                                                 Unfocused="EntryPhoneNumber_Unfocused">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:OnlyNumericValuesBehaviour />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -3070,6 +3097,7 @@
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
+                                                                 IsHintAlwaysFloated="True"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
@@ -3179,6 +3207,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding Declaration.IDTypeOrNoPicker}"
@@ -3198,9 +3227,9 @@
                                                                 Text="{Binding IdNumberSR}"
                                                                 TextChanged="EntryContactIDNumber_TextChanged"
                                                                 Unfocused="EntryContactIDNumber_Unfocused">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:OnlyNumericValuesBehaviour />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -3227,6 +3256,7 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="FrmContactDBO"
                                                                 Grid.Row="1"
+                                                                 IsHintAlwaysFloated="True"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameContactDOBError}"
@@ -3260,11 +3290,11 @@
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
 
-                                                            <Button
+                                                            <buttons:SfButton
                                                                 x:Name="btnSR"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btn4_Clicked"
                                                                 IsEnabled="{Binding Declaration.DOBEntry}"
                                                                 IsVisible="false" />
@@ -3283,9 +3313,6 @@
                                                                 OkButtonClicked="ContactDOBPicker_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDate}">
 
-                                                                <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -3293,13 +3320,16 @@
 
                                                                 <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Background="{StaticResource Primary}" Text="Date of Birth" />
+                                                                    <syncfusion:PickerHeaderView
+                                                                        Height="46"
+                                                                        Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46"
+                                                                                                 Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -3330,6 +3360,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding Declaration.ContactNameEntry}"
@@ -3346,9 +3377,9 @@
                                                                 Style="{StaticResource DefaultEntry}"
                                                                 Text="{Binding FirstNameSR}"
                                                                 TextChanged="EntryContactName_TextChanged">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:AlphabetandArabicCharacters />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>

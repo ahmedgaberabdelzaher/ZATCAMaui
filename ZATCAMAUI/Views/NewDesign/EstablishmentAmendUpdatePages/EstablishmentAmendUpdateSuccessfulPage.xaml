@@ -35,12 +35,12 @@
                 HorizontalOptions="Center"
                 VerticalOptions="FillAndExpand">
                 <Image Source="Forget_ic_success" />
-                <custom:CustomLabel
+                <Label
                     Margin="0,20,0,10"
                     HorizontalOptions="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.ZVatAcknowledgment}" />
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     LineBreakMode="WordWrap"

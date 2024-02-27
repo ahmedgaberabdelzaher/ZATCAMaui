@@ -22,6 +22,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
 
                 if (Device.RuntimePlatform == Device.Android)
                 {
+                    //TODO Not supported yet 
+                    //PdfViewForCertificate.CustomPdfRenderer = DependencyService.Get<ICustomPdfRendererService>().AlternatePdfRenderer;
                 }
                 NavigationPage.SetBackButtonTitle(this, "");
                 On<iOS>().SetUseSafeArea(true);

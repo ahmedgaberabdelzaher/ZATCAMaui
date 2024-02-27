@@ -59,13 +59,13 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{Binding NafathLoginHeader}"
+                    Text="{x:Static ResourceManager:AppResources.NafathLoginHeader}"
                     VerticalOptions="Center" />
 
             </Grid>
@@ -78,9 +78,11 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
+                <Grid RowDefinitions="*">
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                 Padding="10">
 
                         <!--  NafathLoginSubHeader Label  -->
                         <Label
@@ -120,6 +122,7 @@
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                 IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
@@ -164,7 +167,7 @@
                     </StackLayout>
 
                 </ScrollView>
-
+                </Grid>
             </yummy:PancakeView>
             <!--#endregion Body-->
 

@@ -368,6 +368,7 @@
                             <inputLayout:SfTextInputLayout
                                 x:Name="FrmDBO"
                                 Margin="0,-10,0,0"
+                                 IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     x:Name="DateEntry"
@@ -397,9 +398,9 @@
                                     </StackLayout>
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
-                            <Button
+                            <buttons:SfButton
                                 Margin="0,0,0,0"
-                                BackgroundColor="Transparent"
+                                Background="Transparent"
                                 Clicked="OnDOBClicked" />
 
                             <custom:CustomDatePicker
@@ -416,9 +417,7 @@
                                 SelectedItem="{Binding TodayDate}"
                                 SelectionChanged="DpDbo_SelectionChanged">
 
-                                <custom:CustomDatePicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                </custom:CustomDatePicker.ColumnHeaderView>
+
 
                                 <custom:CustomDatePicker.SelectedTextStyle>
                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -465,9 +464,9 @@
                                 SelectedItem="{Binding TodayDateinHijri}"
                                 SelectionChanged="DpDbo_SelectionChanged">
 
-                                <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                 <custom:CustomHijriDatePicker.SelectionView >
+                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                </custom:CustomHijriDatePicker.SelectionView>
 
                                 <custom:CustomHijriDatePicker.HeaderView>
 
@@ -539,6 +538,7 @@
                                 <inputLayout:SfTextInputLayout
                                     x:Name="FrmDBO2"
                                     Margin="0,-10,0,0"
+                                     IsHintAlwaysFloated="True"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         x:Name="DateEntry21"
@@ -570,9 +570,9 @@
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
 
-                                <Button
+                                <buttons:SfButton
                                     Margin="0,0,0,0"
-                                    BackgroundColor="Transparent"
+                                    Background="Transparent"
                                     Clicked="OnDOBClicked"
                                     TextColor="Transparent" />
 
@@ -590,9 +590,7 @@
                                     SelectedItem="{Binding TodayDate}"
                                     SelectionChanged="DpDbo_SelectionChanged">
 
-                                    <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                    </custom:CustomDatePicker.ColumnHeaderView>
+
 
                                     <custom:CustomDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -641,9 +639,9 @@
                                     SelectedItem="{Binding TodayDateinHijri}"
                                     SelectionChanged="DpDbo_SelectionChanged">
 
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                      </custom:CustomHijriDatePicker.SelectionView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -683,6 +681,7 @@
                                     x:Name="TINNumber"
                                     Margin="0,-6,0,-6"
                                     CharMaxLength="10"
+                                     IsHintAlwaysFloated="True"
                                     ContainerType="Outlined"
                                     HasError="{Binding FrameTinError}"
                                     OutlineCornerRadius="13"
@@ -774,6 +773,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
+                                     IsHintAlwaysFloated="True"
                                     HasError="{Binding FrameIDError}"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
@@ -827,6 +827,7 @@
                         <Grid IsVisible="{Binding IsDobVisible}">
                             <inputLayout:SfTextInputLayout
                                 x:Name="FrmDBO1"
+                                 IsHintAlwaysFloated="True"
                                 Margin="0,-10,0,0"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
@@ -858,9 +859,9 @@
                                     </StackLayout>
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
-                            <Button
+                            <buttons:SfButton
                                 Margin="0,0,0,0"
-                                BackgroundColor="Transparent"
+                                Background="Transparent"
                                 Clicked="OnIDDOBClicked" />
 
                             <custom:CustomDatePicker
@@ -877,9 +878,7 @@
                                 SelectedItem="{Binding TodayDate}"
                                 SelectionChanged="DpDOB_SelectionChanged">
 
-                                <custom:CustomDatePicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                </custom:CustomDatePicker.ColumnHeaderView>
+
 
                                 <custom:CustomDatePicker.SelectedTextStyle>
                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -928,9 +927,9 @@
                                 SelectedItem="{Binding TodayDateinHijri}"
                                 SelectionChanged="DpDOB_SelectionChanged">
 
-                                <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                                </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                 <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
 
                                 <custom:CustomHijriDatePicker.HeaderView>
 
@@ -979,6 +978,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1015,6 +1015,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1046,6 +1047,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1076,6 +1078,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1107,6 +1110,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1142,6 +1146,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1173,6 +1178,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1800,6 +1806,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1828,6 +1835,7 @@
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HasError="False"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="13"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1855,6 +1863,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
+                                     IsHintAlwaysFloated="True"
                                     HasError="False"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="13"

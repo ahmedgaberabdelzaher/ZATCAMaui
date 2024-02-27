@@ -30,13 +30,26 @@ namespace ZATCAMAUI.Core.CustomControls
         public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(propertyName: nameof(SelectedItem),
             returnType: typeof(object),
             declaringType: typeof(CustomHijriDatePicker),
-            defaultValue: typeof(object));
+            defaultValue: typeof(object),
+            defaultBindingMode: BindingMode.TwoWay);
 
         public object SelectedItem
         {
             get { return (object)GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
+
+        public static readonly BindableProperty SelectedDateProperty = BindableProperty.Create(propertyName: nameof(SelectedDate),
+            returnType: typeof(DateTime),
+            declaringType: typeof(CustomHijriDatePicker),
+            defaultBindingMode: BindingMode.TwoWay);
+
+        public DateTime SelectedDate
+        {
+            get { return (DateTime)GetValue(SelectedDateProperty); }
+            set { SetValue(SelectedDateProperty, value); }
+        }
+
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
@@ -56,166 +69,228 @@ namespace ZATCAMAUI.Core.CustomControls
 
         private void Picker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            try
             {
-                var oldDay = day[e.OldValue];
-                newDay = day[e.NewValue];
 
-                // for testing
-                //this.Columns[0].HeaderText = $"{oldDay} {newDay}";
-            }
-            else if (e.ColumnIndex == 1)
-            {
-                var oldMonth = month[e.OldValue];
-                newMonth = month[e.NewValue];
 
-                // for testing
-                //this.Columns[1].HeaderText = $"{oldMonth} {newMonth}";
-            }
-            else
-            {
-                var oldYear = year[e.OldValue];
-                newYear = year[e.NewValue];
-
-                // for testing
-                //this.Columns[2].HeaderText = $"{oldYear} {newYear}";
-            }
-
-            if (e.ColumnIndex == 1 || e.ColumnIndex == 2) // Month/Year column
-            {
-                noOfDays = DateTime.DaysInMonth(int.Parse(newYear), int.Parse(newMonth));
-                day = new ObservableCollection<string>();
-                for (int i = 1; i <= noOfDays; i++)
+                if (e.ColumnIndex == 0)
                 {
-                    day.Add(i.ToString("D2"));
-                    this.Columns[0].ItemsSource = day;
-
+                    var oldDay = day[e.OldValue];
+                    newDay = day[e.NewValue];
+                }
+                else if (e.ColumnIndex == 1)
+                {
+                    var oldMonth = month[e.OldValue];
+                    newMonth = month[e.NewValue];
+                }
+                else
+                {
+                    var oldYear = year[e.OldValue];
+                    newYear = year[e.NewValue];
                 }
 
-                #region To Adjust selection of days if it was 28/31/30
-                if (noOfDays == 30 && newDay.Equals("31"))
-                    this.Columns[0].SelectedIndex = 27;
+                if (e.ColumnIndex == 1 || e.ColumnIndex == 2) // Month/Year column
+                {
+                    noOfDays = DateTime.DaysInMonth(int.Parse(newYear), int.Parse(newMonth));
+                    day = new ObservableCollection<string>();
+                    for (int i = 1; i <= noOfDays; i++)
+                    {
+                        day.Add(i.ToString("D2"));
+                        this.Columns[0].ItemsSource = day;
 
-                else if (noOfDays == 31 && newDay.Equals("30"))
-                    this.Columns[0].SelectedIndex = 27;
+                    }
 
-                else if (noOfDays == 28 && newDay.Equals("30")
-                    || noOfDays == 28 && newDay.Equals("31"))
-                    this.Columns[0].SelectedIndex = 27;
-                #endregion
+                    #region To Adjust selection of days if it was 28/31/30
+                    if (noOfDays == 30 && newDay.Equals("31"))
+                        this.Columns[0].SelectedIndex = 27;
+
+                    else if (noOfDays == 31 && newDay.Equals("30"))
+                        this.Columns[0].SelectedIndex = 27;
+
+                    else if (noOfDays == 28 && newDay.Equals("30")
+                        || noOfDays == 28 && newDay.Equals("31"))
+                        this.Columns[0].SelectedIndex = 27;
+                    #endregion
+                }
+                SelectedDate = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
+                SelectedItem = new ObservableCollection<object>
+                {
+                    newDay,
+                    newMonth,
+                    newYear
+                };
             }
-            SelectedItem = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
-            //this.HeaderView.Text = $"{newDay}-{newMonth}-{newYear}";
+            catch (Exception)
+            {
+
+            }
         }
 
         private void InitializeDatePicker()
         {
-            noOfDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
-
-            for (int i = 1; i <= noOfDays; i++)
+            try
             {
-                day.Add(i.ToString("D2"));
+                ReInitializeList();
+
+                noOfDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+
+                for (int i = 1; i <= noOfDays; i++)
+                {
+                    day.Add(i.ToString("D2"));
+
+                }
+                dayColumn = new PickerColumn()
+                {
+                    ItemsSource = day,
+                    SelectedIndex = 0,
+                };
+
+                for (int i = 1; i <= 12; i++)
+                {
+                    month.Add(i.ToString("D2"));
+
+                }
+
+                monthColumn = new PickerColumn()
+                {
+                    ItemsSource = month,
+                    SelectedIndex = 0,
+                };
+
+
+
+                for (int i = 1900; i < 2050; i++)
+                {
+                    year.Add(i.ToString());
+
+                }
+
+                yearColumn = new PickerColumn()
+                {
+                    ItemsSource = year,
+                    SelectedIndex = int.Parse(year.Last()),
+                };
+
+                pickerColumns = new ObservableCollection<PickerColumn>()
+                {
+                    dayColumn,
+                    monthColumn,
+                    yearColumn
+                };
+
+                this.Columns = pickerColumns;
+
+                this.SelectionChanged += Picker_SelectionChanged;
+                newDay = day[0]; newMonth = month[0]; newYear = year[0];
+
+                SelectedDate = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
+                SelectedItem = new ObservableCollection<object>
+                {
+                    newDay,
+                    newMonth,
+                    newYear
+                };
+            }
+            catch (Exception)
+            {
 
             }
-            dayColumn = new PickerColumn()
-            {
-                HeaderText = day[0],
-                ItemsSource = day,
-                SelectedIndex = 0,
-            };
-
-            for (int i = 1; i <= 12; i++)
-            {
-                month.Add(i.ToString("D2"));
-
-            }
-
-            monthColumn = new PickerColumn()
-            {
-                HeaderText = month[0],
-                ItemsSource = month,
-                SelectedIndex = 0,
-            };
-
-
-
-            for (int i = 1900; i < 2050; i++)
-            {
-                year.Add(i.ToString());
-
-            }
-
-            yearColumn = new PickerColumn()
-            {
-                HeaderText = year.Last(),
-                ItemsSource = year,
-                SelectedIndex = int.Parse(year.Last()),
-            };
-
-            pickerColumns.Add(dayColumn);
-            pickerColumns.Add(monthColumn);
-            pickerColumns.Add(yearColumn);
-
-            this.Columns = pickerColumns;
-
-            this.SelectionChanged += Picker_SelectionChanged;
-            //this.HeaderView.Text = $"{dayColumn.HeaderText}-{monthColumn.HeaderText}-{yearColumn.HeaderText}";
-            newDay = day[0]; newMonth = month[0]; newYear = year[0];
-            SelectedItem = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
         }
+
         private void InitializeFutureDatePicker()
         {
-            noOfDays = DateTime.DaysInMonth(DateTime.Today.Year,DateTime.Today.Month);
-
-            for (int i = 1; i <= noOfDays; i++)
+            try
             {
-                day.Add(i.ToString("D2"));
+
+                ReInitializeList();
+
+                noOfDays = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+
+                for (int i = 1; i <= noOfDays; i++)
+                {
+                    day.Add(i.ToString("D2"));
+
+                }
+                dayColumn = new PickerColumn()
+                {
+                    HeaderText = day[0],
+                    ItemsSource = day,
+                    SelectedIndex = 0,
+                };
+
+                for (int i = 1; i <= 12; i++)
+                {
+                    month.Add(i.ToString("D2"));
+
+                }
+
+                monthColumn = new PickerColumn()
+                {
+                    HeaderText = month[0],
+                    ItemsSource = month,
+                    SelectedIndex = 0,
+                };
+
+
+
+                for (int i = DateTime.Today.Year; i <= DateTime.Today.Year + 1000; i++)
+                {
+                    year.Add(i.ToString());
+
+                }
+
+                yearColumn = new PickerColumn()
+                {
+                    HeaderText = year[0],
+                    ItemsSource = year,
+                    SelectedIndex = 0,
+                };
+
+                pickerColumns = new ObservableCollection<PickerColumn>()
+                {
+                    dayColumn,
+                    monthColumn,
+                    yearColumn
+                };
+
+                this.Columns = pickerColumns;
+                this.SelectionChanged += Picker_SelectionChanged;
+                newDay = day[0]; newMonth = month[0]; newYear = year[0];
+                SelectedDate = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
+                SelectedItem = new ObservableCollection<object>
+                {
+                    newDay,
+                    newMonth,
+                    newYear
+                };
+            }
+            catch (Exception )
+            {
 
             }
-            dayColumn = new PickerColumn()
-            {
-                HeaderText = day[0],
-                ItemsSource = day,
-                SelectedIndex = 0,
-            };
+        }
 
-            for (int i = 1; i <= 12; i++)
-            {
-                month.Add(i.ToString("D2"));
+        private void ReInitializeList()
+        {
+            day = new ObservableCollection<string>();
+            month = new ObservableCollection<string>();
+            year = new ObservableCollection<string>();
+        }
 
-            }
+        protected override void OnOkButtonClicked(EventArgs e)
+        {
+            base.OnOkButtonClicked(e);
 
-            monthColumn = new PickerColumn()
-            {
-                HeaderText = month[0],
-                ItemsSource = month,
-                SelectedIndex = 0,
-            };
+            this.IsOpen = false;
+        }
 
+        protected override void OnCancelButtonClicked(EventArgs e)
+        {
+            base.OnCancelButtonClicked(e);
+            this.IsOpen = false;
 
-
-            for (int i = DateTime.Today.Year; i <= DateTime.Today.Year + 1000; i++)
-            {
-                year.Add(i.ToString());
-
-            }
-
-            yearColumn = new PickerColumn()
-            {
-                HeaderText = year[0],
-                ItemsSource = year,
-                SelectedIndex = 0,
-            };
-
-            pickerColumns.Add(dayColumn);
-            pickerColumns.Add(monthColumn);
-            pickerColumns.Add(yearColumn);
-
-            this.Columns = pickerColumns;
-            this.SelectionChanged += Picker_SelectionChanged;
-            // this.HeaderView.Text = $"{dayColumn.HeaderText}-{monthColumn.HeaderText}-{yearColumn.HeaderText}";
-            newDay = day[0]; newMonth = month[0]; newYear = year[0];
-            SelectedItem = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
+            SelectedDate = new DateTime();
+            SelectedItem = default(object);
         }
     }
 }

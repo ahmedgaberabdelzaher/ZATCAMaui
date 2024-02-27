@@ -187,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                     };
 
                     SubmitModel.travelerDeclaration.tobacco.Add(item);
-                    CardData.Add(cardItem);
+                    
                     Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
                     {
                         harmonizedCode = item.itemCode.ToString(),
@@ -200,7 +200,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                         weight = string.IsNullOrWhiteSpace(Weight) ? 0 : double.Parse(Weight),
                         value = double.Parse(TotalValue)
                     };
-                    await CalculateFees(1, tobao, null);
+                    var fees = await CalculateFees(1, tobao, null);
+                    if (!fees)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.ServerError;
+                        return;
+                    }
+                        
+                    CardData.Add(cardItem);
                     ClearTobacoData();
                 }
                 else

@@ -74,7 +74,7 @@
                 </StackLayout>
 
                 <!--  My Pervious Reports Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"
@@ -351,6 +351,7 @@
                                 ContainerType="Outlined"
                                 HasError="{Binding IsNeedRewardError}"
                                 InputViewPadding="15,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">

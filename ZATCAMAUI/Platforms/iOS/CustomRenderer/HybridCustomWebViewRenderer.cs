@@ -69,7 +69,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
             App.ArePreLoginLangCookiesSet = true;
             this.NavigationDelegate = new DisplayLinkWebViewDelegateNew((HybridWebView)Element);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -116,7 +116,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                     element.InvokeAction("requestTimedout");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
 
@@ -186,7 +186,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                         element.InvokeAction("displayLoginLoadingIndicator");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
 
 
@@ -194,7 +194,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                 }
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -303,11 +303,8 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";
                     element.InvokeAction("error");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-
-
-
                     IsError = true;
                     App.IsLoginCalled = false;
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";
@@ -315,7 +312,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                 }
             });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -353,7 +350,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 
                 decisionHandler(WKNavigationResponsePolicy.Allow);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

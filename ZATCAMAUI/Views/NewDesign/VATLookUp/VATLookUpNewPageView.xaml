@@ -75,6 +75,7 @@
                                         ContainerType="Outlined"
                                         HasError="False"
                                         OutlineCornerRadius="8"
+                                         IsHintAlwaysFloated="True"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -164,6 +165,7 @@
                                             Margin="0,-6,0,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
+                                             IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>

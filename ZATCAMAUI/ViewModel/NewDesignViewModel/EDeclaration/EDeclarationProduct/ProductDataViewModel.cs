@@ -181,8 +181,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                         count = int.Parse(Quantity ?? "0"),
                         ID = item.ID
                     };
+                    var fees= await CalculateFees(1, null, product);
+                    if (!fees)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.ServerError;
+                        return;
+                    }
+                       
                     CardData.Add(cardItem);
-                    await CalculateFees(1, null, product);
                     ClearProductData();
 
                 }

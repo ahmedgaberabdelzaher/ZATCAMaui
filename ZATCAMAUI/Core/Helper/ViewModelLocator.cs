@@ -104,6 +104,7 @@ using ZATCAMAUI.Views.NewDesign.EDeclaration.InquireRequestPages;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
+using ZATCAMAUI.Views.NewDesign.EstablishmentSignUP;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
 using ZATCAMAUI.Views.NewDesign.FormBundleStatusPages;
@@ -2671,9 +2672,9 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.AttachmentPopUp, typeof(AttachmentPopUp));
             navigationService.Configure(App.RefundAccountPopupPageView, typeof(RefundAccountPopupPageView));
             navigationService.Configure(App.NewAccountPopPageView, typeof(NewAccountPopUpPageView));
-            //navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
-            //navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
-            //navigationService.Configure(App.AccountCreatedSuccessfullyPageView, typeof(AccountCreatedSuccessfullyPageView));
+            navigationService.Configure(App.EstablishmentSignUPPageView, typeof(EstablishmentSignUPPageView));
+            navigationService.Configure(App.SignUpForEstablishmentPageView, typeof(SignUpForEstablishmentPageView));
+            navigationService.Configure(App.AccountCreatedSuccessfullyPageView, typeof(AccountCreatedSuccessfullyPageView));
             navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
             navigationService.Configure(App.VATCreditCarriedForwardPopUpPageView, typeof(VATCreditCarriedForwardPopUpPageView));
             navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
@@ -3252,7 +3253,7 @@ namespace ZATCAMAUI.Core.Helper
                 {
                     return ServiceLocator.Current.GetInstance<InquiryaboutCustomsIssuesViewModel>();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }

@@ -2,6 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
+#if ANDROID
+using Microsoft.Maui.Handlers;
+#endif
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Helper;
@@ -195,8 +198,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 {
                     try
                     {
-                        SetDefaultDate();
                         control.IsOpen = true;
+
                     }
                     catch (Exception)
                     {
@@ -342,6 +345,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 return new Command(() =>
                 {
                     ResetDate();
+                    DeclarationDateString = string.Empty;
                     ResetTrackShipmentData();
                     ResetTrackStatus();
                     _navigationService.NavigateTo("/Home", "0");
@@ -354,33 +358,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         {
             get
             {
-                return new Command(() =>
+                return new Command<CustomHijriDatePicker>((date) =>
                 {
-                    Device.BeginInvokeOnMainThread(() =>
+                    try
+                    {
+                        var dateTime = date.SelectedDate;
+                        DeclarationDateString = DateTimeHelper.DateTimeFormater(dateTime);
+
+                    }
+                    catch (Exception)
                     {
 
-                        if (TodayDateinHijri != null && TodayDateinHijri.Count > 0)
-                        {
-                            string month = TodayDateinHijri[1].ToString();
-                            string day; string year;
-                            if (Device.RuntimePlatform ==Device.Android)
-                            {
-                                day = TodayDateinHijri[0].ToString();
-                                year = TodayDateinHijri[2].ToString();
-                            }
-                            else
-                            {
-                                day = TodayDateinHijri[2].ToString();
-                                year = TodayDateinHijri[0].ToString();
-                            }
-                            HijriDateToBeDisplayed = $"{day}-{month}-{year}";
+                    }
 
-                            if (!HijriDateToBeDisplayed.Equals("01-01-1000"))
-                                DeclarationDateString = HijriDateToBeDisplayed;
-                        }
-
-                    });
-                    
                 });
             }
         }

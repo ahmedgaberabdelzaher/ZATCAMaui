@@ -322,13 +322,14 @@
                                             HelperText="{Binding TextCount}"
                                             IsVisible="{Binding IsOthersEditorVisible}"
                                             LeadingViewPosition="Inside"
+                                             IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="15"
                                             Stroke="{StaticResource Primary}"
                                             TrailingViewPosition="Inside">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <Entry
+                                            <custom:GAZTBorderlessEntry
                                                 HeightRequest="100"
                                                 MaxLength="1000"
                                                 Style="{StaticResource DefaultEntry}"
@@ -396,13 +397,14 @@
                                                     HelperText="{Binding TextCount}"
                                                     IsVisible="{Binding IsOthersEditorVisible}"
                                                     LeadingViewPosition="Inside"
+                                                     IsHintAlwaysFloated="True"
                                                     OutlineCornerRadius="15"
                                                     Stroke="{StaticResource Primary}"
                                                     TrailingViewPosition="Inside">
                                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <inputLayout:LabelStyle TextColor="#B00020" />
                                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <Entry
+                                                    <custom:GAZTBorderlessEntry
                                                         HeightRequest="100"
                                                         MaxLength="1000"
                                                         Style="{StaticResource DefaultEntry}"
@@ -713,6 +715,7 @@
                                     ContainerType="Outlined"
                                     HasError="False"
                                     HorizontalOptions="FillAndExpand"
+                                     IsHintAlwaysFloated="True"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="8"
@@ -721,7 +724,7 @@
                                         <inputLayout:LabelStyle TextColor="#B00020" />
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <!--  Attachments  -->
-                                    <Entry
+                                    <custom:GAZTBorderlessEntry
                                         HorizontalTextAlignment="Start"
                                         IsEnabled="False"
                                         Placeholder="{x:Static ResourceManager:AppResources.VatDeregAttachmentInputPlaceholder}"
@@ -907,12 +910,13 @@
                                                 x:Name="FrmIDNumber"
                                                 Margin="0,0,0,0"
                                                 ContainerType="Outlined"
+                                                 IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="13"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <Entry
+                                                <custom:GAZTBorderlessEntry
                                                     x:Name="EntryIDNumber"
                                                     FontSize="Micro"
                                                     HorizontalOptions="FillAndExpand"
@@ -922,10 +926,10 @@
                                                     TextChanged="IDNumberEntry_TextChanged"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     Unfocused="EntryIDNo_Unfocused">
-                                                    <Entry.Behaviors>
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
-                                                    </Entry.Behaviors>
-                                                </Entry>
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                         </StackLayout>
                                         <StackLayout
@@ -983,6 +987,7 @@
                                             Margin="0,-6,0,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
+                                             IsHintAlwaysFloated="True"
                                             HorizontalOptions="StartAndExpand"
                                             OutlineCornerRadius="13"
                                             Stroke="{StaticResource Primary}">
@@ -1140,10 +1145,10 @@
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}"
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
-                                            <Button
+                                            <buttons:SfButton
                                                 Grid.Row="0"
                                                 Grid.Column="1"
-                                                BackgroundColor="Transparent"
+                                                Background="Transparent"
                                                 Clicked="Button_Clicked_1"
                                                 FontFamily="SSTBold"
                                                 HorizontalOptions="End"
@@ -1245,10 +1250,10 @@
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}"
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
-                                            <Button
+                                            <buttons:SfButton
                                                 Grid.Row="0"
                                                 Grid.Column="1"
-                                                BackgroundColor="Transparent"
+                                                Background="Transparent"
                                                 Clicked="Button_Clicked_2"
                                                 FontFamily="SSTBold"
                                                 HorizontalOptions="End"
@@ -1348,10 +1353,10 @@
                                                     Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}"
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
-                                            <Button
+                                            <buttons:SfButton
                                                 Grid.Row="0"
                                                 Grid.Column="1"
-                                                BackgroundColor="Transparent"
+                                                Background="Transparent"
                                                 Clicked="Button_Clicked_3"
                                                 FontFamily="SSTBold"
                                                 HorizontalOptions="End"

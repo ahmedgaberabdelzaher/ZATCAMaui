@@ -3037,8 +3037,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
-                ///only for dev purpose
-                ///
 #if DEBUG
                 await Application.Current.MainPage.DisplayAlert("Error", ex.ToString(), "OK");
 #endif

@@ -25,6 +25,7 @@
             LeadingViewPosition="Inside"
             OutlineCornerRadius="14"
             Stroke="#999999"
+             IsHintAlwaysFloated="True"
             Style="{StaticResource InputTableTextInputLayoutStyle}">
             <custom:GAZTBorderlessEntry
                 x:Name="TextValue"

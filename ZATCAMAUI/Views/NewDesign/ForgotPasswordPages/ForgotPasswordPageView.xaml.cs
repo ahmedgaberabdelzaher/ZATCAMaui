@@ -17,20 +17,25 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
         GAZTNewDesignForgotPasswordPageViewModel viewModel;
         public GAZTNewDesignForgotPasswordPageView()
         {
+            try
+            {
+                InitializeComponent();
+                NavigationPage.SetBackButtonTitle(this, " ");
 
-            InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, " ");
+                viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
+                BindingContext = viewModel;
+                viewModel.ClearData();
+                viewModel.OnPageLoad();
+                SetLTR();
+                viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
+                SetPickerFont();
+                viewModel.StartPage = 1;
+                On<iOS>().SetUseSafeArea(true);
+            }
+            catch (Exception)
+            {
 
-            viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
-            BindingContext = viewModel;
-            viewModel.ClearData();
-            viewModel.OnPageLoad();
-            SetLTR();
-            viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
-            SetPickerFont();
-            viewModel.StartPage = 1;
-            On<iOS>().SetUseSafeArea(true);
-
+            }
         }
 
         public void SetPickerFont()
@@ -218,7 +223,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             }
         }
 
-        void OnIdNumberTextChanged(object sender,TextChangedEventArgs e)
+        void OnIdNumberTextChanged(object sender, TextChangedEventArgs e)
         {
             if (viewModel.CorporateCardBackgroundImg.Equals("FP_selected_tile"))
             {
@@ -322,28 +327,37 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-
-            if (Device.RuntimePlatform == Device.Android)
+            try
             {
-                Picker_Tins.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
+
+
+                base.OnAppearing();
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                Padding = safeInsets;
+
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    Picker_Tins.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
+                }
+                else
+                {
+                    Picker_Tins.BackgroundColor = (Color)Application.Current.Resources["White"];
+                }
+
+                // Reset values
+                viewModel.currentAttempts = 0;
+                viewModel.Enabled = true;
+
+                NewPasswordIcon.Source = "hidePassword";
+                ConfirmNewPasswordIcon.Source = "hidePassword";
             }
-            else
+            catch (Exception)
             {
-                Picker_Tins.BackgroundColor = (Color)Application.Current.Resources["White"];
+
             }
-
-            // Reset values
-            viewModel.currentAttempts = 0;
-            viewModel.Enabled = true;
-
-            NewPasswordIcon.Source = "hidePassword";
-            ConfirmNewPasswordIcon.Source = "hidePassword";
         }
 
         protected override void OnDisappearing()

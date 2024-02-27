@@ -28,6 +28,7 @@
                 <inputLayout:SfTextInputLayout
                     x:Name="EmailInputLayout"
                     Grid.Column="0"
+                     IsHintAlwaysFloated="True"
                     Grid.ColumnSpan="2"
                     Margin="10,-6,10,-6"
                     ContainerType="Outlined"
@@ -73,6 +74,7 @@
                     x:Name="TINSLayout"
                     Grid.Row="0"
                     Grid.Column="0"
+                     IsHintAlwaysFloated="True"
                     Grid.ColumnSpan="2"
                     Margin="10,-6,10,-6"
                     ContainerType="Outlined"

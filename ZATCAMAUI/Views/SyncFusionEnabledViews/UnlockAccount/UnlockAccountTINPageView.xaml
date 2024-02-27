@@ -129,6 +129,7 @@
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                         IsHintAlwaysFloated="True"
                                         HorizontalOptions="FillAndExpand"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="8"
@@ -305,6 +306,7 @@
                                         Grid.Column="0"
                                         Grid.ColumnSpan="1"
                                         ContainerType="Outlined"
+                                         IsHintAlwaysFloated="True"
                                         HasError="False"
                                         OutlineCornerRadius="12"
                                         Stroke="{StaticResource Primary}">
@@ -337,6 +339,7 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Grid.ColumnSpan="1"
+                                         IsHintAlwaysFloated="True"
                                         ContainerType="Outlined"
                                         HasError="False"
                                         OutlineCornerRadius="12"
@@ -372,6 +375,7 @@
                                         Grid.ColumnSpan="1"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                         IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="12"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -406,6 +410,7 @@
                                         Grid.ColumnSpan="1"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                         IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="12"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -605,6 +610,7 @@
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
+                                         IsHintAlwaysFloated="True"
                                         HasError="{Binding FramePasswordError}"
                                         HorizontalOptions="FillAndExpand"
                                         LeadingViewPosition="Inside"
@@ -655,6 +661,7 @@
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
+                                         IsHintAlwaysFloated="True"
                                         HasError="{Binding FrameConfirmPasswordError}"
                                         HorizontalOptions="FillAndExpand"
                                         LeadingViewPosition="Inside"

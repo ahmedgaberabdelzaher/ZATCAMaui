@@ -67,7 +67,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="15"
                     HorizontalOptions="Center"
@@ -87,11 +87,12 @@
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                 Padding="10">
 
                         <!--  Circle view  -->
                         <Grid
-                            Margin="0,30,0,10"
+                            Margin="0,20,0,10"
                             ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
                             ColumnSpacing="0"
                             HorizontalOptions="CenterAndExpand"
@@ -100,17 +101,18 @@
 
                             <!--  Circle button 1  -->
                             <ImageButton
-                                Padding="5"
+                                Padding="6"
+                                Margin="-5,0"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="30"
+                                HeightRequest="41"
                                 HorizontalOptions="EndAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="30" />
+                                WidthRequest="41" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -121,11 +123,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 2  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="2"
-                                BackgroundColor="Transparent"
-                                BorderColor="#0996D4"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#0996D4"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -134,13 +136,13 @@
                                 TextColor="#0996D4"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -151,11 +153,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 3  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="4"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -164,13 +166,13 @@
                                 TextColor="#565655"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -181,11 +183,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 4  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="6"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -194,13 +196,13 @@
                                 TextColor="#565655"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                         </Grid>
 
@@ -228,10 +230,10 @@
                                 HeightRequest="94"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
-                                <Image Aspect="Fill" Source="QSelected.png">
+                                <Image Aspect="AspectFill" Source="QSelected.png">
 
                                     <Image.Triggers>
                                         <DataTrigger
@@ -291,11 +293,11 @@
                             <!--  National ID card  -->
                             <Grid
                                 Padding="5"
-                                HeightRequest="94"
-                                WidthRequest="171">
+                                HeightRequest="100"
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
-                                <Image Aspect="Fill" Source="QUnselected.png">
+                                <Image Aspect="AspectFill" Source="QUnselected.png">
 
                                     <Image.Triggers>
                                         <DataTrigger
@@ -371,6 +373,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -408,6 +411,7 @@
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -443,6 +447,7 @@
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -475,6 +480,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
@@ -498,6 +504,10 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -524,6 +534,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -566,11 +577,11 @@
                             <!--  Male card  -->
                             <Grid
                                 Padding="5"
-                                HeightRequest="94"
-                                WidthRequest="171">
+                                HeightRequest="100"
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
-                                <Image Aspect="Fill" Source="QSelected.png">
+                                <Image Aspect="AspectFit" Source="QSelected.png">
 
                                     <Image.Triggers>
                                         <DataTrigger
@@ -629,13 +640,11 @@
 
                             <!--  Female Card  -->
                             <Grid
-                                HeightRequest="94"
-                                HorizontalOptions="StartAndExpand"
-                                VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                HeightRequest="100"
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
-                                <Image Aspect="Fill" Source="QUnselected.png">
+                                <Image Aspect="AspectFit" Source="QUnselected.png">
 
                                     <Image.Triggers>
                                         <DataTrigger
@@ -701,6 +710,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -755,6 +765,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -777,6 +788,10 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -803,6 +818,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
@@ -812,7 +828,7 @@
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                <Grid>
+                                <Grid Padding="10">
 
                                     <DatePicker
                                         x:Name="ReleaseDate"
@@ -874,6 +890,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -882,7 +899,7 @@
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                <Grid>
+                                <Grid Padding="10">
 
                                     <DatePicker
                                         x:Name="EndDate"
@@ -943,6 +960,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
@@ -952,7 +970,7 @@
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                <Grid>
+                                <Grid Padding="10">
 
                                     <DatePicker
                                         x:Name="DateBirth"

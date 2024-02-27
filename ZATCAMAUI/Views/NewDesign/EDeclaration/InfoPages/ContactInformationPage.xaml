@@ -62,7 +62,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <controls:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="15"
                     HorizontalOptions="Center"
@@ -80,13 +80,15 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
+                <Grid RowDefinitions="*">
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                 Padding="10">
 
                         <!--  Circle view  -->
                         <Grid
-                            Margin="0,30,0,10"
+                            Margin="0,20,0,10"
                             ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
                             ColumnSpacing="0"
                             HorizontalOptions="CenterAndExpand"
@@ -96,16 +98,17 @@
                             <!--  Circle button 1  -->
                             <ImageButton
                                 Padding="5"
+                                Margin="-5,0"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="30"
+                                HeightRequest="39"
                                 HorizontalOptions="EndAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="30" />
+                                WidthRequest="39"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -119,16 +122,17 @@
                             <ImageButton
                                 Grid.Column="2"
                                 Padding="5"
+                                Margin="-5,0"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="30"
+                                HeightRequest="39"
                                 HorizontalOptions="StartAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="30" />
+                                WidthRequest="39" />
 
 
                             <!--  Horizontal Line  -->
@@ -143,16 +147,17 @@
                             <ImageButton
                                 Grid.Column="4"
                                 Padding="5"
+                                Margin="-5,0"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="30"
+                                HeightRequest="39"
                                 HorizontalOptions="StartAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="30" />
+                                WidthRequest="39" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -163,11 +168,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 4  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="6"
-                                BackgroundColor="Transparent"
-                                BorderColor="#0996D4"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#0996D4"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -176,13 +181,13 @@
                                 TextColor="#0996D4"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                         </Grid>
 
@@ -214,7 +219,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -231,6 +236,7 @@
                                 <inputLayout:SfTextInputLayout.LeadingView>
                                     <StackLayout
                                         Padding="2"
+                                        WidthRequest="45"
                                         Orientation="Horizontal"
                                         Spacing="0">
 
@@ -253,6 +259,12 @@
                                     </StackLayout>
                                 </inputLayout:SfTextInputLayout.LeadingView>
                             </inputLayout:SfTextInputLayout>
+
+                             <Label
+                                Margin="3,-10,3,3"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.NumberHint}"
+                                TextColor="#58595B" />
                         </StackLayout>
 
                         <!--  Email Field  -->
@@ -275,6 +287,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -309,6 +322,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -347,7 +361,7 @@
                     </StackLayout>
 
                 </ScrollView>
-
+                </Grid>
             </yummy:PancakeView>
             <!--#endregion Body-->
 

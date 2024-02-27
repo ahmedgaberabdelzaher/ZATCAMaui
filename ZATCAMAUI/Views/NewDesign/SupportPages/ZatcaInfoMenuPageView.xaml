@@ -245,7 +245,7 @@
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnBackArrowTapped" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"

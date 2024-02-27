@@ -118,7 +118,7 @@
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TOnBackButtonClicked" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"

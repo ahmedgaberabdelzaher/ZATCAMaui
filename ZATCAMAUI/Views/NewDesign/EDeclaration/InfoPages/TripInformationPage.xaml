@@ -67,7 +67,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="15"
                     HorizontalOptions="Center"
@@ -87,11 +87,12 @@
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                 Padding="10">
 
                         <!--  Circle view  -->
                         <Grid
-                            Margin="0,30,0,10"
+                            Margin="0,20,0,10"
                             ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
                             ColumnSpacing="0"
                             HorizontalOptions="CenterAndExpand"
@@ -100,17 +101,18 @@
 
                             <!--  Circle button 1  -->
                             <ImageButton
-                                Padding="5"
+                                Padding="6"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="30"
+                                Margin="-5,0"
+                                HeightRequest="41"
                                 HorizontalOptions="EndAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="30" />
+                                WidthRequest="41" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -123,17 +125,18 @@
                             <!--  Circle button 2  -->
                             <ImageButton
                                 Grid.Column="2"
-                                Padding="5"
+                                Padding="6"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
+                                Margin="-5,0"
                                 CornerRadius="15"
-                                HeightRequest="30"
+                                HeightRequest="41"
                                 HorizontalOptions="StartAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="30" />
+                                WidthRequest="41" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -144,11 +147,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 3  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="4"
-                                BackgroundColor="Transparent"
-                                BorderColor="#0996D4"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#0996D4"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -157,13 +160,13 @@
                                 TextColor="#0996D4"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -174,11 +177,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 4  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="6"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -187,13 +190,13 @@
                                 TextColor="#565655"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                         </Grid>
 
@@ -247,13 +250,13 @@
 
                             <!--  Air Card  -->
                             <Grid
-                                HeightRequest="94"
+                                HeightRequest="100"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
-                                <Image Aspect="Fill" Source="{Binding TripCard.AirImage}" />
+                                <Image Aspect="AspectFit" Source="{Binding TripCard.AirImage}" />
 
                                 <!--  Air Label  -->
                                 <custom:CustomLabel
@@ -274,13 +277,13 @@
                             <!--  Land card  -->
                             <Grid
                                 Padding="5"
-                                HeightRequest="94"
+                                HeightRequest="100"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
-                                <Image Aspect="Fill" Source="{Binding TripCard.LandImage}" />
+                                <Image Aspect="AspectFit" Source="{Binding TripCard.LandImage}" />
 
                                 <!--  Land label  -->
                                 <custom:CustomLabel
@@ -302,12 +305,12 @@
                         <!--  Sea card  -->
                         <Grid
                             Padding="5"
-                            HeightRequest="94"
+                            HeightRequest="100"
                             HorizontalOptions="StartAndExpand"
-                            WidthRequest="171">
+                            WidthRequest="160">
 
                             <!--  Background image selected  -->
-                            <Image Aspect="Fill" Source="{Binding TripCard.SeaImage}" />
+                            <Image Aspect="AspectFit" Source="{Binding TripCard.SeaImage}" />
 
                             <!--  Sea label  -->
                             <custom:CustomLabel
@@ -356,6 +359,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -377,6 +381,10 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -412,6 +420,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -433,6 +442,10 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                  <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -470,12 +483,13 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <Grid>
+                                <Grid Padding="10">
 
                                     <DatePicker
                                         x:Name="ArivalDate"
@@ -534,6 +548,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -568,6 +583,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -588,6 +604,10 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -615,6 +635,7 @@
                                 ContainerType="Outlined"
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -656,6 +677,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -676,6 +698,10 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -701,6 +727,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -724,6 +751,10 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -750,6 +781,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -789,6 +821,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                 IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -808,6 +841,7 @@
                                     </custom:GAZTBorderlessEntry.Behaviors>
 
                                 </custom:GAZTBorderlessEntry>
+
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>

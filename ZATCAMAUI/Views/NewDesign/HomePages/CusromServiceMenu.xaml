@@ -8,10 +8,8 @@
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
     TitleText="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}">
     <newdesign:BaseContentPage.PancakeView>
-        <Grid>
-            <ScrollView VerticalScrollBarVisibility="Never">
-                <controls:ServiceMenuControl />
-            </ScrollView>
+        <Grid Padding="10">
+              <controls:ServiceMenuControl />
         </Grid>
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>

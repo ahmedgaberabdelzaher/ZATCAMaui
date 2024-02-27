@@ -241,10 +241,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         public void SetDefaultDate()
         {
-
-            //TodayDateinHijri
             ObservableCollection<object> todaycollectionHijri = new ObservableCollection<object>();
-            var calendar = new HijriCalendar();
+            var calendar = new UmAlQuraCalendar();
             if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
                 todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
             else
@@ -255,7 +253,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 todaycollectionHijri.Add(calendar.GetMonth(DateTime.Now.Date).ToString());
             todaycollectionHijri.Add(calendar.GetYear(DateTime.Now.Date).ToString());
             TodayDateinHijri = todaycollectionHijri;
-            //     DefaultMonthHijri = calendar.GetMonth(DateTime.Now.Date);
 
 
         }

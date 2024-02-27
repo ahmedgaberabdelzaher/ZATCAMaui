@@ -27,70 +27,70 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         public IndividualRegistrationPageView(string isGulf)
         {
-            InitializeComponent();
-
-            viewModel = App.Locator.IndividualRegistrationPageView;
-            On<iOS>().SetUseSafeArea(true);
-            BindingContext = viewModel;
-            viewModel.IsHijriCal = false;
-
-            if (isGulf == "Gulf")
-            {
-                viewModel.IsGulfER = true;
-                viewModel.IsCitizen = false;
-            }
-            else if (isGulf == "RegisterPageSSO")
-            {
-                viewModel.IsGulfER = false;
-                viewModel.IsCitizen = true;
-            }
-            else
-            {
-                viewModel.IsGulfER = true;
-                viewModel.IsCitizen = false;
-            }
-
-
-            viewModel.ClearData();
-            Task.Run(async () =>
-           {
-               viewModel.OnPageLoad();
-           });
-
-            viewModel.IndividualRegistrationView = true;
-            SetLTR();
-
-            viewModel.TxtCountryCode = "+966";
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                IntnlCodes.Margin = new Thickness(0);
-            }
-            else
-            {
-                IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
-            }
-            viewModel.currentStep = 1;
-            viewModel.NationalAddressView = false;
-            viewModel.ContactInformationView = false;
-            viewModel.SummeryView = false;
-            viewModel.PasswordView = false;
-            viewModel.ContinueButtonText = AppResources.ZZZZContinue;
-            //viewModel.SetFormVisibility();
             try
             {
+
+
+                InitializeComponent();
+
+                viewModel = App.Locator.IndividualRegistrationPageView;
+                On<iOS>().SetUseSafeArea(true);
+                BindingContext = viewModel;
+                viewModel.IsHijriCal = false;
+
+                if (isGulf == "Gulf")
+                {
+                    viewModel.IsGulfER = true;
+                    viewModel.IsCitizen = false;
+                }
+                else if (isGulf == "RegisterPageSSO")
+                {
+                    viewModel.IsGulfER = false;
+                    viewModel.IsCitizen = true;
+                }
+                else
+                {
+                    viewModel.IsGulfER = true;
+                    viewModel.IsCitizen = false;
+                }
+
+
+                viewModel.ClearData();
+                Task.Run(async () =>
+               {
+                   await viewModel.OnPageLoad();
+               });
+
+                viewModel.IndividualRegistrationView = true;
+                SetLTR();
+
+                viewModel.TxtCountryCode = "+966";
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    IntnlCodes.Margin = new Thickness(0);
+                }
+                else
+                {
+                    IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
+                }
+                viewModel.currentStep = 1;
+                viewModel.NationalAddressView = false;
+                viewModel.ContactInformationView = false;
+                viewModel.SummeryView = false;
+                viewModel.PasswordView = false;
+                viewModel.ContinueButtonText = AppResources.ZZZZContinue;
                 viewModel.PopulateDataInChips();
                 ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType == AppResources.NDGregorian).FirstOrDefault();
                 viewModel.IsHijriCal = false;
                 viewModel.DOBddyymm = string.Empty;
                 viewModel.DOB = string.Empty;
-
+                SetPickerFont();
+                _ = viewModel.GetCaptchAndGUID();
             }
             catch (Exception)
             {
 
             }
-            SetPickerFont();
-            _ = viewModel.GetCaptchAndGUID();
         }
 
 
@@ -652,14 +652,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (Exception)
 
-                        
+
                         {
 
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                
+
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
@@ -708,7 +708,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 SignUpDOB.IsOpen = true;
 
-              
+
             }
         }
         private void CountryCodes_Clicked(object sender, EventArgs e)
@@ -1030,7 +1030,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void ddlLIssuedByCity_OkButtonClicked(object sender,EventArgs e)
+        private void ddlLIssuedByCity_OkButtonClicked(object sender, EventArgs e)
         {
 
         }
@@ -1050,109 +1050,108 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-            idType.Text = "";
-            Number.Text = "";
-            Birthdt.Text = "";
-            Firstname.Text = "";
-            if (viewModel.IsCitizen)
+            try
             {
-                Task.Run(async () =>
-                {
 
-                    try
+
+                base.OnAppearing();
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                Padding = safeInsets;
+                idType.Text = "";
+                Number.Text = "";
+                Birthdt.Text = "";
+                Firstname.Text = "";
+                if (viewModel.IsCitizen)
+                {
+                    Task.Run(async () =>
                     {
                         viewModel.modelSSOID = await WebServiceManager.LoginDataSSO();
                         //viewModel.IdNumber = viewModel.modelSSOID.results[0].Idnumber;
                         MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            // EntryIDNumber.Text = viewModel.modelSSOID.results[0].Idnumber;
-                            if (viewModel.modelSSOID.results[0].IdType == "ZS0015")
-                            {
-                                idType.Text = AppResources.NationaID;
-                            }
-                            else
-                            {
-                                idType.Text = AppResources.VFCIqamaID;
-                            }
-
-                            Number.Text = viewModel.modelSSOID.results[0].Idnumber;
-                            Birthdt.Text = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt);
-                            viewModel.DOBddyymm = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt); ;
-                            Firstname.Text = viewModel.modelSSOID.results[0].Firstname;
-
-                            await Task.Run(() =>
-                            {
-                                viewModel.IsLoading = false;
-                            });
-                        });
-
-                    }
-                    catch (Exception)
                     {
+                        // EntryIDNumber.Text = viewModel.modelSSOID.results[0].Idnumber;
+                                if (viewModel.modelSSOID.results[0].IdType == "ZS0015")
+                                {
+                                    idType.Text = AppResources.NationaID;
+                                }
+                                else
+                                {
+                                    idType.Text = AppResources.VFCIqamaID;
+                                }
 
-                    }
-                    //viewModel.TxtIDType = viewModel.modelSSOID.results[0].Idnumber;
+                                Number.Text = viewModel.modelSSOID.results[0].Idnumber;
+                                Birthdt.Text = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt);
+                                viewModel.DOBddyymm = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt); ;
+                                Firstname.Text = viewModel.modelSSOID.results[0].Firstname;
+
+                                await Task.Run(() =>
+                                {
+                                    viewModel.IsLoading = false;
+                                });
+                            });
+
+                    });
+
+                }
+
+
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    DDlIDType.Background = (Color)Application.Current.Resources["PickerBgGray"];
+                    GCCPicker_Country.Background = (Color)Application.Current.Resources["PickerBgGray"];
+                    Picker_Region.Background = (Color)Application.Current.Resources["PickerBgGray"];
+                    Picker_City.Background = (Color)Application.Current.Resources["PickerBgGray"];
+                }
+                else
+                {
+                    DDlIDType.Background = (Color)Application.Current.Resources["White"];
+                    GCCPicker_Country.Background = (Color)Application.Current.Resources["White"];
+                    Picker_Region.Background = (Color)Application.Current.Resources["White"];
+                    Picker_City.Background = (Color)Application.Current.Resources["White"];
+                }
+
+                MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+                {
+                    IntnlCodes.Text = arg;
+                    viewModel.TxtCountryCode = arg;
+                });
+                MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
+                {
+
+                    viewModel.MobileCountryCode = arg;
                 });
 
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    IntnlCodes.Margin = new Thickness(0);
+                }
+                else
+                {
+                    IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
+                }
+                try
+                {
+                    mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+                }
+                catch (Exception)
+                {
+
+
+
+                }
+                if (viewModel.currentStep == 5 && App.IsComingFromSleepMode)
+                {
+
+                    int timeToExpireOTP = 120;
+                    viewModel.TimerStart(timeToExpireOTP);
+                }
             }
-
-
-
-            if (Device.RuntimePlatform == Device.Android)
+            catch (Exception )
             {
-                DDlIDType.Background = (Color)Application.Current.Resources["PickerBgGray"];
-                GCCPicker_Country.Background = (Color)Application.Current.Resources["PickerBgGray"];
-                Picker_Region.Background = (Color)Application.Current.Resources["PickerBgGray"];
-                Picker_City.Background = (Color)Application.Current.Resources["PickerBgGray"];
-            }
-            else
-            {
-                DDlIDType.Background = (Color)Application.Current.Resources["White"];
-                GCCPicker_Country.Background = (Color)Application.Current.Resources["White"];
-                Picker_Region.Background = (Color)Application.Current.Resources["White"];
-                Picker_City.Background = (Color)Application.Current.Resources["White"];
-            }
-
-            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
-            {
-                IntnlCodes.Text = arg;
-                viewModel.TxtCountryCode = arg;
-            });
-            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedCountryCode", (sender, arg) =>
-            {
-
-                viewModel.MobileCountryCode = arg;
-            });
-
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                IntnlCodes.Margin = new Thickness(0);
-            }
-            else
-            {
-                IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
-            }
-            try
-            {
-                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
-            }
-            catch (Exception)
-            {
-
-
 
             }
-            if (viewModel.currentStep == 5 && App.IsComingFromSleepMode)
-            {
-
-                int timeToExpireOTP = 120;
-                viewModel.TimerStart(timeToExpireOTP);
-            }
-
         }
 
         private void PickerBtn_Country_Clicked(object sender, EventArgs e)

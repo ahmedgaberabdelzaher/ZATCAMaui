@@ -177,6 +177,7 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
+                             IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -212,6 +213,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -275,6 +277,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -326,6 +329,7 @@
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
                                     <custom:GAZTBorderlessEntry
@@ -356,6 +360,7 @@
                                     Grid.Column="1"
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                     IsHintAlwaysFloated="True"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
@@ -386,6 +391,7 @@
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
                                     <custom:GAZTBorderlessEntry
@@ -413,6 +419,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
+                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -444,6 +451,7 @@
                                     Grid.Row="5"
                                     Grid.Column="0"
                                     ContainerBackground="White"
+                                     IsHintAlwaysFloated="True"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
@@ -471,6 +479,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="5"
                                     Grid.Column="1"
+                                     IsHintAlwaysFloated="True"
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
@@ -508,6 +517,7 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
+                             IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -539,6 +549,7 @@
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
+                             IsHintAlwaysFloated="True"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
@@ -581,6 +592,7 @@
                             HelperText="{x:Static ResourceManager:AppResources.PDFFileHint}"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
+                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}"
                             VerticalOptions="StartAndExpand">
@@ -625,6 +637,7 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             InputViewPadding="16,0,16,0"
+                                             IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="15"
                                             Stroke="{StaticResource NeutralGreay}">

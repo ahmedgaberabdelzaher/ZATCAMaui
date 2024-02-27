@@ -22,7 +22,7 @@
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>-->
-            <ResourceDictionary>
+            <ResourceDictionary> 
                 <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             </ResourceDictionary>
         </ResourceDictionary>
@@ -63,7 +63,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="15"
                     HorizontalOptions="Center"
@@ -110,9 +110,12 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
+                <Grid RowDefinitions="*">
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                 Padding="10,0"
+                                 Spacing="8">
 
                         <!--  Circle view  -->
                         <Grid
@@ -124,10 +127,10 @@
                             VerticalOptions="Start">
 
                             <!--  Circle button 1  -->
-                            <Button
-                                BackgroundColor="Transparent"
-                                BorderColor="#0996D4"
-                                BorderWidth="1"
+                            <buttons:SfButton
+                                Background="Transparent"
+                                Stroke="#0996D4"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="EndAndExpand"
@@ -136,13 +139,13 @@
                                 TextColor="#0996D4"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -153,11 +156,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 2  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="2"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -166,13 +169,13 @@
                                 TextColor="#565655"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -183,11 +186,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 3  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="4"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -196,13 +199,13 @@
                                 TextColor="#565655"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -213,11 +216,11 @@
                                 WidthRequest="20" />
 
                             <!--  Circle button 4  -->
-                            <Button
+                            <buttons:SfButton
                                 Grid.Column="6"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
+                                Background="Transparent"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
@@ -226,13 +229,13 @@
                                 TextColor="#565655"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="30">
-                                <Button.Padding>
+                                <buttons:SfButton.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
-                                </Button.Padding>
+                                </buttons:SfButton.Padding>
 
-                            </Button>
+                            </buttons:SfButton>
 
                         </Grid>
 
@@ -249,8 +252,8 @@
                         <!--  Horizontal Line  -->
                         <BoxView
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                            HeightRequest="1"
+                            WidthRequest="350" />
 
                         <!--  Welcome Label for logged in only  -->
                         <Label
@@ -290,9 +293,9 @@
                         <BoxView
                             Margin="0,0,0,10"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
+                            HeightRequest="1"
                             IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
-                            WidthRequest="20" />
+                            WidthRequest="350" />
 
                         <!--#region Questions View-->
                         <StackLayout>
@@ -318,7 +321,7 @@
                                 </Frame.Triggers>
 
                                 <StackLayout
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="Start"
                                     Orientation="Horizontal"
                                     Spacing="10"
                                     VerticalOptions="StartAndExpand">
@@ -327,7 +330,7 @@
                                     <Image
                                         Aspect="AspectFit"
                                         HeightRequest="20"
-                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalOptions="Start"
                                         Source="information.png"
                                         VerticalOptions="StartAndExpand"
                                         WidthRequest="20" />
@@ -335,6 +338,7 @@
                                     <!--  Question Hint Label  -->
                                     <custom:CustomLabel
                                         FontSize="12"
+                                        LineHeight="1"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}"
                                         TextColor="#999999">
@@ -431,10 +435,13 @@
                         <!--#endregion Questions View-->
 
                         <!--#region Submit and Card-->
-                        <StackLayout>
+                        <StackLayout Spacing="10"
+                                     WidthRequest="350"
+                                     Margin="0,10">
                             <!--  Add Item Button  -->
                             <buttons:SfButton
                                 Command="{Binding AddCommand}"
+                                WidthRequest="350"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.AddItem}" />
 
@@ -494,7 +501,8 @@
                             Command="{Binding NextCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}"
-                            VerticalOptions="EndAndExpand" />
+                            VerticalOptions="EndAndExpand"
+                            WidthRequest="350"/>
 
                         <!--  Prevoius Button  -->
                         <buttons:SfButton
@@ -510,7 +518,7 @@
                     </StackLayout>
 
                 </ScrollView>
-
+                </Grid>
             </yummy:PancakeView>
             <!--#endregion Body-->
 

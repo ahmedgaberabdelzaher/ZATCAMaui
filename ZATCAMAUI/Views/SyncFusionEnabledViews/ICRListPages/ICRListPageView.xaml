@@ -130,6 +130,7 @@
                     Margin="10,0,10,0"
                     ContainerType="Outlined"
                     HasError="False"
+                     IsHintAlwaysFloated="True"
                     OutlineCornerRadius="8"
                     Stroke="{StaticResource Primary}">
                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>

@@ -89,6 +89,7 @@
                     ContainerBackground="White"
                     ContainerType="Outlined"
                     InputViewPadding="0"
+                     IsHintAlwaysFloated="True"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15">
                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -111,6 +112,7 @@
                     ContainerType="Outlined"
                     EnablePasswordVisibilityToggle="True"
                     InputViewPadding="0"
+                     IsHintAlwaysFloated="True"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15">
                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>

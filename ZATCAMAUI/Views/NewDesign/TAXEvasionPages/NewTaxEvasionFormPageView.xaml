@@ -97,6 +97,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="2"
                                     Grid.Column="0"
+                                     IsHintAlwaysFloated="True"
                                     Margin="0,-6,0,-6"
                                     HasError="{Binding IsTnameHasError}"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -119,6 +120,7 @@
                                     ContainerType="Outlined"
                                     FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
+                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="8"
                                     Stroke="{StaticResource Primary}">
@@ -140,7 +142,7 @@
                                             WidthRequest="80" />
 
                                     </inputLayout:SfTextInputLayout.LeadingView>
-                                    <Entry
+                                    <custom:GAZTBorderlessEntry
                                         x:Name="TMobNumber"
                                         FlowDirection="LeftToRight"
                                         FontSize="Medium"
@@ -164,6 +166,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="2"
                                     Grid.Column="0"
+                                     IsHintAlwaysFloated="True"
                                     Margin="0,-10,0,0">
                                     <Editor
                                         AutoSize="TextChanges"
@@ -220,6 +223,7 @@
                                 <inputLayout:SfTextInputLayout
                                     x:Name="FrmFName"
                                     Margin="0,-10,0,0"
+                                     IsHintAlwaysFloated="True"
                                     HasError="{Binding IsFacilityNameHasError}"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
@@ -229,9 +233,9 @@
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TFaciName}"
                                         Unfocused="TFaciName_Unfocused">
-                                        <Entry.Behaviors>
+                                        <custom:GAZTBorderlessEntry.Behaviors>
                                             <behaviors:AlphabetandArabicCharacters />
-                                        </Entry.Behaviors>
+                                        </custom:GAZTBorderlessEntry.Behaviors>
                                     </custom:GAZTBorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
 
@@ -239,6 +243,7 @@
                                 <inputLayout:SfTextInputLayout
                                     x:Name="FrmTIN"
                                     Margin="0,-10,0,0"
+                                     IsHintAlwaysFloated="True"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TxtTIN"
@@ -258,6 +263,7 @@
                                 <inputLayout:SfTextInputLayout
                                     x:Name="FrmVAT"
                                     Margin="0,-10,0,0"
+                                     IsHintAlwaysFloated="True"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TVatNumber"
@@ -282,6 +288,7 @@
                                 <Grid>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-10,0,0"
+                                         IsHintAlwaysFloated="True"
                                         HasError="{Binding IsRegionHasError}"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
@@ -367,6 +374,7 @@
                                 <Grid>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-10,0,0"
+                                         IsHintAlwaysFloated="True"
                                         HasError="{Binding IsCityHasError}"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
@@ -454,6 +462,7 @@
                                 <inputLayout:SfTextInputLayout
                                     x:Name="FrmFDAddress"
                                     Margin="0,-10,0,0"
+                                     IsHintAlwaysFloated="True"
                                     HasError="{Binding IsFDHasError}"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
@@ -475,6 +484,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="2"
                                     Grid.Column="0"
+                                     IsHintAlwaysFloated="True"
                                     Margin="0,-10,0,0"
                                     HasError="{Binding IsFSHasError}"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -594,6 +604,7 @@
                                     x:Name="FrmReportDetail"
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
+                                     IsHintAlwaysFloated="True"
                                     HasError="{Binding IsReportDetailHasError}"
                                     OutlineCornerRadius="8"
                                     Stroke="{StaticResource Primary}">
@@ -632,6 +643,7 @@
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-10,0,0"
                                         LeadingViewPosition="Inside"
+                                         IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <inputLayout:SfTextInputLayout.LeadingView>
                                             <Image x:Name="Attachment_Tmg" Source="ic_attachment" />
@@ -660,6 +672,7 @@
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0,0,0,0"
                                                     LeadingViewPosition="Inside"
+                                                     IsHintAlwaysFloated="True"
                                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                     <inputLayout:SfTextInputLayout.LeadingView>
                                                         <Image x:Name="Attachment_Tmg" Source="{Binding CorrespondingImageAccoringtoext}" />
@@ -1038,6 +1051,7 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 Margin="0,10,0,0"
                                                                 LeadingViewPosition="Inside"
+                                                                 IsHintAlwaysFloated="True"
                                                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                                 <inputLayout:SfTextInputLayout.LeadingView>
                                                                     <Image x:Name="Attachment_Tmg" Source="{Binding CorrespondingImageAccoringtoext}" />

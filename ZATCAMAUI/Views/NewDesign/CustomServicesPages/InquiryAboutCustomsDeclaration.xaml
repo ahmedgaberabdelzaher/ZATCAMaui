@@ -356,6 +356,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
+                                     IsHintAlwaysFloated="True"
                                     InputViewPadding="16,0,16,0"
                                     OutlineCornerRadius="14"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -386,6 +387,7 @@
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="14"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
 
@@ -433,6 +435,7 @@
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-10,0,0"
                                         ContainerType="Outlined"
+                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
                                         OutlineCornerRadius="14"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -485,6 +488,7 @@
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
+                                     IsHintAlwaysFloated="True"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="8"
@@ -517,6 +521,7 @@
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
+                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="8"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -552,15 +557,14 @@
                                         <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="{StaticResource NeutralBlack}" />
                                     </custom:CustomHijriDatePicker.SelectedTextStyle>
 
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                      </custom:CustomHijriDatePicker.SelectionView>
+
                                     <custom:CustomHijriDatePicker.TextStyle>
                                         <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" />
                                     </custom:CustomHijriDatePicker.TextStyle>
 
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="50">
-                                            <syncfusion:PickerColumnHeaderView.TextStyle FontFamily="{StaticResource SomarSemiBold}" />
-                                        </syncfusion:PickerColumnHeaderView>
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -604,6 +608,10 @@
                                     Mode="Dialog"
                                     SelectedItem="{Binding TodayDateinHijri}">
 
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
+
                                     <custom:CustomHijriDatePicker.HeaderView>
 
                                         <syncfusion:PickerHeaderView
@@ -616,10 +624,6 @@
                                         </syncfusion:PickerHeaderView>
 
                                     </custom:CustomHijriDatePicker.HeaderView>
-
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -660,6 +664,7 @@
                                 </custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
+                                     IsHintAlwaysFloated="True"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
@@ -698,6 +703,7 @@
                                         Margin="0,-10,0,0"
                                         ContainerType="Outlined"
                                         InputViewPadding="16,0,16,0"
+                                         IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="14"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <Grid>
@@ -749,9 +755,9 @@
                                 TextColor="White"
                                 VerticalOptions="CenterAndExpand" />
                         </Frame>
-                        <Button
+                        <buttons:SfButton
                             Margin="0,20,0,10"
-                            BackgroundColor="#0996D4"
+                            Background="#0996D4"
                             Command="{Binding SubmitInquiryCommand}"
                             CornerRadius="14"
                             HorizontalOptions="FillAndExpand"

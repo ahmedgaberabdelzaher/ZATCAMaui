@@ -257,7 +257,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
                     Name=AppResources.TransactionReception, ID="IAMLoginView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
                  },
 
-                /*  ,
+                 
                    new MenuModel()
                  {
                     Name=AppResources.ShipmentTracking, ID="ShipmentTrackingTypesPage",ImageSource="shipmentIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
@@ -273,7 +273,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
                   new MenuModel()
                  {
                     Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=isvertical?0:1,Row=isvertical?7:3,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
-                 }*/
+                 },
                  new MenuModel()
                      {
                         Name=AppResources.InquiryaboutCustomsIssuesView, ID="InquiryaboutCustomsIssuesView",ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""

@@ -315,7 +315,7 @@
                     <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel
+                <Label
                     Grid.Row="0"
                     Grid.Column="1"
                     FontSize="Large"

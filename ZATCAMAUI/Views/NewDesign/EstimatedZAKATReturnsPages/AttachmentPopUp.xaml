@@ -44,6 +44,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDWriteYourObjectionReason}" />
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
+                                 IsHintAlwaysFloated="True"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry

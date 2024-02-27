@@ -117,7 +117,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                 WebviewGrid.Insert(WebviewGrid.Count, webView);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -213,7 +213,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
             }

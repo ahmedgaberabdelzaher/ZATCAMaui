@@ -195,6 +195,7 @@
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
+                             IsHintAlwaysFloated="True"
                             Stroke="#B1B1B1"
                             Style="{StaticResource InputTableTextInputLayoutStyle}"
                             VerticalOptions="CenterAndExpand">
@@ -419,6 +420,7 @@
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="15"
                                     Stroke="#B1B1B1"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">

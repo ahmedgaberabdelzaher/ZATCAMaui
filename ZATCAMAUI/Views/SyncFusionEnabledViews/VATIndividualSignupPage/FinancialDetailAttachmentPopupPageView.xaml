@@ -66,6 +66,7 @@
                                     Grid.Row="1"
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
+                                     IsHintAlwaysFloated="True"
                                     HasError="False"
                                     OutlineCornerRadius="8"
                                     Stroke="{StaticResource Primary}">
@@ -164,6 +165,7 @@
                                         Grid.Row="3"
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
+                                         IsHintAlwaysFloated="True"
                                         HasError="False"
                                         OutlineCornerRadius="8"
                                         Stroke="#bbbbbb">

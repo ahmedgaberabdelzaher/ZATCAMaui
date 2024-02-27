@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
@@ -35,10 +36,10 @@
                 Padding="0"
                 Style="{StaticResource GreyBorderFrameWithShadow}">
                 <StackLayout Orientation="Horizontal">
-                    <Button
+                    <buttons:SfButton
                         x:Name="PickerDoneButton"
                         Margin="10,0,10,0"
-                        BackgroundColor="Transparent"
+                        Background="Transparent"
                         Clicked="PopupClose_Clicked"
                         FontFamily="{StaticResource SomarBold}"
                         FontSize="Medium"
@@ -46,10 +47,10 @@
                         Text="{x:Static ResourceManager:AppResources.ZDone}"
                         TextColor="{StaticResource Primary}"
                         VerticalOptions="Center" />
-                    <Button
+                    <buttons:SfButton
                         x:Name="PickerCancelButton"
                         Margin="10,0,10,0"
-                        BackgroundColor="Transparent"
+                        Background="Transparent"
                         Clicked="PopupCancel_Clicked"
                         FontFamily="{StaticResource SomarBold}"
                         FontSize="Medium"

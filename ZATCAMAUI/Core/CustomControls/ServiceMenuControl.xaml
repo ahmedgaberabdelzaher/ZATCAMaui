@@ -20,7 +20,8 @@
             </ResourceDictionary>
         </Grid.Resources>
 
-        <Grid RowDefinitions="auto,auto">
+        <Grid RowDefinitions="auto,*">
+
             <Grid Grid.Row="0" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
@@ -31,6 +32,7 @@
                     TextColor="{StaticResource Primary}" />
                 <StackLayout
                     Grid.Column="1"
+                    Spacing="10"
                     HorizontalOptions="EndAndExpand"
                     Orientation="Horizontal">
                     <Image
@@ -69,22 +71,25 @@
 
             </Grid>
 
-            <Grid
+            <CollectionView
                 x:Name="menu"
                 Grid.Row="1"
+                ItemsLayout="VerticalGrid,2"
                 Margin="0,18,0,0"
-                BindableLayout.ItemsSource="{Binding CustomeMenuLst}"
-                ColumnDefinitions="*,*">
-                <Grid.Triggers>
+                ItemsSource="{Binding CustomeMenuLst}">
+
+                <CollectionView.Triggers>
                     <DataTrigger
                         Binding="{Binding ItemCountPerRow}"
-                        TargetType="Grid"
+                        TargetType="CollectionView"
                         Value="1">
-                        <Setter Property="ColumnDefinitions" Value="*" />
+                        <Setter Property="ItemsLayout" Value="VerticalList" />
                     </DataTrigger>
-                </Grid.Triggers>
-                <BindableLayout.ItemTemplate>
+                </CollectionView.Triggers>
+
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
+
                         <Frame
                             x:Name="Item"
                             Grid.Row="{Binding Row}"
@@ -105,13 +110,15 @@
                                     Command="{Binding NavigateToServiceCommand}"
                                     CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                             </Frame.GestureRecognizers>
-                            <StackLayout Margin="5">
+                            <StackLayout Margin="5"
+                                         Spacing="0">
                                 <StackLayout.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IsVerticalView}"
                                         TargetType="StackLayout"
                                         Value="true">
                                         <Setter Property="Orientation" Value="Horizontal" />
+                                        <Setter Property="Spacing" Value="5" />
                                     </DataTrigger>
                                 </StackLayout.Triggers>
                                 <Image
@@ -145,8 +152,9 @@
                         </Frame>
 
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </Grid>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
         </Grid>
     </Grid>
 </ContentView>

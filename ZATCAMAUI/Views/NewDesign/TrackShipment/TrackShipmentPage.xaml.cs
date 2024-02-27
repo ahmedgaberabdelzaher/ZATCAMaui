@@ -1,4 +1,5 @@
-﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment;
+﻿using ZATCAMAUI.Core.CustomControls;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment;
 
 namespace ZATCAMAUI.Views.NewDesign.TrackShipment
 {
@@ -19,6 +20,11 @@ namespace ZATCAMAUI.Views.NewDesign.TrackShipment
 
             viewModel.BackMethod();
             return true;
+        }
+
+        void declarationDate_CancelButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            viewModel.DeclarationDateString = string.Empty;
         }
     }
 }

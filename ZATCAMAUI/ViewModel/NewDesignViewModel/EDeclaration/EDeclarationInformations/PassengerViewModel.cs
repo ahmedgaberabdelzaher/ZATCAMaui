@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
-
+#if ANDROID
+using Microsoft.Maui.Handlers;
+#endif
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
     public partial class EDeclarationInformationsViewModel
@@ -114,7 +116,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                 {
                     try
                     {
-                        control?.Focus();
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+
+#if ANDROID
+                                var handler = control.Handler as IDatePickerHandler;
+                                handler.PlatformView.PerformClick();
+#endif
+#if IOS
+                            control?.Focus();
+#endif
+                        });
+                       
 
                         if (control.ClassId.ToLower().Equals("releasedateentry") &&
                             SubmitModel.travelerDeclaration.passIssuingDate.Date == DateTime.Now.Date.AddHours(-24))

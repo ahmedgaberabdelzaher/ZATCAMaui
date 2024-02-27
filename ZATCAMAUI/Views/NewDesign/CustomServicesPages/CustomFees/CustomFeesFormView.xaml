@@ -104,6 +104,7 @@
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
+                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -165,6 +166,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -214,6 +216,7 @@
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -251,6 +254,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -298,6 +302,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                 IsHintAlwaysFloated="True"
                                 FlowDirection="LeftToRight"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"

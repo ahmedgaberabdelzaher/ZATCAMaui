@@ -80,11 +80,11 @@
                         <TapGestureRecognizer Command="{Binding BackCommand}" NumberOfTapsRequired="1" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    LineSpacing=".9"
+                    LineHeight=".9"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.searchingandviewingtheindicativepricesforexciseGoods}"
                     VerticalOptions="Center" />

@@ -594,6 +594,7 @@
                     ContainerType="Outlined"
                     HorizontalOptions="FillAndExpand"
                     OutlineCornerRadius="8"
+                     IsHintAlwaysFloated="True"
                     Stroke="{StaticResource Primary}"
                     TrailingViewPosition="Inside">
                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -628,6 +629,7 @@
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Margin="0"
+                     IsHintAlwaysFloated="True"
                     ContainerType="Outlined"
                     HorizontalOptions="FillAndExpand"
                     LeadingViewPosition="Inside"
@@ -648,7 +650,7 @@
                             </Image.Source>
                         </Image>
                     </inputLayout:SfTextInputLayout.LeadingView>
-                    <Entry
+                    <custom:GAZTBorderlessEntry
                         HeightRequest="51"
                         Placeholder="Text here"
                         Style="{StaticResource DefaultEntry}" />

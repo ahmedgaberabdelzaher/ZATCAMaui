@@ -32,7 +32,10 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
         }
         private void SetColors()
         {
-            Control.SetTextColor(Element.IsEnabled ? Element.TextColor.ToAndroid() : Color.Gray);
+            if (Element.IsEnabled && Element.TextColor != null)
+                Control.SetTextColor(Element.TextColor.ToAndroid());
+            else if (Element.IsEnabled && Element.TextColor == null)
+                Control.SetTextColor(Color.Gray);
         }
         #endregion
     }

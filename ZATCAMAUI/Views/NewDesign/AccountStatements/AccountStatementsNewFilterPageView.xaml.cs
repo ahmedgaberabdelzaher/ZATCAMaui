@@ -616,11 +616,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
         }
 
-        private void TaxPeriodDateNormalCalendar_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void TaxPeriodDateNormalCalendar_Closed(object sender, EventArgs e)
         {
             try

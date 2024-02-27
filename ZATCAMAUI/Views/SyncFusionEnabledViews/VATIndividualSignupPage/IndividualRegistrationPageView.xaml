@@ -297,6 +297,7 @@
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
+                                                                 IsHintAlwaysFloated="True"
                                                                 InputViewPadding="16,0,16,0"
                                                                 LeadingViewPosition="Inside"
                                                                 OutlineCornerRadius="8"
@@ -412,6 +413,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="{Binding FrameIDError}"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
@@ -435,9 +437,9 @@
                                                                 Text="{Binding IdNumber}"
                                                                 TextChanged="GAZTBorderlessEntry_TextChanged"
                                                                 Unfocused="EntryIDNumber_Unfocused">
-                                                                <Entry.Behaviors>
+                                                                <custom:GAZTBorderlessEntry.Behaviors>
                                                                     <behaviors:OnlyNumericValuesBehaviour />
-                                                                </Entry.Behaviors>
+                                                                </custom:GAZTBorderlessEntry.Behaviors>
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -496,6 +498,7 @@
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameDOBError}"
+                                                                 IsHintAlwaysFloated="True"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
                                                                 LeadingViewPosition="Inside"
@@ -522,11 +525,11 @@
                                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
 
-                                                            <Button
+                                                            <buttons:SfButton
                                                                 x:Name="btn4"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btnDate_Clicked" />
 
                                                             <custom:CustomDatePicker
@@ -560,13 +563,10 @@
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
-                                                                <custom:CustomDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomDatePicker.ColumnHeaderView>
-
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46"
+                                                                                                 Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
@@ -596,9 +596,9 @@
                                                                 OkButtonClicked="DOB_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDateinHijri}">
 
-                                                                <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="50" Background="White" />
-                                                                </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                                                 <custom:CustomHijriDatePicker.SelectionView >
+                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                                                </custom:CustomHijriDatePicker.SelectionView>
 
                                                                 <custom:CustomHijriDatePicker.HeaderView>
 
@@ -656,6 +656,7 @@
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
+                                                             IsHintAlwaysFloated="True"
                                                             OutlineCornerRadius="8"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -767,6 +768,7 @@
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
+                                                                 IsHintAlwaysFloated="True"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
@@ -819,6 +821,7 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="GCCFrame_Country"
                                                                 Grid.Row="1"
+                                                                 IsHintAlwaysFloated="True"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameGccCountyError}"
@@ -951,6 +954,7 @@
                                                                 x:Name="Frame_Region"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
+                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameRegionError}"
                                                                 HorizontalOptions="FillAndExpand"
@@ -1083,6 +1087,7 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="Frame_City"
                                                                 Grid.Row="1"
+                                                                 IsHintAlwaysFloated="True"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameCityError}"
@@ -1201,6 +1206,7 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
+                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             LeadingViewPosition="Inside"
@@ -1236,6 +1242,7 @@
                                                         <inputLayout:SfTextInputLayout
                                                             x:Name="PostalCode"
                                                             Margin="0,-6,0,-6"
+                                                             IsHintAlwaysFloated="True"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
@@ -1274,6 +1281,7 @@
                                                         <inputLayout:SfTextInputLayout
                                                             x:Name="BuildingNumber"
                                                             Margin="0,-6,0,-6"
+                                                             IsHintAlwaysFloated="True"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
@@ -1314,6 +1322,7 @@
                                                             x:Name="UnitNumber"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
+                                                             IsHintAlwaysFloated="True"
                                                             HasError="False"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
@@ -1414,6 +1423,7 @@
                                                             x:Name="FrmEmailAddress"
                                                             Grid.Row="13"
                                                             Grid.Column="0"
+                                                             IsHintAlwaysFloated="True"
                                                             Grid.ColumnSpan="2"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
@@ -1466,6 +1476,7 @@
                                                             Grid.ColumnSpan="2"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
+                                                             IsHintAlwaysFloated="True"
                                                             HasError="{Binding FrameConfirmEmailError}"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
@@ -2054,6 +2065,7 @@
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FramePasswordError}"
                                                                 HorizontalOptions="FillAndExpand"
+                                                                 IsHintAlwaysFloated="True"
                                                                 InputViewPadding="16,0,16,0"
                                                                 LeadingViewPosition="Inside"
                                                                 OutlineCornerRadius="8"
@@ -2110,6 +2122,7 @@
                                                                 HasError="{Binding FrameConfirmPasswordError}"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                 IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
                                                                 OutlineCornerRadius="8"
                                                                 Stroke="{StaticResource Primary}"
@@ -2227,6 +2240,7 @@
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
                                                                 LeadingViewPosition="Inside"
+                                                                 IsHintAlwaysFloated="True"
                                                                 OutlineCornerRadius="8"
                                                                 Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">

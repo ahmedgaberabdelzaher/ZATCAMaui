@@ -189,6 +189,7 @@
                                 InputViewPadding="10,0,10,0"
                                 IsEnabled="{Binding EnableCRInputField}"
                                 OutlineCornerRadius="14"
+                                IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10"
@@ -263,19 +264,17 @@
                             </custom:CustomDatePicker.SelectedTextStyle>
 
 
-                            <custom:CustomDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                            </custom:CustomDatePicker.ColumnHeaderView>
-
                             <custom:CustomDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                <syncfusion:PickerHeaderView Background="#EAF7CC"
+                                                             Height="46"
+                                                             Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                             </custom:CustomDatePicker.HeaderView>
 
                             <custom:CustomDatePicker.FooterView>
 
-                                <syncfusion:PickerFooterView Background="#EAF7CC">
+                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                     <syncfusion:PickerFooterView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -302,6 +301,10 @@
                             Mode="Dialog"
                             SelectedItem="{Binding SelectedCRValidFromHijiriDate}">
 
+                             <custom:CustomHijriDatePicker.SelectionView >
+                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                             </custom:CustomHijriDatePicker.SelectionView>
+
                             <custom:CustomHijriDatePicker.SelectedTextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                             </custom:CustomHijriDatePicker.SelectedTextStyle>
@@ -315,12 +318,6 @@
                                     Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                             </custom:CustomHijriDatePicker.HeaderView>
-
-
-                            <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                            </custom:CustomHijriDatePicker.ColumnHeaderView>
-
 
                             <custom:CustomHijriDatePicker.FooterView>
 
@@ -832,6 +829,7 @@
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
 
                             <custom:GAZTBorderlessEntry
@@ -903,13 +901,13 @@
                             Mode="Dialog"
                             SelectedItem="{Binding SelectedValidFromDate}">
 
-                            <custom:CustomDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                            </custom:CustomDatePicker.ColumnHeaderView>
+
 
                             <custom:CustomDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                <syncfusion:PickerHeaderView Background="#EAF7CC"
+                                                             Height="46"
+                                                             Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                             </custom:CustomDatePicker.HeaderView>
 
@@ -919,7 +917,8 @@
 
                             <custom:CustomDatePicker.FooterView>
 
-                                <syncfusion:PickerFooterView Background="#EAF7CC">
+                                <syncfusion:PickerFooterView Height="46"
+                                                             Background="#EAF7CC">
 
                                     <syncfusion:PickerFooterView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -946,9 +945,14 @@
                             Mode="Dialog"
                             SelectedItem="{Binding SelectedValidFromHijiriDate}">
 
+                             <custom:CustomHijriDatePicker.SelectionView >
+                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                             </custom:CustomHijriDatePicker.SelectionView>
+
                             <custom:CustomHijriDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView Height="46" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                <syncfusion:PickerHeaderView Height="46"
+                                                             Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                             </custom:CustomHijriDatePicker.HeaderView>
 
@@ -957,10 +961,6 @@
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                             </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-
-                            <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
-                            </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                             <custom:CustomHijriDatePicker.FooterView>
 

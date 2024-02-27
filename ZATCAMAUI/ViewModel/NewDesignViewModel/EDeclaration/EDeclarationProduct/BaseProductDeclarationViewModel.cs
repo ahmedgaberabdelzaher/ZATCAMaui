@@ -80,18 +80,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         {
             get
             {
-                return new Command(async _ =>
+                return new Command( _ =>
                 {
-                    if(CardData != null && CardData.Count != 0)
-                    {
-                       
-                        EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
-                        await PopupNavigation.Instance.PushAsync(poupWindow);
-                        return;
-                    }
+                    MainThread.BeginInvokeOnMainThread(async() => {
 
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.EmptyCart;
+                        if (CardData != null && CardData.Count != 0)
+                        {
+
+                            EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
+                            await PopupNavigation.Instance.PushAsync(poupWindow);
+                            return;
+                        }
+
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.EmptyCart;
+
+                    });
+                    
 
                 });
             }
@@ -527,7 +532,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                             case 1:
                                 var tobaco = SubmitModel.travelerDeclaration.tobacco.First(c => c.ID == e.ID);
                                 var tobacofess = FeesCalculatorBody.tobacco?.First(c => c.ID == e.ID);
-                                                                await CalculateFees(2, tobacofess);
+                                await CalculateFees(2, tobacofess);
                                 SubmitModel.travelerDeclaration.tobacco.Remove(tobaco);
                                 break;
                             case 2:
@@ -726,7 +731,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
             _navigationService.GoBack();
         }
 
-        protected async Task CalculateFees(int operation = 1, Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
+        protected async Task<bool> CalculateFees(int operation = 1, Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
         {
             try
             {
@@ -774,7 +779,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                 {
                     FeesCalculatorResponse = new FeesCalculatorResponse();
                     await PopupNavigation.Instance.PopAsync(true);
-                    return;
+                    return false;
                 }
                 var calres = await DeclerationServices.FeesCalculator(FeesCalculatorBody);
                 if (calres.IsSuccessStatusCode)
@@ -794,17 +799,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
 
                             FeesCalculatorResponse.extraFees = result.ExtraFees;
 
-                            return;
+                            return true;
                         }
                         FeesCalculatorResponse = new FeesCalculatorResponse();
-                        return;
+                        return false;
                     }
 
                 }
+                return false;
             }
             catch (Exception)
             {
-
+                return false;
             }
 
         }

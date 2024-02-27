@@ -141,6 +141,7 @@
                                 Grid.Row="6"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
+                                 IsHintAlwaysFloated="True"
                                 Margin="10,0,10,-6"
                                 ContainerType="Outlined"
                                 HasError="False"

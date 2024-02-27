@@ -143,7 +143,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }

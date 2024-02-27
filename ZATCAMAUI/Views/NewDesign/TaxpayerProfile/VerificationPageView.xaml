@@ -241,6 +241,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,8,16,8"
                                     LeadingViewPosition="Inside"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="8"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -277,6 +278,7 @@
                                     InputViewPadding="16,8,16,8"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="8"
+                                     IsHintAlwaysFloated="True"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <inputLayout:LabelStyle TextColor="#B00020" />
@@ -309,6 +311,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,8,16,8"
                                     LeadingViewPosition="Inside"
+                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="8"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>

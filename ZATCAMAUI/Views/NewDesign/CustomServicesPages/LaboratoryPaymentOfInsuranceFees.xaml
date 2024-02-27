@@ -143,6 +143,7 @@
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="8,0,8,0"
+                                         IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="14"
                                         Style="{StaticResource InputTableTextInputLayoutStyleWuthoutHeighandWidth}"
                                         VerticalOptions="FillAndExpand">
@@ -191,6 +192,7 @@
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
+                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="14"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -225,6 +227,7 @@
                                     InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="8"
+                                     IsHintAlwaysFloated="True"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         IsReadOnly="True"
@@ -253,6 +256,10 @@
                                     Mode="Dialog"
                                     SelectedItem="{Binding TodayDateinHijri}">
 
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                     </custom:CustomHijriDatePicker.SelectionView>
+
                                     <custom:CustomHijriDatePicker.HeaderView>
 
                                         <syncfusion:PickerHeaderView
@@ -262,10 +269,6 @@
 
                                     </custom:CustomHijriDatePicker.HeaderView>
 
-
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />

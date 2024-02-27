@@ -84,7 +84,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

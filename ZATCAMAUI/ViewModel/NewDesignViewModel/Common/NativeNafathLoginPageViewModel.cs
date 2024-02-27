@@ -72,11 +72,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                                 IsLoading = false;
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
-                                //_navigationService.NavigateTo("NativeConfirmNafathPage");
                                 navigation.InsertPageBefore(new NativeConfirmNafathPage(), currentPage);
 
                                 _navigationService.GoBack();
-                                // _navigationService.NavigateTo("NativeConfirmNafathPage");
                                 await Task.Delay(10000);
                                 await GetNafathStatus();
                             }
@@ -134,7 +132,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
                                 IsLoading = false;
-                                // navigation.InsertPageBefore(new NativeNafathPage(""),currentPage);
                                 _navigationService.GoBack();
                                 return;
                             }
@@ -148,11 +145,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                             userData = data;
                             if (userData != null)
                             {
-
-
-                                /*var navigation = Application.Current.MainPage.Navigation;
-                                var currentPage = navigation.NavigationStack.LastOrDefault();
-                                navigation.InsertPageBefore(new TransactionReceptionView(userData), currentPage);*/
                                 await GetNafathCustomProfile(userData.result.userInfo.id.ToString(), userData.result.userInfo.dateOfBirthH.Replace('-', '/'));
                                 return;
                             }
@@ -183,7 +175,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 RandomNumber = string.Empty;
                 TransactionId = string.Empty;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageTxt = AppResources.Somethingwentwrong;
                 IsShowMsgView = true;
@@ -241,7 +233,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 MessageTxt = AppResources.Somethingwentwrong;
                 IsShowMsgView = true;

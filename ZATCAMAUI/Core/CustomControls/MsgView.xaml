@@ -41,7 +41,9 @@
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 
-            <StackLayout Margin="0" VerticalOptions="Center">
+            <StackLayout Padding="10"
+                         Spacing="10"
+                         VerticalOptions="Center">
 
                 <Label
                     HorizontalTextAlignment="Start"

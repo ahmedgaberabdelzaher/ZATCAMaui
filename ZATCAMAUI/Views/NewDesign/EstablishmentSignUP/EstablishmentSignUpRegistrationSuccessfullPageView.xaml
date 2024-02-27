@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentSignUP.EstablishmentSignUpRegistrationSuccessfullPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundImageSource="partials_background"
+    mc:Ignorable="d">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <StackLayout Padding="24,0,24,16">
+            <Image Margin="0,75,0,0" Source="Forget_ic_success.png" />
+            <Label
+                Margin="0,25,0,0"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource SectionTitleWhiteBold}"
+                Text="{x:Static ResourceManager:AppResources.ZZZZRegistrationSuccessful}" />
+            <Label
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource BodyLabelBlack}"
+                Text="{x:Static ResourceManager:AppResources.NDYouSuccessfullyRegisteredGAZTServies}"
+                TextColor="White" />
+            <buttons:SfButton
+                x:Name="btnprimary"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

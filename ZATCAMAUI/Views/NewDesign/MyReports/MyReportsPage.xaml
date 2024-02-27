@@ -78,7 +78,7 @@
                 </StackLayout>
 
                 <!--  My Reports Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"
@@ -94,6 +94,7 @@
                     ContainerBackground="White"
                     ContainerType="Outlined"
                     HorizontalOptions="CenterAndExpand"
+                     IsHintAlwaysFloated="True"
                     InputViewPadding="10,0,10,0"
                     IsVisible="{Binding IsSearching}"
                     OutlineCornerRadius="15"

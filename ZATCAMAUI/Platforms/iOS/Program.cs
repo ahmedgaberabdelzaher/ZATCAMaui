@@ -17,8 +17,6 @@ public class Program
         }
         catch (Exception ex)
         {
-
-
             LogUnhandledException(ex);
         }
     }

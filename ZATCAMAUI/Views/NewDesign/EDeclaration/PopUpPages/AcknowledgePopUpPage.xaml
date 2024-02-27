@@ -40,7 +40,7 @@
             VerticalOptions="EndAndExpand">
             <ScrollView VerticalScrollBarVisibility="Never">
 
-                <StackLayout>
+                <StackLayout Padding="10">
 
                     <!--  Header  -->
                     <StackLayout
@@ -85,6 +85,7 @@
                             <StackLayout
                                 HorizontalOptions="Start"
                                 Orientation="Horizontal"
+                                Spacing="10"
                                 VerticalOptions="Start">
 
                                 <!--  Infromation Image  -->
@@ -161,7 +162,8 @@
                     <StackLayout
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
-                        Spacing="15">
+                        Margin="0,10"
+                        Spacing="10">
 
                         <!--  Check box Image  -->
                         <Image
@@ -208,7 +210,7 @@
 
                     <!--  Approve Declaration Button  -->
                     <buttons:SfButton
-                        Margin="0,20"
+                        Margin="0,20,0,50"
                         Command="{Binding ApproveDeclarationCommand}"
                         FontFamily="{StaticResource SomarBold}"
                         Style="{StaticResource PrimaryButtonStyle}"

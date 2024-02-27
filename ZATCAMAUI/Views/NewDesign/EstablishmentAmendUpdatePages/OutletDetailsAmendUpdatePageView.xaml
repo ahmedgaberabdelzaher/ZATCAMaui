@@ -147,6 +147,7 @@
                             Margin="0,-6,0,-6"
                             ContainerType="Outlined"
                             Stroke="{StaticResource Primary}"
+                             IsHintAlwaysFloated="True"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
                             IsEnabled="{Binding OutletDetails.OutletName}"
@@ -156,7 +157,7 @@
                                 <inputLayout:LabelStyle TextColor="#B00020"/>
 
                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                            <Entry
+                            <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
@@ -410,11 +411,12 @@
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="1"
                                 Grid.Column="0"
+                                 IsHintAlwaysFloated="True"
                                 Margin="0"
                                 InputViewPadding="10,0,10,0"
                                 IsEnabled="{Binding AddressDetails.HouseNo}"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -433,10 +435,11 @@
                                 Grid.Row="1"
                                 Grid.Column="1"
                                 Margin="0"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="10,0,10,0"
                                 IsEnabled="{Binding AddressDetails.BuildinNo}"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -467,9 +470,10 @@
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
+                             IsHintAlwaysFloated="True"
                             IsEnabled="{Binding AddressDetails.Floor}"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
-                            <Entry
+                            <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
@@ -498,10 +502,11 @@
                         </custom:CustomLabel>
                         <inputLayout:SfTextInputLayout
                             Margin="0"
+                             IsHintAlwaysFloated="True"
                             InputViewPadding="10,0,10,0"
                             IsEnabled="{Binding AddressDetails.Street}"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
-                            <Entry
+                            <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
@@ -531,9 +536,10 @@
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
+                             IsHintAlwaysFloated="True"
                             IsEnabled="{Binding AddressDetails.Quarter}"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
-                            <Entry
+                            <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
@@ -563,6 +569,7 @@
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
+                             IsHintAlwaysFloated="True"
                             IsEnabled="{Binding AddressDetails.PostelCode}"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry
@@ -594,6 +601,7 @@
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
+                             IsHintAlwaysFloated="True"
                             IsEnabled="{Binding AddressDetails.AddNo}"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry
@@ -762,10 +770,11 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="0"
+                                     IsHintAlwaysFloated="True"
                                     Margin="0"
                                     InputViewPadding="10,0,10,0"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <Entry
+                                    <custom:GAZTBorderlessEntry
                                         Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
@@ -783,10 +792,11 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="1"
+                                     IsHintAlwaysFloated="True"
                                     Margin="0"
                                     InputViewPadding="10,0,10,0"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <Entry
+                                    <custom:GAZTBorderlessEntry
                                         Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
@@ -817,8 +827,9 @@
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
                                 InputViewPadding="10,0,10,0"
+                                 IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -848,8 +859,9 @@
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
                                 InputViewPadding="10,0,10,0"
+                                 IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -877,9 +889,10 @@
                             </custom:CustomLabel>
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="10,0,10,0"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="15"
@@ -908,6 +921,7 @@
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
                                 InputViewPadding="10,0,10,0"
+                                 IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10"
@@ -937,6 +951,7 @@
                                 VerticalOptions="Center" />
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
+                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="10,0,10,0"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry

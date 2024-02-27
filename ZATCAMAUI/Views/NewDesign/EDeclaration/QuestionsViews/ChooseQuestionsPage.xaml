@@ -62,7 +62,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="15"
                     HorizontalOptions="Center"
@@ -82,7 +82,7 @@
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout>
+                    <StackLayout Padding="10">
 
                         <!--  AddingItems Label  -->
                         <Label
@@ -233,7 +233,7 @@
 
                         <!--  GoTo Question View Button  -->
                         <buttons:SfButton
-                            Margin="0,8"
+                            Margin="0,25,0,8"
                             Command="{Binding GoToSelectedQuestionsViewCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}"

@@ -55,7 +55,7 @@
             <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
 
                 <!--  Live video Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"

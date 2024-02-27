@@ -46,7 +46,7 @@
                             <ColumnDefinition Width="60*" />
                             <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="0"
                             Grid.Column="1"
                             HorizontalOptions="Center"

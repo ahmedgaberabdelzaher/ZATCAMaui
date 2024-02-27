@@ -12,7 +12,7 @@
     TitleText="{x:Static ResourceManager:AppResources.eDeclaration}">
     <newdesign:BaseContentPage.PancakeView>
         <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout>
+            <StackLayout Padding="10">
 
                 <!--#region Header-->
 
@@ -49,8 +49,8 @@
                 <BoxView
                     Margin="0,0,0,0"
                     BackgroundColor="{StaticResource NeutralLightGrey}"
-                    HeightRequest="2"
-                    WidthRequest="20" />
+                    HeightRequest="1"
+                    WidthRequest="350" />
 
                 <!--#endregion-->
 
@@ -251,7 +251,8 @@
                 <!--#endregion Visitor&Citizen/Review previous View-->
 
                 <!--#region Review Option Entries-->
-                <StackLayout IsVisible="{Binding ShowReviewEntries}">
+                <StackLayout IsVisible="{Binding ShowReviewEntries}"
+                             Padding="0">
 
 
                     <!--  Reference Number Field  -->
@@ -273,6 +274,7 @@
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
+                             IsHintAlwaysFloated="True"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
@@ -310,6 +312,7 @@
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
+                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>

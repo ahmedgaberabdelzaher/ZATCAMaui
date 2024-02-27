@@ -461,7 +461,7 @@
                     <ColumnDefinition Width="15*" />
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"

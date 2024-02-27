@@ -51,9 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                     }
                     else
                     {
-                        //_navigationService.NavigateTo("IAMLoginView", 1);
-                        _navigationService.NavigateTo("NativeNafathPage", "NewDeclarationPage");
-
+                       _navigationService.NavigateTo("NativeNafathPage", "NewDeclarationPage");
                     }
                     ShowReviewEntries = false;
                 });
@@ -68,6 +66,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
+                        if(string.IsNullOrWhiteSpace(ReferenceNumber)
+                        || string.IsNullOrWhiteSpace(IDResidencePassportNumber))
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.RequiredData;
+                            return;
+                        }
                         IsLoading = true;
                         var result = await DeclerationServices?.GetInquireDecleration(ReferenceNumber, IDResidencePassportNumber);
 

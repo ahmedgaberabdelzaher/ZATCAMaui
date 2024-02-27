@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentSignUP.EstablishmentSignUpRegistrationSuccessfulForNoTINPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    BackgroundImageSource="partials_background"
+    mc:Ignorable="d">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="24,0,24,16">
+                <Image Margin="0,75,0,0" Source="Forget_ic_success.png" />
+                <Label
+                    Margin="0,25,0,0"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZZRegistrationSuccessful}" />
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource BodyLabelBlack}"
+                    Text="{x:Static ResourceManager:AppResources.NDYouReceivedSMSWithTIN}"
+                    TextColor="White" />
+            </StackLayout>
+            <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+                <StackLayout>
+                    <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource BodyLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.TINS}" />
+                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                <Label
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="1234 5678 9012 3456" />
+                                <Image Source="zakat_copy.png" />
+
+                            </StackLayout>
+                        </StackLayout>
+                    </Border>
+
+                    <buttons:SfButton
+                        x:Name="btnprimary"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}"
+                        VerticalOptions="EndAndExpand" />
+
+                    <custom:CustomLabel
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource ValueLabelBlackBold}"
+                        Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
+                        TextColor="{StaticResource NewDullOrangeColor}" />
+                </StackLayout>
+            </yummy:PancakeView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

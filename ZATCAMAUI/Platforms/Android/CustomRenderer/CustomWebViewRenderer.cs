@@ -5,9 +5,9 @@ using Microsoft.Maui.Controls.Platform;
 
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
-    public class PdfWebViewRenderer : WebViewRenderer
+    public class CustomWebViewRenderer : WebViewRenderer
     {
-        public PdfWebViewRenderer(Context context) : base(context)
+        public CustomWebViewRenderer(Context context) : base(context)
         {
 
         }

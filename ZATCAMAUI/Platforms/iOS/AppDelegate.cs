@@ -42,7 +42,7 @@ public class AppDelegate : MauiUIApplicationDelegate
             //App.InitializeAppDynamics();
 
         }
-        catch (Exception ex)
+        catch (Exception)
         {
 
         }

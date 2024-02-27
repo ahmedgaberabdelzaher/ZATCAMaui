@@ -35,6 +35,7 @@
             <inputLayout:SfTextInputLayout
                 Margin="0,-6,0,-6"
                 ContainerType="Outlined"
+                IsHintAlwaysFloated="True"
                 HasError="{Binding IsReportDetailHasError}"
                 OutlineCornerRadius="8"
                 Stroke="{StaticResource Primary}">

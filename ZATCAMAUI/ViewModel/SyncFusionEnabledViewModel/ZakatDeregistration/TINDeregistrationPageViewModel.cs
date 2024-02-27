@@ -4188,8 +4188,6 @@ After:
             }
             catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5104,7 +5102,6 @@ After:
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || DobText.IsEditable && string.IsNullOrEmpty(SelectedDob) || FirstNameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.Name1) || SurnameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                                //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -5114,7 +5111,6 @@ After:
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                                //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
@@ -5133,21 +5129,18 @@ After:
                     //TODO validation for transfer/close to indiviual case missing
                     if (SelectedReason == null)
                     {
-                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDate)) != null)
                     {
-                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDregRsnTb)) != null)
                     {
-                        // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -5158,33 +5151,28 @@ After:
 
                         if (transferrred.FirstOrDefault(x => x.APermitTransTinTb == App.LoginDataRetrieved.TIN) != null)
                         {
-                            //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationSameNotAllow));
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
                         {
-                            //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDobDate)) != null)
                         {
-                            // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
                         }
                     }
-                    // await SaveAsDraft();
                     EnableOutletDetaislView();
                 }
                 else if (SelectedPermitOutletOptionIndex == 0)
                 {
                     if (SelectedReason == null || string.IsNullOrEmpty(SingleDeregistrationDate))
                     {
-                        //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
@@ -5226,7 +5214,6 @@ After:
                             item.APermitEffDtHTb = SingleDeregistrationDate;
                         }
                     }
-                    // await SaveAsDraft();
                     EnableOutletDetaislView();
                 }
 
@@ -5242,18 +5229,15 @@ After:
                 if (PopupNavigation.Instance.PopupStack.Count > 0)
                     await PopupNavigation.Instance.PopAllAsync();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
 
             }
             catch (InternetException ex)
             {
-
-
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5263,7 +5247,6 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                 });
@@ -5274,10 +5257,9 @@ After:
         {
             try
             {
-                //await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc, viewModel[0]));
-                await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc, this));
+                 await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc, this));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
             }
@@ -5285,7 +5267,6 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5324,7 +5305,6 @@ After:
                 {
 
                     PopulateAttachmentsListViewTemplate();
-                    //await SaveAsDraft();
 
                     try
                     {
@@ -5336,7 +5316,7 @@ After:
                     }
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
 
 
@@ -5345,7 +5325,6 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5375,7 +5354,6 @@ After:
                         isMandatoryDocAttached = TinDeregistrationData.AttDetSet.Results.Any(attachedDocs => attachedDocs.Dotyp == reqAttachment.DocType);
                         if (!isMandatoryDocAttached)
                         {
-                            //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             break;
@@ -5388,30 +5366,14 @@ After:
                 //await SaveAsDraft();
                 EnableDeclarationView();
             }
-            catch (GAZTUnlockAccountException ex)
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-Before:
+            catch (GAZTUnlockAccountException)
             {
-                
-                
-                App.HideProgressView();
-After:
-            {
-
-
-                App.HideProgressView();
-*/
-            {
-
-
                 App.HideProgressView();
             }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5433,7 +5395,6 @@ After:
                         PopulateSummaryDeclarationData();
                         if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
                         {
-                            //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         }
@@ -5444,7 +5405,7 @@ After:
                     }
                 });
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -5453,51 +5414,12 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
             }
         }
-
-        //public void AddAttachmentToRequestPayload()
-        //{
-        //    TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
-        //    List<Attachment> list = new List<Attachment>();
-        //    if (AttachmentsListViewData != null && AttachmentsListViewData.Count > 0)
-        //    {
-        //        foreach(TinDeregestrationAttachmentsModel attachment in AttachmentsListViewData)
-        //        {
-        //            list.Add(attachment.AttachmentTypeList);
-        //        }
-        //    }
-        //}
-
-        //public List<Attachment> GetAllAttachemt(List<TinDeregestrationAttachmentsModel> attachmentList)
-        //{
-        //    try
-        //    {
-        //        List<Attachment> list = new List<Attachment>();
-        //        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in attachmentList)
-        //        {
-        //            if (attachmentsModelsTemp.AttachmentTypeList != null)
-        //            {
-        //                foreach (Attachment attachment in attachmentsModelsTemp.AttachmentTypeList)
-        //                {
-        //                    list.Add(attachment);
-        //                }
-        //            }
-        //        }
-        //        return list;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return new List<Attachment>();
-        //    }
-
-        //}
-
         public async void SummaryContinueBtnClicked()
         {
             try
@@ -5508,13 +5430,8 @@ After:
                 {
                     _navigationService.NavigateTo(App.TINDeregestrationSuccessPageView, TinDeregistrationData);
                 }
-                else
-                {
-                    //_navigationService.GoBack();
-
-                }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -5523,7 +5440,6 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5572,14 +5488,13 @@ After:
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                         _navigationService.GoBack();
                     });
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -5588,7 +5503,6 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -5608,32 +5522,20 @@ After:
                 {
                     await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
-                {
-
-
-                }
                 catch (InternetException ex)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                         _navigationService.GoBack();
                     });
                 }
             }
-            catch (GAZTUnlockAccountException ex)
-            {
-
-
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
@@ -6687,11 +6589,6 @@ After:
             {
                 isSubmitted = false;
 
-
-                //await Task.Run(() =>
-                //{
-                //    App.HideProgressView();
-                //});
             }
             finally
             {
@@ -6707,7 +6604,6 @@ After:
             {
                 case ProcessStep.Step1:
                     {
-                        //ReasonContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
@@ -6740,7 +6636,6 @@ After:
                     }
                 case ProcessStep.Step4:
                     {
-                        // DeclarationContinueBtnClicked();
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {

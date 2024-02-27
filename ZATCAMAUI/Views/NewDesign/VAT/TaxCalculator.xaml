@@ -235,11 +235,11 @@
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    LineSpacing=".7"
+                    LineHeight=".7"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.TaxCalculator}"
                     VerticalOptions="Center" />

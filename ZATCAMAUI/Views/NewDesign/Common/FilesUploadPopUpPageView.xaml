@@ -32,9 +32,9 @@
                         HorizontalOptions="Center"
                         Style="{StaticResource NeutralGrayBoxViewDrag}"
                         VerticalOptions="Start" />
-                    <Button
+                    <buttons:SfButton
                         Margin="10,10,10,10"
-                        BackgroundColor="Transparent"
+                        Background="Transparent"
                         Command="{Binding GoButtonClick}"
                         FontAttributes="Bold"
                         FontSize="Medium"

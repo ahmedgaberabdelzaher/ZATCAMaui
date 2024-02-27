@@ -61,7 +61,7 @@
                 </StackLayout>
 
                 <!--  Header Label  -->
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     FontSize="20"
                     HorizontalOptions="Center"
@@ -76,12 +76,16 @@
             <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
-                Padding="20,5,20,0"
+                Padding="25,10,25,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView VerticalScrollBarVisibility="Never">
+                <Grid RowDefinitions="*">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <ScrollView VerticalScrollBarVisibility="Never">
+
+
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     Padding="10">
 
 
                         <!--  New Declaration Label  -->
@@ -115,8 +119,8 @@
                         <BoxView
                             Margin="0,0,0,25"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                            HeightRequest="1"
+                            WidthRequest="350" />
 
                         <!--  Question Field Label  -->
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -201,6 +205,7 @@
                                     <!--  Arriving Label  -->
                                     <custom:CustomLabel
                                         FontSize="16"
+                                        LineHeight="1"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.ArrivingToKSA}"
                                         TextColor="White">
@@ -302,6 +307,7 @@
                                     <!--  Departing label  -->
                                     <custom:CustomLabel
                                         FontSize="16"
+                                        LineHeight="1"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.DepartingToKSA}"
                                         TextColor="{StaticResource Primary}">
@@ -391,11 +397,10 @@
 
                     </StackLayout>
 
-                </ScrollView>
-
+                    </ScrollView>
+                </Grid>
             </yummy:PancakeView>
             <!--#endregion Body-->
-
 
         </Grid>
     </ContentPage.Content>

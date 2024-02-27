@@ -430,13 +430,12 @@
 
                                     <custom:CustomDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="Aqua" Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
+                                        <syncfusion:PickerHeaderView Background="Aqua"
+                                                                     Height="46"
+                                                                     Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
 
                                     </custom:CustomDatePicker.HeaderView>
 
-                                    <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </custom:CustomDatePicker.ColumnHeaderView>
 
                                     <custom:CustomDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
@@ -444,7 +443,8 @@
 
                                     <custom:CustomDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46"
+                                                                     Background="#EAF7CC">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -476,6 +476,10 @@
                                     SelectionChanged="NormalCalendar_SelectionChanged"
                                     Style="{StaticResource PickerStyle}">
 
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                          <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                     </custom:CustomHijriDatePicker.SelectionView>
+
                                     <custom:CustomHijriDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
                                     </custom:CustomHijriDatePicker.SelectedTextStyle>
@@ -488,11 +492,6 @@
                                             Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
 
                                     </custom:CustomHijriDatePicker.HeaderView>
-
-
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.FooterView>
 
@@ -590,19 +589,18 @@
                                     </custom:CustomDatePicker.SelectedTextStyle>
 
 
-                                    <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </custom:CustomDatePicker.ColumnHeaderView>
-
                                     <custom:CustomDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="Aqua" Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
+                                        <syncfusion:PickerHeaderView Background="Aqua"
+                                                                     Height="46"
+                                                                     Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
 
                                     </custom:CustomDatePicker.HeaderView>
 
                                     <custom:CustomDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46"
+                                                                     Background="#EAF7CC">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -634,14 +632,13 @@
                                     SelectionChanged="EndDateNormalCalendar_SelectionChanged"
                                     Style="{StaticResource PickerStyle}">
 
+                                     <custom:CustomHijriDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                     </custom:CustomHijriDatePicker.SelectionView>
+
                                     <custom:CustomHijriDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
                                     </custom:CustomHijriDatePicker.SelectedTextStyle>
-
-
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 

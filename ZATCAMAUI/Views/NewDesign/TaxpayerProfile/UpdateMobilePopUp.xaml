@@ -66,11 +66,12 @@
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="8"
+                                 IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource Primary}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <Entry
+                                <custom:GAZTBorderlessEntry
                                     x:Name="Mobile_Entry"
                                     FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
@@ -122,9 +123,9 @@
                                         Text="{Binding NewMobileNumberEntryText}"
                                         TextColor="{StaticResource PrimaryColor}"
                                         Unfocused="Mobile_entry_Unfocused">
-                                        <Entry.Behaviors>
+                                        <custom:GAZTBorderlessEntry.Behaviors>
                                             <behaviors:OnlyNumericValuesBehaviour />
-                                        </Entry.Behaviors>
+                                        </custom:GAZTBorderlessEntry.Behaviors>
                                     </custom:GAZTBorderlessEntry>
                                 </StackLayout>
                             </Frame>
@@ -208,6 +209,7 @@
                                         Grid.Column="0"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                         IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -237,6 +239,7 @@
                                     <!--  Second OTP Digit Start  -->
                                     <inputLayout:SfTextInputLayout
                                         Grid.Column="1"
+                                         IsHintAlwaysFloated="True"
                                         ContainerType="Outlined"
                                         HasError="False"
                                         OutlineCornerRadius="8"
@@ -270,6 +273,7 @@
                                         Grid.Column="2"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                         IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -302,6 +306,7 @@
                                         ContainerType="Outlined"
                                         HasError="False"
                                         OutlineCornerRadius="8"
+                                         IsHintAlwaysFloated="True"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
