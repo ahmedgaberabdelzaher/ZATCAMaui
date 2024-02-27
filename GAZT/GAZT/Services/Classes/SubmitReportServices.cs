@@ -6,6 +6,7 @@ using EGAZT.Helper;
 using EGAZT.Models.BaseModels;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
+using Xamarin.Forms;
 
 namespace EGAZT.Services.Classes
 {
@@ -28,13 +29,21 @@ namespace EGAZT.Services.Classes
         }
         public async Task<List<BaseRegionAndCity>> GetCities(string regionId)
         {
-            var response = await NewHTTPManger.Get<BaseResponseModel<List<BaseRegionAndCity>>>($"{App.VatBaseUrl}/SMS/GetCities?region={regionId}") as BaseResponseModel<List<BaseRegionAndCity>>;
-            return response?.Result?.Data;
+            /* var response = await NewHTTPManger.Get<BaseResponseModel<List<BaseRegionAndCity>>>($"{App.VatBaseUrl}/SMS/GetCities?region={regionId}") as BaseResponseModel<List<BaseRegionAndCity>>;
+             return response?.Result?.Data;*/
+            var lang = App.IsArabic ? "ar" : "en";
+            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<List<BaseRegionAndCity>>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/cities?languageCode={lang}&region={regionId}") as DATAPowerBaseResponse<List<BaseRegionAndCity>>;
+            return response?.data;
         } 
         public async Task<List<BaseRegionAndCity>> GetRegions()
         {
-            var response = await NewHTTPManger.Get<BaseResponseModel<List<BaseRegionAndCity>>>($"{App.VatBaseUrl}/SMS/GetRegions") as BaseResponseModel<List<BaseRegionAndCity>>;
-            return response?.Result?.Data;
+            /*   var response = await NewHTTPManger.Get<BaseResponseModel<List<BaseRegionAndCity>>>($"{App.VatBaseUrl}/SMS/GetRegions") as BaseResponseModel<List<BaseRegionAndCity>>;
+               return response?.Result?.Data;
+            */
+            var lang = App.IsArabic ? "ar" : "en";
+            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<List<BaseRegionAndCity>>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/regions?languageCode={lang}") as DATAPowerBaseResponse<List<BaseRegionAndCity>>;
+            return response?.data;
+
         }
         public async Task<DATAPowerBaseResponseResult<SubmitDataPowerResult>> CreateZatcaNewReport(SubmitReportDataPowerModel submitReport)
         {
