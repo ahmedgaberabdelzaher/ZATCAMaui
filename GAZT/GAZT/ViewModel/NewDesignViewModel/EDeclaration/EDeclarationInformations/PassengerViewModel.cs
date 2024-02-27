@@ -20,9 +20,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         string _ReleaseDateString;
         public string ReleaseDateString { get { return _ReleaseDateString; } set { _ReleaseDateString = value; RaisePropertyChanged(); } }
 
-        string _EndDateString;
-        public string EndDateString { get { return _EndDateString; } set { _EndDateString = value; RaisePropertyChanged(); } }
-
         string _BirthDateString;
         public string BirthDateString { get { return _BirthDateString; } set { _BirthDateString = value; RaisePropertyChanged(); } }
 
@@ -85,14 +82,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     try
                     {
-
+                       
                         if (control.ClassId.ToLower().Equals("releasedateentry"))
                         {
                             ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
                         }
+                       
                         else if (control.ClassId.ToLower().Equals("enddateentry"))
                         {
-                            EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+                            if (SubmitModel.travelerDeclaration.Isvisitor || SubmitModel.travelerDeclaration.travelID.StartsWith("1")||!SubmitModel.travelerDeclaration.isPremiumResidency)
+                            {
+
+                                EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+
+                            }
                         }
                         else
                         {
@@ -125,8 +128,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                         else if (control.ClassId.ToLower().Equals("enddateentry") &&
                             SubmitModel.travelerDeclaration.passExpiryDate.Date == DateTime.Now.Date)
-                            EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
-
+                        {
+                            if (SubmitModel.travelerDeclaration.Isvisitor || SubmitModel.travelerDeclaration.travelID.StartsWith("1") || !SubmitModel.travelerDeclaration.isPremiumResidency)
+                            {
+                                EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+                            }
+                        }
                         else
                             BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
                     }

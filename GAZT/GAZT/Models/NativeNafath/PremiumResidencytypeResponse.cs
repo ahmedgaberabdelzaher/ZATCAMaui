@@ -18,7 +18,7 @@ namespace EGAZT.Models.NativeNafath
     public class PremiumResidencytypeResponse
     {
         public PremiumResidencytypeResponseHeader header { get; set; }
-        public PremiumResidencytypeData data { get; set; }
+        public PremiumResidencytypeData result { get; set; }
     }
 
     public class PremiumResidencytypeStatus

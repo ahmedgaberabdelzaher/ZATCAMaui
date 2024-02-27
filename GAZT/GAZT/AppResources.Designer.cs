@@ -7993,7 +7993,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Iqama Type.
+        ///   Looks up a localized string similar to Residency Type.
         /// </summary>
         public static string IqamaType {
             get {
@@ -12040,6 +12040,15 @@ namespace EGAZT {
         public static string ResendVerificationCode {
             get {
                 return ResourceManager.GetString("ResendVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Residency.
+        /// </summary>
+        public static string Residency {
+            get {
+                return ResourceManager.GetString("Residency", resourceCulture);
             }
         }
         

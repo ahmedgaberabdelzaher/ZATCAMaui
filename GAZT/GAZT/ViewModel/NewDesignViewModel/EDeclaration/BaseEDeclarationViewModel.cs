@@ -58,9 +58,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         string iqamaTypeDescription;
         public string IqamaTypeDescription { get { return iqamaTypeDescription; } set { iqamaTypeDescription = value; RaisePropertyChanged(); } }
 
-        string iqamaExpiryDate;
-        public string IqamaExpiryDate { get { return iqamaExpiryDate; } set { iqamaExpiryDate = value; RaisePropertyChanged(); } }
+        bool isIqama;
+        public bool IsIqama { get { return isIqama; } set { isIqama = value; RaisePropertyChanged(); } }
 
+
+
+        string _EndDateString;
+        public string EndDateString {
+            get { return _EndDateString; }
+            set {
+
+                _EndDateString = value;
+                RaisePropertyChanged(); } }
 
         #endregion
 
@@ -144,7 +153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             _nativeNafath = nativeNafath;
         }
 
-        public void SetPassangerData(object data)
+        public  void SetPassangerData(object data)
         {
 
             try
@@ -175,8 +184,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.cardIssueDateHijri.ToString());
 
                 SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.idExpiryDateHijri.ToString());
-
-
+                if (iamLoginPayloadData.nationalId.StartsWith("2"))
+                {
+                    IsIqama = true;
+                }
+                else
+                {
+                    IsIqama = false;
+                }
+               GetPremiumResidencyType(iamLoginPayloadData.nationalId, iamLoginPayloadData.dateOfBirthHijri).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -202,37 +218,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     var data = JsonConvert.DeserializeObject<PremiumResidencytypeResponse>(conent);
                     if (data.header.status.code == "I000000")
                     {
-                        if (data.data != null)
+                        if (data.result != null)
                         {
-                            var premiumResidencytype = data.data;
+                            var premiumResidencytype = data.result;
                             if (premiumResidencytype != null)
                             {
-                                IqamaExpiryDate = premiumResidencytype.iqamaExpiryDate;
-                                iqamaTypeDescription = premiumResidencytype.iqamaTypeDescription;
+                               // IqamaExpiryDate = premiumResidencytype.iqamaExpiryDate;
+                                IqamaTypeDescription = premiumResidencytype.iqamaType==2?AppResources.SpecialIqamawithexpirydate:AppResources.SpecialIqamawithoutexpirydate;
+                                SubmitModel.travelerDeclaration.isPremiumResidency = true;
+                                SubmitModel.travelerDeclaration.premiumResidencyExpiryDate = premiumResidencytype.iqamaExpiryDate;
+                                if (premiumResidencytype.iqamaType == 2)
+                                {
+                                    EndDateString = DateTimeHelper.DateTimeFormater(DateTime.Parse(premiumResidencytype.iqamaExpiryDate));
+                                    SubmitModel.travelerDeclaration.passExpiryDate = DateTime.Parse(premiumResidencytype.iqamaExpiryDate);
+
+                                }
+                                SubmitModel.travelerDeclaration.IqamaTypeDescription = premiumResidencytype.iqamaType == 2 ? AppResources.SpecialIqamawithexpirydate : AppResources.SpecialIqamawithoutexpirydate;
+
                                 IsLoading = false;
                                 
                             }
+                            else
+                            {
+                                SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
+                            }
+
                         }
                     }
-                    else if (!string.IsNullOrWhiteSpace(data.header.status.description))
+                   /* else if (!string.IsNullOrWhiteSpace(data.header.status.description))
                     {
                         MessageTxt = data.header.status.description;
                         IsShowMsgView = true;
                         IsLoading = false;
 
-                    }
+                    }*/
                     else
                     {
-                        MessageTxt = AppResources.RequestTimeoutDescription;
-                        IsShowMsgView = true;
+                        SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
                         IsLoading = false;
 
                     }
                 }
                 else
                 {
-                    MessageTxt = AppResources.RequestTimeoutDescription;
-                    IsShowMsgView = true;
+                    SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
                     IsLoading = false;
 
                 }
@@ -240,8 +269,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             catch (Exception)
             {
-                MessageTxt = AppResources.Somethingwentwrong;
-                IsShowMsgView = true;
+                SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
                 IsLoading = false;
             }
         }

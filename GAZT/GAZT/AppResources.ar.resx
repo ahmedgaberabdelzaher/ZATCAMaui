@@ -10474,12 +10474,15 @@ info@zatca.gov.sa</value>
     <value>الرقم الإضافي</value>
   </data>
         <data name="IqamaType" xml:space="preserve">
-    <value>نوع الاقامه</value>
+    <value>نوع الإقامة </value>
   </data>
      <data name="SpecialIqamawithexpirydate" xml:space="preserve">
-    <value>اقامه مميزه محدده المده</value>
+    <value>إقامة مميزة محددة المدة</value>
   </data>
        <data name="SpecialIqamawithoutexpirydate" xml:space="preserve">
-    <value>اقامه مميزه غير محدده المده</value>
+    <value>إقامة مميزة غير محددة المدة</value>
+  </data>
+          <data name="Residency" xml:space="preserve">
+    <value>إقامة </value>
   </data>
 </root>

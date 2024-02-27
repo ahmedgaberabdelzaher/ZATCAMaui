@@ -10546,12 +10546,15 @@ We regret that you are unable to use the service at this time. Please sign up fo
     <value>Secondary Number</value>
   </data>
       <data name="IqamaType" xml:space="preserve">
-    <value>Iqama Type</value>
+    <value>Residency Type</value>
   </data>
      <data name="SpecialIqamawithexpirydate" xml:space="preserve">
     <value>Special Iqama with expiry date</value>
   </data>
        <data name="SpecialIqamawithoutexpirydate" xml:space="preserve">
     <value>Special Iqama without expiry date</value>
+  </data>
+        <data name="Residency" xml:space="preserve">
+    <value>Residency</value>
   </data>
 </root>
