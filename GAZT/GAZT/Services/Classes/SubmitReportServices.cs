@@ -32,8 +32,9 @@ namespace EGAZT.Services.Classes
             /* var response = await NewHTTPManger.Get<BaseResponseModel<List<BaseRegionAndCity>>>($"{App.VatBaseUrl}/SMS/GetCities?region={regionId}") as BaseResponseModel<List<BaseRegionAndCity>>;
              return response?.Result?.Data;*/
             var lang = App.IsArabic ? "ar" : "en";
-            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<List<BaseRegionAndCity>>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/cities?languageCode={lang}&region={regionId}") as DATAPowerBaseResponse<List<BaseRegionAndCity>>;
-            return response?.data;
+            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<CitiesListModel>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/cities?languageCode={lang}&region={regionId}") as DATAPowerBaseResponse<CitiesListModel>;
+
+            return response?.data.cities;
         } 
         public async Task<List<BaseRegionAndCity>> GetRegions()
         {
@@ -41,8 +42,8 @@ namespace EGAZT.Services.Classes
                return response?.Result?.Data;
             */
             var lang = App.IsArabic ? "ar" : "en";
-            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<List<BaseRegionAndCity>>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/regions?languageCode={lang}") as DATAPowerBaseResponse<List<BaseRegionAndCity>>;
-            return response?.data;
+            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<RegionsListModel>> ($"{PageSettings.ZATCABaseURL}v1/vat/sms/regions?languageCode={lang}") as DATAPowerBaseResponse<RegionsListModel>;
+            return response?.data.regions;
 
         }
         public async Task<DATAPowerBaseResponseResult<SubmitDataPowerResult>> CreateZatcaNewReport(SubmitReportDataPowerModel submitReport)
