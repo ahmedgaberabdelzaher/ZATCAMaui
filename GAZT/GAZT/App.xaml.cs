@@ -388,6 +388,7 @@ namespace EGAZT
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
         public static HttpClientHandler httpClientHandler = null;
+        public static string IBanValidatedResponse;
 
         public App()
         {
