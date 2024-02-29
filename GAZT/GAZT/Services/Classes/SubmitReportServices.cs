@@ -24,8 +24,13 @@ namespace EGAZT.Services.Classes
         }
         public async Task<List<CategoryDataResponse>> GetReportCategories(string typeId)
         {
-            var response = await NewHTTPManger.Get<BaseResponseModel<List<CategoryDataResponse>>>($"{App.VatBaseUrl}/SMS/GetCategories?type={typeId}") as BaseResponseModel<List<CategoryDataResponse>>;
-            return response?.Result?.Data;
+          /*  var response = await NewHTTPManger.Get<BaseResponseModel<List<CategoryDataResponse>>>($"{App.VatBaseUrl}/SMS/GetCategories?type={typeId}") as BaseResponseModel<List<CategoryDataResponse>>;
+            return response?.Result?.Data;*/
+
+            var lang = App.IsArabic ? "ar" : "en";
+            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<CategoryResponseModel>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/categories?languageCode={lang}&categoryType={typeId}") as DATAPowerBaseResponse<CategoryResponseModel>;
+
+            return response?.data.categories;
         }
         public async Task<List<BaseRegionAndCity>> GetCities(string regionId)
         {

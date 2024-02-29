@@ -12,5 +12,17 @@ namespace EGAZT.Models.MyReportsModel
     {
         public string key { get; set; }
     }
+
+   
+
+    public class Result
+    {
+        public string key { get; set; }
+    }
+
+   
+   
+
+
 }
 

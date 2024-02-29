@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EGAZT.Services.Interface;
 using EGAZT.Models.MyReportsModel;
+using EGAZT.Controls;
+using EGAZT.AppConfigurations;
 
 namespace EGAZT.Services.Classes
 {
@@ -22,25 +24,31 @@ namespace EGAZT.Services.Classes
             return response.Result;
         }
 
-        public async Task<BaseResponseModel<SendOTPModel>> SendOTP(string mobile)
+        public async Task<DATAPowerBaseResponseResult<KeyModel>> SendOTP(string mobile)
         {
+            var lang = App.IsArabic ? "ar" : "en";
             var body = new
             {
+                languageCode= lang,
                 mobile = mobile,
             };
-            var response = await NewHTTPManger.Post<BaseResponseModel<SendOTPModel>> ($"{App.VatBaseUrl}/SMS/SendOTP", body) as BaseResponseModel<SendOTPModel>;
+            /* var response = await NewHTTPManger.Post<BaseResponseModel<SendOTPModel>> ($"{App.VatBaseUrl}/SMS/SendOTP", body) as BaseResponseModel<SendOTPModel>;*/
+          var response = await NewHTTPManger.Post<DATAPowerBaseResponseResult<KeyModel>> ($"{PageSettings.ZATCABaseURL}v1/vat/sms/otp/sending", body) as DATAPowerBaseResponseResult<KeyModel>;
+
             return response;
         }
 
-        public async Task<VerifyCodeModel> VerifyCode(string mobile, string key, string otpCode)
+        public async Task<DATAPowerBaseResponse<SendOTPModel>> VerifyCode(string mobile, string key, string otpCode)
         {
+            var lang = App.IsArabic ? "ar" : "en";
             var body = new
             {
+                languageCode = lang,
                 mobile = mobile,
                 key = key,
                 code = otpCode
             };
-            var response = await NewHTTPManger.Post<VerifyCodeModel>($"{App.VatBaseUrl}/SMS/VerifyCode", body) as VerifyCodeModel;
+            var response = await NewHTTPManger.Post <DATAPowerBaseResponse<SendOTPModel>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/otp/verification", body) as DATAPowerBaseResponse<SendOTPModel >;
             return response;
         }
     }

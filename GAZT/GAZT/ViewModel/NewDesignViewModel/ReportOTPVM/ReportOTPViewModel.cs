@@ -154,7 +154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.RequestTimeoutDescription;
                             }
-                            else if(result.Status)
+                            else if(result.header.status.code== "I000000")
                             {
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
@@ -289,9 +289,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM
                                     IsShowMsgView = true;
                                     MessageTxt = AppResources.RequestTimeoutDescription;
                                 }
-                                else if (result.Success)
+                                else if (result.header.status.code== "I000000")
                                 {
-                                    Key = result?.Result?.Data?.data?.key;
+                                    Key = result?.result?.key;
                                     _navigationService.NavigateTo("ReportOTPPage");
                                 }
                                 else
