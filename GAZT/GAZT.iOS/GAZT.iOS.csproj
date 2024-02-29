@@ -114,8 +114,8 @@
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
     <IOSDebuggerPort>10001</IOSDebuggerPort>
-    <CodesignProvision>Automatic</CodesignProvision>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision>ZATCADevProfile</CodesignProvision>
+    <CodesignKey>iPhone Developer: ahmed gaber (9VPCFT6L35)</CodesignKey>
     <CodesignEntitlements></CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
