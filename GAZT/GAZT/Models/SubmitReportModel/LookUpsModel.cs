@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace EGAZT.Models.SubmitReportModel
 {
-    public class LookUpsModel
+    public class LookUpsModelold
     {
         public string lookupId { get; set; }
         public string lookupName { get; set; }

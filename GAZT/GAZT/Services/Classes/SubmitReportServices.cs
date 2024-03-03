@@ -17,10 +17,14 @@ namespace EGAZT.Services.Classes
             var response = await NewHTTPManger.Get<BaseResponseModel<ReportTypeList>>($"{App.VatBaseUrl}/Report/GetReportTaxType") as BaseResponseModel<ReportTypeList>;
             return response?.Result?.Data;
         }
-        public async Task<LookUpsListModel> GetLookUps()
+        public async Task<List<BaseRegionAndCity>> GetLookUps()
         {
-            var response = await NewHTTPManger.Get<BaseResponseModel<LookUpsListModel>>($"{App.VatBaseUrl}/Report/GetLookups") as BaseResponseModel<LookUpsListModel>;
-            return response?.Result?.Data;
+            /* var response = await NewHTTPManger.Get<BaseResponseModel<LookUpsListModel>>($"{App.VatBaseUrl}/Report/GetLookups") as BaseResponseModel<LookUpsListModel>;
+             return response?.Result?.Data;*/
+            var lang = App.IsArabic ? "ar" : "en";
+            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<LookUpsModel>>($"{PageSettings.ZATCABaseURL}/v1/vat/reports/lookups?languageCode={lang}") as DATAPowerBaseResponse<LookUpsModel>;
+            return response?.data?.lookUpList;
+
         }
         public async Task<List<CategoryDataResponse>> GetReportCategories(string typeId)
         {

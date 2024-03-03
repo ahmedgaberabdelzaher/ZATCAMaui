@@ -19,6 +19,10 @@ namespace EGAZT.Models.SubmitReportModel
         public List<BaseRegionAndCity> cities { get; set; }
     }
 
+    public class LookUpsModel
+    {
+        public List<BaseRegionAndCity> lookUpList { get; set; }
+    }
     public class BaseRegionAndCity
     {
         public string id { get; set; }

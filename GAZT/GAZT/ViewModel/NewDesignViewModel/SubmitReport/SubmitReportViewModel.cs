@@ -595,7 +595,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         isReportTypeSelected = false;
                         isRegionSelected = false;
                         var reportType = await this._submitReportServices.GetLookUps();
-                        var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName });
+                        var result = reportType?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);

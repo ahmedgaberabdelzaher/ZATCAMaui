@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using GalaSoft.MvvmLight;
 
@@ -32,5 +33,14 @@ namespace EGAZT.Models.MyReportsModel
         private string reportLocation;
         public string ReportLocation { get { return reportLocation; } set { reportLocation = value; RaisePropertyChanged(); } }
     }
+
+
+
+
+ 
+  
+
+
+
 }
 
