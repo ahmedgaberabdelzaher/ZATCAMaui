@@ -9,7 +9,7 @@ namespace EGAZT.Services.Interface
     public interface IMyReportsServices
     {
 
-        Task<DataModel<List<MyReportsModel>>> GetMyReports(string mobile, int? reportStatus = null, string search = "", int pageNumber = 1, int pageSize = 10);
+        Task<ReportsResult> GetMyReports(string mobile, int? reportStatus = null, string search = "", int pageNumber = 1, int pageSize = 10);
 
         Task<DATAPowerBaseResponseResult<KeyModel>> SendOTP(string mobile);
 

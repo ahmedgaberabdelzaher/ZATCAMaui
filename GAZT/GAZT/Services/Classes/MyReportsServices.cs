@@ -13,17 +13,21 @@ namespace EGAZT.Services.Classes
 {
     public class MyReportsServices : IMyReportsServices
     {
-        public async Task<DataModel<List<MyReportsModel>>> GetMyReports(string mobile,int? reportStatus = null, string search = "", int pageNumber = 1, int pageSize = 10)
+        public async Task<ReportsResult> GetMyReports(string mobile,int? reportStatus = null, string search = "", int pageNumber = 1, int pageSize = 10)
         {
             var body = new
             {
                 reportType = reportStatus,
+                pageNumber=pageNumber,
+                pageSize=pageSize,
+                mobile=mobile,
+                languageCode=App.IsArabic?"ar":"en",
                 search = search
             };
             /* var response = await NewHTTPManger.Post<BaseResponseModel<List<MyReportsModel>>>($"{App.VatBaseUrl}/Report/GetReportTaxByMobile?PageNumber={pageNumber}&PageSize={pageSize}&mobile={mobile}", body) as BaseResponseModel<List<MyReportsModel>>;
              return response.Result;*/
-            var response = await NewHTTPManger.Post<BaseResponseModel<List<MyReportsModel>>>($"{App.VatBaseUrl}/Report/GetReportTaxByMobile?PageNumber={pageNumber}&PageSize={pageSize}&mobile={mobile}", body) as BaseResponseModel<List<MyReportsModel>>;
-            return response.Result;
+            var response = await NewHTTPManger.Post<DATAPowerBaseResponseResult<ReportsResult>>($"{PageSettings.ZATCABaseURL}v1/vat/reports/tax-types", body) as DATAPowerBaseResponseResult<ReportsResult>;
+            return response.result;
         }
 
         public async Task<DATAPowerBaseResponseResult<KeyModel>> SendOTP(string mobile)

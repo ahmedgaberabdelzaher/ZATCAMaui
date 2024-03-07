@@ -44,7 +44,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
         public string PhoneNumber;
         private int? status = null;
         private int pageNumber = 1;
-        private DataModel<List<MyReportsModel>> reportsAPIResult = new DataModel<List<MyReportsModel>> ();
+        private ReportsResult reportsAPIResult = new ReportsResult ();
         GenericPickerModel genericPickerModel = new GenericPickerModel();
         #endregion
 
@@ -70,9 +70,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                     try
                     {
                         IsLoading = true;
-                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber) ?? new DataModel<List<MyReportsModel>>();
+                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber) ?? new ReportsResult();
                         pageNumber = 1;
-                        MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.Data);
+                        MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.reportTaxTypes);
                         ReportsResultTitle = AppResources.AllReports;
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
@@ -99,9 +99,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                     {
                         if (pageNumber >= reportsAPIResult?.pagesCount) return;
                         IsLoading = true;
-                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber,status,pageNumber: ++pageNumber) ?? new DataModel<List<MyReportsModel>>();
+                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber,status,pageNumber: ++pageNumber) ?? new ReportsResult();
 
-                        foreach (var item in reportsAPIResult?.Data)
+                        foreach (var item in reportsAPIResult?.reportTaxTypes)
                         {
                             MyReportsList.Add(item);
                         }
@@ -166,9 +166,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                         {
                             IsSearching = false;
                             IsLoading = true;
-                            reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber,status,SearchValue.ToLower()) ?? new DataModel<List<MyReportsModel>>();
+                            reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber,status,SearchValue.ToLower()) ?? new ReportsResult();
                             pageNumber = 1;
-                            MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.Data);
+                            MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.reportTaxTypes);
                             ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                             IsLoading = false;
                             SearchValue = string.Empty;
@@ -236,9 +236,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                         var value = selectedFilter as string;
                         checkReportStatus(value);
                         IsLoading = true;
-                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber, status) ?? new DataModel<List<MyReportsModel>>();
+                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber, status) ?? new ReportsResult();
                         pageNumber = 1;
-                        MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.Data);
+                        MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.reportTaxTypes);
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
                     }
