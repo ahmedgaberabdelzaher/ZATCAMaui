@@ -258,6 +258,7 @@ namespace GAZT.Helper
         public static string ESTOutletList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_OutletSet";
         public static string ESTOutletAddressFetch = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ADDR_RETRIEVE_SRV/AddressSet";//
         public static string ESTFinancialMaxDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_FD_MAX_DATE_SRV/fd_end_dateSet";//
+        public static string UpdateLicenseAndCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/ISIC4Set";
         #endregion
 
         #region VATInstalment
@@ -492,6 +493,50 @@ namespace GAZT.Helper
         public static string GAZTVATSignUpValidateIdDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TP_NAME_SRV/taxpayer_nameSet";//CRPENTEST(Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
         public static string GAZTSiguupValidateIDTypesDecl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/taxpayer_nameSet";//PENTEST Chnage
 
-
+        
+            "90731",
+ " الهيئة السعودية للحياة الفطرية"
+                  },
+                  {
+            "90732",
+ " الهيئة السعودية للمدن الصناعية ومناطق التقنية"
+                  },
+                  {
+    "90733",
+ " الهيئة العامة للأرصاد وحماية البيئة"
+                  },
+                  {
+    "90735",
+ "الهيئة العامة للغذاء والدواء"
+                  },
+                  {
+    "90736",
+ " الهيئة العامة للموانئ"
+                  },
+                  {
+    "90737",
+ " هيئة السوق المالية"
+                  },
+                  {
+    "90738",
+ " هيئة تنظيم الكهرباء والإنتاج المزدوج"
+                  },
+                  {
+    "90739",
+ " وزارة الأسكان"
+                  },
+                  {
+    "90741",
+ " وزارة الطاقة"
+                  },
+                  {
+    "90742",
+ "هيئة الإعلام المرئي والمسموع"
+                  },
+                  {
+    "90718",
+ " أخرى"
+                  },
+        };
     }
 }

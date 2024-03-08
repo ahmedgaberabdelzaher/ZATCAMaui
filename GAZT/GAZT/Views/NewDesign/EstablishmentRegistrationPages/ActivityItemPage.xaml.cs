@@ -29,6 +29,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.results.Where(i => i.Actno == $"{Int16.Parse(_activityNavigation.nextNumber?.Actno):00000}").ToList();
             viewModel.CurrentTab = _activityNavigation.openedTab;
             BindingContext = viewModel;
+           // viewModel.CrName = _activityNavigation.validateCR.Crname;
             ChangeAeroIcon();
             SetLTR();
         }
@@ -73,10 +74,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         {
             viewModel?.validateCRNumber();
         }
-
+        void LicenseEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            //viewModel?.validateCRNumber();
+        }
+        
         void CRSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
-           
+            Console.WriteLine("CR Main " + CRMainActivity.IsOn);
             if (CRMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
                 viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
@@ -85,7 +90,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void LicenseSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
-            
+            Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
             if (LicenseMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
                 viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
@@ -140,8 +145,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.CRValidFrom = _crvalidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         void validFromPicker_Closed(System.Object sender, System.EventArgs e)
@@ -162,8 +170,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.ValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
-            {     
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

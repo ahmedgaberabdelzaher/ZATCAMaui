@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ErrorMessagePopup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+                                    xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:custom="clr-namespace:GAZT">
+
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" BackgroundColor="White">
+
+        <StackLayout VerticalOptions="Center" Margin="0,0,0,0">
+            <!--<Image HorizontalOptions="EndAndExpand">
+                <Image.Source>
+                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </Image.GestureRecognizers>
+            </Image>-->
+
+            <Label x:Name="InfromatationText" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
+            <custom:CustomLabel  Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.LinkText}"  FontFamily="{StaticResource Somar-Regular}" />
+                                            
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                    
+                                </custom:CustomLabel>
+
+             <Button x:Name="Link" Text="{x:Static ResourceManager:AppResources.Link}" TextColor="Blue" HorizontalOptions="StartAndExpand" BackgroundColor="White" Clicked="Link_Clicked"></Button>
+
+            <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,10" />
+
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>
+

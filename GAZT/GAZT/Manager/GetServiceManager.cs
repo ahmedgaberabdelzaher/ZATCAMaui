@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
+using GAZT.Helper;
 using Xamarin.Forms.Internals;
 
 namespace EGAZT.Manager
@@ -62,6 +64,24 @@ namespace EGAZT.Manager
 
             var uri = new Uri(URL);
             HttpResponseMessage response = await client.GetAsync(uri);
+            return response;
+        }
+        public static async Task<HttpResponseMessage> PostApiCall(String URL, bool istoken, string PayLoad)
+        {
+            HttpClient client = new HttpClient(App.httpClientHandler);
+            client.DefaultRequestHeaders.Add("Token", App.Token);
+            client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+            client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+            var uri = new Uri(string.Format(URL));
+            //var financeData = JsonConvert.SerializeObject(PayLoad, new JsonSerializerSettings
+            //{
+            //    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
+            //    DateTimeZoneHandling = DateTimeZoneHandling.Utc
+            //});
+            HttpContent contentPost = new StringContent(PayLoad, Encoding.UTF8, Constants.ContentType);
+            HttpResponseMessage response = await client.PostAsync(uri, contentPost);
             return response;
         }
     }

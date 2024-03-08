@@ -120,33 +120,33 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     case Xamarin.Forms.Device.Android:
                         {
 
-                            validFromPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            validFromPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            validFromPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            validFromPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            validFromPicker.HeaderFontFamily = "Somar-SemiBold";
+                            validFromPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            validFromPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            validFromPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            validFromHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            validFromHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            validFromHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            validFromHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//ddlLIssuedBy
+                            validFromHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            validFromHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            validFromHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            validFromHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
-                            crValidFromPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            crValidFromPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            crValidFromPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            crValidFromPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//ddlLIssuedBy
+                            crValidFromPicker.HeaderFontFamily = "Somar-SemiBold";
+                            crValidFromPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            crValidFromPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            crValidFromPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
-                            crValidFromHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            crValidFromHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            crValidFromHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            crValidFromHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//ddlLIssuedBy
+                            crValidFromHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            crValidFromHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            crValidFromHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            crValidFromHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -166,6 +166,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         void CRSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
+            Console.WriteLine("CR Main " + CRMainActivity.IsOn);
             if (CRMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
                 viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
@@ -174,6 +175,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
          void LicenseSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
+            Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
             if (LicenseMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
                 viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
@@ -228,8 +230,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.CRValidFrom = _crvalidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
-            { 
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -251,8 +255,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.ValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

@@ -25,6 +25,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
+            if(outletNavigation.selectedOutletItem.MciEntry== "X"||!string.IsNullOrEmpty(outletNavigation.selectedOutletItem.Actnm))
+            {
+                viewModel.isEditable = false;
+            }
+            else
+            {
+                viewModel.isEditable = true;
+            }
         }
         private void SetLTR()
         {
@@ -78,10 +86,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 var index = OutletTabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 OutletTabScrollView.ScrollToAsync(OutletTabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception) {
+            catch (Exception ex) {
 
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -100,10 +108,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception) {
+            catch (Exception ex) {
 
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

@@ -10627,4 +10627,87 @@ info@zatca.gov.sa</value>
    <data name="SadadBillOption" xml:space="preserve">
     <value>يمكنك طلب تخفيض الضمان النقدي عن طريق الاتصال على الرقم: 19993</value>
   </data>
+
+  
+  <!--5250 and 6073-->
+   <data name="FinacialPeriodNormal" xml:space="preserve">
+    <value>الفترة العادية</value>
+  </data>
+  <data name="FinacialPeriodSmall" xml:space="preserve">
+    <value>الفترة القصيرة</value>
+  </data>
+  <data name="FinacialPeriodLong" xml:space="preserve">
+    <value>الفترة الطويلة</value>
+  </data>
+  <data name="Error896" xml:space="preserve">
+      <value>عزيزي المكلف, السجل التجاري مسجل لدينا باسم آخر.</value>
+  </data>
+  <data name="ExistingOutletError" xml:space="preserve">
+        <value>لايُمكن حذف الفرع الموجود</value>
+    </data>
+   <data name="ESTValidateLicenseName" xml:space="preserve">
+      <value>برجاء ادخال اسم الرخصة</value>
+  </data>
+   <data name="TPFinacialPeriodMonthValidation" xml:space="preserve">
+    <value>الرجاء اختيار اليوم والشهر للفترة المالية المطلوبة</value>
+  </data>
+  <data name="FinacialDetailsZyear" xml:space="preserve">
+    <value>فقط yyyy يسمح لك تعديل السنة المالية لسنة</value>
+  </data>
+   <data name="MainOutletError" xml:space="preserve">
+        <value> لا يمكنك حذف الفرع الرئيسي</value>
+    </data>
+    <data name="DeleteError" xml:space="preserve">
+      <value>السجلات التجارية التي تم استدعائها من خلال وزارة التجارة لا يمكن حذفها</value>
+  </data>
+  <data name="ZZZZCRUpdateSuccess" xml:space="preserve">
+    <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة التجارة.</value>
+  </data>
+  <data name="ZZZZLicenseUpdateSuccess" xml:space="preserve">
+    <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة الشؤون البلدية والقروية.</value>
+  </data>
+  <data name="AmendRegistrationSubmitWarning" xml:space="preserve">
+    <value>عزيزي المكلف سوف يتم حذف الطلب المحفوظ كمسودة في حال تمت الموافقة على طلب تعديل فترة تقديم الإقرار المقدمة</value>
+  </data>
+  <data name="LinkText" xml:space="preserve">
+      <value>لإكمال التسجيل ، يمكنك التواصل معنا على الرقم 19993 أو رفع تذكرة من خلال الضغط </value>
+  </data>
+   <data name="Link" xml:space="preserve">
+      <value>هنا</value>
+  </data>
+   <data name="TinOutletOutletNumber" xml:space="preserve">
+    <value>رقم الفرع</value>
+  </data>
+   <data name="FinacialDetailsLastFulfilledreturn" xml:space="preserve">
+    <value>تاريخ اخر إقرار مقدم</value>
+  </data>
+   <data name="InnerListCrTitle" xml:space="preserve">
+      <value> رقم السجل التجاري الصادر من وزارة الثقافة فقط</value>
+  </data>
+   <data name="InnerListLicenceTitle" xml:space="preserve">
+      <value>تفاصيل الرخصة</value>
+  </data>
+  <data name="FinacialYearOptions" xml:space="preserve">
+    <value>خيارات الفترة المالية</value>
+  </data>
+  <data name="CrType" xml:space="preserve">
+      <value>نوع السجل التجاري</value>
+  </data>
+   <data name="IssuedCity" xml:space="preserve">
+      <value>المدينة</value>
+  </data>
+  <data name="LicenceNumber" xml:space="preserve">
+      <value>رقم الرخصة</value>
+  </data>
+   <data name="VatEffNoData" xml:space="preserve">
+    <value>لا توجد بيانات</value>
+  </data>
+   <data name="ZZLicenseName" xml:space="preserve">
+      <value>أسم الرخصة</value>
+  </data>
+
+  <!--End 5250 6073-->
+   <data name="ZZZZTitle" xml:space="preserve">
+    <value>لقب</value>
+  </data>
 </root>

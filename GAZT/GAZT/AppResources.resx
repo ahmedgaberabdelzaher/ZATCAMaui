@@ -10705,4 +10705,48 @@ We regret that you are unable to use the service at this time. Please sign up fo
    <data name="SadadBillOption" xml:space="preserve">
     <value>You may request a reduction of the cash collateral amount by contacting: 19993</value>
   </data>
+  
+    <value>License Name</value>
+    <comment>Sign up</comment>
+  </data>
+
+  <data name="Link" xml:space="preserve">
+<value>Click Here</value>
+</data>
+<data name="TinOutletOutletNumber" xml:space="preserve">
+    <value>Outlet No.</value>
+  </data>
+   <data name="FinacialDetailsLastFulfilledreturn" xml:space="preserve">
+    <value>Last fulfilled Return</value>
+  </data>
+  <data name="InnerListCrTitle" xml:space="preserve">
+      <value>Commercial Registration Number issued by MOC only</value>
+  </data>
+   <data name="InnerListLicenceTitle" xml:space="preserve">
+      <value>License Details</value>
+  </data>
+   <data name="FinacialYearOptions" xml:space="preserve">
+    <value>Financial Year Options</value>
+  </data>
+   <data name="CrType" xml:space="preserve">
+      <value>CR Type</value>
+  </data>
+   <data name="IssuedCity" xml:space="preserve">
+      <value>Issued City</value>
+  </data>
+   <data name="LicenceNumber" xml:space="preserve">
+      <value>License Number</value>
+  </data>
+  <data name="VatEffNoData" xml:space="preserve">
+    <value>No Data</value>
+  </data>
+   <data name="LicenceName" xml:space="preserve">
+      <value>License Name</value>
+  </data>
+ 
+  <!--End 5250 and 6073-->
+
+    <data name="ZZZZTitle" xml:space="preserve">
+    <value>Title</value>
+  </data>
 </root>

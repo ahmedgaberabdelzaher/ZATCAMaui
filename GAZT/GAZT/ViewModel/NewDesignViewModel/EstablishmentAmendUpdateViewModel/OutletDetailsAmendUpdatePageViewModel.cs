@@ -16,9 +16,12 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using static GAZT.ErrorMessage;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 {
@@ -189,7 +192,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _houseNumber = value;
+                    _houseNumberSame = value;
                     RaisePropertyChanged(nameof(HouseNumber));
+                    RaisePropertyChanged(nameof(HouseNumberSame));
                 }
             }
         }
@@ -204,7 +209,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _buildingNumber = value;
+                    _buildingNumberSame = value;
                     RaisePropertyChanged(nameof(BuildingNumber));
+                    RaisePropertyChanged(nameof(BuildingNumberSame));
                 }
             }
         }
@@ -219,7 +226,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _floorNumber = value;
+                    _floorNumberSame = value;
                     RaisePropertyChanged(nameof(FloorNumber));
+                    RaisePropertyChanged(nameof(FloorNumberSame));
                 }
             }
         }
@@ -234,7 +243,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _street = value;
+                    _streetSame = value;
                     RaisePropertyChanged(nameof(Street));
+                    RaisePropertyChanged(nameof(StreetSame));
                 }
             }
         }
@@ -249,7 +260,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _quarter = value;
+                    _quarterSame = value;
                     RaisePropertyChanged(nameof(Quarter));
+                    RaisePropertyChanged(nameof(QuarterSame));
                 }
             }
         }
@@ -264,7 +277,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _postalCode = value;
+                    _postalCodeSame = value;
                     RaisePropertyChanged(nameof(PostalCode));
+                    RaisePropertyChanged(nameof(PostalCodeSame));
                 }
             }
         }
@@ -279,7 +294,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _addNumber = value;
+                    _addNumberSame = value;
                     RaisePropertyChanged(nameof(AddNumber));
+                    RaisePropertyChanged(nameof(AddNumberSame));
                 }
             }
         }
@@ -294,7 +311,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _country = value;
+                    _countrySame = value;
                     RaisePropertyChanged(nameof(Country));
+                    RaisePropertyChanged(nameof(CountrySame));
                 }
             }
         }
@@ -309,7 +328,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _provinance = value;
+                    _provinanceSame = value;
                     RaisePropertyChanged(nameof(Provinance));
+                    RaisePropertyChanged(nameof(ProvinanceSame));
                 }
             }
         }
@@ -324,7 +345,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (value != null)
                 {
                     _city = value;
+                    _citySame = value;
                     RaisePropertyChanged(nameof(City));
+                    RaisePropertyChanged(nameof(CitySame));
                 }
             }
         }
@@ -597,9 +620,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
                 RaisePropertyChanged("PickerModel");
@@ -666,7 +689,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -676,9 +699,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
             });
             OnProvinanceSelectButtonClick = new Command((str) =>
@@ -727,7 +750,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                     catch (GAZTUnlockAccountException ex)
                     {
-                         
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     }
                     catch (InternetException ex)
                     {
@@ -737,9 +760,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             _navigationService.GoBack();
                         });
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                         
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     }
 
                 }
@@ -790,7 +813,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                     catch (GAZTUnlockAccountException ex)
                     {
-                         
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     }
                     catch (InternetException ex)
                     {
@@ -800,9 +823,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             _navigationService.GoBack();
                         });
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                         
+                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     }
 
                 }
@@ -857,6 +880,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         }
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
+            Console.WriteLine(_enum);
             if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
@@ -972,7 +996,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
 
-                        taxPayerDetails.off_notesSet = new OffNotesSet();
+                        taxPayerDetails.off_notesSet = new Models.EstablishmentRegistration.OffNotesSet();
                         taxPayerDetails.off_notesSet.results = new List<OffNotes>();
                         taxPayerDetails.Nreg_BtnSet = new NregBtnSet();
 
@@ -986,6 +1010,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     catch (Exception ex)
                     {
                         IsLoading = false;
+                        Console.WriteLine(ex.StackTrace);
                         if (ex is HTTPBadRequestException)
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -1005,17 +1030,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             IsLoading = true;
             try
             {
-                taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+                //taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
                 var newList = new List<Nreg_ActivityItem>();
                 newList.AddRange(list);
-                taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
-                var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
-                     );
+
+                foreach (Nreg_ActivityItem newItem in newList)
+                {
+                    var count = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Idnumber == newItem.Idnumber).ToList().Count();
+                    if (count == 0)
+                    {
+                        taxPayerDetails?.Nreg_ActivitySet.results?.Add(newItem);
+                    }
+                }
+
+                var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx);
                 taxPayerDetails?.AttDetSet.results?.Clear();
                 taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -1090,44 +1124,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
                          );
 
-                        if (OutletActNumber == "00000")
-                        {
-                            var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
-                            if (preLoadedItems.Count == 1)
-                            {
-                                var preLoadedItem = preLoadedItems.FirstOrDefault();
-                                if (preLoadedItem?.Type == "BUP002")
-                                {
-                                    validateCR = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
-                                    if (!string.IsNullOrEmpty(validateCR?.Crname))
-                                    {
-                                        OutletName = validateCR?.Crname;
-                                        validateCR.Crnum = preLoadedItem?.Idnumber;
-                                    }
-                                    PreLoadedLicenseItem = null;
-                                }
-                                else if (preLoadedItem?.Type == "ZS0004")
-                                {
-                                    validateCR = null;
-                                    PreLoadedLicenseItem = preLoadedItem;
-                                }
-                                else
-                                {
-                                    validateCR = null;
-                                    PreLoadedLicenseItem = null;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            validateCR = null;
-                            PreLoadedLicenseItem = null;
-                        }
+                        //As per 5250 commented below code, in amend we no need to call this api.
+                        //if (OutletActNumber == "00000")
+                        //{
+                        //    var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
+                        //    if (preLoadedItems.Count == 1)
+                        //    {
+                        //        var preLoadedItem = preLoadedItems.FirstOrDefault();
+                        //        if (preLoadedItem?.Type == "BUP002")
+                        //        {
+                        //            var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                        //            try
+                        //            {
+                        //                if (!string.IsNullOrEmpty(result))
+                        //                {
+                        //                    validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
+                        //                }
+                        //                if (validateCR.Crnum == null)
+                        //                {
+                        //                    PrepareError(result);
+                        //                }
+                        //            }
+                        //            catch (Exception ex)
+                        //            {
+
+                        //            }
+
+
+                        //            if (!string.IsNullOrEmpty(validateCR?.Crname))
+                        //            {
+                        //                OutletName = validateCR?.Crname;
+                        //                validateCR.Crnum = preLoadedItem?.Idnumber;
+                        //            }
+                        //            PreLoadedLicenseItem = null;
+                        //        }
+                        //        else if (preLoadedItem?.Type == "ZS0004")
+                        //        {
+                        //            validateCR = null;
+                        //            PreLoadedLicenseItem = preLoadedItem;
+                        //        }
+                        //        else
+                        //        {
+                        //            validateCR = null;
+                        //            PreLoadedLicenseItem = null;
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    validateCR = null;
+                        //    PreLoadedLicenseItem = null;
+                        //}
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        
-                        
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
@@ -1209,14 +1261,63 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
                 IsLoading = false;
+            }
+        }
+        private void PrepareError(string result)
+        {
+            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
+            var errorID = string.Empty;
+            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+            {
+                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+
+                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+
+                if (errorCode.Contains("206"))
+                {
+                    WebServiceManager.ErrorMessageForUnlockAccount = "206";
+                }
+                else if (errorCode.Contains("112"))
+                {
+                    WebServiceManager.ErrorMessageForUnlockAccount = "112";
+                }
+                else if (errorCode.Contains("896"))
+                {
+                    errorID = errorCode;
+                }
+
+                string line1 = "";
+
+                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
+                {
+                    line1 = line1 + " " + errorMesg.error.innererror.errordetails[i].message;
+                }
+                WebServiceManager.ErrorMessageForUnlockAccount = line1;
+
+                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    if (errorID.Contains("896"))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
+                    }
+
+                });
+
+                //throw new GAZTErrorException(WithReplacedString);
             }
         }
         private void populateAddress(OutletAddress address)
