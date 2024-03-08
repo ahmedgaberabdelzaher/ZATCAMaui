@@ -10705,7 +10705,7 @@ We regret that you are unable to use the service at this time. Please sign up fo
    <data name="SadadBillOption" xml:space="preserve">
     <value>You may request a reduction of the cash collateral amount by contacting: 19993</value>
   </data>
-  
+  <data>
     <value>License Name</value>
     <comment>Sign up</comment>
   </data>
