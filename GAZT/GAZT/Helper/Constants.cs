@@ -147,6 +147,7 @@ namespace GAZT.Helper
         #region SignUp
         public static string GAZTGetCityListForSignUp = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/";
         public static string GAZTSiguupValidateIDTypes = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet";
+        public static string GAZTSiguupValidateGCCIDType = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/taxpayer_nameSet";
         public static string GAZTSiguupValidateCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_CR_VALDATE_SRV/validatecrSet";
         public static string GAZTSiguupCheckDuplicate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ID_DUPLICAE_CHECK_SRV/permit_detSet";
         public static string GAZTSiguupIssuedByList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_MOBILE_SRV/ConsumeSet?$filter=Request eq ";

@@ -8827,7 +8827,7 @@ I acknowledge that the above bank account information is correct and assume full
     <value>Apple pay payment</value>
   </data>
   <data name="PaymentMethodCardPayment" xml:space="preserve">
-    <value>Card Payment</value>
+    <value>E-commerce payments</value>
   </data>
   <data name="PaymentMethodPayNow" xml:space="preserve">
     <value>Pay Now</value>
@@ -10695,4 +10695,17 @@ We regret that you are unable to use the service at this time. Please sign up fo
    <data name="IBanSubmitSuccess1" xml:space="preserve">
     <value>The request has been approved by the Authority, you can use the bank account in refund requests.</value>
   </data>
+<<<<<<< Updated upstream
+  <!--6100-->
+    <data name="PaymentCancelInfo" xml:space="preserve">
+    <value>Dear taxpayer, transaction cannot be completed now, kindly try again shortly</value>
+</data>
+=======
+  <data name="BankGuaranteeOption" xml:space="preserve">
+    <value>You may request a reduction of the bank guarantee amount by contacting: 19993</value>
+  </data>
+   <data name="SadadBillOption" xml:space="preserve">
+    <value>You may request a reduction of the cash collateral amount by contacting: 19993</value>
+  </data>
+>>>>>>> Stashed changes
 </root>

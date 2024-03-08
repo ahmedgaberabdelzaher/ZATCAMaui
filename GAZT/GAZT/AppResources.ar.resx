@@ -8769,7 +8769,7 @@ info@zatca.gov.sa</value>
     <value>الدفع عن طريق  Apple pay</value>
     </data>
   <data name="PaymentMethodCardPayment" xml:space="preserve">
-    <value>الدفع عن طريق البطاقة</value>
+     <value>قنوات الدفع الإلكترونية</value>
     </data>
   <data name="PaymentMethodPayNow" xml:space="preserve">
     <value>ادفع الآن</value>
@@ -10617,4 +10617,17 @@ info@zatca.gov.sa</value>
     <data name="IBanSubmitSuccess1" xml:space="preserve">
     <value> تم اعتماد الطلب من قبل الهيئة، يمكنكم استخدام الحساب البنكي في طلبات الاسترداد</value>
   </data>
+<<<<<<< Updated upstream
+  <!--6100-->
+    <data name="PaymentCancelInfo" xml:space="preserve">
+   <value>عزيزي المكلف, لا يمكن إتمام هذه العملية حاليا, يرجى المحاولة لاحقا</value>
+</data>
+=======
+  <data name="BankGuaranteeOption" xml:space="preserve">
+    <value>يمكنك طلب تخفيض الضمان البنكي عن طريق الاتصال على الرقم: 19993</value>
+  </data>
+   <data name="SadadBillOption" xml:space="preserve">
+    <value>يمكنك طلب تخفيض الضمان النقدي عن طريق الاتصال على الرقم: 19993</value>
+  </data>
+>>>>>>> Stashed changes
 </root>

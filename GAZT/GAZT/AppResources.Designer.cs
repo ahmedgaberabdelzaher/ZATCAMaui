@@ -1051,6 +1051,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You may request a reduction of the bank guarantee amount by contacting: 19993.
+        /// </summary>
+        public static string BankGuaranteeOption {
+            get {
+                return ResourceManager.GetString("BankGuaranteeOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bill.
         /// </summary>
         public static string Bill {
@@ -11079,6 +11088,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear taxpayer, transaction cannot be completed now, kindly try again shortly.
+        /// </summary>
+        public static string PaymentCancelInfo {
+            get {
+                return ResourceManager.GetString("PaymentCancelInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment Details.
         /// </summary>
         public static string PaymentDetails {
@@ -11106,7 +11124,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Card Payment.
+        ///   Looks up a localized string similar to E-commerce payments.
         /// </summary>
         public static string PaymentMethodCardPayment {
             get {
@@ -12519,6 +12537,15 @@ namespace EGAZT {
         public static string Sadad {
             get {
                 return ResourceManager.GetString("Sadad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may request a reduction of the cash collateral amount by contacting: 19993.
+        /// </summary>
+        public static string SadadBillOption {
+            get {
+                return ResourceManager.GetString("SadadBillOption", resourceCulture);
             }
         }
         

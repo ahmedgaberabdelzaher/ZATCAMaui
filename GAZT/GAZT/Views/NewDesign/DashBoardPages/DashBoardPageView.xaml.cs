@@ -397,12 +397,12 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
-                {
-                    await viewModel.ApplePaySelected();
-                    viewModel.isPayNowTapped = false;
+                //MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                //{
+                //    await viewModel.ApplePaySelected();
+                //    viewModel.isPayNowTapped = false;
 
-                });
+                //});
             }
             catch (Exception)
             {
@@ -422,15 +422,15 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             try
             {
-                MessagingCenter.Subscribe<App, string>(this, "DashboardApplePayData", async (sender, arg) =>
-                {
+                //MessagingCenter.Subscribe<App, string>(this, "DashboardApplePayData", async (sender, arg) =>
+                //{
 
-                    viewModel.ApplePayTokenData = arg.ToString();
+                //    viewModel.ApplePayTokenData = arg.ToString();
 
-                    await viewModel.UpdateApplePayPaymentGuid();
+                //    await viewModel.UpdateApplePayPaymentGuid();
 
 
-                });
+                //});
 
             }
             catch (Exception)

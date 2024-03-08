@@ -62,7 +62,7 @@
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Grid.Row="0" Padding="20,32,24,10">
+                    <Grid Grid.Row="0" Padding="20,40,24,4">
 
                         <Image
                             Grid.Row="0"

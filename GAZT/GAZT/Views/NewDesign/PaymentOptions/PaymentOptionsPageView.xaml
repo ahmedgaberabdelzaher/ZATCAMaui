@@ -56,7 +56,7 @@
 
                     <listView:SfListView.ItemTemplate>
 
-                        <DataTemplate>
+                        <!--<DataTemplate>
                             <cards:SfCardView
                                 BackgroundColor="{StaticResource PickerBgGray}"
                                 BorderColor="{StaticResource NeutralLightGrey}"
@@ -96,11 +96,19 @@
                                 </Grid>
                             </cards:SfCardView>
 
-                        </DataTemplate>
+                        </DataTemplate>-->
+                        <DataTemplate>
+                            <cards:SfCardView HasShadow="False" CornerRadius="10" HeightRequest="150" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="{StaticResource PickerBgGray}" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0,-4">
+                                    <Image x:Name="PayIcon" Source="{Binding SelectedCardIcon}"  HeightRequest="100" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Aspect="AspectFit" Margin="4,0,0,0" ></Image>
+                                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Padding="8,0"/>
+                                </StackLayout>
+                            </cards:SfCardView>
 
+                        </DataTemplate>
                     </listView:SfListView.ItemTemplate>
 
-                    <listView:SfListView.SelectedItemTemplate>
+                    <!--<listView:SfListView.SelectedItemTemplate>
 
 
                         <DataTemplate>
@@ -130,7 +138,7 @@
                                             x:Name="PayIcon"
                                             Margin="4,0,0,0"
                                             Aspect="AspectFit"
-                                            HeightRequest="{Binding IconHeight}"
+                                            HeightRequest="100"
                                             HorizontalOptions="Start"
                                             Source="{Binding SelectedCardIcon}"
                                             VerticalOptions="CenterAndExpand" />
@@ -145,8 +153,24 @@
                             </cards:SfCardView>
 
                         </DataTemplate>
+                         <DataTemplate>
+                            <cards:SfCardView HasShadow="False" CornerRadius="10" HeightRequest="150" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="{StaticResource PickerBgGray}" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
+                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="55"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal" Padding="0,-4">
+                                        <Image x:Name="PayIcon" Source="{Binding SelectedCardIcon}"  HeightRequest="120" WidthRequest="120"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Aspect="AspectFit" Margin="4,0,0,0" ></Image>
+                                        <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Padding="8,0"/>
+                                    </StackLayout>
+                                </Grid>
+                            </cards:SfCardView>
 
-                    </listView:SfListView.SelectedItemTemplate>
+                        </DataTemplate>
+                    </listView:SfListView.SelectedItemTemplate>-->
                     <listView:SfListView.LayoutManager>
 
                         <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=1, Tablet=1, Desktop=5}" />
