@@ -910,7 +910,11 @@
 
                         <!--  End Date Field  -->
                         <StackLayout Spacing="0">
-
+                            <StackLayout.Triggers>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding premiumResidencytype.iqamaType}" Value="1">
+                                    <Setter Property="IsVisible" Value="false"></Setter>
+                                </DataTrigger>
+                            </StackLayout.Triggers>
                             <!--  End Date Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
@@ -939,10 +943,10 @@
                                   <DatePicker
                                         x:Name="EndDate"
                                         ClassId="enddateentry"
-                                        Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
+                                       
                                         Format="dd/MM/yyyy"
                                         IsVisible="false"
-                                        MinimumDate="{Binding MinimumDate}">
+                                        >
 
                                         <DatePicker.Behaviors>
                                             <xct:EventToCommandBehavior
