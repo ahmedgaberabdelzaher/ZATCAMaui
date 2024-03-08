@@ -10705,6 +10705,9 @@ info@zatca.gov.sa</value>
    <data name="ZZLicenseName" xml:space="preserve">
       <value>أسم الرخصة</value>
   </data>
+  <data name="LicenceName" xml:space="preserve">
+      <value>أسم الرخصة</value>
+  </data>
 
   <!--End 5250 6073-->
    <data name="ZZZZTitle" xml:space="preserve">

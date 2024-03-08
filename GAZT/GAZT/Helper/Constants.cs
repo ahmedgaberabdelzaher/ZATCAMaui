@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Xamarin.Forms.Internals;
+using EGAZT.Models.EstablishmentRegistration;
 
 namespace GAZT.Helper
 {

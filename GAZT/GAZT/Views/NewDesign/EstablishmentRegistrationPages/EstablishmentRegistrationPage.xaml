@@ -34,7 +34,7 @@
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
             <converters:ESTOutletDeleteActionVisibilityConverter x:Key="deleteActionVisibilityConverter" />
             <converters:ESTresidentialStatusConverter x:Key="residentialStatusConverter" />
-            <converter:InverseBoolConverter x:Key="BoolConverter"/>
+            <!--<converter:InverseBoolConverter x:Key="BoolConverter"/>-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
