@@ -58,12 +58,12 @@ namespace GAZT.Helper
         public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         public static string DomainUrlForCookies = DevDomainForCookies;
         public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
-    /*
+    
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-     */
+    
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
@@ -75,10 +75,10 @@ namespace GAZT.Helper
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
     */
      
-        public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
+      /*  public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = ProdDomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;*/
     
     
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";

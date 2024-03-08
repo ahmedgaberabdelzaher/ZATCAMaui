@@ -148,7 +148,6 @@
 	  <None Remove="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 	  <None Remove="Views\NewDesign\Common\NativeNafath\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
-	  <None Remove="Views\NewDesign\IBanAccountsManagements\" />
 	  <None Remove="ViewModel\NewDesignViewModel\IBanAccManagementsViewModel\" />
 	</ItemGroup>
 	<ItemGroup>
@@ -300,7 +299,6 @@
 		<Folder Include="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 		<Folder Include="Views\NewDesign\Common\NativeNafath\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
-		<Folder Include="Views\NewDesign\IBanAccountsManagements\" />
 		<Folder Include="ViewModel\NewDesignViewModel\IBanAccManagementsViewModel\" />
 	</ItemGroup>
 	<ItemGroup>
