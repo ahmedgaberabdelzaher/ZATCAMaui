@@ -1542,9 +1542,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry.Land1 : LicenseIssueCountry.Land1,
                             City = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityName : LicenseIssueCity.CityName,
                             CityCode = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCity.CityCode : LicenseIssueCity.CityCode,
-                            Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector,
-                            ActMgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRMainGroup.IndSector : LicenseMainGroup.IndSector,
-                            ActSgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRSubGroup.IndSector : LicenseSubGroup == null? "": LicenseSubGroup.IndSector,
+                            Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? (CRAcitivity == null ? "" : CRAcitivity.IndSector) : (LicenseAcitivity == null ? "" : LicenseAcitivity.IndSector),
+                            ActMgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? (CRMainGroup == null ? "" : CRMainGroup.IndSector) : (LicenseMainGroup == null ? "" : LicenseMainGroup.IndSector),
+                            ActSgrp = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? (CRSubGroup == null ? "" : CRSubGroup.IndSector) : (LicenseSubGroup == null ? "" : LicenseSubGroup.IndSector),
                             Actcat = MainActivity ? "M" : "S",
                             Actno = $"{Int16.Parse(newNumber?.Actno):00000}",
                             Crattfg = CRsCopies.Count > 0 ? "X" : string.Empty,
@@ -1775,7 +1775,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         CityCode = string.Empty
                     };
                     CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    EnableCRInputField = string.IsNullOrEmpty(validateCR?.Crname);
                     SelectedCRItem = taxPayerDetails?.Nreg_ActivitySet?.results?.FirstOrDefault(i => i.Type == "BUP002");
                     if (SelectedCRItem != null)
                     {
@@ -1788,8 +1787,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                         CRIssueCity = new CityDropdownItem()
                         {
-                            CityName = SelectedCRItem?.City,
-                            CityCode = SelectedCRItem?.CityCode
+                            CityName = OutletDropDowns.city_dropdownSet.results.Where(i => i.CityCode == SelectedCRItem?.CityCode).FirstOrDefault().CityName,
+                            CityCode = SelectedCRItem?.CityCode,
                         };
 
                         if (SelectedCRItem.Actcat.Equals("M"))
@@ -1800,11 +1799,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         {
                             MainActivity = false;
                         }
+
                         updateActivityList(SelectedCRItem?.Activity);
                         CRAcitivity = activityList.activitySet.results.Where(i => i.IndSector == SelectedCRItem?.Activity).FirstOrDefault();
                         CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActMgrp).FirstOrDefault();
                         CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector == SelectedCRItem?.ActSgrp).FirstOrDefault();
                         updateCRAttachments();
+                    }
+                    if (CrName.Length > 0)
+                    {
+                        EnableCRInputField = false;
+                    }
+                    else
+                    {
+                        EnableCRInputField = true;
                     }
                     if (!string.IsNullOrEmpty(CRNumber))
                         validateCRNumber();
@@ -2005,8 +2013,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 CRIssueCity = new CityDropdownItem()
                 {
-                    CityName = validateCR?.CityAry,
-                    CityCode = string.Empty
+                    CityName = OutletDropDowns.city_dropdownSet.results.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
+                    CityCode = SelectedCRItem?.CityCode,
                 };
                 CRValidFrom = validateCR?.Issuedt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
