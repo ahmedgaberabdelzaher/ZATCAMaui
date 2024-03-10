@@ -13,6 +13,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -248,7 +249,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
             isLoginLoaded = false;
 
-            if (e.Url.Contains("bank/?IsPmtSts"))
+            if (e.Url.Contains("IsPmtSts"))
             {
                 var splitString = e.Url.Split('=');
                 if (splitString.Length > 0)
@@ -275,7 +276,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 }
 
             }
-            else if (e.Url.Contains("error/?isAuthErr"))
+            else if ((e.Url.Contains("isAuthErr")) || (e.Url.Contains("IsPROCBlank")))
             {
                 var splitString = e.Url.Split('&');
                 if (splitString.Length > 0)
@@ -283,8 +284,9 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
                     isPaymentProcessed = false;
 
-                    var responseMessage = splitString[1].Replace("msg","");
-
+                    var responseMessage = splitString[1].Replace("msg='", "");
+                    string decodedMessage = Uri.UnescapeDataString(responseMessage);
+                    string[] parts = decodedMessage.Split('\'');
                     //("Payment Successful:" + e.Url);
 
                     webView.IsVisible = false;
@@ -292,7 +294,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(responseMessage));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(parts[1]));
                         //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         viewModel._navigationService.GoBack();
                     });
@@ -302,8 +304,8 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 }
 
             }
-            else if (e.Url.Contains(Constants.DomainUrlForCookies)) {
-
+            else if (e.Url.Contains(Constants.DomainUrlForCookies) && (!(e.Url.Contains("madapmnt.Madaconfirm"))))
+            {
                 isLoginLoaded = true;
                 webView.IsVisible = false;
             }

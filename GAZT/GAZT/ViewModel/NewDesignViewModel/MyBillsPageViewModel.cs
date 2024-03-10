@@ -1020,7 +1020,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
 
-                            ApplePayStatus = await ProcessApplePay();
+                            //ApplePayStatus = await ProcessApplePay();
                         }
 
 
@@ -1185,14 +1185,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private async Task<bool> ProcessApplePay()
-        {
+        //private async Task<bool> ProcessApplePay()
+        //{
 
-            var Amount = Convert.ToDouble(PaymentData.d.Amount);
-            var BillAmount = Math.Round(Amount, 2);
-            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
-        }
+        //    var Amount = Convert.ToDouble(PaymentData.d.Amount);
+        //    var BillAmount = Math.Round(Amount, 2);
+        //    DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
+        //    return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+        //}
 
         public void MadaPaymentSelected()
         {

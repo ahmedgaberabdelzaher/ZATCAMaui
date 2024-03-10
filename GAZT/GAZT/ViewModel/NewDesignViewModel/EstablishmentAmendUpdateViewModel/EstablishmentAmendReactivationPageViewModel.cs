@@ -38,6 +38,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public bool IsExceptionPopupVisible { get; set; } = false;
         public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
+        private FinancialDetail financialDetailPeriod { get; set; } = null;
+        public bool isFinaceDetailsChanged { get; set; } = false;
+        public string isDraftEnabled { get; set; } = "";
         public Nreg_IdItem idItem { get; set; } = null;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         private EstablishmentRegistrationTabsEnum _currentTab;
@@ -283,6 +286,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                 _isClickedAFixedBasePE = value;
                 RaisePropertyChanged("IsClickedAFixedBasePE");
+            }
+        }
+
+        private bool _isFinancePeriodVisible = false;
+        public bool IsFinancePeriodVisible
+        {
+            get => _isFinancePeriodVisible;
+            set
+            {
+
+                _isFinancePeriodVisible = value;
+                RaisePropertyChanged("IsFinancePeriodVisible");
             }
         }
 
@@ -567,6 +582,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
             }
         }
+        private bool _showLicenceNoData = true;
+        public bool ShowLicenceNoData
+        {
+            get => _showLicenceNoData;
+            set
+            {
+                if (_showLicenceNoData == value) return;
+
+                _showLicenceNoData = value;
+                RaisePropertyChanged("ShowLicenceNoData");
+            }
+        }
+
+        private bool _showCRNoData = true;
+        public bool ShowCRNoData
+        {
+            get => _showCRNoData;
+            set
+            {
+                if (_showCRNoData == value) return;
+
+                _showCRNoData = value;
+                RaisePropertyChanged("ShowCRNoData");
+            }
+        }
+
         private string _selectedGender;
         public string SelectedGender
         {
@@ -670,6 +711,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(SelectedDOBHijiriDate));
             }
         }
+
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                if (_title == value) return;
+
+                _title = value;
+                RaisePropertyChanged(nameof(Title));
+            }
+        }
+
         private string _firstName;
         public string FirstName
         {
@@ -1015,6 +1070,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(SelectedPassportFileName));
             }
         }
+
+        private string _iqamaTypeDesc = string.Empty;
+        public string IqamaTypeDesc
+        {
+            get
+            {
+                return _iqamaTypeDesc;
+            }
+            set
+            {
+                _iqamaTypeDesc = value;
+                RaisePropertyChanged("IqamaTypeDesc");
+            }
+        }
+
+        private bool _showIqamaTypeDesc = false;
+        public bool ShowIqamaTypeDesc
+        {
+            get
+            {
+                return _showIqamaTypeDesc;
+            }
+            set
+            {
+                _showIqamaTypeDesc = value;
+                RaisePropertyChanged("ShowIqamaTypeDesc");
+            }
+        }
+        private string _iqamaDesc;
+        public string IqamaDesc
+        {
+            get => _iqamaDesc;
+            set
+            {
+                if (_iqamaDesc == value) return;
+
+                _iqamaDesc = value;
+                RaisePropertyChanged(nameof(IqamaDesc));
+            }
+        }
+
+        private bool _showIqamaType;
+        public bool ShowIqamaType
+        {
+            get => _showIqamaType;
+            set
+            {
+                if (_showIqamaType == value) return;
+
+                _showIqamaType = value;
+                RaisePropertyChanged(nameof(ShowIqamaType));
+            }
+        }
+
         #endregion
 
         #region Outlet variables
@@ -1028,9 +1137,79 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                 _searchText = value == null ? string.Empty : value;
                 SearchableOutletData?.Clear();
-                OutletData.Where(i => i.Actnm.StartsWith(_searchText)).ToList().ForEach(j =>
+                OutlettUiList.Clear();
+                OutletData.Where(i => i.Actnm.StartsWith(_searchText)).ToList().ForEach(_out =>
                 {
-                    SearchableOutletData.Add(j);
+                    SearchableOutletData.Add(_out);
+
+                    OuteltInfo_NestedListView newItem = new OuteltInfo_NestedListView();
+
+                    newItem.Metadata = _out.__metadata;
+                    newItem.CityCode = _out.CityCode;
+                    newItem.City1 = _out.City1;
+                    newItem.Crlicenceno = _out.Crlicenceno;
+                    newItem.Oldmst = _out.Oldmst;
+                    newItem.Outdocdreg = _out.Outdocdreg;
+                    newItem.Caltp = _out.Caltp;
+                    newItem.Cmatt = _out.Cmatt;
+                    newItem.Mandtx = _out.Mandtx;
+                    newItem.Fbnumx = _out.Fbnumx;
+                    newItem.Rentatt = _out.Rentatt;
+                    newItem.Conatt = _out.Conatt;
+                    newItem.PortalUsrx = _out.PortalUsrx;
+                    newItem.Langx = _out.Langx;
+                    newItem.Operationx = _out.Operationx;
+                    newItem.StepNumberx = _out.StepNumberx;
+                    newItem.ReturnIdx = _out.ReturnIdx;
+                    newItem.Officerx = _out.Officerx;
+                    newItem.Gpartx = _out.Gpartx;
+                    newItem.Mandt = _out.Mandt;
+                    newItem.FormGuid = _out.FormGuid;
+                    newItem.DataVersion = _out.DataVersion;
+                    newItem.LineNo = _out.LineNo;
+                    newItem.RankingOrder = _out.RankingOrder;
+                    newItem.ActNo = _out.Actno;
+                    newItem.StartDate = _out.StartDate;
+                    newItem.EndDate = _out.EndDate;
+                    newItem.ActCat = _out.Actcat;
+                    newItem.ActNm = _out.Actnm;
+                    newItem.ActNm2 = _out.Actnm2;
+                    newItem.ChInd = _out.ChInd;
+                    newItem.MciEntry = _out.MciEntry;
+                    if (newItem.MciEntry.ToUpper().ToString().Equals("X"))
+                    {
+                        newItem.ShowEditIcon = false;
+                    }
+                    else
+                    {
+                        newItem.ShowEditIcon = true;
+                    }
+
+                    //if (newItem.ActCat.Equals("M"))
+                    //{
+                    //    if (App.IsArabic)
+                    //    {
+                    //        newItem.ActCatDesc = "فرع رئيسي";
+                    //    }
+                    //    else
+                    //    {
+                    //        newItem.ActCatDesc = "Main Outlet";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (App.IsArabic)
+                    //    {
+                    //        newItem.ActCatDesc = "فرع فرعي";
+                    //    }
+                    //    else
+                    //    {
+                    //        newItem.ActCatDesc = "Sub Outlet";
+                    //    }
+                    //}
+
+
+                    OutlettUiList.Add(newItem);
                 });
                 RaisePropertyChanged(SearchText);
             }
@@ -1061,6 +1240,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     _searchableOutletData = value;
                     RaisePropertyChanged(nameof(SearchableOutletData));
                 }
+            }
+        }
+
+        private ObservableCollection<OuteltInfo_NestedListView> _outlettUiList = new ObservableCollection<OuteltInfo_NestedListView>();
+        public ObservableCollection<OuteltInfo_NestedListView> OutlettUiList
+        {
+            get
+            {
+                return _outlettUiList;
+            }
+            set
+            {
+                if (_outlettUiList == value) return;
+
+                _outlettUiList = value;
+
+                RaisePropertyChanged("OutlettUiList");
             }
         }
         #endregion
@@ -1099,7 +1295,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _selectedMethod;
             set
             {
-                if (_selectedMethod == value) return;
 
                 if (value != null)
                 {
@@ -1129,7 +1324,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             get => _calendarType;
             set
             {
-                if (_calendarType == value) return;
 
                 if (value != null)
                 {
@@ -1137,6 +1331,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     RaisePropertyChanged(nameof(CalendarType));
                     if (taxPayerDetails != null)
                         udpdateDates();
+                }
+            }
+        }
+
+        private List<PeriodSetResult> _periodList = new List<PeriodSetResult>();
+        public List<PeriodSetResult> PeriodList
+        {
+            get => _periodList;
+            set
+            {
+                if (_periodList == value) return;
+
+                if (value != null)
+                {
+                    _periodList = value;
+                    RaisePropertyChanged(nameof(PeriodList));
+                }
+            }
+        }
+        private PeriodSetResult _selectedPeriod = null;
+        public PeriodSetResult SelectedPeriod
+        {
+            get => _selectedPeriod;
+            set
+            {
+                if (_selectedPeriod == value) return;
+
+                if (value != null)
+                {
+                    _selectedPeriod = value;
+                    RaisePropertyChanged(nameof(SelectedPeriod));
+                    //if (taxPayerDetails != null)
+                    //    udpdateDates();
                 }
             }
         }
@@ -1188,6 +1415,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(TaxDate));
             }
         }
+        private string _lastFulfilledReturn = string.Empty;
+        public string LastFulfilledReturn
+        {
+            get => _lastFulfilledReturn;
+            set
+            {
+                if (_lastFulfilledReturn == value) return;
+
+                _lastFulfilledReturn = value;
+                RaisePropertyChanged(nameof(LastFulfilledReturn));
+            }
+        }
+        private string _zYear = string.Empty;
+        public string ZYear
+        {
+            get => _zYear;
+            set
+            {
+                if (_zYear == value) return;
+
+                _zYear = value;
+                RaisePropertyChanged(nameof(ZYear));
+            }
+        }
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -1234,9 +1485,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
                 RaisePropertyChanged("PickerModel");
@@ -1299,6 +1550,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 RaisePropertyChanged(nameof(ESTLedge));
             }
         }
+
+        private OuteltInfo_NestedListView selectedItem;
+        public OuteltInfo_NestedListView SelectedItem
+        {
+            get => selectedItem;
+            set
+            {
+                if (selectedItem == value) return;
+
+                selectedItem = value;
+                RaisePropertyChanged(nameof(SelectedItem));
+            }
+        }
+        private OutletDropDowns _outletDropDowns = null;
+        public OutletDropDowns OutletDropDowns
+        {
+            get => _outletDropDowns;
+            set
+            {
+                if (_outletDropDowns == value) return;
+
+                _outletDropDowns = value;
+                RaisePropertyChanged(nameof(OutletDropDowns));
+            }
+        }
+        private ActivitySetsList activityList = null;
         #endregion
 
         #endregion
@@ -1387,6 +1664,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
         #region Outlet Tabs commands
         public ICommand OnEditOutletButtonClick { get; set; }
+        public ICommand OnEditOutletButtonClick2 { get; set; }
         public ICommand OnNewOutletButtonClick { get; set; }
         public ICommand OnDeleteOutletButtonClick { get; set; }
         #endregion
@@ -1464,7 +1742,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -1474,9 +1752,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
 
@@ -1511,7 +1789,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -1521,9 +1799,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
             });
@@ -1551,7 +1829,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -1561,9 +1839,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
             });
@@ -1589,9 +1867,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException)
+                catch (GAZTUnlockAccountException ex)
                 {
-                    
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -1601,9 +1879,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                   
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
             });
             #endregion
@@ -1633,7 +1911,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -1643,9 +1921,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                     
+                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
 
             });
@@ -1662,32 +1940,62 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 ));
 
             #region Outlet Tabs variable initialization
-            OnEditOutletButtonClick = new Command((item) => openEditOutlet(item as OutletItem));
+            OnEditOutletButtonClick = new Command((item) => openEditOutlet(item as OuteltInfo_NestedListView, 1)); // Expander
+            OnEditOutletButtonClick2 = new Command((item) => openEditOutlet(item as OuteltInfo_NestedListView, 2)); //edit
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
             OnDeleteOutletButtonClick = new Command(async (item) =>
             {
-                var newItem = item as OutletItem;
-                string QuestionMark = string.Empty;
-                if (App.IsArabic)
+                var newItem = item as OuteltInfo_NestedListView;
+                if (newItem.Oldmst.ToString().ToUpper().Equals("X"))
                 {
-                    QuestionMark = "؟";
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ExistingOutletError, AppResources.Information);
+
+                    });
+                }
+                else if (newItem.MciEntry.ToString().ToUpper().Equals("X"))
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.DeleteError, AppResources.Information);
+
+                    });
+                }
+                else if (newItem.ActNo.Equals("00000"))
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.MainOutletError, AppResources.Information); // Main ol cannot be deleted 
+
+                    });
                 }
                 else
                 {
-                    QuestionMark = "?";
-                }
-                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + newItem.Actnm + QuestionMark)
-                {
-                    CloseWhenBackgroundIsClicked = false
-                };
-                confirmPopup.OnSelect = (str) =>
-                {
-                    if (str == "Yes")
+                    string QuestionMark = string.Empty;
+                    if (App.IsArabic)
                     {
-                        Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+                        QuestionMark = "؟";
                     }
-                };
-                await PopupNavigation.Instance.PushAsync(confirmPopup);
+                    else
+                    {
+                        QuestionMark = "?";
+                    }
+                    var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + newItem.ActNm + QuestionMark)
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+                    confirmPopup.OnSelect = (str) =>
+                    {
+                        if (str == "Yes")
+                        {
+                            Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OuteltInfo_NestedListView));
+                        }
+                    };
+                    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                }
+
+
             });
             #endregion
 
@@ -1737,6 +2045,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 poupWindow.OnItemSelect = async (item) =>
                 {
                     var actionName = item as string;
+                    Console.WriteLine(item);
                     if (actionName == AppResources.ZZSaveAsDraft)
                     {
                         IsLoading = true;
@@ -1756,13 +2065,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
                                 {
                                     //await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, "Application " + _taxPayerDetails.Fbnumx + " saved successfully", string.Empty), true);
-                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, String.Format(AppResources.ZZZApplicationSaved, "" + _taxPayerDetails.Fbnumx), string.Empty),true);
+                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, String.Format(AppResources.ZZZApplicationSaved, "" + _taxPayerDetails.Fbnumx), string.Empty), true);
 
                                 }
                             }
                         }
                         catch (Exception e)
                         {
+                            Console.WriteLine(e.StackTrace);
                             if (e is HTTPBadRequestException)
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
@@ -1797,7 +2107,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                         taxPayerDetails.StepNumberx = string.Empty;
                                         var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                                         currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                                         var _navigation = Application.Current.MainPage.Navigation;
+                                        var _navigation = Application.Current.MainPage.Navigation;
 
                                         int dashboard = 0, stackCount = _navigation.NavigationStack.Count;
 
@@ -1809,7 +2119,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                                 break;
                                             }
                                         }
-                                        for (int i = stackCount - 1; i > dashboard+1; i--)
+                                        for (int i = stackCount - 1; i > dashboard + 1; i--)
                                         {
                                             _navigation.RemovePage(_navigation.NavigationStack[i]);
                                         }
@@ -1820,6 +2130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                     }
                                     catch (Exception e)
                                     {
+                                        Console.WriteLine(e.StackTrace);
                                         if (e is HTTPBadRequestException)
                                         {
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
@@ -1893,6 +2204,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     RegTaxPayerTypeAvailability.ResidencyStatus = true;
 
                     TaxPayerDetailsAvailability.DOB = true;
+                    TaxPayerDetailsAvailability.Title = false;
                     TaxPayerDetailsAvailability.FirstName = false;
                     TaxPayerDetailsAvailability.LastName = true;
                     TaxPayerDetailsAvailability.FathersName = false;
@@ -1932,6 +2244,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     RegTaxPayerTypeAvailability.IsResidencyStatusVisible = false;
 
                     TaxPayerDetailsAvailability.DOB = true;
+                    TaxPayerDetailsAvailability.Title = false;
                     TaxPayerDetailsAvailability.FirstName = false;
                     TaxPayerDetailsAvailability.LastName = true;
                     TaxPayerDetailsAvailability.FathersName = false;
@@ -2022,19 +2335,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     if (await FormValidation(currentTab))
                     {
-                        if (await PushDatatoServer(currentTab))
+
+                        if ((isDraftEnabled == "X") || (isFinaceDetailsChanged))
                         {
-                            _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+
+                            var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                            {
+                                CloseWhenBackgroundIsClicked = false
+                            };
+                            somewarningpopup.OnDone = async () =>
+                            {
+                                if (await PushDatatoServer(currentTab))
+                                {
+                                    _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                                }
+
+
+                            };
+                            await PopupNavigation.Instance.PushAsync(somewarningpopup);
                         }
+                        else
+                        {
+
+                            if (await PushDatatoServer(currentTab))
+                            {
+                                _navigationService.NavigateTo(App.EstablishmentAmendUpdateSuccessfulPage, taxPayerDetails);
+                            }
+                        }
+
+
+
+
+
                     }
                 }
 
                 SetUIAvailability();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -2461,10 +2802,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        catch (Exception)
+                                        catch (Exception ex)
                                         {
-                                            
-                                            
+                                            Console.Write(ex.ToString());
+                                            Console.Write(ex.StackTrace.ToString());
                                         }
                                     }
                                     else
@@ -2497,8 +2838,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
 
             }
-            catch (Exception)
-            {    
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2521,8 +2865,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
 
             }
-            catch (Exception)
-            {     
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -2586,7 +2933,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 {
                                     VisitPortalPopup.OnGotoPortal = () =>
                                     {
-
+                                        _navigationService.GoBack();
                                         Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
 
                                     };
@@ -2595,19 +2942,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                 {
                                     VisitPortalPopup.OnGotoPortal = () =>
                                     {
-
+                                        _navigationService.GoBack();
                                         Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
 
                                     };
                                 }
 
-                              
+
                                 await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
-                                
-                                
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
 
 
@@ -2645,6 +2992,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     if (IsSaudi)
                     {
                         TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
+                        //taxPayerDetails.Tpresidence = "3";
                     }
                     else
                     {
@@ -2666,8 +3014,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     {
                         GCCIDType = idItem != null ? EnIDType[idItem?.Type] : "";
                     }
+                    //if ((bool)(idItem?.IqamaFg.Equals("X")))
+                    //{
+                    //    ShowIqamaType = true;
+                    //    IqamaDesc = idItem?.IqamaDesc;
+                    //}
+                    //else
+                    //{
+                    //    ShowIqamaType = false;
+                    //    IqamaDesc = "";
+                    //}
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;
@@ -2701,7 +3060,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     IsLoading = true;
                     bindingOutletList();
-                   // taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
+                    // taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
@@ -2723,6 +3082,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     CalendarTypeList.AddRange(EnCalendarTypeList.Values);
                     CalendarTypeList = new List<string>(CalendarTypeList);
                     SelectedMethod = EnMethodList?[taxPayerDetails?.Accmethod];
+
+                    if (SelectedMethod == AppResources.NDAccounting)
+                    {
+
+                        IsFinancePeriodVisible = true;
+                    }
+                    else
+                    {
+                        IsFinancePeriodVisible = false;
+
+                    }
                     CalendarType = EnCalendarTypeList?[taxPayerDetails?.Fdcalender];
                     udpdateDates();
                 }
@@ -2736,8 +3106,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 IsExceptionPopupVisible = true;
                 await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZZDone, e.Message, AppResources.Information));
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -2876,7 +3247,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
                     ADateComm = taxPayerDetails?.Commdt
                 });
-                TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                // TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+                if (taxPayerDetails.LastFilledRetdt != null)
+                {
+
+                    //LastFulfilledReturn = taxPayerDetails.LastFilledRetdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                    var toDay = string.Empty;
+                    if (_CalendarType == "H")
+                    {
+
+                        LastFulfilledReturn = taxPayerDetails.LastFilledRetdt?.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+
+
+                    }
+                    else
+                    {
+
+                        LastFulfilledReturn = taxPayerDetails.LastFilledRetdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                    }
+
+                }
+                if (taxPayerDetails.Zyear != null)
+                {
+
+                    ZYear = AppResources.FinacialDetailsZyear.Replace("yyyy", taxPayerDetails.Zyear);
+
+                }
+
+
                 if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
                 {
                     if (financialDetail?.EIslmedate == "28")
@@ -2894,12 +3294,89 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         dates.Remove("30");
                     }
                 }
+                IsLoading = true;
+
+                var selectedFintype = "";
+
+                if (!string.IsNullOrEmpty(SelectedMethod))
+                {
+                    selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                }
+                else
+                {
+                    selectedFintype = taxPayerDetails.Accmethod;
+                }
+
+
+                financialDetailPeriod = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
+                {
+                    ACaltype = _CalendarType,
+                    AMonth = FiscalMonth,
+                    EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                    ADateComm = taxPayerDetails?.Commdt,
+                    Gpart = App.LoginDataRetrieved.TIN,
+                    Zfintype = selectedFintype,
+                    PeriodSet = new List<PeriodSetResult>()
+                });
+
+                if (financialDetailPeriod != null)
+                {
+
+                    var fincialPeriodDetials = financialDetailPeriod.PeriodSet.results;
+
+                    foreach (var s in fincialPeriodDetials)
+                    {
+                        var fromDate = string.Empty;
+                        var toDay = string.Empty;
+                        if (_CalendarType == "H")
+                        {
+
+                            fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                            toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+
+                        }
+                        else
+                        {
+
+                            fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                            toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                        }
+
+                        s.ConvretedFromDate = fromDate;
+                        s.ConvretedToDate = toDay;
+
+
+                    }
+
+                    PeriodList = fincialPeriodDetials;
+                    TaxDate = String.Empty;
+                    PeriodList = financialDetailPeriod.PeriodSet.results;
+                    isDraftEnabled = financialDetailPeriod.Draft;
+                    if (PeriodList.Count > 0)
+                    {
+
+                        if (!string.IsNullOrEmpty(taxPayerDetails.FinPeriod))
+                        {
+                            SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
+
+                            TaxDate = SelectedPeriod.ConvretedToDate;
+
+                        }
+
+
+                        //SelectedPeriod = PeriodList.FirstOrDefault();
+
+                    }
+                }
+
+
                 IsLoading = false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
@@ -2924,6 +3401,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 GCCIDTypeIdNumberValue = idItem?.Idnumber;
                 SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                Title = taxPayerDetails?.TpTitle;
                 FirstName = taxPayerDetails?.NameFirst;
                 LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                 FatherName = taxPayerDetails?.FatherName;
@@ -2948,10 +3426,81 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                 OutletData.Clear();
                 SearchableOutletData?.Clear();
+                OutlettUiList.Clear();
                 _outletTempData.ForEach(_out =>
                 {
                     OutletData.Add(_out);
                     SearchableOutletData.Add(_out);
+                    OuteltInfo_NestedListView newItem = new OuteltInfo_NestedListView();
+
+                    newItem.Metadata = _out.__metadata;
+                    newItem.CityCode = _out.CityCode;
+                    newItem.City1 = _out.City1;
+                    newItem.Crlicenceno = _out.Crlicenceno;
+                    newItem.Oldmst = _out.Oldmst;
+                    newItem.Outdocdreg = _out.Outdocdreg;
+                    newItem.Caltp = _out.Caltp;
+                    newItem.Cmatt = _out.Cmatt;
+                    newItem.Mandtx = _out.Mandtx;
+                    newItem.Fbnumx = _out.Fbnumx;
+                    newItem.Rentatt = _out.Rentatt;
+                    newItem.Conatt = _out.Conatt;
+                    newItem.PortalUsrx = _out.PortalUsrx;
+                    newItem.Langx = _out.Langx;
+                    newItem.Operationx = _out.Operationx;
+                    newItem.StepNumberx = _out.StepNumberx;
+                    newItem.ReturnIdx = _out.ReturnIdx;
+                    newItem.Officerx = _out.Officerx;
+                    newItem.Gpartx = _out.Gpartx;
+                    newItem.Mandt = _out.Mandt;
+                    newItem.FormGuid = _out.FormGuid;
+                    newItem.DataVersion = _out.DataVersion;
+                    newItem.LineNo = _out.LineNo;
+                    newItem.RankingOrder = _out.RankingOrder;
+                    newItem.ActNo = _out.Actno;
+                    newItem.StartDate = _out.StartDate;
+                    newItem.EndDate = _out.EndDate;
+                    newItem.ActCat = _out.Actcat;
+                    newItem.ActNm = _out.Actnm;
+                    newItem.ActNm2 = _out.Actnm2;
+                    newItem.ChInd = _out.ChInd;
+                    newItem.MciEntry = _out.MciEntry;
+                    newItem.ShowEditIcon = true;
+                    newItem.ShowDeleteIcon = true;
+                    //if (_out.MciEntry.ToUpper().Equals("X") || _out.Oldmst.ToUpper().Equals("X") || _out.Actnm.Equals("00000"))
+                    //{
+                    //    newItem.ShowDeleteIcon = false;
+                    //}
+                    //else
+                    //{
+                    //    newItem.ShowDeleteIcon = true;
+                    //}
+
+
+                    if (newItem.ActCat.Equals("M"))
+                    {
+                        if (App.IsArabic)
+                        {
+                            newItem.ActCatDesc = "فرع رئيسي";
+                        }
+                        else
+                        {
+                            newItem.ActCatDesc = "Main Outlet";
+                        }
+                    }
+                    else
+                    {
+                        if (App.IsArabic)
+                        {
+                            newItem.ActCatDesc = "فرع فرعي";
+                        }
+                        else
+                        {
+                            newItem.ActCatDesc = "Sub Outlet";
+                        }
+                    }
+
+                    OutlettUiList.Add(newItem);
                 });
 
                 IsLoading = false;
@@ -2961,22 +3510,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 IsLoading = false;
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
-        private void openEditOutlet(OutletItem item)
+        private async Task openEditOutlet(OuteltInfo_NestedListView item, int btnCode)
         {
+
+            if (btnCode == 1)
+            {
+                if (SelectedItem != null)
+                {
+                    if (SelectedItem.ActNo == item.ActNo && SelectedItem.IsInnerListVisible == true)
+                    {
+                        item.IsInnerListVisible = false;
+                        return;
+                    }
+                    else
+                    {
+                        item.IsInnerListVisible = true;
+                    }
+                }
+                else
+                {
+                    item.IsInnerListVisible = !item.IsInnerListVisible;
+                }
+            }
+            SelectedItem = item;
+            IsLoading = true;
+
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
-            outletNavigationModels.idItem = idItem;
-            outletNavigationModels.selectedOutletItem = item;
-            outletNavigationModels.IsEditingMode = true;
-            outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
-            _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
+            var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
+
+            item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
+            item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
+
+            OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
+            activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
+
+            taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber,
+                taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx);
+            //taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+            PrepareUIBranchesList(item);
+            IsLoading = false;
+            if (btnCode == 2)
+            {
+                outletNavigationModels.idItem = idItem;
+                outletNavigationModels.selectedOutletItem = GetSelectedItem(item);
+                outletNavigationModels.IsEditingMode = true;
+                outletNavigationModels.openedTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
+                _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
+            }
         }
         private void openNewOutlet()
         {
@@ -2987,16 +3575,223 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             outletNavigationModels.IsEditingMode = false;
             _navigationService.NavigateTo(App.OutletDetailsAmendUpdatePageView, outletNavigationModels);
         }
-        private void deleteOutlet(OutletItem item)
+        private void deleteOutlet(OuteltInfo_NestedListView item)
         {
             IsLoading = true;
-            var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.Actno, taxPayerDetails?.PortalUsrx);
+            Console.WriteLine(item.ToString());
+            var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.ActNo, taxPayerDetails?.PortalUsrx);
             if (!string.IsNullOrEmpty(delete) && delete == "delete")
             {
                 bindingOutletList();
             }
             IsLoading = false;
         }
+
+
+        private OutletItem GetSelectedItem(OuteltInfo_NestedListView _out)
+        {
+            OutletItem newItem = new OutletItem();
+            newItem.__metadata = _out.Metadata;
+            newItem.CityCode = _out.CityCode;
+            newItem.City1 = _out.City1;
+            newItem.Crlicenceno = _out.Crlicenceno;
+            newItem.Oldmst = _out.Oldmst;
+            newItem.Outdocdreg = _out.Outdocdreg;
+            newItem.Caltp = _out.Caltp;
+            newItem.Cmatt = _out.Cmatt;
+            newItem.Mandtx = _out.Mandtx;
+            newItem.Fbnumx = _out.Fbnumx;
+            newItem.Rentatt = _out.Rentatt;
+            newItem.Conatt = _out.Conatt;
+            newItem.PortalUsrx = _out.PortalUsrx;
+            newItem.Langx = _out.Langx;
+            newItem.Operationx = _out.Operationx;
+            newItem.StepNumberx = _out.StepNumberx;
+            newItem.ReturnIdx = _out.ReturnIdx;
+            newItem.Officerx = _out.Officerx;
+            newItem.Gpartx = _out.Gpartx;
+            newItem.Mandt = _out.Mandt;
+            newItem.FormGuid = _out.FormGuid;
+            newItem.DataVersion = _out.DataVersion;
+            newItem.LineNo = _out.LineNo;
+            newItem.RankingOrder = _out.RankingOrder;
+            newItem.Actno = _out.ActNo;
+            newItem.StartDate = _out.StartDate;
+            newItem.EndDate = _out.EndDate;
+            newItem.Actcat = _out.ActCat;
+            newItem.Actnm = _out.ActNm;
+            newItem.Actnm2 = _out.ActNm2;
+            newItem.ChInd = _out.ChInd;
+            return newItem;
+        }
+
+        private void PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
+        {
+            try
+            {
+                outletItem.ContactDetails.Clear();
+                outletItem.ContactDetails2.Clear();
+                foreach (var item in taxPayerDetails.Nreg_ActivitySet.results)
+                {
+
+                    Nreg_ActivityItem obj = new Models.EstablishmentRegistration.Nreg_ActivityItem();
+                    obj.__metadata = item.__metadata;
+                    obj.CrType = item.CrType;
+                    obj.ActName = item.ActName;
+                    obj.MciEntry = item.MciEntry;
+                    obj.CityCode = item.CityCode;
+                    obj.ActSgrp = item.ActSgrp;
+                    obj.Crstat = item.Crstat;
+                    obj.Mncrfg = item.Mncrfg;
+                    obj.Crexpdt = item.Crexpdt;
+                    obj.Hstfg = item.Hstfg;
+                    obj.Srno = item.Srno;
+                    obj.Mandt = item.Mandt;
+                    obj.FormGuid = item.FormGuid;
+                    obj.Oldmst = item.Oldmst;
+                    obj.Actdocdreg = item.Actdocdreg;
+                    obj.DataVersion = item.DataVersion;
+                    obj.Idnm = item.Idnm;
+                    obj.Actno = item.Actno;
+                    obj.Type = item.Type;
+                    obj.Idnumber = item.Idnumber;
+
+
+                    if (item.ValidDateFrom != null)
+                    {
+                        obj.ValidFromUI = Convert.ToDateTime(item.ValidDateFrom.ToString()).ToShortDateString();
+                    }
+
+                    obj.ValidDateFrom = item.ValidDateFrom;
+
+                    obj.ValidDateTo = item.ValidDateTo;
+                    obj.ValidDateType = item.ValidDateType;
+                    obj.Country = item.Country;
+                    obj.Institute = item.Institute;
+                    obj.City = item.City;
+                    obj.Crclsattfg = item.Crclsattfg;
+                    obj.Crattfg = item.Crattfg;
+                    obj.Crtrfattfg = item.Crtrfattfg;
+                    obj.Activity = item.Activity;
+                    obj.Actcat = item.Actcat;
+                    obj.ActMgrp = item.ActMgrp;
+
+                    var resultAct = activityList.activitySet.results.Where(i => i.IndSector == obj.Activity).FirstOrDefault();
+                    var resultMaingrp = activityList.act_groupSet.results.Where(i => i.IndSector == obj.ActMgrp).FirstOrDefault();
+                    var resultSubGrp = activityList.act_subgroupSet.results.Where(i => i.IndSector == obj.ActSgrp).FirstOrDefault();
+                    var resultCity = OutletDropDowns.city_dropdownSet.results.Where(i => i.CityCode == obj.CityCode).FirstOrDefault();
+                    var resultCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == obj.Country).FirstOrDefault();
+
+                    if (resultAct != null)
+                    {
+                        obj.ActivityDesc = resultAct.Text;
+                    }
+                    if (resultMaingrp != null)
+                    {
+                        obj.ActMgrpDesc = resultMaingrp.Text;
+                    }
+                    if (resultSubGrp != null)
+                    {
+                        obj.ActSgrpDesc = resultSubGrp.Text;
+                    }
+                    if (resultCity != null)
+                    {
+                        obj.IssuedCity = resultCity.CityName;
+                    }
+                    if (resultAct != null)
+                    {
+                        obj.IssuedCountry = resultCountry.Landx;
+                    }
+                    //obj.ActivityDesc = activityList.activitySet.results.Where(i => i.IndSector == obj.Activity).FirstOrDefault().Text;
+                    //obj.ActMgrpDesc = activityList.act_groupSet.results.Where(i => i.IndSector == obj.ActMgrp).FirstOrDefault().Text;
+                    //obj.ActSgrpDesc = activityList.act_subgroupSet.results.Where(i => i.IndSector == obj.ActSgrp).FirstOrDefault().Text;
+                    //obj.IssuedCity = OutletDropDowns.city_dropdownSet.results.Where(i => i.CityCode == obj.CityCode).FirstOrDefault().CityName;
+                    //obj.IssuedCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == obj.Country).FirstOrDefault().Landx;
+
+                    if (App.IsArabic)
+                    {
+                        //obj.IssuedBy = obj.IssuedCountry == "SA" ? Constants.ArIssueBy["90702"] : Constants.EnIssueBy["90718"];
+                        if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
+                        {
+                            obj.IssuedBy = Constants.ArIssueBy["90702"];
+                        }
+                        else
+                        {
+                            obj.IssuedBy = Constants.ArIssueBy["90718"];
+                        }
+                    }
+                    else
+                    {
+                        //obj.IssuedBy = obj.IssuedCountry == "SA" ? Constants.ArIssueBy["90702"] : Constants.EnIssueBy["90718"];
+                        if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
+                        {
+                            obj.IssuedBy = Constants.EnIssueBy["90702"];
+                        }
+                        else
+                        {
+                            obj.IssuedBy = Constants.EnIssueBy["90718"];
+                        }
+                    }
+
+                    if (item.Type.ToUpper().Equals("BUP002"))
+                    {
+                        if (item.CrType.Equals("M"))
+                        {
+                            if (App.IsArabic)
+                            {
+                                obj.CRTypeDesc = "سجل تجاري رئيسي";
+                            }
+                            else
+                            {
+                                obj.CRTypeDesc = "Main CR";
+                            }
+                        }
+                        else
+                        {
+                            if (App.IsArabic)
+                            {
+                                obj.CRTypeDesc = "سجل تجاري فرعي";
+                            }
+                            else
+                            {
+                                obj.CRTypeDesc = "Sub CR";
+                            }
+                        }
+                        outletItem.ContactDetails.Add(obj);
+
+                    }
+                    else
+                    {
+                        outletItem.ContactDetails2.Add(obj);
+                    }
+
+                }
+                if (outletItem.ContactDetails.Count > 0)
+                {
+                    ShowCRNoData = false;
+                }
+                else
+                {
+                    ShowCRNoData = true;
+                }
+                if (outletItem.ContactDetails2.Count > 0)
+                {
+                    ShowLicenceNoData = false;
+                }
+                else
+                {
+                    ShowLicenceNoData = true;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+        }
+
+
         private void ResidenceTypePrePopulateData(TaxPayerDetails taxPayerDetails)
         {
             if (taxPayerDetails.Tpresidence == "1")
@@ -3164,6 +3959,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateDOB));
                         return false;
                     }
+
                     else if (TaxPayerDetailsAvailability.FirstName && string.IsNullOrWhiteSpace(FirstName))
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateFirstName));
@@ -3269,11 +4065,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-               // ex.ToString();
-                
-                
+                // ex.ToString();
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             return true;
         }
@@ -3286,12 +4082,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
+                    if (SelectedReportingBranch?.Augrp != null)
+                    {
+                        taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
+                    }
+
                     taxPayerDetails.Atype = "1";
                     taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
                     taxPayerDetails.Tpnationality = taxPayerDetails.Tpnationality == null ? "" : taxPayerDetails.Tpnationality;
                     taxPayerDetails.Taxtpdetermination = "1";
-                    taxPayerDetails.Tpresidence = SelectedTpresidence;
+                    if (!SelectedTpresidence.Equals(""))
+                    {
+                        taxPayerDetails.Tpresidence = SelectedTpresidence;
+                    }
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
                     taxPayerDetails.Orgnonresidentoptions = string.IsNullOrEmpty(SelectedOrgNonResidentOptions) ? string.Empty : SelectedOrgNonResidentOptions;
                     taxPayerDetails.Orgnonresidentactivity = string.IsNullOrEmpty(SelectedOrgNonResidentActivity) ? string.Empty : SelectedOrgNonResidentActivity;
@@ -3307,6 +4110,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.StepNumberx = "01";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
+                    //if (taxPayerDetails.Tpnationality.Equals("SAUDI"))
+                    //{
+                    //    taxPayerDetails.Tpresidence = "3";
+                    //}
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -3316,6 +4123,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 {
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
+                    taxPayerDetails.TpTitle = Title;
                     taxPayerDetails.NameFirst = FirstName;
                     taxPayerDetails.NameLast = string.IsNullOrEmpty(LastName) ? string.Empty : LastName;
                     taxPayerDetails.FatherName = string.IsNullOrEmpty(FatherName) ? string.Empty : FatherName;
@@ -3338,6 +4146,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.StepNumberx = "02";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
+                    //if (taxPayerDetails.Tpnationality.Equals("SAUDI"))
+                    //{
+                    //    taxPayerDetails.Tpresidence = "3";
+                    //}
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
 
@@ -3373,6 +4185,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.StepNumberx = "02";
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
+                    //if (taxPayerDetails.Tpnationality.Equals("SAUDI"))
+                    //{
+                    //    taxPayerDetails.Tpresidence = "3";
+                    //}
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -3380,7 +4196,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
+                    if (taxPayerDetails.Fdenddt == null)
+                    {
+                        DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
+
+                        taxPayerDetails.Fdenddt = Fdenddt;
+                    }
+                    else
+                    {
+                        taxPayerDetails.Fdenddt = taxPayerDetails.Fdenddt;
+
+                    }
+
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
                     taxPayerDetails.Accmethod = taxPayerDetails.Accmethod == null ? "" : taxPayerDetails.Accmethod;
                     taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
@@ -3388,12 +4215,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Fdmonth = FiscalMonth == null ? "" : FiscalMonth;
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
-                    taxPayerDetails.Fdenddt = Fdenddt;
                     taxPayerDetails.Chkfg = "X";
+
+                    if (SelectedPeriod != null)
+                    {
+                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                    }
+
 
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";
+                    //if (taxPayerDetails.Tpnationality.Equals("SAUDI"))
+                    //{
+                    //    taxPayerDetails.Tpresidence = "3";
+                    //}
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -3424,8 +4260,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             catch (Exception ex)
             {
                 IsLoading = false;
-                
-                
+                // ex.ToString();
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 if (ex is HTTPBadRequestException)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -3443,12 +4280,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
-                    taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
+                    if (SelectedReportingBranch?.Augrp != null)
+                    {
+                        taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
+                    }
                     taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
                     taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
                     taxPayerDetails.Tpnationality = taxPayerDetails.Tpnationality == null ? "" : taxPayerDetails.Tpnationality;
                     taxPayerDetails.Taxtpdetermination = "1";
-                    taxPayerDetails.Tpresidence = SelectedTpresidence;
+                    if (!SelectedTpresidence.Equals(""))
+                    {
+                        taxPayerDetails.Tpresidence = SelectedTpresidence;
+                    }
                     taxPayerDetails.Orgnonresident = string.IsNullOrEmpty(SelectedOrgNonResident) ? string.Empty : SelectedOrgNonResident;
                     taxPayerDetails.Orgnonresidentoptions = string.IsNullOrEmpty(SelectedOrgNonResidentOptions) ? string.Empty : SelectedOrgNonResidentOptions;
                     taxPayerDetails.Orgnonresidentactivity = string.IsNullOrEmpty(SelectedOrgNonResidentActivity) ? string.Empty : SelectedOrgNonResidentActivity;
@@ -3474,6 +4317,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         DateTime.TryParseExact(DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                         taxPayerDetails.Birthdt = dob;
                     }
+                    taxPayerDetails.TpTitle = Title;
                     taxPayerDetails.NameFirst = FirstName;
                     taxPayerDetails.NameLast = string.IsNullOrEmpty(LastName) ? string.Empty : LastName;
                     taxPayerDetails.FatherName = string.IsNullOrEmpty(FatherName) ? string.Empty : FatherName;
@@ -3556,6 +4400,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";
+                    if (SelectedPeriod != null)
+                    {
+                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                    }
                     flag = true;
                     return flag;
                 }
@@ -3564,6 +4412,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 return flag;
             }
@@ -3675,6 +4525,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     DisplaySelectedDOB = string.Empty;
                     SelectedDOBDate = null;
                     SelectedDOBHijiriDate = null;
+                    Title = string.Empty;
                     FirstName = string.Empty;
                     LastName = string.Empty;
                     FatherName = string.Empty;

@@ -44,6 +44,7 @@ namespace EGAZT
         public static string CustomBaseUrl;
         public static string VatCustom;
         public static string VatBaseUrl;
+        public static string IBanValidatedResponse;
         #region new design views
 
         public static string GUIDFrSSO { get; set; }
@@ -388,7 +389,6 @@ namespace EGAZT
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
         public static HttpClientHandler httpClientHandler = null;
-        public static string IBanValidatedResponse;
 
         public App()
         {

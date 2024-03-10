@@ -1,36 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
+using GAZT.Helper;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Internals;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
-{
-    [Preserve(AllMembers = true)]
-    public partial class AttachmentInformationPopUp : PopupPage
+{	
+	public partial class ErrorMessagePopup : PopupPage
     {
         public delegate void OnDoneDelegate();
-        public OnDoneDelegate OnDone { get; set; } = null;
+        public delegate void OnLinkDelegate();
 
-        public AttachmentInformationPopUp(string infromationText)
+        public OnDoneDelegate OnDone { get; set; } = null;
+        public OnLinkDelegate OnLink { get; set; } = null;
+
+        public ErrorMessagePopup(string infromationText)
         {
             InitializeComponent();
-            if (infromationText == "Payer cancelled transaction")
-            {
-                paymentCancelInfo.IsVisible = true;
-                if (App.IsArabic)
-                {
-                    paymentCancelInfo.Text = AppResources.PaymentCancelInfo;
-                }
-                else
-                {
-                    paymentCancelInfo.Text = AppResources.PaymentCancelInfo;
-                }
-            }
             InfromatationText.Text = infromationText;
+
             SetLTR();
         }
+
 
         private void OnCloseTapped(object sender, EventArgs e)
         {
@@ -62,5 +55,25 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
         }
 
+        void Link_Clicked(System.Object sender, System.EventArgs e)
+        {
+            // OnLink?.Invoke();
+            PopupNavigation.Instance.PopAsync();
+            if (App.IsArabic)
+            {
+                Uri uri = new Uri(Constants.ZAtcaContactUsAR);
+                OpenBrowser(uri);
+            }
+            else
+            {
+                Uri uri = new Uri(Constants.ZAtcaContactUsEN);
+                OpenBrowser(uri);
+            }
+            
+        }
+        public async void OpenBrowser(Uri uri)
+        {
+            await Launcher.OpenAsync(uri);
+        }
     }
 }

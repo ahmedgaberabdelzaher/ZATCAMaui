@@ -49,6 +49,8 @@ namespace GAZT.Models
         [DataMember]
         public string CaseGuid { get; set; }
         [DataMember]
+        public string ACaptcha { get; set; }
+        [DataMember]
         public string AIssuedBy { get; set; }
         [DataMember]
         public string FormGuid { get; set; }

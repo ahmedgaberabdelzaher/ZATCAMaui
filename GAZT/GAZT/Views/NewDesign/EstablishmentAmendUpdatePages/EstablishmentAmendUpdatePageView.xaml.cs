@@ -23,45 +23,51 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
     public partial class EstablishmentAmendUpdatePageView : ContentPage
     {
         EstablishmentAmendUpdatePageViewModel viewModel;
-        List<Grid> NationalityTileGrids = null;
+       // List<Grid> NationalityTileGrids = null;
         public EstablishmentAmendUpdatePageView()
         {
-            InitializeComponent();
-            ChangeAeroIcon();
-            SetLTR();
-            viewModel = App.Locator.EstablishmentAmendUpdatePage;
-            viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-            viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
-            viewModel.IsNavigationCompletedToSuccessfulPage = false;
-            BindingContext = viewModel;
-            if (App.ZAKATType == Enums.PageExecutionType.Amend || App.ZAKATType == Enums.PageExecutionType.Update)
+            try
             {
-                fiscalMonth.IsEnabled = false;
-                fiscalDay.IsEnabled = false;
+                InitializeComponent();
             }
-            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
-            {
-                PopupNavigation.Instance.PopAsync();
-                viewModel._navigationService.GoBack();
-            });
-            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse", (obj, res) =>
-            {
-                PopupNavigation.Instance.PopAsync();
-                viewModel._navigationService.GoBack();
-            });
-            MessagingCenter.Subscribe<Xamarin.Forms.Application>(this, "BackButtonPressed", (args) =>
-            {
-                if (viewModel.IsExceptionPopupVisible)
+            catch (Exception ex) { Console.Write("UpdateAmend exception : "+ex.Message);
+                DisplayAlert("UpdateAmend exception", ex.Message, "");
+            }
+            ChangeAeroIcon();
+                SetLTR();
+                viewModel = App.Locator.EstablishmentAmendUpdatePage;
+                viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+                viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+                viewModel.IsNavigationCompletedToSuccessfulPage = false;
+                BindingContext = viewModel;
+                if (App.ZAKATType == Enums.PageExecutionType.Amend || App.ZAKATType == Enums.PageExecutionType.Update)
                 {
-                    Navigation.PopAsync();
+                    fiscalMonth.IsEnabled = false;
+                    fiscalDay.IsEnabled = false;
                 }
-            });
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
+                MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+                {
+                    PopupNavigation.Instance.PopAsync();
+                    viewModel._navigationService.GoBack();
+                });
+                MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse", (obj, res) =>
+                {
+                    PopupNavigation.Instance.PopAsync();
+                    viewModel._navigationService.GoBack();
+                });
+                MessagingCenter.Subscribe<Xamarin.Forms.Application>(this, "BackButtonPressed", (args) =>
+                {
+                    if (viewModel.IsExceptionPopupVisible)
+                    {
+                        Navigation.PopAsync();
+                    }
+                });
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+                {
 
-                viewModel.PickerModel = arg;
-            });
-
+                    viewModel.PickerModel = arg;
+                });
+            
         }
 
         protected override void OnAppearing()
@@ -124,43 +130,43 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     case Xamarin.Forms.Device.Android:
                         {
 
-                            dobPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            dobPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            dobPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            dobPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            dobPicker.HeaderFontFamily = "Somar-SemiBold";
+                            dobPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            dobPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            dobPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            dobHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            dobHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            dobHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            dobHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            dobHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            dobHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            dobHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            dobHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportIssuePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssuePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssuePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssuePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssuePicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportIssuePicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportIssuePicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportIssuePicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportIssueHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssueHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssueHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            passportIssueHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportIssueHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportIssueHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportIssueHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportIssueHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportExpiryPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryPicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportExpiryPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportExpiryHijiriPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryHijiriPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryHijiriPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";
-                            passportExpiryHijiriPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                            passportExpiryHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportExpiryHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -245,12 +251,55 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception) {
+            catch (Exception ex) {
 
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
+
+         void FinacialPeriodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            viewModel.isFinaceDetailsChanged = true;
+
+            if (viewModel.SelectedPeriod != null)
+            {
+
+                viewModel.TaxDate = viewModel.SelectedPeriod.ConvretedToDate;
+            }
+
+        }
+
+        void FinacialMethodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+
+            try {
+                string selectedItem = e.AddedItems[0] as string;
+
+                if(selectedItem == AppResources.NDAccounting) {
+
+                    viewModel.IsFinancePeriodVisible = true;
+                }
+                else {
+                    viewModel.IsFinancePeriodVisible = false;
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+
+
+
+            viewModel.isFinaceDetailsChanged = true;
+
+        }
+
 
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
@@ -315,10 +364,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception) {
+            catch (Exception ex) {
 
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -366,10 +415,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             var dob = viewModel.SelectedDOB.Replace("/", "");
             await viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -391,10 +440,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -416,10 +465,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

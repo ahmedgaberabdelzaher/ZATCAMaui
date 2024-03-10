@@ -491,6 +491,16 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer the saved as draft return will be canceled/deleted once the change return period request has been approved.
+        ///Then The system should cancel (/delete) the draft and apply the necessary changes on the ICRs once this request is approved by the Supervisor..
+        /// </summary>
+        public static string AmendRegistrationSubmitWarning {
+            get {
+                return ResourceManager.GetString("AmendRegistrationSubmitWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amend return.
         /// </summary>
         public static string AmendReturn {
@@ -1047,6 +1057,15 @@ namespace EGAZT {
         public static string BalaghSupportedFileMsg {
             get {
                 return ResourceManager.GetString("BalaghSupportedFileMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may request a reduction of the bank guarantee amount by contacting: 19993.
+        /// </summary>
+        public static string BankGuaranteeOption {
+            get {
+                return ResourceManager.GetString("BankGuaranteeOption", resourceCulture);
             }
         }
         
@@ -2856,6 +2875,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CR Type.
+        /// </summary>
+        public static string CrType {
+            get {
+                return ResourceManager.GetString("CrType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
         public static string CRWarning {
@@ -3518,6 +3546,15 @@ namespace EGAZT {
         public static string DeclerationSecondSecurityQuestionYesHint {
             get {
                 return ResourceManager.GetString("DeclerationSecondSecurityQuestionYesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outlets retrieved from MCI cannot be deleted.
+        /// </summary>
+        public static string DeleteError {
+            get {
+                return ResourceManager.GetString("DeleteError", resourceCulture);
             }
         }
         
@@ -4220,6 +4257,15 @@ namespace EGAZT {
         public static string EntrancePort {
             get {
                 return ResourceManager.GetString("EntrancePort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, the commercial registration(CR) is already registered under another owner..
+        /// </summary>
+        public static string Error896 {
+            get {
+                return ResourceManager.GetString("Error896", resourceCulture);
             }
         }
         
@@ -5646,6 +5692,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter license name.
+        /// </summary>
+        public static string ESTValidateLicenseName {
+            get {
+                return ResourceManager.GetString("ESTValidateLicenseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please choose nationality.
         /// </summary>
         public static string ESTValidateNationality {
@@ -5943,6 +5998,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Existing outlet can not be deleted.
+        /// </summary>
+        public static string ExistingOutletError {
+            get {
+                return ResourceManager.GetString("ExistingOutletError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Exit {
@@ -6128,6 +6192,60 @@ namespace EGAZT {
         public static string Filter {
             get {
                 return ResourceManager.GetString("Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last fulfilled Return.
+        /// </summary>
+        public static string FinacialDetailsLastFulfilledreturn {
+            get {
+                return ResourceManager.GetString("FinacialDetailsLastFulfilledreturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to you are allowed to change financial year for yyyy only.
+        /// </summary>
+        public static string FinacialDetailsZyear {
+            get {
+                return ResourceManager.GetString("FinacialDetailsZyear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Long Period.
+        /// </summary>
+        public static string FinacialPeriodLong {
+            get {
+                return ResourceManager.GetString("FinacialPeriodLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal Period.
+        /// </summary>
+        public static string FinacialPeriodNormal {
+            get {
+                return ResourceManager.GetString("FinacialPeriodNormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Short Period.
+        /// </summary>
+        public static string FinacialPeriodSmall {
+            get {
+                return ResourceManager.GetString("FinacialPeriodSmall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Year Options.
+        /// </summary>
+        public static string FinacialYearOptions {
+            get {
+                return ResourceManager.GetString("FinacialYearOptions", resourceCulture);
             }
         }
         
@@ -7989,6 +8107,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Commercial Registration Number issued by MOC only.
+        /// </summary>
+        public static string InnerListCrTitle {
+            get {
+                return ResourceManager.GetString("InnerListCrTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License Details.
+        /// </summary>
+        public static string InnerListLicenceTitle {
+            get {
+                return ResourceManager.GetString("InnerListLicenceTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InQuery with statement information.
         /// </summary>
         public static string InQuerywithstatementinformation {
@@ -8265,6 +8401,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Issued City.
+        /// </summary>
+        public static string IssuedCity {
+            get {
+                return ResourceManager.GetString("IssuedCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Description.
         /// </summary>
         public static string ItemDescription {
@@ -8324,6 +8469,42 @@ namespace EGAZT {
         public static string Langauge {
             get {
                 return ResourceManager.GetString("Langauge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License Name.
+        /// </summary>
+        public static string LicenceName {
+            get {
+                return ResourceManager.GetString("LicenceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to License Number.
+        /// </summary>
+        public static string LicenceNumber {
+            get {
+                return ResourceManager.GetString("LicenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click Here.
+        /// </summary>
+        public static string Link {
+            get {
+                return ResourceManager.GetString("Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To complete the registration please contact us via the unified number 19993 or raise a ticket by clicking below link.
+        /// </summary>
+        public static string LinkText {
+            get {
+                return ResourceManager.GetString("LinkText", resourceCulture);
             }
         }
         
@@ -8441,6 +8622,15 @@ namespace EGAZT {
         public static string MainOutlet {
             get {
                 return ResourceManager.GetString("MainOutlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main outlet cannot deleted.
+        /// </summary>
+        public static string MainOutletError {
+            get {
+                return ResourceManager.GetString("MainOutletError", resourceCulture);
             }
         }
         
@@ -11079,6 +11269,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear taxpayer, transaction cannot be completed now, kindly try again shortly.
+        /// </summary>
+        public static string PaymentCancelInfo {
+            get {
+                return ResourceManager.GetString("PaymentCancelInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment Details.
         /// </summary>
         public static string PaymentDetails {
@@ -11106,7 +11305,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Card Payment.
+        ///   Looks up a localized string similar to E-commerce payments.
         /// </summary>
         public static string PaymentMethodCardPayment {
             get {
@@ -12519,6 +12718,15 @@ namespace EGAZT {
         public static string Sadad {
             get {
                 return ResourceManager.GetString("Sadad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may request a reduction of the cash collateral amount by contacting: 19993.
+        /// </summary>
+        public static string SadadBillOption {
+            get {
+                return ResourceManager.GetString("SadadBillOption", resourceCulture);
             }
         }
         
@@ -14023,6 +14231,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Outlet No..
+        /// </summary>
+        public static string TinOutletOutletNumber {
+            get {
+                return ResourceManager.GetString("TinOutletOutletNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TIN Number.
         /// </summary>
         public static string TINS {
@@ -14352,6 +14569,15 @@ namespace EGAZT {
         public static string TPEmailUpdated {
             get {
                 return ResourceManager.GetString("TPEmailUpdated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please select the day and month for the desired period.
+        /// </summary>
+        public static string TPFinacialPeriodMonthValidation {
+            get {
+                return ResourceManager.GetString("TPFinacialPeriodMonthValidation", resourceCulture);
             }
         }
         
@@ -15640,6 +15866,15 @@ namespace EGAZT {
         public static string VatDueAmountInstruction {
             get {
                 return ResourceManager.GetString("VatDueAmountInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Data.
+        /// </summary>
+        public static string VatEffNoData {
+            get {
+                return ResourceManager.GetString("VatEffNoData", resourceCulture);
             }
         }
         
@@ -25129,6 +25364,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to License Name.
+        /// </summary>
+        public static string ZZLicenseName {
+            get {
+                return ResourceManager.GetString("ZZLicenseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to License Number.
         /// </summary>
         public static string ZZLicenseNumber {
@@ -28132,6 +28376,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, we would like to inform you that activities details in your account have been updated as per the activity details in Ministry of Commerce.
+        /// </summary>
+        public static string ZZZZCRUpdateSuccess {
+            get {
+                return ResourceManager.GetString("ZZZZCRUpdateSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Done.
         /// </summary>
         public static string ZZZZDone {
@@ -28416,6 +28669,15 @@ namespace EGAZT {
         public static string ZZZZKuwait {
             get {
                 return ResourceManager.GetString("ZZZZKuwait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, we would like to inform you that activities details in your account have been updated as per the activities details in Ministry of Municipal and Rural Affairs.
+        /// </summary>
+        public static string ZZZZLicenseUpdateSuccess {
+            get {
+                return ResourceManager.GetString("ZZZZLicenseUpdateSuccess", resourceCulture);
             }
         }
         
@@ -28722,6 +28984,15 @@ namespace EGAZT {
         public static string ZZZZSummery {
             get {
                 return ResourceManager.GetString("ZZZZSummery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string ZZZZTitle {
+            get {
+                return ResourceManager.GetString("ZZZZTitle", resourceCulture);
             }
         }
         

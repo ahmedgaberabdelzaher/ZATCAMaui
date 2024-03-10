@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Xamarin.Forms.Internals;
+using EGAZT.Models.EstablishmentRegistration;
 
 namespace GAZT.Helper
 {
@@ -58,12 +60,12 @@ namespace GAZT.Helper
         public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         public static string DomainUrlForCookies = DevDomainForCookies;
         public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
-    /*
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+    
+     /*   public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-     */
+    */
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
@@ -147,6 +149,7 @@ namespace GAZT.Helper
         #region SignUp
         public static string GAZTGetCityListForSignUp = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/";
         public static string GAZTSiguupValidateIDTypes = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet";
+        public static string GAZTSiguupValidateGCCIDType = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/taxpayer_nameSet";
         public static string GAZTSiguupValidateCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_CR_VALDATE_SRV/validatecrSet";
         public static string GAZTSiguupCheckDuplicate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ID_DUPLICAE_CHECK_SRV/permit_detSet";
         public static string GAZTSiguupIssuedByList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_MOBILE_SRV/ConsumeSet?$filter=Request eq ";
@@ -257,6 +260,7 @@ namespace GAZT.Helper
         public static string ESTOutletList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/Nreg_OutletSet";
         public static string ESTOutletAddressFetch = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ADDR_RETRIEVE_SRV/AddressSet";//
         public static string ESTFinancialMaxDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NREG_FD_MAX_DATE_SRV/fd_end_dateSet";//
+        public static string UpdateLicenseAndCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/ISIC4Set";
         #endregion
 
         #region VATInstalment
@@ -491,6 +495,200 @@ namespace GAZT.Helper
         public static string GAZTVATSignUpValidateIdDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TP_NAME_SRV/taxpayer_nameSet";//CRPENTEST(Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
         public static string GAZTSiguupValidateIDTypesDecl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/taxpayer_nameSet";//PENTEST Chnage
 
+        public static string ZAtcaContactUsEN = "https://zatca.gov.sa/en/contactus/Pages/default.aspx";
+        public static string ZAtcaContactUsAR = "https://zatca.gov.sa/ar/contactus/Pages/default.aspx";
 
+        public static List<Nreg_IdItem> IdSet = new List<Nreg_IdItem>();
+
+        public static Dictionary<string, string> EnIssueBy = new Dictionary<string, string>()
+        {
+            {"",""},
+            {"90701", "Communications, Space and Technology Commission" },
+            {"90702", "Ministry of Commerce" },
+            {"90703", "Ministry of Health" },
+            {"90704", "Ministry of Media" },
+            {"90705", "Ministry of Environment Water & Agriculture" },
+            {"90706", "Ministry of Municipal and Rural Affairs" },
+            {"90707", "Ministry of Education" },
+            {"90708", "Technical and Vocational Training Corporation" },
+            {"90709", "Ministry of Human Resources and Social Development" },
+            {"90710", "Ministry of Islamic Affairs Dawah and Guidance" },
+            {"90711", "Ministry of Hajj and Umrah" },
+            {"90712", "Ministry of Investment" },
+            {"90713", "Saudi Electricity Company" },
+            {"90714", "Saudi Arabian Monetary Agency" },
+            {"90715", "General Authority of Civil Aviation" },
+            {"90716", "Ministry of Interior" },
+            {"90717", "Ministry of Transportation" },
+            {"90719", "Same Government Agency" },
+            {"90721", "Municipality" },
+            {"90722", "Saudi Organization for Certified public Accountants" },
+            {"90723", "Ministry of Tourism" },
+            {"90725", "Ministry Of Justice" },
+            {"90729", "Saudi Council of Engineers" },
+            {"90724", "Ministry of Industry and Mineral Resources" },
+
+            {"90740", "Ministry of Sports" },
+            {"90731", "Saudi Wildlife Authority" },
+            {"90732", "Saudi Authority for Industrial Cities and Technology Zones" },
+            {"90733", "The General Authority of Meteorology and Environmental Protection" },
+            {"90735", "Saudi Food and Drug Authority" },
+            {"90736", "Saudi Ports Authority" },
+            {"90737", "Capital Markets Authority" },
+            {"90738", "Electricity & CoGeneration Regulatory Authority" },
+            {"90739", "Ministry of Housing" },
+            {"90741", "Ministry of Energy" },
+            {"90742", "General Commission For Audiovisual Media" },
+            {"90718", "Other" },
+        };
+
+        public static Dictionary<string, string> ArIssueBy = new Dictionary<string, string>()
+{
+            {"",""},
+      {
+        "90701",
+  "هيئة الاتصالات والفضاء والتقنية"
+      },
+                   {
+            "90702",
+ "وزارة التجارة"
+                  },
+                  {
+            "90703",
+ "وزارة الصحة"
+                  },
+                  {
+            "90704",
+ " وزارة الإعلام"
+                  },
+                  {
+            "90705",
+ " وزارة البيئة والمياه والزراعة"
+                  },
+                  {
+            "90706",
+ " وزارة الشؤون البلدية والقروية"
+                  },
+                  {
+            "90707",
+ " وزارة التعليم"
+                  },
+                  {
+            "90708",
+ " المؤسسة العامة للتدريب التقني والمهني"
+                  },
+                  {
+            "90709",
+ " وزارة الموارد البشرية والتنمية الاجتماعية"
+                  },
+                  {
+            "90710",
+ " وزارة الشؤون الإسلامية والأوقاف والدعوة والإرشاد"
+                  },
+                  {
+            "90711",
+ " وزارة الحج والعمرة"
+                  },
+                  {
+            "90712",
+ " وزارة الاستثمار"
+                  },
+                  {
+            "90713",
+ " الشركة السعودية للكهرباء"
+                  },
+                  {
+            "90714",
+ " مؤسسة النقد العربي السعودي"
+                  },
+                  {
+            "90715",
+ " الهيئة العامة للطيران المدني"
+                  },
+                  {
+            "90716",
+ " وزارة الداخلية"
+                  },
+                  {
+            "90717",
+ " وزارة النقل"
+                  },
+                  {
+            "90719",
+ " نفس الجهة الحكومية"
+                  },
+                  {
+            "90721",
+ " الأمانات"
+                  },
+                  {
+            "90722",
+ " الهيئة السعودية للمحاسبين القانونيين"
+                  },
+                  {
+            "90723",
+ " وزارة السياحة"
+                  },
+                  {
+            "90725",
+ " وزارة العدل"
+                  },
+                  {
+            "90729",
+ " الهيئة السعودية للمهندسين"
+                  },
+                  {
+            "90724",
+ " وزارة الصناعة والثروة المعدنية"
+                  },
+                  {
+            "90740",
+ " وزارة الرياضة"
+                  },
+                  {
+            "90731",
+ " الهيئة السعودية للحياة الفطرية"
+                  },
+                  {
+            "90732",
+ " الهيئة السعودية للمدن الصناعية ومناطق التقنية"
+                  },
+                  {
+            "90733",
+ " الهيئة العامة للأرصاد وحماية البيئة"
+                  },
+                  {
+            "90735",
+ "الهيئة العامة للغذاء والدواء"
+                  },
+                  {
+            "90736",
+ " الهيئة العامة للموانئ"
+                  },
+                  {
+            "90737",
+ " هيئة السوق المالية"
+                  },
+                  {
+            "90738",
+ " هيئة تنظيم الكهرباء والإنتاج المزدوج"
+                  },
+                  {
+            "90739",
+ " وزارة الأسكان"
+                  },
+                  {
+            "90741",
+ " وزارة الطاقة"
+                  },
+                  {
+            "90742",
+ "هيئة الإعلام المرئي والمسموع"
+                  },
+                  {
+            "90718",
+ " أخرى"
+                  },
+        };
     }
 }

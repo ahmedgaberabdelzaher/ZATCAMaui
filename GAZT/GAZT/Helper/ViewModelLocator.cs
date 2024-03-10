@@ -209,7 +209,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
             SimpleIoc.Default.Register<ITrackShipment, TrackShipmentServices>();
             SimpleIoc.Default.Register<EDeclerationSubmitModel>();
-
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -903,8 +902,8 @@ namespace EGAZT
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
-                    SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
+                    //SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
+                    //SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
                 }
                 catch (Exception)
@@ -3473,7 +3472,6 @@ namespace EGAZT
                 }
             }
         }
-
         public ViewNotePopUpViewModel ViewNotePopUpViewModel
         {
             get

@@ -22,22 +22,43 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         EstablishmentRegistrationPageViewModel viewModel;
         public EstablishmentRegistrationPage()
         {
-            EstablishmentRegistrationPageViewModel.taxPayerDetails = null;
-            InitializeComponent();
-            ChangeAeroIcon();
-            SetLTR();
-
-            viewModel = App.Locator.EstablishmentRegistrationPage;
-            BindingContext = viewModel;
-            viewModel.IsNavigationCompletedToSuccessfulPage = false;
-
-            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+            try
             {
-                PopupNavigation.Instance.PopAsync();
-                viewModel._navigationService.GoBack();
-            });
-            viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-            viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+                InitializeComponent();    
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                //PopupNavigation.Instance(AttachmentInformationPopUp(""));
+            }
+
+            try
+            {
+
+                EstablishmentRegistrationPageViewModel.taxPayerDetails = null;
+                viewModel = App.Locator.EstablishmentRegistrationPage;
+                BindingContext = viewModel;
+                viewModel.IsNavigationCompletedToSuccessfulPage = false;
+
+                MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+                {
+                    PopupNavigation.Instance.PopAsync();
+                    viewModel._navigationService.GoBack();
+                });
+                viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+                viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+                //viewModel.CurrentIndex = 1;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
+                ChangeAeroIcon();
+                SetLTR();               
+            
+           
         }
 
         protected override void OnAppearing()
@@ -52,10 +73,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
             }
             viewModel?.OnAppearing();
+            
         }
 
         protected override void OnDisappearing()
         {
+            MessagingCenter.Unsubscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse");
             base.OnDisappearing();
         }
 
@@ -121,16 +144,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void SfChipGroup_SelectionChanged(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
         {
-            try
-            {
-                var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
-                TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
-            }
-            catch (Exception) {
+            //try
+            //{
+            //    var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
+            //    TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
+            //}
+            //catch (Exception ex) {
 
-                
-                
+            //    Console.Write(ex.ToString());
+            //    Console.Write(ex.StackTrace.ToString());
+            //}
+        }
+
+        void FinacialPeriodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
+        {
+            viewModel.isFinaceDetailsChanged = true;
+
+            if (viewModel.SelectedPeriod != null)
+            {
+
+                viewModel.TaxDate = viewModel.SelectedPeriod.ConvretedToDate;
             }
+
         }
 
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
@@ -159,10 +194,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -191,10 +226,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -213,10 +248,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception) {
+            catch (Exception ex) {
 
-                
-                
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -263,10 +298,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -288,10 +323,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -313,10 +348,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

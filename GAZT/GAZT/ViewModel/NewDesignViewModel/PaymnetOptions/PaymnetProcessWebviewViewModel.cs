@@ -71,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             GoBackClick = new Command(async () =>
             {
-                CancelPaymentService();
+               await CancelPaymentService();
             });
 
         }
