@@ -386,6 +386,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", (sender, arg) =>
                 {
+                    Console.WriteLine("Card Payment Clicked");
                     viewModel.MadaPaymentSelected();
                     viewModel.isPayNowTapped = false;
 
