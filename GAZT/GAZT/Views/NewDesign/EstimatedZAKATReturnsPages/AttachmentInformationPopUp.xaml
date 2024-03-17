@@ -33,6 +33,7 @@
                     <TapGestureRecognizer Tapped="OnCloseTapped"/>
                 </Image.GestureRecognizers>
             </Image>-->
+            <Label IsVisible="false" x:Name="paymentCancelInfo" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"/>
             <Label
                 x:Name="InfromatationText"
                 HorizontalTextAlignment="Start"

@@ -11269,6 +11269,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear taxpayer, transaction cannot be completed now, kindly try again shortly.
+        /// </summary>
+        public static string PaymentCancelInfo {
+            get {
+                return ResourceManager.GetString("PaymentCancelInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment Details.
         /// </summary>
         public static string PaymentDetails {

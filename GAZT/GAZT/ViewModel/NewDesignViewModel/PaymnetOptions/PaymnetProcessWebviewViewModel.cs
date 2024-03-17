@@ -161,8 +161,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
 
-                    //removed based on CR6100 Hyper care
-                    //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
