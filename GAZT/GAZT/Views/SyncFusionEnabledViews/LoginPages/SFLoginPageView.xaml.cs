@@ -487,6 +487,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
                         }
 
+                        if (apiUrl.ToString().Contains(GAZT.Helper.Constants.WebKeyChangeMobCompanay))
+                        {
+                            element.InvokeAction(GAZT.Helper.Constants.AppChangeMobCompanay);
+                        }
+                        if (apiUrl.ToString().Contains(GAZT.Helper.Constants.WebKeyChangeMobCompanayNafath))
+                        {
+                            string guid = apiUrl.ToString();
+                            App.GUIDFrChangeMob = guid;
+                            element.InvokeAction(GAZT.Helper.Constants.AppChangeMobCompanayNafath);
+                        }
+
                         if (data == "navigateBackToLoginPage")
                         {
                             App.IsLoginCalled = false;
