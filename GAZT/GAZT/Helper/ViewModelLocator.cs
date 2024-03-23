@@ -182,7 +182,7 @@ using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
 using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesViews;
 using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
-using Internal;
+
 
 namespace EGAZT
 {

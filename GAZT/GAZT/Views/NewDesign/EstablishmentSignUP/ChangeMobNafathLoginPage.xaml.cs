@@ -50,7 +50,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 if (App.GUIDFrChangeMob.Contains(Constants.WebKeyChangeMobCompanayNafath))
                                 {
                                     viewModel.Goback();
-                                    var guid = App.GUIDFrChangeMob.Split("guid=")[1];
+                                    var guid = App.GUIDFrChangeMob.Split(new string[] { "guid=" }, StringSplitOptions.None)[1];
                                     viewModel._navigationService.GoBack();
                                     viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, guid);
                                     

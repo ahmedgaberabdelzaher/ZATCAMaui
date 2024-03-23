@@ -114,7 +114,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.LoginPages
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected");
             MessagingCenter.Unsubscribe<InternationalCodeSearchPage, string>(this, "SelectedItem");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected");
-
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem"); 
             viewModel.StopTimer();
         }
 

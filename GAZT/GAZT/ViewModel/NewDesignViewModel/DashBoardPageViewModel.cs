@@ -1827,7 +1827,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                  RaisePropertyChanged("ACStatementBills");
             }
         }
+        private bool _isContactZatcaEmpTileVisible = false;
+        public bool IsContactZatcaEmpTileVisible
+        {
+            get
+            {
+                return _isContactZatcaEmpTileVisible;
+            }
+            set
+            {
+                if (_isContactZatcaEmpTileVisible == value) return;
 
+                _isContactZatcaEmpTileVisible = value;
+                RaisePropertyChanged("IsContactZatcaEmpTileVisible");
+            }
+        }
         #endregion
 
         #region Constructor

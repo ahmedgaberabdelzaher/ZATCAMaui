@@ -503,7 +503,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         {
                             if (App.GUIDFrChangeMob.Contains(Constants.WebKeyChangeMobCompanayNafath))
                             {
-                                var guid = App.GUIDFrChangeMob.Split("guid=")[1];
+                                var guid = App.GUIDFrChangeMob.Split(new string[]{"guid="}, StringSplitOptions.None)[1];
                                 viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, guid);
                             }
                         }

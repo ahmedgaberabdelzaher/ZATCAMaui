@@ -10919,5 +10919,9 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Verify OTP</value>
   </data>
     <!--End of CR6003-->
-
+ <!-- start of CR6741-->
+   <data name="ContactZatcaEmp" xml:space="preserve">
+     <value>Contact ZATCA for Audit Case</value>
+   </data>
+    <!--End of CR6741-->
 </root>
