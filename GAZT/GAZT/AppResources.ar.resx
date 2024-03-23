@@ -10713,4 +10713,117 @@ info@zatca.gov.sa</value>
    <data name="ZZZZTitle" xml:space="preserve">
     <value>لقب</value>
   </data>
+  <!--CR 6003-->
+  <data name="ManagerName" xml:space="preserve">
+        <value>اسم المدير</value>
+    </data>
+    <data name="ManagerID" xml:space="preserve">
+        <value>رقم هوية المدير</value>
+    </data>
+
+    <data name="NafathLinkText" xml:space="preserve">
+        <value>للمواطنين / المقيمين. تسجيل الدخول عن طريق نفاذ</value>
+    </data>
+
+    <data name="ManualRequestTitle" xml:space="preserve">
+        <value>في حال كانت خدمة نفاذ غير متوفرة ، الرجاء تقديم الطلب اليدوي</value>
+    </data>
+
+    <data name="ToThisMobNumber" xml:space="preserve">
+        <value>الى رقم الجوال التالي:</value>
+    </data>
+     <data name="Change" xml:space="preserve">
+        <value>تغيير</value>
+    </data>
+    <data name="SendOTP" xml:space="preserve">
+        <value>ارسال رمز التحقق</value>
+    </data>
+    <data name="PrintForm" xml:space="preserve">
+        <value>طباعة النموذج</value>
+    </data>
+    <data name="ReAttachForm" xml:space="preserve">
+        <value>إعادة إرفاق النموذج</value>
+    </data>
+    <data name="YouMustPrintForm" xml:space="preserve">
+        <value>بناء على سياسة الهيئة للشركات الغير مقيمة بان يتم طباعة النموذج وتعبئته والمصادقة عليه (مصادقة الخطاب من السفارة السعودية).</value>
+    </data>
+
+    <data name="OTPVerifiedSuccessFully" xml:space="preserve">
+        <value>تم التحقق من رمز التحقق بنجاح</value>
+    </data>
+
+    <data name="AttachmentWarnMsg" xml:space="preserve">
+        <value>يمكن تحميل مرفق واحد كحد أقصى.</value>
+    </data>
+
+    <data name="Ideclare" xml:space="preserve">
+        <value>أتعهد بأن المعلومات الواردة في هذا النموذج صحيحة وأني مفوض بالتوقيع على هذا الطلب</value>
+    </data>
+
+    <data name="Continue" xml:space="preserve">
+        <value>متابعة</value>
+    </data>
+
+     <data name="ManagerNameError" xml:space="preserve">
+        <value>الرجاء إدخال اسم المدير</value>
+    </data>
+
+    <data name="ChangeMobSuccessMsg" xml:space="preserve">
+        <value>عزيزي المكلف، تم استلام طلب تغيير رقم الجوال بنجاح</value>
+    </data>
+     <data name="ChangeMobSuccessMsg2" xml:space="preserve">
+        <value>عزيزي المكلف, تم إعادة تعيين رقم الجوال بنجاح للرقم المميز {0}</value>
+    </data>
+    <data name="AttachChamberOfCommerce" xml:space="preserve">
+        <value>ارفاق خطاب تفويض الغرفة التجارية</value>
+    </data>
+
+    <data name="ManagerDetails" xml:space="preserve">
+        <value>تفاصيل المدير</value>
+    </data>
+
+     <data name="DataSaved" xml:space="preserve">
+        <value>تم حفظ البيانات بنجاح</value>
+    </data>
+     <data name="DiscardChanges" xml:space="preserve">
+        <value>تجاهل التغييرات</value>
+    </data>
+    <data name="AttachmentInstructionPrintForm" xml:space="preserve">
+        <value>الرجاء ارفاق الملفات بصيغ PDF </value>
+    </data>
+    <data name="EnterTin" xml:space="preserve">
+        <value>ادخل الرقم المميز</value>
+    </data>
+        <data name="ManagerDetailsDob" xml:space="preserve">
+        <value>تاريخ الميلاد</value>
+    </data>
+        <data name="ManagerDetailsTitle" xml:space="preserve">
+        <value>بيانات المدير</value>
+    </data>
+     <data name="AttachmentInstruction2" xml:space="preserve">
+        <value>الرجاء ارفاق الملفات بصيغ Doc, Docx, Jpg, PDF </value>
+    </data>
+        <data name="AttachmentInstruction1" xml:space="preserve">
+        <value> يجب ان يكون حجم الملف اقل من 10 ميقا</value>
+    </data>
+        <data name="MCIErrorConfirmMsg" xml:space="preserve">
+        <value>إذا كنت ترغب في  تقديم نموذج الطلب اليدوي</value>
+    </data>
+       <data name="MCIErrorTitleMsg" xml:space="preserve">
+        <value>عزيزي المكلف, عذراً لم نتمكن من اكمال طلبك نظرا للاسباب التالية:</value>
+    </data>
+    <data name="TinNumberValidation" xml:space="preserve">
+              <value>الرقم المميز يجب أن يحتوي على 10 أرقام</value>
+    </data>
+     <data name="DoYouHaveAccountInNafath" xml:space="preserve">
+      <value>هل لديك حساب في نفاذ؟</value>
+  </data>
+
+<data name="OTPMaxAttempts" xml:space="preserve">
+        <value>لقد بلغت الحد الأقصى لعدد المحاولات, يرجى إدخال رقم الجوال مجددا</value>
+    </data>
+        <data name="ChangeMobHeader" xml:space="preserve">
+      <value>عزيزي المكلف، الشخص المخول بتغيير رقم الجوال هو مدير الشركة حسب بيانات وزارة التجارة</value>
+  </data>
+  <!--End of CR6003-->
 </root>

@@ -181,6 +181,8 @@ using EGAZT.Views.NewDesign.EDeclaration.InfoPages;
 using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
 using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesViews;
+using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
+using Internal;
 
 namespace EGAZT
 {
@@ -461,6 +463,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<FasahLoginViewModel>();
             SimpleIoc.Default.Register<BaseLoginViewModel>();
             SimpleIoc.Default.Register<InquiryaboutCustomsIssuesViewModel>();
+
+            SimpleIoc.Default.Register<UpdateManagerViewModel>();
+            SimpleIoc.Default.Register<ChangeMobNafathPageViewMode>();
+            SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
+
+            SimpleIoc.Default.Register<NafathPopupPageViewModel>();
+            SimpleIoc.Default.Register<NafathLoginPageViewModel>();
+
             #endregion
         }
 
@@ -2926,7 +2936,12 @@ namespace EGAZT
             navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
             navigationService.Configure("InquiryaboutCustomsIssuesView", typeof(InquiryaboutCustomsIssuesView));
-#endregion
+            //CR6003
+            navigationService.Configure(App.ChangeMobileRequestPageView, typeof(ChangeMobileRequestPageView));
+            navigationService.Configure(App.ChangeMobNafathLoginPage, typeof(ChangeMobNafathLoginPage));
+            navigationService.Configure(App.UpdateManagerDetailsPopUp, typeof(UpdateManagerDetailsPopUp));
+
+            #endregion
 
             return navigationService;
         }
@@ -4352,6 +4367,58 @@ namespace EGAZT
                 }
             }
         }
+        public ChangeMobileRequestViewModel ChangeMobileRequestPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<ChangeMobileRequestViewModel>();
+                    SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
+                    return ServiceLocator.Current.GetInstance<ChangeMobileRequestViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public ChangeMobNafathPageViewMode ChangeMobNafathLoginPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeMobNafathPageViewMode>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public UpdateManagerViewModel UpdateManagerPopUp
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdateManagerViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
+
         //
     }
 

@@ -11,6 +11,7 @@ using Android.Net.Http;
 using EGAZT;
 using EGAZT.Droid.CustomRenderer;
 using GAZT.Manager;
+using static Android.Telephony.CarrierConfigManager;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 namespace EGAZT.Droid.CustomRenderer
@@ -230,6 +231,18 @@ namespace EGAZT.Droid.CustomRenderer
                  string guid = url.ToString();
                  App.GUIDFrSSO = guid;
                 _hybridWebView.InvokeAction("navigateToVATIndividualSignupPageSSO");
+            }
+
+            if (url.ToString().Contains(Constants.WebKeyChangeMobCompanay))
+            {
+                _hybridWebView.InvokeAction(Constants.AppChangeMobCompanay);
+            }
+
+            if (url.ToString().Contains(Constants.WebKeyChangeMobCompanayNafath))
+            {
+                string guid = url.ToString();
+                App.GUIDFrChangeMob = guid;
+                _hybridWebView.InvokeAction(Constants.AppChangeMobCompanayNafath);
             }
 
             if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))

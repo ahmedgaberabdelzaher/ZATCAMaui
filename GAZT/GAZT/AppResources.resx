@@ -10797,4 +10797,128 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Title</value>
   </data>
 
+   <!--CR6003-->
+    <data name="ChangeMobHeader" xml:space="preserve">
+      <value>Dear Taxpayer, kindly note that the authorized person to change company mobile number must be registered as a manager in Ministry of commerce</value>
+    </data>
+
+    <data name="DoYouHaveAccountInNafath" xml:space="preserve">
+        <value>Verify your ID through NAFATH</value>
+    </data>
+    <data name="OTPMaxAttempts" xml:space="preserve">
+        <value> You have reached the maximum number of attempts, please enter mobile number again</value>
+    </data>
+   
+   
+    <data name="ManagerName" xml:space="preserve">
+        <value>Manager Name</value>
+    </data>
+    <data name="ManagerID" xml:space="preserve">
+        <value>ID Number</value>
+    </data>
+
+    <data name="NafathLinkText" xml:space="preserve">
+        <value>For Citizens/Resident Individuals,Login through IAM</value>
+    </data>
+
+    <data name="ManualRequestTitle" xml:space="preserve">
+        <value>In case NAFATH is not available, Please submit a manual request</value>
+    </data>
+
+    <data name="ToThisMobNumber" xml:space="preserve">
+        <value>To this mobile number</value>
+    </data>
+    <data name="Change" xml:space="preserve">
+        <value>Change</value>
+    </data>
+    <data name="SendOTP" xml:space="preserve">
+        <value>Send OTP</value>
+    </data>
+    <data name="PrintForm" xml:space="preserve">
+        <value>Print Form</value>
+    </data>
+    <data name="ReAttachForm" xml:space="preserve">
+        <value>Reattach Form</value>
+    </data>
+    <data name="YouMustPrintForm" xml:space="preserve">
+        <value>Based on the Authority's policy for non-resident companies to print, fill out and authenticate the form (letter authentication from the Saudi Embassy).</value>
+    </data>
+
+    <data name="OTPVerifiedSuccessFully" xml:space="preserve">
+        <value>OTP Verified Successfully</value>
+    </data>
+
+    <data name="AttachmentWarnMsg" xml:space="preserve">
+        <value>Maximum no. of 1 attachments can be uploaded.</value>
+    </data>
+
+    <data name="Ideclare" xml:space="preserve">
+        <value>I declare all the mentioned details are correct, and i am authorised to sign on this request</value>
+    </data>
+
+    <data name="Continue" xml:space="preserve">
+        <value>Continue</value>
+    </data>
+
+     <data name="ManagerNameError" xml:space="preserve">
+        <value>Please enter manager name</value>
+    </data>
+
+    <data name="ChangeMobSuccessMsg" xml:space="preserve">
+        <value>Dear Taxpayer, you have successfully submitted the request</value>
+    </data>
+
+    <data name="ChangeMobSuccessMsg2" xml:space="preserve">
+        <value>Dear Taxpayer, phone number for TIN {0} has been successfully changed</value>
+    </data>
+
+    
+    <data name="AttachChamberOfCommerce" xml:space="preserve">
+        <value>Attach Chamber of commerce authenticated letter</value>
+    </data>
+
+    <data name="ManagerDetails" xml:space="preserve">
+        <value>Manager Details</value>
+    </data>
+
+     <data name="DataSaved" xml:space="preserve">
+        <value>Data saved successfully</value>
+    </data>
+     <data name="DiscardChanges" xml:space="preserve">
+        <value>Discard Changes</value>
+    </data>
+    <data name="TinNumberValidation" xml:space="preserve">
+         <value>TIN number must contain 10 digits</value>
+    </data>
+  <data name="MCIErrorTitleMsg" xml:space="preserve">
+        <value>Dear Taxpayer: Sorry we cannot proceed your request, because:</value>
+    </data>
+    <data name="MCIErrorConfirmMsg" xml:space="preserve">
+        <value>If you wish to submit manual form</value>
+    </data>
+
+    <data name="AttachmentInstruction1" xml:space="preserve">
+        <value>File size should be less than 10 MB</value>
+    </data>
+
+    <data name="AttachmentInstruction2" xml:space="preserve">
+        <value>Choose only file with extension Doc,Docx,Jpg,PDF</value>
+    </data>
+
+    <data name="AttachmentInstructionPrintForm" xml:space="preserve">
+        <value>Choose only file with extension PDF</value>
+    </data>
+
+    <data name="ManagerDetailsTitle" xml:space="preserve">
+        <value>Manager Details</value>
+    </data>
+    <data name="ManagerDetailsDob" xml:space="preserve">
+        <value>Date of birth</value>
+    </data>
+    <data name="EnterTin" xml:space="preserve">
+        <value>Enter TIN</value>
+    </data>
+
+    <!--End of CR6003-->
+
 </root>

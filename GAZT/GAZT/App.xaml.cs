@@ -290,9 +290,18 @@ namespace EGAZT
 
         public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
 
+        //CR6003
+        public static string ChangeMobileRequestPageView = "ChangeMobileRequestPageView";
+        public static string ChangeMobNafathLoginPage = "ChangeMobNafathLoginPage";
+        public static string UpdateManagerDetailsPopUp = "UpdateManagerDetailsPopUp";
+
+
         //cr6094
         public static string NafathPopUpPage = "NafathPopUpPage";
         public static string NafathLoginPageView = "NafathLoginPageView";
+
+        //cr6003
+        public static string GUIDFrChangeMob { get; set; }
 
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
