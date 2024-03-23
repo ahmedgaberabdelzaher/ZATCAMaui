@@ -510,6 +510,8 @@ namespace GAZT.Helper
         public static string ZAtcaContactUsEN = "https://zatca.gov.sa/en/contactus/Pages/default.aspx";
         public static string ZAtcaContactUsAR = "https://zatca.gov.sa/ar/contactus/Pages/default.aspx";
 
+        public static string ChangeMobNafath = string.Empty;
+
         public static string WebKeyChangeMobCompanay = "IsCHGMCMPY=Y";
         public static string WebKeyChangeMobCompanayNafath = "IsCompany=Y&guid=";
 
