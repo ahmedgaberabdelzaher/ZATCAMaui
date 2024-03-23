@@ -10915,7 +10915,9 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <data name="EnterTin" xml:space="preserve">
         <value>Enter TIN</value>
     </data>
-
+    <data name="VerifyOtp" xml:space="preserve">
+    <value>Verify OTP</value>
+  </data>
     <!--End of CR6003-->
 
 </root>

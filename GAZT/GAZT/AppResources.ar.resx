@@ -10822,5 +10822,8 @@ info@zatca.gov.sa</value>
         <data name="ChangeMobHeader" xml:space="preserve">
       <value>عزيزي المكلف، الشخص المخول بتغيير رقم الجوال هو مدير الشركة حسب بيانات وزارة التجارة</value>
   </data>
+  <data name="VerifyOtp" xml:space="preserve">
+    <value>التحقق من الكود</value>
+  </data>
   <!--End of CR6003-->
 </root>
