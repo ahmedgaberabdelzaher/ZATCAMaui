@@ -16,18 +16,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         public AttachmentInformationPopUp(string infromationText)
         {
             InitializeComponent();
-            if (infromationText == "Payer cancelled transaction")
-            {
-                paymentCancelInfo.IsVisible = true;
-                if (App.IsArabic)
-                {
-                    paymentCancelInfo.Text = AppResources.PaymentCancelInfo;
-                }
-                else
-                {
-                    paymentCancelInfo.Text = AppResources.PaymentCancelInfo;
-                }
-            }
             InfromatationText.Text = infromationText;
             SetLTR();
         }

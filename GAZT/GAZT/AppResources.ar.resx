@@ -10617,10 +10617,7 @@ info@zatca.gov.sa</value>
     <data name="IBanSubmitSuccess1" xml:space="preserve">
     <value> تم اعتماد الطلب من قبل الهيئة، يمكنكم استخدام الحساب البنكي في طلبات الاسترداد</value>
   </data>
-  <!--6100-->
-    <data name="PaymentCancelInfo" xml:space="preserve">
-   <value>عزيزي المكلف, لا يمكن إتمام هذه العملية حاليا, يرجى المحاولة لاحقا</value>
-</data>
+  <!--VAT REVIEW-->
   <data name="BankGuaranteeOption" xml:space="preserve">
     <value>يمكنك طلب تخفيض الضمان البنكي عن طريق الاتصال على الرقم: 19993</value>
   </data>

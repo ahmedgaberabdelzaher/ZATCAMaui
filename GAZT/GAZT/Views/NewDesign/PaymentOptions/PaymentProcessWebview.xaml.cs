@@ -245,7 +245,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         }
         protected async void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
-           
+            Console.WriteLine("WebViewURL: " + e.Url);
 
             isLoginLoaded = false;
 
