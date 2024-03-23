@@ -61,21 +61,21 @@ namespace GAZT.Helper
         public static string DomainUrlForCookies = DevDomainForCookies;
         public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
     
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        public static string DomainUrlForCookies = QADomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = QADomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
     
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-/*
+
         public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = PreprodDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-    */
+    
      
       /*  public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
@@ -474,6 +474,11 @@ namespace GAZT.Helper
         public static string GetTpManagersList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/ManagerDetailsSet?$filter=";
         public static string PostTpManagersList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPOC_HeaderSet";
 
+        #endregion
+        #region Bank Account Managmnt
+        public static string GetBankAccountInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/HeaderSet(";
+        public static string PostBankAccountIBAN = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanListSet?&sap-language=";
+        public static string GetIBANAcoountFormGUID = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanListSet(Fbnum='')?sap-language=";
         #endregion
 
         public static string GAZTChatPartialUrlen = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/en/index_PROD.html";

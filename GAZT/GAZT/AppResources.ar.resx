@@ -10595,21 +10595,21 @@ info@zatca.gov.sa</value>
     <value>رقم الشركة خاطئ، يجب أن يتكون من 10 أرقام</value>
   </data>
   <data name="IBANIdNumberInfo" xml:space="preserve">
-      <value>يجب أن يكون الرقم {0} مرتبطًا برقم الحساب المصرفي الدولي السعودي.</value>
+   <value>يجب ان يكون رقم {0} مرتبط برقم الايبان السعودي</value>
   </data>
-   <data name="IBANAttachment1" xml:space="preserve">
+ <data name="IBANAttachment1" xml:space="preserve">
       <value>المرفقات 1</value>
   </data>
    <data name="IBANAttachment2" xml:space="preserve">
       <value>المرفقات 2</value>
   </data>
-    <data name="IBANAttachmentTitle" xml:space="preserve">
-    <value>1. يجب ألا يزيد حجم الملف عن 10 ميجابايت.
-2. اختر فقط الملف ذو الامتداد DOC، DOCX، GIF، JPEG، JPG، PDF، XLS، XLSX، XML.
+   <data name="IBANAttachmentTitle" xml:space="preserve">
+    <value>جب أن يكون حجم الملف أقل من 10 ميجا بايت.1
+2. اختر الملف ذو الامتداد فقط DOC, DOCX, GIF, JPEG, JPG, PDF, XLS, XLSX, XML.
 3. الحد الأقصى لا. عدد المرفقات المسموح بها هو 1.</value>
   </data>
-    <data name="IBANAttachmentErrorMsg" xml:space="preserve">
-      <value>الرجاء إضافة المرفقات الإلزامية</value>
+   <data name="IBANAttachmentErrorMsg" xml:space="preserve">
+      <value>الرجاء إدخال مرفق إلزامي</value>
   </data>
   <data name="IBANIdNumberDynamic" xml:space="preserve">
     <value>رقم {0}</value>

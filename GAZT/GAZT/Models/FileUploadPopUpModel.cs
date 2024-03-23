@@ -58,7 +58,8 @@ namespace EGAZT.Models.ZakatInstalationModels
         Others = 16,
         OldZakatInstalmentBankStatements = 17,
         OldZakatInstalmentFinance = 18,
-
+        IBANBankAccountOne = 28,
+        IBANBankAccountTwo = 29,
 
     }
     

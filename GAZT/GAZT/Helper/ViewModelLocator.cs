@@ -182,7 +182,8 @@ using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
 using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesViews;
 using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
-
+using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
+using EGAZT.Views.NewDesign.IBanAccountsManagementPages;
 
 namespace EGAZT
 {
@@ -211,6 +212,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
             SimpleIoc.Default.Register<ITrackShipment, TrackShipmentServices>();
             SimpleIoc.Default.Register<EDeclerationSubmitModel>();
+            SimpleIoc.Default.Register<BankAccountManagementPageViewModel>();
+            SimpleIoc.Default.Register<BankAccountAddorUpdateIBANViewModel>();
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -2712,7 +2715,8 @@ namespace EGAZT
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
             navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
             navigationService.Configure(App.TaxpayerSubsidyRequest, typeof(TaxpayerSubsidyRequest));
-
+            navigationService.Configure(App.GAZTBankAccountManagementPageView, typeof(BankAccountManagementPageView));
+            navigationService.Configure(App.GAZTBankAccountAddOrUpdatePageView, typeof(BankAccountAddorUpdateIBANPageView));
             #endregion
 
             #region NewDesignRelease2
@@ -4417,7 +4421,34 @@ namespace EGAZT
                 }
             }
         }
-
+        public BankAccountManagementPageViewModel BankAccountManagementPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountManagementPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public BankAccountAddorUpdateIBANViewModel BankAccountAddOrUpdatePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountAddorUpdateIBANViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
 
         //
     }

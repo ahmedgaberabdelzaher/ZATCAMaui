@@ -1846,14 +1846,14 @@
                                                     <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
-                                           <!-- <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                            <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
                                                 <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.GeneralServices}" />
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="General_Services_Tapped" />
                                                 </StackLayout.GestureRecognizers>
-                                            </StackLayout>-->
+                                            </StackLayout>
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <!--  Subsidy Request Starts  -->
                                             <StackLayout

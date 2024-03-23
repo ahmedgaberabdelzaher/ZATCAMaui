@@ -12,6 +12,7 @@ using EGAZT;
 using EGAZT.Droid.CustomRenderer;
 using GAZT.Manager;
 using static Android.Telephony.CarrierConfigManager;
+using GAZT.Helper;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 namespace EGAZT.Droid.CustomRenderer

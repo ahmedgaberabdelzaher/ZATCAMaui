@@ -10687,7 +10687,7 @@ We regret that you are unable to use the service at this time. Please sign up fo
 3. Maximum no. of allowed attachments are 1.</value>
   </data>
     <data name="IBANAttachmentErrorMsg" xml:space="preserve">
-      <value>Please Add Mandatory Attachments</value>
+      <value>Please Upload Mandatory Attachments</value>
   </data>
     <data name="IBANIdNumberDynamic" xml:space="preserve">
     <value>{0} Number</value>

@@ -7889,7 +7889,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please Add Mandatory Attachments.
+        ///   Looks up a localized string similar to Please Upload Mandatory Attachments.
         /// </summary>
         public static string IBANAttachmentErrorMsg {
             get {
