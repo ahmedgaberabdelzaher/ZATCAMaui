@@ -12,10 +12,15 @@ namespace EGAZT.Services.Classes
 {
     public class SubmitReportServices : ISubmitReportServices
     {
-        public async Task<ReportTypeList> GetReportType()
+        public async Task<List<ReportTypeModel>> GetReportType()
         {
-            var response = await NewHTTPManger.Get<BaseResponseModel<ReportTypeList>>($"{App.VatBaseUrl}/Report/GetReportTaxType") as BaseResponseModel<ReportTypeList>;
-            return response?.Result?.Data;
+           /*  var response = await NewHTTPManger.Get<DATAPowerBaseResponse<ReportTypeList>>($"{App.VatBaseUrl}/Report/GetReportTaxType") as BaseResponseModel<ReportTypeList>;
+             return response?.Result?.Data;
+            */
+            var lang = App.IsArabic ? "ar" : "en";
+            var response = await NewHTTPManger.Get<DATAPowerBaseResponse<ReportTypeList>>($"{PageSettings.ZATCABaseURL}v1/vat/reports/all-tax-types?languageCode={lang}") as DATAPowerBaseResponse<ReportTypeList>;
+            return response?.data?.reportTaxTypes;
+
         }
         public async Task<List<BaseRegionAndCity>> GetLookUps()
         {

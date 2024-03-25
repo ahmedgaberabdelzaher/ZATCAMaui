@@ -158,7 +158,7 @@ namespace EGAZT.Helper
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;

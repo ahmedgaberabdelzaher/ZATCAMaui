@@ -159,7 +159,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                             };
                             #region DATA Power Response
-                          /*  var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
+                         var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
                          
                             if (reportResult.header.status.code == "I000000")
                             {
@@ -177,9 +177,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.RequestTimeoutDescription;
                             }
-                            */
+                           
                             #endregion
-
+                            /*
                             var res = await _submitReportServices.CreateZatcaReport(SubmitReport);
                             if (res.Success)
                             {
@@ -190,7 +190,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 IsMissingFieldShowen = false;
                                 ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
                                 _navigationService.NavigateTo("/ReportSuccessPage");
-                            }
+                            }*/
                             IsLoading = false;
 
                         }
@@ -537,7 +537,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         isMissingFieldSelected = false;
                         isRegionSelected = false;
                         var reportType = await this._submitReportServices.GetReportType();
-                        var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
+                        var result = reportType?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ReportType;

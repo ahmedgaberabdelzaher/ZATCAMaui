@@ -9,9 +9,14 @@ namespace EGAZT.Models.SubmitReportModel
         public string reportTaxTypeCode { get; set; }
         public string reportTaxTypeName { get; set; }
     }
-    public class ReportTypeList
+  /*  public class ReportTypeList
     {
         public List<ReportTypeModel> reportTaxTypeList { get; set; }
+    }*/
+
+    public class ReportTypeList
+    {
+        public List<ReportTypeModel> reportTaxTypes { get; set; }
     }
 }
 
