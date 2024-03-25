@@ -127,6 +127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
                         else if (isAirCardSelected)
                         {
+                           // SelectedPortId = 30;
                             StatusTitle = DrawShipmentTrack.IsDeclarationSelected ? $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}" : $"{AppResources.Billofladingnumber}: {ShipmentBillNumber}";
                             await GetAirShipping(DrawShipmentTrack.IsDeclarationSelected);
 
@@ -442,7 +443,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                         var status = new ShipmentStatus();
 
                         status.ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(item.activityDate).ToString("dd/MM/yyyy  hh:mm tt");
-                        status.ShipmentStatusValue = item.Name;
+                        status.ShipmentStatusValue = item.Name.Replace("تم تحويل البيان الجمركي للتحصيل","تم اصدار الفاتورة");
                         if (trackShipmentResponse?.activities.Count > 1)
                         {
                             // Draw start circle for first item only
@@ -578,6 +579,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
             else if (trackType == ShipmentCards.Air)
             {
+               // SelectedPortName = "30";
                 if (string.IsNullOrWhiteSpace(SelectedPortName))
                 {
                     IsShowMsgView = true;
