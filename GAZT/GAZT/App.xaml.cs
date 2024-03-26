@@ -44,7 +44,6 @@ namespace EGAZT
         public static string CustomBaseUrl;
         public static string VatCustom;
         public static string VatBaseUrl;
-        public static string IBanValidatedResponse;
         #region new design views
 
         public static string GUIDFrSSO { get; set; }
@@ -137,7 +136,10 @@ namespace EGAZT
         public static string NotesPopUpPageView = "NotesPopUpPageView";
         public static string TaxManagementPageView = "TaxManagementPageView";
         // * End
-
+        // * Bank Managment
+        public static string GAZTBankAccountManagementPageView = "BankAccountManagementPageView";
+        public static string GAZTBankAccountAddOrUpdatePageView = "BankAccountAddorUpdateIBANPageView";
+        // * End
         #endregion
 
         #region new design views Release2
@@ -290,9 +292,18 @@ namespace EGAZT
 
         public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
 
+        //CR6003
+        public static string ChangeMobileRequestPageView = "ChangeMobileRequestPageView";
+        public static string ChangeMobNafathLoginPage = "ChangeMobNafathLoginPage";
+        public static string UpdateManagerDetailsPopUp = "UpdateManagerDetailsPopUp";
+
+
         //cr6094
         public static string NafathPopUpPage = "NafathPopUpPage";
         public static string NafathLoginPageView = "NafathLoginPageView";
+
+        //cr6003
+        public static string GUIDFrChangeMob { get; set; }
 
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
@@ -361,6 +372,10 @@ namespace EGAZT
         public static bool IsVAtProfitForGoods { get; set; }
         //in Seconds
         public static int IdleTimeToLogout = 100;
+        //Bank Managment
+        public static string SelectedIBAN = string.Empty;
+        public static string SelectedFbGuid = string.Empty;
+        public static string IBanValidatedResponse = string.Empty;
 
         public static bool IsLoginPageRefreshed;
         private INavigationService _navigationService;

@@ -61,26 +61,25 @@ namespace GAZT.Helper
         public static string DomainUrlForCookies = DevDomainForCookies;
         public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
     
+
      /*   public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
     */
+
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-/*
+
         public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = PreprodDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-    */
+    
      
-        public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = ProdDomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+       
     
     
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
@@ -464,6 +463,23 @@ namespace GAZT.Helper
 
         #endregion
 
+        #region Change Mob Number
+        public static string ChangeMobNumberGetIDTypes = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CHMB_M_SRV/ChmbHdrSet(";
+        public static string SaveChangeMobNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CHMB_M_SRV/ChmbHdrSet?&sap-language=";
+        public static string ChangeMobPostAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SIGNUP_ATTACH_SRV/AttachSet";
+        public static string ChangeMobDeleteAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_SIGNUP_ATTACH_SRV/AttachMedSet";
+        public static string PrintFormUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_DOWN_FORM_EXT_SRV/cover_formSet(Utype='',";// Fbnum='40000006834')/$value";
+
+        public static string GetTpManagersList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/ManagerDetailsSet?$filter=";
+        public static string PostTpManagersList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/TPOC_HeaderSet";
+
+        #endregion
+        #region Bank Account Managmnt
+        public static string GetBankAccountInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/HeaderSet(";
+        public static string PostBankAccountIBAN = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanListSet?&sap-language=";
+        public static string GetIBANAcoountFormGUID = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanListSet(Fbnum='')?sap-language=";
+        #endregion
+
         public static string GAZTChatPartialUrlen = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/en/index_PROD.html";
         public static string GAZTChatPartialUrlar = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/ar/index_PROD.html";
 
@@ -497,6 +513,14 @@ namespace GAZT.Helper
 
         public static string ZAtcaContactUsEN = "https://zatca.gov.sa/en/contactus/Pages/default.aspx";
         public static string ZAtcaContactUsAR = "https://zatca.gov.sa/ar/contactus/Pages/default.aspx";
+
+        public static string ChangeMobNafath = string.Empty;
+
+        public static string WebKeyChangeMobCompanay = "IsCHGMCMPY=Y";
+        public static string WebKeyChangeMobCompanayNafath = "IsCompany=Y&guid=";
+
+        public static string AppChangeMobCompanay = "ChangeMobCompanay";
+        public static string AppChangeMobCompanayNafath = "ChangeMobCompanayNafath";
 
         public static List<Nreg_IdItem> IdSet = new List<Nreg_IdItem>();
 
@@ -690,5 +714,7 @@ namespace GAZT.Helper
  " أخرى"
                   },
         };
+
+
     }
 }

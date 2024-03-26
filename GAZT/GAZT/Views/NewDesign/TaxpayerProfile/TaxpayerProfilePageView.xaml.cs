@@ -117,7 +117,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
         {
             PopupNavigation.Instance.PushAsync(new UpdatePasswordPopUp());
         }
-
+        private void OnManagerDetailsTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new UpdateManagerDetailsPopUp());
+        }
         private void OnBackArrowBtnTapped(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() =>

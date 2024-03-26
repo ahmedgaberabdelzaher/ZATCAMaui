@@ -437,7 +437,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         }
 
-                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountOne || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountTwo)
                         {
                             if (VatAttachmentsList != null)
                             {
@@ -663,7 +663,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                             }
                                         }
-                                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice || IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment || IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
+                                        else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice || IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment || IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountOne || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountTwo)
                                         {
                                             if (fileSize <= 10)
                                             {
@@ -1034,6 +1034,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "Z_SAVE_ATTACH_SRV";
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.IBANBankAccountOne || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountTwo)
+                        {
+                            APiMethod = "Z_SAVE_ATTACH_SRV";
+                        }
                         else if (IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod12Months || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriod2Years || IsComeForWhichAttachment == WhichAttachment.ChangeFillingPeriodOtherDoc)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
@@ -1181,6 +1185,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }
                     else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice)
+                    {
+                        APiMethod = "Z_SAVE_ATTACH_SRV";
+                    }
+                    else if (IsComeForWhichAttachment == WhichAttachment.IBANBankAccountOne || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountTwo)
                     {
                         APiMethod = "Z_SAVE_ATTACH_SRV";
                     }

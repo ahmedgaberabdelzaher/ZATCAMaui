@@ -487,10 +487,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
                         }
 
+                       
                         if (data == "navigateBackToLoginPage")
                         {
                             App.IsLoginCalled = false;
                             OnAppearing();
+                        }
+
+                        if (data == Constants.AppChangeMobCompanay)
+                        {
+                            viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, "");
+                        }
+
+                        if (data == Constants.AppChangeMobCompanayNafath)
+                        {
+                            if (App.GUIDFrChangeMob.Contains(Constants.WebKeyChangeMobCompanayNafath))
+                            {
+                                var guid = App.GUIDFrChangeMob.Split(new string[]{"guid="}, StringSplitOptions.None)[1];
+                                viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, guid);
+                            }
                         }
 
                         if (data == "error")

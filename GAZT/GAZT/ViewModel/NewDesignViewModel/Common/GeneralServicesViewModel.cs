@@ -10,6 +10,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
     [Preserve(AllMembers = true)]
     public class GeneralServicesViewModel : BaseViewModel
     {
+        public List<GeneralServicesListModel> generalServicesListData = new List<GeneralServicesListModel>();
+        string fileImage = string.Empty;
         [Preserve(AllMembers = true)]
         public class GeneralServicesListModel
         {
@@ -91,7 +93,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     ZDImageSource = "request_verification.png",
                     ArrowImageSource = fileImage
                 });
-            
+
+            generalServicesListData.Add(new GeneralServicesListModel
+            {
+                ZDTitle = AppResources.NDBankAccManagement,
+                ZDImageSource = "tax_evasion_green.png",
+                ArrowImageSource = fileImage
+            });
+
             generalServicesListData.Add(new GeneralServicesListModel
                 {
                     ZDTitle = AppResources.NDTaxEvasionReport,

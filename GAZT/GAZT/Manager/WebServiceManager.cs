@@ -35,6 +35,7 @@ using static EGAZT.Models.LoginSSOModel;
 using AppDynamics.Agent;
 using System.Security.Policy;
 
+
 namespace GAZT.Manager
 {
     [Preserve(AllMembers = true)]
@@ -6371,6 +6372,255 @@ namespace GAZT.Manager
                     Console.WriteLine(ex.Message);
                     Console.Write(ex.StackTrace.ToString());
                     throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<Tuple<HttpResponseMessage, string>> GetTPManagerDetails()
+        {
+            HttpResponseMessage response = null;
+            string result = string.Empty;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                try
+                {
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+                    String url = Constants.GetTpManagersList + "Gpart eq '" + App.TP.Tin + "'&$format=json";
+
+                    Console.WriteLine("ChangeMobNumberGetIDTypes   " + url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    response = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    result = response.Content.ReadAsStringAsync().Result.ToString();
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+            return new Tuple<HttpResponseMessage, string>(response, result);
+        }
+
+        public static async Task<Tuple<HttpResponseMessage, string>> SaveManagersList(ManagerDetailsPayload modelDetails)
+        {
+            HttpResponseMessage response = null;
+            string result = string.Empty;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZ = WebServiceManager.GetLangZParameterAREN();
+                    String url = Constants.PostTpManagersList;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var serilized = JsonConvert.SerializeObject(modelDetails);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    response = client.PostAsync(uri, contentPost).Result;
+                    result = response.Content.ReadAsStringAsync().Result;
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+            return new Tuple<HttpResponseMessage, string>(response, result);
+        }
+
+        public static async Task<Tuple<HttpResponseMessage, string>> GetIDTypesForChangeMobNumber(string Nafathguid)
+        {
+            HttpResponseMessage response = null;
+            string result = string.Empty;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+
+                try
+                {
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+
+                    String url = Constants.ChangeMobNumberGetIDTypes + "SrcAppz='MB',ReturnId='',Nafathguid='" + Nafathguid + "')?$expand=ATTACHSet%2CNOTESSet%2CIDTYPSet%2CMC_ERRORSet&$format=json&sap-language=" + LangZAREN;
+
+                    Console.WriteLine("ChangeMobNumberGetIDTypes   " + url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    response = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    result = response.Content.ReadAsStringAsync().Result.ToString();
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+            return new Tuple<HttpResponseMessage, string>(response, result);
+        }
+
+        public static async Task<Tuple<HttpResponseMessage, string>> SaveChangeMobileNumberAsync(ChangeMobileNumberModel modelDetails)
+        {
+            HttpResponseMessage response = null;
+            string result = string.Empty;
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZ = WebServiceManager.GetLangZParameterAREN();
+                    String url = Constants.SaveChangeMobNumber + LangZ;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var serilized = JsonConvert.SerializeObject(modelDetails);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    response = client.PostAsync(uri, contentPost).Result;
+                    result = response.Content.ReadAsStringAsync().Result;
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+            return new Tuple<HttpResponseMessage, string>(response, result);
+        }
+
+        public static string ChangeMobDeleteAttachment(string fileName, string RetGuid, string docType, string docguid)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                string DeleteToken = string.Empty;
+                try
+                {
+                    //https://sapgatewayd.zatca.gov.sa/sap/opu/odata/SAP/Z_SIGNUP_ATTACH_SRV/AttachMedSet(RetGuid='005056B1365C1EEE9BA8E9D923855F5F',Flag='N',OutletRef='',Dotyp='CHM2',SchGuid='',Srno=1,Doguid='005056B1365C1EEE9BA8EC8B83875F5F',AttBy='TP')/$value
+
+                    var uri = new Uri(string.Format("{0}(RetGuid='{1}',Flag='N',OutletRef='',Dotyp='{2}',SchGuid='',Srno=1,Doguid='{3}',AttBy='X')/$value",
+                        Constants.ChangeMobDeleteAttachment, RetGuid, docType, docguid));
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+
+                    HttpResponseMessage response = client.DeleteAsync(uri).Result;
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    if (response != null)
+                    {
+                        HttpHeaders headers = response.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("delete", out values))
+                        {
+                            DeleteToken = values.First();
+                        }
+                    }
+                    return "delete";
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    return DeleteToken;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<Attachment> ChangeMobileNumberAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Doctype, string contentType) //RG16 for Residency, RG19 for passport RG01 for CR copy RG02 licence copy
+        {
+            char lang = WebServiceManager.GetLangZParameter();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+
+                    // OutletRef = '',RetGuid = '" + returnid + "',Flag='N',Dotyp='" + doctype + "',SchGuid='',Srno=1,Doguid='',AttBy='TP'
+
+
+                    var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='',Flag='N',Dotyp='{2}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
+                        Constants.ChangeMobPostAttachment, RetGuid, Doctype));
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+
+                    ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    if (!string.IsNullOrEmpty(contentType))
+                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(uri, baContent);
+                    var responsestr = response.Content.ReadAsStringAsync().Result;
+                    responsestr = JObject.Parse(responsestr)["d"].ToString();
+                    Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
+                    return _attachment;
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
                 }
             }
             else

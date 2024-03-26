@@ -191,7 +191,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 viewModel.IsLoading = true;
 
-                string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync();
+                string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("MSUB");
 
                 if (response != null && response.Length > 0)
                 {
@@ -386,6 +386,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", (sender, arg) =>
                 {
+                    Console.WriteLine("Card Payment Clicked");
                     viewModel.MadaPaymentSelected();
                     viewModel.isPayNowTapped = false;
 
@@ -630,6 +631,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     if (App.LoginDataRetrieved.ZkReg == "X")
                     {
                         viewModel.IfnotRegInVATAndZakat = true;
+                    }
+                    if (App.LoginDataRetrieved.CozatcaTile == "X")
+                    {
+                        viewModel.IsContactZatcaEmpTileVisible = true;
                     }
                 }
 
@@ -1754,6 +1759,53 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         void OnChatTapped(System.Object sender, System.EventArgs e)
         {
 
+        }
+        private void ContactZatcaEmp_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ContactZatcaEmp_Tapped", "Contact ZATCA Employee");
+            var a = App.LoginDataRetrieved;
+            viewModel.IsLoading = true;
+            Task.Run(async () =>
+            {
+                viewModel.IsLoading = true;
+
+                string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("6741");
+
+                if (response != null && response.Length > 0)
+                {
+                    SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
+                    if (subsidyResponseModel != null && subsidyResponseModel.D != null)
+                    {
+
+                        if (!string.IsNullOrEmpty(subsidyResponseModel.D.Fbguid))
+                        {
+
+                            String url = subsidyResponseModel.D.ExternalPortal;
+                            url = url.Replace("TINVALUE", App.LoginDataRetrieved.TIN);
+                            url = url.Replace("TOKENVALUE", subsidyResponseModel.D.Fbguid);
+                            Constants.TaxpayerSubsidyRequest = url;
+
+                            Device.BeginInvokeOnMainThread(async () => {
+                                viewModel.IsLoading = false;
+                                //var url=new Uri($"https://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/MeetingWithAuditorPages/TaxPayer/Requests.aspx?tin={App.LoginDataRetrieved.TIN}&token={subsidyResponseModel.D.Fbguid}");
+                                await Browser.OpenAsync(url);
+                            });
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+                            });
+                        }
+
+
+                    }
+                }
+
+
+            });
         }
     }
 }
