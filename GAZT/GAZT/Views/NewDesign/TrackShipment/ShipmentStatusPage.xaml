@@ -231,7 +231,7 @@
                                         FontSize="14"
                                         HorizontalOptions="Start"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding TrackShipmentResponse.totalFees}"
+                                        Text="{Binding TrackShipmentResponse.totalFees,StringFormat='{0:n}'}"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
@@ -280,7 +280,7 @@
                                         FontSize="14"
                                         HorizontalOptions="Start"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding TrackShipmentResponse.customs}"
+                                        Text="{Binding TrackShipmentResponse.customs,StringFormat='{0:n}'}"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
@@ -342,7 +342,7 @@
                                         FontSize="14"
                                         HorizontalOptions="Start"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding TrackShipmentResponse.VAT}"
+                                        Text="{Binding TrackShipmentResponse.VAT,StringFormat='{0:n}'}"
                                         TextColor="#002447"
                                         VerticalOptions="Start" />
 
@@ -378,7 +378,7 @@
                                         FontSize="14"
                                         HorizontalOptions="Start"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding TrackShipmentResponse.CIF}"
+                                        Text="{Binding TrackShipmentResponse.CIF,StringFormat='{0:n}'}"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
@@ -426,7 +426,7 @@
                                         FontSize="14"
                                         HorizontalOptions="Start"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding TrackShipmentResponse.others}"
+                                        Text="{Binding TrackShipmentResponse.others,StringFormat='{0:n}'}"
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
