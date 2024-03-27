@@ -13,7 +13,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel;
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
 {
 
-    public class MyBillsViewModel : ViewModelBase
+    public class MyBillsViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -241,19 +241,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 RaisePropertyChanged("MyBillsPartiallyPaid");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private bool _setNoDataLabelVisibility = false;
         public bool SetNoDataLabelVisibility
         {
@@ -358,7 +346,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 RaisePropertyChanged("StatusImage");
             }
         }
-        public MyBillsViewModel(INavigationService navigationService, IDialogService dialogService)
+        public MyBillsViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

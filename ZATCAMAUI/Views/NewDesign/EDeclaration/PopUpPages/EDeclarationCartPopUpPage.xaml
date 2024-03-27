@@ -7,10 +7,7 @@
     xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     FlowDirection="{Binding AppDirection}">
 
     <pages:PopupPage.Resources>
@@ -34,10 +31,10 @@
 
     <Grid VerticalOptions="EndAndExpand">
 
-        <yummy:PancakeView
+        <Border
             Padding="20"
             BackgroundColor="White"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
             HeightRequest="500"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
@@ -54,7 +51,7 @@
                                  Padding="10">
 
                         <!--  Checkout Header Label  -->
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,0,0,20"
                             FontSize="18"
                             HorizontalOptions="StartAndExpand"
@@ -108,7 +105,7 @@
                                     WidthRequest="25" />
 
                                 <!--  Product Name Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     Padding="15"
                                     FontSize="18"
                                     HorizontalOptions="StartAndExpand"
@@ -161,7 +158,7 @@
                                             </Image>
 
                                             <!--  Product name  -->
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="1"
                                                 Grid.ColumnSpan="2"
                                                 FontSize="12"
@@ -171,7 +168,7 @@
                                                 VerticalOptions="Start" />
 
                                             <!--  Product Desc.  -->
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 Grid.Column="1"
                                                 Grid.ColumnSpan="2"
@@ -199,22 +196,22 @@
                                                     VerticalOptions="Start" />
 
                                                 <!--  QTY Value  -->
-                                                <custom:CustomLabel
+                                                <Label
                                                     FontSize="14"
                                                     HorizontalOptions="Start"
                                                     LineBreakMode="WordWrap"
                                                     TextColor="#232323"
                                                     VerticalOptions="Start">
 
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static ResourceManager:AppResources.QTY}" />
                                                             <Span Text=": " />
                                                             <Span Text="{Binding QTY}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
+                                                    </Label.FormattedText>
 
-                                                </custom:CustomLabel>
+                                                </Label>
 
                                                 <!--  Total value Icon  -->
                                                 <Image
@@ -224,22 +221,22 @@
                                                     VerticalOptions="Start" />
 
                                                 <!--  Total value  Value  -->
-                                                <custom:CustomLabel
+                                                <Label
                                                     FontSize="14"
                                                     HorizontalOptions="End"
                                                     LineBreakMode="WordWrap"
                                                     TextColor="#232323"
                                                     VerticalOptions="Start">
 
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
                                                             <Span Text=": " />
                                                             <Span Text="{Binding Price}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
+                                                    </Label.FormattedText>
 
-                                                </custom:CustomLabel>
+                                                </Label>
 
                                             </StackLayout>
 
@@ -268,11 +265,11 @@
                     <!--#endregion Frame Contains Product list-->
 
                     <!--#region Fees Details-->
-                    <yummy:PancakeView
+                    <Border
                         Padding="15"
-                        Border="{yummy:BorderMarkup Color=#EBEBEB,
-                                                    Thickness='1'}"
-                        CornerRadius="15,15,0,0"
+                        Stroke="#EBEBEB"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         Style="{StaticResource CommonTopCurves}">
 
                         <StackLayout Padding="10"
@@ -384,16 +381,16 @@
 
                         </StackLayout>
 
-                    </yummy:PancakeView>
+                    </Border>
 
                     <!--  Total Label  -->
                     <Grid>
 
-                        <yummy:PancakeView
+                        <Border
                             BackgroundColor="#0996D4"
-                            Border="{yummy:BorderMarkup Color=#EBEBEB,
-                                                        Thickness='1'}"
-                            CornerRadius="0,0,15,15"
+                            Stroke="#EBEBEB"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 0,0,15,15"
                             HorizontalOptions="FillAndExpand"
                             Opacity="0.1"
                             Style="{StaticResource CommonTopCurves}"
@@ -409,7 +406,7 @@
                             <StackLayout Orientation="Horizontal">
 
                                 <!--  Total Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     FontSize="18"
                                     HorizontalOptions="Start"
                                     Text="{x:Static ResourceManager:AppResources.NDTotal}"
@@ -424,19 +421,19 @@
                                     ToolTipProperties.Text="{x:Static ResourceManager:AppResources.NDTotalDisclaimer}" />
 
                                 <!--  Price Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     FontSize="18"
                                     HorizontalOptions="EndAndExpand"
                                     TextColor="Black"
                                     VerticalOptions="Start">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
                                             <Span Text="  " />
                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                             </StackLayout>
 
@@ -458,7 +455,7 @@
 
             </ScrollView>
             </Grid>
-        </yummy:PancakeView>
+        </Border>
 
     </Grid>
 

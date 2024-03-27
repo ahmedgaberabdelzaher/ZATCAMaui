@@ -13,7 +13,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
@@ -26,10 +26,6 @@
             <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="0" />
             </Style>
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
-            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -38,18 +34,18 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
                 <!--<ScrollView> -->
                 <StackLayout>
                     <!--  Start Of Type  -->
-                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                        <custom:CustomLabel.FormattedText>
+                    <Label Style="{StaticResource CaptionLabelGrey}">
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" />
                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
                     <Grid>
                         <inputLayout:SfTextInputLayout
                             x:Name="txtBundleType"
@@ -77,18 +73,17 @@
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
                         <buttons:SfButton Background="Transparent" Clicked="OnBundleTypeClicked" />
-                        <syncfusion:SfPicker
+                        <custom:CustomSfPicker
                             x:Name="BundleType"
                             Margin="10,0,10,0"
                             Background="White"
                             Closed="BundleType_Closed"
-                            FlowDirection="RightToLeft"
                             ItemHeight="40"
                             Mode="Dialog"
                             OkButtonClicked="BundleType_OkButtonClicked"
                             SelectionChanged="BundleType_SelectionChanged">
 
-                            <syncfusion:SfPicker.HeaderView>
+                            <custom:CustomSfPicker.HeaderView>
 
                                 <syncfusion:PickerHeaderView
                                     Height="55"
@@ -99,32 +94,33 @@
                                     </syncfusion:PickerHeaderView.TextStyle>
                                 </syncfusion:PickerHeaderView>
 
-                            </syncfusion:SfPicker.HeaderView>
+                            </custom:CustomSfPicker.HeaderView>
 
-                            <syncfusion:SfPicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" />
-                            </syncfusion:SfPicker.ColumnHeaderView>
 
-                            <syncfusion:SfPicker.TextStyle>
+                         <custom:CustomSfPicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomSfPicker.SelectionView>
+
+                            <custom:CustomSfPicker.TextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                            </syncfusion:SfPicker.TextStyle>
+                            </custom:CustomSfPicker.TextStyle>
 
-                            <syncfusion:SfPicker.Columns>
+                            <custom:CustomSfPicker.Columns>
                                 <syncfusion:PickerColumn
                                     Width="300"
                                     DisplayMemberPath="Txt50"
                                     ItemsSource="{Binding FormBundleList}"
                                     SelectedIndex="{Binding IDTypeIndex}" />
-                            </syncfusion:SfPicker.Columns>
+                            </custom:CustomSfPicker.Columns>
 
-                            <syncfusion:SfPicker.SelectedTextStyle>
+                            <custom:CustomSfPicker.SelectedTextStyle>
                                 <syncfusion:PickerTextStyle
                                     FontAttributes="Bold"
                                     FontSize="15"
                                     TextColor="{StaticResource NeutralBlack}" />
-                            </syncfusion:SfPicker.SelectedTextStyle>
+                            </custom:CustomSfPicker.SelectedTextStyle>
 
-                            <syncfusion:SfPicker.FooterView>
+                            <custom:CustomSfPicker.FooterView>
 
                                 <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
@@ -134,24 +130,21 @@
 
                                 </syncfusion:PickerFooterView>
 
-                            </syncfusion:SfPicker.FooterView>
+                            </custom:CustomSfPicker.FooterView>
 
-                            <syncfusion:SfPicker.Behaviors>
-                                <behaviors:SfPickerBehavior />
-                            </syncfusion:SfPicker.Behaviors>
 
-                        </syncfusion:SfPicker>
+                        </custom:CustomSfPicker>
                     </Grid>
                     <!--  End Of Type  -->
 
-                    <custom:CustomLabel Margin="0,16,0,0" Style="{StaticResource CaptionLabelGrey}">
-                        <custom:CustomLabel.FormattedText>
+                    <Label Margin="0,16,0,0" Style="{StaticResource CaptionLabelGrey}">
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" />
                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
 
                     <Grid>
                         <inputLayout:SfTextInputLayout
@@ -182,17 +175,16 @@
 
                         <buttons:SfButton Background="Transparent" Clicked="OnBundleNumberClicked" />
 
-                        <syncfusion:SfPicker
+                        <custom:CustomSfPicker
                             x:Name="BundleNumber"
                             Margin="10,0,10,0"
                             Background="White"
-                            FlowDirection="RightToLeft"
                             ItemHeight="40"
                             Mode="Dialog"
                             OkButtonClicked="BundleNumber_OkButtonClicked"
                             SelectionChanged="BundleNumber_SelectionChanged">
 
-                            <syncfusion:SfPicker.HeaderView>
+                            <custom:CustomSfPicker.HeaderView>
 
                                 <syncfusion:PickerHeaderView
                                     Height="55"
@@ -203,32 +195,33 @@
                                     </syncfusion:PickerHeaderView.TextStyle>
                                 </syncfusion:PickerHeaderView>
 
-                            </syncfusion:SfPicker.HeaderView>
+                            </custom:CustomSfPicker.HeaderView>
 
-                            <syncfusion:SfPicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" />
-                            </syncfusion:SfPicker.ColumnHeaderView>
 
-                            <syncfusion:SfPicker.TextStyle>
+                         <custom:CustomSfPicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomSfPicker.SelectionView>
+
+                            <custom:CustomSfPicker.TextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                            </syncfusion:SfPicker.TextStyle>
+                            </custom:CustomSfPicker.TextStyle>
 
-                            <syncfusion:SfPicker.Columns>
+                            <custom:CustomSfPicker.Columns>
                                 <syncfusion:PickerColumn
                                     Width="300"
                                     DisplayMemberPath="Fbnum"
                                     ItemsSource="{Binding FormBundleApplicatioNumberList}"
                                     SelectedIndex="{Binding IDTypeIndex}" />
-                            </syncfusion:SfPicker.Columns>
+                            </custom:CustomSfPicker.Columns>
 
-                            <syncfusion:SfPicker.SelectedTextStyle>
+                            <custom:CustomSfPicker.SelectedTextStyle>
                                 <syncfusion:PickerTextStyle
                                     FontAttributes="Bold"
                                     FontSize="15"
                                     TextColor="{StaticResource NeutralBlack}" />
-                            </syncfusion:SfPicker.SelectedTextStyle>
+                            </custom:CustomSfPicker.SelectedTextStyle>
 
-                            <syncfusion:SfPicker.FooterView>
+                            <custom:CustomSfPicker.FooterView>
 
                                 <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
@@ -238,14 +231,11 @@
 
                                 </syncfusion:PickerFooterView>
 
-                            </syncfusion:SfPicker.FooterView>
+                            </custom:CustomSfPicker.FooterView>
 
 
-                            <syncfusion:SfPicker.Behaviors>
-                                <behaviors:SfPickerBehavior />
-                            </syncfusion:SfPicker.Behaviors>
 
-                        </syncfusion:SfPicker>
+                        </custom:CustomSfPicker>
                     </Grid>
 
                     <ListView
@@ -263,8 +253,8 @@
                                     <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="10">
                                             <StackLayout Orientation="Horizontal">
-                                                <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZStatus}" />
-                                                <custom:CustomLabel
+                                                <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZStatus}" />
+                                                <Label
                                                     HorizontalOptions="EndAndExpand"
                                                     Style="{StaticResource ValueLabelBlack}"
                                                     Text="{Binding FbStatus}" />
@@ -277,7 +267,7 @@
                     </ListView>
                 </StackLayout>
                 <!--</ScrollView> -->
-            </yummy:PancakeView>
+            </Border>
 
 
             <Grid Grid.Row="0" Padding="15,5,15,5">

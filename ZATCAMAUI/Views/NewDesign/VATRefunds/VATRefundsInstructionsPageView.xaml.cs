@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             viewModel = App.Locator.VATRefundsInstructionsPageView;
             viewModel.IsInstructionsVisible = true;
             this.BindingContext = viewModel;
-            SetLTR();
         }
 
         protected override async void OnAppearingAnimationEnd()
@@ -23,18 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             await viewModel.ReloadData();
         }
 
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-                btnConfirmVATRefundInstructions.FontSize = 15;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
 
         public void VATRefundRequestInstructions_Tapped(object sender, EventArgs e)
         {

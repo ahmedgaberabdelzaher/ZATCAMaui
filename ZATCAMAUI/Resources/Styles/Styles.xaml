@@ -8,7 +8,7 @@
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:sfControl="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    >
 
     <Color x:Key="OrangeyYellow">#0996d4</Color>
     <Color x:Key="Transparent">Transparent</Color>
@@ -309,8 +309,8 @@
         <Setter Property="LineHeight" Value="{OnPlatform Default=1.25, iOS=-1}" />
     </Style>
 
-    <Style x:Key="CommonTopCurves" TargetType="yummy:PancakeView">
-        <Setter Property="CornerRadius" Value="15,15,0,0" />
+    <Style x:Key="CommonTopCurves" TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 15,15,0,0" />
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="Padding" Value="20,20,20,20" />
     </Style>

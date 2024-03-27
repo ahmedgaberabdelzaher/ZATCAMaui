@@ -18,7 +18,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
         {
             InitializeComponent();
 
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ChangeFillingPeriodSuccessPageView;
             BindingContext = viewModel;
@@ -32,13 +31,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             Padding = safeInsets;
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
 
         private void Dashboard_Tapped(object sender, EventArgs e)
         {

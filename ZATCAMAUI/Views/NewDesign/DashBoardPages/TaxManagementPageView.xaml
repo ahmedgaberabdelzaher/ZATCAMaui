@@ -8,7 +8,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -44,7 +44,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
                 <ScrollView>
                     <StackLayout>
                         <StackLayout Spacing="16">
@@ -54,7 +54,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="vat_user.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDNewProfile}"
                                         VerticalOptions="Center"
@@ -72,7 +72,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.MyBills}"
                                         VerticalOptions="Center"
@@ -90,7 +90,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDReturns}"
                                         VerticalOptions="Center"
@@ -108,7 +108,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDCertificates}"
                                         VerticalOptions="Center"
@@ -126,7 +126,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDRegistrationDetails}"
                                         VerticalOptions="Center"
@@ -147,7 +147,7 @@
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
                                             <Image Grid.Column="0" Source="ic_vat_return.png" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="1"
                                                 Style="{StaticResource ValueLabelBlack}"
                                                 Text="{x:Static ResourceManager:AppResources.NDVATServices}"
@@ -164,7 +164,7 @@
                                                     Orientation="Horizontal"
                                                     Spacing="20">
                                                     <Image Source="ic_vat_return.png" />
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}"
                                                         VerticalOptions="Center"
@@ -182,7 +182,7 @@
                                                     Orientation="Horizontal"
                                                     Spacing="20">
                                                     <Image Source="ic_vat_return.png" />
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}"
                                                         VerticalOptions="Center"
@@ -200,7 +200,7 @@
                                                     Orientation="Horizontal"
                                                     Spacing="20">
                                                     <Image Source="ic_vat_return.png" />
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.DBSMVATDeregistration}"
                                                         VerticalOptions="Center"
@@ -224,7 +224,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}"
                                         VerticalOptions="Center"
@@ -242,7 +242,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.VRObjectionsReviews}"
                                         VerticalOptions="Center"
@@ -260,7 +260,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_menu_cr.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}"
                                         VerticalOptions="Center"
@@ -278,7 +278,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_Application_Status.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZFormBundleStatus}"
                                         VerticalOptions="Center"
@@ -296,7 +296,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDRegistertoVAT}"
                                         VerticalOptions="Center"
@@ -310,7 +310,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
                                         VerticalOptions="Center"
@@ -324,7 +324,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
                                         VerticalOptions="Center"
@@ -344,7 +344,7 @@
                                         HeightRequest="25"
                                         Source="ic_logo_gazt.png"
                                         WidthRequest="25" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}"
                                         VerticalOptions="Center"
@@ -362,7 +362,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDPrivacyPolicy}"
                                         VerticalOptions="Center"
@@ -380,7 +380,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="customerServiceColor.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZSupport}"
                                         VerticalOptions="Center"
@@ -398,7 +398,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center">
@@ -409,7 +409,7 @@
                                                 <Span Text="{Binding AppVersion}" />
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </Label>
                                 </StackLayout>
                             </Border>
 
@@ -419,7 +419,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}"
                                         VerticalOptions="Center"
@@ -437,7 +437,7 @@
                                     Orientation="Horizontal"
                                     Spacing="20">
                                     <Image Source="ic_vat_return.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZLogout}"
                                         VerticalOptions="Center"
@@ -452,7 +452,7 @@
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
-            </yummy:PancakeView>
+            </Border>
 
             <Grid Grid.Row="0" Padding="15,5,15,5">
                 <Grid.ColumnDefinitions>

@@ -2,12 +2,13 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
 
 
-    public class TINDeregestrationSuccessPageViewModel : ViewModelBase
+    public class TINDeregestrationSuccessPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -29,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("FBNumber");
             }
         }
-        public TINDeregestrationSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TINDeregestrationSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

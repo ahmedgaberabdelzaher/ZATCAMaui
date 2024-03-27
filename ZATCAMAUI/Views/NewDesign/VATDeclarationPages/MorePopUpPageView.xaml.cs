@@ -20,7 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.MorePopUpPageView;
                 this.BindingContext = viewModel;
-                SetLTR();
                 if (ListOfActionButtonsApplicable != null)
                 {
                     viewModel.VatReturnUIButtons = ListOfActionButtonsApplicable;
@@ -35,18 +34,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception)
             {
-            }
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
             }
         }
         private void OnClose(object sender, EventArgs e)

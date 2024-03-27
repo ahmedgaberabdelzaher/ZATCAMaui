@@ -5,7 +5,7 @@ using GalaSoft.MvvmLight.Views;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
 
-    public class NewZakatObjectionPageViewModel : ViewModelBase
+    public class NewZakatObjectionPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -129,7 +129,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #endregion
 
         #region Constructor
-        public NewZakatObjectionPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public NewZakatObjectionPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

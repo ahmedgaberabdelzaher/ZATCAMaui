@@ -87,7 +87,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 SetPickerFont();
                 _ = viewModel.GetCaptchAndGUID();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -98,31 +98,27 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if (!App.IsArabic)
             {
-                FlowDirection = FlowDirection.LeftToRight;
+                //FlowDirection = FlowDirection.LeftToRight;
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
                 EntryMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
             }
             else
             {
-                FlowDirection = FlowDirection.RightToLeft;
+                //FlowDirection = FlowDirection.RightToLeft;
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
                 EntryMobileNumber.HorizontalTextAlignment = TextAlignment.End;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("EGAZT.SyncfusionControl", Application.Current.GetType().Assembly);
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
 
             }
         }
 
 
         #region
-        private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         protected override void OnDisappearing()
         {
@@ -130,6 +126,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.StopTimer = false;
             viewModel.TotalSec = -10;
         }
+
         private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.IdNumber))
@@ -175,16 +172,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.FrameIDError = false;
             }
-        }
-
-        private void EntryPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void EntryTIN_Unfocused(object sender, FocusEventArgs e)
-        {
-
         }
 
         private async void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
@@ -373,40 +360,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
         }
-        private void DpDOB_OkButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DpDOB_CancelButtonClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                viewModel.DOB = viewModel.DOBPrev;
-                if (!string.IsNullOrEmpty(viewModel.DOBPrev))
-                {
-                    string[] Date = viewModel.DOBPrev.Split('/');
-                    ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-                    //Select today dates
-                    todaycollection.Add(Date[2]);
-                    todaycollection.Add(Date[1]);//day
-                    todaycollection.Add(Date[0]);
-
-                    SignUpDOB.SelectedItem = todaycollection;
-                }
-            }
-            catch (Exception Ex)
-            {
-
-            }
-
-        }
 
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
             ValidateIDNumber();
         }
-
 
         public async void ValidateIDNumber()
         {
@@ -675,71 +633,18 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             });
         }
 
-        private void EntryName_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-        private async void DOB_Closed(object sender, EventArgs e)
-        {
-
-        }
-        private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void btn1_Clicked(object sender, EventArgs e)
-        {
-            DDlIDType.IsOpen = true;
-        }
-
-        private void btnDate_Clicked(object sender, EventArgs e)
-        {
-            if (viewModel.IsHijriCal)
-            {
-                SignUpDOBHijri.IsOpen = true;
-            }
-            else
-            {
-                SignUpDOB.IsOpen = true;
-
-
-            }
-        }
         private void CountryCodes_Clicked(object sender, EventArgs e)
         {
-
-
             PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
 
-
-        }
-
-        private void LIssuedBy_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LIssuedByCity_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSubmitNext_Clicked(object sender, EventArgs e)
-        {
         }
 
         private void IDType_SelectedIndexChanged(object sender, PickerSelectionChangedEventArgs e)
         {
             try
             {
-                viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
-                viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
+                viewModel.TxtIDType = viewModel.IdTypeList[e.NewValue].Name;
+                viewModel.SelectedIdType = viewModel.IdTypeList[e.NewValue];
                 viewModel.IdNumber = string.Empty;
                 if (!viewModel.SelectedIdType.ID.Equals("ZS0018"))
                 {
@@ -749,20 +654,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
 
                 }
-            }
-            catch (Exception)
-            {
-
-
-
-            }
-        }
-
-        private void DOB_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-            try
-            {
-
             }
             catch (Exception)
             {
@@ -774,14 +665,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void IDType_CancelButtonClicked(object sender, EventArgs e)
         {
+            DDlIDType.IsOpen = false;
         }
 
         private void DDlIDType_OkayButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
-                viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
+                var selected = sender as SfPicker;
+                viewModel.TxtIDType = viewModel.IdTypeList[selected.Columns[0].SelectedIndex].Name;
+                viewModel.SelectedIdType = viewModel.IdTypeList[selected.Columns[0].SelectedIndex];
                 viewModel.IdNumber = string.Empty;
                 if (!viewModel.SelectedIdType.ID.Equals("ZS0018"))
                 {
@@ -791,7 +684,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
 
                 }
-
 
             }
             catch (Exception)
@@ -804,45 +696,17 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DOB_CancelButtonClicked(object sender, EventArgs e)
         {
-
-        }
-
-        private void Country_OkayButtonClicked(object sender, EventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-
-                viewModel.CountryName = viewModel.CountryList[viewModel.SelectedCountryIndex].Natio;
-                viewModel.SelectedCountry = viewModel.CountryList[viewModel.SelectedCountryIndex];
-            }
-        }
-
-        private void Country_CancelButtonClicked(object sender, EventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-
-
-            }
+            SignUpDOB.IsOpen = false;
         }
 
         private void GCCCountry_OkayButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                viewModel.CountryName = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex].CountryName;
-                viewModel.SelectedGCCCountry = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex];
-
+                var selected = sender as SfPicker;
+                viewModel.CountryName = viewModel.GCCCountryList[selected.Columns[0].SelectedIndex].CountryName;
+                viewModel.SelectedGCCCountry = viewModel.GCCCountryList[selected.Columns[0].SelectedIndex];
+                GCCPicker_Country.IsOpen = false;
             }
             catch (Exception)
             {
@@ -854,26 +718,18 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void GCCCountry_CancelButtonClicked(object sender, EventArgs e)
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-
-
-            }
+            GCCPicker_Country.IsOpen = false;
         }
 
         private void Region_OkayButtonClicked(object sender, EventArgs e)
         {
             try
             {
-                viewModel.SelectedRegion = viewModel.RegionList[viewModel.SelectedRegionIndex];
-                viewModel.Region = viewModel.RegionList[viewModel.SelectedRegionIndex].Bezei;
+                var selected = sender as SfPicker;
+                viewModel.SelectedRegion = viewModel.RegionList[selected.Columns[0].SelectedIndex];
+                viewModel.Region = viewModel.RegionList[selected.Columns[0].SelectedIndex].Bezei;
                 viewModel.CityName = string.Empty;
-
+                Picker_Region.IsOpen = false;
             }
             catch (Exception)
             {
@@ -883,36 +739,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(EntryEmail.Text))
-            {
-                bool flag = IsValid(EntryEmail.Text);
-                if (!flag)
-                {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
-                    popUp.IsLinkAvailable = false;
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        // popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseenteravalidEmailAddress));
-                    FrmEmailAddress.HasError = true;
-                    EntryEmail.Text = string.Empty;
-                }
-                else
-                {
-                    FrmEmailAddress.HasError = false;
-                }
-            }
-        }
         public bool IsValid(string emailaddress)
         {
             bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
@@ -926,28 +752,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-
         private void Region_CancelButtonClicked(object sender, EventArgs e)
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-
-
-            }
+            Picker_Region.IsOpen = false;
         }
 
         private void City_OkayButtonClicked(object sender, EventArgs e)
         {
             try
             {
-
-                viewModel.SelectedCity = viewModel.CityList[viewModel.SelectedCityIndex];
-                viewModel.CityName = viewModel.CityList[viewModel.SelectedCityIndex].CityName;
+                var selected = sender as SfPicker;
+                viewModel.SelectedCity = viewModel.CityList[selected.Columns[0].SelectedIndex];
+                viewModel.CityName = viewModel.CityList[selected.Columns[0].SelectedIndex].CityName;
+                Picker_City.IsOpen = false;
             }
             catch (Exception)
             {
@@ -959,16 +776,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void City_CancelButtonClicked(object sender, EventArgs e)
         {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-
-
-            }
+            Picker_City.IsOpen = false;
         }
 
         private void DOB_OkButtonClicked(object sender, EventArgs e)
@@ -999,10 +807,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.DOBPrev = viewModel.DOB;
 
                 }
-
-
-
-
                 ValidateIDNumber();
             }
             catch (Exception)
@@ -1013,47 +817,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
 
 
-
-
-        private void ddlLIssuedBy_CancelButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ddlLIssuedBy_OkButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ddlLIssuedByCity_CancelButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ddlLIssuedByCity_OkButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnDateEntryFocussed(object sender, FocusEventArgs e)
-        {
-
-        }
-
-
         #endregion
-        private async void btnContinue_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
 
         protected override void OnAppearing()
         {
             try
             {
-
-
                 base.OnAppearing();
                 var safeInsets = On<iOS>().SafeAreaInsets();
                 safeInsets.Bottom = -10;
@@ -1148,36 +917,26 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.TimerStart(timeToExpireOTP);
                 }
             }
-            catch (Exception )
+            catch (Exception ex)
             {
 
             }
         }
 
-        private void PickerBtn_Country_Clicked(object sender, EventArgs e)
-        {
-            // Picker_Country.IsOpen = true;
-        }
-
-        private void PickerBtn_Region_Clicked(object sender, EventArgs e)
+        private void PickerBtn_Region_Clicked(object sender, TappedEventArgs e)
         {
             Picker_Region.IsOpen = true;
 
         }
 
-        private void PickerBtn_City_Clicked(object sender, EventArgs e)
+        private void PickerBtn_City_Clicked(object sender, TappedEventArgs e)
         {
             Picker_City.IsOpen = true;
         }
 
-        private void GCCPickerBtn_Country_Clicked(object sender, EventArgs e)
+        private void GCCPickerBtn_Country_Clicked(object sender, TappedEventArgs e)
         {
             GCCPicker_Country.IsOpen = true;
-        }
-
-        private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
-        {
-
         }
 
         private void EntryEmail_Unfocused(object sender, FocusEventArgs e)
@@ -1308,7 +1067,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void ImageSeePassword_Tapped(object sender, EventArgs e)
+        private void ImageSeePassword_Tapped(object sender, TappedEventArgs e)
         {
             if (viewModel.IsPasswordEncripted)
             {
@@ -1322,7 +1081,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void ImageSeeConfirmPassword_Tapped(object sender, EventArgs e)
+        private void ImageSeeConfirmPassword_Tapped(object sender, TappedEventArgs e)
         {
             if (viewModel.IsConfirmPasswordEncripted)
             {
@@ -1335,18 +1094,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 ImageSeeConfirmPassword.Source = "hidePassword";
             }
 
-        }
-
-        private void ImageSeeOtp_Tapped(object sender, EventArgs e)
-        {
-            if (viewModel.IsOTPEncripted)
-            {
-                viewModel.IsOTPEncripted = false;
-            }
-            else
-            {
-                viewModel.IsOTPEncripted = true;
-            }
         }
 
         private void GccCountryName_TextChanged(object sender, TextChangedEventArgs e)
@@ -1423,8 +1170,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                viewModel.CountryName = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex].CountryName;
-                viewModel.SelectedGCCCountry = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex];
+                viewModel.CountryName = viewModel.GCCCountryList[e.NewValue].CountryName;
+                viewModel.SelectedGCCCountry = viewModel.GCCCountryList[e.NewValue];
             }
             catch (Exception)
             {
@@ -1474,54 +1221,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)
-        {
-            if (viewModel.IsHijriCal)
-            {
-
-                var selectedItem = SignUpDOBHijri.SelectedItem as ObservableCollection<object>;
-                if (selectedItem != null)
-                {
-                    string month = selectedItem[1].ToString();
-                    string day = selectedItem[0].ToString();
-                    string year = selectedItem[2].ToString();
-                    viewModel.DOB = year + "/" + month + "/" + day;
-                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
-                    string DOB = year + month + day;
-                    viewModel.DOBPrev = viewModel.DOB;
-
-                }
-                else
-                {
-                    viewModel.DOB = string.Empty;
-                    viewModel.DOBddyymm = string.Empty;
-
-                }
-
-            }
-            else
-            {
-                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
-                if (selectedItem != null)
-                {
-                    string month = selectedItem[1].ToString();
-                    string day = selectedItem[0].ToString();
-                    string year = selectedItem[2].ToString();
-                    viewModel.DOB = year + "/" + month + "/" + day;
-                    viewModel.DOBddyymm = day + "/" + month + "/" + year;
-                    string DOB = year + month + day;
-                    viewModel.DOBPrev = viewModel.DOB;
-
-                }
-                else
-                {
-                    viewModel.DOB = string.Empty;
-                    viewModel.DOBddyymm = string.Empty;
-                }
-
-            }
-        }
-
         private void EntryPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             ResetPasswordValidationConditions();
@@ -1543,6 +1242,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (UtilityManager.ValidNumber && UtilityManager.ValidSymbol) { viewModel.NumSymbol = "check_oval"; }
             }
         }
+
         public void SetPickerFont()
         {
             try
@@ -1586,6 +1286,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
 
         }
+
         void ResetPasswordValidationConditions()
         {
             viewModel.MinEight = "error";
@@ -1679,5 +1380,25 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+
+        void btnIdType_Clicked(object sender,TappedEventArgs e)
+        {
+            DDlIDType.IsOpen = true;
+        }
+
+        void btnDate_Clicked(object sender, TappedEventArgs e)
+        {
+            if (viewModel.IsHijriCal)
+            {
+                SignUpDOBHijri.IsOpen = true;
+            }
+            else
+            {
+                SignUpDOB.IsOpen = true;
+
+
+            }
+        }
+
     }
 }

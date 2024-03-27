@@ -11,12 +11,12 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
 
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="22,22,0,0"
+        StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="EndAndExpand">
         <StackLayout>
             <Image
@@ -173,5 +173,5 @@
                 VerticalOptions="End" />
         </StackLayout>
 
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

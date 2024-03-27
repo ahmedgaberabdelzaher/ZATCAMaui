@@ -38,7 +38,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
                 viewModel.ClearData();
                 viewModel.isOnLoad = true;
                 viewModel.OnLoad();
-                SetLTR();
                 NavigationPage.SetBackButtonTitle(this, "");
                 SetDynamicBehaviour();
                 ChangeAeroIcon();
@@ -60,13 +59,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AmendSalesDetailsPages
             else
             {
                 NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false, Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         #endregion

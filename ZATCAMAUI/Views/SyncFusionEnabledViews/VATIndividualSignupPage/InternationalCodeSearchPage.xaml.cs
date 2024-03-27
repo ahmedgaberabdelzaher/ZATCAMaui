@@ -26,7 +26,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.MobileCodes = mobileData;
             viewModel.MobileCodesAllValues = mobileData;
 
-            SetLTR();
         }
         protected override void OnAppearing()
 
@@ -34,24 +33,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             base.OnAppearing();
 
             viewModel.onPageLoad();
-        }
-        private void SetLTR()
-        {
-
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-
-            }
         }
         public void ChangeAeroIcon()
         {
@@ -86,11 +67,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void List_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void List_ItemTapped(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                var dataItem = e.Item as InternationalMobileData;
+                var dataItem = e.CurrentSelection as InternationalMobileData;
                 MessagingCenter.Send(this, "SelectedItem", dataItem.Telefto.ToString());
 
                 MessagingCenter.Send(this, "SelectedCountryCode", dataItem.Land1.ToString());

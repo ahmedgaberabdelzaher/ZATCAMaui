@@ -15,14 +15,13 @@ using ZATCAMAUI.Models.ZakatInstalationModels;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
    
-    public class OldZakatInstalmentPlanListViewModel : ViewModelBase
+    public class OldZakatInstalmentPlanListViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         private bool _isZakatLandingPageVisible = false;
         private bool _createZakatInstalmentBtnVisible = true;
-        private bool _isLoading = false;
         private bool _isRevokZakatInstalmentVisible = true;
         private bool _isOTPPageVisible = false;
         private bool _IsZakatSummaryVisible = false;
@@ -49,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         #endregion
 
-        public OldZakatInstalmentPlanListViewModel(INavigationService navigationService, IDialogService dialogService)
+        public OldZakatInstalmentPlanListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
             //IsZakat = Preferences.Get("isZakat", false);
@@ -836,18 +835,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         }
 
 
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
         private bool _isSummaryAttachmentsVisible = false;
         public bool IsSummaryAttachmentsVisible
         {

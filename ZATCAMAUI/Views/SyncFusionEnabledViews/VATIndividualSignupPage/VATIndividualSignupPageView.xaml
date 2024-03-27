@@ -7,7 +7,7 @@
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -21,11 +21,11 @@
     </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid>
-            <yummy:PancakeView
+            <Border
                 Grid.Row="0"
                 Padding="0"
                 BackgroundColor="White"
-                CornerRadius="32,32,0,0">
+                StrokeShape="RoundRectangle 32,32,0,0">
                 <StackLayout Padding="20">
                     <Grid HorizontalOptions="FillAndExpand">
                         <Grid.ColumnDefinitions>
@@ -165,7 +165,7 @@
                     </Grid>
                     <!--  Establishment signup block  -->
                 </StackLayout>
-            </yummy:PancakeView>
+            </Border>
             <Grid
                 Grid.Row="0"
                 Grid.Column="0"

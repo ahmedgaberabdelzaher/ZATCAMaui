@@ -31,7 +31,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel.PageType = _activityNavigation.openedTab;
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             if (viewModel.LicenseData.Count == 4)
             {
                 viewModel.AddLicenseEnabled = false;
@@ -48,19 +47,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.PickerModel = arg;
             });
         }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

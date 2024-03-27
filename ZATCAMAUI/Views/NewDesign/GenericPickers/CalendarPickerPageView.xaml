@@ -8,19 +8,12 @@
     xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    FlowDirection="{Binding AppDirection}"
     BackgroundClicked="PopupPage_BackgroundClicked">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="End"
         IsVisible="true"
         VerticalOptions="End">
@@ -65,15 +58,42 @@
                 <custom:CustomDatePicker
                     x:Name="calendarPicker"
                     Margin="2"
-                    FlowDirection="RightToLeft"
                     IsOpen="True"
                     ItemHeight="36"
                     SelectedItem="{Binding SelectedDate}"
-                    SelectionChanged="genericPicker_SelectionChanged"
-                    Style="{StaticResource CalendarPickerStyle}">
-                    <custom:CustomDatePicker.Behaviors>
-                        <behavior:SfPickerBehavior />
-                    </custom:CustomDatePicker.Behaviors>
+                    SelectionChanged="genericPicker_SelectionChanged">
+                     <custom:CustomDatePicker.SelectedTextStyle>
+                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                            </custom:CustomDatePicker.SelectedTextStyle>
+
+                                                                    <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
+                     <custom:CustomDatePicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+                                        </custom:CustomDatePicker.SelectionView>
+
+                            <custom:CustomDatePicker.HeaderView>
+
+                                <syncfusion:PickerHeaderView Background="#EAF7CC"
+                                                             Height="46"
+                                                             Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+
+                            </custom:CustomDatePicker.HeaderView>
+
+                            <custom:CustomDatePicker.FooterView>
+
+                                <syncfusion:PickerFooterView
+                                    Height="46"
+                                    Background="#EAF7CC">
+
+                                    <syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                </syncfusion:PickerFooterView>
+
+                            </custom:CustomDatePicker.FooterView>
                 </custom:CustomDatePicker>
             </StackLayout>
             <StackLayout
@@ -92,17 +112,13 @@
                 <custom:CustomDatePicker
                     x:Name="futureCalendarPicker"
                     Margin="2"
-                    FlowDirection="RightToLeft"
                     IsOpen="True"
                     ItemHeight="36"
                     SelectedItem="{Binding SelectedDate}"
                     SelectionChanged="genericPicker_SelectionChanged"
-                    Style="{StaticResource CalendarPickerStyle}">
-                    <custom:CustomDatePicker.Behaviors>
-                        <behavior:SfPickerBehavior />
-                    </custom:CustomDatePicker.Behaviors>
-                </custom:CustomDatePicker>
+                    Style="{StaticResource CalendarPickerStyle}"/>
+
             </StackLayout>
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

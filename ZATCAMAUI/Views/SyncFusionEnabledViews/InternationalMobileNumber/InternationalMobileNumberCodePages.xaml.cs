@@ -21,31 +21,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.InternationalMobileNumber
             On<iOS>().SetUseSafeArea(true);
 
             ChangeAeroIcon();
-            SetLTR();
 
             viewModel.onPageLoad();
 
-        }
-        private void SetLTR()
-        {
-
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                searchBar.FlowDirection = FlowDirection.RightToLeft;
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                searchBar.FlowDirection = FlowDirection.LeftToRight;
-
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-
-            }
         }
         public void ChangeAeroIcon()
         {

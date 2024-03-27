@@ -7,7 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -17,10 +17,10 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    <Border
         Padding="15"
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         VerticalOptions="EndAndExpand">
         <StackLayout HorizontalOptions="CenterAndExpand">
             <ListView
@@ -39,7 +39,7 @@
                     <DataTemplate>
                         <ViewCell>
 
-                            <custom:CustomLabel
+                            <Label
                                 FontFamily="{StaticResource SomarBold}"
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
@@ -51,5 +51,5 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

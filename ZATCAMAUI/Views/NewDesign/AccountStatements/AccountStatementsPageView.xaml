@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:chips="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
@@ -13,7 +12,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:sfconverters="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
@@ -23,8 +22,6 @@
             <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -59,29 +56,27 @@
                                                 VerticalOptions="CenterAndExpand" />
                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding TaxtypeDesc}" />
                                         </StackLayout>
-                                        <yummy:PancakeView
+                                        <Border
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Padding="10,10,10,10"
                                             BackgroundColor="{StaticResource Secondary}"
-                                            CornerRadius="14"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             HeightRequest="20"
                                             HorizontalOptions="End"
                                             Opacity=".2"
+                                            StrokeThickness="1"
                                             VerticalOptions="CenterAndExpand"
                                             WidthRequest="110">
-                                            <yummy:PancakeView.Triggers>
+                                            <Border.Triggers>
                                                 <DataTrigger
                                                     Binding="{Binding Status}"
-                                                    TargetType="yummy:PancakeView"
+                                                    TargetType="Border"
                                                     Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                 </DataTrigger>
-                                            </yummy:PancakeView.Triggers>
-                                            <yummy:PancakeView.Border>
-                                                <yummy:Border Thickness="1" />
-                                            </yummy:PancakeView.Border>
-                                        </yummy:PancakeView>
+                                            </Border.Triggers>
+                                        </Border>
                                         <StackLayout
                                             Grid.Row="0"
                                             Grid.Column="1"
@@ -125,11 +120,11 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Spacing="-5">
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.ASBillAmount}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource ValueLabelBlack}"
                                                 Text="{Binding Betrh}"
@@ -176,7 +171,7 @@
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" />
 
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="Start"
                                                 HorizontalTextAlignment="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -186,7 +181,7 @@
                                                         <Span Text="{Binding PeriodTxt}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
-                                            </custom:CustomLabel>
+                                            </Label>
                                         </StackLayout>
                                     </Grid>
                                 </StackLayout>
@@ -216,21 +211,19 @@
                                                     Text="{x:Static ResourceManager:AppResources.ASAccountStatementTotalDebit}"
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
-                                            <yummy:PancakeView
+                                            <Border
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Padding="10,10,10,10"
                                                 BackgroundColor="{StaticResource NewDarkGreenColor}"
-                                                CornerRadius="14"
+                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 HeightRequest="20"
                                                 HorizontalOptions="End"
                                                 Opacity=".2"
+                                                StrokeThickness="1"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="110">
-                                                <yummy:PancakeView.Border>
-                                                    <yummy:Border Thickness="1" />
-                                                </yummy:PancakeView.Border>
-                                            </yummy:PancakeView>
+                                            </Border>
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="1"
@@ -276,29 +269,27 @@
                                                     Text="{x:Static ResourceManager:AppResources.ASAccountStatementTotalCredit}"
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
-                                            <yummy:PancakeView
+                                            <Border
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Padding="10,10,10,10"
                                                 BackgroundColor="{StaticResource ErrorColor}"
-                                                CornerRadius="14"
+                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 HeightRequest="20"
                                                 HorizontalOptions="End"
                                                 Opacity=".2"
+                                                StrokeThickness="1"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="110">
-                                                <yummy:PancakeView.Border>
-                                                    <yummy:Border Thickness="1" />
-                                                </yummy:PancakeView.Border>
-                                                <yummy:PancakeView.Triggers>
+                                                <Border.Triggers>
                                                     <DataTrigger
                                                         Binding="{Binding Status}"
-                                                        TargetType="yummy:PancakeView"
+                                                        TargetType="Border"
                                                         Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                         <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                     </DataTrigger>
-                                                </yummy:PancakeView.Triggers>
-                                            </yummy:PancakeView>
+                                                </Border.Triggers>
+                                            </Border>
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="1"
@@ -471,9 +462,9 @@
                             </Grid>
                         </StackLayout>
                     </Grid>
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
-                        CornerRadius="14,14,0,0"
+                        StrokeShape="RoundRectangle 14,14,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             x:Name="VATRMainGrid"
@@ -492,7 +483,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </Grid>
         </ControlTemplate>
@@ -563,18 +554,15 @@
                                                         Padding="10,0,10,0"
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="FillAndExpand">
-                                                        <!--<Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding Betrh}"
-                                               TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                        </Label>-->
 
 
 
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             HorizontalOptions="CenterAndExpand"
                                                             Style="{StaticResource CaptionLabelBlack}"
                                                             TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
                                                             VerticalOptions="CenterAndExpand">
-                                                            <custom:CustomLabel.FormattedText>
+                                                            <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span
                                                                         Style="{StaticResource CaptionLabelBlack}"
@@ -586,8 +574,8 @@
                                                                         Text="{x:Static ResourceManager:AppResources.ZSAR}"
                                                                         TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}" />
                                                                 </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                                                            </Label.FormattedText>
+                                                        </Label>
                                                     </StackLayout>
                                                 </Grid>
 
@@ -603,7 +591,7 @@
                             <ViewCell>
                                 <ViewCell.View>
 
-                                    <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{Binding Key}" />
+                                    <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Key}" />
 
                                 </ViewCell.View>
                             </ViewCell>
@@ -612,7 +600,7 @@
                     <ListView.Footer>
                         <Grid>
                             <StackLayout IsVisible="{Binding IsNotHaveStatements}">
-                                <custom:CustomLabel
+                                <Label
                                     Margin="0,50,0,0"
                                     HorizontalOptions="Center"
                                     Style="{StaticResource CaptionLabelGrey}"
@@ -624,16 +612,14 @@
                     <ListView.Header>
                         <StackLayout
                             Grid.Row="0"
-                            FlowDirection="RightToLeft"
-                            Orientation="Vertical"
                             Spacing="-5">
 
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}">
-                                    <custom:CustomLabel.GestureRecognizers>
+                                <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}">
+                                    <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked" />
-                                    </custom:CustomLabel.GestureRecognizers>
-                                </custom:CustomLabel>
+                                    </Label.GestureRecognizers>
+                                </Label>
 
                                 <Image
                                     Margin="0,5,0,0"
@@ -687,9 +673,9 @@
                                         ItemsSource="{Binding TransactionTypeFilter}" />
                                 </syncfusion:SfPicker.Columns>
 
-                                <syncfusion:SfPicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46" />
-                                </syncfusion:SfPicker.ColumnHeaderView>
+                                <syncfusion:SfPicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                </syncfusion:SfPicker.SelectionView>
 
                                 <syncfusion:SfPicker.HeaderView>
 
@@ -706,19 +692,17 @@
 
                                 <syncfusion:SfPicker.FooterView>
 
-                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                    <syncfusion:PickerFooterView Height="46"
+                                                                  Background="{StaticResource Primary}">
 
                                         <syncfusion:PickerFooterView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                            <syncfusion:PickerTextStyle TextColor="White" />
                                         </syncfusion:PickerFooterView.TextStyle>
 
                                     </syncfusion:PickerFooterView>
 
                                 </syncfusion:SfPicker.FooterView>
 
-                                <syncfusion:SfPicker.Behaviors>
-                                    <behaviors:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
                             </syncfusion:SfPicker>
 
                             <!--  {Binding IsYearsChipVisible}  -->
@@ -750,7 +734,7 @@
                                                     HeightRequest="25"
                                                     HorizontalOptions="Center"
                                                     Source="{Binding ImageSource}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="CenterAndExpand"
                                                     Style="{StaticResource CaptionLabelBlack}"
                                                     Text="{Binding Text}" />
@@ -789,7 +773,7 @@
                                                         VerticalOptions="CenterAndExpand" />
                                                     <StackLayout Grid.Row="0" Padding="10,0,10,0">
                                                         <!--  TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  -->
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             HorizontalOptions="CenterAndExpand"
                                                             Style="{StaticResource CaptionLabelBlack}"
                                                             Text="{Binding StatusDesc}"
@@ -1051,21 +1035,21 @@
                                     Grid.Column="0"
                                     BackgroundColor="White"
                                     HorizontalOptions="Start">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelBlack}"
                                         VerticalOptions="CenterAndExpand">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.SortBy}" />
                                                 <Span Text=":" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
                             </Grid>
 
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
 
                             <StackLayout Margin="10">
                                 <Border
@@ -1092,35 +1076,33 @@
                                                     VerticalOptions="CenterAndExpand" />
                                             </StackLayout>
 
-                                            <yummy:PancakeView
+                                            <Border
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Padding="10,10,10,10"
                                                 BackgroundColor="{StaticResource Primary}"
-                                                CornerRadius="14"
+                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 HeightRequest="20"
                                                 HorizontalOptions="End"
                                                 Opacity=".2"
+                                                StrokeThickness="1"
                                                 VerticalOptions="CenterAndExpand"
                                                 WidthRequest="110">
-                                                <yummy:PancakeView.Triggers>
+                                                <Border.Triggers>
                                                     <DataTrigger
                                                         Binding="{Binding IsOpeningBalancePositive}"
-                                                        TargetType="yummy:PancakeView"
+                                                        TargetType="Border"
                                                         Value="true">
                                                         <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                     </DataTrigger>
                                                     <DataTrigger
                                                         Binding="{Binding IsOpeningBalancePositive}"
-                                                        TargetType="yummy:PancakeView"
+                                                        TargetType="Border"
                                                         Value="false">
                                                         <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
                                                     </DataTrigger>
-                                                </yummy:PancakeView.Triggers>
-                                                <yummy:PancakeView.Border>
-                                                    <yummy:Border Thickness="1" />
-                                                </yummy:PancakeView.Border>
-                                            </yummy:PancakeView>
+                                                </Border.Triggers>
+                                            </Border>
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="1"
@@ -1129,59 +1111,59 @@
                                                 Orientation="Horizontal"
                                                 Spacing="2"
                                                 VerticalOptions="FillAndExpand">
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="EndAndExpand"
                                                     LineBreakMode="WordWrap"
                                                     Style="{StaticResource CaptionLabelBlack}"
                                                     TextColor="{StaticResource NewDarkGreenColor}"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding HeaderSet.D.OpeningAmount}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                    <custom:CustomLabel.Triggers>
+                                                    </Label.FormattedText>
+                                                    <Label.Triggers>
                                                         <DataTrigger
                                                             Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="custom:CustomLabel"
+                                                            TargetType="Label"
                                                             Value="true">
                                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="custom:CustomLabel"
+                                                            TargetType="Label"
                                                             Value="false">
                                                             <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
                                                         </DataTrigger>
-                                                    </custom:CustomLabel.Triggers>
-                                                </custom:CustomLabel>
+                                                    </Label.Triggers>
+                                                </Label>
 
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="CenterAndExpand"
                                                     LineBreakMode="WordWrap"
                                                     Style="{StaticResource CaptionLabelBlack}"
                                                     TextColor="{StaticResource NewDarkGreenColor}"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                    <custom:CustomLabel.Triggers>
+                                                    </Label.FormattedText>
+                                                    <Label.Triggers>
                                                         <DataTrigger
                                                             Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="custom:CustomLabel"
+                                                            TargetType="Label"
                                                             Value="true">
                                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="custom:CustomLabel"
+                                                            TargetType="Label"
                                                             Value="false">
                                                             <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
                                                         </DataTrigger>
-                                                    </custom:CustomLabel.Triggers>
-                                                </custom:CustomLabel>
+                                                    </Label.Triggers>
+                                                </Label>
 
                                             </StackLayout>
 
@@ -1222,16 +1204,16 @@
                                                 VerticalOptions="FillAndExpand">
 
 
-                                                <!--<custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}"
+                                                <!--<Label Style="{StaticResource SectionTitleBlackBold}"
                                                                             TextColor="{Binding TotalBalanceBackground}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
-                                                            <custom:CustomLabel.FormattedText>
+                                                            <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="{Binding HeaderSet.D.CloseAmount,Converter={StaticResource commaSeparatorConverter}}" TextColor="{Binding TotalBalanceBackground}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
                                                                     <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}" ></Span>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR} " TextColor="{Binding TotalBalanceBackground}"  Style="{StaticResource SectionTitleBlackBold}" ></Span>
                                                                 </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                   </custom:CustomLabel>-->
+                                                            </Label.FormattedText>
+                                                   </Label>-->
 
 
                                                 <Label
@@ -1258,7 +1240,7 @@
                             </StackLayout>
 
                             <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" />
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
                         </StackLayout>
                     </ListView.Header>
                 </ListView>

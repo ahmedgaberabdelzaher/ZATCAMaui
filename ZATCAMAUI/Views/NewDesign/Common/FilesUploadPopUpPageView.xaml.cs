@@ -27,7 +27,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             //App.IsArabic = false;
             viewModel = App.Locator.FilesUploadPopUpView;
             this.BindingContext = viewModel;
-            SetLTR();
             var attachement = new Attachments();
             attachement.results = attachments;
             onPageLoadAsync(attachement, whichAttachment, returnIdz);
@@ -41,7 +40,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             this.BindingContext = viewModel;
             dmsTypeString = dmsType;
             On<iOS>().SetUseSafeArea(true);
-            SetLTR();
             var attachement = new Attachments();
             attachement.results = attachments;
             onPageLoadAsync(attachement, whichAttachment, returnIdz);
@@ -219,17 +217,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             }
 
         }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
-
-
 
         public async Task email(string doguid, VATAttachment attachment)
         {

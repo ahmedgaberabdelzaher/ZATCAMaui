@@ -31,8 +31,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
             viewModel.ClearData();
             ChangeAeroIcon();
-            SetLTR();
-            // ChangeArrowDirection();
 
             On<iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
@@ -285,18 +283,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
             GC.Collect();
-        }
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
 
         public void ChangeAeroIcon()

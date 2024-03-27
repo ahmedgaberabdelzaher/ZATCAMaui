@@ -12,7 +12,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static ResourceManager:AppResources.ZZakatReturnDetails}"
     BackgroundColor="White"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -136,7 +136,7 @@
                                 VerticalOptions="FillAndExpand">
 
 
-                                <custom:CustomLabel
+                                <Label
                                     x:Name="date"
                                     Margin="10,0,10,0"
                                     FlowDirection="LeftToRight"
@@ -175,7 +175,7 @@
                                 Grid.Column="0"
                                 Grid.ColumnSpan="3"
                                 Style="{StaticResource GAZTBoxViewStyle}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="8"
                                 Grid.Column="0"
                                 FontFamily="{StaticResource GAZT_FONT_BOLD}"

@@ -6,9 +6,8 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="RightToLeft"
+   FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -36,11 +35,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -58,7 +57,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />

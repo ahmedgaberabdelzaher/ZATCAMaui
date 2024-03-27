@@ -9,7 +9,6 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     FlowDirection="{Binding AppDirection}">
 
     <!--<pages:PopupPage.Resources>
@@ -32,7 +31,7 @@
 
     <Grid VerticalOptions="EndAndExpand">
 
-        <yummy:PancakeView
+        <Border
             Grid.Row="0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
@@ -51,13 +50,13 @@
                 <!--#region New CR Field-->
                 <StackLayout Spacing="0">
                     <!--  New CR Label  -->
-                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                        <custom:CustomLabel.FormattedText>
+                    <Label Style="{StaticResource CaptionLabelGrey}">
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.AddNewCRTitle}" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
                     <!--  New CR  Entry  -->
                     <inputLayout:SfTextInputLayout
                         ContainerBackground="White"
@@ -87,7 +86,7 @@
                     Text="{x:Static ResourceManager:AppResources.Add}" />
             </StackLayout>
 
-        </yummy:PancakeView>
+        </Border>
 
 
     </Grid>

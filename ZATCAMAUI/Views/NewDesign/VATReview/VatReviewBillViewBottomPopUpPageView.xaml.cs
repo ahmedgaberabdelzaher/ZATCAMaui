@@ -14,22 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             InitializeComponent();
             _viewModel = App.Locator.VatReviewView;
             this.BindingContext = _viewModel;
-            SetLTR();
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                this.FlowDirection = FlowDirection.RightToLeft;
-
-            }
         }
 
         private void CloseTapped(object sender, EventArgs e)

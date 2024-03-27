@@ -26,7 +26,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.FileAttachmentPopUpPageView;
             this.BindingContext = viewModel;
-            SetLTR();
             viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
             viewModel.VatAttachmentsList = new ObservableCollection<Attachment>();
             onPageLoad(vATRegistrationDetails);
@@ -39,7 +38,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.FileAttachmentPopUpPageView;
             this.BindingContext = viewModel;
             On<iOS>().SetUseSafeArea(true);
-            SetLTR();
             viewModel.AttachmentList = new ObservableCollection<VATAttachment>();
             viewModel.VatAttachmentsList = new ObservableCollection<Attachment>();
             viewModel.IsComeForWhichAttachment = attachment;
@@ -134,13 +132,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 

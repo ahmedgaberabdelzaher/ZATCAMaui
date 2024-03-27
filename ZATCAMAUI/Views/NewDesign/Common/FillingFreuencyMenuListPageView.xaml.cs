@@ -16,8 +16,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             InitializeComponent();
             ChangeAeroIcon();
 
-            SetLTR();
-
             _viewModel = App.Locator.GeneralServicesListView;
             On<iOS>().SetUseSafeArea(true);
             BindingContext = _viewModel;
@@ -32,18 +30,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             Padding = safeInsets;
 
             _viewModel.PopulateFillingFrequencyListData();
-        }
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
 
         public void ChangeAeroIcon()

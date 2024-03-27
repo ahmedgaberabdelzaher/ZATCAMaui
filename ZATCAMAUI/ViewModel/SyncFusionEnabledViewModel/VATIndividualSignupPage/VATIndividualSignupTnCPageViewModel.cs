@@ -3,12 +3,13 @@ using GalaSoft.MvvmLight.Views;
 using RGPopup.Maui.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
 
-    public class VATIndividualSignupTnCPageViewModel : ViewModelBase
+    public class VATIndividualSignupTnCPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -33,21 +34,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("WebUrl");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private bool _ischkTAndC = false;
         public bool IschkTAndC
         {
@@ -106,7 +93,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #endregion
         #region Constructor
-        public VATIndividualSignupTnCPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATIndividualSignupTnCPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

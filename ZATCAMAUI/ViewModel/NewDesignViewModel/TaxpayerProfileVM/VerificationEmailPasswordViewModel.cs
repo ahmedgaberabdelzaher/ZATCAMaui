@@ -9,7 +9,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
 
-    public class VerificationEmailPasswordViewModel : ViewModelBase
+    public class VerificationEmailPasswordViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -120,21 +120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                if (_IsLoading == value) return;
-
-                _IsLoading = value;
-                RaisePropertyChanged(() => IsLoading);
-            }
-        }
+       
 
         private bool _BtnEnableFlag;
         public bool BtnEnableFlag
@@ -270,7 +256,7 @@ After:
 
         #endregion
 
-        public VerificationEmailPasswordViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VerificationEmailPasswordViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
             _navigationService = navigationService;

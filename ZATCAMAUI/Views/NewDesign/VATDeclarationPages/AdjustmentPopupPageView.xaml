@@ -8,24 +8,16 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
-    mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    mc:Ignorable="d"
+    FlowDirection="{Binding AppDirection}">
+    <Border
         Padding="15"
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         VerticalOptions="EndAndExpand">
         <StackLayout Spacing="15">
 
-            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="Adjustment Amount" />
+            <Label Style="{StaticResource SectionTitleBlack}" Text="Adjustment Amount" />
 
             <ScrollView Grid.Row="1">
                 <StackLayout Spacing="15">
@@ -37,14 +29,14 @@
 
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="ic_vat_info" />
-                                <custom:CustomLabel
+                                <Label
                                     CharacterSpacing="0"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="Verify Adjustment Amount"
                                     VerticalOptions="CenterAndExpand" />
                             </StackLayout>
 
-                            <custom:CustomLabel
+                            <Label
                                 CharacterSpacing="0"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="The adjustment amount entered is more than 10% larger than the amount of domestic standard-rated sales. please verify the amount entered in the return or continue if the amount entered is correct." />
@@ -62,5 +54,5 @@
                 VerticalOptions="EndAndExpand" />
 
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

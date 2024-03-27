@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -21,7 +21,7 @@
     <Grid RowDefinitions="auto,*">
 
         <!--#region Scan View-->
-        <yummy:PancakeView
+        <Border
             Grid.Row="1"
             Margin="0"
             Padding="0"
@@ -175,11 +175,11 @@
                 </Grid>
 
             </Grid>
-        </yummy:PancakeView>
+        </Border>
         <!--#endregion Scan View-->
 
         <!--#region Success Result View-->
-        <yummy:PancakeView
+        <Border
             Grid.Row="1"
             Padding="20,20,20,0"
             IsVisible="{Binding IsShowRsltView}"
@@ -387,7 +387,7 @@
 
             </Grid>
 
-        </yummy:PancakeView>
+        </Border>
         <!--#endregion Success Result View-->
 
         <!--  Header  -->

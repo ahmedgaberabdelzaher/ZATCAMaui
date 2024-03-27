@@ -27,7 +27,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 
             SetPickerFont();
             ChangeAeroIcon();
-            SetLTR();
             //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
 
             NavigationPage.SetBackButtonTitle(this, "");
@@ -108,17 +107,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             }
 
             MessagingCenter.Send(this, "ScanData", "abc");
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
 
         public void ChangeAeroIcon()

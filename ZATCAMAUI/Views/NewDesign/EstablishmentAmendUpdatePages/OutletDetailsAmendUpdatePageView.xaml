@@ -12,7 +12,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -27,20 +27,15 @@
             </Style>
             <converters:EstablishmentRegistrationOutletTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
-            <yummy:PancakeView
+            <Border
                 Margin="0"
                 Padding="0"
                 BackgroundColor="White"
-                CornerRadius="{OnPlatform Android='15,15,0,0',
-                                          iOS='15'}"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
                 <StackLayout
@@ -54,7 +49,7 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand" />
                 </StackLayout>
-            </yummy:PancakeView>
+            </Border>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
@@ -86,34 +81,34 @@
                         Orientation="Vertical"
                         Spacing="0"
                         VerticalOptions="FillAndExpand">
-                        <custom:CustomLabel
+                        <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="15"
                             HorizontalOptions="StartAndExpand"
                             Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}"
                             TextColor="{StaticResource NeutralGreay}"
                             VerticalOptions="Center" />
-                        <custom:CustomLabel
+                        <Label
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="15"
                             HorizontalOptions="StartAndExpand"
                             Text="{Binding OutletActNumber}"
                             TextColor="{StaticResource NeutralBlack}"
                             VerticalOptions="Center" />
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="11"
                             HorizontalOptions="StartAndExpand"
                             TextColor="{StaticResource NeutralGreay}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <buttons:SfButton
                             Margin="0,5,0,0"
                             Padding="5"
@@ -129,20 +124,20 @@
                             Style="{StaticResource NoBackgroundButtonStyle}"
                             Text="{Binding SelectedOutletType}"
                             TextColor="{StaticResource NeutralBlack}" />
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="11"
                             HorizontalOptions="StartAndExpand"
                             TextColor="{StaticResource NeutralGreay}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCommercialName}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <inputLayout:SfTextInputLayout
                             Margin="0,-6,0,-6"
                             ContainerType="Outlined"
@@ -206,7 +201,7 @@
                                         HorizontalOptions="Center"
                                         Source="deregistration.png"
                                         VerticalOptions="Center" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -247,7 +242,7 @@
                                         HorizontalOptions="Center"
                                         Source="deregistration.png"
                                         VerticalOptions="Center" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
                                         HorizontalOptions="StartAndExpand"
@@ -288,7 +283,7 @@
                                     HorizontalOptions="Center"
                                     Source="ic_vat_info.png"
                                     VerticalOptions="Center" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="10,0,0,0"
@@ -297,7 +292,7 @@
                                     Style="{StaticResource CaptionLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.Information}"
                                     VerticalOptions="CenterAndExpand" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="FillAndExpand"
@@ -333,7 +328,7 @@
                                     HorizontalOptions="Center"
                                     Source="ic_vat_info.png"
                                     VerticalOptions="Center" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="10,0,0,0"
@@ -342,7 +337,7 @@
                                     Style="{StaticResource CaptionLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.Information}"
                                     VerticalOptions="CenterAndExpand" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="FillAndExpand"
@@ -365,7 +360,7 @@
                         Orientation="Vertical"
                         Spacing="0"
                         VerticalOptions="StartAndExpand">
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             BackgroundColor="AliceBlue"
                             HorizontalOptions="StartAndExpand"
@@ -386,7 +381,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Margin="0,10,0,0"
@@ -394,20 +389,20 @@
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.ESTHouseNumber}"
                                 VerticalOptions="Center" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -455,18 +450,18 @@
                                     VerticalTextAlignment="Center" />
                             </inputLayout:SfTextInputLayout>
                         </Grid>
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
@@ -488,18 +483,18 @@
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center" />
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                              IsHintAlwaysFloated="True"
@@ -521,18 +516,18 @@
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center" />
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTQuarter}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
@@ -554,18 +549,18 @@
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center" />
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <inputLayout:SfTextInputLayout
                             Margin="0"
                             InputViewPadding="10,0,10,0"
@@ -592,7 +587,7 @@
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
@@ -619,18 +614,18 @@
                                 VerticalOptions="Center"
                                 VerticalTextAlignment="Center" />
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <buttons:SfButton
                             Margin="0,5,0,0"
                             Padding="5"
@@ -646,18 +641,18 @@
                             Style="{StaticResource NoBackgroundButtonStyle}"
                             Text="{Binding Country}"
                             TextColor="{StaticResource NeutralBlack}" />
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTProvinance}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <buttons:SfButton
                             Margin="0,5,0,0"
                             Padding="5"
@@ -673,18 +668,18 @@
                             Style="{StaticResource NoBackgroundButtonStyle}"
                             Text="{Binding Provinance}"
                             TextColor="{StaticResource NeutralBlack}" />
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCity}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <buttons:SfButton
                             Margin="0,5,0,0"
                             Padding="5"
@@ -700,7 +695,7 @@
                             Style="{StaticResource NoBackgroundButtonStyle}"
                             Text="{Binding City}"
                             TextColor="{StaticResource NeutralBlack}" />
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             HorizontalTextAlignment="Start"
@@ -713,7 +708,7 @@
                             IsEnabled="{Binding AddressDetails.CBSameAsPhysical}"
                             Orientation="Horizontal"
                             VerticalOptions="EndAndExpand">
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 BackgroundColor="AliceBlue"
                                 HorizontalOptions="StartAndExpand"
@@ -745,7 +740,7 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Margin="0,10,0,0"
@@ -753,20 +748,20 @@
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ESTHouseNumber}"
                                     VerticalOptions="Center" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     VerticalOptions="Center">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
                                             <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="0"
@@ -812,18 +807,18 @@
                                         VerticalTextAlignment="Center" />
                                 </inputLayout:SfTextInputLayout>
                             </Grid>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTFloorNumber}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
                                 InputViewPadding="10,0,10,0"
@@ -844,18 +839,18 @@
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center" />
                             </inputLayout:SfTextInputLayout>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
                                 InputViewPadding="10,0,10,0"
@@ -875,18 +870,18 @@
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center" />
                             </inputLayout:SfTextInputLayout>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTQuarter}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
                                  IsHintAlwaysFloated="True"
@@ -906,18 +901,18 @@
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center" />
                             </inputLayout:SfTextInputLayout>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
                                 InputViewPadding="10,0,10,0"
@@ -943,7 +938,7 @@
                                     </custom:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
@@ -969,18 +964,18 @@
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center" />
                             </inputLayout:SfTextInputLayout>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <buttons:SfButton
                                 Margin="0,5,0,0"
                                 Padding="5"
@@ -996,18 +991,18 @@
                                 Style="{StaticResource NoBackgroundButtonStyle}"
                                 Text="{Binding CountrySame}"
                                 TextColor="{StaticResource NeutralBlack}" />
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTProvinance}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <buttons:SfButton
                                 Margin="0,5,0,0"
                                 Padding="5"
@@ -1023,18 +1018,18 @@
                                 Style="{StaticResource NoBackgroundButtonStyle}"
                                 Text="{Binding ProvinanceSame}"
                                 TextColor="{StaticResource NeutralBlack}" />
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCity}" />
                                         <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <buttons:SfButton
                                 Margin="0,5,0,0"
                                 Padding="5"
@@ -1098,7 +1093,7 @@
                     MarkSize="24"
                     MaxNum="{Binding MaxIndex}"
                     MinNum="{Binding CurrentIndex}" />
-                <custom:CustomLabel
+                <Label
                     Padding="0,-5,0,-10"
                     FontFamily="{StaticResource SomarBold}"
                     FontSize="28"
@@ -1106,7 +1101,7 @@
                     Style="{StaticResource SectionTitleBlack}"
                     Text="{Binding SelectedOutletTabText}"
                     VerticalOptions="Center" />
-                <custom:CustomLabel
+                <Label
                     FontFamily="{StaticResource SomarRegular}"
                     FontSize="15"
                     HorizontalOptions="StartAndExpand"
@@ -1141,7 +1136,7 @@
                                     Padding="5,-2,5,-2"
                                     Orientation="Horizontal"
                                     Spacing="2">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="CenterAndExpand"
                                         Style="{StaticResource CaptionLabelBlack}"
                                         Text="{Binding}" />

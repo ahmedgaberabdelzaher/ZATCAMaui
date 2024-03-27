@@ -1,11 +1,12 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
  
-    public class ZakatDeregistrationPageViewModel : ViewModelBase
+    public class ZakatDeregistrationPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -13,7 +14,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         public ICommand GoBackClick { get; set; }
         #endregion
 
-        public ZakatDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZakatDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

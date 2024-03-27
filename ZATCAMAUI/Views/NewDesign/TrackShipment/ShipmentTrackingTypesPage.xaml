@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -70,7 +70,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -122,7 +122,7 @@
                                         WidthRequest="40" />
 
                                     <!--  Express Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.ExpressShipping}"
@@ -163,7 +163,7 @@
                                         WidthRequest="40" />
 
                                     <!--  Air Freight Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.AirFreight}"
@@ -204,7 +204,7 @@
                                         WidthRequest="40" />
 
                                     <!--  Sea Freight Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.SeaFreight}"
@@ -246,7 +246,7 @@
                                         WidthRequest="40" />
 
                                     <!--  Sea Freight Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.LandFreight}"
@@ -287,7 +287,7 @@
                                         WidthRequest="40" />
 
                                     <!--  Train Freight Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.TrainFreight}"
@@ -307,7 +307,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
         </Grid>

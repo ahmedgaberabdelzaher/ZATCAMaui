@@ -20,11 +20,10 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:system="clr-namespace:System;assembly=netstandard"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     x:Name="VATRegistration"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -94,10 +93,10 @@
 
                 </Grid>
                 <!-- </Grid>-->
-                <yummy:PancakeView
+                <Border
                     Grid.Row="1"
                     Padding="0"
-                    CornerRadius="14,14,0,0"
+                    StrokeShape="RoundRectangle 15,15,0,0"
                     VerticalOptions="FillAndExpand">
                     <Grid
                         x:Name="VATRMainGrid"
@@ -117,7 +116,7 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand" />
                     </Grid>
-                </yummy:PancakeView>
+                </Border>
 
             </Grid>
         </ControlTemplate>
@@ -128,10 +127,10 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="0"
-                CornerRadius="15,15,0,0">
+                StrokeShape="RoundRectangle 15,15,0,0">
                 <Grid
                     x:Name="VATRMainGrid"
                     Margin="0"
@@ -195,25 +194,25 @@
                                                     Style="{StaticResource GAZTSmallGoldLabel}"
                                                     Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}" />
                                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         HorizontalOptions="Start"
                                                         HorizontalTextAlignment="Start"
                                                         Style="{StaticResource CaptionLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ1}"
                                                         TextColor="{StaticResource Secondary}" />
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         HorizontalOptions="Start"
                                                         HorizontalTextAlignment="Start"
                                                         Style="{StaticResource CaptionLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ2}"
                                                         TextColor="{StaticResource Primary}">
-                                                        <custom:CustomLabel.GestureRecognizers>
+                                                        <Label.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="VATFaqTapped" />
-                                                        </custom:CustomLabel.GestureRecognizers>
-                                                    </custom:CustomLabel>
+                                                        </Label.GestureRecognizers>
+                                                    </Label>
 
                                                 </StackLayout>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Margin="0,-10,0,0"
                                                     HorizontalOptions="Start"
                                                     HorizontalTextAlignment="Start"
@@ -221,76 +220,76 @@
                                                     Text="{x:Static ResourceManager:AppResources.ZZZZVATRFAQ3}"
                                                     TextColor="{StaticResource NeutralGreay}" />
 
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource GAZTMicroGrayLabel}"
                                                     VerticalOptions="EndAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="1." />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions1}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource GAZTMicroGrayLabel}"
                                                     VerticalOptions="EndAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span FontSize="11" Text="2." />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions2}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <custom:CustomLabel Style="{StaticResource GAZTMicroGrayLabel}" VerticalOptions="EndAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label Style="{StaticResource GAZTMicroGrayLabel}" VerticalOptions="EndAndExpand">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="3." />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions3}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <custom:CustomLabel Style="{StaticResource GAZTMicroGrayLabel}">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label Style="{StaticResource GAZTMicroGrayLabel}">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="4." />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions4}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <custom:CustomLabel Style="{StaticResource GAZTMicroGrayLabel}" VerticalOptions="EndAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label Style="{StaticResource GAZTMicroGrayLabel}" VerticalOptions="EndAndExpand">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="5." />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions5}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <custom:CustomLabel Style="{StaticResource GAZTMicroGrayLabel}">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label Style="{StaticResource GAZTMicroGrayLabel}">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="6." />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditions6}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <custom:CustomLabel Style="{StaticResource GAZTMicroGrayLabel}">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label Style="{StaticResource GAZTMicroGrayLabel}">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="7." />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATAmendInstrunctionsAndConditions7}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
                                                 <StackLayout Orientation="Horizontal">
                                                     <custom:CheckboxCustom
@@ -299,13 +298,13 @@
                                                         IsEnabled="{Binding InstAndCondition.CBAgreeCondition}"
                                                         Style="{StaticResource CheckboxHeightWidth32}"
                                                         VerticalOptions="CenterAndExpand" />
-                                                    <custom:CustomLabel Style="{DynamicResource IsInstrunctionCheckedStyle}">
-                                                        <custom:CustomLabel.FormattedText>
+                                                    <Label Style="{DynamicResource IsInstrunctionCheckedStyle}">
+                                                        <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}" />
                                                             </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                    </custom:CustomLabel>
+                                                        </Label.FormattedText>
+                                                    </Label>
                                                 </StackLayout>
                                             </StackLayout>
                                         </ScrollView>
@@ -581,13 +580,13 @@
                                                             Style="{StaticResource CheckboxHeightWidth32}"
                                                             VerticalOptions="CenterAndExpand" />
 
-                                                        <custom:CustomLabel Style="{DynamicResource IsAddAdditionalInfoCheckedStyle}">
-                                                            <custom:CustomLabel.FormattedText>
+                                                        <Label Style="{DynamicResource IsAddAdditionalInfoCheckedStyle}">
+                                                            <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.VATRTPDetailsAdditionalInformation}" />
                                                                 </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                                                            </Label.FormattedText>
+                                                        </Label>
                                                     </StackLayout>
 
                                                     <Frame
@@ -668,19 +667,19 @@
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
-                                                            <custom:CustomLabel
+                                                            <Label
                                                                 Grid.Row="0"
                                                                 Padding="0,0,0,0"
                                                                 HorizontalOptions="Start"
                                                                 Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                                <custom:CustomLabel.FormattedText>
+                                                                <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static ResourceManager:AppResources.VATREligibleStartDate}" />
                                                                         <Span Text="*" TextColor="#e84941" />
                                                                     </FormattedString>
-                                                                </custom:CustomLabel.FormattedText>
-                                                            </custom:CustomLabel>
+                                                                </Label.FormattedText>
+                                                            </Label>
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="FrmEStartDate"
                                                                 Grid.Row="1"
@@ -763,7 +762,6 @@
                                                                 Background="White"
                                                                 CancelButtonClicked="DpEStartDate_CancelButtonClicked"
                                                                 Closed="DpEStartDate_Closed"
-                                                                FlowDirection="RightToLeft"
                                                                 FutureDay="False"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
@@ -773,6 +771,14 @@
                                                                 SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
                                                                 SelectionChanged="DpEStartDate_SelectionChanged">
 
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                                                                 <custom:CustomDatePicker.SelectionView >
+                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                                                 </custom:CustomDatePicker.SelectionView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -799,9 +805,6 @@
 
                                                                 </custom:CustomDatePicker.FooterView>
 
-                                                                <custom:CustomDatePicker.Behaviors>
-                                                                    <behaviors:SfPickerBehavior />
-                                                                </custom:CustomDatePicker.Behaviors>
                                                             </custom:CustomDatePicker>
                                                         </Grid>
                                                     </StackLayout>
@@ -1100,10 +1103,10 @@
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource SectionTitleBlackBold}"
                                                                 Text="{Binding SliderLable1}" />
-                                                            <yummy:PancakeView
+                                                            <Border
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="#eaeaea"
-                                                                CornerRadius="10"
+                                                                StrokeShape="RoundRectangle 10,10,10,10"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 IsEnabled="{Binding FinancialDetails.VATEligibilityPoint1Parent}">
                                                                 <Slider
@@ -1115,7 +1118,7 @@
                                                                     MaximumTrackColor="{StaticResource Primary}"
                                                                     Minimum="0"
                                                                     MinimumTrackColor="{StaticResource Primary}" />
-                                                            </yummy:PancakeView>
+                                                            </Border>
                                                             <StackLayout
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="White"
@@ -1166,10 +1169,10 @@
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource SectionTitleBlackBold}"
                                                                 Text="{Binding SliderLable2}" />
-                                                            <yummy:PancakeView
+                                                            <Border
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="#eaeaea"
-                                                                CornerRadius="10"
+                                                                StrokeShape="RoundRectangle 1,10,10,10"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 IsEnabled="{Binding FinancialDetails.VATEligibilityPoint2Parent}">
                                                                 <Slider
@@ -1181,7 +1184,7 @@
                                                                     MaximumTrackColor="{StaticResource Primary}"
                                                                     Minimum="0"
                                                                     MinimumTrackColor="{StaticResource Primary}" />
-                                                            </yummy:PancakeView>
+                                                            </Border>
                                                             <StackLayout
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="White"
@@ -1261,7 +1264,7 @@
                                                                                 <RowDefinition Height="*" />
                                                                                 <RowDefinition Height="auto" />
                                                                             </Grid.RowDefinitions>
-                                                                            <custom:CustomLabel
+                                                                            <Label
                                                                                 x:Name="label4"
                                                                                 Grid.Row="1"
                                                                                 Style="{DynamicResource CardLabelBlack}"
@@ -1290,13 +1293,13 @@
                                                                         Margin="0"
                                                                         Padding="0"
                                                                         VerticalOptions="FillAndExpand">
-                                                                        <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
+                                                                        <Border Grid.Row="0" BackgroundColor="White">
                                                                             <Image
                                                                                 Aspect="AspectFill"
                                                                                 HorizontalOptions="FillAndExpand"
                                                                                 Source="{Binding ImageforTextQuestion3Second}"
                                                                                 VerticalOptions="FillAndExpand" />
-                                                                        </yummy:PancakeView>
+                                                                        </Border>
 
                                                                         <Grid
                                                                             Grid.Row="0"
@@ -1307,7 +1310,7 @@
                                                                                 <RowDefinition Height="auto" />
                                                                             </Grid.RowDefinitions>
 
-                                                                            <custom:CustomLabel
+                                                                            <Label
                                                                                 x:Name="label3"
                                                                                 Grid.Row="1"
                                                                                 Style="{DynamicResource CardLabelBlack}"
@@ -1373,7 +1376,7 @@
                                                                                 <RowDefinition Height="*" />
                                                                                 <RowDefinition Height="auto" />
                                                                             </Grid.RowDefinitions>
-                                                                            <custom:CustomLabel
+                                                                            <Label
                                                                                 x:Name="label1"
                                                                                 Grid.Row="1"
                                                                                 Style="{DynamicResource CardLabelBlack}"
@@ -1403,13 +1406,13 @@
                                                                         Margin="0"
                                                                         Padding="0"
                                                                         VerticalOptions="FillAndExpand">
-                                                                        <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
+                                                                        <Border Grid.Row="0" BackgroundColor="White">
                                                                             <Image
                                                                                 Aspect="AspectFill"
                                                                                 HorizontalOptions="FillAndExpand"
                                                                                 Source="{Binding ImageforTextQuestion4Second}"
                                                                                 VerticalOptions="FillAndExpand" />
-                                                                        </yummy:PancakeView>
+                                                                        </Border>
 
                                                                         <Grid
                                                                             Grid.Row="0"
@@ -1420,7 +1423,7 @@
                                                                                 <RowDefinition Height="auto" />
                                                                             </Grid.RowDefinitions>
 
-                                                                            <custom:CustomLabel
+                                                                            <Label
                                                                                 x:Name="label2"
                                                                                 Grid.Row="1"
                                                                                 Style="{DynamicResource CardLabelBlack}"
@@ -1457,13 +1460,13 @@
 
 
 
-                                                    <custom:CustomLabel Style="{DynamicResource IsFDChangeSectionCheckedStyle}">
-                                                        <custom:CustomLabel.FormattedText>
+                                                    <Label Style="{DynamicResource IsFDChangeSectionCheckedStyle}">
+                                                        <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span Text="{x:Static ResourceManager:AppResources.VATAmendRegistrationFinancialDetailsChangeSection}" />
                                                             </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                    </custom:CustomLabel>
+                                                        </Label.FormattedText>
+                                                    </Label>
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15">
                                                     <Frame
@@ -1617,13 +1620,13 @@
                                                                     Style="{StaticResource CheckboxHeightWidth32}"
                                                                     VerticalOptions="CenterAndExpand" />
                                                             </Grid>
-                                                            <custom:CustomLabel Style="{DynamicResource IsChangeEmailCheckedStyle}" VerticalOptions="CenterAndExpand">
-                                                                <custom:CustomLabel.FormattedText>
+                                                            <Label Style="{DynamicResource IsChangeEmailCheckedStyle}" VerticalOptions="CenterAndExpand">
+                                                                <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZAmendFinancialRepCheck}" />
                                                                     </FormattedString>
-                                                                </custom:CustomLabel.FormattedText>
-                                                            </custom:CustomLabel>
+                                                                </Label.FormattedText>
+                                                            </Label>
                                                         </StackLayout>
                                                         <StackLayout Orientation="Horizontal">
                                                             <Grid
@@ -1645,13 +1648,13 @@
                                                                     VerticalOptions="CenterAndExpand" />
                                                             </Grid>
 
-                                                            <custom:CustomLabel Style="{DynamicResource IsAddNewRepresentativeCheckedStyle}" VerticalOptions="CenterAndExpand">
-                                                                <custom:CustomLabel.FormattedText>
+                                                            <Label Style="{DynamicResource IsAddNewRepresentativeCheckedStyle}" VerticalOptions="CenterAndExpand">
+                                                                <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static ResourceManager:AppResources.VATChangeRegistrationAddFinancialRepresentative}" />
                                                                     </FormattedString>
-                                                                </custom:CustomLabel.FormattedText>
-                                                            </custom:CustomLabel>
+                                                                </Label.FormattedText>
+                                                            </Label>
 
                                                         </StackLayout>
                                                     </StackLayout>
@@ -1800,10 +1803,10 @@
                                                                             </StackLayout>
                                                                         </inputLayout:SfTextInputLayout>
 
-                                                                        <custom:CustomButton
+                                                                        <buttons:SfButton
                                                                             Grid.Row="1"
                                                                             Margin="10,0,10,0"
-                                                                            BackgroundColor="Transparent"
+                                                                            Background="Transparent"
                                                                             FontSize="Small" />
 
                                                                         <syncfusion:SfPicker
@@ -1814,9 +1817,10 @@
                                                                             Mode="Dialog"
                                                                             OkButtonClicked="DDlIDTypeFR_OkButtonClicked">
 
-                                                                            <syncfusion:SfPicker.ColumnHeaderView>
-                                                                                <syncfusion:PickerColumnHeaderView Height="46" />
-                                                                            </syncfusion:SfPicker.ColumnHeaderView>
+
+                                                                             <syncfusion:SfPicker.SelectionView >
+                                                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                                                             </syncfusion:SfPicker.SelectionView>
 
                                                                             <syncfusion:SfPicker.TextStyle>
                                                                                 <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -1859,9 +1863,6 @@
 
                                                                             </syncfusion:SfPicker.FooterView>
 
-                                                                            <syncfusion:SfPicker.Behaviors>
-                                                                                <behaviors:SfPickerBehavior />
-                                                                            </syncfusion:SfPicker.Behaviors>
                                                                         </syncfusion:SfPicker>
 
                                                                     </Grid>
@@ -1914,7 +1915,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <custom:CustomLabel
+                                                                        <Label
                                                                             Grid.Row="0"
                                                                             IsVisible="{Binding DOBNonMandatoryVisibility}"
                                                                             Style="{StaticResource ComponentHeaderBlackBold}"
@@ -1973,7 +1974,14 @@
                                                                             OkButtonClicked="DOB_OkButtonClicked"
                                                                             SelectedItem="{Binding TodayDate}">
 
+                                                                             <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
 
+
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
 
                                                                             <custom:CustomDatePicker.SelectedTextStyle>
                                                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -2002,9 +2010,6 @@
 
                                                                             </custom:CustomDatePicker.FooterView>
 
-                                                                            <custom:CustomDatePicker.Behaviors>
-                                                                                <behaviors:SfPickerBehavior />
-                                                                            </custom:CustomDatePicker.Behaviors>
 
                                                                         </custom:CustomDatePicker>
                                                                     </Grid>
@@ -2232,11 +2237,11 @@
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
 
-                                                            <custom:CustomButton
+                                                            <buttons:SfButton
                                                                 x:Name="btnID"
                                                                 Grid.Row="1"
                                                                 Margin="10,0,10,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btnID_Clicked"
                                                                 FontSize="Small"
                                                                 IsEnabled="{Binding FinancialRepresentative.IDTypeEntry}" />
@@ -2247,7 +2252,6 @@
                                                                 Margin="10,0,10,0"
                                                                 Background="White"
                                                                 CancelButtonClicked="DDlIDTypeFR_CancelButtonClicked"
-                                                                FlowDirection="RightToLeft"
                                                                 ItemHeight="40"
                                                                 Mode="Dialog"
                                                                 OkButtonClicked="DDlIDTypeFR_OkButtonClicked"
@@ -2266,9 +2270,10 @@
 
                                                                 </syncfusion:SfPicker.HeaderView>
 
-                                                                <syncfusion:SfPicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
-                                                                </syncfusion:SfPicker.ColumnHeaderView>
+
+                         <syncfusion:SfPicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </syncfusion:SfPicker.SelectionView>
 
 
                                                                 <syncfusion:SfPicker.Columns>
@@ -2299,29 +2304,26 @@
 
                                                                 </syncfusion:SfPicker.FooterView>
 
-                                                                <syncfusion:SfPicker.Behaviors>
-                                                                    <behaviors:SfPickerBehavior />
-                                                                </syncfusion:SfPicker.Behaviors>
                                                             </syncfusion:SfPicker>
 
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2">
 
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             IsVisible="{Binding IDNumberMandatoryVisibility}"
                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.IDNumber}" />
 
 
-                                                        <custom:CustomLabel IsVisible="false" Style="{StaticResource ComponentHeaderBlackBold}">
+                                                        <Label IsVisible="false" Style="{StaticResource ComponentHeaderBlackBold}">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static ResourceManager:AppResources.IDNumber}" />
                                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
-                                                        </custom:CustomLabel>
+                                                        </Label>
 
                                                         <inputLayout:SfTextInputLayout
                                                             x:Name="FrmIDNo"
@@ -2368,26 +2370,26 @@
                                                             </Grid.RowDefinitions>
 
 
-                                                            <custom:CustomLabel
+                                                            <Label
                                                                 Grid.Row="0"
                                                                 IsVisible="{Binding DOBNonMandatoryVisibility}"
                                                                 Style="{StaticResource ComponentHeaderBlackBold}"
                                                                 Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
 
-                                                            <custom:CustomLabel
+                                                            <Label
                                                                 Grid.Row="0"
                                                                 Padding="0,0,0,0"
                                                                 IsVisible="false"
                                                                 Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                                <custom:CustomLabel.FormattedText>
+                                                                <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
                                                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                     </FormattedString>
-                                                                </custom:CustomLabel.FormattedText>
-                                                            </custom:CustomLabel>
+                                                                </Label.FormattedText>
+                                                            </Label>
 
 
 
@@ -2442,13 +2444,18 @@
                                                                 Margin="2"
                                                                 Background="White"
                                                                 Closed="SignUpDOB_Closed"
-                                                                FlowDirection="RightToLeft"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 ItemHeight="45"
                                                                 Mode="Dialog"
                                                                 SelectedItem="{Binding TodayDate}">
+                                                                 <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
 
 
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                                                 </custom:CustomDatePicker.SelectedTextStyle>
@@ -2471,9 +2478,6 @@
 
                                                                 </custom:CustomDatePicker.FooterView>
 
-                                                                <custom:CustomDatePicker.Behaviors>
-                                                                    <behaviors:SfPickerBehavior />
-                                                                </custom:CustomDatePicker.Behaviors>
                                                             </custom:CustomDatePicker>
                                                         </Grid>
                                                     </StackLayout>
@@ -3002,19 +3006,19 @@
                                                             Grid.Column="0"
                                                             Style="{StaticResource BodyLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Row="5"
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
                                                             Style="{StaticResource BodyLabelBlackMedium}">
-                                                            <custom:CustomLabel.FormattedText>
+                                                            <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <!--<Span Text="(0966)"/>-->
                                                                     <Span Text="{Binding BindingContext.MobNumberSum, Source={x:Reference VATRegistration}}" />
                                                                 </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                                                            </Label.FormattedText>
+                                                        </Label>
                                                         <Label
                                                             Grid.Row="6"
                                                             Grid.Column="0"
@@ -3042,24 +3046,24 @@
                                                     Grid.Column="0"
                                                     IsChecked="{Binding IsDeclarationChecked}"
                                                     Style="{StaticResource CheckboxHeightWidth32}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Row="0"
                                                     Grid.Column="1"
                                                     Grid.ColumnSpan="2"
                                                     Style="{DynamicResource IsDeclarationCheckedStyle}"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRDR1}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                    <custom:CustomLabel.Margin>
+                                                    </Label.FormattedText>
+                                                    <Label.Margin>
                                                         <OnPlatform x:TypeArguments="Thickness">
                                                             <On Platform="iOS" Value="0,0,0,0" />
                                                             <On Platform="Android" Value="0,-14,0,0" />
                                                         </OnPlatform>
-                                                    </custom:CustomLabel.Margin>
-                                                </custom:CustomLabel>
+                                                    </Label.Margin>
+                                                </Label>
                                             </Grid>
                                             <StackLayout>
                                                 <Label
@@ -3084,15 +3088,15 @@
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
-                                                            <custom:CustomLabel Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
+                                                            <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                                <custom:CustomLabel.FormattedText>
+                                                                <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static ResourceManager:AppResources.VATRIDType}" />
                                                                         <Span Text="*" TextColor="#e84941" />
                                                                     </FormattedString>
-                                                                </custom:CustomLabel.FormattedText>
-                                                            </custom:CustomLabel>
+                                                                </Label.FormattedText>
+                                                            </Label>
                                                             <inputLayout:SfTextInputLayout
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
@@ -3118,11 +3122,11 @@
                                                                     <Image Source="arrowDropdown.png" />
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
-                                                            <custom:CustomButton
+                                                            <buttons:SfButton
                                                                 x:Name="btnContactID"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
-                                                                BackgroundColor="Transparent"
+                                                                Background="Transparent"
                                                                 Clicked="btnContactID_Clicked"
                                                                 FontSize="Small"
                                                                 IsEnabled="{Binding Declaration.IDTypeOrNoPicker}" />
@@ -3132,7 +3136,6 @@
                                                                 Margin="0,0,0,0"
                                                                 Background="White"
                                                                 CancelButtonClicked="IDTypeSR_CancelButtonClicked"
-                                                                FlowDirection="RightToLeft"
                                                                 ItemHeight="40"
                                                                 Mode="Dialog"
                                                                 OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"
@@ -3169,9 +3172,9 @@
                                                                 </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                                                <syncfusion:SfPicker.ColumnHeaderView>
-                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
-                                                                </syncfusion:SfPicker.ColumnHeaderView>
+                                                                 <syncfusion:SfPicker.SelectionView >
+                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                                                 </syncfusion:SfPicker.SelectionView>
 
                                                                 <syncfusion:SfPicker.FooterView>
 
@@ -3185,22 +3188,19 @@
 
                                                                 </syncfusion:SfPicker.FooterView>
 
-                                                                <syncfusion:SfPicker.Behaviors>
-                                                                    <behaviors:SfPickerBehavior />
-                                                                </syncfusion:SfPicker.Behaviors>
                                                             </syncfusion:SfPicker>
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="1">
-                                                        <custom:CustomLabel Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
+                                                        <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                            <custom:CustomLabel.FormattedText>
+                                                            <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.IDNumber}" />
                                                                     <Span Text="*" TextColor="#e84941" />
                                                                 </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                                                            </Label.FormattedText>
+                                                        </Label>
 
                                                         <inputLayout:SfTextInputLayout
                                                             x:Name="FrmContactIDNumber"
@@ -3240,19 +3240,19 @@
                                                                 <RowDefinition Height="auto" />
                                                             </Grid.RowDefinitions>
 
-                                                            <custom:CustomLabel
+                                                            <Label
                                                                 x:Name="lblDOB"
                                                                 Grid.Row="0"
                                                                 IsVisible="false"
                                                                 Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                                <custom:CustomLabel.FormattedText>
+                                                                <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
                                                                         <Span Text="*" TextColor="#e84941" />
                                                                     </FormattedString>
-                                                                </custom:CustomLabel.FormattedText>
-                                                            </custom:CustomLabel>
+                                                                </Label.FormattedText>
+                                                            </Label>
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="FrmContactDBO"
                                                                 Grid.Row="1"
@@ -3306,13 +3306,20 @@
                                                                 Background="White"
                                                                 CancelButtonClicked="ContactDOBPicker_CancelButtonClicked"
                                                                 Closed="ContactDOBPicker_Closed"
-                                                                FlowDirection="RightToLeft"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 ItemHeight="45"
                                                                 Mode="Dialog"
                                                                 OkButtonClicked="ContactDOBPicker_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDate}">
 
+                                                                  <custom:CustomDatePicker.ColumnHeaderView>
+                                                                      <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                   </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                                                                 <custom:CustomDatePicker.SelectionView >
+                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                                                 </custom:CustomDatePicker.SelectionView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -3339,22 +3346,19 @@
 
                                                                 </custom:CustomDatePicker.FooterView>
 
-                                                                <custom:CustomDatePicker.Behaviors>
-                                                                    <behaviors:SfPickerBehavior />
-                                                                </custom:CustomDatePicker.Behaviors>
                                                             </custom:CustomDatePicker>
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="3">
-                                                        <custom:CustomLabel Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
+                                                        <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                            <custom:CustomLabel.FormattedText>
+                                                            <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.VATRContactPersonName}" />
                                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                                 </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                                                            </Label.FormattedText>
+                                                        </Label>
                                                         <inputLayout:SfTextInputLayout
                                                             x:Name="FrmContactName"
                                                             Margin="0,-6,0,-6"
@@ -3487,7 +3491,7 @@
                         </Grid>
                     </StackLayout>
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
             <Grid
                 Grid.Row="0"

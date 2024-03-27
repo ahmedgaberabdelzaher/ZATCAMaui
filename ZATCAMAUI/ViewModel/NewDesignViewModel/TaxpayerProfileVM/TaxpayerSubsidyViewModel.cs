@@ -5,7 +5,7 @@ using System.Windows.Input;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
 
-    public class TaxpayerSubsidyViewModel : ViewModelBase
+    public class TaxpayerSubsidyViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -26,23 +26,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 RaisePropertyChanged("WebUrl");
             }
         }
-        //IsLoading
-        private bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                _IsLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         #endregion
         #region Constructor
-        public TaxpayerSubsidyViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxpayerSubsidyViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

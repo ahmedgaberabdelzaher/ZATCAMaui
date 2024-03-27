@@ -18,7 +18,7 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
 
-    public class VATDeRegistrationDetailsPageViewModel : ViewModelBase
+    public class VATDeRegistrationDetailsPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -376,21 +376,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
         private DateTime _suspendedStartDate = DateTime.Now;
         public DateTime SuspendedStartDate
@@ -1293,7 +1279,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATDeRegistrationDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

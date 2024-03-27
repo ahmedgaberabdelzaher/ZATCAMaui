@@ -14,7 +14,8 @@ using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
 
-    public class GAZTNewDesignForgotPasswordPageViewModel : ViewModelBase
+    public class GAZTNewDesignForgotPasswordPageViewModel : BaseViewModel
+
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -380,21 +381,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged(() => IsLoading);
-            }
-        }
+    
 
 
         // * OTP Verification Properties
@@ -1614,7 +1601,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         #endregion
         #region Constructor
-        public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

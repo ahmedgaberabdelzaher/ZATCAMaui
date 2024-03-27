@@ -15,7 +15,7 @@
     xmlns:sfcustom="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     Title="{x:Static ResourceManager:AppResources.ZAmendSalesDetails}"
     BackgroundColor="White"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
@@ -244,7 +244,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             HorizontalOptions="FillAndExpand">
-                            <custom:CustomLabel
+                            <Label
                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 HorizontalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Start"

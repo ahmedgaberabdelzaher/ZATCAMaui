@@ -13,7 +13,7 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
 
-    public class GAZTNewDesignMyReturnsNewPageViewModel : ViewModelBase
+    public class GAZTNewDesignMyReturnsNewPageViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -137,42 +137,82 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 if (_selectedListItem != null)
                 {
-
-                    Task.Run(async () =>
+                    try
                     {
-                        await Task.Run(() =>
+                        Task.Run(async () =>
                         {
-                            IsLoading = true;
-                        });
-
-                        if (_selectedListItem.Open)
-                        {
-                            if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
+                            await Task.Run(() =>
                             {
-                                //zakat
+                                IsLoading = true;
+                            });
 
-                                if (_selectedListItem.Fbtyp.Equals("FZ12"))
+                            if (_selectedListItem.Open)
+                            {
+                                if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
                                 {
-                                    App.IsZakatLoadingFromMyReturns = true;
-                                    MainThread.BeginInvokeOnMainThread(() =>
+                                    //zakat
+
+                                    if (_selectedListItem.Fbtyp.Equals("FZ12"))
                                     {
-                                        App.selectedForm12Fbguid = _selectedListItem.Fbguid;
-                                        _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
-                                    });
+                                        App.IsZakatLoadingFromMyReturns = true;
+                                        MainThread.BeginInvokeOnMainThread(() =>
+                                        {
+                                            App.selectedForm12Fbguid = _selectedListItem.Fbguid;
+                                            _navigationService.NavigateTo(App.ZAKATReturnDetailsView, _selectedListItem.Fbguid);
+                                        });
 
-                                }
-                                else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
-                                {
-
-                                    App.IsZakatLoadingFromMyReturns = true;
-                                    MainThread.BeginInvokeOnMainThread(() =>
+                                    }
+                                    else if (_selectedListItem.Fbtyp.Equals("ZKTE"))
                                     {
-                                        _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
-                                    });
-                                }
-                                else
-                                {
 
+                                        App.IsZakatLoadingFromMyReturns = true;
+                                        MainThread.BeginInvokeOnMainThread(() =>
+                                        {
+                                            _navigationService.NavigateTo(App.GAZTForm5PageView, _selectedListItem.Fbguid);
+                                        });
+                                    }
+                                    else
+                                    {
+
+                                        MainThread.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await Task.Run(() =>
+                                            {
+                                                IsLoading = false;
+                                            });
+
+                                            var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                            if (App.IsArabic)
+                                            {
+                                                VisitPortalPopup.OnGotoPortal = () =>
+                                                {
+
+                                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                                                };
+                                            }
+                                            else
+                                            {
+                                                VisitPortalPopup.OnGotoPortal = () =>
+                                                {
+
+                                                    Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                                                };
+                                            }
+                                            await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                                        });
+                                    }
+                                }
+
+                                if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
+                                {
+                                    //Vat
+                                    await GetVATAllReturnsAsync(_selectedListItem);
+                                }
+                                if (_selectedListItem.TaxType.Equals("ETAX"))
+                                {
+                                    //ET
                                     MainThread.BeginInvokeOnMainThread(async () =>
                                     {
                                         await Task.Run(() =>
@@ -199,102 +239,69 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                                             };
                                         }
+
                                         await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                                     });
+
+                                }
+                                if (_selectedListItem.TaxType.Equals("WHTX"))
+                                {
+                                    //WT
+                                    MainThread.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await Task.Run(() =>
+                                        {
+                                            IsLoading = false;
+                                        });
+
+                                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                        if (App.IsArabic)
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
+
+                                            };
+                                        }
+                                        else
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
+
+                                            };
+                                        }
+
+                                        await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                                    });
+
                                 }
                             }
-
-                            if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
+                            else
                             {
-                                //Vat
-                                await GetVATAllReturnsAsync(_selectedListItem);
-                            }
-                            if (_selectedListItem.TaxType.Equals("ETAX"))
-                            {
-                                //ET
                                 MainThread.BeginInvokeOnMainThread(async () =>
                                 {
                                     await Task.Run(() =>
                                     {
                                         IsLoading = false;
                                     });
-
-                                    var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                                    if (App.IsArabic)
-                                    {
-                                        VisitPortalPopup.OnGotoPortal = () =>
-                                        {
-
-                                            Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                        };
-                                    }
-                                    else
-                                    {
-                                        VisitPortalPopup.OnGotoPortal = () =>
-                                        {
-
-                                            Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                        };
-                                    }
-
-                                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                                    string messageTodisplay = string.Empty;
+                                    messageTodisplay = _selectedListItem.Msg;
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
                                 });
 
                             }
-                            if (_selectedListItem.TaxType.Equals("WHTX"))
-                            {
-                                //WT
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await Task.Run(() =>
-                                    {
-                                        IsLoading = false;
-                                    });
-
-                                    var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
-                                    if (App.IsArabic)
-                                    {
-                                        VisitPortalPopup.OnGotoPortal = () =>
-                                        {
-
-                                            Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
-
-                                        };
-                                    }
-                                    else
-                                    {
-                                        VisitPortalPopup.OnGotoPortal = () =>
-                                        {
-
-                                            Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
-
-                                        };
-                                    }
-
-                                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
-                                });
-
-                            }
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
-                                string messageTodisplay = string.Empty;
-                                messageTodisplay = _selectedListItem.Msg;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
-                            });
-
-                        }
 
 
-                    });
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    
 
                 }
 
@@ -437,25 +444,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         #endregion
 
         #region Constructor
-        public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

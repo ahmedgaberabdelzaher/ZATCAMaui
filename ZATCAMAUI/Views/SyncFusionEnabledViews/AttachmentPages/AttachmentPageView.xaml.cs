@@ -31,7 +31,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
-            SetLTR();
             double ht = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceHeight();
             ht = ht * 45 / 100;
             AttachmentList.HeightRequest = ht;
@@ -98,13 +97,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
         }
         #endregion
         #region Method
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
             try

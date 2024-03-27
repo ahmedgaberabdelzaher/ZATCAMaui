@@ -11,7 +11,6 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     x:Name="TraiffPage"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
@@ -24,8 +23,6 @@
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
 
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -93,9 +90,9 @@
                     Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" />
 
             </StackLayout>
-            <yummy:PancakeView
+            <Border
                 Padding="0"
-                CornerRadius="14,14,0,0"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
                 <Grid
                     Margin="0"
@@ -128,14 +125,14 @@
                                     TextColor="White" />
                             </Frame>
                             <StackLayout Margin="0,9,0,0">
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.Port}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <Grid>
 
                                     <inputLayout:SfTextInputLayout
@@ -179,15 +176,15 @@
 
                             <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.RequestNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
 
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
@@ -211,14 +208,14 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                            <custom:CustomLabel Margin="0,5,0,0" Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Margin="0,5,0,0" Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.RequestDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Grid>
                                 <inputLayout:SfTextInputLayout
@@ -249,7 +246,6 @@
                                 <custom:CustomHijriDatePicker
                                     Margin="10,0,10,0"
                                     Background="White"
-                                    FlowDirection="RightToLeft"
                                     HorizontalOptions="FillAndExpand"
                                     IsOpen="{Binding IsOpenHijriPicker}"
                                     ItemHeight="40"
@@ -257,8 +253,12 @@
                                     SelectedItem="{Binding TodayDateinHijri}">
 
                                      <custom:CustomHijriDatePicker.SelectionView >
-                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                        <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
                                      </custom:CustomHijriDatePicker.SelectionView>
+
+                                     <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                        <syncfusion:PickerColumnHeaderView Height="46" />
+                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -325,7 +325,7 @@
                     </ScrollView>
 
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
         </StackLayout>
         <StackLayout IsVisible="{Binding IsDetailsView}">
@@ -364,9 +364,9 @@
                     Text="{x:Static ResourceManager:AppResources.InquiryResult}" />
 
             </StackLayout>
-            <yummy:PancakeView
+            <Border
                 Padding="0"
-                CornerRadius="14,14,0,0"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
                 <Grid
                     Margin="0"
@@ -389,7 +389,7 @@
                     </Frame>
 
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
         </StackLayout>
         <custom:PickerWithSearch IsVisible="{Binding IsPortsPickerSearch}" />

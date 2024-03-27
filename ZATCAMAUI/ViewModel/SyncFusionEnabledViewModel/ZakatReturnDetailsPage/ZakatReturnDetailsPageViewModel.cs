@@ -6,13 +6,14 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
 {
 
-    public class ZakatReturnDetailsPageViewModel : ViewModelBase
+    public class ZakatReturnDetailsPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -29,19 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
         public static string Fbguid { get; set; }
         #endregion
         #region Property
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
         {
@@ -151,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
 
         #endregion
         #region Constructor
-        public ZakatReturnDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZakatReturnDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

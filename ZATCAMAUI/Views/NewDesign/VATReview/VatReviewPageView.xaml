@@ -14,7 +14,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
 
@@ -45,11 +45,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="{StaticResource Primary}"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             Margin="0"
                             Padding="0,0,0,0"
@@ -66,7 +66,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -187,13 +187,13 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource PageTitleBlack}"
                                 Text="{x:Static ResourceManager:AppResources.VRReviewReason}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Margin="0,-10,0,15"
@@ -213,18 +213,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarLight}"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VRReviewReason}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <Frame
@@ -239,7 +239,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
                                     VerticalOptions="CenterAndExpand">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="FillAndExpand"
                                         IsEnabled="False"
                                         Style="{StaticResource BodyLabelBlack}"
@@ -267,18 +267,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarLight}"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VRReviewSubReason}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Frame
                                 Grid.Row="1"
@@ -292,7 +292,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
                                     VerticalOptions="CenterAndExpand">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="FillAndExpand"
                                         IsEnabled="False"
                                         Style="{StaticResource BodyLabelBlack}"
@@ -319,18 +319,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarLight}"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VRApplicationReferenceNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Frame
                                 Grid.Row="1"
@@ -344,7 +344,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
                                     VerticalOptions="CenterAndExpand">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="FillAndExpand"
                                         IsEnabled="False"
                                         Style="{StaticResource BodyLabelBlack}"
@@ -370,7 +370,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarLight}"
                                 HorizontalOptions="StartAndExpand"
@@ -390,7 +390,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
                                     VerticalOptions="CenterAndExpand">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="FillAndExpand"
                                         IsEnabled="False"
                                         Style="{StaticResource BodyLabelBlack}"
@@ -414,7 +414,7 @@
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.VRContinue}" />
 
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="6"
                             Margin="10,0,10,15"
                             FontFamily="{StaticResource SomarSemiBold}"
@@ -423,10 +423,10 @@
                             IsVisible="{Binding IsApplicationVisible}"
                             Style="{StaticResource ValueLabelPrimary}"
                             Text="{Binding ViewApplicationTypeText}">
-                            <custom:CustomLabel.GestureRecognizers>
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ViewApplicationTapped}" />
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </Label>
 
                     </StackLayout>
 
@@ -442,13 +442,13 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource PageTitleBlack}"
                                 Text="{x:Static ResourceManager:AppResources.VRReportDetails}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Margin="0,-10,0,15"
@@ -465,19 +465,19 @@
                         <StackLayout Grid.Row="5" HorizontalOptions="FillAndExpand">
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarLight}"
                                 HorizontalOptions="StartAndExpand"
-                                LineSpacing="0.5"
+                                LineHeight="0.5"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VATReviewRequestString}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <Border
@@ -506,24 +506,24 @@
                             </Border>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="2"
                                 FontFamily="{StaticResource SomarRegular}"
                                 HorizontalOptions="EndAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span
                                             FontFamily="{StaticResource SomarLight}"
                                             Style="{StaticResource MicroGrayLabelStyle}"
                                             Text="{Binding charCountReportDetails}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                            <custom:CustomLabel
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
                                 Grid.Row="3"
                                 HorizontalOptions="StartAndExpand"
-                                LineSpacing="0.8"
+                                LineHeight="0.8"
                                 Style="{StaticResource ButtonLabelBlackBold}"
                                 Text="{x:Static ResourceManager:AppResources.VRHelperText}" />
 
@@ -582,7 +582,7 @@
                                                     Style="{StaticResource CaptionLabelBlack}"
                                                     Text="{Binding Filename}"
                                                     VerticalOptions="FillAndExpand" />
-                                                <!--<custom:CustomLabel Grid.Row="0" Grid.Column="1"
+                                                <!--<Label Grid.Row="0" Grid.Column="1"
                                                                         Text="{Binding Filename}"
                                                                         FontSize="Small" TextColor="{StaticResource PrimaryColor}"
                                                                         HorizontalOptions="FillAndExpand"
@@ -620,7 +620,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarRegular}"
                                 HorizontalOptions="StartAndExpand"
@@ -639,7 +639,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         FontFamily="{StaticResource SomarRegular}"
@@ -693,13 +693,13 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource PageTitleBlack}"
                                 Text="{x:Static ResourceManager:AppResources.VRReviewDetails}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Margin="0,-10,0,15"
@@ -721,7 +721,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -751,7 +751,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -783,7 +783,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -812,7 +812,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -841,7 +841,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -870,7 +870,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -896,7 +896,7 @@
 
                         <StackLayout IsVisible="{Binding IsAssessPayOptionVisible}">
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -935,7 +935,7 @@
                                                     HorizontalOptions="FillAndExpand"
                                                     Source="vat_tile_listofsignup_W"
                                                     VerticalOptions="FillAndExpand" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Margin="20,0,20,20"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
@@ -966,7 +966,7 @@
                                                     HorizontalOptions="FillAndExpand"
                                                     Source="vat_tile_listofsignup"
                                                     VerticalOptions="FillAndExpand" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Margin="20,0,20,20"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
@@ -996,7 +996,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -1030,19 +1030,19 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarRegular}"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
 
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VRDisputeDetails}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <Border
@@ -1073,17 +1073,17 @@
                             </Border>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="2"
                                 FontFamily="{StaticResource SomarRegular}"
                                 HorizontalOptions="EndAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{Binding charCountDisputeDetails}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                         </Grid>
 
@@ -1110,7 +1110,7 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
@@ -1127,7 +1127,7 @@
 
                             <Grid Margin="0,5,0,10" HorizontalOptions="FillAndExpand">
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -1170,7 +1170,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Source="vat_tile_listofsignup_W"
                                                         VerticalOptions="FillAndExpand" />
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Margin="20,0,20,20"
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
@@ -1201,7 +1201,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         Source="vat_tile_listofsignup"
                                                         VerticalOptions="FillAndExpand" />
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Margin="20,0,20,20"
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
@@ -1235,7 +1235,7 @@
                                     HasShadow="False"
                                     HorizontalOptions="FillAndExpand"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.VRSecurityNote1}" />
@@ -1252,7 +1252,7 @@
                                     HasShadow="False"
                                     HorizontalOptions="FillAndExpand"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.VRSecurityNote2}" />
@@ -1343,7 +1343,7 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         FontFamily="{StaticResource SomarRegular}"
                                         HorizontalOptions="StartAndExpand"
@@ -1362,7 +1362,7 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 FontFamily="{StaticResource SomarRegular}"
@@ -1410,27 +1410,27 @@
                                         IsChecked="{Binding IsSadadCheckBox1}"
                                         Style="{StaticResource CheckboxHeightWidth32}"
                                         VerticalOptions="CenterAndExpand" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.VRSecurityBankGurrantCheckBoxDesc1}"
                                         VerticalOptions="CenterAndExpand">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsSadadCheckBox1}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
                                                 <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                             </DataTrigger>
                                             <DataTrigger
                                                 Binding="{Binding IsSadadCheckBox1}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="False">
                                                 <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                             </DataTrigger>
-                                        </custom:CustomLabel.Triggers>
-                                    </custom:CustomLabel>
+                                        </Label.Triggers>
+                                    </Label>
                                 </Grid>
 
 
@@ -1455,7 +1455,7 @@
                                     Text="{x:Static ResourceManager:AppResources.ZVatRefresh}"
                                     VerticalOptions="End" />
 
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     IsVisible="{Binding SadadGenerateProgressVisible}"
                                     Style="{StaticResource BodyLabelBlack}"
@@ -1474,11 +1474,11 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Column="0"
                                             Style="{StaticResource ValueLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Column="1"
                                             HorizontalOptions="EndAndExpand"
                                             HorizontalTextAlignment="End"
@@ -1505,27 +1505,27 @@
                                         IsEnabled="{Binding IsSadadCheckBoxEnabled}"
                                         Style="{StaticResource CheckboxHeightWidth32}"
                                         VerticalOptions="CenterAndExpand" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.VRSecuritySadadCheckBoxDesc1}"
                                         VerticalOptions="CenterAndExpand">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsSadadCheckBox3}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
                                                 <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                             </DataTrigger>
                                             <DataTrigger
                                                 Binding="{Binding IsSadadCheckBox3}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="False">
                                                 <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                             </DataTrigger>
-                                        </custom:CustomLabel.Triggers>
-                                    </custom:CustomLabel>
+                                        </Label.Triggers>
+                                    </Label>
                                 </Grid>
 
                             </StackLayout>
@@ -1541,11 +1541,11 @@
                                 Padding="15"
                                 HorizontalOptions="FillAndExpand"
                                 Orientation="Horizontal">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VRSECURITYAMOUNT}" />
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="EndAndExpand"
                                     Style="{StaticResource CaptionLabelBlackBold}"
                                     Text="{Binding SecurityAmount, Converter={StaticResource commaSeparatorConverter}}" />
@@ -1589,13 +1589,13 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource PageTitleBlack}"
                                 Text="{x:Static ResourceManager:AppResources.VRDeclaration}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Margin="0,-10,0,15"
@@ -1625,27 +1625,27 @@
                                 IsChecked="{Binding IsDECCheckBox}"
                                 Style="{StaticResource CheckboxHeightWidth32}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Column="1"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.VRDECCheckBox}"
                                 VerticalOptions="CenterAndExpand">
 
-                                <custom:CustomLabel.Triggers>
+                                <Label.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IsDECCheckBox}"
-                                        TargetType="custom:CustomLabel"
+                                        TargetType="Label"
                                         Value="True">
                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                     </DataTrigger>
                                     <DataTrigger
                                         Binding="{Binding IsDECCheckBox}"
-                                        TargetType="custom:CustomLabel"
+                                        TargetType="Label"
                                         Value="False">
                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                     </DataTrigger>
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                </Label.Triggers>
+                            </Label>
                         </Grid>
 
                         <Grid Grid.Row="2" HorizontalOptions="FillAndExpand">
@@ -1657,7 +1657,7 @@
                                 HasShadow="False"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource GreyBorderFrame}">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VRDECDesc}" />
@@ -1671,18 +1671,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarRegular}"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VRIDType}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Frame
                                 Grid.Row="1"
@@ -1697,7 +1697,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal"
                                     VerticalOptions="CenterAndExpand">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="FillAndExpand"
                                         IsEnabled="False"
                                         Style="{StaticResource BodyLabelBlack}"
@@ -1733,18 +1733,18 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     FontFamily="{StaticResource SomarRegular}"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource MicroGrayLabelStyle}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VRIDNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -1775,18 +1775,18 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     FontFamily="{StaticResource SomarRegular}"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource MicroGrayLabelStyle}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VRDateOfBirth}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -1829,18 +1829,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 FontFamily="{StaticResource SomarRegular}"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.VRContactPersonName}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Border
                                 Grid.Row="1"
@@ -1889,13 +1889,13 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource PageTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.CRSummary}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Margin="0,-10,0,15"
@@ -2146,7 +2146,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0">
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource ValueLabelGrey}"
@@ -2181,12 +2181,12 @@
                                                             <ColumnDefinition Width="Auto" />
                                                         </Grid.ColumnDefinitions>
 
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="0"
                                                             FontFamily="{StaticResource SomarRegular}"
                                                             Style="{StaticResource ValueLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.VRAttachment}" />
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
@@ -2287,14 +2287,14 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0">
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource ValueLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.VRTaxPeriodofCase}" />
                                             </StackLayout>
                                             <StackLayout Grid.Column="1">
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"
                                                     Style="{StaticResource BodyLabelBlack}"
@@ -2382,10 +2382,10 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Column="0"
+                                            <Label Grid.Column="0"
                                                                 Text="{x:Static ResourceManager:AppResources.VRRequesttoReviewtheAmount}"
                                                                 Style="{StaticResource ValueLabelGrey}" />
-                                            <custom:CustomLabel Grid.Column="1"
+                                            <Label Grid.Column="1"
                                                                 Text="{Binding VRRequesttoReviewtheAmountValue}"
                                                                 Style="{StaticResource BodyLabelBlack}"
                                                                 HorizontalOptions="EndAndExpand"
@@ -2400,7 +2400,7 @@
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0">
-                                                <custom:CustomLabel
+                                                <Label
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
                                                     Style="{StaticResource ValueLabelGrey}"

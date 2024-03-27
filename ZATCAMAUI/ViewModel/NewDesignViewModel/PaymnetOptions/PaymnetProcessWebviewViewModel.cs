@@ -10,27 +10,13 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 {
 
-    public class PaymnetProcessWebviewViewModel : ViewModelBase
+    public class PaymnetProcessWebviewViewModel : BaseViewModel
     {
         public ICommand GoBackClick { get; set; }
         public int PaymentType;
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
 
 
         public MadaPaymentResponse _paymentData = null;
@@ -50,7 +36,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
         }
         #region Constructor
 
-        public PaymnetProcessWebviewViewModel(INavigationService navigationService, IDialogService dialogService)
+        public PaymnetProcessWebviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

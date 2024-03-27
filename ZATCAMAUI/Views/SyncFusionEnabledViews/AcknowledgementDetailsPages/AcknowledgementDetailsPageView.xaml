@@ -11,6 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sfcustom="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     BackgroundColor="White"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
@@ -160,7 +161,7 @@
                                 Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                 Text="{x:Static ResourceManager:AppResources.ZAmountPayable}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="14"
                                 Padding="0"
                                 FontFamily="{StaticResource SomarSemiBold}"
@@ -168,15 +169,15 @@
                                 IsVisible="{Binding IsSadadNumberVisible}"
                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                 VerticalOptions="CenterAndExpand">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span FontFamily="{StaticResource SomarBold}" Text="{Binding AmountPayable}" />
                                         <Span Text="&#160;&#160;" />
                                         <Span FontFamily="{StaticResource GAZT_FONT_BOLD}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                            <custom:CustomLabel
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
                                 Padding="0"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 HorizontalOptions="StartAndExpand"
@@ -184,14 +185,14 @@
                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                 Text="{x:Static ResourceManager:AppResources.ZVatAcknowledgmentWaitingText}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 FontFamily="{StaticResource GAZT_FONT_BOLD}"
                                 HorizontalOptions="StartAndExpand"
                                 IsVisible="{Binding BreakdownAmountVisibility}"
                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                 Text="{x:Static ResourceManager:AppResources.BreakDownLabel}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 Padding="0"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 HorizontalOptions="StartAndExpand"

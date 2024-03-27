@@ -6,7 +6,7 @@ using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
-    public class OldZakatInstalmentPlanBottomPopupViewModel : ViewModelBase
+    public class OldZakatInstalmentPlanBottomPopupViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -16,7 +16,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         public ICommand ZakatInstalationClicked { get; set; }
 
-        public OldZakatInstalmentPlanBottomPopupViewModel(INavigationService navigationService, IDialogService dialogService)
+        public OldZakatInstalmentPlanBottomPopupViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             InitializeComponent();
             viewModel = App.Locator.AccountStatementsFiltersPageView;
             ChangeAeroIcon();
-            SetLTR();
             this.BindingContext = viewModel;
         }
 
@@ -29,18 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             viewModel.PopulateFiltersData();
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
         public void ChangeAeroIcon()
         {
             if (!App.IsArabic)
@@ -51,14 +38,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             {
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
             }
-        }
-
-        void SortAscending_Tapped(object sender, EventArgs e)
-        {
-        }
-
-        void SortDescending_Tapped(object sender, EventArgs e)
-        {
         }
     }
 }

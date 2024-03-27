@@ -13,7 +13,7 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage;
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
 {
 
-    public class AttachmentPageViewModel : ViewModelBase
+    public class AttachmentPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -28,19 +28,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
         public int NumberOfAttachmentComingFromServer = 0;
         #endregion
         #region Property
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
@@ -192,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
 
         #endregion
         #region Constructor
-        public AttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

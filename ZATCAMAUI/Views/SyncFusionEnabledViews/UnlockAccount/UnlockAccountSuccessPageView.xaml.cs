@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
             viewModel = App.Locator.UnlockAccountSuccessPageViewModel;
             BindingContext = viewModel;
             viewModel.PasswordChangedSuccessfully = PasswordChangedSuccessfully;
-            SetLTR();
             ChangeAeroIcon();
         }
 
@@ -35,20 +34,5 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-            }
-        }
     }
 }

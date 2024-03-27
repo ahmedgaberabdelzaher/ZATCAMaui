@@ -113,21 +113,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        private FlowDirection _FlowDirect = FlowDirection.RightToLeft;
-        public FlowDirection FlowDirect
-        {
-            get
-            {
-                return _FlowDirect;
-            }
-            set
-            {
-                if (_FlowDirect == value) return;
+        //private FlowDirection _FlowDirect = FlowDirection.RightToLeft;
+        //public FlowDirection FlowDirect
+        //{
+        //    get
+        //    {
+        //        return _FlowDirect;
+        //    }
+        //    set
+        //    {
+        //        if (_FlowDirect == value) return;
 
-                _FlowDirect = value;
-                RaisePropertyChanged("FlowDirect");
-            }
-        }
+        //        _FlowDirect = value;
+        //        RaisePropertyChanged("FlowDirect");
+        //    }
+        //}
 
 
         public ASTabIdentification _tabIdentification = null;
@@ -1440,7 +1440,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
-            FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+            //FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
 
         }
 

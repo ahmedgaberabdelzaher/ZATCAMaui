@@ -7,7 +7,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False"
+    FlowDirection="{Binding AppDirection}">
     <!--<ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />
@@ -69,7 +70,7 @@
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Grid.Row="0" Orientation="Horizontal">
-                                        <custom:CustomLabel
+                                        <Label
                                             Margin="10,0,10,0"
                                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                             FontSize="Small"
@@ -78,7 +79,7 @@
                                             Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                             Text="{Binding Telefto}"
                                             TextColor="{StaticResource PrimaryColor}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Margin="30,0,30,0"
                                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                             FontSize="Small"

@@ -77,7 +77,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
             }
             ChangeAeroIcon();
-            SetLTR();
 
 
             NavigationPage.SetBackButtonTitle(this, "");
@@ -180,19 +179,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

@@ -6,39 +6,41 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    FlowDirection="{Binding AppDirection}">
+    <Grid
+        Grid.RowSpan="2"
+        Margin="0"
+        VerticalOptions="FillAndExpand">
+        <Border
+           Padding="0"
+            Margin="0"
+            Stroke="White"
+            Background="White"
+            HorizontalOptions="Fill"
+            StrokeShape="RoundRectangle 15,15,0,0"
+            VerticalOptions="EndAndExpand">
 
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
+            <StackLayout Padding="20,10"
+                        Spacing="15"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
 
-    <yummy:PancakeView
-        Padding="20,20,20,10"
-        BackgroundColor="White"
-        CornerRadius="15,15,0,0"
-        Style="{StaticResource CommonTopCurves}"
-        VerticalOptions="EndAndExpand">
+                <Label
+                   x:Name="InfromatationText"
+                   HorizontalOptions="Start"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Start"
+                   Style="{StaticResource BodyLabelBlack}" />
 
-        <StackLayout Margin="0,0,0,0" VerticalOptions="Center">
+                <buttons:SfButton
+                    x:Name="btnprimary"
+                    Clicked="DoneButtonClicked"
+                    WidthRequest="380"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                    VerticalOptions="EndAndExpand" />
 
-            <Label
-                x:Name="InfromatationText"
-                HorizontalTextAlignment="Start"
-                Style="{StaticResource BodyLabelBlack}" />
-
-            <buttons:SfButton
-                x:Name="btnprimary"
-                Margin="0,0,0,10"
-                Clicked="DoneButtonClicked"
-                Style="{StaticResource PrimaryButtonStyle}"
-                Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
-                VerticalOptions="CenterAndExpand" />
-
-        </StackLayout>
-    </yummy:PancakeView>
+            </StackLayout>
+        </Border>
+    </Grid>
 </pages:PopupPage>

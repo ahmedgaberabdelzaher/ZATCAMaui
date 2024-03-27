@@ -4,11 +4,12 @@ using GalaSoft.MvvmLight.Views;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
 {
 
-    public class TaxEvasionRegistrationViewModel : ViewModelBase
+    public class TaxEvasionRegistrationViewModel : BaseViewModel
     {
         #region variable
         public readonly INavigationService _navigationService;
@@ -44,20 +45,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
                 RaisePropertyChanged("IsVisiblePickerEn");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
+       
         private string _txtEmailAddress = string.Empty;
         public string TxtEmailAddress
         {
@@ -167,7 +155,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             }
         }
 
-        public TaxEvasionRegistrationViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxEvasionRegistrationViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -18,7 +18,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.FAQPage
             BindingContext = viewModel;
             On<iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
-            SetLTR();
             SetUrl();
         }
 
@@ -47,14 +46,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.FAQPage
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
             }
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-       
         private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
             viewModel.IsLoading = true;

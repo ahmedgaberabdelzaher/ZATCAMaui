@@ -16,7 +16,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.ShowVatInformationConfirmationPageView;
                 this.BindingContext = viewModel;
-                SetLTR();
                 this.CloseWhenBackgroundIsClicked = false;
                 if (newDesignPopData != null)
                 {
@@ -37,18 +36,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
         public void SetMargin()
         {
             if (viewModel.NewDesignPopUp != null && viewModel.NewDesignPopUp.HeaderWithInfos != null && viewModel.NewDesignPopUp.HeaderWithInfos.Count != 0)

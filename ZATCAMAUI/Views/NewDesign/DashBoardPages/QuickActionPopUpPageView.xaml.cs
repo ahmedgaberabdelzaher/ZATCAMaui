@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             InitializeComponent();
             viewModel = App.Locator.QuickActionPopUpPageView;
             this.BindingContext = viewModel;
-            SetLTR();
         }
 
         protected async override void OnAppearing()
@@ -27,14 +26,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             await ReadInbox.TranslateTo(0, 0, 500);
             await GetSupport.TranslateTo(0, 0, 600);
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
         private async void OnOverdueReturnClicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PopAsync();

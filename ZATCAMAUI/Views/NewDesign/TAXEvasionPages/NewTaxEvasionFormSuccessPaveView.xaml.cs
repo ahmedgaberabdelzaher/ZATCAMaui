@@ -10,7 +10,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             InitializeComponent();
             viewModel = App.Locator.NewTaxEvasionFormSuccessPaveView;
             BindingContext = viewModel;
-            SetLTR();
 
             if (App.TP != null)
             {
@@ -29,17 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         protected override bool OnBackButtonPressed() => true;
 

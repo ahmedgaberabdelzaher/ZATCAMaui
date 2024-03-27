@@ -12,93 +12,62 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         EstablishmentSignUPPageViewModel viewModel;
         public EstablishmentSignUPPageView()
         {
-            try
-            {
-                InitializeComponent();
-                viewModel = App.Locator.EstablishmentSignUPPageView;
-                BindingContext = viewModel;
-                On<iOS>().SetUseSafeArea(true); 
-            }
-            catch (Exception)
-            {
 
-            }
+            InitializeComponent();
+            viewModel = App.Locator.EstablishmentSignUPPageView;
+            BindingContext = viewModel;
+            On<iOS>().SetUseSafeArea(true);
 
 
         }
 
         protected override async void OnAppearing()
         {
-            try
+            base.OnAppearing();
+
+            if (App.IsArabic)
             {
-
-
-                base.OnAppearing();
-
-                if (App.IsArabic)
-                {
-                    backArrow.Rotation = 180;
-                    FlowDirection = FlowDirection.RightToLeft;
-                }
-                else
-                {
-                    backArrow.Rotation = 0;
-                    FlowDirection = FlowDirection.LeftToRight;
-                }
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                    viewModel.IndividualBackImg = "vat_tile_listofsignup_W.png";
-                    viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
-                });
+                backArrow.Rotation = 180;
+                FlowDirection = FlowDirection.RightToLeft;
             }
-            catch (Exception)
+            else
             {
-
+                backArrow.Rotation = 0;
+                FlowDirection = FlowDirection.LeftToRight;
             }
-        }
 
-        private async void OnEstablishmentTapped(object sender, EventArgs e)
-        {
+            var safeInsets = On<iOS>().SafeAreaInsets();
+            safeInsets.Bottom = -10;
+            Padding = safeInsets;
+
             await Task.Run(() =>
             {
-                viewModel.IsLoading = true;
+                viewModel.IsLoading = false;
                 viewModel.IndividualBackImg = "vat_tile_listofsignup_W.png";
-                viewModel.EstablishmentBackImg = "vat_tile_listofsignup.png";
-
-            });
-
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
-
-            });
-        }
-
-        private async void OnIndividualTapped(object sender, EventArgs e)
-        {
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-                viewModel.IndividualBackImg = "vat_tile_listofsignup.png";
                 viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
-
-            });
-
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-
-                PopupNavigation.Instance.PushAsync(new NafathPopUpPage());//CR6094
-
             });
         }
 
-        private void OnBackArrowTapped(object sender, EventArgs e)
+        private void OnEstablishmentTapped(object sender, TappedEventArgs e)
+        {
+
+            viewModel.IsLoading = true;
+            viewModel.IndividualBackImg = "vat_tile_listofsignup_W.png";
+            viewModel.EstablishmentBackImg = "vat_tile_listofsignup.png";
+            viewModel._navigationService.NavigateTo(App.SignUpForEstablishmentPageView);
+
+        }
+
+        private async void OnIndividualTapped(object sender, TappedEventArgs e)
+        {
+
+            viewModel.IsLoading = true;
+            viewModel.IndividualBackImg = "vat_tile_listofsignup.png";
+            viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
+           await PopupNavigation.Instance.PushAsync(new NafathPopUpPage());//CR6094
+        }
+
+        private void OnBackArrowTapped(object sender, TappedEventArgs e)
         {
             viewModel._navigationService.GoBack();
         }

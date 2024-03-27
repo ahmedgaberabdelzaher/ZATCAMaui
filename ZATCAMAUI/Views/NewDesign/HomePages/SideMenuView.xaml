@@ -7,13 +7,12 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     TitleText="{x:Static ResourceManager:AppResources.NDVATServices}">
 
-    <VerticalStackLayout Spacing="10"
-                         Margin="0,30">
+    <Grid RowDefinitions="auto,100*,*">
 
             <Image
-
                 HeightRequest="110"
                 HorizontalOptions="CenterAndExpand"
                 Source="ZatcaLogoWithTitle"
@@ -23,7 +22,7 @@
             
             <CollectionView x:Name="menu"
                             VerticalScrollBarVisibility="Never"
-                            HeightRequest="490"
+                            Grid.Row="1"
                             VerticalOptions="FillAndExpand"
                             ItemsSource="{Binding SideMenuServiceLst}">
 
@@ -53,7 +52,7 @@
                                     Style="{StaticResource SmallIcon}"
                                     WidthRequest="32" />
 
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalTextAlignment="Start"
                                     Style="{StaticResource ValueLabelWhiteBold}"
                                     Text="{Binding Name}"
@@ -74,11 +73,12 @@
 
             </CollectionView>
 
-         <custom:BottomMenu
+         <custom:BottomMenu Grid.Row="2"
+                            Margin="0,-10"
                      VerticalOptions="EndAndExpand" />
 
            
 
-    </VerticalStackLayout>
+    </Grid>
 
 </newdesign:BaseContentPage>

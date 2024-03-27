@@ -6,11 +6,8 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -18,8 +15,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
             </ResourceDictionary.MergedDictionaries>
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
@@ -37,7 +32,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -62,9 +57,9 @@
                                         HeightRequest="50"
                                         Source="warning"
                                         WidthRequest="25" />
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="FillAndExpand"
-                                        LineSpacing=".9"
+                                        LineHeight=".9"
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.searchingandviewingtheindicativepricesforexciseGoods}"
                                         VerticalTextAlignment="Center" />
@@ -88,7 +83,7 @@
 
 
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
             <Grid
                 Grid.Row="1"
                 Margin="0,0,0,0"

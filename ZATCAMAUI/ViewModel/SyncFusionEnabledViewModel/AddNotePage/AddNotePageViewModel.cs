@@ -2,12 +2,13 @@
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage
 {
 
-    public class AddNotePageViewModel : ViewModelBase
+    public class AddNotePageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -71,7 +72,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage
         }
         #endregion
         #region Constructor
-        public AddNotePageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AddNotePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

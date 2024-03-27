@@ -9,7 +9,6 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -80,7 +79,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -255,7 +254,7 @@
                                 </Image>
 
                                 <!--  Passport Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     Padding="15"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
@@ -263,26 +262,26 @@
                                     TextColor="White"
                                     VerticalOptions="EndAndExpand">
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding IsYesSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="True">
                                             <Setter Property="TextColor" Value="White" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding IsYesSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="False">
                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                         </DataTrigger>
 
 
-                                    </custom:CustomLabel.Triggers>
+                                    </Label.Triggers>
 
-                                </custom:CustomLabel>
+                                </Label>
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IDSelectionCommand}" CommandParameter="4" />
@@ -320,7 +319,7 @@
 
 
                                 <!--  National ID label  -->
-                                <custom:CustomLabel
+                                <Label
                                     Padding="15"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
@@ -328,23 +327,23 @@
                                     TextColor="{StaticResource Primary}"
                                     VerticalOptions="EndAndExpand">
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding IsYesSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="False">
                                             <Setter Property="TextColor" Value="White" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding IsYesSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="True">
                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IDSelectionCommand}" CommandParameter="16" />
@@ -359,14 +358,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  First Name Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  First Name Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -395,14 +394,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Middle Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.MiddleName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Middle Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -431,14 +430,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Last Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTLastNameLabel}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Last Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -467,14 +466,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Nationality Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.PassengerNationality}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Nationality Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -520,14 +519,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  ID Number Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding IDName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  ID Number Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -553,14 +552,14 @@
                         </StackLayout>
 
                         <!--  Gender Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ESTGenderLabel}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
 
                         <!--#region Gender Cards-->
                         <!--  In case visitor  -->
@@ -604,7 +603,7 @@
 
                                 <!--  Male label  -->
 
-                                <custom:CustomLabel
+                                <Label
                                     Padding="15"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
@@ -612,25 +611,25 @@
                                     TextColor="White"
                                     VerticalOptions="EndAndExpand">
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding IsMaleSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="True">
                                             <Setter Property="TextColor" Value="White" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding IsMaleSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="False">
                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                         </DataTrigger>
 
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GenderSelectionCommand}" CommandParameter="1" />
@@ -666,7 +665,7 @@
                                 </Image>
 
                                 <!--  Female Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     Padding="15"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
@@ -674,24 +673,24 @@
                                     TextColor="{StaticResource Primary}"
                                     VerticalOptions="EndAndExpand">
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding IsMaleSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="False">
                                             <Setter Property="TextColor" Value="White" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding IsMaleSelected}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="True">
                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
+                                    </Label.Triggers>
 
-                                </custom:CustomLabel>
+                                </Label>
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GenderSelectionCommand}" CommandParameter="2" />
@@ -751,14 +750,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Its Source Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ItsSource}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Its Source Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -804,14 +803,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Release Date Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ReleaseDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <!--  Release Date Label  -->
@@ -875,14 +874,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  End Date Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <!--  End Date Label  -->
@@ -946,14 +945,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Date of Birth Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <!--  Date of Birth Label  -->
@@ -1038,7 +1037,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Bottom Sheet List  -->

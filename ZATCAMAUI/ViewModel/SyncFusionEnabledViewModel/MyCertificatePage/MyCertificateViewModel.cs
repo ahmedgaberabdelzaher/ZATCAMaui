@@ -7,11 +7,12 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
 {
 
-    public class MyCertificateViewModel : ViewModelBase
+    public class MyCertificateViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -42,19 +43,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
                 RaisePropertyChanged("SelectedTab");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private bool _isCertificateAvailableZakat = false;
         public bool IsCertificateAvailableZakat
         {
@@ -347,7 +336,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
         }
         #endregion
         #region Constructor
-        public MyCertificateViewModel(INavigationService navigationService, IDialogService dialogService)
+        public MyCertificateViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

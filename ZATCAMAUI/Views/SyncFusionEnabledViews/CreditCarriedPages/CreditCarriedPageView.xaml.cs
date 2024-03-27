@@ -20,7 +20,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.CreditCarriedPages
                 ChangeAeroIcon();
                 viewModel = App.Locator.CreditCarriedPageView;
                 BindingContext = viewModel;
-                SetLTR();
                 if (vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
@@ -53,13 +52,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.CreditCarriedPages
             else
             {
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
     }

@@ -14,7 +14,7 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     x:Name="TinDeReg"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="false">
@@ -50,11 +50,11 @@
                         <RowDefinition Height="Auto" />
 
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -74,7 +74,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid
                         Grid.Row="0"
                         Margin="8,0"
@@ -184,13 +184,13 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="1" />
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="0"
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource SectionTitleBlack}"
                             Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" />
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="1"
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
@@ -213,7 +213,7 @@
 
                         <StackLayout Grid.Row="0" Grid.Column="0">
 
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" />
@@ -332,21 +332,21 @@
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         IsVisible="{Binding IsOption1Visible}">
-                        <custom:CustomLabel x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" />
                                     <Span Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <StackLayout
                             x:Name="CalLabel"
                             Grid.Row="4"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Orientation="Horizontal">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="Start"
                                 Style="{StaticResource CaptionLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.NDGregorian}" />
@@ -355,7 +355,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 IsToggled="{Binding IsHijriCal}"
                                 Toggled="HijriCalSwitch_Toggled" />
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="End"
                                 Style="{StaticResource CaptionLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.NDHijri}" />
@@ -409,7 +409,6 @@
                                 Background="White"
                                 CancelButtonClicked="DpDbo_CancelButtonClicked"
                                 Closed="DpDbo_Closed"
-                                FlowDirection="RightToLeft"
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="40"
                                 Mode="Dialog"
@@ -417,7 +416,14 @@
                                 SelectedItem="{Binding TodayDate}"
                                 SelectionChanged="DpDbo_SelectionChanged">
 
+                                  <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
 
+
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
 
                                 <custom:CustomDatePicker.SelectedTextStyle>
                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -445,9 +451,6 @@
 
                                 </custom:CustomDatePicker.FooterView>
 
-                                <custom:CustomDatePicker.Behaviors>
-                                    <behaviors:SfPickerBehavior />
-                                </custom:CustomDatePicker.Behaviors>
                             </custom:CustomDatePicker>
                             <!--  HijriDatePicker  -->
                             <custom:CustomHijriDatePicker
@@ -465,8 +468,12 @@
                                 SelectionChanged="DpDbo_SelectionChanged">
 
                                  <custom:CustomHijriDatePicker.SelectionView >
-                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                </custom:CustomHijriDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                 <custom:CustomHijriDatePicker.HeaderView>
 
@@ -510,16 +517,16 @@
                         <!--  Display this view in both cases Transfer outlets to snigle transferee an sub selection all id types-!>  -->
 
                         <StackLayout>
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" />
                                         <Span Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="Start"
                                     Style="{StaticResource CaptionLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.NDGregorian}" />
@@ -528,7 +535,7 @@
                                     HorizontalOptions="CenterAndExpand"
                                     IsToggled="{Binding IsHijriCal, Mode=TwoWay}"
                                     Toggled="HijriCal2Switch_Toggled" />
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="End"
                                     Style="{StaticResource CaptionLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.NDHijri}" />
@@ -582,7 +589,6 @@
                                     Background="White"
                                     CancelButtonClicked="DpDbo_CancelButtonClicked"
                                     Closed="DpDbo_Closed"
-                                    FlowDirection="RightToLeft"
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="40"
                                     Mode="Dialog"
@@ -590,7 +596,14 @@
                                     SelectedItem="{Binding TodayDate}"
                                     SelectionChanged="DpDbo_SelectionChanged">
 
+                                      <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
 
+
+                                     <custom:CustomDatePicker.SelectionView >
+                                        <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                     </custom:CustomDatePicker.SelectionView>
 
                                     <custom:CustomDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -619,10 +632,6 @@
                                     </custom:CustomDatePicker.FooterView>
 
 
-                                    <custom:CustomDatePicker.Behaviors>
-                                        <behaviors:SfPickerBehavior />
-                                    </custom:CustomDatePicker.Behaviors>
-
                                 </custom:CustomDatePicker>
                                 <!--  HijriDatePicker  -->
                                 <custom:CustomHijriDatePicker
@@ -639,9 +648,13 @@
                                     SelectedItem="{Binding TodayDateinHijri}"
                                     SelectionChanged="DpDbo_SelectionChanged">
 
-                                     <custom:CustomHijriDatePicker.SelectionView >
-                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                      </custom:CustomHijriDatePicker.SelectionView>
+                                   <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -673,7 +686,7 @@
                             </Grid>
 
                             <StackLayout Margin="0,20,0,0" IsVisible="{Binding TinText.IsVisible}">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.TIN}" />
@@ -710,14 +723,14 @@
                             </StackLayout>
 
                             <StackLayout>
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
                                             <Span Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Margin="0,0,0,10"
@@ -760,14 +773,14 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding IdNumberText.IsVisible}">
-                                <custom:CustomLabel FontFamily="{StaticResource SomarLight}" Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label FontFamily="{StaticResource SomarLight}" Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.IDNumber}" />
                                             <Span Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
 
                                 <inputLayout:SfTextInputLayout
@@ -800,16 +813,16 @@
                             </StackLayout>
 
                         </StackLayout>
-                        <custom:CustomLabel IsVisible="{Binding IsDobVisible}" Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label IsVisible="{Binding IsDobVisible}" Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
                                     <Span Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <StackLayout IsVisible="{Binding IsDobVisible}" Orientation="Horizontal">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="Start"
                                 Style="{StaticResource CaptionLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.NDGregorian}" />
@@ -818,7 +831,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 IsToggled="{Binding IsDOBHijriCal, Mode=TwoWay}"
                                 Toggled="HijriCal3Switch_Toggled" />
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="End"
                                 Style="{StaticResource CaptionLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.NDHijri}" />
@@ -870,7 +883,6 @@
                                 Background="White"
                                 CancelButtonClicked="DpDOB_CancelButtonClicked"
                                 Closed="DpDOB_Closed"
-                                FlowDirection="RightToLeft"
                                 HorizontalOptions="FillAndExpand"
                                 ItemHeight="40"
                                 Mode="Dialog"
@@ -878,6 +890,13 @@
                                 SelectedItem="{Binding TodayDate}"
                                 SelectionChanged="DpDOB_SelectionChanged">
 
+                                  <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                    </custom:CustomDatePicker.ColumnHeaderView>
+
+                                 <custom:CustomDatePicker.SelectionView >
+                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                 </custom:CustomDatePicker.SelectionView>
 
 
                                 <custom:CustomDatePicker.SelectedTextStyle>
@@ -907,10 +926,6 @@
                                 </custom:CustomDatePicker.FooterView>
 
 
-                                <custom:CustomDatePicker.Behaviors>
-                                    <behaviors:SfPickerBehavior />
-                                </custom:CustomDatePicker.Behaviors>
-
                             </custom:CustomDatePicker>
                             <!--  HijriDatePicker  -->
                             <custom:CustomHijriDatePicker
@@ -930,6 +945,11 @@
                                  <custom:CustomHijriDatePicker.SelectionView >
                                             <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
                                         </custom:CustomHijriDatePicker.SelectionView>
+
+                                 <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+
 
                                 <custom:CustomHijriDatePicker.HeaderView>
 
@@ -965,14 +985,14 @@
                         <StackLayout>
 
                             <StackLayout Margin="0,20,0,0" IsVisible="{Binding FirstNameText.IsVisible}">
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
                                             <Span Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-6,0,-6"
@@ -1002,14 +1022,14 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding SurnameText.IsVisible}">
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationSurName}" />
                                             <Span Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-6,0,-6"
@@ -1039,7 +1059,7 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding FathersNameText.IsVisible}">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" />
@@ -1070,7 +1090,7 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding GrandFathersNameText.IsVisible}">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" />
@@ -1102,7 +1122,7 @@
 
 
                             <StackLayout IsVisible="{Binding FamilyNameText.IsVisible}">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" />
@@ -1138,7 +1158,7 @@
 
                         <StackLayout IsVisible="{Binding IsName1Visible}">
                             <StackLayout>
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" />
@@ -1170,7 +1190,7 @@
                             </StackLayout>
 
                             <StackLayout>
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" />
@@ -1226,11 +1246,11 @@
                     IsVisible="{Binding IsOutletViewEnabled}"
                     VerticalOptions="FillAndExpand">
 
-                    <custom:CustomLabel
+                    <Label
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource SectionTitleBlack}"
                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletDetails}" />
-                    <custom:CustomLabel
+                    <Label
                         Margin="0,0,0,8"
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource BodyLabelGrey}"
@@ -1535,7 +1555,7 @@
                             Style="{StaticResource CheckboxHeightWidth32}"
                             VerticalOptions="CenterAndExpand" />
 
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="0"
                             Grid.Column="1"
                             Grid.ColumnSpan="2"
@@ -1561,11 +1581,11 @@
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding IsAttachmentsViewEnabled}"
                     VerticalOptions="FillAndExpand">
-                    <custom:CustomLabel
+                    <Label
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource SectionTitleBlack}"
                         Text="{x:Static ResourceManager:AppResources.Attachment}" />
-                    <custom:CustomLabel
+                    <Label
                         Margin="0,0,0,8"
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource BodyLabelGrey}"
@@ -1644,7 +1664,7 @@
                                                         </Grid.RowDefinitions>
 
 
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Row="0"
                                                             Grid.Column="0"
                                                             FontSize="Small"
@@ -1678,7 +1698,7 @@
                                                                     Source="Generic_attachment_icon.png"
                                                                     VerticalOptions="Center"
                                                                     WidthRequest="25" />
-                                                                <custom:CustomLabel
+                                                                <Label
                                                                     Grid.Row="0"
                                                                     Grid.Column="1"
                                                                     FontSize="Small"
@@ -1770,13 +1790,13 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="1" />
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="0"
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource SectionTitleBlack}"
                             Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}" />
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="1"
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
@@ -1798,7 +1818,7 @@
                         </Grid.RowDefinitions>
                         <StackLayout>
                             <StackLayout>
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ZZName}" />
@@ -1827,7 +1847,7 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout>
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" />
@@ -1856,7 +1876,7 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
                             <StackLayout>
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
@@ -1873,7 +1893,7 @@
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="+966" />
@@ -1905,7 +1925,7 @@
                                 Grid.Row="3"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.Date}" />
@@ -1947,13 +1967,13 @@
                                     IsChecked="{Binding IsDeclarationChecked}"
                                     Style="{StaticResource CheckboxHeightWidth32}"
                                     VerticalOptions="CenterAndExpand" />
-                                <custom:CustomLabel Margin="5,10,0,15" Style="{DynamicResource IsDeclarationCheckedStyle}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Margin="5,10,0,15" Style="{DynamicResource IsDeclarationCheckedStyle}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationDeclarationCheck}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                             </StackLayout>
                             <buttons:SfButton
                                 x:Name="btnDeclarationContinue"
@@ -1997,13 +2017,13 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="0"
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource PageTitleBlack}"
                             Text="{x:Static ResourceManager:AppResources.ZSummary}" />
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="1"
                             Grid.Column="0"
                             Margin="0,0,0,8"

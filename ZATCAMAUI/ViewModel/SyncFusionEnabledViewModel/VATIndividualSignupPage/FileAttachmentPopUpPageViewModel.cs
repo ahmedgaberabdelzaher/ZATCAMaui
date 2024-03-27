@@ -10,12 +10,13 @@ using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
 
-    public class FileAttachmentPopUpPageViewModel : ViewModelBase
+    public class FileAttachmentPopUpPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public ICommand OnAttachmentClick { get; set; }
@@ -30,19 +31,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public int NumberOfAttachmentComingFromServer = 0;
 
         #region Property
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
         private VATAttachment _vATAttachmentObj;
         public VATAttachment VATAttachmentObj
@@ -361,7 +350,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
         #endregion
-        public FileAttachmentPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public FileAttachmentPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

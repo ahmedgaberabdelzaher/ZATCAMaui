@@ -3,12 +3,13 @@ using GalaSoft.MvvmLight.Views;
 using RGPopup.Maui.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage
 {
 
-    public class SignUpTAndCPageViewModel : ViewModelBase
+    public class SignUpTAndCPageViewModel : BaseViewModel
     {
         #region Veriables
         public readonly INavigationService _navigationService;
@@ -68,7 +69,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage
         }
         #endregion
         #region Constructor
-        public SignUpTAndCPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public SignUpTAndCPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

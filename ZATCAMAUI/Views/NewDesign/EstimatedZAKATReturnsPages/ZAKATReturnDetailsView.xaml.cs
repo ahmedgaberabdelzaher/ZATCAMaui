@@ -34,7 +34,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
             ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
-            SetLTR();
             IsComingFromAttachmentPage = false;
         }
 
@@ -263,14 +262,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
             }
 
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
 
         public void ChangeAeroIcon()

@@ -20,8 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             viewModel = App.Locator.TaxEvasionReportDetailPageView;
             BindingContext = viewModel;
             viewModel.SelectedTaxEvasionListItem = SelectedTaxEvasionListItem;
-            SetLTR();
-
             On<iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
         }
@@ -106,19 +104,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             else
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
 

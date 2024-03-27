@@ -9,7 +9,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:questionsviews="clr-namespace:ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -79,7 +79,7 @@
                     Spacing="0">
 
                     <!--  Count Label  -->
-                    <custom:CustomLabel
+                    <Label
                         FontSize="14"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
@@ -105,7 +105,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -276,18 +276,18 @@
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Question Title Field Label  -->
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,0,0,10"
                             FontSize="14"
-                            LineSpacing="1"
+                            LineHeight="1"
                             Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding Question}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
 
                         <!--  Horizontal Line  -->
                         <BoxView
@@ -336,39 +336,39 @@
                                         WidthRequest="20" />
 
                                     <!--  Question Hint Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="12"
                                         LineHeight="1"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}"
                                         TextColor="#999999">
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
 
                                             <DataTrigger
                                                 Binding="{Binding QFlow}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="2">
                                                 <Setter Property="Text" Value="" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding QFlow}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="3">
                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Q2Hint}" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding QFlow}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="4">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  Hint With Two Line  -->
                                     <StackLayout IsVisible="false">
@@ -385,27 +385,27 @@
                                         </StackLayout.Triggers>
 
                                         <!--  Hint Label  -->
-                                        <custom:CustomLabel
+                                        <Label
                                             FontSize="12"
                                             HorizontalOptions="StartAndExpand"
-                                            LineSpacing="1"
+                                            LineHeight="1"
                                             Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
                                             TextColor="#999999" />
 
                                         <!--  View List Label  -->
-                                        <custom:CustomLabel
+                                        <Label
                                             FontSize="12"
                                             HorizontalOptions="StartAndExpand"
-                                            LineSpacing="1"
+                                            LineHeight="1"
                                             Text="{x:Static ResourceManager:AppResources.Viewlist}"
                                             TextColor="#002447"
                                             TextDecorations="Underline">
 
-                                            <custom:CustomLabel.GestureRecognizers>
+                                            <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}" />
-                                            </custom:CustomLabel.GestureRecognizers>
+                                            </Label.GestureRecognizers>
 
-                                        </custom:CustomLabel>
+                                        </Label>
 
                                     </StackLayout>
 
@@ -463,18 +463,18 @@
                                         VerticalOptions="Center">
 
                                         <!--  Total Number Label  -->
-                                        <custom:CustomLabel
+                                        <Label
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="14"
                                             Style="{StaticResource CaptionLabelGrey}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
                                                     <Span Text="  " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                     </Frame>
 
@@ -519,7 +519,7 @@
 
                 </ScrollView>
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Bottom Sheet List  -->

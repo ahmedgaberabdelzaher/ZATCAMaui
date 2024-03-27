@@ -41,21 +41,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
             }
         }
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
-
 
         public ContactUsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {

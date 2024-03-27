@@ -10,7 +10,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -21,11 +21,11 @@
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView
+    <Border
         x:Name="MainPanCakeView"
         Padding="15"
         BackgroundColor="White"
-        CornerRadius="8,8,0,0"
+        StrokeShape="RoundRectangle 8,8,0,0"
         VerticalOptions="EndAndExpand">
         <Grid>
             <Grid.RowDefinitions>
@@ -56,20 +56,20 @@
                                         <StackLayout IsVisible="{Binding IsHeaderAvailable}">
                                             <StackLayout Orientation="Horizontal">
                                                 <Image Source="ic_vat_info" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     x:Name="HeaderTextlbl"
                                                     Style="{StaticResource BodyLabelBlack}"
                                                     Text="{Binding HeaderText}"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:CustomLabel.Triggers>
+                                                    <Label.Triggers>
                                                         <DataTrigger
                                                             Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}"
-                                                            TargetType="custom:CustomLabel"
+                                                            TargetType="Label"
                                                             Value="0">
                                                             <Setter Property="IsVisible" Value="False" />
                                                         </DataTrigger>
-                                                    </custom:CustomLabel.Triggers>
-                                                </custom:CustomLabel>
+                                                    </Label.Triggers>
+                                                </Label>
                                             </StackLayout>
                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding Message}" />
                                         </StackLayout>
@@ -136,7 +136,7 @@
                 </buttons:SfButton>
             </StackLayout>
         </Grid>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>
 
 

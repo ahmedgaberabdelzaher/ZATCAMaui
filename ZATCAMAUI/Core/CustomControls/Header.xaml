@@ -13,7 +13,7 @@
 
         </ResourceDictionary>
     </ContentView.Resources>
-    <Grid Padding="20,5,20,5" ColumnDefinitions="10*,80*,10*">
+    <Grid Padding="15,15" ColumnDefinitions="10*,80*,10*">
         <StackLayout Grid.Column="0">
             <Image
                 x:Name="backbutton"

@@ -34,7 +34,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
                 viewModel.zakatReturnDetailsDToCompare = ZakatReturnDetail;
                 SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
                 fbNum = ZakatReturnDetail.d.Fbnum;
-                SetLTR();
                 viewModel.ClearData();
                 viewModel.onPageLoad();
                 viewModel.ZakatReturnDetail = ZakatReturnDetail;
@@ -64,13 +63,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
             else
             {
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         protected override void OnAppearing()

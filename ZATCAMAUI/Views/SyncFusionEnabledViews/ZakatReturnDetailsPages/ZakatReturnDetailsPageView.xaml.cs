@@ -29,7 +29,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
                 viewModel.ClearData();
                 Fbguid = fbguid;
                 On<iOS>().SetUseSafeArea(true);
-                SetLTR();
                 BindingContext = viewModel;
                 NavigationPage.SetBackButtonTitle(this, "");
                 ChangeAeroIcon();
@@ -59,13 +58,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
             await viewModel.OnPageLoad(Fbguid);
             date.Text = viewModel.Abrzu;
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+
         protected async void OnBillsButtonClicked(object sender, EventArgs e)
         {
             ZakatReturnDetailsPageViewModel.IsAmendButtonClicked = false;

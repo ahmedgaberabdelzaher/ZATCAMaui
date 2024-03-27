@@ -8,6 +8,7 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
@@ -15,7 +16,7 @@ using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
 
-    public class VATRegistrationPageViewModel : ViewModelBase
+    public class VATRegistrationPageViewModel : BaseViewModel
     {
         string idnumber { get; set; }
         public int DefaultMonth;
@@ -666,21 +667,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
         private List<String> _ListOfActionButtonsApplicableForRegistration;
         public List<String> ListOfActionButtonsApplicableForRegistration
@@ -1790,7 +1777,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public bool isLoadedAlready { get; private set; }
         #endregion
 
-        public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

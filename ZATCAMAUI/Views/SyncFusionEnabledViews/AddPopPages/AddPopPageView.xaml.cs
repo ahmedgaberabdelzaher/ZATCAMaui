@@ -19,7 +19,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages
                     viewModel = App.Locator.AddPopPageView;
                     this.BindingContext = viewModel;
                     InitializeComponent();
-                    SetLTR();
                     if (objPopUP.isFontSet)
                     {
                         if (Device.RuntimePlatform == Device.Android)
@@ -84,17 +83,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages
                         viewModel.IsRed = "{StaticResource ForgotPasswordGrayTextColor}";
                     }
                     viewModel.FlowDirections = objPopUP.FlowDirections;
-                    SetLTR();
                 }
             }
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+       
         private void OnClose(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync();

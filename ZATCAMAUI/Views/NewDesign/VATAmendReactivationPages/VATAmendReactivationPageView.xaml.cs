@@ -73,7 +73,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                 viewModel.SetDefaultDate();
-                SetLTR();
                 Task.Run(async () =>
                 {
                     try
@@ -127,20 +126,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             EntryEmail.Text = string.Empty;
             EntryPhoneNumber.Text = string.Empty;
             EntryIDNo.Text = string.Empty;
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-
-            }
-
         }
         public void ChangeAeroIcon()
         {

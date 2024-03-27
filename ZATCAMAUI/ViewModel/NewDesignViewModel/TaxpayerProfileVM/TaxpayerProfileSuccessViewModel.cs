@@ -4,7 +4,7 @@ using GalaSoft.MvvmLight.Views;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
 
-    public class TaxpayerProfileSuccessViewModel : ViewModelBase
+    public class TaxpayerProfileSuccessViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -45,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        public TaxpayerProfileSuccessViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxpayerProfileSuccessViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
             _navigationService = navigationService;

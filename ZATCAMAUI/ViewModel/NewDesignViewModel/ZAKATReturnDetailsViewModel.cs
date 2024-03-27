@@ -17,7 +17,7 @@ using ZATCAMAUI.Views.NewDesign.PaymentOptions;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
 
-    public class ZAKATReturnDetailsViewModel : ViewModelBase
+    public class ZAKATReturnDetailsViewModel : BaseViewModel
     {
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnConfirmClicked { get; set; }
@@ -82,21 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("isLabelVisible");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
         private bool _isEditTextVisible = true;
         public bool IsEditTextVisible
@@ -725,7 +711,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
 
         #region Constructor
-        public ZAKATReturnDetailsViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZAKATReturnDetailsViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

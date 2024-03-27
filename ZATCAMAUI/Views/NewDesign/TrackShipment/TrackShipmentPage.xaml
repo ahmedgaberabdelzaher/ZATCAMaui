@@ -11,7 +11,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -76,7 +76,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -249,32 +249,32 @@
                                     </Image>
 
                                     <!--  Declaration Details label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.ShipmentDeclarationDetails}"
                                         TextColor="White"
                                         VerticalOptions="EndAndExpand">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
 
                                             <DataTrigger
                                                 Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
                                                 <Setter Property="TextColor" Value="White" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="False">
                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                             </DataTrigger>
 
 
-                                        </custom:CustomLabel.Triggers>
-                                    </custom:CustomLabel>
+                                        </Label.Triggers>
+                                    </Label>
                                 </StackLayout>
 
 
@@ -346,31 +346,31 @@
                                     </Image>
 
                                     <!--  Bill Number Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.BillNumber}"
                                         TextColor="{StaticResource Primary}"
                                         VerticalOptions="EndAndExpand">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
 
                                             <DataTrigger
                                                 Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="False">
                                                 <Setter Property="TextColor" Value="White" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                             </DataTrigger>
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                 </StackLayout>
 
@@ -468,9 +468,13 @@
                                             <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="{StaticResource NeutralBlack}" />
                                         </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-                                         <custom:CustomHijriDatePicker.SelectionView >
-                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                        </custom:CustomHijriDatePicker.SelectionView>
+                                        <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                         <custom:CustomHijriDatePicker.HeaderView>
 
@@ -619,7 +623,7 @@
 
                 </ScrollView>
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Bottom Sheet List  -->

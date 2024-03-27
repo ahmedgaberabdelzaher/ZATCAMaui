@@ -17,19 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             BindingContext = viewModel;
             FlowDirection = FlowDirection.LeftToRight;
             ChangeAeroIcon();
-            SetLTR();
-        }
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
 
         public void ChangeAeroIcon()

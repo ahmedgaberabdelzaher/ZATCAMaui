@@ -2,11 +2,12 @@
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.DisplayNotesPage
 {
  
-    public class DisplayNotesPageViewModel : ViewModelBase
+    public class DisplayNotesPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -56,7 +57,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.DisplayNotesPage
         }
         #endregion
         #region Constructor
-        public DisplayNotesPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public DisplayNotesPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

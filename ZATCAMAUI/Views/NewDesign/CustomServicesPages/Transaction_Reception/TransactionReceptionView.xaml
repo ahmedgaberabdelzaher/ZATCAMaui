@@ -9,7 +9,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     HasBackButton="True"
     TitleText="{x:Static ResourceManager:AppResources.TransactionReception}">
     <newdesign:BaseContentPage.PancakeView>
@@ -25,14 +25,14 @@
                         FontSize="12"
                         Text="{x:Static ResourceManager:AppResources.Pleasecompletethedata}"
                         TextColor="#999999" />
-                    <custom:CustomLabel Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
-                        <custom:CustomLabel.FormattedText>
+                    <Label Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.UserType}" />
                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
                     <!--#region Selection Options-->
                     <Grid ColumnDefinitions="*,15,*" RowDefinitions="auto">
                         <!--#region Individula Option-->
@@ -164,14 +164,14 @@
                     <StackLayout Spacing="0">
 
                         <!--  Email Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <!--  Email Entry  -->
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
@@ -199,14 +199,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  CR Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.UnifiedNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <!--  CR DropDown Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
@@ -264,13 +264,13 @@
                         <StackLayout Spacing="0">
 
                             <!--  Tin Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TIN}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <!--  Tin Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
@@ -504,14 +504,14 @@
                     <!--#region  Subject Field-->
                     <StackLayout Spacing="0">
                         <!--  Subject Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.Subject}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <!--  Subject Entry  -->
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
@@ -536,14 +536,14 @@
                     <StackLayout Spacing="0">
 
                         <!--  description Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.Transactiondescription}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
 
                         <!--  description Entry  -->
                         <inputLayout:SfTextInputLayout
@@ -576,14 +576,14 @@
                     <StackLayout Spacing="0">
 
                         <!--  Uploaded files Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.Attachments}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
 
                         <!--  Uploaded files Entry  -->
                         <inputLayout:SfTextInputLayout

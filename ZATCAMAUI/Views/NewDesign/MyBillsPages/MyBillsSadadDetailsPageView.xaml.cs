@@ -41,9 +41,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 viewModel.TotalAmount = viewModel.selectedAmount;
                 BindingContext = viewModel;
             }
-
-
-            SetLTR();
             ChangeAeroIcon();
             On<iOS>().SetUseSafeArea(true);
 
@@ -57,7 +54,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 _VatReturnSuccessPageViewModel = App.Locator.VATReturnSuccessfullPageView;
                 screenIndex = 2;
                 BindingContext = _VatReturnSuccessPageViewModel;
-                SetLTR();
                 ChangeAeroIcon();
                 On<iOS>().SetUseSafeArea(true);
                 if (vATDeclaration != null && vATDeclaration.d != null)
@@ -156,7 +152,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             _zakatReturnDetail = ZakatReturnDetail;
             On<iOS>().SetUseSafeArea(true);
             BindingContext = _ZakatReturnSuccessPageViewModel;
-            SetLTR();
             ChangeAeroIcon();
 
             _ = _ZakatReturnSuccessPageViewModel.OnPageLoad(ZakatReturnDetail);
@@ -259,17 +254,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private void SetLTR()
-        {
 
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
     }
 }

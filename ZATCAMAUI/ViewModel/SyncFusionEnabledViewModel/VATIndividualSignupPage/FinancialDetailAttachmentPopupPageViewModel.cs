@@ -10,11 +10,12 @@ using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
-    public class FinancialDetailAttachmentPopupPageViewModel : ViewModelBase
+    public class FinancialDetailAttachmentPopupPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -272,21 +273,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
@@ -505,7 +492,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
         #endregion
-        public FinancialDetailAttachmentPopupPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public FinancialDetailAttachmentPopupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

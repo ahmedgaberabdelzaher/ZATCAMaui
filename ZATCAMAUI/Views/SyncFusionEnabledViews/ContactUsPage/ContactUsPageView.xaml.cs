@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ContactUsPage
             viewModel = App.Locator.ContactUsPageView;
             On<iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
-            SetLTR();
             SetUrl();
             BindingContext = viewModel;
         }
@@ -40,13 +39,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ContactUsPage
             else
             {
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void BackButtonClicked(object sender, EventArgs e)

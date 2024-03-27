@@ -4,8 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons">
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,9 +19,10 @@
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
-    <Grid
-        Grid.Row="0"
-        Margin="0,0,0,0"
+
+     <Grid
+        Grid.RowSpan="2"
+        Margin="0"
         VerticalOptions="FillAndExpand">
 
         <Grid.GestureRecognizers>
@@ -34,33 +34,37 @@
             Opacity="0.4"
             VerticalOptions="FillAndExpand" />
 
-        <yummy:PancakeView
-            Padding="20,20,20,10"
-            BackgroundColor="White"
-            CornerRadius="15,15,0,0"
-            Style="{StaticResource CommonTopCurves}"
+        <Border
+            Padding="0"
+            Margin="0"
+            Stroke="White"
+            Background="White"
+            HorizontalOptions="Fill"
+            StrokeShape="RoundRectangle 15,15,0,0"
             VerticalOptions="EndAndExpand">
 
-            <StackLayout Padding="10"
-                         Spacing="10"
-                         VerticalOptions="Center">
+            <StackLayout Padding="20,10"
+                         Spacing="15"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
 
                 <Label
+                    HorizontalOptions="StartAndExpand"
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource BodyLabelBlack}"
-                    Text="{Binding MessageTxt}" />
+                   Text="{Binding MessageTxt}"  />
 
                 <buttons:SfButton
-                    Margin="0,0,0,10"
                     Command="{Binding CloseMsgViewCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
-                    VerticalOptions="CenterAndExpand" />
+                    VerticalOptions="EndAndExpand" />
 
             </StackLayout>
 
-        </yummy:PancakeView>
+        </Border>
 
     </Grid>
+
 </ContentView>
 

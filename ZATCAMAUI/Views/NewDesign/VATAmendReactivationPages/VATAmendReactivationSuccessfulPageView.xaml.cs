@@ -17,7 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             viewModel = App.Locator.VATAmendReactivationSuccesssulPageView;
             BindingContext = viewModel;
             On<iOS>().SetUseSafeArea(true);
-            SetLTR();
             if (response != null)
             {
                 if (response.d != null)
@@ -40,14 +39,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             safeInsets.Bottom = -10;
             Padding = safeInsets;
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
             int dashboard = 0, stackCount = Navigation.NavigationStack.Count;

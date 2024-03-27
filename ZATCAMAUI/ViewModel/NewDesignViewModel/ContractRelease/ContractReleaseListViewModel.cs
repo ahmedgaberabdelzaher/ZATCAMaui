@@ -11,7 +11,7 @@ using static ZATCAMAUI.Models.ContractRelease.ContractReleaseSummaryModel;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 {
 
-    public class ContractReleaseListViewModel : ViewModelBase
+    public class ContractReleaseListViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -94,19 +94,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        private bool _isLoading = false;
-
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
         private bool _isContractListsVisible = false;
 
@@ -384,7 +372,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;

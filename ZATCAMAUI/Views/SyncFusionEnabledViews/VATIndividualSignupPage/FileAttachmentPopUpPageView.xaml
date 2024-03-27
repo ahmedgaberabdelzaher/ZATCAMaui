@@ -11,7 +11,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
         <ResourceDictionary>
@@ -22,9 +22,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>-->
 
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="22,22,0,0"
+        StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="End">
         <Grid>
             <StackLayout Margin="10,0,10,0" Padding="0,0,0,0">
@@ -67,11 +67,11 @@
                         IsToggled="{Binding IsSwitchToggled}"
                         VerticalOptions="CenterAndExpand" />
 
-                    <custom:CustomButton
+                    <buttons:SfButton
                         x:Name="btnForNewChange"
                         Grid.Row="1"
                         Grid.Column="1"
-                        BackgroundColor="Transparent"
+                        Background="Transparent"
                         Clicked="btnSwitch_ClickedForNewVATChange"
                         FontSize="13"
                         HeightRequest="15"
@@ -256,5 +256,5 @@
             </Grid>
         </Grid>
 
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

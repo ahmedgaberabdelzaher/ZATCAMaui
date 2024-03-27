@@ -5,10 +5,11 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage
 {
-    public class TaxEvasionReportListPageViewModel : ViewModelBase
+    public class TaxEvasionReportListPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -57,19 +58,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
                 RaisePropertyChanged("MobileNumber");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private string _addIcon = string.Empty;
         public string AddIcon
         {
@@ -147,7 +136,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
                 RaisePropertyChanged("TERListReportbymobnoDummy");
             }
         }
-        public TaxEvasionReportListPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxEvasionReportListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

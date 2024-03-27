@@ -8,7 +8,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
 
-    public class UpdateEmailViewModel : ViewModelBase
+    public class UpdateEmailViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -54,24 +54,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                if (_IsLoading == value) return;
-
-                _IsLoading = value;
-                RaisePropertyChanged(() => IsLoading);
-            }
-        }
+      
         #endregion
 
-        public UpdateEmailViewModel(INavigationService navigationService, IDialogService dialogService)
+        public UpdateEmailViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
             _navigationService = navigationService;

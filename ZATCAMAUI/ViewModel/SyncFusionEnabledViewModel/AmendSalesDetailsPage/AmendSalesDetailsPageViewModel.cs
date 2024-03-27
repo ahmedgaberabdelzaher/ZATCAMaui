@@ -6,12 +6,13 @@ using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
 {
 
-    public class AmendSalesDetailsPageViewModel : ViewModelBase
+    public class AmendSalesDetailsPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -52,19 +53,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 RaisePropertyChanged("ZakatReturnAttachmentsList");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private bool _isSaveButtonEnable = false;
         public bool IsSaveButtonEnable
         {
@@ -205,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
         }
         #endregion
         #region Constructor
-        public AmendSalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AmendSalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

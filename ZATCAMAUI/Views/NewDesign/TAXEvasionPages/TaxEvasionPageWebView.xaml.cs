@@ -16,8 +16,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
-            //  SetLanguage();
             loadingIndicator.IsVisible = true;
             SetLanguage();
         }
@@ -58,17 +56,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             else
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void TOnBackButtonClicked(object sender, EventArgs e)

@@ -12,17 +12,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:settings="clr-namespace:ZATCAMAUI.Core.AppConfigurations"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="180" />
@@ -39,7 +35,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -64,7 +60,7 @@
                                         HeightRequest="50"
                                         Source="education.png"
                                         WidthRequest="25" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.CustomsZATCAIntegrat}"
                                         VerticalTextAlignment="Center" />
@@ -85,7 +81,7 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="ic_menu_Tax_check.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.CustomsZatcaDelca}"
                                         VerticalTextAlignment="Center" />
@@ -111,8 +107,8 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="ic_menu_Tax_check.png" />
-                                    <custom:CustomLabel
-                                        LineSpacing="1"
+                                    <Label
+                                        LineHeight="1"
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}"
                                         VerticalTextAlignment="Center" />
@@ -139,8 +135,8 @@
                                         HeightRequest="50"
                                         Source="EDeclerationicon"
                                         WidthRequest="25" />
-                                    <custom:CustomLabel
-                                        LineSpacing="1"
+                                    <Label
+                                        LineHeight="1"
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}"
                                         VerticalTextAlignment="Center" />
@@ -192,7 +188,7 @@
                     </Grid>
                     <!--  Customs View Ends  -->
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
             <Grid
                 Grid.Row="1"
                 Margin="0,0,0,0"

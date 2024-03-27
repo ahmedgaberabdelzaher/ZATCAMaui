@@ -38,7 +38,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
                 //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("annotation", false);
                 //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("print", false);
 
-                SetLTR();
                 BindingContext = viewModel;
             }
             catch (Exception)
@@ -71,13 +70,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         public void ChangeAeroIcon()
         {

@@ -17,7 +17,7 @@
         </ResourceDictionary>
     </ContentView.Resources>-->
     <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
-        <custom:CustomLabel x:Name="Title" Style="{StaticResource CaptionLabelGrey}" />
+        <Label x:Name="Title" Style="{StaticResource CaptionLabelGrey}" />
         <inputLayout:SfTextInputLayout
             Margin="0,-10,0,0"
             ContainerType="Outlined"

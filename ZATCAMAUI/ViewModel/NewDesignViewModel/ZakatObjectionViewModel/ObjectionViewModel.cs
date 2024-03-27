@@ -6,7 +6,7 @@ using GalaSoft.MvvmLight.Views;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
    
-    public class ObjectionViewModel : ViewModelBase
+    public class ObjectionViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -42,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
         }
 
-        public ObjectionViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ObjectionViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

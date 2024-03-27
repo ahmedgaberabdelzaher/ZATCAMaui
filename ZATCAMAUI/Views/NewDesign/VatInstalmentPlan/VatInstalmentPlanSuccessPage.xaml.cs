@@ -16,18 +16,10 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
         public VatInstalmentPlanSuccessPage()
         {
             InitializeComponent();
-            SetLTR();
             viewModel = App.Locator.VatInstalmentPlanSuccessPageView;
             BindingContext = viewModel;
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         private async void Instalment_copy_Tapped(object sender, EventArgs e)
         {
             try

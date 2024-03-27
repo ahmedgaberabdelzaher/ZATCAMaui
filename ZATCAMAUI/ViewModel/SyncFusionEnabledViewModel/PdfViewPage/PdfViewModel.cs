@@ -5,12 +5,13 @@ using System.Net;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
 {
 
-    public class PdfViewModel : ViewModelBase
+    public class PdfViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -159,7 +160,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
 
         #region Constructor
 
-        public PdfViewModel(INavigationService navigationService, IDialogService dialogService)
+        public PdfViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -13,7 +13,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static ResourceManager:AppResources.ZSalesDetails}"
     BackgroundColor="White"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
@@ -107,7 +107,7 @@
                                     IsChecked="{Binding CheckBoxStatus}"
                                     IsVisible="{Binding DesClaimerVisibility}"
                                     VerticalOptions="Start" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     FontFamily="{StaticResource custom_FONT_MEDIUM}"
@@ -194,13 +194,13 @@
                     Grid.ColumnSpan="2"
                     HorizontalOptions="FillAndExpand"
                     Spacing="0">
-                    <custom:CustomLabel
+                    <Label
                         Margin="10,5,10,0"
                         FontSize="11"
                         HorizontalOptions="StartAndExpand"
                         VerticalOptions="CenterAndExpand"
                         VerticalTextAlignment="Center">
-                        <custom:CustomLabel.FormattedText>
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span
                                     FontFamily="{StaticResource custom_FONT_MEDIUM}"
@@ -215,8 +215,8 @@
                                     TextColor="{StaticResource DashboardGrayTextColor}" />
 
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
 
                     <StackLayout
                         Grid.Column="0"
@@ -224,12 +224,12 @@
                         Orientation="Horizontal"
                         VerticalOptions="CenterAndExpand">
 
-                        <custom:CustomLabel
+                        <Label
                             Margin="10,0,10,0"
                             FontFamily="{StaticResource SomarSemiBold}"
                             LineBreakMode="CharacterWrap"
                             VerticalOptions="CenterAndExpand">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
 
                                     <Span
@@ -242,9 +242,9 @@
                                         Style="{StaticResource MicroGrayLabelStyleNew}"
                                         Text=" " />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
-                        <custom:CustomLabel
+                            </Label.FormattedText>
+                        </Label>
+                        <Label
                             Margin="-5,0,-5,0"
                             FlowDirection="LeftToRight"
                             FontFamily="{StaticResource SomarSemiBold}"
@@ -255,13 +255,13 @@
                             TextColor="{StaticResource DashboardGrayTextColor}"
                             VerticalOptions="CenterAndExpand" />
                     </StackLayout>
-                    <custom:CustomLabel
+                    <Label
                         Margin="10,0,10,5"
                         FontSize="11"
                         HorizontalOptions="StartAndExpand"
                         VerticalOptions="CenterAndExpand"
                         VerticalTextAlignment="Center">
-                        <custom:CustomLabel.FormattedText>
+                        <Label.FormattedText>
                             <FormattedString>
 
                                 <Span
@@ -276,8 +276,8 @@
                                     Text="{Binding Fbnum}"
                                     TextColor="{StaticResource DashboardGrayTextColor}" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
 
                 </StackLayout>
                 <Grid
@@ -388,7 +388,7 @@
                                             Style="{StaticResource customGoldLabelStyleForCaptionFont}"
                                             Text="{Binding SalesType}"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="1"
                                             Grid.Column="0"
                                             Margin="10,0,10,0"
@@ -422,7 +422,7 @@
                                                 <TapGestureRecognizer Tapped="OnInformationMessageClicked" />
                                             </Label.GestureRecognizers>
                                         </Label>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="2"
                                             Grid.Column="0"
                                             Margin="10,0,10,10"
@@ -433,7 +433,7 @@
                                             Text="{Binding InformationFromPartieToCompare}"
                                             VerticalOptions="FillAndExpand"
                                             VerticalTextAlignment="Center" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="2"
                                             Grid.Column="1"
                                             Margin="10,0,10,10"
@@ -448,7 +448,7 @@
                                                     <Span Text="{Binding EstimateSales}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
-                                        </custom:CustomLabel>
+                                        </Label>
                                         <Image
                                             Grid.Row="2"
                                             Grid.Column="2"

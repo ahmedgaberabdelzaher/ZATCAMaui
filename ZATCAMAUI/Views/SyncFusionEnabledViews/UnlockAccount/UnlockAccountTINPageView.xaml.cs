@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
                 viewModel = App.Locator.UnlockAccountTINPageViewModel;
                 this.BindingContext = viewModel;
 
-                SetLTR();
                 ChangeAeroIcon();
                 OtpGAZTDarkGrayLabelStyleFourthEntry.Text = string.Empty;
                 viewModel.EnableTINView();
@@ -49,25 +48,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-                //Image_backArrow.Rotation = 0;
-                //Label_MobileInitialAr.IsVisible = false;
-                //Label_MobileInitialEng.IsVisible = true;
-                //TINEntry.HorizontalTextAlignment = TextAlignment.Start;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-            }
-        }
 
         private void TappedOnTinContentBackButton(object sender, EventArgs e)
         {

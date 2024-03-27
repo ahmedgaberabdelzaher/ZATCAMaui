@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             InitializeComponent();
             ChangeAeroIcon();
-            SetLTR();
             viewModel = App.Locator.EstablishmentAmendUpdatePage;
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
@@ -177,17 +176,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         {
             return base.OnBackButtonPressed();
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
         }
 
         public void ChangeAeroIcon()

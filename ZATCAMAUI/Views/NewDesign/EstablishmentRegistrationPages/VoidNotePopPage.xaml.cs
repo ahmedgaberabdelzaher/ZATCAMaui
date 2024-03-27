@@ -11,19 +11,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         public VoidNotePopPage()
         {
             InitializeComponent();
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
         }
 
         async void Void_Button_Clicked(object sender, EventArgs e)

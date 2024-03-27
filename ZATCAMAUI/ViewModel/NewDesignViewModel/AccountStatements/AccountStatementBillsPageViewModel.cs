@@ -288,23 +288,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        public bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                if (_IsLoading == value) return;
-
-                _IsLoading = value;
-
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
+        
         public string _searchText = "";
         public string SearchText
         {

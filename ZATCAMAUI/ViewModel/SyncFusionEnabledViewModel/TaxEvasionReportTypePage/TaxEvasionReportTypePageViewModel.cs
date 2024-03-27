@@ -5,10 +5,11 @@ using GalaSoft.MvvmLight.Views;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage
 {
-    public class TaxEvasionReportTypePageViewModel : ViewModelBase
+    public class TaxEvasionReportTypePageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -130,20 +131,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
                 RaisePropertyChanged("CategorySelected_Index");
             }
         }
-        //IsLoading
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
 
         public async Task OnPageLoad()
         {
@@ -230,7 +218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
             }
         }
 
-        public TaxEvasionReportTypePageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxEvasionReportTypePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             try
             {

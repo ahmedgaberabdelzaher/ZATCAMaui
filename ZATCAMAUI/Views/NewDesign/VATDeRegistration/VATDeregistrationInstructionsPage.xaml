@@ -7,21 +7,13 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
 
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="End"
         IsVisible="true"
         VerticalOptions="End">
@@ -34,7 +26,7 @@
                 HorizontalOptions="Center"
                 Style="{StaticResource NeutralGrayBoxViewDrag}"
                 VerticalOptions="Start" />
-            <custom:CustomLabel
+            <Label
                 Margin="0,0,0,16"
                 HorizontalOptions="StartAndExpand"
                 Style="{StaticResource SectionTitleBlackBold}"
@@ -52,7 +44,7 @@
                             Source="ic_vat_info.png"
                             VerticalOptions="Center"
                             WidthRequest="24" />
-                        <custom:CustomLabel
+                        <Label
                             Margin="10,0,10,5"
                             HorizontalOptions="End"
                             Style="{StaticResource ValueLabelBlack}"
@@ -86,27 +78,27 @@
                     IsEnabled="{Binding isInstructionCheckedEnable}"
                     Style="{StaticResource CheckboxHeightWidth32}" />
 
-                <custom:CustomLabel Margin="5,10,0,15" Style="{DynamicResource IsInstructionCheckedStyle}">
-                    <custom:CustomLabel.FormattedText>
+                <Label Margin="5,10,0,15" Style="{DynamicResource IsInstructionCheckedStyle}">
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                    <custom:CustomLabel.Triggers>
+                    </Label.FormattedText>
+                    <Label.Triggers>
                         <DataTrigger
                             Binding="{Binding IsInstructionChecked}"
-                            TargetType="custom:CustomLabel"
+                            TargetType="Label"
                             Value="True">
                             <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                         </DataTrigger>
                         <DataTrigger
                             Binding="{Binding IsInstructionChecked}"
-                            TargetType="custom:CustomLabel"
+                            TargetType="Label"
                             Value="False">
                             <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                         </DataTrigger>
-                    </custom:CustomLabel.Triggers>
-                </custom:CustomLabel>
+                    </Label.Triggers>
+                </Label>
             </StackLayout>
             <buttons:SfButton
                 x:Name="btnVATDeregistration"
@@ -118,7 +110,7 @@
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static ResourceManager:AppResources.VATDeregistration}" />
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 
 </pages:PopupPage>
 

@@ -19,7 +19,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.VATIndividualSignupTnCPageView;
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            SetLTR();
             ChangeAeroIcon();
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -65,17 +64,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             else
             {
                 Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
     }

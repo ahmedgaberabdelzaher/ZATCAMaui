@@ -7,7 +7,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundColor="{StaticResource Primary}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -49,11 +49,11 @@
                     Text="{x:Static ResourceManager:AppResources.VATAmendReactivationSuccessfulAkwdg}" />
             </StackLayout>
             <ScrollView>
-                <yummy:PancakeView
+                <Border
                     Margin="0,-20,0,0"
                     Padding="20"
                     BackgroundColor="White"
-                    CornerRadius="22,22,0,0"
+                    StrokeShape="RoundRectangle 22,22,0,0"
                     VerticalOptions="EndAndExpand">
                     <StackLayout Padding="0,0,0,10">
                         <Frame
@@ -142,7 +142,7 @@
                             Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
                             VerticalOptions="End" />
                     </StackLayout>
-                </yummy:PancakeView>
+                </Border>
             </ScrollView>
         </StackLayout>
     </ContentPage.Content>

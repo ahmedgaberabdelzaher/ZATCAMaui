@@ -9,6 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     NavigationPage.HasNavigationBar="False"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -91,12 +92,12 @@
                         HorizontalOptions="FillAndExpand"
                         Spacing="20">
                         <StackLayout Spacing="5">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalTextAlignment="Start"
                                 Style="{StaticResource PageTitleWhite}"
                                 Text="{x:Static ResourceManager:AppResources.NDServices}"
                                 VerticalOptions="Center" />
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
+                            <Label Style="{StaticResource CaptionLabelWhite}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.NDV}" />
@@ -104,12 +105,12 @@
                                         <Span Text="{Binding AppVersion}" />
                                     </FormattedString>
                                 </Label.FormattedText>
-                            </custom:CustomLabel>
+                            </Label>
                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="password_key.png" Style="{StaticResource SmallIcon}" />
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
                                 VerticalOptions="Center" />
@@ -124,7 +125,7 @@
                             <Image Source="vat_new_Establishment_W.png" Style="{StaticResource SmallIcon}" />
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}"
                                 VerticalOptions="Center" />
@@ -138,7 +139,7 @@
                             <Image Source="taxEvasion.png" Style="{StaticResource SmallIcon}" />
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
                                 VerticalOptions="Center" />
@@ -153,7 +154,7 @@
                             <Image Source="customerService" Style="{StaticResource SmallIcon}" />
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZSupport}"
                                 VerticalOptions="Center" />
@@ -167,7 +168,7 @@
                             <Image Source="education" Style="{StaticResource SmallIcon}" />
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}"
                                 VerticalOptions="Center" />
@@ -178,7 +179,7 @@
                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
                         <StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="education" Style="{StaticResource SmallIcon}" />
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.ExciseTax}"
                                 VerticalOptions="Center" />
@@ -189,7 +190,7 @@
                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
                         <StackLayout Orientation="Horizontal" Spacing="20">
                             <Image Source="ThaqaqIcon" Style="{StaticResource SmallIcon}" />
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelWhiteBold}"
                                 Text="{x:Static ResourceManager:AppResources.TahqaqService}"
                                 VerticalOptions="Center" />
@@ -233,7 +234,7 @@
                             HorizontalOptions="Start"
                             Source="language"
                             Style="{StaticResource SmallIcon}" />
-                        <custom:CustomLabel
+                        <Label
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource ValueLabelWhiteBold}"
                             Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}"
@@ -258,7 +259,7 @@
                             HorizontalOptions="StartAndExpand"
                             Source="user_profile"
                             Style="{StaticResource SmallIcon}" />
-                        <custom:CustomLabel
+                        <Label
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource ValueLabelWhiteBold}"
                             Text="{x:Static ResourceManager:AppResources.NDSwitchUser}"

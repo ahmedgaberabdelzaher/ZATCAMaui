@@ -15,12 +15,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Grid>
-        <yummy:PancakeView
+        <Border
             BackgroundColor="White"
-            CornerRadius="22,22,0,0"
+            StrokeShape="RoundRectangle 22,22,0,0"
             VerticalOptions="End">
             <Grid>
 
@@ -85,14 +85,14 @@
 
                                     </StackLayout>
                                 </inputLayout:SfTextInputLayout>
-                                <custom:CustomButton
+                                <buttons:SfButton
                                     x:Name="btn1"
                                     Grid.Row="1"
                                     Margin="0,0,0,0"
-                                    BackgroundColor="Transparent"
+                                    Background="Transparent"
                                     Clicked="btn1_Clicked"
                                     FontSize="Small" />
-                                <!--  SelectedIndex="{Binding IDTypeIndex}"  -->
+
                                 <syncfusion:SfPicker
                                     x:Name="AttachmentTypePicker"
                                     Grid.Row="1"
@@ -120,9 +120,10 @@
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
                                     </syncfusion:SfPicker.SelectedTextStyle>
 
-                                    <syncfusion:SfPicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </syncfusion:SfPicker.ColumnHeaderView>
+
+                                 <syncfusion:SfPicker.SelectionView >
+                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                 </syncfusion:SfPicker.SelectionView>
 
                                     <syncfusion:SfPicker.HeaderView>
 
@@ -149,9 +150,6 @@
 
                                     </syncfusion:SfPicker.FooterView>
 
-                                    <syncfusion:SfPicker.Behaviors>
-                                        <behaviors:SfPickerBehavior />
-                                    </syncfusion:SfPicker.Behaviors>
 
                                 </syncfusion:SfPicker>
                                 <!--  OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"  -->
@@ -337,7 +335,7 @@
                     </StackLayout>
                 </Grid>
             </Grid>
-        </yummy:PancakeView>
+        </Border>
 
     </Grid>
 

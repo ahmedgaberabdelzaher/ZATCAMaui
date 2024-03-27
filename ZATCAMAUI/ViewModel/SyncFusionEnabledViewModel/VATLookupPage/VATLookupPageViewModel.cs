@@ -5,10 +5,11 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
 {
-    public class VATLookupPageViewModel : ViewModelBase
+    public class VATLookupPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -31,19 +32,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
                 RaisePropertyChanged("IsTooltipEnableVisible");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private string _parameter;
         public string Parameter
         {
@@ -241,7 +230,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
                 MaxDigids = "15";
             }
         }
-        public VATLookupPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATLookupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

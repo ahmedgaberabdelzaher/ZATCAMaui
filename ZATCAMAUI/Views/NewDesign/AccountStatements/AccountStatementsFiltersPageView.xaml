@@ -7,19 +7,12 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
-    <pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>
-    <yummy:PancakeView
+    FlowDirection="{Binding AppDirection}">
+ 
+    <Border
         Padding="10,10,10,10"
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
 
@@ -56,21 +49,15 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="Sort Ascending"
-                                            VerticalOptions="CenterAndExpand">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="SortAscending_Tapped" />
-                                            </Label.GestureRecognizers>
-                                        </Label>
+                                            VerticalOptions="CenterAndExpand"/>
+
                                         <Label
                                             Margin="20,0,20,0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="Sort Descending"
-                                            VerticalOptions="CenterAndExpand">
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="SortDescending_Tapped" />
-                                            </Label.GestureRecognizers>
-                                        </Label>
+                                            VerticalOptions="CenterAndExpand"/>
+
                                     </StackLayout>
                                 </Grid>
                                 <BoxView
@@ -88,6 +75,6 @@
                 Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
                 VerticalOptions="CenterAndExpand" />
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>
 

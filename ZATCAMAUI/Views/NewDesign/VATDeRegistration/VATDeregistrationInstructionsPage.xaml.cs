@@ -13,23 +13,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
 
             viewModel = App.Locator.VATDeregistrationInstructionsPage;
             this.BindingContext = viewModel;
-            SetLTR();
             viewModel.IsInstructionChecked = InstructionChecked;
             viewModel.isInstructionCheckedEnable = !InstructionChecked;
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                this.FlowDirection = FlowDirection.RightToLeft;
-
-            }
         }
         protected override void OnAppearing()
         {

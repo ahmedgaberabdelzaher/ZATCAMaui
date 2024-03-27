@@ -13,7 +13,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         public ZAKATOkCancelPopUpView(string ConfirmationText)
         {
             InitializeComponent();
-            SetLTR();
             if(ConfirmationText.Equals("DeleteVATAttachment"))
             {
                 _confirmationText = "DeleteVATAttachment";
@@ -95,13 +94,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             OnSelect?.Invoke("No");
             await PopupNavigation.Instance.PopAsync();
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
         }
     }
 }

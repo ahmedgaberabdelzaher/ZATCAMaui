@@ -5,11 +5,12 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage
 {
 
-    public class AcknowledgementDetailsPageViewModel : ViewModelBase
+    public class AcknowledgementDetailsPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -21,19 +22,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
         public ICommand GoHomeClick { get; set; }
         #endregion
         #region Property
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private string _tPName = "";
         public string TPName
         {
@@ -217,7 +206,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
         }
         #endregion
         #region Constructor
-        public AcknowledgementDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AcknowledgementDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

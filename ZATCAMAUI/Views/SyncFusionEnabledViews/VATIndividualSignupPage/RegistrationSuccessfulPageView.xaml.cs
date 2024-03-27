@@ -29,14 +29,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsCitizen = true;
                 viewModel.IsGulf = false;
             }
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {

@@ -10,9 +10,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="LeftToRight"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -72,9 +71,9 @@
                             </Image>
                         </Grid>
 
-                        <yummy:PancakeView
+                        <Border
                             Padding="0"
-                            CornerRadius="14,14,0,0"
+                            StrokeShape="RoundRectangle 15,15,0,0"
                             VerticalOptions="FillAndExpand">
                             <Grid
                                 x:Name="VATRMainGrid"
@@ -96,7 +95,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand" />
                             </Grid>
-                        </yummy:PancakeView>
+                        </Border>
                     </StackLayout>
 
                 </Grid>
@@ -140,8 +139,8 @@
                             </Image.Source>
                         </Image>
                     </Grid>
-                    <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{Binding PageTitle}" />
-                    <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{Binding PageTitleTag}" />
+                    <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding PageTitle}" />
+                    <Label Style="{StaticResource BodyLabelGrey}" Text="{Binding PageTitleTag}" />
                     <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1" />
                 </StackLayout>
 
@@ -152,18 +151,18 @@
                     Padding="10"
                     IsVisible="{Binding IsShowMobileInput}">
 
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="0"
                         Padding="0,0,0,0"
                         Style="{StaticResource CaptionLabelGrey}">
 
-                        <custom:CustomLabel.FormattedText>
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
 
                     <inputLayout:SfTextInputLayout
                         x:Name="frmMobile"
@@ -217,12 +216,12 @@
                     Margin="10,0,10,0"
                     Padding="0,15,0,0"
                     IsVisible="{Binding IsShowOTPInput}">
-                    <custom:CustomLabel
+                    <Label
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource CaptionLabelGrey}"
                         Text="{Binding OTPSentOnThisMobileNumber}" />
-                    <custom:CustomLabel
+                    <Label
                         FlowDirection="LeftToRight"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
@@ -371,7 +370,7 @@
 
                     <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                         <Image Source="clock" />
-                        <custom:CustomLabel
+                        <Label
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{Binding LblCountDownTimer}"
                             VerticalOptions="Center" />

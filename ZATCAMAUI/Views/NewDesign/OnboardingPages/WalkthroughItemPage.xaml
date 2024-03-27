@@ -4,14 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    NavigationPage.HasNavigationBar="False">
-    <!--<ContentView.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentView.Resources>-->
+    NavigationPage.HasNavigationBar="False"
+    FlowDirection="{Binding AppDirection}">
     <ContentView.Content>
         <Grid
             BackgroundColor="Transparent"
@@ -36,7 +30,7 @@
 
             <!--  Label to display header  -->
 
-            <custom:CustomLabel
+            <Label
                 Grid.Row="1"
                 Margin="0,20,0,5"
                 FontSize="18.6"

@@ -7,7 +7,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
     <!--<ContentPage.Resources>
@@ -19,9 +19,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>-->
 
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="End"
         IsVisible="true"
         VerticalOptions="EndAndExpand">
@@ -44,7 +44,7 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
                         HorizontalOptions="StartAndExpand"
@@ -267,11 +267,11 @@
                                         <ColumnDefinition Width="35*" />
                                         <ColumnDefinition Width="65*" />
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="0"
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRDueDate}" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
@@ -313,6 +313,6 @@
 
         </ScrollView>
 
-    </yummy:PancakeView>
+    </Border>
 
 </pages:PopupPage>

@@ -16,7 +16,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
@@ -43,7 +43,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -68,7 +68,7 @@
                                         HeightRequest="25"
                                         Source="ic_logo_gazt.png"
                                         WidthRequest="25" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}"
                                         VerticalOptions="Center"
@@ -90,7 +90,7 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="declaration.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZPrivacyandPolicy}"
                                         VerticalOptions="Center"
@@ -111,7 +111,7 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="faQs.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZFaq}"
                                         VerticalOptions="Center"
@@ -133,7 +133,7 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="thumbnail_chat.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.DBSMChat}"
                                         VerticalTextAlignment="Center" />
@@ -154,7 +154,7 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="customerService.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZContactus}"
                                         VerticalTextAlignment="Center" />
@@ -215,26 +215,24 @@
                             <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
                                 <StackLayout>
                                     <!--<WebView x:Name="ContactUsWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />-->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         Style="{StaticResource SectionTitleBlackBold}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZLandingPageTitle}" />
 
-                                    <yummy:PancakeView
+                                    <Border
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        CornerRadius="14">
-                                        <yummy:PancakeView.Border>
-                                            <yummy:Border Color="{StaticResource NeutralLightGrey}" />
-                                        </yummy:PancakeView.Border>
+                                        Stroke="{StaticResource NeutralLightGrey}"
+                                        StrokeShape="RoundRectangle 14,14,14,14">
                                         <gmaps:Map
                                             x:Name="mapView"
                                             HeightRequest="200"
                                             HorizontalOptions="FillAndExpand"
                                             IsShowingUser="True"
                                             VerticalOptions="CenterAndExpand" />
-                                    </yummy:PancakeView>
-                                    <custom:CustomLabel
+                                    </Border>
+                                    <Label
                                         Grid.Column="1"
                                         Margin="0,15,0,0"
                                         Style="{StaticResource SectionTitleBlack}"
@@ -254,13 +252,13 @@
                                                     Margin="0,3,0,0"
                                                     Source="Grey_phone.png"
                                                     VerticalOptions="CenterAndExpand" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.NDLocalPhone}"
                                                     VerticalOptions="StartAndExpand"
                                                     VerticalTextAlignment="Start" />
                                             </StackLayout>
-                                            <custom:CustomLabel
+                                            <Label
                                                 x:Name="LocalPhone"
                                                 Grid.Column="1"
                                                 HorizontalTextAlignment="End"
@@ -283,7 +281,7 @@
                                                     Margin="0,3,0,0"
                                                     Source="Grey_phone.png"
                                                     VerticalOptions="CenterAndExpand" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.NDInternationalPhone}"
                                                     VerticalOptions="StartAndExpand"
@@ -292,7 +290,6 @@
                                             <Label
                                                 x:Name="InternationalPhone"
                                                 Grid.Column="1"
-                                                FlowDirection="LeftToRight"
                                                 HorizontalOptions="Start"
                                                 HorizontalTextAlignment="End"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -312,13 +309,13 @@
                                             </Grid.ColumnDefinitions>
                                             <StackLayout Grid.Column="0" Orientation="Horizontal">
                                                 <Image Source="message.png" VerticalOptions="CenterAndExpand" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.NDContactEmail}"
                                                     VerticalOptions="StartAndExpand"
                                                     VerticalTextAlignment="Start" />
                                             </StackLayout>
-                                            <custom:CustomLabel
+                                            <Label
                                                 x:Name="email"
                                                 Grid.Column="1"
                                                 HorizontalTextAlignment="End"
@@ -327,7 +324,7 @@
                                         </Grid>
                                     </Border>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         Style="{StaticResource SectionTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.NDSocial}" />
@@ -355,7 +352,7 @@
 
                                             <StackLayout VerticalOptions="StartAndExpand">
                                                 <Label Style="{StaticResource CaptionLabelBlackBold}" Text="{x:Static ResourceManager:AppResources.NDGAZT}" />
-                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTwitter}" />
+                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTwitter}" />
                                             </StackLayout>
                                             <Image
                                                 Margin="6,0,16,0"
@@ -403,7 +400,7 @@
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="30" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Style="{StaticResource PageTitleBlack}"
@@ -417,29 +414,29 @@
                                     Source="arrowDropdown"
                                     VerticalOptions="Center" />
 
-                                <custom:CustomButton
+                                <buttons:SfButton
                                     x:Name="btn"
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
-                                    BackgroundColor="Transparent"
+                                    Background="Transparent"
                                     Clicked="Branch_Clicked" />
 
-                                <syncfusion:SfPicker
+                                <custom:CustomSfPicker
                                     x:Name="BranchLocation"
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Margin="10,0,10,0"
-                                    FlowDirection="RightToLeft"
                                     ItemHeight="40"
                                     Mode="Dialog"
                                     SelectionChanged="BranchLocation_SelectionChanged">
 
-                                    <syncfusion:SfPicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </syncfusion:SfPicker.ColumnHeaderView>
 
-                                    <syncfusion:SfPicker.HeaderView>
+                         <custom:CustomSfPicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomSfPicker.SelectionView>
+
+                                    <custom:CustomSfPicker.HeaderView>
 
                                         <syncfusion:PickerHeaderView
                                             Height="55"
@@ -450,28 +447,28 @@
                                             </syncfusion:PickerHeaderView.TextStyle>
                                         </syncfusion:PickerHeaderView>
 
-                                    </syncfusion:SfPicker.HeaderView>
+                                    </custom:CustomSfPicker.HeaderView>
 
 
-                                    <syncfusion:SfPicker.TextStyle>
+                                    <custom:CustomSfPicker.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
-                                    </syncfusion:SfPicker.TextStyle>
+                                    </custom:CustomSfPicker.TextStyle>
 
-                                    <syncfusion:SfPicker.SelectedTextStyle>
+                                    <custom:CustomSfPicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle
                                             FontAttributes="Bold"
                                             FontSize="15"
                                             TextColor="{StaticResource NeutralBlack}" />
-                                    </syncfusion:SfPicker.SelectedTextStyle>
+                                    </custom:CustomSfPicker.SelectedTextStyle>
 
-                                    <syncfusion:SfPicker.Columns>
+                                    <custom:CustomSfPicker.Columns>
                                         <syncfusion:PickerColumn
                                             Width="300"
                                             DisplayMemberPath="TaxType"
                                             ItemsSource="{Binding ReturnTypeForFilter}" />
-                                    </syncfusion:SfPicker.Columns>
+                                    </custom:CustomSfPicker.Columns>
 
-                                    <syncfusion:SfPicker.FooterView>
+                                    <custom:CustomSfPicker.FooterView>
 
                                         <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
@@ -481,12 +478,9 @@
 
                                         </syncfusion:PickerFooterView>
 
-                                    </syncfusion:SfPicker.FooterView>
+                                    </custom:CustomSfPicker.FooterView>
 
-                                    <syncfusion:SfPicker.Behaviors>
-                                        <behaviors:SfPickerBehavior />
-                                    </syncfusion:SfPicker.Behaviors>
-                                </syncfusion:SfPicker>
+                                </custom:CustomSfPicker>
                             </Grid>
                             <!--  DropDown Ends  -->
 
@@ -501,13 +495,13 @@
                                             Margin="0,3,0,0"
                                             Source="ic_location_Outline.png"
                                             VerticalOptions="Start" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Style="{StaticResource BodyLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZVatAddress}"
                                             VerticalOptions="StartAndExpand"
                                             VerticalTextAlignment="Start" />
                                     </StackLayout>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
@@ -520,8 +514,8 @@
 
                             <Border Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="16,8,16,8" Orientation="Horizontal">
-                                    <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDPobox1}" />
-                                    <custom:CustomLabel
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDPobox1}" />
+                                    <Label
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
@@ -531,8 +525,8 @@
 
                             <Border Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="16,8,16,8" Orientation="Horizontal">
-                                    <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
-                                    <custom:CustomLabel
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZPostalCode}" />
+                                    <Label
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
@@ -540,11 +534,11 @@
                                 </StackLayout>
                             </Border>
 
-                            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" />
+                            <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" />
                             <Border Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="16,8,16,8" Orientation="Horizontal">
-                                    <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDLocalPhone}" />
-                                    <custom:CustomLabel
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDLocalPhone}" />
+                                    <Label
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
@@ -554,8 +548,8 @@
 
                             <Border Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="16,8,16,8" Orientation="Horizontal">
-                                    <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDOpeningHours}" />
-                                    <custom:CustomLabel
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDOpeningHours}" />
+                                    <Label
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
@@ -567,7 +561,7 @@
                     </ScrollView>
                     <!--  Branch Locator Ends  -->
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
             <Grid
                 Grid.Row="1"
                 Margin="0,0,0,0"

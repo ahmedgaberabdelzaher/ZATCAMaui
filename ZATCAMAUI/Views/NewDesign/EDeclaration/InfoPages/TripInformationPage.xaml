@@ -10,7 +10,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -80,7 +80,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -229,14 +229,14 @@
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Type Of Trip Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.TypeOfTrip}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
 
                         <!--#region Trip Cards-->
                         <StackLayout
@@ -259,7 +259,7 @@
                                 <Image Aspect="AspectFit" Source="{Binding TripCard.AirImage}" />
 
                                 <!--  Air Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     Padding="15"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
@@ -286,7 +286,7 @@
                                 <Image Aspect="AspectFit" Source="{Binding TripCard.LandImage}" />
 
                                 <!--  Land label  -->
-                                <custom:CustomLabel
+                                <Label
                                     Padding="15"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
@@ -313,7 +313,7 @@
                             <Image Aspect="AspectFit" Source="{Binding TripCard.SeaImage}" />
 
                             <!--  Sea label  -->
-                            <custom:CustomLabel
+                            <Label
                                 Padding="15"
                                 FontSize="16"
                                 HorizontalOptions="StartAndExpand"
@@ -332,27 +332,27 @@
                         <StackLayout Spacing="0">
 
                             <!--  Coming From/Going To Label  -->
-                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
+                            <Label IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
 
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ComingFrom}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
+                                </Label.FormattedText>
 
-                            </custom:CustomLabel>
+                            </Label>
 
-                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
+                            <Label IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
 
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.GoingTo}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
+                                </Label.FormattedText>
 
-                            </custom:CustomLabel>
+                            </Label>
 
                             <!--  Coming From/Going To Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -397,23 +397,23 @@
                         <StackLayout Spacing="0">
 
                             <!--  Entrance/Exit Port Label  -->
-                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.EntrancePort}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
-                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ExitPort}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Entrance/Exit Port Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -458,23 +458,23 @@
                         <StackLayout Spacing="0">
 
                             <!--  Arrival/Departure Date Label  -->
-                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ArrivalDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
-                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.DepartureDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <!--  Arrival/Departure Date Label  -->
@@ -533,14 +533,14 @@
                         <StackLayout IsVisible="{Binding TripCard.IsAirTripSelected}" Spacing="0">
 
                             <!--  Trip Number Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TripNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Trip Number Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -568,14 +568,14 @@
                         <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.IsDisclosure}" Spacing="0">
 
                             <!--  Travel Purpose Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TravelPurpose}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Travel Purpose Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -620,14 +620,14 @@
                         <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.IsDisclosure}" Spacing="0">
 
                             <!--  Traveler Count Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TravelerCount}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Traveler Count Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -663,13 +663,13 @@
                         <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
 
                             <!--  Plates Country Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Plates Country Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -714,14 +714,14 @@
                         <StackLayout IsVisible="{Binding HasPlatesCity}" Spacing="0">
 
                             <!--  Plates City Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Plates City Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -767,13 +767,13 @@
                         <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
 
                             <!--  Plates Number Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.PlatesNumber}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Plates Number Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -808,13 +808,13 @@
                         <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
 
                             <!--  Plates Letter Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.PlatesLetter}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Plates Letter Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -895,7 +895,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Bottom Sheet List  -->

@@ -9,7 +9,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPageViewModel
 {
    
-    public class VATAmendReactivationSuccesssulPageViewModel : ViewModelBase
+    public class VATAmendReactivationSuccesssulPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -28,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPage
                 RaisePropertyChanged("FBNumber");
             }
         }
-        public VATAmendReactivationSuccesssulPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATAmendReactivationSuccesssulPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

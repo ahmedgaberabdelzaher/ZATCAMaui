@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 ZAKATReturnDetailsView.IsComingFromAttachmentPage = true;
                 viewModel.ZakatReturnDetail = ZakatReturnDetail;
                 viewModel.OnPageLoad();
-                SetLTR();
             }
             catch (Exception)
             {
@@ -56,14 +55,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             catch (Exception)
             {
 
-            }
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private async void OnCloseTapped(object sender, EventArgs e)

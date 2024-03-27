@@ -7,11 +7,12 @@ namespace ZATCAMAUI.Views.NewDesign.HomePages
         HomeViewModel viewModel;
         public Home(string tab = "0")
         {
+            InitializeComponent();
             viewModel = App.Locator.homeViewModel;
             BindingContext = viewModel;
 
             viewModel.CurrentTab = 0;
-            InitializeComponent();
+           
             if (tab == "3")
             {
                 tab = "0";

@@ -8,6 +8,7 @@
     xmlns:themes="clr-namespace:ZATCAMAUI.Resources.Styles">
 
     <Application.Resources>
+
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/LightTheme.xaml" />
@@ -1295,12 +1296,12 @@
             </Style>
 
 
-            <Style x:Key="CardLabelBlack" TargetType="custom:CustomLabel">
+            <Style x:Key="CardLabelBlack" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
             </Style>
-            <Style x:Key="CardLabelWhite" TargetType="custom:CustomLabel">
+            <Style x:Key="CardLabelWhite" TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="HorizontalTextAlignment" Value="Start" />

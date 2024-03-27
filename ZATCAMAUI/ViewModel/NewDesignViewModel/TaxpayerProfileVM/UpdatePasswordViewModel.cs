@@ -4,7 +4,7 @@ using GalaSoft.MvvmLight.Views;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
     
-    public class UpdatePasswordViewModel : ViewModelBase
+    public class UpdatePasswordViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -12,20 +12,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #endregion
 
         #region Properties
-        private bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                if (_IsLoading == value) return;
-                _IsLoading = value;
-                RaisePropertyChanged(() => IsLoading);
-            }
-        }
+        
 
         private string _CurrentPasswordEntry;
         public string CurrentPasswordEntry
@@ -76,7 +63,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         }
         #endregion
 
-        public UpdatePasswordViewModel(INavigationService navigationService, IDialogService dialogService)
+        public UpdatePasswordViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
             _navigationService = navigationService;

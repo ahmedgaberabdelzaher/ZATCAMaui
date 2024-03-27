@@ -5,7 +5,7 @@ using System.Windows.Input;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
     
-    public class AccountCreatedSuccessfullyPageViewModel : ViewModelBase
+    public class AccountCreatedSuccessfullyPageViewModel : BaseViewModel
     {
         #region Veriables
         public readonly INavigationService _navigationService;
@@ -30,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         }
         #endregion
         #region Constructor
-        public AccountCreatedSuccessfullyPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AccountCreatedSuccessfullyPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;

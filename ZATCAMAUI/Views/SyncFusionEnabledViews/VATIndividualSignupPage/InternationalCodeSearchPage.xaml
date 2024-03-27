@@ -7,38 +7,49 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <ScrollView>
-        <yummy:PancakeView
-            Margin="0,150,0,0"
-            BackgroundColor="White"
-            CornerRadius="22,22,0,0"
-            VerticalOptions="EndAndExpand">
 
-            <Grid>
+    <Border
+        Margin="0,150,0,0"
+        Padding="0"
+        BackgroundColor="White"
+        StrokeShape="RoundRectangle 22,22,0,0"
+        VerticalOptions="EndAndExpand">
 
-                <StackLayout Padding="22,22,22,0">
-                    <Label
-                        FontFamily="{StaticResource SomarBold}"
-                        FontSize="Medium"
-                        Text="{x:Static ResourceManager:AppResources.CountryText}"
-                        TextColor="{StaticResource PrimaryColor}"
-                        VerticalOptions="Start" />
-                    <Image HorizontalOptions="EndAndExpand">
-                        <Image.Source>
-                            <FontImageSource
-                                FontFamily="UserIconFont"
-                                Glyph="{x:Static FontImage:IconFonts.Close}"
-                                Size="25"
-                                Color="{StaticResource SecondaryNew}" />
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="Close_Tapped" />
-                        </Image.GestureRecognizers>
-                    </Image>
+        <StackLayout Padding="10,10,10,0">
 
-                    <SearchBar
+            <StackLayout Orientation="Horizontal"
+                         Margin="0,10"
+                         VerticalOptions="Start">
+
+                <Label
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="Medium"
+                    Text="{x:Static ResourceManager:AppResources.CountryText}"
+                    TextColor="{StaticResource PrimaryColor}"
+                    VerticalOptions="Start" />
+
+                <Image HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Start"
+                        WidthRequest="25"
+                        HeightRequest="25"
+                        Source="close">
+                    <!--<Image.Source>
+                        <FontImageSource
+                            FontFamily="UserIconFont"
+                            Glyph="{x:Static FontImage:IconFonts.Close}"
+                            Size="25"
+                            Color="{StaticResource SecondaryNew}" />
+                    </Image.Source>-->
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Close_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+            </StackLayout>
+
+            <SearchBar
                         x:Name="searchBar"
                         CancelButtonColor="Blue"
                         HorizontalOptions="Fill"
@@ -47,57 +58,47 @@
                         PlaceholderColor="Gray"
                         TextChanged="OnTextChanged"
                         VerticalOptions="CenterAndExpand" />
-                    <ListView
+
+            <CollectionView
                         x:Name="searchResults"
                         HorizontalOptions="Fill"
-                        ItemTapped="List_ItemTapped"
+                        Grid.Row="1"
+                        SelectionChanged="List_ItemTapped"
                         ItemsSource="{Binding MobileCodes}"
                         VerticalOptions="CenterAndExpand">
-                        <ListView.ItemTemplate>
+                        <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Frame
-                                        Margin="0,0,0,0"
-                                        Padding="0"
-                                        CornerRadius="8"
-                                        HasShadow="False">
-                                        <StackLayout>
 
-                                            <Grid Padding="10,0,0,10">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
+                                <Frame
+                                    Margin="0,0,0,0"
+                                    Padding="0"
+                                    CornerRadius="8"
+                                    HasShadow="False">
 
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="70*" />
-                                                    <ColumnDefinition Width="30*" />
-                                                </Grid.ColumnDefinitions>
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                    Style="{StaticResource GAZTSmallGrayLabelStyle}"
-                                                    Text="{Binding Landx}"
-                                                    TextColor="{StaticResource PrimaryColor}" />
-                                                <Label
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                    HorizontalOptions="End"
-                                                    Style="{StaticResource GAZTSmallBlackLabel}"
-                                                    Text="{Binding Telefto}"
-                                                    TextColor="{StaticResource PrimaryColor}" />
+                                    <StackLayout Orientation="Horizontal"
+                                                 Spacing="10"
+                                                 HorizontalOptions="StartAndExpand">
+                                        <Label
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            Style="{StaticResource GAZTSmallGrayLabelStyle}"
+                                            Text="{Binding Landx}"
+                                            TextColor="{StaticResource PrimaryColor}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            HorizontalOptions="End"
+                                            Style="{StaticResource GAZTSmallBlackLabel}"
+                                            Text="{Binding Telefto}"
+                                            TextColor="{StaticResource PrimaryColor}" />
 
-                                            </Grid>
-                                        </StackLayout>
-                                    </Frame>
-                                </ViewCell>
+
+                                    </StackLayout>
+                                </Frame>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
-                </StackLayout>
-            </Grid>
-        </yummy:PancakeView>
-    </ScrollView>
+        </StackLayout>
+
+    </Border>
 </pages:PopupPage>

@@ -5,10 +5,11 @@ using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage
 {
-    public class TaxEvasionReportMobilePageViewModel : ViewModelBase
+    public class TaxEvasionReportMobilePageViewModel : BaseViewModel
     {
         public ICommand BackButtonClicked { get; set; }
         public readonly INavigationService _navigationService;
@@ -30,19 +31,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
                 RaisePropertyChanged("IsVerifyEnable");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private string _mobileNumber;
         public string MobileNumber
         {
@@ -59,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
 
         public string MobileNumberPrefix { get; set; }
 
-        public TaxEvasionReportMobilePageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxEvasionReportMobilePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

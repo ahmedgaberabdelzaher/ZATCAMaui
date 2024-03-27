@@ -292,21 +292,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 RaisePropertyChanged("TINID");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                this.RaisePropertyChanged("IsLoading");
-            }
-        }
         private bool _isLoginEnabled = false;
         public bool IsLoginEnabled
         {

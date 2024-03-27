@@ -14,7 +14,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     Title="{x:Static ResourceManager:AppResources.VATDeclaration}"
     ios:Page.UseSafeArea="true"
     BackgroundColor="{StaticResource Primary}"
@@ -65,10 +65,10 @@
                         </Label>
                     </Grid>
 
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="32,32,0,0">
+                        StrokeShape="RoundRectangle 32,32,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -89,7 +89,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
 
             </Grid>
@@ -141,13 +141,13 @@
                         IsSpellCheckEnabled="False"
                         Text="{Binding TxtSelectedStatus}" />
                 </inputLayout:SfTextInputLayout>
-                <custom:CustomButton
+                <buttons:SfButton
                     x:Name="BPickerButton"
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="7"
                     Margin="10,0,10,0"
-                    BackgroundColor="Transparent"
+                    Background="Transparent"
                     Clicked="BPickerButton_Clicked" />
                 <syncfusion:SfPicker
                     x:Name="BPicker"
@@ -179,9 +179,9 @@
                         <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource Primary}" />
                     </syncfusion:SfPicker.SelectedTextStyle>
 
-                    <syncfusion:SfPicker.ColumnHeaderView>
-                        <syncfusion:PickerColumnHeaderView Height="46" />
-                    </syncfusion:SfPicker.ColumnHeaderView>
+                         <syncfusion:SfPicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </syncfusion:SfPicker.SelectionView>
 
                     <syncfusion:SfPicker.HeaderView>
 
@@ -208,9 +208,6 @@
 
                     </syncfusion:SfPicker.FooterView>
 
-                    <syncfusion:SfPicker.Behaviors>
-                        <behaviors:SfPickerBehavior />
-                    </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
                 <StackLayout
                     x:Name="ListLayout"
@@ -273,7 +270,7 @@
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Row="0"
                                                     Grid.Column="0"
                                                     FontFamily="{StaticResource SomarSemiBold}"
@@ -281,7 +278,7 @@
                                                     Style="{StaticResource MicroGrayLabelStyleNew}"
                                                     Text="{x:Static ResourceManager:AppResources.ZVATReturnForm}"
                                                     VerticalOptions="StartAndExpand" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Row="1"
                                                     Grid.Column="0"
                                                     FontFamily="{StaticResource SomarSemiBold}"
@@ -289,7 +286,7 @@
                                                     Style="{StaticResource MicroGrayLabelStyleNew}"
                                                     Text="{Binding Incotext}"
                                                     VerticalOptions="StartAndExpand" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     x:Name="Fbnumber"
                                                     Grid.Row="2"
                                                     Grid.Column="0"
@@ -306,14 +303,14 @@
                                                             <Setter Property="IsVisible" Value="False" />
                                                         </DataTrigger>
                                                     </Label.Triggers>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel
+                                                </Label>
+                                                <Label
                                                     Grid.Row="3"
                                                     Grid.Column="0"
                                                     Margin="0"
                                                     HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span
                                                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
@@ -328,15 +325,15 @@
                                                                 Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                                 Text="{Binding FormatTaxPeriod}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
-                                                <custom:CustomLabel
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
                                                     Grid.Row="4"
                                                     Grid.Column="0"
                                                     Margin="0"
                                                     HorizontalOptions="StartAndExpand"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span
                                                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
@@ -351,8 +348,8 @@
                                                                 Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                                 Text="{Binding StatusTxt}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
                                                 <StackLayout
                                                     Grid.Row="5"
                                                     Grid.Column="0"
@@ -360,12 +357,12 @@
                                                     Margin="0"
                                                     Orientation="Horizontal">
 
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Margin="0,0,0,0"
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         LineBreakMode="CharacterWrap"
                                                         VerticalOptions="CenterAndExpand">
-                                                        <custom:CustomLabel.FormattedText>
+                                                        <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span
                                                                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
@@ -376,9 +373,9 @@
                                                                     Style="{StaticResource MicroGrayLabelStyleNew}"
                                                                     Text=" : " />
                                                             </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                    </custom:CustomLabel>
-                                                    <custom:CustomLabel
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
                                                         Margin="-5,0,-5,0"
                                                         FlowDirection="LeftToRight"
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -393,7 +390,7 @@
                                                     Grid.Column="0"
                                                     Margin="0"
                                                     Orientation="Horizontal">
-                                                    <custom:CustomLabel Margin="0,0,0,0" VerticalOptions="CenterAndExpand">
+                                                    <Label Margin="0,0,0,0" VerticalOptions="CenterAndExpand">
                                                         <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span
@@ -406,8 +403,8 @@
                                                                     Text=" : " />
                                                             </FormattedString>
                                                         </Label.FormattedText>
-                                                    </custom:CustomLabel>
-                                                    <custom:CustomLabel
+                                                    </Label>
+                                                    <Label
                                                         Margin="-5,0,-5,0"
                                                         FlowDirection="LeftToRight"
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -430,7 +427,7 @@
                     </ListView>
                 </StackLayout>
 
-                <custom:CustomLabel
+                <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     Grid.ColumnSpan="7"

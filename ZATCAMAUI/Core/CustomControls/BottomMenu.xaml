@@ -4,46 +4,42 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="LeftToRight"
     x:Name="CustomEntryWithSAR">
-    <!--<ContentView.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
 
-        </ResourceDictionary>
-    </ContentView.Resources>-->
-    <yummy:PancakeView
-        Margin="-20,0,-20,0"
+    <Grid RowDefinitions="*">
+    <Border
         BackgroundColor="#002447"
-        CornerRadius="15,15,0,0"
+        Stroke="#002447"
+        StrokeShape="RoundRectangle 15,15,0,0"
+        HorizontalOptions="Fill"
         VerticalOptions="EndAndExpand">
-        <yummy:PancakeView.Resources>
-            <ResourceDictionary>
+        <Border.Resources>
+             <ResourceDictionary>
                 <Style TargetType="Label">
-                    <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                    <Setter Property="HorizontalOptions" Value="Center" />
                     <Setter Property="TextColor" Value="#FFFFFF" />
                     <Setter Property="FontSize" Value="13" />
                 </Style>
                 <Style TargetType="Image">
                     <Setter Property="HeightRequest" Value="23" />
-                    <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-                    <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                    <Setter Property="HorizontalOptions" Value="Center" />
+                    <Setter Property="VerticalOptions" Value="Center" />
+                </Style>
+                 <Style TargetType="StackLayout">
+                    <Setter Property="Spacing" Value="4" />
                 </Style>
             </ResourceDictionary>
-        </yummy:PancakeView.Resources>
+        </Border.Resources>
+
         <Grid
-            Padding="10,0,10,0"
             ColumnDefinitions="*,*,*,*"
             RowDefinitions="65">
             <StackLayout Grid.Column="0">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="0" />
                 </StackLayout.GestureRecognizers>
-                <Image HeightRequest="5" VerticalOptions="StartAndExpand">
+                <Image HeightRequest="5">
                     <Image.Triggers>
                         <DataTrigger
                             Binding="{Binding CurrentTab}"
@@ -180,6 +176,7 @@
                 </Label>
             </StackLayout>
         </Grid>
-    </yummy:PancakeView>
 
+    </Border>
+    </Grid>
 </ContentView>

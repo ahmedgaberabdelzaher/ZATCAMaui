@@ -10,13 +10,14 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 {
 
-    public class VATReturnsPageViewModelEX : ViewModelBase
+    public class VATReturnsPageViewModelEX : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -300,21 +301,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 RaisePropertyChanged("StepNumberz");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private bool _isFirstSubmission = true;
         public bool IsFirstSubmission
         {
@@ -2614,7 +2601,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         #endregion
         #endregion
         #region Constructor
-        public VATReturnsPageViewModelEX(INavigationService navigationService, IDialogService dialogService)
+        public VATReturnsPageViewModelEX(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

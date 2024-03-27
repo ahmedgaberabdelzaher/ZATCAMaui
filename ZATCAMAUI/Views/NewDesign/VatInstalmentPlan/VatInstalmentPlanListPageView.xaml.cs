@@ -31,7 +31,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
                 //App.IsArabic = true;
                 ChangeAeroIcon();
-                SetLTR();
                 On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.VatInstalmentPlanListPageView;
@@ -108,15 +107,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
             {
 
 
-            }
-        }
-
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         public void ChangeAeroIcon()

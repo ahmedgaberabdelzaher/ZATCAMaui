@@ -21,7 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             BindingContext = viewModel;
             viewModel.ClearData();
             ChangeAeroIcon();
-            SetLTR();
             SetPickerFont();
             OnPageLoad();
         }
@@ -87,21 +86,6 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        public void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
-
-            }
-        }
-
         public async void OnPageLoad()
         {
             await Task.Run(() =>

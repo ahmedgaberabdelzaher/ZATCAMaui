@@ -8,7 +8,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     Title="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"
@@ -26,10 +26,10 @@
                 <Setter Property="Rotation" Value="0" />
             </Style>
 
-            <Style x:Key="MainPage" TargetType="yummy:PancakeView">
+            <Style x:Key="MainPage" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="Padding" Value="20,20,20,10" />
-                <Setter Property="CornerRadius" Value="15,15,0,0" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 15,15,0,0" />
             </Style>
             <Style x:Key="HorizontalEnd" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="EndAndExpand" />
@@ -74,7 +74,7 @@
                         StyleId="OnBoardText"
                         Text="{x:Static ResourceManager:AppResources.NDZakatObjection}"
                         TextColor="White" />
-                    <custom:CustomLabel
+                    <Label
                         Margin="0,-15,0,0"
                         HorizontalTextAlignment="Center"
                         IsVisible="{Binding SetSuccessMessageVisibility}"
@@ -84,7 +84,7 @@
                         TextColor="White" />
                 </StackLayout>
 
-                <yummy:PancakeView
+                <Border
                     x:Name="MainGrid"
                     Grid.Row="2"
                     Style="{StaticResource CommonTopCurves}"
@@ -101,12 +101,12 @@
                                 Orientation="Vertical"
                                 Spacing="0">
 
-                                <custom:CustomLabel
+                                <Label
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofdisputedamount}"
                                     VerticalTextAlignment="Center" />
 
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}"
@@ -135,13 +135,13 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZZTotaldisputedAmount}"
                                             VerticalTextAlignment="Center" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 FontSize="11"
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -154,13 +154,13 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}"
                                             VerticalTextAlignment="Center" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 FontSize="11"
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -171,7 +171,7 @@
                                 </Border>
 
 
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.ZZSADADBillDetails}"
@@ -181,13 +181,13 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZZSADADInvoiceNumber}"
                                             VerticalTextAlignment="Center" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 FontSize="11"
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -200,13 +200,13 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZSADADGAZTId}"
                                             VerticalTextAlignment="Center" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 FontSize="11"
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -219,13 +219,13 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZZTheUndisputedAmount}"
                                             VerticalTextAlignment="Center" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 FontSize="11"
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -239,13 +239,13 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZZ25oftheDisputedAmount}"
                                             VerticalTextAlignment="Center" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 FontSize="11"
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -258,13 +258,13 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.TotalAmount}"
                                             VerticalTextAlignment="Center" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 FontSize="11"
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -301,7 +301,7 @@
                             </Label>
                         </StackLayout>
                     </Grid>
-                </yummy:PancakeView>
+                </Border>
 
             </Grid>
 

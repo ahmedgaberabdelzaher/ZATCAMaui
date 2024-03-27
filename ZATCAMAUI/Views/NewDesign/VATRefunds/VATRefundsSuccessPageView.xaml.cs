@@ -14,8 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             InitializeComponent();
 
             viewModel = App.Locator.VATRefundsSuccessPageView;
-            // ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             viewModel.VatNewReqSummaryData = vatRefundsSummaryData;
@@ -27,18 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             Padding = safeInsets;
-        }
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         public void ChangeAeroIcon()
         {

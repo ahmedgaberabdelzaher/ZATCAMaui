@@ -7,7 +7,7 @@
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -56,10 +56,10 @@
                         </Label>
                     </Grid>
 
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="14,14,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -81,7 +81,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
 
             </Grid>

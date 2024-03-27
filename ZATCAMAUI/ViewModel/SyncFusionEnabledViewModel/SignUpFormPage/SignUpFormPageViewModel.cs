@@ -5,11 +5,12 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
 {
 
-    public class SignUpFormPageViewModel : ViewModelBase
+    public class SignUpFormPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -101,19 +102,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 RaisePropertyChanged("SelectedLOrC");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+      
         private SignUpUsing _selectedSignUpUsingSetForCancle = null;
         public SignUpUsing SelectedSignUpUsingSetForCancle
         {
@@ -692,7 +681,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
         }
         #endregion
         #region Constructor
-        public SignUpFormPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public SignUpFormPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             try
             {

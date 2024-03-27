@@ -8,7 +8,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    FlowDirection="{Binding AppDirection}">
 
     <!--<ContentPage.Resources>
         <ResourceDictionary>
@@ -19,9 +19,9 @@
         </ResourceDictionary>
     </ContentPage.Resources>-->
 
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="FillAndExpand"
         IsVisible="true"
         VerticalOptions="End">
@@ -44,7 +44,7 @@
                 Style="{StaticResource NeutralGrayBoxViewDrag}"
                 VerticalOptions="Start" />
 
-            <custom:CustomLabel
+            <Label
                 Grid.Row="1"
                 Margin="0,0,0,16"
                 HorizontalOptions="StartAndExpand"
@@ -75,7 +75,7 @@
                         Source="ic_vat_info.png"
                         VerticalOptions="Center"
                         WidthRequest="24" />
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         Margin="10,0,0,0"
@@ -83,7 +83,7 @@
                         Style="{StaticResource ValueLabelBlack}"
                         Text="{Binding InfoTitle, StringFormat='{0}'}" />
 
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="1"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
@@ -101,6 +101,6 @@
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static ResourceManager:AppResources.CRDone}" />
         </Grid>
-    </yummy:PancakeView>
+    </Border>
 
 </pages:PopupPage>

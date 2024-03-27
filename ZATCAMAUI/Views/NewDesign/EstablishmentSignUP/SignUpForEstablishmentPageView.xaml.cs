@@ -32,10 +32,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             try
             {
                 InitializeComponent();
-                BindingContext = viewModel;
-
                 viewModel = App.Locator.SignUpForEstablishmentPageView;
-                On<iOS>().SetUseSafeArea(true);
                 BindingContext = viewModel;
                 viewModel.IsAllValidDataEntered = false;
                 viewModel.IsAllValidCRNumberEntered = false;
@@ -94,6 +91,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
             }
         }
+
         public void SetPickerFont()
         {
             try
@@ -202,12 +200,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.PickerDobToDisplay = string.Empty;
         }
 
-        private void LIssuedBy_Clicked(object sender, EventArgs e)
+        private void LIssuedBy_Clicked(object sender, TappedEventArgs e)
         {
             ddlLIssuedBy.IsOpen = true;
         }
 
-        private void ddlLIssuedBy_OkButtonClicked(object sender, EventArgs e)
+        private void ddlLIssuedBy_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
         {
             if (viewModel.IssuedByList[ddlLIssuedBy.Columns[0].SelectedIndex] != null)
             {
@@ -220,29 +218,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        private void ddlLIssuedBy_CancelButtonClicked(object sender, EventArgs e)
-        {
-            viewModel.SelectedIssuedBy = viewModel.SelectedIssuedByPrev;
-            //ddlLIssuedBy.SelectedItem = viewModel.SelectedIssuedByPrev;
-            if (viewModel.SelectedIssuedByPrev == null)
-            {
-                viewModel.TxtLOrCIssuedBy = string.Empty;
-            }
-
-        }
-
-        private void ddlLIssuedByCity_CancelButtonClicked(object sender, EventArgs e)
-        {
-            viewModel.SelectCityList = viewModel.SelectCityListPrev;
-            //ddlLIssuedByCity.SelectedItem = viewModel.SelectCityListPrev;
-            if (viewModel.SelectCityListPrev == null)
-            {
-                viewModel.TxtLOrCIssuedByCity = string.Empty;
-            }
-
-        }
-
-        private void LIssuedByCity_Clicked(object sender, EventArgs e)
+        private void LIssuedByCity_Clicked(object sender, TappedEventArgs e)
         {
             ddlLIssuedByCity.IsOpen = true;
         }
@@ -300,7 +276,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             if (App.IsArabic)
             {
 
-                FlowDirection = FlowDirection.RightToLeft;
+                //FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
@@ -308,7 +284,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
             else
             {
-                FlowDirection = FlowDirection.LeftToRight;
+                //FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
@@ -331,21 +307,21 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         {
             base.OnAppearing();
             await loadPageData();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
+            //var safeInsets = On<iOS>().SafeAreaInsets();
+            //safeInsets.Bottom = -10;
+            //Padding = safeInsets;
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                IDTypePicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-                ddlLIssuedBy.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
-                ddlLIssuedByCity.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
+                IDTypePicker.Background = (Color)Application.Current.Resources["PickerBgGray"];
+                ddlLIssuedBy.Background = (Color)Application.Current.Resources["PickerBgGray"];
+                ddlLIssuedByCity.Background = (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                IDTypePicker.BackgroundColor = (Color)Application.Current.Resources["White"];
-                ddlLIssuedBy.BackgroundColor = (Color)Application.Current.Resources["White"];
-                ddlLIssuedByCity.BackgroundColor = (Color)Application.Current.Resources["White"];
+                IDTypePicker.Background = (Color)Application.Current.Resources["White"];
+                ddlLIssuedBy.Background = (Color)Application.Current.Resources["White"];
+                ddlLIssuedByCity.Background = (Color)Application.Current.Resources["White"];
             }
 
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
@@ -397,11 +373,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        private void OTPFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         //mobile OTP entry text changed events
         private void MobOTPFirstEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -427,27 +398,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        private void MobOTPFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void OnNewPasswordTapped(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NewPassword_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void OnConfirmNewPasswordTapped(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnDOBClicked(object sender, EventArgs e)
+        private void OnDOBClicked(object sender, TappedEventArgs e)
         {
             if (!viewModel.IsHijriCal)
             {
@@ -541,6 +492,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 return false;
             }
         }
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -617,7 +569,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         }
 
-        private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
+        private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryEmail.Text))
             {
@@ -721,6 +673,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 }
             }
         }
+
         private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
         {
             StringBuilder Message = new StringBuilder();
@@ -789,7 +742,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 return false;
             }
         }
-        private void OnIDTypeClicked(object sender, EventArgs e)
+
+        private void OnIDTypeClicked(object sender, TappedEventArgs e)
         {
             IDTypePicker.IsOpen = true;
         }
@@ -802,10 +756,10 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.TxtIDNumber = string.Empty;
             if (IsTermsAndConditionPage == false)
             {
-                EntryIDNumber.Focus();
+                //EntryIDNumber.Focus();
             }
             IsTermsAndConditionPage = false;
-            IDTypePicker.IsOpen = false;
+            //IDTypePicker.IsOpen = false;
 
         }
 
@@ -1008,26 +962,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 FrmIDNumber.HasError = false;
             }
         }
-        public void OnDateEntryFocussed(object sender, EventArgs args)
-        {
-            if (viewModel.IsHijriCal)
-            {
-                DpDboHijri.IsOpen = true;
-            }
-            else
-            {
-                DpDbo.IsOpen = true;
-            }
 
-        }
-        private void DOBpicker_OkButtonClicked(object sender, EventArgs e)
-        {
-            //  ValidateIDNumber();
-        }
-        private void DatePicker_Unfocused(object sender, FocusEventArgs e)
-        {
-            //ValidateIDNumber();
-        }
         public async void ValidateIDNumber()
         {
             // viewModel.IsAllValidDataEntered = true;
@@ -1505,6 +1440,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 });
             });
         }
+
         private void DpDbo_CancelButtonClicked(object sender, EventArgs e)
         {
             viewModel.PkrDBO = viewModel.PkrDBOPrev;
@@ -1521,9 +1457,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-
-
-        private void ddlLIssuedByCity_OkButtonClicked(object sender, EventArgs e)
+        private void ddlLIssuedByCity_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
         {
             if (viewModel.CityList[ddlLIssuedByCity.Columns[0].SelectedIndex] != null)
             {
@@ -1535,11 +1469,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.IssuedByCityTapped = true;
             }
         }
-        private void DpDbo_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-        }
-
-
+      
         private void DpDbo_Closed(object sender, EventArgs e)
         {
             try
@@ -1627,6 +1557,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
             }
         }
+
         private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
@@ -1634,6 +1565,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 FrmIDNumber.HasError = false;
             }
         }
+
         private void OnInCTapped(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new InstructionPopUpPageView());
@@ -1694,7 +1626,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         }
 
 
-        private void OnYesTapped(object sender, EventArgs e)
+        private void OnYesTapped(object sender, TappedEventArgs e)
         {
             viewModel.IsTIN = true;
             viewModel.ImgBackgroundNo = "vat_tile_listofsignup_W";
@@ -1704,17 +1636,17 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             //EntryTIN.Unfocus();
 
         }
-        private void OnNoTapped(object sender, EventArgs e)
+
+        private void OnNoTapped(object sender, TappedEventArgs e)
         {
             viewModel.IsTIN = false;
             viewModel.ImgBackgroundNo = "re_Tile_Background";
-
             viewModel.ImgBackgroundYes = "vat_tile_listofsignup_W";
             EntryTIN.Text = string.Empty;
             viewModel.TxtTIN = string.Empty;
         }
 
-        private void OnCRNumberTapped(object sender, EventArgs e)
+        private void OnCRNumberTapped(object sender, TappedEventArgs e)
         {
             viewModel.ImgBackgroundCRNubmer = "FP_selected_tile";
             viewModel.ImgBackgroundLicenseNubmer = "vat_tile_listofsignup_W";
@@ -1725,22 +1657,25 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         }
 
-        private void OnLicenseNumberTapped(object sender, EventArgs e)
+        private void OnLicenseNumberTapped(object sender, TappedEventArgs e)
         {
             viewModel.ImgBackgroundCRNubmer = "vat_tile_listofsignup_W";
             viewModel.ImgBackgroundLicenseNubmer = "FP_selected_tile";
+
             viewModel.IsCRChecked = false;
             viewModel.TxtCRNumber = string.Empty;
             viewModel.CROptionsVisible = false;
             viewModel.LicenseOptionsVisible = true;
 
         }
-        private void ImageSeeConfirmPassword_Tapped(object sender, EventArgs e)
+
+        private void ImageSeeConfirmPassword_Tapped(object sender, TappedEventArgs e)
         {
             viewModel.IsConfirmPasswordEncripted = !viewModel.IsConfirmPasswordEncripted;
             imageConfirmPassword.Source = viewModel.IsConfirmPasswordEncripted ? "hidePassword.png" : "showPassword.png";
         }
-        private void ImageSeeNewPassword_Tapped(object sender, EventArgs e)
+
+        private void ImageSeeNewPassword_Tapped(object sender, TappedEventArgs e)
         {
             viewModel.IsPasswordEncripted = !viewModel.IsPasswordEncripted;
             imageNewPassword.Source = viewModel.IsPasswordEncripted ? "hidePassword.png" : "showPassword.png";
@@ -1767,7 +1702,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsAllValidDataEntered = false;
             }
         }
-
 
 
         private void EntryTIN_Unfocused(object sender, FocusEventArgs e)
@@ -1852,6 +1786,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 }
                 viewModel.SelectedSignUpUsingSetForCancle = viewModel.SelectedSignUpUsing;
             }
+            IDTypePicker.IsOpen = false;
+            ddlLIssuedBy.IsOpen = false;
+            ddlLIssuedByCity.IsOpen = false;
         }
 
         private void EntryName_Unfocused(object sender, FocusEventArgs e)
@@ -2028,6 +1965,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
 
         }
+
         public void CheckValidationForIndividualStep()
         {
             bool flag = true;
@@ -2076,6 +2014,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
 
         }
+
         public void CheckValidationForContactInformation()
         {
             bool flag = true;
@@ -2102,6 +2041,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
             }
         }
+
         public void CheckValidationForBusinessStep()
         {
             //CRNumber Tile
@@ -2284,11 +2224,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-
-        private void EntryCfrmPass_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
         void ResetPasswordValidationConditions()
         {
             viewModel.MinEight = "error";
@@ -2296,6 +2231,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.MaxSixteen = "error";
             viewModel.NumSymbol = "error";
         }
+
         private void EntryPass_TextChanged(object sender, TextChangedEventArgs e)
         {
             //rmPass.HasError = false;
@@ -2323,6 +2259,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
 
         }
+
         public async Task NavigateToVerifyOTPScreenAsync(SignUpModelRootObject ResultFirstSubmitModel)
         {
             try
@@ -3887,13 +3824,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
         private void EntryLicenceNumber_Unfocused(object sender, FocusEventArgs e)
         {
-            if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
-            {
-            }
-            else
-            {
-                FrmLicenseNumber.HasError = false;
-            }
+            FrmLicenseNumber.HasError = false;
         }
 
         private void EntryCRNumber_TextChanged(object sender, TextChangedEventArgs e)
@@ -3935,23 +3866,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsAllValidDataEntered = false;
             }
 
-
         }
-        public void BussinessValidationCheck()
-        {
 
-
-        }
-        public void ContactInformationValidationCheck()
-        {
-
-
-        }
-        public void OTPValidationCheck()
-        {
-
-
-        }
 
         private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -3968,11 +3884,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             {
                 FrmIssuedByCity.HasError = false;
             }
-        }
-
-        private void OnDateEntryFocussed(object sender, FocusEventArgs e)
-        {
-
         }
 
         private void HijriCalSwitch_Toggled(object sender, ToggledEventArgs e)

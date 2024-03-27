@@ -27,7 +27,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
             {
                 viewModel = App.Locator.AcknowledgementDetailsPageView;
                 BindingContext = viewModel;
-                SetLTR();
                 if (vATDeclaration != null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
@@ -157,13 +156,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AcknowledgementDetailsPages
             {
             }
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+       
         protected async void OnVATRefreshButtonClicked(object sender, EventArgs e)
         {
             await viewModel.OnRefreshClick();

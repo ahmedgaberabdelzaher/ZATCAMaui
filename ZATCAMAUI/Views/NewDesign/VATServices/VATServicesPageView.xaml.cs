@@ -27,19 +27,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATServices
             safeInsets.Bottom = -10;
             Padding = safeInsets;
 
-            SetLTR();
         }
         private void SetLTR()
         {
             if (App.IsArabic)
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                FlowDirection = FlowDirection.RightToLeft;
+                //FlowDirection = FlowDirection.RightToLeft;
             }
             else
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                FlowDirection = FlowDirection.LeftToRight;
+                //FlowDirection = FlowDirection.LeftToRight;
             }
         }
 

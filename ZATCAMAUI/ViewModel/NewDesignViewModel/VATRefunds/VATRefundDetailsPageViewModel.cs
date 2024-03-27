@@ -10,7 +10,7 @@ using ZATCAMAUI.Models.VATRefunds;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 {
     
-    public class VATRefundDetailsPageViewModel : ViewModelBase
+    public class VATRefundDetailsPageViewModel : BaseViewModel
     {
         #region Commands
 
@@ -264,23 +264,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
+       
 
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
-        public VATRefundDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATRefundDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

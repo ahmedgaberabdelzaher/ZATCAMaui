@@ -20,8 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             viewModel = App.Locator.UpdatePasswordPopUp;
             this.BindingContext = viewModel;
 
-            //SetLTR();
-            this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
 
         async void OnUpdateBtnClicked(object sender, EventArgs e)

@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -18,79 +18,79 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    <Border
         Margin="0,200,0,0"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="End">
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout>
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="StartAndExpand"
                     Style="{StaticResource BodyLabelBlack}"
                     Text="{x:Static ResourceManager:AppResources.ZVatTermsAndConditions}"
                     VerticalOptions="StartAndExpand" />
 
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="StartAndExpand"
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource CaptionLabelGrey}"
                     VerticalOptions="EndAndExpand">
-                    <custom:CustomLabel.FormattedText>
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="1." />
                             <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCone}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="StartAndExpand"
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource CaptionLabelGrey}"
                     VerticalOptions="EndAndExpand">
-                    <custom:CustomLabel.FormattedText>
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="2." />
                             <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCtwo}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="StartAndExpand"
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource CaptionLabelGrey}"
                     VerticalOptions="EndAndExpand">
-                    <custom:CustomLabel.FormattedText>
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="3." />
                             <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCthree}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="StartAndExpand"
                     HorizontalTextAlignment="Start"
                     Style="{StaticResource CaptionLabelGrey}"
                     VerticalOptions="EndAndExpand">
-                    <custom:CustomLabel.FormattedText>
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="4." />
                             <Span Text="{x:Static ResourceManager:AppResources.ZVatTandCfour}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
-                <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}">
-                    <custom:CustomLabel.FormattedText>
+                <Label Style="{StaticResource CaptionLabelBlack}">
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ZVatCertifyInformation}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
             </StackLayout>
         </ScrollView>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

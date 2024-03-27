@@ -23,7 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             viewModel = App.Locator.NewTaxEvasionFormPageView;
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             SetPickerFont();
             ClearFields();
@@ -162,20 +161,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             {
 
 
-            }
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
 

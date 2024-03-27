@@ -12,7 +12,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             MessageText.Text = message;
             btnOK.Text = buttonOKName;
             btnNO.Text = buttonNoName;
-            SetLTR();
         }
 
         private void OnNoButtonClicked(object sender, EventArgs e)
@@ -22,13 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         private void OnOkButtonClicked(object sender, EventArgs e)
         {
             MessagingCenter.Send<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse", true);
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
         }
     }
 }

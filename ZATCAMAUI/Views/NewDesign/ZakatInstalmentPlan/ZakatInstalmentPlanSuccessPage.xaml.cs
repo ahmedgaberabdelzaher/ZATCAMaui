@@ -11,7 +11,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
         public ZakatInstalmentPlanSuccessPage()
         {
             InitializeComponent();
-            SetLTR();
             viewModel = App.Locator.ZakatInstalmentPlanSuccessPageView;
             BindingContext = viewModel;
 
@@ -26,13 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         private async void Instalment_copy_Tapped(object sender, EventArgs e)
         {
             try

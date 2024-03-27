@@ -2,11 +2,12 @@
 using GalaSoft.MvvmLight.Views;
 using RGPopup.Maui.Services;
 using System.Windows.Input;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
 
-    public class NewAccountPopUpPageViewModel : ViewModelBase
+    public class NewAccountPopUpPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -145,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #endregion
 
-        public NewAccountPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public NewAccountPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

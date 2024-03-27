@@ -34,7 +34,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
 
             BindingContext = viewModel;
-            SetLTR();
             ChangeAeroIcon();
 
         }
@@ -57,19 +56,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
 
         public async void OnCopyReferenceNumberButtonClicked(object sender, EventArgs args)
         {

@@ -20,8 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             ChangeAeroIcon();
             viewModel._updateEmailData = updateEmailData;
 
-            //SetLTR();
-            FlowDirection = UtilityManager.SetLTRAndRTL();
         }
 
         public void ChangeAeroIcon()

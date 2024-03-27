@@ -25,7 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 BindingContext = viewModel;
                 NavigationPage.SetBackButtonTitle(this, "");
                 NavigationPage.SetHasBackButton(this, false);
-                SetLTR();
                 ChangeAeroIcon();
                 //  viewModel.NoteText = string.Empty;
                 NotesPopUpPageViewModel.IsComingFromNotePage = true;
@@ -89,18 +88,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         #endregion
 
         #region Methods
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
 
         public void ChangeAeroIcon()
         {

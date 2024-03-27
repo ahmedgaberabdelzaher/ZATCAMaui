@@ -20,7 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             InitializeComponent();
             viewModel = App.Locator.AccountStatementsPageView;
             ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
 
@@ -78,17 +77,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
+       
 
         public void ChangeAeroIcon()
         {

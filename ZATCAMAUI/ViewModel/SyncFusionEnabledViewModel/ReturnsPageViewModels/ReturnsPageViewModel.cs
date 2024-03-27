@@ -4,6 +4,7 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
 {
@@ -30,7 +31,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             }
         }
     }
-    public class ReturnsPageViewModel : ViewModelBase
+    public class ReturnsPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -247,19 +248,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("ReturnsListCountsByStatus");
             }
         }
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         public List<ICRListSet> ICRListVATSubmitted
         {
             get
@@ -425,7 +414,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("FDirection");
             }
         }
-        public ReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
+        public ReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

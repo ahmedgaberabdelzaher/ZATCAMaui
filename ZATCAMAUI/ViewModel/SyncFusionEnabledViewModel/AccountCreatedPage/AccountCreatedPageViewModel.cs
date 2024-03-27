@@ -1,11 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage
 {
 
-    public class AccountCreatedPageViewModel : ViewModelBase
+    public class AccountCreatedPageViewModel : BaseViewModel
     {
         #region Veriables
         public readonly INavigationService _navigationService;
@@ -13,14 +14,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage
         public ICommand OnLoginPageLinkClicked;
         #endregion
         #region Constructor
-        public AccountCreatedPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AccountCreatedPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
-            //OnLoginPageLinkClicked = new Xamarin.Forms.Command(() =>
-            //{
-            //    _navigationService.NavigateTo(App.LogInPageView, App.SFLandingPageView);
-            //});
         }
         #endregion
     }

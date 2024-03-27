@@ -22,25 +22,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
                 viewModel = App.Locator.NewYesorNoView;
                 BindingContext = viewModel;
                 On<iOS>().SetUseSafeArea(true);
-                SetLTR();
                 ChangeAeroIcon();
                 MakeFalse();
             }
             catch (Exception)
             {
 
-            }
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
         public void ChangeAeroIcon()

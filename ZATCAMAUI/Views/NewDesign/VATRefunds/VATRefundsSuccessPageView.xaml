@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False">
@@ -70,14 +70,14 @@
                             TextColor="White" />
                     </StackLayout>
 
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="0"
                         Grid.Column="0"
                         Grid.ColumnSpan="3"
                         Margin="0,8,0,0"
                         Padding="0"
                         BackgroundColor="White"
-                        CornerRadius="15,15,0,0"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="End">
                         <StackLayout
                             Margin="30,60,30,40"
@@ -121,7 +121,7 @@
                                 Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
                                 TextColor="{StaticResource Primary}" />
                         </StackLayout>
-                    </yummy:PancakeView>
+                    </Border>
 
                 </Grid>
             </StackLayout>

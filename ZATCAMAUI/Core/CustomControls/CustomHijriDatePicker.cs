@@ -64,7 +64,7 @@ namespace ZATCAMAUI.Core.CustomControls
         {
             if (!FutureDay) InitializeDatePicker();
             else InitializeFutureDatePicker();
-
+            this.FlowDirection = FlowDirection.RightToLeft;
         }
 
         private void Picker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
@@ -138,6 +138,7 @@ namespace ZATCAMAUI.Core.CustomControls
                 }
                 dayColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.CalDay,
                     ItemsSource = day,
                     SelectedIndex = 0,
                 };
@@ -150,6 +151,7 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 monthColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.CalMonth,
                     ItemsSource = month,
                     SelectedIndex = 0,
                 };
@@ -165,8 +167,9 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 yearColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.ZakatYear,
                     ItemsSource = year,
-                    SelectedIndex = 0,
+                    SelectedIndex = year.IndexOf(hijri.GetYear(DateTime.Today).ToString()),
                 };
 
                 pickerColumns = new ObservableCollection<PickerColumn>()
@@ -210,6 +213,7 @@ namespace ZATCAMAUI.Core.CustomControls
                 }
                 dayColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.CalDay,
                     ItemsSource = day,
                     SelectedIndex = 0,
                 };
@@ -222,6 +226,7 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 monthColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.CalMonth,
                     ItemsSource = month,
                     SelectedIndex = 0,
                 };
@@ -236,6 +241,7 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 yearColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.ZakatYear,
                     ItemsSource = year,
                     SelectedIndex = 0,
                 };

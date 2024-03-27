@@ -10,7 +10,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -20,7 +20,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+    <Border Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
         <StackLayout>
             <Image
                 Margin="15,10,15,0"
@@ -31,12 +31,12 @@
                 </Image.GestureRecognizers>
             </Image>
             <StackLayout>
-                <custom:CustomLabel
+                <Label
                     Style="{StaticResource ValueLabelBlackBold}"
                     Text="{Binding AccountText}"
                     VerticalOptions="Center" />
 
-                <custom:CustomLabel Style="{StaticResource ValueLabelBlackBold}" Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
+                <Label Style="{StaticResource ValueLabelBlackBold}" Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
             </StackLayout>
 
             <StackLayout Padding="0,0,0,15" FlowDirection="LeftToRight">
@@ -56,7 +56,7 @@
                                     CornerRadius="15"
                                     HeightRequest="30"
                                     WidthRequest="30" />
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalTextAlignment="Center"
                                     Style="{StaticResource ValueLabelBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.NASA}"
@@ -163,5 +163,5 @@
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static ResourceManager:AppResources.ZZZZConfirmRefund}" />
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

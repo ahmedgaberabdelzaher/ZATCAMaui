@@ -13,7 +13,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             InfromatationText.Text = infromationText;
-            SetLTR();
         }
 
         private void OnCloseTapped(object sender, EventArgs e)
@@ -31,20 +30,5 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             OnDone?.Invoke();
             PopupNavigation.Instance.PopAsync();
         }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-                InfromatationText.HorizontalOptions = LayoutOptions.StartAndExpand;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-                InfromatationText.HorizontalOptions = LayoutOptions.StartAndExpand;
-            }
-        }
-
     }
 }

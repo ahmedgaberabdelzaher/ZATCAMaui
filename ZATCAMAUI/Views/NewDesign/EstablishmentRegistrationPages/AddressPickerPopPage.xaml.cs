@@ -14,19 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         {
             InitializeComponent();
             addressList.ItemsSource = addressess;
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
         }
         async void CancelButton_Clicked(object sender, EventArgs e)
         {

@@ -23,27 +23,14 @@ using Metadata = ZATCAMAUI.Models.VATInstalmentModels.Metadata;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 {
 
-    public class VATInstalmentPlanViewModel : ViewModelBase
+    public class VATInstalmentPlanViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        private bool _isLoading = false;
         public List<VATResults4> selectedList = new List<VATResults4>();
 
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private string _vATDueAmount = "0.00";
         public string VATDueAmount
         {
@@ -2017,7 +2004,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         }
         #endregion
 
-        public VATInstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATInstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -2443,7 +2430,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             EnableSlectionView();
             NoOfInstalments = 2;
-            _isLoading = false;
             SecondTerms = false;
             _vATPenalityAmount = "0.00";
             _vATLiabilityAmount = "0.00 SAR";

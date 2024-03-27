@@ -10,7 +10,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     Title="{x:Static ResourceManager:AppResources.ZVatTermsAndConditions}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
@@ -61,11 +61,11 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <Grid Margin="0,-6,0,0" BackgroundColor="{StaticResource Primary}">
-            <yummy:PancakeView
+            <Border
                 Margin="0,0,0,0"
                 Padding="0"
                 BackgroundColor="Transparent"
-                CornerRadius="32,32,0,0">
+                StrokeShape="RoundRectangle 32,32,0,0">
                 <Grid
                     Margin="0"
                     Padding="0,15,0,0"
@@ -120,7 +120,7 @@
                                 IsChecked="{Binding IschkTAndC}"
                                 Style="{StaticResource CheckboxHeightWidth32}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,0,10,0"
                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 HorizontalOptions="Start"
@@ -176,7 +176,7 @@
                     </StackLayout>
 
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
             <Grid
                 Grid.Row="0"
                 Grid.Column="0"

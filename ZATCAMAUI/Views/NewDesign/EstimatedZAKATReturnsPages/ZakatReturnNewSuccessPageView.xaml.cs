@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            SetLTR();
             ChangeAeroIcon();
 
             viewModel.ReferenceNumber = paymentInfo.Paymentref;
@@ -59,14 +58,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

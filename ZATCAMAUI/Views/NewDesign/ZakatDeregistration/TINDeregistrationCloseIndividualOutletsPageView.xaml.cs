@@ -26,7 +26,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             try
             {
                 ChangeAeroIcon();
-                SetLTR();
                 tINDeregistrationPageViewModel.IsMultiplePermitsVisible = false;
                 viewModel = tINDeregistrationPageViewModel;
                 this.BindingContext = viewModel;
@@ -38,18 +37,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
 
                 return;
-            }
-        }
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void CloseDeregDatePicker_Unfocused(object sender, FocusEventArgs e)

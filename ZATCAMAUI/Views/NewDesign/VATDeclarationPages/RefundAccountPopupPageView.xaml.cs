@@ -21,7 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.RefundAccountPopupPageView;
                 this.BindingContext = viewModel;
-                SetLTR();
                 SetPickerFont();
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
@@ -624,18 +623,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             //TODO
             // IDTypeDropdown.SelectedItem = viewModel.SelectedIBANTypePrev;
             viewModel.SelectedIBANType = viewModel.SelectedIBANTypePrev;
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {

@@ -8,7 +8,7 @@
     xmlns:sfcustom="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.PdfViewer;assembly=Syncfusion.Maui.PdfViewer"
     BackgroundColor="White"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_share.png" x:Name="ICvalidation1"

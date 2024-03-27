@@ -10,7 +10,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         public RegistrationSuccessfulPage(TaxPayerDetails taxpayerProfile)
         {
             InitializeComponent();
-            SetLTR();
             viewModel = App.Locator.RegistrationSuccessfulPage;
             viewModel.taxPayerDetails = taxpayerProfile;
             BindingContext = viewModel;
@@ -62,19 +61,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
 
             }
 
-        }
-
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
         }
     }
 }

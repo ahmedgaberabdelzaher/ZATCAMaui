@@ -23,7 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             viewModel.TaxablePeriod = ZakatReturnDetail.Persl;
-            SetLTR();
             ChangeAeroIcon();
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             _ = viewModel.OnPageLoad(ZakatReturnDetail);
@@ -75,14 +74,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     TitleText="{x:Static ResourceManager:AppResources.IAMLogin}">
 
     <newdesign:BaseContentPage.PancakeView>
@@ -34,10 +34,10 @@
                     <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
                 </Grid.GestureRecognizers>
 
-                <yummy:PancakeView
+                <Border
                     Padding="20,20,20,10"
                     BackgroundColor="White"
-                    CornerRadius="15,15,0,0"
+                    StrokeShape="RoundRectangle 15,15,0,0"
                     Style="{StaticResource CommonTopCurves}"
                     VerticalOptions="EndAndExpand">
 
@@ -58,7 +58,7 @@
 
                     </StackLayout>
 
-                </yummy:PancakeView>
+                </Border>
 
             </Grid>
 

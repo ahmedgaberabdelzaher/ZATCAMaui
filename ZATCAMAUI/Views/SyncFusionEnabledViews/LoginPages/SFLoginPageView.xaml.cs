@@ -1,16 +1,10 @@
-﻿
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+﻿using RGPopup.Maui.Services;
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;
-using System.Text.RegularExpressions;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Enums;
-using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
-using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount;
@@ -27,8 +21,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
     {
         SFLoginPageViewModel viewModel;
 
-        private double width = 0;
-        private double height = 0;
         HybridWebView hybridWebView = new HybridWebView();
 
         /// <summary>
@@ -89,16 +81,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 {
                 });
 
-                DependencyService.Get<IStatusBar>().HideStatusBar();
 
                 App.ArePreLoginLangCookiesSet = false;
                 App.IsLoginCalled = false;
-
-                var safeInsets = On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                this.Padding = safeInsets;
-
-                NavigationPage.SetHasNavigationBar(this, false);
                 viewModel.TINIndex = 0;
 
             }
@@ -167,11 +152,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                     }
                 }
 
-                var safeInsets = On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SafeAreaInsets();
-                if (Device.RuntimePlatform == Device.iOS && safeInsets.Bottom == 0)
-                {
-                    loginGrid.Margin = new Thickness(0, -50, 0, -30);
-                }
+                //var safeInsets = On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SafeAreaInsets();
+                //if (Device.RuntimePlatform == Device.iOS && safeInsets.Bottom == 0)
+                //{
+                //    loginGrid.Margin = new Thickness(0, -50, 0, -30);
+                //}
             }
             catch (Exception )
             {
@@ -196,6 +181,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
+
 
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
@@ -452,9 +438,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 loginGrid.Add(hybridWebView, 0, 0);
 
                 //TODO
-                // send the child to back because LowerChild() is not available in MAUI
-                loginGrid.Children.RemoveAt(loginGrid.Children.IndexOf(hybridWebView));
-                loginGrid.Insert(loginGrid.Children.Count, hybridWebView);
+                //// send the child to back because LowerChild() is not available in MAUI
+                //loginGrid.Children.RemoveAt(loginGrid.Children.IndexOf(hybridWebView));
+                //loginGrid.Insert(loginGrid.Children.Count, hybridWebView);
             }
             catch (Exception)
             {
@@ -479,24 +465,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
             });
             viewModel.CurrentTab = 1;
             viewModel.IsLoading = false;
-        }
-
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-            if (width != this.width || height != this.height)
-            {
-                this.width = width;
-                this.height = height;
-                if (width > height)
-                {
-                    this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
-                }
-                else
-                {
-                    this.BackgroundImageSource = "partials_background.png";
-                }
-            }
         }
 
         protected override void OnDisappearing()

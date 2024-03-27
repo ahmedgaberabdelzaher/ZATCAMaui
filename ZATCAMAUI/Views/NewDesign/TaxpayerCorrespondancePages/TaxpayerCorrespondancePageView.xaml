@@ -12,7 +12,7 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -69,9 +69,9 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
-                        CornerRadius="14,14,0,0"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             x:Name="VATRMainGrid"
@@ -91,7 +91,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
 
             </Grid>
@@ -154,14 +154,13 @@
                         Grid.Column="0"
                         Margin="10,0,10,0"
                         Background="White"
-                        FlowDirection="RightToLeft"
                         ItemHeight="40"
                         Mode="Dialog"
                         SelectionChanged="TaxTypeDownPicker_SelectionChanged">
 
-                        <syncfusion:SfPicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" />
-                        </syncfusion:SfPicker.ColumnHeaderView>
+                        <syncfusion:SfPicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </syncfusion:SfPicker.SelectionView>
 
                         <syncfusion:SfPicker.TextStyle>
                             <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
@@ -203,25 +202,22 @@
 
                         </syncfusion:SfPicker.FooterView>
 
-                        <syncfusion:SfPicker.Behaviors>
-                            <behavior:SfPickerBehavior />
-                        </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
 
-                <custom:CustomLabel
+                <Label
                     Margin="5,0,5,0"
                     HorizontalOptions="StartAndExpand"
                     Style="{StaticResource TPCorrCaptionLabelGrey}"
                     Text="{Binding CountLabel}">
-                    <custom:CustomLabel.FormattedText>
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Style="{StaticResource TPCorrCaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDCount}" />
                             <Span Style="{StaticResource TPCorrCaptionLabelGrey}" Text=" : " />
                             <Span Style="{StaticResource TPCorrCaptionLabelGrey}" Text="{Binding Count}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
                 <ScrollView
                     HorizontalScrollBarVisibility="Never"
                     IsVisible="{Binding IsVisibleFavourite}"
@@ -251,7 +247,7 @@
                                         HeightRequest="25"
                                         HorizontalOptions="Center"
                                         Source="{Binding ImageSource}" />
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="Center"
                                         Style="{StaticResource CaptionLabelBlack}"
                                         Text="{Binding Text}"
@@ -356,7 +352,7 @@
                     </listView:SfListView.ItemTemplate>
                 </listView:SfListView>
 
-                <custom:CustomLabel
+                <Label
                     Margin="0,20,0,0"
                     HorizontalOptions="Center"
                     IsVisible="{Binding IsNoDataLableVisible}"

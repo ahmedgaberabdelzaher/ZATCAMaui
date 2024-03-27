@@ -15,7 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             viewModel = App.Locator.InfoPopUpPage;
             this.BindingContext = viewModel;
-            SetLTR();
             InitializeComponent();
         }
 
@@ -27,17 +26,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         private void OnVATNowTapped(object sender, EventArgs e)
         {
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
         }
 
         private void btnDashboard_Clicked(object sender, EventArgs e)

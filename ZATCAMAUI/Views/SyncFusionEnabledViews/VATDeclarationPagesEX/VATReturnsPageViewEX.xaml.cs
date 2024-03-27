@@ -261,19 +261,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             if (App.IsArabic)
             {
-                FlowDirection = FlowDirection.RightToLeft;
-                viewModel.FDirection = FlowDirection.RightToLeft;
+                //FlowDirection = FlowDirection.RightToLeft;
+                //viewModel.FDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("EGAZT.SyncfusionControl", Application.Current.GetType().Assembly);
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
             }
             else
             {
-                FlowDirection = FlowDirection.LeftToRight;
-                viewModel.FDirection = FlowDirection.LeftToRight;
+                //FlowDirection = FlowDirection.LeftToRight;
+                //viewModel.FDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
             }
         }
         public async Task IntilizeAsync()
@@ -4943,6 +4943,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     ValidationsForVATRefund();
                 }
             }
+            BPicker.IsOpen = false;
         }
         private void BPicker_CancelButtonClicked(object sender, EventArgs e)
         {

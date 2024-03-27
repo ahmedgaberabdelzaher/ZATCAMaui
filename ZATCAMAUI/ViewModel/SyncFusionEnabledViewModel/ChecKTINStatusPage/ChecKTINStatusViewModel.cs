@@ -7,11 +7,12 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
 {
 
-    public class ChecKTINStatusViewModel : ViewModelBase
+    public class ChecKTINStatusViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -165,7 +166,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
         }
         //@Divya Jannapureddy adding line number
         //Replace the below method
-        public ChecKTINStatusViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ChecKTINStatusViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             _dialogService = dialogService;
             _navigationService = navigationService;

@@ -8,7 +8,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -46,7 +46,7 @@
                     TextColor="White" />
             </StackLayout>
 
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Style="{StaticResource CommonTopCurves}"
                 VerticalOptions="EndAndExpand">
@@ -60,12 +60,12 @@
                             <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
 
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="Start"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5SadadBillNo}" />
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource BodyLabelBlack}"
                                             Text="{Binding SadadBillNumber}" />
@@ -77,12 +77,12 @@
                             <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
 
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="Start"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5TotalZakatPayable}" />
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                        <custom:CustomLabel HorizontalOptions="Start" Style="{StaticResource BodyLabelBlack}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding TotalZakatPayble}" />
@@ -90,7 +90,7 @@
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
                                             </Label.FormattedText>
-                                        </custom:CustomLabel>
+                                        </Label>
                                     </StackLayout>
                                 </StackLayout>
                             </Border>
@@ -101,9 +101,9 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="ic_vat_info.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="Start"
-                                        LineSpacing="0.6"
+                                        LineHeight="0.6"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.NDPayBillAmtObtainCertificateAutomaticall}" />
                                 </StackLayout>
@@ -122,7 +122,7 @@
                             Text="{x:Static ResourceManager:AppResources.Form5Finish}" />
                     </StackLayout>
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
         </Grid>
     </ContentPage.Content>

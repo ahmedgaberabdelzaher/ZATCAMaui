@@ -11,9 +11,8 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="LeftToRight"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -23,8 +22,6 @@
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -45,11 +42,12 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
-                        BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        BackgroundColor="Transparent"
+                        Stroke="Transparent"
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             Margin="0"
                             Padding="0,0,0,0"
@@ -66,7 +64,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -101,8 +99,8 @@
             <Grid Grid.Row="0" VerticalOptions="FillAndExpand">
                 <ScrollView VerticalOptions="FillAndExpand">
                     <StackLayout Padding="10" VerticalOptions="FillAndExpand">
-                        <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.SADADDetailss}" />
-                        <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ReviewSADADBillDetailss}" />
+                        <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.SADADDetailss}" />
+                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ReviewSADADBillDetailss}" />
 
                         <Grid VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
@@ -114,12 +112,12 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource ValueLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.SADADNumber}" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
                                                 Text="{Binding SadadBindNumber}" />
@@ -138,12 +136,12 @@
                                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
                                     <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource ValueLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ZSADADGAZTId}" />
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="Start"
                                                 Style="{StaticResource ValueLabelBlack}"
                                                 Text="020" />
@@ -170,25 +168,25 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.TotalAmount}"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             HorizontalOptions="EndAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding TotalAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                                     <Span Style="{StaticResource ValueLabelBlack}" Text="&#160;" />
                                                     <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                     </Grid>
                                 </Frame>

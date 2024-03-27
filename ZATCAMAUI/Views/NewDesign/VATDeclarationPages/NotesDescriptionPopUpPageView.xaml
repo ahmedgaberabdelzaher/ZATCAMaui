@@ -9,7 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -19,12 +19,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    <Border
         Margin="0,150,0,0"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="End">
         <StackLayout>
-            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZZDisplayNotes}" />
+            <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZZDisplayNotes}" />
             <ListView
                 BackgroundColor="White"
                 HasUnevenRows="True"
@@ -38,7 +38,7 @@
                         <ViewCell>
                             <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout Padding="20" Spacing="-5">
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                    <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
@@ -48,9 +48,9 @@
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </Label>
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                    <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
@@ -60,9 +60,9 @@
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </Label>
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                    <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
@@ -72,9 +72,9 @@
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </Label>
 
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                    <Label Style="{StaticResource ValueLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
@@ -84,7 +84,7 @@
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                 </StackLayout>
                             </Border>
@@ -92,7 +92,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <custom:CustomLabel
+            <Label
                 HorizontalOptions="Center"
                 IsVisible="{Binding IsNoDataLabelVisible}"
                 Style="{StaticResource ValueLabelBlack}"
@@ -103,5 +103,5 @@
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static ResourceManager:AppResources.ZDone}" />
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

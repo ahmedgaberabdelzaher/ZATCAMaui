@@ -6,7 +6,7 @@
     xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
     xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    >
 
     <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -28,10 +28,10 @@
 
     <Grid VerticalOptions="EndAndExpand">
 
-        <yummy:PancakeView
+        <Border
             Padding="0"
             BackgroundColor="White"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
             HeightRequest="400"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
@@ -44,7 +44,7 @@
                 MapType="Street"
                 MyLocationEnabled="True" />
 
-        </yummy:PancakeView>
+        </Border>
 
         <Image
             Margin="10"

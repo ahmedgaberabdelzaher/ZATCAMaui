@@ -14,27 +14,9 @@ namespace ZATCAMAUI.Views.NewDesign.CustomServicesPages
             viewModel = App.Locator.exciseTaxViewModel;
             BindingContext = viewModel;
             InitializeComponent();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
 
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-
-
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
         }
 
     }

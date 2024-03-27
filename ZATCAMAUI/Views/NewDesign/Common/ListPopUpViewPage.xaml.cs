@@ -12,19 +12,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         {
             InitializeComponent();
             PopupList.ItemsSource = (System.Collections.IEnumerable)data;
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
         }
         async void PopupList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

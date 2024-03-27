@@ -40,8 +40,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             else
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
 
-            //SetLTR();
-            this.FlowDirection = UtilityManager.SetLTRAndRTL();
+            
 
             // Setup International Mobile Data
             currentMobileData = mobileData;

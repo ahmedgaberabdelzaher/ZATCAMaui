@@ -7,7 +7,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -87,7 +87,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
@@ -95,11 +95,11 @@
 
 
                         <!--  ReportNote Frame  -->
-                        <yummy:PancakeView
+                        <Border
                             Margin="0,15"
-                            Border="{yummy:BorderMarkup Color=#EBEBEB,
-                                                        Thickness='1'}"
-                            CornerRadius="15"
+                            Stroke="#EBEBEB"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 15,15,15,15"
                             Style="{StaticResource CommonTopCurves}"
                             VerticalOptions="Start">
 
@@ -137,7 +137,7 @@
 
 
 
-                        </yummy:PancakeView>
+                        </Border>
 
                         <!--  Send Report Button  -->
                         <buttons:SfButton
@@ -154,7 +154,7 @@
                 </ScrollView>
 
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
         </Grid>

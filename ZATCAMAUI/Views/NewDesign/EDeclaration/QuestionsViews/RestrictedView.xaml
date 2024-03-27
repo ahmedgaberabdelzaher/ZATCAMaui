@@ -33,14 +33,14 @@
     <StackLayout Spacing="0">
 
         <!--  Item Label  -->
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.TypeItem}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <!--  Item Entry  -->
         <inputLayout:SfTextInputLayout
@@ -67,14 +67,14 @@
 
     <!--#region Purpose View-->
     <StackLayout>
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.Purpose}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
@@ -131,14 +131,14 @@
         </StackLayout.Triggers>
 
         <!--  Other Purpose Label  -->
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.OtherPurpose}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <!--  Other Purpose Entry  -->
         <inputLayout:SfTextInputLayout
@@ -168,14 +168,14 @@
     <StackLayout Spacing="0">
 
         <!--  Quantity Label  -->
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.Quantity}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <!--  Quantity Entry  -->
         <inputLayout:SfTextInputLayout
@@ -215,14 +215,14 @@
 
     <!--#region units View-->
     <StackLayout>
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.units}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
@@ -269,14 +269,14 @@
 
     <!--#region Currency View-->
     <StackLayout>
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.Currency}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
@@ -325,14 +325,14 @@
     <StackLayout Spacing="0">
 
         <!--  Quantity Label  -->
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <!--  Total Value Entry  -->
         <inputLayout:SfTextInputLayout
@@ -359,7 +359,7 @@
 
             </custom:GAZTBorderlessEntry>
             <inputLayout:SfTextInputLayout.TrailingView>
-                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
             </inputLayout:SfTextInputLayout.TrailingView>
         </inputLayout:SfTextInputLayout>
 
@@ -375,14 +375,14 @@
     <!--#region Permit Label-->
 
     <!--  Permit Label  -->
-    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-        <custom:CustomLabel.FormattedText>
+    <Label Style="{StaticResource CaptionLabelGrey}">
+        <Label.FormattedText>
             <FormattedString>
                 <Span Text="{x:Static ResourceManager:AppResources.PermitLabel}" />
                 <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
             </FormattedString>
-        </custom:CustomLabel.FormattedText>
-    </custom:CustomLabel>
+        </Label.FormattedText>
+    </Label>
 
     <Grid ColumnDefinitions="*,15,*" HeightRequest="100">
 
@@ -480,14 +480,14 @@
         <StackLayout Spacing="0">
 
             <!--  Uploaded files Label  -->
-            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                <custom:CustomLabel.FormattedText>
+            <Label Style="{StaticResource CaptionLabelGrey}">
+                <Label.FormattedText>
                     <FormattedString>
                         <Span Text="{x:Static ResourceManager:AppResources.Attachments}" />
                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                     </FormattedString>
-                </custom:CustomLabel.FormattedText>
-            </custom:CustomLabel>
+                </Label.FormattedText>
+            </Label>
 
             <!--  Uploaded files Entry  -->
             <inputLayout:SfTextInputLayout

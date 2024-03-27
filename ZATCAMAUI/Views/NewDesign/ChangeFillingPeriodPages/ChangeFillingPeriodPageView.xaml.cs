@@ -28,7 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
 
                 NavigationPage.SetBackButtonTitle(this, "");
                 ChangeAeroIcon();
-                SetLTR();
                 On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.ChangeFillingPeriodPageView;
@@ -39,14 +38,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             }
             catch (Exception)
             {
-            }
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
 

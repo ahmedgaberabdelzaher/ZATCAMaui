@@ -15,7 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             InitializeComponent();
             viewModel = App.Locator.VATCreditCarriedForwardPopUpPageView;
             BindingContext = viewModel;
-            SetLTR();
             if (vATDeclaration.d != null)
             {
                 viewModel.VATDeclarationData = vATDeclaration;
@@ -33,13 +32,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     viewModel.IsListViewVisible = false;
                     viewModel.IsNoDataLabelVisible = true;
                 }
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private async void OnCloseTapped(object sender, EventArgs e)

@@ -12,29 +12,17 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
     public partial class NafathLoginPageView : ContentPage
     {
         NafathLoginPageViewModel viewModel;
-        HybridWebView Hybridview;
+        HybridWebView hybridview;
         public NafathLoginPageView()
         {
             InitializeComponent();
             viewModel = App.Locator.NafathLoginPageView;
             BindingContext = viewModel;
             On<iOS>().SetUseSafeArea(true);
-            SetLTR();
             ChangeAeroIcon();
 
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -60,16 +48,16 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         url = modelSSOID.results[0].Murl;
-                        Hybridview = new HybridWebView();
-                        Hybridview.Url = url;
-                        RegnagaftGrid.Add(Hybridview, 0, 0);
-                        Hybridview.RegisterAction(async (obj) =>
+                        hybridview = new HybridWebView();
+                        hybridview.Url = url;
+                        RegnagaftGrid.Add(hybridview, 0, 0);
+                        hybridview.RegisterAction(async (obj) =>
                         {
                             if (obj == "navigateToVATIndividualSignupPageSSO")
                             {
                                MainThread.BeginInvokeOnMainThread(async () =>
                                 {
-                                    try
+                                     try
                                     {
                                         viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
                                         //API Call
@@ -82,7 +70,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
                             }
                             if (obj == "displayLoginLoadingIndicator")
                             {
-                                Hybridview.Opacity = 0;
+                                hybridview.Opacity = 0;
                                 viewModel.IsLoading = true;
                             }
 
@@ -93,7 +81,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
 
                             if (obj == "hideLoadingIndicator")
                             {
-                                Hybridview.Opacity = 1;
+                                hybridview.Opacity = 1;
                                 viewModel.IsLoading = false;
 
                             }
@@ -126,7 +114,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
                                         }
                                         else
                                         {
-                                            Hybridview.Opacity = 0;
+                                            hybridview.Opacity = 0;
                                             viewModel.IsLoading = false;
 
                                             await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
@@ -145,7 +133,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
                                         }
                                         else
                                         {
-                                            Hybridview.Opacity = 0;
+                                            hybridview.Opacity = 0;
                                             viewModel.IsLoading = false;
 
                                             await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
@@ -172,10 +160,6 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
 
         }
 
-        void webviewNavigated(object sender, WebNavigatedEventArgs e)
-        {
-
-        }
 
     }
 }

@@ -6,7 +6,7 @@ using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
-    public class VATDeRegistrationInstructionsPageViewModel : ViewModelBase
+    public class VATDeRegistrationInstructionsPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -84,7 +84,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         public ICommand VATDeregistrationClicked { get; set; }
 
-        public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

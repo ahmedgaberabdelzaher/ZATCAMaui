@@ -8,21 +8,13 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundClicked="PopupPage_BackgroundClicked">
 
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
 
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="15,15,0,0"
+        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="EndAndExpand"
         IsVisible="true"
         VerticalOptions="EndAndExpand">
@@ -34,11 +26,12 @@
             <Border
                 Margin="0,0,0,5"
                 Padding="0"
+                Stroke="Transparent"
                 Style="{StaticResource GreyBorderFrameWithShadow}">
                 <StackLayout Orientation="Horizontal">
                     <buttons:SfButton
                         x:Name="PickerDoneButton"
-                        Margin="10,0,10,0"
+                        Margin="10,0"
                         Background="Transparent"
                         Clicked="PopupClose_Clicked"
                         FontFamily="{StaticResource SomarBold}"
@@ -49,7 +42,7 @@
                         VerticalOptions="Center" />
                     <buttons:SfButton
                         x:Name="PickerCancelButton"
-                        Margin="10,0,10,0"
+                        Margin="10,0"
                         Background="Transparent"
                         Clicked="PopupCancel_Clicked"
                         FontFamily="{StaticResource SomarBold}"
@@ -77,8 +70,8 @@
                 <syncfusion:SfPicker
                     x:Name="genericPicker"
                     Margin="2"
-                    FlowDirection="RightToLeft"
                     IsOpen="True"
+                    Background="White"
                     ItemHeight="36"
                     SelectionChanged="genericPicker_SelectionChanged"
                     Style="{StaticResource PickerStyle}">
@@ -102,6 +95,10 @@
                             TextColor="{StaticResource NeutralBlack}" />
                     </syncfusion:SfPicker.SelectedTextStyle>
 
+                    <syncfusion:SfPicker.SelectionView>
+                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+
+                    </syncfusion:SfPicker.SelectionView>
 
                     <syncfusion:SfPicker.HeaderView>
 
@@ -113,11 +110,8 @@
 
                     </syncfusion:SfPicker.HeaderView>
 
-                    <syncfusion:SfPicker.Behaviors>
-                        <behavior:SfPickerBehavior />
-                    </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
             </StackLayout>
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

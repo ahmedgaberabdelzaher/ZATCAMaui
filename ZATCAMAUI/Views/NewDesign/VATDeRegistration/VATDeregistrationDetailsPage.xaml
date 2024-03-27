@@ -15,15 +15,13 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -43,11 +41,11 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0,0,0,0"
                         BackgroundColor="White"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid RowSpacing="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
@@ -106,7 +104,7 @@
                             </StackLayout>
 
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid
                         Grid.Row="0"
                         Margin="8,0"
@@ -190,14 +188,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VatDeregDetailsTitle}" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -209,7 +207,7 @@
                                     Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                             </Grid>
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
@@ -282,7 +280,7 @@
                                     IsVisible="{Binding IsDeregReasonVisible}">
 
 
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" />
@@ -356,7 +354,7 @@
                                     <StackLayout>
                                         <StackLayout>
 
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.TinDeregistrationReason}" />
@@ -420,12 +418,12 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedStartDate}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="1"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
@@ -488,7 +486,7 @@
                                         </Border>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregSuspendedFilingPeriod}" />
@@ -530,7 +528,7 @@
                                         </Border>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingPeriod}" />
@@ -571,7 +569,7 @@
                                         </Border>
                                     </StackLayout>
                                     <StackLayout Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregNextFilingDueDate}" />
@@ -635,14 +633,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VatDeregAttachmentsHeaderTitle}" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Margin="0,0,0,8"
@@ -775,13 +773,13 @@
                                                     Source="Generic_attachment_icon.png"
                                                     VerticalOptions="Center"
                                                     WidthRequest="25" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Row="0"
                                                     Grid.Column="1"
                                                     FontSize="Small"
                                                     HorizontalOptions="StartAndExpand"
                                                     HorizontalTextAlignment="Start"
-                                                    LineSpacing="1"
+                                                    LineHeight="1"
                                                     Text="{Binding Filename}"
                                                     TextColor="{StaticResource PrimaryColor}"
                                                     VerticalOptions="Center" />
@@ -831,13 +829,13 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -863,7 +861,7 @@
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2">
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" />
@@ -902,7 +900,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         Orientation="Vertical">
                                         <StackLayout>
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.IDNumber}" />
@@ -936,7 +934,7 @@
                                             Grid.ColumnSpan="2"
                                             HorizontalOptions="FillAndExpand"
                                             IsVisible="{Binding IsDOBEditorVisible}">
-                                            <custom:CustomLabel
+                                            <Label
                                                 Margin="0,0,0,0"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
@@ -978,7 +976,7 @@
                                         </StackLayout>
                                     </StackLayout>
                                     <StackLayout>
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="StartAndExpand"
                                             IsEnabled="{Binding IsContactPersonEnabled}"
                                             Style="{StaticResource CaptionLabelGrey}"
@@ -1020,13 +1018,13 @@
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <custom:CustomLabel Margin="5,10,0,15" Style="{StaticResource GAZTMicroMediumGrayLabel}">
-                                            <custom:CustomLabel.FormattedText>
+                                        <Label Margin="5,10,0,15" Style="{StaticResource GAZTMicroMediumGrayLabel}">
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.VATDeregistrationDeclarationCheckBoxText}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                     </StackLayout>
                                     <Border
                                         Margin="0,20,0,10"
@@ -1041,7 +1039,7 @@
                                                     Source="ic_vat_info.png"
                                                     VerticalOptions="Center"
                                                     WidthRequest="24" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Margin="10,0,10,5"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource ValueLabelBlack}"
@@ -1094,13 +1092,13 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VatDeregSummaryTitle}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Margin="0,0,0,8"
@@ -1305,7 +1303,7 @@
                                                                 IsVisible="{Binding IsAttachmentAttached, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                                 Source="Generic_attachment_icon.png"
                                                                 VerticalOptions="Center" />
-                                                            <custom:CustomLabel
+                                                            <Label
                                                                 FontSize="Small"
                                                                 HorizontalTextAlignment="End"
                                                                 Style="{StaticResource ValueLabelBlack}"

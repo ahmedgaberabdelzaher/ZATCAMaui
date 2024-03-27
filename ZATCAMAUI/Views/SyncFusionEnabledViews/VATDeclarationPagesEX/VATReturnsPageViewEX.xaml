@@ -16,6 +16,7 @@
     xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
     Title="{x:Static ResourceManager:AppResources.VATDeclaration}"
     BackgroundColor="White"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
@@ -120,7 +121,7 @@
                                             Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                             Text="{x:Static ResourceManager:AppResources.ZVatReadInstructions}"
                                             VerticalOptions="EndAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="2"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -128,7 +129,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                             VerticalOptions="EndAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
@@ -139,9 +140,9 @@
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZZPleasefilltherequestedinformationforeachstep}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
                                             Grid.Row="3"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -149,7 +150,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                             VerticalOptions="EndAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
@@ -160,9 +161,9 @@
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatSubmittedInstructions}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
                                             Grid.Row="4"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -170,7 +171,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                             VerticalOptions="EndAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
@@ -181,9 +182,9 @@
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatDateInstructions}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
                                             Grid.Row="5"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -191,7 +192,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                             VerticalOptions="EndAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarLight}"
@@ -202,8 +203,8 @@
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatFaqSectionInstructions}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <Label
                                             Grid.Row="6"
                                             Grid.Column="0"
@@ -235,22 +236,22 @@
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="7"
                                             Grid.Column="1"
                                             Margin="0,0,0,5"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                             VerticalOptions="CenterAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                     </Grid>
                                 </ScrollView>
                             </tabView:SfTabItem.Content>
@@ -624,7 +625,7 @@
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="15"
                                             Grid.Column="1"
                                             Margin="10,0,10,0"
@@ -636,7 +637,7 @@
                                             TextColor="{StaticResource PrimaryColor}"
                                             VerticalOptions="FillAndExpand"
                                             VerticalTextAlignment="Center" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="16"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -672,10 +673,10 @@
 
                                                 </FormattedString>
                                             </Label.FormattedText>
-                                            <custom:CustomLabel.GestureRecognizers>
+                                            <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}" />
-                                            </custom:CustomLabel.GestureRecognizers>
-                                        </custom:CustomLabel>
+                                            </Label.GestureRecognizers>
+                                        </Label>
 
                                     </Grid>
                                 </ScrollView>
@@ -760,7 +761,7 @@
                                             <ColumnDefinition Width="86*" />
                                             <ColumnDefinition Width="14*" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -768,13 +769,13 @@
                                             HorizontalOptions="Start"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsNewReturn}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZDoyouhavesalesorpurchasessubjectto5VAT}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <Grid
                                             Grid.Row="1"
                                             Grid.Column="0"
@@ -808,11 +809,11 @@
                                                 IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableSwitchToggledFor15PercentChange}"
                                                 IsToggled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsSwitchToggledFor15PercentChange}"
                                                 VerticalOptions="CenterAndExpand" />
-                                            <custom:CustomButton
+                                            <buttons:SfButton
                                                 x:Name="btnForNewChange"
                                                 Grid.Row="0"
                                                 Grid.Column="1"
-                                                BackgroundColor="Transparent"
+                                                Background="Transparent"
                                                 Clicked="btnSwitch_ClickedForNewVATChange"
                                                 FontSize="13"
                                                 HeightRequest="15"
@@ -1428,12 +1429,12 @@
                                             </inputLayout:SfTextInputLayout.Triggers>
                                         </inputLayout:SfTextInputLayout>
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="11"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -1444,8 +1445,8 @@
                                                         FontSize="13"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatPrivateHealthcare}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntrySalesGccAmtFrame"
                                             Grid.Row="12"
@@ -2042,12 +2043,12 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 FontSize="Micro"
                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
@@ -2058,8 +2059,8 @@
                                                             FontSize="13"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTotalSales}" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
+                                                </Label.FormattedText>
+                                            </Label>
                                             <Label
                                                 x:Name="LabelTotalsalesAmt"
                                                 Grid.Row="0"
@@ -2069,14 +2070,14 @@
                                                 HorizontalOptions="CenterAndExpand"
                                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAmt, StringFormat='{0:D2}'}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 Grid.Column="0"
                                                 Margin="10,0,10,1"
                                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                 FontSize="Micro"
                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SomarBold}"/>-->
                                                         <Span
@@ -2084,8 +2085,8 @@
                                                             FontSize="11"
                                                             Text="{x:Static ResourceManager:AppResources.ZZZTotalSalesAdjustment}" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
+                                                </Label.FormattedText>
+                                            </Label>
                                             <Label
                                                 x:Name="LabelTotalsalesAdj"
                                                 Grid.Row="1"
@@ -2095,14 +2096,14 @@
                                                 HorizontalOptions="CenterAndExpand"
                                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="2"
                                                 Grid.Column="0"
                                                 Margin="10,0,10,1"
                                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                 FontSize="Micro"
                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SomarBold}"/>-->
                                                         <Span
@@ -2110,8 +2111,8 @@
                                                             FontSize="11"
                                                             Text="{x:Static ResourceManager:AppResources.ZZZTotalVATTaxableAmountonSales}" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
+                                                </Label.FormattedText>
+                                            </Label>
                                             <Label
                                                 Grid.Row="2"
                                                 Grid.Column="1"
@@ -2693,7 +2694,7 @@
                                         </inputLayout:SfTextInputLayout>
 
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="33"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -2701,7 +2702,7 @@
                                             HorizontalTextAlignment="Start"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -2712,8 +2713,8 @@
                                                         FontSize="13"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatImportsVatPaidatcustoms}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryZVatAmountWithSARFrame"
                                             Grid.Row="34"
@@ -2880,7 +2881,7 @@
                                             </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="33"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -2888,7 +2889,7 @@
                                             HorizontalTextAlignment="Start"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -2899,8 +2900,8 @@
                                                         FontSize="13"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZImportssubjecttoVATpaidatcustoms15}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryZVatAmountWithSARFrame15"
                                             Grid.Row="34"
@@ -3067,7 +3068,7 @@
                                             </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="37"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -3075,7 +3076,7 @@
                                             HorizontalTextAlignment="Start"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -3086,8 +3087,8 @@
                                                         FontSize="13"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZImportssubjecttoVATpaidatcustoms5}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryZVatAmountWithSARFrame5"
                                             Grid.Row="38"
@@ -3257,14 +3258,14 @@
                                         </inputLayout:SfTextInputLayout>
 
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="41"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             FontAttributes="Bold"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -3275,8 +3276,8 @@
                                                         FontSize="13"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatImportsSubjectToVatAccounted}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryImportsaccAmtFrame"
                                             Grid.Row="42"
@@ -3457,14 +3458,14 @@
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="41"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             FontAttributes="Bold"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -3475,8 +3476,8 @@
                                                         FontSize="13"
                                                         Text="{x:Static ResourceManager:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryImportsaccAmtFrame15"
                                             Grid.Row="42"
@@ -3656,14 +3657,14 @@
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="45"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             FontAttributes="Bold"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -3674,8 +3675,8 @@
                                                         FontSize="13"
                                                         Text="{x:Static ResourceManager:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryImportsaccAmtFrame5"
                                             Grid.Row="46"
@@ -4182,12 +4183,12 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 FontSize="Micro"
                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
@@ -4198,9 +4199,9 @@
                                                             FontSize="13"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTotalPurchases}" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-                                            <custom:CustomLabel
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
                                                 x:Name="LabelTotalpurchaseAmt"
                                                 Grid.Row="0"
                                                 Grid.Column="1"
@@ -4210,7 +4211,7 @@
                                                 HorizontalOptions="CenterAndExpand"
                                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAmt, StringFormat='{0:D2}'}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 Grid.Column="0"
                                                 Margin="10,0,10,1"
@@ -4218,7 +4219,7 @@
                                                 FontSize="Micro"
                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                 Text="{x:Static ResourceManager:AppResources.ZZZTotalPurchasesAdjustment}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 x:Name="LabelTotalpurchaseAdj"
                                                 Grid.Row="1"
                                                 Grid.Column="1"
@@ -4228,7 +4229,7 @@
                                                 HorizontalOptions="CenterAndExpand"
                                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="2"
                                                 Grid.Column="0"
                                                 Margin="10,0,10,1"
@@ -4236,7 +4237,7 @@
                                                 FontSize="Micro"
                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                 Text="{x:Static ResourceManager:AppResources.ZZZTotalVATTaxableAmountonPurchases}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="2"
                                                 Grid.Column="1"
                                                 Grid.ColumnSpan="2"
@@ -4245,12 +4246,12 @@
                                                 HorizontalOptions="CenterAndExpand"
                                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="3"
                                                 Grid.Column="0"
                                                 FontSize="Micro"
                                                 Style="{StaticResource GAZTCaptionGreenLabelStyle}">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
@@ -4261,9 +4262,9 @@
                                                             FontSize="13"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatTotalVATdueforcurrentperiod}" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-                                            <custom:CustomLabel
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
                                                 x:Name="LabelTotaldueVat"
                                                 Grid.Row="3"
                                                 Grid.Column="1"
@@ -4273,7 +4274,7 @@
                                                 HorizontalOptions="CenterAndExpand"
                                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="4"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="3"
@@ -4291,7 +4292,7 @@
                                                             Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
-                                            </custom:CustomLabel>
+                                            </Label>
                                             <StackLayout
                                                 Grid.Row="5"
                                                 Grid.Column="0"
@@ -4299,7 +4300,7 @@
                                                 IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsSwitchVisible}"
                                                 Orientation="Horizontal"
                                                 VerticalOptions="FillAndExpand">
-                                                <custom:CustomLabel Style="{StaticResource GAZTCaptionGreenLabelStyle}" Text="{x:Static ResourceManager:AppResources.ZNegative}" />
+                                                <Label Style="{StaticResource GAZTCaptionGreenLabelStyle}" Text="{x:Static ResourceManager:AppResources.ZNegative}" />
                                                 <Switch
                                                     HorizontalOptions="Start"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsControlEnabled}"
@@ -4376,12 +4377,12 @@
                                                     </Label>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
                                             </inputLayout:SfTextInputLayout>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="7"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="3"
                                                 Style="{StaticResource GAZTSmallGreenLabelStyle}">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span
                                                             FontFamily="{StaticResource SomarSemiBold}"
@@ -4392,18 +4393,18 @@
                                                             FontSize="13"
                                                             Text="{x:Static ResourceManager:AppResources.ZVatcreditcarriedforward}" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
-                                            <custom:CustomLabel
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label
                                                 Grid.Row="8"
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="3"
                                                 Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                                 Text="{x:Static ResourceManager:AppResources.ZVatClickForMoreDetails}">
-                                                <custom:CustomLabel.GestureRecognizers>
+                                                <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.onCreditCarriedForwardClicked}" />
-                                                </custom:CustomLabel.GestureRecognizers>
-                                            </custom:CustomLabel>
+                                                </Label.GestureRecognizers>
+                                            </Label>
 
                                             <inputLayout:SfTextInputLayout
                                                 Grid.Row="9"
@@ -4567,7 +4568,7 @@
                                             Grid.ColumnSpan="2"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsRefundVisible}"
                                             Style="{StaticResource GAZTFrameStyleEntryForLableBackground}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -4577,7 +4578,7 @@
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.ZVatRefundInformation}"
                                             VerticalOptions="Center" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="1"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -4588,7 +4589,7 @@
                                             Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                             Text="{x:Static ResourceManager:AppResources.ZVatRefundInformationNoteOne}"
                                             VerticalOptions="EndAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="2"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -4612,12 +4613,12 @@
                                             PropertyChanged="Switch_PropertyChanged"
                                             Toggled="Switch_Toggled"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomButton
+                                        <buttons:SfButton
                                             x:Name="btnForSwitch"
                                             Grid.Row="3"
                                             Grid.Column="0"
                                             Margin="10,0,10,0"
-                                            BackgroundColor="Transparent"
+                                            Background="Transparent"
                                             Clicked="btnSwitch_Clicked"
                                             FontSize="13"
                                             IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsSwichButtonEnableToTap}"
@@ -4673,13 +4674,13 @@
                                                         IsSpellCheckEnabled="False"
                                                         Text="{Binding TxtSelectedIBAN}" />
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomButton
+                                                <buttons:SfButton
                                                     x:Name="btnIban"
                                                     Grid.Row="1"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
                                                     Margin="10,0,10,0"
-                                                    BackgroundColor="Transparent"
+                                                    Background="Transparent"
                                                     Clicked="btnIban_Clicked"
                                                     FontSize="13"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBAN}" />
@@ -4708,9 +4709,10 @@
                                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
                                                     </syncfusion:SfPicker.SelectedTextStyle>
 
-                                                    <syncfusion:SfPicker.ColumnHeaderView>
-                                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                                    </syncfusion:SfPicker.ColumnHeaderView>
+
+                                             <syncfusion:SfPicker.SelectionView >
+                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                             </syncfusion:SfPicker.SelectionView>
 
                                                     <syncfusion:SfPicker.HeaderView>
 
@@ -4737,10 +4739,6 @@
 
                                                     </syncfusion:SfPicker.FooterView>
 
-
-                                                    <syncfusion:SfPicker.Behaviors>
-                                                        <behaviors:SfPickerBehavior />
-                                                    </syncfusion:SfPicker.Behaviors>
                                                 </syncfusion:SfPicker>
                                                 <StackLayout
                                                     Grid.Row="2"
@@ -4756,7 +4754,7 @@
                                                         IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedRefund}"
                                                         IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableCheckedRefund}"
                                                         VerticalOptions="Center" />
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Grid.Row="1"
                                                         Grid.Column="0"
                                                         Grid.ColumnSpan="2"
@@ -4766,7 +4764,7 @@
                                                         Text="{x:Static ResourceManager:AppResources.ZVatRefundInformationCheckBoxInfo}"
                                                         VerticalOptions="Center" />
                                                 </StackLayout>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Row="3"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
@@ -4796,13 +4794,13 @@
                                                         IsSpellCheckEnabled="False"
                                                         Text="{Binding TxtSelectedIBANType}" />
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomButton
+                                                <buttons:SfButton
                                                     x:Name="btnIban1"
                                                     Grid.Row="4"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
                                                     Margin="10,0,10,0"
-                                                    BackgroundColor="Transparent"
+                                                    Background="Transparent"
                                                     Clicked="btnIban1_Clicked"
                                                     FontSize="13"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBANType}" />
@@ -4831,9 +4829,10 @@
                                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
                                                     </syncfusion:SfPicker.SelectedTextStyle>
 
-                                                    <syncfusion:SfPicker.ColumnHeaderView>
-                                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                                    </syncfusion:SfPicker.ColumnHeaderView>
+
+                                                     <syncfusion:SfPicker.SelectionView >
+                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                             </syncfusion:SfPicker.SelectionView>
 
                                                     <syncfusion:SfPicker.HeaderView>
 
@@ -4862,13 +4861,8 @@
 
 
 
-                                                    <syncfusion:SfPicker.Behaviors>
-                                                        <behaviors:SfPickerBehavior />
-                                                    </syncfusion:SfPicker.Behaviors>
-
-
                                                 </syncfusion:SfPicker>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Row="5"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
@@ -4898,13 +4892,13 @@
                                                         IsSpellCheckEnabled="False"
                                                         Text="{Binding TxtSelectedIBANIDNumber}" />
                                                 </inputLayout:SfTextInputLayout>
-                                                <custom:CustomButton
+                                                <buttons:SfButton
                                                     x:Name="btnIban2"
                                                     Grid.Row="6"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
                                                     Margin="10,0,10,0"
-                                                    BackgroundColor="Transparent"
+                                                    Background="Transparent"
                                                     Clicked="btnIban2_Clicked"
                                                     FontSize="13"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBANIdNumber}" />
@@ -4933,9 +4927,10 @@
                                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
                                                     </syncfusion:SfPicker.SelectedTextStyle>
 
-                                                    <syncfusion:SfPicker.ColumnHeaderView>
-                                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                                    </syncfusion:SfPicker.ColumnHeaderView>
+
+                                                     <syncfusion:SfPicker.SelectionView >
+                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                             </syncfusion:SfPicker.SelectionView>
 
                                                     <syncfusion:SfPicker.HeaderView>
 
@@ -4962,9 +4957,6 @@
 
                                                     </syncfusion:SfPicker.FooterView>
 
-                                                    <syncfusion:SfPicker.Behaviors>
-                                                        <behaviors:SfPickerBehavior />
-                                                    </syncfusion:SfPicker.Behaviors>
 
                                                 </syncfusion:SfPicker>
                                                 <Frame
@@ -4994,7 +4986,7 @@
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IbanNumberText}"
                                                     TextChanged="Iban_Changed"
                                                     Unfocused="Unfocused_IBAN" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Row="7"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
@@ -5029,7 +5021,7 @@
                                             Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                             Text="{x:Static ResourceManager:AppResources.ZVatTermsAndConditions}"
                                             VerticalOptions="StartAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="7"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -5037,7 +5029,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                             VerticalOptions="StartAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -5048,9 +5040,9 @@
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCone}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
                                             Grid.Row="8"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -5058,7 +5050,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                             VerticalOptions="StartAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -5069,9 +5061,9 @@
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCtwo}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
                                             Grid.Row="9"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -5079,7 +5071,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                             VerticalOptions="StartAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -5090,9 +5082,9 @@
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCthree}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
                                             Grid.Row="10"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -5100,7 +5092,7 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}"
                                             VerticalOptions="StartAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -5112,8 +5104,8 @@
                                                         Text="{x:Static ResourceManager:AppResources.ZVatTandCfour}" />
                                                     <!--<Span Text="{x:Static ResourceManager:AppResources.ZVatClickFaqInstructions}"  />-->
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <CheckBox
                                             x:Name="chkDeclarationForSummary"
                                             Grid.Row="11"
@@ -5132,7 +5124,7 @@
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="11"
                                             Grid.Column="1"
                                             Margin="10,7,10,0"
@@ -5140,15 +5132,15 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                             VerticalOptions="StartAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZVatCertifyInformation}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
                                         <CheckBox
                                             x:Name="chkRefundDeclaration"
                                             Grid.Row="12"
@@ -5168,7 +5160,7 @@
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="12"
                                             Grid.Column="1"
                                             Padding="0"
@@ -5176,16 +5168,16 @@
                                             IsVisible="{Binding IsVisiblechkRefundDeclaration}"
                                             Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                             VerticalOptions="StartAndExpand">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span
                                                         FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                         FontSize="11"
                                                         Text="{x:Static ResourceManager:AppResources.ZZIacknowledgethattheabovebankaccount}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
-                                        <custom:CustomLabel
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label
                                             Grid.Row="13"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -5196,7 +5188,7 @@
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.OnGetAcknowledgementLinkClicked}" />
                                             </Label.GestureRecognizers>
-                                        </custom:CustomLabel>
+                                        </Label>
                                     </Grid>
                                 </ScrollView>
                             </tabView:SfTabItem.Content>
@@ -5238,7 +5230,7 @@
                                     HorizontalOptions="Center"
                                     Orientation="Horizontal"
                                     VerticalOptions="CenterAndExpand">
-                                    <custom:CustomLabel
+                                    <Label
                                         x:Name="lblName"
                                         Margin="5,0,5,0"
                                         BackgroundColor="{StaticResource Primary}"

@@ -1,16 +1,16 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
 
-    public class TINDeregistrationCloseIndividualOutletsPageViewModel : ViewModelBase
+    public class TINDeregistrationCloseIndividualOutletsPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -594,7 +594,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
-        public TINDeregistrationCloseIndividualOutletsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TINDeregistrationCloseIndividualOutletsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

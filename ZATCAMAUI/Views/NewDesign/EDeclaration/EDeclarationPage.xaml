@@ -25,24 +25,24 @@
                     TextColor="{StaticResource Primary}" />
 
                 <!--  Declaration Note Label  -->
-                <custom:CustomLabel
+                <Label
                     Margin="0,0,0,10"
                     FontSize="16"
                     LineBreakMode="WordWrap"
-                    LineSpacing="1"
+                    LineHeight="1"
                     Style="{StaticResource CaptionLabelGrey}">
-                    <custom:CustomLabel.FormattedText>
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}" TextColor="{StaticResource NeutralGreay}" />
                             <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" TextColor="{StaticResource Primary}" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
+                    </Label.FormattedText>
 
-                    <custom:CustomLabel.GestureRecognizers>
+                    <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}" />
-                    </custom:CustomLabel.GestureRecognizers>
+                    </Label.GestureRecognizers>
 
-                </custom:CustomLabel>
+                </Label>
 
 
                 <!--  Horizontal Line  -->
@@ -55,14 +55,14 @@
                 <!--#endregion-->
 
                 <!--  Identity type Label  -->
-                <custom:CustomLabel Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
-                    <custom:CustomLabel.FormattedText>
+                <Label Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.Identitytype}" />
                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
                 <!--#region Visitor&Citizen/Review previous Options-->
                 <StackLayout Margin="0,0,0,10" Spacing="20">
@@ -259,16 +259,16 @@
                     <StackLayout Spacing="0">
 
                         <!--  Reference Number Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                        <Label Style="{StaticResource CaptionLabelGrey}">
 
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
+                            </Label.FormattedText>
 
-                        </custom:CustomLabel>
+                        </Label>
 
                         <!--  Reference Number Entry  -->
                         <inputLayout:SfTextInputLayout
@@ -295,16 +295,16 @@
                     <StackLayout Spacing="0">
 
                         <!--  ID/Passport Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                        <Label Style="{StaticResource CaptionLabelGrey}">
 
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.IDResidencePassportNumber}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
+                            </Label.FormattedText>
 
-                        </custom:CustomLabel>
+                        </Label>
 
                         <!--  ID/Passport Entry  -->
                         <inputLayout:SfTextInputLayout

@@ -20,7 +20,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.VATRegistrationSuccessfullPageView;
             BindingContext = viewModel;
             On<iOS>().SetUseSafeArea(true);
-            SetLTR();
             if (response != null)
             {
                 if (response.d != null)
@@ -35,14 +34,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
 
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
             if (Navigation.NavigationStack.Count > 0)

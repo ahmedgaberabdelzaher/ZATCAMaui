@@ -6,7 +6,7 @@ using ZATCAMAUI.Models.VATRefunds;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 {
    
-    public class VATRefundsSuccessPageViewModel : ViewModelBase
+    public class VATRefundsSuccessPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -32,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         #endregion
 
-        public VATRefundsSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATRefundsSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

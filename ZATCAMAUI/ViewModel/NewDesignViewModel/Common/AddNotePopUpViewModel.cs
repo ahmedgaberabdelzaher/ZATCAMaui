@@ -6,7 +6,7 @@ using RGPopup.Maui.Services;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 {
 
-    public class AddNotePopUpViewModel : ViewModelBase
+    public class AddNotePopUpViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -49,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
         #endregion
         #region Constructor
-        public AddNotePopUpViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AddNotePopUpViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

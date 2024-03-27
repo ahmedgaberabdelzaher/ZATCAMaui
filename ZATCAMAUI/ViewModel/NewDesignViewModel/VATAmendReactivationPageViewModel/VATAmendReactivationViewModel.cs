@@ -14,7 +14,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 {
   
-    public class VATAmendReactivationPageViewModel : ViewModelBase
+    public class VATAmendReactivationPageViewModel : BaseViewModel
     {
         public List<ListViewCardTemplateModel> ImporterExporterItems { get; set; }
         public VATRegistrationDetails VATRegistrationData = new VATRegistrationDetails();
@@ -748,21 +748,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
             }
         }
 
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
 
         private List<string> _ListOfActionButtonsApplicableForRegistration;
         public List<string> ListOfActionButtonsApplicableForRegistration
@@ -2441,7 +2426,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
         }
 
 
-        public VATAmendReactivationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATAmendReactivationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

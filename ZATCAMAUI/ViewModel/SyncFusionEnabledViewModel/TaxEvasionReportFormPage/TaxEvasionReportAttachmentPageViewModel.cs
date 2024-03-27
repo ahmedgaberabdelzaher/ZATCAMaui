@@ -5,10 +5,11 @@ using GalaSoft.MvvmLight.Views;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
 {
-    public class TaxEvasionReportAttachmentPageViewModel : ViewModelBase
+    public class TaxEvasionReportAttachmentPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -44,20 +45,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 RaisePropertyChanged("TotalAttachmentSize");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
+       
         private SignUpModelRootObject _signUpModelRootObjectM = null;
         public SignUpModelRootObject SignUpModelRootObjectM
         {
@@ -192,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 RaisePropertyChanged("AttachmentName");
             }
         }
-        public TaxEvasionReportAttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxEvasionReportAttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -8,14 +8,14 @@ using ZATCAMAUI.Models.InstalmentPlanModel;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 {
 
-    public class InstalmentPlanViewModel : ViewModelBase
+    public class InstalmentPlanViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         #endregion
 
-        public InstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService)
+        public InstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

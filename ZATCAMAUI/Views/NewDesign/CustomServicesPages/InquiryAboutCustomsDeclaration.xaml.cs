@@ -9,28 +9,9 @@ namespace ZATCAMAUI.Views.NewDesign.CustomServicesPages
         {
             viewModel = App.Locator.InquiryAboutCustomsDeclarationViewModel;
             BindingContext = viewModel;
-            SetLTR();
-            // SetPickerFont();
             InitializeComponent();
 
         }
-
-
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-
-
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
 
 
     }

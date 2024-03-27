@@ -11,7 +11,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
 
-    public class ZakatObjectionSuccessfullPageViewModel : ViewModelBase
+    public class ZakatObjectionSuccessfullPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -25,20 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         #region Property
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
         private EstimatedZAKATReturnsSADADNumberResult _estimatedZAKATSADADNumber;
         public EstimatedZAKATReturnsSADADNumberResult EstimatedZAKATSADADNumber
@@ -91,7 +78,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #endregion
 
         #region Constructor
-        public ZakatObjectionSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZakatObjectionSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

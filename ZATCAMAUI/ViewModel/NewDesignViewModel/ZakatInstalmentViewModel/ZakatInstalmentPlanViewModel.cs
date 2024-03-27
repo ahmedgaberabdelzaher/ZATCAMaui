@@ -21,12 +21,11 @@ using NotesSet = ZATCAMAUI.Models.ZakatInstalationModels.NotesSet;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
     
-    public class ZakatInstalmentPlanViewModel : ViewModelBase
+    public class ZakatInstalmentPlanViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        private bool _isLoading = false;
         bool _bankStatementsAttachment = true;
         private bool _isNoDataLableVisible = false;
 
@@ -137,19 +136,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         #region Properties
 
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private bool isNewLoading;
 
         public bool IsNewLoading
@@ -2239,7 +2226,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 RaisePropertyChanged("SuccessMessage");
             }
         }
-        public ZakatInstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZakatInstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

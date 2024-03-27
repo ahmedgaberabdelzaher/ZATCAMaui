@@ -21,9 +21,7 @@ namespace ZATCAMAUI.Views.NewDesign.InstalmentPlan
 
                 NavigationPage.SetBackButtonTitle(this, "");
 
-                //App.IsArabic = true;
                 ChangeAeroIcon();
-                SetLTR();
                 On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.InstalmentPlanPageView;
@@ -36,13 +34,6 @@ namespace ZATCAMAUI.Views.NewDesign.InstalmentPlan
 
             }
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         public void ChangeAeroIcon()
         {

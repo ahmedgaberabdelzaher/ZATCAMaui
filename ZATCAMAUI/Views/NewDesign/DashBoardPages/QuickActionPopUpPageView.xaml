@@ -4,9 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundColor="Transparent">
 
     <!--<pages:PopupPage.Resources>
@@ -17,7 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-    <yummy:PancakeView CornerRadius="20" VerticalOptions="FillAndExpand">
+    <Border StrokeShape="RoundRectangle 20,20,20,20" VerticalOptions="FillAndExpand">
 
         <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
@@ -34,8 +33,7 @@
             <Grid
                 Grid.Row="0"
                 Grid.RowSpan="{x:OnPlatform iOS=2,
-                                            Android=2,
-                                            UWP=2}"
+                                            Android=2}"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 BackgroundColor="Black"
@@ -64,16 +62,16 @@
                         HorizontalOptions="Center"
                         Orientation="Horizontal">
 
-                        <custom:CustomLabel
+                        <Label
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
                             Style="{StaticResource CustomButtonTextStyle}"
                             Text="{x:Static ResourceManager:AppResources.QuickActionShowOverDueReturns}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.GestureRecognizers>
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </Label>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
                         </StackLayout.GestureRecognizers>
@@ -93,14 +91,14 @@
                         HorizontalOptions="Center"
                         Orientation="Horizontal">
 
-                        <custom:CustomLabel
+                        <Label
                             Style="{StaticResource CustomButtonTextStyle}"
                             Text="{x:Static ResourceManager:AppResources.QuickActionShowCertificates}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.GestureRecognizers>
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnCorrespondanceClicked" />
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </Label>
 
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnCorrespondanceClicked" />
@@ -118,14 +116,14 @@
                         HorizontalOptions="Center"
                         Orientation="Horizontal">
 
-                        <custom:CustomLabel
+                        <Label
                             Style="{StaticResource CustomButtonTextStyle}"
                             Text="{x:Static ResourceManager:AppResources.GetSupport}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.GestureRecognizers>
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnGetSupportClicked" />
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </Label>
 
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnGetSupportClicked" />
@@ -175,5 +173,5 @@
             </StackLayout>
         </Grid>
 
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

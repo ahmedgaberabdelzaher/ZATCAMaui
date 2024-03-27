@@ -8,7 +8,7 @@
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
 
@@ -37,11 +37,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             Margin="0"
                             Padding="0,0,0,0"
@@ -58,7 +58,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="0,10,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -139,13 +139,13 @@
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="0"
                             Grid.Column="0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource SectionTitleBlack}"
                             Text="{x:Static ResourceManager:AppResources.VatDeregSummaryTitle}" />
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="1"
                             Grid.Column="0"
                             Margin="0,0,0,8"
@@ -219,11 +219,11 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="0"
                                                     Style="{StaticResource ValueLabelGrey}"
                                                     Text="{Binding SummaryTitle}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"
@@ -301,11 +301,11 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="Auto" />
                                                 </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="0"
                                                     Style="{StaticResource ValueLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.Attachment}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"
@@ -392,11 +392,11 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="0"
                                                     Style="{StaticResource ValueLabelGrey}"
                                                     Text="{Binding SummaryTitle}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"

@@ -1,9 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 {
-    public class UnlockAccountSuccessPageViewModel : ViewModelBase
+    public class UnlockAccountSuccessPageViewModel : BaseViewModel
     {
 
         public readonly INavigationService _navigationService;
@@ -28,7 +29,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         /// <summary>
         /// Initializes a new instance for the <see cref="UnlockAccountTINPageViewModel" /> class.
         /// </summary>
-        public UnlockAccountSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public UnlockAccountSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

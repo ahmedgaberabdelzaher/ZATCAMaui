@@ -6,10 +6,11 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
 {
-    public class FAQPageViewModel : ViewModelBase
+    public class FAQPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -49,19 +50,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
 
 
@@ -80,7 +69,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
         }
 
         #endregion
-        public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService) :base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

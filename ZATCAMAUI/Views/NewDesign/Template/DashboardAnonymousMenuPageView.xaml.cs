@@ -14,19 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.Template
             InitializeComponent();
             viewModel = App.Locator.DashboardAnonymousMenuPageView;
             BindingContext = viewModel;
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
         }
 
         private void GoBackTapped(object sender, EventArgs e)

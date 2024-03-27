@@ -21,7 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             InitializeComponent();
             viewModel = App.Locator.UpdateEmailPopUp;
             this.BindingContext = viewModel;
-            this.FlowDirection = UtilityManager.SetLTRAndRTL();
         }
 
         private async void UpdatedClicked(object sender, EventArgs e)

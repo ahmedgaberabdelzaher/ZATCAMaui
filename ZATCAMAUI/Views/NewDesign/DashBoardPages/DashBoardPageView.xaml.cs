@@ -83,11 +83,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     tileUpdatedBoxView.IsVisible = false;
 
                     OnDataLoad();
-
-                    //         MainThread.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
-
                 });
-                SetLTR();
             }
             catch (Exception)
             {
@@ -125,7 +121,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 }
                 viewModel.GetDashBoardMenuLst(1);
 
-                SetLTR();
 
             }
             catch (Exception)
@@ -216,7 +211,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             });
         }
 
-        private void btnCommitmentsPickerClicked(object sender, EventArgs e)
+        private void btnCommitmentsPickerClicked(object sender, TappedEventArgs e)
         {
             CommitmentsPicker.IsOpen = true;
         }
@@ -274,9 +269,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
             viewModel.TotalString = AppResources.NDTotalNumberOfBills;
 
-
-
-
             ChangeArrowDirection();
             MessagingCenter.Subscribe<object>(this, "UpdateProgressBar", (sender) =>
             {
@@ -333,9 +325,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 }
                 catch (GAZTErrorException )
                 {
-
-
-
                 }
 
             }
@@ -727,13 +716,13 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             finally { viewModel.IsLoading = false; }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+        //private void SetLTR()
+        //{
+        //    if (!App.IsArabic)
+        //    {
+        //        FlowDirection = FlowDirection.LeftToRight;
+        //    }
+        //}
 
         #endregion
 
@@ -1659,22 +1648,11 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
         void CommitmentsPicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
-            viewModel.SelectedCommitmentFilterLabelValue = viewModel.SelectedCommitmentFilterValue = e.NewValue.ToString();
+            viewModel.SelectedCommitmentFilterLabelValue = viewModel.CommitmentsListFilter [e.NewValue];
+            viewModel.SelectedCommitmentFilterValue = viewModel.CommitmentsListFilter [e.NewValue];
 
         }
 
-        private async void InternalUITesting_Tapped(object sender, EventArgs e)
-        {
-            try
-            {
-                //await Application.Current.MainPage.Navigation.PushAsync(new TestPage());
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
 
         private async void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
@@ -1771,9 +1749,5 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
         }
 
-        void OnChatTapped(object sender, EventArgs e)
-        {
-
-        }
     }
 }

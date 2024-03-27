@@ -1,11 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.StylesTestUi
 {
 
-    public class StyleTestUIPageViewModel : ViewModelBase
+    public class StyleTestUIPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -30,21 +31,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.StylesTestUi
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
-
+      
 
         private string _webUrl = string.Empty;
         public string WebUrl
@@ -61,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.StylesTestUi
         }
 
         #endregion
-        public StyleTestUIPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public StyleTestUIPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

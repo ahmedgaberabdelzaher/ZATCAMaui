@@ -8,8 +8,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
-    FlowDirection="LeftToRight"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
         <ResourceDictionary>
@@ -65,10 +64,10 @@
                             VerticalOptions="CenterAndExpand" />
                     </Grid>
 
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="32,32,0,0">
+                        StrokeShape="RoundRectangle 32,32,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -89,7 +88,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
 
             </Grid>
@@ -452,14 +451,14 @@
                                 Text="500.00 SAR" />
                         </StackLayout>
 
-                        <yummy:PancakeView
+                        <Border
                             Grid.Row="18"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Margin="0,0,0,0"
                             Padding="0"
                             BackgroundColor="#ADD8E6"
-                            CornerRadius="0,0,8,8">
+                            StrokeShape="RoundRectangle 0,0,8,8">
                             <StackLayout Margin="10,0,10,0" Padding="0">
                                 <Label
                                     Margin="0,0,0,-9"
@@ -471,7 +470,7 @@
                                     Style="{StaticResource ValueLabelBlack}"
                                     Text="500.00 SAR" />
                             </StackLayout>
-                        </yummy:PancakeView>
+                        </Border>
 
                     </Grid>
 

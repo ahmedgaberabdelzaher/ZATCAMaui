@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             viewModel = App.Locator.TaxpayerCorrespondanceDetailPageView;
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel.IsFavoriteVisible = false;
@@ -121,13 +120,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             safeInsets.Bottom = -10;
             Padding = safeInsets;
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         public void ChangeAeroIcon()
         {

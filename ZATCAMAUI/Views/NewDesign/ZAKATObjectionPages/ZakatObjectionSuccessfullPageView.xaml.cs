@@ -18,8 +18,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages
             viewModel = App.Locator.ZakatObjectionSuccessfullPageView;
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
-            SetLTR();
             ChangeAeroIcon();
 
             viewModel.ClearData();
@@ -71,16 +69,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages
             }
 
         }
-
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
         private void OnReturnClicked(object sender, EventArgs e)
         {
             Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];

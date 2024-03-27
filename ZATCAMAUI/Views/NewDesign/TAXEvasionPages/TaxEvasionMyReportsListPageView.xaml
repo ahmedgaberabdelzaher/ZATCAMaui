@@ -7,7 +7,7 @@
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasBackButton="False"
     NavigationPage.HasNavigationBar="False">
@@ -63,9 +63,9 @@
                         </Image>
                     </Grid>
 
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
-                        CornerRadius="14,14,0,0"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             x:Name="VATRMainGrid"
@@ -84,7 +84,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </Grid>
         </ControlTemplate>
@@ -120,8 +120,8 @@
                                         <StackLayout Padding="0" Spacing="0">
                                             <StackLayout Padding="17,16,17,16" Orientation="Horizontal">
                                                 <StackLayout Spacing="-10">
-                                                    <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="{Binding CompanyName}" />
-                                                    <custom:CustomLabel
+                                                    <Label Style="{StaticResource SectionTitleBlackBold}" Text="{Binding CompanyName}" />
+                                                    <Label
                                                         FontSize="Small"
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         Text="{Binding TicketId}"
@@ -160,14 +160,13 @@
                                                 HorizontalOptions="FillAndExpand" />
 
                                             <StackLayout Padding="17,16,17,16" Spacing="0">
-                                                <custom:CustomLabel
+                                                <Label
                                                     FontSize="Small"
                                                     Style="{StaticResource CaptionLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}"
                                                     VerticalOptions="CenterAndExpand" />
                                                 <StackLayout HorizontalOptions="Start">
-                                                    <custom:CustomLabel
-                                                        FlowDirection="LeftToRight"
+                                                    <Label
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{Binding CreatedAt}"
                                                         VerticalOptions="CenterAndExpand" />
@@ -180,7 +179,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <custom:CustomLabel
+                    <Label
                         Margin="0,20,0,0"
                         HorizontalOptions="Center"
                         IsVisible="{Binding IsNoReportLabelVisible}"
@@ -192,7 +191,7 @@
                     Grid.Row="0"
                     Padding="0,0,0,0"
                     BackgroundColor="White">
-                    <custom:CustomLabel Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.NDMyReports}" />
+                    <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.NDMyReports}" />
                     <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
                         <busyindicator:SfChipGroup
                             x:Name="ChipGroup_statusFilter"
@@ -215,7 +214,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         Orientation="Horizontal"
                                         Spacing="2">
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="Center"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="{Binding Text}" />
@@ -231,7 +230,7 @@
                                 Orientation="Horizontal"
                                 Spacing="10">
                                 <Image Source="ic_add_plus.png" />
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="Start"
                                     Style="{StaticResource ValueLabelPrimary}"
                                     Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" />

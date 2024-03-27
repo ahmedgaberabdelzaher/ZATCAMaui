@@ -5,10 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     FlowDirection="{Binding AppDirection}">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -18,14 +16,6 @@
             PositionIn="Bottom"
             PositionOut="Bottom" />
     </pages:PopupPage.Animation>
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
     <!--#region SurveyView {Binding IsShowMsgView}-->
     <Grid
         Grid.Row="0"
@@ -38,10 +28,10 @@
             Opacity="0.4"
             VerticalOptions="FillAndExpand" />
 
-        <yummy:PancakeView
+        <Border
             Padding="20,20,20,25"
             BackgroundColor="White"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
             <Grid Margin="0,0,0,0">
@@ -248,7 +238,7 @@
                 <!--#endregion-->
 
             </Grid>
-        </yummy:PancakeView>
+        </Border>
 
     </Grid>
     <!--#endregion-->

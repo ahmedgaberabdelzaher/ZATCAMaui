@@ -9,7 +9,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -19,7 +19,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
@@ -30,7 +30,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Spacing="0">
-                <custom:CustomLabel
+                <Label
                     x:Name="confirmationText"
                     Margin="10"
                     Style="{StaticResource BodyLabelBlack}" />
@@ -59,5 +59,5 @@
                     VerticalOptions="FillAndExpand" />
             </Grid>
         </Grid>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

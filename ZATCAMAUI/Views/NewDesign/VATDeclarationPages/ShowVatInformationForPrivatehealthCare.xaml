@@ -9,22 +9,14 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    <Border
         x:Name="MainPanCakeView"
         Margin="0,130,0,0"
         Padding="15"
         BackgroundColor="White"
-        CornerRadius="8,8,0,0"
+        StrokeShape="RoundRectangle 8,8,0,0"
         VerticalOptions="EndAndExpand">
         <Grid>
             <Grid.RowDefinitions>
@@ -33,7 +25,7 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <custom:CustomLabel
+            <Label
                 Grid.Row="0"
                 Style="{StaticResource SectionTitleBlack}"
                 Text="{x:Static ResourceManager:AppResources.ZVatPrivateHealthcare}" />
@@ -50,13 +42,13 @@
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="ic_vat_info" />
-                            <custom:CustomLabel
+                            <Label
                                 x:Name="HeaderTextlbl1ForPrivateCare"
                                 Style="{StaticResource BodyLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZAmountWithSAR}"
                                 VerticalOptions="CenterAndExpand" />
                         </StackLayout>
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZToolTipPrivateHealthcareAmount}" />
+                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZToolTipPrivateHealthcareAmount}" />
                     </StackLayout>
                 </Frame>
             </StackLayout>
@@ -73,13 +65,13 @@
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="ic_vat_info" />
-                            <custom:CustomLabel
+                            <Label
                                 x:Name="HeaderTextlbl2ForPrivateCare"
                                 Style="{StaticResource BodyLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZAdjustmentWithSAR}"
                                 VerticalOptions="CenterAndExpand" />
                         </StackLayout>
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZToolTipPrivateHealthcareAdjustment}" />
+                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZToolTipPrivateHealthcareAdjustment}" />
                     </StackLayout>
                 </Frame>
             </StackLayout>
@@ -102,5 +94,5 @@
 
             </StackLayout>
         </Grid>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

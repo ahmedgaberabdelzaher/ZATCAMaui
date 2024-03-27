@@ -8,7 +8,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -70,10 +70,10 @@
                         Text="{x:Static ResourceManager:AppResources.CopiedSuccessMessage}" />
 
                 </StackLayout>
-                <yummy:PancakeView
+                <Border
                     Padding="20"
                     BackgroundColor="White"
-                    CornerRadius="20,20,0,0"
+                    StrokeShape="RoundRectangle 20,20,0,0"
                     VerticalOptions="EndAndExpand">
                     <StackLayout>
                         <Frame
@@ -129,7 +129,7 @@
                             TextColor="{StaticResource Primary}"
                             VerticalOptions="End" />
                     </StackLayout>
-                </yummy:PancakeView>
+                </Border>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

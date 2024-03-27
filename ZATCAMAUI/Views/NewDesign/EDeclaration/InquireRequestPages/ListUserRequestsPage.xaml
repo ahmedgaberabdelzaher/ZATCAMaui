@@ -8,7 +8,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -75,7 +75,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -171,20 +171,20 @@
                                                 TextColor="{StaticResource Primary}" />
 
                                             <!--  Total Amount Label Not used now  -->
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 FontSize="12"
                                                 HorizontalOptions="StartAndExpand"
                                                 IsVisible="false"
                                                 TextColor="#575756">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}" />
                                                         <Span Text="  " />
                                                         <Span Text="3" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
+                                                </Label.FormattedText>
+                                            </Label>
 
                                             <!--  Total fees payable Label  -->
                                             <Label
@@ -207,20 +207,20 @@
                                                     VerticalOptions="Start" />
 
                                                 <!--  Price Label  -->
-                                                <custom:CustomLabel
+                                                <Label
                                                     FontFamily="{StaticResource SomarBold}"
                                                     FontSize="12"
                                                     HorizontalOptions="CenterAndExpand"
                                                     TextColor="#0996D4"
                                                     VerticalOptions="CenterAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding totalFees}" />
                                                             <Span Text="  " />
                                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
                                             </Grid>
 
@@ -301,7 +301,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Loader  -->

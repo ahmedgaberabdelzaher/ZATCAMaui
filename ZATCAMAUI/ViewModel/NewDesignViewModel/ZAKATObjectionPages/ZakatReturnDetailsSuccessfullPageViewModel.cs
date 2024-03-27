@@ -13,7 +13,7 @@ using ZATCAMAUI.Views.NewDesign.PaymentOptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
-    public class ZakatReturnDetailsSuccessfullPageViewModel : ViewModelBase
+    public class ZakatReturnDetailsSuccessfullPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -27,21 +27,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #endregion
 
         #region Property
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
+       
         private ZakatReturnDetails _zakatReturnDetails;
         public ZakatReturnDetails ZakatReturnDetails
         {
@@ -258,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #endregion
 
         #region Constructor
-        public ZakatReturnDetailsSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZakatReturnDetailsSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

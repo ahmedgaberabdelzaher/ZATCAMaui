@@ -4,10 +4,11 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber
 {
-    public class InternationalMobileNumberCodePagesViewModel : ViewModelBase
+    public class InternationalMobileNumberCodePagesViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -68,7 +69,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
             }
         }
         #region Constructor
-        public InternationalMobileNumberCodePagesViewModel(INavigationService navigationService, IDialogService dialogService)
+        public InternationalMobileNumberCodePagesViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

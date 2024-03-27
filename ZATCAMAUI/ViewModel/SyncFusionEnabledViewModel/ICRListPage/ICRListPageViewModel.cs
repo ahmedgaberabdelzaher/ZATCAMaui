@@ -4,11 +4,12 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
 {
 
-    public class ICRListPageViewModel : ViewModelBase
+    public class ICRListPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -33,19 +34,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                 RaisePropertyChanged("TxtSelectedStatus");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+      
         private bool _isNoDataLabelVisible = false;
         public bool IsNoDataLabelVisible
         {
@@ -202,7 +191,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
         }
         #endregion
         #region Constructor
-        public ICRListPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ICRListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

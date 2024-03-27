@@ -24,8 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             this.isAmountLess = isAmountLess;
             amountMsg = messageText;
             InitializeComponent();
-
-            SetLTR();
         }
 
         private void setUpListItems()
@@ -78,17 +76,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             base.OnAppearing();
             setUpListItems();
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
         }
 
         private async void paymentItemSelectionChanged(object sender, ItemSelectionChangedEventArgs e)

@@ -23,7 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.VATReturnSuccessfullPageView;
                 BindingContext = viewModel;
-                SetLTR();
                 ChangeAeroIcon();
                 On<iOS>().SetUseSafeArea(true);
                 if (vATDeclaration != null && vATDeclaration.d != null)
@@ -158,18 +157,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             else
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
         public async void RefreshForSadad()

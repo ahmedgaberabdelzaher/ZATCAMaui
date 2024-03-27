@@ -20,7 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                 InitializeComponent();
                 viewModel = App.Locator.MoreMenuPopUpPageViewRTwo;
                 this.BindingContext = viewModel;
-                SetLTR();
                 if (ListOfActionButtonsApplicable != null)
                 {
                     viewModel.VatReturnUIButtons = ListOfActionButtonsApplicable;
@@ -34,18 +33,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             }
         }
 
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
         private void OnClose(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAsync();

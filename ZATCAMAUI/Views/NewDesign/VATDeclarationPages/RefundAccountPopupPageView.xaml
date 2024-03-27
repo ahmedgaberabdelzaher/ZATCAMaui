@@ -15,7 +15,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -25,7 +25,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
@@ -41,7 +41,7 @@
                     RowDefinitions="Auto,Auto,Auto,15,Auto,Auto,Auto,Auto,Auto"
                     RowSpacing="5">
 
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
@@ -54,7 +54,7 @@
                         Grid.ColumnSpan="2"
                         BackgroundColor="White"
                         IsEnabled="{Binding IsIdTypeEnabled}">
-                        <custom:CustomLabel
+                        <Label
                             BackgroundColor="White"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" />
@@ -77,7 +77,7 @@
                                     <Image Source="arrowDropdown.png" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
-                            <custom:CustomButton Background="Transparent" Clicked="SfButton_Clicked" />
+                            <buttons:SfButton Background="Transparent" Clicked="SfButton_Clicked" />
                             <syncfusion:SfPicker
                                 x:Name="IDTypeDropdown"
                                 Grid.Row="0"
@@ -85,7 +85,6 @@
                                 Margin="10,0,10,0"
                                 BackgroundColor="White"
                                 CancelButtonClicked="IDTypeDropdown_CancelButtonClicked"
-                                FlowDirection="RightToLeft"
                                 ItemHeight="40"
                                 Mode="Dialog"
                                 OkButtonClicked="IDTypeDropdown_OkButtonClicked"
@@ -109,9 +108,9 @@
                                         TextColor="{StaticResource NeutralBlack}" />
                                 </syncfusion:SfPicker.SelectedTextStyle>
 
-                                <syncfusion:SfPicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46" />
-                                </syncfusion:SfPicker.ColumnHeaderView>
+                                <syncfusion:SfPicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+                                </syncfusion:SfPicker.SelectionView>
 
                                 <syncfusion:SfPicker.HeaderView>
 
@@ -138,9 +137,6 @@
 
                                 </syncfusion:SfPicker.FooterView>
 
-                                <syncfusion:SfPicker.Behaviors>
-                                    <behavior:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
                             </syncfusion:SfPicker>
                         </Grid>
 
@@ -153,7 +149,7 @@
                         Grid.ColumnSpan="2"
                         BackgroundColor="Red"
                         IsEnabled="{Binding IsIdNumberEnabled}">
-                        <custom:CustomLabel
+                        <Label
                             BackgroundColor="White"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.IDNumber}" />
@@ -186,7 +182,6 @@
                                 Margin="10,0,10,0"
                                 BackgroundColor="White"
                                 CancelButtonClicked="IDNumberDropdown_CancelButtonClicked"
-                                FlowDirection="RightToLeft"
                                 ItemHeight="40"
                                 Mode="Dialog"
                                 OkButtonClicked="IDNumberDropdown_OkButtonClicked"
@@ -210,9 +205,9 @@
                                         TextColor="{StaticResource NeutralBlack}" />
                                 </syncfusion:SfPicker.SelectedTextStyle>
 
-                                <syncfusion:SfPicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46" />
-                                </syncfusion:SfPicker.ColumnHeaderView>
+                                <syncfusion:SfPicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                </syncfusion:SfPicker.SelectionView>
 
                                 <syncfusion:SfPicker.HeaderView>
 
@@ -239,9 +234,6 @@
 
                                 </syncfusion:SfPicker.FooterView>
 
-                                <syncfusion:SfPicker.Behaviors>
-                                    <behavior:SfPickerBehavior />
-                                </syncfusion:SfPicker.Behaviors>
                             </syncfusion:SfPicker>
 
                         </Grid>
@@ -260,7 +252,7 @@
                                 Orientation="Horizontal"
                                 Spacing="10">
                                 <Image Source="ic_add_plus.png" />
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="Start"
                                     Style="{StaticResource ValueLabelPrimary}"
                                     Text="{Binding NewAccountText}" />
@@ -278,7 +270,7 @@
                         BackgroundColor="White"
                         Spacing="0">
 
-                        <custom:CustomLabel
+                        <Label
                             BackgroundColor="White"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
@@ -314,7 +306,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             Source="vat_tile_listofsignup_W"
                                             VerticalOptions="FillAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             x:Name="cardLabel"
                                             Padding="20"
                                             FontFamily="{StaticResource SomarSemiBold}"
@@ -346,7 +338,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             Source="vat_tile_listofsignup"
                                             VerticalOptions="FillAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             x:Name="cardLabel"
                                             Padding="20"
                                             FontFamily="{StaticResource SomarSemiBold}"
@@ -385,21 +377,21 @@
                                 </DataTrigger>
                             </CheckBox.Triggers>
                         </CheckBox>
-                        <custom:CustomLabel
+                        <Label
                             Style="{StaticResource CaptionLabelBlack}"
                             VerticalOptions="CenterAndExpand"
                             VerticalTextAlignment="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}" />
                                     <Span Text="&#160;" />
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                            <custom:CustomLabel.GestureRecognizers>
+                            </Label.FormattedText>
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnRefundInCTapped" />
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
                     <StackLayout
                         Grid.Row="7"
@@ -450,5 +442,5 @@
                 </Grid>
             </Grid>
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

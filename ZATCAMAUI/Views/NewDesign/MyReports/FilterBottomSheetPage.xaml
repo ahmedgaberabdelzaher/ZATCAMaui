@@ -4,16 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
-
-    <!--<ContentView.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentView.Resources>-->
+    FlowDirection="{Binding AppDirection}">
     <ContentView.Content>
         <Grid Margin="0">
 
@@ -28,12 +19,12 @@
             </StackLayout>
 
             <!--  List of names inside frame  -->
-            <yummy:PancakeView
+            <Border
                 Padding="20,15"
                 BackgroundColor="White"
-                Border="{yummy:BorderMarkup Color=#EBEBEB,
-                                            Thickness='3'}"
-                CornerRadius="15,15,0,0"
+                Stroke="#EBEBEB"
+                StrokeThickness="3"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 HeightRequest="200"
                 Style="{StaticResource CommonTopCurves}"
                 VerticalOptions="EndAndExpand">
@@ -141,7 +132,7 @@
                 </StackLayout>
 
 
-            </yummy:PancakeView>
+            </Border>
 
         </Grid>
     </ContentView.Content>

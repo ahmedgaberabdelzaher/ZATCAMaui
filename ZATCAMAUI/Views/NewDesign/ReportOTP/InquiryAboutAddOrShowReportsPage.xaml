@@ -6,7 +6,6 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -80,7 +79,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -123,7 +122,7 @@
                                         WidthRequest="45" />
 
                                     <!--  Add Report Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="14"
                                         HorizontalOptions="CenterAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
@@ -164,7 +163,7 @@
                                         WidthRequest="45" />
 
                                     <!--  ShowPerviousReports Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="14"
                                         HorizontalOptions="CenterAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.ShowPerviousReports}"
@@ -206,10 +205,10 @@
                                     WidthRequest="20" />
 
                                 <!--  ReportsNote Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     FontSize="12"
                                     HorizontalOptions="StartAndExpand"
-                                    LineSpacing="0.8"
+                                    LineHeight="0.8"
                                     Text="{x:Static ResourceManager:AppResources.ReportsNote}"
                                     TextColor="#999999" />
 
@@ -221,7 +220,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
 

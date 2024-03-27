@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
@@ -28,7 +28,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid RowDefinitions="auto,*">
-        <yummy:PancakeView
+        <Border
             Grid.Row="1"
             Padding="20,20,20,0"
             Style="{StaticResource CommonTopCurves}">
@@ -71,7 +71,7 @@
                     </Frame>
                 </Grid>
             </StackLayout>
-        </yummy:PancakeView>
+        </Border>
         <controls:Header TitleText="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}" />
         <controls:Loader
             Grid.Row="0"

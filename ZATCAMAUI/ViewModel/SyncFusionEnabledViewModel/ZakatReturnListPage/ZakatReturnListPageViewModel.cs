@@ -6,12 +6,13 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnListPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
 {
 
-    public class ZakatReturnListPageViewModel : ViewModelBase
+    public class ZakatReturnListPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -168,19 +169,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
                 RaisePropertyChanged("SelectedZakatStatus");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private int _selectedIndex;
         public int SelectedIndex
         {
@@ -209,7 +198,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
         }
         #endregion
         #region Constructor
-        public ZakatReturnListPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZakatReturnListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddNotePages
                 NavigationPage.SetBackButtonTitle(this, "");
                 NavigationPage.SetHasBackButton(this, false);
                 On<iOS>().SetUseSafeArea(true);
-                SetLTR();
                 ChangeAeroIcon();
 
                 viewModel = App.Locator.AddNotePageView;
@@ -94,13 +93,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddNotePages
             else
             {
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         #endregion

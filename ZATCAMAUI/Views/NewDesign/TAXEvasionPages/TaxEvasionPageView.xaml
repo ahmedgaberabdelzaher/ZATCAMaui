@@ -7,7 +7,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -24,7 +24,7 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -39,7 +39,7 @@
                                     Orientation="Horizontal"
                                     Spacing="10">
                                     <Image Source="ic_add_plus.png" />
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="Start"
                                         Style="{StaticResource ValueLabelPrimary}"
                                         Text="Tax Evasion Report" />
@@ -50,8 +50,8 @@
                                 <StackLayout Padding="0" Spacing="0">
                                     <StackLayout Padding="17,16,17,16" Orientation="Horizontal">
                                         <StackLayout Spacing="-10">
-                                            <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="Zayad Corporation" />
-                                            <custom:CustomLabel
+                                            <Label Style="{StaticResource SectionTitleBlackBold}" Text="Zayad Corporation" />
+                                            <Label
                                                 FontSize="Small"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="00894790088"
@@ -74,12 +74,12 @@
                                         HorizontalOptions="FillAndExpand" />
 
                                     <StackLayout Padding="17,16,17,16" Spacing="0">
-                                        <custom:CustomLabel
+                                        <Label
                                             FontSize="Small"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="Report Date"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="06th May 2020"
                                             VerticalOptions="CenterAndExpand" />
@@ -93,8 +93,8 @@
                                 <StackLayout Padding="0" Spacing="0">
                                     <StackLayout Padding="17,16,17,16" Orientation="Horizontal">
                                         <StackLayout Spacing="-10">
-                                            <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="Zayad Corporation" />
-                                            <custom:CustomLabel
+                                            <Label Style="{StaticResource SectionTitleBlackBold}" Text="Zayad Corporation" />
+                                            <Label
                                                 FontSize="Small"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="00894790088"
@@ -117,12 +117,12 @@
                                         HorizontalOptions="FillAndExpand" />
 
                                     <StackLayout Padding="17,16,17,16" Spacing="0">
-                                        <custom:CustomLabel
+                                        <Label
                                             FontSize="Small"
                                             Style="{StaticResource CaptionLabelGrey}"
                                             Text="Report Date"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="06th May 2020"
                                             VerticalOptions="CenterAndExpand" />
@@ -137,7 +137,7 @@
                         Grid.Row="0"
                         Padding="0,0,0,32"
                         BackgroundColor="White">
-                        <custom:CustomLabel Style="{StaticResource PageTitleBlack}" Text="My Reports" />
+                        <Label Style="{StaticResource PageTitleBlack}" Text="My Reports" />
                         <StackLayout Orientation="Horizontal" Spacing="24">
                             <buttons:SfButton
                                 Padding="12,0,12,0"
@@ -160,7 +160,7 @@
                         </StackLayout>
                     </StackLayout>
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
             <Grid Grid.Row="0" Padding="15,10,15,10">
                 <Grid.ColumnDefinitions>
@@ -168,7 +168,7 @@
                     <ColumnDefinition Width="60*" />
                     <ColumnDefinition Width="20*" />
                 </Grid.ColumnDefinitions>
-                <custom:CustomLabel
+                <Label
                     Grid.Column="1"
                     HorizontalOptions="CenterAndExpand"
                     Style="{StaticResource SectionTitleBlack}"

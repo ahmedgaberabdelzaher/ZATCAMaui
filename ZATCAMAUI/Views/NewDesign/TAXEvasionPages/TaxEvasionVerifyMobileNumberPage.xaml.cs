@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             On<iOS>().SetUseSafeArea(true);
             viewModel.ShowMobileForm();
             ChangeAeroIcon();
-            SetLTR();
 
         }
         protected async override void OnAppearing()
@@ -64,18 +63,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
         async void btn_Continue_ClickedAsync(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(viewModel.MobileNumber))

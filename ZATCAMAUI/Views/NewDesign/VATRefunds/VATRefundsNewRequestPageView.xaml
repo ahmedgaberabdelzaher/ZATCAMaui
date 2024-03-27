@@ -11,7 +11,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
@@ -94,9 +94,9 @@
                         </StackLayout>
                     </Grid>
 
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
-                        CornerRadius="14,14,0,0"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             x:Name="VATRMainGrid"
@@ -115,7 +115,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </Grid>
         </ControlTemplate>
@@ -155,13 +155,13 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="1" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource SectionTitleBlack}"
                                 Text="{x:Static ResourceManager:AppResources.VATRefundDetails}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
@@ -179,7 +179,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="1"
                             Margin="0,16,0,0">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
@@ -221,7 +221,7 @@
                             Grid.Column="1"
                             Grid.ColumnSpan="1"
                             Margin="0,16,0,0">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.IDNumber}" />
@@ -263,7 +263,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Margin="0,16,0,8">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.VATRefundAccounts}" />
@@ -457,7 +457,7 @@
                                         Source="ic_vat_info.png"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Margin="10,0,10,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource ValueLabelBlack}"
@@ -492,8 +492,8 @@
                                 HorizontalOptions="Start"
                                 Orientation="Horizontal"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel
-                                    LineSpacing="0.8"
+                                <Label
+                                    LineHeight="0.8"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" />
                             </StackLayout>
@@ -502,15 +502,15 @@
                                 HorizontalOptions="End"
                                 Orientation="Horizontal"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel HorizontalOptions="EndAndExpand" Style="{StaticResource SectionTitleBlackBold}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label HorizontalOptions="EndAndExpand" Style="{StaticResource SectionTitleBlackBold}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding VatRefundsDisplayDataModel.Rfamt, Converter={StaticResource commaSeparatorConverter}}" />
                                             <Span Text=" " />
                                             <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                             </StackLayout>
                         </StackLayout>
                         <Border
@@ -529,7 +529,7 @@
                                         Source="ic_vat_info.png"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Margin="10,0,10,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource ValueLabelBlack}"

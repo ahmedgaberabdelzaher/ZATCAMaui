@@ -9,17 +9,9 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
             DurationIn="400"
@@ -29,13 +21,12 @@
             PositionOut="Bottom" />
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
-        <yummy:PancakeView
+        <Border
             Padding="10"
             BackgroundColor="White"
+            StrokeThickness="1"
+            Stroke="Black"
             VerticalOptions="EndAndExpand">
-            <yummy:PancakeView.Border>
-                <yummy:Border Thickness="1" Color="Black" />
-            </yummy:PancakeView.Border>
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="300" />
@@ -65,7 +56,7 @@
                                     <ColumnDefinition Width="1" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     HorizontalOptions="Start"
                                     Text="{Binding BuildingNo}"
@@ -75,7 +66,7 @@
                                     BackgroundColor="Black"
                                     VerticalOptions="Fill"
                                     WidthRequest="1" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="2"
                                     HorizontalOptions="Start"
                                     Text="{Binding DistrictName}"
@@ -85,7 +76,7 @@
                                     BackgroundColor="Black"
                                     VerticalOptions="Fill"
                                     WidthRequest="1" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="4"
                                     HorizontalOptions="Start"
                                     Text="{Binding StreetName}"
@@ -107,6 +98,6 @@
                         Text="{x:Static ResourceManager:AppResources.ZZZCancelText}" />
                 </StackLayout>
             </Grid>
-        </yummy:PancakeView>
+        </Border>
     </pages:PopupPage.Content>
 </pages:PopupPage>

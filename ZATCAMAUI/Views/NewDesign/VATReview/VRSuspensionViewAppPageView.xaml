@@ -8,7 +8,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
 
@@ -35,11 +35,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             Margin="0"
                             Padding="0,0,0,0"
@@ -56,7 +56,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="0,10,0,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -117,13 +117,13 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource PageTitleBlack}"
                         Text="{x:Static ResourceManager:AppResources.VRViewApplication}" />
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="1"
                         Grid.Column="0"
                         Margin="0,-10,0,15"
@@ -165,28 +165,28 @@
                                     Color="{StaticResource SecondaryNew}" />
                             </Image.Source>
                         </Image>
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="0"
                             Grid.Column="1"
                             Margin="10,0,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"
                             Text="{x:Static ResourceManager:AppResources.Information}" />
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="1"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.VRVSInstruction1}" />
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="2"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.VRVSInstruction2}" />
-                        <custom:CustomLabel
+                        <Label
                             Grid.Row="3"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
@@ -247,11 +247,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRVSRequestType}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"
@@ -267,11 +267,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRVSStartofSuspensionPeriod}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"
@@ -286,11 +286,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRVSEndofSuspensionPeriod}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"
@@ -306,11 +306,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRVSSuspendedfilingperiod}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"
@@ -327,11 +327,11 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.ColumnSpan="2" Orientation="Horizontal">
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="0"
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRVSNextfilingperiod}" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
@@ -349,11 +349,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRVSNextfilingduedate}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"
@@ -369,11 +369,11 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.ColumnSpan="2" Orientation="Horizontal">
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="0"
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRVSReasonforSuspensionofFiling}" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
@@ -412,11 +412,11 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="0"
                                                 Style="{StaticResource ValueLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.VRAttachment}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="1"
                                                 HorizontalOptions="EndAndExpand"
                                                 HorizontalTextAlignment="End"
@@ -494,11 +494,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRIDType}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"
@@ -514,11 +514,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRIDNumber}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"
@@ -535,11 +535,11 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="0"
                                     Style="{StaticResource ValueLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VRContactPersonName}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Column="1"
                                     HorizontalOptions="EndAndExpand"
                                     HorizontalTextAlignment="End"

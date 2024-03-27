@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    >
     <ContentView.Resources>
         <ResourceDictionary>
 
@@ -36,10 +36,10 @@
             Opacity="0.4"
             Orientation="Vertical"
             VerticalOptions="FillAndExpand" />
-        <yummy:PancakeView
+        <Border
             Padding="20,20,20,10"
             BackgroundColor="White"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 
@@ -96,7 +96,7 @@
                     VerticalOptions="CenterAndExpand" />
 
             </Grid>
-        </yummy:PancakeView>
+        </Border>
     </Grid>
 
 </ContentView>

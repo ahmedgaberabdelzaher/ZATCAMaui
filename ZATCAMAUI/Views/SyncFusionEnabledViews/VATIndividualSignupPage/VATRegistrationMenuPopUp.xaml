@@ -9,11 +9,11 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="22,22,22,22"
+        StrokeShape="RoundRectangle 22,22,22,22"
         VerticalOptions="CenterAndExpand">
         <StackLayout>
             <Label
@@ -72,5 +72,5 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

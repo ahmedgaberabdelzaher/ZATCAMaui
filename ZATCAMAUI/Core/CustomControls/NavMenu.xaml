@@ -2,25 +2,15 @@
 <ContentView
     x:Class="ZATCAMAUI.Core.CustomControls.NavMenu"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
-    <!--<ContentView.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-        </ResourceDictionary>
-    </ContentView.Resources>-->
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Content>
-        <yummy:PancakeView
+        <Border
             BackgroundColor="#002447"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
+            Padding="16,8"
             VerticalOptions="EndAndExpand">
-            <yummy:PancakeView.Resources>
+
+            <Border.Resources>
                 <ResourceDictionary>
                     <Style TargetType="Label">
                         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
@@ -33,12 +23,13 @@
                         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                     </Style>
                 </ResourceDictionary>
-            </yummy:PancakeView.Resources>
+            </Border.Resources>
+
             <Grid
                 x:Name="menu"
-                Padding="10,0,10,0"
+                Padding="0,0"
                 BindableLayout.ItemsSource="{Binding AfterLoginMenuLst}"
-                ColumnDefinitions="*"
+                ColumnDefinitions="*,*,*,*"
                 RowDefinitions="65">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
@@ -46,13 +37,15 @@
                         <Grid
                             x:Name="Item"
                             Grid.Column="{Binding ColumnNo}"
-                            RowDefinitions="auto,23,*">
+                            RowDefinitions="auto,*,*">
+
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer
                                     BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
                                     Command="{Binding MenuNavigationCommand}"
                                     CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                             </Grid.GestureRecognizers>
+
                             <Image
                                 Grid.Row="0"
                                 HeightRequest="5"
@@ -66,6 +59,7 @@
                                     </DataTrigger>
                                 </Image.Triggers>
                             </Image>
+
                             <Image
                                 Grid.Row="1"
                                 Source="{Binding ImageSource}"
@@ -79,6 +73,7 @@
                                     </DataTrigger>
                                 </Image.Triggers>
                             </Image>
+
                             <Label
                                 Grid.Row="2"
                                 HorizontalOptions="CenterAndExpand"
@@ -92,11 +87,13 @@
                                     </DataTrigger>
                                 </Label.Triggers>
                             </Label>
+
                         </Grid>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </Grid>
-        </yummy:PancakeView>
+
+        </Border>
     </ContentView.Content>
 </ContentView>
 

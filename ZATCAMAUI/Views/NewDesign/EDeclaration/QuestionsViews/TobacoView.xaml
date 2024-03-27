@@ -32,14 +32,14 @@
     <StackLayout Spacing="0">
 
         <!--  TypeItem Label  -->
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.TypeItem}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <!--  TypeItem Entry  -->
         <inputLayout:SfTextInputLayout
@@ -96,14 +96,14 @@
     <StackLayout Spacing="0">
 
         <!--  ProductName Label  -->
-        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-            <custom:CustomLabel.FormattedText>
+        <Label Style="{StaticResource CaptionLabelGrey}">
+            <Label.FormattedText>
                 <FormattedString>
                     <Span Text="{x:Static ResourceManager:AppResources.ProductName}" />
                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                 </FormattedString>
-            </custom:CustomLabel.FormattedText>
-        </custom:CustomLabel>
+            </Label.FormattedText>
+        </Label>
 
         <!--  ProductName Entry  -->
         <StackLayout>
@@ -154,14 +154,14 @@
         <StackLayout Spacing="0">
 
             <!--  Total Value Label  -->
-            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                <custom:CustomLabel.FormattedText>
+            <Label Style="{StaticResource CaptionLabelGrey}">
+                <Label.FormattedText>
                     <FormattedString>
                         <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                     </FormattedString>
-                </custom:CustomLabel.FormattedText>
-            </custom:CustomLabel>
+                </Label.FormattedText>
+            </Label>
 
             <!--  Total Value Entry  -->
             <inputLayout:SfTextInputLayout
@@ -189,7 +189,7 @@
                         Value="{Binding TotalValue}" />
 
                   <inputLayout:SfTextInputLayout.TrailingView>
-                        <custom:CustomLabel
+                        <Label
                             WidthRequest="50"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
@@ -212,14 +212,14 @@
             <!--  Weight Label  -->
             <StackLayout Orientation="Horizontal">
 
-                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                    <custom:CustomLabel.FormattedText>
+                <Label Style="{StaticResource CaptionLabelGrey}">
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.Weight}" />
                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
                 <!--  MeasureUnit label  -->
                 <Label
@@ -269,14 +269,14 @@
         <StackLayout Spacing="0">
 
             <!--  Quantity Label  -->
-            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                <custom:CustomLabel.FormattedText>
+            <Label Style="{StaticResource CaptionLabelGrey}">
+                <Label.FormattedText>
                     <FormattedString>
                         <Span Text="{x:Static ResourceManager:AppResources.Quantity}" />
                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                     </FormattedString>
-                </custom:CustomLabel.FormattedText>
-            </custom:CustomLabel>
+                </Label.FormattedText>
+            </Label>
 
             <!--  Quantity Entry  -->
             <inputLayout:SfTextInputLayout

@@ -26,7 +26,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 BindingContext = viewModel;
                 viewModel.ClearData();
                 viewModel.OnPageLoad();
-                SetLTR();
                 viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
                 SetPickerFont();
                 viewModel.StartPage = 1;
@@ -69,18 +68,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
             }
 
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
 
         private void OnPasswordCardClicked(object sender, EventArgs e)

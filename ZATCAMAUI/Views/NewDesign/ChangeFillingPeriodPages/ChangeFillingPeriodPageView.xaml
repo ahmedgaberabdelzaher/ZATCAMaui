@@ -14,10 +14,9 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -27,8 +26,6 @@
             <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector" />
 
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -49,11 +46,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -70,7 +67,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -186,14 +183,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     FontSize="28"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodFrequencyDetails}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -236,14 +233,14 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Margin="0"
                                             Padding="0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelGrey}"
                                             Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodCurrentFrequency}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="1"
                                             Margin="0,8,0,0"
                                             Padding="0"
@@ -272,7 +269,7 @@
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Margin="0"
@@ -282,7 +279,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodNewFrequency}"
                                             VerticalOptions="Start" />
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="1"
                                             Grid.Column="0"
                                             Margin="0,8,0,0"
@@ -308,7 +305,7 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Margin="0"
                                     Padding="0"
@@ -316,13 +313,13 @@
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource MiniNewGrayLabelStyle}"
                                     Text="{x:Static ResourceManager:AppResources.VFCEffectiveDate}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VFCEffectiveDate}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Frame
                                     Grid.Row="1"
@@ -389,27 +386,27 @@
                                         IsChecked="{Binding IsFrequencyDetailsChecked}"
                                         Style="{StaticResource CheckboxHeightWidth32}"
                                         VerticalOptions="CenterAndExpand" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         HorizontalOptions="StartAndExpand"
                                         HorizontalTextAlignment="Start"
                                         Text="{x:Static ResourceManager:AppResources.VFCFrequencyDetailsCheckBoxString}">
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsFrequencyDetailsChecked}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
                                                 <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                             </DataTrigger>
                                             <DataTrigger
                                                 Binding="{Binding IsFrequencyDetailsChecked}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="False">
                                                 <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                             </DataTrigger>
-                                        </custom:CustomLabel.Triggers>
-                                    </custom:CustomLabel>
+                                        </Label.Triggers>
+                                    </Label>
 
 
                                 </Grid>
@@ -452,14 +449,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     FontSize="28"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachments}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -688,7 +685,7 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         FontFamily="{StaticResource SomarRegular}"
                                         HorizontalOptions="StartAndExpand"
@@ -707,7 +704,7 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 FontFamily="{StaticResource SomarRegular}"
@@ -731,7 +728,7 @@
                                             </Image>
                                         </Grid>
                                     </Border>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource MicroGrayLabelStyle}"
@@ -764,13 +761,13 @@
                                             HeightRequest="20"
                                             Source="ic_vat_info"
                                             WidthRequest="20" />
-                                        <custom:CustomLabel
+                                        <Label
                                             CharacterSpacing="0"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.Attachments}"
                                             VerticalOptions="CenterAndExpand" />
                                     </StackLayout>
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
                                         Style="{StaticResource CaptionLabelGrey}"
@@ -831,14 +828,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="1" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     FontSize="28"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodDeclaration}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -901,7 +898,7 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Margin="0"
                                     Padding="0"
@@ -910,13 +907,13 @@
                                     Style="{StaticResource MiniNewGrayLabelStyle}"
                                     Text="{x:Static ResourceManager:AppResources.VFCIDType}">
 
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VFCIDType}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Frame
                                     Grid.Row="1"
@@ -966,7 +963,7 @@
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Margin="0"
                                         Padding="0"
@@ -974,13 +971,13 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource MiniNewGrayLabelStyle}"
                                         Text="{x:Static ResourceManager:AppResources.VFCIDNumber}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.VFCIDNumber}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                     <Frame
                                         Grid.Row="1"
                                         Margin="0,5,0,0"
@@ -1019,7 +1016,7 @@
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Margin="0"
                                         Padding="0"
@@ -1028,13 +1025,13 @@
                                         Style="{StaticResource MiniNewGrayLabelStyle}"
                                         Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}">
 
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.VFCDateofBirth}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
 
                                     <Frame
                                         Grid.Row="1"
@@ -1087,7 +1084,7 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Margin="0"
                                     Padding="0"
@@ -1096,13 +1093,13 @@
                                     Style="{StaticResource MiniNewGrayLabelStyle}"
                                     Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}">
 
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.VFCContactPersonName}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Frame
                                     Grid.Row="1"
@@ -1175,14 +1172,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.ColumnSpan="2"
                                     FontSize="28"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.VatDeregSummaryTitle}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
@@ -1401,11 +1398,11 @@
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="0"
                                                             Style="{StaticResource ValueLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwoYears}" />
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
@@ -1432,11 +1429,11 @@
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="0"
                                                             Style="{StaticResource ValueLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsTwelveMonths}" />
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"
@@ -1462,11 +1459,11 @@
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="0"
                                                             Style="{StaticResource ValueLabelGrey}"
                                                             Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodAttachmentsOtherDocuments}" />
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             Grid.Column="1"
                                                             HorizontalOptions="EndAndExpand"
                                                             HorizontalTextAlignment="End"

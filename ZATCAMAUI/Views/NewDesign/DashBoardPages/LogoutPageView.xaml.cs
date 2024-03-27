@@ -13,7 +13,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         public LogoutPageView(string ConfirmationText)
         {
             InitializeComponent();
-            SetLTR();
             _confirmationText = confirmationText.Text = ConfirmationText;
         }
 
@@ -21,17 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             base.OnAppearing();
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
         }
         private async void OnOkayButtonClicked(object sender, EventArgs e)
         {

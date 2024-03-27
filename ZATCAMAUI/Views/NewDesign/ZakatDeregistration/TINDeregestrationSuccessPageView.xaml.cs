@@ -16,7 +16,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
             viewModel = App.Locator.TINDeregestrationSuccessPageView;
             ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             if (response != null)
@@ -40,18 +39,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             Padding = safeInsets;
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
         }
         public void ChangeAeroIcon()
         {

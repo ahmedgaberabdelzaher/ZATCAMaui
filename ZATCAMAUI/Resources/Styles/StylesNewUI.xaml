@@ -7,7 +7,7 @@
     xmlns:customControl="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    >
 
     <!--#region Colors-->
 
@@ -357,12 +357,12 @@
         <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
         <!--<Setter Property="Shadow" Value="{StaticResource NeutralLightGrey}" />-->
     </Style>
-    <Style x:Key="GreyBorderFrameWithShadow1" TargetType="yummy:PancakeView">
+    <Style x:Key="GreyBorderFrameWithShadow1" TargetType="Border">
         <!--<Setter Property="Margin" Value="10,0,10,0" />
          <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
         <!--  <Setter Property="HasShadow" Value="False" />-->
-        <Setter Property="CornerRadius" Value="14" />
+         <Setter Property="StrokeShape" Value="RoundRectangle 15,15,0,0"/>
         <!--  <Setter Property="BorderThickness" Value="1.5" />
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />-->
     </Style>

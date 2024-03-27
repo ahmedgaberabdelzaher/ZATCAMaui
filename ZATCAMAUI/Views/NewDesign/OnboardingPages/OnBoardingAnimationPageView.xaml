@@ -8,17 +8,10 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:rotator="clr-namespace:ZATCAMAUI.Core"
+    xmlns:rotator="clr-namespace:Syncfusion.Maui.Rotator;assembly=Syncfusion.Maui.Rotator"
     ios:Page.UseSafeArea="False"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid ColumnSpacing="0" RowSpacing="5">
             <Grid.RowDefinitions>
@@ -74,13 +67,13 @@
                 Source="centered.png" />
 
             <!--  Rotator used to navigate the view  -->
-            <!--<rotator:SfRotator
+            <rotator:SfRotator
                 Grid.Row="2"
                 Margin="{OnPlatform Android='0,0,0,0',
                                     iOS='0,10,0,0'}"
                 BackgroundColor="Transparent"
                 DotPlacement="None"
-                DotsBorderColor="Transparent"
+                DotsStroke="Transparent"
                 EnableLooping="False"
                 EnableSwiping="True"
                 FlowDirection="LeftToRight"
@@ -96,7 +89,7 @@
                     <behavior:SfRotatorBehavior />
                 </rotator:SfRotator.Behaviors>
 
-            </rotator:SfRotator>-->
+            </rotator:SfRotator>
 
             <!--  Next button  -->
             <buttons:SfButton

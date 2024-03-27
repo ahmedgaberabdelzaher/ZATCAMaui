@@ -7,18 +7,10 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid
             Padding="0"
@@ -49,7 +41,7 @@
                     Text="{x:Static ResourceManager:AppResources.ESTGAZTAcknowledgesTheReceiptRegApplication}"
                     TextColor="White" />
             </StackLayout>
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 HorizontalOptions="FillAndExpand"
                 Style="{StaticResource CommonTopCurves}"
@@ -77,11 +69,11 @@
                                     Padding="10"
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.ESTName}" />
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Name}" />
+                                    <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Name}" />
                                 </StackLayout>
                             </Border>
                             <Border
@@ -92,11 +84,11 @@
                                     Padding="10"
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.ESTReferenceNumber}" />
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding Fbnumx}" />
+                                    <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Fbnumx}" />
                                 </StackLayout>
                             </Border>
                             <Border
@@ -107,18 +99,18 @@
                                     Padding="10"
                                     HorizontalOptions="FillAndExpand"
                                     Orientation="Horizontal">
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.Date}" />
-                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding DateText}" />
+                                    <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding DateText}" />
                                 </StackLayout>
                             </Border>
                             <Border
                                 Stroke="{StaticResource NeutralLightGrey}"
                                 StrokeShape="RoundRectangle 10,10,10,10"
                                 StrokeThickness="1">
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ESTFutureRefernceAndCommunicationFinalMsg}" />
@@ -133,7 +125,7 @@
                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}"
                         TextColor="{StaticResource Primary}" />
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -10472,5 +10472,11 @@ info@zatca.gov.sa</value>
   </data>
 	<data name="SecondaryNumber" xml:space="preserve">
     <value>الرقم الإضافي</value>
+  </data>
+  	<data name="CalDay" xml:space="preserve">
+    <value>يوم</value>
+  </data>
+ <data name="CalMonth" xml:space="preserve">
+    <value>شهر</value>
   </data> 
 </root>

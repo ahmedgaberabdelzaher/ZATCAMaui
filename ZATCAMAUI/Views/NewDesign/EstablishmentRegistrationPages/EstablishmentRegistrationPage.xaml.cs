@@ -21,8 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             EstablishmentRegistrationPageViewModel.taxPayerDetails = null;
             InitializeComponent();
             ChangeAeroIcon();
-            SetLTR();
-
             viewModel = App.Locator.EstablishmentRegistrationPage;
             BindingContext = viewModel;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
@@ -54,19 +52,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         {
             base.OnDisappearing();
         }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

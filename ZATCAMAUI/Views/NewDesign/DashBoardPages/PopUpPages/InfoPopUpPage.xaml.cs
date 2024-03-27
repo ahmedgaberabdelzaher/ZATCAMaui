@@ -15,34 +15,12 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages
         {
             viewModel = App.Locator.InfoPopUpPage;
             this.BindingContext = viewModel;
-            SetLTR();
             InitializeComponent();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-        }
-
-        private void OnVATNowTapped(object sender, EventArgs e)
-        {
-
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
-        private void btnDashboard_Clicked(object sender, EventArgs e)
-        {
-
         }
 
         private async void btnLogout_Clicked(object sender, EventArgs e)

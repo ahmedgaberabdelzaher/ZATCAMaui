@@ -10,17 +10,14 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:local="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:StringToColor x:Key="StringToColor" />
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -71,9 +68,9 @@
 
                     </Grid>
 
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
-                        CornerRadius="14,14,0,0"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             x:Name="VATRMainGrid"
@@ -92,7 +89,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </Grid>
         </ControlTemplate>
@@ -113,15 +110,15 @@
                     BackgroundColor="Transparent">
 
                     <StackLayout Orientation="Horizontal">
-                        <custom:CustomLabel
+                        <Label
                             HorizontalOptions="Start"
                             Style="{StaticResource PageTitleBlack}"
                             Text="{Binding FilterLabelText}"
                             VerticalOptions="CenterAndExpand">
-                            <custom:CustomLabel.GestureRecognizers>
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="btn_Clicked" />
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </Label>
                         <Image
                             HorizontalOptions="Center"
                             Source="arrowDropdown"
@@ -132,20 +129,20 @@
                         </Image>
                     </StackLayout>
 
-                    <custom:CustomLabel
+                    <Label
                         Padding="0,0,0,0"
                         HorizontalOptions="StartAndExpand"
                         VerticalOptions="Start"
                         VerticalTextAlignment="Start">
-                        <custom:CustomLabel.FormattedText>
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DashBoardMyTaxObligations}" />
                                 <Span Style="{StaticResource SectionTitleBlackBold}" Text="&#160;" />
                                 <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
-                    <!--<custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>-->
+                        </Label.FormattedText>
+                    </Label>
+                    <!--<Label Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>-->
                     <StackLayout
                         Margin="0,16,0,0"
                         BackgroundColor="Transparent"
@@ -180,7 +177,7 @@
                                             HorizontalOptions="Center"
                                             Source="{Binding ImageSource}"
                                             VerticalOptions="Center" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Margin="0,0,5,0"
                                             HorizontalOptions="CenterAndExpand"
                                             Style="{StaticResource CaptionLabelBlack}"
@@ -253,7 +250,7 @@
                                                             Source="ic_iconpay_white"
                                                             VerticalOptions="CenterAndExpand"
                                                             WidthRequest="16" />
-                                                        <custom:CustomLabel
+                                                        <Label
                                                             FontFamily="{StaticResource SomarRegular}"
                                                             FontSize="11"
                                                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
@@ -294,15 +291,15 @@
                                                         HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         Text="{x:Static ResourceManager:AppResources.NDInvoiceDueamount}" />
-                                                    <custom:CustomLabel HorizontalOptions="StartAndExpand">
-                                                        <custom:CustomLabel.FormattedText>
+                                                    <Label HorizontalOptions="StartAndExpand">
+                                                        <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding TestDueAmount}" />
                                                                 <Span Style="{StaticResource SectionTitleBlackBold}" Text="&#160;" />
                                                                 <Span Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                    </custom:CustomLabel>
+                                                        </Label.FormattedText>
+                                                    </Label>
                                                 </StackLayout>
 
                                                 <StackLayout
@@ -314,9 +311,9 @@
                                                     <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDPeriod}" />
                                                     <!--<Label Text="{Binding Period}" Style="{StaticResource ValueLabelBlack}" />-->
                                                     <StackLayout Orientation="Horizontal">
-                                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding PeriodPart1}" />
-                                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="-" />
-                                                        <custom:CustomLabel
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding PeriodPart1}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="-" />
+                                                        <Label
                                                             HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource ValueLabelBlack}"
                                                             Text="{Binding PeriodPart2}" />
@@ -341,15 +338,15 @@
                                                         HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         Text="{x:Static ResourceManager:AppResources.MyBillsPaidAmount}" />
-                                                    <custom:CustomLabel HorizontalOptions="StartAndExpand">
-                                                        <custom:CustomLabel.FormattedText>
+                                                    <Label HorizontalOptions="StartAndExpand">
+                                                        <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding TotalPaidAmt}" />
                                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="&#160;" />
                                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                    </custom:CustomLabel>
+                                                        </Label.FormattedText>
+                                                    </Label>
                                                 </StackLayout>
 
                                                 <StackLayout
@@ -370,15 +367,15 @@
                                                         HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         Text="{x:Static ResourceManager:AppResources.MyBillsRemainingAmount}" />
-                                                    <custom:CustomLabel HorizontalOptions="StartAndExpand">
-                                                        <custom:CustomLabel.FormattedText>
+                                                    <Label HorizontalOptions="StartAndExpand">
+                                                        <Label.FormattedText>
                                                             <FormattedString>
                                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding TotalRemainingAmount}" />
                                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="&#160;" />
                                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                             </FormattedString>
-                                                        </custom:CustomLabel.FormattedText>
-                                                    </custom:CustomLabel>
+                                                        </Label.FormattedText>
+                                                    </Label>
                                                 </StackLayout>
 
                                                 <StackLayout
@@ -395,9 +392,9 @@
                                                     Grid.Row="3"
                                                     Grid.Column="1"
                                                     Margin="0,0,0,20">
-                                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DueDate}" />
+                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DueDate}" />
                                                     <StackLayout HorizontalOptions="Start">
-                                                        <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding FormatedFaedn}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding FormatedFaedn}" />
                                                     </StackLayout>
 
                                                 </StackLayout>
@@ -410,7 +407,7 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <custom:CustomLabel
+                    <Label
                         Margin="0,20,0,0"
                         HorizontalOptions="Center"
                         IsVisible="{Binding isNoDataLableVisible}"

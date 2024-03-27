@@ -9,7 +9,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -49,7 +49,7 @@
             VerticalOptions="FillAndExpand">
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 HorizontalOptions="FillAndExpand"
@@ -92,7 +92,7 @@
                         </Grid>
 
                         <!--  Header Label  -->
-                        <custom:CustomLabel
+                        <Label
                             FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="28"
                             HorizontalOptions="CenterAndExpand"
@@ -102,7 +102,7 @@
                             VerticalOptions="Start" />
 
                         <!--  OTP msg Label  -->
-                        <custom:CustomLabel
+                        <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="16"
                             HorizontalOptions="Center"
@@ -121,7 +121,7 @@
 
 
                         <!--  OTP msg Label  -->
-                        <custom:CustomLabel
+                        <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
@@ -304,7 +304,7 @@
                             Orientation="Horizontal"
                             Spacing="20">
 
-                            <custom:CustomLabel
+                            <Label
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
@@ -320,7 +320,7 @@
                         </StackLayout>
 
                         <!--  Resend msg Label  -->
-                        <custom:CustomLabel
+                        <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
@@ -332,16 +332,16 @@
                             TextDecorations="Underline"
                             VerticalOptions="Start">
 
-                            <custom:CustomLabel.GestureRecognizers>
+                            <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ResendOtpCommand}" />
-                            </custom:CustomLabel.GestureRecognizers>
-                        </custom:CustomLabel>
+                            </Label.GestureRecognizers>
+                        </Label>
 
                     </StackLayout>
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
 

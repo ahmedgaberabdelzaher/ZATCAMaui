@@ -8,13 +8,13 @@ using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
 {
-    public class NafathLoginPageViewModel : ViewModelBase
+    public class NafathLoginPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
         public int CurrentAttempt = 0;
-        public NafathLoginPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public NafathLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
 
         {
             if (navigationService == null)
@@ -32,8 +32,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
                 _navigationService.GoBack();
             });
         }
-
-        public bool IsLoading { get; internal set; }
 
         public async Task LoginCompletedInWebView()
         {

@@ -21,7 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             InitializeComponent();
 
             ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
 
             var safeInsets = On<iOS>().SafeAreaInsets();
@@ -49,13 +48,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

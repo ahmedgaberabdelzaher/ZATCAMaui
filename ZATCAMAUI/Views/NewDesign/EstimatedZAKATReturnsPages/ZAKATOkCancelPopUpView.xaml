@@ -7,16 +7,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+    FlowDirection="{Binding AppDirection}">
+    <Border
         BackgroundColor="White"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
@@ -31,7 +23,7 @@
             <StackLayout Grid.Row="0" Spacing="0">
 
 
-                <custom:CustomLabel
+                <Label
                     x:Name="confirmationText"
                     Margin="10"
                     Style="{StaticResource BodyLabelBlack}" />
@@ -65,5 +57,5 @@
                     VerticalOptions="FillAndExpand" />
             </Grid>
         </Grid>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

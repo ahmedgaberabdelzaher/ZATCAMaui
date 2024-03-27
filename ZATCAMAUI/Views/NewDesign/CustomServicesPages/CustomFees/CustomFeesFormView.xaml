@@ -10,6 +10,7 @@
     xmlns:numericinput="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
     xmlns:view="clr-namespace:ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews"
     HasBackButton="True"
+    FlowDirection="{Binding AppDirection}"
     TitleText="{x:Static ResourceManager:AppResources.CustomFeesCalculator}">
 
     <newdesign:BaseContentPage.PancakeView>
@@ -61,7 +62,7 @@
                                     Source="information.png"
                                     VerticalOptions="StartAndExpand"
                                     WidthRequest="20" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     FontFamily="{StaticResource SomarBold}"
@@ -70,12 +71,12 @@
                                     Text="{x:Static ResourceManager:AppResources.Disclaimer}"
                                     TextColor="#14395B" />
                                 <!--  Question Hint Label  -->
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     FontSize="12"
                                     HorizontalOptions="StartAndExpand"
-                                    LineSpacing=".8"
+                                    LineHeight=".8"
                                     Text="{x:Static ResourceManager:AppResources.FeesCalcDisclaimerTXt}"
                                     TextColor="Gray" />
                             </Grid>
@@ -89,14 +90,14 @@
                     <StackLayout Spacing="0">
 
                         <!--  TypeItem Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
+                        <Label Style="{StaticResource CaptionLabelGrey}">
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.Thetypeofmerchandise}" />
                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
 
                         <!--  TypeItem Entry  -->
                         <inputLayout:SfTextInputLayout
@@ -151,14 +152,14 @@
                         <StackLayout IsVisible="{Binding IsProductItemHaveSubType}" Spacing="0">
 
                             <!--  ProductName Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.Selecttheitem}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  ProductName Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -199,14 +200,14 @@
                         <StackLayout IsVisible="false" Spacing="0">
 
                             <!--  Quantity Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.Quantity}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Quantity Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -243,14 +244,14 @@
 
                         <!--  unit Label  -->
                         <StackLayout IsVisible="false">
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.units}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
@@ -289,14 +290,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Total Value Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.Productvalue}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Total Value Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -328,7 +329,7 @@
                                         Value="{Binding TotalValue}" />
 
 
-                                    <custom:CustomLabel
+                                    <Label
                                         HorizontalOptions="EndAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.FORM5SAR}"

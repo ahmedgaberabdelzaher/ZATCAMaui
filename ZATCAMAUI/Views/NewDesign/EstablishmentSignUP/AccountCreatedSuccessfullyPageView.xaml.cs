@@ -29,14 +29,14 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                 headerAmountInfo.IsLinkAvailable = false;
                 headerAmountInfo.Message = displayText;
-                if (App.IsArabic)
-                {
-                    headerAmountInfo.FlowDirections = "RightToLeft";
-                }
-                else
-                {
-                    headerAmountInfo.FlowDirections = "LeftToRight";
-                }
+                //if (App.IsArabic)
+                //{
+                //    headerAmountInfo.FlowDirections = "RightToLeft";
+                //}
+                //else
+                //{
+                //    headerAmountInfo.FlowDirections = "LeftToRight";
+                //}
                 headerWithInfos.Add(headerAmountInfo);
                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;

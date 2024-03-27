@@ -26,7 +26,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
             //App.IsArabic = false;
             ChangeAeroIcon();
-            SetLTR();
             SetPickerFont();
             On<iOS>().SetUseSafeArea(true);
 
@@ -190,14 +189,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             MessagingCenter.Unsubscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem");
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
 
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         public void ChangeAeroIcon()
         {

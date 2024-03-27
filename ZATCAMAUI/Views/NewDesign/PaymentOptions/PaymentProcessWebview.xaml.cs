@@ -25,7 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             viewModel = App.Locator.PaymentProcessWebview;
 
             BindingContext = viewModel;
-            SetLTR();
             ChangeAeroIcon();
             viewModel.PaymentType = type;
         }
@@ -290,21 +289,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
 
         }
-
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
-
 
     }
 }

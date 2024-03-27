@@ -23,7 +23,7 @@ using ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
 
-    public class ChangeFillingPeriodViewModel : ViewModelBase
+    public class ChangeFillingPeriodViewModel : BaseViewModel
     {
 
         #region Variable
@@ -53,20 +53,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public PickerEnum selectedPicker = PickerEnum.EffectiveDate;
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+      
 
         private bool _isFrequencyDetailsChecked = false;
         public bool IsFrequencyDetailsChecked
@@ -527,7 +514,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
 
 
-        public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {
 
             if (navigationService == null)

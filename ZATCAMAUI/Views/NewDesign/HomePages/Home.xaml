@@ -7,36 +7,41 @@
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     Padding="0,45,0,0"
     ios:Page.UseSafeArea="False"
     HasBackButton="False"
     TitleText="{x:Static ResourceManager:AppResources.Home}">
-    <newdesign:BaseContentPage.Padding>
+
+    <!--<newdesign:BaseContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0,45,0,0" />
+            <On Platform="iOS" Value="10,45,0,0" />
             <On Platform="Android" Value="0" />
         </OnPlatform>
     </newdesign:BaseContentPage.Padding>
+
     <newdesign:BaseContentPage.PancakMargin>
         <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0,0,0,20" />
+            <On Platform="iOS" Value="10,0,0,20" />
             <On Platform="Android" Value="0" />
         </OnPlatform>
-    </newdesign:BaseContentPage.PancakMargin>
+    </newdesign:BaseContentPage.PancakMargin>-->
+
     <newdesign:BaseContentPage.PancakeView>
-        <Grid Margin="-20,0,-20,0" RowDefinitions="auto,*,auto">
+
+        <Grid RowDefinitions="auto,*,*">
+
             <Label
-                Grid.Row="0"
-                Margin="24,10,24,10"
                 FontFamily="{StaticResource SomarBold}"
                 FontSize="18"
+                Padding="10"
                 Text="{x:Static ResourceManager:AppResources.ZATCAServices}"
                 TextColor="{StaticResource Primary}" />
+
             <StackLayout
                 x:Name="HomeMenuLst"
                 Grid.Row="1"
-                Margin="20,0,20,0"
+                Padding="10"
                 BindableLayout.ItemsSource="{Binding MenuLst}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
@@ -68,16 +73,16 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
+
             <controls:BottomMenu
                 x:Name="preLoginMenu"
                 Grid.Row="2"
-                Margin="20,0,20,0"
-                HorizontalOptions="Fill"
+                HorizontalOptions="FillAndExpand"
                 VerticalOptions="EndAndExpand" />
+
             <controls:NavMenu
                 x:Name="beforeLoginMenu"
                 Grid.Row="2"
-                Margin="0"
                 HorizontalOptions="Fill"
                 IsVisible="false"
                 VerticalOptions="EndAndExpand" />

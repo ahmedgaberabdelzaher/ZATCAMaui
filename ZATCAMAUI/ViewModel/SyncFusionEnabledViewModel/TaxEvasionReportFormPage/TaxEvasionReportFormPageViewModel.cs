@@ -5,10 +5,11 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
 {
-    public class TaxEvasionReportFormPageViewModel : ViewModelBase
+    public class TaxEvasionReportFormPageViewModel : BaseViewModel
     {
         #region variable
         public readonly INavigationService _navigationService;
@@ -207,19 +208,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 RaisePropertyChanged("ListFacilityCompanyType");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private List<FacilityCompanyType> _dlistfacilityCompanyType = null;
         public List<FacilityCompanyType> DListFacilityCompanyType
         {
@@ -768,7 +757,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 RaisePropertyChanged("CList");
             }
         }
-        public TaxEvasionReportFormPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxEvasionReportFormPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

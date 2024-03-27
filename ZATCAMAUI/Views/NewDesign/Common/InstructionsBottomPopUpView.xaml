@@ -10,9 +10,8 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     CloseWhenBackgroundIsClicked="False"
-    FlowDirection="RightToLeft"
     mc:Ignorable="d">
 
     <!--<pages:PopupPage.Resources>
@@ -28,10 +27,10 @@
     <Grid>
 
 
-        <yummy:PancakeView
+        <Border
             Padding="15,0,15,0"
             BackgroundColor="White"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
             IsVisible="{Binding IsCancelButtonVisible}"
             VerticalOptions="EndAndExpand">
 
@@ -100,7 +99,7 @@
                                 Color="{StaticResource SecondaryNew}" />
                         </Image.Source>
                     </Image>
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         FontSize="15"
@@ -159,7 +158,7 @@
                                             Color="{StaticResource SecondaryNew}" />
                                     </Image.Source>
                                 </Image>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="10,0,0,0"
@@ -167,12 +166,12 @@
                                     IsVisible="false"
                                     Style="{StaticResource ValueLabelBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.Information}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
-                                    LineSpacing="1"
+                                    LineHeight="1"
                                     Style="{StaticResource TCBodyLabelGrey}"
                                     Text="{Binding Description}" />
                             </Grid>
@@ -199,25 +198,25 @@
                                     IsEnabled="{Binding IsCheckboxEditable}"
                                     Style="{StaticResource CheckboxHeightWidth32}"
                                     VerticalOptions="CenterAndExpand" />
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
-                                    LineSpacing="0.8"
+                                    LineHeight="0.8"
                                     Text="{Binding CheckBoxDescription}">
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
                                         <DataTrigger
                                             Binding="{Binding IsInstuctionsChecked}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="True">
                                             <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                         </DataTrigger>
                                         <DataTrigger
                                             Binding="{Binding IsInstuctionsChecked}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="False">
                                             <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
                             </StackLayout>
                         </Grid>
 
@@ -238,13 +237,13 @@
 
 
             </Grid>
-        </yummy:PancakeView>
+        </Border>
 
 
-        <yummy:PancakeView
+        <Border
             Padding="15,0,15,0"
             BackgroundColor="White"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
             IsVisible="{Binding IsInstructions}"
             VerticalOptions="EndAndExpand">
             <Grid>
@@ -282,7 +281,7 @@
                                 Color="{StaticResource SecondaryNew}" />
                         </Image.Source>
                     </Image>
-                    <custom:CustomLabel
+                    <Label
                         Grid.Row="0"
                         Grid.Column="1"
                         FontSize="15"
@@ -341,7 +340,7 @@
                                             Color="{StaticResource SecondaryNew}" />
                                     </Image.Source>
                                 </Image>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="10,0,0,0"
@@ -349,12 +348,12 @@
                                     IsVisible="false"
                                     Style="{StaticResource ValueLabelBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.Information}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
-                                    LineSpacing="1"
+                                    LineHeight="1"
                                     Style="{StaticResource TCBodyLabelGrey}"
                                     Text="{Binding Description}" />
                             </Grid>
@@ -381,27 +380,27 @@
                                     IsEnabled="{Binding IsCheckboxEditable}"
                                     Style="{StaticResource CheckboxHeightWidth32}"
                                     VerticalOptions="CenterAndExpand" />
-                                <custom:CustomLabel
+                                <Label
                                     HorizontalOptions="StartAndExpand"
-                                    LineSpacing="0.8"
+                                    LineHeight="0.8"
                                     Text="{Binding CheckBoxDescription}"
                                     VerticalOptions="CenterAndExpand">
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
                                         <DataTrigger
                                             Binding="{Binding IsInstuctionsChecked}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="True">
                                             <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                         </DataTrigger>
                                         <DataTrigger
                                             Binding="{Binding IsInstuctionsChecked}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="False">
                                             <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
                             </StackLayout>
                         </Grid>
 
@@ -422,11 +421,11 @@
 
 
             </Grid>
-        </yummy:PancakeView>
-        <yummy:PancakeView
+        </Border>
+        <Border
             Padding="15,0,15,0"
             BackgroundColor="White"
-            CornerRadius="15,15,0,0"
+            StrokeShape="RoundRectangle 15,15,0,0"
             IsVisible="{Binding IsTerms}"
             VerticalOptions="EndAndExpand">
             <Grid>
@@ -436,7 +435,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <custom:CustomLabel
+                <Label
                     Grid.Row="0"
                     Margin="0,32,0,0"
                     FontSize="15"
@@ -478,7 +477,7 @@
                                     </Image.Source>
 
                                 </Image>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="10,0,0,0"
@@ -488,12 +487,12 @@
                                     Style="{StaticResource ValueLabelBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.Information}" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
-                                    LineSpacing="1.5"
+                                    LineHeight="1.5"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{Binding Description}" />
 
@@ -519,28 +518,28 @@
                                 Style="{StaticResource CheckboxHeightWidth32}"
                                 VerticalOptions="CenterAndExpand" />
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="1"
                                 HorizontalOptions="StartAndExpand"
-                                LineSpacing="0.8"
+                                LineHeight="0.8"
                                 Text="{Binding CheckBoxDescription}"
                                 VerticalOptions="Center">
-                                <custom:CustomLabel.Triggers>
+                                <Label.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IsTermsChecked}"
-                                        TargetType="custom:CustomLabel"
+                                        TargetType="Label"
                                         Value="True">
                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
                                     </DataTrigger>
                                     <DataTrigger
                                         Binding="{Binding IsTermsChecked}"
-                                        TargetType="custom:CustomLabel"
+                                        TargetType="Label"
                                         Value="False">
                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
                                     </DataTrigger>
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                </Label.Triggers>
+                            </Label>
                         </Grid>
 
 
@@ -558,7 +557,7 @@
                 </ScrollView>
 
             </Grid>
-        </yummy:PancakeView>
+        </Border>
 
     </Grid>
 

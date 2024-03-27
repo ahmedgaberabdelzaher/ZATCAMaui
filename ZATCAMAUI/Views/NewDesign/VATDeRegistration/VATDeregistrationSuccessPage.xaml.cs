@@ -15,8 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             viewModel = App.Locator.VATDeregistrationSuccessPage;
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            SetLTR();
-
             if (response != null)
             {
                 if (response.d != null)
@@ -37,17 +35,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             Padding = safeInsets;
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {

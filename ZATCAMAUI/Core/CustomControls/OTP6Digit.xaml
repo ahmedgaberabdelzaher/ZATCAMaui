@@ -35,15 +35,15 @@
 
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <StackLayout>
-                <custom:CustomLabel Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
-                <custom:CustomLabel
+                <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
+                <Label
                     Padding="0,0,0,16"
                     Style="{StaticResource BodyLabelGrey}"
                     Text="{x:Static ResourceManager:AppResources.EnterVerificationCodeSentToMobile}" />
                 <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
 
                 <StackLayout Padding="0,15,0,0">
-                    <custom:CustomLabel
+                    <Label
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
                         Style="{StaticResource BodyLabelGrey}"
@@ -215,7 +215,7 @@
                         HorizontalOptions="Center"
                         Orientation="Horizontal">
                         <Image Source="clock" />
-                        <custom:CustomLabel
+                        <Label
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{Binding LblCountDownTimer}"
                             VerticalOptions="Center" />

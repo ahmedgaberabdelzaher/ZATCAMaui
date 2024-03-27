@@ -8,7 +8,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
 
 
@@ -89,14 +89,14 @@
                             Margin="0"
                             Padding="0"
                             VerticalOptions="FillAndExpand">
-                            <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
+                            <Border Grid.Row="0" BackgroundColor="White">
                                 <Image
                                     x:Name="CitigenImage"
                                     Aspect="AspectFill"
                                     HorizontalOptions="FillAndExpand"
                                     Source="vat_tile_IbanCard_background.png"
                                     VerticalOptions="FillAndExpand" />
-                            </yummy:PancakeView>
+                            </Border>
 
                             <Grid
                                 Grid.Row="0"

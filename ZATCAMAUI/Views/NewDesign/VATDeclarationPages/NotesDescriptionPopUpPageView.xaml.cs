@@ -17,17 +17,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         public NotesDescriptionPopUpPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
-            //viewModel = App.Locator.NotesDescriptionPopUpPageView;
-            //BindingContext = viewModel;
-            //SetLTR();
 
 
             try
             {
                 viewModel = App.Locator.NotesDescriptionPopUpPageView;
                 BindingContext = viewModel;
-                SetLTR();
-                //ChangeAeroIcon();
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     if (vATDeclaration.d.NOTESSet.results.Count != 0)
@@ -53,20 +48,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         }
         #endregion
 
-        #region Methods
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-        #endregion
 
         private async void OnCloseTapped(object sender, EventArgs e)
         {

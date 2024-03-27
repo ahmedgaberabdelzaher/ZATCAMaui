@@ -22,7 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
             viewModel = App.Locator.TaxpayersCertificatesPageView;
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             SetPickerFont();
             On<iOS>().SetUseSafeArea(true);
             NavigationPage.SetBackButtonTitle(this, "");
@@ -114,20 +113,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
                 TaxTypePicker.BackgroundColor = (Color)Application.Current.Resources["White"];
             }
             viewModel.IsLoading = false;
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
-
-            }
         }
         public void ChangeAeroIcon()
         {

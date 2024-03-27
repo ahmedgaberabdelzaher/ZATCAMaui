@@ -28,7 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
                 //App.IsArabic = true;
                 ChangeAeroIcon();
-                SetLTR();
                 On<iOS>().SetUseSafeArea(true);
 
                 var safeInsets = On<iOS>().SafeAreaInsets();
@@ -59,13 +58,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             Padding = safeInsets;
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

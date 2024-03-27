@@ -2,11 +2,12 @@
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage
 {
 
-    public class CreditCarriedPageViewModel : ViewModelBase
+    public class CreditCarriedPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -63,7 +64,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage
                 RaisePropertyChanged("IsListViewVisible");
             }
         }
-        public CreditCarriedPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public CreditCarriedPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             _dialogService = dialogService;
             _navigationService = navigationService;

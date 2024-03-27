@@ -6,6 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    FlowDirection="{Binding AppDirection}"
     TitleText="{x:Static ResourceManager:AppResources.NDVATServices}">
     <newdesign:BaseContentPage.PancakeView>
         <Grid Padding="10">

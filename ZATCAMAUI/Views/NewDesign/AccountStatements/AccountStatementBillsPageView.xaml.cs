@@ -23,7 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             BindingContext = viewModel;
             viewModel.GetDashBoardMenuLst(2);
             ChangeAeroIcon();
-            SetLTR();
             ChangeArrowDirection();
 
 
@@ -74,18 +73,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             else
             {
                 Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
 

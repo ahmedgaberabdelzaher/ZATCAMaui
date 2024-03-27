@@ -25,7 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
 
                 NavigationPage.SetBackButtonTitle(this, "");
                 ChangeAeroIcon();
-                SetLTR();
                 On<iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.ChangeFillingPeriodListPageView;
                 BindingContext = viewModel;
@@ -55,21 +54,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-                Filinglbl.HorizontalOptions = LayoutOptions.StartAndExpand;
-                Filinglbl.HorizontalTextAlignment = TextAlignment.Start;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-                Filinglbl.HorizontalOptions = LayoutOptions.EndAndExpand;
-                Filinglbl.HorizontalTextAlignment = TextAlignment.Start;
-            }
-        }
+       
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

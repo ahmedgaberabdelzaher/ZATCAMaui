@@ -10,7 +10,7 @@
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -47,7 +47,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -65,8 +65,8 @@
                             <BoxView Style="{StaticResource boxIndicator}" />
                         </StackLayout>
 
-                        <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{Binding HeaderTitle}" />
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{Binding subHeaderTitle}" />
+                        <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding HeaderTitle}" />
+                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding subHeaderTitle}" />
                         <BoxView Style="{StaticResource lineSeperator}" />
                     </StackLayout>
                     <!--  Header Section Ends  -->
@@ -97,10 +97,10 @@
 
                                         <Image Source="ic_vat_return" />
 
-                                        <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" />
+                                        <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" />
 
 
-                                        <custom:CustomLabel
+                                        <Label
                                             HorizontalOptions="EndAndExpand"
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="View Return"
@@ -117,28 +117,28 @@
                                         BindingContext="{Binding ZakatReturnDetail}"
                                         Spacing="10">
                                         <StackLayout Orientation="Horizontal">
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FiscalYear}" />
-                                            <custom:CustomLabel Style="{StaticResource HorizontalEnd}" Text="2020" />
+                                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FiscalYear}" />
+                                            <Label Style="{StaticResource HorizontalEnd}" Text="2020" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Spacing="10">
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="Financial Period" />
-                                            <custom:CustomLabel
+                                            <Label Style="{StaticResource ValueLabelGrey}" Text="Financial Period" />
+                                            <Label
                                                 HorizontalOptions="EndAndExpand"
                                                 HorizontalTextAlignment="End"
                                                 Style="{StaticResource ValueLabelBlack}"
                                                 Text="May 2019 - May 2020" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Spacing="10">
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}" />
-                                            <custom:CustomLabel
+                                            <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}" />
+                                            <Label
                                                 HorizontalOptions="EndAndExpand"
                                                 HorizontalTextAlignment="End"
                                                 Style="{StaticResource ValueLabelBlack}"
                                                 Text="{Binding Fbnum}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal" Spacing="10">
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="Tax Type" />
-                                            <custom:CustomLabel
+                                            <Label Style="{StaticResource ValueLabelGrey}" Text="Tax Type" />
+                                            <Label
                                                 HorizontalOptions="EndAndExpand"
                                                 HorizontalTextAlignment="End"
                                                 Style="{StaticResource ValueLabelBlack}"
@@ -149,11 +149,11 @@
                                                 <ColumnDefinition Width="60*" />
                                                 <ColumnDefinition Width="40*" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="0"
                                                 Style="{StaticResource ValueLabelGrey}"
                                                 Text="Assessment Amount GAZT" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Column="1"
                                                 HorizontalOptions="EndAndExpand"
                                                 HorizontalTextAlignment="End"
@@ -163,8 +163,8 @@
                                     </StackLayout>
                                 </StackLayout>
                             </Border>
-                            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="Dispute Amounts" />
-                            <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="The Following data has been changed by GAZT. Please edit all the data you want to dispute" />
+                            <Label Style="{StaticResource SectionTitleBlack}" Text="Dispute Amounts" />
+                            <Label Style="{StaticResource BodyLabelGrey}" Text="The Following data has been changed by GAZT. Please edit all the data you want to dispute" />
                             <Grid ColumnSpacing="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -174,12 +174,12 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="Internal Procurement for Saudi" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Style="{StaticResource CaptionLabelGrey}"
@@ -214,7 +214,7 @@
                         Grid.Row="1"
                         IsVisible="{Binding IsObjectionReasonVisible}">
                         <StackLayout>
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="Write Your Objection Reason" />
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="Write Your Objection Reason" />
                             <inputLayout:SfTextInputLayout Margin="0"
                                                             IsHintAlwaysFloated="True"
                                                            Style="{StaticResource InputTableTextInputLayoutStyle}">
@@ -227,7 +227,7 @@
                     <!--  Start of Attachment Visible  -->
                     <ScrollView Grid.Row="1" IsVisible="{Binding IsAttachmentsVisible}">
                         <StackLayout>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="Attachment" />
@@ -264,12 +264,12 @@
 
                                 </StackLayout>
                             </Border>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,-5,0,0"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="20MB max" />
 
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,10,0,0"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="New Attachment (Optional)" />
@@ -296,7 +296,7 @@
                                     </Image>
                                 </StackLayout>
                             </Border>
-                            <custom:CustomLabel
+                            <Label
                                 Margin="0,-5,0,0"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="50MB max" />
@@ -320,7 +320,7 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 Margin="0,10,0,0"
@@ -352,14 +352,14 @@
                                     </Image>
                                 </StackLayout>
                             </Border>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
                                 Margin="0,10,0,0"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="ID Number" />
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="2"
                                 Grid.Column="1"
                                 Margin="0,10,0,0"
@@ -398,7 +398,7 @@
                             </inputLayout:SfTextInputLayout>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="4"
                                 Grid.ColumnSpan="2"
                                 Margin="0,10,0,0"
@@ -460,18 +460,18 @@
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Padding="14,10,14,10" Spacing="-5">
-                                            <custom:CustomLabel
+                                            <Label
                                                 Style="{StaticResource ValueLabelBlack}"
                                                 Text="Zakat"
                                                 TextColor="White" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="May 2019 - May 2020"
                                                 TextColor="White" />
                                         </StackLayout>
                                         <BoxView Style="{StaticResource lineSeperator}" />
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Padding="14,10,14,10"
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="1,200.00 SAR"
@@ -486,25 +486,25 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="Reference Number"
                                                 TextColor="White" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="Year"
                                                 TextColor="White" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 Grid.Column="0"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="1234567890   "
                                                 TextColor="White" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 Grid.Column="1"
                                                 Style="{StaticResource BodyLabelBlack}"
@@ -517,12 +517,12 @@
                                 <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
                                         <StackLayout Padding="14,10,14,10" Spacing="-5">
-                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="Zakat" />
-                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="May 2019 - May 2020" />
+                                            <Label Style="{StaticResource ValueLabelBlack}" Text="Zakat" />
+                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="May 2019 - May 2020" />
                                         </StackLayout>
                                         <BoxView Style="{StaticResource lineSeperator}" />
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Padding="14,10,14,10"
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="1,200.00 SAR" />
@@ -536,22 +536,22 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="Reference Number" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="1"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="Year" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 Grid.Column="0"
                                                 Style="{StaticResource BodyLabelBlack}"
                                                 Text="1234567890   " />
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="1"
                                                 Grid.Column="1"
                                                 Style="{StaticResource BodyLabelBlack}"
@@ -569,7 +569,7 @@
 
                     <!--  Body Section Ends  -->
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
             <Grid Grid.Row="0" Padding="15,10,15,10">
                 <Grid.RowDefinitions>

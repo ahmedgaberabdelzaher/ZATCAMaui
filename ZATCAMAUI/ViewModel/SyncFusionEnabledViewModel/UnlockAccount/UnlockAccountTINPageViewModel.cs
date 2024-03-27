@@ -7,12 +7,13 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 {
-    public class UnlockAccountTINPageViewModel : ViewModelBase
+    public class UnlockAccountTINPageViewModel : BaseViewModel
     {
         private string captcha = string.Empty;
         private string GUID = string.Empty;
@@ -66,19 +67,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+      
 
         private bool _isTinContentViewVisible = false;
         public bool IsTinContentViewVisible
@@ -632,7 +621,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         /// <summary>
         /// Initializes a new instance for the <see cref="UnlockAccountTINPageViewModel" /> class.
         /// </summary>
-        public UnlockAccountTINPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public UnlockAccountTINPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -11,14 +11,12 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             InitializeComponent();
             MessageText.Text = message;
             btnOK.Text = buttonName;
-            SetLTR();
         }
         public SingleButtonPopupView(string buttonName, string message, string header)
         {
             InitializeComponent();
             MessageText.Text = message;
             btnOK.Text = buttonName;
-            SetLTR();
             lblPopupHeader.Text = header;
 
             if (string.IsNullOrEmpty(header))
@@ -31,13 +29,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         {
             MessagingCenter.Send<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", true);
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+       
 
         private void OnBackGroundClicked(object sender, EventArgs e)
         {

@@ -9,7 +9,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
@@ -109,9 +109,9 @@
                             VerticalOptions="FillAndExpand" />
                     </Grid>
 
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
-                        CornerRadius="14,14,0,0"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             x:Name="VATRMainGrid"
@@ -130,7 +130,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </Grid>
         </ControlTemplate>
@@ -143,7 +143,7 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <StackLayout Grid.Row="0" Spacing="0">
-                    <custom:CustomLabel Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.VATRefund}" />
+                    <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.VATRefund}" />
                     <Label
                         Margin="0,-3,0,32"
                         Style="{StaticResource CaptionLabelGrey}"
@@ -163,7 +163,7 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                     </Border>
-                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
+                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
                     <busyindicator:SfChipGroup
                         x:Name="ChipGroup_statusFilter"
                         ChipBackground="Transparent"
@@ -235,32 +235,29 @@
                                                 VerticalOptions="CenterAndExpand" />
                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding RefundFbnum}" />
                                         </StackLayout>
-                                        <yummy:PancakeView
+                                        <Border
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             Padding="10,10,10,10"
                                             BackgroundColor="{StaticResource Secondary}"
-                                            CornerRadius="14"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
+                                            StrokeThickness="1"
                                             HeightRequest="20"
                                             HorizontalOptions="End"
                                             Opacity=".2"
                                             VerticalOptions="CenterAndExpand"
                                             WidthRequest="60">
 
-                                            <yummy:PancakeView.Border>
-                                                <yummy:Border Thickness="1" />
-                                            </yummy:PancakeView.Border>
-
-                                            <yummy:PancakeView.Triggers>
+                                            <Border.Triggers>
                                                 <!--  Text="{Binding statusMessage}" TextColor="{Binding statusColor}"  -->
                                                 <DataTrigger
                                                     Binding="{Binding Status}"
-                                                    TargetType="yummy:PancakeView"
+                                                    TargetType="Border"
                                                     Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                 </DataTrigger>
-                                            </yummy:PancakeView.Triggers>
-                                        </yummy:PancakeView>
+                                            </Border.Triggers>
+                                        </Border>
                                         <StackLayout
                                             Grid.Row="0"
                                             Grid.Column="1"
@@ -303,23 +300,23 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Spacing="-1">
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestTotalRequestedAmount}" />
-                                            <custom:CustomLabel
+                                            <Label
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource SectionTitleBlackBold}"
                                                 Text="{Binding RequestedAmt}"
                                                 VerticalOptions="CenterAndExpand">
-                                                <custom:CustomLabel.FormattedText>
+                                                <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding RequestedAmt, Converter={StaticResource commaSeparatorConverter}}" />
                                                         <Span Text=" " />
                                                         <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                     </FormattedString>
-                                                </custom:CustomLabel.FormattedText>
-                                            </custom:CustomLabel>
+                                                </Label.FormattedText>
+                                            </Label>
                                         </StackLayout>
 
                                         <StackLayout

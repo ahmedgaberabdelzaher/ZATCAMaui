@@ -11,11 +11,11 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <yummy:PancakeView
+    <Border
         BackgroundColor="White"
-        CornerRadius="22,22,0,0"
+        StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="End">
         <Grid>
             <StackLayout Margin="10,0,10,0" Padding="0,0,0,0">
@@ -70,11 +70,11 @@
                         IsToggled="{Binding IsSwitchToggled}"
                         VerticalOptions="CenterAndExpand" />
 
-                    <custom:CustomButton
+                    <buttons:SfButton
                         x:Name="btnForNewChange"
                         Grid.Row="1"
                         Grid.Column="1"
-                        BackgroundColor="Transparent"
+                        Background="Transparent"
                         FontSize="13"
                         HeightRequest="15"
                         WidthRequest="15" />
@@ -202,5 +202,5 @@
             </StackLayout>
         </Grid>
 
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

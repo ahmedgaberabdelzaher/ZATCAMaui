@@ -19,26 +19,9 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             viewModel = App.Locator.MyBillsMultiplePayableList;
             this.BindingContext = viewModel;
 
-            //for(int i = 0; i < multiplePayableBills.Count; i++)
-            //{
-            //    multiplePayableBills[i].Abtypt = multiplePayableBills[i].Txt30;
-            //}
-
             viewModel.MultiplePayableBills = multiplePayableBills;
-            SetLTR();
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
 
         private async void ContinueButtonClicked(object sender, EventArgs e)
         {

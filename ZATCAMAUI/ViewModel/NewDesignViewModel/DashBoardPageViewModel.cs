@@ -2307,17 +2307,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 });
             }
             catch (Exception)
-
-            /* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-            Before:
-                        {
-
-                            IsLoading = false;
-            After:
-                        {
-
-                            IsLoading = false;
-            */
             {
 
                 IsLoading = false;
@@ -2766,9 +2755,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     DateTime Today = DateTime.Now;
                     var BillsAndReturnsCommitmentsLocal = new List<OverduePaymentAndUnSubmittedReturn>();
-                    var BillsAndReturnsCommitmentsOverdurItems = new List<OverduePaymentAndUnSubmittedReturn>();//BillsAndReturnsCommitmentsTemp.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
-
-                    //  BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsOverdurItems.OrderByDescending(i => (i.DueDtC)).OrderByDescending(i=>(i.DueDt)).ToList();
+                    var BillsAndReturnsCommitmentsOverdurItems = new List<OverduePaymentAndUnSubmittedReturn>();
 
                     var tempList = new List<OverduePaymentAndUnSubmittedReturn>();
 
@@ -2914,9 +2901,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     catch (Exception)
                     {
-
-
-
                     }
 
                     if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))

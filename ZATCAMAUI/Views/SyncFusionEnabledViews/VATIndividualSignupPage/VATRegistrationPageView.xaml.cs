@@ -40,9 +40,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                 viewModel.SetDefaultDate();
-                SetLTR();
-
-
 
                 SetPickerFont();
             }
@@ -144,15 +141,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             EntryEmail.Text = string.Empty;
             EntryPhoneNumber.Text = string.Empty;
             EntryIDNo.Text = string.Empty;
-
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
 
         }
         public void ChangeAeroIcon()

@@ -10,7 +10,6 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -87,7 +86,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -97,7 +96,7 @@
                     <StackLayout Spacing="30">
 
                         <!--  Choose the way to see your reports Label  -->
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,20,0,0"
                             FontSize="16"
                             HorizontalOptions="StartAndExpand"
@@ -178,32 +177,32 @@
                                     </Image>
 
                                     <!--  Phone number Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.MobileNumber}"
                                         TextColor="White">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
 
                                             <DataTrigger
                                                 Binding="{Binding IsPhoneSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
                                                 <Setter Property="TextColor" Value="White" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding IsPhoneSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="False">
                                                 <Setter Property="TextColor" Value="#232323" />
                                             </DataTrigger>
 
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                 </StackLayout>
 
@@ -281,31 +280,31 @@
                                     </Image>
 
                                     <!--  Report number label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="16"
                                         HorizontalOptions="StartAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}"
                                         TextColor="#232323">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
 
                                             <DataTrigger
                                                 Binding="{Binding IsPhoneSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="False">
                                                 <Setter Property="TextColor" Value="White" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding IsPhoneSelected}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
                                                 <Setter Property="TextColor" Value="#232323" />
                                             </DataTrigger>
 
 
-                                        </custom:CustomLabel.Triggers>
-                                    </custom:CustomLabel>
+                                        </Label.Triggers>
+                                    </Label>
 
                                 </StackLayout>
 
@@ -321,28 +320,28 @@
                         <StackLayout Spacing="0">
 
                             <!--  Phone & Report no. Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MobileNumber}">
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MobileNumber}">
 
-                                <custom:CustomLabel.Triggers>
+                                <Label.Triggers>
 
                                     <DataTrigger
                                         Binding="{Binding IsPhoneSelected}"
-                                        TargetType="custom:CustomLabel"
+                                        TargetType="Label"
                                         Value="False">
                                         <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding IsPhoneSelected}"
-                                        TargetType="custom:CustomLabel"
+                                        TargetType="Label"
                                         Value="True">
                                         <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                     </DataTrigger>
 
 
-                                </custom:CustomLabel.Triggers>
+                                </Label.Triggers>
 
-                            </custom:CustomLabel>
+                            </Label>
 
 
                             <!--  Phone & Report no. Entry  -->
@@ -409,7 +408,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Loader  -->

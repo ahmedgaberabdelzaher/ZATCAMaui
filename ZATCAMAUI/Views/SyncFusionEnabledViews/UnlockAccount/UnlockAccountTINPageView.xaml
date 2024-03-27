@@ -13,7 +13,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     CloseWhenBackgroundIsClicked="False"
     mc:Ignorable="d">
     <pages:PopupPage.Resources>
@@ -34,10 +34,10 @@
             </Style>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView
+    <Border
         x:Name="mainContentView"
         BackgroundColor="Transparent"
-        CornerRadius="22,22,0,0"
+        StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="FillAndExpand">
         <StackLayout>
             <ScrollView
@@ -51,9 +51,9 @@
                     BackgroundColor="Transparent"
                     IsVisible="{Binding IsTinContentViewVisible}"
                     VerticalOptions="FillAndExpand">
-                    <yummy:PancakeView
+                    <Border
                         BackgroundColor="White"
-                        CornerRadius="22,22,0,0"
+                        StrokeShape="RoundRectangle 22,22,0,0"
                         VerticalOptions="EndAndExpand">
                         <StackLayout
                             Margin="15,10,15,0"
@@ -98,7 +98,7 @@
                                     VerticalOptions="CenterAndExpand"
                                     WidthRequest="40" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3"
@@ -106,7 +106,7 @@
                                     BackgroundColor="Transparent"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}" />
-                                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSelectTheOptionAndCompleteDetails}" Style="{StaticResource BodyLabelGrey}"/>-->
+                                <!--<Label Text="{x:Static ResourceManager:AppResources.NDSelectTheOptionAndCompleteDetails}" Style="{StaticResource BodyLabelGrey}"/>-->
 
                                 <StackLayout
                                     Grid.Row="2"
@@ -114,16 +114,16 @@
                                     Grid.ColumnSpan="3"
                                     Margin="0,0,0,0">
                                     <!--<Label Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Margin="0,20,0,0"
                                         Style="{StaticResource CaptionLabelGrey}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.TIN}" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                     <inputLayout:SfTextInputLayout
                                         x:Name="FrmTIN"
                                         Margin="0,-6,0,-6"
@@ -175,7 +175,7 @@
                                 TextColor="{DynamicResource Gray-White}"
                                 VerticalOptions="End" />
                         </StackLayout>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </ScrollView>
             <ScrollView
@@ -189,9 +189,9 @@
                     BackgroundColor="Transparent"
                     IsVisible="{Binding IsOTPContentViewVisible}"
                     VerticalOptions="FillAndExpand">
-                    <yummy:PancakeView
+                    <Border
                         BackgroundColor="White"
-                        CornerRadius="22,22,0,0"
+                        StrokeShape="RoundRectangle 22,22,0,0"
                         VerticalOptions="EndAndExpand">
                         <StackLayout
                             Margin="15,10,15,0"
@@ -243,14 +243,14 @@
                                     VerticalOptions="CenterAndExpand"
                                     WidthRequest="40" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3"
                                     Margin="0,25,0,0"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="2"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3"
@@ -507,7 +507,7 @@
                                 VerticalOptions="End" />
                         </StackLayout>
 
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
 
             </ScrollView>
@@ -522,9 +522,9 @@
                     BackgroundColor="Transparent"
                     IsVisible="{Binding IsChangePasswordViewVisible}"
                     VerticalOptions="FillAndExpand">
-                    <yummy:PancakeView
+                    <Border
                         BackgroundColor="White"
-                        CornerRadius="22,22,0,0"
+                        StrokeShape="RoundRectangle 22,22,0,0"
                         VerticalOptions="EndAndExpand">
                         <StackLayout
                             x:Name="ChangePasswordView"
@@ -575,14 +575,14 @@
                                     VerticalOptions="CenterAndExpand"
                                     WidthRequest="40" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3"
                                     Margin="0,25,0,0"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="2"
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3"
@@ -603,7 +603,7 @@
                                     Grid.ColumnSpan="3">
                                     <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static behaviors:AppResources.NewPassword}"  Padding="0,0,0,0"/>-->
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Padding="0,0,0,0"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.NDNewPassword}" />
@@ -654,7 +654,7 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="3">
                                     <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static behaviors:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>-->
-                                    <custom:CustomLabel
+                                    <Label
                                         Padding="0,0,0,0"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" />
@@ -705,7 +705,7 @@
                                     Margin="0,16,0,0">
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding MinEight}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Padding="5,0,0,0"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.NDAtleast8character}" />
@@ -713,7 +713,7 @@
 
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding CapsSmall}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Padding="5,0,0,0"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.NDEnglishcapitalandsmallletters}"
@@ -722,7 +722,7 @@
 
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding MaxSixteen}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Padding="5,0,0,0"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}"
@@ -731,7 +731,7 @@
 
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding NumSymbol}" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Padding="5,0,0,0"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.NDNumbersAndSymbols}"
@@ -756,7 +756,7 @@
                                 VerticalOptions="End" />
                         </StackLayout>
 
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </ScrollView>
 
@@ -824,5 +824,5 @@
                 </Grid>
             </StackLayout>
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

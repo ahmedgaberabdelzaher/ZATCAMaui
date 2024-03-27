@@ -14,7 +14,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
 
@@ -45,11 +45,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             Margin="0"
                             Padding="0,0,0,0"
@@ -66,7 +66,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -172,13 +172,13 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.CRRequestDetails}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Margin="0,5,0,15"
@@ -199,18 +199,18 @@
                                 </Grid.RowDefinitions>
 
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.CRContractonName}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -232,18 +232,18 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.CRContractNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -268,18 +268,18 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.CRContractType}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -294,7 +294,7 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="FillAndExpand"
@@ -348,7 +348,7 @@
                                         <busyindicator:SfChipGroup.ItemTemplate>
                                             <DataTemplate>
                                                 <StackLayout WidthRequest="80">
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         HorizontalOptions="FillAndExpand"
                                                         HorizontalTextAlignment="Center"
                                                         Style="{StaticResource CaptionLabelBlack}"
@@ -359,14 +359,14 @@
                                         </busyindicator:SfChipGroup.ItemTemplate>
                                     </busyindicator:SfChipGroup>
 
-                                    <custom:CustomLabel HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}">
-                                        <custom:CustomLabel.FormattedText>
+                                    <Label HorizontalOptions="StartAndExpand" Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.CRContractStartDate}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
 
 
@@ -383,7 +383,7 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="FillAndExpand"
@@ -419,7 +419,6 @@
                                     Background="White"
                                     CancelButtonClicked="NormalCalendar_CancelButtonClicked"
                                     Closed="NormalCalendar_Closed"
-                                    FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="36"
                                     Mode="Dialog"
@@ -427,6 +426,15 @@
                                     SelectedItem="{Binding TodayDateStart}"
                                     SelectionChanged="NormalCalendar_SelectionChanged"
                                     Style="{StaticResource PickerStyle}">
+
+                                      <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
 
                                     <custom:CustomDatePicker.HeaderView>
 
@@ -454,9 +462,6 @@
 
                                     </custom:CustomDatePicker.FooterView>
 
-                                    <custom:CustomDatePicker.Behaviors>
-                                        <behaviors:SfPickerBehavior />
-                                    </custom:CustomDatePicker.Behaviors>
                                 </custom:CustomDatePicker>
 
                                 <!--  HijriDatePicker  -->
@@ -467,7 +472,6 @@
                                     Background="White"
                                     CancelButtonClicked="NormalCalendar_CancelButtonClicked"
                                     Closed="NormalCalendar_Closed"
-                                    FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="36"
                                     Mode="Dialog"
@@ -476,9 +480,13 @@
                                     SelectionChanged="NormalCalendar_SelectionChanged"
                                     Style="{StaticResource PickerStyle}">
 
-                                     <custom:CustomHijriDatePicker.SelectionView >
-                                          <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                     </custom:CustomHijriDatePicker.SelectionView>
+                                   <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
@@ -513,18 +521,18 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.CRContractEndDate}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -540,7 +548,7 @@
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="FillAndExpand"
@@ -575,7 +583,6 @@
                                     Background="White"
                                     CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
                                     Closed="EndDateNormalCalendar_Closed"
-                                    FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="36"
                                     Mode="Dialog"
@@ -583,6 +590,15 @@
                                     SelectedItem="{Binding TodayDateEnd}"
                                     SelectionChanged="EndDateNormalCalendar_SelectionChanged"
                                     Style="{StaticResource PickerStyle}">
+
+                                      <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
 
                                     <custom:CustomDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
@@ -610,9 +626,6 @@
 
                                     </custom:CustomDatePicker.FooterView>
 
-                                    <custom:CustomDatePicker.Behaviors>
-                                        <behaviors:SfPickerBehavior />
-                                    </custom:CustomDatePicker.Behaviors>
                                 </custom:CustomDatePicker>
 
                                 <!--  HijriDatePicker  -->
@@ -623,7 +636,6 @@
                                     Background="White"
                                     CancelButtonClicked="EndDateNormalCalendar_CancelButtonClicked"
                                     Closed="EndDateNormalCalendar_Closed"
-                                    FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="36"
                                     Mode="Dialog"
@@ -632,9 +644,13 @@
                                     SelectionChanged="EndDateNormalCalendar_SelectionChanged"
                                     Style="{StaticResource PickerStyle}">
 
-                                     <custom:CustomHijriDatePicker.SelectionView >
-                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                     </custom:CustomHijriDatePicker.SelectionView>
+                                  <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
@@ -668,18 +684,18 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.CRTotalAmountOfContract}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -702,18 +718,18 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.ColumnSpan="2"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource ValueLabelBlack}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.CRAmountRequiredToRelease}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
 
                                 <Border
                                     Grid.Row="1"
@@ -750,7 +766,7 @@
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Margin="10,0,0,0"
@@ -776,7 +792,7 @@
 
                                     </Image>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         Margin="10,0,0,0"
@@ -784,7 +800,7 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRPercentage}" />
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Margin="10,-10,0,0"
@@ -814,7 +830,7 @@
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Margin="10,0,0,0"
@@ -838,7 +854,7 @@
                                         </Image.GestureRecognizers>
                                     </Image>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
@@ -846,21 +862,21 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAmount}" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
                                         Margin="10,-10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlackBold}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding ProfitEstimatedContract, Converter={StaticResource commaSeparatorConverter}}" />
                                                 <Span Text="&#160;" />
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
 
                                 </Grid>
 
@@ -891,7 +907,7 @@
                                         HorizontalOptions="FillAndExpand"
                                         Orientation="Horizontal"
                                         VerticalOptions="FillAndExpand">
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Margin="10,0,0,0"
@@ -917,7 +933,7 @@
                                     </StackLayout>
 
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         Margin="10,0,0,0"
@@ -925,7 +941,7 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAmount}" />
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
@@ -933,22 +949,22 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRPercentage}" />
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Margin="10,-10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlackBold}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding EstimatedProfitForZakatAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                                 <Span Text="&#160;" />
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         Margin="10,-10,0,0"
@@ -985,7 +1001,7 @@
                                         HorizontalOptions="FillAndExpand"
                                         Orientation="Horizontal"
                                         VerticalOptions="FillAndExpand">
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Margin="10,0,0,0"
@@ -1011,7 +1027,7 @@
                                     </StackLayout>
 
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         Margin="10,0,0,0"
@@ -1019,7 +1035,7 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAmount}" />
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Margin="10,0,0,0"
@@ -1030,22 +1046,22 @@
 
 
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Margin="10,-10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlackBold}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding EstimatedProfitForTaxAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                                 <Span Text="&#160;" />
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         Margin="10,-10,0,0"
@@ -1076,7 +1092,7 @@
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Margin="10,0,0,0"
@@ -1100,7 +1116,7 @@
                                         </Image.GestureRecognizers>
                                     </Image>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
@@ -1109,21 +1125,21 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAmount}" />
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
                                         Margin="10,-10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlackBold}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding ZakatDues, Converter={StaticResource commaSeparatorConverter}}" />
                                                 <Span Text="&#160;" />
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </Grid>
 
                             </cards:SfCardView>
@@ -1146,7 +1162,7 @@
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Margin="10,0,0,0"
@@ -1170,7 +1186,7 @@
                                         </Image.GestureRecognizers>
                                     </Image>
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
@@ -1179,29 +1195,29 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.CRAmount}" />
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="0"
                                         Grid.ColumnSpan="2"
                                         Margin="10,-10,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource SectionTitleBlackBold}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding TaxDues, Converter={StaticResource commaSeparatorConverter}}" />
                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="&#160;" />
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </Grid>
                             </cards:SfCardView>
 
                             <StackLayout Grid.Row="14">
-                                <yummy:PancakeView
+                                <Border
                                     Padding="12"
                                     BackgroundColor="{StaticResource PartialBg}"
-                                    CornerRadius="14"
+                                    StrokeShape="RoundRectangle 15,15,15,15"
                                     VerticalOptions="FillAndExpand">
 
                                     <Grid>
@@ -1214,7 +1230,7 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="StartAndExpand"
@@ -1222,21 +1238,21 @@
                                             Text="{x:Static ResourceManager:AppResources.CRTotalDues}"
                                             VerticalTextAlignment="Center" />
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             HorizontalOptions="EndAndExpand"
                                             Style="{StaticResource SectionTitleBlackBold}"
                                             VerticalOptions="Center"
                                             VerticalTextAlignment="Center">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding TotalDues, Converter={StaticResource commaSeparatorConverter}}" />
                                                     <Span Text="&#160;" />
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <Image
                                             Grid.Row="0"
@@ -1255,7 +1271,7 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </Grid>
-                                </yummy:PancakeView>
+                                </Border>
                             </StackLayout>
 
                             <Grid Grid.Row="15">
@@ -1294,7 +1310,7 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Padding="0,10,0,0"
@@ -1302,7 +1318,7 @@
                                     Style="{StaticResource PageTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.CRAttachments}" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -1412,18 +1428,18 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         FontFamily="{StaticResource SomarRegular}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource MicroGrayLabelStyle}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                     <Border
                                         Grid.Row="1"
                                         Margin="0,0,0,10"
@@ -1437,7 +1453,7 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 FontFamily="{StaticResource SomarRegular}"
@@ -1466,7 +1482,7 @@
                                     </Grid.GestureRecognizers>
                                 </Grid>
                             </Grid>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="3"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource BodyLabelGrey}"
@@ -1562,18 +1578,18 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         FontFamily="{StaticResource SomarRegular}"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource MicroGrayLabelStyle}">
-                                        <custom:CustomLabel.FormattedText>
+                                        <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                    </custom:CustomLabel>
+                                        </Label.FormattedText>
+                                    </Label>
                                     <Border
                                         Grid.Row="1"
                                         Margin="0,0,0,10"
@@ -1587,7 +1603,7 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel
+                                            <Label
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 FontFamily="{StaticResource SomarRegular}"
@@ -1652,14 +1668,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Padding="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource PageTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.CRRemarksAndDescription}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
@@ -1673,7 +1689,7 @@
                             </Grid>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource BodyLabelGrey}"
@@ -1698,17 +1714,17 @@
                                     VerticalOptions="CenterAndExpand" />
 
                             </Border>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="3"
                                 HorizontalOptions="EndAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{Binding charCountRemarksText}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                            <custom:CustomLabel
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
                                 Grid.Row="4"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource BodyLabelGrey}"
@@ -1733,16 +1749,16 @@
                                     TextColor="{StaticResource NeutralBlack}" />
                             </Border>
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="6"
                                 HorizontalOptions="EndAndExpand"
                                 Style="{StaticResource MicroGrayLabelStyle}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Style="{StaticResource MicroGrayLabelStyle}" Text="{Binding charCountDetailDescription}" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <buttons:SfButton
                                 Grid.Row="7"
@@ -1777,14 +1793,14 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Padding="0,10,0,0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource PageTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.CRDeclaration}" />
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Margin="0,0,0,0"
@@ -1799,17 +1815,17 @@
                             </Grid>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource BodyLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <Border
@@ -1826,17 +1842,17 @@
                             </Border>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="3"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource BodyLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.CRDesignation}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <Border
@@ -1891,14 +1907,14 @@
                                         <RowDefinition Height="auto" />
                                         <RowDefinition Height="auto" />
                                     </Grid.RowDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         Padding="0,5,0,0"
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource PageTitleBlack}"
                                         Text="{x:Static ResourceManager:AppResources.CRSummary}" />
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
                                         Margin="0,-10,0,15"
@@ -2063,15 +2079,15 @@
                                             </StackLayout>
                                             <StackLayout Grid.Row="4" Grid.Column="1">
 
-                                                <custom:CustomLabel HorizontalOptions="EndAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label HorizontalOptions="EndAndExpand">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding ContractTotalAmount, Converter={StaticResource commaSeparatorConverter}}" />
                                                             <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="&#160;" />
                                                             <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="5" Grid.Column="0">
@@ -2083,15 +2099,15 @@
                                                     VerticalOptions="StartAndExpand" />
                                             </StackLayout>
                                             <StackLayout Grid.Row="5" Grid.Column="1">
-                                                <custom:CustomLabel HorizontalOptions="EndAndExpand">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label HorizontalOptions="EndAndExpand">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{Binding AmountToRelease, Converter={StaticResource commaSeparatorConverter}}" />
                                                             <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="&#160;" />
                                                             <Span Style="{StaticResource SectionTitleSmallMediumBlack}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </Grid>
 
@@ -2118,26 +2134,26 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.CRTheValueofZakatdues}"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             HorizontalOptions="EndAndExpand"
                                             Style="{StaticResource SectionTitleBlackBold}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding ZakatDues, Converter={StaticResource commaSeparatorConverter}}" />
                                                     <Span Text="&#160;" />
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                     </Grid>
                                 </Frame>
@@ -2161,26 +2177,26 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.CRTheValueTaxDues}"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             HorizontalOptions="EndAndExpand"
                                             Style="{StaticResource SectionTitleBlackBold}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding TaxDues, Converter={StaticResource commaSeparatorConverter}}" />
                                                     <Span Text="&#160;" />
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                     </Grid>
                                 </Frame>
@@ -2204,26 +2220,26 @@
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource ValueLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.CRTotalDues}"
                                             VerticalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="1"
                                             HorizontalOptions="EndAndExpand"
                                             Style="{StaticResource SectionTitleBlackBold}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding TotalDues, Converter={StaticResource commaSeparatorConverter}}" />
                                                     <Span Text="&#160;" />
                                                     <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                     </Grid>
                                 </Frame>
@@ -2308,10 +2324,10 @@
                                                                 <ColumnDefinition Width="*" />
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Row="0" Grid.Column="0">
-                                                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachContract}" />
+                                                                <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachContract}" />
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="0" Grid.Column="1">
-                                                                <custom:CustomLabel
+                                                                <Label
                                                                     HorizontalOptions="EndAndExpand"
                                                                     HorizontalTextAlignment="End"
                                                                     Style="{StaticResource SectionTitleSmallMediumBlack}"
@@ -2345,10 +2361,10 @@
                                                                 <ColumnDefinition Width="*" />
                                                             </Grid.ColumnDefinitions>
                                                             <StackLayout Grid.Row="0" Grid.Column="0">
-                                                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}" />
+                                                                <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CRAttachInvoiceCopy}" />
                                                             </StackLayout>
                                                             <StackLayout Grid.Row="0" Grid.Column="1">
-                                                                <custom:CustomLabel
+                                                                <Label
                                                                     HorizontalOptions="EndAndExpand"
                                                                     HorizontalTextAlignment="End"
                                                                     Style="{StaticResource SectionTitleSmallMediumBlack}"
@@ -2367,11 +2383,11 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="0"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRRemarks}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"
@@ -2387,11 +2403,11 @@
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="0"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRDetailDescription}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"
@@ -2468,11 +2484,11 @@
                                                     <ColumnDefinition Width="Auto" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="0"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRContactPersonFullName}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"
@@ -2488,11 +2504,11 @@
                                                     <ColumnDefinition Width="Auto" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="0"
                                                     Style="{StaticResource BodyLabelGrey}"
                                                     Text="{x:Static ResourceManager:AppResources.CRDesignation}" />
-                                                <custom:CustomLabel
+                                                <Label
                                                     Grid.Column="1"
                                                     HorizontalOptions="EndAndExpand"
                                                     HorizontalTextAlignment="End"

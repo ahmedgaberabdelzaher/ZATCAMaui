@@ -12,18 +12,6 @@
         public WalkthroughItemPage()
         {
             InitializeComponent();
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
         }
     }
 }

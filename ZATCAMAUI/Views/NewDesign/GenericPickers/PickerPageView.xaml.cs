@@ -17,7 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             viewModel = App.Locator.PickerPageView;
             viewModel.PickerItemSource = _pickerSource;
             ChangeAeroIcon();
-            SetLTR();
 
             this.BindingContext = viewModel;
 
@@ -64,13 +63,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -111,7 +103,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
             try
             {
-                viewModel.DataSource.SelectedValue = e.NewValue.ToString();
+                viewModel.DataSource.SelectedValue = viewModel.DataSource.PickerData[e.NewValue];
 
             }
             catch (Exception)

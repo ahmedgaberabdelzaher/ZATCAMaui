@@ -11,7 +11,7 @@ using ZATCAMAUI.Models;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
 
-    public class VATRegistrationDisplayDetailsPageViewModel : ViewModelBase
+    public class VATRegistrationDisplayDetailsPageViewModel : BaseViewModel
     {
 
         string idnumber { get; set; }
@@ -19,7 +19,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public VATRegistrationDisplayDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATRegistrationDisplayDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnBackButtonClicked = new Command(() =>
             {
@@ -39,20 +39,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
         }
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+      
         private string _DOB = string.Empty;
         public string DOB
         {

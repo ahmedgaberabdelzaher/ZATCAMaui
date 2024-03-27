@@ -8,7 +8,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
     ios:Page.UseSafeArea="true"
@@ -17,10 +17,6 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
-            </ResourceDictionary.MergedDictionaries>
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="180" />
@@ -37,7 +33,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Margin="0"
                 Padding="0"
@@ -178,9 +174,9 @@
                         </StackLayout>
                     </Grid>
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
                 IsVisible="{Binding IsCheckWithCode}"
@@ -213,13 +209,13 @@
                             </StackLayout>
                             <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.QRCode}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
@@ -257,8 +253,8 @@
 
 
                 </Grid>
-            </yummy:PancakeView>
-            <yummy:PancakeView
+            </Border>
+            <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
                 IsVisible="{Binding IsShowRsltView}"
@@ -335,8 +331,8 @@
 
 
                 </Grid>
-            </yummy:PancakeView>
-            <yummy:PancakeView
+            </Border>
+            <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
                 IsVisible="{Binding IsShowFailRsltView}"
@@ -395,7 +391,7 @@
 
 
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
 
             <Grid Grid.Row="0" Padding="20,5,20,5">

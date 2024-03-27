@@ -28,7 +28,7 @@
                         HorizontalOptions="FillAndExpand"
                         Style="{DynamicResource CardParentStacklayout}"
                         VerticalOptions="End">
-                        <custom:CustomLabel
+                        <Label
                             FontSize="Small"
                             Style="{DynamicResource CardLabelWhite}"
                             Text="{Binding CardLabel}" />

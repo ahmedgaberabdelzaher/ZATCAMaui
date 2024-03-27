@@ -7,7 +7,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -71,7 +71,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -173,7 +173,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="0">
 
                                     <!--  Declaration/Bill Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Padding="10"
                                         FontSize="20"
                                         HorizontalOptions="StartAndExpand"
@@ -198,7 +198,7 @@
                                     RowSpacing="15">
 
                                     <!--  TotalFees Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
                                         HorizontalOptions="Start"
@@ -207,21 +207,21 @@
                                         TextColor="#999999"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  TotalFees value Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
@@ -231,21 +231,21 @@
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  Custom Fees Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
@@ -255,21 +255,21 @@
                                         TextColor="#999999"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  CustomsFees value Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -280,21 +280,21 @@
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  VAT Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
@@ -305,33 +305,33 @@
                                         VerticalOptions="Start" />
 
                                     <!--  VATDisclaimer Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="3"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
                                         HorizontalOptions="Start"
                                         IsVisible="false"
                                         LineBreakMode="WordWrap"
-                                        LineSpacing="1"
+                                        LineHeight="1"
                                         Text="{x:Static ResourceManager:AppResources.VATDisclaimer}"
                                         TextColor="#999999"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="true" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  VAT value Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="2"
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -343,7 +343,7 @@
                                         VerticalOptions="Start" />
 
                                     <!--  CIF Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="3"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
@@ -353,21 +353,21 @@
                                         TextColor="#999999"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  CIF value Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="3"
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -378,21 +378,21 @@
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  Other Fees Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="4"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
@@ -401,21 +401,21 @@
                                         Text="{x:Static ResourceManager:AppResources.OtherFees}"
                                         TextColor="#999999"
                                         VerticalOptions="Start">
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                     <!--  Other Fees Value Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="4"
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
@@ -426,18 +426,18 @@
                                         TextColor="#002447"
                                         VerticalOptions="Start">
 
-                                        <custom:CustomLabel.Triggers>
+                                        <Label.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
-                                                TargetType="custom:CustomLabel"
+                                                TargetType="Label"
                                                 Value="True">
 
                                                 <Setter Property="IsVisible" Value="false" />
                                             </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                        </Label.Triggers>
 
-                                    </custom:CustomLabel>
+                                    </Label>
 
                                 </Grid>
                                 <!--#endregion Declaration/Bill Number Values-->
@@ -459,7 +459,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
         </Grid>

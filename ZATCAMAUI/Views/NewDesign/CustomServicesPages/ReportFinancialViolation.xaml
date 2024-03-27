@@ -11,7 +11,6 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:system="clr-namespace:System;assembly=netstandard"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     x:Name="TraiffPage"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
@@ -94,9 +93,9 @@
                     Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" />
 
             </StackLayout>
-            <yummy:PancakeView
+            <Border
                 Padding="0"
-                CornerRadius="14,14,0,0"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
                 <Grid
                     Margin="0"
@@ -169,13 +168,13 @@
                             </Frame>
                             <StackLayout Margin="0,10,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.NameForImprter}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
@@ -193,13 +192,13 @@
                             </StackLayout>
                             <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.PhoneNumber}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
@@ -229,13 +228,13 @@
                             </StackLayout>
                             <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.Email}" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <inputLayout:SfTextInputLayout
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
@@ -259,14 +258,14 @@
                             </StackLayout>
                             <StackLayout Margin="0,9,0,0">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ReportType}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <Grid>
 
                                     <inputLayout:SfTextInputLayout
@@ -328,14 +327,14 @@
 
                             <StackLayout Margin="0,9,0,0">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ReportLocation}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <Grid>
 
                                     <inputLayout:SfTextInputLayout
@@ -380,14 +379,14 @@
                                 HeightRequest="200"
                                 Style="{StaticResource SFTaxPayerProfile}">
 
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                    <custom:CustomLabel.FormattedText>
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ReportText}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <!--  HasError="{Binding BalaghTxtHasError}"  -->
                                 <inputLayout:SfTextInputLayout
                                     ContainerType="Outlined"
@@ -582,7 +581,7 @@
                     </ScrollView>
 
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
         </StackLayout>
         <StackLayout IsVisible="{Binding IsShowSuccessView}">
@@ -606,10 +605,10 @@
                 Text="{x:Static ResourceManager:AppResources.ReportSentSuccess}"
                 TextColor="White" />
 
-            <yummy:PancakeView
+            <Border
                 Padding="24,38,24,38"
                 BackgroundColor="White"
-                CornerRadius="14,14,0,0"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="EndAndExpand">
 
                 <StackLayout>
@@ -675,7 +674,7 @@
                             VerticalOptions="CenterAndExpand" />
                     </Frame>
                 </StackLayout>
-            </yummy:PancakeView>
+            </Border>
         </StackLayout>
         <custom:PickerWithSearch IsVisible="{Binding IsPortsPickerSearch}" />
         <custom:MsgView

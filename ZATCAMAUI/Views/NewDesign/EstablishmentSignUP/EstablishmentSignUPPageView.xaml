@@ -8,37 +8,28 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid>
-            <yummy:PancakeView Padding="24,16,24,24"
-                               Style="{StaticResource CommonTopCurves}">
+            <Border Padding="0"
+                    Style="{StaticResource CommonTopCurves}">
 
-                <Grid Padding="15"
+                <Grid Padding="015"
                       RowDefinitions="auto,auto,*,auto">
 
                     <Grid
                         x:Name="ParentView"
                         Grid.Row="2"
                         RowDefinitions="auto,auto"
-                        ColumnDefinitions="auto,auto"
+                        ColumnDefinitions="*,*"
                         ColumnSpacing="10"
                         HorizontalOptions="FillAndExpand">
 
 
-                        <Grid>
+                        <Grid >
 
                             <Image
                                 Aspect="Fill"
@@ -60,16 +51,16 @@
                                     </Image.Triggers>
                                 </Image>
 
-                                <custom:CustomLabel Style="{StaticResource ValueLabelWhiteMedium}" Text="{x:Static ResourceManager:AppResources.NDIndividuals}">
-                                    <custom:CustomLabel.Triggers>
+                                <Label Style="{StaticResource ValueLabelWhiteMedium}" Text="{x:Static ResourceManager:AppResources.NDIndividuals}">
+                                    <Label.Triggers>
                                         <DataTrigger
                                             Binding="{Binding IndividualBackImg}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="vat_tile_listofsignup_W.png">
                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
                             </StackLayout>
 
@@ -100,16 +91,16 @@
                                     </Image.Triggers>
                                 </Image>
 
-                                <custom:CustomLabel Style="{StaticResource ValueLabelWhiteMedium}" Text="{x:Static ResourceManager:AppResources.NDEstablishments}">
-                                    <custom:CustomLabel.Triggers>
+                                <Label Style="{StaticResource ValueLabelWhiteMedium}" Text="{x:Static ResourceManager:AppResources.NDEstablishments}">
+                                    <Label.Triggers>
                                         <DataTrigger
                                             Binding="{Binding EstablishmentBackImg}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="vat_tile_listofsignup_W.png">
                                             <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                         </DataTrigger>
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
                             </StackLayout>
 
@@ -126,9 +117,9 @@
                                  Margin="0,0,0,10"
                                  Spacing="10"
                                  Padding="0,48,0,0">
-                        <custom:CustomLabel Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZTERNewAccount}" />
+                        <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZTERNewAccount}" />
 
-                        <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZSelectthetypeofEntity}" />
+                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZSelectthetypeofEntity}" />
 
                         <BoxView Style="{StaticResource SeparatorStyle}" />
                     </StackLayout>
@@ -156,7 +147,7 @@
 
                     <!--  Loader Starts  -->
                 </Grid>
-            </yummy:PancakeView>
+            </Border>
 
 
             <Grid

@@ -15,10 +15,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATRegistrationDetails
             viewModel = App.Locator.VATRegistrationDisplayDetails;
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            SetLTR();
             Task.Run(async () =>
             {
-                //viewModel.IsLoading = true;
                 await GetVatRegistrationData();
             });
         }
@@ -42,18 +40,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATRegistrationDetails
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
         public async Task GetVatRegistrationData()
         {
             try

@@ -1,10 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
 {
-    public class PrivacyAndPolicyPageViewModel : ViewModelBase
+    public class PrivacyAndPolicyPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -25,27 +26,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
                 RaisePropertyChanged("WebUrl");
             }
         }
-        private bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                _IsLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-        //IsLoading
+       
         #endregion
         #region Commands
         public ICommand BackButtonClicked { get; private set; }
 
         #endregion
         #region Constructor
-        public PrivacyAndPolicyPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public PrivacyAndPolicyPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

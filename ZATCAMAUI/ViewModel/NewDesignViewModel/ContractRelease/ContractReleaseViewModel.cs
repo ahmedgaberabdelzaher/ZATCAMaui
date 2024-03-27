@@ -23,7 +23,7 @@ using Metadata = ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse.Me
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 {
 
-    public class ContractReleaseViewModel : ViewModelBase
+    public class ContractReleaseViewModel : BaseViewModel
     {
         #region Enums
 
@@ -769,7 +769,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
         public ContractReleaseInterface contractReleaseInterface { get; set; }
 
-        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) :base(navigationService, dialogService)
         {
             _navigationService = navigationService;
 

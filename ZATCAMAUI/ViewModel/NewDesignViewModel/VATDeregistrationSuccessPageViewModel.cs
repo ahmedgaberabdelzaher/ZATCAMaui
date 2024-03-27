@@ -8,7 +8,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
  
-    public class VATDeregistrationSuccessPageViewModel : ViewModelBase
+    public class VATDeregistrationSuccessPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -31,7 +31,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("FBNumber");
             }
         }
-        public VATDeregistrationSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATDeregistrationSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

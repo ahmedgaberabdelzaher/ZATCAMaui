@@ -91,14 +91,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnListPages
         {
             if (App.IsArabic)
             {
-                FlowDirection = FlowDirection.RightToLeft;
+                //FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
             }
             else
             {
-                FlowDirection = FlowDirection.LeftToRight;
+                //FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);

@@ -2,15 +2,16 @@
 using GalaSoft.MvvmLight.Views;
 using System.Globalization;
 using ZATCAMAUI.Core.Mangers;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
-    public class VATRegistrationSuccessfullPageViewModel : ViewModelBase
+    public class VATRegistrationSuccessfullPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
-        public VATRegistrationSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATRegistrationSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

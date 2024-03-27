@@ -19,8 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                 InitializeComponent();
                 viewModel = App.Locator.ViewNotePopUpViewModel;
                 BindingContext = viewModel;
-                SetLTR();
-                //ChangeAeroIcon();
                 if (notesSet != null)
                 {
                     if (notesSet.results.Count != 0)
@@ -47,18 +45,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         }
 
         #region Methods
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
         #endregion
 
         private async void OnCloseTapped(object sender, EventArgs e)

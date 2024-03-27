@@ -74,28 +74,41 @@
             <CollectionView
                 x:Name="menu"
                 Grid.Row="1"
-                ItemsLayout="VerticalGrid,2"
                 Margin="0,18,0,0"
+                ItemSizingStrategy="MeasureFirstItem"
                 ItemsSource="{Binding CustomeMenuLst}">
+
+                <CollectionView.ItemsLayout>
+                   <GridItemsLayout Orientation="Vertical"
+                                    Span="2"
+                                    VerticalItemSpacing="10"
+                                    HorizontalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
 
                 <CollectionView.Triggers>
                     <DataTrigger
                         Binding="{Binding ItemCountPerRow}"
                         TargetType="CollectionView"
                         Value="1">
-                        <Setter Property="ItemsLayout" Value="VerticalList" />
+                        <Setter Property="ItemsLayout" >
+
+                            <GridItemsLayout Orientation="Vertical"
+                                              VerticalItemSpacing="10"/>
+                        </Setter>
                     </DataTrigger>
                 </CollectionView.Triggers>
+
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
                         <Frame
                             x:Name="Item"
+                            HasShadow="False"
                             Grid.Row="{Binding Row}"
                             Grid.Column="{Binding ColumnNo}"
                             Margin="0,0,10,10"
-                            Padding="10,0,10,0">
+                            Padding="10,0">
                             <Frame.Triggers>
                                 <DataTrigger
                                     Binding="{Binding IsVerticalView}"
@@ -133,6 +146,7 @@
                                         Margin="0,5,0,5"
                                         HorizontalOptions="Center"
                                         Text="{Binding Name}"
+                                        
                                         VerticalOptions="Start">
                                         <Label.Triggers>
                                             <DataTrigger
@@ -146,7 +160,20 @@
                                     <Label
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="10"
-                                        Text="{Binding ServiceDesc}" />
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding ServiceDesc}">
+
+                                        <Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsVerticalView}"
+                                                TargetType="Label"
+                                                Value="true">
+                                                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                                                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
+
+                                    </Label>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>

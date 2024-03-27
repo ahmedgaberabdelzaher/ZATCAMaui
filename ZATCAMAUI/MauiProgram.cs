@@ -74,7 +74,6 @@ public static class MauiProgram
              .ConfigureMauiHandlers((handlers) =>
               {
 #if ANDROID
-                  handlers.AddCompatibilityRenderer(typeof(CustomButton), typeof(CustomButtonRenderer));
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
                   //handlers.AddCompatibilityRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
@@ -85,14 +84,13 @@ public static class MauiProgram
 #elif IOS
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(CustomButton), typeof(CustomButtonRenderer));
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
                   //handlers.AddCompatibilityRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(Page), typeof(KeyboardRender));
-                  handlers.AddCompatibilityRenderer(typeof(RoundCornersEffect), typeof(RoundCornersEffectIOS));
-                  handlers.AddCompatibilityRenderer(typeof(ViewCell), typeof(TransparentViewCellRenderer));
+                  //handlers.AddCompatibilityRenderer(typeof(Page), typeof(KeyboardRender));
+                 // handlers.AddCompatibilityRenderer(typeof(RoundCornersEffect), typeof(RoundCornersEffectIOS));
+                  //handlers.AddCompatibilityRenderer(typeof(ViewCell), typeof(TransparentViewCellRenderer));
 #endif 
               });
 

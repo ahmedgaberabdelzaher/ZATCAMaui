@@ -8,7 +8,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    >
     <ContentView.Resources>
 
         <converter:RemoveLastLineConverter x:Key="RemoveLastLineConverter" />
@@ -23,7 +23,7 @@
     <ContentView.Content>
 
         <!--  List of names inside frame  -->
-        <yummy:PancakeView Padding="20" Style="{StaticResource CommonTopCurves}">
+        <Border Padding="20" Style="{StaticResource CommonTopCurves}">
 
             <Grid RowDefinitions="auto,*"
                     Padding="10">
@@ -109,7 +109,7 @@
             </Grid>
 
 
-        </yummy:PancakeView>
+        </Border>
 
     </ContentView.Content>
 </ContentView>

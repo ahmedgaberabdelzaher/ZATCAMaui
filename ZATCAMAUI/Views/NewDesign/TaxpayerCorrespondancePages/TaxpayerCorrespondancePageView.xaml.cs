@@ -19,7 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             viewModel = App.Locator.TaxpayerCorrespondancePageView;
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             viewModel.SelectedChipFilterItemList = new List<ChipModel>();
             PopulateReturnTypeList();
             viewModel.PopulateFilterDropdownList();
@@ -60,19 +59,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
 
             }
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-
-            }
         }
         public void ChangeAeroIcon()
         {

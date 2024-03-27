@@ -35,8 +35,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
                 //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
-                SetLTR();
-
                 viewModel.IsPayNowVisible = false;
                 viewModel.IsTaxYesChecked = false;
 
@@ -1429,21 +1427,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.ImportsaccVat = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignated(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj);
                 viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat, viewModel.ImportspaidVat, viewModel.ImportsaccVat);
             });
-        }
-
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-                // MainGrid.Margin = new Thickness(0);
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-                //MainGrid.Margin = new Thickness(-36,0,36,0);
-            }
         }
 
         public void ChangeAeroIcon()

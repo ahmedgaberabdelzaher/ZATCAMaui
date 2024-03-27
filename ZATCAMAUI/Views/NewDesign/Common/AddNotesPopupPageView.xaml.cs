@@ -18,7 +18,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                 BindingContext = viewModel;
                 NavigationPage.SetBackButtonTitle(this, "");
                 NavigationPage.SetHasBackButton(this, false);
-                SetLTR();
                 viewModel.NoteText = notes;
                 viewModel.IsEdit = isEdit;
 
@@ -29,20 +28,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         }
 
         #region Methods
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
-
+       
 
         protected override bool OnBackButtonPressed()
         {

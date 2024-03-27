@@ -1288,17 +1288,7 @@ namespace ZATCAMAUI.Core.Mangers
         }
 
         // * Global Method For Changing Flow Direction LANG Based
-        public static FlowDirection SetLTRAndRTL()
-        {
-            if (App.IsArabic)
-            {
-                return FlowDirection.RightToLeft;
-            }
-            else
-            {
-                return FlowDirection.LeftToRight;
-            }
-        }
+        
         public static byte[] ReadFully(Stream input)
         {
             byte[] buffer = new byte[16 * 1024];

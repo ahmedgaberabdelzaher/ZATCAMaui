@@ -7,7 +7,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign">
+    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    FlowDirection="{Binding AppDirection}">
     <Grid RowDefinitions="Auto,*">
 
         <!--#region Header-->

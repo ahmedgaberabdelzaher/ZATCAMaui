@@ -21,19 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             viewModel.currentTab = outletNavigation.openedTab;
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
         }
 
         public void ChangeAeroIcon()

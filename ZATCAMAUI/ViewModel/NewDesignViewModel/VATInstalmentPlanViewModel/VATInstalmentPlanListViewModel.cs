@@ -14,25 +14,12 @@ using static ZATCAMAUI.Models.VATInstalmentModels.RequestToVATInstallmentPlanDet
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 {
-    public class VATInstalmentPlanListViewModel : ViewModelBase
+    public class VATInstalmentPlanListViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         #endregion
 
         public ICommand GoBackClick { get; set; }
@@ -40,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         public ICommand SummaryContinueBtnTapped { get; set; }
 
 
-        public VATInstalmentPlanListViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATInstalmentPlanListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -50,7 +50,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
                 BindingContext = _dashBoardPageViewModel;
             }
-            SetLTR();
             ChangeAeroIcon();
         }
 
@@ -123,18 +122,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             else
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
     }

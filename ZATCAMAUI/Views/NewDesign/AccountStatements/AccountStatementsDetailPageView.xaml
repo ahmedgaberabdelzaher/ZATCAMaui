@@ -4,18 +4,14 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sfconverters="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="RightToLeft"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -25,8 +21,6 @@
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <sfconverters:StringToColorConvertor x:Key="StringToColorConvertor" />
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
 
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
@@ -49,11 +43,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -70,7 +64,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -138,9 +132,9 @@
                                 VerticalOptions="CenterAndExpand" />
 
                             <StackLayout Orientation="Horizontal">
-                                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></custom:CustomLabel>
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Text=": "></custom:CustomLabel>-->
-                                <custom:CustomLabel
+                                <!--<Label Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
+                                <Label Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Text=": "></Label>-->
+                                <Label
                                     x:Name="LableFbNum"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource CaptionLabelGrey}"
@@ -171,7 +165,7 @@
 
 
 
-                            <custom:CustomLabel
+                            <Label
                                 x:Name="LableCardStatus"
                                 HorizontalOptions="CenterAndExpand"
                                 Style="{StaticResource CaptionLabelBlack}"
@@ -187,12 +181,12 @@
                             Grid.Row="2"
                             Grid.Column="0"
                             Margin="0,5">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.ASSadadBillNumber}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 x:Name="LableSadadNum"
                                 Margin="0,-10"
                                 HorizontalOptions="FillAndExpand"
@@ -201,19 +195,19 @@
                         </StackLayout>
 
                         <!--<StackLayout Grid.Row="2" Grid.Column="1" Margin="0,5">
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
-                            <custom:CustomLabel x:Name="LableTransactionDate"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></custom:CustomLabel>
+                            <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
+                            <Label x:Name="LableTransactionDate"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                         </StackLayout>-->
                         <StackLayout
                             Grid.Row="2"
                             Grid.Column="1"
                             Margin="0,5">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 x:Name="LableDueDate"
                                 Margin="0,-10"
                                 HorizontalOptions="FillAndExpand"
@@ -226,12 +220,12 @@
                             Grid.Row="3"
                             Grid.ColumnSpan="2"
                             Margin="0,5">
-                            <custom:CustomLabel
+                            <Label
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource CaptionLabelGrey}"
                                 Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryTaxPeriod}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 x:Name="LableTaxPeriod"
                                 Margin="0,-10"
                                 HorizontalOptions="FillAndExpand"
@@ -277,7 +271,7 @@
                                 Grid.Row="0"
                                 Padding="10"
                                 VerticalOptions="FillAndExpand">
-                                <custom:CustomLabel
+                                <Label
                                     x:Name="LableTaxType"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource BodyLabelBlack}"
@@ -307,13 +301,13 @@
                         Grid.Row="0"
                         Padding="10"
                         Orientation="Horizontal">
-                        <custom:CustomLabel
+                        <Label
                             x:Name="LableAmountTitle"
                             FontSize="15"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource BodyLabelBlack}"
                             VerticalOptions="CenterAndExpand" />
-                        <custom:CustomLabel
+                        <Label
                             x:Name="LableAmount"
                             HorizontalOptions="EndAndExpand"
                             Style="{StaticResource SectionTitleBlackBold}"
@@ -343,13 +337,13 @@
                         Grid.Row="0"
                         Padding="10"
                         Orientation="Horizontal">
-                        <custom:CustomLabel
+                        <Label
                             FontSize="15"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource BodyLabelBlack}"
                             Text="{x:Static ResourceManager:AppResources.MyBillsRemainingAmount}"
                             VerticalOptions="CenterAndExpand" />
-                        <custom:CustomLabel
+                        <Label
                             x:Name="RemainingAmount"
                             HorizontalOptions="EndAndExpand"
                             Style="{StaticResource SectionTitleBlackBold}"

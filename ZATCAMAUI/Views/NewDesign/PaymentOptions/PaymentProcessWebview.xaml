@@ -6,9 +6,9 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="RightToLeft"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -35,11 +35,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             x:Name="VATRMainGrid"
                             Margin="0"
@@ -57,7 +57,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="20,32,24,10">
 
                         <Image
@@ -68,7 +68,7 @@
                             IsVisible="{Binding IsBackStepButtonVisible}"
                             Source="arrowLeftwhite"
                             Style="{DynamicResource BackButtonArrow}"
-                            VerticalOptions="CenterAndExpand"
+                            VerticalOptions="StartAndExpand"
                             WidthRequest="24">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
@@ -84,60 +84,16 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-        <Grid>
+        <Grid HeightRequest="850">
 
 
-            <Grid x:Name="WebviewGrid">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="100*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*" />
-                </Grid.ColumnDefinitions>
+            <Grid x:Name="WebviewGrid"
+                  RowDefinitions="100*"
+                  ColumnDefinitions="100*">
 
+                <custom:Loader Grid.RowSpan="2"  IsVisible="{Binding IsLoading}"/>
 
-                <!--<Grid Grid.Row="0" Grid.Column="0">
-                       <StackLayout  VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
-                    <WebView x:Name="WebView" VerticalOptions="FillAndExpand" Navigated="OnNavigated"/>
-                    </StackLayout>
-                       </Grid>-->
-
-
-                <Grid
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    IsVisible="{Binding IsLoading}">
-                    <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        BackgroundColor="Black"
-                        Opacity="0.4"
-                        Orientation="Vertical"
-                        VerticalOptions="FillAndExpand" />
-                    <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Padding="15,15"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="Center"
-                        Opacity="0.8"
-                        Orientation="Vertical"
-                        VerticalOptions="Center">
-                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                            <busyindicator:SfBusyIndicator
-                                x:Name="busyindicatorForLanding"
-                                HorizontalOptions="CenterAndExpand"
-                                IsRunning="True"
-                                AnimationType="Cupertino"
-                                SizeFactor="0.6"
-                                WidthRequest="70"
-                                HeightRequest="70"
-                                IndicatorColor="{StaticResource Secondary}"
-                                TitlePlacement="Bottom"
-                                VerticalOptions="CenterAndExpand" />
-                        </StackLayout>
-                    </StackLayout>
-                </Grid>
+               
             </Grid>
 
 

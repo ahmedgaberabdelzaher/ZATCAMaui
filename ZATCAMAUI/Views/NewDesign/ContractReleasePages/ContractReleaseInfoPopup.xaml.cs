@@ -15,19 +15,10 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             //ChangeAeroIcon();
-            SetLTR();
             viewModel = App.Locator.ContractReleasePageView;
             this.BindingContext = viewModel;
             viewModel.InfoTitle = Title;
             viewModel.InfoDesc = Desc;
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         public void ChangeAeroIcon()
         {

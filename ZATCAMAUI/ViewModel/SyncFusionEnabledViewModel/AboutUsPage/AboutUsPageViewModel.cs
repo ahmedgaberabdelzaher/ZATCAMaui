@@ -1,10 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
 {
-    public class AboutUsPageViewModel : ViewModelBase
+    public class AboutUsPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -25,23 +26,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
                 RaisePropertyChanged("WebUrl");
             }
         }
-        //IsLoading
-        private bool _IsLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                _IsLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         #endregion
         #region Constructor
-        public AboutUsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AboutUsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

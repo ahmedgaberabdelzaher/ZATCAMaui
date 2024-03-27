@@ -5,23 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
-    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="End">
+    <Border Style="{StaticResource CommonTopCurves}" VerticalOptions="End">
         <StackLayout>
             <Image HorizontalOptions="EndAndExpand" Source="close.png">
                 <Image.GestureRecognizers>
@@ -29,7 +19,7 @@
                 </Image.GestureRecognizers>
             </Image>
 
-            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" />
+            <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" />
 
 
             <inputLayout:SfTextInputLayout
@@ -55,7 +45,7 @@
                         Text="{Binding NoteText}"
                         Unfocused="NoteDetail_Unfocused" />
 
-                    <custom:CustomLabel
+                    <Label
                         FontSize="Micro"
                         HorizontalOptions="EndAndExpand"
                         Style="{StaticResource CaptionLabelGrey}"
@@ -83,5 +73,5 @@
                 Text="{x:Static ResourceManager:AppResources.ZVatNotesClearandClose}"
                 VerticalOptions="CenterAndExpand" />
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

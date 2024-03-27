@@ -30,8 +30,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             ChangeAeroIcon();
-
-            SetLTR();
             ChangeArrowDirection();
 
 
@@ -201,20 +199,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
                 }
 
             });
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
-
-            }
         }
         public async Task GetVatDeRegistrationData()
         {

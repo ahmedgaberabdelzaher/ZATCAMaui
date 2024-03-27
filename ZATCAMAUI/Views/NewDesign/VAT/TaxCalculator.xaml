@@ -10,7 +10,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
@@ -42,7 +42,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -207,7 +207,7 @@
                         </Frame>
                     </StackLayout>
                 </ScrollView>
-            </yummy:PancakeView>
+            </Border>
             <Grid Grid.Row="0" Padding="20,5,20,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*" />
@@ -260,10 +260,10 @@
                     Opacity="0.4"
                     Orientation="Vertical"
                     VerticalOptions="FillAndExpand" />
-                <yummy:PancakeView
+                <Border
                     Padding="20,20,20,10"
                     BackgroundColor="White"
-                    CornerRadius="15,15,0,0"
+                    StrokeShape="RoundRectangle 15,15,0,0"
                     Style="{StaticResource CommonTopCurves}"
                     VerticalOptions="EndAndExpand">
 
@@ -328,7 +328,7 @@
                             VerticalOptions="CenterAndExpand" />
 
                     </StackLayout>
-                </yummy:PancakeView>
+                </Border>
             </Grid>
             <custom:MsgView
                 Grid.Row="0"

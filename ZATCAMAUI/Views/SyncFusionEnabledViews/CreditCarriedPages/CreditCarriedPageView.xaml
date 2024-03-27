@@ -11,6 +11,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundColor="White"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
@@ -48,7 +49,7 @@
                 HorizontalOptions="FillAndExpand"
                 Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"
                 VerticalOptions="StartAndExpand">
-                <custom:CustomLabel
+                <Label
                     FontSize="Caption"
                     HorizontalOptions="StartAndExpand"
                     HorizontalTextAlignment="Start"
@@ -214,7 +215,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="Center"
                     IsVisible="{Binding IsNoDataLabelVisible}"
                     Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"

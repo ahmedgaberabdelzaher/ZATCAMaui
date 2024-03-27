@@ -4,11 +4,12 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
 {
 
-    public class FormBundleStatusPageViewModel : ViewModelBase
+    public class FormBundleStatusPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -48,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                 RaisePropertyChanged("TxtFBnum");
             }
         }
-        public FormBundleStatusPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public FormBundleStatusPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -208,19 +209,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                 RaisePropertyChanged("ListFormBudles");
             }
         }
-        private bool _isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         public async Task onPageLoad()
         {
             try

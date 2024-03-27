@@ -5,21 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
-    <yummy:PancakeView
+
+    <Border
         BackgroundColor="{StaticResource NewDullOrangeColor}"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
@@ -47,7 +39,7 @@
                     Source="ic_White_info.png"
                     Style="{DynamicResource BackButtonArrow}" />
 
-                <custom:CustomLabel
+                <Label
                     x:Name="VATTitle"
                     Grid.Row="0"
                     Grid.Column="1"
@@ -55,11 +47,11 @@
                     Text="{x:Static ResourceManager:AppResources.ZZZZRegisterinVATNow}"
                     TextColor="White"
                     VerticalOptions="StartAndExpand" />
-                <custom:CustomLabel
+                <Label
                     x:Name="VATDecp"
                     Grid.Row="1"
                     Grid.Column="1"
-                    LineSpacing="0.7"
+                    LineHeight="0.7"
                     Style="{StaticResource BodyLabelBlack}"
                     Text="{x:Static ResourceManager:AppResources.NDLessThan5MinRegister}"
                     TextColor="White"
@@ -88,17 +80,17 @@
                     Source="ic_White_info.png"
                     Style="{DynamicResource BackButtonArrow}" />
 
-                <custom:CustomLabel
+                <Label
                     Grid.Row="0"
                     Grid.Column="1"
                     Style="{StaticResource SectionTitleBlack}"
                     Text="{x:Static ResourceManager:AppResources.NDRegisterZAKAT}"
                     TextColor="White"
                     VerticalOptions="StartAndExpand" />
-                <custom:CustomLabel
+                <Label
                     Grid.Row="1"
                     Grid.Column="1"
-                    LineSpacing="0.7"
+                    LineHeight="0.7"
                     Style="{StaticResource BodyLabelBlack}"
                     Text="{x:Static ResourceManager:AppResources.NDRegZakatin5mins}"
                     TextColor="White"
@@ -120,5 +112,5 @@
                 Text="{x:Static ResourceManager:AppResources.ZLogout}"
                 VerticalOptions="End" />
         </StackLayout>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

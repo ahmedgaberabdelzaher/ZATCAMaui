@@ -4,11 +4,12 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
 {
 
-    public class MyReturnsPageViewModel : ViewModelBase
+    public class MyReturnsPageViewModel : BaseViewModel
     {
         #region Veriables
         public readonly INavigationService _navigationService;
@@ -17,19 +18,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         public MyReturnsRootObject MyReturns { get; set; }
         #endregion
         #region Properties
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private bool _isArabic = false;
         public bool IsArabic
         {
@@ -820,7 +809,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         }
         #endregion
         #region Custructor
-        public MyReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public MyReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -15,7 +15,7 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
 {
 
-    public class VATDeclarationAttachmentPageViewModel : ViewModelBase
+    public class VATDeclarationAttachmentPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -32,19 +32,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         #endregion
 
         #region Property
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
@@ -195,7 +183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         #endregion
 
         #region Constructor
-        public VATDeclarationAttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VATDeclarationAttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

@@ -12,7 +12,7 @@ using ZATCAMAUI.Models.ZakatObjectionsModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 {
-    public class ZakatObjectionsListViewModel : ViewModelBase
+    public class ZakatObjectionsListViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -27,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         #endregion
 
-        public ZakatObjectionsListViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ZakatObjectionsListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -139,21 +139,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
 
         private string _returnNumber = "";
         public string ReturnNumber

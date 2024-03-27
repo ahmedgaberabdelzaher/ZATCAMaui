@@ -27,7 +27,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages
                 safeInsets.Bottom = -10;
                 Padding = safeInsets;
                 ChangeAeroIcon();
-                SetLTR();
                 BindingContext = viewModel;
                 if (Device.RuntimePlatform == Device.iOS)
                 {
@@ -85,13 +84,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AboutUsPages
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
             }
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
+       
         private void BackButtonClicked(object sender, EventArgs e)
         {
             if (AboutUsWebView.CanGoBack)

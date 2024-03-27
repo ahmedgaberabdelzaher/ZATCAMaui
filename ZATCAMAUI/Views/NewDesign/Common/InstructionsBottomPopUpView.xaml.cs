@@ -118,10 +118,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                
                 _viewModel.EnableCheckboxContinue();
 
-                SetLTR();
-
-
-
             }
             catch (Exception) {
 
@@ -130,29 +126,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             }
         }
 
-
-
-
-        private void SetLTR()
-
-        {
-
-
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-
-
-            //if (!App.IsArabic)
-            //{
-            //    this.FlowDirection = FlowDirection.LeftToRight;
-            //}
-        }
         protected override bool OnBackButtonPressed() => true;
         protected override void OnDisappearing()
         {

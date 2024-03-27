@@ -6,16 +6,12 @@
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -60,9 +56,9 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
-                    <yummy:PancakeView
+                    <Border
                         Padding="0"
-                        CornerRadius="14,14,0,0"
+                        StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid
                             x:Name="VATRMainGrid"
@@ -81,7 +77,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                 </StackLayout>
             </Grid>
         </ControlTemplate>
@@ -116,14 +112,14 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="1" />
                 </Grid.RowDefinitions>
-                <custom:CustomLabel
+                <Label
                     Grid.Row="0"
                     Grid.Column="0"
                     HorizontalOptions="StartAndExpand"
                     Style="{StaticResource SectionTitleBlack}"
                     Text="{x:Static ResourceManager:AppResources.Statement}" />
 
-                <custom:CustomLabel
+                <Label
                     Grid.Row="1"
                     Grid.Column="0"
                     HorizontalOptions="StartAndExpand"
@@ -139,7 +135,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="2">
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="StartAndExpand"
                     Style="{StaticResource CaptionLabelGrey}"
                     Text="{x:Static ResourceManager:AppResources.StatementDate}" />

@@ -19,7 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             InitializeComponent();
             ChangeAeroIcon();
             ChangeFilterArrow();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.AccountStatementsFilterPageView;
 
@@ -368,19 +367,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             else
             {
                 TaxPeriodDateNormalCalendar.IsOpen = false;
-            }
-        }
-
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
             }
         }
 

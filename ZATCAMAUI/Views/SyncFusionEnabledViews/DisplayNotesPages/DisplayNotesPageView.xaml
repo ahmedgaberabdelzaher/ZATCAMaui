@@ -10,7 +10,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundColor="White"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
@@ -145,7 +145,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <custom:CustomLabel
+                <Label
                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                     HorizontalOptions="Center"
                     IsVisible="{Binding IsNoDataLabelVisible}"

@@ -141,6 +141,7 @@ namespace ZATCAMAUI.Core.CustomControls
                 }
                 dayColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.CalDay,
                     ItemsSource = day,
                     SelectedIndex = 0,
                 };
@@ -153,6 +154,7 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 monthColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.CalMonth,
                     ItemsSource = month,
                     SelectedIndex = 0,
                 };
@@ -167,8 +169,9 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 yearColumn = new PickerColumn()
                 {
+                    HeaderText = AppResources.ZakatYear,
                     ItemsSource = year,
-                    SelectedIndex = int.Parse(year.Last()),
+                    SelectedIndex = year.IndexOf(DateTime.Today.Year.ToString()),
                 };
 
                 pickerColumns = new ObservableCollection<PickerColumn>()
@@ -213,7 +216,7 @@ namespace ZATCAMAUI.Core.CustomControls
                 }
                 dayColumn = new PickerColumn()
                 {
-                    HeaderText = day[0],
+                    HeaderText = AppResources.CalDay,
                     ItemsSource = day,
                     SelectedIndex = 0,
                 };
@@ -226,7 +229,7 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 monthColumn = new PickerColumn()
                 {
-                    HeaderText = month[0],
+                    HeaderText = AppResources.CalMonth,
                     ItemsSource = month,
                     SelectedIndex = 0,
                 };
@@ -241,7 +244,7 @@ namespace ZATCAMAUI.Core.CustomControls
 
                 yearColumn = new PickerColumn()
                 {
-                    HeaderText = year[0],
+                    HeaderText = AppResources.ZakatYear,
                     ItemsSource = year,
                     SelectedIndex = 0,
                 };

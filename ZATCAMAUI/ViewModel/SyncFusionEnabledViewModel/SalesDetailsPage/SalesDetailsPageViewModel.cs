@@ -5,13 +5,14 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
 {
    
-    public class SalesDetailsPageViewModel : ViewModelBase
+    public class SalesDetailsPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -35,19 +36,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
         public double existingZakatBase = 0.00;
         #endregion
         #region Property
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private SalesDetails _selectedSalesDetails;
         public SalesDetails SelectedSalesDetails
         {
@@ -320,7 +309,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
         }
         #endregion
         #region Constructor
-        public SalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public SalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

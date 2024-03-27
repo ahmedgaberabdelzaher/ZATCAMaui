@@ -10,6 +10,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.Nafat.LoginSSOModel;
 using Metadata = ZATCAMAUI.Models.Metadata;
@@ -17,7 +18,7 @@ using Metadata = ZATCAMAUI.Models.Metadata;
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
 
-    public class IndividualRegistrationPageViewModel : ViewModelBase
+    public class IndividualRegistrationPageViewModel : BaseViewModel
     {
         public int DefaultMonth;
         public readonly INavigationService _navigationService;
@@ -222,21 +223,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsCitizen");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+       
         private bool _isOTPEncripted = true;
         public bool IsOTPEncripted
         {
@@ -1667,7 +1654,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #endregion
 
         #region Constructor
-        public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             //IsGulf = isGulf;
             if (navigationService == null)
@@ -2078,17 +2065,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
 
             if (flag)
-
-            /* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-            Before:
-                        {
-
-                            if (flag)
-            After:
-                        {
-
-                            if (flag)
-            */
             {
 
                 if (flag)
@@ -2134,9 +2110,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                     {
                                         vATSignUpData = await TaxEvasionWebServiceManager.GAZTGetVATSignUpCityListForSignup();
 
-
-                                        //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
-                                        //var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
                                     }
                                     catch (GAZTException gex)
                                     {
@@ -2168,23 +2141,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             _navigationService.GoBack();
                                         });
                                     }
-                                    catch (HttpRequestException ex)
+                                    catch (HttpRequestException )
 
-                                    /* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-                                    Before:
-                                                                        {
-
-
-                                                                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    After:
-                                                                        {
-
-
-                                                                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    */
                                     {
-
-
                                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                                         MainThread.BeginInvokeOnMainThread(async () =>
@@ -2207,21 +2166,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                         });
                                     }
                                     catch (Exception)
-
-                                    /* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-                                    Before:
-                                                                        {
-
-
-
-                                                                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    After:
-                                                                        {
-
-
-
-                                                                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                                    */
                                     {
 
 
@@ -2436,17 +2380,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 SelectedIdType = signUpIdTypeListGulf[0];
             }
             else
-
-            /* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-            Before:
-                        {
-
-                            if (modelSSOID.results[0].Idnumber.Substring(0,1) == "1")
-            After:
-                        {
-
-                            if (modelSSOID.results[0].Idnumber.Substring(0,1) == "1")
-            */
             {
 
                 if (modelSSOID.results[0].Idnumber.Substring(0, 1) == "1")
@@ -2469,24 +2402,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 Name = modelSSOID.results[0].Firstname;
                 DOB = JsonConvert.SerializeObject(modelSSOID.results[0].Birthdt.ToString());
 
-
-                /* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-                Before:
-                            }
-
-                            //IDTypeIndex = 0;
-                After:
-                            }
-
-                            //IDTypeIndex = 0;
-                */
             }
-
-            //IDTypeIndex = 0;
-            //TxtIDType = AppResources.ZZNationalID;
-
-            //TxtIDType = IdTypeList[IDTypeIndex].Name;
-            //SelectedIdType = IdTypeList[IDTypeIndex];
         }
 
         public async Task<string> ValidateIDs()
@@ -2498,19 +2414,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 return resposne;
             }
             catch (Exception)
-
-            /* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-            Before:
-                        {
-
-
-                            return null;
-            After:
-                        {
-
-
-                            return null;
-            */
             {
 
 
@@ -2534,19 +2437,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
             }
             catch (Exception)
-
-            /* Unmerged change from project 'ZATCAMAUI (net7.0-android)'
-            Before:
-                        {
-
-
-                            return false;
-            After:
-                        {
-
-
-                            return false;
-            */
             {
 
 
@@ -2739,13 +2629,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             try
             {
-                //var Bdt1 = string.Empty;
-                //string date1 = DOB;
-                //DateTime dt = DateTimeHelper.DateTimeFormater(date1);
-                //dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-                //long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
-                //unixTimestamp = unixTimestamp * 1000;
-                //Bdt1 = "" + "/Date(" + unixTimestamp + ")/";
+                
 
                 var Bdt1 = string.Empty;
                 string date1 = DOB;
@@ -2755,45 +2639,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 unixTimestamp = unixTimestamp * 1000;
                 Bdt1 = "" + "/Date(" + unixTimestamp + ")/";
 
-                //JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
-                //{
-                //    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                //};
-                ////var jsonDateTime = JsonConvert.SerializeObject(dt, microsoftDateFormatSettings);
-                //var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
-                //string[] dateList = jsonDateTime.Split('+');
-                //jsonDateTime = dateList[0].Replace("\"\\", "");
-                //var t = jsonDateTime.Replace("\\/\"", "");
-                //t = t + "/";
-                // long unixTimestamp = (long)(date2.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-
-                if (IsHijriCal)
-                {
-                    //string[] date1 = date1DOB.Split("/");
-                    //string date = UtilityManager.HijriToGreg(date1[0] + "/" + date1[1] + "/" + date1[2]);
-                    //string[] SplitDate = date.Split('/');
-                    ////Bdt1 = SplitDate[0] + "-" + SplitDate[1] + "-" + SplitDate[2] + "T00:00:00";
-                    //var gregorian = date;
-                    //DateTime dt = Convert.ToDateTime(gregorian);
-                    //dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-                    //long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
-
-                    //unixTimestamp = unixTimestamp * 1000;
-
-                    //Bdt1 = "" + "/Date(" + unixTimestamp + ")/";
-
-                }
-                else
-                {
-                    ////Bdt = date1[0] + "-" + date1[1] + "-" + date1[2] + "T00:00:00";
-                    //DateTime dt = Convert.ToDateTime(date1DOB);
-                    //dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-                    //long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
-
-                    //unixTimestamp = unixTimestamp * 1000;
-
-                    //Bdt1 = "" + "/Date(" + unixTimestamp + ")/";
-                }
 
                 string _City = string.Empty;
                 string _Region = string.Empty;
@@ -2816,10 +2661,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     }
                 }
-                //TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
-                //string unixTime = span.TotalSeconds.ToString("N0");
-                //unixTime = unixTime.Replace(",", "");
-                // string dd = "" + "/Date(" + unixTime + ")/";// need to
+
                 string submitValue;
                 if (currentStep == 4)
                 {
@@ -2833,8 +2675,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (IsCitizen)
                 {
 
-                    // var strings = App.GUIDFrSSO.Split("guid=");
-                    //   var strings = App.GUIDFrSSO.Split("guid=");
                     List<string> strings = new List<string>(
      App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
                     var guid = strings[1];
@@ -2850,7 +2690,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
-                    // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
+                   
                     Type = "1",
                     IdType = SelectedIdType.ID,//"ZS0018",
                     Idnumber = IdNumber,
@@ -2884,33 +2724,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Captcha = Captcha,
                     Mguid = Mguid
 
-
-
-                    //Type = "1",
-                    //IdType = SelectedIdType.ID,//"ZS0018",
-                    //Idnumber = "11111112221",
-                    //Firstname = "Ashish",
-                    //Lastname = "Ranjan",
-                    //PostCode1 = "00000",
-                    //City1 = "",
-                    //Country = "OM",
-                    //Region = "",
-                    //Building = "",
-                    //Floor = "",
-                    //Street = "",
-                    //Begda = "/Date(1593139376000)/",
-                    //Endda = "/Date(253402251010000)/",
-                    //Email = "abc@gmail.com",
-                    //Mobile = "00966546825230",
-                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
-                    //Birthdt = "/Date(1577846576000)/",
-                    //Password = "",
-                    //SmsCode = "",
-                    //EmailCode = "",
-                    //Submit = "",
                 };
 
-                //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
                 string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
 
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
@@ -3049,10 +2864,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 string[] date1 = DOB.Split('/');
-                //var dateTime = new DateTime(year, month, day, 10, 2, 0, DateTimeKind.Local);
-                //var dateTimeOffset = new DateTimeOffset(dateTime);
-                //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
-                //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+
                 int unixTimestamp = (int)dateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
                 var Bdt = date1[0] + "-" + date1[1] + "-" + date1[2] + "T00:00:00";
                 string _City = string.Empty;
@@ -3089,15 +2901,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Lastname = ".",
                     PostCode1 = "00000",
                     City1 = _City,
-                    //Country = SelectedCountry.Land1,
-                    //Region = SelectedRegion.Land1,
+
                     Region = _Region,
-                    //Country = SelectedGCCCountry.CountryCode,
+
                     Country = _Country,
                     MobileCountry = MobileCountryCode,
-                    //Building = BuildingNumber,
-                    //Floor = "",
-                    //Street = "",
                     Building = BuildingNumber,
                     Floor = UnitNumber,
                     Street = Neighborhood,
@@ -3105,11 +2913,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Endda = "/Date(253402251010000)/",
                     Email = Email,
                     Mobile = newCountryCodeString + MobileNumber,
-                    //  Mobile = "00966" + MobileNumber,
-                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+
                     CaseGuid = Guid,
                     Birthdt = Bdt,//"/Date(1577846576000)/",
-                    //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
+
                     Password = "",
                     SmsCode = "",
                     EmailCode = "",
@@ -3234,126 +3041,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 });
             }
         }
-
-        //public async Task SetRequestObject()
-        //{
-
-        //    try
-        //    {
-        //        //TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
-        //        //string unixTime = span.TotalSeconds.ToString("N0");
-        //        //unixTime = unixTime.Replace(",", "");
-        //        var date = DOB;
-        //        var dateTime = new DateTime(2015, 05, 24, 10, 2, 0, DateTimeKind.Local);
-        //        var dateTimeOffset = new DateTimeOffset(dateTime);
-        //        var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
-        //        string dd = "" + "/Date(" + unixDateTime + ")/";// need to
-        //        string submitValue;
-        //        if (currentStep == 4)
-        //        {
-        //            submitValue = "";
-        //        }
-        //        else
-        //        {
-        //            submitValue = "X";
-        //        }
-
-
-
-
-
-        //        VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
-        //        {
-        //            // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
-        //            Type = "1",
-        //            IdType = SelectedIdType.ID,//"ZS0018",
-        //            Idnumber = IdNumber,
-        //            Firstname = Name,
-        //            Lastname = ".",
-        //            PostCode1 = PostalCode,
-        //            // City1 =CityName,
-        //            City1 = " ",
-        //            Country = SelectedGCCCountry.CountryCode,
-        //            // Region = SelectedRegion.Land1,
-        //            Region = " ",
-        //            Building = BuildingNumber,
-        //            Floor = "",
-        //            Street = "",
-        //            Begda = "/Date(1593139376000)/",
-        //            Endda = "/Date(253402251010000)/",
-        //            Email = Email,
-        //            Mobile = "00966" + MobileNumber,
-        //            CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
-        //            // Birthdt = "" + "/Date(" + unixTime + ")/",//"/Date(1577846576000)/",
-        //            Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
-        //            Password = Password,
-        //            SmsCode = OTP,
-        //            EmailCode = "",
-        //            Submit = submitValue,
-
-
-
-
-        //            //Type = "1",
-        //            //IdType = SelectedIdType.ID,//"ZS0018",
-        //            //Idnumber = "11111112221",
-        //            //Firstname = "Ashish",
-        //            //Lastname = "Ranjan",
-        //            //PostCode1 = "00000",
-        //            //City1 = "",
-        //            //Country = "OM",
-        //            //Region = "",
-        //            //Building = "",
-        //            //Floor = "",
-        //            //Street = "",
-        //            //Begda = "/Date(1593139376000)/",
-        //            //Endda = "/Date(253402251010000)/",
-        //            //Email = "abc@gmail.com",
-        //            //Mobile = "00966546825230",
-        //            //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
-        //            //Birthdt = "/Date(1577846576000)/",
-        //            //Password = "",
-        //            //SmsCode = "",
-        //            //EmailCode = "",
-        //            //Submit = "",
-        //        };
-
-        //       // VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
-
-        //        string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
-        //        VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
-        //        vatSignUpSubmit = JsonConvert.DeserializeObject<VATSignUpSubmit>(response);
-        //        if (vatSignUpSubmit == null)
-        //        {
-        //            SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
-        //            StringBuilder Message = new StringBuilder();
-        //            foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-        //            {
-        //                if (itemerror.code.Contains("ZD_PUSR"))
-        //                {
-        //                    if (Message.Length > 0)
-        //                    {
-        //                        Message.Append(Environment.NewLine);
-        //                    }
-        //                    Message.Append(itemerror.message);
-        //                }
-        //            }
-        //            _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
-        //        }
-        //        else
-        //        {//success
-        //         //_navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
-        //            PasswordView = false;
-        //            currentStep = 1;
-
-        //            _navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
-        //        }
-        //    }
-        //    catch (Exception)
-        //    { 
-
-        //    }
-        //}
 
         public void SetcolorForDots(string visiliblityItemName)
         {

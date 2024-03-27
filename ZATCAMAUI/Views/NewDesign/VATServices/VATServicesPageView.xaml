@@ -8,7 +8,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     NavigationPage.BackButtonTitle=""
@@ -38,7 +38,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
                 <StackLayout Spacing="16">
                     <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                         <StackLayout
@@ -46,7 +46,7 @@
                             Orientation="Horizontal"
                             Spacing="20">
                             <Image Source="ic_RefundR.png" />
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}"
                                 VerticalOptions="Center"
@@ -64,7 +64,7 @@
                             Orientation="Horizontal"
                             Spacing="20">
                             <Image Source="ic_vat_return.png" />
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}"
                                 VerticalOptions="Center"
@@ -83,7 +83,7 @@
                                 Orientation="Horizontal"
                                 Spacing="20">
                                 <Image Source="deregistration.png" />
-                                <custom:CustomLabel
+                                <Label
                                     Style="{StaticResource ValueLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.DBSMVATDeregistration}"
                                     VerticalOptions="Center"
@@ -101,7 +101,7 @@
                                 Orientation="Horizontal"
                                 Spacing="20">
                                 <Image Source="registration.png" />
-                                <custom:CustomLabel
+                                <Label
                                     Style="{StaticResource ValueLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationAmendmentTile}"
                                     VerticalOptions="Center"
@@ -121,7 +121,7 @@
                             Orientation="Horizontal"
                             Spacing="20">
                             <Image Source="details.png" />
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}"
                                 VerticalOptions="Center"
@@ -138,7 +138,7 @@
                             Orientation="Horizontal"
                             Spacing="20">
                             <Image Source="sf_ic_Paid.png" />
-                            <custom:CustomLabel
+                            <Label
                                 Style="{StaticResource ValueLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationReactivationTile}"
                                 VerticalOptions="Center"
@@ -151,7 +151,7 @@
                     </Border>
 
                 </StackLayout>
-            </yummy:PancakeView>
+            </Border>
             <Grid Grid.Row="0" Padding="15,5,15,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*" />

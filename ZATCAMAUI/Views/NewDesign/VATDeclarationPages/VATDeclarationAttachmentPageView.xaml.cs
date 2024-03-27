@@ -31,7 +31,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             InitializeComponent();
             viewModel = App.Locator.VATDeclarationAttachmentPageView;
             this.BindingContext = viewModel;
-            SetLTR();
             list.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
@@ -118,15 +117,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             catch (Exception)
             {
 
-            }
-        }
-
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void OnCloseTapped(object sender, EventArgs e)

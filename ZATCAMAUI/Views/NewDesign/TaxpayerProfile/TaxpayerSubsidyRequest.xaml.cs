@@ -29,7 +29,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                 safeInsets.Bottom = -10;
                 Padding = safeInsets;
                 ChangeAeroIcon();
-                SetLTR();
                 BindingContext = viewModel;
                 viewModel.WebUrl = ZATCAConstants.TaxpayerSubsidyRequest;
 
@@ -58,13 +57,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             else
             {
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void BackButtonClicked(object sender, EventArgs e)

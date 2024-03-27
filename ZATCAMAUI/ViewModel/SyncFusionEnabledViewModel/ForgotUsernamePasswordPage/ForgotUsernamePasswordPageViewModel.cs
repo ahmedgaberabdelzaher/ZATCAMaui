@@ -7,10 +7,11 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage
 {
-    public class ForgotUsernamePasswordPageViewModel : ViewModelBase
+    public class ForgotUsernamePasswordPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -30,19 +31,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         public bool StopTimer = true;
         #endregion
         #region Property
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged(() => IsLoading);
-            }
-        }
+       
         private bool _isOTPEntryEnable = true;
         public bool IsOTPEntryEnable
         {
@@ -702,7 +691,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
 
         #endregion
         #region Constructor
-        public ForgotUsernamePasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ForgotUsernamePasswordPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

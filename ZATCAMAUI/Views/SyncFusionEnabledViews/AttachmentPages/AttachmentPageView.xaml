@@ -13,6 +13,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundColor="White"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
@@ -71,7 +72,7 @@
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
                                 Style="{StaticResource GAZTFrameStyleEntryForLableBackground}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
@@ -79,7 +80,7 @@
                                 Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZVatAttachments}"
                                 VerticalOptions="Center" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
@@ -89,7 +90,7 @@
                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                 Text="{x:Static ResourceManager:AppResources.ZVatAttachmentSizeNotfication}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="2"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
@@ -99,7 +100,7 @@
                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                 Text="{x:Static ResourceManager:AppResources.ZVatAttachmentTypeNotfication}"
                                 VerticalOptions="EndAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="3"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
@@ -109,7 +110,7 @@
                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                 Text="{x:Static ResourceManager:AppResources.ZVatAttachmentMaxSizeNotfication}"
                                 VerticalOptions="CenterAndExpand" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="4"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
@@ -121,7 +122,7 @@
                                 IsVisible="{Binding AttachmentSizeVisibility}"
                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                 VerticalOptions="CenterAndExpand">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding TotalAttachmentSize}" />
                                         <Span Text="     " />
@@ -129,9 +130,9 @@
                                         <Span Text="     " />
                                         <Span Text="300 MB" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
-                            <custom:CustomLabel
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
                                 Grid.Row="5"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"

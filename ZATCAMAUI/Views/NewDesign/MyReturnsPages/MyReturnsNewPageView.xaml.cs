@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
             viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel.Index = Index;
@@ -131,20 +130,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
 
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
-
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

@@ -12,7 +12,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         private EstablishmentAmendUpdateSuccessfulPageViewModel viewModel;
         public EstablishmentAmendUpdateSuccessfulPage(TaxPayerDetails taxpayerProfile)
         {
-            InitializeComponent(); SetLTR();
+            InitializeComponent(); 
             viewModel = App.Locator.EstablishmentAmendUpdateSuccessfulPage;
             viewModel.taxPayerDetails = taxpayerProfile;
             BindingContext = viewModel;
@@ -48,18 +48,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
             }
 
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
         }
     }
 }

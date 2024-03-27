@@ -14,7 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
         public AccountStatementsDetailPageView(MyBills myBills)
         {
             InitializeComponent();
-            SetLTR();
             ChangeAeroIcon();
             this.myBills = myBills;
         }
@@ -24,18 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

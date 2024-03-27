@@ -9,26 +9,19 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundImageSource="partials_background"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <StackLayout Padding="20">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                 <Image Margin="0,0,0,20" Source="forget_ic_success" />
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleBlack}"
                     Text="{x:Static ResourceManager:AppResources.RecoverUserName}"
                     TextColor="White" />
-                <custom:CustomLabel
+                <Label
                     HorizontalOptions="FillAndExpand"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource BodyLabelBlack}"

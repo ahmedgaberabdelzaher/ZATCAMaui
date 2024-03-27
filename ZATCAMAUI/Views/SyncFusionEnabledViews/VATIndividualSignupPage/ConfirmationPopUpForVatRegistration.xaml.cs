@@ -15,7 +15,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             _FromWhere = FromWhere;
             confirmationText.Text = ConfirmationText;
-            SetLTR();
         }
 
         protected override void OnAppearing()
@@ -66,13 +65,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
 
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
         }
     }
 }

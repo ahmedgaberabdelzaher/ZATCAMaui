@@ -36,9 +36,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
 
             }
-
-            // * Page content direction
-            FlowDirection = UtilityManager.SetLTRAndRTL();
         }
         public void ChangeAeroIcon()
         {

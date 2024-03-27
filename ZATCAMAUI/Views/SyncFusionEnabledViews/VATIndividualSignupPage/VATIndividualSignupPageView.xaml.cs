@@ -34,7 +34,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if (!App.IsArabic)
             {
-                FlowDirection = FlowDirection.LeftToRight;
                 Image_backArrow.Rotation = 0;
             }
             else

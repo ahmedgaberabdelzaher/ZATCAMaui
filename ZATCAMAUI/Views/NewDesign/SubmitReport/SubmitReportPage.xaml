@@ -9,7 +9,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -75,7 +75,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -187,14 +187,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Report Type Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ReportType}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Report Type Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -241,14 +241,14 @@
                         <StackLayout IsVisible="{Binding IsReportCategoryShowen}" Spacing="0">
 
                             <!--  Report Category Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ReportCategory}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Report Category Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -292,14 +292,14 @@
                         <StackLayout IsVisible="{Binding IsMissingFieldShowen}" Spacing="0">
 
                             <!--  Missing Field Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ReportMissingField}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Missing Field Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -343,14 +343,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  ReportDetails Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ReportText}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  ReportDetails Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -382,14 +382,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Location Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZTERReportDetailReportDetailRLocation}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Location Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -431,14 +431,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  ViolationDate Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ViolationDate}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <!--  ViolationDate Label  -->
@@ -467,14 +467,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Uploaded files Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Uploaded files Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -517,7 +517,7 @@
                         <StackLayout IsVisible="{Binding IsTherePDFUploaded}" Spacing="0">
 
                             <!--  PDfUploaded Label  -->
-                            <custom:CustomLabel
+                            <Label
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="12"
                                 Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachment}" />
@@ -577,7 +577,7 @@
                         <StackLayout Spacing="0">
 
                             <!--  TIN Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TIN}" />
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TIN}" />
 
                             <!--  TIN Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -605,14 +605,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Company Name Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Company Name Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -641,7 +641,7 @@
                         <StackLayout Spacing="0">
 
                             <!--  Commercial Registration Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}" />
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}" />
 
                             <!--  Commercial Registration Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -668,14 +668,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  WorkType Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.WorkType}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  WorkType Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -703,14 +703,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Company Address Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.NDFacilityAddress}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Company Address Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -738,14 +738,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Region Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
 
                             <!--  Region Entry  -->
@@ -786,14 +786,14 @@
                         <StackLayout IsVisible="{Binding IsCityShowen}" Spacing="0">
 
                             <!--  City Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ReportCity}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  City Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -839,14 +839,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  District Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  District Entry  -->
 
@@ -875,14 +875,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Street Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ReportStreetName}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Street Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -973,10 +973,10 @@
                                     Spacing="10"
                                     VerticalOptions="CenterAndExpand">
                                     <!--  reward hint text Label  -->
-                                    <custom:CustomLabel
+                                    <Label
                                         FontSize="12"
                                         HorizontalOptions="StartAndExpand"
-                                        LineSpacing="0.8"
+                                        LineHeight="0.8"
                                         Text="{x:Static ResourceManager:AppResources.NeedRewardHint}" />
 
                                 </StackLayout>
@@ -988,57 +988,57 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Name Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ReportFullName}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
 
-                                <custom:CustomLabel
+                                <Label
                                     IsVisible="{Binding SubmitReport.IsNeedReward}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ReportFullName}">
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
                                 <!--  Name Entry  -->
                                 <inputLayout:SfTextInputLayout
@@ -1069,57 +1069,57 @@
 
 
                                 <!--  Name Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.NationaID}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
 
-                                <custom:CustomLabel
+                                <Label
                                     IsVisible="{Binding SubmitReport.IsNeedReward}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.NationaID}">
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
                                 <!--  Name Entry  -->
                                 <inputLayout:SfTextInputLayout
@@ -1147,57 +1147,57 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Email Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
 
-                                <custom:CustomLabel
+                                <Label
                                     IsVisible="{Binding SubmitReport.IsNeedReward}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}">
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
 
                                 <!--  Email Entry  -->
@@ -1225,57 +1225,57 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Phone Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <Label IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
 
-                                <custom:CustomLabel
+                                <Label
                                     IsVisible="{Binding SubmitReport.IsNeedReward}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.MobileNumber}">
-                                    <custom:CustomLabel.Triggers>
+                                    <Label.Triggers>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
                                             Binding="{Binding SubmitReport.IsNeedReward}"
-                                            TargetType="custom:CustomLabel"
+                                            TargetType="Label"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
-                                    </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
+                                    </Label.Triggers>
+                                </Label>
 
                                 <!--  Phone Entry  -->
                                 <inputLayout:SfTextInputLayout
@@ -1387,7 +1387,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Bottom Sheet List  -->

@@ -28,7 +28,7 @@ using NotesSet = ZATCAMAUI.Models.VATReviewModel.NotesSet;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 {
-    public class VatReviewViewModel : ViewModelBase
+    public class VatReviewViewModel : BaseViewModel
     {
         #region Enums
 
@@ -113,19 +113,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        private bool _isLoading = false;
-
-        public bool IsLoading
-        {
-            get { return _isLoading; }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        
 
         private bool _isReviewReasonVisible = false;
 
@@ -2784,7 +2772,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public VatReviewInterface vRInterface { get; set; }
 
-        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService)
+        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
 

@@ -6,9 +6,9 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    FlowDirection="{Binding AppDirection}">
     <Grid RowDefinitions="auto,*">
-        <yummy:PancakeView
+        <Border
             Grid.Row="1"
             Padding="20,20,20,0"
             Style="{StaticResource CommonTopCurves}">
@@ -18,7 +18,7 @@
                 HorizontalOptions="FillAndExpand"
                 Navigating="WebView_Navigating"
                 VerticalOptions="FillAndExpand" />
-        </yummy:PancakeView>
+        </Border>
         <controls:Header TitleText="{x:Static ResourceManager:AppResources.CarImport}" />
         <controls:Loader
             Grid.Row="0"

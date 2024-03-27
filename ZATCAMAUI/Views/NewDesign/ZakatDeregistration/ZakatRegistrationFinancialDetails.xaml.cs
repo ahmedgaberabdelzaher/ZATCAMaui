@@ -11,28 +11,13 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         ZakatRegistrationFinancialDetailsPageViewModel viewModel;
         public ZakatRegistrationFinancialDetails()
         {
-            SetLTR();
             InitializeComponent();
             ChangeAeroIcon();
 
             viewModel = App.Locator.ZakatRegistrationFinancialDetailsPageView;
             On<iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            //  this.FlowDirection = FlowDirection.LeftToRight;
         }
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
 
         public void ChangeAeroIcon()
         {
@@ -64,7 +49,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             this.Padding = safeInsets;
 
             await viewModel.LoadDataFinancialDetails();
-            SetLTR();
         }
     }
 }

@@ -6,22 +6,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -51,11 +46,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
+                    <Border
                         Grid.Row="1"
                         Padding="0"
                         BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
+                        StrokeShape="RoundRectangle 15,15,0,0">
                         <Grid
                             Margin="0"
                             Padding="0,0,0,0"
@@ -72,7 +67,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
-                    </yummy:PancakeView>
+                    </Border>
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -137,7 +132,7 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand">
-                        <custom:CustomLabel
+                        <Label
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.TransactionAmount}" />
@@ -209,7 +204,7 @@
                         Grid.Row="1"
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand">
-                        <custom:CustomLabel
+                        <Label
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
@@ -316,12 +311,19 @@
                         Margin="2"
                         Background="White"
                         Closed="TxDateNormalCalendar_Closed"
-                        FlowDirection="LeftToRight"
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="36"
                         Mode="Dialog"
                         SelectedItem="{Binding TodayDateNormal}"
                         Style="{StaticResource PickerStyle}">
+
+                        <custom:CustomDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomDatePicker.ColumnHeaderView>
+
+                         <custom:CustomDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </custom:CustomDatePicker.SelectionView>
 
 
                         <custom:CustomDatePicker.SelectedTextStyle>
@@ -353,9 +355,6 @@
 
                         </custom:CustomDatePicker.FooterView>
 
-                        <custom:CustomDatePicker.Behaviors>
-                            <behaviors:SfPickerBehavior />
-                        </custom:CustomDatePicker.Behaviors>
                     </custom:CustomDatePicker>
 
                     <!--  HijriDatePicker  -->
@@ -365,11 +364,14 @@
                         Margin="2"
                         Background="White"
                         Closed="TxDateNormalCalendar_Closed"
-                        FlowDirection="LeftToRight"
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="36"
                         Mode="Dialog"
                         SelectedItem="{Binding TodayDateinHijri}">
+
+                        <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                          <custom:CustomHijriDatePicker.SelectionView >
                             <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
@@ -410,7 +412,7 @@
                         Grid.Row="2"
                         Grid.Column="0"
                         HorizontalOptions="FillAndExpand">
-                        <custom:CustomLabel
+                        <Label
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" />
@@ -511,12 +513,19 @@
                         x:Name="TaxPeriodDateNormalCalendar"
                         Margin="2"
                         Background="White"
-                        FlowDirection="LeftToRight"
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="36"
                         Mode="Dialog"
                         SelectedItem="{Binding TodayDateNormal}"
                         Style="{StaticResource PickerStyle}">
+
+                        <custom:CustomDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomDatePicker.ColumnHeaderView>
+
+                         <custom:CustomDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </custom:CustomDatePicker.SelectionView>
 
                         <custom:CustomDatePicker.SelectedTextStyle>
                             <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
@@ -547,9 +556,6 @@
 
                         </custom:CustomDatePicker.FooterView>
 
-                        <custom:CustomDatePicker.Behaviors>
-                            <behaviors:SfPickerBehavior />
-                        </custom:CustomDatePicker.Behaviors>
                     </custom:CustomDatePicker>
 
                     <!--  HijriDatePicker  -->
@@ -558,7 +564,6 @@
                         x:Name="TaxPeriodDateHijriCalendar"
                         Margin="2"
                         Background="White"
-                        FlowDirection="LeftToRight"
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="36"
                         Mode="Dialog"
@@ -567,6 +572,10 @@
                          <custom:CustomHijriDatePicker.SelectionView >
                             <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
                          </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                         <custom:CustomHijriDatePicker.SelectedTextStyle>
                             <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />

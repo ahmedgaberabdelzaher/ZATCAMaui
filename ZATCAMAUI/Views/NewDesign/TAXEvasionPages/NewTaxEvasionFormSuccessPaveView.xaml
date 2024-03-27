@@ -9,16 +9,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <!--<ScrollView>-->
         <StackLayout Padding="0,0,0,10" VerticalOptions="FillAndExpand">

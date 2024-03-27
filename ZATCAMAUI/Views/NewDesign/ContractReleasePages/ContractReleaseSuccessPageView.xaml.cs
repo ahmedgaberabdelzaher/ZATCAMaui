@@ -17,8 +17,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         {
             InitializeComponent();
             this.viewModel = viewModel;
-            //ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
 
             var safeInsets = On<iOS>().SafeAreaInsets();
@@ -30,13 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             ContractNumberTxt.Text = viewModel.ContractReleaseData.d.AContNo;
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

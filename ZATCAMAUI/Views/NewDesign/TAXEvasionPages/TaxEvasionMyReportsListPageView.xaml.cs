@@ -21,7 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             viewModel.SelectedChipFilterItemList = new List<ChipModel>();
 
             On<iOS>().SetUseSafeArea(true);
-            SetLTR();
 
 
         }
@@ -70,20 +69,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
         private async void ChipGroup_statusFilter_SelectionChanging(object sender, Syncfusion.Maui.Core.Chips.SelectionChangingEventArgs e)
         {
             try

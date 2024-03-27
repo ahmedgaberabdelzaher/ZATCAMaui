@@ -28,7 +28,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             viewModel.SetUIAvailability();
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
@@ -36,19 +35,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.PickerModel = arg;
             });
         }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

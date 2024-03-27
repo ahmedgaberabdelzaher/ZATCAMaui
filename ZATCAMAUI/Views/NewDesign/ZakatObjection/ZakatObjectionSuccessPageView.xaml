@@ -11,10 +11,10 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
-    FlowDirection="RightToLeft"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -62,10 +62,10 @@
             </StackLayout>
             <ScrollView>
                 <Grid>
-                    <yummy:PancakeView
+                    <Border
                         Padding="20"
                         BackgroundColor="White"
-                        CornerRadius="20,20,0,0"
+                        StrokeShape="RoundRectangle 20,20,0,0"
                         VerticalOptions="EndAndExpand">
                         <StackLayout>
 
@@ -87,7 +87,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         HorizontalOptions="Start"
@@ -97,7 +97,7 @@
 
 
 
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         HorizontalOptions="End"
@@ -153,18 +153,18 @@
 
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Margin="10,0,10,15"
                                 HorizontalOptions="Center"
                                 HorizontalTextAlignment="Center"
                                 Style="{StaticResource BodyLabelSecondary}"
                                 Text="{x:Static ResourceManager:AppResources.ZakatObjection}">
-                                <custom:CustomLabel.GestureRecognizers>
+                                <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ZAkat_Objections_Tapped" />
-                                </custom:CustomLabel.GestureRecognizers>
-                            </custom:CustomLabel>
+                                </Label.GestureRecognizers>
+                            </Label>
                         </StackLayout>
-                    </yummy:PancakeView>
+                    </Border>
 
 
 

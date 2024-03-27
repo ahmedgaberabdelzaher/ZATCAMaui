@@ -9,15 +9,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
+    FlowDirection="{Binding AppDirection}">
     <ContentPage.Content>
         <AbsoluteLayout>
             <BoxView
@@ -29,13 +21,13 @@
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </BoxView.GestureRecognizers>
             </BoxView>
-            <yummy:PancakeView
+            <Border
                 x:Name="picker"
                 Padding="0"
                 AbsoluteLayout.LayoutBounds="1,1,1,.4"
                 AbsoluteLayout.LayoutFlags="All"
                 BackgroundColor="White"
-                CornerRadius="14,14,0,0"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
                 <StackLayout Orientation="Vertical">
 
@@ -66,49 +58,41 @@
                         Margin="0,8,0,0"
                         Padding="24,0"
                         Orientation="Vertical">
-                        <syncfusion:SfPicker
+                        <customcontrol:CustomSfPicker
                             x:Name="TaxTypePicker"
                             Background="White"
-                            FlowDirection="RightToLeft"
                             IsOpen="True"
                             ItemHeight="56"
                             Mode="Default">
 
-                            <syncfusion:SfPicker.TextStyle>
+                            <customcontrol:CustomSfPicker.TextStyle>
                                 <syncfusion:PickerTextStyle
                                     FontFamily="{OnPlatform iOS=Somar-SemiBold,
                                                             Android=GAZT_FONT_BOLD}"
                                     FontSize="15"
                                     TextColor="{StaticResource NeutralBlack}" />
-                            </syncfusion:SfPicker.TextStyle>
+                            </customcontrol:CustomSfPicker.TextStyle>
 
-                            <syncfusion:SfPicker.Columns>
+                            <customcontrol:CustomSfPicker.Columns>
                                 <syncfusion:PickerColumn Width="300" DisplayMemberPath="TaxType" />
-                            </syncfusion:SfPicker.Columns>
+                            </customcontrol:CustomSfPicker.Columns>
 
-                            <syncfusion:SfPicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46">
-                                    <syncfusion:PickerColumnHeaderView.TextStyle>
-                                        <syncfusion:PickerTextStyle FontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}" />
-                                    </syncfusion:PickerColumnHeaderView.TextStyle>
-                                </syncfusion:PickerColumnHeaderView>
-                            </syncfusion:SfPicker.ColumnHeaderView>
 
-                            <syncfusion:SfPicker.SelectionView>
+                            <customcontrol:CustomSfPicker.SelectionView>
                                 <syncfusion:PickerSelectionView Background="LightGray" />
-                            </syncfusion:SfPicker.SelectionView>
+                            </customcontrol:CustomSfPicker.SelectionView>
 
-                            <syncfusion:SfPicker.SelectedTextStyle>
+                            <customcontrol:CustomSfPicker.SelectedTextStyle>
                                 <syncfusion:PickerTextStyle
                                     FontAttributes="Bold"
                                     FontFamily="{OnPlatform iOS=Somar-SemiBold,
                                                             Android=GAZT_FONT_BOLD}"
                                     FontSize="15"
                                     TextColor="{StaticResource NeutralBlack}" />
-                            </syncfusion:SfPicker.SelectedTextStyle>
+                            </customcontrol:CustomSfPicker.SelectedTextStyle>
 
 
-                            <syncfusion:SfPicker.HeaderView>
+                            <customcontrol:CustomSfPicker.HeaderView>
 
                                 <syncfusion:PickerHeaderView
                                     Height="55"
@@ -119,9 +103,9 @@
                                     </syncfusion:PickerHeaderView.TextStyle>
                                 </syncfusion:PickerHeaderView>
 
-                            </syncfusion:SfPicker.HeaderView>
+                            </customcontrol:CustomSfPicker.HeaderView>
 
-                            <syncfusion:SfPicker.FooterView>
+                            <customcontrol:CustomSfPicker.FooterView>
 
                                 <syncfusion:PickerFooterView Height="46">
 
@@ -131,20 +115,16 @@
 
                                 </syncfusion:PickerFooterView>
 
-                            </syncfusion:SfPicker.FooterView>
+                            </customcontrol:CustomSfPicker.FooterView>
 
-
-                            <syncfusion:SfPicker.Behaviors>
-                                <behaviors:SfPickerBehavior />
-                            </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker>
+                        </customcontrol:CustomSfPicker>
                     </StackLayout>
 
                 </StackLayout>
 
 
 
-            </yummy:PancakeView>
+            </Border>
         </AbsoluteLayout>
     </ContentPage.Content>
 </pages:PopupPage>

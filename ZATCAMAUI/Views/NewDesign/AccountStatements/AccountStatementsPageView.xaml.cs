@@ -21,7 +21,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             ChangeAeroIcon();
-            SetLTR();
             ChangeArrowDirection();
             Task.Run(async () =>
             {
@@ -58,22 +57,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             }
         }
 
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-                LvwContacts.FlowDirection = FlowDirection.LeftToRight;
-                (LvwContacts.Header as StackLayout).FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-                LvwContacts.FlowDirection = FlowDirection.RightToLeft;
-                LvwContacts.FlowDirection = FlowDirection.RightToLeft;
-                (LvwContacts.Header as StackLayout).FlowDirection = FlowDirection.RightToLeft;
-            }
-        }
 
         public void ChangeAeroIcon()
         {
@@ -87,17 +70,13 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             }
         }
 
-        private void btn_Clicked(object sender, EventArgs e)
-        {
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
+            //var safeInsets = On<iOS>().SafeAreaInsets();
+            //safeInsets.Bottom = -10;
+            //Padding = safeInsets;
 
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>

@@ -8,7 +8,6 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -71,7 +70,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView
+            <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -111,16 +110,16 @@
                         <StackLayout Spacing="0">
 
                             <!--  MobileNumber Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                            <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
+                                </Label.FormattedText>
 
-                            </custom:CustomLabel>
+                            </Label>
 
                             <!--  MobileNumber Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -152,16 +151,16 @@
                         <StackLayout Spacing="0">
 
                             <!--  Email Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                            <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
+                                </Label.FormattedText>
 
-                            </custom:CustomLabel>
+                            </Label>
 
                             <!--  Email Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -188,16 +187,16 @@
                         <StackLayout Spacing="0">
 
                             <!--  Address Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                            <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
+                                </Label.FormattedText>
 
-                            </custom:CustomLabel>
+                            </Label>
 
                             <!--  Address Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -243,7 +242,7 @@
 
                 </ScrollView>
 
-            </yummy:PancakeView>
+            </Border>
             <!--#endregion Body-->
 
             <!--  Loader  -->

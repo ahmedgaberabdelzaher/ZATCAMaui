@@ -1,11 +1,12 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
 {
 
-    public class AddPopPageViewModel : ViewModelBase
+    public class AddPopPageViewModel : BaseViewModel
     {
         #region Variable
         public readonly INavigationService _navigationService;
@@ -119,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
         }
         #endregion
         #region Constructor
-        public AddPopPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AddPopPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
             {

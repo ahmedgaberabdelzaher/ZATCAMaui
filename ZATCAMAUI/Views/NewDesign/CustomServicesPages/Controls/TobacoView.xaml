@@ -6,6 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    FlowDirection="{Binding AppDirection}"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core">
     <!--<ContentView.Resources>
         <ResourceDictionary>
@@ -21,14 +22,14 @@
             <!--  TypeItem Field  -->
             <StackLayout Spacing="0">
                 <!--  TypeItem Label  -->
-                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                    <custom:CustomLabel.FormattedText>
+                <Label Style="{StaticResource CaptionLabelGrey}">
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.TypeItem}" />
                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
                 <!--  TypeItem Entry  -->
                 <inputLayout:SfTextInputLayout
@@ -75,14 +76,14 @@
             <StackLayout Spacing="0">
 
                 <!--  ProductName Label  -->
-                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                    <custom:CustomLabel.FormattedText>
+                <Label Style="{StaticResource CaptionLabelGrey}">
+                    <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.ProductName}" />
                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                         </FormattedString>
-                    </custom:CustomLabel.FormattedText>
-                </custom:CustomLabel>
+                    </Label.FormattedText>
+                </Label>
 
                 <!--  ProductName Entry  -->
                 <StackLayout>
@@ -129,14 +130,14 @@
                 <StackLayout Spacing="0">
 
                     <!--  Quantity Label  -->
-                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                        <custom:CustomLabel.FormattedText>
+                    <Label Style="{StaticResource CaptionLabelGrey}">
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.Quantity}" />
                                 <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
 
                     <!--  Quantity Entry  -->
                     <inputLayout:SfTextInputLayout
@@ -171,14 +172,14 @@
                 <StackLayout Spacing="0">
 
                     <!--  Total value Label  -->
-                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                        <custom:CustomLabel.FormattedText>
+                    <Label Style="{StaticResource CaptionLabelGrey}">
+                        <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.Productvalue}" />
                                 <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                             </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
+                        </Label.FormattedText>
+                    </Label>
 
                     <!--  Total Value Entry  -->
                     <inputLayout:SfTextInputLayout
@@ -204,7 +205,7 @@
                             </custom:GAZTBorderlessEntry.Behaviors>
                         </custom:GAZTBorderlessEntry>
                         <inputLayout:SfTextInputLayout.TrailingView>
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
 

@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    TitleText="{x:Static ResourceManager:AppResources.NDChat}">
+    TitleText="{x:Static ResourceManager:AppResources.NDChat}"
+    FlowDirection="{Binding AppDirection}">
     <newdesign:BaseContentPage.PancakeView>
         <WebView x:Name="ChatWebView" />
     </newdesign:BaseContentPage.PancakeView>

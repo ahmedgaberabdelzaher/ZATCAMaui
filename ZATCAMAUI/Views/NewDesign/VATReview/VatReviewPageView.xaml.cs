@@ -22,7 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             NavigationPage.SetBackButtonTitle(this, "");
 
             ChangeAeroIcon();
-            SetLTR();
             On<iOS>().SetUseSafeArea(true);
 
             viewModel = App.Locator.VatReviewView;
@@ -40,14 +39,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
             viewModel.setMoreOptioButtons();
 
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-            }
         }
         public void ChangeAeroIcon()
         {

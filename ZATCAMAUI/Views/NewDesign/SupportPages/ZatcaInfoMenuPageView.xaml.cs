@@ -17,30 +17,12 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
 
             InitializeComponent();
 
-            SetLTR();
             viewModel = App.Locator.ZatcaInfoMenuPageView;
             BindingContext = viewModel;
 
             viewModel.setMenuTab();
             On<iOS>().SetUseSafeArea(true);
             App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
-        }
-        private void SetLTR()
-        {
-
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
-
-
-            }
-            else
-            {
-                FlowDirection = FlowDirection.RightToLeft;
-
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
         }
         protected override void OnAppearing()
         {

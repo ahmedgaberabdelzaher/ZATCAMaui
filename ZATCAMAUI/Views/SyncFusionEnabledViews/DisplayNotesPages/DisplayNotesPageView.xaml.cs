@@ -25,7 +25,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.DisplayNotesPages
                 viewModel = App.Locator.DisplayNotesPageView;
                 BindingContext = viewModel;
                 ChangeAeroIcon();
-                SetLTR();
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     if (vATDeclaration.d.NOTESSet.results.Count != 0)
@@ -57,13 +56,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.DisplayNotesPages
             else
             {
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                FlowDirection = FlowDirection.LeftToRight;
             }
         }
         #endregion

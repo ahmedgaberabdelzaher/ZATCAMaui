@@ -15,7 +15,7 @@
     xmlns:local1="clr-namespace:ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}"
     x:Name="TinDeregIndOutlets">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -33,11 +33,11 @@
         </ResourceDictionary>
 
     </ContentPage.Resources>
-    <yummy:PancakeView
+    <Border
         Grid.Row="1"
         Padding="0"
         BackgroundColor="White"
-        CornerRadius="30,30,0,0">
+        StrokeShape="RoundRectangle 30,30,0,0">
         <Grid>
             <ScrollView>
                 <Grid
@@ -243,6 +243,15 @@
                                 Mode="Dialog"
                                 SelectedItem="{Binding TodayDate}">
 
+                                  <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
+
                                 <custom:CustomDatePicker.SelectedTextStyle>
                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                 </custom:CustomDatePicker.SelectedTextStyle>
@@ -266,9 +275,6 @@
 
                                 </custom:CustomDatePicker.FooterView>
 
-                                <custom:CustomDatePicker.Behaviors>
-                                    <behaviors:SfPickerBehavior />
-                                </custom:CustomDatePicker.Behaviors>
 
                             </custom:CustomDatePicker>
 
@@ -285,8 +291,12 @@
                                 SelectedItem="{Binding TodayDateinHijri}">
 
                                  <custom:CustomHijriDatePicker.SelectionView >
-                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                </custom:CustomHijriDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                 <custom:CustomHijriDatePicker.HeaderView>
 
@@ -390,12 +400,19 @@
                                         Margin="10,0,10,0"
                                         Background="White"
                                         Closed="CloseDeregDatePicker_Closed"
-                                        FlowDirection="RightToLeft"
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="40"
                                         Mode="Dialog"
                                         SelectedItem="{Binding TodayDate}">
 
+                                        <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                                         <custom:CustomDatePicker.SelectionView >
+                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                         </custom:CustomDatePicker.SelectionView>
 
                                         <custom:CustomDatePicker.SelectedTextStyle>
                                             <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -420,9 +437,6 @@
 
                                         </custom:CustomDatePicker.FooterView>
 
-                                        <custom:CustomDatePicker.Behaviors>
-                                            <behaviors:SfPickerBehavior />
-                                        </custom:CustomDatePicker.Behaviors>
 
                                     </custom:CustomDatePicker>
 
@@ -438,9 +452,13 @@
                                         Mode="Dialog"
                                         SelectedItem="{Binding TodayDateinHijri}">
 
-                                         <custom:CustomHijriDatePicker.SelectionView >
-                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                        </custom:CustomHijriDatePicker.SelectionView>
+                                        <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                         <custom:CustomHijriDatePicker.HeaderView>
 
@@ -650,13 +668,18 @@
                                     Margin="10,0,10,0"
                                     Background="White"
                                     Closed="TransferDOBPicker_Closed"
-                                    FlowDirection="RightToLeft"
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="40"
                                     Mode="Dialog"
                                     SelectedItem="{Binding TodayDate}">
 
+                                      <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
 
+                                        <custom:CustomDatePicker.SelectionView >
+                                        <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                                        </custom:CustomDatePicker.SelectionView>
 
                                     <custom:CustomDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -681,9 +704,6 @@
 
                                     </custom:CustomDatePicker.FooterView>
 
-                                    <custom:CustomDatePicker.Behaviors>
-                                        <behaviors:SfPickerBehavior />
-                                    </custom:CustomDatePicker.Behaviors>
 
                                 </custom:CustomDatePicker>
 
@@ -699,9 +719,13 @@
                                     Mode="Dialog"
                                     SelectedItem="{Binding TodayDateinHijri}">
 
-                                     <custom:CustomHijriDatePicker.SelectionView >
-                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                      </custom:CustomHijriDatePicker.SelectionView>
+                                    <custom:CustomHijriDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -1742,12 +1766,18 @@
                         Margin="10,0,10,0"
                         Background="White"
                         Closed="ClosePermitDeregDatePicker_Closed"
-                        FlowDirection="RightToLeft"
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="40"
                         Mode="Dialog"
                         SelectedItem="{Binding TodayDate}">
+                          <custom:CustomDatePicker.ColumnHeaderView>
+                                <syncfusion:PickerColumnHeaderView Height="46" />
+                            </custom:CustomDatePicker.ColumnHeaderView>
 
+
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
 
                         <custom:CustomDatePicker.SelectedTextStyle>
                             <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1772,9 +1802,6 @@
 
                         </custom:CustomDatePicker.FooterView>
 
-                        <custom:CustomDatePicker.Behaviors>
-                            <behaviors:SfPickerBehavior />
-                        </custom:CustomDatePicker.Behaviors>
 
                     </custom:CustomDatePicker>
 
@@ -1792,7 +1819,11 @@
 
                          <custom:CustomHijriDatePicker.SelectionView >
                             <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                        </custom:CustomHijriDatePicker.SelectionView>
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                         <custom:CustomHijriDatePicker.HeaderView>
 
@@ -1822,13 +1853,19 @@
                         Margin="10,0,10,0"
                         Background="White"
                         Closed="ClosePermitDOBPicker_Closed"
-                        FlowDirection="RightToLeft"
                         HorizontalOptions="FillAndExpand"
                         ItemHeight="40"
                         Mode="Dialog"
                         SelectedItem="{Binding TodayDate}">
 
+                          <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
 
+
+                         <custom:CustomDatePicker.SelectionView >
+                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                         </custom:CustomDatePicker.SelectionView>
 
                         <custom:CustomDatePicker.SelectedTextStyle>
                             <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1853,9 +1890,6 @@
 
                         </custom:CustomDatePicker.FooterView>
 
-                        <custom:CustomDatePicker.Behaviors>
-                            <behaviors:SfPickerBehavior />
-                        </custom:CustomDatePicker.Behaviors>
 
                     </custom:CustomDatePicker>
 
@@ -1873,7 +1907,11 @@
 
                          <custom:CustomHijriDatePicker.SelectionView >
                             <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                        </custom:CustomHijriDatePicker.SelectionView>
+                         </custom:CustomHijriDatePicker.SelectionView>
+
+                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" />
+                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
 
                         <custom:CustomHijriDatePicker.HeaderView>
@@ -1914,5 +1952,5 @@
                 </Grid>
             </ScrollView>
         </Grid>
-    </yummy:PancakeView>
+    </Border>
 </pages:PopupPage>

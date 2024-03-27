@@ -11,7 +11,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
 
-    public class AttachmentPopUpViewModel : ViewModelBase
+    public class AttachmentPopUpViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -42,19 +42,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+      
 
         private string _attachmentName = "";
         public string AttachmentName
@@ -100,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
-        public AttachmentPopUpViewModel(INavigationService navigationService, IDialogService dialogService)
+        public AttachmentPopUpViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
