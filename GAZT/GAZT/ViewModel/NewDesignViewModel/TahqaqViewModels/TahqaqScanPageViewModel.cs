@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models.BaseModels;
 using EGAZT.Models.EinvoiceModels;
 using EGAZT.Models.SurveyModels;
 using EGAZT.Models.TahqaqModels;
@@ -347,7 +348,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             IsLoading = true;
 
                             string code = scanCode;
-                         //  code = "ASVaYW1pbCBPcGVyYXRpb25zICYgTWFpbnRlbmFuY2UgQ28gTHRkAg8zMTAxMzY4NDAzMDAwMDMDEzIwMjMtMTItMThUMDY6NDM6MjUEBzExNzYuOTEFBjE1My41MQYsVDI2RjBMYzVvTHpGenZTVjNIU1JLQnIwNSsvQmRmRG93bzU1VjhHNitwOD0HYE1FUUNJRGVnSUw5MStMTHN1c3F5Ukd2djd5cUZ5ZEtsTmQ0UnhXZ3JLQ1c0Vmd5cUFpQk04SDhYaWlMclhrZTZzVm9LeUo0TXRuS2NCZDUyV281VlpRUHZtcVByT1E9PQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEouqS1tSXHqT8suzSdB7CJVLlQZnGe8B12TYwC8O4PqJJVEFHOHV3nzdenUmVyRzExqlrGHhfJ1yB+jrEECWyZg==";
+                           code = "ASVaYW1pbCBPcGVyYXRpb25zICYgTWFpbnRlbmFuY2UgQ28gTHRkAg8zMTAxMzY4NDAzMDAwMDMDEzIwMjMtMTItMThUMDY6NDM6MjUEBzExNzYuOTEFBjE1My41MQYsVDI2RjBMYzVvTHpGenZTVjNIU1JLQnIwNSsvQmRmRG93bzU1VjhHNitwOD0HYE1FUUNJRGVnSUw5MStMTHN1c3F5Ukd2djd5cUZ5ZEtsTmQ0UnhXZ3JLQ1c0Vmd5cUFpQk04SDhYaWlMclhrZTZzVm9LeUo0TXRuS2NCZDUyV281VlpRUHZtcVByT1E9PQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEouqS1tSXHqT8suzSdB7CJVLlQZnGe8B12TYwC8O4PqJJVEFHOHV3nzdenUmVyRzExqlrGHhfJ1yB+jrEECWyZg==";
                             if (code == "-1")
                             {
                                 return;
@@ -780,7 +781,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         }
 
-        public async Task GetQrDataEradApi(string TinNo)
+        public async Task GetQrDataEradApiOld(string TinNo)
         {
             try
             {
@@ -886,6 +887,122 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
 
         }
+
+        public async Task GetQrDataEradApi(string TinNo)
+        {
+            try
+            {
+                IsLoading = true;
+                if (Helper.NetworkCheck.IsInternet())
+                {
+                    IsClearedStatusVisible = false;
+                    var body = new EradQrBody() { idType = "3", idNumber = TinNo };
+                    var res =await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                     var content =await res.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject< DATAPowerBaseResponseResult<VATLokupsDP> >(content);
+                    var qrResponseData = result.result;
+                    //// Old APi T2
+                    // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
+                    // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    if (qrResponseData != null&& qrResponseData.lookups!=null & qrResponseData.lookups.Count>0)
+                    {
+                        //   var content =await data.Content.ReadAsStringAsync();
+                        ///  var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
+
+                        if (qrResponseData.lookups[0].einvEnfStatus==null)
+                        {
+                            qrResponseData.lookups[0].einvEnfStatus = "";
+                        }
+                        var EInvEnfStatus = qrResponseData.lookups[0].einvEnfStatus == "" ? 0 : int.Parse(qrResponseData.lookups[0].einvEnfStatus);
+                        if (string.IsNullOrEmpty(qrResponseData.lookups[0].errorDescription))
+                        {
+
+                            if (NoofTags == 5 && EInvEnfStatus == 0)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                            }
+                            else if (NoofTags == 5 && EInvEnfStatus == 1)
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                            }
+                            else if (NoofTags == 9 && EInvEnfStatus == 1)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+
+                            }
+                            else if (NoofTags == 8 && EInvEnfStatus == 1)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                                IsClearedStatusVisible = true;
+
+                            }
+                            else
+                            {
+                                if (NoofTags == 8)
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                    // IsShowSubmitReport = false;
+                                }
+                                else
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            /* if (NoofTags == 5)
+                             {*/
+                            RegisterStatus = AppResources.NotRegistered;
+                            IsShowSubmitReport = true;
+                            IsShowRsltView = true;
+                            IsShowScanView = false;
+                            /* }
+                            else
+                             {
+                                 IsShowMsgView = true;
+                                 MessageTxt = AppResources.InvalidQrMessage;
+                             }*/
+                        }
+
+                    }
+                    /*else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        RegisterStatus = AppResources.NotRegistered;
+                        IsShowSubmitReport = true;
+                    }*/
+                    else
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.unableToVerify;
+                        // RegisterStatus = AppResources.unableToVerify;
+                    }
+
+
+                }
+                else
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.unableToVerify;
+                    // RegisterStatus = AppResources.unableToVerify;
+                }
+
+                IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.unableToVerify;
+            }
+            finally
+            {
+                IsLoading = false;
+                IsScanning = false;
+            }
+
+        }
+
 
         private void RegistredStatusWithDisplaQRRslt()
         {

@@ -31,6 +31,31 @@ namespace GAZT.Models
         public string EinvEnfStatus { get; set; }
         public string EinvEnfDt { get; set; }
     }
+
+    public class Lookup
+    {
+        public string idNumber { get; set; }
+        public string TIN { get; set; }
+        public string name { get; set; }
+        public string buildingCode { get; set; }
+        public string street { get; set; }
+        public string houseNumber { get; set; }
+        public string postCode { get; set; }
+        public string city { get; set; }
+        public string region { get; set; }
+        public string country { get; set; }
+        public string VATCertificateNumber { get; set; }
+        public string errorCode { get; set; }
+        public string errorDescription { get; set; }
+        public int idType { get; set; }
+        public string einvEnfStatus { get; set; }
+        public string einvEnfDt { get; set; }
+    }
+
+    public class VATLokupsDP
+    {
+        public List<Lookup> lookups { get; set; }
+    }
     [Preserve(AllMembers = true)]
     public class VATLookUpD
     {
