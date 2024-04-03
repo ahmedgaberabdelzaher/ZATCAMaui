@@ -91,10 +91,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 var index = OutletTabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 OutletTabScrollView.ScrollToAsync(OutletTabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception) {
+            catch (Exception ex) {
 
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -113,10 +113,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception) {
+            catch (Exception ex) {
 
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -154,10 +154,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.SelectedOutletType = result;
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

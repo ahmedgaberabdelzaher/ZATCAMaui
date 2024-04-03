@@ -81,7 +81,7 @@ namespace GAZT.Models
         public string NameOrg1 { get; set; }
         [JsonProperty("TypeChk")]
         public string TypeChk { get; set; }
-
+        public string CozatcaTile { get; set; }
         public string ResponseStatusMessage { get; set; }
 
         public string ResponseStatusCode { get; set; }

@@ -33,7 +33,6 @@
                     <TapGestureRecognizer Tapped="OnCloseTapped"/>
                 </Image.GestureRecognizers>
             </Image>-->
-
             <Label
                 x:Name="InfromatationText"
                 HorizontalTextAlignment="Start"

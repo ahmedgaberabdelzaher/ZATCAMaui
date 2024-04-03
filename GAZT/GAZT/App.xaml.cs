@@ -136,7 +136,10 @@ namespace EGAZT
         public static string NotesPopUpPageView = "NotesPopUpPageView";
         public static string TaxManagementPageView = "TaxManagementPageView";
         // * End
-
+        // * Bank Managment
+        public static string GAZTBankAccountManagementPageView = "BankAccountManagementPageView";
+        public static string GAZTBankAccountAddOrUpdatePageView = "BankAccountAddorUpdateIBANPageView";
+        // * End
         #endregion
 
         #region new design views Release2
@@ -289,9 +292,18 @@ namespace EGAZT
 
         public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
 
+        //CR6003
+        public static string ChangeMobileRequestPageView = "ChangeMobileRequestPageView";
+        public static string ChangeMobNafathLoginPage = "ChangeMobNafathLoginPage";
+        public static string UpdateManagerDetailsPopUp = "UpdateManagerDetailsPopUp";
+
+
         //cr6094
         public static string NafathPopUpPage = "NafathPopUpPage";
         public static string NafathLoginPageView = "NafathLoginPageView";
+
+        //cr6003
+        public static string GUIDFrChangeMob { get; set; }
 
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
@@ -360,6 +372,10 @@ namespace EGAZT
         public static bool IsVAtProfitForGoods { get; set; }
         //in Seconds
         public static int IdleTimeToLogout = 100;
+        //Bank Managment
+        public static string SelectedIBAN = string.Empty;
+        public static string SelectedFbGuid = string.Empty;
+        public static string IBanValidatedResponse = string.Empty;
 
         public static bool IsLoginPageRefreshed;
         private INavigationService _navigationService;
@@ -393,8 +409,8 @@ namespace EGAZT
         {
             IsAppRunningInBackground = false;
             App.Current.Properties["timeOut"] = DateTime.Now;
-            PageSettings.CheckTarget_Environment("STG");
-            PageSettings.GetBaseURL("STG");
+            PageSettings.CheckTarget_Environment("Prod");
+            PageSettings.GetBaseURL("Prod");
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
             Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;

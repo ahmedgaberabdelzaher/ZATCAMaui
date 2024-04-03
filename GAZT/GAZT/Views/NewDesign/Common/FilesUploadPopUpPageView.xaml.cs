@@ -108,6 +108,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.TitleOne = "";
                 viewModel.TitleTwo = AppResources.TINDeregAttachmentsTitleTwo;
             }
+            else if (whichAttachment == WhichAttachment.IBANBankAccountOne || whichAttachment == WhichAttachment.IBANBankAccountTwo)
+            {
+                viewModel.TitleOne = "";
+                viewModel.TitleTwo = AppResources.IBANAttachmentTitle; ;
+            }
             else
             {
                 viewModel.TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
@@ -228,6 +233,14 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo)
             {
                 viewModel.DocTypeString = "N03B";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.IBANBankAccountOne)
+            {
+                viewModel.DocTypeString = "ZIB1";
+            }
+            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.IBANBankAccountTwo)
+            {
+                viewModel.DocTypeString = "ZIB2";
             }
 
         }

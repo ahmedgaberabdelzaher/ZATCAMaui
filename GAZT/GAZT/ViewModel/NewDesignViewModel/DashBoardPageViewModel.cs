@@ -1827,7 +1827,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                  RaisePropertyChanged("ACStatementBills");
             }
         }
+        private bool _isContactZatcaEmpTileVisible = false;
+        public bool IsContactZatcaEmpTileVisible
+        {
+            get
+            {
+                return _isContactZatcaEmpTileVisible;
+            }
+            set
+            {
+                if (_isContactZatcaEmpTileVisible == value) return;
 
+                _isContactZatcaEmpTileVisible = value;
+                RaisePropertyChanged("IsContactZatcaEmpTileVisible");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -2022,7 +2036,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
 
-                            ApplePayStatus = await ProcessApplePay();
+                            //ApplePayStatus = await ProcessApplePay();
                         }
 
 
@@ -2086,22 +2100,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-        private async Task<bool> ProcessApplePay()
-        {
-            try
-            {
-                var Amount = Convert.ToDouble(PaymentData.d.Amount);
-                var BillAmount = Math.Round(Amount, 2);
-                DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
-                return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
-            }
-            catch (Exception)
-            {
+        //private async Task<bool> ProcessApplePay()
+        //{
+        //    try
+        //    {
+        //        var Amount = Convert.ToDouble(PaymentData.d.Amount);
+        //        var BillAmount = Math.Round(Amount, 2);
+        //        DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
+        //        return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+        //    }
+        //    catch (Exception)
+        //    {
                 
                 
-                return false;
-            }
-        }
+        //        return false;
+        //    }
+        //}
 
         public async Task UpdateApplePayPaymentGuid()
         {

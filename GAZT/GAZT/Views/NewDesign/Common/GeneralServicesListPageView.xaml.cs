@@ -89,15 +89,21 @@ namespace EGAZT.Views.NewDesign.Common
                     _viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-            
+                else if (selectedItem.ZDTitle == AppResources.NDBankAccManagement)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "BankAccManagement", "BankAccManagement");
+                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                }
+
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

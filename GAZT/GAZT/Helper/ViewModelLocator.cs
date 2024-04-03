@@ -181,6 +181,9 @@ using EGAZT.Views.NewDesign.EDeclaration.InfoPages;
 using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
 using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesViews;
+using EGAZT.Views.SyncFusionEnabledViews.LoginPages;
+using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
+using EGAZT.Views.NewDesign.IBanAccountsManagementPages;
 
 namespace EGAZT
 {
@@ -210,7 +213,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<ITrackShipment, TrackShipmentServices>();
             SimpleIoc.Default.Register<INativeNafath, NativeNafathServices>();
             SimpleIoc.Default.Register<EDeclerationSubmitModel>();
-
+            SimpleIoc.Default.Register<BankAccountManagementPageViewModel>();
+            SimpleIoc.Default.Register<BankAccountAddorUpdateIBANViewModel>();
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -463,6 +467,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<FasahLoginViewModel>();
             SimpleIoc.Default.Register<BaseLoginViewModel>();
             SimpleIoc.Default.Register<InquiryaboutCustomsIssuesViewModel>();
+
+            SimpleIoc.Default.Register<UpdateManagerViewModel>();
+            SimpleIoc.Default.Register<ChangeMobNafathPageViewMode>();
+            SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
+
+            SimpleIoc.Default.Register<NafathPopupPageViewModel>();
+            SimpleIoc.Default.Register<NafathLoginPageViewModel>();
+
             #endregion
         }
 
@@ -904,8 +916,8 @@ namespace EGAZT
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
-                    SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
+                    //SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
+                    //SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
                 }
                 catch (Exception)
@@ -2704,7 +2716,8 @@ namespace EGAZT
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
             navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
             navigationService.Configure(App.TaxpayerSubsidyRequest, typeof(TaxpayerSubsidyRequest));
-
+            navigationService.Configure(App.GAZTBankAccountManagementPageView, typeof(BankAccountManagementPageView));
+            navigationService.Configure(App.GAZTBankAccountAddOrUpdatePageView, typeof(BankAccountAddorUpdateIBANPageView));
             #endregion
 
             #region NewDesignRelease2
@@ -2928,7 +2941,12 @@ namespace EGAZT
             navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
             navigationService.Configure("InquiryaboutCustomsIssuesView", typeof(InquiryaboutCustomsIssuesView));
-#endregion
+            //CR6003
+            navigationService.Configure(App.ChangeMobileRequestPageView, typeof(ChangeMobileRequestPageView));
+            navigationService.Configure(App.ChangeMobNafathLoginPage, typeof(ChangeMobNafathLoginPage));
+            navigationService.Configure(App.UpdateManagerDetailsPopUp, typeof(UpdateManagerDetailsPopUp));
+
+            #endregion
 
             return navigationService;
         }
@@ -3474,7 +3492,6 @@ namespace EGAZT
                 }
             }
         }
-
         public ViewNotePopUpViewModel ViewNotePopUpViewModel
         {
             get
@@ -4355,6 +4372,85 @@ namespace EGAZT
                 }
             }
         }
+        public ChangeMobileRequestViewModel ChangeMobileRequestPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<ChangeMobileRequestViewModel>();
+                    SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
+                    return ServiceLocator.Current.GetInstance<ChangeMobileRequestViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public ChangeMobNafathPageViewMode ChangeMobNafathLoginPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeMobNafathPageViewMode>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public UpdateManagerViewModel UpdateManagerPopUp
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdateManagerViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public BankAccountManagementPageViewModel BankAccountManagementPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountManagementPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public BankAccountAddorUpdateIBANViewModel BankAccountAddOrUpdatePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountAddorUpdateIBANViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
         //
     }
 

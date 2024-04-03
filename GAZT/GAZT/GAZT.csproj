@@ -149,6 +149,8 @@
 	  <None Remove="Views\NewDesign\Common\NativeNafath\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
 	  <None Remove="Models\EinvoiceModels\DPModels\" />
+	  <None Remove="ViewModel\NewDesignViewModel\IBanAccManagementsViewModel\" />
+	  <None Remove="Views\NewDesign\IBanAccountsManagementPages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -299,7 +301,12 @@
 		<Folder Include="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 		<Folder Include="Views\NewDesign\Common\NativeNafath\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
+<<<<<<< HEAD
 		<Folder Include="Models\EinvoiceModels\DPModels\" />
+=======
+		<Folder Include="ViewModel\NewDesignViewModel\IBanAccManagementsViewModel\" />
+		<Folder Include="Views\NewDesign\IBanAccountsManagementPages\" />
+>>>>>>> release/release2.1.16
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

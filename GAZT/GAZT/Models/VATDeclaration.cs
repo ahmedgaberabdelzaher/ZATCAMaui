@@ -243,6 +243,9 @@ namespace EGAZT.Models
         public string Visedit { get; set; }
         //[DataMember]
         public string Visdel { get; set; }
+        //[DataMember]
+        public Color ColorOf { get; set; }
+        public bool showDelete { get; set; }
     }
 
     [Serializable]
