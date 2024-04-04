@@ -8545,19 +8545,20 @@ namespace EGAZT {
         }
         
         /// <summary>
-<<<<<<< HEAD
         ///   Looks up a localized string similar to Residency Type.
         /// </summary>
-        public static string IqamaType {
-            get {
+        public static string IqamaType
+        {
+            get
+            {
                 return ResourceManager.GetString("IqamaType", resourceCulture);
-=======
+            }
+        }
         ///   Looks up a localized string similar to Issued City.
         /// </summary>
         public static string IssuedCity {
             get {
                 return ResourceManager.GetString("IssuedCity", resourceCulture);
->>>>>>> release/release2.1.16
             }
         }
         
