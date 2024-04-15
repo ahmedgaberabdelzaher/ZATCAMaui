@@ -569,7 +569,11 @@
 
                            <!--  ID ExpiryDate Field  -->
                         <StackLayout Spacing="0" >
-
+                                 <StackLayout.Triggers>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}" Value="{x:Static ResourceManager:AppResources.SpecialIqamawithoutexpirydate}">
+                                    <Setter Property="IsVisible" Value="false"></Setter>
+                                </DataTrigger>
+                            </StackLayout.Triggers>
                             <!--  ID ExpiryDate Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}">
                             
@@ -911,7 +915,7 @@
                         <!--  End Date Field  -->
                         <StackLayout Spacing="0">
                             <StackLayout.Triggers>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding premiumResidencytype.iqamaType}" Value="1">
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}" Value="{x:Static ResourceManager:AppResources.SpecialIqamawithoutexpirydate}">
                                     <Setter Property="IsVisible" Value="false"></Setter>
                                 </DataTrigger>
                             </StackLayout.Triggers>
@@ -978,7 +982,7 @@
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
-
+                            <Label Text="{Binding premiumResidencytype.iqamaType}"></Label>
                         </StackLayout>
 
                         <!--  Date of Birth Field  -->
