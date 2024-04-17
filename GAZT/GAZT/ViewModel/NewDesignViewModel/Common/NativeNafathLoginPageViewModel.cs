@@ -135,7 +135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     {
                         if (data.result != null)
                         {
-                            if (data.result.status == "EXPIRED")
+                            if (data.result.status == "EXPIRED"||data.result.status== "REJECTED")
                             {
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
@@ -152,7 +152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                           
                             
                              userData = data;
-                            if (userData != null)
+                            if (userData != null&& userData.result.userInfo!=null)
                             {
 
 
