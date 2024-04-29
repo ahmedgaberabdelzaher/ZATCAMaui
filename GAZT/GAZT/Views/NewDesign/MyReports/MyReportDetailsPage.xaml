@@ -126,7 +126,7 @@
                             <!--  Report Details Body  -->
                             <Grid
                                 ColumnDefinitions="*,*"
-                                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,0,Auto,Auto,Auto,Auto"
                                 RowSpacing="25">
 
                                 <!--  Report Type Label  -->
@@ -371,7 +371,7 @@
                                 </Label>
 
                                 <!--  Street Label  -->
-                                <Label
+                                <Label IsVisible="false"
                                     Grid.Row="8"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
@@ -403,7 +403,7 @@
 
 
                                 <!--  TIN number Label  -->
-                                <Label
+                                <Label  IsVisible="false"
                                     Grid.Row="9"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"

@@ -46,6 +46,7 @@ namespace EGAZT.Models.SubmitReportModel
         public string ReportCategoryName { get { return _reportCategoryName; } set { _reportCategoryName = value; RaisePropertyChanged(); } }
 
         public string ReportCategory { get; set; }
+        public string ReportSubCategory { get; set; }
 
         string _reportTypeName;
         public string ReportTypeName { get { return _reportTypeName; } set { _reportTypeName = value; RaisePropertyChanged(); } }
@@ -100,6 +101,10 @@ namespace EGAZT.Models.SubmitReportModel
 
         public string fileBase64 { get; set; }
         public string[] fAraay { get; set; }
+
+        string _reportSubCategoryName;
+        public string ReportSubCategoryName { get { return _reportSubCategoryName; } set { _reportSubCategoryName = value; RaisePropertyChanged(); } }
+
 
     }
 }

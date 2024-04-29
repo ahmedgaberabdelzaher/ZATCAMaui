@@ -306,7 +306,7 @@ namespace EGAZT.Helper
         {
 
             client.DefaultRequestHeaders.Add("LanguageCode", App.IsArabic ? "ar" : "en");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", null);
+           // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", null);
             client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
             client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
         }

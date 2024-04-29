@@ -58,9 +58,9 @@ namespace EGAZT.AppConfigurations
         public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
         /// <summary>
         /// Old one
-               public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
+      //   public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
         /// </summary>
-        //public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
+       public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
 
         //public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/"; Deprecated
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";

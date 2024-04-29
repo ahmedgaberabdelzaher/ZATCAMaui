@@ -26,12 +26,13 @@ namespace EGAZT.Models.SubmitReportModel
         public string regionName { get; set; }
         public string reportCategory { get; set; }
         public string reportCategoryName { get; set; }
+        public string reportSubCategoryName { get; set; }
         public string reportTypeName { get; set; }
         public string reportDetails { get; set; }
         public string missedField { get; set; }
         public string reportSubCategory { get; set; }
         public string reportTaxType { get; set; }
-        public int reporterID { get; set; }
+        public string reporterID { get; set; }
         public string reporterEmail { get; set; }
         public string reporterMobileNumber { get; set; }
         public string reporterName_Arabic { get; set; }

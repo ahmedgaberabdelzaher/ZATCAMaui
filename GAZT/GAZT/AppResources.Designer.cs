@@ -8547,13 +8547,13 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Residency Type.
         /// </summary>
-        public static string IqamaType
-        {
-            get
-            {
+        public static string IqamaType {
+            get {
                 return ResourceManager.GetString("IqamaType", resourceCulture);
             }
         }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Issued City.
         /// </summary>
         public static string IssuedCity {
@@ -12498,6 +12498,15 @@ namespace EGAZT {
         public static string Reportafinancialoradministrativeviolation {
             get {
                 return ResourceManager.GetString("Reportafinancialoradministrativeviolation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments (should be less than 4 MB).
+        /// </summary>
+        public static string ReportAttachements {
+            get {
+                return ResourceManager.GetString("ReportAttachements", resourceCulture);
             }
         }
         

@@ -10340,7 +10340,7 @@ info@zatca.gov.sa</value>
      <value>تسجيل الدخول إلى خدمه استيراد السيارات</value>
   </data>
   <data name="NeedRewardHint" xml:space="preserve">
-     <value>تسجيل معلوماتك الشخصية من اسم ورقم تواصل وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء </value>
+     <value> تسجيل معلوماتك الشخصية من اسم ورقم تواصل  وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء المناسب</value>
   </data>
     <data name="NeedReward" xml:space="preserve">
      <value> أرغب بالحصول على مكافأة</value>
@@ -10849,4 +10849,13 @@ info@zatca.gov.sa</value>
     <value>طلب التواصل مع الموظف بشأن حالة فحص</value>
   </data>
   <!--End of CR6741-->
+  <!--End of CR6003-->
+      <!--start of CR6741-->
+  <data name="ContactZatcaEmp" xml:space="preserve">
+    <value>طلب التواصل مع الموظف بشأن حالة فحص</value>
+  </data>
+  <!--End of CR6741-->
+  <data name="ReportAttachements" xml:space="preserve">
+    <value>مرفقات البلاغ (الرجاء تحديد جميع المرفقات مرة واحدة بحجم أقل من 4 ميجا بايت)</value>
+  </data>
 </root>

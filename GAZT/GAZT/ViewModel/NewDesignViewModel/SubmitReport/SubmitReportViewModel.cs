@@ -9,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
+using EGAZT.AppConfigurations;
 using EGAZT.Controls;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
@@ -66,6 +67,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         bool isMissingFieldShowen;
         public bool IsMissingFieldShowen { get { return isMissingFieldShowen; } set { isMissingFieldShowen = value; RaisePropertyChanged(); } }
 
+        bool isSubCategeoryShow;
+        public bool IsSubCategeoryShow { get { return isSubCategeoryShow; } set { isSubCategeoryShow = value; RaisePropertyChanged(); } }
+
+
         bool isCityShowen;
         public bool IsCityShowen { get { return isCityShowen; } set { isCityShowen = value; RaisePropertyChanged(); } }
 
@@ -96,7 +101,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         private List<BaseRegionAndCity> RegionsList;
         private List<CategoryDataResponse> ReportCategory;
         private List<LookUpsListModel> MissingFieldsList;
-
+        private List<CategoryDataResponse> ReportSubCategory;
+        private bool isReportSubCategorySelected = false;
         #endregion
 
         #region Commands
@@ -111,7 +117,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         if (IsValidateTermsReport())
                         {
                             IsLoading = true;
-
+                            PageSettings.CheckTarget_Environment("STG");
+                            PageSettings.GetBaseURL("STG");
                             System.Globalization.DateTimeFormatInfo DTFormat;
                             DTFormat = new System.Globalization.CultureInfo("en-US", false).DateTimeFormat;
                             DTFormat.Calendar = new System.Globalization.GregorianCalendar();
@@ -141,6 +148,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 regionCode = SubmitReport.RegionCode,
                                 regionName = SubmitReport.Region,
                                 reportCategory = SubmitReport.ReportCategory,
+                                reportSubCategory=SubmitReport.ReportSubCategory,
                                 reportCategoryName = SubmitReport.ReportCategoryName,
                                 reportDetails = SubmitReport.ReportDetails,
                                 reporterEmail = SubmitReport.ReporterEmail,
@@ -155,7 +163,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 violationDate = SubmitReport.ViolationDate,
                                 workType = SubmitReport.ReportTaxType,
                                 attachements = DATAPowerAttachements,
-                                reporterNationalID= SubmitReport.ReporterNationalId
+                                reporterNationalID= SubmitReport.ReporterNationalId,
+                                reportSubCategoryName=submitReport.ReportSubCategoryName,
+                                reporterID= SubmitReport.ReporterNationalId,
 
                             };
                             #region DATA Power Response
@@ -477,7 +487,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         {
                             SubmitReport.ReportCategoryName = e.Name;
                             SubmitReport.ReportCategory = e.Id;
+                            #region GetSubbCategeory
+                            ReportSubCategory = await _submitReportServices.GetReportSubCategories(e.Id);
+                            if (ReportSubCategory != null && ReportSubCategory.Count>0)
+                            {
+                                IsSubCategeoryShow = true;
+                            }
+                            else
+                            {
+                                IsSubCategeoryShow = false;
+                            }
+                            var result = ReportSubCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
+                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+
+                            #endregion
                             isReportCategorySelected = false;
+                            SubmitReport.MissedFieldName = string.Empty;
+                            SubmitReport.MissedField = string.Empty;
+                            IsMissingFieldShowen = !string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName) && SubmitReport.ReportCategory.ToLower().Equals("v36") ? true : false;
+                        }
+                        else if (isReportSubCategorySelected)
+                        {
+                            SubmitReport.ReportSubCategoryName = e.Name;
+                            SubmitReport.ReportSubCategory = e.Id;
+                            isReportSubCategorySelected = false;
                             SubmitReport.MissedFieldName = string.Empty;
                             SubmitReport.MissedField = string.Empty;
                             IsMissingFieldShowen = !string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName) && SubmitReport.ReportCategory.ToLower().Equals("v36") ? true : false;
@@ -531,6 +564,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
+                     
                         IsLoading = true;
                         isReportTypeSelected = true;
                         isReportCategorySelected = false;
@@ -538,7 +572,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         isRegionSelected = false;
                         var reportType = await this._submitReportServices.GetReportType();
                         var result = reportType?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
-                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result.Distinct());
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ReportType;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
@@ -569,6 +603,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ReportCategory;
                         var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    }
+                    catch (Exception)
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+            }
+        }
+
+        public ICommand OpenReportSubCategoryCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    try
+                    {
+                        isReportSubCategorySelected=true;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
+                        isRegionSelected = false;
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportCategory;
+                        var result = ReportSubCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).Distinct();
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     }

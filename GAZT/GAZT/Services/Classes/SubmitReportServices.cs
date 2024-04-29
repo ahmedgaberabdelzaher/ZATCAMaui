@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using EGAZT.AppConfigurations;
 using EGAZT.Helper;
@@ -14,12 +15,14 @@ namespace EGAZT.Services.Classes
     {
         public async Task<List<ReportTypeModel>> GetReportType()
         {
-           /*  var response = await NewHTTPManger.Get<DATAPowerBaseResponse<ReportTypeList>>($"{App.VatBaseUrl}/Report/GetReportTaxType") as BaseResponseModel<ReportTypeList>;
-             return response?.Result?.Data;
-            */
+      
+            /*  var response = await NewHTTPManger.Get<DATAPowerBaseResponse<ReportTypeList>>($"{App.VatBaseUrl}/Report/GetReportTaxType") as BaseResponseModel<ReportTypeList>;
+              return response?.Result?.Data;
+             */
             var lang = App.IsArabic ? "ar" : "en";
             var response = await NewHTTPManger.Get<DATAPowerBaseResponse<ReportTypeList>>($"{PageSettings.ZATCABaseURL}v1/vat/reports/all-tax-types?languageCode={lang}") as DATAPowerBaseResponse<ReportTypeList>;
-            return response?.data?.reportTaxTypes;
+            var data = response?.data?.reportTaxTypes.GroupBy(c => c.reportTaxTypeName).Select(c=>c.First()).ToList();
+            return data;
 
         }
         public async Task<List<BaseRegionAndCity>> GetLookUps()
@@ -28,18 +31,35 @@ namespace EGAZT.Services.Classes
              return response?.Result?.Data;*/
             var lang = App.IsArabic ? "ar" : "en";
             var response = await NewHTTPManger.Get<DATAPowerBaseResponse<LookUpsModel>>($"{PageSettings.ZATCABaseURL}/v1/vat/reports/lookups?languageCode={lang}") as DATAPowerBaseResponse<LookUpsModel>;
-            return response?.data?.lookUpList;
+            return response?.data?.lookups;
 
         }
         public async Task<List<CategoryDataResponse>> GetReportCategories(string typeId)
         {
-          /*  var response = await NewHTTPManger.Get<BaseResponseModel<List<CategoryDataResponse>>>($"{App.VatBaseUrl}/SMS/GetCategories?type={typeId}") as BaseResponseModel<List<CategoryDataResponse>>;
-            return response?.Result?.Data;*/
-
+        /*  var response = await NewHTTPManger.Get<BaseResponseModel<List<CategoryDataResponse>>>($"{App.VatBaseUrl}/SMS/GetCategories?type={typeId}") as BaseResponseModel<List<CategoryDataResponse>>;
+          return response?.Result?.Data;*/
+        
             var lang = App.IsArabic ? "ar" : "en";
+         /*   var response = await NewHTTPManger.Get<List<portalResponse>>($"https://zatca.gov.sa/{lang}/_LAYOUTS/15/GAZTInternet/PortalHandler.ashx?op=GetCheckListByReportType&ReportTaxTypeCode={typeId}") as List<portalResponse>;
+            List<CategoryDataResponse> categoryDataResponses = new List<CategoryDataResponse>();
+            foreach (var item in response)
+            {
+                categoryDataResponses.Add(new CategoryDataResponse() { id = item.ReportCategoryCode, title = App.IsArabic ? item.ReportCategoryNameAR : item.ReportCategoryNameEN });
+            }
+            return categoryDataResponses;*/
             var response = await NewHTTPManger.Get<DATAPowerBaseResponse<CategoryResponseModel>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/categories?languageCode={lang}&categoryType={typeId}") as DATAPowerBaseResponse<CategoryResponseModel>;
-
             return response?.data.categories;
+
+        }
+
+        public async Task<List<CategoryDataResponse>> GetReportSubCategories(string CatId)
+        {
+            var response = await NewHTTPManger.Get<BaseResponseModel<SubCategoryResponseModel>>($"https://vatmobile.zatca.gov.sa/api/Report/GetReportSubCategory?categoryCode={CatId}") as BaseResponseModel<SubCategoryResponseModel>;
+              return response?.Result?.Data.subCategoryList;
+
+            //var response = await NewHTTPManger.Get<DATAPowerBaseResponse<CategoryResponseModel>>($"{PageSettings.ZATCABaseURL}v1/vat/sms/categories?languageCode={lang}&categoryType={typeId}") as DATAPowerBaseResponse<CategoryResponseModel>;
+            // return response?.data.categories;
+
         }
         public async Task<List<BaseRegionAndCity>> GetCities(string regionId)
         {
@@ -74,7 +94,8 @@ namespace EGAZT.Services.Classes
         }
         public async Task<BaseResponseModel<string>> CreateZatcaReport(SubmitReportModel submitReport)
         {
-             var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
+         
+            var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
            
             // var res = await HttpManager.PostAsync($"{App.VatBaseUrl}/Report/CreateZatcaNewReport", submitReport);
             //DataPower
@@ -84,6 +105,15 @@ namespace EGAZT.Services.Classes
             var response = NewHTTPManger.DeserializeObject<DATAPowerBaseResponseResult<SubmitDataPowerResult>>(cont);*/
             return response;
         }
+    }
+
+    public class portalResponse
+    {
+        public string ReportCategoryCode { get; set; }
+        public string ReportCategoryGuid { get; set; }
+        public string ReportCategoryNameAR { get; set; }
+        public string ReportCategoryNameEN { get; set; }
+        public string ReportTypeGuid { get; set; }
     }
 }
 

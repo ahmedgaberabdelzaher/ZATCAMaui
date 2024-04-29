@@ -18,4 +18,8 @@ namespace EGAZT.Models.SubmitReportModel
     {
         public List<CategoryDataResponse> categories { get; set; }
     }
+    public class SubCategoryResponseModel
+    {
+        public List<CategoryDataResponse> subCategoryList { get; set; }
+    }
 }

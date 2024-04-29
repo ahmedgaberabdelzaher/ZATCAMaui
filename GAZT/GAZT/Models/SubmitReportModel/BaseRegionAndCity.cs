@@ -2,11 +2,11 @@
 
 namespace EGAZT.Models.SubmitReportModel
 {
-  /*  public class BaseRegionAndCity
+   public class ReportSubCategeory
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-    }*/
+        public string id { get; set; }
+        public string title { get; set; }
+    }
 
 
     public class RegionsListModel
@@ -21,7 +21,7 @@ namespace EGAZT.Models.SubmitReportModel
 
     public class LookUpsModel
     {
-        public List<BaseRegionAndCity> lookUpList { get; set; }
+        public List<BaseRegionAndCity> lookups { get; set; }
     }
     public class BaseRegionAndCity
     {

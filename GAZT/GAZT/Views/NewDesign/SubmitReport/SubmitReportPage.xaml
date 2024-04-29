@@ -285,6 +285,57 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
+
+                           <!--  Report Sub Category Field  -->
+                        <StackLayout IsVisible="{Binding IsSubCategeoryShow}" Spacing="0">
+
+                            <!--  Report SubCategory Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ReportCategory}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Report SubCategory Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}"
+                                VerticalOptions="StartAndExpand">
+                                <custom:BorderlessEntry
+                                    x:Name="reportSubCategoryEntry"
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ReportCategory}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.ReportSubCategoryName}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenReportSubCategoryCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenReportSubCategoryCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            </inputLayout:SfTextInputLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenReportSubCategoryCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+
                         <!--  Missing Field  -->
                         <StackLayout IsVisible="{Binding IsMissingFieldShowen}" Spacing="0">
 
@@ -341,7 +392,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ReportText}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ReportTextDisclaimer}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -459,7 +510,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ReportAttachements}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -481,7 +532,7 @@
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.FDANewAttachment}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ReportAttachements}"
                                     Style="{StaticResource DefaultEntry}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.TrailingView>
