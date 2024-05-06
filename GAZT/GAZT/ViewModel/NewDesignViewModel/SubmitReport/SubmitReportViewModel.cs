@@ -45,6 +45,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         bool _IsReadTermsandCondition = false;
         public bool IsReadTermsandCondition { get { return _IsReadTermsandCondition; } set { _IsReadTermsandCondition = value; RaisePropertyChanged(); } }
 
+        bool _IsreporterDataMandatory = false;
+        public bool IsreporterDataMandatory { get { return _IsreporterDataMandatory; } set { _IsreporterDataMandatory = value; RaisePropertyChanged(); } }
+
 
         private readonly ISubmitReportServices _submitReportServices;
 
@@ -424,6 +427,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     SubmitReport.IsNeedReward = SubmitReport.IsNeedReward == true ? false : true;
+                    if (SubmitReport.ReportTaxType != "E1")
+                    {
+                        IsreporterDataMandatory = SubmitReport.IsNeedReward;
+                    }
+                  
                 });
 
             }
@@ -482,6 +490,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReport.MissedField = string.Empty;
                             IsMissingFieldShowen = false;
                             IsReportCategoryShowen = string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName) ? false : true;
+                            if (SubmitReport.ReportTaxType=="E1")
+                            {
+                                IsreporterDataMandatory = true;
+                            }
+                            else
+                            {
+                                IsreporterDataMandatory = false;
+                            }
                         }
                         else if (isReportCategorySelected)
                         {
@@ -850,6 +866,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 || string.IsNullOrWhiteSpace(SubmitReport.Location)
                 || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
                 || SelectedDate.Date > DateTime.Now.Date
+                || !IsReadTermsandCondition
                 || ReportUloadedFiles.Count == 0)
             {
                 IsShowMsgView = true;
@@ -921,6 +938,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                 }
             }
+
+            else if (SubmitReport.ReportTaxType== "V1"|| SubmitReport.ReportTaxType=="E1")
+            {
+                if (string.IsNullOrWhiteSpace(SubmitReport.ReporterNameAr)
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterMobileNumber)
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterEmail))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.RequiredData;
+                    return false;
+
+                }
+                else if (!Email.IsMatch(SubmitReport.ReporterEmail.ToLower()))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.InvalidEmailFormat;
+                    return false;
+                }
+                else if (!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber05;
+                    return false;
+
+
+                }
+            }
+
+            if (!IsReadTermsandCondition)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+            }
+            
             return true;
 
         }

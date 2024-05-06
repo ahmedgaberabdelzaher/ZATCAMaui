@@ -139,12 +139,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 {
 
-                    _navigationService.NavigateTo(App.TaxEvasionPageWebView);
+                    // _navigationService.NavigateTo(App.TaxEvasionPageWebView);
+                    _navigationService.NavigateTo("SubmitReportPage");
 
                 });
             }
         }
-
         public bool IsBase64(string base64String)
         {//|| base64String.Length % 4 != 0
             if (string.IsNullOrEmpty(base64String)
@@ -997,6 +997,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
             finally
             {
+                RegisterStatus = AppResources.NotRegistered;
+                IsShowSubmitReport = true;
                 IsLoading = false;
                 IsScanning = false;
             }

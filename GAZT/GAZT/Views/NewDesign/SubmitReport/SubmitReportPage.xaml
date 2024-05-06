@@ -1006,7 +1006,7 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Name Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel IsVisible="{Binding IsreporterDataMandatory}" Style="{StaticResource CaptionLabelGrey}">
 
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -1018,14 +1018,14 @@
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
@@ -1036,20 +1036,20 @@
 
 
                                 <custom:CustomLabel
-                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    IsVisible="{Binding IsreporterDataMandatory}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ReportFullName}">
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />
@@ -1085,7 +1085,7 @@
 
 
                                 <!--  Name Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel IsVisible="{Binding IsreporterDataMandatory}" Style="{StaticResource CaptionLabelGrey}">
 
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -1097,14 +1097,14 @@
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
@@ -1115,7 +1115,7 @@
 
 
                                 <custom:CustomLabel
-                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    IsVisible="{Binding IsreporterDataMandatory}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.NationaID}">
                                     <custom:CustomLabel.Triggers>
@@ -1148,7 +1148,7 @@
                                     OutlineCornerRadius="15"
                                     UnfocusedColor="{StaticResource NeutralGreay}">
                                     <custom:BorderlessEntry
-                                        x:Name="NationalIdEntry"
+                                        x:Name="NationalIdEntry" MaxLength="10"
                                         Keyboard="Text"
                                         Placeholder="{x:Static ResourceManager:AppResources.NationaID}"
                                         Style="{StaticResource DefaultEntry}"
@@ -1161,7 +1161,7 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Email Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel IsVisible="{Binding IsreporterDataMandatory}" Style="{StaticResource CaptionLabelGrey}">
 
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -1173,14 +1173,14 @@
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
@@ -1191,20 +1191,20 @@
 
 
                                 <custom:CustomLabel
-                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    IsVisible="{Binding IsreporterDataMandatory}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}">
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />
@@ -1237,7 +1237,7 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Phone Label  -->
-                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel IsVisible="{Binding IsreporterDataMandatory}" Style="{StaticResource CaptionLabelGrey}">
 
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
@@ -1249,14 +1249,14 @@
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="false" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="true" />
@@ -1267,20 +1267,20 @@
 
 
                                 <custom:CustomLabel
-                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    IsVisible="{Binding IsreporterDataMandatory}"
                                     Style="{StaticResource CaptionLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.MobileNumber}">
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />
