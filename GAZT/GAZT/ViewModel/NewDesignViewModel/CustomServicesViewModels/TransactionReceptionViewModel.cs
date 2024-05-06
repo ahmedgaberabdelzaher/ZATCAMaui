@@ -598,9 +598,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                  MobileNo = "+966" + iamLoginPayloadData["Mobile"].ToString();
                  IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());*/
                 ///
-                var data = payload as CustomsNafathUserProfile;
-                NationalId = data.nationalid.ToString();
-                MobileNo = "+966" + data.mobilenumber.ToString();
+                var data = payload as CustomsIamUser;
+                NationalId = data.nationalId.ToString();
+                MobileNo = "+966" + data.mobileNumber.ToString();
                 IamRegisteredUserID = data.id;
             }
         }

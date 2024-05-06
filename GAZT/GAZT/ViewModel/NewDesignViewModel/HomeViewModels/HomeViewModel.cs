@@ -79,7 +79,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.GeneralServices, ID="4",ImageSource="GeneralServices"
+                                  Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports"
+
+                 //  Name=AppResources.GeneralServices, ID="4",ImageSource="GeneralServices"
                 },
             };
         }
@@ -310,9 +312,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("ExciseServices");
                             break;
                         case "4":
-                            _navigationService.NavigateTo("GeneralServices");
+                            //  _navigationService.NavigateTo("GeneralServices");
+                            _navigationService.NavigateTo(MenuItem.ID);
                             break;
+
                         default:
+                            _navigationService.NavigateTo(MenuItem.ID);
                             break;
                     }
 
