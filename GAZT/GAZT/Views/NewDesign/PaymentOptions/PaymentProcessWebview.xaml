@@ -35,47 +35,32 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid BackgroundColor="Transparent">
-                <Grid>
+                <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView
-                        Grid.Row="1"
-                        Padding="0"
-                        BackgroundColor="Black"
-                        CornerRadius="15,15,0,0">
-                        <Grid
-                            x:Name="VATRMainGrid"
-                            Margin="0"
-                            Padding="0,0,0,0"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0"
+                  Padding="0,0,0,0" x:Name="VATRMainGrid">
                             <Grid.RowDefinitions>
                                 <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
+                            <ContentPresenter VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Grid.Row="0" Padding="20,40,24,4">
+                    <Grid Padding="20,32,24,10" Grid.Row="0">
 
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HeightRequest="24"
-                            HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding IsBackStepButtonVisible}"
-                            Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="24">
+                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
+                               Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
+                               HeightRequest="24"
+                               WidthRequest="24">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
                             </Image.GestureRecognizers>
                         </Image>
 
@@ -93,10 +78,10 @@
 
             <Grid x:Name="WebviewGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100*" />
+                    <RowDefinition Height="100*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="100*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
 
@@ -107,38 +92,22 @@
                        </Grid>-->
 
 
-                <Grid
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    IsVisible="{Binding IsLoading}">
-                    <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        BackgroundColor="Black"
-                        Opacity="0.4"
-                        Orientation="Vertical"
-                        VerticalOptions="FillAndExpand" />
-                    <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Padding="15,15"
-                        BackgroundColor="Transparent"
-                        HorizontalOptions="Center"
-                        Opacity="0.8"
-                        Orientation="Vertical"
-                        VerticalOptions="Center">
-                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                            <busyindicator:SfBusyIndicator
-                                x:Name="busyindicatorForLanding"
-                                AnimationType="SingleCircle"
-                                EnableAnimation="True"
-                                HorizontalOptions="CenterAndExpand"
-                                IsBusy="True"
-                                TextColor="{StaticResource Secondary}"
-                                TitlePlacement="Bottom"
-                                VerticalOptions="CenterAndExpand"
-                                ViewBoxHeight="70"
-                                ViewBoxWidth="70" />
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="{StaticResource Secondary}"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>

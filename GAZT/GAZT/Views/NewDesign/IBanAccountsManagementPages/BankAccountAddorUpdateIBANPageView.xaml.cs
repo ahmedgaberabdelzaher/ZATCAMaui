@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EGAZT.Models;
 using EGAZT.Models.ZakatInstalationModels;
@@ -334,10 +335,20 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagementPages
         private void AccountOwnerNameTextChanged(object sender, TextChangedEventArgs e)
         {
             _viewModel.AccountOwnerName = e.NewTextValue;
-
-
         }
 
+        private void AccountOwnerName_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (!_viewModel.IBANAccountData.d.AutoPopFg && !Regex.IsMatch(_viewModel.AccountOwnerName, @"^[a-zA-Z]+$"))
+            {
+                _viewModel.IsBorderColorRed = Color.Red;
+                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
+            }
+            else
+            {
+                _viewModel.IsBorderColorRed = Color.LightGray;
+            }
+        }
         private void IBANTextChanged(object sender, TextChangedEventArgs e)
         {
             _viewModel.IsIBanDropDownEnabled = true;
@@ -877,5 +888,6 @@ namespace EGAZT.Views.NewDesign.IBanAccountsManagementPages
 
         }
 
+       
     }
 }

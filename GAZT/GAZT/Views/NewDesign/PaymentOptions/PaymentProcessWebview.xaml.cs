@@ -33,7 +33,6 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
         public PaymentProcessWebview(int type)
         {
-
             InitializeComponent();
             viewModel = App.Locator.PaymentProcessWebview;
 
@@ -42,9 +41,9 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             ChangeAeroIcon();
             viewModel.PaymentType = type;
             //WebviewGrid.LowerChild(webView);
-          
+
             //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
-            
+
         }
 
 
@@ -70,7 +69,8 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             }
 
             var PaymentSAPClient = "300";
-            if (Constants.PaymentUrl.Contains(Constants.DevBaseUrlForODataServices)) {
+            if (Constants.PaymentUrl.Contains(Constants.DevBaseUrlForODataServices))
+            {
 
                 PaymentSAPClient = Constants.DevPaymentSapClinet;
             }
@@ -113,14 +113,14 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                     cookieContainer.Add(cookie);
                 }
 
-                
+
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                
-                
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
             viewModel.IsLoading = true;
@@ -169,10 +169,10 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
         private void OnNavigated(object sender, WebNavigatedEventArgs e)
         {
-           
 
-            if (isLoginLoaded) {
 
+            if (isLoginLoaded)
+            {
 
                 if (webView != null)
                     WebviewGrid.Children.Remove(webView);
@@ -191,13 +191,9 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                     platform = "C3";
                 }
 
-
                 string paymentUrl = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform + "&sap-ui-language=" + UtilityManager.GetLanguageParameter();
 
-
                 CookieContainer cookieContainer = new CookieContainer();
-
-
                 try
                 {
                     foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
@@ -213,15 +209,13 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                         cookie.Secure = cookieModel.Secure;
                         cookieContainer.Add(cookie);
                     }
-
-
                 }
 
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    
-                    
-                    
+                    Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
 
@@ -237,7 +231,8 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
                 viewModel.IsLoading = true;
             }
-            else {
+            else
+            {
                 viewModel.IsLoading = false;
             }
 
@@ -247,7 +242,9 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         {
             Console.WriteLine("WebViewURL: " + e.Url);
 
+
             isLoginLoaded = false;
+
 
             if (e.Url.Contains("IsPmtSts"))
             {
@@ -256,25 +253,19 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 {
 
                     var responseGUID = splitString[1];
-                    //("Payment Successful:" + e.Url);
+                    //Console.WriteLine("Payment Successful:" + e.Url);
 
                     webView.IsVisible = false;
                     viewModel.IsLoading = true;
 
 
-                    if (!isPaymentProcessed) {
+                    if (!isPaymentProcessed)
+                    {
 
                         isPaymentProcessed = true;
-
                         await viewModel.UpdateMadaPaymentDetails(responseGUID);
-
-
                     }
-
-
-
                 }
-
             }
             else if ((e.Url.Contains("isAuthErr")) || (e.Url.Contains("IsPROCBlank")))
             {
@@ -285,9 +276,11 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                     isPaymentProcessed = false;
 
                     var responseMessage = splitString[1].Replace("msg='", "");
+                    //string decodedParameter = HttpUtility.UrlDecode(responseMessage);
+                    //string extractedMessage = ExtractMessage(responseMessage, '%', '\'');
                     string decodedMessage = Uri.UnescapeDataString(responseMessage);
                     string[] parts = decodedMessage.Split('\'');
-                    //("Payment Successful:" + e.Url);
+                    //Console.WriteLine("Payment Successful:" + e.Url);
 
                     webView.IsVisible = false;
                     viewModel.IsLoading = true;
@@ -306,14 +299,13 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             }
             else if (e.Url.Contains(Constants.DomainUrlForCookies) && (!(e.Url.Contains("madapmnt.Madaconfirm"))))
             {
+
                 isLoginLoaded = true;
                 webView.IsVisible = false;
             }
 
-            
         }
-
-
+        // https://tstdp1as1.mygazt.gov.sa:50001/irj/servlet/prt/portal/prtroot/madapmnt.Madaconfirm/005056B1365C1EEDBEA6B961D6E7A95C/C4/A/EN
         private void SetLTR()
         {
             if (!App.IsArabic)

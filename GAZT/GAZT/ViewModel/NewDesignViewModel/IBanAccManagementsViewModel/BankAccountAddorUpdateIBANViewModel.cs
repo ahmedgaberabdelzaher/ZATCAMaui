@@ -20,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -1058,6 +1059,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     return;
                 }
                 if (AccountOwnerName.Contains("."))
+                {
+                    IsBorderColorRed = Color.Red;
+                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
+
+                    return;
+                }
+                if (!IBANAccountData.d.AutoPopFg && !Regex.IsMatch(AccountOwnerName, @"^[a-zA-Z]+$"))
                 {
                     IsBorderColorRed = Color.Red;
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));

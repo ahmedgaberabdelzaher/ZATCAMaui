@@ -4748,8 +4748,6 @@ namespace GAZT.Manager
 
                 String url = Constants.ValidatePaymentInformation + "?sap-language=" + UtilityManager.GetLanguageParameter() + "";
 
-
-
                 var uri = new Uri(url);
 
                 HttpClient client = new HttpClient(App.httpClientHandler);
@@ -4766,33 +4764,7 @@ namespace GAZT.Manager
 
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
 
-                var tracker = HTTPRequestTracker.Create(uri);
-                foreach (var header in ServerCorrelationHeaders.Generate)
-                {
-                    foreach (var value in header.Value)
-                    {
-                        client.DefaultRequestHeaders.Add(header.Key, value);
-                    }
-                }
-                HttpResponseMessage res = null;
-                try
-                {
-                    res = client.PostAsync(uri, contentPost).Result;
-                    if(res != null)
-                    {
-                        tracker.ResponseCode = (int)res.StatusCode;
-                        tracker.StatusLine = res.ReasonPhrase;
-                        tracker.ResponseHeaderFields = res.Headers;
-                        tracker.ReportDone();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    tracker.Exception = ex;
-                    tracker.ReportDone();
-                    throw ex;
-                }
-              
+                HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
 
                 _paymentsubmitResponse = res.Content.ReadAsStringAsync().Result;
 
@@ -4836,10 +4808,10 @@ namespace GAZT.Manager
 
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
 
 

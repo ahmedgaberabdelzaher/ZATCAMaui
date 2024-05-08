@@ -1965,7 +1965,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public void MadaPaymentSelected()
         {
 
-
             DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
 
 
@@ -2006,10 +2005,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     modelDetails.Sadad = sdadNo;
 
                     PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
-
                     if (PaymentData != null && PaymentData.d != null)
                     {
-
                         if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                         {
                             await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
@@ -2025,9 +2022,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (paymentType == "M")
                         {
-
-                            Device.BeginInvokeOnMainThread(async () => {
-
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
                                 _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
                                 //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
@@ -2055,7 +2051,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //}
 
                     }
-
                     IsLoading = false;
 
                 }
@@ -2068,7 +2063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //_navigationService.GoBack();
                     });
                 }
-                catch (InternetException ex)
+                catch (InternetException)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -2078,7 +2073,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (GAZTNetworkConnectivityIssueException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -2089,7 +2084,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -2111,8 +2106,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //    }
         //    catch (Exception)
         //    {
-                
-                
+
+
         //        return false;
         //    }
         //}
@@ -2636,53 +2631,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                 AllBills = TempBills;
 
-           
-           
 
-            if (TempBills != null)
-            {
 
-                var newItems = TempBills.ToList();
 
-                if (newItems != null)
+                if (TempBills != null)
                 {
-                    if (newItems.Count > 3)
+
+                    var newItems = TempBills.ToList();
+
+                    if (newItems != null)
                     {
-                        for (int i = 0; i < 3; i++)
+                        if (newItems.Count > 3)
                         {
-
-                            var singleItem = newItems[i];
-
-                            try
+                            for (int i = 0; i < 3; i++)
                             {
 
-                                if (singleItem.Abtyp != null)
+                                var singleItem = newItems[i];
+
+                                try
                                 {
 
-                                    if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
-                                    {
-                                        singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
-
-                                        string[] dts = singleItem.FormatedDuedate.Split('/');
-                                        if (App.IsArabic)
-                                        {
-
-                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                            singleItem.FormatedDuedate = date;
-                                        }
-                                        else
-                                        {
-                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                            singleItem.FormatedDuedate = date;
-                                        }
-                                    }
-                                    else
+                                    if (singleItem.Abtyp != null)
                                     {
 
-
-                                        if (singleItem.CalendarTyp.Equals("G"))
+                                        if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
                                         {
                                             singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
 
@@ -2704,78 +2676,78 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         else
                                         {
 
-                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
 
-                                            string[] dts = singleItem.FormatedDuedate.Split('/');
-                                            if (App.IsArabic)
+                                            if (singleItem.CalendarTyp.Equals("G"))
                                             {
+                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
 
-                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+                                                string[] dts = singleItem.FormatedDuedate.Split('/');
+                                                if (App.IsArabic)
+                                                {
 
-                                                singleItem.FormatedDuedate = date;
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
+                                                else
+                                                {
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
                                             }
                                             else
                                             {
-                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
 
-                                                singleItem.FormatedDuedate = date;
+                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+
+                                                string[] dts = singleItem.FormatedDuedate.Split('/');
+                                                if (App.IsArabic)
+                                                {
+
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
+                                                else
+                                                {
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
                                             }
+
+
                                         }
 
 
                                     }
+                                }
+                                catch (Exception)
+                                {
+
+
 
 
                                 }
+
+
+                                pendingBills.Add(singleItem);
                             }
-                            catch (Exception)
-                            {
-                                
-                                
-                                
-
-                            }
-
-
-                            pendingBills.Add(singleItem);
                         }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < newItems.Count; i++)
+                        else
                         {
-                            var singleItem = newItems[i];
-
-                            try
+                            for (int i = 0; i < newItems.Count; i++)
                             {
+                                var singleItem = newItems[i];
 
-                                if (singleItem.Abtyp != null)
+                                try
                                 {
 
-                                    if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
-                                    {
-                                        singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
-
-                                        string[] dts = singleItem.FormatedDuedate.Split('/');
-                                        if (App.IsArabic)
-                                        {
-
-                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                            singleItem.FormatedDuedate = date;
-                                        }
-                                        else
-                                        {
-                                            string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                                            singleItem.FormatedDuedate = date;
-                                        }
-                                    }
-                                    else
+                                    if (singleItem.Abtyp != null)
                                     {
 
-
-                                        if (singleItem.CalendarTyp.Equals("G"))
+                                        if (singleItem.Abtyp.Equals("VATX") || singleItem.Abtyp.Equals("ETAX"))
                                         {
                                             singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
 
@@ -2797,100 +2769,123 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                         else
                                         {
 
-                                            singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
 
-                                            string[] dts = singleItem.FormatedDuedate.Split('/');
-                                            if (App.IsArabic)
+                                            if (singleItem.CalendarTyp.Equals("G"))
                                             {
+                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("en-US")));
 
-                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+                                                string[] dts = singleItem.FormatedDuedate.Split('/');
+                                                if (App.IsArabic)
+                                                {
 
-                                                singleItem.FormatedDuedate = date;
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
+                                                else
+                                                {
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
                                             }
                                             else
                                             {
-                                                string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
 
-                                                singleItem.FormatedDuedate = date;
+                                                singleItem.FormatedDuedate = string.Format(singleItem.DueDtC?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
+
+                                                string[] dts = singleItem.FormatedDuedate.Split('/');
+                                                if (App.IsArabic)
+                                                {
+
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
+                                                else
+                                                {
+                                                    string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
+
+                                                    singleItem.FormatedDuedate = date;
+                                                }
                                             }
+
+
                                         }
 
 
                                     }
-
-
                                 }
-                            }
-                            catch (Exception)
-                            {
-                            }
+                                catch (Exception)
+                                {
+                                }
 
-                            pendingBills.Add(singleItem);
+                                pendingBills.Add(singleItem);
+                            }
                         }
-                    }
-                    foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
-                    {
-                        temp1.Add(ee);
-                        if (ee.Amount != null)
+                        foreach (OverduePaymentAndUnSubmittedReturn ee in newItems)
                         {
-                            MyObligationAmount += Double.Parse(ee.Amount);
+                            temp1.Add(ee);
+                            if (ee.Amount != null)
+                            {
+                                MyObligationAmount += Double.Parse(ee.Amount);
+                            }
                         }
                     }
                 }
-            }
 
 
-            if (MyObligationAmount > 0)
-            {
-                IsMyObligationsClear = false;
-                IsBodyMyTaxVisible = true;
-            }
-            else
-            {
-                IsMyObligationsClear = true;
-                IsBodyMyTaxVisible = false;
-            }
+                if (MyObligationAmount > 0)
+                {
+                    IsMyObligationsClear = false;
+                    IsBodyMyTaxVisible = true;
+                }
+                else
+                {
+                    IsMyObligationsClear = true;
+                    IsBodyMyTaxVisible = false;
+                }
 
-            MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
+                MyObligationAmountCommas = string.Format("{0:N2}", MyObligationAmount);
 
-            Bills = temp1;
-            PendingBills = pendingBills;
-            if (PendingBills.Count == 0)
-            {
-                IsPendingBillsVisible = false;
-            }
-            else
-            {
-                IsPendingBillsVisible = true;
-            }
-            if (PendingBills != null && PendingBills.Count > 2)
-            {
-                PendingBillsListHeight = 250;
-            }
-            else if (PendingBills != null && PendingBills.Count > 1)
-            {
-                PendingBillsListHeight = 170;
-            }
-            else
-            {
-                PendingBillsListHeight = 83;
-            }
+                Bills = temp1;
+                PendingBills = pendingBills;
+                if (PendingBills.Count == 0)
+                {
+                    IsPendingBillsVisible = false;
+                }
+                else
+                {
+                    IsPendingBillsVisible = true;
+                }
+                if (PendingBills != null && PendingBills.Count > 2)
+                {
+                    PendingBillsListHeight = 250;
+                }
+                else if (PendingBills != null && PendingBills.Count > 1)
+                {
+                    PendingBillsListHeight = 170;
+                }
+                else
+                {
+                    PendingBillsListHeight = 83;
+                }
 
 
-            var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
-            List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
-            {
-                temp2.Add(ee);
-            }
-            Device.BeginInvokeOnMainThread(() => Returns = temp2);
+                var temp2 = new List<OverduePaymentAndUnSubmittedReturn>();
+                List<OverduePaymentAndUnSubmittedReturn> TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                foreach (OverduePaymentAndUnSubmittedReturn ee in TempReturns)
+                {
+                    temp2.Add(ee);
+                }
+                Device.BeginInvokeOnMainThread(() => Returns = temp2);
 
             }
             catch (GAZTErrorException ex)
             {
 
-                
-                
+
+
             }
 
         }

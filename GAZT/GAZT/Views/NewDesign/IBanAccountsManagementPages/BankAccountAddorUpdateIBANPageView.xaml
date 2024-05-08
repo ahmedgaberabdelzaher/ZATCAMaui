@@ -143,7 +143,7 @@
                                 <custom:BorderlessEntry x:Name="AccountOwnerName" IsEnabled="{Binding isNameEnabled}" 
                                                     HorizontalOptions="FillAndExpand"
                                                             Text="{Binding AccountOwnerName}"
-                                                            TextChanged="AccountOwnerNameTextChanged"
+                                                            TextChanged="AccountOwnerNameTextChanged" Unfocused="AccountOwnerName_Unfocused"
                                                             TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15"/>
                             </border:SfBorder>
 

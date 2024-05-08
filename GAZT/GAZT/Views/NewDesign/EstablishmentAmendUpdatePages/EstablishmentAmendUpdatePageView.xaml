@@ -80,7 +80,7 @@
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTEntityTypeQuestionLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ESTEntityTypeQuestionLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -91,7 +91,7 @@
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDWhatisYourNationality}" FontFamily="{StaticResource Somar-Regular}"/>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NDWhatisYourNationality}" FontFamily="{StaticResource SomarRegular}"/>
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -109,7 +109,7 @@
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}"  Grid.Row="0" Grid.Column="0" HorizontalOptions="StartAndExpand"  >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusQuestionLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ESTNationalyStatusQuestionLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -243,7 +243,7 @@
                                         <custom:CustomLabel HorizontalOptions="Start" Style="{StaticResource forLightLabel}" >
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ESTProvideAttachmentCopyofRentLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ESTProvideAttachmentCopyofRentLabel}" FontFamily="{StaticResource SomarRegular}" />
                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
@@ -304,7 +304,7 @@
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTChooseLegalEntityBelowTitleLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ESTChooseLegalEntityBelowTitleLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -400,7 +400,7 @@
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}" HorizontalOptions="Start">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ESTPermanentEstablishmentTypeLabel}" FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -695,7 +695,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}"  FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}"  FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
@@ -780,12 +780,12 @@
                             <StackLayout x:Name="PersonalDetails" Orientation="Vertical" Grid.Row="1" Spacing="24">
                                 <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZZPersonalInformation}" Style="{StaticResource SectionTitleBlackBold}" />
 
-
-                                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <!--Below change is related to CR 5784 uncomment this on Go-Live of this CR-->
+                                 <!--<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZTitle}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZTitle}" FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}"/>
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
@@ -803,7 +803,7 @@
                                                Text="{Binding Title}" IsSpellCheckEnabled="false"
                                                IsReadOnly="{Binding TaxPayerDetailsAvailability.Title}"/>
                                     </inputLayout:SfTextInputLayout>
-                                </StackLayout>
+                                </StackLayout>-->
 
 
 
@@ -812,7 +812,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}"/>
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
@@ -835,7 +835,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTLastNameLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTLastNameLabel}" FontFamily="{StaticResource SomarRegular}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
@@ -855,7 +855,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTFathersNameLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTFathersNameLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
@@ -876,7 +876,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTGrandFathersNameLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTGrandFathersNameLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
@@ -897,7 +897,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTFamilyNameLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTFamilyNameLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
@@ -916,7 +916,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span  Text="{x:Static ResourceManager:AppResources.ESTInitialLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span  Text="{x:Static ResourceManager:AppResources.ESTInitialLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
                                     </custom:CustomLabel>
@@ -936,7 +936,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span  Text="{x:Static ResourceManager:AppResources.ESTGenderLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span  Text="{x:Static ResourceManager:AppResources.ESTGenderLabel}" FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
@@ -995,7 +995,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}" FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
@@ -1013,7 +1013,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTCitizenLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTCitizenLabel}" FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
@@ -1030,7 +1030,7 @@
                                     <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTResidenceLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTResidenceLabel}" FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
@@ -1076,7 +1076,7 @@
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTPassportNumberLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ESTPassportNumberLabel}" FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -1106,7 +1106,7 @@
                                 <custom:CustomLabel  Style="{StaticResource forLightLabel}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span  Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"  FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span  Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"  FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -1123,7 +1123,7 @@
                                 <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -1207,7 +1207,7 @@
                                 <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" FontFamily="{StaticResource SomarRegular}" />
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -1295,7 +1295,7 @@
                                     <custom:CustomLabel HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" >
                                         <custom:CustomLabel.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.ESTPleaseProvideACopyOfAbovePassportDetailsLabel}" FontFamily="{StaticResource Somar-Regular}" />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTPleaseProvideACopyOfAbovePassportDetailsLabel}" FontFamily="{StaticResource SomarRegular}" />
                                                 <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                             </FormattedString>
                                         </custom:CustomLabel.FormattedText>
