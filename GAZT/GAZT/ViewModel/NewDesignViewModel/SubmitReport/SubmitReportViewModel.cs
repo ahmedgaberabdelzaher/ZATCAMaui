@@ -427,11 +427,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     SubmitReport.IsNeedReward = SubmitReport.IsNeedReward == true ? false : true;
-                    if (SubmitReport.ReportTaxType != "E1")
+                    if (!SubmitReport.ReportCategory.ToLower().Contains("v"))
                     {
                         IsreporterDataMandatory = SubmitReport.IsNeedReward;
                     }
-                  
+                    else
+                    {
+                       
+                    }
+
                 });
 
             }
@@ -490,14 +494,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReport.MissedField = string.Empty;
                             IsMissingFieldShowen = false;
                             IsReportCategoryShowen = string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName) ? false : true;
-                            if (SubmitReport.ReportTaxType=="E1")
-                            {
-                                IsreporterDataMandatory = true;
-                            }
-                            else
-                            {
-                                IsreporterDataMandatory = false;
-                            }
+                         
                         }
                         else if (isReportCategorySelected)
                         {
@@ -512,6 +509,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             else
                             {
                                 IsSubCategeoryShow = false;
+                            }
+                            if (SubmitReport.ReportCategory.ToLower().Contains("v"))
+                            {
+                                IsreporterDataMandatory = true;
+                            }
+                            else
+                            {
+                                IsreporterDataMandatory = false;
                             }
                             var result = ReportSubCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
@@ -939,7 +944,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 }
             }
 
-            else if (SubmitReport.ReportTaxType== "V1"|| SubmitReport.ReportTaxType=="E1")
+            else if (IsreporterDataMandatory)
             {
                 if (string.IsNullOrWhiteSpace(SubmitReport.ReporterNameAr)
                     || string.IsNullOrWhiteSpace(SubmitReport.ReporterMobileNumber)

@@ -18886,6 +18886,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Waiting for response.
+        /// </summary>
+        public static string Waitingforresponse {
+            get {
+                return ResourceManager.GetString("Waitingforresponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weight.
         /// </summary>
         public static string Weight {

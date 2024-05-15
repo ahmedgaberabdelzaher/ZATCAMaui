@@ -1121,14 +1121,14 @@
                                     <custom:CustomLabel.Triggers>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="false">
                                             <Setter Property="IsVisible" Value="true" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            Binding="{Binding IsreporterDataMandatory}"
                                             TargetType="custom:CustomLabel"
                                             Value="true">
                                             <Setter Property="IsVisible" Value="false" />

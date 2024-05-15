@@ -10858,4 +10858,7 @@ info@zatca.gov.sa</value>
   <data name="ReportAttachements" xml:space="preserve">
     <value>مرفقات البلاغ (الرجاء تحديد جميع المرفقات مرة واحدة بحجم أقل من 4 ميجا بايت)</value>
   </data>
+    <data name="Waitingforresponse" xml:space="preserve">
+    <value>بانتظار الرد </value>
+  </data>
 </root>

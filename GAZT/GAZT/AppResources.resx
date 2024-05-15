@@ -10938,5 +10938,8 @@ Then The system should cancel (/delete) the draft and apply the necessary change
      <data name="ReportAttachements" xml:space="preserve">
     <value>Attachments (should be less than 4 MB)</value>
   </data>
+       <data name="Waitingforresponse" xml:space="preserve">
+    <value>Waiting for response</value>
+  </data>
     <!--End of CR6741-->
 </root>
