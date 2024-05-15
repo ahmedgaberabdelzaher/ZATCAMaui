@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage
     x:Class="EGAZT.Views.NewDesign.VatReview.VatReviewPageView"
@@ -1593,7 +1593,13 @@
                             </StackLayout>
                         </Frame>
 
-
+                         <StackLayout 
+                                Padding="5">
+                            <custom:CustomLabel
+                                    HorizontalOptions="StartAndExpand"
+                                    FontSize="Medium" Style="{StaticResource CaptionLabelBlackBold}"
+                                    Text="{Binding OptionTextLabel}" />
+                        </StackLayout>
                         <buttons:SfButton
                             Margin="0,16,0,16"
                             BackgroundColor="{Binding SecurityPaymentButtonBackGroundColor}"
