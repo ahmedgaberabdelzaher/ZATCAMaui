@@ -43,7 +43,7 @@ namespace EGAZT.Helper
                                         "M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss","yyyy-MM-dd'T'HH:mm:ss"};
                 return DateTime.ParseExact(dateTimeString, formates, cu, DateTimeStyles.None);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new DateTime();
             }

@@ -179,7 +179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 SubmitModel.travelerDeclaration.gender = iamLoginPayloadData.gender.ToString() == "Male" ? 1 : 2;
                 SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData.nationalId.ToString();
                 App.Locator.StateManager.SetItem("TravelId", SubmitModel.travelerDeclaration.travelID);
-                SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.birthDate.ToString());
+                SubmitModel.travelerDeclaration.birthDate = iamLoginPayloadData.birthDate;
 
                 SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.cardIssueDateHijri.ToString());
 
@@ -223,18 +223,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             var premiumResidencytype = data.result;
                             if (premiumResidencytype != null)
                             {
-                               // IqamaExpiryDate = premiumResidencytype.iqamaExpiryDate;
-                                IqamaTypeDescription = premiumResidencytype.iqamaType==2?AppResources.SpecialIqamawithexpirydate:AppResources.SpecialIqamawithoutexpirydate;
+                                if (premiumResidencytype.iqamaType == 2)
+                                {
+                                    if (DateTime.Parse(premiumResidencytype.iqamaExpiryDate) < DateTime.Now)
+                                    {
+                                        SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
+                                        SubmitModel.travelerDeclaration.isPremiumResidency = false;
+
+
+                                        IsLoading = false;
+                                        return;
+                                    }
+                                }
+                                    // IqamaExpiryDate = premiumResidencytype.iqamaExpiryDate;
+                                    IqamaTypeDescription = premiumResidencytype.iqamaType==2?AppResources.SpecialIqamawithexpirydate:AppResources.SpecialIqamawithoutexpirydate;
                                 SubmitModel.travelerDeclaration.isPremiumResidency = true;
                                 SubmitModel.travelerDeclaration.premiumResidencyExpiryDate = premiumResidencytype.iqamaExpiryDate;
                                 if (premiumResidencytype.iqamaType == 2)
                                 {
+                                 
                                     EndDateString = DateTimeHelper.DateTimeFormater(DateTime.Parse(premiumResidencytype.iqamaExpiryDate));
                                     SubmitModel.travelerDeclaration.passExpiryDate = DateTime.Parse(premiumResidencytype.iqamaExpiryDate);
 
                                 }
                                 SubmitModel.travelerDeclaration.IqamaTypeDescription = premiumResidencytype.iqamaType == 2 ? AppResources.SpecialIqamawithexpirydate : AppResources.SpecialIqamawithoutexpirydate;
-
+                              
                                 IsLoading = false;
                                 
                             }

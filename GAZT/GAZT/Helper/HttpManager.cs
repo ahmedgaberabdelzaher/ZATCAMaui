@@ -343,7 +343,7 @@ namespace EGAZT.Helper
                 }
 
             }
-            catch (Exception)
+            catch (Exception exp)
             {
                 return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ServerErrorOrNoInternetConnection };
             }

@@ -400,6 +400,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
+                             <!--IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"-->   
 
                             <!--  Middle Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -408,7 +409,6 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
@@ -434,6 +434,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
+                               <!--IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"--> 
 
                             <!--  Last Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -442,7 +443,6 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
@@ -568,10 +568,10 @@
                         </StackLayout>
 
                            <!--  ID ExpiryDate Field  -->
-                        <StackLayout Spacing="0" >
+                        <StackLayout Spacing="0" IsVisible="false">
                                  <StackLayout.Triggers>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}" Value="{x:Static ResourceManager:AppResources.SpecialIqamawithoutexpirydate}">
-                                    <Setter Property="IsVisible" Value="false"></Setter>
+                                <DataTrigger TargetType="StackLayout" Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}" Value="{x:Static ResourceManager:AppResources.SpecialIqamawithexpirydate}">
+                                    <Setter Property="IsVisible" Value="true"></Setter>
                                 </DataTrigger>
                             </StackLayout.Triggers>
                             <!--  ID ExpiryDate Label  -->

@@ -159,7 +159,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                                 /*var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
                                 navigation.InsertPageBefore(new TransactionReceptionView(userData), currentPage);*/
-                               await GetNafathCustomProfile(userData.result.userInfo.id.ToString(), userData.result.userInfo.dateOfBirthH.Replace('-','/'));
+                               await GetNafathCustomProfile(userData.result.userInfo.id.ToString(), userData.result.userInfo.dateOfBirthH.Replace('-','/'), userData.result.userInfo.dateOfBirthG, userData.result.userInfo.idInfo.idExpiryDateG, userData.result.userInfo.idInfo.idIssueDateG);
                                 return;
                             }
                         }
@@ -196,7 +196,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                 IsLoading = false;
             }
         }
-        private async Task GetNafathCustomProfile(string NationalIqamaId, string HBD)
+        private async Task GetNafathCustomProfile(string NationalIqamaId, string HBD,string BD, string IdEXPDATe, string IdissueEXPDATe)
         {
             try
             {
@@ -213,9 +213,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                         var currentPage = navigation.NavigationStack.LastOrDefault();
                         IsLoading = false;
                         NationalIqamaId = "";
+                        var IamaDATA = data.data;
+                        IamaDATA.birthDate =DateTime.Parse(BD);
+                        IamaDATA.cardIssueDateHijri = IdissueEXPDATe;
+                        IamaDATA.idExpiryDateHijri = IdEXPDATe;
                         if (PageName == "NewDeclarationPage")
                         {
-                            navigation.InsertPageBefore(new NewDeclarationPage(data.data), currentPage);
+                            
+                            navigation.InsertPageBefore(new NewDeclarationPage(IamaDATA), currentPage);
                         }
                         else
                         {
