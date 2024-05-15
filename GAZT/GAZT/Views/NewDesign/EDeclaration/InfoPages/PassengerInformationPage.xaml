@@ -571,7 +571,7 @@
                         <StackLayout Spacing="0" IsVisible="false">
                                  <StackLayout.Triggers>
                                 <DataTrigger TargetType="StackLayout" Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}" Value="{x:Static ResourceManager:AppResources.SpecialIqamawithexpirydate}">
-                                    <Setter Property="IsVisible" Value="true"></Setter>
+                                    <Setter Property="IsVisible" Value="false"></Setter>
                                 </DataTrigger>
                             </StackLayout.Triggers>
                             <!--  ID ExpiryDate Label  -->
