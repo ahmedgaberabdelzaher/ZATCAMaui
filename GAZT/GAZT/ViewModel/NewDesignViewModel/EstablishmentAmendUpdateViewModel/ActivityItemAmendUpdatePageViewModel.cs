@@ -1303,9 +1303,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         ActivityDetails.TransferCRCopy = false;
                         ActivityDetails.DeleteTransferCRCopy = false;
                         ActivityDetails.IsTransferCRCopyVisible = false;
-                        ActivityDetails.MainGroup = false;
-                        ActivityDetails.SubGroup = false;
-                        ActivityDetails.Activity = false;
+                        ActivityDetails.MainGroup = true;
+                        ActivityDetails.SubGroup = true;
+                        ActivityDetails.Activity = true;
 
                         LicenseDetails.IssueCountry = false;
                         LicenseDetails.IssueBy = false;
@@ -1814,8 +1814,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     {
                         EnableCRInputField = true;
                     }
-                    if (!string.IsNullOrEmpty(CRNumber))
-                        validateCRNumber();
+                    //if (!string.IsNullOrEmpty(CRNumber))
+                    //    validateCRNumber();
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
@@ -2283,7 +2283,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 else if (string.IsNullOrWhiteSpace(CrName))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRNumber));
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRName));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CRValidFrom))
@@ -2291,11 +2291,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
-                else if (CRsCopies == null || CRsCopies.Count == 0)
-                {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
-                    return false;
-                }
+                //else if (CRsCopies == null || CRsCopies.Count == 0)
+                //{
+                //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAAttachCR));
+                //    return false;
+                //}
                 else if (CRMainGroup == null && ActivityDetails.MainGroup == true)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));

@@ -5557,6 +5557,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide CR name.
+        /// </summary>
+        public static string ESTValidateACRName {
+            get {
+                return ResourceManager.GetString("ESTValidateACRName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide CR number.
         /// </summary>
         public static string ESTValidateACRNumber {

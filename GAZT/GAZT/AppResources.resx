@@ -10930,6 +10930,9 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <data name="VerifyOtp" xml:space="preserve">
     <value>Verify OTP</value>
   </data>
+   <data name="ESTValidateACRName" xml:space="preserve">
+  <value>Please provide CR name</value>
+  </data>
     <!--End of CR6003-->
  <!-- start of CR6741-->
    <data name="ContactZatcaEmp" xml:space="preserve">

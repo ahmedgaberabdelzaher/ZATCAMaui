@@ -225,7 +225,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span   Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfCRLabel}"/>
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                        <!--<Span Text="*" TextColor="{StaticResource InformationRedColor}"/>-->
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>

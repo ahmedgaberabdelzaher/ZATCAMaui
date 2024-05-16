@@ -10843,6 +10843,9 @@ info@zatca.gov.sa</value>
   <data name="VerifyOtp" xml:space="preserve">
     <value>التحقق من الكود</value>
   </data>
+     <data name="ESTValidateACRName" xml:space="preserve">
+  <value>يرجى تقديم اسم السجل التجاري</value>
+  </data>
   <!--End of CR6003-->
       <!--start of CR6741-->
   <data name="ContactZatcaEmp" xml:space="preserve">
