@@ -7,7 +7,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -628,9 +627,7 @@
 
             </Border>
             <!--#endregion Body-->
-            <custom:Loader
-                Grid.Row="0"
-                Grid.RowSpan="2"
+            <custom:Loader Grid.RowSpan="2"
                 IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>

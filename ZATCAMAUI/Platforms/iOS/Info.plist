@@ -72,12 +72,14 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>LaunchScreen.storyboard</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon-2.appiconset</string>
 	<key>NSContactsUsageDescription</key>
 	<string>please grant access to ZATCA app to your contacts list</string>
 	<key>NSMicrophoneUsageDescription</key>
@@ -95,6 +97,6 @@
 	<key>CFBundleVersion</key>
 	<string>5.0.229</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.enterprise.zatca</string>
+	<string>com.gazt.egazt</string>
 </dict>
 </plist>

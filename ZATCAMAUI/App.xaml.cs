@@ -390,8 +390,9 @@ namespace ZATCAMAUI
                 Preferences.Default.Set("timeOut", DateTime.Now);
                 PageSettings.CheckTarget_Environment("STG");
                 PageSettings.GetBaseURL("STG");
-                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
-                                                                                                                                                                        // Device.SetFlags(new[] { "Expander_Experimental" });
+
+                                                                                                                                                                                    Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzI1MTUyNkAzMjM1MmUzMDJlMzBXVEhKSTV0K3lEVjM2TUpST3pLbTFhUEVuQjVlczY3TCtWblZGRUoyUHNrPQ=="); //MAUI
+
                 AppResources.Culture = CultureInfo.CurrentUICulture;
                 bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
 
@@ -460,7 +461,9 @@ namespace ZATCAMAUI
                 //NEw
                 if (!hasKey)
                 {
-                    navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Colors.White };
+                    //navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Colors.White };
+
+                    navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
                 }
                 else
                 {

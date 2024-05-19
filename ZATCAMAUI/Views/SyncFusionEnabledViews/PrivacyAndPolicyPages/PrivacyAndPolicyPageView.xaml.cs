@@ -78,7 +78,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PrivacyAndPolicyPages
 
 
         }
-        private void BackButtonClicked(object sender, EventArgs e)
+        private void BackButtonClicked(object sender, TappedEventArgs e)
         {
             if (PrivacyandPolicyWebView.CanGoBack)
             {
@@ -99,6 +99,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PrivacyAndPolicyPages
         {
             viewModel.IsLoading = false;
         }
+
         #endregion
     }
 }

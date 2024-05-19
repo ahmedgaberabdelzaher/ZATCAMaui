@@ -229,7 +229,6 @@
                                             x:Name="mapView"
                                             HeightRequest="200"
                                             HorizontalOptions="FillAndExpand"
-                                            IsShowingUser="True"
                                             VerticalOptions="CenterAndExpand" />
                                     </Border>
                                     <Label

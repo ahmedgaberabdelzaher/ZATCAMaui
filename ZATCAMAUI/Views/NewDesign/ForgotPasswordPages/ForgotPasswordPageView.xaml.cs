@@ -140,11 +140,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
         }
 
-        private void CustomLabel_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
         private async void Entry_UserName_Unfocused(object sender, FocusEventArgs e)
         {
 
@@ -210,15 +205,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             }
         }
 
-        void OnIdNumberTextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (viewModel.CorporateCardBackgroundImg.Equals("FP_selected_tile"))
-            {
-
-
-            }
-        }
-
 
         void OtpThirdEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -228,10 +214,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             }
         }
 
-        void OtpFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         void OtpFourthEntry_Unfocused(object sender, FocusEventArgs e)
         {
@@ -356,13 +338,13 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 viewModel.otpTimer.Stop();
         }
 
-        private void OnBackTapped(object sender, EventArgs e)
+        private void OnBackTapped(object sender, TappedEventArgs e)
         {
-            Navigation.PopModalAsync(true);
-            //viewModel._navigationService.GoBack();
+            //Navigation.PopModalAsync(true);
+            viewModel._navigationService.GoBack();
         }
 
-        void Btn_TinPicker_Clicked_1(object sender, EventArgs e)
+        void Btn_TinPicker_Clicked_1(object sender, TappedEventArgs e)
         {
             Picker_Tins.IsOpen = true;
 

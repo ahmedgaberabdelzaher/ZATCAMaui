@@ -35,7 +35,7 @@
                 <buttons:SfButton
                     x:Name="btnprimary"
                     Clicked="DoneButtonClicked"
-                    WidthRequest="380"
+                    WidthRequest="{OnPlatform Android=310,iOS=380}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
                     VerticalOptions="EndAndExpand" />

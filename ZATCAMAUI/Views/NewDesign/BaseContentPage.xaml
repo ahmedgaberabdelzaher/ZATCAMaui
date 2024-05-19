@@ -13,8 +13,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -32,8 +30,9 @@
                 x:Name="MainContainer"
                 Grid.Row="1"
                 Padding="0"
+                Stroke="Transparent"
                 StrokeShape="RoundRectangle 15,15,0,0"
-                Background="White"
+                BackgroundColor="White"
                 x:FieldModifier="public"/>
 
             <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
@@ -43,7 +42,6 @@
         </Grid>
 
         <controls:MsgView
-            Grid.Row="0"
             IsVisible="{Binding IsShowMsgView}"
             VerticalOptions="EndAndExpand" />
     </Grid>

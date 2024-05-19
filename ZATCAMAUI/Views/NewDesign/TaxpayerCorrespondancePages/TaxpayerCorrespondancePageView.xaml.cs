@@ -23,10 +23,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             PopulateReturnTypeList();
             viewModel.PopulateFilterDropdownList();
             viewModel.PopulateDataInChips();
-            On<iOS>().SetUseSafeArea(true);
-            NavigationPage.SetBackButtonTitle(this, "");
             SetPickerFont();
-            //  _ = PageLoad();
         }
         public void SetPickerFont()
         {
@@ -106,9 +103,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             {
                 base.OnAppearing();
                 await PageLoad();
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
+
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     TaxTypeDownPicker.BackgroundColor = (Color)Application.Current.Resources["PickerBgGray"];
@@ -157,7 +152,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             };
                 viewModel.TaxTypeListForDropDown = new List<ReturnTypes>();
                 viewModel.TaxTypeListForDropDown = ReturnTypesList;
-
+                viewModel.FilterTaxTypeLabelText = viewModel.TaxTypeListForDropDown[0].TaxType;
 
             }
             catch (Exception)
@@ -223,7 +218,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages
             });
         }
 
-        private void btn_TaxTypeClicked(object sender, EventArgs e)
+        private void btn_TaxTypeClicked(object sender, TappedEventArgs e)
         {
             TaxTypeDownPicker.IsOpen = true;
         }

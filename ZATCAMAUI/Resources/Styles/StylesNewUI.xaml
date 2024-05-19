@@ -37,7 +37,7 @@
         <Setter Property="StrokeThickness" Value="0" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="HeightRequest" Value="48" />
-        <Setter Property="WidthRequest" Value="330" />
+        <Setter Property="WidthRequest" Value="{OnPlatform Android=330,iOS=380}" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="Background" Value="{StaticResource Secondary}" />

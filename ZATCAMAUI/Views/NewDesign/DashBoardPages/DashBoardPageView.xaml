@@ -26,7 +26,6 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
@@ -59,31 +58,124 @@
 
 
     <ContentPage.Content>
-        <Grid>
+        <Grid HorizontalOptions="FillAndExpand"
+              VerticalOptions="FillAndExpand">
             <Grid
-                Margin="0,0,0,-16"
-                BackgroundColor="Transparent"
-                RowSpacing="0"
+                Margin="0,0,0,50"
                 RowDefinitions="*,auto,auto">
 
                 <Image
                     x:Name="BGImageLogin"
-                    Margin="0,-50,0,0"
+                    Margin="0,0,0,0"
                     Aspect="AspectFill"
                     BackgroundColor="Transparent"
                     Source="partials_background.png" />
 
                 <Grid
-                    Grid.Row="0"
-                    Margin="0"
-                    Padding="0,0,0,0"
                     IsVisible="{Binding HomeViewVisible}"
-                    RowSpacing="0"
                     RowDefinitions="auto,*">
 
+                      <!--Header-->
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="15,0"
+                        HorizontalOptions="FillAndExpand">
+
+                        <Grid ColumnDefinitions="*,40">
+
+                            <StackLayout>
+                                <Image
+                                    HeightRequest="40"
+                                    HorizontalOptions="Start"
+                                    IsVisible="{Binding IsMenuLogoVisible}"
+                                    Source="ic_Gazt.png"
+                                    VerticalOptions="Start"
+                                    WidthRequest="40" />
+                            </StackLayout>
+
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="0,-10,0,0"
+                                HorizontalOptions="CenterAndExpand">
+                                <Border
+                                    x:Name="frameToolbar"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="CenterAndExpand"
+                                    IsVisible="{Binding IsToolbarTaxVisible}"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    StrokeThickness="0"
+                                    VerticalOptions="CenterAndExpand">
+
+                                    <Grid HorizontalOptions="StartAndExpand">
+                                        <Frame
+                                            BackgroundColor="White"
+                                            CornerRadius="15"
+                                            Opacity="0.1" />
+
+                                        <StackLayout
+                                            Padding="10,3"
+                                            Orientation="Vertical"
+                                            Spacing="0">
+                                            <Label
+                                                Margin="0"
+                                                Padding="0"
+                                                FontSize="11"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Style="{StaticResource CaptionLabelWhite}"
+                                                Text="{x:Static ResourceManager:AppResources.DashBoardNewMyTaxObligations}" />
+                                            <Label
+                                                Margin="0,-8,0,0"
+                                                Padding="0"
+                                                FontSize="20">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span
+                                                            FontSize="20"
+                                                            Style="{StaticResource ButtonLabelWhiteBold}"
+                                                            Text="{Binding MyObligationAmountCommas}" />
+                                                        <Span Text=" " />
+                                                        <Span
+                                                            FontSize="15"
+                                                            Style="{StaticResource CaptionLabelWhite}"
+                                                            Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_ToolbarMyTax" />
+                                    </Border.GestureRecognizers>
+                                </Border>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="0" Grid.Column="1">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="message"
+                                    VerticalOptions="Center">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                        </Grid>
+
+                    </StackLayout>
+
+                    <!--Dashboard-->
                     <Border
                         Grid.Row="1"
                         Padding="0"
+                        Stroke="Transparent"
                         StrokeShape="RoundRectangle 12,12,0,0"
                         VerticalOptions="FillAndExpand">
 
@@ -211,17 +303,9 @@
                                     BackgroundColor="{StaticResource NewDullOrangeColor}"
                                     ColumnSpacing="16"
                                     IsVisible="{Binding IsEstablishmentRegistrationTileVisible}"
-                                    RowSpacing="4">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
+                                    RowSpacing="4"
+                                    RowDefinitions="auto,auto,auto"
+                                    ColumnDefinitions="auto,*,auto">
                                     <Image
                                         Grid.Row="0"
                                         Grid.Column="0"
@@ -1114,6 +1198,7 @@
                                                 VerticalOptions="Start"
                                                 Spacing="10"
                                                 Padding="15"
+                                                
                                                 HorizontalOptions="FillAndExpand">
 
                                            <StackLayout Orientation="Horizontal">
@@ -1283,132 +1368,23 @@
 
                     </Border>
 
-                    <!--Header-->
+                </Grid>
+
+                <!--  Side Menu  -->
+                <Grid
+                    x:Name="OldMenu"
+                    RowDefinitions="auto,*"
+                    IsVisible="{Binding MenuViewVisible}">
                     <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Padding="15,0,15,0"
+                        Padding="15,15,15,0"
                         HorizontalOptions="FillAndExpand">
 
-                        <Grid ColumnDefinitions="*,40">
+                        <Grid ColumnDefinitions="40,*,40">
 
                             <StackLayout >
                                 <Image
                                     HeightRequest="40"
                                     HorizontalOptions="Start"
-                                    IsVisible="{Binding IsMenuLogoVisible}"
-                                    Source="ic_Gazt.png"
-                                    VerticalOptions="Start"
-                                    WidthRequest="40" />
-                            </StackLayout>
-
-                            <StackLayout
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Padding="0,-10,0,0"
-                                HorizontalOptions="CenterAndExpand">
-                                <Border
-                                    x:Name="frameToolbar"
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    HorizontalOptions="CenterAndExpand"
-                                    IsVisible="{Binding IsToolbarTaxVisible}"
-                                    StrokeShape="RoundRectangle 10,10,10,10"
-                                    StrokeThickness="0"
-                                    VerticalOptions="CenterAndExpand">
-
-                                    <Grid HorizontalOptions="StartAndExpand">
-                                        <Frame
-                                            BackgroundColor="White"
-                                            CornerRadius="15"
-                                            Opacity="0.1" />
-
-                                        <StackLayout
-                                            Padding="10,3,10,3"
-                                            Orientation="Vertical"
-                                            Spacing="0">
-                                            <Label
-                                                Margin="0"
-                                                Padding="0"
-                                                FontSize="11"
-                                                HorizontalOptions="CenterAndExpand"
-                                                Style="{StaticResource CaptionLabelWhite}"
-                                                Text="{x:Static ResourceManager:AppResources.DashBoardNewMyTaxObligations}" />
-                                            <Label
-                                                Margin="0,-8,0,0"
-                                                Padding="0"
-                                                FontSize="20">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span
-                                                            FontSize="20"
-                                                            Style="{StaticResource ButtonLabelWhiteBold}"
-                                                            Text="{Binding MyObligationAmountCommas}" />
-                                                        <Span Text=" " />
-                                                        <Span
-                                                            FontSize="15"
-                                                            Style="{StaticResource CaptionLabelWhite}"
-                                                            Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-
-                                        </StackLayout>
-                                    </Grid>
-
-                                    <Border.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_ToolbarMyTax" />
-                                    </Border.GestureRecognizers>
-                                </Border>
-                            </StackLayout>
-
-                            <StackLayout Grid.Row="0" Grid.Column="1">
-                                <Image
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    HorizontalOptions="EndAndExpand"
-                                    Source="message"
-                                    VerticalOptions="Center">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Inbox" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-
-                        </Grid>
-
-                    </StackLayout>
-
-                </Grid>
-
-                <!--  Menu Starts  -->
-
-                <Grid
-                    x:Name="OldMenu"
-                    Grid.Row="0"
-                    IsVisible="{Binding MenuViewVisible}">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <StackLayout
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        Padding="15,15,15,0"
-                        HorizontalOptions="FillAndExpand">
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="40" />
-                            </Grid.ColumnDefinitions>
-
-                            <StackLayout Grid.Row="0" Grid.Column="0">
-                                <Image
-                                    HeightRequest="40"
-                                    HorizontalOptions="Start"
                                     Source="ic_Gazt.png"
                                     VerticalOptions="Start"
                                     WidthRequest="40" />
@@ -1416,9 +1392,8 @@
 
 
 
-                            <StackLayout Grid.Row="0" Grid.Column="2">
+                            <StackLayout  Grid.Column="2">
                                 <Image
-                                    Grid.Row="0"
                                     Grid.Column="2"
                                     HorizontalOptions="EndAndExpand"
                                     Source="message"
@@ -1438,7 +1413,10 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
 
-                        <ScrollView VerticalScrollBarVisibility="Never">
+                        <ScrollView VerticalScrollBarVisibility="Never"
+                                    HorizontalOptions="FillAndExpand"
+                                    Margin="0,0,0,50"
+                        VerticalOptions="FillAndExpand">
                             <Grid>
                                 <Grid x:Name="ParentMenu">
                                     <Grid.RowDefinitions>
@@ -1709,16 +1687,13 @@
 
                 </Grid>
 
-                <!--  Menu Ends  -->
-
-                <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
-             
-                <!--  Nav Menu Starts  -->
-               <custom:NavMenu Grid.Row="1"/>
-
-                <!--  Nav Menu End  -->
             </Grid>
 
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
+             
+             <!--  Nav Menu Starts  -->
+             <custom:NavMenu Grid.Row="1"
+                               VerticalOptions="EndAndExpand"/>
 
             <!--#region SurveyView {Binding IsShowMsgView}-->
             <Grid
@@ -1957,6 +1932,7 @@
 
             </Grid>
             <!--#endregion-->
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

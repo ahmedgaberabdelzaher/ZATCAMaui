@@ -264,13 +264,12 @@
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                            <StackLayout>
+                                            <StackLayout Padding="{OnPlatform Android=12,iOS=0}">
 
                                                 <syncfusion:SfPicker
                                                     x:Name="DDlIDType"
                                                     Background="White"
                                                     CancelButtonClicked="IDType_CancelButtonClicked"
-                                                    FlowDirection="RightToLeft"
                                                     ItemHeight="46"
                                                     Mode="Dialog"
                                                     OkButtonClicked="DDlIDType_OkayButtonClicked"
@@ -456,23 +455,32 @@
                                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                                <StackLayout >
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="DateEntry"
+                                                    FontFamily="{StaticResource SomarLight}"
+                                                    FontSize="Small"
+                                                    InputTransparent="True"
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Placeholder="dd/MM/yyyy"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding DOBddyymm}"
+                                                    TextChanged="DateEntry_TextChanged"
+                                                    TextColor="{StaticResource Primary}"
+                                                    Unfocused="DatePicker_Unfocused" />
 
-                                                    <custom:GAZTBorderlessEntry
-                                                        x:Name="DateEntry"
-                                                        FontFamily="{StaticResource SomarLight}"
-                                                        FontSize="Small"
-                                                        InputTransparent="True"
-                                                        IsReadOnly="True"
-                                                        Keyboard="Text"
-                                                        Placeholder="dd/MM/yyyy"
-                                                        Style="{StaticResource DefaultEntry}"
-                                                        Text="{Binding DOBddyymm}"
-                                                        TextChanged="DateEntry_TextChanged"
-                                                        TextColor="{StaticResource Primary}"
-                                                        Unfocused="DatePicker_Unfocused" />
+                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="btnDate_Clicked" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                                    <custom:CustomDatePicker
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Image Aspect="AspectFit"
+                                                            Style="{StaticResource SmallIcon}"
+                                                            Source="greyCalender" />
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                        </inputLayout:SfTextInputLayout>
+
+                                         <custom:CustomDatePicker
                                                         x:Name="SignUpDOB"
                                                         Background="White"
                                                         CancelButtonClicked="DOB_CancelButtonClicked"
@@ -526,7 +534,7 @@
 
                                                     </custom:CustomDatePicker>
 
-                                                    <custom:CustomHijriDatePicker
+                                        <custom:CustomHijriDatePicker
                                                         x:Name="SignUpDOBHijri"
                                                         Background="White"
                                                         CancelButtonClicked="DOB_CancelButtonClicked"
@@ -543,7 +551,8 @@
                                                          </custom:CustomHijriDatePicker.SelectionView>
 
                                                          <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                                            <syncfusion:PickerColumnHeaderView Height="46"
+                                                                                               Background="White"/>
                                                         </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                                         <custom:CustomHijriDatePicker.HeaderView>
@@ -572,23 +581,6 @@
                                                         </custom:CustomHijriDatePicker.FooterView>
 
                                                     </custom:CustomHijriDatePicker>
-
-                                                           
-
-                                                </StackLayout>
-
-
-                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="btnDate_Clicked" />
-                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-
-                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                    <Image Aspect="AspectFit"
-                                                            Style="{StaticResource SmallIcon}"
-                                                            Source="greyCalender" />
-                                                </inputLayout:SfTextInputLayout.TrailingView>
-                                        </inputLayout:SfTextInputLayout>
-
                                     </StackLayout>
 
                                     <!--Name-->
@@ -2101,7 +2093,7 @@
                         <buttons:SfButton
                             x:Name="btnContinue"
                             Margin="0,10"
-                            WidthRequest="380"
+                            WidthRequest="{OnPlatform Android=310, iOS=380}"
                             VerticalOptions="EndAndExpand"
                             Command="{Binding OnContinueButtonClick}"
                             Style="{StaticResource PrimaryButtonStyle}"

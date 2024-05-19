@@ -8,7 +8,12 @@
     TitleText="{x:Static ResourceManager:AppResources.NDChat}"
     FlowDirection="{Binding AppDirection}">
     <newdesign:BaseContentPage.PancakeView>
-        <WebView x:Name="ChatWebView" />
+        <Grid BackgroundColor="White">
+
+            <WebView x:Name="ChatWebView"
+                     WidthRequest="{OnPlatform Android=350,iOS=410}"/>
+
+        </Grid>
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>
 

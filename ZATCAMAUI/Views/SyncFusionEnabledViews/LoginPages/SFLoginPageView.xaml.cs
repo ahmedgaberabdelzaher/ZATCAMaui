@@ -310,7 +310,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                             else if (data == "navigateToForgotUsernamePage")
                             {
                                 hybridWebView.Opacity = 0;
-                                await Navigation.PushModalAsync(new GAZTNewDesignForgotPasswordPageView(), true);
+                                viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
                             }
 
                             else if (data == "navigateToUnlockAccountPage")

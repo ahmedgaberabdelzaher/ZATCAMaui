@@ -45,7 +45,7 @@
         <Grid RowDefinitions="Auto,*">
 
              <!--Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,5" ColumnDefinitions="*,2*,*">
                         
                 <StackLayout>
 
@@ -94,7 +94,7 @@
 
             <Border
                 Grid.Row="1"
-                Padding="20,5,20,0"
+                Padding="20,10,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
                  <StackLayout HorizontalOptions="FillAndExpand"
@@ -110,15 +110,12 @@
                         MinNum="{Binding CurrentIndex}" />
 
                     <Label
-                        Margin="0,10,0,0"
-                        Padding="0,10,0,0"
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource PageTitleBlack}"
                         Text="{Binding PageTitle}"
                         VerticalOptions="Start" />
 
                     <Label
-                        Padding="0,10,0,8"
                         VerticalOptions="Start"
                         Style="{StaticResource BodyLabelGrey}"
                         Text="{Binding BodyText}" />
@@ -131,8 +128,7 @@
 
                    
                     <!--  step 1  -->
-                    <WebView Margin="0"
-                             HeightRequest="590"
+                    <WebView HeightRequest="{OnPlatform Android=490,iOS=590}"
                              IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}"
                         x:Name="TCWebView"/>
 
@@ -297,9 +293,27 @@
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10">
 
-                                            <StackLayout Padding="0">
+                                                <custom:GAZTBorderlessEntry
+                                                    IsReadOnly="True"
+                                                    BackgroundColor="Transparent"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding TxtIDType}"
+                                                    TextColor="{StaticResource NeutralBlack}"
+                                                    VerticalTextAlignment="Center" />
 
-                                                <syncfusion:SfPicker
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image Source="arrowDropdown.png"
+                                                        Style="{StaticResource SmallIcon}"/>
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnIDTypeClicked"  />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                        </inputLayout:SfTextInputLayout>
+
+                                        <syncfusion:SfPicker
                                                     x:Name="IDTypePicker"
                                                     Margin="0"
                                                     Background="Transparent"
@@ -359,28 +373,6 @@
                                                     </syncfusion:SfPicker.FooterView>
 
                                                 </syncfusion:SfPicker>
-
-                                                <custom:GAZTBorderlessEntry
-                                                    IsReadOnly="True"
-                                                    BackgroundColor="Transparent"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding TxtIDType}"
-                                                    TextColor="{StaticResource NeutralBlack}"
-                                                    VerticalTextAlignment="Center" />
-
-                                            </StackLayout>
-
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Source="arrowDropdown.png"
-                                                        Style="{StaticResource SmallIcon}"/>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
-
-                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="OnIDTypeClicked"  />
-                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-
-                                        </inputLayout:SfTextInputLayout>
 
                                     </StackLayout>
                                    
@@ -472,9 +464,33 @@
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource NeutralGreay}">
 
-                                            <StackLayout Padding="0">
+                                             <custom:GAZTBorderlessEntry
+                                                        x:Name="DateEntry"
+                                                        FontFamily="{StaticResource SomarLight}"
+                                                        FontSize="Small"
+                                                        InputTransparent="True"
+                                                        IsReadOnly="True"
+                                                        Keyboard="Text"
+                                                        Placeholder="dd/MM/yyyy"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Text="{Binding PickerDobToDisplay}"
+                                                        TextChanged="DateEntry_TextChanged"
+                                                        TextColor="{StaticResource NeutralBlack}"
+                                                        VerticalTextAlignment="Center" />
 
-                                                 <!--  DatePicker  -->
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image HorizontalOptions="EndAndExpand"
+                                                        Style="{StaticResource SmallIcon}"
+                                                        Source="calendar.png" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnDOBClicked" />
+                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                        </inputLayout:SfTextInputLayout>
+
+                                          <!--  DatePicker  -->
                                                 <custom:CustomDatePicker
                                                     x:Name="DpDbo"
                                                     Background="White"
@@ -574,35 +590,6 @@
 
                                                 </custom:CustomHijriDatePicker>
 
-                                                 <custom:GAZTBorderlessEntry
-                                                    x:Name="DateEntry"
-                                                    FontFamily="{StaticResource SomarLight}"
-                                                    FontSize="Small"
-                                                    InputTransparent="True"
-                                                    IsReadOnly="True"
-                                                    Keyboard="Text"
-                                                    Placeholder="dd/MM/yyyy"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding PickerDobToDisplay}"
-                                                    TextChanged="DateEntry_TextChanged"
-                                                    TextColor="{StaticResource NeutralBlack}"
-                                                    VerticalTextAlignment="Center" />
-
-
-                                            </StackLayout>
-                                   
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                        Style="{StaticResource SmallIcon}"
-                                                        Source="calendar.png" />
-                                            </inputLayout:SfTextInputLayout.TrailingView>
-
-                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnDOBClicked" />
-                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
-
-                                        </inputLayout:SfTextInputLayout>
-
                                 
 
                                     </StackLayout>
@@ -667,7 +654,7 @@
                                         <Grid >
 
                                              <Image Aspect="AspectFill"
-                                                    WidthRequest="180"
+                                                    WidthRequest="160"
                                                     HeightRequest="100"
                                                     Source="{Binding ImgBackgroundCRNubmer}" />
 
@@ -698,7 +685,7 @@
 
                                             <Image
                                                 Aspect="AspectFill"
-                                                WidthRequest="180"
+                                                WidthRequest="160"
                                                 HeightRequest="100"
                                                 Source="{Binding ImgBackgroundLicenseNubmer}" />
 
@@ -831,9 +818,28 @@
                                                 IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="10">
 
-                                                <StackLayout>
+                                                  <custom:GAZTBorderlessEntry
+                                                        IsReadOnly="True"
+                                                        IsSpellCheckEnabled="False"
+                                                        Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Text="{Binding TxtLOrCIssuedBy}"
+                                                        TextColor="{StaticResource NeutralBlack}"
+                                                        VerticalTextAlignment="Center" />
 
-                                                     <syncfusion:SfPicker
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Image Source="arrowDropdown.png"
+                                                           Style="{StaticResource SmallIcon}"/>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="LIssuedBy_Clicked"/>
+
+                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                            </inputLayout:SfTextInputLayout>
+
+                                         <syncfusion:SfPicker
                                                         x:Name="ddlLIssuedBy"
                                                         Background="White"
                                                         ItemHeight="46"
@@ -891,27 +897,7 @@
 
                                                     </syncfusion:SfPicker>
 
-                                                    <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
-                                                        IsSpellCheckEnabled="False"
-                                                        Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
-                                                        Style="{StaticResource DefaultEntry}"
-                                                        Text="{Binding TxtLOrCIssuedBy}"
-                                                        TextColor="{StaticResource NeutralBlack}"
-                                                        VerticalTextAlignment="Center" />
-                                                </StackLayout>
-
-                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                    <Image Source="arrowDropdown.png"
-                                                           Style="{StaticResource SmallIcon}"/>
-                                                </inputLayout:SfTextInputLayout.TrailingView>
-
-                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="LIssuedBy_Clicked"/>
-
-                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
-
-                                            </inputLayout:SfTextInputLayout>
+                                                 
 
                                     </StackLayout>
 
@@ -2090,7 +2076,7 @@
                                 x:Name="btnprimary"
                                 VerticalOptions="EndAndExpand"
                                 Clicked="btnSubmitNext_Clicked"
-                                WidthRequest="380"
+                                WidthRequest="{OnPlatform Android=310,iOS=380}"
                                 IsEnabled="{Binding IsNextButtonEnable}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{Binding NextBTN}">
