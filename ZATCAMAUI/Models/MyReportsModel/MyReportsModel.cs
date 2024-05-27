@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using GalaSoft.MvvmLight;
 
 namespace ZATCAMAUI.Models.MyReportsModel
@@ -31,5 +31,22 @@ namespace ZATCAMAUI.Models.MyReportsModel
         private string reportLocation;
         public string ReportLocation { get { return reportLocation; } set { reportLocation = value; RaisePropertyChanged(); } }
     }
+
+    public class ReportsResult
+    {
+        public List<MyReportsModel> reportTaxTypes { get; set; }
+        public int totalCount { get; set; }
+        public int pagesCount { get; set; }
+    }
+
+
+
+
+
+
+
+
+
+
 }
 

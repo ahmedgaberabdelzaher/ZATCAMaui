@@ -537,7 +537,6 @@
                             </Label.FormattedText>
                         </Label>
                         <inputLayout:SfTextInputLayout
-                            Margin="0,-6,0,-6"
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
@@ -572,7 +571,6 @@
                             Text="{x:Static ResourceManager:AppResources.ESTAddNumber}"
                             VerticalOptions="Center" />
                         <inputLayout:SfTextInputLayout
-                            Margin="0,-6,0,-6"
                             ContainerType="Outlined"
                              IsHintAlwaysFloated="True"
                             HorizontalOptions="FillAndExpand"
@@ -749,7 +747,6 @@
                                     Grid.Row="1"
                                     Grid.Column="0"
                                      IsHintAlwaysFloated="True"
-                                    Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
@@ -848,7 +845,6 @@
                             </Label>
                             <inputLayout:SfTextInputLayout
                                 IsHintAlwaysFloated="True"
-                                Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
@@ -882,7 +878,6 @@
                                 </Label.FormattedText>
                             </Label>
                             <inputLayout:SfTextInputLayout
-                                Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"

@@ -26,18 +26,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #region Variable
 
-        //private ZakatForm5TabEnum _currentTab = ZakatForm5TabEnum.BasicInformation;
-        //public ZakatForm5TabEnum currentTab
-        //{
-        //    get => _currentTab;
-        //    private set
-        //    {
-        //        _currentTab = value;
-        //        RaisePropertyChanged(nameof(currentTab));
-        //        CurrentIndex = (int)_currentTab;
-        //        RaisePropertyChanged(nameof(CurrentIndex));
-        //    }
-        //}
         private int _currenrIndex = 1;
         public int CurrentIndex
         {
@@ -2112,6 +2100,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (vATRegistration.d.CONTACT_PERSONSet != null)
                         {
                             GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
+                            //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                             idnumber = string.Empty;
                             idnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                             FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
@@ -2126,7 +2115,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
 
                         //Step 5
+
+                        /* if (vATRegistration.d.Decfg == "1")
+                         {*/
                         IsDeclarationChecked = true;
+                        //VATRegistrationDetailsData.d.Decfg = "1";
+                        /*}
+                        else if (vATRegistration.d.Decfg == "0")
+                        {
+                            IsDeclarationChecked = false;
+                        }*/
                         if (vATRegistration.d.AgrFg != null)
                         {
                             if (vATRegistration.d.AgrFg == "1")

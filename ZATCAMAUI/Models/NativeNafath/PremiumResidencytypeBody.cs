@@ -1,0 +1,10 @@
+﻿
+namespace ZATCAMAUI.Models.NativeNafath
+{
+	public class PremiumResidencytypeBody
+    {
+		public string personID { get; set; }
+        public string birthDate { get; set; }
+	}
+}
+

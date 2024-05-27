@@ -23,10 +23,6 @@
             </Style>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -59,35 +55,28 @@
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
                     </Border>
-                    <Grid Grid.Row="0" Padding="24,10,24,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <!--<ColumnDefinition Width="20*" />-->
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            HorizontalOptions="Center"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" />
-                        <Image
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            HeightRequest="24"
-                            HorizontalOptions="EndAndExpand"
-                            Source="close"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="24">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </Grid>
+                    <Grid Padding="24,10,24,10"
+                          RowDefinitions="auto"
+                          ColumnDefinitions="20*,60*,20*"
+                          Grid.Row="0">
+ 
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+<Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"
+                               Style="{DynamicResource BackButtonArrow}">
+<Image.GestureRecognizers>
+<TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
+</Image.GestureRecognizers>
+</Image>
+<Image  Grid.Row="0" Grid.Column="2"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                               Source="close"
+                               HeightRequest="24"
+                               WidthRequest="24">
+<Image.GestureRecognizers>
+<TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}"/>
+</Image.GestureRecognizers>
+</Image>
+</Grid>
                 </Grid>
             </Grid>
         </ControlTemplate>
@@ -111,22 +100,24 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="1" />
-                        </Grid.RowDefinitions>
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="0"
-                            Margin="0"
-                            Padding="0,10,0,0"
-                            HorizontalOptions="StartAndExpand"
-                            Style="{StaticResource PageTitleBlack}"
-                            Text="{x:Static ResourceManager:AppResources.ContractRelease}" />
-
-                    </Grid>
-
+ 
+                        <StackLayout Orientation="Horizontal">
+ 
+                            <custom:CustomLabel Text="{Binding FilterLabelTxt}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource SectionTitleBlack}" FontSize="28" FontAttributes="Bold"/>
+<Image Source="arrowDropdown" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+<Image.Margin>
+<OnPlatform x:TypeArguments="Thickness">
+<On Platform="iOS" Value="5"/>
+<On Platform="Android" Value="5,10,5,0"/>
+</OnPlatform>
+</Image.Margin>
+<Image.GestureRecognizers>
+<TapGestureRecognizer Tapped="btn_Clicked"/>
+</Image.GestureRecognizers>
+</Image>
+</StackLayout>
+</Grid>
                     <Grid
                         Grid.Row="1"
                         BackgroundColor="Transparent"
@@ -269,7 +260,7 @@
                                                             Text="{Binding StatText}"
                                                             TextColor="{StaticResource Partial}"
                                                             VerticalOptions="CenterAndExpand">
-                                                            <Label.Triggers>
+                                                          <!-- <Label.Triggers>
 
                                                                 <DataTrigger
                                                                     Binding="{Binding StatText}"
@@ -279,7 +270,7 @@
                                                                     <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
                                                                 </DataTrigger>
-                                                            </Label.Triggers>
+                                                            </Label.Triggers>--> 
                                                         </Label>
                                                     </Border>
                                                 </StackLayout>

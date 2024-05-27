@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Web;
+using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.Core.Helper
@@ -150,7 +151,7 @@ namespace ZATCAMAUI.Core.Helper
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
@@ -298,7 +299,9 @@ namespace ZATCAMAUI.Core.Helper
         {
 
             client.DefaultRequestHeaders.Add("LanguageCode", App.IsArabic ? "ar" : "en");
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", null);
+           // client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", null);
+            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+            client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
         }
 
         private static string CheckNullJsonObject(object obj)

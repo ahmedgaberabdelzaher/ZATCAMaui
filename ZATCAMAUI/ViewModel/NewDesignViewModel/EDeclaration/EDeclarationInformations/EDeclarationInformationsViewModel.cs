@@ -8,6 +8,7 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models;
 using RGPopup.Maui.Services;
+using ZATCAMAUI.Core.AppConfigurations;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -334,7 +335,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
             {
                 return new Command(_ =>
                 {
-                    _navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
+                //_navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
+                 var decreptedURlParam = EncryptionHelper.EncryptStringAES($"\\refCode={TravelerDeclarationResponse.ReferenceID}&travilID={ TravelerDeclarationResponse.travelID}\\");
+
+
+                    //     var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{TravelerDeclarationResponse.ReferenceID}&travilID={TravelerDeclarationResponse.travelID}";
+                    var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{decreptedURlParam}";
+
+                    Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
+                    {
+                        LaunchMode = BrowserLaunchMode.SystemPreferred,
+                        TitleMode = BrowserTitleMode.Show,
+                        PreferredToolbarColor = Color.FromHex("#002447"),
+                        PreferredControlColor = Color.FromHex("#0996d4"),
+                    });
+
+                  
+
+                  //  Xamarin.Essentials.Launcher.OpenAsync(paymentRedirectURL);
 
                 });
             }
@@ -355,7 +373,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
 
         #endregion
 
-        public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)
+        public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService, declerationServices,nativeNafath)
         {
         }
     }

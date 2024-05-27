@@ -8,7 +8,7 @@
     }
     public class ReportTypeList
     {
-        public List<ReportTypeModel> reportTaxTypeList { get; set; }
+        public List<ReportTypeModel> reportTaxTypes { get; set; }
     }
 }
 

@@ -10,6 +10,7 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.BaseModels;
 using ZATCAMAUI.Models.EinvoiceModels;
 using ZATCAMAUI.Models.TahqaqModels;
 
@@ -37,6 +38,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         {
             _tahqaqServices = tahqaqServices;
             eInvoiceQRModel = new EInvoiceQRModel();
+            //  scanCode = "SAA6216738003275";
+            //ScanEnvoiceQrCommand.Execute(null);
 
         }
 
@@ -100,7 +103,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             get
             {
                 return new Command(() =>
+
                 {
+
                     IsAnalyzing = false;
                     IsScanning = false;
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -111,6 +116,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                         IsLoading = false;
 
                     });
+
+
                 });
             }
         }
@@ -123,33 +130,199 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 {
 
-                    _navigationService.NavigateTo(App.TaxEvasionPageWebView);
+                    // _navigationService.NavigateTo(App.TaxEvasionPageWebView);
+                    _navigationService.NavigateTo("SubmitReportPage");
 
                 });
             }
         }
-
         public bool IsBase64(string base64String)
-        {
+        {//|| base64String.Length % 4 != 0
+            if (string.IsNullOrEmpty(base64String)
+               || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
+                return false;
 
             try
             {
-                if (string.IsNullOrEmpty(base64String)
-                    || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
+                try
+                {
+                    Convert.FromBase64String(base64String);
+                    return true;
+                }
+                catch (Exception)
+                {
                     return false;
-
-                Convert.FromBase64String(base64String);
-                return true;
+                }
 
             }
             catch (Exception)
             {
                 return false;
-
+                // Handle the exception
             }
+            return false;
         }
 
         int NoofTags;
+
+        public ICommand ScanEnvoiceQrCommandOld
+        {
+            get
+            {
+                return new Command(() =>
+
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        try
+                        {
+
+                            IsLoading = true;
+
+                            // string code = Result.Text;
+                            string code = scanCode;
+                            code = "AYHd2LTYsdmD2Kkg2LnYtdin2YUg2YLYqNin2YbZiiDZiNi02LHZg9in2Ycg2YTZhNil2YbYtNin2KHYp9iqINmI2KfZhNi12YrYp9mG2KkgfCBJc2FtIEthYmJhbmkgJiBQYXJ0bmVycyAgRm9yIENvbnN0cnVjdGlvbiAmIE1haW50ZW5hbmNlIENvbXBhbnkg2LTYsdmD2Kkg2LnYtdin2YUg2YLYqNin2YbZiiDZiNi02LHZg9in2Ycg2YTZhNil2YbYtNin2KHYp9iqINmI2KfZhNi12YrYp9mG2KkCDzMwMDgwMzU3NjgxMDAwMwMTMjAyNC0wMS0xN1QwMDowMDowMAQJNDM3NDcwLjM1BQg1NzA2MS4zNQYsN2UrZVRTaEVLdWlhSlFaWjc3dnN5bTdWQjRjK1JnUTFtbHhIVThMUzYxST0HYE1FVUNJUUNuZ2YyZTNNMGtCMVM3MnAzWVRvL3hIQTlXL295Zm9taGFnd1Z4QnNpSGVBSWdHZnhmZm45eDBKaTNUNndxY1JkcEM5ZDBTVms5NXc3dkQwaFh0V2pJVkdNPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDPIPLT2044zYRvIVZo57gAfl5mNwAY5yUx67kGLP9s0cQ/T5wXshikXZU4rFMqdms9pZJWs+UVE/G3+Ar5QYrg==";
+                            // code = "AT5KYWhleiBJbnRlcm5hdGlvbmFsIENvbXBhbnkgZm9yIEluZm9ybWF0aW9uIFN5c3RlbXMgVGVjaG5vbG9neQIPMzEwMTkxNjI3NDEwMDAzAxMyMDIzLTAxLTA2VDE0OjIyOjA4BAQ5LjAwBQQxLjE3";
+                            if (code == "-1")
+                            {
+                                return;
+                            }
+                            /* if (code.Length!=15)
+                             {
+                                 // string code = "ASR2YWx1ZXMuYWRkcmVzcy5raXRvcGlTYS50YXhwYXllck5hbWUCDzMxMDQwOTY1NTcwMDAwMwMYMjAyMi0wNy0xOVQxMzozMjo0My40MTFaBAU0Mi4wMAUENS40OA==";
+                           IsShowMsgView = true;
+                                 MessageTxt = AppResources.InValidCode;
+                             }*/
+                            if (!IsBase64(code))
+                            {
+                                eInvoiceQRModel.InvalidData = code;
+                                await AddQRLog(eInvoiceQRModel);
+                                IsLoading = false;
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                                return;
+                            }
+                            //  code = "AUrYtNix2YPYqSDYp9mE2K/YsdmK2LMg2YTZhNiu2K/Zhdin2Kog2KfZhNio2KrYsdmI2YTZitipINmI2KfZhNmG2YLZhNmK2KfYqgIPMzAwMDU2NDYyMzAwMDAzAxQyMDIzLTA1LTEzVDE5OjI1OjU5WgQFNTAuMDIFBDYuNTIGLFhLcyt4M2VrM1JvY21yS2lMdzdhZVZuaitNZDdHRnhML2NjNmk3dmRRRkE9B2BNRVFDSUtNblpOeHlYb3NOTGpKalZPcWQvUDI5WHJxQi95TmJ0ZmQ1Wm5PcGRXVGtBaUJWQUE2eFNTWkxHekFsaGdqcVlyQmFobHZIZzVZTkdHVUFGZW9BTXgyUVpBPT0IWDBWMBAGByqGSM49AgEGBSuBBAAKA0IABI/9OKmqTjHjta6j6JOIz11T1SRSiy9OCaTaepysFnlhzgeii+nknOn8bOYqsvq2xuY6GaPPKBD+7qytEWk6cWgJRjBEAiA2MdHOYnHsV7VtGZFcxuNek53vqGO//1OZO70/oTyZqQIgLF1Vc+ANeI0cqw52ytxWJWLb7KqC+q+wRBckr+6j0hE=";
+                            byte[] byteList = Convert.FromBase64String(code);
+                            int currentPosition = 1;
+                            // NoofTags = byteList.Length;
+                            int tagNumber = 0;
+                            while (currentPosition < byteList.Length)
+                            {
+                                // int tagNumber = byteList[currentPosition];
+                                tagNumber++;
+                                currentPosition++;
+                                // Read Length
+                                int valueLength = byteList[currentPosition];
+                                Debug.WriteLine(valueLength);
+
+                                currentPosition++;
+                                // Read Message
+                                int lastPosition = currentPosition + valueLength + 1;
+                                var message = byteList.Skip(currentPosition).Take(lastPosition - (currentPosition + 1));
+                                String messageAsText = Encoding.UTF8.GetString(message.ToArray());
+                                Debug.WriteLine(messageAsText);
+                                // Utf8Decoder().convert(message.toList());
+                                currentPosition += valueLength;
+                                SetDataToModel(tagNumber, messageAsText);
+                                NoofTags = tagNumber;
+                                // tagNumber++;
+
+                            }
+                            if (NoofTags < 5)
+                            {
+                                currentPosition = 0;
+                                tagNumber = 0;
+                                while (currentPosition < byteList.Length)
+                                {
+                                    // int tagNumber = byteList[currentPosition];
+
+                                    currentPosition++;
+                                    tagNumber++;
+                                    // Read Length
+                                    int valueLength = byteList[currentPosition];
+                                    Debug.WriteLine(valueLength);
+
+                                    currentPosition++;
+                                    // Read Message
+                                    int lastPosition = currentPosition + valueLength + 1;
+                                    var message = byteList.Skip(currentPosition).Take(lastPosition - (currentPosition + 1));
+                                    String messageAsText = Encoding.UTF8.GetString(message.ToArray());
+                                    Debug.WriteLine(messageAsText);
+                                    // Utf8Decoder().convert(message.toList());
+                                    currentPosition += valueLength;
+                                    SetDataToModel(tagNumber, messageAsText);
+                                    NoofTags = tagNumber;
+
+
+                                }
+                            }
+                            var res = qrValidation(eInvoiceQRModel);
+                            if ((NoofTags <= 5 && res != "") || (NoofTags <= 8 && res != ""))
+                            {
+                                currentPosition = 0;
+                                tagNumber = 0;
+                                while (currentPosition < byteList.Length)
+                                {
+                                    // int tagNumber = byteList[currentPosition];
+
+                                    currentPosition++;
+                                    tagNumber++;
+                                    // Read Length
+                                    int valueLength = byteList[currentPosition];
+                                    Debug.WriteLine(valueLength);
+
+                                    currentPosition++;
+                                    // Read Message
+                                    int lastPosition = currentPosition + valueLength + 1;
+                                    var message = byteList.Skip(currentPosition).Take(lastPosition - (currentPosition + 1));
+                                    String messageAsText = Encoding.UTF8.GetString(message.ToArray());
+                                    Debug.WriteLine(messageAsText);
+                                    // Utf8Decoder().convert(message.toList());
+                                    currentPosition += valueLength;
+                                    SetDataToModel(tagNumber, messageAsText);
+                                    NoofTags = tagNumber;
+
+
+                                }
+                                res = qrValidation(eInvoiceQRModel);
+                            }
+                            if (res == "")
+                            {
+                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false;
+                                await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
+
+                                ///Old Scenario
+                                /*    IsShowRsltView = true;
+                                IsShowScanView = false;
+                                await GetQrData(eInvoiceQRModel.vatNumber);*/
+                            }
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+
+                            }
+
+                            IsLoading = false;
+                            await AddQRLog(eInvoiceQRModel);
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        finally
+                        {
+                            IsLoading = false;
+                            IsScanning = false;
+                        }
+                    });
+
+
+                });
+            }
+        }
 
         public ICommand ScanEnvoiceQrCommand
         {
@@ -166,7 +339,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                             IsLoading = true;
 
                             string code = scanCode;
-
+                            code = "ASVaYW1pbCBPcGVyYXRpb25zICYgTWFpbnRlbmFuY2UgQ28gTHRkAg8zMTAxMzY4NDAzMDAwMDMDEzIwMjMtMTItMThUMDY6NDM6MjUEBzExNzYuOTEFBjE1My41MQYsVDI2RjBMYzVvTHpGenZTVjNIU1JLQnIwNSsvQmRmRG93bzU1VjhHNitwOD0HYE1FUUNJRGVnSUw5MStMTHN1c3F5Ukd2djd5cUZ5ZEtsTmQ0UnhXZ3JLQ1c0Vmd5cUFpQk04SDhYaWlMclhrZTZzVm9LeUo0TXRuS2NCZDUyV281VlpRUHZtcVByT1E9PQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEouqS1tSXHqT8suzSdB7CJVLlQZnGe8B12TYwC8O4PqJJVEFHOHV3nzdenUmVyRzExqlrGHhfJ1yB+jrEECWyZg==";
                             if (code == "-1")
                             {
                                 return;
@@ -186,20 +359,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
 
 
-
+                            int currentPosition = 1;
+                            int TagIndex = 0;
+                            int noOfTags = 0;
                             TlvEncoding.ProcessTlvStream(stream,
-                            (tag, data) =>
-                            {
-                                var messageAsText = Encoding.UTF8.GetString(data);
-                                SetDataToModel(int.Parse(tag.ToString()), messageAsText);
-                                NoofTags = (int)tag;
-                            });
-                            /* 
-                             *  int currentPosition = 1;
-                                 int TagIndex = 0;
-                                int noOfTags = 0;
-
-                             * while (currentPosition < byteList.Length)
+    (tag, data) => {
+        var messageAsText = Encoding.UTF8.GetString(data);
+        SetDataToModel(int.Parse(tag.ToString()), messageAsText);
+        NoofTags = (int)tag;
+    });
+                            /*     while (currentPosition < byteList.Length)
                                  {
                                      // Read Length
                                      int msgLength = byteList[TagIndex + 1];
@@ -268,6 +437,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 case 1:
                     {
                         eInvoiceQRModel.sellerName = new string(messageAsText.Trim().Where(c => !char.IsControl(c)).ToArray());
+                        // eInvoiceQRModel.sellerName = messageAsText.Trim();
+                        //  SellerName = messageAsText.Trim();
                         SellerName = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
                         Debug.WriteLine($"Seller Name {messageAsText}");
                         break;
@@ -276,6 +447,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 case 2:
                     {
+                        //eInvoiceQRModel.vatNumber = messageAsText.TrimStart().Trim();
                         eInvoiceQRModel.vatNumber = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
                         VatNumber = messageAsText.TrimStart().Trim();
                         Debug.WriteLine($"Vat No {messageAsText.TrimStart()}");
@@ -285,8 +457,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 case 3:
                     {
+                        // eInvoiceQRModel.timeStamp = messageAsText.TrimStart().Trim().Replace(" ","");
                         eInvoiceQRModel.timeStamp = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
 
+                        // TimeStamp = messageAsText.Trim();
 
                     }
                     break;
@@ -347,11 +521,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         string qrValidation(EInvoiceQRModel qRcodeModelDetails)
         {
             var result = "";
+            //  double vat =double.Parse(vatAmount.Replace(" ",""));
+            //  int vat = int.Parse(qRcodeModelDetails.vatAmount);
             if (String.IsNullOrEmpty(qRcodeModelDetails.sellerName))
             {
                 result = "Empty Seller Name";
             }
-            else if (string.IsNullOrEmpty(qRcodeModelDetails.vatNumber))
+            else if (String.IsNullOrEmpty(qRcodeModelDetails.vatNumber))
             {
                 result = "Empty Vat Number";
             }
@@ -371,6 +547,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 result = "VAT Amount not Valid ";
             }
+            /* else if (vat < 0)
+             {
+                 result = "VAT Amount is Negative ";
+             }*/
             else if (checkValidDate(qRcodeModelDetails.timeStamp.Replace(" ", "")) == false)
             {
 
@@ -410,7 +590,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
 
                 if (DateTime.TryParse(dateValue, culture, styles, out myDate))
-                {
+                /*if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture,
+       DateTimeStyles.AdjustToUniversal, out myDate))*/
+                /* if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
+     DateTimeStyles.AdjustToUniversal, out myDate))*/
+                {//2023-05-13T19:25:59Z
+                    /* var date = DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
+       DateTimeStyles.AdjustToUniversal,out myDate);*/
                     var olddate = DateTime.Parse(dateValue);
                     var olldkind = olddate.Kind;
                     var newkind = myDate.Kind;
@@ -443,13 +629,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 return location;
             }
-            catch (FeatureNotSupportedException)
+            catch (FeatureNotSupportedException fnsEx)
             {
             }
-            catch (FeatureNotEnabledException )
+            catch (FeatureNotEnabledException fneEx)
             {
             }
-            catch (PermissionException )
+            catch (PermissionException pEx)
             {
             }
             catch (Exception)
@@ -586,7 +772,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         }
 
-        public async Task GetQrDataEradApi(string TinNo)
+        public async Task GetQrDataEradApiOld(string TinNo)
         {
             try
             {
@@ -596,8 +782,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                     IsClearedStatusVisible = false;
                     var body = new EradQrBody() { IDTYPE = "3", IDNUMBER = TinNo };
                     VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp("A", "3", TinNo);
+                    //// Old APi T2
+                    // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
+                    // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
                     if (vatLookUp.d != null)
                     {
+                        //   var content =await data.Content.ReadAsStringAsync();
+                        ///  var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
                         var EInvEnfStatus = vatLookUp.d.results[0].EinvEnfStatus == "" ? 0 : int.Parse(vatLookUp.d.results[0].EinvEnfStatus);
                         if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))
                         {
@@ -627,6 +818,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 if (NoofTags == 8)
                                 {
                                     RegistredStatusWithDisplaQRRslt();
+                                    // IsShowSubmitReport = false;
                                 }
                                 else
                                 {
@@ -636,17 +828,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                         else
                         {
+                            /* if (NoofTags == 5)
+                             {*/
                             RegisterStatus = AppResources.NotRegistered;
                             IsShowSubmitReport = true;
                             IsShowRsltView = true;
                             IsShowScanView = false;
+                            /* }
+                            else
+                             {
+                                 IsShowMsgView = true;
+                                 MessageTxt = AppResources.InvalidQrMessage;
+                             }*/
                         }
 
                     }
+                    /*else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        RegisterStatus = AppResources.NotRegistered;
+                        IsShowSubmitReport = true;
+                    }*/
                     else
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.unableToVerify;
+                        // RegisterStatus = AppResources.unableToVerify;
                     }
 
 
@@ -655,6 +861,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.unableToVerify;
+                    // RegisterStatus = AppResources.unableToVerify;
                 }
 
                 IsLoading = false;
@@ -671,6 +878,124 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
 
         }
+
+        public async Task GetQrDataEradApi(string TinNo)
+        {
+            try
+            {
+                IsLoading = true;
+                if (NetworkCheck.IsInternet())
+                {
+                    IsClearedStatusVisible = false;
+                    var body = new EradQrBody() { idType = "3", idNumber = TinNo };
+                    var res = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    var content = await res.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<VATLokupsDP>>(content);
+                    var qrResponseData = result.result;
+                    //// Old APi T2
+                    // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
+                    // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    if (qrResponseData != null && qrResponseData.lookups != null & qrResponseData.lookups.Count > 0)
+                    {
+                        //   var content =await data.Content.ReadAsStringAsync();
+                        ///  var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
+
+                        if (qrResponseData.lookups[0].einvEnfStatus == null)
+                        {
+                            qrResponseData.lookups[0].einvEnfStatus = "";
+                        }
+                        var EInvEnfStatus = qrResponseData.lookups[0].einvEnfStatus == "" ? 0 : int.Parse(qrResponseData.lookups[0].einvEnfStatus);
+                        if (string.IsNullOrEmpty(qrResponseData.lookups[0].errorDescription))
+                        {
+
+                            if (NoofTags == 5 && EInvEnfStatus == 0)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                            }
+                            else if (NoofTags == 5 && EInvEnfStatus == 1)
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                            }
+                            else if (NoofTags == 9 && EInvEnfStatus == 1)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+
+                            }
+                            else if (NoofTags == 8 && EInvEnfStatus == 1)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                                IsClearedStatusVisible = true;
+
+                            }
+                            else
+                            {
+                                if (NoofTags == 8)
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                    // IsShowSubmitReport = false;
+                                }
+                                else
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            /* if (NoofTags == 5)
+                             {*/
+                            RegisterStatus = AppResources.NotRegistered;
+                            IsShowSubmitReport = true;
+                            IsShowRsltView = true;
+                            IsShowScanView = false;
+                            /* }
+                            else
+                             {
+                                 IsShowMsgView = true;
+                                 MessageTxt = AppResources.InvalidQrMessage;
+                             }*/
+                        }
+
+                    }
+                    /*else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        RegisterStatus = AppResources.NotRegistered;
+                        IsShowSubmitReport = true;
+                    }*/
+                    else
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.unableToVerify;
+                        // RegisterStatus = AppResources.unableToVerify;
+                    }
+
+
+                }
+                else
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.unableToVerify;
+                    // RegisterStatus = AppResources.unableToVerify;
+                }
+
+                IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.unableToVerify;
+            }
+            finally
+            {
+                RegisterStatus = AppResources.NotRegistered;
+                IsShowSubmitReport = true;
+                IsLoading = false;
+                IsScanning = false;
+            }
+
+        }
+
 
         private void RegistredStatusWithDisplaQRRslt()
         {
@@ -753,5 +1078,4 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
         }
     }
-
 }

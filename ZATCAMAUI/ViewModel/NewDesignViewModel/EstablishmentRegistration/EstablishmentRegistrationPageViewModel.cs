@@ -4,6 +4,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
@@ -20,7 +21,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         public static TaxPayerDetails taxPayerDetails { get; set; } = null;
         private FinancialDetail financialDetail { get; set; } = null;
+        private FinancialDetail financialDetailPeriod { get; set; } = null;
+        public bool isFinaceDetailsChanged { get; set; } = false;
+        public string isDraftEnabled { get; set; } = "";
         private Nreg_IdItem idItem { get; set; } = null;
+        private String calType = string.Empty; 
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
@@ -154,6 +159,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        private OutletDropDowns _outletDropDowns = null;
+        public OutletDropDowns OutletDropDowns
+        {
+            get => _outletDropDowns;
+            set
+            {
+                if (_outletDropDowns == value) return;
+
+                _outletDropDowns = value;
+                RaisePropertyChanged(nameof(OutletDropDowns));
+            }
+        }
+        private ActivitySetsList activityList = null;
+
+
         private bool _isClickedStayMoreThanKSAOption = false;
         public bool IsClickedStayMoreThanKSAOption
         {
@@ -268,6 +288,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
+        private bool _isFinancePeriodVisible = false;
+        public bool IsFinancePeriodVisible
+        {
+            get => _isFinancePeriodVisible;
+            set
+            {
+
+                if (_isFinancePeriodVisible == value) return;
+                _isFinancePeriodVisible = value;
+                RaisePropertyChanged("IsFinancePeriodVisible");
+            }
+        }
+
         private bool _isClickedNonResidentPartnerPE = false;
         public bool IsClickedNonResidentPartnerPE
         {
@@ -278,6 +311,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 _isClickedNonResidentPartnerPE = value;
                 RaisePropertyChanged("IsClickedNonResidentPartnerPE");
+            }
+        }
+        private bool _showLicenceNoData = true;
+        public bool ShowLicenceNoData
+        {
+            get => _showLicenceNoData;
+            set
+            {
+                if (_showLicenceNoData == value) return;
+
+                _showLicenceNoData = value;
+                RaisePropertyChanged("ShowLicenceNoData");
+            }
+        }
+
+        private bool _showCRNoData = true;
+        public bool ShowCRNoData
+        {
+            get => _showCRNoData;
+            set
+            {
+                if (_showCRNoData == value) return;
+
+                _showCRNoData = value;
+                RaisePropertyChanged("ShowCRNoData");
             }
         }
 
@@ -554,6 +612,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     _genderList = value;
                     RaisePropertyChanged(nameof(GenderList));
                 }
+                else
+                {
+                    _genderList = null;
+                    RaisePropertyChanged(nameof(GenderList));
+                }
             }
         }
         private string _selectedGender;
@@ -660,6 +723,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SelectedDOBHijiriDate));
             }
         }
+
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                if (_title == value) return;
+
+                _title = value;
+                RaisePropertyChanged(nameof(Title));
+            }
+        }
+        private bool _titleVisibility = false;
+        public bool TitleVisibility
+        {
+            get
+            {
+                return _titleVisibility;
+            }
+            set
+            {
+                if (_titleVisibility == value) return;
+
+                _titleVisibility = value;
+                RaisePropertyChanged("TitleVisibility");
+            }
+        }
         private string _firstName;
         public string FirstName
         {
@@ -710,6 +801,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 _grandFatherName = value;
                 RaisePropertyChanged(nameof(GrandFatherName));
+            }
+        }
+
+        private string _iqamaDesc;
+        public string IqamaDesc
+        {
+            get => _iqamaDesc;
+            set
+            {
+                if (_iqamaDesc == value) return;
+
+                _iqamaDesc = value;
+                RaisePropertyChanged(nameof(IqamaDesc));
+            }
+        }
+
+        private bool _showIqamaType;
+        public bool ShowIqamaType
+        {
+            get => _showIqamaType;
+            set
+            {
+                if (_showIqamaType == value) return;
+
+                _showIqamaType = value;
+                RaisePropertyChanged(nameof(ShowIqamaType));
             }
         }
 
@@ -1058,6 +1175,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
+
+        private ObservableCollection<OuteltInfo_NestedListView> _outlettUiList = new ObservableCollection<OuteltInfo_NestedListView>();
+        public ObservableCollection<OuteltInfo_NestedListView> OutlettUiList
+        {
+            get
+            {
+                return _outlettUiList;
+            }
+            set
+            {
+                if (_outlettUiList == value) return;
+
+                _outlettUiList = value;
+
+                RaisePropertyChanged("OutlettUiList");
+            }
+        }
+
         #endregion
 
         #region Financial Details Tabs variables
@@ -1135,6 +1270,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
+
+        private List<PeriodSetResult> _periodList = new List<PeriodSetResult>();
+        public List<PeriodSetResult> PeriodList
+        {
+            get => _periodList;
+            set
+            {
+                if (_periodList == value) return;
+
+                if (value != null)
+                {
+                    _periodList = value;
+                    RaisePropertyChanged(nameof(PeriodList));
+                }
+            }
+        }
+        private PeriodSetResult _selectedPeriod = null;
+        public PeriodSetResult SelectedPeriod
+        {
+            get => _selectedPeriod;
+            set
+            {
+                if (_selectedPeriod == value) return;
+
+                if (value != null)
+                {
+                    _selectedPeriod = value;
+                    RaisePropertyChanged(nameof(SelectedPeriod));
+                    //if (taxPayerDetails != null)
+                    //    udpdateDates();
+                }
+            }
+        }
         private string _fiscalMonth = string.Empty;
         public string FiscalMonth
         {
@@ -1183,6 +1351,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(TaxDate));
             }
         }
+
+        private string _lastFulfilledReturn = string.Empty;
+        public string LastFulfilledReturn
+        {
+            get => _lastFulfilledReturn;
+            set
+            {
+                if (_lastFulfilledReturn == value) return;
+
+                _lastFulfilledReturn = value;
+                RaisePropertyChanged(nameof(LastFulfilledReturn));
+            }
+        }
+        private string _zYear = string.Empty;
+        public string ZYear
+        {
+            get => _zYear;
+            set
+            {
+                if (_zYear == value) return;
+
+                _zYear = value;
+                RaisePropertyChanged(nameof(ZYear));
+            }
+        }
         #endregion
 
         #region Summary Tabs variables
@@ -1198,21 +1391,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(SummaryExpendedCard));
             }
         }
-        private ObservableCollection<string> _outletList = new ObservableCollection<string>();
-        public ObservableCollection<string> OutletList
-        {
-            get => _outletList;
-            set
-            {
-                if (_outletList == value) return;
 
-                if (value != null)
-                {
-                    _outletList = value;
-                    RaisePropertyChanged(nameof(OutletList));
-                }
-            }
-        }
         private bool _eSTLedge = false;
         public bool ESTLedge
         {
@@ -1225,6 +1404,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 RaisePropertyChanged(nameof(ESTLedge));
             }
         }
+
+        private OuteltInfo_NestedListView selectedItem;
+        public OuteltInfo_NestedListView SelectedItem
+        {
+            get => selectedItem;
+            set
+            {
+                if (selectedItem == value) return;
+
+                selectedItem = value;
+                RaisePropertyChanged(nameof(SelectedItem));
+            }
+        }
+
+
         #endregion
 
         #endregion
@@ -1309,6 +1503,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Outlet Tabs commands
         public ICommand OnNewOutletButtonClick { get; set; }
         public ICommand OnEditOutletButtonClick { get; set; }
+        public ICommand OnEditOutletButtonClick2 { get; set; }
+        public ICommand OuterListTapCommand { get; set; }
         public ICommand OnDeleteOutletButtonClick { get; set; }
         #endregion
 
@@ -1359,14 +1555,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             #endregion
 
             OnReportingBranchSelectButtonClick = new Command(() =>
-           {
-               ListPopUpViewPage poupWindow = new ListPopUpViewPage(ReportingBranchList);
-               poupWindow.OnItemSelect = (item) =>
-               {
-                   SelectedReportingBranch = item as BranchesDropDownModel;
-               };
-               PopupNavigation.Instance.PushAsync(poupWindow);
-           });
+
+            {
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(ReportingBranchList);
+                poupWindow.OnItemSelect = (item) =>
+                {
+                    SelectedReportingBranch = (item as BranchesDropDownModel);
+                };
+                PopupNavigation.Instance.PushAsync(poupWindow);
+            });
+
+            // OuterListTapCommand = new Command<object>(OnOuterListTapped);
 
             #endregion
 
@@ -1418,31 +1617,64 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Outlet Tabs variable initialization
             OnNewOutletButtonClick = new Command(() => openNewOutlet());
-            OnEditOutletButtonClick = new Command((item) => openEditOutlet(item as OutletItem));
+            OnEditOutletButtonClick = new Command((item) => openEditOutletAsync(item as OuteltInfo_NestedListView, 1)); //Expander
+            OuterListTapCommand = new Command((item) => openEditOutletAsync(item as OuteltInfo_NestedListView, 0));
+            OnEditOutletButtonClick2 = new Command((item) => openEditOutletAsync(item as OuteltInfo_NestedListView, 2)); // Edit
+
             OnDeleteOutletButtonClick = new Command(async (item) =>
             {
-                var newItem = item as OutletItem;
-                string QuestionMark = string.Empty;
-                if (App.IsArabic)
+                var newItem = item as OuteltInfo_NestedListView;
+
+                if (newItem.Oldmst.ToString().ToUpper().Equals("X"))
                 {
-                    QuestionMark = "؟";
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ExistingOutletError, AppResources.Information);
+
+                    });
+                }
+                else if (newItem.MciEntry.ToString().ToUpper().Equals("X"))
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.DeleteError, AppResources.Information);
+
+                    });
+                }
+                else if (newItem.ActNo.Equals("00000"))
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.MainOutletError, AppResources.Information); // Main ol cannot be deleted 
+
+                    });
                 }
                 else
                 {
-                    QuestionMark = "?";
-                }
-                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + newItem.Actnm + QuestionMark)
-                {
-                    CloseWhenBackgroundIsClicked = false
-                };
-                confirmPopup.OnSelect = (str) =>
-                {
-                    if (str == "Yes")
+
+                    string QuestionMark = string.Empty;
+                    if (App.IsArabic)
                     {
-                       MainThread.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+
+                        QuestionMark = "؟";
                     }
-                };
-                await PopupNavigation.Instance.PushAsync(confirmPopup);
+                    else
+                    {
+                        QuestionMark = "?";
+                    }
+                    var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + "   " + newItem.ActNm + QuestionMark)
+                    {
+                        CloseWhenBackgroundIsClicked = false
+                    };
+                    confirmPopup.OnSelect = (str) =>
+                    {
+                        if (str == "Yes")
+                        {
+                            Device.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+                        }
+                    };
+                    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                }
             });
             #endregion
 
@@ -1462,6 +1694,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" });
                 poupWindow.OnItemSelect = (item) =>
                 {
+
+                    if (!FiscalMonth.Equals(item))
+                    {
+                        FiscalDay = string.Empty;
+                        udpdateDates(FiscalDay);
+                        IsFinancePeriodVisible = false;
+                    }
+
                     FiscalMonth = item as string;
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -1484,7 +1724,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 currentTab = (EstablishmentRegistrationTabsEnum)_enum;
             });
-            OutletList.Clear();
+
+
+
 
             OnVoidOrSaveDraftClick = new Command(() =>
             {
@@ -1492,6 +1734,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 poupWindow.OnItemSelect = async (item) =>
                 {
                     var actionName = item as string;
+                    Console.WriteLine(item);
                     if (actionName == AppResources.ZZSaveAsDraft)
                     {
                         IsLoading = true;
@@ -1639,10 +1882,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
 
-                    if (await PushDatatoServer(currentTab))
+                    if (await FormValidation(currentTab))
                     {
-                        currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                        if (await PushDatatoServer(currentTab))
+                        {
+                            currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                        }
                     }
+
+
+                    //if (await PushDatatoServer(currentTab))
+                    //{
+                    //    currentTab = EstablishmentRegistrationTabsEnum.Declaration;
+                    //}
                 }
                 else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
@@ -1658,6 +1910,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (await FormValidation(currentTab))
                     {
+
+                        //if ((isDraftEnabled == "X") || (isFinaceDetailsChanged))
+                        //{
+
+                        //    var somewarningpopup = new AttachmentInformationPopUp(AppResources.AmendRegistrationSubmitWarning)
+                        //    {
+                        //        CloseWhenBackgroundIsClicked = false
+                        //    };
+                        //    somewarningpopup.OnDone = async () =>
+                        //    {
+                        //        if (await PushDatatoServer(currentTab))
+                        //        {
+                        //            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        //        }
+
+
+                        //    };
+                        //    await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                        //}
+                        //else
+                        //{
+
+                        //    if (await PushDatatoServer(currentTab))
+                        //    {
+                        //        _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                        //    }
+                        //}
+
+
                         if (await PushDatatoServer(currentTab))
                         {
                             _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
@@ -2229,15 +2510,48 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await GetPdNationalityListFromServer(taxPayerDetails?.Tpnationality);
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
                     idItem = taxPayerDetails?.Nreg_IdSet.results.Where(i => EnIDType.ContainsKey(i.Type)).FirstOrDefault();
-                    if (App.IsArabic)
+                    if (idItem != null)
                     {
-                        GCCIDType = ArIDType[idItem?.Type];
+                        if (App.IsArabic)
+                        {
+                            GCCIDType = ArIDType[idItem?.Type];
+                        }
+                        else
+                        {
+                            GCCIDType = EnIDType[idItem?.Type];
+                        }
+                        if (idItem?.Type == "ZS0001")
+                        {
+                            TitleVisibility = true;
+                        }
+                        Title = taxPayerDetails?.TpTitle;
+                        GCCIDTypeIdNumberValue = idItem.Idnumber;
                     }
                     else
                     {
-                        GCCIDType = EnIDType[idItem?.Type];
+                        if (App.IsArabic)
+                        {
+                            GCCIDType = ArIDType["ZS0001"];
+                        }
+                        else
+                        {
+                            GCCIDType = EnIDType["ZS0001"];
+                        }
+                        TitleVisibility = true;
+                        Title = taxPayerDetails?.TpTitle;
                     }
-                    GCCIDTypeIdNumberValue = idItem.Idnumber;
+
+                    //if ((bool)(idItem?.IqamaFg.Equals("X")))
+                    //{
+                    //    ShowIqamaType = true;
+                    //    IqamaDesc = idItem?.IqamaDesc;
+                    //}
+                    //else
+                    //{
+                    //    ShowIqamaType = false;
+                    //    IqamaDesc = "";
+                    //}
+
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2276,8 +2590,53 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("04", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
-                    SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
-                    CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Accmethod))
+                    {
+
+                        SelectedMethod = EnMethodList[taxPayerDetails?.Accmethod];
+
+                    }
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails?.Fdcalender))
+                    {
+                        CalendarType = EnCalendarTypeList[taxPayerDetails?.Fdcalender];
+
+                    }
+                    else
+                    {
+                        CalendarType = AppResources.Gregorian;
+                        calType = "G";
+                    }
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails.Fdmonth))
+                    {
+
+                        FiscalMonth = taxPayerDetails.Fdmonth;
+                    }
+
+                    if (!string.IsNullOrEmpty(taxPayerDetails.Fdday))
+                    {
+
+                        if (taxPayerDetails.Fdday == "LD")
+                        {
+
+
+                            FiscalDay = AppResources.ESTFinLastDay;
+                        }
+                        else
+                        {
+
+                            FiscalDay = taxPayerDetails.Fdday;
+
+                        }
+
+
+                    }
+
+                    IsFinancePeriodVisible = false;
+
+
                     udpdateDates();
                 }
                 if (IsSaudi)
@@ -2350,6 +2709,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;
@@ -2459,6 +2819,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;
@@ -2503,6 +2864,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
                     FatherName = taxPayerDetails?.FatherName;
@@ -2521,17 +2883,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     SelectedCitizen = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Citizen).FirstOrDefault();
                     SelectedResidence = TaxpayerFullNationlityList.Where(i => i.Land1 == taxPayerDetails?.Residence).FirstOrDefault();
 
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-Before:
-                    bindingOutletList();
-                    
-                    //As per new CR changes this call is not needed anymore.
-After:
-                    bindingOutletList();
-
-                    //As per new CR changes this call is not needed anymore.
-*/
                     bindingOutletList();
 
                     //As per new CR changes this call is not needed anymore.
@@ -2548,10 +2899,19 @@ After:
                     else
                         SelectedMethod = AppResources.NDEstimated;
 
-                    if (taxPayerDetails?.Fdcalender == "1")
-                        CalendarType = AppResources.Gregorian;
-                    else
+                    
+                        if (taxPayerDetails?.Fdcalender == "1")
+                        {
+                            CalendarType = AppResources.Gregorian;
+                            calType = "G";
+                        }
+                        
+                        else
+                        {
                         CalendarType = AppResources.Hijri;
+                        calType = "H";
+
+                        }
                     udpdateDates();
                 }
             }
@@ -2640,10 +3000,55 @@ After:
                 }
             }
             catch (Exception)
+            { }
+        }
+
+        public void updateDatePickers()
+        {
+            try
+            {
+                DateTime dob = DateTime.Now;
+                ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
+                if (taxPayerDetails?.Caltp == "G")
+                {
+                    _selectedDOBDate?.Clear();
+                    _selectedDOBDate.Add($"{dob.Day:00}");
+                    _selectedDOBDate.Add($"{dob.Month:00}");
+                    _selectedDOBDate.Add(dob.Year.ToString());
+                }
+                else
+                {
+                    _selectedDOBDate?.Clear();
+                    var hijiriDate = dob.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                    var arr = hijiriDate.Split('/');
+                    _selectedDOBDate.Add(arr[2]);
+                    _selectedDOBDate.Add(arr[1]);
+                    _selectedDOBDate.Add(arr[0]);
+                }
+
+
+                DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
+                DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
+                if (taxPayerDetails?.Caltp == "G")
+                {
+                    SelectedPassportIssueDate = _selectedDOBDate;
+                    if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                        DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                }
+                else
+                {
+                    SelectedPassportIssueHijiriDate = _selectedDOBDate;
+                    if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                        DisplayPassportIssueDate = HijriDateString(_issueDate);
+                }
+
+            }
+            catch (Exception)
             {
             }
         }
-        private async void udpdateDates(string selectedDate = null)
+
+        public async void udpdateDates(string selectedDate = null)
         {
             try
             {
@@ -2711,26 +3116,192 @@ After:
                     ADateComm = taxPayerDetails?.Commdt
                 });
                 TaxDate = string.Format("{0:0000/00/00}", long.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
-
-                if (string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
+                if (!string.IsNullOrEmpty(FiscalMonth) && string.IsNullOrEmpty(FiscalDay))
                 {
-                    if (financialDetail?.EIslmedate == "28")
-                    {
-                        dates.Remove("29");
-                        dates.Remove("30");
-                    }
-                    else if (financialDetail?.EIslmedate == "29")
-                    {
-                        dates.Remove("29");
-                        dates.Remove("30");
-                    }
-                    else if (financialDetail?.EIslmedate == "30")
-                    {
-                        dates.Remove("30");
-                    }
-                }
-                IsLoading = false;
 
+                    var selectedFintype = "";
+
+                    if (!string.IsNullOrEmpty(SelectedMethod))
+                    {
+                        selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                    }
+                    else
+                    {
+                        selectedFintype = taxPayerDetails.Accmethod;
+                    }
+
+                    financialDetail = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
+                    {
+                        ACaltype = _CalendarType,
+                        AMonth = FiscalMonth,
+                        ADateComm = taxPayerDetails?.Commdt,
+                        Gpart = "",
+                        Zfintype = selectedFintype,
+                        Fbnum = taxPayerDetails.Fbnumx,
+                        PeriodSet = new List<PeriodSetResult>()
+                    });
+
+                    dates = new List<string> { AppResources.ESTFinLastDay, "30", "29", "28", "27", "26", "25", "24", "23", "22", "21", "20", "19", "18", "17", "16", "15", "14", "13", "12", "11", "10", "09", "08", "07", "06", "05", "04", "03", "02", "01" };
+
+
+                    if (!string.IsNullOrEmpty(financialDetail?.EIslmedate) /*&& (taxPayerDetails?.Fdcalender == "2")*/)
+                    {
+                        if (financialDetail?.EIslmedate == "28")
+                        {
+                            dates.Remove("29");
+                            dates.Remove("30");
+                        }
+                        else if (financialDetail?.EIslmedate == "29")
+                        {
+                            dates.Remove("29");
+                            dates.Remove("30");
+                        }
+                        else if (financialDetail?.EIslmedate == "30")
+                        {
+                            dates.Remove("30");
+                        }
+                    }
+
+                }
+                else if (!string.IsNullOrEmpty(FiscalDay) && !string.IsNullOrEmpty(FiscalMonth))
+                {
+
+                    financialDetail = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDate(new FinancialDetailRequest()
+                    {
+                        ACaltype = _CalendarType,
+                        AMonth = FiscalMonth,
+                        EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                        ADateComm = taxPayerDetails?.Commdt
+                    });
+                    TaxDate = string.Format("{0:0000/00/00}", Int64.Parse(_CalendarType == "H" ? financialDetail?.ACommDate : financialDetail?.EIsldate));
+
+                    if (taxPayerDetails.LastFilledRetdt != null)
+                    {
+
+                        LastFulfilledReturn = taxPayerDetails.LastFilledRetdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                    }
+                    if (taxPayerDetails.Zyear != null)
+                    {
+
+                        ZYear = AppResources.FinacialDetailsZyear.Replace("yyyy", taxPayerDetails.Zyear);
+
+                    }
+
+
+                    IsLoading = false;
+
+                    IsLoading = true;
+
+                    var selectedFintype = "";
+
+                    if (!string.IsNullOrEmpty(SelectedMethod))
+                    {
+                        selectedFintype = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
+                    }
+                    else
+                    {
+                        selectedFintype = taxPayerDetails.Accmethod;
+                    }
+
+
+                    if (SelectedMethod == AppResources.NDAccounting)
+                    {
+
+                        IsFinancePeriodVisible = true;
+                    }
+                    else
+                    {
+                        IsFinancePeriodVisible = false;
+
+                    }
+
+
+                    financialDetailPeriod = await EstablishmentRegistrationWebServiceManager.ESTFinancialMaxDateForPeriod(new FinancialDetailPeriodRequest()
+                    {
+                        ACaltype = _CalendarType,
+                        AMonth = FiscalMonth,
+                        EIslmedate = FiscalDay == AppResources.ESTFinLastDay ? "32" : FiscalDay,
+                        ADateComm = taxPayerDetails?.Commdt,
+                        Gpart = App.LoginDataRetrieved.TIN,
+                        Zfintype = selectedFintype,
+                        Fbnum = taxPayerDetails.Fbnumx,
+                        PeriodSet = new List<PeriodSetResult>()
+                    });
+
+                    if (financialDetailPeriod != null)
+                    {
+                        IsFinancePeriodVisible = true;
+
+                        var fincialPeriodDetials = financialDetailPeriod.PeriodSet.results;
+
+                        foreach (var s in fincialPeriodDetials)
+                        {
+                            var fromDate = string.Empty;
+                            var toDay = string.Empty;
+                            if (_CalendarType == "H")
+                            {
+
+                                fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+                                toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
+
+                            }
+                            else
+                            {
+
+                                fromDate = s.FromDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                                toDay = s.ToDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
+                            }
+
+                            s.ConvretedFromDate = fromDate;
+                            s.ConvretedToDate = toDay;
+
+
+                        }
+
+                        PeriodList = fincialPeriodDetials;
+
+
+
+                        isDraftEnabled = financialDetailPeriod.Draft;
+                        if (PeriodList.Count > 0)
+                        {
+
+                            if (!string.IsNullOrEmpty(taxPayerDetails.FinPeriod))
+                            {
+                                TaxDate = String.Empty;
+                                SelectedPeriod = PeriodList.Where(temp => (temp.FinPeriod == taxPayerDetails.FinPeriod)).FirstOrDefault();
+                                TaxDate = SelectedPeriod.ConvretedToDate;
+
+                            }
+                            else
+                            {
+                                SelectedPeriod = PeriodList.FirstOrDefault();
+                            }
+
+
+
+
+                        }
+                    }
+
+
+
+
+                    IsLoading = false;
+
+                }
+                else
+                {
+
+                    PeriodList.Clear();
+                    SelectedPeriod = null;
+                    TaxDate = string.Empty;
+                    taxPayerDetails.FinPeriod = string.Empty;
+                }
+
+                IsLoading = false;
 
             }
             catch (Exception)
@@ -2742,17 +3313,103 @@ After:
 
             }
         }
-
+        //ENYT
         private async void bindingOutletList()
         {
-            var _outletTempData = await EstablishmentRegistrationWebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
-            OutletData.Clear();
-            SearchableOutletData?.Clear();
-            _outletTempData.ForEach(_out =>
+            try
             {
-                OutletData.Add(_out);
-                SearchableOutletData.Add(_out);
-            });
+                var _outletTempData = await EstablishmentRegistrationWebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
+                OutletData.Clear();
+                SearchableOutletData?.Clear();
+                OutlettUiList.Clear();
+                foreach (var _out in _outletTempData)
+                {
+                    OutletData.Add(_out);
+                    SearchableOutletData.Add(_out);
+
+                    OuteltInfo_NestedListView newItem = new OuteltInfo_NestedListView();
+
+                    newItem.Metadata = _out.__metadata;
+                    newItem.CityCode = _out.CityCode;
+                    newItem.City1 = _out.City1;
+                    newItem.Crlicenceno = _out.Crlicenceno;
+                    newItem.Oldmst = _out.Oldmst;
+                    newItem.Outdocdreg = _out.Outdocdreg;
+                    newItem.Caltp = _out.Caltp;
+                    newItem.Cmatt = _out.Cmatt;
+                    newItem.Mandtx = _out.Mandtx;
+                    newItem.Fbnumx = _out.Fbnumx;
+                    newItem.Rentatt = _out.Rentatt;
+                    newItem.Conatt = _out.Conatt;
+                    newItem.PortalUsrx = _out.PortalUsrx;
+                    newItem.Langx = _out.Langx;
+                    newItem.Operationx = _out.Operationx;
+                    newItem.StepNumberx = _out.StepNumberx;
+                    newItem.ReturnIdx = _out.ReturnIdx;
+                    newItem.Officerx = _out.Officerx;
+                    newItem.Gpartx = _out.Gpartx;
+                    newItem.Mandt = _out.Mandt;
+                    newItem.FormGuid = _out.FormGuid;
+                    newItem.DataVersion = _out.DataVersion;
+                    newItem.LineNo = _out.LineNo;
+                    newItem.RankingOrder = _out.RankingOrder;
+                    newItem.ActNo = _out.Actno;
+                    newItem.StartDate = _out.StartDate;
+                    newItem.EndDate = _out.EndDate;
+                    newItem.ActCat = _out.Actcat;
+                    newItem.ActNm = _out.Actnm;
+                    newItem.ActNm2 = _out.Actnm2;
+                    newItem.ChInd = _out.ChInd;
+                    newItem.MciEntry = _out.MciEntry;
+                    newItem.ShowDeleteIcon = true;
+                    //if (_out.MciEntry.ToUpper().Equals("X") || _out.Oldmst.ToUpper().Equals("X") || _out.Actnm.Equals("00000"))
+                    //{
+                    //    newItem.ShowDeleteIcon = false;
+                    //}
+                    //else
+                    //{
+                    //    newItem.ShowDeleteIcon = true;
+                    //}
+
+                    if (newItem.MciEntry.ToUpper().ToString().Equals("X"))
+                    {
+                        newItem.ShowEditIcon = false;
+                    }
+                    else
+                    {
+                        newItem.ShowEditIcon = true;
+                    }
+
+                    if (newItem.ActCat.Equals("M"))
+                    {
+                        if (App.IsArabic)
+                        {
+                            newItem.ActCatDesc = "فرع رئيسي";
+                        }
+                        else
+                        {
+                            newItem.ActCatDesc = "Main Outlet";
+                        }
+                    }
+                    else
+                    {
+                        if (App.IsArabic)
+                        {
+                            newItem.ActCatDesc = "فرع فرعي";
+                        }
+                        else
+                        {
+                            newItem.ActCatDesc = "Sub Outlet";
+                        }
+                    }
+
+                    OutlettUiList.Add(newItem);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
         }
         private void openNewOutlet()
         {
@@ -2761,14 +3418,247 @@ After:
             outletNavigationModels.idItem = idItem;
             _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
         }
-        private void openEditOutlet(OutletItem item)
+        private async Task openEditOutletAsync(OuteltInfo_NestedListView item, int btnCode)
         {
-            OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
-            outletNavigationModels.taxPayerDetails = taxPayerDetails;
-            outletNavigationModels.idItem = idItem;
-            outletNavigationModels.selectedOutletItem = item;
-            _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
+            try
+            {
+
+               
+
+                SelectedItem = item;
+                IsLoading = true;
+                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
+                outletNavigationModels.taxPayerDetails = taxPayerDetails;
+                var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
+
+
+                item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
+                item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
+
+                OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
+                activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
+
+                taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                PrepareUIBranchesList(item);
+                IsLoading = false;
+                 if (btnCode == 1)
+                {
+                    if (SelectedItem != null)
+                    {
+                        if (SelectedItem.ActNo == item.ActNo && SelectedItem.IsInnerListVisible == true)
+                        {
+                            item.IsInnerListVisible = false;
+                            return;
+                        }
+                        else
+                        {
+                            item.IsInnerListVisible = true;
+                        }
+                    }
+                    else
+                    {
+                        item.IsInnerListVisible = !item.IsInnerListVisible;
+                    }
+                }
+
+                if (btnCode == 2)
+                {
+                    outletNavigationModels.idItem = idItem;
+                    outletNavigationModels.selectedOutletItem = GetSelectedItem(item);
+                    _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+            }
+
+
         }
+
+        private OutletItem GetSelectedItem(OuteltInfo_NestedListView _out)
+        {
+            OutletItem newItem = new OutletItem();
+            newItem.__metadata = _out.Metadata;
+            newItem.CityCode = _out.CityCode;
+            newItem.City1 = _out.City1;
+            newItem.Crlicenceno = _out.Crlicenceno;
+            newItem.Oldmst = _out.Oldmst;
+            newItem.Outdocdreg = _out.Outdocdreg;
+            newItem.Caltp = _out.Caltp;
+            newItem.Cmatt = _out.Cmatt;
+            newItem.Mandtx = _out.Mandtx;
+            newItem.Fbnumx = _out.Fbnumx;
+            newItem.Rentatt = _out.Rentatt;
+            newItem.Conatt = _out.Conatt;
+            newItem.PortalUsrx = _out.PortalUsrx;
+            newItem.Langx = _out.Langx;
+            newItem.Operationx = _out.Operationx;
+            newItem.StepNumberx = _out.StepNumberx;
+            newItem.ReturnIdx = _out.ReturnIdx;
+            newItem.Officerx = _out.Officerx;
+            newItem.Gpartx = _out.Gpartx;
+            newItem.Mandt = _out.Mandt;
+            newItem.FormGuid = _out.FormGuid;
+            newItem.DataVersion = _out.DataVersion;
+            newItem.LineNo = _out.LineNo;
+            newItem.RankingOrder = _out.RankingOrder;
+            newItem.Actno = _out.ActNo;
+            newItem.StartDate = _out.StartDate;
+            newItem.EndDate = _out.EndDate;
+            newItem.Actcat = _out.ActCat;
+            newItem.Actnm = _out.ActNm;
+            newItem.Actnm2 = _out.ActNm2;
+            newItem.ChInd = _out.ChInd;
+            newItem.MciEntry = _out.MciEntry;
+            return newItem;
+        }
+
+        private void PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
+        {
+            try
+            {
+                outletItem.ContactDetails.Clear();
+                outletItem.ContactDetails2.Clear();
+                foreach (var item in taxPayerDetails.Nreg_ActivitySet.results)
+                {
+                    Nreg_ActivityItem obj = new Models.EstablishmentRegistration.Nreg_ActivityItem();
+                    obj.__metadata = item.__metadata;
+                    obj.CrType = item.CrType;
+                    obj.ActName = item.ActName;
+                    obj.MciEntry = item.MciEntry;
+                    obj.CityCode = item.CityCode;
+                    obj.ActSgrp = item.ActSgrp;
+                    obj.Crstat = item.Crstat;
+                    obj.Mncrfg = item.Mncrfg;
+                    obj.Crexpdt = item.Crexpdt;
+                    obj.Hstfg = item.Hstfg;
+                    obj.Srno = item.Srno;
+                    obj.Mandt = item.Mandt;
+                    obj.FormGuid = item.FormGuid;
+                    obj.Oldmst = item.Oldmst;
+                    obj.Actdocdreg = item.Actdocdreg;
+                    obj.DataVersion = item.DataVersion;
+                    obj.Idnm = item.Idnm;
+                    obj.Actno = item.Actno;
+                    obj.Type = item.Type;
+                    obj.Idnumber = item.Idnumber;
+
+
+                    if (item.ValidDateFrom != null)
+                    {
+                        obj.ValidFromUI = Convert.ToDateTime(item.ValidDateFrom.ToString()).ToShortDateString();
+                    }
+
+                    obj.ValidDateFrom = item.ValidDateFrom;
+
+                    obj.ValidDateTo = item.ValidDateTo;
+                    obj.ValidDateType = item.ValidDateType;
+                    obj.Country = item.Country;
+                    obj.Institute = item.Institute;
+                    obj.City = item.City;
+                    obj.Crclsattfg = item.Crclsattfg;
+                    obj.Crattfg = item.Crattfg;
+                    obj.Crtrfattfg = item.Crtrfattfg;
+                    obj.Activity = item.Activity;
+                    obj.Actcat = item.Actcat;
+                    obj.ActMgrp = item.ActMgrp;
+
+                    obj.ActivityDesc = activityList.activitySet.results.Where(i => i.IndSector == obj.Activity).FirstOrDefault().Text;
+                    obj.ActMgrpDesc = activityList.act_groupSet.results.Where(i => i.IndSector == obj.ActMgrp).FirstOrDefault().Text;
+                    obj.ActSgrpDesc = activityList.act_subgroupSet.results.Where(i => i.IndSector == obj.ActSgrp).FirstOrDefault().Text;
+                    obj.IssuedCity = OutletDropDowns.city_dropdownSet.results.Where(i => i.CityCode == obj.CityCode).FirstOrDefault()?.CityName;
+                    obj.IssuedCountry = OutletDropDowns.country_dropdownSet.results.Where(i => i.Land1 == obj.Country).FirstOrDefault()?.Landx;
+
+                    if (App.IsArabic)
+                    {
+                        //obj.IssuedBy = obj.IssuedCountry == "SA" ? Constants.ArIssueBy["90702"] : Constants.EnIssueBy["90718"];
+                        if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
+                        {
+                            obj.IssuedBy = ZATCAConstants.ArIssueBy["90702"];
+                        }
+                        else
+                        {
+                            obj.IssuedBy = ZATCAConstants.ArIssueBy["90718"];
+                        }
+                    }
+                    else
+                    {
+                        //obj.IssuedBy = obj.IssuedCountry == "SA" ? Constants.ArIssueBy["90702"] : Constants.EnIssueBy["90718"];
+                        if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
+                        {
+                            obj.IssuedBy = ZATCAConstants.EnIssueBy["90702"];
+                        }
+                        else
+                        {
+                            obj.IssuedBy = ZATCAConstants.EnIssueBy["90718"];
+                        }
+                    }
+
+                    if (item.Type.ToUpper().Equals("BUP002"))
+                    {
+
+                        if (item.CrType.Equals("M"))
+                        {
+                            if (App.IsArabic)
+                            {
+                                obj.CRTypeDesc = "سجل تجاري رئيسي";
+                            }
+                            else
+                            {
+                                obj.CRTypeDesc = "Main CR";
+                            }
+                        }
+                        else
+                        {
+                            if (App.IsArabic)
+                            {
+                                obj.CRTypeDesc = "سجل تجاري فرعي";
+                            }
+                            else
+                            {
+                                obj.CRTypeDesc = "Sub CR";
+                            }
+                        }
+
+                        outletItem.ContactDetails.Add(obj);
+
+                    }
+                    else
+                    {
+                        outletItem.ContactDetails2.Add(obj);
+
+                    }
+
+
+                }
+                if (outletItem.ContactDetails.Count > 0)
+                {
+                    ShowCRNoData = false;
+                }
+                else
+                {
+                    ShowCRNoData = true;
+                }
+                if (outletItem.ContactDetails2.Count > 0)
+                {
+                    ShowLicenceNoData = false;
+                }
+                else
+                {
+                    ShowLicenceNoData = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+        }
+
+
+
         private void deleteOutlet(OutletItem item)
         {
             IsLoading = true;
@@ -3006,6 +3896,25 @@ After:
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
+                    if (string.IsNullOrEmpty(FiscalMonth))
+                    {
+
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodMonthValidation));
+                        return false;
+                    }
+                    else if (string.IsNullOrEmpty(FiscalDay))
+                    {
+
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodMonthValidation));
+                        return false;
+                    }
+                    //TODO 5250 New Reg commented.
+                    //else if(SelectedPeriod == null ) {
+
+                    //    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodValidation));
+                    //    return false;
+                    //}
+
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
                 {
@@ -3018,11 +3927,7 @@ After:
 
             }
             catch (Exception)
-            {
-                //ex.ToString();
-
-
-            }
+            {}
             return true;
         }
 
@@ -3034,6 +3939,7 @@ After:
                 IsLoading = true;
                 if (_enum == EstablishmentRegistrationTabsEnum.RegistrationType)
                 {
+                    SelectedTpresidence = taxPayerDetails.Tpresidence;
                     taxPayerDetails.Augrp = SelectedReportingBranch?.Augrp;
                     taxPayerDetails.Atype = "1";// SelectedEntityType.Equals("Individual") ? "1" : "2";
                     foreach (var s in NationalityMapping)
@@ -3072,6 +3978,7 @@ After:
                 {
                     DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
                     taxPayerDetails.Birthdt = dob;
+                    taxPayerDetails.TpTitle = Title;
                     taxPayerDetails.NameFirst = FirstName;
                     taxPayerDetails.NameLast = string.IsNullOrEmpty(LastName) ? string.Empty : LastName;
                     taxPayerDetails.FatherName = string.IsNullOrEmpty(FatherName) ? string.Empty : FatherName;
@@ -3146,14 +4053,21 @@ After:
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", long.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
+                    // DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
                     taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
                     taxPayerDetails.Fdmonth = FiscalMonth;
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ADateComm;
-                    taxPayerDetails.Fdenddt = Fdenddt;
+                    taxPayerDetails.Caltp = calType;
+                    //taxPayerDetails.Fdenddt = Fdenddt;
                     taxPayerDetails.Chkfg = "X";
+                    if (SelectedPeriod != null)
+                    {
+                        taxPayerDetails.FinPeriod = SelectedPeriod.FinPeriod;
+                        taxPayerDetails.FromDt = SelectedPeriod.FromDate;
+                        taxPayerDetails.Fdenddt = SelectedPeriod.ToDate;
+                    }
                     taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.StepNumberx = "04";
                     taxPayerDetails.UserTypx = "TP";

@@ -2353,6 +2353,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
                 {
                     Guid = forgotPasswordOTP.d.Guid;
+                    Captcha = forgotPasswordOTP.d.Captcha;
                 }
                 else
                 {
@@ -2419,6 +2420,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
                             CreateModel.AType = SignUpModelRootObjectM.d.AType;
                             CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
+                            CreateModel.ACaptcha = SignUpModelRootObjectM.d.ACaptcha;
                             string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                             if (ResultFirstSubmitModel.d == null)
@@ -2890,6 +2892,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                 _txtEmailCode = value;
                 RaisePropertyChanged("TxtEmailCode");
+            }
+        }
+        private string captcha = string.Empty;
+        public string Captcha
+        {
+            get
+            {
+                return captcha;
+            }
+            set
+            {
+                if (captcha == value) return;
+
+                captcha = value;
+                RaisePropertyChanged("Captcha");
             }
         }
         public async void CreateGaZTAccount()

@@ -8,7 +8,6 @@ using System.Windows.Input;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
-using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
@@ -145,7 +144,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
 
-        ObservableCollection<SurveyQuestions> imojiesLst = new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "61c32bf2527cacedb5d3192c" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "61c32bf2527cacedb5d3192d" }, new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied", ID = "61c32bf2527cacedb5d3192e" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "61c32bf2527cacedb5d3192f" }, new SurveyQuestions() { ImojieSource = "Angry", ID = "61c32bf2527cacedb5d31930" } };
+
+        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "64087eadfe688b43c294529d" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "64087eadfe688b43c294529c" },  new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "64087eadfe688b43c294529b" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "64087eadfe688b43c294529a" },new SurveyQuestions() { ImojieSource = "Angry", ID = "64087eadfe688b43c2945299" } };
         public ObservableCollection<SurveyQuestions> ImojiesLst
         {
             get
@@ -1830,7 +1830,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ACStatementBills");
             }
         }
+        private bool _isContactZatcaEmpTileVisible = false;
+        public bool IsContactZatcaEmpTileVisible
+        {
+            get
+            {
+                return _isContactZatcaEmpTileVisible;
+            }
+            set
+            {
+                if (_isContactZatcaEmpTileVisible == value) return;
 
+                _isContactZatcaEmpTileVisible = value;
+                RaisePropertyChanged("IsContactZatcaEmpTileVisible");
+            }
+        }
         #endregion
 
         #region Constructor
@@ -1955,7 +1969,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public void MadaPaymentSelected()
         {
 
-
             DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
 
 
@@ -1996,10 +2009,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     modelDetails.Sadad = sdadNo;
 
                     PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
-
                     if (PaymentData != null && PaymentData.d != null)
                     {
-
                         if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                         {
                             await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
@@ -2026,12 +2037,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
 
-                            ApplePayStatus = await ProcessApplePay();
+                            //ApplePayStatus = await ProcessApplePay();
                         }
 
 
                     }
-
                     IsLoading = false;
 
                 }
@@ -2076,22 +2086,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 });
             }
         }
-        private async Task<bool> ProcessApplePay()
-        {
-            try
-            {
-                var Amount = Convert.ToDouble(PaymentData.d.Amount);
-                var BillAmount = Math.Round(Amount, 2);
-                DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
-                return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
-            }
-            catch (Exception)
-            {
+
+        //private async Task<bool> ProcessApplePay()
+        //{
+        //    try
+        //    {
+        //        var Amount = Convert.ToDouble(PaymentData.d.Amount);
+        //        var BillAmount = Math.Round(Amount, 2);
+        //        DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
+        //        return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+        //    }
+        //    catch (Exception)
+        //    {
 
 
-                return false;
-            }
-        }
+        //        return false;
+        //    }
+        //}
 
         public async Task UpdateApplePayPaymentGuid()
         {
@@ -2600,7 +2611,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             temp1.Add(ee);
                             if (ee.Amount != null)
                             {
-                                MyObligationAmount += double.Parse(ee.Amount);
+                                MyObligationAmount += Double.Parse(ee.Amount);
                             }
                         }
                     }
@@ -3442,7 +3453,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
 
                     SelctedImojy = selected;
-                    if (selected.ID == "61c32bf2527cacedb5d31930" || selected.ID == "61c32bf2527cacedb5d3192f")
+                    if (selected.ID== "64087eadfe688b43c294529a" || selected.ID== "64087eadfe688b43c2945299")
                     {
                         QuestionTxt = AppResources.SurveyQ2;
                         QNumber = 2;
@@ -3499,8 +3510,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     if (!IsShowMsgView)
                     {
-                        IsShowMsgView = await HaveSurveyForToday();
-                        if (IsShowMsgView)
+
+                 IsShowMsgView = await HaveSurveyForToday();
+                                     if (IsShowMsgView)
                         {
                             SurveyPopUp poupWindow = new SurveyPopUp();
                             await PopupNavigation.Instance.PushAsync(poupWindow);
@@ -3582,7 +3594,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                              {
                                  new An()
                                  {
-                                     rowId=PageSettings.Q1AnsID,
+                                     rowID=PageSettings.Q1AnsID,
                                      columnID=SelctedImojy.ID
                                  }
                              }
@@ -3594,7 +3606,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                              {
                                  new An()
                                  {
-                                     rowId=QNumber==2?PageSettings.Q2AnsID:PageSettings.Q3AnsID,
+                                     rowID=QNumber==2?PageSettings.Q2AnsID:PageSettings.Q3AnsID,
                                      text=SQAnswer
                                  }
                              }

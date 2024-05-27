@@ -5,12 +5,13 @@ using Android.Webkit;
 using Java.Interop;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Platform;
-using ZATCAMAUI.Core.CustomControls;
+using HybridWebView = ZATCAMAUI.Core.CustomControls.HybridWebView;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using WebView = Android.Webkit.WebView;
-
+using System;
+using System.Collections.Generic;
 
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
@@ -228,6 +229,19 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
                 string guid = url.ToString();
                 App.GUIDFrSSO = guid;
                 _hybridWebView.InvokeAction("navigateToVATIndividualSignupPageSSO");
+            }
+
+
+            if (url.ToString().Contains(ZATCAConstants.WebKeyChangeMobCompanay))
+            {
+                _hybridWebView.InvokeAction(ZATCAConstants.AppChangeMobCompanay);
+            }
+
+            if (url.ToString().Contains(ZATCAConstants.WebKeyChangeMobCompanayNafath))
+            {
+                string guid = url.ToString();
+                App.GUIDFrChangeMob = guid;
+                _hybridWebView.InvokeAction(ZATCAConstants.AppChangeMobCompanayNafath);
             }
 
             if (url.ToString().Contains(ZATCAConstants.DomainUrlForCookies))

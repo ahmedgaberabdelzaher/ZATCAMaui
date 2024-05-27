@@ -14,15 +14,6 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
-
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -108,10 +99,8 @@
 
                         <!--  MobileNumber Field  -->
                         <StackLayout Spacing="0">
-
                             <!--  MobileNumber Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
-
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
@@ -121,7 +110,7 @@
 
                             </Label>
 
-                            <!--  MobileNumber Entry  -->
+                            <!--MobileNumber Entry-->  
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
@@ -149,7 +138,6 @@
 
                         <!--  Email Field  -->
                         <StackLayout Spacing="0">
-
                             <!--  Email Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
 
@@ -162,7 +150,7 @@
 
                             </Label>
 
-                            <!--  Email Entry  -->
+                              <!--Email Entry-->  
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                  IsHintAlwaysFloated="True"
@@ -185,7 +173,6 @@
 
                         <!--  Address Field  -->
                         <StackLayout Spacing="0">
-
                             <!--  Address Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
 
@@ -198,7 +185,7 @@
 
                             </Label>
 
-                            <!--  Address Entry  -->
+                            <!--Address Entry-->  
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"

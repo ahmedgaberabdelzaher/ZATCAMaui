@@ -1,4 +1,5 @@
-﻿using ZATCAMAUI.Models.BaseModels;
+﻿
+using ZATCAMAUI.Models.BaseModels;
 
 namespace ZATCAMAUI.Models.NativeNafath
 {

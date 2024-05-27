@@ -39,7 +39,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
                     viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
 
                 }
-                if (billInfo != null)
+                if (billInfo != null && billInfo.BillTypeName != null)
                 {
                     if (billInfo.BillTypeName.Equals(AppResources.Paid))
                     {

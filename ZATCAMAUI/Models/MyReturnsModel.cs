@@ -66,51 +66,12 @@ namespace ZATCAMAUI.Models
         }
         public string Msg { get; set; }
         public bool Open { get; set; }
-        public string Due
-        { get; set; }
 
-        private string _StatusTxt;
-        public string StatusTxt
-        {
-            get
-            {
-                return _StatusTxt;
-            }
-            set
-            {
-                _StatusTxt = value;
-                try
-                {
-                    if (_StatusTxt != null)
-                    {
-                        if (_StatusTxt == "Submitted")
-                        {
-                            StatusMessage = "submitted";
+        public string Due { get; set; }
 
-                        }
-                        if (_StatusTxt == "Non Submitted")
-                        {
-                            StatusMessage = "unsubmitted";
 
-                            if (Due != null)
-                            {
-                                if (Due.Equals('X'))
-                                {
-                                    StatusMessage = "overdue";
+        public string StatusTxt { get; set; }
 
-                                }
-
-                            }
-                        }
-                    }
-                }
-
-                catch (Exception)
-                {
-
-                }
-            }
-        }
 
         public string StatusMessage
         {
@@ -285,6 +246,8 @@ namespace ZATCAMAUI.Models
 
             }
         }
+
+        public string TaxtpText { get; set; }
 
         public string Sortperiod { get; set; }
         public string TaxType { get; set; }

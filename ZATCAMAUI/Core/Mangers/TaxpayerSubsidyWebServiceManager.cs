@@ -10,7 +10,7 @@ namespace ZATCAMAUI.Core.Mangers
    
     public static class TaxpayerSubsidyWebServiceManager
     {
-        public static async Task<string> TaxpayerSubsidyPostRequestAsync()
+        public static async Task<string> TaxpayerSubsidyPostRequestAsync(string source)
         {
             string _requestResponse = string.Empty;
             if (NetworkCheck.IsInternet())
@@ -25,7 +25,7 @@ namespace ZATCAMAUI.Core.Mangers
                         Euser = App.LoginDataRetrieved.Euser,
                         Fbguid = App.LoginDataRetrieved.FbGuid,
                         Langz = "" + LangZ,
-                        Source = "MSUB",//"VSUB"
+                        Source = source,//"VSUB" or 6741
                         Partner = App.LoginDataRetrieved.TIN
                     };
 

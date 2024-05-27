@@ -27,6 +27,11 @@ namespace ZATCAMAUI.Core.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<UserCRResponseModel>>>($"{PageSettings.ZATCABaseURL}{version}/portal/twareed/cr-details?userID={UserId}").ConfigureAwait(false);
             return response;
         }
+        public async Task<Tuple<DATAPowerBaseResponse<CrTinNoModel>, bool, string>> GetCurrentCRTiNo(string CRNo)
+        {
+              var response = await HttpManager.GetAsync<DATAPowerBaseResponse<CrTinNoModel>>($"{PageSettings.ZATCABaseURL}/v2/dwh/taxpayers?idType=CRNumber&idNumber={CRNo}",false,"99",false).ConfigureAwait(false);
+             return response;
+        }
     }
 }
 

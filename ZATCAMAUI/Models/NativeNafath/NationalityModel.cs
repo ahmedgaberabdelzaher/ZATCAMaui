@@ -1,5 +1,4 @@
-﻿
-namespace ZATCAMAUI.Models.NativeNafath
+﻿namespace ZATCAMAUI.Models.NativeNafath
 {
     public class NationalityModel
 	{

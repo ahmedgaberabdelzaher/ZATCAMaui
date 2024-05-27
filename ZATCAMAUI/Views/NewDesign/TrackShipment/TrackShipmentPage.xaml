@@ -18,16 +18,6 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
-
-
     <ContentPage.Content>
 
         <Grid RowDefinitions="Auto,*">
@@ -368,6 +358,9 @@
                                                 Value="True">
                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                             </DataTrigger>
+                                            <DataTrigger   TargetType="custom:CustomLabel" Binding="{Binding IsExpressShipment}" Value="true">
+                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}"></Setter>
+                                            </DataTrigger>
                                         </Label.Triggers>
 
                                     </Label>
@@ -376,7 +369,8 @@
 
 
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding DeclarationSelectionCommand}" CommandParameter="2" />
+                                    <TapGestureRecognizer Command="{Binding DeclarationSelectionCommand}"
+                                                          CommandParameter="2" />
                                 </Grid.GestureRecognizers>
 
                             </Grid>
@@ -548,6 +542,18 @@
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
+                                <Label.Triggers>
+                                      <DataTrigger   TargetType="Label" Binding="{Binding IsExpressShipment}" Value="true">
+                                        <Setter Property="FormattedText">
+                                                   <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ExpressBillNumber}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+
+                                               </Setter>
+                                      </DataTrigger>
+
+                                </Label.Triggers>
                             </Label>
 
                             <!--  Bill Number Entry  -->
@@ -559,15 +565,28 @@
                                  IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
+
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.BillNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding ShipmentBillNumber}"
-                                    TextColor="#58595B" />
+                                    TextColor="#58595B" >
+                                    <custom:GAZTBorderlessEntry.Triggers>
+                                          <DataTrigger   TargetType="custom:GAZTBorderlessEntry"
+                                                         Binding="{Binding IsExpressShipment}" Value="true">
+
+                                                <Setter Property="Placeholder"
+                                                        Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}"/>
+                                            </DataTrigger>
+
+                                    </custom:GAZTBorderlessEntry.Triggers>
+
+                                </custom:GAZTBorderlessEntry>
 
 
                             </inputLayout:SfTextInputLayout>

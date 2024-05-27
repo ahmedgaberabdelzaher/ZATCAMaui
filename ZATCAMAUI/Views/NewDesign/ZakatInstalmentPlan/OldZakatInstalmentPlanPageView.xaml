@@ -34,8 +34,6 @@
             <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector" />
 
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
 
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
@@ -2330,74 +2328,6 @@
                             </cards:SfCardView>
 
                         </Grid>
-
-                        <Grid
-                            Grid.Row="6"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="2"
-                            Margin="0,10,0,0">
-
-                            <cards:SfCardView CornerRadius="20">
-                                <StackLayout Padding="10">
-
-                                    <Label
-                                        HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelBlack}"
-                                        Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" />
-
-                                    <cards:SfCardView
-                                        Margin="0,0,0,5"
-                                        Padding="10,0,10,0"
-                                        BorderColor="Gray"
-                                        BorderWidth="0.2"
-                                        CornerRadius="15"
-                                        HorizontalOptions="FillAndExpand">
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="downPaymentEntry"
-                                            HorizontalOptions="FillAndExpand"
-                                            Keyboard="Numeric"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            Text="{Binding DownPaymentAmount}"
-                                            Unfocused="downPaymentEntry_Unfocused" />
-                                    </cards:SfCardView>
-                                    <Frame
-                                        Padding="0"
-                                        BackgroundColor="Transparent"
-                                        CornerRadius="10"
-                                        HasShadow="False">
-                                        <StackLayout>
-                                            <Slider
-                                                x:Name="downPaymentSlider"
-                                                Margin="5,5,5,10"
-                                                Maximum="{Binding MaxAmount, Converter={StaticResource commaSeparatorConverter}}"
-                                                MaximumTrackColor="LightSlateGray"
-                                                Minimum="{Binding MinAmount, Converter={StaticResource commaSeparatorConverter}}"
-                                                MinimumTrackColor="{StaticResource Primary}"
-                                                ThumbColor="{StaticResource Primary}"
-                                                Value="{Binding DownPaymentAmount}" />
-
-                                        </StackLayout>
-                                    </Frame>
-                                    <StackLayout Padding="10" Orientation="Horizontal">
-
-                                        <Label
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding MinAmountTitle}"
-                                            VerticalTextAlignment="Center" />
-
-                                        <Label
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding MaxAmountTitle}"
-                                            VerticalTextAlignment="Center" />
-
-                                    </StackLayout>
-                                </StackLayout>
-                            </cards:SfCardView>
-
-                        </Grid>
-
 
                         <Grid
                             Grid.Row="7"

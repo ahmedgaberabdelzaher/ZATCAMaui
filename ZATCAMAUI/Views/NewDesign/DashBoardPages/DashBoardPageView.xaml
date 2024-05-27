@@ -1564,7 +1564,14 @@
                                                     <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
-
+<BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                            <StackLayout Orientation="Horizontal" Spacing="20">
+                                                <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
+                                                <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.GeneralServices}" />
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="General_Services_Tapped" />
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <!--  Subsidy Request Starts  -->
                                             <StackLayout
@@ -1581,6 +1588,18 @@
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             </StackLayout>
                                             <!--  Subsidy Request Ends  -->
+                                             <!--Contact Zatca For Audit Case starts-->
+                                            <StackLayout  Orientation="Vertical" Spacing="20" IsVisible="{Binding IsContactZatcaEmpTileVisible}">
+                                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                                    <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}"/>
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ContactZatcaEmp}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="ContactZatcaEmp_Tapped"/>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+                                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsContactZatcaEmpTileVisible}"/>
+                                            </StackLayout>
+                                            <!--Contact Zatca For Audit Case ends-->
                                             <!--  CR6264 starts  -->
 
                                             <StackLayout

@@ -2,7 +2,7 @@
 {
     public class An
     {
-        public string rowId { get; set; }
+        public string rowID { get; set; }
         public string columnID { get; set; }
         public string text { get; set; }
     }

@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Views;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.TPProfile;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM

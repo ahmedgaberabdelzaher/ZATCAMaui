@@ -3,12 +3,14 @@ using System.Globalization;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using RGPopup.Maui.Services;
+using Newtonsoft.Json;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
@@ -69,6 +71,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 3;
+
+        private bool _isEditable;
+
+        public bool isEditable
+        {
+            get => _isEditable;
+            set
+            {
+                if (_isEditable == value) return;
+
+                _isEditable = value;
+                RaisePropertyChanged(nameof(isEditable));
+            }
+        }
 
 
         private int _currenrIndex = (int)EstablishmentRegistrationOutletTabsEnum.OutletDetail;
@@ -333,7 +349,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
             }
         }
-        private bool _postalAsPhysical = false;
+        private bool _postalAsPhysical = true;
         public bool PostalAsPhysical
         {
             get => _postalAsPhysical;
@@ -703,7 +719,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         public void OnAppearing()
         {
         }
-        private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
+        private async void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
             try
             {
@@ -718,17 +734,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                     }
 
-
-                    _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
+                    MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        openedTab = _enum,
-                        taxPayerDetails = taxPayerDetails,
-                        nextNumber = newNumber,
-                        goBackAction = (List<Nreg_ActivityItem> list) =>
+                        _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
-                            addActivities(list);
-                        }
-                    }); ;
+                            openedTab = _enum,
+                            taxPayerDetails = taxPayerDetails,
+                            nextNumber = newNumber,
+                            goBackAction = (List<Nreg_ActivityItem> list) =>
+                            {
+                                addActivities(list);
+                            }
+                        }); ;
+                    });
+                        
                 }
                 else
                 {
@@ -923,7 +942,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             var preLoadedItem = preLoadedItems.FirstOrDefault();
                             if (preLoadedItem?.Type == "BUP002")
                             {
-                                validateCR = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                                var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
+                                try
+                                {
+                                    if (!string.IsNullOrEmpty(result))
+                                    {
+                                        validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
+                                    }
+                                    if (validateCR.Crnum == null)
+                                    {
+                                        PrepareError(result);
+                                    }
+
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+
                                 if (!string.IsNullOrEmpty(validateCR?.Crname))
                                 {
                                     OutletName = validateCR?.Crname;
@@ -953,6 +989,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         validateCR = null;
                         PreLoadedLicenseItem = null;
                     }
+
+                    if (!string.IsNullOrEmpty(OutletName)){
+                        isEditable = false;
+                    }
+                    else
+                    {
+                        isEditable = true;
+                    }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
@@ -968,10 +1012,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         PostalCode = defaultAddress?.PostCode1;
                         AddNumber = defaultAddress?.HouseNum2;
                         Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == defaultAddress?.Country).FirstOrDefault();
-                        Provinance = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == defaultAddress?.Region).FirstOrDefault();
-                        City = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == defaultAddress?.CityCode && i.CityName == defaultAddress?.City1).FirstOrDefault();
+                        Provinance = OutletDropDowns?.State_dropdownSet?.results.Where( i => i.Bland == defaultAddress?.Region && i.Land1 == defaultAddress?.Country).FirstOrDefault();
+                        City = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == defaultAddress?.CityCode && i.CityName == defaultAddress?.City1 && i.Country == defaultAddress?.Country && i.Region == defaultAddress?.Region).FirstOrDefault();
 
-                        PostalAsPhysical = defaultAddress?.Sameasphy == "X";
+                        //PostalAsPhysical = defaultAddress?.Sameasphy == "X";
 
                         Nreg_AddressItem _address = taxPayerDetails?.Nreg_AddressSet?.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("0001")).FirstOrDefault();
                         HouseNumberSame = _address?.HouseNum1;
@@ -1175,12 +1219,60 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             return true;
         }
+
+        private void PrepareError(string result)
+        {
+            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
+            var errorID = string.Empty;
+            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+            {
+                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+
+                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+
+                if (errorCode.Contains("206"))
+                {
+                    WebServiceManager.ErrorMessageForUnlockAccount = "206";
+                }
+                else if (errorCode.Contains("112"))
+                {
+                    WebServiceManager.ErrorMessageForUnlockAccount = "112";
+                }
+                else if (errorCode.Contains("896"))
+                {
+                    errorID = errorCode;
+                }
+                string line1 = "";
+
+                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
+                {
+                    line1 = line1 + " " + errorMesg.error.innererror.errordetails[i].message;
+                }
+                WebServiceManager.ErrorMessageForUnlockAccount = line1;
+
+                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    if (errorID.Contains("896"))
+                    {
+                        await PopupNavigation.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
+                    }
+                    else
+                    {
+                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
+                    }
+                });
+
+                // throw new GAZTErrorException(WithReplacedString);
+            }
+        }
         private void clearFormData()
         {
             CanExecute = true;
             OutletName = string.Empty;
             taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
-            PostalAsPhysical = false;
+            PostalAsPhysical = true;
 
             HouseNumber = string.Empty;
             BuildingNumber = string.Empty;

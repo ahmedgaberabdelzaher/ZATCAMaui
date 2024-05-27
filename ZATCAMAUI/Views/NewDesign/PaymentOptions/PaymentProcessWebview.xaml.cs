@@ -20,67 +20,68 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
         public PaymentProcessWebview(int type)
         {
-
             InitializeComponent();
             viewModel = App.Locator.PaymentProcessWebview;
 
-            BindingContext = viewModel;
+            this.BindingContext = viewModel;
             ChangeAeroIcon();
             viewModel.PaymentType = type;
+
         }
 
 
         protected override void OnAppearing()
         {
+            base.OnAppearing();
+
+            isPaymentProcessed = false;
+            webView = new WebView();
+
+
+
+
+            var platform = "";
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                platform = "C4";
+            }
+            else if (Device.RuntimePlatform == Device.Android)
+            {
+                platform = "C3";
+            }
+
+            var PaymentSAPClient = "300";
+            if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.DevBaseUrlForODataServices))
+            {
+
+                PaymentSAPClient = ZATCAConstants.DevPaymentSapClinet;
+            }
+            else if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.QABaseUrlForODataServices))
+            {
+                PaymentSAPClient = ZATCAConstants.QAPaymentSapClinet;
+
+            }
+            else if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.PreProdBaseUrlForODataServices))
+            {
+                PaymentSAPClient = ZATCAConstants.PreProdPaymentSapClinet;
+
+            }
+            else if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.ProdBaseUrlForODataServices))
+            {
+                PaymentSAPClient = ZATCAConstants.ProdPaymentSapClinet;
+
+            }
+
+
+            string paymentUrl = ZATCAConstants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform + "&sap-ui-language=" + UtilityManager.GetLanguageParameter() + "&sap-client=" + PaymentSAPClient;
+
+
+            CookieContainer cookieContainer = new CookieContainer();
+
+
             try
             {
-                base.OnAppearing();
-
-                isPaymentProcessed = false;
-                webView = new WebView();
-
-
-
-
-                var platform = "";
-
-                if (Device.RuntimePlatform == Device.iOS)
-                {
-                    platform = "C4";
-                }
-                else if (Device.RuntimePlatform == Device.Android)
-                {
-                    platform = "C3";
-                }
-
-                var PaymentSAPClient = "300";
-                if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.DevBaseUrlForODataServices))
-                {
-
-                    PaymentSAPClient = ZATCAConstants.DevPaymentSapClinet;
-                }
-                else if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.QABaseUrlForODataServices))
-                {
-                    PaymentSAPClient = ZATCAConstants.QAPaymentSapClinet;
-
-                }
-                else if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.PreProdBaseUrlForODataServices))
-                {
-                    PaymentSAPClient = ZATCAConstants.PreProdPaymentSapClinet;
-
-                }
-                else if (ZATCAConstants.PaymentUrl.Contains(ZATCAConstants.ProdBaseUrlForODataServices))
-                {
-                    PaymentSAPClient = ZATCAConstants.ProdPaymentSapClinet;
-
-                }
-
-
-                string paymentUrl = ZATCAConstants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform + "&sap-ui-language=" + UtilityManager.GetLanguageParameter() + "&sap-client=" + PaymentSAPClient;
-
-
-                CookieContainer cookieContainer = new CookieContainer();
-
                 foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                 {
                     Cookie cookie = new Cookie();
@@ -95,32 +96,31 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                     cookieContainer.Add(cookie);
                 }
 
-                viewModel.IsLoading = true;
-                Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
-                webView.Cookies = cookieContainer;
-                webView.Source = new UrlWebViewSource { Url = uri.ToString() };
-
-
-
-                //webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
-
-
-                isLoginLoaded = false;
-
-
-                webView.Navigated += OnNavigated;
-                webView.Navigating += OnNavigating;
-
-                WebviewGrid.Add(webView, 0, 0);
-                //TODO
-                WebviewGrid.Insert(WebviewGrid.Count, webView);
 
             }
-            catch (Exception)
+
+            catch (Exception )
             {
-
             }
 
+            viewModel.IsLoading = true;
+            Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
+            webView.Cookies = cookieContainer;
+            webView.Source = new UrlWebViewSource { Url = uri.ToString() };
+
+
+
+            //webView.Source = Constants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform;
+
+
+            isLoginLoaded = false;
+
+
+            webView.Navigated += OnNavigated;
+            webView.Navigating += OnNavigating;
+
+            WebviewGrid.Add(webView, 0, 0);
+            WebviewGrid.Insert(WebviewGrid.Count, webView);
         }
 
         public void ChangeAeroIcon()
@@ -149,35 +149,32 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
         private void OnNavigated(object sender, WebNavigatedEventArgs e)
         {
 
-            try
+
+            if (isLoginLoaded)
             {
-                if (isLoginLoaded)
+
+                if (webView != null)
+                    WebviewGrid.Children.Remove(webView);
+
+                webView = new WebView();
+
+
+                var platform = "";
+
+                if (Device.RuntimePlatform == Device.iOS)
                 {
+                    platform = "C4";
+                }
+                else if (Device.RuntimePlatform == Device.Android)
+                {
+                    platform = "C3";
+                }
 
+                string paymentUrl = ZATCAConstants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform + "&sap-ui-language=" + UtilityManager.GetLanguageParameter();
 
-                    if (webView != null)
-                        WebviewGrid.Children.Remove(webView);
-
-                    webView = new WebView();
-
-
-                    var platform = "";
-
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        platform = "C4";
-                    }
-                    else if (Device.RuntimePlatform == Device.Android)
-                    {
-                        platform = "C3";
-                    }
-
-
-                    string paymentUrl = ZATCAConstants.PaymentUrl + App.PaymentGuid + "&Srcid=" + platform + "&sap-ui-language=" + UtilityManager.GetLanguageParameter();
-
-
-                    CookieContainer cookieContainer = new CookieContainer();
-
+                CookieContainer cookieContainer = new CookieContainer();
+                try
+                {
                     foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                     {
                         Cookie cookie = new Cookie();
@@ -191,48 +188,48 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                         cookie.Secure = cookieModel.Secure;
                         cookieContainer.Add(cookie);
                     }
-
-
-                    Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
-                    webView.Cookies = cookieContainer;
-                    webView.Source = new UrlWebViewSource { Url = uri.ToString() };
-                    webView.Navigated += OnNavigated;
-                    webView.Navigating += OnNavigating;
-
-                    WebviewGrid.Add(webView, 0, 0);
-                    //TODO
-                    WebviewGrid.Insert(WebviewGrid.Count,webView);
-                    isLoginLoaded = false;
-
-                    viewModel.IsLoading = true;
                 }
-                else
+
+                catch (Exception)
                 {
-                    viewModel.IsLoading = false;
                 }
 
-            }
-            catch (Exception )
-            {
 
+                Uri uri = new Uri(paymentUrl, UriKind.RelativeOrAbsolute);
+                webView.Cookies = cookieContainer;
+                webView.Source = new UrlWebViewSource { Url = uri.ToString() };
+                webView.Navigated += OnNavigated;
+                webView.Navigating += OnNavigating;
+
+                WebviewGrid.Add(webView, 0, 0);
+                WebviewGrid.Insert(WebviewGrid.Count,webView);
+                isLoginLoaded = false;
+
+                viewModel.IsLoading = true;
+            }
+            else
+            {
+                viewModel.IsLoading = false;
             }
 
 
         }
         protected async void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
+            Console.WriteLine("WebViewURL: " + e.Url);
 
 
             isLoginLoaded = false;
 
-            if (e.Url.Contains("bank/?IsPmtSts"))
+
+            if (e.Url.Contains("IsPmtSts"))
             {
                 var splitString = e.Url.Split('=');
                 if (splitString.Length > 0)
                 {
 
                     var responseGUID = splitString[1];
-                    //("Payment Successful:" + e.Url);
+                    //Console.WriteLine("Payment Successful:" + e.Url);
 
                     webView.IsVisible = false;
                     viewModel.IsLoading = true;
@@ -242,18 +239,11 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                     {
 
                         isPaymentProcessed = true;
-
                         await viewModel.UpdateMadaPaymentDetails(responseGUID);
-
-
                     }
-
-
-
                 }
-
             }
-            else if (e.Url.Contains("error/?isAuthErr"))
+            else if ((e.Url.Contains("isAuthErr")) || (e.Url.Contains("IsPROCBlank")))
             {
                 var splitString = e.Url.Split('&');
                 if (splitString.Length > 0)
@@ -261,34 +251,32 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
                     isPaymentProcessed = false;
 
-                    var responseMessage = splitString[1].Replace("msg", "");
-
-                    //("Payment Successful:" + e.Url);
+                    var responseMessage = splitString[1].Replace("msg='", "");
+                    string decodedMessage = Uri.UnescapeDataString(responseMessage);
+                    string[] parts = decodedMessage.Split('\'');
 
                     webView.IsVisible = false;
                     viewModel.IsLoading = true;
 
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(responseMessage));
-                        //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(parts[1]));
                         viewModel._navigationService.GoBack();
                     });
 
-                    //await viewModel.UpdateMadaPaymentDetails(responseGUID);
 
                 }
 
             }
-            else if (e.Url.Contains(ZATCAConstants.DomainUrlForCookies))
+            else if (e.Url.Contains(ZATCAConstants.DomainUrlForCookies) && (!(e.Url.Contains("madapmnt.Madaconfirm"))))
             {
 
                 isLoginLoaded = true;
                 webView.IsVisible = false;
             }
 
-
         }
-
+        // https://tstdp1as1.mygazt.gov.sa:50001/irj/servlet/prt/portal/prtroot/madapmnt.Madaconfirm/005056B1365C1EEDBEA6B961D6E7A95C/C4/A/EN
+        
     }
 }

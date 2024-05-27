@@ -3,10 +3,12 @@ using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Core.Mangers
@@ -72,8 +74,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
                     // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -157,12 +157,16 @@ namespace ZATCAMAUI.Core.Mangers
 
                             }
                             taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                            if (step.Equals("02") && taxPayer.Nreg_IdSet.results.Count > 0)
+                            {
+                                ZATCAConstants.IdSet = taxPayer.Nreg_IdSet.results;
+                            }
                         }
                     }
                 }
                 catch (GAZTErrorException ex)
                 {
-                    throw ex;
+                   
                 }
                 catch (JsonReaderException)
                 {
@@ -170,17 +174,14 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (HttpRequestException ex)
                 {
-                    throw ex;
+                   
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
+                    
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -258,38 +259,30 @@ namespace ZATCAMAUI.Core.Mangers
                             try
                             {
                                 replaceDString = JObject.Parse(jsonReplace)["d"].ToString();
-
+                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(replaceDString);
                             }
                             catch (Exception)
                             {
-
-
                             }
-                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(replaceDString);
+                            
                         }
                     }
                 }
-                catch (GAZTErrorException ex)
+                catch (GAZTErrorException)
                 {
-                    throw ex;
                 }
                 catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -355,7 +348,25 @@ namespace ZATCAMAUI.Core.Mangers
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
                             {
-                                string ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
+                                string ErrorMessageFormServer = string.Empty;
+                                if (errorMesg.error.innererror.errordetails?.Count > 0)
+                                {
+
+                                    if (errorMesg.error.innererror.errordetails.Count > 2)
+                                    {
+                                        for (int i = 0; i < errorMesg.error.innererror.errordetails.Count - 1; i++)
+                                        {
+                                            ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.error.innererror.errordetails[i].message;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
+                                    }
+
+                                }
+
+
                                 throw new HTTPBadRequestException(ErrorMessageFormServer);
                             }
                             else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
@@ -378,20 +389,15 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
                 }
                 catch (Exception)
 
                 {
-
-
-                    // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -446,21 +452,19 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                 }
                 catch (JsonReaderException )
+
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
                 }
                 catch (Exception)
 
                 {
-                    // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -499,8 +503,6 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (Exception)
 
                 {
-
-
                     return null;
                 }
             }
@@ -598,19 +600,14 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
                 }
                 catch (Exception)
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -665,19 +662,14 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -734,19 +726,14 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException)
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException)
                 {
-                    throw gex;
                 }
                 catch (Exception)
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -813,9 +800,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -824,9 +808,10 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return list;
         }
-        public static async Task<ValidateCR> ESTValidateCRNum(string cr)
+        public static async Task<string> ESTValidateCRNum(string cr)
         {
-            ValidateCR validate = null;
+            //ValidateCR validate = null;
+            string ESTBranchesDropDownResponseJSON = string.Empty;
             if (NetworkCheck.IsInternet())
             {
                 string NewToken = string.Empty;
@@ -836,8 +821,22 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Crnum='{1}')?$format=json",
-                        ZATCAConstants.ESTValidateCRNum, cr), false, "");
+
+                    var CrNumber = new JProperty("Crnum", cr);
+
+                    var idset = ZATCAConstants.IdSet.Where(i => (i.Srcidentify == "00000" || i.Srcidentify == "") && (i.Type != "FS0002")).FirstOrDefault();
+
+                    var IdNo = new JProperty("Idnumber", idset.Idnumber);
+                    var Type = new JProperty("IdType", idset.Type);
+                    var Gpart = new JProperty("Gpart", idset.Gpart);
+
+
+
+                    JObject obj = new JObject(CrNumber, IdNo, Type, Gpart);
+
+
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.PostApiCall(ZATCAConstants.ESTValidateCRNum, false, obj.ToString());
+
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -858,11 +857,11 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                            validate = JsonConvert.DeserializeObject<ValidateCR>(ESTBranchesDropDownResponseJSON);
+                            //validate = JsonConvert.DeserializeObject<ValidateCR>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
@@ -870,26 +869,21 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException)
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException)
                 {
-                    throw gex;
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
                 throw new GAZTInternetException();
             }
-            return validate;
+            return ESTBranchesDropDownResponseJSON;
         }
         public static async Task<List<OutletItem>> ESTOutletList(string email, string gpart, string fbnum)
         {
@@ -963,9 +957,8 @@ namespace ZATCAMAUI.Core.Mangers
                     throw new GAZTInvalidDataException();
                 }
 
-                catch (HttpRequestException ex)
+                catch (HttpRequestException)
                 {
-                    throw ex;
                 }
                 catch (GAZTException gex)
                 {
@@ -974,9 +967,6 @@ namespace ZATCAMAUI.Core.Mangers
 
                 catch (Exception)
                 {
-
-
-                    // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -1032,19 +1022,14 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException)
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException)
                 {
-                    throw gex;
                 }
                 catch (Exception)
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -1145,23 +1130,18 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException)
                 {
-                    throw ex;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
                 }
-                catch (Exception)
+                catch (Exception )
                 {
-
-
-                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -1170,6 +1150,191 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return financial;
         }
+
+        public static async Task<FinancialDetail> ESTFinancialMaxDateForPeriod(FinancialDetailPeriodRequest financialDetailRequest)
+        {
+            FinancialDetail financial = null;
+            if (NetworkCheck.IsInternet())
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    if (!NetworkCheck.IsInternet())
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var uri = new Uri(string.Format(ZATCAConstants.ESTFinancialMaxDate));
+                    var financeData = JsonConvert.SerializeObject(financialDetailRequest, new JsonSerializerSettings
+                    {
+                        DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
+                        DateTimeZoneHandling = DateTimeZoneHandling.Utc
+                    });
+                    HttpContent contentPost = new StringContent(financeData, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(uri, contentPost);
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
+                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        {
+
+                            if (!ESTBranchesDropDownResponseJSON.Contains("An exception was raised") || !ESTBranchesDropDownResponseJSON.Contains("error"))
+                            {
+
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                                financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
+                            }
+
+
+                        }
+                    }
+                }
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException)
+                {
+                }
+                catch (GAZTException )
+                {
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return financial;
+        }
+
+        public static async Task<string> UpdateUserLicenseInActivityPage(UpdateActivityLicenseModel updateActivityModel, string pageType)
+        {
+            ActivityUpdateViewResponseModel financial = null;
+            if (NetworkCheck.IsInternet())
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    if (!NetworkCheck.IsInternet())
+                    {
+                        throw new GAZTInternetException();
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var uri = new Uri(string.Format(ZATCAConstants.UpdateLicenseAndCR));
+                    var financeData = JsonConvert.SerializeObject(updateActivityModel);
+                    HttpContent contentPost = new StringContent(financeData, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(uri, contentPost);
+
+
+                    if (ESTBranchesDropDownResponse != null)
+                    {
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+                        HttpHeaders headers = ESTBranchesDropDownResponse.Headers;
+                        IEnumerable<string> values = null;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+                        var ESTBranchesDropDownResponseJSON = ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
+                        financial = JsonConvert.DeserializeObject<ActivityUpdateViewResponseModel>(ESTBranchesDropDownResponseJSON);
+
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.OK || ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Created)
+                        {
+                            if (financial != null && financial.d != null)
+                            {
+                                if (financial.d.UpdFlg)
+                                {
+                                    if (pageType.Equals("2"))
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZCRUpdateSuccess));
+                                    else if (pageType.Equals("1"))
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZLicenseUpdateSuccess));
+                                }
+                            }
+                        }
+
+
+                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            ErrorObj errorMesgs = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                            if (errorMesgs != null && errorMesgs.error != null && errorMesgs.error.innererror != null
+                                                                && errorMesgs.error.innererror.errordetails != null && errorMesgs.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorCode = errorMesgs.error.innererror.errordetails[0].code;
+
+                                var errorMsg = errorMesgs.error.innererror.errordetails[0].message;
+
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(errorMsg));
+
+                            }
+                        }
+                    }
+                }
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException)
+                {
+                }
+                catch (GAZTException)
+                {
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+            return "";
+        }
+
+
+
         #endregion
     }
 }

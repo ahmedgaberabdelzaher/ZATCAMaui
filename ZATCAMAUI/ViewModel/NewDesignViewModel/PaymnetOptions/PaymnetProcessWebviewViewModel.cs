@@ -51,7 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
             GoBackClick = new Command(async () =>
             {
-                CancelPaymentService();
+               await CancelPaymentService();
             });
 
         }
@@ -143,9 +143,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
 
-
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //removed based on CR6100 Hyper care
+                    //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     _navigationService.GoBack();
                 });
             }

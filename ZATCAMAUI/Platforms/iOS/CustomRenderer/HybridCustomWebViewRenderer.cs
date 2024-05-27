@@ -172,6 +172,16 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
             {
                 element.InvokeAction("navigateToVATIndividualSignupPage");
             }
+            if (apiUrl.ToString().Contains(ZATCAConstants.WebKeyChangeMobCompanay))
+            {
+                element.InvokeAction(ZATCAConstants.AppChangeMobCompanay);
+            }
+            if (apiUrl.ToString().Contains(ZATCAConstants.WebKeyChangeMobCompanayNafath))
+            {
+                string guid = apiUrl.ToString();
+                App.GUIDFrChangeMob = guid;
+                element.InvokeAction(ZATCAConstants.AppChangeMobCompanayNafath);
+            }
             if (apiUrl.ToString().Contains(ZATCAConstants.DomainUrlForCookies))
             {
                 App.IsLoginCalled = true;

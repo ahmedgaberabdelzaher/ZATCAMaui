@@ -1,6 +1,7 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using RGPopup.Maui.Services;
+using Syncfusion.Maui.ListView;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using ZATCAMAUI.Core.Enums;
@@ -102,19 +103,31 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
 
         void SfChipGroup_SelectionChanged(object sender, Syncfusion.Maui.Core.Chips.SelectionChangedEventArgs e)
         {
-            try
+            //try
+            //{
+            //    var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
+            //    //TODO
+            //    var view = (Element)TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index);
+            //    TabScrollView.ScrollToAsync(view, ScrollToPosition.MakeVisible, true);
+            //}
+            //catch (Exception)
+            //{
+
+
+
+            //}
+        }
+
+        void FinacialPeriodSelectionChanged(System.Object sender, ItemSelectionChangedEventArgs e)
+        {
+            viewModel.isFinaceDetailsChanged = true;
+
+            if (viewModel.SelectedPeriod != null)
             {
-                var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
-                //TODO
-                var view = (Element)TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index);
-                TabScrollView.ScrollToAsync(view, ScrollToPosition.MakeVisible, true);
+
+                viewModel.TaxDate = viewModel.SelectedPeriod.ConvretedToDate;
             }
-            catch (Exception)
-            {
 
-
-
-            }
         }
 
         async void TapRentDeleteGestureRecognizer_Tapped(object sender, EventArgs e)

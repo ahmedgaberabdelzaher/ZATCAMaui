@@ -49,6 +49,9 @@ namespace ZATCAMAUI.Models
         public string ATinExist { get; set; }
         [DataMember]
 
+        public string ACaptcha { get; set; }
+        [DataMember]
+
         public string CaseGuid { get; set; }
         [DataMember]
 

@@ -2,6 +2,7 @@
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using RGPopup.Maui.Services;
 using Syncfusion.Maui.Core.Chips;
+using Syncfusion.Maui.ListView;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using ZATCAMAUI.Core.Enums;
@@ -224,6 +225,51 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             {
                 passportExpiryHijiriPicker.IsOpen = true;
             }
+        }
+
+        void FinacialPeriodSelectionChanged(System.Object sender, ItemSelectionChangedEventArgs e)
+        {
+            viewModel.isFinaceDetailsChanged = true;
+
+            if (viewModel.SelectedPeriod != null)
+            {
+
+                viewModel.TaxDate = viewModel.SelectedPeriod.ConvretedToDate;
+            }
+
+        }
+
+        void FinacialMethodSelectionChanged(System.Object sender, ItemSelectionChangedEventArgs e)
+        {
+
+            try
+            {
+                string selectedItem = e.AddedItems[0] as string;
+
+                if (selectedItem == AppResources.NDAccounting)
+                {
+
+                    viewModel.IsFinancePeriodVisible = true;
+                }
+                else
+                {
+                    viewModel.IsFinancePeriodVisible = false;
+
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+
+
+
+            viewModel.isFinaceDetailsChanged = true;
+
         }
 
         void SfChipGroup_SelectionChanged(object sender, Syncfusion.Maui.Core.Chips.SelectionChangedEventArgs e)

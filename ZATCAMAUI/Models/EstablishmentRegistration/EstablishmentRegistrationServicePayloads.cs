@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -137,6 +137,8 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Actno { get; set; } = string.Empty;
         public string ValidDateFromC { get; set; } = string.Empty;
         public string ValidDateToC { get; set; } = string.Empty;
+        //public string IqamaDesc { get; set; } = string.Empty;
+        //public string IqamaFg { get; set; } = string.Empty;
     }
     
     public class NregIdSet
@@ -153,6 +155,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
     {
         [JsonIgnore]
         public Metadata __metadata { get; set; }
+        public string MciEntry { get; set; }
         public string CityCode { get; set; }
         public string City1 { get; set; }
         public string Crlicenceno { get; set; }
@@ -207,6 +210,9 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonIgnore]
         public Metadata __metadata { get; set; }
         public string CityCode { get; set; } = string.Empty;
+        public string CrType { get; set; } = string.Empty;
+        public string ActName { get; set; } = string.Empty;
+        public string MciEntry { get; set; } = string.Empty;
         public string ActSgrp { get; set; } = string.Empty;
         public string Crstat { get; set; } = string.Empty;
         public string Mncrfg { get; set; } = string.Empty;
@@ -245,6 +251,24 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
             }
         }
         public string ActMgrp { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ActMgrpDesc { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ActivityDesc { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ActSgrpDesc { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string IssuedCity { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string IssuedState { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string IssuedCountry { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string IssuedBy { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ValidFromUI { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string CRTypeDesc { get; set; } = string.Empty;
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -261,7 +285,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
     
     public class NregActivitySet
     {
-        public List<Nreg_ActivityItem> results { get; set; }
+        public List<Nreg_ActivityItem> results { get; set; } = new List<Nreg_ActivityItem>();
     }
     
     public class Nreg_AddressItem
@@ -401,7 +425,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
     {
         public List<object> results { get; set; }
     }
-    
+
     public class TaxPayerDetails
     {
         [JsonIgnore]
@@ -412,6 +436,8 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Autoappfg { get; set; }
         public DateTime? Crexpdt { get; set; }
         public string Shldfg { get; set; }
+        public DateTime? LastFilledRetdt { get; set; }
+        public string Zyear { get; set; }
         public string Accmethod { get; set; }
         public string Qsrvfg { get; set; }
         public string Aoldappno { get; set; }
@@ -483,6 +509,8 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Forward { get; set; }
         public string Forwardx { get; set; }
         public string FullName { get; set; }
+        public string FinPeriod { get; set; }
+        public DateTime? FromDt { get; set; }
         public string Govttp { get; set; }
         public string Gpart { get; set; }
         public string Gpartx { get; set; }
@@ -525,6 +553,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Topmgatt { get; set; }
         public string Tpnationality { get; set; }
         public string Tpresidence { get; set; }
+        public string TpTitle { get; set; } = string.Empty;
         public string UserTypx { get; set; }
         public string Vkont { get; set; }
         public string Vtref { get; set; }
@@ -639,6 +668,17 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string AddressPostaly { get; set; }
         public string Addresstypey { get; set; }
         public string AddressPhysicaly { get; set; }
+        public string Z700Crnum { get; set; }
+
+        public string Actcat { get; set; }
+        public string IdType { get; set; }
+
+        public string Activity { get; set; }
+        public string ActSgrp { get; set; }
+        public string ActMgrp { get; set; }
+
+        public string CityCode { get; set; }
+
     }
     
     public class CityDropdownItem
@@ -738,6 +778,56 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string IGregdate { get; set; }
         public string EIsldate { get; set; }
         public string EIslmedate { get; set; }
+        public string Draft { get; set; }
+        public PeriodSet PeriodSet { get; set; }
+
+
+    }
+    
+
+    public class PeriodSetResult
+    {
+        public Metadata __metadata { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public string ConvretedFromDate { get; set; }
+        public string ConvretedToDate { get; set; }
+        public string FinPeriodText { get; set; }
+
+        public string _finPeriod = String.Empty;
+        public string FinPeriod
+        {
+            get
+            {
+
+                return _finPeriod;
+            }
+            set
+            {
+                _finPeriod = value;
+                if (FinPeriod == "N")
+                {
+                    FinPeriodText = AppResources.FinacialPeriodNormal;
+                }
+                else if (FinPeriod == "S")
+                {
+                    FinPeriodText = AppResources.FinacialPeriodSmall;
+                }
+                else if (FinPeriod == "L")
+                {
+                    FinPeriodText = AppResources.FinacialPeriodLong;
+                }
+
+            }
+        }
+    }
+
+
+    
+
+    public class PeriodSet
+    {
+        public List<PeriodSetResult> results { get; set; }
     }
     
     public class FinancialDetailRequest
@@ -747,7 +837,18 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public DateTime? ADateComm { get; set; }
         public string EIslmedate { get; set; } = string.Empty;
     }
-    
+    public class FinancialDetailPeriodRequest
+    {
+        public string ACaltype { get; set; } = "H";
+        public string AMonth { get; set; } = string.Empty;
+        public DateTime? ADateComm { get; set; }
+        public string EIslmedate { get; set; } = string.Empty;
+        public string Gpart { get; set; } = string.Empty;
+        public string Zfintype { get; set; } = string.Empty;
+        public string Fbnum { get; set; } = string.Empty;
+        public List<PeriodSetResult> PeriodSet { get; set; }
+
+    }
     public class TaxPayerTypeAvailability : INotifyPropertyChanged
     {
         private bool _reportingBranch;
@@ -871,6 +972,18 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
                 OnPropertyChnaged(nameof(DOB));
             }
         }
+
+        private bool _title;
+        public bool Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                OnPropertyChnaged(nameof(Title));
+            }
+        }
+
         private bool _firstName;
         public bool FirstName
         {
@@ -1101,7 +1214,6 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         }
 
     }
-    
 
     public class OutletDetails : INotifyPropertyChanged
     {
@@ -1336,6 +1448,16 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
                 OnPropertyChnaged(nameof(LicenseNo));
             }
         }
+        private bool _licenseName;
+        public bool LicenseName
+        {
+            get => _licenseName;
+            set
+            {
+                _licenseName = value;
+                OnPropertyChnaged(nameof(LicenseName));
+            }
+        }
         private bool _validFrom;
         public bool ValidFrom
         {
@@ -1554,7 +1676,16 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-    
+    public class UpdateActivityLicenseModel
+    {
+        public string Taxpayer { get; set; }
+        public string Idtype { get; set; }
+        public string Idnumber { get; set; }
+        public string Activity { get; set; }
+        public string MainGrp { get; set; }
+        public string SubGrp { get; set; }
+        public bool UpdFlg { get; set; }
+    }
     public class FinancialDetails : INotifyPropertyChanged
     {
         private bool _financialRecords;

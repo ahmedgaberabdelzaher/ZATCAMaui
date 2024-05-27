@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
+using Newtonsoft.Json;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Helper;
@@ -44,6 +45,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 
         public IDictionary<string, object> IamLoginPayloadData;
 
+        string iqamaTypeDescription;
+        public string IqamaTypeDescription { get { return iqamaTypeDescription; } set { iqamaTypeDescription = value; RaisePropertyChanged(); } }
+
+        bool isIqama;
+        public bool IsIqama { get { return isIqama; } set { isIqama = value; RaisePropertyChanged(); } }
+
+
+
+        string _EndDateString;
+        public string EndDateString {
+            get { return _EndDateString; }
+            set {
+
+                _EndDateString = value;
+                RaisePropertyChanged(); } }
 
         #endregion
 
@@ -107,6 +123,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
+
                         Launcher.OpenAsync(PageSettings.GetCustomDeclarationInformationURl());
                     }
                     catch (Exception)
@@ -119,43 +136,53 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
         }
         #endregion
         public IE_DeclerationServices DeclerationServices;
-        public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService)
+        public INativeNafath _nativeNafath;
+        public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService)
         {
             SubmitModel = App.Locator.EDeclerationSubmitModel;
             DeclerationServices = declerationServices;
+            _nativeNafath = nativeNafath;
         }
 
-        public void SetPassangerData(object data)
+        public  void SetPassangerData(object data)
         {
 
             try
             {
                 if (data == null) return;
 
-                //IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
-                var iamLoginPayloadData = data as CustomsNafathUserProfile;
+                 var iamLoginPayloadData = data as CustomsIamUser;
                 SubmitModel.travelerDeclaration.email = iamLoginPayloadData.email.ToString();
-                SubmitModel.travelerDeclaration.phoneNumber = iamLoginPayloadData.mobilenumber.ToString();
-                SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData.firstname.ToString();
-                SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData.secondname.ToString();
-                SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData.thirdname.ToString();
+                SubmitModel.travelerDeclaration.phoneNumber = iamLoginPayloadData.mobileNumber.ToString();
+                SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData.firstName.ToString();
+                SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData.secondName.ToString();
+                SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData.thirdName.ToString();
                 SubmitModel.travelerDeclaration.FullName = $"{SubmitModel.travelerDeclaration.firstName} {SubmitModel.travelerDeclaration.lastName}";
                 App.Locator.StateManager.SetItem("FullName", SubmitModel.travelerDeclaration.FullName);
-                SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData.nationalitynamearabic ?? iamLoginPayloadData.nationalitynameenglish.ToString();
-                SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData.nationalityid.ToString());
+                SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData.nationalityNameArabic?? iamLoginPayloadData.nationalityNameEnglish.ToString();
+                SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData.nationalityId.ToString());
 
                 // Its source is empty so it must be KSA as the user maybe resident or citizen.
                 SubmitModel.travelerDeclaration.travelIssuerName = App.IsArabic ? "السعودية" : "SAUDI ARABIA";
                 SubmitModel.travelerDeclaration.travelIssuerID = 100; // it must be KSA => 100 because the user is resident or citizen
 
                 SubmitModel.travelerDeclaration.gender = iamLoginPayloadData.gender.ToString() == "Male" ? 1 : 2;
-                SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData.nationalid.ToString();
+                SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData.nationalId.ToString();
                 App.Locator.StateManager.SetItem("TravelId", SubmitModel.travelerDeclaration.travelID);
-                SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.birthdate.ToString());
+                SubmitModel.travelerDeclaration.birthDate = iamLoginPayloadData.birthDate;
 
-                SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.cardissuedatehijri.ToString());
+                SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.cardIssueDateHijri.ToString());
 
-                SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.idexpirydatehijri.ToString());
+                SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.idExpiryDateHijri.ToString());
+                if (iamLoginPayloadData.nationalId.StartsWith("2"))
+                {
+                    IsIqama = true;
+                }
+                else
+                {
+                    IsIqama = false;
+                }
+               GetPremiumResidencyType(iamLoginPayloadData.nationalId, iamLoginPayloadData.dateOfBirthHijri).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -164,6 +191,91 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 
         }
 
+        private async Task GetPremiumResidencyType(string id, string HBD)
+        {
+            try
+            {
+                IsLoading = true;
+                PremiumResidencytypeBody premiumResidencytypeBody = new PremiumResidencytypeBody()
+                {
+                    personID = id,
+                    birthDate = HBD
+                };
+                var premiumResidencytypeRes = await _nativeNafath.PremiumResidencyType(premiumResidencytypeBody);
+                if (premiumResidencytypeRes.IsSuccessStatusCode)
+                {
+                    var conent = await premiumResidencytypeRes.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<PremiumResidencytypeResponse>(conent);
+                    if (data.header.status.code == "I000000")
+                    {
+                        if (data.result != null)
+                        {
+                            var premiumResidencytype = data.result;
+                            if (premiumResidencytype != null)
+                            {
+                                if (premiumResidencytype.iqamaType == 2)
+                                {
+                                    if (DateTime.Parse(premiumResidencytype.iqamaExpiryDate) < DateTime.Now)
+                                    {
+                                        SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
+                                        SubmitModel.travelerDeclaration.isPremiumResidency = false;
+
+
+                                        IsLoading = false;
+                                        return;
+                                    }
+                                }
+                                    // IqamaExpiryDate = premiumResidencytype.iqamaExpiryDate;
+                                    IqamaTypeDescription = premiumResidencytype.iqamaType==2?AppResources.SpecialIqamawithexpirydate:AppResources.SpecialIqamawithoutexpirydate;
+                                SubmitModel.travelerDeclaration.isPremiumResidency = true;
+                                SubmitModel.travelerDeclaration.premiumResidencyExpiryDate = premiumResidencytype.iqamaExpiryDate;
+                                if (premiumResidencytype.iqamaType == 2)
+                                {
+                                 
+                                    EndDateString = DateTimeHelper.DateTimeFormater(DateTime.Parse(premiumResidencytype.iqamaExpiryDate));
+                                    SubmitModel.travelerDeclaration.passExpiryDate = DateTime.Parse(premiumResidencytype.iqamaExpiryDate);
+
+                                }
+                                SubmitModel.travelerDeclaration.IqamaTypeDescription = premiumResidencytype.iqamaType == 2 ? AppResources.SpecialIqamawithexpirydate : AppResources.SpecialIqamawithoutexpirydate;
+                              
+                                IsLoading = false;
+                                
+                            }
+                            else
+                            {
+                                SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
+                            }
+
+                        }
+                    }
+                   /* else if (!string.IsNullOrWhiteSpace(data.header.status.description))
+                    {
+                        MessageTxt = data.header.status.description;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+
+                    }*/
+                    else
+                    {
+                        SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
+                        IsLoading = false;
+
+                    }
+                }
+                else
+                {
+                    SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
+                    IsLoading = false;
+
+                }
+
+            }
+            catch (Exception)
+            {
+                SubmitModel.travelerDeclaration.IqamaTypeDescription = AppResources.Residency;
+                IsLoading = false;
+            }
+        }
 
 
     }

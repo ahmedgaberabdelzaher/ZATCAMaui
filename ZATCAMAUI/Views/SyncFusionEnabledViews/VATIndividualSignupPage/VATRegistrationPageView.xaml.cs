@@ -1962,9 +1962,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
-                // if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+
+               // if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
                 if (viewModel.ImporterImageSource == "selected171x136.png")
-                {
+                 {
+
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
                 else
@@ -2611,7 +2613,10 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     try
                     {
 
-                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDDeclaration("ZS0001", viewModel.IdNumberSR, dob);
+
+                        //  string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
+                          string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDDeclaration("ZS0001", viewModel.IdNumberSR, dob);
+
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)

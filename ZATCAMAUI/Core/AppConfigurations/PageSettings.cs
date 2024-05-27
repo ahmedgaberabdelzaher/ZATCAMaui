@@ -54,9 +54,10 @@
         public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
         /// <summary>
         /// Old one
-        public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
+      //   public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
         /// </summary>
-        //public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
+       public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
+
 
         //public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/"; Deprecated
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";
@@ -82,6 +83,7 @@
         public static string CustomsIssuesStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
 
 
+
         public static string CustomBaseUrl=CustomSTGBaseUrl;
         public static string IAMLoginBaseUrl;
         public static string ZATCABaseURL;
@@ -99,8 +101,9 @@
         public static string ZATCAPaymentWebViewStgBaseURL = "https://peservices.zatca.gov.sa";
         public static string ZATCAPaymentWebViewProdBaseURL = "https://eservices.zatca.gov.sa";
         public static string ZATCAPaymentWebViewBaseURL;
-        public static string FasahApiKey = "Av549-e756Z-4c29-a16a-287de9c04755";
-        public static string CurrentEnvironment = "STG";
+
+        public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
+        public static string CurrentEnvironment="STG";
         public static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
@@ -112,7 +115,7 @@
         }
         public static void GetBaseURL(string environment = "STG")
         {
-            // Target_Environment = CheckTarget_Environment(environment);
+           // Target_Environment = CheckTarget_Environment(environment);
             switch (Target_Environment)
             {
                 case "STG":

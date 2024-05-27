@@ -12,6 +12,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         private void DrawExpressShipping()
         {
             isExpressCardSelected = true;
+            IsExpressShipment = true;
             HeaderTitle = AppResources.ExpressShipping;
             DrawShipmentTrack.ShipmentTrackName = $"{AppResources.Track} {AppResources.ExpressShipping}";
             DrawShipmentTrack.ShipmentCardImage = "expressDark.png";

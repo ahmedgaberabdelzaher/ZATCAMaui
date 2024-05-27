@@ -1,7 +1,8 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
+using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
 using static ZATCAMAUI.Models.ContractRelease.ContractReleaseSummaryModel;
 using Application = Microsoft.Maui.Controls.Application;
@@ -55,7 +56,11 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             // On<iOS>().SetUseSafeArea(true);
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
-            Padding = safeInsets;
+
+            this.Padding = safeInsets;
+            MessagingCenter.Subscribe<PickerPageView, Models.GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                viewModel.updatePicker(arg);
+            });
         }
 
         public void ChangeAeroIcon()
@@ -220,6 +225,10 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                 }
             });
 
+        }
+        private void btn_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.showPickerDialog();
         }
 
     }

@@ -23,8 +23,6 @@
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
 
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -469,11 +467,6 @@
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
                                         </Grid>
-                                        <!--
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Source="arrowDropdown.png"/>
-                                        </inputLayout:SfTextInputLayout.TrailingView>
-                                        -->
                                     </inputLayout:SfTextInputLayout>
 
 

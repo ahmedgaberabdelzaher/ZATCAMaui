@@ -51,7 +51,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                     }
                     else
                     {
-                       _navigationService.NavigateTo("NativeNafathPage", "NewDeclarationPage");
+
+                         //_navigationService.NavigateTo("IAMLoginView", 1);
+                        _navigationService.NavigateTo("NativeNafathPage", "NewDeclarationPage");
                     }
                     ShowReviewEntries = false;
                 });
@@ -138,8 +140,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
             ResetData();
             _navigationService.GoBack();
         }
+        public EDeclerationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService,declerationServices,nativeNafath)
 
-        public EDeclerationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)
         {
         }
 

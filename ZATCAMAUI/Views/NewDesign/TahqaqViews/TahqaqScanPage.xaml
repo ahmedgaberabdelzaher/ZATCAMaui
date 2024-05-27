@@ -8,7 +8,6 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
     ios:Page.UseSafeArea="true"
@@ -135,7 +134,6 @@
                             VerticalOptions="End" />
 
                     </Grid>
-
 
                     <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
                         <Frame BackgroundColor="Black" Opacity=".44" />

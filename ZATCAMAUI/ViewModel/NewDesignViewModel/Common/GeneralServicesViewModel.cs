@@ -7,7 +7,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
     public class GeneralServicesViewModel : BaseViewModel
     {
-
+        public List<GeneralServicesListModel> generalServicesListData = new List<GeneralServicesListModel>();
+        string fileImage = string.Empty;
         public class GeneralServicesListModel
         {
             public string ZDTitle { get; set; }
@@ -57,17 +58,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 _fillingFrquencyMenuList = value;
                 RaisePropertyChanged("FillingFrquencyMenuList");
             }
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-Before:
-        }
-        
-        public ICommand GoBackBtnTapped { get; set; }
-After:
-        }
-
-        public ICommand GoBackBtnTapped { get; set; }
-*/
         }
 
         public ICommand GoBackBtnTapped { get; set; }
@@ -78,17 +68,6 @@ After:
             {
                 _navigationService.GoBack();
             });
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-Before:
-        }
-        
-        public void PopulateGeneralServicesListData()
-After:
-        }
-
-        public void PopulateGeneralServicesListData()
-*/
         }
 
         public void PopulateGeneralServicesListData()
@@ -111,16 +90,6 @@ After:
                 ZDImageSource = "request_verification.png",
                 ArrowImageSource = fileImage
 
-/* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-Before:
-                });
-            
-            generalServicesListData.Add(new GeneralServicesListModel
-After:
-                });
-
-            generalServicesListData.Add(new GeneralServicesListModel
-*/
             });
 
             generalServicesListData.Add(new GeneralServicesListModel

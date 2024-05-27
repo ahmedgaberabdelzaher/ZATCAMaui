@@ -6,8 +6,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
 using ZATCAMAUI.Core.Enums;
 using Syncfusion.Maui.Picker;
@@ -1902,7 +1900,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 SiguupModel.AIdtype = "ZS0003";
             }
             SiguupModel.CaseGuid = viewModel.Guid;
-
+            SiguupModel.ACaptcha = viewModel.Captcha;
             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
             viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -2316,6 +2314,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             viewModel.IsAllValidCRNumberEntered = false;
                             try
                             {
+                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
                                 DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
                                 if (ResultDuplicateCR.d.Flag == "")
                                 {
@@ -2329,7 +2328,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     {
                                         SiguupModel.ALang = "E";
                                     }
-
+                                    //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    //string month = selectedItem[1].ToString();
+                                    //string day = selectedItem[0].ToString();
+                                    //string year = selectedItem[2].ToString();
+                                    //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                     if (viewModel.IsHijriCal)
                                     {
                                         var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
@@ -2394,6 +2397,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
 
                                         }
+                                        //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                        //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
                                         SiguupModel.ACommId = "";
                                     }
                                     SiguupModel.AEmail = viewModel.TxtEmailAddress;
@@ -2410,7 +2415,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                                     string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                                     SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                                    //  viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                                     SiguupModel.ACountry = viewModel.MobileCountryCode;
+                                    // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                     if (viewModel.SelectedSignUpUsing.ID == 1)
                                     {
                                         SiguupModel.AIdtype = "ZS0001";
@@ -2424,6 +2431,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         SiguupModel.AIdtype = "ZS0003";
                                     }
                                     SiguupModel.CaseGuid = viewModel.Guid;
+                                    SiguupModel.ACaptcha = viewModel.Captcha;
                                     string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                     viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -2485,7 +2493,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         if (result == true)
                                         {
                                             CRDuplicateCheck();
-
+                                            // _navigationService.GoBack();
 
                                         }
                                         else // if it's equal to NO
@@ -2496,10 +2504,13 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         }
                                     }
 
+                                    //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
+
 
                                 }
                                 else
                                 {
+                                    // viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                                 }
                             }
@@ -2529,6 +2540,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 {
                                     viewModel.IsLoading = false;
 
+                                    //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                     viewModel._navigationService.GoBack();
                                 });
@@ -2539,8 +2551,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                                 MainThread.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                    // IsLoading = false;
 
+                                    //  await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                    //_navigationService.GoBack();
                                 });
                             }
 
@@ -2559,6 +2574,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                 MainThread.BeginInvokeOnMainThread(async () =>
                                 {
+                                    // IsLoading = false;
+
+                                    // await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                                 });
@@ -2583,7 +2601,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.ALang = "E";
                                 }
-
                                 if (viewModel.IsHijriCal)
                                 {
                                     var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
@@ -2647,6 +2664,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     catch (Exception)
                                     {
                                     }
+                                    //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                    //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
                                     SiguupModel.ACommId = "";
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
@@ -2680,7 +2699,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                                 SiguupModel.CaseGuid = viewModel.Guid;
-
+                                SiguupModel.ACaptcha = viewModel.Captcha;
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -2699,6 +2718,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                             Message.Append(itemerror.message);
                                         }
                                     }
+                                    // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                                 }
                                 else
@@ -2706,7 +2726,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                                     await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
 
-
+                                    //  viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
 
@@ -2874,6 +2894,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.ALang = "E";
                                 }
+                                //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                //string month = selectedItem[1].ToString();
+                                //string day = selectedItem[0].ToString();
+                                //string year = selectedItem[2].ToString();
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 if (viewModel.IsHijriCal)
                                 {
                                     var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
@@ -2974,7 +2999,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                                 SiguupModel.CaseGuid = viewModel.Guid;
-
+                                SiguupModel.ACaptcha = viewModel.Captcha;
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -3045,10 +3070,13 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     }
                                 }
 
+                                //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
+
 
                             }
                             else
                             {
+                                //   viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYoushouldsignupasnewuser));
                             }
                         }
@@ -3131,6 +3159,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             {
                                 SiguupModel.ALang = "E";
                             }
+                            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                            //string month = selectedItem[1].ToString();
+                            //string day = selectedItem[0].ToString();
+                            //string year = selectedItem[2].ToString();
+                            //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                             if (viewModel.IsHijriCal)
                             {
                                 var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
@@ -3194,6 +3227,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 catch (Exception)
                                 {
                                 }
+                                //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
                                 SiguupModel.ACommId = "";
                             }
                             SiguupModel.AEmail = viewModel.TxtEmailAddress;
@@ -3209,6 +3244,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
                             string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
                             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                            // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
                             SiguupModel.ACountry = viewModel.MobileCountryCode;
 
                             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
@@ -3226,7 +3262,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             }
                             //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                             SiguupModel.CaseGuid = viewModel.Guid;
-
+                            SiguupModel.ACaptcha = viewModel.Captcha;
                             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                             viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -3350,6 +3386,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.ALang = "E";
                                 }
+                                //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                //string month = selectedItem[1].ToString();
+                                //string day = selectedItem[0].ToString();
+                                //string year = selectedItem[2].ToString();
+                                //SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 if (viewModel.IsHijriCal)
                                 {
                                     var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
@@ -3413,6 +3454,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     catch (Exception)
                                     {
                                     }
+                                    //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                    //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
                                     SiguupModel.ACommId = "";
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
@@ -3448,7 +3491,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                                 SiguupModel.CaseGuid = viewModel.Guid;
-
+                                SiguupModel.ACaptcha = viewModel.Captcha;
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
@@ -3702,7 +3745,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             }
                             //SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                             SiguupModel.CaseGuid = viewModel.Guid;
-
+                            SiguupModel.ACaptcha = viewModel.Captcha;
                             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                             viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;

@@ -1,7 +1,6 @@
 ﻿
 using Prism.Mvvm;
 using ZATCAMAUI.Core.Helper;
-using ZATCAMAUI.Models.BaseModels;
 
 namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
 {
@@ -85,8 +84,6 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
     {
         public TravelerDeclarationResponse travelerDeclarationResponse { get; set; }
     }
-
-
     public class SubmitResponseTobacco
     {
         public string typeName_Arabic { get; set; }

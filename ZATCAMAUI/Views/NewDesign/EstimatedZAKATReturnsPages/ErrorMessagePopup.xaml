@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages.ErrorMessagePopup"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    FlowDirection="{Binding AppDirection}">
+
+    <Border Style="{StaticResource CommonTopCurves}"
+            StrokeShape="RoundRectangle 15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" BackgroundColor="White">
+
+        <StackLayout VerticalOptions="Center" Margin="0,0,0,0">
+
+            <Label x:Name="InfromatationText" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
+            <custom:CustomLabel  Style="{StaticResource BodyLabelBlack}" HorizontalOptions="StartAndExpand"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.LinkText}"  FontFamily="{StaticResource Somar-Regular}" />
+                                            
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                    
+                                </custom:CustomLabel>
+
+             <Button x:Name="Link" Text="{x:Static ResourceManager:AppResources.Link}" TextColor="Blue" HorizontalOptions="StartAndExpand" BackgroundColor="White" Clicked="Link_Clicked"></Button>
+
+            <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,10" />
+
+        </StackLayout>
+    </Border>
+</pages:PopupPage>
+

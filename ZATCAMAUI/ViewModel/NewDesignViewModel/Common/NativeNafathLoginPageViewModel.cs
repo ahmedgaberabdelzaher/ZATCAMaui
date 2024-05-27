@@ -72,9 +72,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                                 IsLoading = false;
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
+                                //_navigationService.NavigateTo("NativeConfirmNafathPage");
                                 navigation.InsertPageBefore(new NativeConfirmNafathPage(), currentPage);
 
                                 _navigationService.GoBack();
+                                // _navigationService.NavigateTo("NativeConfirmNafathPage");
                                 await Task.Delay(10000);
                                 await GetNafathStatus();
                             }
@@ -127,11 +129,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                     {
                         if (data.result != null)
                         {
-                            if (data.result.status == "EXPIRED")
+                            if (data.result.status == "EXPIRED" || data.result.status == "REJECTED")
                             {
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
                                 IsLoading = false;
+                                // navigation.InsertPageBefore(new NativeNafathPage(""),currentPage);
                                 _navigationService.GoBack();
                                 return;
                             }
@@ -143,9 +146,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
 
                             userData = data;
-                            if (userData != null)
+                            if (userData != null && userData.result.userInfo != null)
                             {
-                                await GetNafathCustomProfile(userData.result.userInfo.id.ToString(), userData.result.userInfo.dateOfBirthH.Replace('-', '/'));
+
+
+                                /*var navigation = Application.Current.MainPage.Navigation;
+                                var currentPage = navigation.NavigationStack.LastOrDefault();
+                                navigation.InsertPageBefore(new TransactionReceptionView(userData), currentPage);*/
+                                await GetNafathCustomProfile(userData.result.userInfo.id.ToString(), userData.result.userInfo.dateOfBirthH.Replace('-', '/'), userData.result.userInfo.dateOfBirthG, userData.result.userInfo.idInfo.idExpiryDateG, userData.result.userInfo.idInfo.idIssueDateG);
                                 return;
                             }
                         }
@@ -175,14 +183,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 RandomNumber = string.Empty;
                 TransactionId = string.Empty;
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageTxt = AppResources.Somethingwentwrong;
                 IsShowMsgView = true;
                 IsLoading = false;
             }
         }
-        private async Task GetNafathCustomProfile(string NationalIqamaId, string HBD)
+        private async Task GetNafathCustomProfile(string NationalIqamaId, string HBD, string BD, string IdEXPDATe, string IdissueEXPDATe)
         {
             try
             {
@@ -193,15 +201,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                 if (submitRes.Item2)
                 {
                     var data = submitRes.Item1;
-                    if (data.code != 404)
+                    if (data.data != null && data.data.id != 0)
                     {
                         var navigation = Application.Current.MainPage.Navigation;
                         var currentPage = navigation.NavigationStack.LastOrDefault();
                         IsLoading = false;
                         NationalIqamaId = "";
+                        var IamaDATA = data.data;
+                        IamaDATA.birthDate = DateTime.Parse(BD);
+                        IamaDATA.cardIssueDateHijri = IdissueEXPDATe;
+                        IamaDATA.idExpiryDateHijri = IdEXPDATe;
                         if (PageName == "NewDeclarationPage")
                         {
-                            navigation.InsertPageBefore(new NewDeclarationPage(data.data), currentPage);
+
+                            navigation.InsertPageBefore(new NewDeclarationPage(IamaDATA), currentPage);
                         }
                         else
                         {
@@ -233,7 +246,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 MessageTxt = AppResources.Somethingwentwrong;
                 IsShowMsgView = true;

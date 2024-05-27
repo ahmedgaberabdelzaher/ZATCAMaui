@@ -72,6 +72,13 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
 
+                else if (selectedItem.ZDTitle == AppResources.NDBankAccManagement)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "BankAccManagement", "BankAccManagement");
+                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                }
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }

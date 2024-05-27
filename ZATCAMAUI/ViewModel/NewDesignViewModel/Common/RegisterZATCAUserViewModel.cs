@@ -158,8 +158,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             var payload = App.Locator.StateManager.GetItem("IAMLoginPassengerData");
             _navigationService.GoBack();
             IsLoading = false;
-           
-
 
         }
     }

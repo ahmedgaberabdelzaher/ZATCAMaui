@@ -2753,7 +2753,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 RaisePropertyChanged("VrVRIbanList");
             }
         }
+        private string _optionTextLabel = AppResources.SadadBillOption;
+        public string OptionTextLabel
+        {
+            get
+            {
+                return _optionTextLabel;
+            }
+            set
+            {
+                if (_optionTextLabel == value) return;
 
+                _optionTextLabel = value;
+                RaisePropertyChanged("OptionTextLabel");
+            }
+        }
         private Dictionary<string, string> IDTypeDictionary = null;
         private Dictionary<string, string> VGSupplicesDictionary = null;
         private Dictionary<string, string> VGPurchasesDictionary = null;
@@ -3705,7 +3719,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             IsBankGurantSecuritySelected = false;
 
             SecurityType = AppResources.VRSADAD;
-
+            OptionTextLabel = AppResources.SadadBillOption;
 
             // ShowSadadGenerateButton();
         }
@@ -3716,6 +3730,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             IsBankGurantSecuritySelected = true;
 
             SecurityType = AppResources.VRBANKGURANTEE;
+            OptionTextLabel = AppResources.BankGuaranteeOption;
         }
 
         public async Task GenerateSadadNumberAsync()

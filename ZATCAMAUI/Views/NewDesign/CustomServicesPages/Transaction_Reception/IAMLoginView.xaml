@@ -6,7 +6,6 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    FlowDirection="{Binding AppDirection}"
     TitleText="{x:Static ResourceManager:AppResources.IAMLogin}">
 
     <newdesign:BaseContentPage.PancakeView>

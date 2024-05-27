@@ -142,7 +142,7 @@
                         </Grid>
 
                         <ScrollView
-                            Margin="0,24,0,24"
+                            Margin="0,12,0,12"
                             HorizontalOptions="StartAndExpand"
                             HorizontalScrollBarVisibility="Never"
                             Orientation="Horizontal">
@@ -253,52 +253,32 @@
                                                         <Label
                                                             Margin="0,10,0,0"
                                                             Style="{StaticResource CaptionLabelGrey}"
-                                                            Text="{Binding RetStatTxt}"
+                                                            Text="{Binding TaxtpText}"
                                                             VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
                                                     <!--  StatusTxt  -->
-                                                    <buttons:SfButton
-                                                        Grid.Row="0"
-                                                        Grid.Column="1"
-                                                        Padding="12,0,12,0"
-                                                        CornerRadius="20"
-                                                        FontFamily="{StaticResource SomarRegular}"
-                                                        FontSize="Small"
-                                                        HeightRequest="40"
-                                                        HorizontalOptions="End"
-                                                        IsEnabled="False"
-                                                        Text="{Binding Status}"
-                                                        VerticalOptions="CenterAndExpand">
-                                                        <buttons:SfButton.Triggers>
-                                                            <DataTrigger
-                                                                Binding="{Binding StatusMessage}"
-                                                                TargetType="buttons:SfButton"
-                                                                Value="submitted">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Submitted}" />
-                                                                <Setter Property="TextColor" Value="{StaticResource Success}" />
-                                                                <Setter Property="Background" Value="{StaticResource BackgroundGray}" />
-                                                            </DataTrigger>
-                                                            <DataTrigger
-                                                                Binding="{Binding StatusMessage}"
-                                                                TargetType="buttons:SfButton"
-                                                                Value="unsubmitted">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnSubmitted}" />
-                                                                <Setter Property="TextColor" Value="{StaticResource Error}" />
-                                                                <Setter Property="FontSize" Value="11" />
-                                                                <Setter Property="Background" Value="{StaticResource ErrorBg}" />
-                                                            </DataTrigger>
-                                                            <DataTrigger
-                                                                Binding="{Binding StatusMessage}"
-                                                                TargetType="buttons:SfButton"
-                                                                Value="overdue">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.OverDue}" />
-                                                                <Setter Property="TextColor" Value="{StaticResource Error}" />
-                                                                <Setter Property="Background" Value="{StaticResource ChipPaidColor}" />
-                                                            </DataTrigger>
-
-
+                                               
+                                                    <buttons:SfButton TextColor="{StaticResource Success}" BackgroundColor="{StaticResource BackgroundGray}" Grid.Row="0" Grid.Column="1" FontFamily="{StaticResource SomarRegular}" FontSize="Small" IsEnabled="False" Text="{Binding RetStatTxt}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="80" Padding="12,0,12,0" CornerRadius="20" >
+<buttons:SfButton.Triggers>
+<DataTrigger TargetType="buttons:SfButton" Binding="{Binding StatusTxt}" Value="Submitted" >
+<Setter Property="TextColor" Value="{StaticResource Success}" />
+<Setter Property="FontSize" Value="12" />
+<Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}" />
+</DataTrigger>
+<DataTrigger TargetType="buttons:SfButton" Binding="{Binding StatusTxt}" Value="Non Submitted">
+<Setter Property="TextColor" Value="{StaticResource Error}" />
+<Setter Property="FontSize" Value="12" />
+<Setter Property="BackgroundColor"  Value="{StaticResource ErrorBg}" />
+</DataTrigger>
+<DataTrigger TargetType="buttons:SfButton" Binding="{Binding StatusTxt}" Value="Overdue">
+<Setter Property="TextColor"  Value="{StaticResource Error}" />
+<Setter Property="FontSize" Value="12" />
+<Setter Property="BackgroundColor" Value="{StaticResource ChipPaidColor}" />
+</DataTrigger>
+ 
+ 
                                                         </buttons:SfButton.Triggers>
-                                                    </buttons:SfButton>
+</buttons:SfButton>
                                                 </Grid>
                                                 <BoxView
                                                     BackgroundColor="LightGray"

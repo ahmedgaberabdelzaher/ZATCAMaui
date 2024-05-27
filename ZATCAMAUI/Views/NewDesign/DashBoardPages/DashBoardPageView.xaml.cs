@@ -165,7 +165,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             {
                 viewModel.IsLoading = true;
 
-                string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync();
+                string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("MSUB");
 
                 if (response != null && response.Length > 0)
                 {
@@ -355,18 +355,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             {
             }
 
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
-                {
-                    await viewModel.ApplePaySelected();
-                    viewModel.isPayNowTapped = false;
 
-                });
-            }
-            catch (Exception)
-            {
-            }
 
             try
             {
@@ -380,23 +369,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             {
             }
 
-            try
-            {
-                MessagingCenter.Subscribe<App, string>(this, "DashboardApplePayData", async (sender, arg) =>
-                {
-
-                    viewModel.ApplePayTokenData = arg.ToString();
-
-                    await viewModel.UpdateApplePayPaymentGuid();
-
-
-                });
-
-            }
-            catch (Exception)
-            {
-
-            }
+            
         }
 
         public void SetPickerFont()
@@ -590,6 +563,10 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     if (App.LoginDataRetrieved.ZkReg == "X")
                     {
                         viewModel.IfnotRegInVATAndZakat = true;
+                    }
+                    if (App.LoginDataRetrieved.CozatcaTile == "X")
+                    {
+                        viewModel.IsContactZatcaEmpTileVisible = true;
                     }
                 }
 
@@ -1748,6 +1725,56 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             Instrumentation.EndCall(callTracker);
 
         }
+        void OnChatTapped(System.Object sender, System.EventArgs e)
+        {
 
+        }
+        private void ContactZatcaEmp_Tapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ContactZatcaEmp_Tapped", "Contact ZATCA Employee");
+            var a = App.LoginDataRetrieved;
+            viewModel.IsLoading = true;
+            Task.Run(async () =>
+            {
+                viewModel.IsLoading = true;
+
+                string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("6741");
+
+                if (response != null && response.Length > 0)
+                {
+                    SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
+                    if (subsidyResponseModel != null && subsidyResponseModel.D != null)
+                    {
+
+                        if (!string.IsNullOrEmpty(subsidyResponseModel.D.Fbguid))
+                        {
+
+                            string url = subsidyResponseModel.D.ExternalPortal;
+                            url = url.Replace("TINVALUE", App.LoginDataRetrieved.TIN);
+                            url = url.Replace("TOKENVALUE", subsidyResponseModel.D.Fbguid);
+                            ZATCAConstants.TaxpayerSubsidyRequest = url;
+
+                            MainThread.BeginInvokeOnMainThread(async () => {
+                                viewModel.IsLoading = false;
+                                //var url=new Uri($"https://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/MeetingWithAuditorPages/TaxPayer/Requests.aspx?tin={App.LoginDataRetrieved.TIN}&token={subsidyResponseModel.D.Fbguid}");
+                                await Browser.OpenAsync(url);
+                            });
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                        else
+                        {
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+                            });
+                        }
+
+
+                    }
+                }
+
+
+            });
+        }
     }
 }

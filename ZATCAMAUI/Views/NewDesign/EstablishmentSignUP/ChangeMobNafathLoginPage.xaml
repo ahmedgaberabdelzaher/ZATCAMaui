@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentSignUP.ChangeMobNafathLoginPage"
+    FlowDirection="{Binding AppDirection}">
+    <ContentPage.Content>
+        <Grid>
+         <Grid x:Name="RegnagaftGrid" HeightRequest="1000" WidthRequest="1000" >
+             <Grid.RowDefinitions>
+                    <RowDefinition Height="100*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+        </Grid>
+       </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

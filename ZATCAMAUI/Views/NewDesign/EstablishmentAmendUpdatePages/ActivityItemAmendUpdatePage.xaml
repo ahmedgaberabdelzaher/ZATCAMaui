@@ -31,10 +31,6 @@
             </Style>
             <converters:EstablishmentRegistrationActivityTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentMainActivityToVisibilityConverter x:Key="isMainActivityConverter" />
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -170,6 +166,44 @@
                                 Style="{StaticResource ButtonBlackBold16}"
                                 Text="{Binding CRIssueCity}" />
                         </StackLayout>
+
+                        <Label Style="{StaticResource CaptionLabelGrey}" 
+                                            HorizontalOptions="StartAndExpand" 
+                                            VerticalOptions="Center" Margin="0,10,0,0" >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZCRName}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <inputLayout:SfTextInputLayout
+                            IsEnabled="{Binding EnableCRInputField}"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            IsHintAlwaysFloated="True"
+                            ContainerType="Outlined"
+                            InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
+                            <custom:GAZTBorderlessEntry
+                                     Text="{Binding CrName}" 
+                                    Style="{StaticResource DefaultEntry}" 
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Start" 
+                                    Margin="10" HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center"
+                                    HeightRequest="48"
+                                    PlaceholderColor="{StaticResource NeutralGreay}"
+                                    TextColor="{StaticResource NeutralBlack}"
+                                    FontFamily="{StaticResource SomarRegular}" 
+                                    FontSize="15" 
+                                    Keyboard="Text">
+
+                                
+                            </custom:GAZTBorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+
+
                         <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
@@ -377,7 +411,7 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ESTAttachmentCopyOfCRLabel}" />
-                                        <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                        <!--<Span Text="*" TextColor="{StaticResource InformationRedColor}" />-->
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
@@ -860,6 +894,43 @@
                             </custom:GAZTBorderlessEntry>
 
                         </inputLayout:SfTextInputLayout>
+
+                        <custom:CustomLabel 
+                            Style="{StaticResource CaptionLabelGrey}"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="Center" 
+                            Margin="0,10,0,0">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZLicenseName}"/>
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+                        <inputLayout:SfTextInputLayout   
+                            Margin="0,-6,0,-6"
+                            HorizontalOptions="FillAndExpand"
+                            LeadingViewPosition="Inside"
+                            ContainerType="Outlined"
+                            InputViewPadding="16,0,16,0"
+                            Style="{StaticResource TextInputLayout}">
+
+                            <custom:GAZTBorderlessEntry Text="{Binding LicenseName}" 
+                            Style="{StaticResource DefaultEntry}"
+                             IsEnabled="{Binding LicenseDetails.LicenseName}" 
+                             VerticalTextAlignment="Center"
+                             HorizontalTextAlignment="Start"
+                              Margin="10" 
+                              HorizontalOptions="FillAndExpand" 
+                              VerticalOptions="Center" 
+                              HeightRequest="48"
+                               PlaceholderColor="{StaticResource NeutralGreay}" 
+                               TextColor="{StaticResource NeutralBlack}" 
+                               FontFamily="{StaticResource SomarRegular}"
+                                FontSize="15" 
+                                Keyboard="Plain"/>
+                        </inputLayout:SfTextInputLayout>
+                        
                         <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"

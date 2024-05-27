@@ -20,6 +20,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM;
@@ -109,6 +110,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
 using ZATCAMAUI.Views.NewDesign.FormBundleStatusPages;
 using ZATCAMAUI.Views.NewDesign.HomePages;
+using ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages;
 using ZATCAMAUI.Views.NewDesign.InstalmentPlan;
 using ZATCAMAUI.Views.NewDesign.LiveVideo;
 using ZATCAMAUI.Views.NewDesign.LoginPages;
@@ -197,7 +199,8 @@ namespace ZATCAMAUI.Core.Helper
             SimpleIoc.Default.Register<ITrackShipment, TrackShipmentServices>();
             SimpleIoc.Default.Register<INativeNafath, NativeNafathServices>();
             SimpleIoc.Default.Register<EDeclerationSubmitModel>();
-
+            SimpleIoc.Default.Register<BankAccountManagementPageViewModel>();
+            SimpleIoc.Default.Register<BankAccountAddorUpdateIBANViewModel>();
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -448,6 +451,12 @@ namespace ZATCAMAUI.Core.Helper
             SimpleIoc.Default.Register<FasahLoginViewModel>();
             SimpleIoc.Default.Register<BaseLoginViewModel>();
             SimpleIoc.Default.Register<InquiryaboutCustomsIssuesViewModel>();
+
+            SimpleIoc.Default.Register<UpdateManagerViewModel>();
+            SimpleIoc.Default.Register<ChangeMobNafathPageViewMode>();
+            SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
+
+            
             #endregion
         }
 
@@ -889,8 +898,8 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
-                    SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
+                    //SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
+                    //SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
                 }
                 catch (Exception)
@@ -2689,7 +2698,8 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.VATServicesPageView, typeof(VATServicesPageView));
             navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
             navigationService.Configure(App.TaxpayerSubsidyRequest, typeof(TaxpayerSubsidyRequest));
-
+            navigationService.Configure(App.GAZTBankAccountManagementPageView, typeof(BankAccountManagementPageView));
+            navigationService.Configure(App.GAZTBankAccountAddOrUpdatePageView, typeof(BankAccountAddorUpdateIBANPageView));
             #endregion
 
             #region NewDesignRelease2
@@ -2913,6 +2923,12 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
             navigationService.Configure("InquiryaboutCustomsIssuesView", typeof(InquiryaboutCustomsIssuesView));
+
+            //CR6003
+            navigationService.Configure(App.ChangeMobileRequestPageView, typeof(ChangeMobileRequestPageView));
+            navigationService.Configure(App.ChangeMobNafathLoginPage, typeof(ChangeMobNafathLoginPage));
+            navigationService.Configure(App.UpdateManagerDetailsPopUp, typeof(UpdateManagerDetailsPopUp));
+
             #endregion
 
             return navigationService;
@@ -3459,7 +3475,6 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-
         public ViewNotePopUpViewModel ViewNotePopUpViewModel
         {
             get
@@ -4340,6 +4355,85 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
+        public ChangeMobileRequestViewModel ChangeMobileRequestPageView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<ChangeMobileRequestViewModel>();
+                    SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
+                    return ServiceLocator.Current.GetInstance<ChangeMobileRequestViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public ChangeMobNafathPageViewMode ChangeMobNafathLoginPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeMobNafathPageViewMode>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public UpdateManagerViewModel UpdateManagerPopUp
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdateManagerViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public BankAccountManagementPageViewModel BankAccountManagementPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountManagementPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+        public BankAccountAddorUpdateIBANViewModel BankAccountAddOrUpdatePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BankAccountAddorUpdateIBANViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
+
         //
     }
 

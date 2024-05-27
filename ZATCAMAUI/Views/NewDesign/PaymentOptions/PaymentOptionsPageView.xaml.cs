@@ -31,18 +31,9 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             List<PaymentOptionsModel> paymentOptions = new List<PaymentOptionsModel>();
             if (isModaPaymentAvailable && !isAmountLess)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay.png", UnSelectedCardIcon = "ic_iconpay_white.png", CardLabel = AppResources.PaymentMethodCardPayment, IconHeight = 40 });
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "Payment.png", UnSelectedCardIcon = "ic_iconpay_white.png", CardLabel = AppResources.PaymentMethodCardPayment});
             }
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-
-                if (!isAlreadyPaid && !isAmountLess)
-                {
-                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo.png", UnSelectedCardIcon = "ic_icon_applelogo_white.png", CardLabel = AppResources.PaymentMethodApplePay, IconHeight = 25 });
-
-                }
-            }
-            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad.png", UnSelectedCardIcon = "ic_sadad_white.png", CardLabel = AppResources.Sadad, IconHeight = 20 });
+            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad.png", UnSelectedCardIcon = "ic_sadad_white.png", CardLabel = AppResources.Sadad });
             paymentItemsListView.ItemsSource = paymentOptions;
 
             if (paymentOptions.Count > 2)
@@ -93,14 +84,6 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                 MessagingCenter.Send<object, string>(this, "SADAD", "Yes");
                 OnSelect?.Invoke("SADAD");
                 await PopupNavigation.Instance.PopAsync();
-            }
-            else
-            {
-                OnSelect?.Invoke("Apple Pay");
-
-                await PopupNavigation.Instance.PopAsync();
-
-                MessagingCenter.Send<object, string>(this, "Apple_Pay", "Yes");
             }
 
         }

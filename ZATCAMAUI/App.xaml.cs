@@ -128,7 +128,10 @@ namespace ZATCAMAUI
         public static string NotesPopUpPageView = "NotesPopUpPageView";
         public static string TaxManagementPageView = "TaxManagementPageView";
         // * End
-
+        // * Bank Managment
+        public static string GAZTBankAccountManagementPageView = "BankAccountManagementPageView";
+        public static string GAZTBankAccountAddOrUpdatePageView = "BankAccountAddorUpdateIBANPageView";
+        // * End
         #endregion
 
         #region new design views Release2
@@ -281,9 +284,18 @@ namespace ZATCAMAUI
 
         public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
 
+        //CR6003
+        public static string ChangeMobileRequestPageView = "ChangeMobileRequestPageView";
+        public static string ChangeMobNafathLoginPage = "ChangeMobNafathLoginPage";
+        public static string UpdateManagerDetailsPopUp = "UpdateManagerDetailsPopUp";
+
+
         //cr6094
         public static string NafathPopUpPage = "NafathPopUpPage";
         public static string NafathLoginPageView = "NafathLoginPageView";
+
+        //cr6003
+        public static string GUIDFrChangeMob { get; set; }
 
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
@@ -352,6 +364,10 @@ namespace ZATCAMAUI
         public static bool IsVAtProfitForGoods { get; set; }
         //in Seconds
         public static int IdleTimeToLogout = 100;
+        //Bank Managment
+        public static string SelectedIBAN = string.Empty;
+        public static string SelectedFbGuid = string.Empty;
+        public static string IBanValidatedResponse = string.Empty;
 
         public static bool IsLoginPageRefreshed;
         private INavigationService _navigationService;
@@ -390,8 +406,7 @@ namespace ZATCAMAUI
                 Preferences.Default.Set("timeOut", DateTime.Now);
                 PageSettings.CheckTarget_Environment("STG");
                 PageSettings.GetBaseURL("STG");
-
-                                                                                                                                                                                    Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzI1MTUyNkAzMjM1MmUzMDJlMzBXVEhKSTV0K3lEVjM2TUpST3pLbTFhUEVuQjVlczY3TCtWblZGRUoyUHNrPQ=="); //MAUI
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzI1MTUyNkAzMjM1MmUzMDJlMzBXVEhKSTV0K3lEVjM2TUpST3pLbTFhUEVuQjVlczY3TCtWblZGRUoyUHNrPQ=="); //MAUI
 
                 AppResources.Culture = CultureInfo.CurrentUICulture;
                 bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");

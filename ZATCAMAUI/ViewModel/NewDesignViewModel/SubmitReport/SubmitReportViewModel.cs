@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight.Views;
 using Maui.GoogleMaps;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Controls;
+using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
@@ -29,6 +30,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
         bool _IsReadTermsandCondition = false;
         public bool IsReadTermsandCondition { get { return _IsReadTermsandCondition; } set { _IsReadTermsandCondition = value; RaisePropertyChanged(); } }
 
+        bool _IsreporterDataMandatory = false;
+        public bool IsreporterDataMandatory { get { return _IsreporterDataMandatory; } set { _IsreporterDataMandatory = value; RaisePropertyChanged(); } }
+
 
         private readonly ISubmitReportServices _submitReportServices;
 
@@ -50,6 +54,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 
         bool isMissingFieldShowen;
         public bool IsMissingFieldShowen { get { return isMissingFieldShowen; } set { isMissingFieldShowen = value; RaisePropertyChanged(); } }
+
+        bool isSubCategeoryShow;
+        public bool IsSubCategeoryShow { get { return isSubCategeoryShow; } set { isSubCategeoryShow = value; RaisePropertyChanged(); } }
+
 
         bool isCityShowen;
         public bool IsCityShowen { get { return isCityShowen; } set { isCityShowen = value; RaisePropertyChanged(); } }
@@ -81,7 +89,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
         private List<BaseRegionAndCity> RegionsList;
         private List<CategoryDataResponse> ReportCategory;
         private List<LookUpsListModel> MissingFieldsList;
-
+        private List<CategoryDataResponse> ReportSubCategory;
+        private bool isReportSubCategorySelected = false;
         #endregion
 
         #region Commands
@@ -97,9 +106,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                         {
                             IsLoading = true;
 
-                            DateTimeFormatInfo DTFormat;
-                            DTFormat = new CultureInfo("en-US", false).DateTimeFormat;
-                            DTFormat.Calendar = new GregorianCalendar();
+                            PageSettings.CheckTarget_Environment("STG");
+                            PageSettings.GetBaseURL("STG");
+                            System.Globalization.DateTimeFormatInfo DTFormat;
+                            DTFormat = new System.Globalization.CultureInfo("en-US", false).DateTimeFormat;
+                            DTFormat.Calendar = new System.Globalization.GregorianCalendar();
                             DTFormat.ShortDatePattern = "dd/MM/yyyy";
                             SubmitReport.ViolationDate = SelectedDate.Date.ToString(DTFormat).Split(' ').FirstOrDefault();
 
@@ -126,6 +137,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                                 regionCode = SubmitReport.RegionCode,
                                 regionName = SubmitReport.Region,
                                 reportCategory = SubmitReport.ReportCategory,
+                                reportSubCategory=SubmitReport.ReportSubCategory,
                                 reportCategoryName = SubmitReport.ReportCategoryName,
                                 reportDetails = SubmitReport.ReportDetails,
                                 reporterEmail = SubmitReport.ReporterEmail,
@@ -140,31 +152,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                                 violationDate = SubmitReport.ViolationDate,
                                 workType = SubmitReport.ReportTaxType,
                                 attachements = DATAPowerAttachements,
-                                reporterNationalID = SubmitReport.ReporterNationalId
+
+                                reporterNationalID= SubmitReport.ReporterNationalId,
+                                reportSubCategoryName=submitReport.ReportSubCategoryName,
+                                reporterID= SubmitReport.ReporterNationalId,
 
                             };
                             #region DATA Power Response
-                            /*  var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
+                         var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
+                         
+                            if (reportResult.header.status.code == "I000000")
+                            {
+                                ReportNumberResult = reportResult.result?.referenceNumber;
+                                SubmitReport = new SubmitReportModel();
+                                IsCityShowen = false;
+                                IsReportCategoryShowen = false;
+                                IsMissingFieldShowen = false;
+                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
+                                _navigationService.NavigateTo("/ReportSuccessPage");
 
-                              if (reportResult.header.status.code == "I000000")
-                              {
-                                  ReportNumberResult = reportResult.result?.referenceNumber;
-                                  SubmitReport = new SubmitReportModel();
-                                  IsCityShowen = false;
-                                  IsReportCategoryShowen = false;
-                                  IsMissingFieldShowen = false;
-                                  ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
-                                  _navigationService.NavigateTo("/ReportSuccessPage");
+                            }
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.RequestTimeoutDescription;
+                            }
+                           
 
-                              }
-                              else
-                              {
-                                  IsShowMsgView = true;
-                                  MessageTxt = AppResources.RequestTimeoutDescription;
-                              }
-                              */
                             #endregion
-
+                            /*
                             var res = await _submitReportServices.CreateZatcaReport(SubmitReport);
                             if (res.Success)
                             {
@@ -175,7 +191,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                                 IsMissingFieldShowen = false;
                                 ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
                                 _navigationService.NavigateTo("/ReportSuccessPage");
-                            }
+                            }*/
                             IsLoading = false;
 
                         }
@@ -399,6 +415,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     SubmitReport.IsNeedReward = SubmitReport.IsNeedReward == true ? false : true;
+                    if (!SubmitReport.ReportCategory.ToLower().Contains("v"))
+                    {
+                        IsreporterDataMandatory = SubmitReport.IsNeedReward;
+                    }
+                    else
+                    {
+                       
+                    }
+
                 });
 
             }
@@ -457,12 +482,44 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReport.MissedField = string.Empty;
                             IsMissingFieldShowen = false;
                             IsReportCategoryShowen = string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName) ? false : true;
+                         
                         }
                         else if (isReportCategorySelected)
                         {
                             SubmitReport.ReportCategoryName = e.Name;
                             SubmitReport.ReportCategory = e.Id;
+                            #region GetSubbCategeory
+                            ReportSubCategory = await _submitReportServices.GetReportSubCategories(e.Id);
+                            if (ReportSubCategory != null && ReportSubCategory.Count>0)
+                            {
+                                IsSubCategeoryShow = true;
+                            }
+                            else
+                            {
+                                IsSubCategeoryShow = false;
+                            }
+                            if (SubmitReport.ReportCategory.ToLower().Contains("v"))
+                            {
+                                IsreporterDataMandatory = true;
+                            }
+                            else
+                            {
+                                IsreporterDataMandatory = false;
+                            }
+                            var result = ReportSubCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
+                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+
+                            #endregion
                             isReportCategorySelected = false;
+                            SubmitReport.MissedFieldName = string.Empty;
+                            SubmitReport.MissedField = string.Empty;
+                            IsMissingFieldShowen = !string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName) && SubmitReport.ReportCategory.ToLower().Equals("v36") ? true : false;
+                        }
+                        else if (isReportSubCategorySelected)
+                        {
+                            SubmitReport.ReportSubCategoryName = e.Name;
+                            SubmitReport.ReportSubCategory = e.Id;
+                            isReportSubCategorySelected = false;
                             SubmitReport.MissedFieldName = string.Empty;
                             SubmitReport.MissedField = string.Empty;
                             IsMissingFieldShowen = !string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName) && SubmitReport.ReportCategory.ToLower().Equals("v36") ? true : false;
@@ -516,14 +573,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
+                     
                         IsLoading = true;
                         isReportTypeSelected = true;
                         isReportCategorySelected = false;
                         isMissingFieldSelected = false;
                         isRegionSelected = false;
-                        var reportType = await _submitReportServices.GetReportType();
-                        var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
-                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+
+                        var reportType = await this._submitReportServices.GetReportType();
+                        var result = reportType?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result.Distinct());
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ReportType;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
@@ -566,6 +625,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
+        public ICommand OpenReportSubCategoryCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    try
+                    {
+                        isReportSubCategorySelected=true;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
+                        isRegionSelected = false;
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportCategory;
+                        var result = ReportSubCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).Distinct();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    }
+                    catch (Exception)
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+            }
+        }
+
         public ICommand OpenMissingFieldCommand
         {
             get
@@ -579,8 +666,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                         isReportCategorySelected = false;
                         isReportTypeSelected = false;
                         isRegionSelected = false;
-                        var reportType = await _submitReportServices.GetLookUps();
-                        var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName });
+                        var reportType = await this._submitReportServices.GetLookUps();
+                        var result = reportType?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
@@ -773,6 +860,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 || string.IsNullOrWhiteSpace(SubmitReport.Location)
                 || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
                 || SelectedDate.Date > DateTime.Now.Date
+                || !IsReadTermsandCondition
                 || ReportUloadedFiles.Count == 0)
             {
                 IsShowMsgView = true;
@@ -844,6 +932,41 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 
                 }
             }
+
+            else if (IsreporterDataMandatory)
+            {
+                if (string.IsNullOrWhiteSpace(SubmitReport.ReporterNameAr)
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterMobileNumber)
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterEmail))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.RequiredData;
+                    return false;
+
+                }
+                else if (!Email.IsMatch(SubmitReport.ReporterEmail.ToLower()))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.InvalidEmailFormat;
+                    return false;
+                }
+                else if (!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber05;
+                    return false;
+
+
+                }
+            }
+
+            if (!IsReadTermsandCondition)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+            }
+            
             return true;
 
         }

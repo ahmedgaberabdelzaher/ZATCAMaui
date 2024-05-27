@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.TPProfile;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 

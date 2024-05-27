@@ -4,6 +4,8 @@ using GalaSoft.MvvmLight.Views;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
+using System.Linq;
+using ZATCAMAUI.Core.AppConfigurations;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -25,7 +27,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                 return new Command(_ =>
                 {
                     if (Inquire.IsNotPaid)
-                        _navigationService.NavigateTo("EDeclarationPaymentPage", Inquire);
+
+                    {
+                        var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{Inquire.ReferenceID}&travilID={Inquire.travelID}";
+                        Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
+                        {
+                            LaunchMode = BrowserLaunchMode.SystemPreferred,
+                            TitleMode = BrowserTitleMode.Show,
+                            PreferredToolbarColor = Color.FromHex("#002447"),
+                            PreferredControlColor = Color.FromHex("#0996d4")
+                        });
+                        //_navigationService.NavigateTo("EDeclarationPaymentPage", Inquire);
+                    }
                 });
             }
         }

@@ -10,6 +10,7 @@ using ZATCAMAUI.Models;
 namespace ZATCAMAUI.Core.Mangers
 {
 
+
     public static class TaxEvasionWebServiceManager
     {
         #region Tax Evasion
@@ -169,7 +170,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
-                    if (errorReponseModel.Data.Contains("Invalid code") || errorReponseModel.Data.Contains("الرمز غير صحيح"))
+                    if (errorReponseModel.Data.Contains("Invalid code") || errorReponseModel.Data.Contains("«·—„“ €Ì— ’ÕÌÕ"))
                     {
 
                         throw new Exception(AppResources.InvalidOTP);
@@ -486,21 +487,21 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             var values = new[]
                             {
-                                new KeyValuePair<string, string>("RegionCode", evasionReportDetails.RegionCode),
-                                new KeyValuePair<string, string>("category", evasionReportDetails.Category),
-                                new KeyValuePair<string, string>("category_id", "1"),
-                                new KeyValuePair<string, string>("city", evasionReportDetails.City),
-                                new KeyValuePair<string, string>("content", evasionReportDetails.Content),
-                                new KeyValuePair<string, string>("district", evasionReportDetails.District),
-                                new KeyValuePair<string, string>("facilities", evasionReportDetails.Facilities),
-                                new KeyValuePair<string, string>("facility_work_type", evasionReportDetails.WorkType),
-                                new KeyValuePair<string, string>("location", "https://www.google.com/maps/search/?api=1&query=" + evasionReportDetails.Latitude + "," + evasionReportDetails.Longitude),
-                                new KeyValuePair<string, string>("phone_number", evasionReportDetails.PhoneNumber),
-                                new KeyValuePair<string, string>("street", evasionReportDetails.Street),
-                                new KeyValuePair<string, string>("subject", ""),
-                                new KeyValuePair<string, string>("vat_number", evasionReportDetails.VatNumber),
-                                new KeyValuePair<string, string>("TIN", evasionReportDetails.Tin)
-                            };
+                             new KeyValuePair<string, string>("RegionCode", evasionReportDetails.RegionCode),
+                             new KeyValuePair<string, string>("category", evasionReportDetails.Category),
+                             new KeyValuePair<string, string>("category_id", "1"),
+                             new KeyValuePair<string, string>("city", evasionReportDetails.City),
+                             new KeyValuePair<string, string>("content", evasionReportDetails.Content),
+                             new KeyValuePair<string, string>("district", evasionReportDetails.District),
+                             new KeyValuePair<string, string>("facilities", evasionReportDetails.Facilities),
+                             new KeyValuePair<string, string>("facility_work_type", evasionReportDetails.WorkType),
+                             new KeyValuePair<string, string>("location", "https://www.google.com/maps/search/?api=1&query=" + evasionReportDetails.Latitude + "," + evasionReportDetails.Longitude),
+                             new KeyValuePair<string, string>("phone_number", evasionReportDetails.PhoneNumber),
+                             new KeyValuePair<string, string>("street", evasionReportDetails.Street),
+                             new KeyValuePair<string, string>("subject", ""),
+                             new KeyValuePair<string, string>("vat_number", evasionReportDetails.VatNumber),
+                             new KeyValuePair<string, string>("TIN", evasionReportDetails.Tin)
+                         };
 
                             foreach (var keyValuePair in values)
                             {
@@ -514,8 +515,8 @@ namespace ZATCAMAUI.Core.Mangers
 
                                 var valuesTmp = new[]
                                 {
-                                    new KeyValuePair<string, string>("file[]", base64Encoded)
-                                };
+                                 new KeyValuePair<string, string>("file[]", base64Encoded)
+                             };
 
 
                                 foreach (var keyValuePair in valuesTmp)
@@ -655,21 +656,21 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
-                    throw ex;
+                    return null;
                 }
-                catch (GAZTSessionExpiredException gex)
+                catch (GAZTSessionExpiredException )
                 {
-                    throw gex;
+                    return null;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
+                    return null;
                 }
                 catch (Exception)
                 {
@@ -730,21 +731,21 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
                 {
-                    throw ex;
+                    return null;
                 }
-                catch (GAZTSessionExpiredException gex)
+                catch (GAZTSessionExpiredException )
                 {
-                    throw gex;
+                    return null;
                 }
-                catch (GAZTException gex)
+                catch (GAZTException )
                 {
-                    throw gex;
+                    return null;
                 }
                 catch (Exception)
                 {
@@ -758,7 +759,6 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-
         public async static Task<String> GAZTVATSignUpValidateIDDeclaration(string IDType, string IDNumber, string DBO)
 
         {
@@ -778,11 +778,6 @@ namespace ZATCAMAUI.Core.Mangers
                 try
 
                 {
-
-                    //HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
-
-                    //crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-
                     char lang = WebServiceManager.GetLangZParameter();
 
                     //HttpClient client = new HttpClient(crmSignUphttpClientHandler);
@@ -797,7 +792,6 @@ namespace ZATCAMAUI.Core.Mangers
 
                     String url = ZATCAConstants.GAZTVATSignUpValidateIdDeclaration + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
 
-                    // For VAT register String url = ZATCAConstants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
 
                     var uri = new Uri(url);
 
@@ -855,7 +849,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
 
                 {
 
@@ -863,38 +857,33 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (HttpRequestException ex)
+                catch (HttpRequestException )
 
                 {
 
-                    throw ex;
+                    return null;
 
                 }
 
-                catch (GAZTSessionExpiredException gex)
+                catch (GAZTSessionExpiredException )
 
                 {
 
-                    throw gex;
+                    return null;
 
                 }
 
-                catch (GAZTException gex)
+                catch (GAZTException )
 
                 {
 
-                    throw gex;
+                    return null;
 
                 }
 
-                catch (Exception ex)
+                catch (Exception )
 
                 {
-
-                    Console.WriteLine(ex.Message);
-
-                    Console.Write(ex.StackTrace.ToString());
-
                     throw new GAZTNetworkConnectivityIssueException();
 
                 }
@@ -910,6 +899,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
 
         }
+
 
         public async static Task<VATSignUp> GAZTVATSignUpValidateIDTypes(string IDType, string IDNumber, string DBO)
         {
@@ -1011,14 +1001,6 @@ namespace ZATCAMAUI.Core.Mangers
                     String url = ZATCAConstants.GAZTGetVATSignUpCityAndRegionList + "dropdown_headerSet(Spras='" + lang + "',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json";
                     var uri = new Uri(url);
 
-                    //using (var responseStream = await client.GetStreamAsync(uri))
-                    //{
-                    //    using (var textReader = new StreamReader(responseStream))
-                    //    using (var jsonReader = new JsonTextReader(textReader))
-                    //    {
-                    //        vATSignUpData = JsonSerializer.CreateDefault().Deserialize<VATSignUpData>(jsonReader);
-                    //    }
-                    //}
 
                     HttpResponseMessage VATSignUpCountryRegionCityList = await client.GetAsync(uri);
                     if (VATSignUpCountryRegionCityList != null)
@@ -1105,7 +1087,16 @@ namespace ZATCAMAUI.Core.Mangers
                     VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
                     string url = ZATCAConstants.GAZTGetCreateVATSignUp + LangZ;
                     var uri = new Uri(url);
-                    App.httpClientHandler.CookieContainer = null;
+
+                    try
+                    {
+                        App.httpClientHandler.CookieContainer = null;
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -1118,9 +1109,9 @@ namespace ZATCAMAUI.Core.Mangers
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     return detailJson;
                 }
-                catch (Exception )
+                catch (Exception ex)
                 {
-                    return null;
+                    throw ex;
                 }
             }
             else

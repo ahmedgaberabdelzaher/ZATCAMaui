@@ -65,6 +65,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         string statusTitle;
         public string StatusTitle { get { return statusTitle; } set { statusTitle = value; RaisePropertyChanged(); } }
 
+        bool isExpressShipment;
+        public bool IsExpressShipment { get { return isExpressShipment; } set { isExpressShipment = value; RaisePropertyChanged(); } }
+
+
         #endregion Properties
 
         #region Commands
@@ -429,7 +433,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                         var status = new ShipmentStatus();
 
                         status.ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(item.activityDate).ToString("dd/MM/yyyy  hh:mm tt");
-                        status.ShipmentStatusValue = item.Name;
+                        status.ShipmentStatusValue = item.Name.Replace("تم تحويل البيان الجمركي للتحصيل","تم اصدار الفاتورة");
                         if (trackShipmentResponse?.activities.Count > 1)
                         {
                             // Draw start circle for first item only
@@ -653,7 +657,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         private void ResetTrackShipmentData()
         {
             DrawShipmentTrack = new DrawShipmentTrack();
-            isExpressCardSelected = false;
+            isExpressCardSelected = IsExpressShipment = false;
             isAirCardSelected = false;
             isSeaCardSelected = false;
             isLandCardSelected = false;

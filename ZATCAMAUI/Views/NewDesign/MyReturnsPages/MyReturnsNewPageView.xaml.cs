@@ -74,8 +74,8 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
                     viewModel.IsLoading = true;
                 });
                 await viewModel.OnPageLoad();
-
-
+                viewModel.PopulateDataInChips();
+              
                 viewModel.SelectedChipFilterItem = null;
                 // viewModel.FilterAllData();
                 if (viewModel.Index == 0)
@@ -157,20 +157,20 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
                 viewModel.SelectedChipFilterItem = selectedReturntype;
 
-                if (selectedReturntype.Text == AppResources.UnSubmitted)
+                if (selectedReturntype.TemplateType.ToLower() == AppResources.UnSubmitted.ToLower())
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Error"];
                     ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["ErrorBg"];
 
 
                 }
-                else if (selectedReturntype.Text == AppResources.OverDue)
+                else if (selectedReturntype.TemplateType.ToLower() == AppResources.OverDue.ToLower())
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Error"];
                     ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["ErrorBg"];
 
                 }
-                else if (selectedReturntype.Text == AppResources.Submitted)
+                else if (selectedReturntype.TemplateType.ToLower() == AppResources.Submitted.ToLower())
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Success"];
                     ChipGroup_statusFilter.SelectedChipBackground = (Color)Application.Current.Resources["SuccessBg"];

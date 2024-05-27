@@ -255,6 +255,24 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
+                             <Frame BorderColor="{StaticResource NeutralLightGrey}" HasShadow="False" CornerRadius="16" Padding="16">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                       
+                                        <custom:CustomLabel
+                                        Text="{x:Static ResourceManager:AppResources.ManagerDetails}"
+                                        Style="{StaticResource ValueLabelBlackMedium}"
+                                        Margin="0,0,0,0"/>
+                                    </StackLayout>
+                                    
+                                    <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnManagerDetailsTapped"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                </StackLayout>
+                            </Frame>
+
                         </StackLayout>
                   
                     </ScrollView>

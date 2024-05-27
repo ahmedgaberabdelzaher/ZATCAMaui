@@ -25,14 +25,17 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             string Url = "";
             if (App.IsArabic)
             {
-                Url = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
-                // Url = "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx";
+
+              // Url = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
+            Url = "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx";
+
 
             }
             else
             {
-                Url = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
-                //Url  = "https://stgextportal.gazt.gov.sa/en/ContactUs/Pages/ReportFraudMVV1.aspx";
+              //Url = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
+             Url  = "https://stgextportal.gazt.gov.sa/en/ContactUs/Pages/ReportFraudMVV1.aspx";
+
             }
             taxEvasionWebView.Source = Url;
             // taxEvasionHybridWebView.Source = Url;

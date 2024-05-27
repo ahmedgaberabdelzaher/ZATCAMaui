@@ -8599,7 +8599,8 @@ info@zatca.gov.sa</value>
 - إلغاء خطة التقسيط الخاصة في حال تأخرت عن سداد قسطين بشكل متتابع.
 - تقدير المبلغ المالي وفترة الأقساط.
 - إلغاء خطة التقسيط في حال ثبوت القدرة المالية لسداد كامل المستحقات.
-4- أقر بسداد ما يقل عن 20% من قيمة إجمالي المديونيات السابقة.</value>
+<!--4- أقر بسداد ما يقل عن 20% من قيمة إجمالي المديونيات السابقة.-->
+</value>
     </data>
 	<data name="ZakatInstalmentTaxpayerHoldingFinancialStatement" xml:space="preserve">
     <value>بيانات المكلفين المالية القابضة</value>
@@ -8767,8 +8768,8 @@ info@zatca.gov.sa</value>
 	<data name="PaymentMethodApplePay" xml:space="preserve">
     <value>الدفع عن طريق  Apple pay</value>
     </data>
-	<data name="PaymentMethodCardPayment" xml:space="preserve">
-    <value>الدفع عن طريق البطاقة</value>
+  <data name="PaymentMethodCardPayment" xml:space="preserve">
+     <value>قنوات الدفع الإلكترونية</value>
     </data>
 	<data name="PaymentMethodPayNow" xml:space="preserve">
     <value>ادفع الآن</value>
@@ -9741,8 +9742,8 @@ info@zatca.gov.sa</value>
 	<data name="NewDeclaration" xml:space="preserve">
         <value>إقرار جديد</value>
     </data>
-	<data name="NewDeclarationNote" xml:space="preserve">
-        <value>يسهل الإقرار الإلكتروني إجراءات وصولك ومغادرتك دون الحاجة إلى الانتظار كما يحميك من المسؤولية القانونية ، لمعرفة تفاصيل الإعلان يمكنك الإطلاع على </value>
+    <data name="NewDeclarationNote" xml:space="preserve">
+        <value>الإقرار الإلكتروني يسهل إجراءات قدومك ومغادرتك دون الحاجة إلى الانتظار كما يحميك من المسؤولية القانونية، ولمعرفة تفاصيل الإقرار يمكنك الاطلاع على</value>
     </data>
 	<data name="NewDeclarationQuestion" xml:space="preserve">
         <value>القدوم إلى المملكة أم المغادرة؟</value>
@@ -9939,22 +9940,22 @@ info@zatca.gov.sa</value>
 	<data name="DeclarationAcknowledge" xml:space="preserve">
     <value>إقرار</value>
   </data>
-	<data name="AcknowledgeNote1" xml:space="preserve">
+   <data name="AcknowledgeNote1" xml:space="preserve">
     <value>أعلم أن هذا الإقرار الإلكتروني مملوك لهيئة الزكاة والضريبة والجمارك, ويحق لهيئة الزكاة والضريبة والجمارك استخدام المعلومات المدخلة في الأغراض الإحصائية الخاصة بأعمالها.</value>
   </data>
-	<data name="AcknowledgeNote2" xml:space="preserve">
+  <data name="AcknowledgeNote2" xml:space="preserve">
     <value>أتحمل كامل المسؤولية عن صحة ودقة المعلومات المقدمة من قبلي.</value>
   </data>
-	<data name="AcknowledgeNote3" xml:space="preserve">
+  <data name="AcknowledgeNote3" xml:space="preserve">
     <value>أنا مسؤول عما يترتب على استخدامي للإقرار الإلكتروني في الأغراض المعدة لأجله من رسوم وضرائب أو أي التزامات مالية أخرى تفرضها الهيئة العامة لهيئة الزكاة والضريبة والجمارك.</value>
   </data>
-	<data name="AcknowledgeNote4" xml:space="preserve">
+  <data name="AcknowledgeNote4" xml:space="preserve">
     <value>أتحمل كامل المسؤولية في حال ثبت لهيئة الزكاة والضريبة والجمارك عدم صحة المعلومات المقدمة من قبلي أو مخالفتي للأنظمة والتشريعات المعمول بها وأكون عرضة للمساءلة القانونية.</value>
   </data>
-	<data name="AcknowledgeNote5" xml:space="preserve">
+  <data name="AcknowledgeNote5" xml:space="preserve">
     <value>لا يسمح باسترداد المبالغ المحصلة (رسوم وضرائب) إلا فى حالة مراجعة مكتب الإقرار في منفذ الدخول عند الوصول إلى المملكة العربية السعودية وقبل مغادرة المنفذ وذلك لمطابقة المقتنيات بواسطة موظف هيئة الزكاة والضريبة والجمارك.</value>
   </data>
-	<data name="TermsConditions" xml:space="preserve">
+   <data name="TermsConditions" xml:space="preserve">
     <value>لقد قرأت الشروط والسياسات</value>
   </data>
 	<data name="ProhibitedItems" xml:space="preserve">
@@ -10153,7 +10154,7 @@ info@zatca.gov.sa</value>
     <value>تتبع</value>
   </data>
 	<data name="ExpressShipping" xml:space="preserve">
-    <value>الشحن السريع</value>
+    <value>االنقل السريع</value>
   </data>
 	<data name="AirFreight" xml:space="preserve">
     <value>الشحن الجوي</value>
@@ -10282,9 +10283,6 @@ info@zatca.gov.sa</value>
 	<data name="ZProfitOnGoodsConfrimationOk" xml:space="preserve">
     <value>موافق</value>
   </data>
-	<!--<data name="ZProfitOnGoodsConfrimationNo" xml:space="preserve">
-    <value>تقديم</value>
-  </data>-->
 	<data name="ZProfitOnGoodsConfrimationMsg" xml:space="preserve">
     <value>هل انت متأكد في رغبتك بالغاء الطلب؟</value>
   </data>
@@ -10338,8 +10336,8 @@ info@zatca.gov.sa</value>
 	<data name="LogintoCarimportservice" xml:space="preserve">
      <value>تسجيل الدخول إلى خدمه استيراد السيارات</value>
   </data>
-	<data name="NeedRewardHint" xml:space="preserve">
-     <value>تسجيل معلوماتك الشخصية من اسم ورقم تواصل وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء </value>
+  <data name="NeedRewardHint" xml:space="preserve">
+     <value> تسجيل معلوماتك الشخصية من اسم ورقم تواصل  وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء المناسب</value>
   </data>
 	<data name="NeedReward" xml:space="preserve">
      <value> أرغب بالحصول على مكافأة</value>
@@ -10470,13 +10468,400 @@ info@zatca.gov.sa</value>
 	<data name="additionalNoValidationMsg" xml:space="preserve">
     <value>يجب ادخال اربعة ارقام للرقم الإضافي</value>
   </data>
-	<data name="SecondaryNumber" xml:space="preserve">
-    <value>الرقم الإضافي</value>
-  </data>
   	<data name="CalDay" xml:space="preserve">
     <value>يوم</value>
   </data>
  <data name="CalMonth" xml:space="preserve">
     <value>شهر</value>
   </data> 
+     <data name="SecondaryNumber" xml:space="preserve">
+    <value>الرقم الإضافي</value>
+  </data>
+        <data name="IqamaType" xml:space="preserve">
+    <value>نوع الإقامة </value>
+  </data>
+     <data name="SpecialIqamawithexpirydate" xml:space="preserve">
+    <value>إقامة مميزة محددة المدة</value>
+  </data>
+       <data name="SpecialIqamawithoutexpirydate" xml:space="preserve">
+    <value>إقامة مميزة غير محددة المدة</value>
+  </data>
+          <data name="Residency" xml:space="preserve">
+    <value>إقامة </value>
+  </data>
+  <data name="NDBankAccManagement" xml:space="preserve">
+    <value>إدارة بيانات الحساب البنكي</value>
+  </data>
+  <data name="IBAN" xml:space="preserve">
+    <value>رقم الأيبان</value>
+  </data>
+  <data name="IBANAccName" xml:space="preserve">
+    <value>اسم صاحب الحساب</value>
+  </data>
+  <data name="IBANBankName" xml:space="preserve">
+    <value>البنك</value>
+  </data>
+  <data name="IBANIdNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="IBANIdType" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="IBANRefNum" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+  </data>
+  <data name="IBANStatus" xml:space="preserve">
+    <value>حالة الحساب</value>
+  </data>
+  <data name="IBANUpdate" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="NDBankAccAddNewIBan" xml:space="preserve">
+    <value>إضافة رقم IBAN جديد</value>
+  </data>
+  <data name="NDBankAccOwnerName" xml:space="preserve">
+    <value>اسم مالك الحساب</value>
+  </data>
+  <data name="NDBankAccIDType" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+  <data name="NDBankAccIBAN" xml:space="preserve">
+    <value>IBAN</value>
+  </data>
+  <data name="NDBankAccIdNumber" xml:space="preserve">
+    <value>رقم الهوية</value>
+  </data>
+  <data name="NDBankAccBankName" xml:space="preserve">
+    <value>اسم البنك</value>
+  </data>
+  <data name="NDIBANValidationforSA" xml:space="preserve">
+    <value>رقم الآيبان يجب أن يبدأ بSA</value>
+  </data>
+  <data name="NDIBANValidationforLenght" xml:space="preserve">
+    <value>رقم الايبان يجب يتكون من 24 خانة.</value>
+  </data>
+  <data name="AddNewIban" xml:space="preserve">
+    <value>إضافة ايبان جديد</value>
+  </data>
+  <data name="NDIBANIsActivated" xml:space="preserve">
+    <value>تم تفعيل هذا الايبان بنجاح</value>
+  </data>
+  <data name="NDIBANIsDeActivated" xml:space="preserve">
+    <value>تم تعطيل هذا الايبان بنجاح</value>
+  </data>
+  <data name="NDIBANSuccessMessage" xml:space="preserve">
+    <value>يمكنكم استخدام الحساب البنكي في طلبات الاسترداد بعد اعتماده من قبل الهيئة.</value>
+  </data>
+  <data name="NDIBANIncomplete" xml:space="preserve">
+    <value>لديك حساب ايبان غير مكتمل المعلومات الرجاء اكمال المعلومات المطلوبة و التأكد من دقتها وذلك لتسهيل إجراءات الاسترداد الخاصة بكم</value>
+  </data>
+  <data name="NDIBANCertifyAck" xml:space="preserve">
+    <value>أقر وأتعهَد بصحَة كافَة المعلومات والبيانات المدخلة للحساب البنكي الخاص بي، وأنَه يعود لي أنا المكلف/ "{0}" بصفة مباشرة أو غير مباشرة، وبتحملي لكافة المسؤولية في حال ترتَب أثر من أي نوع نتيجة خطأ مقصود أو غير مقصود في البيانات المدخلة، وأن الهيئة غير مسؤولة سواء بشكل كامل أو جزئي عن أي خطأ أو ضرر مباشر أو غير مباشر، عرضي أو تبعي أو عقابي، خاصا كان أو عاما، كما أن الهيئة لا تتحمل أ َي مسؤولية عن أي فرصة ضائعة أو خسارة أو ضرر نتج عن أي من المعلومات أو البيانات المدخلة.</value>
+  </data>
+  <data name="IBANRefundInfo" xml:space="preserve">
+    <value>يتم التحويل على البنوك المرخصة من قبل البنك المركزي السعودي في إجراءات الاسترداد</value>
+  </data>
+  <data name="ReturnAttachmentLimitMessage" xml:space="preserve">
+    <value>تجاوزت الحد المسموح لتحميل المرفقات</value>
+  </data>
+  <data name="IBanRefundsInfo" xml:space="preserve">
+    <value>الرجاء اختيار رقم الايبان الذي ترغب باسترداد المبلغ عليه من قائمة حساباتكم البنكية الموضحة أدناه. مع ملاحظة أنه لن نتمكن من إتمام إجراءات عملية الاسترداد إذا لم يكن رقم الحساب البنكي الدولي صحيح ومتطابق مع رقم معرف الحساب البنكي واسم الحساب البنكي</value>
+  </data>
+  <data name="PleaseGoToIBan" xml:space="preserve">
+    <value>  في حال رغبتكم بإضافة أو تعديل بيانات الحسابات البنكية المسجلة لدى الهيئة الرجاء الذهاب إلى</value>
+  </data>
+  <data name="VisitIBanManagement" xml:space="preserve">
+    <value>خدمة إدارة الحسابات البنكية</value>
+  </data>
+  <data name="IBanActivate" xml:space="preserve">
+    <value>تفعيل</value>
+  </data>
+  <data name="IBanDeactivate" xml:space="preserve">
+    <value>تعطيل</value>
+  </data>
+  <data name="IBanInsertIDNumber" xml:space="preserve">
+    <value>الرجاء اختيار رقم هوية صحيح</value>
+  </data>
+  <data name="IBanInsertIDType" xml:space="preserve">
+    <value>الرجاء اختيار نوع هوية صحيح</value>
+  </data>
+  <data name="IBanInsertName" xml:space="preserve">
+    <value>الرجاء إدخال الاسم الكامل</value>
+  </data>
+  <data name="IBanSelectBank" xml:space="preserve">
+    <value>الرجاء اختيار بنك صحيح</value>
+  </data>
+  <data name="ZZIBANRequired" xml:space="preserve">
+    <value>الرجاء اختيار ايبان صحيح</value>
+  </data>
+  <data name="IBanSubmitSuccess" xml:space="preserve">
+    <value>يمكنكم استخدام الحساب البنكي في طلبات الاسترداد بعد اعتماده من قبل الهيئة.</value>
+  </data>
+  <data name="VRSecurityBankGuarante" xml:space="preserve">
+    <value>اتعهد بأن أقدم أصل الضمان البنكي الى الهيئة العامة للزكاة والدخل قبل نهاية يوم {0}، علماً بأن الطلب سيتم إلغاؤه آلياً في حال عدم الالتزام بذلك.</value>
+  </data>
+  <data name="IBanOtherBankName" xml:space="preserve">
+    <value>اسم بنك آخر</value>
+  </data>
+  <data name="IBanSelectedOtherBankName" xml:space="preserve">
+    <value>اسم بنك آخر</value>
+  </data>
+  <data name="IBanCommercialIdShouldbe10" xml:space="preserve">
+    <value>رقم السجل التجاري يجب أن يتكون من 10 أرقام</value>
+  </data>
+  <data name="IBanCompanyIdStartswith7" xml:space="preserve">
+    <value>رقم الشركة يجب أن يبدأ برقم 7</value>
+  </data>
+  <data name="IBanCompanyIdshouldbelessthan10" xml:space="preserve">
+    <value>رقم الشركة خاطئ، يجب أن يتكون من 10 أرقام</value>
+  </data>
+  <data name="IBANIdNumberInfo" xml:space="preserve">
+   <value>يجب ان يكون رقم {0} مرتبط برقم الايبان السعودي</value>
+  </data>
+ <data name="IBANAttachment1" xml:space="preserve">
+      <value>المرفقات 1</value>
+  </data>
+   <data name="IBANAttachment2" xml:space="preserve">
+      <value>المرفقات 2</value>
+  </data>
+   <data name="IBANAttachmentTitle" xml:space="preserve">
+    <value>جب أن يكون حجم الملف أقل من 10 ميجا بايت.1
+2. اختر الملف ذو الامتداد فقط DOC, DOCX, GIF, JPEG, JPG, PDF, XLS, XLSX, XML.
+3. الحد الأقصى لا. عدد المرفقات المسموح بها هو 1.</value>
+  </data>
+   <data name="IBANAttachmentErrorMsg" xml:space="preserve">
+      <value>الرجاء إدخال مرفق إلزامي</value>
+  </data>
+  <data name="IBANIdNumberDynamic" xml:space="preserve">
+    <value>رقم {0}</value>
+  </data>
+    <data name="IBanSubmitSuccess1" xml:space="preserve">
+    <value> تم اعتماد الطلب من قبل الهيئة، يمكنكم استخدام الحساب البنكي في طلبات الاسترداد</value>
+  </data>
+  <!--VAT REVIEW-->
+  <data name="BankGuaranteeOption" xml:space="preserve">
+    <value>يمكنك طلب تخفيض الضمان البنكي عن طريق الاتصال على الرقم: 19993</value>
+  </data>
+   <data name="SadadBillOption" xml:space="preserve">
+    <value>يمكنك طلب تخفيض الضمان النقدي عن طريق الاتصال على الرقم: 19993</value>
+  </data>
+
+  
+  <!--5250 and 6073-->
+   <data name="FinacialPeriodNormal" xml:space="preserve">
+    <value>الفترة العادية</value>
+  </data>
+  <data name="FinacialPeriodSmall" xml:space="preserve">
+    <value>الفترة القصيرة</value>
+  </data>
+  <data name="FinacialPeriodLong" xml:space="preserve">
+    <value>الفترة الطويلة</value>
+  </data>
+  <data name="Error896" xml:space="preserve">
+      <value>عزيزي المكلف, السجل التجاري مسجل لدينا باسم آخر.</value>
+  </data>
+  <data name="ExistingOutletError" xml:space="preserve">
+        <value>لايُمكن حذف الفرع الموجود</value>
+    </data>
+   <data name="ESTValidateLicenseName" xml:space="preserve">
+      <value>برجاء ادخال اسم الرخصة</value>
+  </data>
+   <data name="TPFinacialPeriodMonthValidation" xml:space="preserve">
+    <value>الرجاء اختيار اليوم والشهر للفترة المالية المطلوبة</value>
+  </data>
+  <data name="FinacialDetailsZyear" xml:space="preserve">
+    <value>فقط yyyy يسمح لك تعديل السنة المالية لسنة</value>
+  </data>
+   <data name="MainOutletError" xml:space="preserve">
+        <value> لا يمكنك حذف الفرع الرئيسي</value>
+    </data>
+    <data name="DeleteError" xml:space="preserve">
+      <value>السجلات التجارية التي تم استدعائها من خلال وزارة التجارة لا يمكن حذفها</value>
+  </data>
+  <data name="ZZZZCRUpdateSuccess" xml:space="preserve">
+    <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة التجارة.</value>
+  </data>
+  <data name="ZZZZLicenseUpdateSuccess" xml:space="preserve">
+    <value>عزيزي المكلف، نفيدكم بأنه قد تم تحديث بيانات األنشطة في حسابكم لتتوافق مع بيانات األنشطة في سجالتكم لدى وزارة الشؤون البلدية والقروية.</value>
+  </data>
+  <data name="AmendRegistrationSubmitWarning" xml:space="preserve">
+    <value>عزيزي المكلف سوف يتم حذف الطلب المحفوظ كمسودة في حال تمت الموافقة على طلب تعديل فترة تقديم الإقرار المقدمة</value>
+  </data>
+  <data name="LinkText" xml:space="preserve">
+      <value>لإكمال التسجيل ، يمكنك التواصل معنا على الرقم 19993 أو رفع تذكرة من خلال الضغط </value>
+  </data>
+   <data name="Link" xml:space="preserve">
+      <value>هنا</value>
+  </data>
+   <data name="TinOutletOutletNumber" xml:space="preserve">
+    <value>رقم الفرع</value>
+  </data>
+   <data name="FinacialDetailsLastFulfilledreturn" xml:space="preserve">
+    <value>تاريخ اخر إقرار مقدم</value>
+  </data>
+   <data name="InnerListCrTitle" xml:space="preserve">
+      <value> رقم السجل التجاري الصادر من وزارة الثقافة فقط</value>
+  </data>
+   <data name="InnerListLicenceTitle" xml:space="preserve">
+      <value>تفاصيل الرخصة</value>
+  </data>
+  <data name="FinacialYearOptions" xml:space="preserve">
+    <value>خيارات الفترة المالية</value>
+  </data>
+  <data name="CrType" xml:space="preserve">
+      <value>نوع السجل التجاري</value>
+  </data>
+   <data name="IssuedCity" xml:space="preserve">
+      <value>المدينة</value>
+  </data>
+  <data name="LicenceNumber" xml:space="preserve">
+      <value>رقم الرخصة</value>
+  </data>
+   <data name="VatEffNoData" xml:space="preserve">
+    <value>لا توجد بيانات</value>
+  </data>
+   <data name="ZZLicenseName" xml:space="preserve">
+      <value>أسم الرخصة</value>
+  </data>
+  <data name="LicenceName" xml:space="preserve">
+      <value>أسم الرخصة</value>
+  </data>
+
+  <!--End 5250 6073-->
+   <data name="ZZZZTitle" xml:space="preserve">
+    <value>لقب</value>
+  </data>
+  <!--CR 6003-->
+  <data name="ManagerName" xml:space="preserve">
+        <value>اسم المدير</value>
+    </data>
+    <data name="ManagerID" xml:space="preserve">
+        <value>رقم هوية المدير</value>
+    </data>
+
+    <data name="NafathLinkText" xml:space="preserve">
+        <value>للمواطنين / المقيمين. تسجيل الدخول عن طريق نفاذ</value>
+    </data>
+
+    <data name="ManualRequestTitle" xml:space="preserve">
+        <value>في حال كانت خدمة نفاذ غير متوفرة ، الرجاء تقديم الطلب اليدوي</value>
+    </data>
+
+    <data name="ToThisMobNumber" xml:space="preserve">
+        <value>الى رقم الجوال التالي:</value>
+    </data>
+     <data name="Change" xml:space="preserve">
+        <value>تغيير</value>
+    </data>
+    <data name="SendOTP" xml:space="preserve">
+        <value>ارسال رمز التحقق</value>
+    </data>
+    <data name="PrintForm" xml:space="preserve">
+        <value>طباعة النموذج</value>
+    </data>
+    <data name="ReAttachForm" xml:space="preserve">
+        <value>إعادة إرفاق النموذج</value>
+    </data>
+    <data name="YouMustPrintForm" xml:space="preserve">
+        <value>بناء على سياسة الهيئة للشركات الغير مقيمة بان يتم طباعة النموذج وتعبئته والمصادقة عليه (مصادقة الخطاب من السفارة السعودية).</value>
+    </data>
+
+    <data name="OTPVerifiedSuccessFully" xml:space="preserve">
+        <value>تم التحقق من رمز التحقق بنجاح</value>
+    </data>
+
+    <data name="AttachmentWarnMsg" xml:space="preserve">
+        <value>يمكن تحميل مرفق واحد كحد أقصى.</value>
+    </data>
+
+    <data name="Ideclare" xml:space="preserve">
+        <value>أتعهد بأن المعلومات الواردة في هذا النموذج صحيحة وأني مفوض بالتوقيع على هذا الطلب</value>
+    </data>
+
+    <data name="Continue" xml:space="preserve">
+        <value>متابعة</value>
+    </data>
+
+     <data name="ManagerNameError" xml:space="preserve">
+        <value>الرجاء إدخال اسم المدير</value>
+    </data>
+
+    <data name="ChangeMobSuccessMsg" xml:space="preserve">
+        <value>عزيزي المكلف، تم استلام طلب تغيير رقم الجوال بنجاح</value>
+    </data>
+     <data name="ChangeMobSuccessMsg2" xml:space="preserve">
+        <value>عزيزي المكلف, تم إعادة تعيين رقم الجوال بنجاح للرقم المميز {0}</value>
+    </data>
+    <data name="AttachChamberOfCommerce" xml:space="preserve">
+        <value>ارفاق خطاب تفويض الغرفة التجارية</value>
+    </data>
+
+    <data name="ManagerDetails" xml:space="preserve">
+        <value>تفاصيل المدير</value>
+    </data>
+
+     <data name="DataSaved" xml:space="preserve">
+        <value>تم حفظ البيانات بنجاح</value>
+    </data>
+     <data name="DiscardChanges" xml:space="preserve">
+        <value>تجاهل التغييرات</value>
+    </data>
+    <data name="AttachmentInstructionPrintForm" xml:space="preserve">
+        <value>الرجاء ارفاق الملفات بصيغ PDF </value>
+    </data>
+    <data name="EnterTin" xml:space="preserve">
+        <value>ادخل الرقم المميز</value>
+    </data>
+        <data name="ManagerDetailsDob" xml:space="preserve">
+        <value>تاريخ الميلاد</value>
+    </data>
+        <data name="ManagerDetailsTitle" xml:space="preserve">
+        <value>بيانات المدير</value>
+    </data>
+     <data name="AttachmentInstruction2" xml:space="preserve">
+        <value>الرجاء ارفاق الملفات بصيغ Doc, Docx, Jpg, PDF </value>
+    </data>
+        <data name="AttachmentInstruction1" xml:space="preserve">
+        <value> يجب ان يكون حجم الملف اقل من 10 ميقا</value>
+    </data>
+        <data name="MCIErrorConfirmMsg" xml:space="preserve">
+        <value>إذا كنت ترغب في  تقديم نموذج الطلب اليدوي</value>
+    </data>
+       <data name="MCIErrorTitleMsg" xml:space="preserve">
+        <value>عزيزي المكلف, عذراً لم نتمكن من اكمال طلبك نظرا للاسباب التالية:</value>
+    </data>
+    <data name="TinNumberValidation" xml:space="preserve">
+              <value>الرقم المميز يجب أن يحتوي على 10 أرقام</value>
+    </data>
+     <data name="DoYouHaveAccountInNafath" xml:space="preserve">
+      <value>هل لديك حساب في نفاذ؟</value>
+  </data>
+
+<data name="OTPMaxAttempts" xml:space="preserve">
+        <value>لقد بلغت الحد الأقصى لعدد المحاولات, يرجى إدخال رقم الجوال مجددا</value>
+    </data>
+        <data name="ChangeMobHeader" xml:space="preserve">
+      <value>عزيزي المكلف، الشخص المخول بتغيير رقم الجوال هو مدير الشركة حسب بيانات وزارة التجارة</value>
+  </data>
+  <data name="VerifyOtp" xml:space="preserve">
+    <value>التحقق من الكود</value>
+  </data>
+     <data name="ESTValidateACRName" xml:space="preserve">
+  <value>يرجى تقديم اسم السجل التجاري</value>
+  </data>
+  <!--End of CR6003-->
+      <!--start of CR6741-->
+  <data name="ContactZatcaEmp" xml:space="preserve">
+    <value>طلب التواصل مع الموظف بشأن حالة فحص</value>
+  </data>
+  <!--End of CR6741-->
+  <data name="ReportAttachements" xml:space="preserve">
+    <value>مرفقات البلاغ (الرجاء تحديد جميع المرفقات مرة واحدة بحجم أقل من 4 ميجا بايت)</value>
+  </data>
+    <data name="Waitingforresponse" xml:space="preserve">
+    <value>بانتظار الرد </value>
+  </data>
+      <data name="ExpressBillNumber" xml:space="preserve">
+    <value>رقم الشحنة</value>
+  </data>
 </root>

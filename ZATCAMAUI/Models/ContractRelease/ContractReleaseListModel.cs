@@ -53,7 +53,8 @@
         
         public class AttDetSet
         {
-            public List<Attachment> results { get; set; }
+            //public List<Attachment> results { get; set; }
+            public List<Models.Attachment> results { get; set; }
         }
         
         public partial class ZnotesSet

@@ -994,30 +994,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             {
 
                                 _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
+                               
 
                             });
                         }
-                        else
-                        {
-
-                            ApplePayStatus = await ProcessApplePay();
-                        }
-
-
-                        // var VatAmount = NetdueVat.Replace(",", "");
-                        //if (String.IsNullOrEmpty(amount) || Double.Parse(amount) == 0)
-                        //{
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, true, false, string.Empty));
-                        //}
-                        //else if (!String.IsNullOrEmpty(amount) && Double.Parse(amount) > 20000)
-                        //{
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, string.Empty));
-                        //}
-                        //else
-                        //{
-                        //    await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, string.Empty));
-                        //}
 
                     }
 
@@ -1166,14 +1146,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        private async Task<bool> ProcessApplePay()
-        {
+        //private async Task<bool> ProcessApplePay()
+        //{
 
-            var Amount = Convert.ToDouble(PaymentData.d.Amount);
-            var BillAmount = Math.Round(Amount, 2);
-            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
-        }
+        //    var Amount = Convert.ToDouble(PaymentData.d.Amount);
+        //    var BillAmount = Math.Round(Amount, 2);
+        //    DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(false);
+        //    return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+        //}
 
         public void MadaPaymentSelected()
         {

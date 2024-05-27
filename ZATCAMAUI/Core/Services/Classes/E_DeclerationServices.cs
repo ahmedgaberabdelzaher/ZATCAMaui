@@ -82,13 +82,13 @@ namespace ZATCAMAUI.Core.Services.Classes
         }
         public async Task<Tuple<DATAPowerBaseResponse<InquireResponse>, bool, string>> GetInquireDecleration(string referenceNumber, string travelID)
         {
-            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<InquireResponse>>($"{PageSettings.ZATCABaseURL}{version}/zatca/customs/declaration/inquire-declaration?declarationID={referenceNumber}&travelID={travelID}").ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<InquireResponse>>($"{PageSettings.ZATCABaseURL}v2/zatca/customs/declaration/inquire-declaration?declarationID={referenceNumber}&travelID={travelID}").ConfigureAwait(false);
             return response;
         }
 
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<TravelerDeclarationResponse>>, bool, string>> GetListInquireDecleration(string travelID)
         {
-            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TravelerDeclarationResponse>>>($"{PageSettings.ZATCABaseURL}{version}/zatca/customs/declaration/inquire-declarations?travelID={travelID}").ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TravelerDeclarationResponse>>>($"{PageSettings.ZATCABaseURL}v2/zatca/customs/declaration/inquire-declarations?travelID={travelID}").ConfigureAwait(false);
             return response;
         }
 

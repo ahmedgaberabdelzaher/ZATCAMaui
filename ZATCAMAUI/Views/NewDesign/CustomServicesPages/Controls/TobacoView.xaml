@@ -8,14 +8,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     FlowDirection="{Binding AppDirection}"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core">
-    <!--<ContentView.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentView.Resources>-->
+
     <ContentView.Content>
         <!--#region TobacoProduct-->
         <StackLayout>

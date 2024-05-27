@@ -467,8 +467,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-               string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
-                var payload = JsonWebToken.DecodeToObject(token, secretKey);
+
+                string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
+                var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);
                 return payload;
             }
             catch (Exception)

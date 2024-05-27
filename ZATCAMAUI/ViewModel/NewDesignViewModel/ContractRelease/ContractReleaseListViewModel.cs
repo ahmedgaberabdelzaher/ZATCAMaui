@@ -1,12 +1,15 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
+using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ContractRelease;
+using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
-using static ZATCAMAUI.Models.ContractRelease.ContractReleaseSummaryModel;
+using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse.ContractReLeaseApplicationFormModel;
+using Attachment = ZATCAMAUI.Models.Attachment;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 {
@@ -19,7 +22,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         public ICommand GoBackClick { get; set; }
         public ICommand CloseClick { get; set; }
         public ICommand RequestContractReleaseBtnTapped { get; set; }
-
+        public ICommand GoBackBtnTapped { get; set; }
         private ContractReleaseSummaryModel.ContractReleaseSummaryData _contractReleaseSummaryData;
         public ContractReleaseSummaryModel.ContractReleaseSummaryData ContractReLeaseSummaryData
         {
@@ -336,6 +339,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get { return _pickerModel; }
+            set
+            {
+                if (_pickerModel == value) return;
+
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+
         public ObservableCollection<Attachment> contractCopyAttachmentsListViewData { get; set; }
 
         public ObservableCollection<Attachment> ContractCopyAttachmentsListViewData
@@ -372,12 +388,79 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public ContractResult _SelectedTypeFilter = new ContractResult();
+
+        public ContractResult SelectedTypeFilter
+
+        {
+
+            get
+
+            {
+
+                return _SelectedTypeFilter;
+
+            }
+
+            set
+
+            {
+
+                _SelectedTypeFilter = value;
+
+                if (_SelectedTypeFilter != null)
+
+                {
+
+                    // FilterLabelTxt = _SelectedTypeFilter.StatText;
+
+                    //FilterOnBasisOfTaxType();
+
+                }
+
+                RaisePropertyChanged("SelectedTaxTypeForFilter");
+
+            }
+
+        }
+
+        public string _filterLabelTxt;
+
+        public string FilterLabelTxt
+
+        {
+
+            get
+
+            {
+
+                return _filterLabelTxt;
+
+            }
+
+            set
+
+            {
+
+                if (_filterLabelTxt == value) return;
+
+                _filterLabelTxt = value;
+
+                RaisePropertyChanged("FilterLabelTxt");
+
+            }
+
+        }
+        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
 
             CloseClick = new Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -503,10 +586,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         public void UpdateDataToUI()
         {
             PopulateContractList();
+            PopulateFilter();
             // ContractReLeaseListSet.results[0]
         }
 
         #region OnPageLoad
+
+        public void PopulateFilter()
+        {
+            var list = new List<string>();
+            try
+            {
+                list.Add("ALL");
+                var distinctList = ContractReLeaseListSet.results.Select(i => i.StatText).Distinct().ToList();
+                foreach (var item in distinctList)
+                {
+                    list.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = "";
+            genericPickerModel.PickerId = "ConractRelease";
+            genericPickerModel.SelectedValue = _SelectedTypeFilter.StatText;
+            PickerModel = genericPickerModel;
+        }
         public async Task OnPageLoad()
         {
             try
@@ -520,7 +630,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     IsLoading = true;
                     cRApplicationFormData = null;
                     ContractReLeaseListSet = null;
-
+                    FilterLabelTxt = "ALL";
 
                     try
                     {
@@ -698,6 +808,45 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+        }
+
+        public async void showPickerDialog()
+        {
+            try
+            {
+                if (PickerModel != null)
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            catch (InternetException ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void updatePicker(Models.GenericPickerModel arg)
+        {
+            if (!string.IsNullOrEmpty(arg.SelectedValue))
+            {
+                FilterLabelTxt = arg.SelectedValue.ToUpper();
+                if (arg.SelectedValue.Equals("ALL"))
+                {
+                    PopulateContractList();
+                }
+                else
+                {
+                    var selectedFilter = new ObservableCollection<ContractResult>(ContractReLeaseListSet.results.Where(temp => temp.StatText.ToUpper().Equals(arg.SelectedValue.ToUpper())));
+                    ContractListViewData = selectedFilter;
+                }
             }
         }
 
