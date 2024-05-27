@@ -21,8 +21,6 @@
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
             <xct:IsListNotNullOrEmptyConverter x:Key="ListIsNotNullOrEmptyConverter" />
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -350,7 +348,7 @@
                                 ContainerType="Outlined"
                                 HasError="{Binding IsNeedRewardError}"
                                 InputViewPadding="15,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">

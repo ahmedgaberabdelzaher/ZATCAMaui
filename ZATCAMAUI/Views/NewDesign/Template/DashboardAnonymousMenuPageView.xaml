@@ -8,14 +8,12 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    NavigationPage.HasNavigationBar="False"
     FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -26,15 +24,11 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="ShadowLvl0">#EFEFEF</Color>
-            <!--<Color x:Key="ShadowLvl1"> "{StaticResource NeutralBlack}" </Color>
-            <Color x:Key="ShadowLvl2"> "{StaticResource NeutralBlack}</Color>-->
             <Style x:Key="GreyBorderFrameWithShadow" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
-                <!--<Setter Property="HasShadow" Value="True" />-->
                 <Setter Property="StrokeThickness" Value="1" />
                 <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
-                <!--<Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />-->
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -299,15 +293,15 @@
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                             <busyindicator:SfBusyIndicator
                                 x:Name="busyindicatorForLanding"
-                                HorizontalOptions="CenterAndExpand"
-                                IsRunning="True"
                                 AnimationType="Cupertino"
-                                SizeFactor="0.6"
-                                WidthRequest="70"
                                 HeightRequest="70"
+                                HorizontalOptions="CenterAndExpand"
                                 IndicatorColor="{StaticResource Secondary}"
+                                IsRunning="True"
+                                SizeFactor="0.6"
                                 TitlePlacement="Bottom"
-                                VerticalOptions="CenterAndExpand" />
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="70" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>

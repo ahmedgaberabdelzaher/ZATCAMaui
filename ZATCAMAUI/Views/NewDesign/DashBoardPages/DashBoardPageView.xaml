@@ -14,9 +14,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -58,11 +58,8 @@
 
 
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand"
-              VerticalOptions="FillAndExpand">
-            <Grid
-                Margin="0,0,0,50"
-                RowDefinitions="*,auto,auto">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid Margin="0,0,0,50" RowDefinitions="*,auto,auto">
 
                 <Image
                     x:Name="BGImageLogin"
@@ -71,11 +68,9 @@
                     BackgroundColor="Transparent"
                     Source="partials_background.png" />
 
-                <Grid
-                    IsVisible="{Binding HomeViewVisible}"
-                    RowDefinitions="auto,*">
+                <Grid IsVisible="{Binding HomeViewVisible}" RowDefinitions="auto,*">
 
-                      <!--Header-->
+                    <!--  Header  -->
                     <StackLayout
                         Grid.Row="0"
                         Grid.Column="0"
@@ -171,7 +166,7 @@
 
                     </StackLayout>
 
-                    <!--Dashboard-->
+                    <!--  Dashboard  -->
                     <Border
                         Grid.Row="1"
                         Padding="0"
@@ -179,8 +174,7 @@
                         StrokeShape="RoundRectangle 12,12,0,0"
                         VerticalOptions="FillAndExpand">
 
-                        <ScrollView Scrolled="ScrollView_Scrolled"
-                                    VerticalScrollBarVisibility="Never">
+                        <ScrollView Scrolled="ScrollView_Scrolled" VerticalScrollBarVisibility="Never">
 
                             <StackLayout Spacing="0">
 
@@ -301,11 +295,11 @@
                                 <Grid
                                     Padding="15,16,15,8"
                                     BackgroundColor="{StaticResource NewDullOrangeColor}"
+                                    ColumnDefinitions="auto,*,auto"
                                     ColumnSpacing="16"
                                     IsVisible="{Binding IsEstablishmentRegistrationTileVisible}"
-                                    RowSpacing="4"
                                     RowDefinitions="auto,auto,auto"
-                                    ColumnDefinitions="auto,*,auto">
+                                    RowSpacing="4">
                                     <Image
                                         Grid.Row="0"
                                         Grid.Column="0"
@@ -342,212 +336,210 @@
                                         Grid.ColumnSpan="3"
                                         Margin="-15,10,-15,-8"
                                         BackgroundColor="White"
-                                        StrokeShape="RoundRectangle 12,12,0,0"
-                                        HeightRequest="10" />
+                                        HeightRequest="10"
+                                        StrokeShape="RoundRectangle 12,12,0,0" />
                                 </Grid>
 
                                 <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
 
                                     <!--  Pending Bills  -->
-                                    <StackLayout IsVisible="{Binding IsPendingBillsVisible}"
-                                                 Padding="10"
-                                                 Spacing="10">
+                                    <StackLayout
+                                        Padding="10"
+                                        IsVisible="{Binding IsPendingBillsVisible}"
+                                        Spacing="10">
 
-                                            <Grid ColumnDefinitions="*,*">
+                                        <Grid ColumnDefinitions="*,*">
+
+                                            <Label
+                                                Grid.Column="0"
+                                                Style="{StaticResource SectionTitleBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}"
+                                                VerticalOptions="Center" />
+
+                                            <StackLayout
+                                                Grid.Column="1"
+                                                HorizontalOptions="EndAndExpand"
+                                                IsVisible="{Binding IsBillsTotalAmountEN}"
+                                                Orientation="Horizontal"
+                                                Spacing="10">
 
                                                 <Label
                                                     Grid.Column="0"
-                                                    Style="{StaticResource SectionTitleBlack}"
-                                                    Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}"
-                                                    VerticalOptions="Center" />
+                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                    VerticalOptions="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding BillCount}" />
+                                                            <Span Style="{StaticResource CaptionLabelBlack}" Text="&#160;" />
+                                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <StackLayout
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    IsVisible="{Binding IsBillsTotalAmountEN}"
-                                                    Spacing="10"
-                                                    Orientation="Horizontal">
+                                                <Image
+                                                    Source="circle_arrow_right.png"
+                                                    Style="{DynamicResource BackButtonArrow}"
+                                                    VerticalOptions="Center">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TappedOnMyBills" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
 
-                                                    <Label
-                                                        Grid.Column="0"
-                                                        Style="{StaticResource CaptionLabelGrey}"
-                                                        VerticalOptions="Center">
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding BillCount}" />
-                                                                <Span Style="{StaticResource CaptionLabelBlack}" Text="&#160;" />
-                                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" />
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
+                                            </StackLayout>
 
-                                                    <Image
-                                                        Source="circle_arrow_right.png"
-                                                        Style="{DynamicResource BackButtonArrow}"
-                                                        VerticalOptions="Center">
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TappedOnMyBills" />
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
+                                            <StackLayout
+                                                Grid.Column="1"
+                                                HorizontalOptions="EndAndExpand"
+                                                IsVisible="{Binding IsBillsTotalAmountAR}"
+                                                Orientation="Horizontal"
+                                                Spacing="10">
 
-                                                </StackLayout>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                    VerticalOptions="Center">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" />
+                                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="&#160;" />
+                                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding BillCount}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
 
-                                                <StackLayout
-                                                    Grid.Column="1"
-                                                    Spacing="10"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    IsVisible="{Binding IsBillsTotalAmountAR}"
-                                                    Orientation="Horizontal">
+                                                <Image
+                                                    Source="circle_arrow_right.png"
+                                                    Style="{DynamicResource BackButtonArrow}"
+                                                    VerticalOptions="Center">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="TappedOnMyBills" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
 
-                                                    <Label
-                                                        Grid.Column="0"
-                                                        Style="{StaticResource CaptionLabelGrey}"
-                                                        VerticalOptions="Center">
-                                                        <Label.FormattedText>
-                                                            <FormattedString>
-                                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DashboardBillsInTotal}" />
-                                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="&#160;" />
-                                                                <Span Style="{StaticResource CaptionLabelGrey}" Text="{Binding BillCount}" />
-                                                            </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
+                                            </StackLayout>
 
-                                                    <Image
-                                                        Source="circle_arrow_right.png"
-                                                        Style="{DynamicResource BackButtonArrow}"
-                                                        VerticalOptions="Center">
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="TappedOnMyBills" />
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
+                                        </Grid>
 
-                                                </StackLayout>
+                                        <CollectionView
+                                            BackgroundColor="Transparent"
+                                            HorizontalOptions="FillAndExpand"
+                                            ItemsSource="{Binding PendingBills}"
+                                            MinimumHeightRequest="{Binding PendingBillsListHeight}"
+                                            VerticalOptions="Center"
+                                            VerticalScrollBarVisibility="Never">
 
-                                            </Grid>
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5" />
+                                            </CollectionView.ItemsLayout>
 
-                                            <CollectionView
-                                                HorizontalOptions="FillAndExpand"
-                                                BackgroundColor="Transparent"
-                                                ItemsSource="{Binding PendingBills}"
-                                                VerticalScrollBarVisibility="Never"
-                                                MinimumHeightRequest="{Binding PendingBillsListHeight}"
-                                                VerticalOptions="Center">
+                                            <CollectionView.ItemTemplate>
 
-                                                <CollectionView.ItemsLayout>
-                                                   <GridItemsLayout Orientation="Vertical"
-                                                                    VerticalItemSpacing="5" />
-                                                </CollectionView.ItemsLayout>
+                                                <DataTemplate>
 
-                                                <CollectionView.ItemTemplate>
+                                                    <cards:SfCardView
+                                                        Padding="5"
+                                                        BackgroundColor="Transparent"
+                                                        BorderColor="{StaticResource NeutralLightGrey}"
+                                                        BorderWidth="1"
+                                                        CornerRadius="16"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand">
 
-                                                    <DataTemplate>
+                                                        <StackLayout Margin="12">
 
-                                                        <cards:SfCardView
-                                                            Padding="5"
-                                                            BorderColor="{StaticResource NeutralLightGrey}"
-                                                            BorderWidth="1"
-                                                            CornerRadius="16"
-                                                            BackgroundColor="Transparent"
-                                                            HorizontalOptions="FillAndExpand"
-                                                            VerticalOptions="FillAndExpand">
+                                                            <Grid ColumnDefinitions="*,*" HorizontalOptions="FillAndExpand">
 
-                                                            <StackLayout Margin="12">
+                                                                <StackLayout Spacing="5">
 
-                                                                <Grid HorizontalOptions="FillAndExpand"
-                                                                        ColumnDefinitions="*,*">
+                                                                    <Label
+                                                                        HorizontalOptions="Start"
+                                                                        Style="{StaticResource BodyLabelBlackMedium}"
+                                                                        Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}">
 
-                                                                    <StackLayout Spacing="5">
+                                                                        <Label.FormattedText>
 
-                                                                        <Label
-                                                                            HorizontalOptions="Start"
-                                                                            Style="{StaticResource BodyLabelBlackMedium}"
-                                                                            Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}">
+                                                                            <FormattedString>
+                                                                                <Span Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                <Span Text=" " />
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
 
-                                                                            <Label.FormattedText>
+                                                                    </Label>
 
-                                                                                <FormattedString>
-                                                                                    <Span Text="{Binding Amount, Converter={StaticResource commaSeparatorConverter}}" />
-                                                                                    <Span Text=" " />
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
+                                                                    <Label
+                                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                                        Text="{Binding Abtypt}"
+                                                                        VerticalOptions="End" />
 
-                                                                        </Label>
+                                                                </StackLayout>
 
-                                                                        <Label
-                                                                            Style="{StaticResource CaptionLabelGrey}"
-                                                                            Text="{Binding Abtypt}"
-                                                                            VerticalOptions="End" />
+                                                                <StackLayout Grid.Column="1" Spacing="5">
 
-                                                                    </StackLayout>
+                                                                    <Border
+                                                                        Grid.Row="0"
+                                                                        Grid.Column="1"
+                                                                        Padding="12,2,12,2"
+                                                                        HeightRequest="32"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        Stroke="{StaticResource SecondaryNew}"
+                                                                        StrokeThickness="1"
+                                                                        VerticalOptions="CenterAndExpand">
+                                                                        <Border.StrokeShape>
+                                                                            <RoundRectangle CornerRadius="20,20,20,20" />
+                                                                        </Border.StrokeShape>
+                                                                        <StackLayout
+                                                                            BindingContext="{Binding .}"
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            Orientation="Horizontal">
+                                                                            <Image
+                                                                                Margin="0,0,5,0"
+                                                                                HeightRequest="16"
+                                                                                Source="ic_iconpay_white"
+                                                                                VerticalOptions="CenterAndExpand"
+                                                                                WidthRequest="16" />
+                                                                            <Label
+                                                                                FontFamily="{StaticResource SomarRegular}"
+                                                                                FontSize="11"
+                                                                                Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
+                                                                                TextColor="{StaticResource SecondaryNew}"
+                                                                                VerticalOptions="CenterAndExpand" />
 
-                                                                    <StackLayout Grid.Column="1"
-                                                                                 Spacing="5">
+                                                                        </StackLayout>
 
-                                                                        <Border
-                                                                            Grid.Row="0"
-                                                                            Grid.Column="1"
-                                                                            Padding="12,2,12,2"
-                                                                            HeightRequest="32"
-                                                                            HorizontalOptions="EndAndExpand"
-                                                                            Stroke="{StaticResource SecondaryNew}"
-                                                                            StrokeThickness="1"
-                                                                            VerticalOptions="CenterAndExpand">
-                                                                            <Border.StrokeShape>
-                                                                                <RoundRectangle CornerRadius="20,20,20,20" />
-                                                                            </Border.StrokeShape>
-                                                                            <StackLayout
-                                                                                BindingContext="{Binding .}"
-                                                                                HorizontalOptions="CenterAndExpand"
-                                                                                Orientation="Horizontal">
-                                                                                <Image
-                                                                                    Margin="0,0,5,0"
-                                                                                    HeightRequest="16"
-                                                                                    Source="ic_iconpay_white"
-                                                                                    VerticalOptions="CenterAndExpand"
-                                                                                    WidthRequest="16" />
-                                                                                <Label
-                                                                                    FontFamily="{StaticResource SomarRegular}"
-                                                                                    FontSize="11"
-                                                                                    Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
-                                                                                    TextColor="{StaticResource SecondaryNew}"
-                                                                                    VerticalOptions="CenterAndExpand" />
+                                                                        <Border.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="BillsPayNowTapped" />
+                                                                        </Border.GestureRecognizers>
+                                                                    </Border>
 
-                                                                            </StackLayout>
+                                                                    <Label
+                                                                        Margin="0,0,0,0"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        Style="{StaticResource CaptionLabelGrey}">
 
-                                                                            <Border.GestureRecognizers>
-                                                                                <TapGestureRecognizer Tapped="BillsPayNowTapped" />
-                                                                            </Border.GestureRecognizers>
-                                                                        </Border>
+                                                                        <Label.FormattedText>
 
-                                                                        <Label
-                                                                            Margin="0,0,0,0"
-                                                                            HorizontalOptions="EndAndExpand"
-                                                                            Style="{StaticResource CaptionLabelGrey}">
+                                                                            <FormattedString>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
+                                                                                <Span Text=": " />
+                                                                                <Span Text="{Binding FormatedDuedate}" />
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
 
-                                                                            <Label.FormattedText>
+                                                                </StackLayout>
 
-                                                                                <FormattedString>
-                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
-                                                                                    <Span Text=": " />
-                                                                                    <Span Text="{Binding FormatedDuedate}" />
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
+                                                            </Grid>
 
-                                                                    </StackLayout>
+                                                        </StackLayout>
 
-                                                                </Grid>
+                                                    </cards:SfCardView>
 
-                                                            </StackLayout>
+                                                </DataTemplate>
 
-                                                        </cards:SfCardView>
+                                            </CollectionView.ItemTemplate>
 
-                                                    </DataTemplate>
-
-                                                </CollectionView.ItemTemplate>
-
-                                            </CollectionView>
+                                        </CollectionView>
 
                                     </StackLayout>
 
@@ -555,21 +547,19 @@
                                     <!--  Next Commitments  -->
                                     <StackLayout Margin="15" VerticalOptions="Start">
 
-                                        <StackLayout >
+                                        <StackLayout>
 
                                             <Label
                                                 Style="{StaticResource SectionTitleBlack}"
                                                 Text="{Binding NextCommitmentsString}"
                                                 VerticalOptions="Center" />
 
-                                            <Grid RowDefinitions="auto"
-                                                    ColumnDefinitions="auto,30">
+                                            <Grid ColumnDefinitions="auto,30" RowDefinitions="auto">
 
-                                                <Label
-                                                    Style="{StaticResource ValueLabelBlackMedium}"
-                                                    Text="{Binding SelectedCommitmentFilterValue}" />
+                                                <Label Style="{StaticResource ValueLabelBlackMedium}" Text="{Binding SelectedCommitmentFilterValue}" />
 
-                                                <Image Grid.Column="1"
+                                                <Image
+                                                    Grid.Column="1"
                                                     Margin="5,5,5,5"
                                                     HorizontalOptions="Start"
                                                     Source="arrowDropdown"
@@ -588,9 +578,10 @@
                                                     </custom:CustomSfPicker.TextStyle>
 
                                                     <custom:CustomSfPicker.Columns>
-                                                        <syncfusion:PickerColumn Width="300"
-                                                                                 SelectedIndex="0"
-                                                                                 ItemsSource="{Binding CommitmentsListFilter}" />
+                                                        <syncfusion:PickerColumn
+                                                            Width="300"
+                                                            ItemsSource="{Binding CommitmentsListFilter}"
+                                                            SelectedIndex="0" />
                                                     </custom:CustomSfPicker.Columns>
 
                                                     <custom:CustomSfPicker.SelectedTextStyle>
@@ -601,7 +592,7 @@
                                                     </custom:CustomSfPicker.SelectedTextStyle>
 
                                                     <custom:CustomSfPicker.SelectionView>
-                                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+                                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
 
                                                     </custom:CustomSfPicker.SelectionView>
 
@@ -620,8 +611,7 @@
 
                                                     <custom:CustomSfPicker.FooterView>
 
-                                                        <syncfusion:PickerFooterView Height="46"
-                                                                                    Background="{StaticResource Primary}">
+                                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                                             <syncfusion:PickerFooterView.TextStyle>
                                                                 <syncfusion:PickerTextStyle TextColor="White" />
@@ -635,7 +625,7 @@
                                                 </custom:CustomSfPicker>
 
                                                 <Grid.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="btnCommitmentsPickerClicked"/>
+                                                    <TapGestureRecognizer Tapped="btnCommitmentsPickerClicked" />
 
                                                 </Grid.GestureRecognizers>
 
@@ -654,35 +644,33 @@
                                                 BackgroundColor="Transparent"
                                                 HeightRequest="80"
                                                 HorizontalOptions="FillAndExpand"
-                                                ItemSizingStrategy="MeasureAllItems"
                                                 HorizontalScrollBarVisibility="Never"
                                                 IsVisible="{Binding SetMyCommitmentsCollectionVisibility}"
+                                                ItemSizingStrategy="MeasureAllItems"
                                                 ItemsSource="{Binding BillsAndReturnsCommitments}"
                                                 VerticalOptions="FillAndExpand">
 
-                                                 <CollectionView.ItemsLayout>
-                                                   <GridItemsLayout Orientation="Horizontal"
-                                                                    HorizontalItemSpacing="10"/>
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout HorizontalItemSpacing="10" Orientation="Horizontal" />
                                                 </CollectionView.ItemsLayout>
 
                                                 <CollectionView.ItemTemplate>
                                                     <DataTemplate>
 
-                                                        <StackLayout  Orientation="Horizontal"
-                                                                      WidthRequest="350">
+                                                        <StackLayout Orientation="Horizontal" WidthRequest="350">
 
                                                             <cards:SfCardView
+                                                                BackgroundColor="Transparent"
                                                                 BorderColor="{StaticResource NeutralLightGrey}"
                                                                 BorderWidth="1"
-                                                                BackgroundColor="Transparent"
-                                                                HorizontalOptions="FillAndExpand"
-                                                                CornerRadius="14">
+                                                                CornerRadius="14"
+                                                                HorizontalOptions="FillAndExpand">
                                                                 <StackLayout Orientation="Horizontal">
 
                                                                     <cards:SfCardView
+                                                                        BackgroundColor="Transparent"
                                                                         CornerRadius="14"
                                                                         HeightRequest="80"
-                                                                        BackgroundColor="Transparent"
                                                                         IsVisible="{Binding IsUnSubmittedReturn}"
                                                                         WidthRequest="80">
                                                                         <StackLayout
@@ -718,9 +706,9 @@
                                                                     </cards:SfCardView>
 
                                                                     <cards:SfCardView
+                                                                        BackgroundColor="Transparent"
                                                                         CornerRadius="14"
                                                                         HeightRequest="80"
-                                                                        BackgroundColor="Transparent"
                                                                         IsVisible="{Binding IsPaymentOverdue}"
                                                                         WidthRequest="80">
                                                                         <StackLayout
@@ -976,388 +964,377 @@
 
                                     <!--  Last Transaction  -->
 
-                                    <StackLayout HorizontalOptions="FillAndExpand"
-                                                 IsVisible="{Binding IfontRegInVATAndZakat}"
-                                                VerticalOptions="Start"
-                                                 Spacing="10"
-                                                 Padding="15">
+                                    <StackLayout
+                                        Padding="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        IsVisible="{Binding IfontRegInVATAndZakat}"
+                                        Spacing="10"
+                                        VerticalOptions="Start">
 
-                                            <StackLayout
-                                                Margin="0,10,0,0"
-                                                IsVisible="true"
-                                                Orientation="Horizontal">
-                                                <Label
-                                                    Style="{StaticResource SectionTitleBlack}"
-                                                    Text="{x:Static ResourceManager:AppResources.DashboardLastTransaction}"
-                                                    VerticalOptions="Center" />
-                                                <Image
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Source="circle_arrow_right.png"
-                                                    Style="{DynamicResource BackButtonArrow}">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                            </StackLayout>
+                                        <StackLayout
+                                            Margin="0,10,0,0"
+                                            IsVisible="true"
+                                            Orientation="Horizontal">
+                                            <Label
+                                                Style="{StaticResource SectionTitleBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.DashboardLastTransaction}"
+                                                VerticalOptions="Center" />
+                                            <Image
+                                                HorizontalOptions="EndAndExpand"
+                                                Source="circle_arrow_right.png"
+                                                Style="{DynamicResource BackButtonArrow}">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="AccountStatements_Tapped" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
 
-                                            <Grid>
+                                        <Grid>
 
-                                                <CollectionView
-                                                    HeightRequest="{Binding LastTransactionsListHeight}"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    VerticalScrollBarVisibility="Never"
-                                                    ItemsSource="{Binding ACStatementBills, Mode=TwoWay}"
-                                                    VerticalOptions="Center">
+                                            <CollectionView
+                                                HeightRequest="{Binding LastTransactionsListHeight}"
+                                                HorizontalOptions="FillAndExpand"
+                                                ItemsSource="{Binding ACStatementBills, Mode=TwoWay}"
+                                                VerticalOptions="Center"
+                                                VerticalScrollBarVisibility="Never">
 
-                                                    <CollectionView.ItemsLayout>
-                                                   <GridItemsLayout Orientation="Vertical"
-                                                                    VerticalItemSpacing="8" />
+                                                <CollectionView.ItemsLayout>
+                                                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="8" />
                                                 </CollectionView.ItemsLayout>
 
-                                                    <CollectionView.ItemTemplate>
-                                                        <DataTemplate>
-
-                                                            <cards:SfCardView
-                                                                Margin="3"
-                                                                BackgroundColor="Transparent"
-                                                                BorderColor="{StaticResource NeutralLightGrey}"
-                                                                BorderWidth="1"
-                                                                CornerRadius="16"
-                                                                VerticalOptions="Fill">
-
-                                                                <StackLayout
-                                                                    Margin="10"
-                                                                    Spacing="8">
-
-                                                                    <Grid HorizontalOptions="FillAndExpand"
-                                                                          ColumnDefinitions="*,auto">
-
-                                                                        <StackLayout>
-
-                                                                            <Label
-                                                                                Style="{StaticResource BodyLabelBlackMedium}"
-                                                                                Text="{Binding Abtypt}" />
-                                                                            <Label
-                                                                                Style="{StaticResource CaptionLabelGrey}"
-                                                                                Text="{Binding FormatedFaedn}" />
-
-                                                                        </StackLayout>
-
-                                                                        <Frame
-                                                                            Grid.Row="0"
-                                                                            Grid.Column="1"
-                                                                            Padding="15"
-                                                                            BackgroundColor="{StaticResource Primary}"
-                                                                            CornerRadius="14"
-                                                                            HorizontalOptions="FillAndExpand"
-                                                                            Opacity=".2"
-                                                                            VerticalOptions="CenterAndExpand">
-
-                                                                            <Frame.Triggers>
-                                                                                <DataTrigger
-                                                                                    Binding="{Binding StatusText}"
-                                                                                    TargetType="Frame"
-                                                                                    Value="{x:Static ResourceManager:AppResources.Paid}">
-                                                                                    <Setter Property="BackgroundColor" Value="{StaticResource SuccessBg}" />
-                                                                                </DataTrigger>
-                                                                                <DataTrigger
-                                                                                    Binding="{Binding StatusText}"
-                                                                                    TargetType="Frame"
-                                                                                    Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
-                                                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
-                                                                                </DataTrigger>
-                                                                                <DataTrigger
-                                                                                    Binding="{Binding StatusText}"
-                                                                                    TargetType="Frame"
-                                                                                    Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                                                    <Setter Property="BackgroundColor" Value="{StaticResource ErrorBg}" />
-                                                                                </DataTrigger>
-                                                                            </Frame.Triggers>
-
-                                                                        </Frame>
-
-                                                                        <StackLayout
-                                                                            Grid.Row="0"
-                                                                            Grid.Column="1"
-                                                                            Padding="15,12"
-                                                                            HorizontalOptions="FillAndExpand"
-                                                                            Orientation="Horizontal"
-                                                                            Spacing="2"
-                                                                            VerticalOptions="FillAndExpand">
-
-                                                                            <Label
-                                                                                HorizontalOptions="EndAndExpand"
-                                                                                LineBreakMode="WordWrap"
-                                                                                Style="{StaticResource CaptionLabelBlack}"
-                                                                                TextColor="{StaticResource NewDarkGreenColor}"
-                                                                                VerticalOptions="CenterAndExpand">
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Text="{Binding TestDueAmount}" />
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                                <Label.Triggers>
-                                                                                    <DataTrigger
-                                                                                        Binding="{Binding StatusText}"
-                                                                                        TargetType="Label"
-                                                                                        Value="{x:Static ResourceManager:AppResources.Paid}">
-                                                                                        <Setter Property="TextColor" Value="{StaticResource Success}" />
-                                                                                    </DataTrigger>
-                                                                                    <DataTrigger
-                                                                                        Binding="{Binding StatusText}"
-                                                                                        TargetType="Label"
-                                                                                        Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
-                                                                                        <Setter Property="TextColor" Value="{StaticResource Partial}" />
-                                                                                    </DataTrigger>
-                                                                                    <DataTrigger
-                                                                                        Binding="{Binding StatusText}"
-                                                                                        TargetType="Label"
-                                                                                        Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                                                        <Setter Property="TextColor" Value="{StaticResource Error}" />
-                                                                                    </DataTrigger>
-                                                                                </Label.Triggers>
-                                                                            </Label>
-
-                                                                            <Label
-                                                                                HorizontalOptions="CenterAndExpand"
-                                                                                LineBreakMode="WordWrap"
-                                                                                Style="{StaticResource CaptionLabelBlack}"
-                                                                                TextColor="{StaticResource NewDarkGreenColor}"
-                                                                                VerticalOptions="CenterAndExpand">
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                                <Label.Triggers>
-                                                                                    <DataTrigger
-                                                                                        Binding="{Binding StatusText}"
-                                                                                        TargetType="Label"
-                                                                                        Value="{x:Static ResourceManager:AppResources.Paid}">
-                                                                                        <Setter Property="TextColor" Value="{StaticResource Success}" />
-                                                                                    </DataTrigger>
-                                                                                    <DataTrigger
-                                                                                        Binding="{Binding StatusText}"
-                                                                                        TargetType="Label"
-                                                                                        Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
-                                                                                        <Setter Property="TextColor" Value="{StaticResource Partial}" />
-                                                                                    </DataTrigger>
-                                                                                    <DataTrigger
-                                                                                        Binding="{Binding StatusText}"
-                                                                                        TargetType="Label"
-                                                                                        Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                                                        <Setter Property="TextColor" Value="{StaticResource Error}" />
-                                                                                    </DataTrigger>
-                                                                                </Label.Triggers>
-                                                                            </Label>
-
-                                                                        </StackLayout>
-
-                                                                    </Grid>
-
-                                                                </StackLayout>
-                                                            </cards:SfCardView>
-
-                                                        </DataTemplate>
-                                                    </CollectionView.ItemTemplate>
-
-                                                </CollectionView>
-
-                                                <Grid IsVisible="{Binding IsAccountsStatementLoading}">
-
-                                                    <StackLayout
-                                                        Grid.Row="0"
-                                                        Grid.Column="0"
-                                                        Padding="15,15"
-                                                        BackgroundColor="Transparent"
-                                                        HorizontalOptions="Center"
-                                                        Opacity="0.8"
-                                                        Orientation="Vertical"
-                                                        VerticalOptions="Center">
-                                                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                                                            <busyindicator:SfBusyIndicator
-                                                                AnimationType="Cupertino"
-                                                                HeightRequest="70"
-                                                                HorizontalOptions="CenterAndExpand"
-                                                                IndicatorColor="{StaticResource Secondary}"
-                                                                IsRunning="True"
-                                                                SizeFactor="0.6"
-                                                                TitlePlacement="Bottom"
-                                                                VerticalOptions="CenterAndExpand"
-                                                                WidthRequest="70" />
-                                                        </StackLayout>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </Grid>
-
-                                    </StackLayout>
-
-                                    <!-- Is Instalment Plan-->
-                                    <StackLayout
-                                               IsVisible="{Binding IsInstalmentPlanVisible}" 
-                                                VerticalOptions="Start"
-                                                Spacing="10"
-                                                Padding="15"
-                                                
-                                                HorizontalOptions="FillAndExpand">
-
-                                           <StackLayout Orientation="Horizontal">
-                                                <Label
-                                                    Style="{StaticResource SectionTitleBlack}"
-                                                    Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
-                                                    VerticalOptions="Center" />
-                                                <Image
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Source="circle_arrow_right.png"
-                                                    Style="{DynamicResource BackButtonArrow}">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="InstalmentPlan_Tapped" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                            </StackLayout>
-
-                                           <CollectionView
-                                                x:Name="InstalmentsCollectionView"
-                                                BackgroundColor="Transparent"
-                                                HeightRequest="170"
-                                                HorizontalOptions="FillAndExpand"
-                                                HorizontalScrollBarVisibility="Never"
-                                                ItemsLayout="HorizontalList"
-                                                ItemsSource="{Binding InstalmentPlanList}"
-                                                VerticalOptions="FillAndExpand">
                                                 <CollectionView.ItemTemplate>
                                                     <DataTemplate>
 
-                                                        <StackLayout
-                                                            Padding="0,0,10,0"
-                                                            Orientation="Horizontal"
-                                                            WidthRequest="366">
+                                                        <cards:SfCardView
+                                                            Margin="3"
+                                                            BackgroundColor="Transparent"
+                                                            BorderColor="{StaticResource NeutralLightGrey}"
+                                                            BorderWidth="1"
+                                                            CornerRadius="16"
+                                                            VerticalOptions="Fill">
 
-                                                            <cards:SfCardView
-                                                                Margin="5"
-                                                                Padding="15"
-                                                                BackgroundColor="Transparent"
-                                                                BorderColor="{StaticResource NeutralLightGrey}"
-                                                                BorderWidth="1"
-                                                                CornerRadius="14"
-                                                                HorizontalOptions="FillAndExpand">
+                                                            <StackLayout Margin="10" Spacing="8">
 
-                                                                <StackLayout HorizontalOptions="FillAndExpand"
-                                                                             Orientation="Horizontal">
+                                                                <Grid ColumnDefinitions="*,auto" HorizontalOptions="FillAndExpand">
 
+                                                                    <StackLayout>
 
-                                                                    <!--  SFChart Instalments  -->
-
-                                                                    <Grid
-                                                                        HeightRequest="80"
-                                                                        VerticalOptions="CenterAndExpand"
-                                                                        WidthRequest="80">
-
-                                                                        <chart:SfCartesianChart
-                                                                            HeightRequest="80"
-                                                                            Rotation="-90"
-                                                                            Series="{Binding Series}"
-                                                                            VerticalOptions="CenterAndExpand"
-                                                                            WidthRequest="80">
-
-                                                                            <chart:SfCartesianChart.XAxes>
-                                                                                <chart:CategoryAxis />
-                                                                            </chart:SfCartesianChart.XAxes>
-                                                                            <chart:SfCartesianChart.YAxes>
-                                                                                <chart:NumericalAxis />
-                                                                            </chart:SfCartesianChart.YAxes>
-                                                                        </chart:SfCartesianChart>
-
-                                                                        <Image
-                                                                            Margin="2,2,0,0"
-                                                                            HeightRequest="32"
-                                                                            Source="sf_Payment.png"
-                                                                            VerticalOptions="Center"
-                                                                            WidthRequest="32" />
-                                                                    </Grid>
-
-                                                                    <!--  SFChart Instalments End  -->
-
-                                                                    <StackLayout
-                                                                        HorizontalOptions="FillAndExpand"
-                                                                        VerticalOptions="CenterAndExpand">
-
-                                                                        <Label
-                                                                            Margin="0,-4,0,-4"
-                                                                            Padding="0"
-                                                                            Style="{StaticResource SectionTitleBlackBold}"
-                                                                            Text="{Binding TaxTypeDes}" />
-
-                                                                        <Label
-                                                                            Margin="0,-4,0,-4"
-                                                                            Padding="0"
-                                                                            FontSize="15"
-                                                                            Style="{StaticResource ValueLabelBlackLight}">
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span
-                                                                                        FontSize="15"
-                                                                                        Style="{StaticResource ValueLabelBlackLight}"
-                                                                                        Text="{Binding TotalInstAmt, Converter={StaticResource commaSeparatorConverter}}" />
-                                                                                    <Span Text=" " />
-                                                                                    <Span
-                                                                                        FontSize="15"
-                                                                                        Style="{StaticResource ValueLabelBlackLight}"
-                                                                                        Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-
-                                                                        <Label
-                                                                            Margin="0,0,0,-4"
-                                                                            Padding="0"
-                                                                            Style="{StaticResource BodyLabelBlackMedium}"
-                                                                            Text="{x:Static ResourceManager:AppResources.DashBoardNextPaymentDue}" />
-
-                                                                        <Label
-                                                                            Margin="0,0,10,0"
-                                                                            FontSize="15"
-                                                                            Style="{StaticResource ValueLabelBlackLight}"
-                                                                            Text="{Binding DayMonthToDisplay}" />
-
-                                                                        <StackLayout Margin="0,-4,5,-4" Orientation="Horizontal">
-
-
-                                                                            <BoxView
-                                                                                Margin="0,13"
-                                                                                BackgroundColor="{StaticResource SuccessColor}"
-                                                                                CornerRadius="8"
-                                                                                HeightRequest="8"
-                                                                                HorizontalOptions="End"
-                                                                                VerticalOptions="Center"
-                                                                                WidthRequest="8" />
-
-
-                                                                            <Label Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NextInstAmt, Converter={StaticResource commaSeparatorConverter}}">
-
-
-
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NextInstAmt, Converter={StaticResource commaSeparatorConverter}}" />
-                                                                                        <Span Text=" " />
-                                                                                        <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-                                                                        </StackLayout>
+                                                                        <Label Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding Abtypt}" />
+                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding FormatedFaedn}" />
 
                                                                     </StackLayout>
 
-                                                                </StackLayout>
-                                                            </cards:SfCardView>
+                                                                    <Frame
+                                                                        Grid.Row="0"
+                                                                        Grid.Column="1"
+                                                                        Padding="15"
+                                                                        BackgroundColor="{StaticResource Primary}"
+                                                                        CornerRadius="14"
+                                                                        HorizontalOptions="FillAndExpand"
+                                                                        Opacity=".2"
+                                                                        VerticalOptions="CenterAndExpand">
 
-                                                        </StackLayout>
+                                                                        <Frame.Triggers>
+                                                                            <DataTrigger
+                                                                                Binding="{Binding StatusText}"
+                                                                                TargetType="Frame"
+                                                                                Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                                                <Setter Property="BackgroundColor" Value="{StaticResource SuccessBg}" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger
+                                                                                Binding="{Binding StatusText}"
+                                                                                TargetType="Frame"
+                                                                                Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                                                <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger
+                                                                                Binding="{Binding StatusText}"
+                                                                                TargetType="Frame"
+                                                                                Value="{x:Static ResourceManager:AppResources.UnPaid}">
+                                                                                <Setter Property="BackgroundColor" Value="{StaticResource ErrorBg}" />
+                                                                            </DataTrigger>
+                                                                        </Frame.Triggers>
+
+                                                                    </Frame>
+
+                                                                    <StackLayout
+                                                                        Grid.Row="0"
+                                                                        Grid.Column="1"
+                                                                        Padding="15,12"
+                                                                        HorizontalOptions="FillAndExpand"
+                                                                        Orientation="Horizontal"
+                                                                        Spacing="2"
+                                                                        VerticalOptions="FillAndExpand">
+
+                                                                        <Label
+                                                                            HorizontalOptions="EndAndExpand"
+                                                                            LineBreakMode="WordWrap"
+                                                                            Style="{StaticResource CaptionLabelBlack}"
+                                                                            TextColor="{StaticResource NewDarkGreenColor}"
+                                                                            VerticalOptions="CenterAndExpand">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding TestDueAmount}" />
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                            <Label.Triggers>
+                                                                                <DataTrigger
+                                                                                    Binding="{Binding StatusText}"
+                                                                                    TargetType="Label"
+                                                                                    Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                                                    <Setter Property="TextColor" Value="{StaticResource Success}" />
+                                                                                </DataTrigger>
+                                                                                <DataTrigger
+                                                                                    Binding="{Binding StatusText}"
+                                                                                    TargetType="Label"
+                                                                                    Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                                                    <Setter Property="TextColor" Value="{StaticResource Partial}" />
+                                                                                </DataTrigger>
+                                                                                <DataTrigger
+                                                                                    Binding="{Binding StatusText}"
+                                                                                    TargetType="Label"
+                                                                                    Value="{x:Static ResourceManager:AppResources.UnPaid}">
+                                                                                    <Setter Property="TextColor" Value="{StaticResource Error}" />
+                                                                                </DataTrigger>
+                                                                            </Label.Triggers>
+                                                                        </Label>
+
+                                                                        <Label
+                                                                            HorizontalOptions="CenterAndExpand"
+                                                                            LineBreakMode="WordWrap"
+                                                                            Style="{StaticResource CaptionLabelBlack}"
+                                                                            TextColor="{StaticResource NewDarkGreenColor}"
+                                                                            VerticalOptions="CenterAndExpand">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                            <Label.Triggers>
+                                                                                <DataTrigger
+                                                                                    Binding="{Binding StatusText}"
+                                                                                    TargetType="Label"
+                                                                                    Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                                                    <Setter Property="TextColor" Value="{StaticResource Success}" />
+                                                                                </DataTrigger>
+                                                                                <DataTrigger
+                                                                                    Binding="{Binding StatusText}"
+                                                                                    TargetType="Label"
+                                                                                    Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                                                    <Setter Property="TextColor" Value="{StaticResource Partial}" />
+                                                                                </DataTrigger>
+                                                                                <DataTrigger
+                                                                                    Binding="{Binding StatusText}"
+                                                                                    TargetType="Label"
+                                                                                    Value="{x:Static ResourceManager:AppResources.UnPaid}">
+                                                                                    <Setter Property="TextColor" Value="{StaticResource Error}" />
+                                                                                </DataTrigger>
+                                                                            </Label.Triggers>
+                                                                        </Label>
+
+                                                                    </StackLayout>
+
+                                                                </Grid>
+
+                                                            </StackLayout>
+                                                        </cards:SfCardView>
 
                                                     </DataTemplate>
                                                 </CollectionView.ItemTemplate>
+
                                             </CollectionView>
-                                       
+
+                                            <Grid IsVisible="{Binding IsAccountsStatementLoading}">
+
+                                                <StackLayout
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Padding="15,15"
+                                                    BackgroundColor="Transparent"
+                                                    HorizontalOptions="Center"
+                                                    Opacity="0.8"
+                                                    Orientation="Vertical"
+                                                    VerticalOptions="Center">
+                                                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                                        <busyindicator:SfBusyIndicator
+                                                            AnimationType="Cupertino"
+                                                            HeightRequest="70"
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            IndicatorColor="{StaticResource Secondary}"
+                                                            IsRunning="True"
+                                                            SizeFactor="0.6"
+                                                            TitlePlacement="Bottom"
+                                                            VerticalOptions="CenterAndExpand"
+                                                            WidthRequest="70" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Grid>
+
+                                    </StackLayout>
+
+                                    <!--  Is Instalment Plan  -->
+                                    <StackLayout
+                                        Padding="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        IsVisible="{Binding IsInstalmentPlanVisible}"
+                                        Spacing="10"
+                                        VerticalOptions="Start">
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                Style="{StaticResource SectionTitleBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
+                                                VerticalOptions="Center" />
+                                            <Image
+                                                HorizontalOptions="EndAndExpand"
+                                                Source="circle_arrow_right.png"
+                                                Style="{DynamicResource BackButtonArrow}">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="InstalmentPlan_Tapped" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </StackLayout>
+
+                                        <CollectionView
+                                            x:Name="InstalmentsCollectionView"
+                                            BackgroundColor="Transparent"
+                                            HeightRequest="170"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalScrollBarVisibility="Never"
+                                            ItemsLayout="HorizontalList"
+                                            ItemsSource="{Binding InstalmentPlanList}"
+                                            VerticalOptions="FillAndExpand">
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <StackLayout
+                                                        Padding="0,0,10,0"
+                                                        Orientation="Horizontal"
+                                                        WidthRequest="366">
+
+                                                        <cards:SfCardView
+                                                            Margin="5"
+                                                            Padding="15"
+                                                            BackgroundColor="Transparent"
+                                                            BorderColor="{StaticResource NeutralLightGrey}"
+                                                            BorderWidth="1"
+                                                            CornerRadius="14"
+                                                            HorizontalOptions="FillAndExpand">
+
+                                                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+
+
+                                                                <!--  SFChart Instalments  -->
+
+                                                                <Grid
+                                                                    HeightRequest="80"
+                                                                    VerticalOptions="CenterAndExpand"
+                                                                    WidthRequest="80">
+
+                                                                    <chart:SfCartesianChart
+                                                                        HeightRequest="80"
+                                                                        Rotation="-90"
+                                                                        Series="{Binding Series}"
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        WidthRequest="80">
+
+                                                                        <chart:SfCartesianChart.XAxes>
+                                                                            <chart:CategoryAxis />
+                                                                        </chart:SfCartesianChart.XAxes>
+                                                                        <chart:SfCartesianChart.YAxes>
+                                                                            <chart:NumericalAxis />
+                                                                        </chart:SfCartesianChart.YAxes>
+                                                                    </chart:SfCartesianChart>
+
+                                                                    <Image
+                                                                        Margin="2,2,0,0"
+                                                                        HeightRequest="32"
+                                                                        Source="sf_Payment.png"
+                                                                        VerticalOptions="Center"
+                                                                        WidthRequest="32" />
+                                                                </Grid>
+
+                                                                <!--  SFChart Instalments End  -->
+
+                                                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+
+                                                                    <Label
+                                                                        Margin="0,-4,0,-4"
+                                                                        Padding="0"
+                                                                        Style="{StaticResource SectionTitleBlackBold}"
+                                                                        Text="{Binding TaxTypeDes}" />
+
+                                                                    <Label
+                                                                        Margin="0,-4,0,-4"
+                                                                        Padding="0"
+                                                                        FontSize="15"
+                                                                        Style="{StaticResource ValueLabelBlackLight}">
+                                                                        <Label.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span
+                                                                                    FontSize="15"
+                                                                                    Style="{StaticResource ValueLabelBlackLight}"
+                                                                                    Text="{Binding TotalInstAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                <Span Text=" " />
+                                                                                <Span
+                                                                                    FontSize="15"
+                                                                                    Style="{StaticResource ValueLabelBlackLight}"
+                                                                                    Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+
+                                                                    <Label
+                                                                        Margin="0,0,0,-4"
+                                                                        Padding="0"
+                                                                        Style="{StaticResource BodyLabelBlackMedium}"
+                                                                        Text="{x:Static ResourceManager:AppResources.DashBoardNextPaymentDue}" />
+
+                                                                    <Label
+                                                                        Margin="0,0,10,0"
+                                                                        FontSize="15"
+                                                                        Style="{StaticResource ValueLabelBlackLight}"
+                                                                        Text="{Binding DayMonthToDisplay}" />
+
+                                                                    <StackLayout Margin="0,-4,5,-4" Orientation="Horizontal">
+
+
+                                                                        <BoxView
+                                                                            Margin="0,13"
+                                                                            BackgroundColor="{StaticResource SuccessColor}"
+                                                                            CornerRadius="8"
+                                                                            HeightRequest="8"
+                                                                            HorizontalOptions="End"
+                                                                            VerticalOptions="Center"
+                                                                            WidthRequest="8" />
+
+
+                                                                        <Label Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NextInstAmt, Converter={StaticResource commaSeparatorConverter}}">
+
+
+
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{Binding NextInstAmt, Converter={StaticResource commaSeparatorConverter}}" />
+                                                                                    <Span Text=" " />
+                                                                                    <Span Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+                                                                    </StackLayout>
+
+                                                                </StackLayout>
+
+                                                            </StackLayout>
+                                                        </cards:SfCardView>
+
+                                                    </StackLayout>
+
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+
                                     </StackLayout>
 
                                 </StackLayout>
@@ -1373,15 +1350,13 @@
                 <!--  Side Menu  -->
                 <Grid
                     x:Name="OldMenu"
-                    RowDefinitions="auto,*"
-                    IsVisible="{Binding MenuViewVisible}">
-                    <StackLayout
-                        Padding="15,15,15,0"
-                        HorizontalOptions="FillAndExpand">
+                    IsVisible="{Binding MenuViewVisible}"
+                    RowDefinitions="auto,*">
+                    <StackLayout Padding="15,15,15,0" HorizontalOptions="FillAndExpand">
 
                         <Grid ColumnDefinitions="40,*,40">
 
-                            <StackLayout >
+                            <StackLayout>
                                 <Image
                                     HeightRequest="40"
                                     HorizontalOptions="Start"
@@ -1392,7 +1367,7 @@
 
 
 
-                            <StackLayout  Grid.Column="2">
+                            <StackLayout Grid.Column="2">
                                 <Image
                                     Grid.Column="2"
                                     HorizontalOptions="EndAndExpand"
@@ -1413,10 +1388,11 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
 
-                        <ScrollView VerticalScrollBarVisibility="Never"
-                                    HorizontalOptions="FillAndExpand"
-                                    Margin="0,0,0,50"
-                        VerticalOptions="FillAndExpand">
+                        <ScrollView
+                            Margin="0,0,0,50"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never">
                             <Grid>
                                 <Grid x:Name="ParentMenu">
                                     <Grid.RowDefinitions>
@@ -1564,7 +1540,7 @@
                                                     <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
-<BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                            <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
                                                 <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.GeneralServices}" />
@@ -1588,18 +1564,21 @@
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             </StackLayout>
                                             <!--  Subsidy Request Ends  -->
-                                             <!--Contact Zatca For Audit Case starts-->
-                                            <StackLayout  Orientation="Vertical" Spacing="20" IsVisible="{Binding IsContactZatcaEmpTileVisible}">
+                                            <!--  Contact Zatca For Audit Case starts  -->
+                                            <StackLayout
+                                                IsVisible="{Binding IsContactZatcaEmpTileVisible}"
+                                                Orientation="Vertical"
+                                                Spacing="20">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
-                                                    <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}"/>
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ContactZatcaEmp}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                                    <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
+                                                    <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ContactZatcaEmp}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ContactZatcaEmp_Tapped"/>
+                                                        <TapGestureRecognizer Tapped="ContactZatcaEmp_Tapped" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding IsContactZatcaEmpTileVisible}"/>
+                                                <BoxView IsVisible="{Binding IsContactZatcaEmpTileVisible}" Style="{StaticResource WhiteLineSeperator}" />
                                             </StackLayout>
-                                            <!--Contact Zatca For Audit Case ends-->
+                                            <!--  Contact Zatca For Audit Case ends  -->
                                             <!--  CR6264 starts  -->
 
                                             <StackLayout
@@ -1708,11 +1687,10 @@
 
             </Grid>
 
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
-             
-             <!--  Nav Menu Starts  -->
-             <custom:NavMenu Grid.Row="1"
-                               VerticalOptions="EndAndExpand"/>
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Nav Menu Starts  -->
+            <custom:NavMenu Grid.Row="1" VerticalOptions="EndAndExpand" />
 
             <!--#region SurveyView {Binding IsShowMsgView}-->
             <Grid
@@ -1760,9 +1738,10 @@
                                 Style="{StaticResource BodyLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.SurveyIntroMsg}" />
 
-                            <Grid Margin="10"
-                                  ColumnSpacing="10"
-                                  ColumnDefinitions="*,*">
+                            <Grid
+                                Margin="10"
+                                ColumnDefinitions="*,*"
+                                ColumnSpacing="10">
                                 <Frame
                                     Grid.Column="0"
                                     Padding="12"

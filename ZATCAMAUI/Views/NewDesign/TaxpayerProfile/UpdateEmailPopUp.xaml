@@ -23,36 +23,38 @@
                 x:Name="UpdateEmail"
                 Grid.Row="0"
                 IsVisible="True">
-                <Image Margin="24,16,24,8"
-                       Source="close"
-                       WidthRequest="25"
-                       HeightRequest="25"
-                       HorizontalOptions="End">
+                <Image
+                    Margin="24,16,24,8"
+                    HeightRequest="25"
+                    HorizontalOptions="End"
+                    Source="close"
+                    WidthRequest="25">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnBackArrowTapped" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <BoxView BackgroundColor="{StaticResource NeutralLightGrey}"
-                         Style="{StaticResource lineSeperator}" />
+                <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" Style="{StaticResource lineSeperator}" />
 
                 <StackLayout Padding="24,16,24,0">
-                    <Label Style="{StaticResource SectionTitleBlackBold}"
-                           HorizontalOptions="Start"
-                           Margin="0,5"
-                           Text="{x:Static ResourceManager:AppResources.ZUpdateEmail}" />
+                    <Label
+                        Margin="0,5"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource SectionTitleBlackBold}"
+                        Text="{x:Static ResourceManager:AppResources.ZUpdateEmail}" />
 
-                    <Label Style="{StaticResource CaptionLabelGrey}"
-                           HorizontalOptions="Start"
-                           Text="{x:Static ResourceManager:AppResources.ZCurrentEmail}" />
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.ZCurrentEmail}" />
 
                     <inputLayout:SfTextInputLayout
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
-                         IsHintAlwaysFloated="True"
                         OutlineCornerRadius="10"
                         Stroke="{StaticResource Primary}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -70,16 +72,17 @@
                         </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
-                    <Label Style="{StaticResource CaptionLabelGrey}"
-                           HorizontalOptions="Start"
-                           Text="{x:Static ResourceManager:AppResources.NewEmail}" />
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.NewEmail}" />
                     <inputLayout:SfTextInputLayout
                         x:Name="Frm_NewEmail"
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
-                         IsHintAlwaysFloated="True"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="10"
                         Stroke="{StaticResource Primary}">
@@ -99,16 +102,17 @@
                         </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
-                    <Label Style="{StaticResource CaptionLabelGrey}"
-                           HorizontalOptions="Start"
-                           Text="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}" />
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}" />
                     <inputLayout:SfTextInputLayout
                         x:Name="Frm_confirmEmail"
                         ContainerBackground="White"
                         ContainerType="Outlined"
-                        IsHintAlwaysFloated="True"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="8"
                         Stroke="{StaticResource Primary}">
@@ -138,8 +142,8 @@
 
             </StackLayout>
 
-             <custom:Loader Grid.RowSpan="2"  IsVisible="{Binding IsLoading}"/>
-         
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </Border>
 

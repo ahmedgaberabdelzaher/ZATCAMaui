@@ -3,22 +3,18 @@
     x:Class="ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages.NewZakatObjectionPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
             <Style x:Key="boxIndicator" TargetType="BoxView">
                 <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}" />
                 <Setter Property="HeightRequest" Value="10" />
@@ -188,8 +184,8 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="0"
-                                     IsHintAlwaysFloated="True"
                                     Margin="0"
+                                    IsHintAlwaysFloated="True"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
                                 </inputLayout:SfTextInputLayout>
@@ -197,8 +193,8 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                     IsHintAlwaysFloated="True"
                                     Margin="0"
+                                    IsHintAlwaysFloated="True"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
 
@@ -215,9 +211,10 @@
                         IsVisible="{Binding IsObjectionReasonVisible}">
                         <StackLayout>
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="Write Your Objection Reason" />
-                            <inputLayout:SfTextInputLayout Margin="0"
-                                                            IsHintAlwaysFloated="True"
-                                                           Style="{StaticResource InputTableTextInputLayoutStyle}">
+                            <inputLayout:SfTextInputLayout
+                                Margin="0"
+                                IsHintAlwaysFloated="True"
+                                Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -369,8 +366,8 @@
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="3"
                                 Grid.Column="0"
-                                 IsHintAlwaysFloated="True"
                                 Margin="0,-10,0,0"
+                                IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Q1720187" />
                             </inputLayout:SfTextInputLayout>
@@ -378,8 +375,8 @@
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="3"
                                 Grid.Column="1"
-                                 IsHintAlwaysFloated="True"
                                 Margin="0,-10,0,0"
+                                IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="7 jun 1995" />
 
@@ -408,8 +405,8 @@
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="5"
                                 Grid.ColumnSpan="2"
-                                 IsHintAlwaysFloated="True"
                                 Margin="0,-10,0,0"
+                                IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Zaed Hardy" />
                             </inputLayout:SfTextInputLayout>
@@ -437,9 +434,10 @@
                         <BoxView Style="{StaticResource lineSeperator}" />
                         <ScrollView>
                             <StackLayout>
-                                <inputLayout:SfTextInputLayout Margin="0"
-                                                                IsHintAlwaysFloated="True"
-                                                               Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <inputLayout:SfTextInputLayout
+                                    Margin="0"
+                                    IsHintAlwaysFloated="True"
+                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image>

@@ -9,8 +9,8 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    BackgroundImageSource="partials_background.png"
     ios:Page.UseSafeArea="False"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
@@ -46,8 +46,7 @@
     </ContentPage.Padding>
     <ContentPage.Content>
 
-        <Grid RowDefinitions="Auto,*"
-              Padding="0">
+        <Grid Padding="0" RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
@@ -69,129 +68,127 @@
                 Grid.Row="1"
                 Padding="0"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                Style="{StaticResource CommonTopCurves}">
+                Style="{StaticResource CommonTopCurves}"
+                VerticalOptions="FillAndExpand">
 
-                <StackLayout  Padding="10,0"
-                            Spacing="20">
-                       
-                        <!--  Live Video Sub Title Label  -->
-                        <Label
-                            Margin="0,10,0,0"
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="28"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
-                            TextColor="#58595B" />
+                <StackLayout Padding="10,0" Spacing="20">
 
-                        <!--  Video URL  -->
-                        <Frame
-                            Padding="0"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="20"
-                            HeightRequest="250"
-                            IsClippedToBounds="True"
-                            WidthRequest="470">
-                            <WebView Source="{Binding VideoUrl}" />
-                        </Frame>
+                    <!--  Live Video Sub Title Label  -->
+                    <Label
+                        Margin="0,10,0,0"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="28"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
+                        TextColor="#58595B" />
 
-                        <!--  Live Video Sub Title Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="18"
-                            
-                            HorizontalOptions="CenterAndExpand"
-                            Text="{Binding SelectedVideo}"
-                            TextColor="#58595B"
-                            VerticalOptions="Center" />
+                    <!--  Video URL  -->
+                    <Frame
+                        Padding="0"
+                        BorderColor="#EBEBEB"
+                        CornerRadius="20"
+                        HeightRequest="250"
+                        IsClippedToBounds="True"
+                        WidthRequest="470">
+                        <WebView Source="{Binding VideoUrl}" />
+                    </Frame>
 
-                        <CollectionView  x:Name="videosList"
-                                         HorizontalOptions="FillAndExpand"
-                                         VerticalOptions="FillAndExpand"
-                                         ItemSizingStrategy="MeasureAllItems"
-                                      CollectionView.ItemsSource="{Binding LiveVideosList}">
+                    <!--  Live Video Sub Title Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding SelectedVideo}"
+                        TextColor="#58595B"
+                        VerticalOptions="Center" />
 
-                            <CollectionView.ItemsLayout>
-                                    <GridItemsLayout Orientation="Vertical"
-                                                     HorizontalItemSpacing="15"
-                                                     VerticalItemSpacing="15"
-                                                     Span="2"/>
-                            </CollectionView.ItemsLayout>
+                    <CollectionView
+                        x:Name="videosList"
+                        CollectionView.ItemsSource="{Binding LiveVideosList}"
+                        HorizontalOptions="FillAndExpand"
+                        ItemSizingStrategy="MeasureAllItems"
+                        VerticalOptions="FillAndExpand">
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout
+                                HorizontalItemSpacing="15"
+                                Orientation="Vertical"
+                                Span="2"
+                                VerticalItemSpacing="15" />
+                        </CollectionView.ItemsLayout>
 
 
-                            <CollectionView.ItemTemplate>
+                        <CollectionView.ItemTemplate>
 
-                                    <DataTemplate>
+                            <DataTemplate>
 
-                                        <Frame
-                                            x:Name="Item"
-                                            Padding="0"
-                                            WidthRequest="140"
-                                            HeightRequest="150"
-                                            BorderColor="#EBEBEB"
-                                            CornerRadius="20"
-                                            IsClippedToBounds="True">
+                                <Frame
+                                    x:Name="Item"
+                                    Padding="0"
+                                    BorderColor="#EBEBEB"
+                                    CornerRadius="20"
+                                    HeightRequest="150"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="140">
 
-                                            <StackLayout Padding="0" >
+                                    <StackLayout Padding="0">
 
-                                                <!--  Live video Label  -->
-                                                <Label
-                                                    Margin="5,0"
-                                                    FontFamily="{StaticResource SomarRegular}"
-                                                    FontSize="14"
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    HorizontalTextAlignment="Center"
-                                                    LineBreakMode="WordWrap"
-                                                    Text="{Binding VideoName}"
-                                                    TextColor="#58595B"
-                                                    VerticalOptions="CenterAndExpand" />
+                                        <!--  Live video Label  -->
+                                        <Label
+                                            Margin="5,0"
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            FontSize="14"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            LineBreakMode="WordWrap"
+                                            Text="{Binding VideoName}"
+                                            TextColor="#58595B"
+                                            VerticalOptions="CenterAndExpand" />
 
-                                                <!--  Bottom bold frame  -->
-                                                <Border
-                                                    BackgroundColor="#0996D4"
-                                                    StrokeShape="RoundRectangle 0,0,15,15"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    IsVisible="{Binding IsSelected}"
-                                                    Style="{StaticResource CommonTopCurves}"
-                                                    VerticalOptions="EndAndExpand" />
+                                        <!--  Bottom bold frame  -->
+                                        <Border
+                                            BackgroundColor="#0996D4"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsVisible="{Binding IsSelected}"
+                                            StrokeShape="RoundRectangle 0,0,15,15"
+                                            Style="{StaticResource CommonTopCurves}"
+                                            VerticalOptions="EndAndExpand" />
 
-                                                <StackLayout.GestureRecognizers>
+                                        <StackLayout.GestureRecognizers>
 
-                                                    <TapGestureRecognizer
-                                                        BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
-                                                        Command="{Binding SelectedVideoItemCommand}"
-                                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                            <TapGestureRecognizer
+                                                BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
+                                                Command="{Binding SelectedVideoItemCommand}"
+                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
 
-                                                </StackLayout.GestureRecognizers>
+                                        </StackLayout.GestureRecognizers>
 
-                                            </StackLayout>
+                                    </StackLayout>
 
-                                            <Frame.GestureRecognizers>
+                                    <Frame.GestureRecognizers>
 
-                                                <TapGestureRecognizer
-                                                    BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
-                                                    Command="{Binding SelectedVideoItemCommand}"
-                                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
+                                            Command="{Binding SelectedVideoItemCommand}"
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
 
-                                            </Frame.GestureRecognizers>
+                                    </Frame.GestureRecognizers>
 
-                                        </Frame>
-                                    </DataTemplate>
+                                </Frame>
+                            </DataTemplate>
 
-                                </CollectionView.ItemTemplate>
+                        </CollectionView.ItemTemplate>
 
-                        </CollectionView>
+                    </CollectionView>
 
                 </StackLayout>
 
             </Border>
 
             <!--  Loader  -->
-             <custom:Loader Grid.RowSpan="2"
-                            IsVisible="{Binding IsLoading}" />
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-            <custom:BottomMenu Grid.Row="2"
-                                 VerticalOptions="EndAndExpand"/>
+            <custom:BottomMenu Grid.Row="2" VerticalOptions="EndAndExpand" />
 
         </Grid>
 

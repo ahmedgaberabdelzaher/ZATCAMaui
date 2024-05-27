@@ -5,17 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -53,8 +53,8 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
-                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="8"
                             Stroke="{StaticResource Primary}"
                             Style="{StaticResource TextInputLayout}">
@@ -97,9 +97,9 @@
                             </custom:CustomSfPicker.HeaderView>
 
 
-                         <custom:CustomSfPicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomSfPicker.SelectionView>
+                            <custom:CustomSfPicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </custom:CustomSfPicker.SelectionView>
 
                             <custom:CustomSfPicker.TextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -153,7 +153,7 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="8"
                             Stroke="{StaticResource Primary}"
@@ -198,9 +198,9 @@
                             </custom:CustomSfPicker.HeaderView>
 
 
-                         <custom:CustomSfPicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomSfPicker.SelectionView>
+                            <custom:CustomSfPicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </custom:CustomSfPicker.SelectionView>
 
                             <custom:CustomSfPicker.TextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -326,15 +326,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="True"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="True"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand" />
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

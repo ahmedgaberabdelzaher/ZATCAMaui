@@ -110,13 +110,13 @@
 
                             </Label>
 
-                            <!--MobileNumber Entry-->  
+                            <!--  MobileNumber Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                 IsHintAlwaysFloated="True"
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -150,12 +150,12 @@
 
                             </Label>
 
-                              <!--Email Entry-->  
+                            <!--  Email Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
-                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -185,12 +185,12 @@
 
                             </Label>
 
-                            <!--Address Entry-->  
+                            <!--  Address Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">

@@ -13,14 +13,6 @@
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
 
     <Border
         BackgroundColor="White"
@@ -242,15 +234,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="{Binding IsLoading}"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="{Binding IsLoading}"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

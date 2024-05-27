@@ -3,13 +3,13 @@
     x:Class="ZATCAMAUI.Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormSuccessPaveView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundImageSource="partials_background"
-    NavigationPage.HasNavigationBar="False"
     FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
         <!--<ScrollView>-->

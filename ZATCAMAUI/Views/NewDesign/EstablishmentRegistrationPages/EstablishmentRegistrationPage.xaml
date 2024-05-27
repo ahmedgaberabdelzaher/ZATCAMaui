@@ -14,11 +14,11 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="ESTRegistrationPage"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -42,8 +42,8 @@
                 Padding="{OnPlatform Android='0',
                                      iOS='0,0,0,30'}"
                 BackgroundColor="White"
-                StrokeShape="RoundRectangle 15,15,0,0"
                 HorizontalOptions="FillAndExpand"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
                 <StackLayout
                     Margin="0"
@@ -1179,13 +1179,13 @@
                                         ItemHeight="40"
                                         Mode="Dialog"
                                         SelectedItem="{Binding SelectedDOBDate}">
-                                          <custom:CustomDatePicker.ColumnHeaderView>
+                                        <custom:CustomDatePicker.ColumnHeaderView>
                                             <syncfusion:PickerColumnHeaderView Height="46" />
                                         </custom:CustomDatePicker.ColumnHeaderView>
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                                        <custom:CustomDatePicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                        </custom:CustomDatePicker.SelectionView>
 
                                         <custom:CustomDatePicker.SelectedTextStyle>
                                             <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1194,16 +1194,16 @@
 
                                         <custom:CustomDatePicker.HeaderView>
 
-                                            <syncfusion:PickerHeaderView Background="#EAF7CC"
-                                                                         Height="46"
-                                                                         Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                            <syncfusion:PickerHeaderView
+                                                Height="46"
+                                                Background="#EAF7CC"
+                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                         </custom:CustomDatePicker.HeaderView>
 
                                         <custom:CustomDatePicker.FooterView>
 
-                                            <syncfusion:PickerFooterView Background="#EAF7CC"
-                                                                         Height="46">
+                                            <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                 <syncfusion:PickerFooterView.TextStyle>
                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1229,13 +1229,13 @@
                                             <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                         </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-                                       <custom:CustomHijriDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomHijriDatePicker.SelectionView>
+                                        <custom:CustomHijriDatePicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
 
-                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" />
-                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                        <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" />
+                                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                         <custom:CustomHijriDatePicker.HeaderView>
 
@@ -1287,8 +1287,8 @@
                                     </Label>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
-                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             Margin="10"
@@ -1318,8 +1318,8 @@
                                     </Label>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
-                                        IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             Margin="10"
@@ -1349,8 +1349,8 @@
                                     </Label>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
-                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             Margin="10"
@@ -1380,9 +1380,9 @@
                                     </Label>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
-                                         IsHintAlwaysFloated="True"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             Margin="10"
@@ -1412,8 +1412,8 @@
                                     </Label>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
-                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             Margin="10"
@@ -1443,8 +1443,8 @@
                                     </Label>
                                     <inputLayout:SfTextInputLayout
                                         Margin="0"
-                                         IsHintAlwaysFloated="True"
                                         InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             Margin="10"
@@ -1714,7 +1714,7 @@
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
-                                     IsHintAlwaysFloated="True"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
                                     <custom:GAZTBorderlessEntry
@@ -1824,13 +1824,13 @@
                                     ItemHeight="40"
                                     Mode="Dialog"
                                     SelectedItem="{Binding SelectedPassportIssueDate}">
-                                      <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                                    <custom:CustomDatePicker.ColumnHeaderView>
+                                        <syncfusion:PickerColumnHeaderView Height="46" />
+                                    </custom:CustomDatePicker.ColumnHeaderView>
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                                    <custom:CustomDatePicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomDatePicker.SelectionView>
 
                                     <custom:CustomDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1839,16 +1839,16 @@
 
                                     <custom:CustomDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="#EAF7CC"
-                                                                     Height="46"
-                                                                     Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                        <syncfusion:PickerHeaderView
+                                            Height="46"
+                                            Background="#EAF7CC"
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                                     </custom:CustomDatePicker.HeaderView>
 
                                     <custom:CustomDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Background="#EAF7CC"
-                                                                     Height="46">
+                                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1875,13 +1875,13 @@
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                     </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-                                    <custom:CustomHijriDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomHijriDatePicker.SelectionView>
+                                    <custom:CustomHijriDatePicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomHijriDatePicker.SelectionView>
 
-                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" />
-                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                        <syncfusion:PickerColumnHeaderView Height="46" />
+                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -1960,14 +1960,14 @@
                                     ItemHeight="40"
                                     Mode="Dialog"
                                     SelectedItem="{Binding SelectedPassportExpireDate}">
-                                      <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                                    <custom:CustomDatePicker.ColumnHeaderView>
+                                        <syncfusion:PickerColumnHeaderView Height="46" />
+                                    </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                                    <custom:CustomDatePicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomDatePicker.SelectionView>
 
                                     <custom:CustomDatePicker.SelectedTextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1976,16 +1976,16 @@
 
                                     <custom:CustomDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="#EAF7CC"
-                                                                     Height="46"
-                                                                     Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                        <syncfusion:PickerHeaderView
+                                            Height="46"
+                                            Background="#EAF7CC"
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                                     </custom:CustomDatePicker.HeaderView>
 
                                     <custom:CustomDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Height="46"
-                                                                     Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -2012,13 +2012,13 @@
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                     </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-                                    <custom:CustomHijriDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomHijriDatePicker.SelectionView>
+                                    <custom:CustomHijriDatePicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomHijriDatePicker.SelectionView>
 
-                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" />
-                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                        <syncfusion:PickerColumnHeaderView Height="46" />
+                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
@@ -2183,9 +2183,9 @@
                     <inputLayout:SfTextInputLayout
                         Margin="0,-6,0,-6"
                         ContainerType="Outlined"
-                         IsHintAlwaysFloated="True"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         Style="{StaticResource TextInputLayout}">
                         <custom:GAZTBorderlessEntry
@@ -2208,85 +2208,158 @@
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </inputLayout:SfTextInputLayout>
 
-                    <!--5250 start -->
+                    <!--  5250 start  -->
 
-                    <listView:SfListView x:Name="outerListView" ItemsSource="{Binding OutlettUiList}" BackgroundColor="White" AutoFitMode="DynamicHeight" SelectionBackground="White" >
-                       
+                    <listView:SfListView
+                        x:Name="outerListView"
+                        AutoFitMode="DynamicHeight"
+                        BackgroundColor="White"
+                        ItemsSource="{Binding OutlettUiList}"
+                        SelectionBackground="White">
+
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
 
                                 <Grid>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <cards:SfCardView Grid.Row="0"  BorderColor="{StaticResource NeutralLightGrey}" BackgroundColor="White" BorderWidth="1" CornerRadius="10" Margin="5,0,0,0">
-                                        <Grid x:Name="GridItem" HorizontalOptions="FillAndExpand" VerticalOptions="Center" ColumnSpacing="5" Padding="8">
+                                    <cards:SfCardView
+                                        Grid.Row="0"
+                                        Margin="5,0,0,0"
+                                        BackgroundColor="White"
+                                        BorderColor="{StaticResource NeutralLightGrey}"
+                                        BorderWidth="1"
+                                        CornerRadius="10">
+                                        <Grid
+                                            x:Name="GridItem"
+                                            Padding="8"
+                                            ColumnSpacing="5"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Center">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                        
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
 
                                             </Grid.ColumnDefinitions>
 
-                                            <buttons:SfButton WidthRequest="100" Grid.Row="0" Grid.Column="0" ShowIcon="True" ImageSource="arrowDropdown.png" 
-                                                           Style="{StaticResource NoBackgroundButtonStyle}" StrokeThickness="1" CornerRadius="10" 
-                                                           TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5"
-                                                              Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}">
-                                            
-                                                </buttons:SfButton>
-                                        
-                                            <StackLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Orientation="Horizontal">
-                                                <buttons:SfButton ShowIcon="True" ImageSource="ic_location.png"
-                                                                  Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}" CommandParameter="{Binding .}"
-                                                          Style="{StaticResource NoBackgroundButtonStyle}"  Padding="5" HorizontalOptions="EndAndExpand"/>
+                                            <buttons:SfButton
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Padding="5"
+                                                Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}"
+                                                CommandParameter="{Binding .}"
+                                                CornerRadius="10"
+                                                HorizontalTextAlignment="Start"
+                                                ImageSource="arrowDropdown.png"
+                                                ShowIcon="True"
+                                                StrokeThickness="1"
+                                                Style="{StaticResource NoBackgroundButtonStyle}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                WidthRequest="100" />
 
-                                                <buttons:SfButton ShowIcon="True" ImageSource="ic_Edit.png" 
-                                                          Style="{StaticResource NoBackgroundButtonStyle}"  Padding="5" HorizontalOptions="EndAndExpand" IsVisible="{Binding ShowEditIcon}" 
-                                                          Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}" CommandParameter="{Binding .}"/>
+                                            <StackLayout
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                Grid.ColumnSpan="1"
+                                                Orientation="Horizontal">
+                                                <buttons:SfButton
+                                                    Padding="5"
+                                                    Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
+                                                    CommandParameter="{Binding .}"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    ImageSource="ic_location.png"
+                                                    ShowIcon="True"
+                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
 
-                                                <buttons:SfButton ShowIcon="True" ImageSource="ic_delete.png" 
-                                                          Style="{StaticResource NoBackgroundButtonStyle}"  Padding="5" HorizontalOptions="EndAndExpand" IsVisible="{Binding ShowDeleteIcon}" 
-                                                          Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}" CommandParameter="{Binding .}"/>
+                                                <buttons:SfButton
+                                                    Padding="5"
+                                                    Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
+                                                    CommandParameter="{Binding .}"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    ImageSource="ic_Edit.png"
+                                                    IsVisible="{Binding ShowEditIcon}"
+                                                    ShowIcon="True"
+                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
+
+                                                <buttons:SfButton
+                                                    Padding="5"
+                                                    Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}"
+                                                    CommandParameter="{Binding .}"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    ImageSource="ic_delete.png"
+                                                    IsVisible="{Binding ShowDeleteIcon}"
+                                                    ShowIcon="True"
+                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
 
                                             </StackLayout>
 
-                                            <StackLayout Grid.Row="1" Grid.Column="0" >
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <StackLayout Grid.Row="1" Grid.Column="0">
+                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
                                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <custom:CustomLabel Text="{Binding ActNo}"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding ActNo}"
+                                                        VerticalTextAlignment="Center" />
                                                 </StackLayout>
                                             </StackLayout>
 
-                                            <StackLayout Grid.Row="1" Grid.Column="1" >
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.OutletTypeField}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <StackLayout Grid.Row="1" Grid.Column="1">
+                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
                                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding ActCatDesc}" TextColor="{StaticResource NeutralBlack}" Style="{StaticResource ValueLabelBlack}"/>
+                                                    <custom:CustomLabel
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding ActCatDesc}"
+                                                        TextColor="{StaticResource NeutralBlack}" />
                                                 </StackLayout>
                                             </StackLayout>
 
-                                            <StackLayout Grid.Row="1" Grid.Column="2" Spacing="-5">
-                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCRNo}" Style="{StaticResource CaptionLabelGrey}"/>
-                                            <StackLayout HorizontalOptions="StartAndExpand">
-                                                <custom:CustomLabel Text="{Binding Crlicenceno}"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.Column="2"
+                                                Spacing="-5">
+                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
+                                                <StackLayout HorizontalOptions="StartAndExpand">
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="StartAndExpand"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding Crlicenceno}"
+                                                        VerticalTextAlignment="Center" />
+                                                </StackLayout>
                                             </StackLayout>
-                                        </StackLayout>
-                                     </Grid>
+                                        </Grid>
                                     </cards:SfCardView>
 
-                                    <listView:SfListView x:Name="innerListView" Margin="5" Grid.Row="1" IsScrollingEnabled="False" IsVisible="{Binding IsInnerListVisible}" ItemsSource="{Binding ContactDetails}" AutoFitMode="DynamicHeight">
+                                    <listView:SfListView
+                                        x:Name="innerListView"
+                                        Grid.Row="1"
+                                        Margin="5"
+                                        AutoFitMode="DynamicHeight"
+                                        IsScrollingEnabled="False"
+                                        IsVisible="{Binding IsInnerListVisible}"
+                                        ItemsSource="{Binding ContactDetails}">
                                         <listView:SfListView.HeaderTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <ViewCell.View>
-                                                        <StackLayout  x:Name="rootArea" Orientation="Vertical">
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.InnerListCrTitle}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                        <StackLayout x:Name="rootArea" Orientation="Vertical">
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{x:Static ResourceManager:AppResources.InnerListCrTitle}"
+                                                                VerticalTextAlignment="Center" />
                                                         </StackLayout>
                                                     </ViewCell.View>
                                                 </ViewCell>
@@ -2294,97 +2367,198 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                                <Grid Padding="10"  x:Name="grid" BackgroundColor="#DBE9FA" Margin="0,5,0,0">
-                                                <Grid.RowDefinitions >
-                                                    <RowDefinition Height="auto"/>
-                                                    
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                
-                                                    <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCRNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                    <Grid
+                                                        x:Name="grid"
+                                                        Margin="0,5,0,0"
+                                                        Padding="10"
+                                                        BackgroundColor="#DBE9FA">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
 
-                                                <StackLayout Grid.Row="0" Grid.Column="1"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZCRName}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
 
-                                                <StackLayout Grid.Row="0" Grid.Column="2"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CrType}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding CRTypeDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding Idnumber}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                <StackLayout Grid.Row="0" Grid.Column="3"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding IssuedCountry}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActName}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                <StackLayout Grid.Row="0" Grid.Column="4"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IssuedCity}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding IssuedCity}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="2"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding CRTypeDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                <StackLayout Grid.Row="0" Grid.Column="5"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding IssuedBy}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="3"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding IssuedCountry}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                <StackLayout Grid.Row="0" Grid.Column="6"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ValidFromUI}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="4"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding IssuedCity}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                <StackLayout Grid.Row="0" Grid.Column="7"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActMgrpDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="5"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding IssuedBy}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                    <StackLayout Grid.Row="0" Grid.Column="8"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActSgrpDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="6"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ValidFromUI}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                    <StackLayout Grid.Row="0" Grid.Column="9"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTActivity}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActivityDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="7"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActMgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                            </Grid>
-                                                     </ScrollView>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="8"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActSgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="9"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActivityDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+
+                                                    </Grid>
+                                                </ScrollView>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
-                                                <StackLayout IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTRegistrationPage}}" HorizontalOptions="Center">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatNoData}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTRegistrationPage}}">
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="StartAndExpand"
+                                                        HorizontalTextAlignment="Start"
+                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZVatNoData}"
+                                                        VerticalTextAlignment="Center" />
                                                 </StackLayout>
 
                                             </DataTemplate>
 
                                         </listView:SfListView.FooterTemplate>
                                     </listView:SfListView>
-                           
-                                    <listView:SfListView x:Name="innerListView2" Margin="5" Grid.Row="2" IsScrollingEnabled="False" IsVisible="{Binding IsInnerListVisible}" ItemsSource="{Binding ContactDetails2}" AutoFitMode="DynamicHeight">
+
+                                    <listView:SfListView
+                                        x:Name="innerListView2"
+                                        Grid.Row="2"
+                                        Margin="5"
+                                        AutoFitMode="DynamicHeight"
+                                        IsScrollingEnabled="False"
+                                        IsVisible="{Binding IsInnerListVisible}"
+                                        ItemsSource="{Binding ContactDetails2}">
 
                                         <listView:SfListView.HeaderTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <ViewCell.View>
-                                                        <StackLayout  x:Name="rootArea" Orientation="Vertical">
-                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                        <StackLayout x:Name="rootArea" Orientation="Vertical">
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}"
+                                                                VerticalTextAlignment="Center" />
                                                         </StackLayout>
                                                     </ViewCell.View>
                                                 </ViewCell>
@@ -2392,75 +2566,156 @@
                                         </listView:SfListView.HeaderTemplate>
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
-                                                <ScrollView Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                                <Grid Padding="10"  x:Name="grid" BackgroundColor="#DBE9FA" Margin="0,5,0,0">
-                                                <Grid.RowDefinitions >
-                                                    <RowDefinition Height="auto"/>
-                                                    
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                   <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                
-                                                    <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.LicenceNumber}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding Idnumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="1"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.LicenceName}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="2"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding IssuedCountry}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="3"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IssuedCity}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding IssuedCity}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="0" Grid.Column="4"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding IssuedBy}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
-                                                    <StackLayout Grid.Row="0" Grid.Column="5"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ValidFromUI}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                    <Grid
+                                                        x:Name="grid"
+                                                        Margin="0,5,0,0"
+                                                        Padding="10"
+                                                        BackgroundColor="#DBE9FA">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
 
-                                                <StackLayout Grid.Row="0" Grid.Column="6"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActMgrpDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                            <ColumnDefinition Width="Auto" />
+                                                        </Grid.ColumnDefinitions>
 
-                                                    <StackLayout Grid.Row="0" Grid.Column="7"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActSgrpDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceNumber}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding Idnumber}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceName}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActName}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="2"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding IssuedCountry}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="3"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding IssuedCity}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="4"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding IssuedBy}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="5"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ValidFromUI}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                                    <StackLayout Grid.Row="0" Grid.Column="8"  Margin="0,0,5,0">
-                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTActivity}" Style="{StaticResource CaptionLabelGrey}"/>
-                                                    <custom:CustomLabel Text="{Binding ActivityDesc}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                                                </StackLayout>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="6"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActMgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                               
-                                                
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="7"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActSgrpDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
 
-                                            </Grid>
-                                                     </ScrollView>
+                                                        <StackLayout
+                                                            Grid.Row="0"
+                                                            Grid.Column="8"
+                                                            Margin="0,0,5,0">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                            <custom:CustomLabel
+                                                                HorizontalOptions="StartAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                Text="{Binding ActivityDesc}"
+                                                                VerticalTextAlignment="Center" />
+                                                        </StackLayout>
+
+
+
+
+                                                    </Grid>
+                                                </ScrollView>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
-                                                <StackLayout IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTRegistrationPage}}" HorizontalOptions="Center">
-                                                   <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatEffNoData}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTRegistrationPage}}">
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="StartAndExpand"
+                                                        HorizontalTextAlignment="Start"
+                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                        Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
+                                                        VerticalTextAlignment="Center" />
                                                 </StackLayout>
 
                                             </DataTemplate>
@@ -2470,12 +2725,12 @@
                                 </Grid>
 
 
-                                  </DataTemplate>
+                            </DataTemplate>
                         </listView:SfListView.ItemTemplate>
 
 
                     </listView:SfListView>
-                    <!--5250 End-->
+                    <!--  5250 End  -->
                 </StackLayout>
                 <ScrollView
                     x:Name="FinancialDetailMainTab"
@@ -2723,67 +2978,101 @@
                             Style="{StaticResource CaptionLabelBlack}"
                             Text="{Binding TaxDate}" />
 
-                        <!-- Trail List-->
+                        <!--  Trail List  -->
 
-                        <listView:SfListView x:Name="FinancePeriodListView" VerticalOptions="Start" HorizontalOptions="StartAndExpand" ItemsSource="{Binding PeriodList}" 
-                                                                     SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"  AutoFitMode="Height" 
-                                                                     ItemSpacing="5" SelectionMode="Single" Margin="0" ScrollBarVisibility="Never" 
-                                                                     IsScrollingEnabled="False"  SelectionChanged="FinacialPeriodSelectionChanged" IsVisible="{Binding IsFinancePeriodVisible}">
-                          
-                                                    <listView:SfListView.ItemTemplate>
-                                                        <DataTemplate>
-                                   
-                                                            <cards:SfCardView Margin="10,0,10,0" CornerRadius="4" HorizontalOptions="StartAndExpand" VerticalOptions="Start" BackgroundColor="LightGray" HeightRequest="60">
-                                                                <Grid HorizontalOptions="StartAndExpand" VerticalOptions="Start">
-                                           
-                                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" HorizontalOptions="Fill" VerticalOptions="Start"  Orientation="Horizontal">
-                                                                        <custom:CustomLabel  Text="{Binding FinPeriodText}" Style="{DynamicResource CardLabelBlack}" />
-                                                                        <custom:CustomLabel Text=" - " Style="{DynamicResource CardLabelBlack}" />
-                                                                        <custom:CustomLabel Style="{DynamicResource CardLabelBlack}" >
-                                                            <custom:CustomLabel.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{Binding FromDate,StringFormat='{0:yyyy/MM/dd}'}"/>
-                                                                    <Span  Text=" " />
-                                                                    <Span  Text="{x:Static ResourceManager:AppResources.To}" />
-                                                                     <Span  Text=" " />
-                                                                    <Span Text="{Binding ToDate,StringFormat='{0:yyyy/MM/dd}'}"/>
-                                                                </FormattedString>
-                                                            </custom:CustomLabel.FormattedText>
-                                                        </custom:CustomLabel>
+                        <listView:SfListView
+                            x:Name="FinancePeriodListView"
+                            Margin="0"
+                            AutoFitMode="Height"
+                            HorizontalOptions="StartAndExpand"
+                            IsScrollingEnabled="False"
+                            IsVisible="{Binding IsFinancePeriodVisible}"
+                            ItemSpacing="5"
+                            ItemsSource="{Binding PeriodList}"
+                            ScrollBarVisibility="Never"
+                            SelectedItem="{Binding SelectedPeriod, Mode=TwoWay}"
+                            SelectionChanged="FinacialPeriodSelectionChanged"
+                            SelectionMode="Single"
+                            VerticalOptions="Start">
 
-                                                                    </StackLayout>
-                                                                </Grid>
-                                                            </cards:SfCardView>
-                                                        </DataTemplate>
-                                                    </listView:SfListView.ItemTemplate>
-                                                    <listView:SfListView.SelectedItemTemplate>
-                                                        <DataTemplate>
-                                    
-                                                            <cards:SfCardView  Margin="10,0,10,0" CornerRadius="4" HorizontalOptions="StartAndExpand" VerticalOptions="Start" HeightRequest="60">
-                                                                <Grid HorizontalOptions="StartAndExpand" VerticalOptions="Start">
-                                           
-                                                                    <Image HeightRequest="60" Source="selected171x136" Aspect="Fill" HorizontalOptions="Fill" VerticalOptions="Start" />
-                                                                    <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                                                                        <custom:CustomLabel  Text="{Binding FinPeriodText}" Style="{DynamicResource CardLabelWhite}"/>
-                                                                        <custom:CustomLabel Text=" - " Style="{DynamicResource CardLabelWhite}" />
-                                                                        <custom:CustomLabel  Style="{DynamicResource CardLabelWhite}">
-                                                                        <custom:CustomLabel.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="{Binding FromDate,StringFormat='{0:yyyy/MM/dd}'}"/>
-                                                                                 <Span  Text=" " />
-                                                                                <Span  Text="{x:Static ResourceManager:AppResources.To}" />
-                                                                                 <Span  Text=" " />
-                                                                                <Span Text="{Binding ToDate,StringFormat='{0:yyyy/MM/dd}'}"/>
-                                                                            </FormattedString>
-                                                                        </custom:CustomLabel.FormattedText>
-                                                                    </custom:CustomLabel>
-                                                                    </StackLayout>
-                                                                </Grid>
-                                                            </cards:SfCardView>
-                                                        </DataTemplate>
-                                                    </listView:SfListView.SelectedItemTemplate>
-                                                </listView:SfListView>
-                        <!--Trail List end-->
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <cards:SfCardView
+                                        Margin="10,0,10,0"
+                                        BackgroundColor="LightGray"
+                                        CornerRadius="4"
+                                        HeightRequest="60"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="Start">
+                                        <Grid HorizontalOptions="StartAndExpand" VerticalOptions="Start">
+
+                                            <StackLayout
+                                                HorizontalOptions="Fill"
+                                                Orientation="Horizontal"
+                                                Style="{DynamicResource CardParentStacklayout}"
+                                                VerticalOptions="Start">
+                                                <custom:CustomLabel Style="{DynamicResource CardLabelBlack}" Text="{Binding FinPeriodText}" />
+                                                <custom:CustomLabel Style="{DynamicResource CardLabelBlack}" Text=" - " />
+                                                <custom:CustomLabel Style="{DynamicResource CardLabelBlack}">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                            <Span Text=" " />
+                                                            <Span Text="{x:Static ResourceManager:AppResources.To}" />
+                                                            <Span Text=" " />
+                                                            <Span Text="{Binding ToDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+
+                                            </StackLayout>
+                                        </Grid>
+                                    </cards:SfCardView>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                            <listView:SfListView.SelectedItemTemplate>
+                                <DataTemplate>
+
+                                    <cards:SfCardView
+                                        Margin="10,0,10,0"
+                                        CornerRadius="4"
+                                        HeightRequest="60"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="Start">
+                                        <Grid HorizontalOptions="StartAndExpand" VerticalOptions="Start">
+
+                                            <Image
+                                                Aspect="Fill"
+                                                HeightRequest="60"
+                                                HorizontalOptions="Fill"
+                                                Source="selected171x136"
+                                                VerticalOptions="Start" />
+                                            <StackLayout
+                                                HorizontalOptions="StartAndExpand"
+                                                Orientation="Horizontal"
+                                                Style="{DynamicResource CardParentStacklayout}"
+                                                VerticalOptions="CenterAndExpand">
+                                                <custom:CustomLabel Style="{DynamicResource CardLabelWhite}" Text="{Binding FinPeriodText}" />
+                                                <custom:CustomLabel Style="{DynamicResource CardLabelWhite}" Text=" - " />
+                                                <custom:CustomLabel Style="{DynamicResource CardLabelWhite}">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                            <Span Text=" " />
+                                                            <Span Text="{x:Static ResourceManager:AppResources.To}" />
+                                                            <Span Text=" " />
+                                                            <Span Text="{Binding ToDate, StringFormat='{0:yyyy/MM/dd}'}" />
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+                                            </StackLayout>
+                                        </Grid>
+                                    </cards:SfCardView>
+                                </DataTemplate>
+                            </listView:SfListView.SelectedItemTemplate>
+                        </listView:SfListView>
+                        <!--  Trail List end  -->
 
 
                     </StackLayout>
@@ -3841,7 +4130,7 @@
                     Margin="0,15"
                     BackgroundColor="WhiteSmoke"
                     HeightRequest="1" />
-                
+
             </StackLayout>
             <Grid
                 Grid.Row="2"
@@ -3880,15 +4169,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="True"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="True"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand" />
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

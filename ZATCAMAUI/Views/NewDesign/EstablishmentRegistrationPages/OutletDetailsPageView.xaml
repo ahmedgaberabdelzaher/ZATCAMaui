@@ -12,10 +12,10 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    FlowDirection="{Binding AppDirection}"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -35,8 +35,8 @@
                 Margin="0"
                 Padding="0"
                 BackgroundColor="White"
-                StrokeShape="RoundRectangle 15,15,0,0"
                 HorizontalOptions="FillAndExpand"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
                 <StackLayout
                     Margin="0"
@@ -108,9 +108,9 @@
                     <inputLayout:SfTextInputLayout
                         Margin="0,-6,0,-6"
                         ContainerType="Outlined"
-                         IsHintAlwaysFloated="True"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         Style="{StaticResource TextInputLayout}">
                         <custom:GAZTBorderlessEntry
@@ -368,9 +368,9 @@
                                 Grid.Column="0"
                                 Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
-                                 IsHintAlwaysFloated="True"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -392,11 +392,11 @@
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                 IsHintAlwaysFloated="True"
                                 Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -433,7 +433,7 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
                             <custom:GAZTBorderlessEntry
@@ -469,7 +469,7 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
                             <custom:GAZTBorderlessEntry
@@ -505,7 +505,7 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
                             <custom:GAZTBorderlessEntry
@@ -540,8 +540,8 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
-                             IsHintAlwaysFloated="True"
                             Style="{StaticResource TextInputLayout}">
                             <custom:GAZTBorderlessEntry
                                 Margin="10"
@@ -572,9 +572,9 @@
                             VerticalOptions="Center" />
                         <inputLayout:SfTextInputLayout
                             ContainerType="Outlined"
-                             IsHintAlwaysFloated="True"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
                             <custom:GAZTBorderlessEntry
@@ -746,10 +746,10 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="0"
-                                     IsHintAlwaysFloated="True"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
                                     <custom:GAZTBorderlessEntry
@@ -772,10 +772,10 @@
                                     Grid.Row="1"
                                     Grid.Column="1"
                                     Margin="0,-6,0,-6"
-                                     IsHintAlwaysFloated="True"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     Style="{StaticResource TextInputLayout}">
                                     <custom:GAZTBorderlessEntry
@@ -809,10 +809,10 @@
                             </Label>
                             <inputLayout:SfTextInputLayout
                                 Margin="0,-6,0,-6"
-                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -844,10 +844,10 @@
                                 </Label.FormattedText>
                             </Label>
                             <inputLayout:SfTextInputLayout
-                                IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -881,7 +881,7 @@
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -916,7 +916,7 @@
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -949,9 +949,9 @@
                             <inputLayout:SfTextInputLayout
                                 Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
-                                 IsHintAlwaysFloated="True"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 Style="{StaticResource TextInputLayout}">
                                 <custom:GAZTBorderlessEntry
@@ -1222,15 +1222,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="True"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="True"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand" />
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

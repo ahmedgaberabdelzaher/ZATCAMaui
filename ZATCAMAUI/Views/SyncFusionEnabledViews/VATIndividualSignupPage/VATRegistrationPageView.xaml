@@ -18,7 +18,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:system="clr-namespace:System;assembly=netstandard"
-    
     Title="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationTile}"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -29,11 +28,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
 
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
-
-            </ResourceDictionary.MergedDictionaries>-->
 
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
@@ -322,8 +316,8 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
-                                                         IsHintAlwaysFloated="True"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
@@ -353,8 +347,8 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
-                                                         IsHintAlwaysFloated="True"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
@@ -378,8 +372,8 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
-                                                         IsHintAlwaysFloated="True"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
@@ -401,10 +395,10 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
-                                                         IsHintAlwaysFloated="True"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -428,9 +422,9 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
-                                                         IsHintAlwaysFloated="True"
                                                         Stroke="#003672"
                                                         Style="{StaticResource TextInputLayout}">
                                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -457,7 +451,7 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
-                                                         IsHintAlwaysFloated="True"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
@@ -473,9 +467,9 @@
                                                     <inputLayout:SfTextInputLayout
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
@@ -499,8 +493,8 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
-                                                         IsHintAlwaysFloated="True"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
                                                         Stroke="#003672"
@@ -630,10 +624,10 @@
                                                             x:Name="FrmEStartDate"
                                                             Grid.Row="1"
                                                             Margin="0,-6,0,-6"
-                                                             IsHintAlwaysFloated="True"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -682,37 +676,38 @@
                                                             SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
                                                             SelectionChanged="DpEStartDate_SelectionChanged">
 
-                                                             <custom:CustomDatePicker.ColumnHeaderView>
+                                                            <custom:CustomDatePicker.ColumnHeaderView>
                                                                 <syncfusion:PickerColumnHeaderView Height="46" />
                                                             </custom:CustomDatePicker.ColumnHeaderView>
 
-                                                             <custom:CustomDatePicker.SelectionView >
-                                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                             </custom:CustomDatePicker.SelectionView>
+                                                            <custom:CustomDatePicker.SelectionView>
+                                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                            </custom:CustomDatePicker.SelectionView>
 
-                                                                <custom:CustomDatePicker.SelectedTextStyle>
-                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                                </custom:CustomDatePicker.SelectedTextStyle>
+                                                            <custom:CustomDatePicker.SelectedTextStyle>
+                                                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                            </custom:CustomDatePicker.SelectedTextStyle>
 
-                                                                <custom:CustomDatePicker.HeaderView>
+                                                            <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Height="46" Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                <syncfusion:PickerHeaderView
+                                                                    Height="46"
+                                                                    Background="{StaticResource Primary}"
+                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
-                                                                </custom:CustomDatePicker.HeaderView>
+                                                            </custom:CustomDatePicker.HeaderView>
 
-                                                                 <custom:CustomDatePicker.FooterView>
+                                                            <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView
-                                                                        Background="#EAF7CC"
-                                                                        Height="46">
+                                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
-                                                                        <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                                                                        </syncfusion:PickerFooterView.TextStyle>
+                                                                    <syncfusion:PickerFooterView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                    </syncfusion:PickerFooterView.TextStyle>
 
-                                                                    </syncfusion:PickerFooterView>
+                                                                </syncfusion:PickerFooterView>
 
-                                                                 </custom:CustomDatePicker.FooterView>
+                                                            </custom:CustomDatePicker.FooterView>
 
                                                         </custom:CustomDatePicker>
                                                     </Grid>
@@ -801,9 +796,9 @@
                                                         Grid.Row="1"
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
                                                         LeadingViewPosition="Inside"
                                                         OutlineCornerRadius="8"
@@ -853,10 +848,10 @@
                                                             x:Name="FrmNewAccount"
                                                             Grid.Row="1"
                                                             Margin="0,-6,0,-6"
-                                                             IsHintAlwaysFloated="True"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -1046,8 +1041,8 @@
                                                             <Border
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="#eaeaea"
-                                                                StrokeShape="RoundRectangle 10,10,10,10"
-                                                                HorizontalOptions="FillAndExpand">
+                                                                HorizontalOptions="FillAndExpand"
+                                                                StrokeShape="RoundRectangle 10,10,10,10">
                                                                 <Slider
                                                                     x:Name="Slider_Answer1"
                                                                     Margin="0,10,0,10"
@@ -1118,8 +1113,8 @@
                                                             <Border
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="#eaeaea"
-                                                                StrokeShape="RoundRectangle 10,10,10,10"
-                                                                HorizontalOptions="FillAndExpand">
+                                                                HorizontalOptions="FillAndExpand"
+                                                                StrokeShape="RoundRectangle 10,10,10,10">
                                                                 <Slider
                                                                     x:Name="Slider_Answer2"
                                                                     Margin="0,10,0,10"
@@ -1468,9 +1463,9 @@
                                                             Grid.Row="1"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
-                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -1606,8 +1601,8 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
-                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -1650,8 +1645,8 @@
                                                                 ContainerType="Outlined"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
-                                                                 IsHintAlwaysFloated="True"
                                                                 OutlineCornerRadius="8"
                                                                 Stroke="#003672"
                                                                 Style="{StaticResource TextInputLayout}">
@@ -1709,9 +1704,9 @@
 
 
 
-                                                             <syncfusion:SfPicker.SelectionView >
-                                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                             </syncfusion:SfPicker.SelectionView>
+                                                                <syncfusion:SfPicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </syncfusion:SfPicker.SelectionView>
 
                                                                 <syncfusion:SfPicker.HeaderView>
 
@@ -1766,8 +1761,8 @@
                                                             ContainerType="Outlined"
                                                             HasError="{Binding FrameIDError}"
                                                             HorizontalOptions="FillAndExpand"
-                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -1830,11 +1825,11 @@
                                                                 x:Name="FrmDBO"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
-                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 IsVisible="{Binding DOBMandatoryVisibility}"
                                                                 LeadingViewPosition="Inside"
                                                                 OutlineCornerRadius="8"
@@ -1886,14 +1881,14 @@
                                                                 OkButtonClicked="DOB_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDate}">
 
-                                                                 <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                                                                 <custom:CustomDatePicker.SelectionView >
-                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                                 </custom:CustomDatePicker.SelectionView>
+                                                                <custom:CustomDatePicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </custom:CustomDatePicker.SelectionView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1901,15 +1896,16 @@
 
                                                                 <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Height="46" Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                    <syncfusion:PickerHeaderView
+                                                                        Height="46"
+                                                                        Background="{StaticResource Primary}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
-                                                                 <custom:CustomDatePicker.FooterView>
+                                                                <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView
-                                                                        Background="#EAF7CC"
-                                                                        Height="46">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1917,7 +1913,7 @@
 
                                                                     </syncfusion:PickerFooterView>
 
-                                                                 </custom:CustomDatePicker.FooterView>
+                                                                </custom:CustomDatePicker.FooterView>
 
 
                                                             </custom:CustomDatePicker>
@@ -1932,7 +1928,7 @@
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
-                                                             IsHintAlwaysFloated="True"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -1961,9 +1957,9 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
-                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding IsFDNameMobEmailEnable}"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -1994,9 +1990,9 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
-                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding IsFDNameMobEmailEnable}"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -2023,9 +2019,9 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
-                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding IsFDNameMobEmailEnable}"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
@@ -2388,10 +2384,10 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
-                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
                                                                 OutlineCornerRadius="8"
                                                                 Stroke="#003672"
@@ -2445,9 +2441,9 @@
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                                                 </syncfusion:SfPicker.SelectedTextStyle>
 
-                                                                 <syncfusion:SfPicker.SelectionView >
-                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                                 </syncfusion:SfPicker.SelectionView>
+                                                                <syncfusion:SfPicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </syncfusion:SfPicker.SelectionView>
 
                                                                 <syncfusion:SfPicker.HeaderView>
 
@@ -2495,8 +2491,8 @@
                                                             HasError="{Binding FrameContactIDError}"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
-                                                             IsHintAlwaysFloated="True"
                                                             OutlineCornerRadius="8"
                                                             Stroke="#003672"
                                                             Style="{StaticResource TextInputLayout}">
@@ -2547,11 +2543,11 @@
                                                                 x:Name="FrmContactDBO"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
-                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameContactDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 IsVisible="{Binding DOBMandatoryVisibilitySM}"
                                                                 LeadingViewPosition="Inside"
                                                                 OutlineCornerRadius="8"
@@ -2599,14 +2595,14 @@
                                                                 OkButtonClicked="ContactDOBPicker_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDate}">
 
-                                                                 <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                                                                <custom:CustomDatePicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </custom:CustomDatePicker.SelectionView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -2614,15 +2610,16 @@
 
                                                                 <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Height="46" Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                    <syncfusion:PickerHeaderView
+                                                                        Height="46"
+                                                                        Background="{StaticResource Primary}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
-                                                                 <custom:CustomDatePicker.FooterView>
+                                                                <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView
-                                                                        Background="#EAF7CC"
-                                                                        Height="46">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -2630,7 +2627,7 @@
 
                                                                     </syncfusion:PickerFooterView>
 
-                                                                 </custom:CustomDatePicker.FooterView>
+                                                                </custom:CustomDatePicker.FooterView>
 
                                                             </custom:CustomDatePicker>
                                                         </Grid>
@@ -2651,9 +2648,9 @@
                                                             ContainerType="Outlined"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             OutlineCornerRadius="8"
-                                                             IsHintAlwaysFloated="True"
                                                             Stroke="#003672"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>

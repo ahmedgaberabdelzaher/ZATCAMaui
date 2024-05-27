@@ -5,17 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    FlowDirection="{Binding AppDirection}"
-    BackgroundColor="Transparent">
-
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
+    BackgroundColor="Transparent"
+    FlowDirection="{Binding AppDirection}">
     <Border StrokeShape="RoundRectangle 20,20,20,20" VerticalOptions="FillAndExpand">
 
         <Grid VerticalOptions="FillAndExpand">

@@ -14,19 +14,12 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
     Title="{x:Static ResourceManager:AppResources.VATDeclaration}"
     ios:Page.UseSafeArea="true"
     BackgroundColor="{StaticResource Primary}"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.ControlTemplate>
         <ControlTemplate>
 
@@ -130,7 +123,7 @@
                     Margin="10,0,10,0"
                     ContainerType="Outlined"
                     HasError="False"
-                     IsHintAlwaysFloated="True"
+                    IsHintAlwaysFloated="True"
                     OutlineCornerRadius="8"
                     Stroke="{StaticResource Primary}">
                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -179,9 +172,9 @@
                         <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource Primary}" />
                     </syncfusion:SfPicker.SelectedTextStyle>
 
-                         <syncfusion:SfPicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </syncfusion:SfPicker.SelectionView>
+                    <syncfusion:SfPicker.SelectionView>
+                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                    </syncfusion:SfPicker.SelectionView>
 
                     <syncfusion:SfPicker.HeaderView>
 

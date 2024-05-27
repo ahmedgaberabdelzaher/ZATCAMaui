@@ -177,8 +177,8 @@
                                     Margin="0,-10,0,0"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
-                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="14"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
@@ -203,9 +203,9 @@
                                     ErrorText="{x:Static ResourceManager:AppResources.PhoneNotCorrect}"
                                     HasError="{Binding PhoneHasError}"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="14"
-                                     IsHintAlwaysFloated="True"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <inputLayout:LabelStyle TextColor="Red" />
@@ -239,8 +239,8 @@
                                     ErrorText="{x:Static ResourceManager:AppResources.Mailnotcorrect}"
                                     HasError="{Binding MailHasError}"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
-                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="14"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -270,7 +270,7 @@
                                         Margin="0,-10,0,0"
                                         ContainerType="Outlined"
                                         InputViewPadding="16,0,16,0"
-                                         IsHintAlwaysFloated="True"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="14"
                                         Style="{StaticResource InputTableTextInputLayoutStyleWuthoutHeighandWidth}">
                                         <Grid>
@@ -306,7 +306,7 @@
                                     ErrorText="{x:Static ResourceManager:AppResources.FieldRequired}"
                                     HasError="{Binding BalaghOtherTypeTxtHasError}"
                                     InputViewPadding="16,0,16,0"
-                                     IsHintAlwaysFloated="True"
+                                    IsHintAlwaysFloated="True"
                                     IsVisible="{Binding IsBalaghTypeOOther}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="14"
@@ -339,8 +339,8 @@
                                         Margin="0,-10,0,0"
                                         ContainerType="Outlined"
                                         InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="14"
-                                         IsHintAlwaysFloated="True"
                                         Style="{StaticResource InputTableTextInputLayoutStyleWuthoutHeighandWidth}">
                                         <Grid>
                                             <StackLayout Orientation="Horizontal">
@@ -390,8 +390,8 @@
                                     ContainerType="Outlined"
                                     ErrorText="{x:Static ResourceManager:AppResources.FieldRequired}"
                                     HeightRequest="137"
+                                    IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="14"
-                                     IsHintAlwaysFloated="True"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <inputLayout:LabelStyle TextColor="#B00020" />

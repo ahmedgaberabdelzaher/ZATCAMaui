@@ -6,8 +6,8 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    FlowDirection="{Binding AppDirection}"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core">
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    FlowDirection="{Binding AppDirection}">
 
     <ContentView.Content>
         <!--#region TobacoProduct-->
@@ -30,7 +30,7 @@
                     ContainerType="Outlined"
                     HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
                     InputViewPadding="16,0,16,0"
-                     IsHintAlwaysFloated="True"
+                    IsHintAlwaysFloated="True"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15"
                     Stroke="{StaticResource NeutralGreay}">
@@ -84,9 +84,9 @@
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
-                         IsHintAlwaysFloated="True"
                         Stroke="{StaticResource NeutralGreay}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -138,9 +138,9 @@
                         ContainerType="Outlined"
                         HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
-                         IsHintAlwaysFloated="True"
                         Stroke="{StaticResource NeutralGreay}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -180,8 +180,8 @@
                         ContainerType="Outlined"
                         HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
-                         IsHintAlwaysFloated="True"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>

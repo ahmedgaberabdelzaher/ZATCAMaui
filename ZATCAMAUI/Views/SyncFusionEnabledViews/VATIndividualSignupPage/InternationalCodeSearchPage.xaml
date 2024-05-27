@@ -19,9 +19,10 @@
 
         <StackLayout Padding="10,10,10,0">
 
-            <StackLayout Orientation="Horizontal"
-                         Margin="0,10"
-                         VerticalOptions="Start">
+            <StackLayout
+                Margin="0,10"
+                Orientation="Horizontal"
+                VerticalOptions="Start">
 
                 <Label
                     FontFamily="{StaticResource SomarBold}"
@@ -30,18 +31,12 @@
                     TextColor="{StaticResource PrimaryColor}"
                     VerticalOptions="Start" />
 
-                <Image HorizontalOptions="EndAndExpand"
-                        VerticalOptions="Start"
-                        WidthRequest="25"
-                        HeightRequest="25"
-                        Source="close">
-                    <!--<Image.Source>
-                        <FontImageSource
-                            FontFamily="UserIconFont"
-                            Glyph="{x:Static FontImage:IconFonts.Close}"
-                            Size="25"
-                            Color="{StaticResource SecondaryNew}" />
-                    </Image.Source>-->
+                <Image
+                    HeightRequest="25"
+                    HorizontalOptions="EndAndExpand"
+                    Source="close"
+                    VerticalOptions="Start"
+                    WidthRequest="25">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="Close_Tapped" />
                     </Image.GestureRecognizers>
@@ -50,53 +45,54 @@
             </StackLayout>
 
             <SearchBar
-                        x:Name="searchBar"
-                        CancelButtonColor="Blue"
-                        HorizontalOptions="Fill"
-                        HorizontalTextAlignment="Start"
-                        Placeholder="{x:Static ResourceManager:AppResources.SearchText}"
-                        PlaceholderColor="Gray"
-                        TextChanged="OnTextChanged"
-                        VerticalOptions="CenterAndExpand" />
+                x:Name="searchBar"
+                CancelButtonColor="Blue"
+                HorizontalOptions="Fill"
+                HorizontalTextAlignment="Start"
+                Placeholder="{x:Static ResourceManager:AppResources.SearchText}"
+                PlaceholderColor="Gray"
+                TextChanged="OnTextChanged"
+                VerticalOptions="CenterAndExpand" />
 
             <CollectionView
-                        x:Name="searchResults"
-                        HorizontalOptions="Fill"
-                        Grid.Row="1"
-                        SelectionChanged="List_ItemTapped"
-                        ItemsSource="{Binding MobileCodes}"
-                        VerticalOptions="CenterAndExpand">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
+                x:Name="searchResults"
+                Grid.Row="1"
+                HorizontalOptions="Fill"
+                ItemsSource="{Binding MobileCodes}"
+                SelectionChanged="List_ItemTapped"
+                VerticalOptions="CenterAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
 
-                                <Frame
-                                    Margin="0,0,0,0"
-                                    Padding="0"
-                                    CornerRadius="8"
-                                    HasShadow="False">
+                        <Frame
+                            Margin="0,0,0,0"
+                            Padding="0"
+                            CornerRadius="8"
+                            HasShadow="False">
 
-                                    <StackLayout Orientation="Horizontal"
-                                                 Spacing="10"
-                                                 HorizontalOptions="StartAndExpand">
-                                        <Label
-                                            FontFamily="{StaticResource SomarSemiBold}"
-                                            Style="{StaticResource GAZTSmallGrayLabelStyle}"
-                                            Text="{Binding Landx}"
-                                            TextColor="{StaticResource PrimaryColor}" />
-                                        <Label
-                                            Grid.Column="1"
-                                            FontFamily="{StaticResource SomarSemiBold}"
-                                            HorizontalOptions="End"
-                                            Style="{StaticResource GAZTSmallBlackLabel}"
-                                            Text="{Binding Telefto}"
-                                            TextColor="{StaticResource PrimaryColor}" />
+                            <StackLayout
+                                HorizontalOptions="StartAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <Label
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    Style="{StaticResource GAZTSmallGrayLabelStyle}"
+                                    Text="{Binding Landx}"
+                                    TextColor="{StaticResource PrimaryColor}" />
+                                <Label
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource GAZTSmallBlackLabel}"
+                                    Text="{Binding Telefto}"
+                                    TextColor="{StaticResource PrimaryColor}" />
 
 
-                                    </StackLayout>
-                                </Frame>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </StackLayout>
 

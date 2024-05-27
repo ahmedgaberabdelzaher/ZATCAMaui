@@ -30,10 +30,10 @@
                 x:Name="MainContainer"
                 Grid.Row="1"
                 Padding="0"
-                Stroke="Transparent"
-                StrokeShape="RoundRectangle 15,15,0,0"
+                x:FieldModifier="public"
                 BackgroundColor="White"
-                x:FieldModifier="public"/>
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 15,15,0,0" />
 
             <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
 
@@ -41,8 +41,6 @@
 
         </Grid>
 
-        <controls:MsgView
-            IsVisible="{Binding IsShowMsgView}"
-            VerticalOptions="EndAndExpand" />
+        <controls:MsgView IsVisible="{Binding IsShowMsgView}" VerticalOptions="EndAndExpand" />
     </Grid>
 </ContentPage>

@@ -8,15 +8,15 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
-    BackgroundClicked="PopupPage_BackgroundClicked">
+    BackgroundClicked="PopupPage_BackgroundClicked"
+    FlowDirection="{Binding AppDirection}">
 
 
     <Border
         BackgroundColor="White"
-        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="EndAndExpand"
         IsVisible="true"
+        StrokeShape="RoundRectangle 15,15,0,0"
         VerticalOptions="EndAndExpand">
         <StackLayout
             BackgroundColor="Transparent"
@@ -70,8 +70,8 @@
                 <syncfusion:SfPicker
                     x:Name="genericPicker"
                     Margin="2"
-                    IsOpen="True"
                     Background="White"
+                    IsOpen="True"
                     ItemHeight="36"
                     SelectionChanged="genericPicker_SelectionChanged"
                     Style="{StaticResource PickerStyle}">
@@ -96,7 +96,7 @@
                     </syncfusion:SfPicker.SelectedTextStyle>
 
                     <syncfusion:SfPicker.SelectionView>
-                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
 
                     </syncfusion:SfPicker.SelectionView>
 

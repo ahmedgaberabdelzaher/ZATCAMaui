@@ -19,64 +19,64 @@
             VerticalOptions="StartAndExpand"
             WidthRequest="190" />
 
-            
-        <CollectionView x:Name="menu"
-                            VerticalScrollBarVisibility="Never"
-                            Grid.Row="1"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            CollectionView.ItemsSource="{Binding SideMenuServiceLst}">
 
-                <CollectionView.ItemTemplate>
+        <CollectionView
+            x:Name="menu"
+            Grid.Row="1"
+            CollectionView.ItemsSource="{Binding SideMenuServiceLst}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
 
-                    <DataTemplate>
+            <CollectionView.ItemTemplate>
 
-                        <StackLayout x:Name="Item" Spacing="10">
+                <DataTemplate>
 
-                            <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
-                                        Command="{Binding SideMenuNavigationCommand}"
-                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                            </StackLayout.GestureRecognizers>
+                    <StackLayout x:Name="Item" Spacing="10">
 
-                            <StackLayout
-                                Padding="20,15"
-                                HorizontalOptions="StartAndExpand"
-                                Orientation="Horizontal"
-                                Spacing="15">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                Command="{Binding SideMenuNavigationCommand}"
+                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                        </StackLayout.GestureRecognizers>
 
-                                <Image
-                                    HeightRequest="30"
-                                    HorizontalOptions="Start"
-                                    Source="{Binding ImageSource}"
-                                    WidthRequest="32" />
+                        <StackLayout
+                            Padding="20,15"
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="15">
 
-                                <Label
-                                    HorizontalTextAlignment="Start"
-                                    Style="{StaticResource ValueLabelWhiteBold}"
-                                    Text="{Binding Name}"
-                                    VerticalOptions="Center" />
+                            <Image
+                                HeightRequest="30"
+                                HorizontalOptions="Start"
+                                Source="{Binding ImageSource}"
+                                WidthRequest="32" />
 
-                            </StackLayout>
+                            <Label
+                                HorizontalTextAlignment="Start"
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{Binding Name}"
+                                VerticalOptions="Center" />
 
-                            <BoxView
+                        </StackLayout>
+
+                        <BoxView
                             Margin="15,0,15,0"
                             HeightRequest="1"
                             Style="{StaticResource WhiteLineSeperator}" />
 
-                        </StackLayout>
+                    </StackLayout>
 
-                    </DataTemplate>
+                </DataTemplate>
 
-                </CollectionView.ItemTemplate>
+            </CollectionView.ItemTemplate>
 
-            </CollectionView>
+        </CollectionView>
 
-         <custom:BottomMenu Grid.Row="2"
-                     VerticalOptions="EndAndExpand" />
+        <custom:BottomMenu Grid.Row="2" VerticalOptions="EndAndExpand" />
 
-           
+
 
     </Grid>
 

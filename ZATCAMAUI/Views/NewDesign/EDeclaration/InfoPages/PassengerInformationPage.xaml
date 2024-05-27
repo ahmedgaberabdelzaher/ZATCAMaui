@@ -31,7 +31,7 @@
 
     <ContentPage.Content>
 
-          <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
@@ -89,118 +89,118 @@
                         <!--  Circle view  -->
                         <Grid
                             Margin="0,20,0,10"
-                             ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-                             ColumnSpacing="0"
-                             HorizontalOptions="CenterAndExpand"
-                             RowDefinitions="Auto"
-                             VerticalOptions="Start">
+                            ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                            ColumnSpacing="0"
+                            HorizontalOptions="CenterAndExpand"
+                            RowDefinitions="Auto"
+                            VerticalOptions="Start">
 
-                             <!--  Circle button 1  -->
-                             <ImageButton
-                                 Padding="6"
-                                 Margin="-5,0"
-                                 BackgroundColor="#0996D4"
-                                 BorderColor="#0996D4"
-                                 BorderWidth="1"
-                                 CornerRadius="15"
-                                 HeightRequest="41"
-                                 HorizontalOptions="EndAndExpand"
-                                 InputTransparent="True"
-                                 Source="reportCheckMark.png"
-                                 VerticalOptions="CenterAndExpand"
-                                 WidthRequest="41" />
+                            <!--  Circle button 1  -->
+                            <ImageButton
+                                Margin="-5,0"
+                                Padding="6"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="41"
+                                HorizontalOptions="EndAndExpand"
+                                InputTransparent="True"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="41" />
 
-                             <!--  Horizontal Line  -->
-                             <BoxView
-                                 Grid.Column="1"
-                                 BackgroundColor="#0996D4"
-                                 HeightRequest="2"
-                                 VerticalOptions="CenterAndExpand"
-                                 WidthRequest="20" />
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
 
-                             <!--  Circle button 2  -->
-                             <buttons:SfButton
-                                 Grid.Column="2"
-                                 Background="Transparent"
-                                 Stroke="#0996D4"
-                                 StrokeThickness="1"
-                                 CornerRadius="15"
-                                 HeightRequest="30"
-                                 HorizontalOptions="StartAndExpand"
-                                 InputTransparent="True"
-                                 Text="2"
-                                 TextColor="#0996D4"
-                                 VerticalOptions="CenterAndExpand"
-                                 WidthRequest="30">
-                                 <buttons:SfButton.Padding>
-                                     <OnPlatform x:TypeArguments="Thickness">
-                                         <On Platform="Android">0</On>
-                                     </OnPlatform>
-                                 </buttons:SfButton.Padding>
+                            <!--  Circle button 2  -->
+                            <buttons:SfButton
+                                Grid.Column="2"
+                                Background="Transparent"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Stroke="#0996D4"
+                                StrokeThickness="1"
+                                Text="2"
+                                TextColor="#0996D4"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <buttons:SfButton.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </buttons:SfButton.Padding>
 
-                             </buttons:SfButton>
+                            </buttons:SfButton>
 
-                             <!--  Horizontal Line  -->
-                             <BoxView
-                                 Grid.Column="3"
-                                 BackgroundColor="#B8BABA"
-                                 HeightRequest="2"
-                                 VerticalOptions="CenterAndExpand"
-                                 WidthRequest="20" />
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="3"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
 
-                             <!--  Circle button 3  -->
-                             <buttons:SfButton
-                                 Grid.Column="4"
-                                 Background="Transparent"
-                                 Stroke="#B8BABA"
-                                 StrokeThickness="1"
-                                 CornerRadius="15"
-                                 HeightRequest="30"
-                                 HorizontalOptions="StartAndExpand"
-                                 InputTransparent="True"
-                                 Text="3"
-                                 TextColor="#565655"
-                                 VerticalOptions="CenterAndExpand"
-                                 WidthRequest="30">
-                                 <buttons:SfButton.Padding>
-                                     <OnPlatform x:TypeArguments="Thickness">
-                                         <On Platform="Android">0</On>
-                                     </OnPlatform>
-                                 </buttons:SfButton.Padding>
+                            <!--  Circle button 3  -->
+                            <buttons:SfButton
+                                Grid.Column="4"
+                                Background="Transparent"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
+                                Text="3"
+                                TextColor="#565655"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <buttons:SfButton.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </buttons:SfButton.Padding>
 
-                             </buttons:SfButton>
+                            </buttons:SfButton>
 
-                             <!--  Horizontal Line  -->
-                             <BoxView
-                                 Grid.Column="5"
-                                 BackgroundColor="#B8BABA"
-                                 HeightRequest="2"
-                                 VerticalOptions="CenterAndExpand"
-                                 WidthRequest="20" />
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="5"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
 
-                             <!--  Circle button 4  -->
-                             <buttons:SfButton
-                                 Grid.Column="6"
-                                 Background="Transparent"
-                                 Stroke="#B8BABA"
-                                 StrokeThickness="1"
-                                 CornerRadius="15"
-                                 HeightRequest="30"
-                                 HorizontalOptions="StartAndExpand"
-                                 InputTransparent="True"
-                                 Text="4"
-                                 TextColor="#565655"
-                                 VerticalOptions="CenterAndExpand"
-                                 WidthRequest="30">
-                                 <buttons:SfButton.Padding>
-                                     <OnPlatform x:TypeArguments="Thickness">
-                                         <On Platform="Android">0</On>
-                                     </OnPlatform>
-                                 </buttons:SfButton.Padding>
+                            <!--  Circle button 4  -->
+                            <buttons:SfButton
+                                Grid.Column="6"
+                                Background="Transparent"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
+                                Text="4"
+                                TextColor="#565655"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <buttons:SfButton.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </buttons:SfButton.Padding>
 
-                             </buttons:SfButton>
+                            </buttons:SfButton>
 
-                         </Grid>
+                        </Grid>
 
                         <!--  Passenger Information Label  -->
                         <Label
@@ -368,17 +368,15 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
@@ -401,21 +399,20 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                             <!--IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"-->   
+                            <!--  IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"  -->
 
                             <!--  Middle Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.MiddleName}"
@@ -438,21 +435,20 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                               <!--IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"--> 
+                            <!--  IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"  -->
 
                             <!--  Last Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
@@ -480,16 +476,15 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     InputTransparent="True"
                                     IsReadOnly="True"
@@ -530,16 +525,15 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="{Binding IDNumberKeyboard}"
                                     Placeholder="{Binding IDNumberPlaceHolder}"
@@ -550,65 +544,62 @@
 
                         </StackLayout>
 
-                        
+
                         <!--  ID Type Field  -->
-                        <StackLayout Spacing="0" >
+                        <StackLayout Spacing="0">
 
                             <!--  ID Type Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IqamaType}">
-                            
-                            </Label>
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IqamaType}" />
 
                             <!--  ID Type Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="{Binding IDNumberKeyboard}"
                                     Placeholder="{x:Static ResourceManager:AppResources.IqamaType}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription }"
+                                    Text="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
 
-                           <!--  ID ExpiryDate Field  -->
-                        <StackLayout Spacing="0" IsVisible="false">
-                                 <StackLayout.Triggers>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}" Value="{x:Static ResourceManager:AppResources.SpecialIqamawithexpirydate}">
-                                    <Setter Property="IsVisible" Value="false"></Setter>
+                        <!--  ID ExpiryDate Field  -->
+                        <StackLayout IsVisible="false" Spacing="0">
+                            <StackLayout.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}"
+                                    TargetType="StackLayout"
+                                    Value="{x:Static ResourceManager:AppResources.SpecialIqamawithexpirydate}">
+                                    <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                             <!--  ID ExpiryDate Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}">
-                            
-                            </Label>
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
 
                             <!--  ID Expiry Date Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="{Binding IDNumberKeyboard}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
@@ -779,16 +770,15 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True"
-                                >
-                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
@@ -835,15 +825,15 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True">
+                                Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     InputTransparent="True"
                                     IsReadOnly="True"
@@ -885,12 +875,12 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True">
+                                Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -940,8 +930,11 @@
                         <!--  End Date Field  -->
                         <StackLayout Spacing="0">
                             <StackLayout.Triggers>
-                                <DataTrigger TargetType="StackLayout" Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}" Value="{x:Static ResourceManager:AppResources.SpecialIqamawithoutexpirydate}">
-                                    <Setter Property="IsVisible" Value="false"></Setter>
+                                <DataTrigger
+                                    Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}"
+                                    TargetType="StackLayout"
+                                    Value="{x:Static ResourceManager:AppResources.SpecialIqamawithoutexpirydate}">
+                                    <Setter Property="IsVisible" Value="false" />
                                 </DataTrigger>
                             </StackLayout.Triggers>
                             <!--  End Date Label  -->
@@ -959,24 +952,22 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True">
+                                Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <Grid>
 
-                                  <DatePicker
+                                    <DatePicker
                                         x:Name="EndDate"
                                         ClassId="enddateentry"
-                                       
                                         Format="dd/MM/yyyy"
-                                        IsVisible="false"
-                                        >
+                                        IsVisible="false">
 
                                         <DatePicker.Behaviors>
                                             <xct:EventToCommandBehavior
@@ -1008,7 +999,7 @@
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
-                            <Label Text="{Binding premiumResidencytype.iqamaType}"></Label>
+                            <Label Text="{Binding premiumResidencytype.iqamaType}" />
                         </StackLayout>
 
                         <!--  Date of Birth Field  -->
@@ -1029,15 +1020,15 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                IsHintAlwaysFloated="True">
+                                Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <Grid>
 
                                     <DatePicker
@@ -1095,9 +1086,9 @@
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
-                            Stroke="Transparent"
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
+                            Stroke="Transparent"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.PerviousButton}"
                             TextColor="{StaticResource Secondary}" />

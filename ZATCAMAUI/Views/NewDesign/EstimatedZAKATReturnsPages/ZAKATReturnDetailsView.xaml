@@ -9,8 +9,8 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     Title="{Binding ZAKATReturnsPagName}"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -50,8 +50,7 @@
             </Grid.RowDefinitions>
 
 
-            <Border Grid.Row="1"
-                    Style="{StaticResource MainPage}">
+            <Border Grid.Row="1" Style="{StaticResource MainPage}">
                 <Grid x:Name="MainGrid">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -86,9 +85,10 @@
                                         Padding="10"
                                         Orientation="Horizontal"
                                         Spacing="10">
-                                        <Image Margin="0"
-                                               Style="{StaticResource SmallIcon}"
-                                               Source="return_vatRefunds.png" />
+                                        <Image
+                                            Margin="0"
+                                            Source="return_vatRefunds.png"
+                                            Style="{StaticResource SmallIcon}" />
 
                                         <Label
                                             Style="{StaticResource SectionTitleBlackBold}"
@@ -159,8 +159,7 @@
                                         Padding="10"
                                         Orientation="Horizontal"
                                         Spacing="10">
-                                        <Image Source="zakat_manageTax"
-                                               Style="{StaticResource SmallIcon}"/>
+                                        <Image Source="zakat_manageTax" Style="{StaticResource SmallIcon}" />
 
                                         <Label
                                             Style="{StaticResource SectionTitleBlackBold}"
@@ -234,8 +233,8 @@
                                             <Image
                                                 Grid.Column="2"
                                                 HorizontalOptions="EndAndExpand"
-                                                Style="{StaticResource SmallIcon}"
-                                                Source="ic_vat_info">
+                                                Source="ic_vat_info"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnCapitalAmountInformationClicked" />
                                                 </Image.GestureRecognizers>
@@ -267,8 +266,8 @@
                                             <Image
                                                 Grid.Column="2"
                                                 HorizontalOptions="EndAndExpand"
-                                                Style="{StaticResource SmallIcon}"
                                                 Source="ic_vat_info"
+                                                Style="{StaticResource SmallIcon}"
                                                 VerticalOptions="Start">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnZAKATBaseAmountInfoClicked" />
@@ -314,8 +313,8 @@
                                     <Image
                                         Grid.Column="2"
                                         HorizontalOptions="EndAndExpand"
-                                        Style="{StaticResource SmallIcon}"
-                                        Source="ic_vat_info">
+                                        Source="ic_vat_info"
+                                        Style="{StaticResource SmallIcon}">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnZAKATAmountInfoClicked" />
                                         </Image.GestureRecognizers>
@@ -325,9 +324,10 @@
                             </Frame>
 
 
-                            <Border Style="{StaticResource GreyBorderFrameWithShadow1}"
-                                    StrokeThickness="1"
-                                    Stroke="{StaticResource NeutralLightGrey}">
+                            <Border
+                                Stroke="{StaticResource NeutralLightGrey}"
+                                StrokeThickness="1"
+                                Style="{StaticResource GreyBorderFrameWithShadow1}">
                                 <StackLayout>
                                     <StackLayout
                                         Padding="10"
@@ -378,9 +378,10 @@
                                                 Grid.ColumnSpan="2"
                                                 Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZTotalVATSales}" />
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       Style="{StaticResource SmallIcon}"
-                                                       Source="ic_vat_info">
+                                                <Image
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="ic_vat_info"
+                                                    Style="{StaticResource SmallIcon}">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnTotalVATSalesInfoClicked" />
                                                     </Image.GestureRecognizers>
@@ -401,9 +402,9 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     Focused="TotalVATSalesInputFocused"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -446,9 +447,9 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     Focused="TotalVATSalesInputFocused"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -490,8 +491,8 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -531,9 +532,9 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     Focused="TotalVATSalesInputFocused"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -572,9 +573,9 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     Focused="TotalVATSalesInputFocused"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -605,10 +606,10 @@
                                             <Image
                                                 Grid.Row="5"
                                                 Grid.Column="1"
-                                                Style="{StaticResource SmallIcon}"
                                                 Margin="0,0,0,10"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalVATSalesEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalVATSalesEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnTotalVATSaleEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -645,9 +646,10 @@
                                                 Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZAveragenumberoflabour}" />
 
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       Style="{StaticResource SmallIcon}"
-                                                       Source="ic_vat_info">
+                                                <Image
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="ic_vat_info"
+                                                    Style="{StaticResource SmallIcon}">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnAverageNumberOfLabourInfoClicked" />
                                                     </Image.GestureRecognizers>
@@ -670,8 +672,8 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -714,8 +716,8 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -761,10 +763,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     OutlineCornerRadius="8"
                                                     Style="{StaticResource TextInputLayout}">
@@ -803,9 +805,9 @@
                                                 <inputLayout:SfTextInputLayout
                                                     x:Name="AverageNumberOfLabourInputLayout"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -845,10 +847,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -881,10 +883,10 @@
                                             <Image
                                                 Grid.Row="5"
                                                 Grid.Column="1"
-                                                Style="{StaticResource SmallIcon}"
                                                 Margin="0,0,0,10"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.AverageNumberOfLabourEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.AverageNumberOfLabourEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnAverageNumberLabourEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -919,9 +921,10 @@
                                                 Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZImportsvalue}" />
 
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       Style="{StaticResource SmallIcon}"
-                                                       Source="ic_vat_info">
+                                                <Image
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="ic_vat_info"
+                                                    Style="{StaticResource SmallIcon}">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnImportValueInfoClicked" />
                                                     </Image.GestureRecognizers>
@@ -942,10 +945,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -987,10 +990,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1039,10 +1042,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1081,9 +1084,9 @@
                                                 <inputLayout:SfTextInputLayout
                                                     x:Name="ImportValueInputLayout"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1122,10 +1125,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1157,9 +1160,9 @@
                                                 Grid.Row="5"
                                                 Grid.Column="1"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource SmallIcon}"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportValueEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportValueEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnImportValueEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -1211,10 +1214,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1254,10 +1257,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1307,10 +1310,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1346,9 +1349,9 @@
                                                     x:Name="SalesFromPointOfSalesInputLayout"
                                                     Grid.ColumnSpan="2"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1386,10 +1389,10 @@
                                                 <inputLayout:SfTextInputLayout
                                                     Grid.ColumnSpan="2"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1421,9 +1424,9 @@
                                                 Grid.Row="5"
                                                 Grid.Column="1"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource SmallIcon}"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportFromPointOfSalesEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportFromPointOfSalesEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnImportFromPointOfSalesEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -1451,9 +1454,10 @@
                                                 Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZContractsformETIMADsystem}" />
 
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       Style="{StaticResource SmallIcon}"
-                                                       Source="ic_vat_info">
+                                                <Image
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="ic_vat_info"
+                                                    Style="{StaticResource SmallIcon}">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnContactFromETIMADSystemInfoClicked" />
                                                     </Image.GestureRecognizers>
@@ -1474,10 +1478,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1517,10 +1521,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1569,10 +1573,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1612,9 +1616,9 @@
                                                 <inputLayout:SfTextInputLayout
                                                     x:Name="ContractFromETIMADSystemInputLayout"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1651,10 +1655,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1685,10 +1689,10 @@
                                             <Image
                                                 Grid.Row="5"
                                                 Grid.Column="1"
-                                                Style="{StaticResource SmallIcon}"
                                                 Margin="0,0,0,10"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ContactFromETIMADSystemEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ContactFromETIMADSystemEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnContactFromETIMADSystemEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -1730,10 +1734,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1774,10 +1778,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1826,10 +1830,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1873,9 +1877,9 @@
                                                 <inputLayout:SfTextInputLayout
                                                     x:Name="ExportValueInputLayout"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1911,8 +1915,8 @@
                                                     Margin="0"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
-                                                     IsHintAlwaysFloated="True"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -1939,11 +1943,11 @@
 
                                             <Image
                                                 Grid.Row="5"
-                                                Style="{StaticResource SmallIcon}"
                                                 Grid.Column="1"
                                                 Margin="0,0,0,10"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ExportValueEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ExportValueEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnExportValueEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -1979,9 +1983,10 @@
                                                 Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZPurchasevalue}" />
 
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       Style="{StaticResource SmallIcon}"
-                                                       Source="ic_vat_info">
+                                                <Image
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="ic_vat_info"
+                                                    Style="{StaticResource SmallIcon}">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnPurchaseInfoClicked" />
                                                     </Image.GestureRecognizers>
@@ -2001,10 +2006,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2048,10 +2053,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2102,10 +2107,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2142,9 +2147,9 @@
                                                 <inputLayout:SfTextInputLayout
                                                     x:Name="PurchaseValueInputLayout"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2177,10 +2182,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2209,9 +2214,9 @@
                                                 Grid.Row="5"
                                                 Grid.Column="1"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource SmallIcon}"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.PurchaseValueEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.PurchaseValueEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnPurchaseValueEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -2249,9 +2254,10 @@
                                                 Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZRealEstatevalue}" />
 
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       Style="{StaticResource SmallIcon}"
-                                                       Source="ic_vat_info">
+                                                <Image
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="ic_vat_info"
+                                                    Style="{StaticResource SmallIcon}">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnRealEstateInfoClicked" />
                                                     </Image.GestureRecognizers>
@@ -2271,10 +2277,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2318,10 +2324,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2372,10 +2378,10 @@
 
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2411,9 +2417,9 @@
                                                 <inputLayout:SfTextInputLayout
                                                     x:Name="RealEstateValueInputLayout"
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2440,10 +2446,10 @@
                                             <Image
                                                 Grid.Row="5"
                                                 Grid.Column="1"
-                                                Style="{StaticResource SmallIcon}"
                                                 Margin="0,0,0,10"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.RealEstateValueEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.RealEstateValueEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnRealEstateValueEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -2481,9 +2487,10 @@
                                                 Orientation="Horizontal">
                                                 <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZCapitalamount}" />
 
-                                                <Image HorizontalOptions="EndAndExpand"
-                                                       Style="{StaticResource SmallIcon}"
-                                                       Source="ic_vat_info">
+                                                <Image
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="ic_vat_info"
+                                                    Style="{StaticResource SmallIcon}">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnCapitalAmountInfoClicked" />
                                                     </Image.GestureRecognizers>
@@ -2501,10 +2508,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2552,10 +2559,10 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerBackground="{StaticResource ContainerBackgroundColor}"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2589,9 +2596,9 @@
                                                 Spacing="0">
                                                 <inputLayout:SfTextInputLayout
                                                     Margin="0"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     InputViewPadding="16,0,16,0"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext. isEditVisible}"
                                                     LeadingViewPosition="Inside"
                                                     OutlineCornerRadius="8"
@@ -2621,9 +2628,9 @@
                                                 Grid.Row="5"
                                                 Grid.Column="1"
                                                 Margin="0,0,0,10"
-                                                Style="{StaticResource SmallIcon}"
                                                 HorizontalOptions="EndAndExpand"
-                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CapitalAmountEditImageSource}">
+                                                Source="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CapitalAmountEditImageSource}"
+                                                Style="{StaticResource SmallIcon}">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnCapitalAmountEditImageClicked" />
                                                 </Image.GestureRecognizers>
@@ -2676,9 +2683,9 @@
                                             <Image
                                                 Grid.Row="0"
                                                 Grid.Column="2"
-                                                Style="{StaticResource SmallIcon}"
                                                 HorizontalOptions="EndAndExpand"
                                                 Source="ic_vat_info"
+                                                Style="{StaticResource SmallIcon}"
                                                 VerticalOptions="Center">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnEstimatedSalesForTheFiscalYearInfoClicked" />
@@ -2835,8 +2842,8 @@
 
             </Grid>
 
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
-          
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

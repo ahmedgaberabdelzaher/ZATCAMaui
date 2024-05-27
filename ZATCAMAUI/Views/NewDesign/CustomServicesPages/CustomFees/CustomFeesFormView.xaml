@@ -9,8 +9,8 @@
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
     xmlns:numericinput="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
     xmlns:view="clr-namespace:ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews"
-    HasBackButton="True"
     FlowDirection="{Binding AppDirection}"
+    HasBackButton="True"
     TitleText="{x:Static ResourceManager:AppResources.CustomFeesCalculator}">
 
     <newdesign:BaseContentPage.PancakeView>
@@ -104,8 +104,8 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
-                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -166,8 +166,8 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
-                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -216,8 +216,8 @@
                                 FlowDirection="LeftToRight"
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
-                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -255,8 +255,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -303,9 +303,9 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                 IsHintAlwaysFloated="True"
                                 FlowDirection="LeftToRight"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">

@@ -6,6 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -13,19 +14,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     Title="{x:Static ResourceManager:AppResources.ZZakatReturnListing}"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
 
@@ -126,7 +119,7 @@
                     Margin="10,0,10,-6"
                     ContainerType="Outlined"
                     HasError="False"
-                     IsHintAlwaysFloated="True"
+                    IsHintAlwaysFloated="True"
                     OutlineCornerRadius="8"
                     Stroke="{StaticResource Primary}">
                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -160,8 +153,8 @@
                     SelectionChanged="ICRStatusChnaged">
 
 
-                    <syncfusion:SfPicker.SelectionView >
-                        <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
+                    <syncfusion:SfPicker.SelectionView>
+                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
                     </syncfusion:SfPicker.SelectionView>
 
                     <syncfusion:SfPicker.SelectedTextStyle>

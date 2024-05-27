@@ -8,7 +8,7 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}">
- 
+
     <Border
         Padding="10,10,10,10"
         BackgroundColor="White"
@@ -49,14 +49,14 @@
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="Sort Ascending"
-                                            VerticalOptions="CenterAndExpand"/>
+                                            VerticalOptions="CenterAndExpand" />
 
                                         <Label
                                             Margin="20,0,20,0"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="Sort Descending"
-                                            VerticalOptions="CenterAndExpand"/>
+                                            VerticalOptions="CenterAndExpand" />
 
                                     </StackLayout>
                                 </Grid>

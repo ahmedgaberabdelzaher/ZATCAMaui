@@ -3,8 +3,8 @@
     x:Class="ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -32,8 +32,6 @@
             <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector" />
             <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector" />
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -368,10 +366,10 @@
                                                     <inputLayout:SfTextInputLayout
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.TinEntry1, Source={x:Reference VATRegistration}}"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -401,7 +399,7 @@
                                                         ContainerType="Outlined"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
-                                                         IsHintAlwaysFloated="True"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -424,10 +422,10 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry1, Source={x:Reference VATRegistration}}"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -448,10 +446,10 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.MainOutletEntry2, Source={x:Reference VATRegistration}}"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -476,9 +474,9 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -505,10 +503,10 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry1, Source={x:Reference VATRegistration}}"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -524,10 +522,10 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.AddressEntry2, Source={x:Reference VATRegistration}}"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -550,10 +548,10 @@
                                                         Margin="0,-6,0,-6"
                                                         ContainerType="Outlined"
                                                         HasError="False"
-                                                         IsHintAlwaysFloated="True"
                                                         HorizontalOptions="FillAndExpand"
                                                         InputViewPadding="16,0,16,0"
                                                         IsEnabled="{Binding BindingContext.TaxPayerDetails.SourceEntry, Source={x:Reference VATRegistration}}"
+                                                        IsHintAlwaysFloated="True"
                                                         LeadingViewPosition="Inside"
                                                         Stroke="{StaticResource Primary}"
                                                         Style="{StaticResource TextInputLayout}">
@@ -683,13 +681,13 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="FrmEStartDate"
                                                                 Grid.Row="1"
-                                                                 IsHintAlwaysFloated="True"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
                                                                 IsEnabled="{Binding BindingContext.IsTaxPayerEligDateEnabled, Source={x:Reference VATRegistration}}"
+                                                                IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
                                                                 Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
@@ -776,9 +774,9 @@
                                                                 </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                                                                 <custom:CustomDatePicker.SelectionView >
-                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                                 </custom:CustomDatePicker.SelectionView>
+                                                                <custom:CustomDatePicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </custom:CustomDatePicker.SelectionView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -786,16 +784,16 @@
 
                                                                 <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Background="White"
-                                                                                                 Height="46"
-                                                                                                 Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                    <syncfusion:PickerHeaderView
+                                                                        Height="46"
+                                                                        Background="White"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Background="#EAF7CC"
-                                                                                                 Height="46">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
@@ -904,12 +902,12 @@
                                                         <inputLayout:SfTextInputLayout
                                                             x:Name="FrmAttachmentOptional"
                                                             Grid.Row="1"
-                                                             IsHintAlwaysFloated="True"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding BindingContext.TaxPayerDetails.ExporterrAttachmentsBtn, Source={x:Reference VATRegistration}}"
+                                                            IsHintAlwaysFloated="True"
                                                             IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
                                                             Stroke="#bbbbbb"
                                                             Style="{StaticResource TextInputLayout}">
@@ -956,9 +954,9 @@
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
-                                                                 IsHintAlwaysFloated="True"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
                                                                 Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
@@ -1106,9 +1104,9 @@
                                                             <Border
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="#eaeaea"
-                                                                StrokeShape="RoundRectangle 10,10,10,10"
                                                                 HorizontalOptions="FillAndExpand"
-                                                                IsEnabled="{Binding FinancialDetails.VATEligibilityPoint1Parent}">
+                                                                IsEnabled="{Binding FinancialDetails.VATEligibilityPoint1Parent}"
+                                                                StrokeShape="RoundRectangle 10,10,10,10">
                                                                 <Slider
                                                                     x:Name="Slider_Answer1"
                                                                     Margin="0,10,0,10"
@@ -1172,9 +1170,9 @@
                                                             <Border
                                                                 Margin="0,10,0,0"
                                                                 BackgroundColor="#eaeaea"
-                                                                StrokeShape="RoundRectangle 1,10,10,10"
                                                                 HorizontalOptions="FillAndExpand"
-                                                                IsEnabled="{Binding FinancialDetails.VATEligibilityPoint2Parent}">
+                                                                IsEnabled="{Binding FinancialDetails.VATEligibilityPoint2Parent}"
+                                                                StrokeShape="RoundRectangle 1,10,10,10">
                                                                 <Slider
                                                                     x:Name="Slider_Answer2"
                                                                     Margin="0,10,0,10"
@@ -1532,9 +1530,9 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
-                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -1735,10 +1733,10 @@
                                                                     <inputLayout:SfTextInputLayout
                                                                         Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
-                                                                         IsHintAlwaysFloated="True"
                                                                         HasError="False"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
+                                                                        IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
                                                                         Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
@@ -1778,9 +1776,9 @@
                                                                             Margin="0,-6,0,-6"
                                                                             ContainerType="Outlined"
                                                                             HasError="False"
-                                                                             IsHintAlwaysFloated="True"
                                                                             HorizontalOptions="FillAndExpand"
                                                                             InputViewPadding="16,0,16,0"
+                                                                            IsHintAlwaysFloated="True"
                                                                             LeadingViewPosition="Inside"
                                                                             Stroke="{StaticResource Primary}"
                                                                             Style="{StaticResource TextInputLayout}">
@@ -1818,9 +1816,9 @@
                                                                             OkButtonClicked="DDlIDTypeFR_OkButtonClicked">
 
 
-                                                                             <syncfusion:SfPicker.SelectionView >
-                                                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                                             </syncfusion:SfPicker.SelectionView>
+                                                                            <syncfusion:SfPicker.SelectionView>
+                                                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                            </syncfusion:SfPicker.SelectionView>
 
                                                                             <syncfusion:SfPicker.TextStyle>
                                                                                 <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -1878,9 +1876,9 @@
                                                                         ContainerType="Outlined"
                                                                         HasError="{Binding FrameIDError}"
                                                                         HorizontalOptions="FillAndExpand"
-                                                                         IsHintAlwaysFloated="True"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsEnabled="False"
+                                                                        IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
                                                                         Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
@@ -1924,10 +1922,10 @@
                                                                             Grid.Row="1"
                                                                             Margin="0,-6,0,-6"
                                                                             ContainerType="Outlined"
-                                                                             IsHintAlwaysFloated="True"
                                                                             HasError="{Binding FrameDOBError}"
                                                                             HorizontalOptions="FillAndExpand"
                                                                             InputViewPadding="16,0,16,0"
+                                                                            IsHintAlwaysFloated="True"
                                                                             IsVisible="{Binding DOBMandatoryVisibility}"
                                                                             LeadingViewPosition="Inside"
                                                                             Stroke="{StaticResource Primary}"
@@ -1974,14 +1972,14 @@
                                                                             OkButtonClicked="DOB_OkButtonClicked"
                                                                             SelectedItem="{Binding TodayDate}">
 
-                                                                             <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                                                                            <custom:CustomDatePicker.ColumnHeaderView>
+                                                                                <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                            </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                                                                            <custom:CustomDatePicker.SelectionView>
+                                                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                            </custom:CustomDatePicker.SelectionView>
 
                                                                             <custom:CustomDatePicker.SelectedTextStyle>
                                                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1990,17 +1988,15 @@
                                                                             <custom:CustomDatePicker.HeaderView>
 
                                                                                 <syncfusion:PickerHeaderView
-                                                                                     Height="46"
+                                                                                    Height="46"
                                                                                     Background="{StaticResource Primary}"
-                                                                                                             Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                             </custom:CustomDatePicker.HeaderView>
 
                                                                             <custom:CustomDatePicker.FooterView>
 
-                                                                                <syncfusion:PickerFooterView
-                                                                                    Height="46"
-                                                                                    Background="#EAF7CC">
+                                                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                                                     <syncfusion:PickerFooterView.TextStyle>
                                                                                         <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
@@ -2021,9 +2017,9 @@
                                                                         Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
                                                                         HasError="False"
-                                                                         IsHintAlwaysFloated="True"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
+                                                                        IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
                                                                         Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
@@ -2052,7 +2048,7 @@
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsEnabled="False"
-                                                                         IsHintAlwaysFloated="True"
+                                                                        IsHintAlwaysFloated="True"
                                                                         LeadingViewPosition="Inside"
                                                                         Stroke="{StaticResource Primary}"
                                                                         Style="{StaticResource TextInputLayout}">
@@ -2077,12 +2073,12 @@
                                                                         Grid.Row="13"
                                                                         Grid.Column="0"
                                                                         Grid.ColumnSpan="2"
-                                                                         IsHintAlwaysFloated="True"
                                                                         Margin="0,-6,0,-6"
                                                                         ContainerType="Outlined"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         InputViewPadding="16,0,16,0"
                                                                         IsEnabled="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IsFDNameMobEmailEnable}"
+                                                                        IsHintAlwaysFloated="True"
                                                                         IsVisible="{Binding DOBMandatoryVisibility}"
                                                                         LeadingViewPosition="Inside"
                                                                         Stroke="{StaticResource Primary}"
@@ -2173,10 +2169,10 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
-                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding FinancialRepresentative.TinEntry}"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -2215,11 +2211,11 @@
                                                                 x:Name="FrmIDType"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
-                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
                                                                 Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
@@ -2271,9 +2267,9 @@
                                                                 </syncfusion:SfPicker.HeaderView>
 
 
-                         <syncfusion:SfPicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </syncfusion:SfPicker.SelectionView>
+                                                                <syncfusion:SfPicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </syncfusion:SfPicker.SelectionView>
 
 
                                                                 <syncfusion:SfPicker.Columns>
@@ -2331,9 +2327,9 @@
                                                             ContainerType="Outlined"
                                                             HasError="{Binding FrameIDError}"
                                                             HorizontalOptions="FillAndExpand"
-                                                             IsHintAlwaysFloated="True"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding FinancialRepresentative.IDNoEntry}"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -2397,11 +2393,11 @@
                                                                 x:Name="FrmDBO"
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
-                                                                 IsHintAlwaysFloated="True"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
                                                                 Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
@@ -2448,27 +2444,30 @@
                                                                 ItemHeight="45"
                                                                 Mode="Dialog"
                                                                 SelectedItem="{Binding TodayDate}">
-                                                                 <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                                                                <custom:CustomDatePicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </custom:CustomDatePicker.SelectionView>
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                                                                 </custom:CustomDatePicker.SelectedTextStyle>
 
                                                                 <custom:CustomDatePicker.HeaderView>
 
-                                                                    <syncfusion:PickerHeaderView Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" Height="46"/>
+                                                                    <syncfusion:PickerHeaderView
+                                                                        Height="46"
+                                                                        Background="{StaticResource Primary}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"  Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
@@ -2489,10 +2488,10 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
-                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="False"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -2520,10 +2519,10 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
-                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="False"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -2550,7 +2549,6 @@
                                                             x:Name="FrmEmailAddress"
                                                             Grid.Row="13"
                                                             Grid.Column="0"
-                                                             IsHintAlwaysFloated="True"
                                                             Grid.ColumnSpan="2"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
@@ -2558,6 +2556,7 @@
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="False"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -2581,12 +2580,12 @@
                                                             Grid.Row="15"
                                                             Grid.Column="0"
                                                             Grid.ColumnSpan="2"
-                                                             IsHintAlwaysFloated="True"
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="False"
+                                                            IsHintAlwaysFloated="True"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
                                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -3101,10 +3100,10 @@
                                                                 Grid.Row="1"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
-                                                                 IsHintAlwaysFloated="True"
                                                                 HasError="False"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 LeadingViewPosition="Inside"
                                                                 Stroke="{StaticResource Primary}"
                                                                 Style="{StaticResource TextInputLayout}">
@@ -3172,9 +3171,9 @@
                                                                 </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                                                 <syncfusion:SfPicker.SelectionView >
-                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                                 </syncfusion:SfPicker.SelectionView>
+                                                                <syncfusion:SfPicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </syncfusion:SfPicker.SelectionView>
 
                                                                 <syncfusion:SfPicker.FooterView>
 
@@ -3207,10 +3206,10 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
-                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding Declaration.IDTypeOrNoPicker}"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -3256,12 +3255,12 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="FrmContactDBO"
                                                                 Grid.Row="1"
-                                                                 IsHintAlwaysFloated="True"
                                                                 Margin="0,-6,0,-6"
                                                                 ContainerType="Outlined"
                                                                 HasError="{Binding FrameContactDOBError}"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 InputViewPadding="16,0,16,0"
+                                                                IsHintAlwaysFloated="True"
                                                                 IsVisible="false"
                                                                 LeadingViewPosition="Inside"
                                                                 Stroke="{StaticResource Primary}"
@@ -3312,14 +3311,14 @@
                                                                 OkButtonClicked="ContactDOBPicker_OkButtonClicked"
                                                                 SelectedItem="{Binding TodayDate}">
 
-                                                                  <custom:CustomDatePicker.ColumnHeaderView>
-                                                                      <syncfusion:PickerColumnHeaderView Height="46" />
-                                                                   </custom:CustomDatePicker.ColumnHeaderView>
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                                                                 <custom:CustomDatePicker.SelectionView >
-                                                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                                 </custom:CustomDatePicker.SelectionView>
+                                                                <custom:CustomDatePicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </custom:CustomDatePicker.SelectionView>
 
                                                                 <custom:CustomDatePicker.SelectedTextStyle>
                                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -3329,14 +3328,14 @@
 
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
-                                                                        Background="{StaticResource Primary}" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                        Background="{StaticResource Primary}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"
-                                                                                                 Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -3364,10 +3363,10 @@
                                                             Margin="0,-6,0,-6"
                                                             ContainerType="Outlined"
                                                             HasError="False"
-                                                             IsHintAlwaysFloated="True"
                                                             HorizontalOptions="FillAndExpand"
                                                             InputViewPadding="16,0,16,0"
                                                             IsEnabled="{Binding Declaration.ContactNameEntry}"
+                                                            IsHintAlwaysFloated="True"
                                                             LeadingViewPosition="Inside"
                                                             Stroke="{StaticResource Primary}"
                                                             Style="{StaticResource TextInputLayout}">
@@ -3517,15 +3516,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="{Binding IsLoading}"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="{Binding IsLoading}"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

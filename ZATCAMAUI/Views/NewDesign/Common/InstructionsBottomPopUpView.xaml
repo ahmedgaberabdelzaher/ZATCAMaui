@@ -10,19 +10,10 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    FlowDirection="{Binding AppDirection}"
     CloseWhenBackgroundIsClicked="False"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
 
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-
-    </pages:PopupPage.Resources>-->
 
     <Grid>
 
@@ -30,8 +21,8 @@
         <Border
             Padding="15,0,15,0"
             BackgroundColor="White"
-            StrokeShape="RoundRectangle 15,15,0,0"
             IsVisible="{Binding IsCancelButtonVisible}"
+            StrokeShape="RoundRectangle 15,15,0,0"
             VerticalOptions="EndAndExpand">
 
 
@@ -243,8 +234,8 @@
         <Border
             Padding="15,0,15,0"
             BackgroundColor="White"
-            StrokeShape="RoundRectangle 15,15,0,0"
             IsVisible="{Binding IsInstructions}"
+            StrokeShape="RoundRectangle 15,15,0,0"
             VerticalOptions="EndAndExpand">
             <Grid>
                 <Grid.RowDefinitions>
@@ -425,8 +416,8 @@
         <Border
             Padding="15,0,15,0"
             BackgroundColor="White"
-            StrokeShape="RoundRectangle 15,15,0,0"
             IsVisible="{Binding IsTerms}"
+            StrokeShape="RoundRectangle 15,15,0,0"
             VerticalOptions="EndAndExpand">
             <Grid>
                 <Grid.RowDefinitions>

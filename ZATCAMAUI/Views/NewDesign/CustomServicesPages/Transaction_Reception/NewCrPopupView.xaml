@@ -11,14 +11,6 @@
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}">
 
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
 
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -62,8 +54,8 @@
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         InputViewPadding="16,0,16,0"
+                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
-                         IsHintAlwaysFloated="True"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
                         <custom:GAZTBorderlessEntry

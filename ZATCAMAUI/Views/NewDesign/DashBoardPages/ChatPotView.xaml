@@ -5,13 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    TitleText="{x:Static ResourceManager:AppResources.NDChat}"
-    FlowDirection="{Binding AppDirection}">
+    FlowDirection="{Binding AppDirection}"
+    TitleText="{x:Static ResourceManager:AppResources.NDChat}">
     <newdesign:BaseContentPage.PancakeView>
         <Grid BackgroundColor="White">
 
-            <WebView x:Name="ChatWebView"
-                     WidthRequest="{OnPlatform Android=350,iOS=410}"/>
+            <WebView x:Name="ChatWebView" WidthRequest="{OnPlatform Android=350, iOS=410}" />
 
         </Grid>
     </newdesign:BaseContentPage.PancakeView>

@@ -188,9 +188,9 @@
                             BackgroundColor="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
-                             IsHintAlwaysFloated="True"
                             Stroke="#B1B1B1"
                             Style="{StaticResource InputTableTextInputLayoutStyle}"
                             VerticalOptions="CenterAndExpand">
@@ -414,8 +414,8 @@
                                     BackgroundColor="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
-                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="15"
                                     Stroke="#B1B1B1"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">

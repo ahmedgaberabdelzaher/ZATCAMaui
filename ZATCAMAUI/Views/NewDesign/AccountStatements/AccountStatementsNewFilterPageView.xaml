@@ -10,8 +10,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -321,7 +321,7 @@
                             <syncfusion:PickerColumnHeaderView Height="46" />
                         </custom:CustomDatePicker.ColumnHeaderView>
 
-                         <custom:CustomDatePicker.SelectionView>
+                        <custom:CustomDatePicker.SelectionView>
                             <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
                         </custom:CustomDatePicker.SelectionView>
 
@@ -332,9 +332,10 @@
 
                         <custom:CustomDatePicker.HeaderView>
 
-                            <syncfusion:PickerHeaderView Background="{StaticResource SecondaryNew}"
-                                                         Height="46"
-                                                         Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
+                            <syncfusion:PickerHeaderView
+                                Height="46"
+                                Background="{StaticResource SecondaryNew}"
+                                Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
 
                         </custom:CustomDatePicker.HeaderView>
 
@@ -342,8 +343,8 @@
                         <custom:CustomDatePicker.FooterView>
 
                             <syncfusion:PickerFooterView
-                                Background="White"
                                 Height="46"
+                                Background="White"
                                 CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
                                 OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
 
@@ -373,9 +374,9 @@
                             <syncfusion:PickerColumnHeaderView Height="46" />
                         </custom:CustomHijriDatePicker.ColumnHeaderView>
 
-                         <custom:CustomHijriDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomHijriDatePicker.SelectionView>
+                        <custom:CustomHijriDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </custom:CustomHijriDatePicker.SelectionView>
 
                         <custom:CustomHijriDatePicker.HeaderView>
 
@@ -523,7 +524,7 @@
                             <syncfusion:PickerColumnHeaderView Height="46" />
                         </custom:CustomDatePicker.ColumnHeaderView>
 
-                         <custom:CustomDatePicker.SelectionView>
+                        <custom:CustomDatePicker.SelectionView>
                             <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
                         </custom:CustomDatePicker.SelectionView>
 
@@ -533,9 +534,10 @@
 
                         <custom:CustomDatePicker.HeaderView>
 
-                            <syncfusion:PickerHeaderView Background="{StaticResource SecondaryNew}"
-                                                         Height="46"
-                                                         Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
+                            <syncfusion:PickerHeaderView
+                                Height="46"
+                                Background="{StaticResource SecondaryNew}"
+                                Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
 
                         </custom:CustomDatePicker.HeaderView>
 
@@ -543,8 +545,8 @@
                         <custom:CustomDatePicker.FooterView>
 
                             <syncfusion:PickerFooterView
-                                Background="White"
                                 Height="46"
+                                Background="White"
                                 CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
                                 OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
 
@@ -569,11 +571,11 @@
                         Mode="Dialog"
                         SelectedItem="{Binding TodayDateinHijri}">
 
-                         <custom:CustomHijriDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomHijriDatePicker.SelectionView>
+                        <custom:CustomHijriDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </custom:CustomHijriDatePicker.SelectionView>
 
-                         <custom:CustomHijriDatePicker.ColumnHeaderView>
+                        <custom:CustomHijriDatePicker.ColumnHeaderView>
                             <syncfusion:PickerColumnHeaderView Height="46" />
                         </custom:CustomHijriDatePicker.ColumnHeaderView>
 
@@ -646,15 +648,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="True"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="True"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand" />
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

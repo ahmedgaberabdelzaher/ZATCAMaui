@@ -9,8 +9,8 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -25,11 +25,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <!--<Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />

@@ -90,7 +90,7 @@
                     ContainerBackground="White"
                     ContainerType="Outlined"
                     InputViewPadding="0"
-                     IsHintAlwaysFloated="True"
+                    IsHintAlwaysFloated="True"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15">
                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>

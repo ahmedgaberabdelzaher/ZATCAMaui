@@ -7,8 +7,8 @@
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
@@ -56,16 +56,16 @@
             </Grid>
             <!--#endregion Header-->
 
-              <WebView
-                    x:Name="PrivacyandPolicyWebView"
-                    Grid.Row="1"
-                    HorizontalOptions="FillAndExpand"
-                    Navigated="PrivacyandPolicyWebView_Navigated"
-                    Navigating="PrivacyandPolicyWebView_Navigating"
-                    Source="{Binding WebUrl}"
-                    VerticalOptions="FillAndExpand" />
+            <WebView
+                x:Name="PrivacyandPolicyWebView"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                Navigated="PrivacyandPolicyWebView_Navigated"
+                Navigating="PrivacyandPolicyWebView_Navigating"
+                Source="{Binding WebUrl}"
+                VerticalOptions="FillAndExpand" />
 
-             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
+            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>
     </ContentPage.Content>

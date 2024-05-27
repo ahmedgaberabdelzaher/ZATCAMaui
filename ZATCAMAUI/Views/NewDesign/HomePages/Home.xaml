@@ -7,34 +7,20 @@
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    FlowDirection="{Binding AppDirection}"
     Padding="0,45,0,0"
     ios:Page.UseSafeArea="False"
+    FlowDirection="{Binding AppDirection}"
     HasBackButton="False"
     TitleText="{x:Static ResourceManager:AppResources.Home}">
-
-    <!--<newdesign:BaseContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="10,45,0,0" />
-            <On Platform="Android" Value="0" />
-        </OnPlatform>
-    </newdesign:BaseContentPage.Padding>
-
-    <newdesign:BaseContentPage.PancakMargin>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="10,0,0,20" />
-            <On Platform="Android" Value="0" />
-        </OnPlatform>
-    </newdesign:BaseContentPage.PancakMargin>-->
 
     <newdesign:BaseContentPage.PancakeView>
 
         <Grid RowDefinitions="auto,*,*">
 
             <Label
+                Padding="10"
                 FontFamily="{StaticResource SomarBold}"
                 FontSize="18"
-                Padding="10"
                 Text="{x:Static ResourceManager:AppResources.ZATCAServices}"
                 TextColor="{StaticResource Primary}" />
 

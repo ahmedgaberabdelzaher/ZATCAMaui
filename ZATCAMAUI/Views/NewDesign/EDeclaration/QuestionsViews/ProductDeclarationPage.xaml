@@ -9,7 +9,6 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:questionsviews="clr-namespace:ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -18,11 +17,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
-            <ResourceDictionary> 
+            <ResourceDictionary>
                 <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             </ResourceDictionary>
         </ResourceDictionary>
@@ -111,413 +106,415 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
-                <ScrollView VerticalScrollBarVisibility="Never">
+                    <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand"
-                                 Padding="10,0"
-                                 Spacing="8">
+                        <StackLayout
+                            Padding="10,0"
+                            Spacing="8"
+                            VerticalOptions="FillAndExpand">
 
-                        <!--  Circle view  -->
-                        <Grid
-                            Margin="0,30,0,10"
-                            ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-                            ColumnSpacing="0"
-                            HorizontalOptions="CenterAndExpand"
-                            RowDefinitions="Auto"
-                            VerticalOptions="Start">
+                            <!--  Circle view  -->
+                            <Grid
+                                Margin="0,30,0,10"
+                                ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                                ColumnSpacing="0"
+                                HorizontalOptions="CenterAndExpand"
+                                RowDefinitions="Auto"
+                                VerticalOptions="Start">
 
-                            <!--  Circle button 1  -->
-                            <buttons:SfButton
-                                Background="Transparent"
-                                Stroke="#0996D4"
-                                StrokeThickness="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
-                                HorizontalOptions="EndAndExpand"
-                                InputTransparent="True"
-                                Text="1"
-                                TextColor="#0996D4"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <buttons:SfButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </buttons:SfButton.Padding>
+                                <!--  Circle button 1  -->
+                                <buttons:SfButton
+                                    Background="Transparent"
+                                    CornerRadius="15"
+                                    HeightRequest="30"
+                                    HorizontalOptions="EndAndExpand"
+                                    InputTransparent="True"
+                                    Stroke="#0996D4"
+                                    StrokeThickness="1"
+                                    Text="1"
+                                    TextColor="#0996D4"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="30">
+                                    <buttons:SfButton.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="Android">0</On>
+                                        </OnPlatform>
+                                    </buttons:SfButton.Padding>
 
-                            </buttons:SfButton>
+                                </buttons:SfButton>
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    Grid.Column="1"
+                                    BackgroundColor="#B8BABA"
+                                    HeightRequest="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                                <!--  Circle button 2  -->
+                                <buttons:SfButton
+                                    Grid.Column="2"
+                                    Background="Transparent"
+                                    CornerRadius="15"
+                                    HeightRequest="30"
+                                    HorizontalOptions="StartAndExpand"
+                                    InputTransparent="True"
+                                    Stroke="#B8BABA"
+                                    StrokeThickness="1"
+                                    Text="2"
+                                    TextColor="#565655"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="30">
+                                    <buttons:SfButton.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="Android">0</On>
+                                        </OnPlatform>
+                                    </buttons:SfButton.Padding>
+
+                                </buttons:SfButton>
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    Grid.Column="3"
+                                    BackgroundColor="#B8BABA"
+                                    HeightRequest="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                                <!--  Circle button 3  -->
+                                <buttons:SfButton
+                                    Grid.Column="4"
+                                    Background="Transparent"
+                                    CornerRadius="15"
+                                    HeightRequest="30"
+                                    HorizontalOptions="StartAndExpand"
+                                    InputTransparent="True"
+                                    Stroke="#B8BABA"
+                                    StrokeThickness="1"
+                                    Text="3"
+                                    TextColor="#565655"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="30">
+                                    <buttons:SfButton.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="Android">0</On>
+                                        </OnPlatform>
+                                    </buttons:SfButton.Padding>
+
+                                </buttons:SfButton>
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    Grid.Column="5"
+                                    BackgroundColor="#B8BABA"
+                                    HeightRequest="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                                <!--  Circle button 4  -->
+                                <buttons:SfButton
+                                    Grid.Column="6"
+                                    Background="Transparent"
+                                    CornerRadius="15"
+                                    HeightRequest="30"
+                                    HorizontalOptions="StartAndExpand"
+                                    InputTransparent="True"
+                                    Stroke="#B8BABA"
+                                    StrokeThickness="1"
+                                    Text="4"
+                                    TextColor="#565655"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="30">
+                                    <buttons:SfButton.Padding>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="Android">0</On>
+                                        </OnPlatform>
+                                    </buttons:SfButton.Padding>
+
+                                </buttons:SfButton>
+
+                            </Grid>
+
+
+                            <!--  AddingItems Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="24"
+                                HorizontalOptions="StartAndExpand"
+                                MaxLines="1"
+                                Text="{x:Static ResourceManager:AppResources.AddingItems}"
+                                TextColor="{StaticResource Primary}" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
-                                Grid.Column="1"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20" />
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="1"
+                                WidthRequest="350" />
 
-                            <!--  Circle button 2  -->
-                            <buttons:SfButton
-                                Grid.Column="2"
-                                Background="Transparent"
-                                Stroke="#B8BABA"
-                                StrokeThickness="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
+                            <!--  Welcome Label for logged in only  -->
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="20"
                                 HorizontalOptions="StartAndExpand"
-                                InputTransparent="True"
-                                Text="2"
-                                TextColor="#565655"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <buttons:SfButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </buttons:SfButton.Padding>
+                                IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                                MaxLines="1"
+                                Text="{x:Static ResourceManager:AppResources.Hi}"
+                                TextColor="#0996D4" />
 
-                            </buttons:SfButton>
+                            <!--  User Label for logged in only  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="20"
+                                HorizontalOptions="StartAndExpand"
+                                IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                                MaxLines="1"
+                                Text="{Binding SubmitModel.travelerDeclaration.FullName}"
+                                TextColor="{StaticResource Primary}" />
+
+                            <!--  Question Title Field Label  -->
+                            <Label
+                                Margin="0,0,0,10"
+                                FontSize="14"
+                                LineHeight="1"
+                                Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Question}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
 
                             <!--  Horizontal Line  -->
                             <BoxView
-                                Grid.Column="3"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20" />
+                                Margin="0,0,0,10"
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="1"
+                                IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                                WidthRequest="350" />
 
-                            <!--  Circle button 3  -->
-                            <buttons:SfButton
-                                Grid.Column="4"
-                                Background="Transparent"
-                                Stroke="#B8BABA"
-                                StrokeThickness="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
-                                HorizontalOptions="StartAndExpand"
-                                InputTransparent="True"
-                                Text="3"
-                                TextColor="#565655"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <buttons:SfButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </buttons:SfButton.Padding>
+                            <!--#region Questions View-->
+                            <StackLayout>
 
-                            </buttons:SfButton>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="5"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20" />
-
-                            <!--  Circle button 4  -->
-                            <buttons:SfButton
-                                Grid.Column="6"
-                                Background="Transparent"
-                                Stroke="#B8BABA"
-                                StrokeThickness="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
-                                HorizontalOptions="StartAndExpand"
-                                InputTransparent="True"
-                                Text="4"
-                                TextColor="#565655"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <buttons:SfButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </buttons:SfButton.Padding>
-
-                            </buttons:SfButton>
-
-                        </Grid>
-
-
-                        <!--  AddingItems Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="24"
-                            HorizontalOptions="StartAndExpand"
-                            MaxLines="1"
-                            Text="{x:Static ResourceManager:AppResources.AddingItems}"
-                            TextColor="{StaticResource Primary}" />
-
-                        <!--  Horizontal Line  -->
-                        <BoxView
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="1"
-                            WidthRequest="350" />
-
-                        <!--  Welcome Label for logged in only  -->
-                        <Label
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="20"
-                            HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
-                            MaxLines="1"
-                            Text="{x:Static ResourceManager:AppResources.Hi}"
-                            TextColor="#0996D4" />
-
-                        <!--  User Label for logged in only  -->
-                        <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="20"
-                            HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
-                            MaxLines="1"
-                            Text="{Binding SubmitModel.travelerDeclaration.FullName}"
-                            TextColor="{StaticResource Primary}" />
-
-                        <!--  Question Title Field Label  -->
-                        <Label
-                            Margin="0,0,0,10"
-                            FontSize="14"
-                            LineHeight="1"
-                            Style="{StaticResource CaptionLabelGrey}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding Question}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <!--  Horizontal Line  -->
-                        <BoxView
-                            Margin="0,0,0,10"
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="1"
-                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
-                            WidthRequest="350" />
-
-                        <!--#region Questions View-->
-                        <StackLayout>
-
-                            <!--#region Hint view-->
-                            <Frame
-                                Padding="10"
-                                BackgroundColor="White"
-                                BorderColor="#E6E6E6"
-                                CornerRadius="10"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="StartAndExpand">
-
-                                <Frame.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding QFlow}"
-                                        TargetType="Frame"
-                                        Value="4">
-                                        <Setter Property="IsVisible" Value="false" />
-
-                                    </DataTrigger>
-
-                                </Frame.Triggers>
-
-                                <StackLayout
-                                    HorizontalOptions="Start"
-                                    Orientation="Horizontal"
-                                    Spacing="10"
+                                <!--#region Hint view-->
+                                <Frame
+                                    Padding="10"
+                                    BackgroundColor="White"
+                                    BorderColor="#E6E6E6"
+                                    CornerRadius="10"
+                                    HorizontalOptions="FillAndExpand"
                                     VerticalOptions="StartAndExpand">
 
-                                    <!--  info icon  -->
-                                    <Image
-                                        Aspect="AspectFit"
-                                        HeightRequest="20"
+                                    <Frame.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding QFlow}"
+                                            TargetType="Frame"
+                                            Value="4">
+                                            <Setter Property="IsVisible" Value="false" />
+
+                                        </DataTrigger>
+
+                                    </Frame.Triggers>
+
+                                    <StackLayout
                                         HorizontalOptions="Start"
-                                        Source="information.png"
-                                        VerticalOptions="StartAndExpand"
-                                        WidthRequest="20" />
+                                        Orientation="Horizontal"
+                                        Spacing="10"
+                                        VerticalOptions="StartAndExpand">
 
-                                    <!--  Question Hint Label  -->
-                                    <Label
-                                        FontSize="12"
-                                        LineHeight="1"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}"
-                                        TextColor="#999999">
-                                        <Label.Triggers>
+                                        <!--  info icon  -->
+                                        <Image
+                                            Aspect="AspectFit"
+                                            HeightRequest="20"
+                                            HorizontalOptions="Start"
+                                            Source="information.png"
+                                            VerticalOptions="StartAndExpand"
+                                            WidthRequest="20" />
 
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="Label"
-                                                Value="2">
-                                                <Setter Property="Text" Value="" />
-                                            </DataTrigger>
-
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="Label"
-                                                Value="3">
-                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Q2Hint}" />
-                                            </DataTrigger>
-
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="Label"
-                                                Value="4">
-
-                                                <Setter Property="IsVisible" Value="false" />
-                                            </DataTrigger>
-
-                                        </Label.Triggers>
-
-                                    </Label>
-
-                                    <!--  Hint With Two Line  -->
-                                    <StackLayout IsVisible="false">
-
-                                        <StackLayout.Triggers>
-
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="StackLayout"
-                                                Value="2">
-                                                <Setter Property="IsVisible" Value="true" />
-                                            </DataTrigger>
-
-                                        </StackLayout.Triggers>
-
-                                        <!--  Hint Label  -->
+                                        <!--  Question Hint Label  -->
                                         <Label
                                             FontSize="12"
                                             HorizontalOptions="StartAndExpand"
                                             LineHeight="1"
-                                            Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
-                                            TextColor="#999999" />
+                                            Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}"
+                                            TextColor="#999999">
+                                            <Label.Triggers>
 
-                                        <!--  View List Label  -->
-                                        <Label
-                                            FontSize="12"
-                                            HorizontalOptions="StartAndExpand"
-                                            LineHeight="1"
-                                            Text="{x:Static ResourceManager:AppResources.Viewlist}"
-                                            TextColor="#002447"
-                                            TextDecorations="Underline">
+                                                <DataTrigger
+                                                    Binding="{Binding QFlow}"
+                                                    TargetType="Label"
+                                                    Value="2">
+                                                    <Setter Property="Text" Value="" />
+                                                </DataTrigger>
 
-                                            <Label.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}" />
-                                            </Label.GestureRecognizers>
+                                                <DataTrigger
+                                                    Binding="{Binding QFlow}"
+                                                    TargetType="Label"
+                                                    Value="3">
+                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Q2Hint}" />
+                                                </DataTrigger>
+
+                                                <DataTrigger
+                                                    Binding="{Binding QFlow}"
+                                                    TargetType="Label"
+                                                    Value="4">
+
+                                                    <Setter Property="IsVisible" Value="false" />
+                                                </DataTrigger>
+
+                                            </Label.Triggers>
 
                                         </Label>
+
+                                        <!--  Hint With Two Line  -->
+                                        <StackLayout IsVisible="false">
+
+                                            <StackLayout.Triggers>
+
+                                                <DataTrigger
+                                                    Binding="{Binding QFlow}"
+                                                    TargetType="StackLayout"
+                                                    Value="2">
+                                                    <Setter Property="IsVisible" Value="true" />
+                                                </DataTrigger>
+
+                                            </StackLayout.Triggers>
+
+                                            <!--  Hint Label  -->
+                                            <Label
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                LineHeight="1"
+                                                Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
+                                                TextColor="#999999" />
+
+                                            <!--  View List Label  -->
+                                            <Label
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                LineHeight="1"
+                                                Text="{x:Static ResourceManager:AppResources.Viewlist}"
+                                                TextColor="#002447"
+                                                TextDecorations="Underline">
+
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}" />
+                                                </Label.GestureRecognizers>
+
+                                            </Label>
+
+                                        </StackLayout>
 
                                     </StackLayout>
 
-                                </StackLayout>
+                                </Frame>
+                                <!--#endregion Hint view-->
 
-                            </Frame>
-                            <!--#endregion Hint view-->
+                                <!--#region TobacoProduct-->
+                                <questionsviews:TobacoView />
+                                <!--#endregion TobacoProduct-->
 
-                            <!--#region TobacoProduct-->
-                            <questionsviews:TobacoView />
-                            <!--#endregion TobacoProduct-->
+                                <!--#region ProductView-->
+                                <questionsviews:ProductView />
+                                <!--#endregion ProductView-->
 
-                            <!--#region ProductView-->
-                            <questionsviews:ProductView />
-                            <!--#endregion ProductView-->
+                                <!--#region CurrencyView-->
+                                <questionsviews:CurrencyView />
+                                <!--#endregion CurrencyView-->
 
-                            <!--#region CurrencyView-->
-                            <questionsviews:CurrencyView />
-                            <!--#endregion CurrencyView-->
+                                <!--#region Security Restricted QuestionView-->
+                                <questionsviews:RestrictedView />
 
-                            <!--#region Security Restricted QuestionView-->
-                            <questionsviews:RestrictedView />
+                                <!--#endregion RestrictedView-->
 
-                            <!--#endregion RestrictedView-->
+                            </StackLayout>
+                            <!--#endregion Questions View-->
 
-                        </StackLayout>
-                        <!--#endregion Questions View-->
+                            <!--#region Submit and Card-->
+                            <StackLayout
+                                Margin="0,10"
+                                Spacing="10"
+                                WidthRequest="350">
+                                <!--  Add Item Button  -->
+                                <buttons:SfButton
+                                    Command="{Binding AddCommand}"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Text="{x:Static ResourceManager:AppResources.AddItem}"
+                                    WidthRequest="350" />
 
-                        <!--#region Submit and Card-->
-                        <StackLayout Spacing="10"
-                                     WidthRequest="350"
-                                     Margin="0,10">
-                            <!--  Add Item Button  -->
-                            <buttons:SfButton
-                                Command="{Binding AddCommand}"
-                                WidthRequest="350"
-                                Style="{StaticResource PrimaryButtonStyle}"
-                                Text="{x:Static ResourceManager:AppResources.AddItem}" />
+                                <!--  Card Frame  -->
+                                <Frame
+                                    Padding="10"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    CornerRadius="10"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="StartAndExpand">
 
-                            <!--  Card Frame  -->
-                            <Frame
-                                Padding="10"
-                                BackgroundColor="{StaticResource Primary}"
-                                CornerRadius="10"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="StartAndExpand">
+                                    <StackLayout Orientation="Horizontal" Spacing="10">
 
-                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                        <Frame
+                                            Padding="10"
+                                            BackgroundColor="White"
+                                            CornerRadius="10"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center">
 
-                                    <Frame
-                                        Padding="10"
-                                        BackgroundColor="White"
-                                        CornerRadius="10"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
+                                            <!--  Total Number Label  -->
+                                            <Label
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Style="{StaticResource CaptionLabelGrey}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
+                                                        <Span Text="  " />
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
 
-                                        <!--  Total Number Label  -->
+                                        </Frame>
+
+                                        <!--  Total Fees Payable Label  -->
                                         <Label
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="14"
-                                            Style="{StaticResource CaptionLabelGrey}">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.totalPayment, StringFormat='{0:n}'}" />
-                                                    <Span Text="  " />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                            HorizontalOptions="End"
+                                            Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
 
-                                    </Frame>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenCartCommand}" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </StackLayout>
+                            <!--#endregion Submit and Card-->
 
-                                    <!--  Total Fees Payable Label  -->
-                                    <Label
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="14"
-                                        HorizontalOptions="End"
-                                        Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
-                                        TextColor="White"
-                                        VerticalOptions="CenterAndExpand" />
+                            <!--  GoTo Second Product Declaration Button  -->
+                            <buttons:SfButton
+                                Margin="0,5"
+                                Command="{Binding NextCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                                VerticalOptions="EndAndExpand"
+                                WidthRequest="350" />
 
-                                </StackLayout>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenCartCommand}" />
-                                </Frame.GestureRecognizers>
-                            </Frame>
+                            <!--  Prevoius Button  -->
+                            <buttons:SfButton
+                                Margin="0,0,0,25"
+                                Background="Transparent"
+                                Command="{Binding PrevoiusCommand}"
+                                FontFamily="{StaticResource SomarLight}"
+                                Stroke="Transparent"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.PerviousButton}"
+                                TextColor="{StaticResource Secondary}" />
+
                         </StackLayout>
-                        <!--#endregion Submit and Card-->
 
-                        <!--  GoTo Second Product Declaration Button  -->
-                        <buttons:SfButton
-                            Margin="0,5"
-                            Command="{Binding NextCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
-                            VerticalOptions="EndAndExpand"
-                            WidthRequest="350"/>
-
-                        <!--  Prevoius Button  -->
-                        <buttons:SfButton
-                            Margin="0,0,0,25"
-                            Background="Transparent"
-                            Command="{Binding PrevoiusCommand}"
-                            FontFamily="{StaticResource SomarLight}"
-                            Stroke="Transparent"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.PerviousButton}"
-                            TextColor="{StaticResource Secondary}" />
-
-                    </StackLayout>
-
-                </ScrollView>
+                    </ScrollView>
                 </Grid>
             </Border>
             <!--#endregion Body-->

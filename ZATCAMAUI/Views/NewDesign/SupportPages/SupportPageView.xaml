@@ -16,17 +16,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="180" />
@@ -431,9 +427,9 @@
                                     SelectionChanged="BranchLocation_SelectionChanged">
 
 
-                         <custom:CustomSfPicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomSfPicker.SelectionView>
+                                    <custom:CustomSfPicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomSfPicker.SelectionView>
 
                                     <custom:CustomSfPicker.HeaderView>
 
@@ -584,15 +580,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="True"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="True"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand" />
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

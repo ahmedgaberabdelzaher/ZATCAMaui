@@ -8,17 +8,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    
     FlowDirection="{Binding AppDirection}">
 
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
 
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -34,106 +25,106 @@
         <Border
             Padding="25"
             BackgroundColor="White"
-            StrokeShape="RoundRectangle 15,15,0,0"
             HeightRequest="490"
+            StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 
             <Grid RowDefinitions="*">
 
-                <ScrollView  VerticalScrollBarVisibility="Never">
+                <ScrollView VerticalScrollBarVisibility="Never">
 
-                <StackLayout>
+                    <StackLayout>
 
-                    <!--#region Frame Contains Image and Text-->
-                    <Frame
-                        Padding="25"
-                        BorderColor="Transparent"
-                        CornerRadius="15"
-                        HasShadow="False">
+                        <!--#region Frame Contains Image and Text-->
+                        <Frame
+                            Padding="25"
+                            BorderColor="Transparent"
+                            CornerRadius="15"
+                            HasShadow="False">
 
-                        <StackLayout>
-                            <!--  Header 1 Label  -->
-                            <Label
-                                FontFamily="{StaticResource SomarBold}"
-                                FontSize="16"
-                                HorizontalOptions="Start"
-                                LineHeight="1"
-                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsHeaderOne}"
-                                TextColor="#002447"
-                                VerticalOptions="Start" />
+                            <StackLayout>
+                                <!--  Header 1 Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarBold}"
+                                    FontSize="16"
+                                    HorizontalOptions="Start"
+                                    LineHeight="1"
+                                    Text="{x:Static ResourceManager:AppResources.EDeclarationTermsHeaderOne}"
+                                    TextColor="#002447"
+                                    VerticalOptions="Start" />
 
-                            <!--  Notes Label  -->
-                            <Label
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="14"
-                                LineBreakMode="WordWrap"
-                                LineHeight="1"
-                                TextColor="#002447">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="•  " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}" />
-                                        <Span Text="&#10;" />
-                                        <Span Text="•  " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsTwo}" />
-                                        <Span Text="&#10;" />
-                                        <Span Text="•  " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsThree}" />
-                                        <Span Text="&#10;" />
-                                        <Span Text="•  " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFour}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
+                                <!--  Notes Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="14"
+                                    LineBreakMode="WordWrap"
+                                    LineHeight="1"
+                                    TextColor="#002447">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="•  " />
+                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}" />
+                                            <Span Text="&#10;" />
+                                            <Span Text="•  " />
+                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsTwo}" />
+                                            <Span Text="&#10;" />
+                                            <Span Text="•  " />
+                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsThree}" />
+                                            <Span Text="&#10;" />
+                                            <Span Text="•  " />
+                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFour}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
 
-                            </Label>
+                                </Label>
 
-                            <!--  Header 2 Label  -->
-                            <Label
-                                FontFamily="{StaticResource SomarBold}"
-                                FontSize="16"
-                                HorizontalOptions="Start"
-                                LineHeight="1"
-                                Text="{x:Static ResourceManager:AppResources.EDeclarationTermsHeaderTwo}"
-                                TextColor="#002447"
-                                VerticalOptions="Start" />
+                                <!--  Header 2 Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarBold}"
+                                    FontSize="16"
+                                    HorizontalOptions="Start"
+                                    LineHeight="1"
+                                    Text="{x:Static ResourceManager:AppResources.EDeclarationTermsHeaderTwo}"
+                                    TextColor="#002447"
+                                    VerticalOptions="Start" />
 
-                            <!--  Notes Label  -->
-                            <Label
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="14"
-                                LineBreakMode="WordWrap"
-                                LineHeight="1"
-                                TextColor="#002447">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="•  " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}" />
-                                        <Span Text="&#10;" />
-                                        <Span Text="•  " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFive}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
+                                <!--  Notes Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="14"
+                                    LineBreakMode="WordWrap"
+                                    LineHeight="1"
+                                    TextColor="#002447">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="•  " />
+                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsOne}" />
+                                            <Span Text="&#10;" />
+                                            <Span Text="•  " />
+                                            <Span Text="{x:Static ResourceManager:AppResources.EDeclarationTermsFive}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
 
-                            </Label>
+                                </Label>
 
-                        </StackLayout>
+                            </StackLayout>
 
 
 
-                    </Frame>
+                        </Frame>
 
-                    <!--  Next Button  -->
-                    <buttons:SfButton
-                        Margin="0,20,0,50"
-                        Command="{Binding GoToProductDeclarationCommand}"
-                        FontFamily="{StaticResource SomarBold}"
-                        Style="{StaticResource PrimaryButtonStyle}"
-                        Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+                        <!--  Next Button  -->
+                        <buttons:SfButton
+                            Margin="0,20,0,50"
+                            Command="{Binding GoToProductDeclarationCommand}"
+                            FontFamily="{StaticResource SomarBold}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 
-                </StackLayout>
+                    </StackLayout>
 
-            </ScrollView>
+                </ScrollView>
 
             </Grid>
         </Border>

@@ -13,15 +13,11 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    FlowDirection="{Binding AppDirection}"
     CloseWhenBackgroundIsClicked="False"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10" />
                 <Setter Property="WidthRequest" Value="10" />
@@ -129,8 +125,8 @@
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
                                         HasError="False"
-                                         IsHintAlwaysFloated="True"
                                         HorizontalOptions="FillAndExpand"
+                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}"
@@ -306,8 +302,8 @@
                                         Grid.Column="0"
                                         Grid.ColumnSpan="1"
                                         ContainerType="Outlined"
-                                         IsHintAlwaysFloated="True"
                                         HasError="False"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="12"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -339,9 +335,9 @@
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         Grid.ColumnSpan="1"
-                                         IsHintAlwaysFloated="True"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="12"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -375,7 +371,7 @@
                                         Grid.ColumnSpan="1"
                                         ContainerType="Outlined"
                                         HasError="False"
-                                         IsHintAlwaysFloated="True"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="12"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -410,7 +406,7 @@
                                         Grid.ColumnSpan="1"
                                         ContainerType="Outlined"
                                         HasError="False"
-                                         IsHintAlwaysFloated="True"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="12"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -610,9 +606,9 @@
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
-                                         IsHintAlwaysFloated="True"
                                         HasError="{Binding FramePasswordError}"
                                         HorizontalOptions="FillAndExpand"
+                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}"
@@ -661,9 +657,9 @@
                                     <inputLayout:SfTextInputLayout
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
-                                         IsHintAlwaysFloated="True"
                                         HasError="{Binding FrameConfirmPasswordError}"
                                         HorizontalOptions="FillAndExpand"
+                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}"

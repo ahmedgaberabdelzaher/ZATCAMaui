@@ -10,8 +10,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
     BackgroundImageSource="partials_background"
-    NavigationPage.HasNavigationBar="False"
     FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
     <ContentPage.Resources>

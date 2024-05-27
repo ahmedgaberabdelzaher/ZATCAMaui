@@ -9,14 +9,6 @@
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
     <Border Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
         <StackLayout>
             <Label Style="{StaticResource SectionTitleBlack}" Text="On Occupancy Rated Clicked" />

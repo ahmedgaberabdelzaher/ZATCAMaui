@@ -8,9 +8,9 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
     Title="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
     BackgroundImageSource="partials_background"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>

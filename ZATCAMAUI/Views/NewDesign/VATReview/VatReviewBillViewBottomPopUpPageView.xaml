@@ -10,20 +10,12 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
 
     <Border
         BackgroundColor="White"
-        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="End"
         IsVisible="true"
+        StrokeShape="RoundRectangle 15,15,0,0"
         VerticalOptions="EndAndExpand">
 
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">

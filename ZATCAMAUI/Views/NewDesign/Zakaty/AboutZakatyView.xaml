@@ -4,8 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    FlowDirection="{Binding AppDirection}"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    FlowDirection="{Binding AppDirection}"
     TitleText="{x:Static ResourceManager:AppResources.Zakaty}">
     <newdesign:BaseContentPage.PancakeView>
         <ScrollView VerticalScrollBarVisibility="Never">

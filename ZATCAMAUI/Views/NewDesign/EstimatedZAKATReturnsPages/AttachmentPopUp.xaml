@@ -12,8 +12,8 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    mc:Ignorable="d"
-    FlowDirection="{Binding AppDirection}">
+    FlowDirection="{Binding AppDirection}"
+    mc:Ignorable="d">
     <Grid RowDefinitions="100*">
 
         <Border
@@ -33,8 +33,8 @@
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDWriteYourObjectionReason}" />
                             <inputLayout:SfTextInputLayout
                                 Margin="0"
-                                 IsHintAlwaysFloated="True"
                                 HorizontalOptions="FillAndExpand"
+                                IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     x:Name="ObjectionReason"
@@ -197,15 +197,15 @@
                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                     <busyindicator:SfBusyIndicator
                         x:Name="busyindicatorForLanding"
-                        HorizontalOptions="CenterAndExpand"
-                        IsRunning="True"
                         AnimationType="Cupertino"
-                        SizeFactor="0.6"
-                        WidthRequest="70"
                         HeightRequest="70"
+                        HorizontalOptions="CenterAndExpand"
                         IndicatorColor="{StaticResource Secondary}"
+                        IsRunning="True"
+                        SizeFactor="0.6"
                         TitlePlacement="Bottom"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="70" />
                 </StackLayout>
             </StackLayout>
         </Grid>

@@ -7,17 +7,18 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     Title="Login"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid>
 
-            <Grid x:Name="loginGrid"
-                  RowDefinitions="100*"
-                  ColumnDefinitions="100*">
+            <Grid
+                x:Name="loginGrid"
+                ColumnDefinitions="100*"
+                RowDefinitions="100*">
 
-                <controls:Loader IsVisible="{Binding IsLoading}"/>
+                <controls:Loader IsVisible="{Binding IsLoading}" />
 
             </Grid>
 
@@ -65,8 +66,7 @@
                 </StackLayout>
             </StackLayout>
 
-           <controls:BottomMenu VerticalOptions="EndAndExpand"
-                                HorizontalOptions="Fill"/>
+            <controls:BottomMenu HorizontalOptions="Fill" VerticalOptions="EndAndExpand" />
 
         </Grid>
     </ContentPage.Content>

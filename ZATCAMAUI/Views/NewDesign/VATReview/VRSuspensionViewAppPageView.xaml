@@ -20,10 +20,6 @@
             <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="0" />
             </Style>
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
-            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
 

@@ -66,8 +66,8 @@
                                     Grid.Row="1"
                                     Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
-                                     IsHintAlwaysFloated="True"
                                     HasError="False"
+                                    IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="8"
                                     Stroke="{StaticResource Primary}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -121,9 +121,9 @@
                                     </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                 <syncfusion:SfPicker.SelectionView >
-                                    <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                 </syncfusion:SfPicker.SelectionView>
+                                    <syncfusion:SfPicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </syncfusion:SfPicker.SelectionView>
 
                                     <syncfusion:SfPicker.HeaderView>
 
@@ -163,8 +163,8 @@
                                         Grid.Row="3"
                                         Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
-                                         IsHintAlwaysFloated="True"
                                         HasError="False"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="8"
                                         Stroke="#bbbbbb">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -322,15 +322,15 @@
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                             <busyindicator:SfBusyIndicator
                                 x:Name="busyindicatorForLanding"
-                                HorizontalOptions="CenterAndExpand"
-                                IsRunning="{Binding IsLoading}"
                                 AnimationType="Cupertino"
-                                SizeFactor="0.6"
-                                WidthRequest="70"
                                 HeightRequest="70"
+                                HorizontalOptions="CenterAndExpand"
                                 IndicatorColor="{StaticResource Secondary}"
+                                IsRunning="{Binding IsLoading}"
+                                SizeFactor="0.6"
                                 TitlePlacement="Bottom"
-                                VerticalOptions="Center" />
+                                VerticalOptions="Center"
+                                WidthRequest="70" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>

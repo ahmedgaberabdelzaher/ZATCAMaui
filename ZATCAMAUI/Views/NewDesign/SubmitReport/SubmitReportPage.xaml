@@ -9,7 +9,6 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -89,11 +88,11 @@
                             <!--  Circle button 1  -->
                             <buttons:SfButton
                                 Background="Transparent"
-                                Stroke="#0996D4"
-                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="EndAndExpand"
+                                Stroke="#0996D4"
+                                StrokeThickness="1"
                                 Text="1"
                                 TextColor="#0996D4"
                                 VerticalOptions="CenterAndExpand"
@@ -118,11 +117,11 @@
                             <buttons:SfButton
                                 Grid.Column="2"
                                 Background="Transparent"
-                                Stroke="#B8BABA"
-                                StrokeThickness="1"
                                 CornerRadius="15"
                                 HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
+                                Stroke="#B8BABA"
+                                StrokeThickness="1"
                                 Text="2"
                                 TextColor="#565655"
                                 VerticalOptions="CenterAndExpand"
@@ -193,9 +192,9 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                 IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource NeutralGreay}"
                                 VerticalOptions="StartAndExpand">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -247,9 +246,9 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                 IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource NeutralGreay}"
                                 VerticalOptions="StartAndExpand">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -281,7 +280,7 @@
                         </StackLayout>
 
 
-                           <!--  Report Sub Category Field  -->
+                        <!--  Report Sub Category Field  -->
                         <StackLayout IsVisible="{Binding IsSubCategeoryShow}" Spacing="0">
 
                             <!--  Report SubCategory Label  -->
@@ -298,13 +297,13 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                Stroke="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}"
                                 VerticalOptions="StartAndExpand">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020"/>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <custom:GAZTBorderlessEntry
                                     x:Name="reportSubCategoryEntry"
@@ -350,7 +349,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}"
@@ -400,8 +399,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -440,8 +439,8 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
-                                 IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -490,9 +489,9 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 HasError="{Binding SubmitReport.HasViolationDate}"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                 IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
@@ -526,9 +525,9 @@
                                 ContainerType="Outlined"
                                 HelperText="{x:Static ResourceManager:AppResources.ReportAttachmentHelperText}"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                 IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource NeutralGreay}"
                                 VerticalOptions="StartAndExpand">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -580,8 +579,8 @@
                                                 ContainerBackground="White"
                                                 ContainerType="Outlined"
                                                 InputViewPadding="16,0,16,0"
+                                                IsHintAlwaysFloated="True"
                                                 LeadingViewPosition="Inside"
-                                                 IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="15"
                                                 Stroke="{StaticResource NeutralGreay}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -628,7 +627,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -661,9 +660,9 @@
                             <!--  Company Name Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
-                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -690,9 +689,9 @@
                             <!--  Commercial Registration Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
-                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -726,7 +725,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -759,9 +758,9 @@
                             <!--  Company Address Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
-                                 IsHintAlwaysFloated="True"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -797,7 +796,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -844,7 +843,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                 IsHintAlwaysFloated="True"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -897,8 +896,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -933,9 +932,9 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                 IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
@@ -1088,8 +1087,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
-                                     IsHintAlwaysFloated="True"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -1170,7 +1169,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                     IsHintAlwaysFloated="True"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -1179,8 +1178,8 @@
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="NationalIdEntry"
-                                        MaxLength="10"
                                         Keyboard="Text"
+                                        MaxLength="10"
                                         Placeholder="{x:Static ResourceManager:AppResources.NationaID}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitReport.ReporterNationalId}"
@@ -1250,7 +1249,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                     IsHintAlwaysFloated="True"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -1327,8 +1326,8 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
-                                     IsHintAlwaysFloated="True"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>

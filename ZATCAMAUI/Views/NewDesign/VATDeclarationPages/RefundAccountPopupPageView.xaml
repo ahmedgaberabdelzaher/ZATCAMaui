@@ -17,14 +17,6 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
     <Border
         BackgroundColor="White"
         Style="{StaticResource CommonTopCurves}"
@@ -62,8 +54,8 @@
                             <inputLayout:SfTextInputLayout
                                 Margin="0,-10,0,0"
                                 BackgroundColor="White"
-                                 IsHintAlwaysFloated="True"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10,0,10,0"
@@ -109,7 +101,7 @@
                                 </syncfusion:SfPicker.SelectedTextStyle>
 
                                 <syncfusion:SfPicker.SelectionView>
-                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
                                 </syncfusion:SfPicker.SelectionView>
 
                                 <syncfusion:SfPicker.HeaderView>
@@ -156,9 +148,9 @@
                         <Grid>
                             <inputLayout:SfTextInputLayout
                                 Margin="0,-10,0,0"
-                                 IsHintAlwaysFloated="True"
                                 BackgroundColor="White"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10,0,10,0"
@@ -428,15 +420,15 @@
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                             <busyindicator:SfBusyIndicator
                                 x:Name="busyindicatorForReturn"
-                                HorizontalOptions="CenterAndExpand"
-                                IsRunning="True"
                                 AnimationType="Cupertino"
-                                SizeFactor="0.6"
-                                WidthRequest="70"
                                 HeightRequest="70"
+                                HorizontalOptions="CenterAndExpand"
                                 IndicatorColor="{StaticResource Secondary}"
+                                IsRunning="True"
+                                SizeFactor="0.6"
                                 TitlePlacement="Bottom"
-                                VerticalOptions="CenterAndExpand" />
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="70" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>

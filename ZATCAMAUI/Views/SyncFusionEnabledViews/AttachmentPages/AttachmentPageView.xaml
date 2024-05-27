@@ -16,13 +16,6 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout
@@ -142,11 +135,11 @@
                                 Grid.Row="6"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
-                                 IsHintAlwaysFloated="True"
                                 Margin="10,0,10,-6"
                                 ContainerType="Outlined"
                                 HasError="False"
                                 Hint="{x:Static ResourceManager:AppResources.ZZAttachment}"
+                                IsHintAlwaysFloated="True"
                                 OutlineCornerRadius="8"
                                 Stroke="{StaticResource Primary}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>

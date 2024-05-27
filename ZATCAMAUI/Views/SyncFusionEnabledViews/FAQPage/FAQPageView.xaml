@@ -6,8 +6,8 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -60,19 +60,19 @@
             </Grid>
             <!--#endregion Header-->
 
-           <!--  Source="{Binding WebUrl}"  -->
+            <!--  Source="{Binding WebUrl}"  -->
             <WebView
                 x:Name="ContactWebView"
+                Grid.Row="1"
                 Navigated="ContactWebView_Navigated"
                 Navigating="ContactWebView_Navigating"
                 Source="{Binding WebUrl}"
-                Grid.Row="1"
-                VerticalOptions="FillAndExpand"/>
+                VerticalOptions="FillAndExpand" />
 
-            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
+            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>
-      
+
     </ContentPage.Content>
 
 

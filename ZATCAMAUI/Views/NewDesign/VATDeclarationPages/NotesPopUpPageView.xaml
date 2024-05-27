@@ -12,14 +12,6 @@
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
     <Border Style="{StaticResource CommonTopCurves}" VerticalOptions="End">
         <StackLayout>
             <Image HorizontalOptions="EndAndExpand" Source="close.png">
@@ -34,8 +26,8 @@
             <inputLayout:SfTextInputLayout
                 Margin="0,-6,0,-6"
                 ContainerType="Outlined"
-                 IsHintAlwaysFloated="True"
                 HasError="{Binding IsReportDetailHasError}"
+                IsHintAlwaysFloated="True"
                 OutlineCornerRadius="8"
                 Stroke="{StaticResource Primary}">
                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>

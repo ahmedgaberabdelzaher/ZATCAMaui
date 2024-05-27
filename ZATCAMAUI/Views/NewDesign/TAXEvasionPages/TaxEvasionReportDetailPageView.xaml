@@ -7,14 +7,12 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -124,12 +122,12 @@
                     <Border
                         Grid.Row="0"
                         Grid.Column="1"
-                        StrokeThickness="1"
                         Padding="10,10,10,10"
                         BackgroundColor="{Binding FrameColorHighlight}"
-                        StrokeShape="RoundRectangle 14,14,14,14"
                         HeightRequest="24"
                         HorizontalOptions="End"
+                        StrokeShape="RoundRectangle 14,14,14,14"
+                        StrokeThickness="1"
                         VerticalOptions="CenterAndExpand">
                         <Label
                             HorizontalOptions="CenterAndExpand"

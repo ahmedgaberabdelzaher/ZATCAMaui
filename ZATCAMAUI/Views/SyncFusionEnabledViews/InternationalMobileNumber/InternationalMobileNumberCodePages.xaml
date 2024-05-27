@@ -7,13 +7,8 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    NavigationPage.HasNavigationBar="False"
-    FlowDirection="{Binding AppDirection}">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary Source="..\Common\Styles.xaml" />
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">

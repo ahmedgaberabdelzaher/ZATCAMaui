@@ -69,12 +69,12 @@
                     VerticalOptions="Center" />
             </Grid>
             <!--#endregion Header-->
-            
+
             <Grid
-                Grid.Row="1"
                 x:Name="RegnagaftGrid"
-                RowDefinitions="100*"
-                ColumnDefinitions="100*"/>
+                Grid.Row="1"
+                ColumnDefinitions="100*"
+                RowDefinitions="100*" />
 
             <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />

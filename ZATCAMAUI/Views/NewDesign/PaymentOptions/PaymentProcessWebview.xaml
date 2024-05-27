@@ -3,8 +3,8 @@
     x:Class="ZATCAMAUI.Views.NewDesign.PaymentOptions.PaymentProcessWebview"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    BackgroundImageSource="partials_background.png"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -39,8 +39,8 @@
                             x:Name="VATRMainGrid"
                             Margin="0"
                             Padding="0,0,0,0"
-                            RowDefinitions="100*"
                             HorizontalOptions="FillAndExpand"
+                            RowDefinitions="100*"
                             VerticalOptions="FillAndExpand">
                             <ContentPresenter
                                 Grid.Row="0"
@@ -79,13 +79,14 @@
         <Grid HeightRequest="850">
 
 
-            <Grid x:Name="WebviewGrid"
-                  RowDefinitions="100*"
-                  ColumnDefinitions="100*">
+            <Grid
+                x:Name="WebviewGrid"
+                ColumnDefinitions="100*"
+                RowDefinitions="100*">
 
-                <custom:Loader Grid.RowSpan="2"  IsVisible="{Binding IsLoading}"/>
+                <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-               
+
             </Grid>
 
 

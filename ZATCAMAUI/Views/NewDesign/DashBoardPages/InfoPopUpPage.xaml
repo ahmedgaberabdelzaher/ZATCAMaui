@@ -17,11 +17,11 @@
         VerticalOptions="EndAndExpand">
         <StackLayout>
             <Grid
+                ColumnDefinitions="auto,*"
                 ColumnSpacing="16"
                 IsVisible="{Binding IsVatRegistrationTileVisible}"
-                RowSpacing="4"
                 RowDefinitions="auto,auto,auto,auto,auto"
-                ColumnDefinitions="auto,*">
+                RowSpacing="4">
                 <Image
                     x:Name="VATInfoImg"
                     Grid.Row="0"

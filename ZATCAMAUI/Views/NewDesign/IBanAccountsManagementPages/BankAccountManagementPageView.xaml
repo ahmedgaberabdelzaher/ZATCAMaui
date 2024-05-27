@@ -1,278 +1,481 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages.BankAccountManagementPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages.BankAccountManagementPageView"
-    Title="BankAccountManagementPageView"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
+    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    Title="BankAccountManagementPageView"
     FlowDirection="{Binding AppDirection}">
 
-   <ContentPage.Resources>
-    <ResourceDictionary>
-        <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-            <Setter Property="Rotation" Value="180" />
-        </Style>
-        <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-            <Setter Property="Rotation" Value="0" />
-        </Style>
-        <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
-      
-    </ResourceDictionary>
-</ContentPage.Resources>
 
-<ContentPage.ControlTemplate>
-    <ControlTemplate>
-        <Grid BackgroundColor="Transparent">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Border Grid.Row="1" BackgroundColor="Black" StrokeShape="RoundRectangle 15,15,0,0" Padding="0">
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"
-                          Padding="0,0,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="100*" />
-                        </Grid.RowDefinitions>
-                        <ContentPresenter VerticalOptions="FillAndExpand"
-                                          HorizontalOptions="FillAndExpand"
-                                          Grid.Column="0"
-                                          Grid.Row="0" BackgroundColor="White" />
-                    </Grid>
-                </Border>
-                <Grid Padding="15,5,15,5">
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="Transparent">
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="20*"/>
-                        <ColumnDefinition Width="60*"/>
-                        <ColumnDefinition Width="20*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDBankAccManagement}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="StartAndExpand"/>
-
-                    <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
-                           Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource BackButtonArrow}" >
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
-                        </Image.GestureRecognizers>
-                    </Image>
-                </Grid>
-            </Grid>
-        </Grid>
-    </ControlTemplate>
-</ContentPage.ControlTemplate>
-
-<ContentPage.Content>
-    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-        <Grid>
-            <Grid  BackgroundColor="Transparent"  Margin="20,32,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="1"   BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <Border Grid.Row="0" StrokeShape="RoundRectangle 15,15,15,15" Margin="0,10,0,20" HorizontalOptions="FillAndExpand" Padding="12"  Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
-                        <Grid >
+                    <Border
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="Black"
+                        StrokeShape="RoundRectangle 15,15,0,0">
+                        <Grid
+                            Margin="0"
+                            Padding="0,0,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="24" HeightRequest="24" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"></Image>
-                            <Label Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.AddNewIban}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontSize="16" VerticalOptions="CenterAndExpand"/>
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AddNewIBANTapped}"></TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
                         </Grid>
                     </Border>
+                    <Grid Padding="15,5,15,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Row="1" Margin="0,0,0,0"  BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.NDBankAccManagement}" />
 
-                        <listView:SfListView  x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand" ScrollBarVisibility="Never"  VerticalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0" AutoFitMode="Height" ItemSpacing="5"
-                                  ItemsSource="{Binding MainListData}"  BackgroundColor="Transparent" 
-                        SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}" SelectionMode="Single" SelectionBackground="Transparent">
+                        <Image
+                            x:Name="Image_BacKIcon"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            Source="arrowLeftwhite"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
 
-                            <listView:SfListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0"
-                                                     HasShadow="True" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                        <StackLayout Padding="0" Spacing="0" >
-                                            <Grid  Padding="10" RowSpacing="0" >
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                    <RowDefinition Height="auto"/>
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="auto"/>
-                                                </Grid.ColumnDefinitions>
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <Grid>
+                <Grid
+                    Margin="20,32,20,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="1"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            Grid.Row="0"
+                            Margin="0,10,0,20"
+                            Padding="12"
+                            HorizontalOptions="FillAndExpand"
+                            StrokeShape="RoundRectangle 15,15,15,15"
+                            Style="{StaticResource GreyBorderFrameWithShadow}"
+                            VerticalOptions="FillAndExpand">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HeightRequest="24"
+                                    HorizontalOptions="Start"
+                                    Source="add"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="24" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                                    Text="{x:Static ResourceManager:AppResources.AddNewIban}"
+                                    VerticalOptions="CenterAndExpand" />
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding AddNewIBANTapped}" />
+                                </Grid.GestureRecognizers>
+                            </Grid>
+                        </Border>
+
+                        <Grid
+                            Grid.Row="1"
+                            Margin="0,0,0,0"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+
+                            <listView:SfListView
+                                x:Name="outletDecisionOptionsListView"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                AutoFitMode="Height"
+                                BackgroundColor="Transparent"
+                                HorizontalOptions="FillAndExpand"
+                                ItemSpacing="5"
+                                ItemsSource="{Binding MainListData}"
+                                ScrollBarVisibility="Never"
+                                SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
+                                SelectionBackground="Transparent"
+                                SelectionMode="Single"
+                                VerticalOptions="FillAndExpand">
+
+                                <listView:SfListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame
+                                            Grid.Column="0"
+                                            Margin="0,15,0,0"
+                                            Padding="10"
+                                            CornerRadius="15"
+                                            HasShadow="True"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <StackLayout Padding="0" Spacing="0">
+                                                <Grid Padding="10" RowSpacing="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="auto" />
+                                                    </Grid.ColumnDefinitions>
 
 
 
-                                                <StackLayout Grid.Row="0" Grid.Column="0" Margin="0,4" HorizontalOptions="Start">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.IBANRefNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
-                                                    <Label Text="{Binding Fbnum}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
-                                                </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Margin="0,4"
+                                                        HorizontalOptions="Start">
+                                                        <Label
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANRefNum}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Margin="0,-10"
+                                                            HorizontalOptions="End"
+                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                            Text="{Binding Fbnum}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
 
-                                                <StackLayout IsVisible="{Binding isUpdateDisabled}" Margin="5" Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Margin="5"
+                                                        HorizontalOptions="End"
+                                                        IsVisible="{Binding isUpdateDisabled}">
 
-                                                    <Frame Grid.Row="0" 
-                                                       HorizontalOptions="FillAndExpand"
-                                                Padding="16,8,16,8" CornerRadius="14"
-                                                HeightRequest="20" Opacity=".8" BackgroundColor="Gray"
-                                                 HasShadow="False" >
-                                                        <StackLayout Grid.Row="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                                                           
-                                                            <Label Style="{StaticResource CaptionLabelWhite}" 
-                                                                         Text="{Binding StatusText}" HorizontalOptions="CenterAndExpand"  
-                                                                            VerticalOptions="CenterAndExpand" >
+                                                        <Frame
+                                                            Grid.Row="0"
+                                                            Padding="16,8,16,8"
+                                                            BackgroundColor="Gray"
+                                                            CornerRadius="14"
+                                                            HasShadow="False"
+                                                            HeightRequest="20"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Opacity=".8">
+                                                            <StackLayout
+                                                                Grid.Row="0"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="Center">
 
-                                                            </Label>
-                                                        </StackLayout>
-                                                    </Frame>
-
-
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer 
-                                                            Tapped="StatusViewButtons_Tapped">
-                                                        </TapGestureRecognizer>
-                                                    </StackLayout.GestureRecognizers>
-
-                                                </StackLayout>
-
-                                                <StackLayout IsVisible="{Binding isUpdateEnabled}" Margin="5" Grid.Row="0" Grid.Column="1" HorizontalOptions="End">
-
-                                                    <Frame Grid.Row="0" 
-                                                       HorizontalOptions="FillAndExpand"
-                                                Padding="16,8,16,8" CornerRadius="14"
-                                                HeightRequest="20" Opacity=".8" BackgroundColor="{StaticResource Primary}"
-                                                 HasShadow="False" >
-                                                        <Frame.Triggers>
-                                                            <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.IBanDeactivate}">
-                                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                                            </DataTrigger>
-                                                            <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.IBANUpdate}">
-                                                                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
-                                                            </DataTrigger>
-                                                            <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.IBanActivate}">
-                                                                <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
-                                                            </DataTrigger>
-                                                        </Frame.Triggers>
-                                                        <StackLayout Grid.Row="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                                                          
-                                                            <Label Style="{StaticResource CaptionLabelWhite}" 
-                                                                         Text="{Binding StatusText}" HorizontalOptions="CenterAndExpand"  
-                                                                            VerticalOptions="CenterAndExpand" >
-
-                                                            </Label>
-                                                        </StackLayout>
-                                                    </Frame>
+                                                                <Label
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    Style="{StaticResource CaptionLabelWhite}"
+                                                                    Text="{Binding StatusText}"
+                                                                    VerticalOptions="CenterAndExpand" />
+                                                            </StackLayout>
+                                                        </Frame>
 
 
-                                                    <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer 
-                                                            Tapped="StatusViewButtons_Tapped">
-                                                        </TapGestureRecognizer>
-                                                    </StackLayout.GestureRecognizers>
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="StatusViewButtons_Tapped" />
+                                                        </StackLayout.GestureRecognizers>
 
-                                                </StackLayout>
+                                                    </StackLayout>
+
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Margin="5"
+                                                        HorizontalOptions="End"
+                                                        IsVisible="{Binding isUpdateEnabled}">
+
+                                                        <Frame
+                                                            Grid.Row="0"
+                                                            Padding="16,8,16,8"
+                                                            BackgroundColor="{StaticResource Primary}"
+                                                            CornerRadius="14"
+                                                            HasShadow="False"
+                                                            HeightRequest="20"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Opacity=".8">
+                                                            <Frame.Triggers>
+                                                                <DataTrigger
+                                                                    Binding="{Binding StatusText}"
+                                                                    TargetType="Frame"
+                                                                    Value="{x:Static ResourceManager:AppResources.IBanDeactivate}">
+                                                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger
+                                                                    Binding="{Binding StatusText}"
+                                                                    TargetType="Frame"
+                                                                    Value="{x:Static ResourceManager:AppResources.IBANUpdate}">
+                                                                    <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger
+                                                                    Binding="{Binding StatusText}"
+                                                                    TargetType="Frame"
+                                                                    Value="{x:Static ResourceManager:AppResources.IBanActivate}">
+                                                                    <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
+                                                                </DataTrigger>
+                                                            </Frame.Triggers>
+                                                            <StackLayout
+                                                                Grid.Row="0"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="Center">
+
+                                                                <Label
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    Style="{StaticResource CaptionLabelWhite}"
+                                                                    Text="{Binding StatusText}"
+                                                                    VerticalOptions="CenterAndExpand" />
+                                                            </StackLayout>
+                                                        </Frame>
+
+
+                                                        <StackLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="StatusViewButtons_Tapped" />
+                                                        </StackLayout.GestureRecognizers>
+
+                                                    </StackLayout>
 
 
 
-                                                <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5" />
+                                                    <BoxView
+                                                        Grid.Row="1"
+                                                        Grid.ColumnSpan="2"
+                                                        Margin="0,5"
+                                                        Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,4">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.IBANAccName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                    <Label Text="{Binding Koinh}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="2"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2"
+                                                        Margin="0,4">
+                                                        <Label
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANAccName}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Margin="0,-10"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                            Text="{Binding Koinh}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
 
 
 
-                                                <StackLayout Grid.Row="5"  Grid.ColumnSpan="2"  Margin="0,4">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                    <Label Text="{Binding IdtypeDesc}"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="5"
+                                                        Grid.ColumnSpan="2"
+                                                        Margin="0,4">
+                                                        <Label
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANIdType}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Margin="0,-10"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                            Text="{Binding IdtypeDesc}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
 
-                                                <StackLayout Grid.Row="6" Grid.ColumnSpan="2" Margin="0,4">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.IBANIdNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                    <Label Text="{Binding Idnumber}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Margin="0,4">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.IBAN}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                    <Label Text="{Binding Iban}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                </StackLayout>
-                                                <StackLayout Grid.Row="3" Grid.ColumnSpan="2" Margin="0,4">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.IBANBankName}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                    <Label Text="{Binding Bkext}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                                                </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="6"
+                                                        Grid.ColumnSpan="2"
+                                                        Margin="0,4">
+                                                        <Label
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANIdNumber}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Margin="0,-10"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                            Text="{Binding Idnumber}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="4"
+                                                        Grid.ColumnSpan="2"
+                                                        Margin="0,4">
+                                                        <Label
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBAN}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Margin="0,-10"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                            Text="{Binding Iban}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="3"
+                                                        Grid.ColumnSpan="2"
+                                                        Margin="0,4">
+                                                        <Label
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANBankName}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Margin="0,-10"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                            Text="{Binding Bkext}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
 
-                                                <StackLayout Grid.Row="7" Grid.Column="0" Margin="0,4" HorizontalOptions="Start">
-                                                    <Label Text="{x:Static ResourceManager:AppResources.IBANStatus}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"></Label>
-                                                    <Label Text="{Binding StatusDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
-                                                </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="7"
+                                                        Grid.Column="0"
+                                                        Margin="0,4"
+                                                        HorizontalOptions="Start">
+                                                        <Label
+                                                            HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource CaptionLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.IBANStatus}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <Label
+                                                            Margin="0,-10"
+                                                            HorizontalOptions="End"
+                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                            Text="{Binding StatusDesc}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
 
-                                                <!--<StackLayout Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4">
+                                                    <!--<StackLayout Grid.Row="5" Grid.ColumnSpan="3" Margin="0,4">
                                     <Label Text="{x:Static ResourceManager:AppResources.IBANIdType}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                     <Label Text="{Binding IdtypeDesc}" Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
                                 </StackLayout>-->
 
 
-                                            </Grid>
+                                                </Grid>
 
-                                        </StackLayout>
-                                    </Frame>
-                                </DataTemplate>
-                            </listView:SfListView.ItemTemplate>
-                        </listView:SfListView>
+                                            </StackLayout>
+                                        </Frame>
+                                    </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                            </listView:SfListView>
 
+                        </Grid>
                     </Grid>
+
                 </Grid>
-
-            </Grid>
-            <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
-                             Opacity="0.4" VerticalOptions="FillAndExpand" />
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
-                             Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                             <busyindicator:SfBusyIndicator
+                <Grid BackgroundColor="Transparent" IsVisible="{Binding IsLoading}">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BackgroundColor="Black"
+                        Opacity="0.4"
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="15,15"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        Opacity="0.8"
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <busyindicator:SfBusyIndicator
                                 x:Name="busyindicatorForLanding"
-                                                        AnimationType="Cupertino"
-                                                        HeightRequest="70"
-                                                        HorizontalOptions="CenterAndExpand"
-                                                        IndicatorColor="{StaticResource Secondary}"
-                                                        IsRunning="True"
-                                                        SizeFactor="0.6"
-                                                        TitlePlacement="Bottom"
-                                                        VerticalOptions="CenterAndExpand"
-                                                        WidthRequest="70" />
+                                AnimationType="Cupertino"
+                                HeightRequest="70"
+                                HorizontalOptions="CenterAndExpand"
+                                IndicatorColor="{StaticResource Secondary}"
+                                IsRunning="True"
+                                SizeFactor="0.6"
+                                TitlePlacement="Bottom"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="70" />
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
+                </Grid>
             </Grid>
-        </Grid>
-    </ScrollView>
+        </ScrollView>
 
-</ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>

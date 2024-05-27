@@ -19,13 +19,6 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid
             x:Name="ParentContainerForVAT"
@@ -323,9 +316,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatReturnType}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -348,9 +341,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatReturn}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -372,10 +365,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatReturnReferenceNo}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -397,9 +390,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZTaxPeriod}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -422,8 +415,8 @@
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
-                                             IsHintAlwaysFloated="True"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatPeriodFrom}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -449,8 +442,8 @@
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
-                                             IsHintAlwaysFloated="True"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatPeriodTo}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -488,10 +481,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.TIN}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -512,10 +505,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVATAccountNumber}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -536,10 +529,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatIdentificationNumber}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
 
@@ -560,11 +553,11 @@
                                             Grid.Row="12"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatTaxpayersName}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -868,13 +861,13 @@
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryVatAmountFrame"
                                             Grid.Row="4"
-                                             IsHintAlwaysFloated="True"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -936,11 +929,11 @@
                                             Grid.Row="5"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1001,10 +994,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1066,10 +1059,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1132,10 +1125,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1193,13 +1186,13 @@
 
                                         <inputLayout:SfTextInputLayout
                                             Grid.Row="6"
-                                             IsHintAlwaysFloated="True"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1260,11 +1253,11 @@
                                             Grid.Row="8"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1325,12 +1318,12 @@
                                             x:Name="EntryVatAdjustmentWithSARFrame5"
                                             Grid.Row="9"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1390,11 +1383,11 @@
                                             Grid.Row="10"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -1453,10 +1446,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1516,11 +1509,11 @@
                                             Grid.Row="13"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1598,11 +1591,11 @@
                                             Grid.Row="15"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1663,10 +1656,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1744,11 +1737,11 @@
                                             Grid.Row="18"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1813,10 +1806,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1894,11 +1887,11 @@
                                             Grid.Row="21"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
 
@@ -1959,11 +1952,11 @@
                                             Grid.Row="22"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -2162,10 +2155,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2225,12 +2218,12 @@
                                             x:Name="EntryStdpurchaseAdjFrame"
                                             Grid.Row="27"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2292,9 +2285,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2345,13 +2338,13 @@
                                         <inputLayout:SfTextInputLayout
                                             x:Name="EntryStdpurchaseAmtFrame15"
                                             Grid.Row="26"
-                                             IsHintAlwaysFloated="True"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2411,12 +2404,12 @@
                                             x:Name="EntryStdpurchaseAdjFrame15"
                                             Grid.Row="27"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2478,9 +2471,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2534,9 +2527,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2599,9 +2592,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2662,10 +2655,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2721,10 +2714,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2785,11 +2778,11 @@
                                             Grid.Row="35"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2851,9 +2844,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2906,12 +2899,12 @@
                                             x:Name="EntryZVatAmountWithSARFrame15"
                                             Grid.Row="34"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -2971,12 +2964,12 @@
                                             x:Name="EntryImportspaidAdjFrame15"
                                             Grid.Row="35"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3037,10 +3030,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3095,10 +3088,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3159,12 +3152,12 @@
                                             x:Name="EntryImportspaidAdjFrame5"
                                             Grid.Row="39"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3226,10 +3219,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3282,12 +3275,12 @@
                                             x:Name="EntryImportsaccAmtFrame"
                                             Grid.Row="42"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3349,12 +3342,12 @@
                                             x:Name="EntryImportsaccAdjFrame"
                                             Grid.Row="43"
                                             Grid.Column="0"
-                                             IsHintAlwaysFloated="True"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3419,8 +3412,8 @@
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
-                                             IsHintAlwaysFloated="True"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsPrevReturn}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3483,11 +3476,11 @@
                                             Grid.Row="42"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3551,10 +3544,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3683,10 +3676,10 @@
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
-                                             IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3751,9 +3744,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3813,13 +3806,13 @@
 
                                         <inputLayout:SfTextInputLayout
                                             Grid.Row="48"
-                                             IsHintAlwaysFloated="True"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZZZVATAmoutWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
@@ -3883,11 +3876,11 @@
                                             Grid.Row="50"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -3947,11 +3940,11 @@
                                             Grid.Row="51"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
-                                             IsHintAlwaysFloated="True"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -4034,8 +4027,8 @@
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
                                             HasError="False"
-                                             IsHintAlwaysFloated="True"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -4097,9 +4090,9 @@
                                             Grid.ColumnSpan="2"
                                             Margin="10,-6,10,-6"
                                             ContainerType="Outlined"
-                                             IsHintAlwaysFloated="True"
                                             HasError="False"
                                             Hint="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}"
+                                            IsHintAlwaysFloated="True"
                                             OutlineCornerRadius="8"
                                             Stroke="{StaticResource Primary}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -4314,8 +4307,8 @@
                                                 Grid.ColumnSpan="3"
                                                 Margin="10,-6,10,-6"
                                                 ContainerType="Outlined"
-                                                 IsHintAlwaysFloated="True"
                                                 HasError="False"
+                                                IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -4413,7 +4406,7 @@
                                                 Margin="10,-6,10,-6"
                                                 ContainerType="Outlined"
                                                 HasError="False"
-                                                 IsHintAlwaysFloated="True"
+                                                IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -4484,7 +4477,7 @@
                                                 Margin="10,-6,10,-6"
                                                 ContainerType="Outlined"
                                                 HasError="False"
-                                                 IsHintAlwaysFloated="True"
+                                                IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
                                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -4656,12 +4649,12 @@
                                                 <inputLayout:SfTextInputLayout
                                                     Grid.Row="1"
                                                     Grid.Column="0"
-                                                     IsHintAlwaysFloated="True"
                                                     Grid.ColumnSpan="2"
                                                     Margin="10,-6,10,-6"
                                                     ContainerType="Outlined"
                                                     HasError="False"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBAN}"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsDropdownVisibleForIban}"
                                                     OutlineCornerRadius="8"
                                                     Stroke="{StaticResource Primary}">
@@ -4710,9 +4703,9 @@
                                                     </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                             <syncfusion:SfPicker.SelectionView >
-                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                             </syncfusion:SfPicker.SelectionView>
+                                                    <syncfusion:SfPicker.SelectionView>
+                                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                    </syncfusion:SfPicker.SelectionView>
 
                                                     <syncfusion:SfPicker.HeaderView>
 
@@ -4778,10 +4771,10 @@
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
                                                     Margin="10,-6,10,-6"
-                                                     IsHintAlwaysFloated="True"
                                                     ContainerType="Outlined"
                                                     HasError="False"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBANType}"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsVisibleDropdownForRefund}"
                                                     OutlineCornerRadius="8"
                                                     Stroke="{StaticResource Primary}">
@@ -4830,9 +4823,9 @@
                                                     </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                                     <syncfusion:SfPicker.SelectionView >
-                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                             </syncfusion:SfPicker.SelectionView>
+                                                    <syncfusion:SfPicker.SelectionView>
+                                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                    </syncfusion:SfPicker.SelectionView>
 
                                                     <syncfusion:SfPicker.HeaderView>
 
@@ -4875,11 +4868,11 @@
                                                     Grid.Row="6"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
-                                                     IsHintAlwaysFloated="True"
                                                     Margin="10,-6,10,-6"
                                                     ContainerType="Outlined"
                                                     HasError="False"
                                                     IsEnabled="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsEnableIBANIdNumber}"
+                                                    IsHintAlwaysFloated="True"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsVisibleDropdownForRefund}"
                                                     OutlineCornerRadius="8"
                                                     Stroke="{StaticResource Primary}">
@@ -4928,9 +4921,9 @@
                                                     </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                                     <syncfusion:SfPicker.SelectionView >
-                                                <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                             </syncfusion:SfPicker.SelectionView>
+                                                    <syncfusion:SfPicker.SelectionView>
+                                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                    </syncfusion:SfPicker.SelectionView>
 
                                                     <syncfusion:SfPicker.HeaderView>
 

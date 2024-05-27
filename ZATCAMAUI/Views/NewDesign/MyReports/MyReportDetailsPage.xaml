@@ -367,10 +367,11 @@
                                 </Label>
 
                                 <!--  Street Label  -->
-                                <Label IsVisible="false"
+                                <Label
                                     Grid.Row="8"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
+                                    IsVisible="false"
                                     Text="{x:Static ResourceManager:AppResources.ReportStreetName}"
                                     TextColor="#58595B" />
 
@@ -399,10 +400,11 @@
 
 
                                 <!--  TIN number Label  -->
-                                <Label  IsVisible="false"
+                                <Label
                                     Grid.Row="9"
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
+                                    IsVisible="false"
                                     Text="{x:Static ResourceManager:AppResources.ZVATAccountNumber}"
                                     TextColor="#58595B" />
 

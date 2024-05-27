@@ -10,14 +10,6 @@
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}">
 
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
 
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -33,8 +25,8 @@
         <Border
             Padding="20"
             BackgroundColor="White"
-            StrokeShape="RoundRectangle 15,15,0,0"
             HeightRequest="490"
+            StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
             <ScrollView VerticalScrollBarVisibility="Never">
@@ -159,9 +151,9 @@
 
                     <!--  Check Box  -->
                     <StackLayout
+                        Margin="0,10"
                         HorizontalOptions="FillAndExpand"
                         Orientation="Horizontal"
-                        Margin="0,10"
                         Spacing="10">
 
                         <!--  Check box Image  -->

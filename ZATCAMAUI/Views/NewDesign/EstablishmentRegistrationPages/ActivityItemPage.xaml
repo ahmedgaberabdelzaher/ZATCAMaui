@@ -14,12 +14,12 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="ESTActivityItemPage"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -39,8 +39,8 @@
                 Margin="0"
                 Padding="0"
                 BackgroundColor="White"
-                StrokeShape="RoundRectangle 15,15,0,0"
                 HorizontalOptions="FillAndExpand"
+                StrokeShape="RoundRectangle 15,15,0,0"
                 VerticalOptions="FillAndExpand">
                 <StackLayout
                     Margin="0"
@@ -161,44 +161,44 @@
                             Text="{Binding CRIssueCity}"
                             TextColor="{StaticResource NeutralBlack}" />
 
-                         <Label Style="{StaticResource CaptionLabelGrey}"
-                                             HorizontalOptions="StartAndExpand"
-                                             VerticalOptions="Center"
-                                             Margin="0,10,0,0" >
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
 
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZCRName}"/>
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
                             </Label.FormattedText>
 
                         </Label>
 
                         <inputLayout:SfTextInputLayout
-                            IsEnabled="{Binding EnableCRInputField}"
-                            HorizontalOptions="FillAndExpand"
-                            LeadingViewPosition="Inside"
                             ContainerType="Outlined"
-                            IsHintAlwaysFloated="True"
+                            HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                            IsEnabled="{Binding EnableCRInputField}"
+                            IsHintAlwaysFloated="True"
+                            LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
 
                             <custom:GAZTBorderlessEntry
+                                Margin="10"
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="15"
+                                HeightRequest="48"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Start"
+                                Keyboard="Text"
+                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                Style="{StaticResource DefaultEntry}"
                                 Text="{Binding CrName}"
-                                 Style="{StaticResource DefaultEntry}"
-                                 VerticalTextAlignment="Center"
-                                 HorizontalTextAlignment="Start"
-                                 Margin="10"
-                                 HorizontalOptions="FillAndExpand"
-                                 VerticalOptions="Center"
-                                 HeightRequest="48"
-                                 PlaceholderColor="{StaticResource NeutralGreay}"
-                                 TextColor="{StaticResource NeutralBlack}"
-                                 FontFamily="{StaticResource SomarRegular}"
-                                 FontSize="15"
-                                 Keyboard="Text">
-                            </custom:GAZTBorderlessEntry>
+                                TextColor="{StaticResource NeutralBlack}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
                         </inputLayout:SfTextInputLayout>
 
                         <Label
@@ -217,8 +217,8 @@
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
                             IsEnabled="{Binding EnableCRInputField}"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
                             <custom:GAZTBorderlessEntry
@@ -291,14 +291,14 @@
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                             </custom:CustomDatePicker.SelectedTextStyle>
 
-                                                                    <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                            <custom:CustomDatePicker.ColumnHeaderView>
+                                <syncfusion:PickerColumnHeaderView Height="46" />
+                            </custom:CustomDatePicker.ColumnHeaderView>
 
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                            <custom:CustomDatePicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </custom:CustomDatePicker.SelectionView>
 
                             <custom:CustomDatePicker.HeaderView>
 
@@ -308,8 +308,7 @@
 
                             <custom:CustomDatePicker.FooterView>
 
-                                <syncfusion:PickerFooterView Height="46"
-                                                             Background="#EAF7CC">
+                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                     <syncfusion:PickerFooterView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -332,13 +331,13 @@
                             Mode="Dialog"
                             SelectedItem="{Binding SelectedCRValidFromHijiriDate}">
 
-                            <custom:CustomHijriDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomHijriDatePicker.SelectionView>
+                            <custom:CustomHijriDatePicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </custom:CustomHijriDatePicker.SelectionView>
 
-                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" />
-                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                <syncfusion:PickerColumnHeaderView Height="46" />
+                            </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                             <custom:CustomHijriDatePicker.SelectedTextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -858,23 +857,40 @@
 
                         </inputLayout:SfTextInputLayout>
 
-                        <!--Licence Name-->
-                         <Label Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                        <!--  Licence Name  -->
+                        <Label
+                            Margin="0,10,0,0"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZLicenseName}"/>
-                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZLicenseName}" />
+                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <inputLayout:SfTextInputLayout 
-                            HorizontalOptions="FillAndExpand"
-                            LeadingViewPosition="Inside"
+                        <inputLayout:SfTextInputLayout
                             ContainerType="Outlined"
+                            HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
+                            LeadingViewPosition="Inside"
                             Style="{StaticResource TextInputLayout}">
 
-                            <custom:GAZTBorderlessEntry Text="{Binding LicenseName}" Style="{StaticResource DefaultEntry}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" Keyboard="Plain"/>
+                            <custom:GAZTBorderlessEntry
+                                Margin="10"
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="15"
+                                HeightRequest="48"
+                                HorizontalOptions="FillAndExpand"
+                                HorizontalTextAlignment="Start"
+                                Keyboard="Plain"
+                                PlaceholderColor="{StaticResource NeutralGreay}"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding LicenseName}"
+                                TextColor="{StaticResource NeutralBlack}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
                         </inputLayout:SfTextInputLayout>
 
                         <Label
@@ -924,27 +940,26 @@
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
                             </custom:CustomDatePicker.SelectedTextStyle>
 
-                                                                    <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" />
-                                        </custom:CustomDatePicker.ColumnHeaderView>
+                            <custom:CustomDatePicker.ColumnHeaderView>
+                                <syncfusion:PickerColumnHeaderView Height="46" />
+                            </custom:CustomDatePicker.ColumnHeaderView>
 
-                         <custom:CustomDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomDatePicker.SelectionView>
+                            <custom:CustomDatePicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </custom:CustomDatePicker.SelectionView>
 
                             <custom:CustomDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView Background="#EAF7CC"
-                                                             Height="46"
-                                                             Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                <syncfusion:PickerHeaderView
+                                    Height="46"
+                                    Background="#EAF7CC"
+                                    Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                             </custom:CustomDatePicker.HeaderView>
 
                             <custom:CustomDatePicker.FooterView>
 
-                                <syncfusion:PickerFooterView
-                                    Height="46"
-                                    Background="#EAF7CC">
+                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                     <syncfusion:PickerFooterView.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -967,13 +982,13 @@
                             Mode="Dialog"
                             SelectedItem="{Binding SelectedValidFromHijiriDate}">
 
-                            <custom:CustomHijriDatePicker.SelectionView >
-                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                         </custom:CustomHijriDatePicker.SelectionView>
+                            <custom:CustomHijriDatePicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </custom:CustomHijriDatePicker.SelectionView>
 
-                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                            <syncfusion:PickerColumnHeaderView Height="46" />
-                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                <syncfusion:PickerColumnHeaderView Height="46" />
+                            </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                             <custom:CustomHijriDatePicker.SelectedTextStyle>
                                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
@@ -1304,15 +1319,15 @@
                     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                         <busyindicator:SfBusyIndicator
                             x:Name="busyindicatorForLanding"
-                            HorizontalOptions="CenterAndExpand"
-                            IsRunning="True"
                             AnimationType="Cupertino"
-                            SizeFactor="0.6"
-                            WidthRequest="70"
                             HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
                             IndicatorColor="{StaticResource Secondary}"
+                            IsRunning="True"
+                            SizeFactor="0.6"
                             TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand" />
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

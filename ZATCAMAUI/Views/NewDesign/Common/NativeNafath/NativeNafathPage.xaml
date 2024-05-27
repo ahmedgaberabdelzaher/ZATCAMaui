@@ -70,94 +70,93 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
-                <ScrollView VerticalScrollBarVisibility="Never">
+                    <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand"
-                                 Padding="10">
+                        <StackLayout Padding="10" VerticalOptions="FillAndExpand">
 
-                        <!--  NafathLoginSubHeader Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="24"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.NafathLoginSubHeader}"
-                            TextColor="{StaticResource Primary}" />
+                            <!--  NafathLoginSubHeader Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="24"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.NafathLoginSubHeader}"
+                                TextColor="{StaticResource Primary}" />
 
-                        <!--  Horizontal Line  -->
-                        <BoxView
-                            Margin="0,0,0,10"
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Margin="0,0,0,10"
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="2"
+                                WidthRequest="20" />
 
-                        <!--  NationalIqamaID Field  -->
-                        <StackLayout Spacing="0">
+                            <!--  NationalIqamaID Field  -->
+                            <StackLayout Spacing="0">
 
-                            <!--  NationalIqamaID Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <!--  NationalIqamaID Label  -->
+                                <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NationalIqamaID}" />
-                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                    </FormattedString>
-                                </Label.FormattedText>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NationalIqamaID}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
 
-                            </Label>
+                                </Label>
 
-                            <!--  NationalIqamaID Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                 IsHintAlwaysFloated="True"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="entry"
-                                    Keyboard="Numeric"
-                                    Placeholder="{x:Static ResourceManager:AppResources.NationalIqamaID}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding NationalIqamaId}"
-                                    TextColor="#58595B">
+                                <!--  NationalIqamaID Entry  -->
+                                <inputLayout:SfTextInputLayout
+                                    ContainerBackground="White"
+                                    ContainerType="Outlined"
+                                    HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                    InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="15"
+                                    Stroke="{StaticResource NeutralGreay}">
+                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <inputLayout:LabelStyle TextColor="#B00020" />
+                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="entry"
+                                        Keyboard="Numeric"
+                                        Placeholder="{x:Static ResourceManager:AppResources.NationalIqamaID}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding NationalIqamaId}"
+                                        TextColor="#58595B">
 
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <behaviour:OnlyNumericValuesBehaviour />
-                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviour:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                                    </custom:GAZTBorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+
+                            <!--  GoTo Login Button  -->
+                            <buttons:SfButton
+                                Margin="0,5"
+                                Command="{Binding NativeNafathLoginCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.NDSwitchUser}"
+                                VerticalOptions="EndAndExpand">
+
+                                <buttons:SfButton.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference entry}, Path=Text.Length}"
+                                        TargetType="buttons:SfButton"
+                                        Value="0">
+                                        <Setter Property="InputTransparent" Value="True" />
+                                        <Setter Property="Opacity" Value="0.7" />
+                                    </DataTrigger>
+                                </buttons:SfButton.Triggers>
+
+                            </buttons:SfButton>
+
+
                         </StackLayout>
 
-                        <!--  GoTo Login Button  -->
-                        <buttons:SfButton
-                            Margin="0,5"
-                            Command="{Binding NativeNafathLoginCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.NDSwitchUser}"
-                            VerticalOptions="EndAndExpand">
-
-                            <buttons:SfButton.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding Source={x:Reference entry}, Path=Text.Length}"
-                                    TargetType="buttons:SfButton"
-                                    Value="0">
-                                    <Setter Property="InputTransparent" Value="True" />
-                                    <Setter Property="Opacity" Value="0.7" />
-                                </DataTrigger>
-                            </buttons:SfButton.Triggers>
-
-                        </buttons:SfButton>
-
-
-                    </StackLayout>
-
-                </ScrollView>
+                    </ScrollView>
                 </Grid>
             </Border>
             <!--#endregion Body-->

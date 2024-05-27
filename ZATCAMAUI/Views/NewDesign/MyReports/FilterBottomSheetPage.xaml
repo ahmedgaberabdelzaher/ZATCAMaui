@@ -22,10 +22,10 @@
             <Border
                 Padding="20,15"
                 BackgroundColor="White"
-                Stroke="#EBEBEB"
-                StrokeThickness="3"
-                StrokeShape="RoundRectangle 15,15,0,0"
                 HeightRequest="200"
+                Stroke="#EBEBEB"
+                StrokeShape="RoundRectangle 15,15,0,0"
+                StrokeThickness="3"
                 Style="{StaticResource CommonTopCurves}"
                 VerticalOptions="EndAndExpand">
                 <StackLayout>

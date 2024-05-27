@@ -10,17 +10,6 @@
     BackgroundColor="White"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <!--<ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_share.png" x:Name="ICvalidation1"
-                Priority="1" Order="Primary" Clicked="Share_Clicked"  />
-    </ContentPage.ToolbarItems>-->
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid>

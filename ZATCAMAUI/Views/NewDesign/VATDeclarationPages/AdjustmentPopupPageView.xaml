@@ -8,8 +8,8 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    mc:Ignorable="d"
-    FlowDirection="{Binding AppDirection}">
+    FlowDirection="{Binding AppDirection}"
+    mc:Ignorable="d">
     <Border
         Padding="15"
         BackgroundColor="White"

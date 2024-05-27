@@ -8,15 +8,13 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -30,10 +28,8 @@
             <Style x:Key="GreyBorderFrameWithShadow" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
-                <!--<Setter Property="HasShadow" Value="True" />-->
                 <Setter Property="StrokeThickness" Value="1" />
                 <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
-                <!--<Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />-->
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>

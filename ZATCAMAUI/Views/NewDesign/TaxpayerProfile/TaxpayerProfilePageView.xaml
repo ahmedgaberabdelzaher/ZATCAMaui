@@ -8,8 +8,8 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -26,8 +26,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid RowDefinitions="auto,*"
-              RowSpacing="0">
+        <Grid RowDefinitions="auto,*" RowSpacing="0">
 
             <!--#region Header-->
             <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
@@ -35,7 +34,7 @@
                 <StackLayout>
 
                     <!--  Back Button  -->
-                   <Image
+                    <Image
                         HorizontalOptions="Start"
                         Source="arrowLeftwhite.png"
                         Style="{DynamicResource BackButtonArrow}"
@@ -64,18 +63,19 @@
             </Grid>
             <!--#endregion Header-->
 
-            <Border Grid.Row="1"
-                    Padding="20,5,20,0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
 
 
                 <StackLayout>
 
-                     <Label
+                    <Label
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource LoginMenuTitleWhite}"
                         Text="{Binding TPProfileNameLbl}"
-                         TextColor="{StaticResource BlackLabelTextColor}"/>
+                        TextColor="{StaticResource BlackLabelTextColor}" />
 
                     <Label
                         Margin="0,0,0,0"
@@ -83,9 +83,10 @@
                         Style="{StaticResource BodyLabelGrey}"
                         Text="{Binding ResidenceText}" />
 
-                    <ScrollView VerticalScrollBarVisibility="Never"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand">
+                    <ScrollView
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
 
                         <StackLayout>
 
@@ -94,10 +95,9 @@
                                 Stroke="{StaticResource NeutralLightGrey}"
                                 StrokeShape="RoundRectangle 16,16,16,16">
 
-                                <StackLayout Orientation="Horizontal"
-                                             >
+                                <StackLayout Orientation="Horizontal">
 
-                                    <StackLayout >
+                                    <StackLayout>
 
                                         <Label
                                             HorizontalOptions="Start"
@@ -114,10 +114,11 @@
                                     <Border
                                         Padding="10,0"
                                         BackgroundColor="{StaticResource OpacityPrimary}"
+                                        HeightRequest="{OnPlatform Android=50,
+                                                                   iOS=32}"
+                                        HorizontalOptions="EndAndExpand"
                                         StrokeShape="RoundRectangle 14,14,14,14"
                                         StrokeThickness="1"
-                                        HeightRequest="{OnPlatform Android=50,iOS=32}"
-                                        HorizontalOptions="EndAndExpand"
                                         VerticalOptions="CenterAndExpand"
                                         WidthRequest="59">
 
@@ -155,27 +156,27 @@
                                 </StackLayout>
 
                                 <inputLayout:SfTextInputLayout
+                                    ContainerBackground="White"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
                                     IsHintAlwaysFloated="True"
+                                    LeadingViewPosition="Inside"
                                     OutlineCornerRadius="10"
-                                    ContainerBackground="White"
                                     Stroke="{StaticResource Primary}">
 
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <inputLayout:LabelStyle TextColor="#B00020" />
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                   <custom:GAZTBorderlessEntry
-                                            x:Name="MobileNumberCodeEntry"
-                                            FlowDirection="LeftToRight"
-                                            HorizontalOptions="FillAndExpand"
-                                            IsReadOnly="True"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding MobileNumber}"
-                                            TextColor="{StaticResource PrimaryColor}"
-                                            VerticalTextAlignment="Center" />
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="MobileNumberCodeEntry"
+                                        FlowDirection="LeftToRight"
+                                        HorizontalOptions="FillAndExpand"
+                                        IsReadOnly="True"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding MobileNumber}"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        VerticalTextAlignment="Center" />
                                 </inputLayout:SfTextInputLayout>
 
                             </StackLayout>
@@ -183,8 +184,7 @@
                             <StackLayout Spacing="10">
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Style="{StaticResource CaptionLabelGrey}"
-                                           Text="{x:Static ResourceManager:AppResources.NDEmail}" />
+                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDEmail}" />
 
                                     <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
                                         <Image.GestureRecognizers>
@@ -198,9 +198,9 @@
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
+                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="10"
-                                    IsHintAlwaysFloated="True"
                                     Stroke="{StaticResource Primary}">
 
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -219,8 +219,7 @@
 
                                 <StackLayout Orientation="Horizontal">
 
-                                    <Label Style="{StaticResource CaptionLabelGrey}"
-                                           Text="{x:Static ResourceManager:AppResources.Password}" />
+                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Password}" />
 
                                     <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
                                         <Image.GestureRecognizers>
@@ -236,8 +235,8 @@
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
                                     IsHintAlwaysFloated="True"
+                                    LeadingViewPosition="Inside"
                                     OutlineCornerRadius="10"
                                     Stroke="{StaticResource Primary}">
 
@@ -255,38 +254,42 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                             <Frame BorderColor="{StaticResource NeutralLightGrey}" HasShadow="False" CornerRadius="16" Padding="16">
+                            <Frame
+                                Padding="16"
+                                BorderColor="{StaticResource NeutralLightGrey}"
+                                CornerRadius="16"
+                                HasShadow="False">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout>
-                                       
+
                                         <custom:CustomLabel
-                                        Text="{x:Static ResourceManager:AppResources.ManagerDetails}"
-                                        Style="{StaticResource ValueLabelBlackMedium}"
-                                        Margin="0,0,0,0"/>
+                                            Margin="0,0,0,0"
+                                            Style="{StaticResource ValueLabelBlackMedium}"
+                                            Text="{x:Static ResourceManager:AppResources.ManagerDetails}" />
                                     </StackLayout>
-                                    
-                                    <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnManagerDetailsTapped"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
+
+                                    <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnManagerDetailsTapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
                             </Frame>
 
                         </StackLayout>
-                  
+
                     </ScrollView>
 
                 </StackLayout>
 
-               
 
-               
+
+
             </Border>
 
-             <!--  Loader  -->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
-         
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

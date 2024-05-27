@@ -6,8 +6,8 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
     <ScrollView>

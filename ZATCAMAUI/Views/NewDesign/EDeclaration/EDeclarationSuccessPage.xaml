@@ -11,14 +11,6 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -39,13 +31,11 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1"
-                               Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand"
-                               Padding="15">
+                    <StackLayout Padding="15" VerticalOptions="FillAndExpand">
 
                         <!--  Success icon  -->
                         <Image
@@ -593,12 +583,12 @@
 
                         <!--  Pay Now Button  -->
                         <buttons:SfButton
+                            Margin="0,10"
                             Background="#0996D4"
                             Command="{Binding GoToPaymentCommand}"
                             IsVisible="{Binding IsPaymentRequired}"
                             Stroke="#0996D4"
                             StrokeThickness="1"
-                            Margin="0,10"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
                             TextColor="White" />
@@ -627,8 +617,7 @@
 
             </Border>
             <!--#endregion Body-->
-            <custom:Loader Grid.RowSpan="2"
-                IsVisible="{Binding IsLoading}" />
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

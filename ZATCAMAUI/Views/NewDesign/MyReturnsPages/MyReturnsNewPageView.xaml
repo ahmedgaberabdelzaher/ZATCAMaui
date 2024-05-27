@@ -257,28 +257,50 @@
                                                             VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
                                                     <!--  StatusTxt  -->
-                                               
-                                                    <buttons:SfButton TextColor="{StaticResource Success}" BackgroundColor="{StaticResource BackgroundGray}" Grid.Row="0" Grid.Column="1" FontFamily="{StaticResource SomarRegular}" FontSize="Small" IsEnabled="False" Text="{Binding RetStatTxt}" HorizontalOptions="End" VerticalOptions="CenterAndExpand" HeightRequest="80" Padding="12,0,12,0" CornerRadius="20" >
-<buttons:SfButton.Triggers>
-<DataTrigger TargetType="buttons:SfButton" Binding="{Binding StatusTxt}" Value="Submitted" >
-<Setter Property="TextColor" Value="{StaticResource Success}" />
-<Setter Property="FontSize" Value="12" />
-<Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}" />
-</DataTrigger>
-<DataTrigger TargetType="buttons:SfButton" Binding="{Binding StatusTxt}" Value="Non Submitted">
-<Setter Property="TextColor" Value="{StaticResource Error}" />
-<Setter Property="FontSize" Value="12" />
-<Setter Property="BackgroundColor"  Value="{StaticResource ErrorBg}" />
-</DataTrigger>
-<DataTrigger TargetType="buttons:SfButton" Binding="{Binding StatusTxt}" Value="Overdue">
-<Setter Property="TextColor"  Value="{StaticResource Error}" />
-<Setter Property="FontSize" Value="12" />
-<Setter Property="BackgroundColor" Value="{StaticResource ChipPaidColor}" />
-</DataTrigger>
- 
- 
+
+                                                    <buttons:SfButton
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Padding="12,0,12,0"
+                                                        BackgroundColor="{StaticResource BackgroundGray}"
+                                                        CornerRadius="20"
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        FontSize="Small"
+                                                        HeightRequest="80"
+                                                        HorizontalOptions="End"
+                                                        IsEnabled="False"
+                                                        Text="{Binding RetStatTxt}"
+                                                        TextColor="{StaticResource Success}"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <buttons:SfButton.Triggers>
+                                                            <DataTrigger
+                                                                Binding="{Binding StatusTxt}"
+                                                                TargetType="buttons:SfButton"
+                                                                Value="Submitted">
+                                                                <Setter Property="TextColor" Value="{StaticResource Success}" />
+                                                                <Setter Property="FontSize" Value="12" />
+                                                                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding StatusTxt}"
+                                                                TargetType="buttons:SfButton"
+                                                                Value="Non Submitted">
+                                                                <Setter Property="TextColor" Value="{StaticResource Error}" />
+                                                                <Setter Property="FontSize" Value="12" />
+                                                                <Setter Property="BackgroundColor" Value="{StaticResource ErrorBg}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding StatusTxt}"
+                                                                TargetType="buttons:SfButton"
+                                                                Value="Overdue">
+                                                                <Setter Property="TextColor" Value="{StaticResource Error}" />
+                                                                <Setter Property="FontSize" Value="12" />
+                                                                <Setter Property="BackgroundColor" Value="{StaticResource ChipPaidColor}" />
+                                                            </DataTrigger>
+
+
                                                         </buttons:SfButton.Triggers>
-</buttons:SfButton>
+                                                    </buttons:SfButton>
                                                 </Grid>
                                                 <BoxView
                                                     BackgroundColor="LightGray"
@@ -391,8 +413,8 @@
 
             </StackLayout>
 
-            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
-         
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
         </Grid>
 
 

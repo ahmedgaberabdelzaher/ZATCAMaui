@@ -13,9 +13,9 @@
 
     <Border
         BackgroundColor="White"
-        StrokeShape="RoundRectangle 15,15,0,0"
         HorizontalOptions="End"
         IsVisible="true"
+        StrokeShape="RoundRectangle 15,15,0,0"
         VerticalOptions="End">
         <StackLayout
             Margin="24,8,24,0"

@@ -10,15 +10,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-
-        </ResourceDictionary>
-    </ContentPage.Resources>-->
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid BackgroundColor="{StaticResource Primary}">
@@ -162,8 +153,8 @@
 
                         <inputLayout:SfTextInputLayout
                             Grid.Row="2"
-                             IsHintAlwaysFloated="True"
                             Grid.Column="0"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
 
@@ -175,7 +166,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="2"
                             Grid.Column="1"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -221,7 +212,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="5"
                             Grid.Column="0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -231,7 +222,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="5"
                             Grid.Column="1"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -277,7 +268,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="8"
                             Grid.Column="0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -287,7 +278,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="8"
                             Grid.Column="1"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -333,7 +324,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="11"
                             Grid.Column="0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -388,7 +379,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="14"
                             Grid.Column="0"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>
@@ -398,7 +389,7 @@
                         <inputLayout:SfTextInputLayout
                             Grid.Row="14"
                             Grid.Column="1"
-                             IsHintAlwaysFloated="True"
+                            IsHintAlwaysFloated="True"
                             Style="{StaticResource InputTableTextInputLayoutStyle}">
                             <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
                             <inputLayout:SfTextInputLayout.TrailingView>

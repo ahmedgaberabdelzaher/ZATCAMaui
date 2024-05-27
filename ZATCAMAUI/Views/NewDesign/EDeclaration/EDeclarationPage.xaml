@@ -251,8 +251,7 @@
                 <!--#endregion Visitor&Citizen/Review previous View-->
 
                 <!--#region Review Option Entries-->
-                <StackLayout IsVisible="{Binding ShowReviewEntries}"
-                             Padding="0">
+                <StackLayout Padding="0" IsVisible="{Binding ShowReviewEntries}">
 
 
                     <!--  Reference Number Field  -->
@@ -274,8 +273,8 @@
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
-                             IsHintAlwaysFloated="True"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -311,8 +310,8 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
-                             IsHintAlwaysFloated="True"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>

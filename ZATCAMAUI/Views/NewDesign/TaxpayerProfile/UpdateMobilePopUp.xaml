@@ -15,14 +15,6 @@
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
     <Border
         Padding="0"
         Style="{StaticResource CommonTopCurves}"
@@ -40,11 +32,12 @@
                         x:Name="UpdateMobile"
                         Grid.Row="0"
                         IsVisible="True">
-                        <Image Margin="24,16,24,8"
-                               Source="close"
-                               WidthRequest="25"
-                               HeightRequest="25"
-                               HorizontalOptions="End">
+                        <Image
+                            Margin="24,16,24,8"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="close"
+                            WidthRequest="25">
 
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnBackArrowTapped" />
@@ -52,27 +45,28 @@
 
                         </Image>
 
-                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}"
-                                 Style="{StaticResource SeparatorStyle}" />
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" Style="{StaticResource SeparatorStyle}" />
 
                         <StackLayout Padding="24,16,24,0">
 
-                            <Label Style="{StaticResource SectionTitleBlackBold}"
-                                   HorizontalOptions="Start"
-                                   Text="{x:Static ResourceManager:AppResources.TPUpdateMobile}" />
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource SectionTitleBlackBold}"
+                                Text="{x:Static ResourceManager:AppResources.TPUpdateMobile}" />
 
-                            <Label Style="{StaticResource CaptionLabelGrey}"
-                                   HorizontalOptions="Start"
-                                   Text="{x:Static ResourceManager:AppResources.ZCurrentMobileNumber}" />
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.ZCurrentMobileNumber}" />
 
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="10"
-                                IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource Primary}">
 
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -91,18 +85,19 @@
                                     VerticalTextAlignment="Center" />
                             </inputLayout:SfTextInputLayout>
 
-                            <Label Style="{StaticResource CaptionLabelGrey}"
-                                   HorizontalOptions="Start"
-                                   Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" />
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" />
 
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
+                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="10"
-                                IsHintAlwaysFloated="True"
                                 Stroke="{StaticResource Primary}">
 
                                 <StackLayout
@@ -222,7 +217,7 @@
                                         Grid.Column="0"
                                         ContainerType="Outlined"
                                         HasError="False"
-                                         IsHintAlwaysFloated="True"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -252,9 +247,9 @@
                                     <!--  Second OTP Digit Start  -->
                                     <inputLayout:SfTextInputLayout
                                         Grid.Column="1"
-                                         IsHintAlwaysFloated="True"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -286,7 +281,7 @@
                                         Grid.Column="2"
                                         ContainerType="Outlined"
                                         HasError="False"
-                                         IsHintAlwaysFloated="True"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="8"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -318,8 +313,8 @@
                                         Grid.Column="3"
                                         ContainerType="Outlined"
                                         HasError="False"
+                                        IsHintAlwaysFloated="True"
                                         OutlineCornerRadius="8"
-                                         IsHintAlwaysFloated="True"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
@@ -378,8 +373,8 @@
 
                 </StackLayout>
 
-                <custom:Loader Grid.RowSpan="2"  IsVisible="{Binding IsLoading}"/>
-                
+                <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
             </Grid>
         </ScrollView>
     </Border>

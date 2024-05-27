@@ -14,10 +14,6 @@
     mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
         </ResourceDictionary>
     </pages:PopupPage.Resources>

@@ -51,10 +51,34 @@
                     <listView:SfListView.ItemTemplate>
 
                         <DataTemplate>
-                            <cards:SfCardView CornerRadius="10" HeightRequest="150" HorizontalOptions="FillAndExpand" VerticalOptions="Start" BackgroundColor="{StaticResource PickerBgGray}" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0,-4">
-                                    <Image x:Name="PayIcon" Source="{Binding SelectedCardIcon}"  HeightRequest="100" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Aspect="AspectFit" Margin="4,0,0,0" ></Image>
-                                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Padding="8,0"/>
+                            <cards:SfCardView
+                                BackgroundColor="{StaticResource PickerBgGray}"
+                                BorderColor="{StaticResource NeutralLightGrey}"
+                                BorderWidth="1"
+                                CornerRadius="10"
+                                HeightRequest="150"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Start">
+                                <StackLayout
+                                    Padding="0,-4"
+                                    HorizontalOptions="FillAndExpand"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image
+                                        x:Name="PayIcon"
+                                        Margin="4,0,0,0"
+                                        Aspect="AspectFit"
+                                        HeightRequest="100"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding SelectedCardIcon}"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="100" />
+                                    <Label
+                                        Padding="8,0"
+                                        HorizontalOptions="Start"
+                                        Style="{DynamicResource CardLabelBlack}"
+                                        Text="{Binding CardLabel}"
+                                        VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
                             </cards:SfCardView>
 

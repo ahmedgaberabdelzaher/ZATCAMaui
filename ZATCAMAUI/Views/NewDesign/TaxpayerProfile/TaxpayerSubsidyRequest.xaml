@@ -7,15 +7,13 @@
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     BackgroundImageSource="partials_background.png"
-   FlowDirection="{Binding AppDirection}"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
 
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />

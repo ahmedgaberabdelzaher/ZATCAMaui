@@ -8,28 +8,26 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Content>
         <Grid>
-            <Border Padding="0"
-                    Style="{StaticResource CommonTopCurves}">
+            <Border Padding="0" Style="{StaticResource CommonTopCurves}">
 
-                <Grid Padding="015"
-                      RowDefinitions="auto,auto,*,auto">
+                <Grid Padding="015" RowDefinitions="auto,auto,*,auto">
 
                     <Grid
                         x:Name="ParentView"
                         Grid.Row="2"
-                        RowDefinitions="auto,auto"
                         ColumnDefinitions="*,*"
                         ColumnSpacing="10"
-                        HorizontalOptions="FillAndExpand">
+                        HorizontalOptions="FillAndExpand"
+                        RowDefinitions="auto,auto">
 
 
-                        <Grid >
+                        <Grid>
 
                             <Image
                                 Aspect="Fill"
@@ -37,8 +35,7 @@
                                 Source="{Binding IndividualBackImg}"
                                 VerticalOptions="FillAndExpand" />
 
-                            <StackLayout Padding="15,0,16,16"
-                                         VerticalOptions="End">
+                            <StackLayout Padding="15,0,16,16" VerticalOptions="End">
 
                                 <Image HorizontalOptions="Start" Source="individual_32White.png">
                                     <Image.Triggers>
@@ -113,10 +110,11 @@
                     </Grid>
 
 
-                    <StackLayout Grid.Row="1"
-                                 Margin="0,0,0,10"
-                                 Spacing="10"
-                                 Padding="0,48,0,0">
+                    <StackLayout
+                        Grid.Row="1"
+                        Margin="0,0,0,10"
+                        Padding="0,48,0,0"
+                        Spacing="10">
                         <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZTERNewAccount}" />
 
                         <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZZZSelectthetypeofEntity}" />
@@ -124,10 +122,10 @@
                         <BoxView Style="{StaticResource SeparatorStyle}" />
                     </StackLayout>
 
-                    <!-- Header-->
+                    <!--  Header  -->
                     <StackLayout Orientation="Horizontal">
-                       
-                       <Image
+
+                        <Image
                             x:Name="backArrow"
                             HorizontalOptions="Start"
                             Rotation="0"
@@ -135,14 +133,14 @@
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnBackArrowTapped" />
                             </Image.GestureRecognizers>
-                     </Image>
+                        </Image>
 
-                    <Image
-                        HeightRequest="40"
-                        VerticalOptions="CenterAndExpand"
-                        HorizontalOptions="CenterAndExpand"
-                         Source="ic_logo_gazt.png"
-                        WidthRequest="34" />
+                        <Image
+                            HeightRequest="40"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="ic_logo_gazt.png"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="34" />
                     </StackLayout>
 
                     <!--  Loader Starts  -->

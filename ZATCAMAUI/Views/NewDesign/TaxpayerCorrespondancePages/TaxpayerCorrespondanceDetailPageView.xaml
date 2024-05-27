@@ -7,15 +7,13 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -33,10 +31,11 @@
             <Grid>
 
                 <StackLayout>
-                    <Grid Padding="15,5,15,5"
-                          RowDefinitions="auto"
-                          ColumnDefinitions="20*,60*,20*"
-                          RowSpacing="0">
+                    <Grid
+                        Padding="15,5,15,5"
+                        ColumnDefinitions="20*,60*,20*"
+                        RowDefinitions="auto"
+                        RowSpacing="0">
 
                         <Label
                             Grid.Row="0"
@@ -89,12 +88,12 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-        <Grid Padding="0"
-              RowDefinitions="auto,*">
+        <Grid Padding="0" RowDefinitions="auto,*">
 
-            <Grid Grid.Row="1"
-                  RowDefinitions="*,auto"
-                  Padding="15">
+            <Grid
+                Grid.Row="1"
+                Padding="15"
+                RowDefinitions="*,auto">
 
                 <custom:MyWebView
                     x:Name="CorWebView"
@@ -105,16 +104,18 @@
                     Margin="0,10,0,10"
                     IsVisible="{Binding IsAttachmentEnabled}"
                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                    <Grid Padding="15"
-                          RowDefinitions="auto"
-                          ColumnDefinitions="15*,85*">
-                        <StackLayout  Grid.Column="1">
+                    <Grid
+                        Padding="15"
+                        ColumnDefinitions="15*,85*"
+                        RowDefinitions="auto">
+                        <StackLayout Grid.Column="1">
                             <Label
                                 Style="{StaticResource CaptionLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.Attachment}"
                                 VerticalOptions="CenterAndExpand" />
                         </StackLayout>
-                        <Image Margin="10,0,10,0"
+                        <Image
+                            Margin="10,0,10,0"
                             Aspect="AspectFit"
                             HorizontalOptions="End"
                             Source="newui_ic_pdf.png"
@@ -135,9 +136,8 @@
                 Padding="15,45,15,0"
                 BackgroundColor="White"
                 VerticalOptions="Center">
-                <Grid RowDefinitions="auto"
-                      ColumnDefinitions="85*,15*">
-                    <StackLayout >
+                <Grid ColumnDefinitions="85*,15*" RowDefinitions="auto">
+                    <StackLayout>
                         <Label
                             Padding="0,10,0,0"
                             Style="{StaticResource PageTitleBlack}"

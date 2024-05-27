@@ -4,8 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    HasBackButton="False"
-    FlowDirection="{Binding AppDirection}">
+    FlowDirection="{Binding AppDirection}"
+    HasBackButton="False">
     <newdesign:BaseContentPage.PancakeView>
         <Grid>
             <Label FontSize="Body" HorizontalOptions="Center">

@@ -27,15 +27,15 @@
             <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                 <busyindicator:SfBusyIndicator
                     x:Name="busyindicatorForLanding"
-                    HorizontalOptions="CenterAndExpand"
-                    IsRunning="True"
                     AnimationType="Cupertino"
-                    SizeFactor="0.6"
-                    WidthRequest="70"
                     HeightRequest="70"
+                    HorizontalOptions="CenterAndExpand"
                     IndicatorColor="{StaticResource Secondary}"
+                    IsRunning="True"
+                    SizeFactor="0.6"
                     TitlePlacement="Bottom"
-                    VerticalOptions="CenterAndExpand" />
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="70" />
             </StackLayout>
         </StackLayout>
     </Grid>

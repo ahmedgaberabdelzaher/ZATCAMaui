@@ -13,16 +13,12 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Common\Styles.xaml" />
-                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="180" />
             </Style>
@@ -49,7 +45,7 @@
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
 
-                 <Image
+                <Image
                     HorizontalOptions="Start"
                     IsVisible="{Binding BackArrowVisible}"
                     Source="arrowLeft.png"
@@ -60,19 +56,19 @@
                 </Image>
 
                 <Image
-                    HeightRequest="40"
                     Grid.Column="1"
+                    HeightRequest="40"
                     Source="ic_logo_gazt.png"
                     WidthRequest="34" />
 
-                 <Image
+                <Image
                     Grid.Column="2"
-                     Aspect="AspectFit"
-                     HorizontalOptions="End"
-                     WidthRequest="25"
-                     HeightRequest="25"
+                    Aspect="AspectFit"
+                    HeightRequest="25"
+                    HorizontalOptions="End"
                     IsVisible="{Binding BackArrowVisible}"
-                    Source="close.png">
+                    Source="close.png"
+                    WidthRequest="25">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoButtonClick}" />
                     </Image.GestureRecognizers>
@@ -87,19 +83,17 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <!--#region Body-->
-                <ScrollView VerticalScrollBarVisibility="Never"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
+                <ScrollView
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand"
-                                    Margin="0,10">
+                    <StackLayout Margin="0,10" VerticalOptions="FillAndExpand">
 
                         <!--  Individual Registration  -->
-                        <StackLayout
-                            x:Name="IndividualRegistrationView"
-                            IsVisible="{Binding IndividualRegistrationView}">
+                        <StackLayout x:Name="IndividualRegistrationView" IsVisible="{Binding IndividualRegistrationView}">
 
-                            <!-- Titles-->
+                            <!--  Titles  -->
                             <Label
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="22"
@@ -109,28 +103,26 @@
                                 VerticalOptions="Center" />
 
                             <Label
-
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="15"
                                 Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
 
-                            <BoxView Margin="10,0,10,15"
-                                        WidthRequest="500"
-                                        Style="{StaticResource lineSeperator}"
-                                        />
+                            <BoxView
+                                Margin="10,0,10,15"
+                                Style="{StaticResource lineSeperator}"
+                                WidthRequest="500" />
 
-                            <StackLayout Padding="0"
-                                IsVisible="{Binding IsCitizen}"
-                                Spacing="15"
+                            <StackLayout
+                                Padding="0"
                                 BackgroundColor="White"
                                 HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding IsCitizen}"
+                                Spacing="15"
                                 VerticalOptions="FillAndExpand">
 
                                 <StackLayout x:Name="IDtYpe">
-                                    <Label
-                                        HorizontalOptions="Start"
-                                        Style="{StaticResource CardLabelBlack}">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
@@ -139,9 +131,10 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <Border Stroke="{StaticResource Gray}"
-                                            StrokeShape="RoundRectangle 10,10,10,10"
-                                            Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <Border
+                                        Stroke="{StaticResource Gray}"
+                                        StrokeShape="RoundRectangle 10,10,10,10"
+                                        Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <Label
                                             x:Name="idType"
                                             Padding="10"
@@ -165,9 +158,10 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Border Stroke="{StaticResource Gray}"
-                                            StrokeShape="RoundRectangle 10,10,10,10"
-                                            Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <Border
+                                        Stroke="{StaticResource Gray}"
+                                        StrokeShape="RoundRectangle 10,10,10,10"
+                                        Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <Label
                                             x:Name="Number"
                                             Padding="10"
@@ -190,9 +184,10 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Border Stroke="{StaticResource Gray}"
-                                            StrokeShape="RoundRectangle 10,10,10,10"
-                                            Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <Border
+                                        Stroke="{StaticResource Gray}"
+                                        StrokeShape="RoundRectangle 10,10,10,10"
+                                        Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <Label
                                             x:Name="Birthdt"
                                             Padding="10"
@@ -215,9 +210,10 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Border Stroke="{StaticResource Gray}"
-                                            StrokeShape="RoundRectangle 10,10,10,10"
-                                            Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <Border
+                                        Stroke="{StaticResource Gray}"
+                                        StrokeShape="RoundRectangle 10,10,10,10"
+                                        Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <Label
                                             x:Name="Firstname"
                                             Padding="10"
@@ -229,436 +225,426 @@
 
                             </StackLayout>
 
-                            <!--GulfER-->
-                            <StackLayout  HorizontalOptions="FillAndExpand"
-                                           IsVisible="{Binding IsGulfER}"
-                                        VerticalOptions="FillAndExpand">
+                            <!--  GulfER  -->
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding IsGulfER}"
+                                VerticalOptions="FillAndExpand">
 
-                                    <!--Id Type-->
-                                    <StackLayout >
+                                <!--  Id Type  -->
+                                <StackLayout>
 
-                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                HorizontalOptions="Start">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
-                                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
+                                                <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
 
-                                        </Label>
-
-                                                
-                                        <inputLayout:SfTextInputLayout
-                                            x:Name="FrmIDType"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            IsHintAlwaysFloated="True"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource NeutralGreay}">
-
-                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-
-                                            <StackLayout Padding="{OnPlatform Android=12,iOS=0}">
-
-                                                <syncfusion:SfPicker
-                                                    x:Name="DDlIDType"
-                                                    Background="White"
-                                                    CancelButtonClicked="IDType_CancelButtonClicked"
-                                                    ItemHeight="46"
-                                                    Mode="Dialog"
-                                                    OkButtonClicked="DDlIDType_OkayButtonClicked"
-                                                    SelectionChanged="IDType_SelectedIndexChanged">
-
-                                                    <syncfusion:SfPicker.TextStyle>
-                                                        <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
-                                                    </syncfusion:SfPicker.TextStyle>
-
-                                                        <syncfusion:SfPicker.SelectionView >
-                                                            <syncfusion:PickerSelectionView
-                                                                Background="{StaticResource Secondary}" ></syncfusion:PickerSelectionView>
-                                                    </syncfusion:SfPicker.SelectionView>
-
-                                                    <syncfusion:SfPicker.Columns>
-                                                        <syncfusion:PickerColumn
-                                                            Width="270"
-                                                            DisplayMemberPath="Name"
-                                                            ItemsSource="{Binding IdTypeList}"
-                                                            SelectedIndex="{Binding IDTypeIndex}" />
-                                                    </syncfusion:SfPicker.Columns>
+                                    </Label>
 
 
-                                                    <syncfusion:SfPicker.SelectedTextStyle>
-                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                    </syncfusion:SfPicker.SelectedTextStyle>
+                                    <inputLayout:SfTextInputLayout
+                                        x:Name="FrmIDType"
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="10"
+                                        Stroke="{StaticResource NeutralGreay}">
 
-                                                    <syncfusion:SfPicker.HeaderView>
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                                        <syncfusion:PickerHeaderView
-                                                            Height="46"
-                                                            Background="{StaticResource Primary}"
-                                                            Text="{x:Static ResourceManager:AppResources.ZZIDType}">
-                                                            <syncfusion:PickerHeaderView.TextStyle>
-                                                                <syncfusion:PickerTextStyle TextColor="White" />
-                                                            </syncfusion:PickerHeaderView.TextStyle>
-                                                        </syncfusion:PickerHeaderView>
+                                        <StackLayout Padding="{OnPlatform Android=12, iOS=0}">
 
-                                                    </syncfusion:SfPicker.HeaderView>
+                                            <syncfusion:SfPicker
+                                                x:Name="DDlIDType"
+                                                Background="White"
+                                                CancelButtonClicked="IDType_CancelButtonClicked"
+                                                ItemHeight="46"
+                                                Mode="Dialog"
+                                                OkButtonClicked="DDlIDType_OkayButtonClicked"
+                                                SelectionChanged="IDType_SelectedIndexChanged">
 
-                                                    <syncfusion:SfPicker.FooterView>
+                                                <syncfusion:SfPicker.TextStyle>
+                                                    <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
+                                                </syncfusion:SfPicker.TextStyle>
 
-                                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+                                                <syncfusion:SfPicker.SelectionView>
+                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                </syncfusion:SfPicker.SelectionView>
 
-                                                            <syncfusion:PickerFooterView.TextStyle>
-                                                                <syncfusion:PickerTextStyle TextColor="White" />
-                                                            </syncfusion:PickerFooterView.TextStyle>
+                                                <syncfusion:SfPicker.Columns>
+                                                    <syncfusion:PickerColumn
+                                                        Width="270"
+                                                        DisplayMemberPath="Name"
+                                                        ItemsSource="{Binding IdTypeList}"
+                                                        SelectedIndex="{Binding IDTypeIndex}" />
+                                                </syncfusion:SfPicker.Columns>
 
-                                                        </syncfusion:PickerFooterView>
 
-                                                    </syncfusion:SfPicker.FooterView>
+                                                <syncfusion:SfPicker.SelectedTextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                </syncfusion:SfPicker.SelectedTextStyle>
+
+                                                <syncfusion:SfPicker.HeaderView>
+
+                                                    <syncfusion:PickerHeaderView
+                                                        Height="46"
+                                                        Background="{StaticResource Primary}"
+                                                        Text="{x:Static ResourceManager:AppResources.ZZIDType}">
+                                                        <syncfusion:PickerHeaderView.TextStyle>
+                                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                                        </syncfusion:PickerHeaderView.TextStyle>
+                                                    </syncfusion:PickerHeaderView>
+
+                                                </syncfusion:SfPicker.HeaderView>
+
+                                                <syncfusion:SfPicker.FooterView>
+
+                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+
+                                                        <syncfusion:PickerFooterView.TextStyle>
+                                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                                        </syncfusion:PickerFooterView.TextStyle>
+
+                                                    </syncfusion:PickerFooterView>
+
+                                                </syncfusion:SfPicker.FooterView>
 
 
-                                                </syncfusion:SfPicker>
+                                            </syncfusion:SfPicker>
 
-                                                <custom:GAZTBorderlessEntry
-                                                    FontFamily="{StaticResource SomarLight}"
-                                                    FontSize="Small"
-                                                    IsReadOnly="True"
-                                                    IsSpellCheckEnabled="False"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding TxtIDType}" />
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarLight}"
+                                                FontSize="Small"
+                                                IsReadOnly="True"
+                                                IsSpellCheckEnabled="False"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding TxtIDType}" />
 
-                                            </StackLayout>
+                                        </StackLayout>
 
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Source="arrowDropdown.png"
-                                                        Style="{StaticResource SmallIcon}"/>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
 
-                                            <!--<inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <!--<inputLayout:SfTextInputLayout.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="btnIdType_Clicked"  />
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>-->
 
-                                        </inputLayout:SfTextInputLayout>
+                                    </inputLayout:SfTextInputLayout>
 
-                                    </StackLayout>
+                                </StackLayout>
 
-                                    <!--Id Number-->
-                                    <StackLayout Grid.Row="1" >
+                                <!--  Id Number  -->
+                                <StackLayout Grid.Row="1">
 
-                                        <Label Style="{StaticResource CaptionLabelBlack}"
-                                                HorizontalOptions="Start">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}">
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.IDNumber}" />
-                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.IDNumber}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
 
-                                        <inputLayout:SfTextInputLayout
-                                            x:Name="FrmIDNumber"
-                                            HasError="{Binding FrameIDError}"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            InputViewPadding="16,0,16,0"
-                                                IsHintAlwaysFloated="True"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource NeutralGreay}">
+                                    <inputLayout:SfTextInputLayout
+                                        x:Name="FrmIDNumber"
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        HasError="{Binding FrameIDError}"
+                                        InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="10"
+                                        Stroke="{StaticResource NeutralGreay}">
 
-                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                            <custom:GAZTBorderlessEntry
-                                                x:Name="EntryIDNumber"
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                IsSpellCheckEnabled="False"
-                                                Keyboard="Numeric"
-                                                MaxLength="{Binding MaxLengthID}"
-                                                Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding IdNumber}"
-                                                TextChanged="GAZTBorderlessEntry_TextChanged"
-                                                Unfocused="EntryIDNumber_Unfocused">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviors:OnlyNumericValuesBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="EntryIDNumber"
+                                            FontFamily="{StaticResource SomarLight}"
+                                            FontSize="Small"
+                                            IsSpellCheckEnabled="False"
+                                            Keyboard="Numeric"
+                                            MaxLength="{Binding MaxLengthID}"
+                                            Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding IdNumber}"
+                                            TextChanged="GAZTBorderlessEntry_TextChanged"
+                                            Unfocused="EntryIDNumber_Unfocused">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:OnlyNumericValuesBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
 
-                                    </StackLayout>
+                                </StackLayout>
 
-                                    <!--DateofBirth-->
-                                    <StackLayout >
+                                <!--  DateofBirth  -->
+                                <StackLayout>
 
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CaptionLabelBlack}">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}">
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
-                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
 
-                                        <busyindicator:SfChipGroup
-                                            x:Name="ChipGroup_statusFilter"
-                                            Margin="0,10"
-                                            ChipBackground="Transparent"
-                                            ChipStroke="{StaticResource NeutralLightGrey}"
-                                            ChipStrokeThickness="1"
-                                            ChipType="Choice"
-                                            HorizontalOptions="Start"
-                                            ItemsSource="{Binding ChipDataFilterlist}"
-                                            SelectedChipBackground="{StaticResource PartialBg}"
-                                            SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
-                                            VerticalOptions="Center">
-                                            <busyindicator:SfChipGroup.ItemTemplate>
-                                                <DataTemplate>
-                                                    <StackLayout WidthRequest="80">
-                                                        <Label
-                                                            HorizontalOptions="FillAndExpand"
-                                                            HorizontalTextAlignment="Center"
-                                                            Style="{StaticResource CaptionLabelBlack}"
-                                                            StyleId="OnBoardText"
-                                                            Text="{Binding Text}" />
-                                                    </StackLayout>
-                                                </DataTemplate>
-                                            </busyindicator:SfChipGroup.ItemTemplate>
-                                        </busyindicator:SfChipGroup>
-
-
-                                        <inputLayout:SfTextInputLayout
-                                                x:Name="FrmDBO"
-                                                HasError="{Binding FrameDOBError}"
-                                                ContainerBackground="White"
-                                                ContainerType="Outlined"
-                                                InputViewPadding="16,0,16,0"
-                                                IsHintAlwaysFloated="True"
-                                                LeadingViewPosition="Inside"
-                                                OutlineCornerRadius="10"
-                                                Stroke="{StaticResource NeutralGreay}">
-
-                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-
-                                                <custom:GAZTBorderlessEntry
-                                                    x:Name="DateEntry"
-                                                    FontFamily="{StaticResource SomarLight}"
-                                                    FontSize="Small"
-                                                    InputTransparent="True"
-                                                    IsReadOnly="True"
-                                                    Keyboard="Text"
-                                                    Placeholder="dd/MM/yyyy"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding DOBddyymm}"
-                                                    TextChanged="DateEntry_TextChanged"
-                                                    TextColor="{StaticResource Primary}"
-                                                    Unfocused="DatePicker_Unfocused" />
-
-                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="btnDate_Clicked" />
-                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
-
-                                                <inputLayout:SfTextInputLayout.TrailingView>
-                                                    <Image Aspect="AspectFit"
-                                                            Style="{StaticResource SmallIcon}"
-                                                            Source="greyCalender" />
-                                                </inputLayout:SfTextInputLayout.TrailingView>
-                                        </inputLayout:SfTextInputLayout>
-
-                                         <custom:CustomDatePicker
-                                                        x:Name="SignUpDOB"
-                                                        Background="White"
-                                                        CancelButtonClicked="DOB_CancelButtonClicked"
-                                                        Closed="SignUpDOB_Closed"
+                                    <busyindicator:SfChipGroup
+                                        x:Name="ChipGroup_statusFilter"
+                                        Margin="0,10"
+                                        ChipBackground="Transparent"
+                                        ChipStroke="{StaticResource NeutralLightGrey}"
+                                        ChipStrokeThickness="1"
+                                        ChipType="Choice"
+                                        HorizontalOptions="Start"
+                                        ItemsSource="{Binding ChipDataFilterlist}"
+                                        SelectedChipBackground="{StaticResource PartialBg}"
+                                        SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
+                                        VerticalOptions="Center">
+                                        <busyindicator:SfChipGroup.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout WidthRequest="80">
+                                                    <Label
                                                         HorizontalOptions="FillAndExpand"
-                                                        ItemHeight="45"
-                                                        Mode="Dialog"
-                                                        OkButtonClicked="DOB_OkButtonClicked"
-                                                        SelectedItem="{Binding TodayDate}">
-
-                                                        <custom:CustomDatePicker.ColumnHeaderView>
-                                    <syncfusion:PickerColumnHeaderView Height="46"
-                                                                        Background="White"/>
-                                </custom:CustomDatePicker.ColumnHeaderView>
-
-                                                        <custom:CustomDatePicker.SelectedTextStyle>
-                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                        </custom:CustomDatePicker.SelectedTextStyle>
-
-                                                            <custom:CustomDatePicker.SelectionView >
-                                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                        </custom:CustomDatePicker.SelectionView>
+                                                        HorizontalTextAlignment="Center"
+                                                        Style="{StaticResource CaptionLabelBlack}"
+                                                        StyleId="OnBoardText"
+                                                        Text="{Binding Text}" />
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </busyindicator:SfChipGroup.ItemTemplate>
+                                    </busyindicator:SfChipGroup>
 
 
-                                                        <custom:CustomDatePicker.HeaderView>
+                                    <inputLayout:SfTextInputLayout
+                                        x:Name="FrmDBO"
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        HasError="{Binding FrameDOBError}"
+                                        InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="10"
+                                        Stroke="{StaticResource NeutralGreay}">
 
-                                                            <syncfusion:PickerHeaderView
-                                                                Height="46"
-                                                                Background="White"
-                                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
-                                                                <syncfusion:PickerHeaderView.TextStyle>
-                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                                </syncfusion:PickerHeaderView.TextStyle>
-                                                            </syncfusion:PickerHeaderView>
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                                        </custom:CustomDatePicker.HeaderView>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="DateEntry"
+                                            FontFamily="{StaticResource SomarLight}"
+                                            FontSize="Small"
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="dd/MM/yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding DOBddyymm}"
+                                            TextChanged="DateEntry_TextChanged"
+                                            TextColor="{StaticResource Primary}"
+                                            Unfocused="DatePicker_Unfocused" />
 
-                                                        <custom:CustomDatePicker.FooterView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="btnDate_Clicked" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                                            <syncfusion:PickerFooterView Height="46"
-                                                                                            Background="{StaticResource NeutralBlack}">
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image
+                                                Aspect="AspectFit"
+                                                Source="greyCalender"
+                                                Style="{StaticResource SmallIcon}" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </inputLayout:SfTextInputLayout>
 
-                                                                <syncfusion:PickerFooterView.TextStyle>
-                                                                    <syncfusion:PickerTextStyle TextColor="White" />
-                                                                </syncfusion:PickerFooterView.TextStyle>
+                                    <custom:CustomDatePicker
+                                        x:Name="SignUpDOB"
+                                        Background="White"
+                                        CancelButtonClicked="DOB_CancelButtonClicked"
+                                        Closed="SignUpDOB_Closed"
+                                        HorizontalOptions="FillAndExpand"
+                                        ItemHeight="45"
+                                        Mode="Dialog"
+                                        OkButtonClicked="DOB_OkButtonClicked"
+                                        SelectedItem="{Binding TodayDate}">
 
-                                                            </syncfusion:PickerFooterView>
+                                        <custom:CustomDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                        </custom:CustomDatePicker.ColumnHeaderView>
 
-                                                        </custom:CustomDatePicker.FooterView>
+                                        <custom:CustomDatePicker.SelectedTextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                        </custom:CustomDatePicker.SelectedTextStyle>
+
+                                        <custom:CustomDatePicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                        </custom:CustomDatePicker.SelectionView>
 
 
-                                                    </custom:CustomDatePicker>
+                                        <custom:CustomDatePicker.HeaderView>
 
-                                        <custom:CustomHijriDatePicker
-                                                        x:Name="SignUpDOBHijri"
-                                                        Background="White"
-                                                        CancelButtonClicked="DOB_CancelButtonClicked"
-                                                        Closed="SignUpDOB_Closed"
-                                                        FlowDirection="RightToLeft"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        ItemHeight="45"
-                                                        Mode="Dialog"
-                                                        OkButtonClicked="DOB_OkButtonClicked"
-                                                        SelectedItem="{Binding TodayDateinHijri}">
+                                            <syncfusion:PickerHeaderView
+                                                Height="46"
+                                                Background="White"
+                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
+                                                <syncfusion:PickerHeaderView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                </syncfusion:PickerHeaderView.TextStyle>
+                                            </syncfusion:PickerHeaderView>
 
-                                                       <custom:CustomHijriDatePicker.SelectionView >
-                                                            <syncfusion:PickerSelectionView  Background="{StaticResource Secondary}" />
-                                                         </custom:CustomHijriDatePicker.SelectionView>
+                                        </custom:CustomDatePicker.HeaderView>
 
-                                                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                                            <syncfusion:PickerColumnHeaderView Height="46"
-                                                                                               Background="White"/>
-                                                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                        <custom:CustomDatePicker.FooterView>
 
-                                                        <custom:CustomHijriDatePicker.HeaderView>
+                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
-                                                            <syncfusion:PickerHeaderView
-                                                                Height="46"
-                                                                Background="White"
-                                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                <syncfusion:PickerFooterView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerFooterView.TextStyle>
 
-                                                        </custom:CustomHijriDatePicker.HeaderView>
+                                            </syncfusion:PickerFooterView>
 
-                                                        <custom:CustomHijriDatePicker.SelectedTextStyle>
-                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                        </custom:CustomHijriDatePicker.SelectedTextStyle>
+                                        </custom:CustomDatePicker.FooterView>
 
-                                                        <custom:CustomHijriDatePicker.FooterView>
 
-                                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
+                                    </custom:CustomDatePicker>
 
-                                                                <syncfusion:PickerFooterView.TextStyle>
-                                                                    <syncfusion:PickerTextStyle TextColor="White" />
-                                                                </syncfusion:PickerFooterView.TextStyle>
+                                    <custom:CustomHijriDatePicker
+                                        x:Name="SignUpDOBHijri"
+                                        Background="White"
+                                        CancelButtonClicked="DOB_CancelButtonClicked"
+                                        Closed="SignUpDOB_Closed"
+                                        FlowDirection="RightToLeft"
+                                        HorizontalOptions="FillAndExpand"
+                                        ItemHeight="45"
+                                        Mode="Dialog"
+                                        OkButtonClicked="DOB_OkButtonClicked"
+                                        SelectedItem="{Binding TodayDateinHijri}">
 
-                                                            </syncfusion:PickerFooterView>
+                                        <custom:CustomHijriDatePicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
 
-                                                        </custom:CustomHijriDatePicker.FooterView>
+                                        <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
-                                                    </custom:CustomHijriDatePicker>
-                                    </StackLayout>
+                                        <custom:CustomHijriDatePicker.HeaderView>
 
-                                    <!--Name-->
-                                    <StackLayout >
+                                            <syncfusion:PickerHeaderView
+                                                Height="46"
+                                                Background="White"
+                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
-                                        <Label
-                                            Style="{StaticResource CaptionLabelBlack}"
-                                            HorizontalOptions="Start">
+                                        </custom:CustomHijriDatePicker.HeaderView>
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZZName}" />
-                                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
+                                        <custom:CustomHijriDatePicker.SelectedTextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                        </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-                                        <inputLayout:SfTextInputLayout
-                                            x:Name="FrmName"
-                                            HasError="{Binding FrameNameError}"
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10"
-                                            Stroke="{StaticResource NeutralGreay}">
+                                        <custom:CustomHijriDatePicker.FooterView>
 
-                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
-                                            <custom:GAZTBorderlessEntry
-                                                x:Name="EntryName"
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                IsSpellCheckEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding Name}"
-                                                TextChanged="EntryName_TextChanged">
+                                                <syncfusion:PickerFooterView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerFooterView.TextStyle>
 
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviors:AlphabetandArabicCharacters />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </syncfusion:PickerFooterView>
 
-                                            </custom:GAZTBorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
+                                        </custom:CustomHijriDatePicker.FooterView>
 
-                             </StackLayout>
+                                    </custom:CustomHijriDatePicker>
+                                </StackLayout>
+
+                                <!--  Name  -->
+                                <StackLayout>
+
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}">
+
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZZName}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <inputLayout:SfTextInputLayout
+                                        x:Name="FrmName"
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        HasError="{Binding FrameNameError}"
+                                        InputViewPadding="16,0,16,0"
+                                        IsHintAlwaysFloated="True"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="10"
+                                        Stroke="{StaticResource NeutralGreay}">
+
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="EntryName"
+                                            FontFamily="{StaticResource SomarLight}"
+                                            FontSize="Small"
+                                            IsSpellCheckEnabled="False"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZName}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding Name}"
+                                            TextChanged="EntryName_TextChanged">
+
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:AlphabetandArabicCharacters />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+
+                            </StackLayout>
 
                         </StackLayout>
 
                         <!--  National Address  -->
-                        <StackLayout
-                            x:Name="NationalAddressView"
-                            IsVisible="{Binding NationalAddressView}">
+                        <StackLayout x:Name="NationalAddressView" IsVisible="{Binding NationalAddressView}">
 
-                             <Label
-                                    Margin="10,0"
-                                    FontFamily="{StaticResource SomarBold}"
-                                    FontSize="22"
-                                    Style="{StaticResource GAZTMediumBoldBlackLabelStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZZNationalAddress}"
-                                    TextColor="{StaticResource PrimaryColor}"
-                                    VerticalOptions="Center" />
+                            <Label
+                                Margin="10,0"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="22"
+                                Style="{StaticResource GAZTMediumBoldBlackLabelStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZNationalAddress}"
+                                TextColor="{StaticResource PrimaryColor}"
+                                VerticalOptions="Center" />
 
-                                <Label
-                                    Margin="10,0"
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    FontSize="15"
-                                    Style="{StaticResource GAZTMediumGrayLabelStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
+                            <Label
+                                Margin="10,0"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="15"
+                                Style="{StaticResource GAZTMediumGrayLabelStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
 
-                                <BoxView Margin="10,10,10,15"
-                                         WidthRequest="380"
-                                         Style="{StaticResource lineSeperator}" />
+                            <BoxView
+                                Margin="10,10,10,15"
+                                Style="{StaticResource lineSeperator}"
+                                WidthRequest="380" />
 
                             <ScrollView>
 
@@ -667,9 +653,7 @@
                                     <!--  Country  -->
                                     <StackLayout IsVisible="{Binding SetCountryVisibility}">
 
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CaptionLabelBlack}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -681,12 +665,12 @@
 
                                         <inputLayout:SfTextInputLayout
                                             x:Name="Frame_Country"
-                                            ContainerType="Outlined"
-                                            IsHintAlwaysFloated="True"
-                                            HasError="False"
                                             ContainerBackground="White"
+                                            ContainerType="Outlined"
+                                            HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -703,8 +687,7 @@
                                                 Text="{Binding CountryName}" />
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Source="arrowDropdown.png"
-                                                        Style="{StaticResource SmallIcon}"/>
+                                                <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
 
                                         </inputLayout:SfTextInputLayout>
@@ -713,9 +696,7 @@
 
                                     <StackLayout IsVisible="{Binding SetGCCCountryVisibility}">
 
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource GAZTSmallGrayLabelStyle}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource GAZTSmallGrayLabelStyle}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -727,12 +708,12 @@
 
                                         <inputLayout:SfTextInputLayout
                                             x:Name="GCCFrame_Country"
-                                            IsHintAlwaysFloated="True"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameGccCountyError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -751,11 +732,10 @@
                                                 Text="{Binding CountryName}"
                                                 TextChanged="GccCountryName_TextChanged" />
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Source="arrowDropdown.png"
-                                                        Style="{StaticResource SmallIcon}"/>
+                                                <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="GCCPickerBtn_Country_Clicked"/>
+                                                <TapGestureRecognizer Tapped="GCCPickerBtn_Country_Clicked" />
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
                                         </inputLayout:SfTextInputLayout>
 
@@ -784,9 +764,8 @@
                                                     SelectedIndex="{Binding SelectedGCCCountryIndex}" />
                                             </syncfusion:SfPicker.Columns>
 
-                                            <syncfusion:SfPicker.SelectionView >
-                                                 <syncfusion:PickerSelectionView
-                                                                Background="{StaticResource Secondary}" ></syncfusion:PickerSelectionView>
+                                            <syncfusion:SfPicker.SelectionView>
+                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
                                             </syncfusion:SfPicker.SelectionView>
 
                                             <syncfusion:SfPicker.SelectedTextStyle>
@@ -808,8 +787,7 @@
 
                                             <syncfusion:SfPicker.FooterView>
 
-                                                <syncfusion:PickerFooterView Height="46"
-                                                                             Background="{StaticResource Primary}">
+                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                                     <syncfusion:PickerFooterView.TextStyle>
                                                         <syncfusion:PickerTextStyle TextColor="White" />
@@ -841,16 +819,16 @@
 
                                         <inputLayout:SfTextInputLayout
                                             x:Name="Frame_Region"
-                                            IsHintAlwaysFloated="True"
+                                            ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameRegionError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
-                                            Stroke="{StaticResource Primary}"
-                                            ContainerBackground="White">
+                                            Stroke="{StaticResource Primary}">
 
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <inputLayout:LabelStyle TextColor="#B00020" />
@@ -867,14 +845,13 @@
                                                 TextChanged="Entry_Region_TextChanged" />
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Source="arrowDropdown.png"
-                                                        Style="{StaticResource SmallIcon}"/>
+                                                <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
 
-                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="PickerBtn_Region_Clicked"/>
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="PickerBtn_Region_Clicked" />
 
-                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                         </inputLayout:SfTextInputLayout>
 
@@ -901,7 +878,7 @@
                                             </syncfusion:SfPicker.Columns>
 
                                             <syncfusion:SfPicker.SelectionView>
-                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
 
                                             </syncfusion:SfPicker.SelectionView>
                                             <syncfusion:SfPicker.SelectedTextStyle>
@@ -924,8 +901,7 @@
 
                                             <syncfusion:SfPicker.FooterView>
 
-                                                <syncfusion:PickerFooterView Height="46"
-                                                                                Background="{StaticResource Primary}">
+                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                                     <syncfusion:PickerFooterView.TextStyle>
                                                         <syncfusion:PickerTextStyle TextColor="White" />
@@ -938,11 +914,11 @@
 
 
                                         </syncfusion:SfPicker>
-                                      
+
                                     </StackLayout>
 
-                                    <StackLayout  IsVisible="{Binding SetCityListVisibility}">
-                                       
+                                    <StackLayout IsVisible="{Binding SetCityListVisibility}">
+
                                         <Label
                                             FontFamily="{StaticResource SomarLight}"
                                             HorizontalOptions="Start"
@@ -960,12 +936,12 @@
 
                                         <inputLayout:SfTextInputLayout
                                             x:Name="Frame_City"
-                                            IsHintAlwaysFloated="True"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameCityError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
@@ -983,12 +959,11 @@
                                                 Text="{Binding CityName}"
                                                 TextChanged="Entry_City_TextChanged" />
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Source="arrowDropdown.png"
-                                                        Style="{StaticResource SmallIcon}"/>
+                                                <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
 
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="PickerBtn_City_Clicked"/>
+                                                <TapGestureRecognizer Tapped="PickerBtn_City_Clicked" />
 
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
                                         </inputLayout:SfTextInputLayout>
@@ -1022,7 +997,7 @@
                                             </syncfusion:SfPicker.SelectedTextStyle>
 
                                             <syncfusion:SfPicker.SelectionView>
-                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"/>
+                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
 
                                             </syncfusion:SfPicker.SelectionView>
 
@@ -1041,11 +1016,10 @@
 
                                             <syncfusion:SfPicker.FooterView>
 
-                                                <syncfusion:PickerFooterView Height="46"
-                                                                                Background="{StaticResource Primary}">
+                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                                     <syncfusion:PickerFooterView.TextStyle>
-                                                        <syncfusion:PickerTextStyle TextColor="White"/>
+                                                        <syncfusion:PickerTextStyle TextColor="White" />
                                                     </syncfusion:PickerFooterView.TextStyle>
 
                                                 </syncfusion:PickerFooterView>
@@ -1054,10 +1028,10 @@
 
 
                                         </syncfusion:SfPicker>
-                                       
+
                                     </StackLayout>
 
-                                    <StackLayout >
+                                    <StackLayout>
                                         <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelBlack}"
@@ -1065,14 +1039,14 @@
 
                                         <inputLayout:SfTextInputLayout
                                             x:Name="Neighborhood"
+                                            ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="False"
-                                             IsHintAlwaysFloated="True"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
-                                            ContainerBackground="White"
                                             Stroke="{StaticResource Primary}"
                                             Style="{StaticResource TextInputLayout}">
                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -1103,11 +1077,11 @@
                                         <inputLayout:SfTextInputLayout
                                             x:Name="PostalCode"
                                             ContainerBackground="White"
-                                            IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1130,19 +1104,19 @@
                                         </inputLayout:SfTextInputLayout>
                                     </StackLayout>
 
-                                    <StackLayout >
+                                    <StackLayout>
                                         <Label
                                             HorizontalOptions="Start"
                                             Style="{StaticResource CaptionLabelBlack}"
                                             Text="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}" />
                                         <inputLayout:SfTextInputLayout
                                             x:Name="BuildingNumber"
-                                            IsHintAlwaysFloated="True"
-                                            ContainerType="Outlined"
                                             ContainerBackground="White"
+                                            ContainerType="Outlined"
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1176,10 +1150,10 @@
                                             x:Name="UnitNumber"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
-                                            IsHintAlwaysFloated="True"
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1210,10 +1184,9 @@
                         </StackLayout>
 
                         <!--  Contact Information  Grid.ColumnSpan="2"  -->
-                        <StackLayout x:Name="ContactInformationView"
-                            IsVisible="{Binding ContactInformationView}">
+                        <StackLayout x:Name="ContactInformationView" IsVisible="{Binding ContactInformationView}">
 
-                           <Label
+                            <Label
                                 Margin="10,0"
                                 FontFamily="{StaticResource SomarBold}"
                                 FontSize="22"
@@ -1226,9 +1199,10 @@
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
-                            <BoxView Margin="10,0,10,15"
-                                        WidthRequest="380"
-                                        Style="{StaticResource lineSeperator}" />
+                            <BoxView
+                                Margin="10,0,10,15"
+                                Style="{StaticResource lineSeperator}"
+                                WidthRequest="380" />
 
                             <ScrollView>
 
@@ -1236,9 +1210,7 @@
 
                                     <StackLayout>
 
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CardLabelBlack}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1251,11 +1223,11 @@
                                         <inputLayout:SfTextInputLayout
                                             x:Name="FrmEmailAddress"
                                             ContainerBackground="White"
-                                            IsHintAlwaysFloated="True"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameEmailError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1264,8 +1236,8 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryEmail"
-                                                Keyboard="Email"
                                                 IsSpellCheckEnabled="False"
+                                                Keyboard="Email"
                                                 Placeholder="{x:Static ResourceManager:AppResources.Email}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding Email}"
@@ -1280,9 +1252,7 @@
 
                                     <StackLayout>
 
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CardLabelBlack}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1296,10 +1266,10 @@
                                             x:Name="FrmConfirmEmail"
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
-                                            IsHintAlwaysFloated="True"
                                             HasError="{Binding FrameConfirmEmailError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1310,8 +1280,8 @@
                                                 x:Name="EntryConfirmEmail"
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
-                                                Keyboard="Email"
                                                 IsSpellCheckEnabled="False"
+                                                Keyboard="Email"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding ConfirmEmail}"
@@ -1325,9 +1295,7 @@
 
                                     <StackLayout>
 
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource CardLabelBlack}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource CardLabelBlack}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1349,9 +1317,10 @@
                                                 Orientation="Horizontal"
                                                 VerticalOptions="CenterAndExpand">
 
-                                                <Image HorizontalOptions="Start"
-                                                        Style="{StaticResource SmallIcon}"
-                                                        Source="arrowDropdown.png">
+                                                <Image
+                                                    HorizontalOptions="Start"
+                                                    Source="arrowDropdown.png"
+                                                    Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="CountryCodes_Clicked" />
@@ -1396,10 +1365,10 @@
                                 </StackLayout>
 
                             </ScrollView>
-                       
+
                         </StackLayout>
 
-                        <!--SummeryView-->
+                        <!--  SummeryView  -->
                         <Grid
                             x:Name="SummeryView"
                             Padding="0,10,0,0"
@@ -1427,9 +1396,10 @@
                                     Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZReviewinformation}" />
 
-                                <BoxView Margin="10,10,10,15"
-                                         WidthRequest="350"
-                                         Style="{StaticResource lineSeperator}" />
+                                <BoxView
+                                    Margin="10,10,10,15"
+                                    Style="{StaticResource lineSeperator}"
+                                    WidthRequest="350" />
 
                             </StackLayout>
 
@@ -1477,8 +1447,8 @@
                                         <BoxView
                                             BackgroundColor="LightGray"
                                             HeightRequest="1"
-                                            WidthRequest="380"
-                                            HorizontalOptions="FillAndExpand" />
+                                            HorizontalOptions="FillAndExpand"
+                                            WidthRequest="380" />
                                         <Grid Padding="10,5,10,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
@@ -1595,8 +1565,8 @@
                                         <BoxView
                                             BackgroundColor="LightGray"
                                             HeightRequest="1"
-                                            WidthRequest="380"
-                                            HorizontalOptions="FillAndExpand" />
+                                            HorizontalOptions="FillAndExpand"
+                                            WidthRequest="380" />
                                         <Grid Padding="10,5,10,10">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto" />
@@ -1748,8 +1718,8 @@
                                         <BoxView
                                             BackgroundColor="LightGray"
                                             HeightRequest="1"
-                                            WidthRequest="380"
-                                            HorizontalOptions="FillAndExpand" />
+                                            HorizontalOptions="FillAndExpand"
+                                            WidthRequest="380" />
 
                                         <Grid Padding="10,5,10,10" VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
@@ -1825,11 +1795,9 @@
                         </Grid>
 
                         <!--  Password  -->
-                        <StackLayout
-                            x:Name="PasswordView"
-                            IsVisible="{Binding PasswordView}" >
-                           
-                            
+                        <StackLayout x:Name="PasswordView" IsVisible="{Binding PasswordView}">
+
+
                             <StackLayout IsVisible="{Binding passwordMainView}">
                                 <Label
                                     FontFamily="{StaticResource SomarBold}"
@@ -1844,9 +1812,10 @@
                                     FontSize="15"
                                     Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZCreateasecurePassword}" />
-                                <BoxView Margin="10,10,10,15"
-                                         WidthRequest="350"
-                                         Style="{StaticResource lineSeperator}" />
+                                <BoxView
+                                    Margin="10,10,10,15"
+                                    Style="{StaticResource lineSeperator}"
+                                    WidthRequest="350" />
                             </StackLayout>
 
                             <StackLayout>
@@ -1854,9 +1823,7 @@
                                 <StackLayout IsVisible="{Binding passwordMainView}">
 
                                     <StackLayout IsVisible="{Binding IsGulfER}">
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource GAZTSmallGrayLabelStyle}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource GAZTSmallGrayLabelStyle}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1871,8 +1838,8 @@
                                             ContainerType="Outlined"
                                             HasError="{Binding FramePasswordError}"
                                             HorizontalOptions="FillAndExpand"
-                                            IsHintAlwaysFloated="True"
                                             InputViewPadding="16,0,16,0"
+                                            IsHintAlwaysFloated="True"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1894,9 +1861,10 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image x:Name="ImageSeePassword"
-                                                        Style="{StaticResource SmallIcon}"
-                                                        Source="hidePassword.png">
+                                                <Image
+                                                    x:Name="ImageSeePassword"
+                                                    Source="hidePassword.png"
+                                                    Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="ImageSeePassword_Tapped" />
@@ -1909,9 +1877,7 @@
 
                                     <StackLayout IsVisible="{Binding IsGulfER}">
 
-                                        <Label
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource GAZTSmallGrayLabelStyle}">
+                                        <Label HorizontalOptions="Start" Style="{StaticResource GAZTSmallGrayLabelStyle}">
 
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -1949,9 +1915,10 @@
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image x:Name="ImageSeeConfirmPassword"
-                                                        Style="{StaticResource SmallIcon}"
-                                                        Source="hidePassword.png">
+                                                <Image
+                                                    x:Name="ImageSeeConfirmPassword"
+                                                    Source="hidePassword.png"
+                                                    Style="{StaticResource SmallIcon}">
 
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped" />
@@ -1964,49 +1931,53 @@
                                     </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="Start"
-                                                    Style="{StaticResource SmallIcon}"
-                                                    Source="{Binding MinEight}" />
-                                            <Label
-                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZZZAtleast8characterslong}"
-                                                TextColor="#010101" />
-                                        </StackLayout>
+                                        <Image
+                                            HorizontalOptions="Start"
+                                            Source="{Binding MinEight}"
+                                            Style="{StaticResource SmallIcon}" />
+                                        <Label
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZZZAtleast8characterslong}"
+                                            TextColor="#010101" />
+                                    </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="Start"
-                                                    Style="{StaticResource SmallIcon}"
-                                                    Source="{Binding CapsSmall}" />
-                                            <Label
-                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZZZEnglishcapitalandsmallletters}"
-                                                TextColor="#010101" />
-                                        </StackLayout>
+                                        <Image
+                                            HorizontalOptions="Start"
+                                            Source="{Binding CapsSmall}"
+                                            Style="{StaticResource SmallIcon}" />
+                                        <Label
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZZZEnglishcapitalandsmallletters}"
+                                            TextColor="#010101" />
+                                    </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="Start"
-                                                    Style="{StaticResource SmallIcon}"
-                                                    Source="{Binding MaxSixteen}" />
-                                            <Label
-                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}"
-                                                TextColor="#010101" />
-                                        </StackLayout>
+                                        <Image
+                                            HorizontalOptions="Start"
+                                            Source="{Binding MaxSixteen}"
+                                            Style="{StaticResource SmallIcon}" />
+                                        <Label
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}"
+                                            TextColor="#010101" />
+                                    </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="Start"
-                                                    Style="{StaticResource SmallIcon}"
-                                                    Source="{Binding NumSymbol}" />
-                                            <Label
-                                                FontFamily="{StaticResource SomarSemiBold}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZZZNumbersandsymbols}"
-                                                TextColor="#010101" />
-                                        </StackLayout>
+                                        <Image
+                                            HorizontalOptions="Start"
+                                            Source="{Binding NumSymbol}"
+                                            Style="{StaticResource SmallIcon}" />
+                                        <Label
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZZZNumbersandsymbols}"
+                                            TextColor="#010101" />
+                                    </StackLayout>
 
                                 </StackLayout>
-                                       
+
                                 <!--  Verification Code  -->
-                                <StackLayout >
+                                <StackLayout>
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
@@ -2023,20 +1994,18 @@
                                         FontSize="15"
                                         Style="{StaticResource GAZTMediumGrayLabelStyle}"
                                         Text="{x:Static ResourceManager:AppResources.EnterVerificationCode}" />
-                                    <BoxView Margin="0,10,0,15"
-                                                WidthRequest="380"
-                                                Style="{StaticResource lineSeperator}" />
+                                    <BoxView
+                                        Margin="0,10,0,15"
+                                        Style="{StaticResource lineSeperator}"
+                                        WidthRequest="380" />
                                 </StackLayout>
 
                                 <StackLayout Spacing="10">
-                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}"
-                                            Text="{Binding EncriptedMobileNumber}" />
+                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding EncriptedMobileNumber}" />
 
                                     <StackLayout Orientation="Horizontal">
-                                        <Image Source="clock.png"
-                                                Style="{StaticResource SmallIcon}"/>
-                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}"
-                                                Text="{Binding OTPValidDuration}" />
+                                        <Image Source="clock.png" Style="{StaticResource SmallIcon}" />
+                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding OTPValidDuration}" />
                                     </StackLayout>
                                 </StackLayout>
 
@@ -2052,8 +2021,8 @@
                                         HasError="{Binding FrameOTPError}"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
                                         IsHintAlwaysFloated="True"
+                                        LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -2093,11 +2062,12 @@
                         <buttons:SfButton
                             x:Name="btnContinue"
                             Margin="0,10"
-                            WidthRequest="{OnPlatform Android=310, iOS=380}"
-                            VerticalOptions="EndAndExpand"
                             Command="{Binding OnContinueButtonClick}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{Binding ContinueButtonText}" />
+                            Text="{Binding ContinueButtonText}"
+                            VerticalOptions="EndAndExpand"
+                            WidthRequest="{OnPlatform Android=310,
+                                                      iOS=380}" />
 
                     </StackLayout>
 
@@ -2106,7 +2076,7 @@
 
             </Border>
 
-             <!--  Loader  -->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>

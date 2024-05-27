@@ -8,8 +8,8 @@
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-    FlowDirection="{Binding AppDirection}"
     BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
@@ -21,10 +21,6 @@
                 <Setter Property="Rotation" Value="0" />
             </Style>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -260,9 +256,9 @@
                                                     Grid.Row="1"
                                                     Grid.Column="1"
                                                     BackgroundColor="{StaticResource PartialBg}"
+                                                    HorizontalOptions="EndAndExpand"
                                                     StrokeShape="RoundRectangle 14,14,14,14"
                                                     StrokeThickness="1"
-                                                    HorizontalOptions="EndAndExpand"
                                                     VerticalOptions="CenterAndExpand">
 
                                                     <Label
@@ -1040,15 +1036,15 @@
                         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                             <busyindicator:SfBusyIndicator
                                 x:Name="busyindicatorForLanding"
-                                HorizontalOptions="CenterAndExpand"
-                                IsRunning="True"
                                 AnimationType="Cupertino"
-                                SizeFactor="0.6"
-                                WidthRequest="70"
                                 HeightRequest="70"
+                                HorizontalOptions="CenterAndExpand"
                                 IndicatorColor="{StaticResource Secondary}"
+                                IsRunning="True"
+                                SizeFactor="0.6"
                                 TitlePlacement="Bottom"
-                                VerticalOptions="CenterAndExpand" />
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="70" />
                             <!--  Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"  -->
                         </StackLayout>
                     </StackLayout>

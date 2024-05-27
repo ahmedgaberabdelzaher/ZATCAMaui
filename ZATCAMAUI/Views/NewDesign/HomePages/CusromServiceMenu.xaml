@@ -9,7 +9,7 @@
     TitleText="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}">
     <newdesign:BaseContentPage.PancakeView>
         <Grid Padding="10">
-              <controls:ServiceMenuControl />
+            <controls:ServiceMenuControl />
         </Grid>
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>

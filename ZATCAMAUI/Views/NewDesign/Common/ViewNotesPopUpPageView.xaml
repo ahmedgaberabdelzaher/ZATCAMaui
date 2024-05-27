@@ -12,14 +12,6 @@
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <!--<pages:PopupPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </pages:PopupPage.Resources>-->
     <Border
         Margin="0,150,0,0"
         Style="{StaticResource CommonTopCurves}"
@@ -43,8 +35,6 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.Number}"/>
-                                                    <Span Text=" : "/>-->
                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Sect}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>
@@ -55,8 +45,6 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.ZDescription}"/>
-                                                    <Span Text=" : "/>-->
                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Strline}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>
@@ -67,8 +55,6 @@
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <FormattedString.Spans>
-                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.ZDescription}"/>
-                                                    <Span Text=" : "/>-->
                                                     <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Namez}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>
