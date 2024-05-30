@@ -70,7 +70,7 @@
         public static string CustomPaymentProdURl = "https://payments-eservices.zatca.gov.sa/payment/initiate/";
 
         public static string CustomPeserviceBaseURl = "https://pre-eservices.zatca.gov.sa";
-        public static string ProhibitedGoodsLstURl = "https://eservices.zatca.gov.sa/";
+        public static string ZATCAPortalBaseURL = " https://zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
         public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";
         public static string ZakatyAppStoreURl = "https://apps.apple.com/sa/app/zakaty-%D8%B2%D9%83%D8%A7%D8%AA%D9%8A/id1374131337";
@@ -306,22 +306,23 @@
         {
             if (App.IsArabic)
             {
-                return $"{ProhibitedGoodsLstURl}ar/general/Prohibited-goods";
+                return $"{ZATCAPortalBaseURL}ar/RulesRegulations/Taxes/Pages/customs_individual/Prohibited-goods.aspx";
             }
             else
             {
-                return $"{ProhibitedGoodsLstURl}en/general/Prohibited-goods";
+                return $"{ZATCAPortalBaseURL}en/RulesRegulations/Taxes/Pages/customs_individual/Prohibited-goods.aspx";
             }
         }
         public static string GetCustomDeclarationInformationURl()
         {
             if (App.IsArabic)
             {
-                return $"{ProhibitedGoodsLstURl}ar/declare";
+                return $"{ZATCAPortalBaseURL}ar/RulesRegulations/Taxes/Pages/customs_individual/Travel_pages/declare.aspx";
             }
             else
             {
-                return $"{ProhibitedGoodsLstURl}en/declare";
+                return $"{ZATCAPortalBaseURL}en/RulesRegulations/Taxes/Pages/customs_individual/Travel_pages/declare.aspx";
+
             }
         }
 

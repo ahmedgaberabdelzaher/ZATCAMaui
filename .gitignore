@@ -264,3 +264,6 @@ __pycache__/
 *.pyc
 /ZATCAMAUI/ZATCAMAUI/Properties/launchSettings.json
 .DS_Store
+ZATCAMAUI/.meteor
+# meteor settings file
+settings.json

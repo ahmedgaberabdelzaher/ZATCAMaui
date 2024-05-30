@@ -301,9 +301,9 @@
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
                                                 TargetType="custom:CustomLabel"
-                                                Value="false">
+                                                Value="True">
 
-                                                <Setter Property="IsVisible" Value="true" />
+                                                <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
 
                                         </custom:CustomLabel.Triggers>
@@ -327,9 +327,9 @@
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
                                                 TargetType="custom:CustomLabel"
-                                                Value="false">
+                                                Value="True">
 
-                                                <Setter Property="IsVisible" Value="false" />
+                                                <Setter Property="IsVisible" Value="True" />
                                             </DataTrigger>
 
                                         </custom:CustomLabel.Triggers>
@@ -352,9 +352,9 @@
                                             <DataTrigger
                                                 Binding="{Binding TrackShipmentResponse.isCombined}"
                                                 TargetType="custom:CustomLabel"
-                                                Value="false">
+                                                Value="true">
 
-                                                <Setter Property="IsVisible" Value="true" />
+                                                <Setter Property="IsVisible" Value="False" />
                                             </DataTrigger>
 
                                         </custom:CustomLabel.Triggers>

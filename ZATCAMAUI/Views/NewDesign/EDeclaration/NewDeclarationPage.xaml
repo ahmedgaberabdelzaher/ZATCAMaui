@@ -70,7 +70,7 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="25,10,25,0"
+                Padding="0,10,0,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">

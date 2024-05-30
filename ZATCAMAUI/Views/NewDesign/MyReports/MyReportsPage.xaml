@@ -474,7 +474,7 @@
                                                                 Binding="{Binding reportStatus}"
                                                                 TargetType="Label"
                                                                 Value="3">
-                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Waitingforresponse}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
                                                                 <Setter Property="TextColor" Value="#62B34F" />
                                                             </DataTrigger>
                                                             <DataTrigger

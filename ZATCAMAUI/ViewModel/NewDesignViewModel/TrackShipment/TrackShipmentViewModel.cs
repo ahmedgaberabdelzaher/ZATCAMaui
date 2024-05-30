@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 #if ANDROID
@@ -123,7 +124,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
 
                         if (isExpressCardSelected)
                         {
-                            StatusTitle = DrawShipmentTrack.IsDeclarationSelected ? $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}": $"{AppResources.Billofladingnumber}: {ShipmentBillNumber}";
+                            StatusTitle = DrawShipmentTrack.IsDeclarationSelected ? $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}" : $"{AppResources.ExpressBillNumber}: {ShipmentBillNumber}";
                             await GetExpressShipping(DrawShipmentTrack.IsDeclarationSelected);
                         }
                             
@@ -432,8 +433,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                     {
                         var status = new ShipmentStatus();
 
-                        status.ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(item.activityDate).ToString("dd/MM/yyyy  hh:mm tt");
-                        status.ShipmentStatusValue = item.Name.Replace("تم تحويل البيان الجمركي للتحصيل","تم اصدار الفاتورة");
+
+                        CultureInfo currentCulture = CultureInfo.GetCultureInfo(CultureInfo.CurrentCulture.ToString());
+                        CultureInfo myLanguage = CultureInfo.GetCultureInfo("en-US");
+                        CultureInfo.CurrentUICulture = myLanguage;
+                        Thread.CurrentThread.CurrentCulture = myLanguage;
+                        // The date in the format that we need
+                        var mydatw = DateTime.Parse(item.activityDate, myLanguage);
+                        var statusDate = mydatw.ToString("dd/MM/yyyy hh:mm tt").ToString(myLanguage);
+
+
+                        status.ShipmentStatusDateString = statusDate;
+                        status.ShipmentStatusValue = item.Name.Replace("تم تحويل البيان الجمركي للتحصيل", "تم اصدار الفاتورة");
                         if (trackShipmentResponse?.activities.Count > 1)
                         {
                             // Draw start circle for first item only

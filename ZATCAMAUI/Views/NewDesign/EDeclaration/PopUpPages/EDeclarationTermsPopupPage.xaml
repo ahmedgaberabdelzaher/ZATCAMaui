@@ -23,7 +23,7 @@
     <Grid VerticalOptions="EndAndExpand">
 
         <Border
-            Padding="25"
+            Padding="0"
             BackgroundColor="White"
             HeightRequest="490"
             StrokeShape="RoundRectangle 15,15,0,0"
@@ -38,7 +38,7 @@
 
                         <!--#region Frame Contains Image and Text-->
                         <Frame
-                            Padding="25"
+                            Padding="20,25"
                             BorderColor="Transparent"
                             CornerRadius="15"
                             HasShadow="False">

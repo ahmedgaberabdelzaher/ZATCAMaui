@@ -12,7 +12,7 @@
 		<ApplicationTitle>ZATCAMAUI</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.zatcamaui</ApplicationId>
+		<ApplicationId>com.gazt.egazt</ApplicationId>
 		<ApplicationIdGuid>c26ce74b-6e11-469c-a8c0-b07fe33a9b2d</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -27,13 +27,12 @@
 	  <CreatePackage>false</CreatePackage>
 	  <CodesignKey>iPhone Developer</CodesignKey>
 	  <CodesignProvision>Automatic</CodesignProvision>
-
 	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
 
-	<!--<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
-        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-    </PropertyGroup>-->
+<!--	<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">-->
+<!--        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>-->
+<!--    </PropertyGroup>-->
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
@@ -105,32 +104,32 @@
 		<PackageReference Include="Plugin.MediaManager.Forms" Version="1.2.2" />
 		<PackageReference Include="Portable.JWT" Version="1.0.5" />
 		<PackageReference Include="Prism.Core" Version="8.1.97" />
-		<PackageReference Include="RGPopup.Maui" Version="1.1.1" />
-		<PackageReference Include="Syncfusion.Licensing" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Buttons" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Calendar" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Charts" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Core" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Expander" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Inputs" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.ListView" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Picker" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="25.2.5" />
-		<PackageReference Include="Syncfusion.Maui.TabView" Version="25.2.5" />
+		<PackageReference Include="RGPopup.Maui" Version="1.1.2" />
+		<PackageReference Include="Syncfusion.Licensing" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Buttons" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Calendar" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Picker" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="25.2.6" />
+		<PackageReference Include="Syncfusion.Maui.TabView" Version="25.2.6" />
 		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
 		<PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 		<PackageReference Include="AppDynamics.Agent" Version="2024.4.0" />
 		<PackageReference Include="AppDynamics.Agent.Maui" Version="2024.4.0" />
 		<PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
-		<PackageReference Include="Syncfusion.Maui.Cards" Version="25.2.5" />
+		<PackageReference Include="Syncfusion.Maui.Cards" Version="25.2.6" />
 		<PackageReference Include="Onion.Maui.GoogleMaps" Version="5.0.3" />
 		<PackageReference Include="TlvLib" Version="1.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
-		<PackageReference Include="Syncfusion.Maui.Rotator" Version="25.2.5" />
+		<PackageReference Include="Syncfusion.Maui.Rotator" Version="25.2.6" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -994,9 +993,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android33.0'">
-	  <PackageReference Include="Xamarin.Firebase.Config" Version="121.5.0.1" />
 	  <PackageReference Include="Xamarin.Firebase.Common" Version="120.4.2.1" />
-	  <PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.2.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -4314,13 +4311,13 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
-	  <PackageReference Include="Xamarin.Firebase.Config" Version="121.5.0.1" />
-	  <PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.2.0.5" />
+	  <PackageReference Include="Xamarin.Firebase.Config" Version="121.6.1.1" />
+	  <PackageReference Include="Xamarin.Firebase.Iid" Version="121.1.0.15" />
 	  <PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.6.2" />
-	  <PackageReference Include="Xamarin.Firebase.Messaging" Version="123.3.1" />
+	  <PackageReference Include="Xamarin.Firebase.Messaging" Version="123.4.1.1" />
+	  <PackageReference Include="Xamarin.GooglePlayServices.Base" Version="118.3.0.1" />
 <!--	  <PackageReference Include="Xamarin.AndroidX.Collection.Jvm" Version="1.3.0.2" />
 	  <PackageReference Include="Xamarin.AndroidX.Collection" Version="1.3.0.2" />-->
-	  <PackageReference Include="Xamarin.Firebase.Iid" Version="121.1.0.13" />
 	</ItemGroup>
 
 	<ItemGroup>

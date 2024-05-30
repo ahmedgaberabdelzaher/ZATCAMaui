@@ -10127,7 +10127,7 @@ info@zatca.gov.sa</value>
     <value>يجب إدخال الأرقام باللغة الإنجليزية</value>
   </data>
 	<data name="CustomDeclarationInformation" xml:space="preserve">
-    <value>معلومات البيان الجمركي.</value>
+      <value>معلومات الإقرار الجمركي وأنظمته .</value>
   </data>
 	<data name="PassengerNationality" xml:space="preserve">
     <value>جنسية المسافر</value>
