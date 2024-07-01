@@ -46,7 +46,8 @@
                             <Label
                                 Margin="0,0,0,20"
                                 FontSize="18"
-                                HorizontalOptions="StartAndExpand"
+                                HorizontalOptions="Start"
+                                LineBreakMode="WordWrap"
                                 Text="{x:Static ResourceManager:AppResources.CartHeader}"
                                 TextColor="#232323"
                                 VerticalOptions="Center" />
@@ -318,7 +319,7 @@
                                     </Label>
 
                                     <!--  CustomsFeesDisclaimer Image  -->
-                                    <Image
+                                    <ImageButton
                                         Aspect="AspectFit"
                                         Source="info"
                                         ToolTipProperties.Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
@@ -351,7 +352,7 @@
                                     </Label>
 
                                     <!--  VATCertificates Image  -->
-                                    <Image
+                                    <ImageButton
                                         Aspect="AspectFit"
                                         Source="info"
                                         ToolTipProperties.Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}" />
@@ -403,7 +404,7 @@
                                         VerticalOptions="Start" />
 
                                     <!--  Total Disclaimer Image  -->
-                                    <Image
+                                    <ImageButton
                                         Margin="5,0"
                                         Aspect="AspectFit"
                                         Source="info"

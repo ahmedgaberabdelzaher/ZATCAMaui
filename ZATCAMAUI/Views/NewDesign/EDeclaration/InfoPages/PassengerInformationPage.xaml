@@ -79,7 +79,6 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
@@ -97,18 +96,17 @@
 
                             <!--  Circle button 1  -->
                             <ImageButton
-                                Margin="-5,0"
-                                Padding="6"
+                                Padding="5"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="41"
+                                HeightRequest="30"
                                 HorizontalOptions="EndAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="41" />
+                                WidthRequest="30" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -212,13 +210,11 @@
 
                         <!--#region Cards-->
                         <StackLayout
-                            Margin="0,0,0,5"
-                            Padding="5"
-                            HeightRequest="100"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                             Orientation="Horizontal"
                             Spacing="10"
+                            Margin="0,15"
                             VerticalOptions="FillAndExpand">
 
                             <!--  Passport Card  -->
@@ -288,7 +284,6 @@
 
                             <!--  National ID card  -->
                             <Grid
-                                Padding="5"
                                 HeightRequest="94"
                                 WidthRequest="171">
 
@@ -370,7 +365,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -406,7 +401,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.MiddleName}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -442,7 +437,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -478,7 +473,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.PassengerNationality}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -527,7 +522,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="{Binding IDNumberPlaceHolder}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -545,8 +540,9 @@
                         </StackLayout>
 
 
-                        <!--  ID Type Field  -->
-                        <StackLayout Spacing="0">
+                        <!--  ID Type Field in case not visitor  -->
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}">
 
                             <!--  ID Type Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IqamaType}" />
@@ -556,8 +552,8 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                IsEnabled="False"
+                                Hint="{x:Static ResourceManager:AppResources.IqamaType}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -593,19 +589,21 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
                                 <custom:GAZTBorderlessEntry
                                     Keyboard="{Binding IDNumberKeyboard}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding EndDateString}"
                                     TextColor="#58595B" />
+
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -624,9 +622,7 @@
                         <!--#region Gender Cards-->
                         <!--  In case visitor  -->
                         <StackLayout
-                            Margin="0,0,0,5"
-                            Padding="5"
-                            HeightRequest="100"
+                            Margin="0,15"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                             Orientation="Horizontal"
@@ -635,8 +631,9 @@
 
                             <!--  Male card  -->
                             <Grid
-                                Padding="5"
                                 HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
                                 WidthRequest="171">
 
                                 <!--  Background image selected  -->
@@ -772,7 +769,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -827,7 +824,7 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.ItsSource}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -858,7 +855,8 @@
                         </StackLayout>
 
                         <!--  Release Date Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
 
                             <!--  Release Date Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
@@ -877,33 +875,15 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="dd/MM/yyyy"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <Grid>
 
-                                    <DatePicker
-                                        x:Name="ReleaseDate"
-                                        ClassId="releasedateentry"
-                                        Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
-                                        Format="dd/MM/yyyy"
-                                        IsVisible="false"
-                                        MaximumDate="{Binding MaximumDate}">
-
-                                        <DatePicker.Behaviors>
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding SelectedDateCommand}"
-                                                CommandParameter="{x:Reference releaseDateEntry}"
-                                                EventName="DateSelected" />
-                                        </DatePicker.Behaviors>
-
-                                    </DatePicker>
-
-                                    <custom:GAZTBorderlessEntry
+                                <custom:GAZTBorderlessEntry
                                         x:Name="releaseDateEntry"
                                         ClassId="releasedateentry"
                                         InputTransparent="True"
@@ -912,23 +892,48 @@
                                         Placeholder="dd/MM/yyyy"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding ReleaseDateString}"
-                                        TextColor="#58595B" />
-                                </Grid>
+                                        TextColor="#58595B" >
+
+                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                                CommandParameter="{x:Reference ReleaseDate}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                </custom:GAZTBorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference ReleaseDate}" />
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                          CommandParameter="{x:Reference ReleaseDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                             </inputLayout:SfTextInputLayout>
 
+                            <DatePicker
+                                x:Name="ReleaseDate"
+                                ClassId="releasedateentry"
+                                Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
+                                Format="dd/MM/yyyy"
+                                IsVisible="false"
+                                MaximumDate="{Binding MaximumDate}">
+
+                                <DatePicker.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding SelectedDateCommand}"
+                                        CommandParameter="{x:Reference releaseDateEntry}"
+                                        EventName="DateSelected" />
+                                </DatePicker.Behaviors>
+
+                            </DatePicker>
+
                         </StackLayout>
 
                         <!--  End Date Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
                             <StackLayout.Triggers>
                                 <DataTrigger
                                     Binding="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}"
@@ -954,31 +959,15 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="dd/MM/yyyy"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <Grid>
 
-                                    <DatePicker
-                                        x:Name="EndDate"
-                                        ClassId="enddateentry"
-                                        Format="dd/MM/yyyy"
-                                        IsVisible="false">
-
-                                        <DatePicker.Behaviors>
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding SelectedDateCommand}"
-                                                CommandParameter="{x:Reference endDateEntry}"
-                                                EventName="DateSelected" />
-                                        </DatePicker.Behaviors>
-
-                                    </DatePicker>
-
-                                    <custom:GAZTBorderlessEntry
+                                <custom:GAZTBorderlessEntry
                                         x:Name="endDateEntry"
                                         ClassId="enddateentry"
                                         InputTransparent="True"
@@ -987,23 +976,51 @@
                                         Placeholder="dd/MM/yyyy"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding EndDateString}"
-                                        TextColor="#58595B" />
+                                        TextColor="#58595B" >
 
-                                </Grid>
+                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                          CommandParameter="{x:Reference EndDate}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                </custom:GAZTBorderlessEntry>
+                                
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                          CommandParameter="{x:Reference EndDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                             </inputLayout:SfTextInputLayout>
+
                             <Label Text="{Binding premiumResidencytype.iqamaType}" />
+
+                            <DatePicker
+                                x:Name="EndDate"
+                                ClassId="enddateentry"
+                                Format="dd/MM/yyyy"
+                                MinimumDate="{Binding MinimumDate}"
+                                Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
+                                IsVisible="false">
+
+                                <DatePicker.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding SelectedDateCommand}"
+                                        CommandParameter="{x:Reference endDateEntry}"
+                                        EventName="DateSelected" />
+                                </DatePicker.Behaviors>
+
+                            </DatePicker>
+
                         </StackLayout>
 
                         <!--  Date of Birth Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
 
                             <!--  Date of Birth Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
@@ -1022,33 +1039,15 @@
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                IsHintAlwaysFloated="True"
+                                Hint="dd/MM/yyyy"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <Grid>
 
-                                    <DatePicker
-                                        x:Name="DateBirth"
-                                        ClassId="birthdateentry"
-                                        Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
-                                        Format="dd/MM/yyyy"
-                                        IsVisible="false"
-                                        MaximumDate="{Binding MaximumDate}">
-
-                                        <DatePicker.Behaviors>
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding SelectedDateCommand}"
-                                                CommandParameter="{x:Reference birthDateEntry}"
-                                                EventName="DateSelected" />
-                                        </DatePicker.Behaviors>
-
-                                    </DatePicker>
-
-                                    <custom:GAZTBorderlessEntry
+                                <custom:GAZTBorderlessEntry
                                         x:Name="birthDateEntry"
                                         ClassId="birthdateentry"
                                         InputTransparent="True"
@@ -1057,18 +1056,41 @@
                                         Placeholder="dd/MM/yyyy"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding BirthDateString}"
-                                        TextColor="#58595B" />
+                                        TextColor="#58595B" >
 
-                                </Grid>
+                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                                CommandParameter="{x:Reference DateBirth}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference DateBirth}" />
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                          CommandParameter="{x:Reference DateBirth}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                             </inputLayout:SfTextInputLayout>
+
+                            <DatePicker
+                                x:Name="DateBirth"
+                                ClassId="birthdateentry"
+                                Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
+                                Format="dd/MM/yyyy"
+                                IsVisible="false"
+                                MaximumDate="{Binding MaximumDate}">
+
+                                <DatePicker.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding SelectedDateCommand}"
+                                        CommandParameter="{x:Reference birthDateEntry}"
+                                        EventName="DateSelected" />
+                                </DatePicker.Behaviors>
+
+                            </DatePicker>
 
                         </StackLayout>
 
@@ -1085,7 +1107,7 @@
                         <!--  Pervious Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
-                            BackgroundColor="Transparent"
+                            Background="Transparent"
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Stroke="Transparent"

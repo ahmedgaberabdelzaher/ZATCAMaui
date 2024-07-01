@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<newdesign:BaseContentPage
     x:Class="ZATCAMAUI.Views.NewDesign.CustomServicesPages.LaboratoryPaymentOfInsuranceFees"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -7,400 +7,342 @@
     xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="TraiffPage"
+    TitleText="{Binding TitleText}" 
     ios:Page.UseSafeArea="true"
-    BackgroundImageSource="partials_background"
-    FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Resources>
+    <newdesign:BaseContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
 
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
 
-            <ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </newdesign:BaseContentPage.Resources>
+
+    <newdesign:BaseContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding LoadPortsCommand}" EventName="Appearing" />
+    </newdesign:BaseContentPage.Behaviors>
+
+    <newdesign:BaseContentPage.PancakeView>
+        <Grid RowDefinitions="*">
+
+            <Grid Padding="15,20">
+
+            <Grid.Resources>
                 <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
+                    <Style x:Key="titleLabel" TargetType="Label">
+                        <Setter Property="FontSize" Value="24" />
+                        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                        <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                     </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Style x:Key="ArrowImage" TargetType="Image">
-                        <Setter Property="HeightRequest" Value="30" />
-                        <Setter Property="WidthRequest" Value="30" />
+                    <Style TargetType="Label">
+                        <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                     </Style>
                 </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.Behaviors>
-        <xct:EventToCommandBehavior Command="{Binding LoadPortsCommand}" EventName="Appearing" />
-    </ContentPage.Behaviors>
-    <Grid>
-        <Grid.Resources>
-            <ResourceDictionary>
-                <Style x:Key="titleLabel" TargetType="Label">
-                    <Setter Property="FontSize" Value="24" />
-                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                    <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
-                </Style>
-                <Style TargetType="Label">
-                    <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
-                </Style>
-            </ResourceDictionary>
-        </Grid.Resources>
-        <StackLayout IsVisible="{Binding IsMainView}">
-            <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
+            </Grid.Resources>
 
+            <StackLayout IsVisible="{Binding IsMainView}">
 
-                <Image
-                    x:Name="Image_BacKIcon"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HeightRequest="25"
-                    HorizontalOptions="Start"
-                    IsVisible="{Binding IsBackStepButtonVisible}"
-                    Rotation="180"
-                    Source="GrayBackButton"
-                    VerticalOptions="CenterAndExpand"
-                    WidthRequest="25">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
-                    </Image.GestureRecognizers>
-                    <Image.Triggers>
-                        <DataTrigger
-                            Binding="{Binding IsArabicLang}"
-                            TargetType="Image"
-                            Value="False">
-                            <Setter Property="Rotation" Value="0" />
-                        </DataTrigger>
-                    </Image.Triggers>
-                </Image>
-
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    HorizontalOptions="CenterAndExpand"
-                    Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" />
-
-            </StackLayout>
-            <Border
-                Padding="0"
-                StrokeShape="RoundRectangle 15,15,0,0"
-                VerticalOptions="FillAndExpand">
-                <Grid
-                    Margin="0"
-                    Padding="0,0,0,0"
-                    BackgroundColor="White"
-                    HorizontalOptions="FillAndExpand"
+                <Border
+                    Padding="0"
+                    StrokeShape="RoundRectangle 15,15,0,0"
                     VerticalOptions="FillAndExpand">
 
+                    <Grid
+                        Margin="0"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
 
-                    <ScrollView VerticalScrollBarVisibility="Never">
-                        <StackLayout Margin="24,34,21,5">
-                            <Label
-                                Margin="0,34,0,5"
-                                Style="{x:StaticResource titleLabel}"
-                                Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" />
-                            <Label
-                                FontSize="16"
-                                Text="{x:Static ResourceManager:AppResources.SelectTheOptionAndCompleteDetails}"
-                                TextColor="#999999" />
-                            <BoxView HeightRequest="1" Color="#EBEBEB" />
-                            <Frame
-                                Padding="5"
-                                BackgroundColor="#0996D4"
-                                BorderColor="#0996D4"
-                                HasShadow="False"
-                                Opacity=".5">
+
+                        <ScrollView VerticalScrollBarVisibility="Never">
+                            <StackLayout Spacing="10">
+
                                 <Label
-                                    FontSize="14"
-                                    Text="{x:Static ResourceManager:AppResources.RequestInformation}"
-                                    TextColor="White" />
-                            </Frame>
-                            <StackLayout Margin="0,9,0,0">
-                                <Label Style="{StaticResource CaptionLabelGrey}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.Port}" />
-                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Grid>
+                                    Style="{x:StaticResource titleLabel}"
+                                    Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" />
+
+                                <Label
+                                    FontSize="16"
+                                    Text="{x:Static ResourceManager:AppResources.SelectTheOptionAndCompleteDetails}"
+                                    TextColor="#999999" />
+
+                                <BoxView HeightRequest="1" Color="#EBEBEB" />
+
+                                <Frame
+                                    Padding="5"
+                                    BackgroundColor="#0996D4"
+                                    BorderColor="#0996D4"
+                                    HasShadow="False"
+                                    Opacity=".5">
+                                    <Label
+                                        FontSize="14"
+                                        Text="{x:Static ResourceManager:AppResources.RequestInformation}"
+                                        TextColor="White" />
+                                </Frame>
+
+                                <StackLayout >
+
+                                    <Label Style="{StaticResource CaptionLabelGrey}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.Port}" />
+                                                <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
 
                                     <inputLayout:SfTextInputLayout
-                                        Margin="0,-10,0,0"
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
-                                        InputViewPadding="8,0,8,0"
-                                        IsHintAlwaysFloated="True"
+                                        InputViewPadding="16,0,16,0"
+                                        Hint="{x:Static ResourceManager:AppResources.Port}"
                                         OutlineCornerRadius="14"
-                                        Style="{StaticResource InputTableTextInputLayoutStyleWuthoutHeighandWidth}"
-                                        VerticalOptions="FillAndExpand">
-                                        <Grid>
-                                            <StackLayout Orientation="Horizontal">
+                                        VerticalOptions="FillAndExpand"
+                                        Stroke="{StaticResource NeutralGreay}">
 
-                                                <custom:GAZTBorderlessEntry
-                                                    IsReadOnly="True"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.Port}"
-                                                    Style="{StaticResource DefaultEntryWithoutHeigh}"
-                                                    Text="{Binding SelectedPort.Name}"
-                                                    TextColor="{StaticResource NeutralBlack}"
-                                                    VerticalTextAlignment="Center" />
-                                                <Image HorizontalOptions="EndAndExpand" Source="arrowDropdown.png" />
-                                            </StackLayout>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
+                                            <custom:GAZTBorderlessEntry
+                                                IsReadOnly="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.Port}"
+                                                Style="{StaticResource DefaultEntryWithoutHeigh}"
+                                                Text="{Binding SelectedPort.Name}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
 
-                                                <StackLayout.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
-                                                </StackLayout.GestureRecognizers>
-                                            </StackLayout>
-                                        </Grid>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image HorizontalOptions="EndAndExpand"
+                                                    Source="arrowDropdown.png" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                                     </inputLayout:SfTextInputLayout>
-                                    <Grid.GestureRecognizers>
+
+                                    <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
-                                    </Grid.GestureRecognizers>
-                                </Grid>
+                                    </StackLayout.GestureRecognizers>
 
-                            </StackLayout>
+                                </StackLayout>
 
-                            <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
+                                <StackLayout >
+
+                                    <Label Style="{StaticResource CaptionLabelGrey}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.RequestNumber}" />
+                                                <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <inputLayout:SfTextInputLayout
+                                        ContainerType="Outlined"
+                                        InputViewPadding="16,0,16,0"
+                                        Hint="{x:Static ResourceManager:AppResources.RequestNumber}"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="14"
+                                        Stroke="{StaticResource NeutralGreay}">
+                                        <custom:GAZTBorderlessEntry
+                                            Keyboard="Numeric"
+                                            MaxLength="10"
+                                            Placeholder="{x:Static ResourceManager:AppResources.RequestNumber}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding RequestNumber}"
+                                            VerticalTextAlignment="Center">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behavior:OnlyNumericValuesBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
 
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.RequestNumber}" />
-                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-
+                                            <Span Text="{x:Static ResourceManager:AppResources.RequestDate}" />
+                                            <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="14"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <custom:GAZTBorderlessEntry
-                                        Keyboard="Numeric"
-                                        MaxLength="10"
-                                        Placeholder="{x:Static ResourceManager:AppResources.RequestNumber}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding RequestNumber}"
-                                        VerticalTextAlignment="Center">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behavior:OnlyNumericValuesBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
-                            </StackLayout>
+                                <StackLayout>
+                                    <inputLayout:SfTextInputLayout
+                                        ContainerType="Outlined"
+                                        InputViewPadding="16,0,16,0"
+                                        Hint="dd/MM/yyyy"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="16"
+                                        Stroke="{StaticResource NeutralGreay}">
+                                        <custom:GAZTBorderlessEntry
+                                            IsReadOnly="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding HijriDateToBeDisplayed}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
 
-                            <Label Margin="0,5,0,0" Style="{StaticResource CaptionLabelGrey}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.RequestDate}" />
-                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                    </FormattedString>
-                                </Label.FormattedText>
-                            </Label>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image HorizontalOptions="EndAndExpand" Source="calendar.png" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
 
-                            <Grid>
-                                <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
-                                    ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="8"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <custom:GAZTBorderlessEntry
-                                        IsReadOnly="True"
-                                        Placeholder="yyyy/MM/dd"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding HijriDateToBeDisplayed}"
-                                        TextColor="{StaticResource NeutralBlack}"
-                                        VerticalTextAlignment="Center" />
-                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Image HorizontalOptions="EndAndExpand" Source="calendar.png" />
-                                    </inputLayout:SfTextInputLayout.TrailingView>
-                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}" />
-                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}"
+                                                                  CommandParameter="{x:Reference dateHijri}"/>
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                </inputLayout:SfTextInputLayout>
+                                    </inputLayout:SfTextInputLayout>
 
-                                <!--  HijriDatePicker  -->
-                                <custom:CustomHijriDatePicker
-                                    Margin="10,0,10,0"
-                                    Background="White"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsOpen="{Binding IsOpenHijriPicker}"
-                                    ItemHeight="40"
-                                    Mode="Dialog"
-                                    SelectedItem="{Binding TodayDateinHijri}">
+                                    <!--  HijriDatePicker  -->
+                                    <custom:CustomHijriDatePicker
+                                        Background="White"
+                                        x:Name="dateHijri"
+                                        HorizontalOptions="FillAndExpand"
+                                        IsOpen="False"
+                                        ItemHeight="40"
+                                        Mode="Dialog"
+                                        SelectedItem="{Binding TodayDateinHijri}">
 
-                                    <custom:CustomHijriDatePicker.SelectionView>
-                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                    </custom:CustomHijriDatePicker.SelectionView>
+                                        <custom:CustomHijriDatePicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                        </custom:CustomHijriDatePicker.SelectionView>
 
-                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" />
-                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                        <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="46"
+                                                                               Background="White"/>
+                                        </custom:CustomHijriDatePicker.ColumnHeaderView>
 
-                                    <custom:CustomHijriDatePicker.HeaderView>
+                                        <custom:CustomHijriDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView
-                                            Height="46"
-                                            Background="#EAF7CC"
-                                            Text="{x:Static ResourceManager:AppResources.RequestDate}" />
+                                            <syncfusion:PickerHeaderView
+                                                Height="46"
+                                                Background="{StaticResource NeutralBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.RequestDate}" >
 
-                                    </custom:CustomHijriDatePicker.HeaderView>
+                                                <syncfusion:PickerHeaderView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerHeaderView.TextStyle>
+                                            </syncfusion:PickerHeaderView>
+
+                                          
+                                        </custom:CustomHijriDatePicker.HeaderView>
 
 
-                                    <custom:CustomHijriDatePicker.SelectedTextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                    </custom:CustomHijriDatePicker.SelectedTextStyle>
+                                        <custom:CustomHijriDatePicker.SelectedTextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                        </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-                                    <custom:CustomHijriDatePicker.FooterView>
+                                        <custom:CustomHijriDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
-                                            <syncfusion:PickerFooterView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                                            </syncfusion:PickerFooterView.TextStyle>
+                                                <syncfusion:PickerFooterView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerFooterView.TextStyle>
 
-                                        </syncfusion:PickerFooterView>
+                                            </syncfusion:PickerFooterView>
 
-                                    </custom:CustomHijriDatePicker.FooterView>
+                                        </custom:CustomHijriDatePicker.FooterView>
 
 
-                                    <custom:CustomHijriDatePicker.Behaviors>
-                                        <xct:EventToCommandBehavior Command="{Binding SelectedRequestDateCommand}" EventName="SelectionChanged" />
-                                    </custom:CustomHijriDatePicker.Behaviors>
-                                </custom:CustomHijriDatePicker>
-                                <!--  HijriDatePicker  -->
-                            </Grid>
+                                        <custom:CustomHijriDatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior
+                                                Command="{Binding SelectedRequestDateCommand}"
+                                                EventName="SelectionChanged" />
+                                        </custom:CustomHijriDatePicker.Behaviors>
 
-                            <Frame
-                                Margin="0,20,0,10"
-                                Padding="12"
-                                BackgroundColor="#0996D4"
-                                CornerRadius="14"
-                                HasShadow="False"
-                                HorizontalOptions="FillAndExpand">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding InquireCommand}" />
-                                </Frame.GestureRecognizers>
+                                    </custom:CustomHijriDatePicker>
+                                    <!--  HijriDatePicker  -->
+                                </StackLayout>
+
+                                <Frame
+                                    Margin="0,20,0,10"
+                                    Padding="12"
+                                    BackgroundColor="#0996D4"
+                                    CornerRadius="14"
+                                    HasShadow="False"
+                                    HorizontalOptions="FillAndExpand">
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding InquireCommand}" />
+                                    </Frame.GestureRecognizers>
+
+                                    <Label
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="16"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.Submit}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+                                </Frame>
+
                                 <Label
-                                    FontFamily="{StaticResource SomarSemiBold}"
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
-                                    Text="{x:Static ResourceManager:AppResources.Submit}"
-                                    TextColor="White"
-                                    VerticalOptions="CenterAndExpand" />
-                            </Frame>
-                            <Label
-                                FontSize="16"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.Clear}"
-                                TextColor="#0996D4">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ClearCommand}" />
-                                </Label.GestureRecognizers>
-                            </Label>
-                        </StackLayout>
-                    </ScrollView>
+                                    Text="{x:Static ResourceManager:AppResources.Clear}"
+                                    TextColor="#0996D4">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ClearCommand}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
 
-                </Grid>
-            </Border>
+                            </StackLayout>
+                        </ScrollView>
 
-        </StackLayout>
-        <StackLayout IsVisible="{Binding IsDetailsView}">
-            <StackLayout Padding="15,5,15,5" Orientation="Horizontal">
-
-
-                <Image
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HeightRequest="25"
-                    HorizontalOptions="Start"
-                    IsVisible="{Binding IsBackStepButtonVisible}"
-                    Rotation="180"
-                    Source="GrayBackButton"
-                    VerticalOptions="CenterAndExpand"
-                    WidthRequest="25">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
-                    </Image.GestureRecognizers>
-                    <Image.Triggers>
-                        <DataTrigger
-                            Binding="{Binding IsArabicLang}"
-                            TargetType="Image"
-                            Value="False">
-                            <Setter Property="Rotation" Value="0" />
-                        </DataTrigger>
-                    </Image.Triggers>
-                </Image>
-
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    HorizontalOptions="CenterAndExpand"
-                    MaxLines="1"
-                    Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.InquiryResult}" />
+                    </Grid>
+                </Border>
 
             </StackLayout>
-            <Border
-                Padding="0"
-                StrokeShape="RoundRectangle 15,15,0,0"
-                VerticalOptions="FillAndExpand">
-                <Grid
-                    Margin="0"
-                    Padding="0,0,0,0"
-                    BackgroundColor="White"
-                    HorizontalOptions="FillAndExpand"
+
+            <StackLayout IsVisible="{Binding IsDetailsView}">
+                     
+                <Border
+                    Padding="0"
+                    StrokeShape="RoundRectangle 15,15,0,0"
                     VerticalOptions="FillAndExpand">
+                    <Grid
+                        Margin="0"
+                        Padding="0,0,0,0"
+                        BackgroundColor="White"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
 
-                    <Frame
-                        Margin="24,55,24,0"
-                        Padding="17,32,17,32"
-                        BorderColor="#B8BABA"
-                        CornerRadius="14"
-                        HasShadow="False"
-                        VerticalOptions="StartAndExpand">
-                        <Label
-                            FontSize="16"
-                            Text="{Binding InsuranceCheckList.data}"
-                            TextColor="#002447" />
-                    </Frame>
+                        <Frame
+                            Padding="17,32,17,32"
+                            BorderColor="#B8BABA"
+                            CornerRadius="14"
+                            HasShadow="False"
+                            VerticalOptions="StartAndExpand">
+                            <Label
+                                FontSize="16"
+                                Text="{Binding InsuranceCheckList.data}"
+                                TextColor="#002447" />
+                        </Frame>
 
-                </Grid>
-            </Border>
+                    </Grid>
+                </Border>
 
-        </StackLayout>
-        <custom:PickerWithSearch IsVisible="{Binding IsPortsPickerSearch}" />
-        <custom:MsgView
-            Grid.Row="0"
-            Margin="0,0,0,0"
-            IsVisible="{Binding IsShowMsgView}"
-            VerticalOptions="FillAndExpand" />
+            </StackLayout>
 
-        <custom:Loader IsVisible="{Binding IsLoading}" />
+           
 
+            </Grid>
 
-    </Grid>
-</ContentPage>
+            <custom:PickerWithSearch Grid.RowSpan="2" IsVisible="{Binding IsPortsPickerSearch}" />
+
+        </Grid>
+        
+
+    </newdesign:BaseContentPage.PancakeView>
+   
+</newdesign:BaseContentPage>

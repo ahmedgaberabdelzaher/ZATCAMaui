@@ -3,98 +3,158 @@
     x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage.InternationalCodeSearchPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     FlowDirection="{Binding AppDirection}"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     NavigationPage.HasNavigationBar="False">
 
-    <Border
-        Margin="0,150,0,0"
-        Padding="0"
-        BackgroundColor="White"
-        StrokeShape="RoundRectangle 22,22,0,0"
-        VerticalOptions="EndAndExpand">
+    <Border Padding="20" Style="{StaticResource CommonTopCurves}">
 
-        <StackLayout Padding="10,10,10,0">
+         <Grid RowDefinitions="auto,*"
+                    Padding="10">
 
-            <StackLayout
+            <StackLayout>
+
+                <StackLayout
                 Margin="0,10"
                 Orientation="Horizontal"
                 VerticalOptions="Start">
 
-                <Label
-                    FontFamily="{StaticResource SomarBold}"
-                    FontSize="Medium"
-                    Text="{x:Static ResourceManager:AppResources.CountryText}"
-                    TextColor="{StaticResource PrimaryColor}"
-                    VerticalOptions="Start" />
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="Medium"
+                        Text="{x:Static ResourceManager:AppResources.CountryText}"
+                        TextColor="{StaticResource PrimaryColor}"
+                        VerticalOptions="Start" />
 
-                <Image
-                    HeightRequest="25"
-                    HorizontalOptions="EndAndExpand"
-                    Source="close"
-                    VerticalOptions="Start"
-                    WidthRequest="25">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="Close_Tapped" />
-                    </Image.GestureRecognizers>
-                </Image>
+                    <Image
+                        HeightRequest="25"
+                        HorizontalOptions="EndAndExpand"
+                        Source="close"
+                        VerticalOptions="Start"
+                        WidthRequest="25">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Close_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </StackLayout>
+
+                <!--  Horizontal Line  -->
+                <BoxView
+                    Margin="0,10,0,0"
+                    BackgroundColor="{StaticResource NeutralLightGrey}"
+                    HeightRequest="1"
+                    VerticalOptions="Center"
+                    WidthRequest="350" />
+
+                 <inputLayout:SfTextInputLayout
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    InputViewPadding="0"
+                    LeadingViewPosition="Inside"
+                    Hint="{x:Static ResourceManager:AppResources.SearchText}"
+                    OutlineCornerRadius="10"
+                    Stroke="{StaticResource NeutralGreay}"
+                    VerticalOptions="Start">
+                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                        <inputLayout:LabelStyle TextColor="#B00020" />
+                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    <custom:GAZTBorderlessEntry
+                        x:Name="searchEntry"
+                        Keyboard="Text"
+                        Placeholder="{x:Static ResourceManager:AppResources.ZSearch}"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding SearchText}"
+                        TextChanged="searchEntry_TextChanged"
+                        TextColor="#002447">
+
+                    </custom:GAZTBorderlessEntry>
+
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Aspect="AspectFit" Source="reportSearchBar.png" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+                </inputLayout:SfTextInputLayout>
+
+                <!--  Horizontal Line  -->
+                <BoxView
+                    Margin="0,0,0,0"
+                    BackgroundColor="{StaticResource NeutralLightGrey}"
+                    HeightRequest="1"
+                    VerticalOptions="Center"
+                    WidthRequest="350" />
 
             </StackLayout>
 
-            <SearchBar
-                x:Name="searchBar"
-                CancelButtonColor="Blue"
-                HorizontalOptions="Fill"
-                HorizontalTextAlignment="Start"
-                Placeholder="{x:Static ResourceManager:AppResources.SearchText}"
-                PlaceholderColor="Gray"
-                TextChanged="OnTextChanged"
-                VerticalOptions="CenterAndExpand" />
+             <Grid RowDefinitions="*"
+                      Grid.Row="1"
+                      ColumnDefinitions="*">
 
-            <CollectionView
-                x:Name="searchResults"
-                Grid.Row="1"
-                HorizontalOptions="Fill"
-                ItemsSource="{Binding MobileCodes}"
-                SelectionChanged="List_ItemTapped"
-                VerticalOptions="CenterAndExpand">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                <CollectionView
+                    x:Name="itemList"
+                    Grid.Row="1"
+                    VerticalScrollBarVisibility="Never"
+                    HorizontalOptions="Fill"
+                    ItemsSource="{Binding MobileCodes}"
+                    VerticalOptions="CenterAndExpand">
 
-                        <Frame
-                            Margin="0,0,0,0"
-                            Padding="0"
-                            CornerRadius="8"
-                            HasShadow="False">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
 
-                            <StackLayout
-                                HorizontalOptions="StartAndExpand"
-                                Orientation="Horizontal"
-                                Spacing="10">
-                                <Label
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    Style="{StaticResource GAZTSmallGrayLabelStyle}"
-                                    Text="{Binding Landx}"
-                                    TextColor="{StaticResource PrimaryColor}" />
-                                <Label
-                                    Grid.Column="1"
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    HorizontalOptions="End"
-                                    Style="{StaticResource GAZTSmallBlackLabel}"
-                                    Text="{Binding Telefto}"
-                                    TextColor="{StaticResource PrimaryColor}" />
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
 
+                            <StackLayout x:Name="selectedItem">
+
+                                <StackLayout Orientation="Horizontal"
+                                             Spacing="10">
+
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="18"
+                                        Text="{Binding Telefto}"
+                                        TextColor="#002447"/>
+
+
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="18"
+                                        Text="{Binding Landx}"
+                                        TextColor="#002447"/>
+
+                                </StackLayout>
+                               
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    Margin="0,10,0,0"
+                                    BackgroundColor="{StaticResource NeutralLightGrey}"
+                                    HeightRequest="1"
+                                    VerticalOptions="Center"
+                                    WidthRequest="350" />
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
+                                            Tapped="TapGestureRecognizer_Tapped"
+                                            CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
+                                    </StackLayout.GestureRecognizers>
 
                             </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                      
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
-        </StackLayout>
+                </CollectionView>
+
+            </Grid>
+
+        </Grid>
 
     </Border>
 </pages:PopupPage>

@@ -79,12 +79,11 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand">
 
                         <!--  Circle view  -->
                         <Grid
@@ -97,18 +96,17 @@
 
                             <!--  Circle button 1  -->
                             <ImageButton
-                                Margin="-5,0"
-                                Padding="6"
+                                Padding="5"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="41"
+                                HeightRequest="30"
                                 HorizontalOptions="EndAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="41" />
+                                WidthRequest="30" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -121,18 +119,17 @@
                             <!--  Circle button 2  -->
                             <ImageButton
                                 Grid.Column="2"
-                                Margin="-5,0"
-                                Padding="6"
+                                Padding="5"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 BorderWidth="1"
                                 CornerRadius="15"
-                                HeightRequest="41"
+                                HeightRequest="30"
                                 HorizontalOptions="StartAndExpand"
                                 InputTransparent="True"
                                 Source="reportCheckMark.png"
                                 VerticalOptions="CenterAndExpand"
-                                WidthRequest="41" />
+                                WidthRequest="30" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -355,7 +352,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.Select}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -416,7 +413,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.Select}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -478,32 +475,15 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="dd/MM/yyyy"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <Grid Padding="10">
 
-                                    <DatePicker
-                                        x:Name="ArivalDate"
-                                        Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
-                                        Format="dd/MM/yyyy"
-                                        IsVisible="false"
-                                        MinimumDate="{Binding MinimumDate}">
-
-                                        <DatePicker.Behaviors>
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding ArrivalSelectedDateCommand}"
-                                                CommandParameter="{x:Reference ArivalDateEntry}"
-                                                EventName="DateSelected" />
-                                        </DatePicker.Behaviors>
-
-                                    </DatePicker>
-
-                                    <custom:GAZTBorderlessEntry
+                                 <custom:GAZTBorderlessEntry
                                         x:Name="ArivalDateEntry"
                                         InputTransparent="True"
                                         IsReadOnly="True"
@@ -512,7 +492,6 @@
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding ArrivalDepartureDateString}"
                                         TextColor="#58595B" />
-                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -522,6 +501,22 @@
                                     <TapGestureRecognizer Command="{Binding ArrivalDateClickedCommand}" CommandParameter="{x:Reference ArivalDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
+
+                              <DatePicker
+                                    x:Name="ArivalDate"
+                                    Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
+                                    Format="dd/MM/yyyy"
+                                    IsVisible="false"
+                                    MinimumDate="{Binding MinimumDate}">
+
+                                    <DatePicker.Behaviors>
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding ArrivalSelectedDateCommand}"
+                                            CommandParameter="{x:Reference ArivalDateEntry}"
+                                            EventName="DateSelected" />
+                                    </DatePicker.Behaviors>
+
+                              </DatePicker>
 
                         </StackLayout>
 
@@ -543,7 +538,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="SV0000"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -578,7 +573,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.TravelPurpose}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -631,7 +626,7 @@
                                 ContainerType="Outlined"
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.TravelerCount}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -672,7 +667,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.CountryText}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -724,7 +719,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -776,7 +771,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.PlatesNumber}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -817,7 +812,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.PlatesLetter}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">

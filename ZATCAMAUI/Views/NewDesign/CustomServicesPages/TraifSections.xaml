@@ -40,40 +40,31 @@
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding LoadIntialTraiffSectionsCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    <Grid>
+    <Grid RowDefinitions="Auto,*">
 
-        <StackLayout>
-            <Grid
-                Margin="0,24"
-                Padding="15,5,15,5"
-                ColumnDefinitions="24,*,auto"
-                RowDefinitions="auto">
+        <!--#region Header-->
+        <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
 
+            <!--  Back Button  -->
+            <StackLayout>
 
+                <!--  Back Image  -->
                 <Image
-                    x:Name="Image_BacKIcon"
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HeightRequest="25"
                     HorizontalOptions="Start"
+                    Rotation="0"
+                    Source="whiteRightBack.png"
                     IsVisible="{Binding IsBackStepButtonVisible}"
-                    Rotation="180"
-                    Source="GrayBackButton"
-                    VerticalOptions="CenterAndExpand"
-                    WidthRequest="25">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
-                    </Image.GestureRecognizers>
+                    Style="{DynamicResource BackButtonArrow}"
+                    VerticalOptions="CenterAndExpand">
 
                     <Image.Triggers>
                         <DataTrigger
-                            Binding="{Binding IsArabicLang}"
+                            Binding="{Binding AppDirection}"
                             TargetType="Image"
-                            Value="False">
-                            <Setter Property="Rotation" Value="0" />
-
+                            Value="LeftToRight">
+                            <Setter Property="Rotation" Value="180" />
                         </DataTrigger>
-                        <DataTrigger
+                            <DataTrigger
                             Binding="{Binding IsSearchVIewVisible}"
                             TargetType="Image"
                             Value="true">
@@ -82,25 +73,38 @@
                             <Setter Property="HeightRequest" Value="19" />
                         </DataTrigger>
                     </Image.Triggers>
+
                 </Image>
 
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    Margin="0"
-                    HorizontalOptions="CenterAndExpand"
-                    LineBreakMode="TailTruncation"
-                    MaxLines="1"
-                    Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{Binding Title}" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}" />
+                </StackLayout.GestureRecognizers>
+
+            </StackLayout>
+
+            <!--  Header Label  -->
+            <Label
+                Grid.Column="1"
+                FontSize="15"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="TailTruncation"
+                Style="{StaticResource SectionTitleWhiteBold}"
+                Text="{Binding Title}"
+                MaxLines="1"
+                VerticalOptions="Center" />
+
+            <!--  Download Image  -->
+            <StackLayout Grid.Column="2">
+
                 <Image
-                    Grid.Column="2"
                     HeightRequest="22"
                     HorizontalOptions="EndAndExpand"
                     IsVisible="false"
                     Source="ic_downloadWhite"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="19">
+
                     <Image.Triggers>
                         <DataTrigger
                             Binding="{Binding IsSectionView}"
@@ -115,19 +119,21 @@
                             <Setter Property="IsVisible" Value="True" />
                         </DataTrigger>
                     </Image.Triggers>
+
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding DownloadTraifDataCommand}" />
                     </Image.GestureRecognizers>
 
                 </Image>
+
                 <Image
-                    Grid.Column="2"
                     HeightRequest="43"
                     HorizontalOptions="EndAndExpand"
                     IsVisible="false"
                     Source="infoWhiteIcon"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="43">
+
                     <Image.Triggers>
                         <DataTrigger
                             Binding="{Binding IsChapterSection}"
@@ -143,68 +149,54 @@
                         </DataTrigger>
 
                     </Image.Triggers>
+
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OpenNoteCommand}" CommandParameter="2" />
                     </Image.GestureRecognizers>
 
                 </Image>
-            </Grid>
-            <Border
-                Padding="0"
-                StrokeShape="RoundRectangle 15,15,0,0"
-                VerticalOptions="FillAndExpand">
+
+            </StackLayout>
+
+
+        </Grid>
+        <!--#endregion Header-->
+
+         <Border
+            Padding="0"
+            Grid.Row="1"
+            StrokeShape="RoundRectangle 15,15,0,0"
+            VerticalOptions="FillAndExpand">
                 <Grid
-                    Padding="0,0,0,0"
                     BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand">
 
 
-                    <StackLayout IsVisible="{Binding IsSectionView}">
-                        <Frame
-                            BackgroundColor="#F5F5F5"
-                            CornerRadius="15"
-                            HasShadow="False"
-                            IsVisible="false">
-                            <Frame.Padding>
-                                <OnPlatform x:TypeArguments="Thickness">
-                                    <On Platform="Android" Value="0" />
-                                    <On Platform="iOS" Value="-8" />
-                                </OnPlatform>
-                            </Frame.Padding>
-                            <SearchBar Placeholder="{x:Static ResourceManager:AppResources.SearchField}">
-                                <SearchBar.Behaviors>
-                                    <xct:EventToCommandBehavior
-                                        Command="{Binding ViewSearchViewCommand}"
-                                        CommandParameter="{Binding SearchKey}"
-                                        EventName="Focused" />
-                                </SearchBar.Behaviors>
-                            </SearchBar>
+                    <Grid IsVisible="{Binding IsSectionView}"
+                          RowDefinitions="auto,*"
+                          Padding="20">
 
-                        </Frame>
                         <inputLayout:SfTextInputLayout
-                            Grid.Column="0"
-                            Margin="24,20"
-                            BackgroundColor="White"
+                            ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
+                            Hint="{x:Static ResourceManager:AppResources.SearchField}"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="#B1B1B1"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}"
                             VerticalOptions="CenterAndExpand">
+
                             <inputLayout:SfTextInputLayout.LeadingView>
                                 <Image Source="topsearchicon" />
                             </inputLayout:SfTextInputLayout.LeadingView>
+
                             <custom:GAZTBorderlessEntry
-                                Grid.Column="1"
                                 HorizontalOptions="FillAndExpand"
                                 Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
                                 PlaceholderColor="#888888"
                                 Style="{StaticResource DefaultEntry}"
                                 VerticalTextAlignment="Center">
-
 
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <xct:EventToCommandBehavior
@@ -214,62 +206,67 @@
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
 
-
                         </inputLayout:SfTextInputLayout>
-                        <ScrollView VerticalScrollBarVisibility="Never">
-                            <CollectionView
-                                ItemSizingStrategy="MeasureAllItems"
-                                ItemsSource="{Binding TraiffSections}"
-                                SelectedItem="{Binding SelectedTraiffSections}"
-                                SelectionChangedCommand="{Binding TraiffSectionsSelectionChangedCommand}"
-                                SelectionMode="Single"
-                                VerticalScrollBarVisibility="Never">
-                                <CollectionView.ItemsLayout>
-                                    <GridItemsLayout
-                                        HorizontalItemSpacing="4"
-                                        Orientation="Vertical"
-                                        VerticalItemSpacing="0" />
-                                </CollectionView.ItemsLayout>
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout Padding="24,6,24,6">
-                                            <Frame
-                                                Padding="20,15,17,15"
-                                                BorderColor="#D8D8D8"
-                                                CornerRadius="14"
-                                                HasShadow="False">
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label
-                                                        FontSize="16"
-                                                        HorizontalOptions="StartAndExpand"
-                                                        Text="{Binding Name}"
-                                                        TextColor="{StaticResource Primary}" />
-                                                    <Image
-                                                        HeightRequest="20"
-                                                        HorizontalOptions="EndAndExpand"
-                                                        Rotation="0"
-                                                        Source="LstArrow"
-                                                        VerticalOptions="CenterAndExpand"
-                                                        WidthRequest="10">
-                                                        <Image.Triggers>
-                                                            <DataTrigger
-                                                                Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
-                                                                TargetType="Image"
-                                                                Value="RightToLeft">
-                                                                <Setter Property="Rotation" Value="180" />
-                                                            </DataTrigger>
-                                                        </Image.Triggers>
 
-                                                    </Image>
+                        <CollectionView
+                            ItemSizingStrategy="MeasureAllItems"
+                            ItemsSource="{Binding TraiffSections}"
+                            SelectedItem="{Binding SelectedTraiffSections}"
+                            SelectionChangedCommand="{Binding TraiffSectionsSelectionChangedCommand}"
+                            SelectionMode="Single"
+                            Grid.Row="1"
+                            VerticalOptions="FillAndExpand"
+                            VerticalScrollBarVisibility="Never">
 
-                                                </StackLayout>
-                                            </Frame>
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout
+                                    Orientation="Vertical"
+                                    VerticalItemSpacing="10" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout>
+                                        <Frame
+                                            Padding="20,15,17,15"
+                                            BorderColor="#D8D8D8"
+                                            CornerRadius="14"
+                                            HasShadow="False">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label
+                                                    FontSize="16"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Text="{Binding Name}"
+                                                    TextColor="{StaticResource Primary}" />
+                                                <Image
+                                                    HeightRequest="20"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    Source="LstArrow"
+                                                    Rotation="180"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    WidthRequest="10">
+                                                    <Image.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding AppDirection}"
+                                                            TargetType="Image"
+                                                            Value="LeftToRight">
+                                                            <Setter Property="Rotation" Value="0" />
+                                                        </DataTrigger>
+
+                                                    </Image.Triggers>
+
+                                                </Image>
+
+
+
                                         </StackLayout>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
-                        </ScrollView>
-                    </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+                    </Grid>
 
                     <Grid IsVisible="{Binding IsChapterSection}">
 
@@ -284,56 +281,11 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                        <Grid Grid.Row="0" IsVisible="{Binding IsSectNote}">
-                            <Grid
-                                BackgroundColor="Black"
-                                HorizontalOptions="Fill"
-                                Opacity=".5"
-                                VerticalOptions="Fill" />
-                            <Frame
-                                Margin="10,0,10,10"
-                                BackgroundColor="White"
-                                BorderColor="#CECECE"
-                                CornerRadius="14"
-                                HasShadow="False"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                                <StackLayout>
-                                    <StackLayout
-                                        Margin="10"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
-                                        <Label
-                                            FontFamily="{StaticResource SomarSemiBold}"
-                                            FontSize="16"
-                                            HorizontalOptions="Center"
-                                            Text="{x:Static ResourceManager:AppResources.ZNote}"
-                                            TextColor="#042E66" />
-                                        <Image
-                                            HeightRequest="19"
-                                            HorizontalOptions="EndAndExpand"
-                                            Source="CloseIcon"
-                                            WidthRequest="19">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding CloseNoteCommand}" CommandParameter="1" />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                    </StackLayout>
-                                    <ScrollView>
-                                        <StackLayout BindableLayout.ItemsSource="{Binding SectionNotesLst}">
-                                            <BindableLayout.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Label Text="{Binding ChaptNote}" />
-                                                </DataTemplate>
-                                            </BindableLayout.ItemTemplate>
-                                        </StackLayout>
-                                    </ScrollView>
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
+
+                        
                     </Grid>
 
-                    <StackLayout IsVisible="{Binding IsMainHarmonizedTariffs}">
+                    <Grid IsVisible="{Binding IsMainHarmonizedTariffs}">
 
                         <CollectionView
                             ItemsSource="{Binding MainHarmonizedTariffs}"
@@ -346,8 +298,9 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                    </StackLayout>
-                    <StackLayout IsVisible="{Binding IsSubHarmonizedTariffs}">
+                    </Grid>
+
+                    <Grid IsVisible="{Binding IsSubHarmonizedTariffs}">
 
                         <CollectionView
                             x:Name="SubHarmonizedTariffsLst"
@@ -356,6 +309,7 @@
                             SelectionChangedCommand="{Binding TraiffSubHarmonizedChangedCommand}">
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
+
                                     <Grid x:Name="Item" Padding="24,6,24,6">
 
                                         <Frame
@@ -363,12 +317,14 @@
                                             BorderColor="#D8D8D8"
                                             CornerRadius="14"
                                             HasShadow="False">
+
                                             <Frame.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     BindingContext="{Binding Source={x:Reference SubHarmonizedTariffsLst}, Path=BindingContext}"
                                                     Command="{Binding TraiffSubHarmonizedChangedCommand}"
                                                     CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                                             </Frame.GestureRecognizers>
+
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
                                                     FontSize="16"
@@ -390,234 +346,268 @@
                                                     WidthRequest="20" />
 
                                             </StackLayout>
+
                                         </Frame>
+
                                     </Grid>
+
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </StackLayout>
 
-                    <Grid
-                        Padding="24,20"
+                        </CollectionView>
+
+                    </Grid>
+
+                    <FlexLayout
+                        Margin="20"
+                        Direction="Column"
+                        JustifyContent="SpaceAround"
                         BackgroundColor="White"
                         IsVisible="{Binding IsSearchVIewVisible}">
-                        <StackLayout>
 
-                            <Grid
-                                Margin="0,0,0,10"
-                                ColumnDefinitions="*,auto"
-                                RowDefinitions="auto">
-
-
-                                <inputLayout:SfTextInputLayout
-                                    Grid.Column="0"
-                                    BackgroundColor="White"
-                                    ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="#B1B1B1"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                    <inputLayout:SfTextInputLayout.LeadingView>
-                                        <Image Source="topsearchicon" />
-                                    </inputLayout:SfTextInputLayout.LeadingView>
-                                    <custom:GAZTBorderlessEntry
-                                        Grid.Column="1"
-                                        HorizontalOptions="FillAndExpand"
-                                        Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
-                                        PlaceholderColor="#888888"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding SearchKey}"
-                                        VerticalTextAlignment="Center">
+                        <Grid
+                            Margin="0,0,0,0"
+                            ColumnSpacing="10"
+                            ColumnDefinitions="*,auto"
+                            RowDefinitions="auto">
 
 
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding SearchCommand}"
-                                                CommandParameter="{Binding SearchKey}"
-                                                EventName="Completed" />
-                                            <xct:EventToCommandBehavior
-                                                Command="{Binding ViewSearchViewCommand}"
-                                                CommandParameter="{Binding SearchKey}"
-                                                EventName="Focused" />
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                Hint="{x:Static ResourceManager:AppResources.SearchField}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="#B1B1B1">
 
-                                        </custom:GAZTBorderlessEntry.Behaviors>
-                                    </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="1"
-                                    Margin="0,15,0,15"
-                                    HorizontalOptions="Start"
-                                    Text="{x:Static ResourceManager:AppResources.Clear}"
-                                    TextColor="#0996D4"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ClearSearchTextCommand}" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                    <Image Source="topsearchicon" />
+                                </inputLayout:SfTextInputLayout.LeadingView>
 
-                            </Grid>
+                                <custom:GAZTBorderlessEntry
+                                    HorizontalOptions="FillAndExpand"
+                                    Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
+                                    PlaceholderColor="#888888"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SearchKey}"
+                                    VerticalTextAlignment="Center">
+
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding SearchCommand}"
+                                            CommandParameter="{Binding SearchKey}"
+                                            EventName="Completed" />
+
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding ViewSearchViewCommand}"
+                                            CommandParameter="{Binding SearchKey}"
+                                            EventName="Focused" />
+
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
                             <Label
-                                FontSize="16"
+                                Grid.Column="1"
+                                Margin="0,15,0,15"
                                 HorizontalOptions="Start"
-                                IsVisible="{Binding IsSearchFilterVisbible}"
-                                Text="{x:Static ResourceManager:AppResources.SearchFor}"
-                                TextColor="#002447" />
-                            <Grid ColumnDefinitions="*,*,*" IsVisible="{Binding IsSearchFilterVisbible}">
-                                <Grid.Resources>
-                                    <ResourceDictionary>
-                                        <Style TargetType="Frame">
-                                            <Setter Property="CornerRadius" Value="20" />
-                                            <Setter Property="Padding" Value="9" />
-                                            <Setter Property="HasShadow" Value="False" />
-
-                                        </Style>
-                                    </ResourceDictionary>
-                                </Grid.Resources>
-                                <Frame Grid.Column="0" BackgroundColor="#F5F5F5">
-                                    <Label
-                                        HorizontalOptions="Center"
-                                        Text="{x:Static ResourceManager:AppResources.Word}"
-                                        TextColor="#666666"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding SearchBy}"
-                                                TargetType="Label"
-                                                Value="1">
-                                                <Setter Property="TextColor" Value="White" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="1" />
-                                    </Frame.GestureRecognizers>
-                                    <Frame.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding SearchBy}"
-                                            TargetType="Frame"
-                                            Value="1">
-                                            <Setter Property="BackgroundColor" Value="#0996D4" />
-                                        </DataTrigger>
-                                    </Frame.Triggers>
-                                </Frame>
-                                <Frame Grid.Column="1" BackgroundColor="#F5F5F5">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="3" />
-                                    </Frame.GestureRecognizers>
-                                    <Frame.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding SearchBy}"
-                                            TargetType="Frame"
-                                            Value="3">
-                                            <Setter Property="BackgroundColor" Value="#0996D4" />
-                                        </DataTrigger>
-                                    </Frame.Triggers>
-                                    <Label
-                                        HorizontalOptions="Center"
-                                        Text="{x:Static ResourceManager:AppResources.HS}"
-                                        TextColor="#666666"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding SearchBy}"
-                                                TargetType="Label"
-                                                Value="3">
-                                                <Setter Property="TextColor" Value="White" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                </Frame>
-                                <Frame Grid.Column="2" BackgroundColor="#F5F5F5">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="2" />
-                                    </Frame.GestureRecognizers>
-                                    <Label
-                                        HorizontalOptions="Center"
-                                        Text="{x:Static ResourceManager:AppResources.HSHeading}"
-                                        TextColor="#666666"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding SearchBy}"
-                                                TargetType="Label"
-                                                Value="2">
-                                                <Setter Property="TextColor" Value="White" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                    <Frame.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding SearchBy}"
-                                            TargetType="Frame"
-                                            Value="2">
-                                            <Setter Property="BackgroundColor" Value="#0996D4" />
-                                        </DataTrigger>
-                                    </Frame.Triggers>
-                                </Frame>
-                            </Grid>
-                            <Label
-                                Margin="10,10,10,3"
-                                IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
-                                TextColor="{StaticResource Primary}">
-                                <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{Binding SearchRsltCount}" />
-                                        <Span Text=" " />
-                                        <Span Text="{x:Static ResourceManager:AppResources.SearchRsltCountText}" />
-                                    </FormattedString>
-                                </Label.FormattedText>
+                                Text="{x:Static ResourceManager:AppResources.Clear}"
+                                TextColor="#0996D4"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClearSearchTextCommand}" />
+                                </Label.GestureRecognizers>
                             </Label>
-                            <Grid>
 
-                                <CollectionView
-                                    Margin="0,25,0,10"
+                        </Grid>
+
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="Start"
+                            IsVisible="{Binding IsSearchFilterVisbible}"
+                            Text="{x:Static ResourceManager:AppResources.SearchFor}"
+                            TextColor="#002447" />
+
+                        <Grid ColumnDefinitions="*,*,*"
+                                ColumnSpacing="10"
+                                IsVisible="{Binding IsSearchFilterVisbible}">
+                            <Grid.Resources>
+                                <ResourceDictionary>
+                                    <Style TargetType="Frame">
+                                        <Setter Property="CornerRadius" Value="20" />
+                                        <Setter Property="Padding" Value="9" />
+                                        <Setter Property="HasShadow" Value="False" />
+
+                                    </Style>
+                                </ResourceDictionary>
+                            </Grid.Resources>
+                            <Frame Grid.Column="0" BackgroundColor="#F5F5F5">
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="{x:Static ResourceManager:AppResources.Word}"
+                                    TextColor="#666666"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding SearchBy}"
+                                            TargetType="Label"
+                                            Value="1">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="1" />
+                                </Frame.GestureRecognizers>
+                                <Frame.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding SearchBy}"
+                                        TargetType="Frame"
+                                        Value="1">
+                                        <Setter Property="BackgroundColor" Value="#0996D4" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
+                            </Frame>
+                            <Frame Grid.Column="1" BackgroundColor="#F5F5F5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="3" />
+                                </Frame.GestureRecognizers>
+                                <Frame.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding SearchBy}"
+                                        TargetType="Frame"
+                                        Value="3">
+                                        <Setter Property="BackgroundColor" Value="#0996D4" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="{x:Static ResourceManager:AppResources.HS}"
+                                    TextColor="#666666"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding SearchBy}"
+                                            TargetType="Label"
+                                            Value="3">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                            </Frame>
+                            <Frame Grid.Column="2" BackgroundColor="#F5F5F5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="2" />
+                                </Frame.GestureRecognizers>
+                                <Label
+                                    HorizontalOptions="Center"
+                                    Text="{x:Static ResourceManager:AppResources.HSHeading}"
+                                    TextColor="#666666"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding SearchBy}"
+                                            TargetType="Label"
+                                            Value="2">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+                                <Frame.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding SearchBy}"
+                                        TargetType="Frame"
+                                        Value="2">
+                                        <Setter Property="BackgroundColor" Value="#0996D4" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
+                            </Frame>
+                        </Grid>
+
+                        <Label
+                        Margin="0,0,0,10"
+                            IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
+                            TextColor="{StaticResource Primary}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding SearchRsltCount}" />
+                                    <Span Text=" " />
+                                    <Span Text="{x:Static ResourceManager:AppResources.SearchRsltCountText}" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                        <FlexLayout FlexLayout.Grow="1">
+                            <CollectionView
+                                    Margin="0,0,0,0"
                                     IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
                                     ItemsSource="{Binding SearchResultLst}"
                                     SelectedItem="{Binding SelectedSearchResultLst}"
                                     SelectionChangedCommand="{Binding TraiffSearchSelectionChangedCommand}"
                                     SelectionMode="Single"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
                                     VerticalScrollBarVisibility="Never">
+
                                     <CollectionView.ItemsLayout>
-                                        <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                                        <LinearItemsLayout ItemSpacing="10"
+                                                            Orientation="Vertical" />
                                     </CollectionView.ItemsLayout>
+
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid Padding="5,0">
+                                            <Grid HorizontalOptions="FillAndExpand"
+                                                    RowDefinitions="*"
+                                                VerticalOptions="FillAndExpand">
                                                 <Frame
-                                                    Padding="20,16,20,13"
+                                                    Padding="10"
                                                     BorderColor="#D8D8D8"
                                                     CornerRadius="14"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="FillAndExpand"
                                                     HasShadow="False">
                                                     <StackLayout>
+
                                                         <Label Text="{Binding Code}" />
+
                                                         <Label
                                                             FontSize="12"
                                                             Text="{Binding Name}"
                                                             TextColor="#0996D4" />
+
                                                         <BoxView HeightRequest="1" Color="#EEEEEE" />
-                                                        <StackLayout BindableLayout.ItemsSource="{Binding tariffreleaseprocedures}">
+
+                                                        <StackLayout
+                                                BindableLayout.ItemsSource="{Binding tariffreleaseprocedures}">
                                                             <BindableLayout.ItemTemplate>
                                                                 <DataTemplate>
-                                                                    <StackLayout Orientation="Horizontal">
+                                                                    <Grid ColumnDefinitions="auto,*"
+                                                                            ColumnSpacing="10"
+                                                                                    VerticalOptions="FillAndExpand"
+                                                                                    HorizontalOptions="FillAndExpand">
                                                                         <Label
                                                                             FontSize="12"
                                                                             Text="{Binding prcdr_code}"
                                                                             TextColor="#002447" />
                                                                         <Label
                                                                             FontSize="12"
+                                                                            Grid.Column="1"
+                                                                            LineBreakMode="WordWrap"
                                                                             Text="{Binding rlse_prcdr_note}"
                                                                             TextColor="#002447" />
-                                                                    </StackLayout>
+                                                                    </Grid>
 
                                                                 </DataTemplate>
                                                             </BindableLayout.ItemTemplate>
+
                                                         </StackLayout>
 
                                                         <BoxView HeightRequest="1" Color="#EEEEEE" />
-                                                        <Label FontSize="12" TextColor="#002447">
+
+                                                        <Label FontSize="12" TextColor="#002447"
+                                                               HorizontalOptions="Start">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
                                                                     <Span Text="{x:Static ResourceManager:AppResources.Duty}" />
@@ -626,17 +616,17 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
+
                                                     </StackLayout>
                                                 </Frame>
                                             </Grid>
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
                                 </CollectionView>
+                        </FlexLayout>
 
-                            </Grid>
-                        </StackLayout>
+                    </FlexLayout>
 
-                    </Grid>
                     <Grid IsVisible="{Binding IsTarrifSearch}">
                         <CollectionView
                             x:Name="HarmonizedTariffsInSearchLst"
@@ -653,7 +643,9 @@
                                             BorderColor="#D8D8D8"
                                             CornerRadius="14"
                                             HasShadow="False">
+
                                             <StackLayout Orientation="Horizontal">
+
                                                 <Label
                                                     x:Name="nameLabl"
                                                     FontSize="16"
@@ -667,6 +659,7 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
+
                                                 <!--  LstArrow  -->
                                                 <Image
                                                     HeightRequest="22"
@@ -729,12 +722,14 @@
 
                                             </StackLayout>
                                         </Frame>
+
                                     </Grid>
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
 
                     </Grid>
+
                     <!--  Harmonized Tarrifs  -->
                     <Grid IsVisible="{Binding IsHarmonizedTarrifs}" VerticalOptions="FillAndExpand">
 
@@ -744,32 +739,6 @@
                             SelectedItem="{Binding SelectedHarmonizedTariffs}"
                             SelectionChangedCommand="{Binding TraiffLevel1SelectionChangedCommand}"
                             SelectionMode="Single">
-
-                            <!--  <CollectionView.Triggers>
-
-                    <DataTrigger TargetType="CollectionView" Binding="{Binding LevelNo}" Value="0">
-                       <Setter Property="ItemsSource" Value="{Binding HarmonizedTariffs}"></Setter>
-                       <Setter Property="SelectedItem" Value="{Binding SelectedHarmonizedTariffs}"></Setter>
-                       <Setter Property="SelectionChangedCommand" Value="{Binding TraiffLevel1SelectionChangedCommand}"></Setter>
-
-                    </DataTrigger>
-                   <DataTrigger TargetType="CollectionView" Binding="{Binding LevelNo}" Value="1">
-                       <Setter Property="SelectionChangedCommand" Value="{Binding TraiffLevel2SelectionChangedCommand}"></Setter>
-                       <Setter Property="ItemsSource" Value="{Binding HarmonizedTariffslvl2}"></Setter>
-                       <Setter Property="SelectedItem" Value="{Binding SelectedHarmonizedTariffslvl2}"></Setter>
-                   </DataTrigger>
-                     <DataTrigger TargetType="CollectionView" Binding="{Binding LevelNo}" Value="2">
-                       <Setter Property="SelectionChangedCommand" Value="{Binding TraiffLevel3SelectionChangedCommand}"></Setter>
-                       <Setter Property="ItemsSource" Value="{Binding HarmonizedTariffslvl3}"></Setter>
-                       <Setter Property="SelectedItem" Value="{Binding SelectedHarmonizedTariffslvl3}"></Setter>
-                   </DataTrigger>
-                      <DataTrigger TargetType="CollectionView" Binding="{Binding LevelNo}" Value="3">
-                       <Setter Property="SelectionChangedCommand" Value="{Binding TraiffLevel3SelectionChangedCommand}"></Setter>
-                       <Setter Property="ItemsSource" Value="{Binding HarmonizedTariffslvl4}"></Setter>
-                       <Setter Property="SelectedItem" Value="{Binding SelectedHarmonizedTariffslvl4}"></Setter>
-                   </DataTrigger>
-               </CollectionView.Triggers>
-                            -->
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid x:Name="Item" Padding="24,6,24,6">
@@ -779,9 +748,6 @@
                                             BorderColor="#D8D8D8"
                                             CornerRadius="14"
                                             HasShadow="False">
-                                            <!--    <Frame.GestureRecognizers>
-                      <TapGestureRecognizer  BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst}, Path=BindingContext}" Command="{Binding }"  CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"></TapGestureRecognizer>
-                  </Frame.GestureRecognizers>-->
                                             <StackLayout Orientation="Horizontal">
                                                 <Label
                                                     x:Name="nameLabl"
@@ -863,53 +829,7 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
 
-                        <Grid Grid.Row="0" IsVisible="{Binding IsChapterNote}">
-                            <Grid
-                                BackgroundColor="Black"
-                                HorizontalOptions="Fill"
-                                Opacity=".5"
-                                VerticalOptions="Fill" />
-                            <Frame
-                                Margin="10,0,10,10"
-                                BackgroundColor="White"
-                                BorderColor="#CECECE"
-                                CornerRadius="14"
-                                HasShadow="False"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center">
-                                <StackLayout>
-                                    <StackLayout
-                                        Margin="10"
-                                        HorizontalOptions="FillAndExpand"
-                                        Orientation="Horizontal">
-                                        <Label
-                                            FontFamily="{StaticResource SomarSemiBold}"
-                                            FontSize="16"
-                                            HorizontalOptions="Center"
-                                            Text="{x:Static ResourceManager:AppResources.ZNote}"
-                                            TextColor="#042E66" />
-                                        <Image
-                                            HeightRequest="19"
-                                            HorizontalOptions="EndAndExpand"
-                                            Source="CloseIcon"
-                                            WidthRequest="19">
-                                            <Image.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding CloseNoteCommand}" CommandParameter="2" />
-                                            </Image.GestureRecognizers>
-                                        </Image>
-                                    </StackLayout>
-                                    <ScrollView>
-                                        <StackLayout BindableLayout.ItemsSource="{Binding ChapterNotesLst}">
-                                            <BindableLayout.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Label Text="{Binding ChaptNote}" />
-                                                </DataTemplate>
-                                            </BindableLayout.ItemTemplate>
-                                        </StackLayout>
-                                    </ScrollView>
-                                </StackLayout>
-                            </Frame>
-                        </Grid>
+                        
 
 
                     </Grid>
@@ -931,9 +851,6 @@
                                         BorderColor="#D8D8D8"
                                         CornerRadius="14"
                                         HasShadow="False">
-                                        <!--    <Frame.GestureRecognizers>
-                      <TapGestureRecognizer  BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst}, Path=BindingContext}" Command="{Binding }"  CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"></TapGestureRecognizer>
-                  </Frame.GestureRecognizers>-->
                                         <StackLayout Orientation="Horizontal">
                                             <Label
                                                 x:Name="nameLabl"
@@ -1031,9 +948,6 @@
                                         BorderColor="#D8D8D8"
                                         CornerRadius="14"
                                         HasShadow="False">
-                                        <!--    <Frame.GestureRecognizers>
-                      <TapGestureRecognizer  BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst}, Path=BindingContext}" Command="{Binding }"  CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"></TapGestureRecognizer>
-                  </Frame.GestureRecognizers>-->
                                         <StackLayout Orientation="Horizontal">
                                             <Label
                                                 x:Name="nameLabl"
@@ -1131,9 +1045,6 @@
                                         BorderColor="#D8D8D8"
                                         CornerRadius="14"
                                         HasShadow="False">
-                                        <!--    <Frame.GestureRecognizers>
-                      <TapGestureRecognizer  BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst}, Path=BindingContext}" Command="{Binding }"  CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"></TapGestureRecognizer>
-                  </Frame.GestureRecognizers>-->
                                         <StackLayout Orientation="Horizontal">
                                             <Label
                                                 x:Name="nameLabl"
@@ -1219,8 +1130,111 @@
 
 
             </Border>
-        </StackLayout>
-        <Grid Grid.Row="0" IsVisible="{Binding IsitemDetilsVisible}">
+
+        <Grid IsVisible="{Binding IsSectNote}"
+              Grid.RowSpan="2">
+
+            <Grid
+                BackgroundColor="Black"
+                HorizontalOptions="Fill"
+                Opacity=".5"
+                VerticalOptions="Fill" />
+
+            <Frame
+                Margin="10,0,10,10"
+                BackgroundColor="White"
+                BorderColor="#CECECE"
+                CornerRadius="14"
+                HasShadow="False"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <StackLayout>
+                    <StackLayout
+                        Margin="10"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+                        <Label
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{x:Static ResourceManager:AppResources.ZNote}"
+                            TextColor="#042E66" />
+                        <Image
+                            HeightRequest="19"
+                            HorizontalOptions="EndAndExpand"
+                            Source="CloseIcon"
+                            WidthRequest="19">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseNoteCommand}" CommandParameter="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <ScrollView HeightRequest="650"
+                                VerticalScrollBarVisibility="Never">
+                        <StackLayout BindableLayout.ItemsSource="{Binding SectionNotesLst}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding ChaptNote}"
+                                           LineBreakMode="WordWrap"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+        </Grid>
+
+        <Grid Grid.RowSpan="2" IsVisible="{Binding IsChapterNote}">
+            <Grid
+                BackgroundColor="Black"
+                HorizontalOptions="Fill"
+                Opacity=".5"
+                VerticalOptions="Fill" />
+            <Frame
+                Margin="10,0,10,10"
+                BackgroundColor="White"
+                BorderColor="#CECECE"
+                CornerRadius="14"
+                HasShadow="False"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <StackLayout>
+                    <StackLayout
+                        Margin="10"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal">
+                        <Label
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="Center"
+                            Text="{x:Static ResourceManager:AppResources.ZNote}"
+                            TextColor="#042E66" />
+                        <Image
+                            HeightRequest="19"
+                            HorizontalOptions="EndAndExpand"
+                            Source="CloseIcon"
+                            WidthRequest="19">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseNoteCommand}" CommandParameter="2" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <ScrollView HeightRequest="650"
+                                VerticalScrollBarVisibility="Never">
+                        <StackLayout BindableLayout.ItemsSource="{Binding ChapterNotesLst}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Text="{Binding ChaptNote}"
+                                           LineBreakMode="WordWrap"/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+        </Grid>
+
+        <Grid Grid.RowSpan="2" IsVisible="{Binding IsitemDetilsVisible}">
             <Grid
                 BackgroundColor="Black"
                 HorizontalOptions="Fill"
@@ -1284,12 +1298,6 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <!--<Grid>
-                                       <StackLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                           <Label Text="{Binding prcdr_code}"></Label>
-                                           <Label Text="{Binding rlse_prcdr_note}" ></Label>
-                                       </StackLayout>
-                                      </Grid>-->
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
@@ -1305,11 +1313,7 @@
                                     Text="{x:Static ResourceManager:AppResources.Duty}"
                                     TextColor="#042E66" />
                                 <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].dutyName}">
-                                    <!--<Label.Triggers>
-                                   <DataTrigger TargetType="Label" Binding="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].duty_rate}" Value="0">
-                                       <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Free}"></Setter>
-                                   </DataTrigger>
-                               </Label.Triggers>-->
+
                                 </Label>
                                 <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date}">
                                     <Label.FormattedText>
@@ -1365,6 +1369,6 @@
             </Frame>
         </Grid>
 
-        <custom:Loader IsVisible="{Binding IsLoading}" />
+        <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
     </Grid>
 </ContentPage>

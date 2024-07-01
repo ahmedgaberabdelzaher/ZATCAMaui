@@ -19,6 +19,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             viewModel = App.Locator.GAZTNewDesignShowVatInformationPopUpPageView;
             this.BindingContext = viewModel;
             SetLTR();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             ClearData();
             if (newDesignPopData != null)
             {

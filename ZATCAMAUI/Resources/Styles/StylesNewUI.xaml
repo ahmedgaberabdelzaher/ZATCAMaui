@@ -37,7 +37,7 @@
         <Setter Property="StrokeThickness" Value="0" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="HeightRequest" Value="48" />
-        <Setter Property="WidthRequest" Value="{OnPlatform Android=330,iOS=380}" />
+        <Setter Property="WidthRequest" Value="345" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="Background" Value="{StaticResource Secondary}" />
@@ -49,7 +49,7 @@
         <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="HeightRequest" Value="48" />
-        <Setter Property="WidthRequest" Value="366" />
+        <Setter Property="WidthRequest" Value="345" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="Background" Value="White" />
@@ -428,6 +428,16 @@
         <Setter Property="WidthRequest" Value="171" />
     </Style>
 
+     <Style TargetType="inputLayout:SfTextInputLayout">
+        <Setter Property="ContainerBackground" Value="White" />
+        <Setter Property="HintLabelStyle">
+            <Setter.Value>
+                <inputLayout:LabelStyle TextColor="{StaticResource NeutralGreay}" />
+            </Setter.Value>
+
+        </Setter>
+    </Style>
+
     <Style x:Key="InputTableEntryLayoutStyle" TargetType="Entry">
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -699,7 +709,7 @@
     </Style>
     <!--  #Styles for New Design R2  -->
 
-    <Style x:Key="SfStyleForZakatPlanGreen" TargetType="Frame">
+    <Style x:Key="SfStyleForZakatPlanGreen" TargetType="Border">
 
         <Setter Property="BackgroundColor" Value="{StaticResource TiffanyBG}" />
 

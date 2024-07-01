@@ -284,7 +284,7 @@
                                             <DataTrigger
                                                 Binding="{Binding AppDirection}"
                                                 TargetType="Label"
-                                                Value="RTL">
+                                                Value="RightToLeft">
                                                 <Setter Property="HorizontalTextAlignment" Value="End" />
                                             </DataTrigger>
 

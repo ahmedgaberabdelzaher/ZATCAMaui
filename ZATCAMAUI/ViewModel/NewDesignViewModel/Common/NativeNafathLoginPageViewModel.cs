@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Globalization;
+using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Services.Interface;
@@ -208,7 +209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                         IsLoading = false;
                         NationalIqamaId = "";
                         var IamaDATA = data.data;
-                        IamaDATA.birthDate = DateTime.Parse(BD);
+                        IamaDATA.birthDate = DateTime.ParseExact(BD, "yyyy-MM-dd", CultureInfo.InvariantCulture);
                         IamaDATA.cardIssueDateHijri = IdissueEXPDATe;
                         IamaDATA.idExpiryDateHijri = IdEXPDATe;
                         if (PageName == "NewDeclarationPage")

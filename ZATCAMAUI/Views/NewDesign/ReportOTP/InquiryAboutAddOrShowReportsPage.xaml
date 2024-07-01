@@ -188,18 +188,18 @@
                             VerticalOptions="StartAndExpand">
 
                             <StackLayout
-                                HorizontalOptions="CenterAndExpand"
+                                HorizontalOptions="FillAndExpand"
                                 Orientation="Horizontal"
                                 Spacing="10"
-                                VerticalOptions="CenterAndExpand">
+                                VerticalOptions="FillAndExpand">
 
                                 <!--  info icon  -->
                                 <Image
                                     Aspect="AspectFit"
                                     HeightRequest="20"
-                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalOptions="Start"
                                     Source="information.png"
-                                    VerticalOptions="CenterAndExpand"
+                                    VerticalOptions="StartAndExpand"
                                     WidthRequest="20" />
 
                                 <!--  ReportsNote Label  -->

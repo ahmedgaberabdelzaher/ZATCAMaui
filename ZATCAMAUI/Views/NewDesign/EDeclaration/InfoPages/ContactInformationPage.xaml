@@ -69,13 +69,12 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
                     <ScrollView VerticalScrollBarVisibility="Never">
 
-                        <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+                        <StackLayout VerticalOptions="FillAndExpand">
 
                             <!--  Circle view  -->
                             <Grid
@@ -88,18 +87,17 @@
 
                                 <!--  Circle button 1  -->
                                 <ImageButton
-                                    Margin="-5,0"
                                     Padding="5"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
                                     BorderWidth="1"
                                     CornerRadius="15"
-                                    HeightRequest="39"
+                                    HeightRequest="30"
                                     HorizontalOptions="EndAndExpand"
                                     InputTransparent="True"
                                     Source="reportCheckMark.png"
                                     VerticalOptions="CenterAndExpand"
-                                    WidthRequest="39" />
+                                    WidthRequest="30" />
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
@@ -112,18 +110,17 @@
                                 <!--  Circle button 2  -->
                                 <ImageButton
                                     Grid.Column="2"
-                                    Margin="-5,0"
                                     Padding="5"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
                                     BorderWidth="1"
                                     CornerRadius="15"
-                                    HeightRequest="39"
+                                    HeightRequest="30"
                                     HorizontalOptions="StartAndExpand"
                                     InputTransparent="True"
                                     Source="reportCheckMark.png"
                                     VerticalOptions="CenterAndExpand"
-                                    WidthRequest="39" />
+                                    WidthRequest="30" />
 
 
                                 <!--  Horizontal Line  -->
@@ -137,18 +134,17 @@
                                 <!--  Circle button 3  -->
                                 <ImageButton
                                     Grid.Column="4"
-                                    Margin="-5,0"
                                     Padding="5"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
                                     BorderWidth="1"
                                     CornerRadius="15"
-                                    HeightRequest="39"
+                                    HeightRequest="30"
                                     HorizontalOptions="StartAndExpand"
                                     InputTransparent="True"
                                     Source="reportCheckMark.png"
                                     VerticalOptions="CenterAndExpand"
-                                    WidthRequest="39" />
+                                    WidthRequest="30" />
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
@@ -211,7 +207,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -278,7 +274,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -314,7 +310,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.AddressKSA}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">

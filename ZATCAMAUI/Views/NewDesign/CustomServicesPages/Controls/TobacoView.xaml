@@ -30,7 +30,7 @@
                     ContainerType="Outlined"
                     HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
                     InputViewPadding="16,0,16,0"
-                    IsHintAlwaysFloated="True"
+                    Hint="{x:Static ResourceManager:AppResources.Select}"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15"
                     Stroke="{StaticResource NeutralGreay}">
@@ -84,7 +84,7 @@
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
+                        Hint="{x:Static ResourceManager:AppResources.Select}"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
@@ -138,7 +138,7 @@
                         ContainerType="Outlined"
                         HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                         InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
+                        Hint="{x:Static ResourceManager:AppResources.Quantity}"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
@@ -180,7 +180,7 @@
                         ContainerType="Outlined"
                         HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                         InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
+                        Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">

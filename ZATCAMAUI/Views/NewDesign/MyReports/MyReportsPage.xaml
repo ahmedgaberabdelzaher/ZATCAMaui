@@ -92,7 +92,6 @@
                     ContainerType="Outlined"
                     HorizontalOptions="CenterAndExpand"
                     InputViewPadding="10,0,10,0"
-                    IsHintAlwaysFloated="True"
                     IsVisible="{Binding IsSearching}"
                     OutlineCornerRadius="15"
                     Stroke="{StaticResource NeutralGreay}"

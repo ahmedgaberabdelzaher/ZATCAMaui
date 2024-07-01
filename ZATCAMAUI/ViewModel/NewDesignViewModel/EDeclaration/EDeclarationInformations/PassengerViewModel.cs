@@ -132,12 +132,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                         });
                        
 
-                        if (control.ClassId.ToLower().Equals("releasedateentry") &&
-                            SubmitModel.travelerDeclaration.passIssuingDate.Date == DateTime.Now.Date.AddHours(-24))
+                        if (control.ClassId.ToLower().Equals("releasedateentry") )
                             ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
 
-                        else if (control.ClassId.ToLower().Equals("enddateentry") &&
-                            SubmitModel.travelerDeclaration.passExpiryDate.Date == DateTime.Now.Date)
+                        else if (control.ClassId.ToLower().Equals("enddateentry"))
                         {
                             if (SubmitModel.travelerDeclaration.Isvisitor || SubmitModel.travelerDeclaration.travelID.StartsWith("1") || !SubmitModel.travelerDeclaration.isPremiumResidency)
                             {

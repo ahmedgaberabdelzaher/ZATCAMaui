@@ -20,7 +20,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+            <Grid Padding="10,15" ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 
@@ -86,8 +86,7 @@
                             <BoxView
                                 Margin="0,0,0,10"
                                 BackgroundColor="{StaticResource NeutralLightGrey}"
-                                HeightRequest="2"
-                                WidthRequest="20" />
+                                HeightRequest="2"/>
 
                             <!--  NationalIqamaID Field  -->
                             <StackLayout Spacing="0">
@@ -110,7 +109,7 @@
                                     ContainerType="Outlined"
                                     HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.NationalIqamaID}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -135,7 +134,7 @@
 
                             <!--  GoTo Login Button  -->
                             <buttons:SfButton
-                                Margin="0,5"
+                                Margin="0,25"
                                 Command="{Binding NativeNafathLoginCommand}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.NDSwitchUser}"

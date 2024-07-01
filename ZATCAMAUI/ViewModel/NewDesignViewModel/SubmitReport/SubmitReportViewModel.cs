@@ -9,6 +9,7 @@ using RGPopup.Maui.Services;
 using ZATCAMAUI.Controls;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.CustomControls;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SubmitReportModel;
@@ -40,14 +41,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
         public SubmitReportModel SubmitReport { get { return submitReport; } set { submitReport = value; RaisePropertyChanged(); } }
 
         public DateTime SelectedDate { get; set; } = DateTime.Now;
+
         bool isTherePDFUploaded;
         public bool IsTherePDFUploaded { get { return isTherePDFUploaded; } set { isTherePDFUploaded = value; RaisePropertyChanged(); } }
 
-        bool isShowBottomSheet;
-        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
-
-        bool isOpenDatePicker;
-        public bool IsOpenDatePicker { get { return isOpenDatePicker; } set { isOpenDatePicker = value; RaisePropertyChanged(); } }
+        string violationDateDateString;
+        public string ViolationDateDateString { get { return violationDateDateString; } set { violationDateDateString = value; RaisePropertyChanged(); } }
 
         bool isReportCategoryShowen;
         public bool IsReportCategoryShowen { get { return isReportCategoryShowen; } set { isReportCategoryShowen = value; RaisePropertyChanged(); } }
@@ -80,6 +79,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
         public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
 
         public ObservableCollection<BottomSheetModel> TempBottomSheetList { get; set; } = new ObservableCollection<BottomSheetModel>();
+
+        DateTime _MaximumDate = DateTime.Now.Date.AddHours(-24);
+        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
 
         private bool isReportTypeSelected = false;
         private bool isReportCategorySelected = false;
@@ -360,13 +362,52 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
-        public ICommand OpenDateCommand
+        public ICommand SelectedDateCommand
         {
             get
             {
-                return new Command(() =>
+                return new Command<Entry>((control) =>
                 {
-                    IsOpenDatePicker = true;
+                    try
+                    {
+                        ViolationDateDateString = DateTimeHelper.DateTimeFormater(SelectedDate.Date);
+
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
+                });
+            }
+        }
+
+        public ICommand DateClickedCommand
+        {
+            get
+            {
+                return new Command<DatePicker>((control) =>
+                {
+                    try
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+
+#if ANDROID
+                                var handler = control.Handler as IDatePickerHandler;
+                                handler.PlatformView.PerformClick();
+#endif
+#if IOS
+                            control?.Focus();
+#endif
+                        });
+
+                        ViolationDateDateString = DateTimeHelper.DateTimeFormater(SelectedDate.Date);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
 
                 });
             }

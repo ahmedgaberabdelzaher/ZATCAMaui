@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using ZATCAMAUI.Models;
+﻿using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
@@ -19,60 +17,40 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
         {
             InitializeComponent();
 
-            // App.DisplayProgressView();
-
             viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel.Index = Index;
             viewModel.PopulateReturnTypeList();
             viewModel.PopulateDataInChips();
-            // viewModel.SelectedReturnTypeForFilter = viewModel.ReturnTypeForFilter.FirstOrDefault();
-            //TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
             viewModel.SelectedChipFilterItem = null;
             ListView_Returns.ItemTapped += (sender, e) =>
             {
-                try
+                MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
+                viewModel.SelectedListItem = SelectedItem;
+                viewModel.PopulateData();
+                if (e.Item == null)
                 {
-                    MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
-                    viewModel.SelectedListItem = SelectedItem;
+                    return;
+                } ((ListView)sender).SelectedItem = null;
 
-                    if (e.Item == null)
-                    {
-                        return;
-                    } ((ListView)sender).SelectedItem = null;
-                }
-                catch (Exception)
-                {
-
-
-                }
             };
         }
 
         protected async override void OnAppearing()
         {
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
-                viewModel.PickerModel = arg;
-                viewModel.updatePicker();
-            });
-
+           
             try
             {
-                VATDeclarationAttachmentPageViewModel.isToBeFilled = true;
-                await Task.Run(() =>
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
-                    viewModel.IsLoading = true;
+                    viewModel.PickerModel = arg;
+                    viewModel.updatePicker();
                 });
+
+                viewModel.IsLoading = true;
+                VATDeclarationAttachmentPageViewModel.isToBeFilled = true;
+                
                 await viewModel.OnPageLoad();
                 viewModel.PopulateDataInChips();
               
@@ -97,28 +75,20 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
                 }
                 if (viewModel.Index == 5)
                 {
-                    // TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "01").FirstOrDefault();
-                    // viewModel.SelectedTaxTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
-
                     viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.StatementFilter == "02").FirstOrDefault();
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                 }
                 if (viewModel.Index == 6)
                 {
-                    // TaxTypePicker.SelectedItem = (ReturnTypes)viewModel.ReturnTypeForFilter.Where(x => x.Id == "02").FirstOrDefault();
-                    //viewModel.SelectedTaxTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
-
+                    
                     viewModel.SelectedTaxTypeForFilter = viewModel.TaxTypeForFilter.Where(x => x.StatementFilter == "06").FirstOrDefault();
 
                     viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                     ChipGroup_statusFilter.SelectedItem = viewModel.ChipDataFilterlist.Where<ChipModel>(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
                 }
 
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -128,18 +98,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
             }
 
 
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
         }
 
 
@@ -185,12 +143,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyReturnsPages
 
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-        }
-
-        private async void payNow_Tapped(object sender, EventArgs e)
+        private void payNow_Tapped(object sender, EventArgs e)
         {
             try
             {

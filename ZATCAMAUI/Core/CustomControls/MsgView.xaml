@@ -7,10 +7,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons">
     <ContentView.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
-            </ResourceDictionary.MergedDictionaries>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
             </Style>
@@ -30,14 +26,15 @@
         </Grid.GestureRecognizers>
 
         <StackLayout
-            BackgroundColor="Black"
+            BackgroundColor="Transparent"
             Opacity="0.4"
             VerticalOptions="FillAndExpand" />
 
         <Border
             Padding="0"
             Margin="0"
-            Stroke="White"
+            StrokeThickness="1.5"
+            Stroke="#EBEBEB"
             Background="White"
             HorizontalOptions="Fill"
             StrokeShape="RoundRectangle 15,15,0,0"
@@ -49,10 +46,10 @@
                          VerticalOptions="FillAndExpand">
 
                 <Label
-                    HorizontalOptions="StartAndExpand"
-                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Fill"
+                    LineBreakMode="WordWrap"
                     Style="{StaticResource BodyLabelBlack}"
-                   Text="{Binding MessageTxt}"  />
+                    Text="{Binding MessageTxt}"  />
 
                 <buttons:SfButton
                     Command="{Binding CloseMsgViewCommand}"

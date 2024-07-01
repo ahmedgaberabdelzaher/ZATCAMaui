@@ -16,61 +16,36 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
 
         public ZakatForm5PageView(string Fbguid)
         {
-
-
             InitializeComponent();
             viewModel = App.Locator.ZakatForm5PageView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
             viewModel.Fbguid = Fbguid;
             _ = viewModel.LoadZakatForm5Data();
+
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = 0;
-            Padding = safeInsets;
 
             App.IsComingFromSleepMode = false;
-       
+
 
             Task.Run(() =>
             {
-               
+
                 if (viewModel != null)
                 {
-                    
+
                     viewModel.NextText = AppResources.ZZNext;
                     viewModel.setCurrentTab();
                 }
             });
-
         }
-        private async Task LoadData()
-        {
-            try
-            {
 
-
-
-            }
-            catch (Exception)
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            }
-        }
-        public void IntialiseAsync()
-        {
-            
-        }
 
         private void SetLTR()
         {
@@ -99,11 +74,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
             {
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
-        }
-
-        private void OnInfoTapped(object sender, EventArgs e)
-        {
-            // PopupNavigation.Instance.PushAsync(new DummyPopUp());
         }
 
 
@@ -169,8 +139,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Additional_Clicked(object sender, EventArgs e)
         {
             viewModel.isAdditionalVisible = true;
-            //           Additionalbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
-            //Cabsbtn.Style=SellBtn.Style=ProfessionalBtn.Style=LabourBtn.Style=IndustryBtn.Style=ContractingBtn.Style=Mineralsbtn.Style=InvestBtn.Style=Hotelsbtn.Style=EducationBtn.Style=Poultrybtn.Style=Carsbtn.Style= (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+            
 
             viewModel.isMineralVisible = false;
             viewModel.isCarVisible = false;
@@ -218,9 +187,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Minerals_Clicked(object sender, EventArgs e)
         {
             viewModel.isMineralVisible = true;
-            // Mineralsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            // Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isAdditionalVisible = false;
             viewModel.isCarVisible = false;
@@ -268,9 +235,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Cars_Clicked(object sender, EventArgs e)
         {
             viewModel.isCarVisible = true;
-            //  Carsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            //   Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isMineralVisible = false;
             viewModel.isAdditionalVisible = false;
@@ -317,9 +282,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Poultry_Clicked(object sender, EventArgs e)
         {
             viewModel.isPoultryVisible = true;
-            // Poultrybtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            //  Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = EducationBtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isCarVisible = false;
             viewModel.isMineralVisible = false;
@@ -366,9 +329,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Education_Clicked(object sender, EventArgs e)
         {
             viewModel.isEducationVisible = true;
-            //  EducationBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            //   Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = Hotelsbtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isPoultryVisible = false;
             viewModel.isCarVisible = false;
@@ -415,9 +376,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Hotels_Clicked(object sender, EventArgs e)
         {
             viewModel.isHotelVisible = true;
-            // Hotelsbtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            //  Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = InvestBtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isEducationVisible = false;
             viewModel.isPoultryVisible = false;
@@ -465,9 +424,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Invest_Clicked(object sender, EventArgs e)
         {
             viewModel.isRealEstateVisible = true;
-            //  InvestBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            // Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = ContractingBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
             viewModel.isHotelVisible = false;
             viewModel.isEducationVisible = false;
@@ -516,9 +473,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Contracting_Clicked(object sender, EventArgs e)
         {
             viewModel.isContractingVisible = true;
-            //  ContractingBtn.Style = (Style)Application.Current.Resources["SelectedBtn"];
 
-            //  Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = IndustryBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
 
 
             viewModel.isRealEstateVisible = false;
@@ -566,10 +521,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Industry_Clicked(object sender, EventArgs e)
         {
             viewModel.isIndustryVisible = true;
-            //  IndustryBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
-
-            // Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = LabourBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
-
+           
             viewModel.isContractingVisible = false;
             viewModel.isRealEstateVisible = false;
             viewModel.isHotelVisible = false;
@@ -616,9 +568,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Labour_Clicked(object sender, EventArgs e)
         {
             viewModel.isLabourOccupancyVisible = true;
-            // LabourBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
-
-            //Cabsbtn.Style = SellBtn.Style = ProfessionalBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+            
 
 
             viewModel.isIndustryVisible = false;
@@ -666,9 +616,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Sell_Clicked(object sender, EventArgs e)
         {
             viewModel.isBuyVisible = true;
-            //  SellBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
-
-            //  Cabsbtn.Style = LabourBtn.Style = ProfessionalBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+            
 
             viewModel.isLabourOccupancyVisible = false;
             viewModel.isIndustryVisible = false;
@@ -715,10 +663,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Professional_Clicked(object sender, EventArgs e)
         {
             viewModel.isProfessionalVisible = true;
-            // ProfessionalBtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
-
-            //  Cabsbtn.Style = SellBtn.Style = SellBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
-
+           
             viewModel.isBuyVisible = false;
             viewModel.isLabourOccupancyVisible = false;
             viewModel.isIndustryVisible = false;
@@ -765,9 +710,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatForm5
         private void Cabs_Clicked(object sender, EventArgs e)
         {
             viewModel.isCabVisible = true;
-            //Cabsbtn.Style= (Style)Application.Current.Resources["SelectedBtn"];
-
-            //      ProfessionalBtn.Style = SellBtn.Style = SellBtn.Style = IndustryBtn.Style = ContractingBtn.Style = InvestBtn.Style = Additionalbtn.Style = Hotelsbtn.Style = EducationBtn.Style = Poultrybtn.Style = Mineralsbtn.Style = Carsbtn.Style = (Style)Application.Current.Resources["BackgroundWhiteBtn"];
+            
 
             viewModel.isProfessionalVisible = false;
             viewModel.isBuyVisible = false;

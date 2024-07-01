@@ -558,8 +558,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxpayerSubsidyViewModel>();
-                    SimpleIoc.Default.Register<TaxpayerSubsidyViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayerSubsidyViewModel>();
                 }
                 catch (Exception)
@@ -758,8 +756,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxpayerCorrespondancePageViewModel>();
-                    SimpleIoc.Default.Register<TaxpayerCorrespondancePageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayerCorrespondancePageViewModel>();
                 }
                 catch (Exception)
@@ -776,8 +772,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxpayerCorrespondanceDetailPageViewModel>();
-                    SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayerCorrespondanceDetailPageViewModel>();
                 }
                 catch (Exception)
@@ -795,8 +789,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxpayersCertificatesPageViewModel>();
-                    SimpleIoc.Default.Register<TaxpayersCertificatesPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayersCertificatesPageViewModel>();
                 }
                 catch (Exception)
@@ -813,8 +805,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
-                    SimpleIoc.Default.Register<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
                 }
                 catch (Exception)
@@ -2309,8 +2299,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZAKATReturnDetailsViewModel>();
-                    SimpleIoc.Default.Register<ZAKATReturnDetailsViewModel>();
                     return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
                 }
                 catch (Exception)

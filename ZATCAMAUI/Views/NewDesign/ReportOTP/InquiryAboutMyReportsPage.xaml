@@ -348,10 +348,29 @@
                                 ContainerType="Outlined"
                                 HasError="{Binding IsNeedRewardError}"
                                 InputViewPadding="15,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
+
+                                <inputLayout:SfTextInputLayout.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsPhoneSelected}"
+                                            TargetType="inputLayout:SfTextInputLayout"
+                                            Value="True">
+                                            <Setter Property="Hint" Value="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsPhoneSelected}"
+                                            TargetType="inputLayout:SfTextInputLayout"
+                                            Value="False">
+                                            <Setter Property="Hint" Value="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}" />
+                                        </DataTrigger>
+
+                                    </inputLayout:SfTextInputLayout.Triggers>
+
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>

@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:numericinput="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
@@ -37,13 +36,20 @@
             ContainerBackground="White"
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
             LeadingViewPosition="Inside"
+            ShowHelperText="True"
+            HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                 <inputLayout:LabelStyle TextColor="#B00020" />
             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+              <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:LabelStyle TextColor="#58595B" />
+            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+
             <custom:GAZTBorderlessEntry
                 x:Name="typeItemEntry"
                 InputTransparent="True"
@@ -69,12 +75,6 @@
             </inputLayout:SfTextInputLayout.GestureRecognizers>
 
         </inputLayout:SfTextInputLayout>
-
-        <Label
-            Margin="3,-10,3,0"
-            FontSize="12"
-            Text="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
-            TextColor="#58595B" />
 
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
@@ -103,7 +103,7 @@
                 ContainerBackground="White"
                 ContainerType="Outlined"
                 InputViewPadding="16,0,16,0"
-                IsHintAlwaysFloated="True"
+                Hint="{x:Static ResourceManager:AppResources.Select}"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}">
@@ -159,13 +159,19 @@
                 ContainerBackground="White"
                 ContainerType="Outlined"
                 InputViewPadding="16,0,16,0"
-                IsHintAlwaysFloated="True"
+                Hint="{x:Static ResourceManager:AppResources.Productvalue}"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
+                ShowHelperText="True"
+                HelperText="{x:Static ResourceManager:AppResources.ProductValueHint}"
                 Stroke="{StaticResource NeutralGreay}">
                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                     <inputLayout:LabelStyle TextColor="#B00020" />
                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                    <inputLayout:LabelStyle TextColor="#58595B" />
+                </inputLayout:SfTextInputLayout.HelperLabelStyle>
 
                 <numericinput:SfNumericEntry
                     CustomFormat="N2"
@@ -188,12 +194,6 @@
                 </inputLayout:SfTextInputLayout.TrailingView>
 
             </inputLayout:SfTextInputLayout>
-
-            <Label
-                Margin="3,-10,3,0"
-                FontSize="12"
-                Text="{x:Static ResourceManager:AppResources.ProductValueHint}"
-                TextColor="#58595B" />
 
         </StackLayout>
 
@@ -226,13 +226,20 @@
                 ContainerBackground="White"
                 ContainerType="Outlined"
                 InputViewPadding="16,0,16,0"
-                IsHintAlwaysFloated="True"
+                Hint="{x:Static ResourceManager:AppResources.Weight}"
                 LeadingViewPosition="Inside"
+                ShowHelperText="True"
+                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}">
                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                     <inputLayout:LabelStyle TextColor="#B00020" />
                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:LabelStyle TextColor="#58595B" />
+            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+
                 <numericinput:SfNumericEntry
                     CustomFormat="N2"
                     FontFamily="{StaticResource SomarRegular}"
@@ -247,12 +254,6 @@
                     Value="{Binding Weight}" />
 
             </inputLayout:SfTextInputLayout>
-
-            <Label
-                Margin="3,-10,3,0"
-                FontSize="12"
-                Text="{x:Static ResourceManager:AppResources.NumberHint}"
-                TextColor="#58595B" />
 
         </StackLayout>
 
@@ -274,13 +275,20 @@
                 ContainerBackground="White"
                 ContainerType="Outlined"
                 InputViewPadding="16,0,16,0"
-                IsHintAlwaysFloated="True"
+                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                ShowHelperText="True"
+                Hint="{x:Static ResourceManager:AppResources.Quantity}"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}">
                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                     <inputLayout:LabelStyle TextColor="#B00020" />
                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:LabelStyle TextColor="#58595B" />
+            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+
                 <numericinput:SfNumericEntry
                     CustomFormat="N2"
                     FontFamily="{StaticResource SomarRegular}"
@@ -295,12 +303,6 @@
                     Value="{Binding Quantity}" />
 
             </inputLayout:SfTextInputLayout>
-
-            <Label
-                Margin="3,-10,3,0"
-                FontSize="12"
-                Text="{x:Static ResourceManager:AppResources.NumberHint}"
-                TextColor="#58595B" />
 
         </StackLayout>
 

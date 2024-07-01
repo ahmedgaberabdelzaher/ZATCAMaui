@@ -13,18 +13,22 @@
     HasBackButton="True"
     TitleText="{x:Static ResourceManager:AppResources.TransactionReception}">
     <newdesign:BaseContentPage.PancakeView>
-        <Grid>
+        <Grid Padding="15,20">
+
             <ScrollView VerticalScrollBarVisibility="Never">
                 <StackLayout>
+
                     <Label
                         FontFamily="{StaticResource SomarSemiBold}"
                         FontSize="18"
                         Text="{x:Static ResourceManager:AppResources.NewTransactionReception}"
                         TextColor="#002447" />
+
                     <Label
                         FontSize="12"
                         Text="{x:Static ResourceManager:AppResources.Pleasecompletethedata}"
                         TextColor="#999999" />
+
                     <Label Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
                         <Label.FormattedText>
                             <FormattedString>
@@ -33,18 +37,22 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
+
                     <!--#region Selection Options-->
                     <Grid ColumnDefinitions="*,15,*" RowDefinitions="auto">
+
                         <!--#region Individula Option-->
                         <Frame
                             Grid.Column="0"
                             Margin="0"
                             Padding="0"
                             CornerRadius="14">
+
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1" />
 
                             </Frame.GestureRecognizers>
+
                             <Grid Grid.Column="0">
 
 
@@ -58,6 +66,7 @@
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
+
                                 <StackLayout>
                                     <Image
                                         Margin="17,25,17,10"
@@ -75,6 +84,7 @@
                                             </DataTrigger>
                                         </Image.Triggers>
                                     </Image>
+
                                     <Label
                                         Margin="10,10,10,10"
                                         FontSize="16"
@@ -90,10 +100,14 @@
                                             </DataTrigger>
                                         </Label.Triggers>
                                     </Label>
+
                                 </StackLayout>
+
                             </Grid>
+
                         </Frame>
                         <!--#endregion-->
+
                         <!--#region Entity Option-->
                         <Frame
                             Grid.Column="2"
@@ -101,10 +115,11 @@
                             Padding="0"
                             CornerRadius="14">
                             <Grid Grid.Column="2">
+
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="2" />
-
                                 </Grid.GestureRecognizers>
+
 
                                 <Image
                                     Grid.Row="0"
@@ -161,7 +176,8 @@
 
 
                     <!--#region  Email Field-->
-                    <StackLayout Spacing="0">
+                    <StackLayout Spacing="0"
+                                 Margin="0,20,0,0">
 
                         <!--  Email Label  -->
                         <Label Style="{StaticResource CaptionLabelGrey}">
@@ -177,7 +193,7 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
+                            Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -196,7 +212,8 @@
 
                     <!--#region CR-->
                     <StackLayout IsVisible="{Binding IsEntity}">
-                        <StackLayout Spacing="0">
+
+                        <StackLayout>
 
                             <!--  CR Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
@@ -208,11 +225,12 @@
                                 </Label.FormattedText>
                             </Label>
                             <!--  CR DropDown Entry  -->
+
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.UnifiedNumber}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -235,13 +253,16 @@
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
+
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
+
                         <!--  ADD Button  -->
                         <Frame
                             Padding="12"
+                            Margin="0,0,0,20"
                             BackgroundColor="White"
                             BorderColor="#4FBBBD"
                             CornerRadius="14">
@@ -257,8 +278,10 @@
 
                             </Frame.GestureRecognizers>
                         </Frame>
+
                     </StackLayout>
                     <!--#endregion-->
+
                     <!--#region TinNo View-->
                     <StackLayout IsVisible="{Binding IsTinNoVisible}">
                         <StackLayout Spacing="0">
@@ -276,7 +299,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.TIN}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -309,10 +332,14 @@
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="20"
+                                Margin="0,10"
                                 Text="{x:Static ResourceManager:AppResources.nationaladdress}"
                                 TextColor="{StaticResource PrimaryColor}" />
-                            <Grid ColumnDefinitions="*,*" RowDefinitions="auto,auto,auto,auto,auto,auto">
-                                <Label Grid.Row="0" Grid.Column="0">
+                            <Grid ColumnDefinitions="*,*"
+                                  ColumnSpacing="10"
+                                  RowDefinitions="auto,auto,auto,auto,auto,auto">
+
+                                <Label >
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.Buildingnumber}" />
@@ -328,7 +355,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.Buildingnumber}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -361,7 +388,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.Streetname}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -390,7 +417,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.Districtname}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -419,7 +446,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.Cityname}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -453,7 +480,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.PostalCode}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -482,7 +509,7 @@
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="{x:Static ResourceManager:AppResources.SecondaryNumber}"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -502,7 +529,8 @@
                     <!--#endregion-->
 
                     <!--#region  Subject Field-->
-                    <StackLayout Spacing="0">
+                    <StackLayout Spacing="0"
+                                 Margin="0,10,0,0">
                         <!--  Subject Label  -->
                         <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
@@ -517,7 +545,7 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
+                            Hint="{x:Static ResourceManager:AppResources.Enterthesubjectofthetransaction}"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -550,7 +578,7 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
+                            Hint="{x:Static ResourceManager:AppResources.Transactiondescription}"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -591,14 +619,20 @@
                             ContainerType="Outlined"
                             HelperText="{x:Static ResourceManager:AppResources.PDFFileHint}"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
+                            Hint="{x:Static ResourceManager:AppResources.Addattachments}"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}"
                             VerticalOptions="StartAndExpand">
+
                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                 <inputLayout:LabelStyle TextColor="#B00020" />
                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                            <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                                <inputLayout:LabelStyle TextColor="{StaticResource NeutralGreay}" />
+                            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+
                             <custom:GAZTBorderlessEntry
                                 IsReadOnly="True"
                                 Keyboard="Text"
@@ -674,6 +708,7 @@
 
                     </StackLayout>
                     <!--#endregion-->
+
                     <!--  Send Button  -->
                     <buttons:SfButton
                         Margin="0,40"
@@ -684,9 +719,6 @@
                 </StackLayout>
             </ScrollView>
 
-            <!--#region Display All Crc-->
-            <!--  Bottom Sheet List  -->
-            <custom:ListBottomSheet Grid.Row="0" IsVisible="{Binding IsShowBottomSheet}" />
 
         </Grid>
 

@@ -1,7 +1,7 @@
 ﻿using RGPopup.Maui.Pages;
 using RGPopup.Maui.Services;
 using System.Collections.ObjectModel;
-using System.Globalization;
+using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 
@@ -45,33 +45,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
             }
         }
-        private void OnTextChanged(object sender, TextChangedEventArgs e)
+
+        private void Close_Tapped(object sender, EventArgs e)
         {
-            var searchPhrase = e.NewTextValue.Trim();
 
-            try
-            {
-                if (searchPhrase.Length > 0)
-                {
-                    viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodesAllValues.Where(name => name.Landx.ToLower().Contains(searchPhrase.ToLower()) || name.Telefto.ToLower().Contains(searchPhrase.ToLower())));
-                }
-                else
-                {
-                    viewModel.refreshList();
-                    viewModel.MobileCodes = mobileData;
-                }
-            }
-            catch (Exception)
-            {
+            PopupNavigation.Instance.PopAsync();
 
-            }
         }
 
-        private void List_ItemTapped(object sender, SelectionChangedEventArgs e)
+        void TapGestureRecognizer_Tapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
         {
             try
             {
-                var dataItem = e.CurrentSelection as InternationalMobileData;
+                var dataItem = e.Parameter as InternationalMobileData;
                 MessagingCenter.Send(this, "SelectedItem", dataItem.Telefto.ToString());
 
                 MessagingCenter.Send(this, "SelectedCountryCode", dataItem.Land1.ToString());
@@ -80,14 +66,38 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             catch (Exception)
             {
 
-
             }
+           
         }
-        private void Close_Tapped(object sender, EventArgs e)
+
+        void searchEntry_TextChanged(System.Object sender, Microsoft.Maui.Controls.TextChangedEventArgs e)
         {
 
-            PopupNavigation.Instance.PopAsync();
+            try
+            {
+                if (e != null)
+                {
+                    
+                    var value = e.NewTextValue.Trim().ToLower();
 
+                    if (string.IsNullOrWhiteSpace(value))
+                    {
+                        viewModel.refreshList();
+                        viewModel.MobileCodes = mobileData;
+                    }
+                    else
+                    {
+                        var result = viewModel.MobileCodesAllValues.Where(s => s.Landx.ToLower().Contains(value));
+                        viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(result);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                searchEntry.Text = string.Empty;
+            }
+
+           
         }
     }
 }

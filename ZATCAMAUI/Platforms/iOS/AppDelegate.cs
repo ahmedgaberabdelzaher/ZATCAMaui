@@ -20,6 +20,7 @@ public class AppDelegate : MauiUIApplicationDelegate
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             CrossMediaManager.Current.Init();
+            //Firebase.Core.App.Configure();
             ServicePointManager
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;

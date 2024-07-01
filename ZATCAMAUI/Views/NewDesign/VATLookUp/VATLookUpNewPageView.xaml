@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
@@ -14,226 +13,222 @@
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="Android, UWP">0</On>
-            <On Platform="iOS">0,20,0,0</On>
-        </OnPlatform>
-    </ContentPage.Padding>
 
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
+
             <Border
                 Grid.Row="1"
                 Margin="0"
-                Padding="0"
+                Padding="15"
                 IsVisible="{Binding IsMainView}"
                 Style="{StaticResource CommonTopCurves}"
                 VerticalOptions="FillAndExpand">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                    </Grid.RowDefinitions>
+                <ScrollView VerticalScrollBarVisibility="Never">
+                    <StackLayout>
 
-                    <StackLayout Grid.Row="0">
-                        <ScrollView VerticalScrollBarVisibility="Never">
-                            <StackLayout Padding="10">
+                        <StackLayout Spacing="10">
+
+                            <Label
+                                LineHeight=".8"
+                                Style="{StaticResource SectionTitleBlack}"
+                                Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" />
+
+                            <Label Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVATLookUpTitleSub}" />
+
+                            <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1" />
+
+                            <StackLayout>
+
                                 <Label
-                                    LineHeight=".8"
-                                    Style="{StaticResource SectionTitleBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" />
-                                <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVATLookUpTitleSub}" />
-                                <BoxView BackgroundColor="{StaticResource NeutralGreay}" HeightRequest="1" />
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
-                                    </Grid.RowDefinitions>
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZSearchParameter}" />
 
-                                    <Label
-                                        Grid.Row="0"
-                                        Padding="0,0,0,0"
-                                        Style="{StaticResource CaptionLabelGrey}"
-                                        Text="{x:Static ResourceManager:AppResources.ZSearchParameter}" />
-
-                                    <inputLayout:SfTextInputLayout
-                                        Grid.Row="1"
-                                        Margin="0,-6,0,-6"
+                                <inputLayout:SfTextInputLayout
                                         ContainerType="Outlined"
-                                        HasError="False"
-                                        IsHintAlwaysFloated="True"
-                                        OutlineCornerRadius="8"
+                                        ContainerBackground="White"
+                                        InputViewPadding="16,0,16,0"
+                                        OutlineCornerRadius="15"
                                         Stroke="{StaticResource Primary}">
                                         <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <custom:GAZTBorderlessEntry
+                                            IsReadOnly="True"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding TxtSearchParameter}"
                                             TextColor="{StaticResource Primary}" />
                                     </inputLayout:SfTextInputLayout>
-                                    <buttons:SfButton
-                                        x:Name="PPicker_btn"
-                                        Grid.Row="1"
-                                        Background="Transparent"
-                                        Clicked="PPicker_btn_Clicked"
-                                        FontSize="Small" />
 
-                                    <syncfusion:SfPicker
-                                        x:Name="PPicker"
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Background="white"
-                                        ItemHeight="40"
-                                        Mode="Dialog"
-                                        SelectionChanged="PPicker_SelectionChanged">
+                                <syncfusion:SfPicker
+                                    x:Name="PPicker"
+                                    Background="white"
+                                    ItemHeight="40"
+                                    IsOpen="False"
+                                    Mode="Dialog"
+                                    OkButtonClicked="PPicker_OkButtonClicked"
+                                    CancelButtonClicked="PPicker_CancelButtonClicked"
+                                    SelectionChanged="PPicker_SelectionChanged">
 
-                                        <syncfusion:SfPicker.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
-                                        </syncfusion:SfPicker.TextStyle>
+                                    <syncfusion:SfPicker.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+                                    </syncfusion:SfPicker.TextStyle>
 
-                                        <syncfusion:SfPicker.Columns>
-                                            <syncfusion:PickerColumn
-                                                Width="300"
-                                                DisplayMemberPath="ParameterType"
-                                                ItemsSource="{Binding ParameterTypeList}" />
-                                        </syncfusion:SfPicker.Columns>
+                                    <syncfusion:SfPicker.Columns>
+                                        <syncfusion:PickerColumn
+                                            Width="300"
+                                            DisplayMemberPath="ParameterType"
+                                            ItemsSource="{Binding ParameterTypeList}" />
+                                    </syncfusion:SfPicker.Columns>
 
-                                        <syncfusion:SfPicker.SelectedTextStyle>
-                                            <syncfusion:PickerTextStyle
-                                                FontAttributes="Bold"
-                                                FontSize="15"
-                                                TextColor="{StaticResource NeutralBlack}" />
-                                        </syncfusion:SfPicker.SelectedTextStyle>
+                                    <syncfusion:SfPicker.SelectedTextStyle>
+                                        <syncfusion:PickerTextStyle
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            TextColor="White" />
+                                    </syncfusion:SfPicker.SelectedTextStyle>
 
 
 
-                                        <syncfusion:SfPicker.SelectionView>
-                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                        </syncfusion:SfPicker.SelectionView>
+                                    <syncfusion:SfPicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </syncfusion:SfPicker.SelectionView>
 
-                                        <syncfusion:SfPicker.HeaderView>
+                                    <syncfusion:SfPicker.HeaderView>
 
-                                            <syncfusion:PickerHeaderView
-                                                Height="55"
-                                                Background="{StaticResource Primary}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
-                                                <syncfusion:PickerHeaderView.TextStyle>
-                                                    <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
-                                                </syncfusion:PickerHeaderView.TextStyle>
-                                            </syncfusion:PickerHeaderView>
+                                        <syncfusion:PickerHeaderView
+                                            Height="55"
+                                            Background="{StaticResource Primary}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                            <syncfusion:PickerHeaderView.TextStyle>
+                                                <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
+                                            </syncfusion:PickerHeaderView.TextStyle>
+                                        </syncfusion:PickerHeaderView>
 
-                                        </syncfusion:SfPicker.HeaderView>
+                                    </syncfusion:SfPicker.HeaderView>
 
-                                        <syncfusion:SfPicker.FooterView>
+                                    <syncfusion:SfPicker.FooterView>
 
-                                            <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46"
+                                                                     Background="{StaticResource NeutralBlack}">
 
-                                                <syncfusion:PickerFooterView.TextStyle>
-                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                                                </syncfusion:PickerFooterView.TextStyle>
+                                            <syncfusion:PickerFooterView.TextStyle>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
+                                            </syncfusion:PickerFooterView.TextStyle>
 
-                                            </syncfusion:PickerFooterView>
+                                        </syncfusion:PickerFooterView>
 
-                                        </syncfusion:SfPicker.FooterView>
+                                    </syncfusion:SfPicker.FooterView>
 
                                     </syncfusion:SfPicker>
 
-                                    <StackLayout Grid.Row="2">
-                                        <Label
-                                            Padding="0,0,0,0"
-                                            Style="{StaticResource CaptionLabelGrey}"
-                                            Text="{Binding SelectedParameterType.ParameterType}" />
-                                        <inputLayout:SfTextInputLayout
-                                            x:Name="frmLookupNumner"
-                                            Margin="0,-6,0,-6"
-                                            ContainerType="Outlined"
-                                            HasError="False"
-                                            IsHintAlwaysFloated="True"
-                                            OutlineCornerRadius="8"
-                                            Stroke="{StaticResource Primary}">
-                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <custom:GAZTBorderlessEntry
-                                                MaxLength="{Binding MaxDigids}"
-                                                Placeholder="{Binding SelectedParameterType.ParameterType}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding LookupNumber}"
-                                                TextColor="{StaticResource Primary}">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behaviors:OnlyNumericValuesBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
-                                            </custom:GAZTBorderlessEntry>
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Label
-                                                    Margin="0,0,0,4"
-                                                    FontSize="Title"
-                                                    HorizontalOptions="End"
-                                                    IsEnabled="{Binding IsTooltipEnableVisible}"
-                                                    IsVisible="{Binding IsTooltipEnableVisible}"
-                                                    Style="{StaticResource IconLabelStyle}"
-                                                    Text="{StaticResource Help}"
-                                                    TextColor="{StaticResource SecondaryNew}"
-                                                    VerticalOptions="Center">
-                                                    <Label.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                                                    </Label.GestureRecognizers>
-                                                </Label>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
-                                        </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PPicker_btn_Clicked"/>
+                                </StackLayout.GestureRecognizers>
 
-                                    <Border
-                                        Grid.Row="3"
-                                        Margin="0,10,0,10"
-                                        IsVisible="{Binding IsNameVisible}"
-                                        Style="{StaticResource GreyBorderFrame}">
-                                        <StackLayout
-                                            Padding="15,10,15,10"
-                                            IsVisible="{Binding IsNameVisible}"
-                                            Orientation="Horizontal">
-                                            <Label
-                                                HorizontalOptions="Start"
-                                                Style="{StaticResource ValueLabelGrey}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZTaxPayerName}" />
-                                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-                                                <Label
-                                                    HorizontalOptions="Start"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding Name}" />
-
-                                            </StackLayout>
-                                        </StackLayout>
-                                    </Border>
-
-                                </Grid>
                             </StackLayout>
 
-                        </ScrollView>
+                            <StackLayout>
+
+                                <Label
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{Binding SelectedParameterType.ParameterType}" />
+
+                                <inputLayout:SfTextInputLayout
+                                    x:Name="frmLookupNumner"
+                                    ContainerType="Outlined"
+                                    Hint="{Binding SelectedParameterType.ParameterType}"
+                                    OutlineCornerRadius="15"
+                                    ContainerBackground="White"
+                                    InputViewPadding="16,0,16,0"
+                                    Stroke="{StaticResource Primary}">
+
+                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <inputLayout:LabelStyle TextColor="#B00020" />
+                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                    <custom:GAZTBorderlessEntry
+                                        MaxLength="{Binding MaxDigids}"
+                                        Placeholder="{Binding SelectedParameterType.ParameterType}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding LookupNumber}"
+                                        Keyboard="Numeric"
+                                        TextColor="{StaticResource Primary}">
+
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviors:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                    </custom:GAZTBorderlessEntry>
+
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Label
+                                            Margin="0,0,0,4"
+                                            FontSize="Title"
+                                            HorizontalOptions="End"
+                                            IsEnabled="{Binding IsTooltipEnableVisible}"
+                                            IsVisible="{Binding IsTooltipEnableVisible}"
+                                            Style="{StaticResource IconLabelStyle}"
+                                            Text="{StaticResource Help}"
+                                            TextColor="{StaticResource SecondaryNew}"
+                                            VerticalOptions="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                </inputLayout:SfTextInputLayout>
+
+                            </StackLayout>
+
+                            
+                            <Border
+                                Margin="0,10,0,10"
+                                IsVisible="{Binding IsNameVisible}"
+                                Style="{StaticResource GreyBorderFrame}">
+
+                                <StackLayout
+                                    Padding="15,10,15,10"
+                                    Spacing="10"
+                                    IsVisible="{Binding IsNameVisible}"
+                                    Orientation="Horizontal">
+
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZTaxPayerName}" />
+
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{Binding Name}" />
+
+                                </StackLayout>
+
+                            </Border>
+
+                        </StackLayout>
+
+                        <buttons:SfButton
+                                x:Name="btnScan"
+                                
+                                VerticalOptions="EndAndExpand"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZQRScanner}" />
+
+                        <buttons:SfButton
+                                x:Name="btnSearch"
+                                Margin="0,20"
+                                VerticalOptions="End"
+                                Command="{Binding OnSearchButtonClicked}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{Binding LookUpButtonText}" />
 
                     </StackLayout>
-                    <StackLayout
-                        Grid.Row="1"
-                        Padding="10,5,10,30"
-                        BackgroundColor="White"
-                        HorizontalOptions="Center">
-                        <buttons:SfButton
-                            x:Name="btnScan"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZQRScanner}" />
-                        <buttons:SfButton
-                            x:Name="btnSearch"
-                            Command="{Binding OnSearchButtonClicked}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{Binding LookUpButtonText}" />
 
-                    </StackLayout>
-                </Grid>
+                </ScrollView>
             </Border>
 
             <!--#region Scan View-->
@@ -377,14 +372,15 @@
             </Border>
 
             <!--#endregion-->
-            <!--#region Success Result View-->
 
+            <!--#region Success Result View-->
             <Border
                 Grid.Row="1"
                 Margin="0"
                 Padding="20"
                 IsVisible="{Binding IsShowRsltView}"
                 Style="{StaticResource CommonTopCurves}">
+
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -569,57 +565,16 @@
 
 
                 </Grid>
+
             </Border>
-
             <!--#endregion-->
-            <Grid
-                Grid.Row="1"
-                Grid.Column="0"
-                IsVisible="{Binding IsLoading}">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
 
-            <custom:Header
-                Grid.Row="0"
-                Padding="0,35,0,10"
-                TitleText="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}">
-                <custom:Header.Padding>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="0,10,0,10" />
-                        <On Platform="Android" Value="0,10,0,10" />
-                    </OnPlatform>
-                </custom:Header.Padding>
+            <custom:Loader Grid.RowSpan="2"
+                           IsVisible="{Binding IsLoading}"/>
 
-            </custom:Header>
+            <custom:Header TitleText="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"/>
+
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

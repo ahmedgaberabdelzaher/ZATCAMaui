@@ -24,23 +24,27 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <Grid>
-        <Grid RowDefinitions="auto,*">
-            <Border
-                x:Name="MainContainer"
-                Grid.Row="1"
-                Padding="0"
-                x:FieldModifier="public"
-                BackgroundColor="White"
-                Stroke="Transparent"
-                StrokeShape="RoundRectangle 15,15,0,0" />
+    <Grid RowDefinitions="auto,*">
 
-            <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
+        <Border
+            x:Name="MainContainer"
+            Grid.Row="1"
+            Padding="0"
+            x:FieldModifier="public"
+            BackgroundColor="White"
+            Stroke="Transparent"
+            StrokeShape="RoundRectangle 15,15,0,0" />
 
-            <controls:Loader Grid.Row="1" IsVisible="{Binding IsLoading}" />
+        <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
 
-        </Grid>
+        <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-        <controls:MsgView IsVisible="{Binding IsShowMsgView}" VerticalOptions="EndAndExpand" />
+        <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}"
+                          BackgroundColor="White"
+                          VerticalOptions="EndAndExpand" />
+
+         <!--  Bottom Sheet List  -->
+        <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
+
     </Grid>
 </ContentPage>

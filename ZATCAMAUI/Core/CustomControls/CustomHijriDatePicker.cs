@@ -62,9 +62,11 @@ namespace ZATCAMAUI.Core.CustomControls
         }
         public CustomHijriDatePicker()
         {
+            this.FooterView.OkButtonText = AppResources.OKText;
+            this.FooterView.CancelButtonText = AppResources.CancelText;
+
             if (!FutureDay) InitializeDatePicker();
             else InitializeFutureDatePicker();
-            this.FlowDirection = FlowDirection.RightToLeft;
         }
 
         private void Picker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
@@ -169,7 +171,7 @@ namespace ZATCAMAUI.Core.CustomControls
                 {
                     HeaderText = AppResources.ZakatYear,
                     ItemsSource = year,
-                    SelectedIndex = year.IndexOf(hijri.GetYear(DateTime.Today).ToString()),
+                    SelectedIndex = year.IndexOf((hijri.GetYear(DateTime.Today)-1).ToString()),
                 };
 
                 pickerColumns = new ObservableCollection<PickerColumn>()
@@ -292,6 +294,12 @@ namespace ZATCAMAUI.Core.CustomControls
 
             SelectedDate = new DateTime();
             SelectedItem = default(object);
+        }
+
+        protected override void OnPopupClosed(EventArgs e)
+        {
+            base.OnPopupClosed(e);
+            this.IsOpen = false;
         }
     }
 }

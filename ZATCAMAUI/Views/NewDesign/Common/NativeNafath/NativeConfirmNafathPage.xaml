@@ -16,7 +16,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+            <Grid Padding="15,10" ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 
@@ -89,8 +89,7 @@
                         <!--  Horizontal Line  -->
                         <BoxView
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                            HeightRequest="2" />
 
                         <!--  ConfirmOpenningNafath Label  -->
                         <Frame

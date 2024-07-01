@@ -10,74 +10,72 @@
     FlowDirection="{Binding AppDirection}"
     TitleText="{x:Static ResourceManager:AppResources.NDVATServices}">
 
-    <Grid RowDefinitions="auto,*">
+   <Grid RowDefinitions="auto,*">
 
-        <Image
-            HeightRequest="110"
-            HorizontalOptions="CenterAndExpand"
-            Source="ZatcaLogoWithTitle"
-            VerticalOptions="StartAndExpand"
-            WidthRequest="190" />
+            <Image
+                HeightRequest="110"
+                HorizontalOptions="CenterAndExpand"
+                Source="ZatcaLogoWithTitle"
+                VerticalOptions="Start"
+                WidthRequest="190" />
 
+            <CollectionView
+                x:Name="menu"
+                Grid.Row="1"
+                Margin="0,0,0,80"
+                CollectionView.ItemsSource="{Binding SideMenuServiceLst}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
 
-        <CollectionView
-            x:Name="menu"
-            Grid.Row="1"
-            CollectionView.ItemsSource="{Binding SideMenuServiceLst}"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemTemplate>
 
-            <CollectionView.ItemTemplate>
+                    <DataTemplate>
 
-                <DataTemplate>
+                        <StackLayout x:Name="Item" Spacing="10">
 
-                    <StackLayout x:Name="Item" Spacing="10">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                    Command="{Binding SideMenuNavigationCommand}"
+                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                            </StackLayout.GestureRecognizers>
 
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer
-                                BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
-                                Command="{Binding SideMenuNavigationCommand}"
-                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                        </StackLayout.GestureRecognizers>
+                            <StackLayout
+                                Padding="20,15"
+                                HorizontalOptions="StartAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="15">
 
-                        <StackLayout
-                            Padding="20,15"
-                            HorizontalOptions="StartAndExpand"
-                            Orientation="Horizontal"
-                            Spacing="15">
+                                <Image
+                                    HeightRequest="30"
+                                    HorizontalOptions="Start"
+                                    Source="{Binding ImageSource}"
+                                    WidthRequest="32" />
 
-                            <Image
-                                HeightRequest="30"
-                                HorizontalOptions="Start"
-                                Source="{Binding ImageSource}"
-                                WidthRequest="32" />
+                                <Label
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource ValueLabelWhiteBold}"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="Center" />
 
-                            <Label
-                                HorizontalTextAlignment="Start"
-                                Style="{StaticResource ValueLabelWhiteBold}"
-                                Text="{Binding Name}"
-                                VerticalOptions="Center" />
+                            </StackLayout>
+
+                            <BoxView
+                                Margin="15,0,15,0"
+                                HeightRequest="1"
+                                Style="{StaticResource WhiteLineSeperator}" />
 
                         </StackLayout>
 
-                        <BoxView
-                            Margin="15,0,15,0"
-                            HeightRequest="1"
-                            Style="{StaticResource WhiteLineSeperator}" />
+                    </DataTemplate>
 
-                    </StackLayout>
+                </CollectionView.ItemTemplate>
 
-                </DataTemplate>
+            </CollectionView>
+       
+            <custom:BottomMenu Grid.Row="2" VerticalOptions="EndAndExpand" />
 
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
-
-        <custom:BottomMenu Grid.Row="2" VerticalOptions="EndAndExpand" />
-
-
-
-    </Grid>
+   </Grid>
 
 </newdesign:BaseContentPage>

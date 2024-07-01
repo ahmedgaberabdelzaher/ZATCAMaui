@@ -103,7 +103,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             try
             {
-                MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodesAllValues.OrderBy(x => x.Telefto).ToList());
+                if(MobileCodes == null || MobileCodes.Count == 0)
+                    MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodesAllValues.OrderBy(x => x.Telefto).ToList());
             }
             catch (Exception)
             {

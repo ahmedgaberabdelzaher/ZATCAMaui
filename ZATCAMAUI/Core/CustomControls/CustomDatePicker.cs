@@ -61,7 +61,8 @@ namespace ZATCAMAUI.Core.CustomControls
         }
         public CustomDatePicker()
         {
-
+            this.FooterView.OkButtonText = AppResources.OKText;
+            this.FooterView.CancelButtonText = AppResources.CancelText;
             if (!FutureDay) InitializeDatePicker();
             else InitializeFutureDatePicker();
 
@@ -171,7 +172,7 @@ namespace ZATCAMAUI.Core.CustomControls
                 {
                     HeaderText = AppResources.ZakatYear,
                     ItemsSource = year,
-                    SelectedIndex = year.IndexOf(DateTime.Today.Year.ToString()),
+                    SelectedIndex = year.IndexOf((DateTime.Today.Year -1).ToString()),
                 };
 
                 pickerColumns = new ObservableCollection<PickerColumn>()
@@ -294,6 +295,12 @@ namespace ZATCAMAUI.Core.CustomControls
 
             SelectedDate = new DateTime();
             SelectedItem = default(object);
+        }
+
+        protected override void OnPopupClosed(EventArgs e)
+        {
+            base.OnPopupClosed(e);
+            this.IsOpen = false;
         }
     }
 }

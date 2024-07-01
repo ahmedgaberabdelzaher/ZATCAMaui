@@ -466,14 +466,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             SetDefaultDate();
             InquireThrougTypes = new ObservableCollection<InquireTypes>()
             {
- new InquireTypes()
- {
-     Name=AppResources.InQuerywithstatementinformation,Id=1
- }  ,
-  new InquireTypes()
- {
-     Name=AppResources.Inquiryforpolicyinformation,Id=2
- }  ,
+                 new InquireTypes()
+                 {
+                     Name=AppResources.InQuerywithstatementinformation,Id=1
+                 }  ,
+                  new InquireTypes()
+                 {
+                     Name=AppResources.Inquiryforpolicyinformation,Id=2
+                 }  ,
             };
         }
 
@@ -530,16 +530,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
 
                     if (PortsStaticLst != null && PortsStaticLst.Count > 0)
                     {
-                        /*var res = await ActionSheet.ShowActionSheet(null, AppResources.CancelText, null, Ports.Select(c => c.Name).ToArray());
-                        if (!String.IsNullOrEmpty(res) && res != AppResources.CancelText)
-                        {
-                            SelectedPort = Ports.First(c => c.Name == res);
-                        }*/
                         Ports = PortsStaticLst;
                         IsPortsPickerSearch = true;
                         IsPickerOpened = true;
@@ -561,11 +556,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     if (DeclartionTpesStaticLst != null && DeclartionTpesStaticLst.Count > 0)
                     {
-                        /*var res = await ActionSheet.ShowActionSheet(null, AppResources.CancelText, null, DeclarationTypes.Select(c => c.Value).ToArray());
-                        if (!String.IsNullOrEmpty(res) && res != AppResources.CancelText)
-                        {
-                            SelectedDeclarationType = DeclarationTypes.First(c => c.Value == res);
-                        }*/
                         DeclarationTypes = DeclartionTpesStaticLst;
                         IsPortsPickerSearch = true; IsDeclarationTypeOpened = true;
                     }
@@ -580,10 +570,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         }
         public StringBuilder GetCaptcha()
         {
-            //Device.BeginInvokeOnMainThread(() =>
-            //{
-            //    SelectedParameterType = ParameterTypeList[0];
-            //});
             StringBuilder Captcha;
             try
             {
@@ -592,8 +578,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 StringBuilder captcha = new StringBuilder();
                 for (int i = 0; i < 6; i++)
                     captcha.Append(combination[random.Next(combination.Length)]);
-                //Session["captcha"] = captcha.ToString();
-                //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
                 Captcha = captcha;
             }
             catch
@@ -607,7 +591,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command(async () =>
+                return new Command(() =>
                 {
                     try
                     {
@@ -615,15 +599,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         IsLoading = true;
                         if (SelectedPort != null)
                         {
-                            //await GetCarriers(SelectedPort.port_cd);
                             if (CarriersStaticLst != null && CarriersStaticLst.Count > 0)
                             {
-
-                                /*         var res = await ActionSheet.ShowActionSheet(null, AppResources.CancelText, null, Carriers.Select(c => c.carr_name).ToArray());
-                                         if (!String.IsNullOrEmpty(res) && res != AppResources.CancelText)
-                                         {
-                                             SelectedCarrier = Carriers.First(c => c.carr_name == res);
-                                         }*/
                                 Carriers = CarriersStaticLst;
                                 IsPortsPickerSearch = IsCarrierOpened = true;
 
@@ -669,22 +646,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command(() =>
+                return new Command((hijriDatePicker) =>
                 {
-                    IsOpenHijriPicker = true;
+                    var date = hijriDatePicker as CustomHijriDatePicker;
+                    date.IsOpen = true;
                 });
             }
         }
-        public ICommand CloseHijriPickerCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    IsOpenHijriPicker = false;
-                });
-            }
-        }
+
         public ICommand ChangeFilterByCommand
         {
             get
@@ -733,7 +702,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     Ports = data.Item1.Data;
                     PortsStaticLst = Ports;
-                    // SelectedPort = null;
                 }
             }
             catch (Exception)
@@ -834,21 +802,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         IsMainPage = false;
                         await SendOtpSMS(DeclarionByInformationInquireLst[0].mobile_nbr);
                         IsOTPView = true;
-                        // await LoadInquiryDetails();
-                        /*
-                        IsDetailsVisible = true;
-                        if (isFromBillInfo)
-                        {
-                            GetDeclarationFees(no.Value, selectedPort.port_cd,date,declarationType.Value);
-                           await GetDeclarationStatmentItems(declarationType.Value);
-                        }
-                        else
-                        {
-                            
-                            GetDeclarationFees(DeclarationNumber.Value, selectedPort.port_cd, HijriDateToBeDisplayed, SelectedDeclarationType.Key);
-                           await GetDeclarationStatmentItems(SelectedDeclarationType.Key);
-                        }
-                      */
+                        IsStatmentDetailsVisible = false;
+                        IsDetailsVisible = false;
+
                     }
                 }
                 else
@@ -873,13 +829,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             IsDetailsVisible = true;
             if (IsFromBillInfo)
             {
-                GetDeclarationFees(DeclarationNumber.Value, SelectedPort.port_cd, Date, DeclarationType.Value);
+                await GetDeclarationFees(DeclarationNumber.Value, SelectedPort.port_cd, Date, DeclarationType.Value);
                 await GetDeclarationStatmentItems(DeclarationType.Value);
             }
             else
             {
 
-                GetDeclarationFees(DeclarationNumber.Value, selectedPort.port_cd, HijriDateToBeDisplayed, SelectedDeclarationType.Key);
+               await GetDeclarationFees(DeclarationNumber.Value, selectedPort.port_cd, HijriDateToBeDisplayed, SelectedDeclarationType.Key);
                 await GetDeclarationStatmentItems(SelectedDeclarationType.Key);
             }
 
@@ -889,9 +845,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
-                // IsLoading = true;
-
-                //var data = await _customInquiryService.GetDclFees(selectedPort.port_cd, DeclarationNumber, HijriDateToBeDisplayed.Replace("/", "-"), selectedDeclarationType.Key);
                 var data = await _customInquiryService.GetDclFees(port, declarationNumber, date.Replace("/", "-"), typeCode);
 
                 if (data.Item2)
@@ -923,18 +876,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 if (DeclarionByInformationInquireLst != null && DeclarionByInformationInquireLst.Count > 0)
 
-                /* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-                Before:
-                                {
-
-
-                                    var dcltn_isn = DeclarionByInformationInquireLst[0].dcltn_isn;
-                After:
-                                {
-
-
-                                    var dcltn_isn = DeclarionByInformationInquireLst[0].dcltn_isn;
-                */
                 {
 
 
@@ -944,9 +885,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     if (data.Item2)
                     {
                         StatmentItemsLst = data.Item1.data;
-                        // StatmentItemsLst.Add(data.Item1.data.First());
-
-
                     }
                 }
             }
@@ -967,7 +905,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     if (data.Item1.code != 200)
                     {
-                        //await _dialogService.ShowMessage(AppResources.DeclarationNotAvailableMsg, "");
                         MessageTxt = AppResources.DeclarationNotAvailableMsg;
 
                         IsShowMsgView = true;
@@ -1013,13 +950,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         {
 
                             await GetDeclarationsByInformation();
-                            //GetDeclarationFees(DeclarationNumber, selectedPort.port_cd, HijriDateToBeDisplayed, SelectedDeclarationType.Key);
-                            //GetDeclarationStatmentItems(SelectedDeclarationType.Key);
                         }
                     }
                     else
                     {
-                        //  await _dialogService.ShowMessage(AppResources.InquiryDataRequiredAttentionMsg, "");
                         MessageTxt = AppResources.InquiryDataRequiredAttentionMsg;
                         IsShowMsgView = true;
                     }
@@ -1032,11 +966,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command<StatmentItems>(async (e) =>
+                return new Command<StatmentItems>( (e) =>
                 {
                     SelectedStatmentItems = e;
                     IsStatmentDetailsVisible = true;
                     IsDetailsVisible = false;
+                    IsOTPView = false;
                 });
             }
 
@@ -1054,6 +989,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     IsMainPage = true;
                     IsDetailsVisible = false;
                     IsStatmentDetailsVisible = false;
+                    IsOTPView = false;
 
                     StatmentItemsLst = null;
                     DeclarionFeesLst = null;
@@ -1085,6 +1021,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     IsStatmentDetailsVisible = false;
                     IsDetailsVisible = true;
                     IsFeesDescriptionVisible = false;
+                    IsOTPView = false;
                 });
             }
         }
@@ -1094,11 +1031,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command(() =>
+                return new Command(async() =>
                 {
-                    GetPorts();
-                    GetDeclarationTypes();
-                    GetCarriers();
+                   await GetPorts();
+                    await GetDeclarationTypes();
+                    await GetCarriers();
                 });
             }
         }
@@ -1168,23 +1105,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     if (TodayDateinHijri != null && TodayDateinHijri.Count > 0)
                     {
-                        /* string month = TodayDateinHijri[1].ToString();
-                         string day = TodayDateinHijri[0].ToString();
-                         string year = TodayDateinHijri[2].ToString();
-                         HijriDateToBeDisplayed = day + "/" + month + "/" + year;
-                         */
                         string month = TodayDateinHijri[1].ToString();
                         string day; string year;
-                        if (Device.RuntimePlatform == Device.Android)
-                        {
-                            day = TodayDateinHijri[0].ToString();
-                            year = TodayDateinHijri[2].ToString();
-                        }
-                        else
-                        {
-                            day = TodayDateinHijri[2].ToString();
-                            year = TodayDateinHijri[0].ToString();
-                        }
+                        day = TodayDateinHijri[0].ToString();
+                        year = TodayDateinHijri[2].ToString();
                         HijriDateToBeDisplayed = day + "/" + month + "/" + year;
 
                     }
@@ -1329,7 +1253,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
-                //PhoneNo = "0551844232";
+                //PhoneNo = "0503455172";
                 Phone = PhoneNo;
                 IsLoading = true;
                 string otp = OTPHelper.Generate();

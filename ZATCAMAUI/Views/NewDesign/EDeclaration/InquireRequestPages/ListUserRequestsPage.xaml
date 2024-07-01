@@ -96,8 +96,7 @@
                         <BoxView
                             Margin="0,0,0,10"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                            HeightRequest="2" />
 
 
                         <!--  Search Entry  -->
@@ -105,7 +104,7 @@
                             ContainerBackground="White"
                             ContainerType="Outlined"
                             InputViewPadding="0"
-                            IsHintAlwaysFloated="True"
+                            Hint="{x:Static ResourceManager:AppResources.SearchRerfrenceID}"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="10"
                             Stroke="{StaticResource NeutralGreay}"
@@ -140,11 +139,10 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
 
-                                    <Frame
+                                    <Border
                                         Padding="10,15"
-                                        BorderColor="#EBEBEB"
-                                        CornerRadius="12"
-                                        HasShadow="False">
+                                        Stroke="#EBEBEB"
+                                        StrokeShape="RoundRectangle 12,12,12,12">
 
                                         <Grid
                                             ColumnDefinitions="*,*,*"
@@ -276,11 +274,11 @@
 
                                         </Grid>
 
-                                        <Frame.GestureRecognizers>
+                                        <Border.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectedItemCommand, Source={x:Reference page}}" CommandParameter="{Binding .}" />
-                                        </Frame.GestureRecognizers>
+                                        </Border.GestureRecognizers>
 
-                                    </Frame>
+                                    </Border>
 
                                 </DataTemplate>
 

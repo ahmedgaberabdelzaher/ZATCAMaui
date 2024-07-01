@@ -39,7 +39,7 @@
             ContainerBackground="White"
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -94,7 +94,7 @@
             ContainerBackground="White"
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -160,7 +160,7 @@
             ContainerBackground="White"
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
+            Hint="{x:Static ResourceManager:AppResources.OtherPurpose}"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -197,7 +197,7 @@
             ContainerBackground="White"
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
+            Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -243,7 +243,7 @@
             ContainerBackground="White"
             ContainerType="Outlined"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -399,7 +399,7 @@
                 ContainerBackground="White"
                 ContainerType="Outlined"
                 InputViewPadding="16,0,16,0"
-                IsHintAlwaysFloated="True"
+                Hint="{x:Static ResourceManager:AppResources.Addattachments}"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}"

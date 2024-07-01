@@ -589,6 +589,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         Title = AppResources.SearchText;
                         IsSearchFilterVisbible = true;
                         IsSearchVIewVisible = true;
+                        IsSectionView = false;
                     }
 
 
@@ -727,22 +728,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
 
                     }
-                    /* bool isthird2digitAllzeros = third2digit.All(c => c == '0');
-                     bool isfr2digitAllzeros = fr2digit.All(c => c == '0');
-                     string parentItemCode;
-                     if (isthird2digitAllzeros && isfr2digitAllzeros)
-                     {
-                         return;
-                     }
-                     else if (!isthird2digitAllzeros)
-                     {
-                         parentItemCode = SelectedHarmonizedTariffslvl2.hrmnzd_code.Substring(0, 6);
-                     }
-                     else
-                     {
-                         parentItemCode = SelectedHarmonizedTariffslvl2.hrmnzd_code.Substring(0, 8);
-
-                     }*/
 
                     HarmonizedTariffslvl3 = await GetHarmonizedTariffs(ParentCode);
                     PreviousCount = ParentCode.Length;
@@ -753,17 +738,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         IsSectionView = false;
                     }
                     SearchNavigationLvl++;
-
-                    /*  Title = SelectedSearchResultLst.Name;
-               // Level3Title = Title;
-                SelectedHarmonizedTariffslvl2 = null;
-                IsChapterSection = false;
-                IsSectionView = false;
-                IsMainHarmonizedTariffs = true;
-                LevelNo = 2;
-                IsHarmonizedTariffs2lvl = false;
-
-                IsHarmonizedTariffs3lvl = true;*/
                 }
 
             }
@@ -1111,14 +1085,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
                     try
                     {
 
                         if (SelectedMainHarmonizedTariffs != null)
                         {
-                            GetSubHarmonizedTariffs(SelectedMainHarmonizedTariffs.chpt_code, SelectedMainHarmonizedTariffs.main_item_code);
+                          await  GetSubHarmonizedTariffs(SelectedMainHarmonizedTariffs.chpt_code, SelectedMainHarmonizedTariffs.main_item_code);
                             Title = SelectedMainHarmonizedTariffs.Name;
                             SelectedMainHarmonizedTariffs = null;
                             IsChapterSection = IsSectionView = IsMainHarmonizedTariffs = false;
@@ -1144,7 +1118,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     if (IsSearchVIewVisible)
                     {
-                        DownLoadSearchRslt();
+                       await DownLoadSearchRslt();
                     }
                     else
                     {
@@ -1199,6 +1173,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
             await downloadFile.DownloadxlFile($"{App.VatBaseUrl}/Taarefa/GetAllWithSearch?lang={Lang}&searchType={SearchBy}&searchKey={SearchKey}", _dialogService);
             IsLoading = false;
+
         }
 
         public ICommand TraiffSubHarmonizedChangedCommand
@@ -1267,14 +1242,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
 
             }
-            /* else if (IsMainHarmonizedTariffs)
-             {
-
-                 IsChapterSection = true;
-                 Title = ChapterTitle;
-                 IsSectionView = IsMainHarmonizedTariffs = false;
-                 MainHarmonizedTariffs = null;
-             }*/
             else if (IsChapterSection)
             {
                 IsChapterSection = false;

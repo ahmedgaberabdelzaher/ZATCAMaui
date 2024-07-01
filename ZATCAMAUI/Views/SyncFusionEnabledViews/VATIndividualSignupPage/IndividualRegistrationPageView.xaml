@@ -7,7 +7,6 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
@@ -79,7 +78,7 @@
 
             <Border
                 Grid.Row="1"
-                Padding="20,5,20,0"
+                Padding="20"
                 Style="{StaticResource CommonTopCurves}">
 
                 <!--#region Body-->
@@ -88,7 +87,7 @@
                     VerticalOptions="FillAndExpand"
                     VerticalScrollBarVisibility="Never">
 
-                    <StackLayout Margin="0,10" VerticalOptions="FillAndExpand">
+                    <StackLayout Margin="0,0" VerticalOptions="FillAndExpand">
 
                         <!--  Individual Registration  -->
                         <StackLayout x:Name="IndividualRegistrationView" IsVisible="{Binding IndividualRegistrationView}">
@@ -251,7 +250,7 @@
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZIDType}"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -260,67 +259,7 @@
                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                        <StackLayout Padding="{OnPlatform Android=12, iOS=0}">
-
-                                            <syncfusion:SfPicker
-                                                x:Name="DDlIDType"
-                                                Background="White"
-                                                CancelButtonClicked="IDType_CancelButtonClicked"
-                                                ItemHeight="46"
-                                                Mode="Dialog"
-                                                OkButtonClicked="DDlIDType_OkayButtonClicked"
-                                                SelectionChanged="IDType_SelectedIndexChanged">
-
-                                                <syncfusion:SfPicker.TextStyle>
-                                                    <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
-                                                </syncfusion:SfPicker.TextStyle>
-
-                                                <syncfusion:SfPicker.SelectionView>
-                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                                </syncfusion:SfPicker.SelectionView>
-
-                                                <syncfusion:SfPicker.Columns>
-                                                    <syncfusion:PickerColumn
-                                                        Width="270"
-                                                        DisplayMemberPath="Name"
-                                                        ItemsSource="{Binding IdTypeList}"
-                                                        SelectedIndex="{Binding IDTypeIndex}" />
-                                                </syncfusion:SfPicker.Columns>
-
-
-                                                <syncfusion:SfPicker.SelectedTextStyle>
-                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                                </syncfusion:SfPicker.SelectedTextStyle>
-
-                                                <syncfusion:SfPicker.HeaderView>
-
-                                                    <syncfusion:PickerHeaderView
-                                                        Height="46"
-                                                        Background="{StaticResource Primary}"
-                                                        Text="{x:Static ResourceManager:AppResources.ZZIDType}">
-                                                        <syncfusion:PickerHeaderView.TextStyle>
-                                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                                        </syncfusion:PickerHeaderView.TextStyle>
-                                                    </syncfusion:PickerHeaderView>
-
-                                                </syncfusion:SfPicker.HeaderView>
-
-                                                <syncfusion:SfPicker.FooterView>
-
-                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
-
-                                                        <syncfusion:PickerFooterView.TextStyle>
-                                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                                        </syncfusion:PickerFooterView.TextStyle>
-
-                                                    </syncfusion:PickerFooterView>
-
-                                                </syncfusion:SfPicker.FooterView>
-
-
-                                            </syncfusion:SfPicker>
-
-                                            <custom:GAZTBorderlessEntry
+                                          <custom:GAZTBorderlessEntry
                                                 FontFamily="{StaticResource SomarLight}"
                                                 FontSize="Small"
                                                 IsReadOnly="True"
@@ -329,17 +268,69 @@
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding TxtIDType}" />
 
-                                        </StackLayout>
-
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
-                                        <!--<inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="btnIdType_Clicked"  />
-                                            </inputLayout:SfTextInputLayout.GestureRecognizers>-->
-
                                     </inputLayout:SfTextInputLayout>
+
+                                     <syncfusion:SfPicker
+                                        x:Name="DDlIDType"
+                                        Background="White"
+                                        CancelButtonClicked="IDType_CancelButtonClicked"
+                                        ItemHeight="46"
+                                        Mode="Dialog"
+                                        OkButtonClicked="DDlIDType_OkayButtonClicked"
+                                        SelectionChanged="IDType_SelectedIndexChanged">
+
+                                        <syncfusion:SfPicker.TextStyle>
+                                            <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
+                                        </syncfusion:SfPicker.TextStyle>
+
+                                        <syncfusion:SfPicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                        </syncfusion:SfPicker.SelectionView>
+
+                                        <syncfusion:SfPicker.Columns>
+                                            <syncfusion:PickerColumn
+                                                Width="270"
+                                                DisplayMemberPath="Name"
+                                                ItemsSource="{Binding IdTypeList}"
+                                                SelectedIndex="{Binding IDTypeIndex}" />
+                                        </syncfusion:SfPicker.Columns>
+
+
+                                        <syncfusion:SfPicker.SelectedTextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                        </syncfusion:SfPicker.SelectedTextStyle>
+
+                                        <syncfusion:SfPicker.HeaderView>
+
+                                            <syncfusion:PickerHeaderView
+                                                Height="46"
+                                                Background="{StaticResource Primary}"
+                                                Text="{x:Static ResourceManager:AppResources.ZZIDType}">
+                                                <syncfusion:PickerHeaderView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerHeaderView.TextStyle>
+                                            </syncfusion:PickerHeaderView>
+
+                                        </syncfusion:SfPicker.HeaderView>
+
+                                        <syncfusion:SfPicker.FooterView>
+
+                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+
+                                                <syncfusion:PickerFooterView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerFooterView.TextStyle>
+
+                                            </syncfusion:PickerFooterView>
+
+                                        </syncfusion:SfPicker.FooterView>
+
+
+                                     </syncfusion:SfPicker>
 
                                 </StackLayout>
 
@@ -362,7 +353,7 @@
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameIDError}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
+                                        Hint="{x:Static ResourceManager:AppResources.IDNumber}"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -437,7 +428,7 @@
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameDOBError}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
+                                        Hint="dd/MM/yyyy"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -591,7 +582,7 @@
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameNameError}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZName}"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -670,7 +661,7 @@
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -713,7 +704,7 @@
                                             HasError="{Binding FrameGccCountyError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -824,7 +815,7 @@
                                             HasError="{Binding FrameRegionError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
@@ -941,7 +932,7 @@
                                             HasError="{Binding FrameCityError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
@@ -1044,7 +1035,7 @@
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1081,7 +1072,7 @@
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1116,7 +1107,7 @@
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1153,7 +1144,7 @@
                                             HasError="False"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZUnitNumber}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1227,7 +1218,7 @@
                                             HasError="{Binding FrameEmailError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.Email}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1269,7 +1260,7 @@
                                             HasError="{Binding FrameConfirmEmailError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1305,11 +1296,10 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <Frame
+                                        <Border
                                             Padding="18,0,18,6"
-                                            BorderColor="LightGray"
-                                            CornerRadius="8"
-                                            HasShadow="False">
+                                            Stroke="LightGray"
+                                            StrokeShape="RoundRectangle 8,8,8,8">
 
                                             <StackLayout
                                                 Padding="0"
@@ -1358,7 +1348,7 @@
 
                                             </StackLayout>
 
-                                        </Frame>
+                                        </Border>
 
                                     </StackLayout>
 
@@ -1409,19 +1399,14 @@
                                     Margin="0,10,0,0"
                                     Padding="0"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout Padding="0,5,0,5">
-                                        <Grid Padding="10,0,10,0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
+                                    <StackLayout Padding="0,5"
+                                                 >
+                                        <Grid Padding="10,0,10,0"
+                                              RowDefinitions="auto"
+                                              ColumnSpacing="5"
+                                              ColumnDefinitions="auto,*,auto">
+
                                             <Image
-                                                Grid.Row="0"
-                                                Grid.Column="0"
                                                 Aspect="AspectFit"
                                                 HeightRequest="30"
                                                 Source="vat_ic_taxpayerDetail.png" />
@@ -1449,17 +1434,9 @@
                                             HeightRequest="1"
                                             HorizontalOptions="FillAndExpand"
                                             WidthRequest="380" />
-                                        <Grid Padding="10,5,10,10">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="40*" />
-                                                <ColumnDefinition Width="60*" />
-                                            </Grid.ColumnDefinitions>
+                                        <Grid Padding="10,5,10,10"
+                                              RowDefinitions="auto,auto,auto,auto"
+                                              ColumnDefinitions="40*,60*">
 
                                             <Label
                                                 Grid.Row="0"
@@ -1527,15 +1504,10 @@
                                     Padding="0"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
-                                        <Grid Margin="10,0,10,0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
+                                        <Grid Margin="10,0,10,0"
+                                              RowDefinitions="auto"
+                                              ColumnSpacing="5"
+                                              ColumnDefinitions="auto,*,auto">
 
                                             <Image
                                                 Grid.Row="0"
@@ -1679,15 +1651,9 @@
 
                                     <StackLayout Margin="0,5,0,5">
 
-                                        <Grid Padding="10,0,10,0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
+                                        <Grid Padding="10,0,10,0"
+                                              RowDefinitions="auto"
+                                              ColumnDefinitions="auto,*,auto">
 
                                             <Image
                                                 Grid.Row="0"
@@ -1698,7 +1664,7 @@
                                             <Label
                                                 Grid.Row="0"
                                                 Grid.Column="1"
-                                                Margin="0,5,0,5"
+                                                Margin="0,5"
                                                 FontFamily="{StaticResource SomarSemiBold}"
                                                 FontSize="Medium"
                                                 Style="{StaticResource GAZTMediumBoldBlackLabelStyle}"
@@ -1839,7 +1805,7 @@
                                             HasError="{Binding FramePasswordError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.NewPassword}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1893,7 +1859,7 @@
                                             HasError="{Binding FrameConfirmPasswordError}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            IsHintAlwaysFloated="True"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -2065,9 +2031,7 @@
                             Command="{Binding OnContinueButtonClick}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{Binding ContinueButtonText}"
-                            VerticalOptions="EndAndExpand"
-                            WidthRequest="{OnPlatform Android=310,
-                                                      iOS=380}" />
+                            VerticalOptions="EndAndExpand" />
 
                     </StackLayout>
 
