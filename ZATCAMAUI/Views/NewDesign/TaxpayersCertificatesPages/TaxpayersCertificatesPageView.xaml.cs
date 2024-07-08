@@ -1,17 +1,12 @@
-﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.Picker;
+﻿using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using Application = Microsoft.Maui.Controls.Application;
 using ListView = Microsoft.Maui.Controls.ListView;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
 {
-  
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxpayersCertificatesPageView : ContentPage
     {
@@ -21,10 +16,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
             InitializeComponent();
             viewModel = App.Locator.TaxpayersCertificatesPageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
             SetPickerFont();
-            On<iOS>().SetUseSafeArea(true);
-            NavigationPage.SetBackButtonTitle(this, "");
             viewModel.PopulateCirtificateTypeList();
             viewModel.IsLoading = true;
             viewModel.OnPageLoad();
@@ -100,9 +92,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -113,26 +102,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayersCertificatesPages
                 TaxTypePicker.BackgroundColor = (Color)Application.Current.Resources["White"];
             }
             viewModel.IsLoading = false;
-        }
-        public void ChangeAeroIcon()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                }
-                else
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                }
-
-            }
-            catch (Exception)
-            {
-
-
-            }
         }
 
     }

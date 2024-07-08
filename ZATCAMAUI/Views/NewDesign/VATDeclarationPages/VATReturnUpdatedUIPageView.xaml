@@ -664,13 +664,11 @@
                                                     <Label
                                                         Grid.Row="0"
                                                         Grid.Column="0"
-                                                        IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZVatStandardRatedSales15}" />
                                                     <Image
                                                         Grid.Row="0"
                                                         Grid.Column="1"
-                                                        IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFifteenPersenctVisible}"
                                                         Source="ic_vat_info"
                                                         Style="{StaticResource ImageStyleForInputTable}">
                                                         <Image.GestureRecognizers>
@@ -810,13 +808,11 @@
                                                     <Label
                                                         Grid.Row="0"
                                                         Grid.Column="0"
-                                                        IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{x:Static ResourceManager:AppResources.ZZZSalessubjecttoVATat5}" />
                                                     <Image
                                                         Grid.Row="0"
                                                         Grid.Column="1"
-                                                        IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsFivePersenctVisible}"
                                                         Source="ic_vat_info"
                                                         Style="{StaticResource ImageStyleForInputTable}">
                                                         <Image.GestureRecognizers>

@@ -48,6 +48,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <MauiFont Remove="Resources\Fonts\MyMaterialIcon.ttf" />
+	  <MauiFont Remove="Resources\Fonts\UIFontIcons.ttf" />
+	  <MauiFont Remove="Resources\Fonts\Somar-SemiBold.otf" />
+	  <MauiFont Remove="Resources\Fonts\Somar-Light.otf" />
+	  <MauiFont Remove="Resources\Fonts\Somar-Regular.otf" />
+	  <MauiFont Remove="Resources\Fonts\Somar-Bold.otf" />
+	</ItemGroup>
+	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
@@ -148,6 +156,14 @@
 	  <Folder Include="Views\NewDesign\IBanAccountsManagementPages\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Fonts\MyMaterialIcon.ttf" />
+	  <EmbeddedResource Include="Resources\Fonts\UIFontIcons.ttf" />
+	  <EmbeddedResource Include="Resources\Fonts\Somar-SemiBold.otf" />
+	  <EmbeddedResource Include="Resources\Fonts\Somar-Light.otf" />
+	  <EmbeddedResource Include="Resources\Fonts\Somar-Regular.otf" />
+	  <EmbeddedResource Include="Resources\Fonts\Somar-Bold.otf" />
+	</ItemGroup>
 	<ItemGroup>
 	  <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="AppResources.resx">
 	    <Generator>PublicResXFileCodeGenerator</Generator>

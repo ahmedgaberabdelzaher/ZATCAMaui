@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
@@ -19,35 +17,21 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             InitializeComponent();
 
             viewModel = App.Locator.AccountStatementBillsPageView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             viewModel.GetDashBoardMenuLst(2);
-            ChangeAeroIcon();
-            ChangeArrowDirection();
 
 
             Task.Run(async () =>
             {
-
-
                 try
                 {
+
                     BillInfo billInfo = new BillInfo();
                     viewModel.onPageLoad(billInfo);
                     if (viewModel.MyBillsOriginal != null)
                     {
                         viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
                     }
-
-
-
-                }
-                catch (Exception)
-                {
-                }
-
-                try
-                {
                     await viewModel.PopulateReturnTypeList();
                     await viewModel.PopulateASFilterData();
                     viewModel.populateStatusChips();
@@ -64,46 +48,9 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (!App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
-
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
