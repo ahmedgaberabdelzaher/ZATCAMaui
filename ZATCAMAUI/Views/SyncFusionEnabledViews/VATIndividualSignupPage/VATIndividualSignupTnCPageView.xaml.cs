@@ -13,7 +13,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             InitializeComponent();
             viewModel = App.Locator.VATIndividualSignupTnCPageView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             ChangeAeroIcon();
             if (Device.RuntimePlatform == Device.iOS)
