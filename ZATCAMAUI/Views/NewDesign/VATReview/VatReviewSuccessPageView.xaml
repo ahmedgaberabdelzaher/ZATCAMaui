@@ -81,11 +81,11 @@
                                         VerticalOptions="Center" />
 
                                     <Label
+                                        x:Name="VATApplicationID"
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         FontSize="15"
                                         HorizontalOptions="End"
-                                        x:Name="VATApplicationID"
                                         Style="{StaticResource ValueLabelBlack}"
                                         Text="{Binding VATReferanceNumber}"
                                         VerticalOptions="Center" />

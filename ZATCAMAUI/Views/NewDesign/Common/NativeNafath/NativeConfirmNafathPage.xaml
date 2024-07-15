@@ -87,9 +87,7 @@
                         </Label>
 
                         <!--  Horizontal Line  -->
-                        <BoxView
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2" />
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="2" />
 
                         <!--  ConfirmOpenningNafath Label  -->
                         <Frame

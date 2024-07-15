@@ -1583,13 +1583,14 @@
 
                                             <Grid
                                                 x:Name="tileUpdatedView"
-                                                IsVisible="{Binding istileUpdated}"
                                                 ColumnDefinitions="auto,*"
-                                                ColumnSpacing="20">
+                                                ColumnSpacing="20"
+                                                IsVisible="{Binding istileUpdated}">
                                                 <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
-                                                <Label Style="{StaticResource ButtonLabelWhiteBold}"
-                                                       Grid.Column="1"
-                                                       Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
+                                                <Label
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource ButtonLabelWhiteBold}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
                                                 <Grid.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="ProfitOnGoods_Tapped" />
                                                 </Grid.GestureRecognizers>

@@ -28,13 +28,13 @@
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 
-           <Grid RowDefinitions="*">
+            <Grid RowDefinitions="*">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
                     <StackLayout>
 
-                         <!--  Header  -->
+                        <!--  Header  -->
                         <StackLayout
                             Margin="0,0,0,20"
                             HorizontalOptions="FillAndExpand"
@@ -79,7 +79,7 @@
                                     Spacing="10"
                                     VerticalOptions="Start">
 
-                                      <!--Infromation Image-->  
+                                    <!--  Infromation Image  -->
                                     <Image
                                         Aspect="AspectFit"
                                         HeightRequest="25"
@@ -88,7 +88,7 @@
                                         VerticalOptions="StartAndExpand"
                                         WidthRequest="25" />
 
-                                      <!--Sub Header Label-->  
+                                    <!--  Sub Header Label  -->
                                     <Label
                                         FontSize="18"
                                         HorizontalOptions="Start"
@@ -99,9 +99,7 @@
                                 <!--#endregion Icon and Label-->
 
                                 <!--  Notes Label  -->
-                                <StackLayout 
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                                     <Label
                                         FontFamily="{StaticResource SomarRegular}"
@@ -250,10 +248,10 @@
                     </StackLayout>
 
                 </ScrollView>
-               
 
 
-           </Grid>
+
+            </Grid>
 
         </Border>
 

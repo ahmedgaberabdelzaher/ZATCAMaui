@@ -579,9 +579,9 @@
                                                     <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
+                                                        IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible, Source={x:Reference VATRegistration}}"
                                                         Stroke="#bbbbbb"
-                                                        StrokeShape="RoundRectangle 10,10,10,10"
-                                                        IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}">
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -645,40 +645,53 @@
 
                                                     </Border>
 
-                                                    <Border Stroke="#bbbbbb"
-                                                           BackgroundColor="White"
-                                                           StrokeShape="RoundRectangle 10,10,10,10"
-                                                           Padding="15,20,15,20"
-                                                           IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}">
+                                                    <Border
+                                                        Padding="15,20,15,20"
+                                                        BackgroundColor="White"
+                                                        IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible, Source={x:Reference VATRegistration}}"
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
-                                                            <Grid RowDefinitions="auto"
-                                                                  ColumnDefinitions="20,*">
+                                                            <Grid ColumnDefinitions="20,*" RowDefinitions="auto">
 
-                                                                <Image HorizontalOptions="Center"
-                                                                       Grid.Row="0" Grid.Column="0"
-                                                                       VerticalOptions="Start">
+                                                                <Image
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="0"
+                                                                    HorizontalOptions="Center"
+                                                                    VerticalOptions="Start">
                                                                     <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont"
-                                                                                         Color="#909090"
-                                                                                         Size="30"
-                                                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
+                                                                        <FontImageSource
+                                                                            FontFamily="UserIconFont"
+                                                                            Glyph="{x:Static FontImage:IconFonts.Information}"
+                                                                            Size="30"
+                                                                            Color="#909090" />
                                                                     </Image.Source>
                                                                 </Image>
 
-                                                                <StackLayout Grid.Column="1"
-                                                                             Grid.Row="0"
-                                                                             Spacing="0"
-                                                                             VerticalOptions="Start">
+                                                                <StackLayout
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="1"
+                                                                    Spacing="0"
+                                                                    VerticalOptions="Start">
 
-                                                                    <Label Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsFirstLine}"
-                                                                           HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}"/>
+                                                                    <Label
+                                                                        HorizontalOptions="Start"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsFirstLine}" />
 
-                                                                    <Label Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsSecondLine}"
-                                                                           HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}"/>
+                                                                    <Label
+                                                                        HorizontalOptions="Start"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsSecondLine}" />
 
-                                                                    <Label Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsThirdLine}"
-                                                                           HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}"/>
+                                                                    <Label
+                                                                        HorizontalOptions="Start"
+                                                                        HorizontalTextAlignment="Start"
+                                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsThirdLine}" />
 
                                                                 </StackLayout>
                                                             </Grid>
@@ -816,9 +829,9 @@
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
                                                                         Background="{StaticResource PrimaryColor}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
 
-                                                                          <syncfusion:PickerHeaderView.TextStyle>
+                                                                        <syncfusion:PickerHeaderView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
                                                                         </syncfusion:PickerHeaderView.TextStyle>
 
@@ -828,8 +841,7 @@
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"
-                                                                                                 Background="{StaticResource PrimaryColor}">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource PrimaryColor}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -843,77 +855,78 @@
                                                         </Grid>
                                                     </StackLayout>
 
-                                                     <StackLayout IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}">
+                                                    <StackLayout IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible, Source={x:Reference VATRegistration}}">
 
-                                                            <StackLayout>
+                                                        <StackLayout>
 
-                                                                <Label 
-                                                                       Padding="0,0,0,0"
-                                                                       HorizontalOptions="Start"
-                                                                       Style="{StaticResource ComponentHeaderBlackBold}">
+                                                            <Label
+                                                                Padding="0,0,0,0"
+                                                                HorizontalOptions="Start"
+                                                                Style="{StaticResource ComponentHeaderBlackBold}">
 
-                                                                    <Label.FormattedText>
-                                                                        <FormattedString>
-                                                                            <Span  Text="{x:Static ResourceManager:AppResources.VATRNewVATEligibleStartDate}"  />
-                                                                            <Span  Text="*" TextColor="#ff0000"/>
-                                                                        </FormattedString>
-                                                                    </Label.FormattedText>
-                                                                </Label>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.VATRNewVATEligibleStartDate}" />
+                                                                        <Span Text="*" TextColor="#ff0000" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
 
-                                                                <inputLayout:SfTextInputLayout 
-                                                                            HorizontalOptions="FillAndExpand"
-                                                                            x:Name="FrmENewStartDate"
-                                                                            LeadingViewPosition="Inside"
-                                                                            ContainerType="Outlined"
-                                                                            Style="{StaticResource TextInputLayout}"
-                                                                            Stroke="#005e4b"
-                                                                            InputViewPadding="16,0,16,0">
+                                                            <inputLayout:SfTextInputLayout
+                                                                x:Name="FrmENewStartDate"
+                                                                ContainerType="Outlined"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                InputViewPadding="16,0,16,0"
+                                                                LeadingViewPosition="Inside"
+                                                                Stroke="#005e4b"
+                                                                Style="{StaticResource TextInputLayout}">
 
-                                                                        <custom:GAZTBorderlessEntry
-                                                                                x:Name="NewDateEntry"
-                                                                                Focused="DateEntry_Focused"
-                                                                                TextChanged="DateEntry_TextChanged_1"
-                                                                                IsEnabled="False"
-                                                                                Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
-                                                                                Unfocused="DateEntry_Unfocused"
-                                                                                Placeholder="DD/MM/YYYY"
-                                                                                Style="{StaticResource DefaultEntry}" />
+                                                                <custom:GAZTBorderlessEntry
+                                                                    x:Name="NewDateEntry"
+                                                                    Focused="DateEntry_Focused"
+                                                                    IsEnabled="False"
+                                                                    Placeholder="DD/MM/YYYY"
+                                                                    Style="{StaticResource DefaultEntry}"
+                                                                    Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
+                                                                    TextChanged="DateEntry_TextChanged_1"
+                                                                    Unfocused="DateEntry_Unfocused" />
 
-                                                                    
 
-                                                                        <inputLayout:SfTextInputLayout.TrailingView>
 
-                                                                            <Image HorizontalOptions="EndAndExpand">
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
 
-                                                                                <Image.Source>
-                                                                                    <FontImageSource FontFamily="UserIconFont"
-                                                                                            Color="DarkGreen"
-                                                                                            Size="20"
-                                                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
-                                                                                </Image.Source>
+                                                                    <Image HorizontalOptions="EndAndExpand">
 
-                                                                                <Image.GestureRecognizers>
-                                                                                    <TapGestureRecognizer  Tapped="NewVATEligibleDateClicked" />
-                                                                                </Image.GestureRecognizers>
+                                                                        <Image.Source>
+                                                                            <FontImageSource
+                                                                                FontFamily="UserIconFont"
+                                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
+                                                                                Size="20"
+                                                                                Color="DarkGreen" />
+                                                                        </Image.Source>
 
-                                                                            </Image>
+                                                                        <Image.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="NewVATEligibleDateClicked" />
+                                                                        </Image.GestureRecognizers>
 
-                                                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                                                    </Image>
 
-                                                                </inputLayout:SfTextInputLayout>
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
 
-                                                                <custom:CustomDatePicker
-						                                            Margin="2" 
-                                                                    Background="White"
-                                                                    FutureDay="False"
-                                                                    Mode="Dialog"
-                                                                    IsOpen="False"
-						                                            x:Name="DpENewStartDate"
-                                                                    OkButtonClicked="DpENewDate_OkButtonClicked"
-                                                                    Closed="DpENewStartDate_Closed"
-                                                                    SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
-                                                                    HorizontalOptions="FillAndExpand"
-						                                            ItemHeight="45" >
+                                                            </inputLayout:SfTextInputLayout>
+
+                                                            <custom:CustomDatePicker
+                                                                x:Name="DpENewStartDate"
+                                                                Margin="2"
+                                                                Background="White"
+                                                                Closed="DpENewStartDate_Closed"
+                                                                FutureDay="False"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                IsOpen="False"
+                                                                ItemHeight="45"
+                                                                Mode="Dialog"
+                                                                OkButtonClicked="DpENewDate_OkButtonClicked"
+                                                                SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}">
 
                                                                 <custom:CustomDatePicker.ColumnHeaderView>
                                                                     <syncfusion:PickerColumnHeaderView Height="46" />
@@ -933,9 +946,9 @@
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
                                                                         Background="{StaticResource PrimaryColor}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
 
-                                                                         <syncfusion:PickerHeaderView.TextStyle>
+                                                                        <syncfusion:PickerHeaderView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
                                                                         </syncfusion:PickerHeaderView.TextStyle>
 
@@ -945,11 +958,10 @@
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"
-                                                                                                 Background="{StaticResource PrimaryColor}">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource PrimaryColor}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="White"/>
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
                                                                         </syncfusion:PickerFooterView.TextStyle>
 
                                                                     </syncfusion:PickerFooterView>
@@ -958,45 +970,45 @@
 
                                                             </custom:CustomDatePicker>
 
-                                                                <StackLayout.GestureRecognizers>
-                                                                            <TapGestureRecognizer  Tapped="btn2_Clicked" />
-                                                                </StackLayout.GestureRecognizers>
+                                                            <StackLayout.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="btn2_Clicked" />
+                                                            </StackLayout.GestureRecognizers>
 
-                                                            </StackLayout>
+                                                        </StackLayout>
 
-                                                            <StackLayout Orientation="Horizontal"
-                                                                         Spacing="10">
+                                                        <StackLayout Orientation="Horizontal" Spacing="10">
 
-                                                                <custom:CheckboxCustom
-                                                                        IsChecked="{Binding BindingContext.IsNewStartDateInfoChecked,Source={x:Reference VATRegistration}}"
-                                                                        Style="{StaticResource CheckboxHeightWidth32}"
-                                                                        VerticalOptions="CenterAndExpand"
-                                                                        CheckChanged="AddAdditionalInfo_CheckedChanged"/>
+                                                            <custom:CheckboxCustom
+                                                                CheckChanged="AddAdditionalInfo_CheckedChanged"
+                                                                IsChecked="{Binding BindingContext.IsNewStartDateInfoChecked, Source={x:Reference VATRegistration}}"
+                                                                Style="{StaticResource CheckboxHeightWidth32}"
+                                                                VerticalOptions="CenterAndExpand" />
 
-                                                                    <Label  HorizontalOptions="Start"
-                                                                            HorizontalTextAlignment="Start"
-                                                                            Style="{DynamicResource IsInstrunctionCheckedStyle}">
+                                                            <Label
+                                                                HorizontalOptions="Start"
+                                                                HorizontalTextAlignment="Start"
+                                                                Style="{DynamicResource IsInstrunctionCheckedStyle}">
 
-                                                                        <Label.FormattedText> 
-                                                                            <FormattedString>
-                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZNewVatDateTerms}"/>
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
-                                                            </StackLayout>
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZNewVatDateTerms}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+                                                        </StackLayout>
                                                     </StackLayout>
                                                     <!--  End Of Read Only or pre-populated {Binding TodayDate}"  -->
                                                     <!--  Start Of Additional Information  -->
-                                                    <StackLayout Grid.Row="8"
-                                                                 IsEnabled="{Binding BindingContext.IsAddAdditionalInfoChecked, Source={x:Reference VATRegistration}}">
+                                                    <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsAddAdditionalInfoChecked, Source={x:Reference VATRegistration}}">
                                                         <Label
                                                             Padding="0,0,0,0"
                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.VATRImportExport}" />
 
-                                                        <Grid ColumnSpacing="30"
-                                                              RowDefinitions="auto,auto"
-                                                              ColumnDefinitions="auto,auto">
+                                                        <Grid
+                                                            ColumnDefinitions="auto,auto"
+                                                            ColumnSpacing="30"
+                                                            RowDefinitions="auto,auto">
 
                                                             <!--#endregion-->
                                                             <!--#region Modified View for Imorter Exporter-->
@@ -1010,10 +1022,11 @@
                                                                 IsEnabled="{Binding BindingContext.TaxPayerDetails.ImporterNoRB, Source={x:Reference VATRegistration}}"
                                                                 WidthRequest="171">
 
-                                                                <Grid HorizontalOptions="FillAndExpand"
-                                                                      VerticalOptions="FillAndExpand"
-                                                                      RowDefinitions="104"
-                                                                      ColumnDefinitions="171">
+                                                                <Grid
+                                                                    ColumnDefinitions="171"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    RowDefinitions="104"
+                                                                    VerticalOptions="FillAndExpand">
 
                                                                     <Image
                                                                         Aspect="Fill"
@@ -1021,8 +1034,7 @@
                                                                         Source="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.ImporterImageSource}"
                                                                         VerticalOptions="FillAndExpand" />
 
-                                                                    <StackLayout Style="{StaticResource CardParentStacklayout}"
-                                                                                 VerticalOptions="EndAndExpand">
+                                                                    <StackLayout Style="{StaticResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
 
                                                                         <Label
                                                                             Style="{StaticResource CardLabelBlack}"
@@ -2161,9 +2173,9 @@
                                                                                 <syncfusion:PickerHeaderView
                                                                                     Height="46"
                                                                                     Background="{StaticResource PrimaryColor}"
-                                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+                                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
 
-                                                                                     <syncfusion:PickerHeaderView.TextStyle>
+                                                                                    <syncfusion:PickerHeaderView.TextStyle>
                                                                                         <syncfusion:PickerTextStyle TextColor="White" />
                                                                                     </syncfusion:PickerHeaderView.TextStyle>
 
@@ -2173,11 +2185,10 @@
 
                                                                             <custom:CustomDatePicker.FooterView>
 
-                                                                                <syncfusion:PickerFooterView Height="46"
-                                                                                                             Background="{StaticResource PrimaryColor}">
+                                                                                <syncfusion:PickerFooterView Height="46" Background="{StaticResource PrimaryColor}">
 
                                                                                     <syncfusion:PickerFooterView.TextStyle>
-                                                                                         <syncfusion:PickerTextStyle TextColor="White" />
+                                                                                        <syncfusion:PickerTextStyle TextColor="White" />
                                                                                     </syncfusion:PickerFooterView.TextStyle>
 
                                                                                 </syncfusion:PickerFooterView>
@@ -2635,7 +2646,7 @@
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
                                                                         Background="{StaticResource PrimaryColor}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
 
                                                                         <syncfusion:PickerHeaderView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -2647,8 +2658,7 @@
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"
-                                                                                                 Background="{StaticResource PrimaryColor}">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource PrimaryColor}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -2888,14 +2898,34 @@
                                                             <ColumnDefinition Width="60*" />
                                                             <ColumnDefinition Width="40*" />
                                                         </Grid.ColumnDefinitions>
-                                                    <Label IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}"
-                                                           Grid.Row="0" Grid.Column="0"
-                                                           Text="{x:Static ResourceManager:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
-                                                        <Label IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
-                                                               Style="{StaticResource BodyLabelBlackMedium}"/>
-                                                        <Label IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}" Grid.Row="0" Grid.Column="0"   Text="{x:Static ResourceManager:AppResources.VATRNewVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="End" IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
-                                                               Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible, Source={x:Reference VATRegistration}}"
+                                                            Style="{StaticResource BodyLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.VATRVATEligibleStartDate}" />
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            HorizontalOptions="End"
+                                                            IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible, Source={x:Reference VATRegistration}}"
+                                                            Style="{StaticResource BodyLabelBlackMedium}"
+                                                            Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" />
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="0"
+                                                            HorizontalOptions="StartAndExpand"
+                                                            IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible, Source={x:Reference VATRegistration}}"
+                                                            Style="{StaticResource BodyLabelGrey}"
+                                                            Text="{x:Static ResourceManager:AppResources.VATRNewVATEligibleStartDate}" />
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Grid.Column="1"
+                                                            HorizontalOptions="End"
+                                                            IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible, Source={x:Reference VATRegistration}}"
+                                                            Style="{StaticResource BodyLabelBlackMedium}"
+                                                            Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}" />
 
                                                     </Grid>
 
@@ -3216,8 +3246,8 @@
                                                 ColumnDefinitions="1*,2*,7*"
                                                 ColumnSpacing="10"
                                                 HeightRequest="32"
-                                                WidthRequest="32"
-                                                IsVisible="{Binding IsDeclarationViewEnabled}">
+                                                IsVisible="{Binding IsDeclarationViewEnabled}"
+                                                WidthRequest="32">
                                                 <custom:CheckboxCustom
                                                     Grid.Row="0"
                                                     Grid.Column="0"
@@ -3252,8 +3282,8 @@
                                                     BackgroundColor="White"
                                                     ColumnSpacing="0"
                                                     HorizontalOptions="FillAndExpand"
-                                                    RowSpacing="15"
                                                     RowDefinitions="auto,auto,auto"
+                                                    RowSpacing="15"
                                                     VerticalOptions="FillAndExpand">
 
                                                     <StackLayout Grid.Row="0">
@@ -3504,9 +3534,9 @@
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
                                                                         Background="{StaticResource PrimaryColor}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
 
-                                                                         <syncfusion:PickerHeaderView.TextStyle>
+                                                                        <syncfusion:PickerHeaderView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
                                                                         </syncfusion:PickerHeaderView.TextStyle>
 
@@ -3516,11 +3546,10 @@
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"
-                                                                                                 Background="{StaticResource PrimaryColor}">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource PrimaryColor}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="White"/>
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
                                                                         </syncfusion:PickerFooterView.TextStyle>
 
                                                                     </syncfusion:PickerFooterView>
@@ -3573,45 +3602,50 @@
                                                 </Grid>
                                             </StackLayout>
 
-                                            <Grid IsVisible="{Binding IsDeclarationViewEnabledNew}"
-                                                  BackgroundColor="Transparent"
-                                                  Margin="20,10,20,0"
-                                                  RowDefinitions="auto"
-                                                  ColumnDefinitions="auto"
-                                                  HorizontalOptions="FillAndExpand"
-                                                  VerticalOptions="FillAndExpand">
+                                            <Grid
+                                                Margin="20,10,20,0"
+                                                BackgroundColor="Transparent"
+                                                ColumnDefinitions="auto"
+                                                HorizontalOptions="FillAndExpand"
+                                                IsVisible="{Binding IsDeclarationViewEnabledNew}"
+                                                RowDefinitions="auto"
+                                                VerticalOptions="FillAndExpand">
 
-                                                <Grid Grid.Row="0"
-                                                      Grid.Column="0"
-                                                      RowDefinitions="auto"
-                                                      Grid.ColumnSpan="2">
+                                                <Grid
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    RowDefinitions="auto">
 
                                                     <StackLayout Grid.Row="0">
 
-                                                        <StackLayout  Orientation="Horizontal">
+                                                        <StackLayout Orientation="Horizontal">
 
-                                                            <custom:CheckboxCustom MinimumHeightRequest="32"
-                                                                                   MinimumWidthRequest="32"
-                                                                                   VerticalOptions="Start"
-                                                                                   IsChecked="{Binding IsDeclarationChecked}"/>
+                                                            <custom:CheckboxCustom
+                                                                IsChecked="{Binding IsDeclarationChecked}"
+                                                                MinimumHeightRequest="32"
+                                                                MinimumWidthRequest="32"
+                                                                VerticalOptions="Start" />
 
-                                                            <Label HeightRequest="350"
-                                                                   Text="{Binding Zterms}"
-                                                                   HorizontalTextAlignment="Start"
-                                                                   VerticalOptions="FillAndExpand"
-                                                                   HorizontalOptions="FillAndExpand"
-                                                                   TextType="Html"
-                                                                   Style="{StaticResource CheckboxUnselectedFontStyle}"
-                                                                   IsVisible="{Binding ShouldShowEN}"/>
+                                                            <Label
+                                                                HeightRequest="350"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                HorizontalTextAlignment="Start"
+                                                                IsVisible="{Binding ShouldShowEN}"
+                                                                Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                                                Text="{Binding Zterms}"
+                                                                TextType="Html"
+                                                                VerticalOptions="FillAndExpand" />
 
-                                                            <Label HeightRequest="350"
-                                                                    Text="{Binding Zterms}"
-                                                                    HorizontalTextAlignment="{Binding TermsAlignment}"
-                                                                    VerticalOptions="FillAndExpand"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    TextType="Html"
-                                                                    Style="{StaticResource CheckboxUnselectedFontStyle}"
-                                                                    IsVisible="{Binding ShouldShowAR}" />
+                                                            <Label
+                                                                HeightRequest="350"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                HorizontalTextAlignment="{Binding TermsAlignment}"
+                                                                IsVisible="{Binding ShouldShowAR}"
+                                                                Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                                                Text="{Binding Zterms}"
+                                                                TextType="Html"
+                                                                VerticalOptions="FillAndExpand" />
 
                                                         </StackLayout>
 

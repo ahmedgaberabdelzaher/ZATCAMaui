@@ -67,9 +67,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border
-                Grid.Row="1"
-                Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
                     <ScrollView VerticalScrollBarVisibility="Never">
@@ -206,8 +204,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
-                                    InputViewPadding="0"
                                     Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                    InputViewPadding="0"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -273,8 +271,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
                                     Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                    InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -309,8 +307,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
                                     Hint="{x:Static ResourceManager:AppResources.AddressKSA}"
+                                    InputViewPadding="16,0,16,0"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">

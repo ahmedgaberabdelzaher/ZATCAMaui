@@ -1,8 +1,4 @@
-﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using ZATCAMAUI.Views.NewDesign.TaxpayerCorrespondancePages;
 using Application = Microsoft.Maui.Controls.Application;
 

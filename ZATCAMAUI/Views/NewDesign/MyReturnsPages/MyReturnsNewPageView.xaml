@@ -83,7 +83,7 @@
             </Grid>
             <!--#endregion Header-->
 
-           <Border
+            <Border
                 Grid.Row="1"
                 Padding="0,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -92,9 +92,10 @@
 
                     <Grid RowDefinitions="*,*">
 
-                        <Grid RowDefinitions="auto"
-                              Padding="10,0"
-                              ColumnDefinitions="auto,30">
+                        <Grid
+                            Padding="10,0"
+                            ColumnDefinitions="auto,30"
+                            RowDefinitions="auto">
                             <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
@@ -128,39 +129,37 @@
                             </Image>
                         </Grid>
 
-                        <Grid Grid.Row="1"
-                              RowDefinitions="*">
+                        <Grid Grid.Row="1" RowDefinitions="*">
 
-                        <ScrollView Orientation="Horizontal"
-                                    HorizontalScrollBarVisibility="Never">
+                            <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
 
-                            <busyindicator:SfChipGroup
-                                x:Name="ChipGroup_statusFilter"
-                                ChipType="Choice"
-                                ItemsSource="{Binding ChipDataFilterlist}"
-                                SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
-                                Style="{StaticResource ReturnsChipGroup}">
-                                <busyindicator:SfChipGroup.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout Style="{StaticResource ChipParentLayout}">
-                                            <Image Source="{Binding ImageSource}" Style="{StaticResource ChipIcon}" />
-                                            <Label
-                                                Style="{StaticResource CaptionLabelBlack}"
-                                                Text="{Binding Text}"
-                                                TextColor="{Binding TextColor}">
-                                                <Label.Margin>
-                                                    <OnPlatform x:TypeArguments="Thickness">
-                                                        <On Platform="iOS" Value="0,0,0,0" />
-                                                        <On Platform="Android" Value="0,0,0,0" />
-                                                    </OnPlatform>
-                                                </Label.Margin>
-                                            </Label>
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </busyindicator:SfChipGroup.ItemTemplate>
-                            </busyindicator:SfChipGroup>
+                                <busyindicator:SfChipGroup
+                                    x:Name="ChipGroup_statusFilter"
+                                    ChipType="Choice"
+                                    ItemsSource="{Binding ChipDataFilterlist}"
+                                    SelectionChanged="ChipGroup_statusFilter_SelectionChanged"
+                                    Style="{StaticResource ReturnsChipGroup}">
+                                    <busyindicator:SfChipGroup.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackLayout Style="{StaticResource ChipParentLayout}">
+                                                <Image Source="{Binding ImageSource}" Style="{StaticResource ChipIcon}" />
+                                                <Label
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    Text="{Binding Text}"
+                                                    TextColor="{Binding TextColor}">
+                                                    <Label.Margin>
+                                                        <OnPlatform x:TypeArguments="Thickness">
+                                                            <On Platform="iOS" Value="0,0,0,0" />
+                                                            <On Platform="Android" Value="0,0,0,0" />
+                                                        </OnPlatform>
+                                                    </Label.Margin>
+                                                </Label>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </busyindicator:SfChipGroup.ItemTemplate>
+                                </busyindicator:SfChipGroup>
 
-                        </ScrollView>
+                            </ScrollView>
                         </Grid>
                     </Grid>
 
@@ -183,13 +182,13 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Border Margin="0,10"
-                                                Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Border Margin="0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <StackLayout Padding="0,10">
-                                                <Grid Padding="10"
-                                                      RowDefinitions="auto,auto"
-                                                      ColumnDefinitions="65*,35*"
-                                                      RowSpacing="0">
+                                                <Grid
+                                                    Padding="10"
+                                                    ColumnDefinitions="65*,35*"
+                                                    RowDefinitions="auto,auto"
+                                                    RowSpacing="0">
 
                                                     <StackLayout>
                                                         <Label
@@ -294,9 +293,9 @@
 
                                                 <Grid
                                                     Padding="10"
+                                                    ColumnDefinitions="auto,*"
                                                     ColumnSpacing="15"
                                                     RowDefinitions="auto,auto,auto,auto"
-                                                    ColumnDefinitions="auto,*"
                                                     RowSpacing="15">
 
                                                     <StackLayout
@@ -328,11 +327,9 @@
                                                         Grid.ColumnSpan="2"
                                                         Spacing="-5">
 
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.NDReturnType}" />
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDReturnType}" />
 
-                                                        <Label Style="{StaticResource ValueLabelBlack}"
-                                                               Text="{Binding FbtText}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding FbtText}" />
 
                                                     </StackLayout>
 
@@ -341,11 +338,9 @@
                                                         Grid.Column="0"
                                                         Spacing="-5">
 
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.NDDescription}" />
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDDescription}" />
 
-                                                        <Label Style="{StaticResource ValueLabelBlack}"
-                                                               Text="{Binding TaxPeriod}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding TaxPeriod}" />
                                                     </StackLayout>
 
                                                     <StackLayout
@@ -374,11 +369,9 @@
                                                         Grid.Column="0"
                                                         Spacing="-5">
 
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.NDReturnNumber}" />
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDReturnNumber}" />
 
-                                                        <Label Style="{StaticResource ValueLabelBlack}"
-                                                               Text="{Binding Fbnum}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding Fbnum}" />
 
                                                     </StackLayout>
 

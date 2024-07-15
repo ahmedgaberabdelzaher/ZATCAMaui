@@ -103,8 +103,8 @@
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
-                            InputViewPadding="0"
                             Hint="{x:Static ResourceManager:AppResources.SearchRerfrenceID}"
+                            InputViewPadding="0"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="10"
                             Stroke="{StaticResource NeutralGreay}"

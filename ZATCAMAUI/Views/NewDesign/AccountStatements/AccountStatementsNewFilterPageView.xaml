@@ -6,13 +6,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    BackgroundImageSource="partials_background.png"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     ios:Page.UseSafeArea="true"
-    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
@@ -64,8 +64,7 @@
                         HorizontalOptions="EndAndExpand"
                         Source="close"
                         VerticalOptions="CenterAndExpand"
-                        WidthRequest="24">
-                    </Image>
+                        WidthRequest="24" />
 
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding FilterCloseClick}" />
@@ -76,537 +75,527 @@
             </Grid>
             <!--#endregion Header-->
 
-             <!--#region Body-->
+            <!--#region Body-->
             <Border
                 Grid.Row="1"
                 Padding="20"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
-                <ScrollView VerticalScrollBarVisibility="Never">
+                    <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <VerticalStackLayout
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="FillAndExpand">
+                        <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                        <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
 
-                            <Label
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.TransactionAmount}" />
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.TransactionAmount}" />
 
-                            <Border
-                                Stroke="#B1B1B1"
-                                StrokeThickness="1"
-                                Style="{StaticResource GreyBorderFrame}">
+                                <Border
+                                    Stroke="#B1B1B1"
+                                    StrokeThickness="1"
+                                    Style="{StaticResource GreyBorderFrame}">
 
-                                <StackLayout
-                                    Padding="10"
-                                    HorizontalOptions="FillAndExpand"
-                                    Orientation="Horizontal">
+                                    <StackLayout
+                                        Padding="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        Orientation="Horizontal">
 
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                          ColumnDefinitions="*,auto,*">
-
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="TxFromAmountEntry"
-                                            Grid.Column="0"
-                                            Keyboard="Numeric"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
-                                            Text="{Binding FromAmount}"
-                                            TextChanged="From_Amount_Changed"
-                                            Unfocused="From_Amount_Unfocused" >
-
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviour:OnlyNumericValuesBehaviour/>
-                                            </custom:GAZTBorderlessEntry.Behaviors>
-
-                                        </custom:GAZTBorderlessEntry>
-
-                                        <StackLayout
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Orientation="Horizontal">
-
-
-                                            <Image
-                                                Margin="5,0"
-                                                HeightRequest="24"
-                                                HorizontalOptions="End"
-                                                Source="arrowRight"
-                                                Style="{DynamicResource FilterArrow}"
-                                                WidthRequest="24" />
-
-                                        </StackLayout>
-
-                                        <custom:GAZTBorderlessEntry
-                                            x:Name="TxToAmountEntry"
-                                            Grid.Column="2"
-                                            Keyboard="Numeric"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
-                                            Text="{Binding ToAmount}"
-                                            TextChanged="To_Amount_Changed"
-                                            Unfocused="To_Amount_Unfocused" >
-
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviour:OnlyNumericValuesBehaviour/>
-
-                                            </custom:GAZTBorderlessEntry.Behaviors>
-
-                                        </custom:GAZTBorderlessEntry>
-
-
-                                    </Grid>
-                                </StackLayout>
-
-                            </Border>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout HorizontalOptions="FillAndExpand">
-
-                            <Label
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
-
-                            <Border
-                                Stroke="#B1B1B1"
-                                StrokeThickness="1"
-                                Style="{StaticResource GreyBorderFrame}">
-
-                                <VerticalStackLayout
-                                    Padding="10"
-                                    HorizontalOptions="FillAndExpand">
-
-
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                          ColumnDefinitions="*,auto,*">
-
-                                        <StackLayout
-                                            Grid.Column="0"
-                                            HorizontalOptions="FillAndExpand"
-                                            Orientation="Horizontal">
-
+                                        <Grid ColumnDefinitions="*,auto,*" HorizontalOptions="FillAndExpand">
 
                                             <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                IsEnabled="False"
+                                                x:Name="TxFromAmountEntry"
+                                                Grid.Column="0"
+                                                Keyboard="Numeric"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
-                                                Text="{Binding TxFromDate, StringFormat='{0:dd MMM yyyy}'}" />
+                                                Text="{Binding FromAmount}"
+                                                TextChanged="From_Amount_Changed"
+                                                Unfocused="From_Amount_Unfocused">
+
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviour:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
+
+                                            <StackLayout
+                                                Grid.Column="1"
+                                                HorizontalOptions="EndAndExpand"
+                                                Orientation="Horizontal">
 
 
-                                            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
-                                                <Image Margin="5,0">
-                                                    <Image.Source>
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                            Size="24"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                </Image>
+                                                <Image
+                                                    Margin="5,0"
+                                                    HeightRequest="24"
+                                                    HorizontalOptions="End"
+                                                    Source="arrowRight"
+                                                    Style="{DynamicResource FilterArrow}"
+                                                    WidthRequest="24" />
 
                                             </StackLayout>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TSDateStartDateClicked" />
-                                            </StackLayout.GestureRecognizers>
-
-
-                                        </StackLayout>
-
-                                        <StackLayout
-                                            Grid.Column="1"
-                                            HorizontalOptions="FillAndExpand"
-                                            Orientation="Horizontal">
-                                            <Image
-                                                Margin="5,0"
-                                                HeightRequest="24"
-                                                HorizontalOptions="Center"
-                                                Source="arrowRight"
-                                                Style="{DynamicResource FilterArrow}"
-                                                WidthRequest="24" />
-
-                                        </StackLayout>
-
-                                        <StackLayout
-                                            Grid.Column="2"
-                                            HorizontalOptions="FillAndExpand"
-                                            Orientation="Horizontal">
 
                                             <custom:GAZTBorderlessEntry
-                                                HorizontalOptions="FillAndExpand"
-                                                IsEnabled="False"
+                                                x:Name="TxToAmountEntry"
+                                                Grid.Column="2"
+                                                Keyboard="Numeric"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
-                                                Text="{Binding TxToDate, StringFormat='{0:dd MMM yyyy}'}" />
-                                            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
-                                                <Image Margin="5,0">
-                                                    <Image.Source>
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                            Size="24"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                </Image>
+                                                Text="{Binding ToAmount}"
+                                                TextChanged="To_Amount_Changed"
+                                                Unfocused="To_Amount_Unfocused">
 
-                                            </StackLayout>
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviour:OnlyNumericValuesBehaviour />
 
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TSDateEndDateClicked" />
-                                            </StackLayout.GestureRecognizers>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
 
-                                        </StackLayout>
-                                    </Grid>
-
-                                </VerticalStackLayout>
-                            </Border>
-                        </VerticalStackLayout>
-
-                        <VerticalStackLayout HorizontalOptions="FillAndExpand">
-
-                            <Label
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" />
-
-                            <Border
-                                Stroke="#B1B1B1"
-                                StrokeThickness="1"
-                                Style="{StaticResource GreyBorderFrame}">
-
-                                <VerticalStackLayout Padding="10"
-                                                     HorizontalOptions="FillAndExpand">
-
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                          ColumnDefinitions="*,auto,*">
-
-                                        <StackLayout
-                                            Grid.Column="0"
-                                            HorizontalOptions="FillAndExpand"
-                                            Orientation="Horizontal">
+                                            </custom:GAZTBorderlessEntry>
 
 
-                                            <custom:GAZTBorderlessEntry
+                                        </Grid>
+                                    </StackLayout>
+
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ASDueDate}" />
+
+                                <Border
+                                    Stroke="#B1B1B1"
+                                    StrokeThickness="1"
+                                    Style="{StaticResource GreyBorderFrame}">
+
+                                    <VerticalStackLayout Padding="10" HorizontalOptions="FillAndExpand">
+
+
+                                        <Grid ColumnDefinitions="*,auto,*" HorizontalOptions="FillAndExpand">
+
+                                            <StackLayout
+                                                Grid.Column="0"
                                                 HorizontalOptions="FillAndExpand"
-                                                IsEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
-                                                Text="{Binding TPFromDate, StringFormat='{0:dd MMM yyyy}'}" />
+                                                Orientation="Horizontal">
 
-                                            <StackLayout HorizontalOptions="End">
-                                                <Image Margin="5,0">
-                                                    <Image.Source>
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                            Size="24"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                </Image>
+
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
+                                                    Text="{Binding TxFromDate, StringFormat='{0:dd MMM yyyy}'}" />
+
+
+                                                <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                    <Image Margin="5,0">
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="UserIconFont"
+                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
+                                                                Size="24"
+                                                                Color="{StaticResource SecondaryNew}" />
+                                                        </Image.Source>
+                                                    </Image>
+
+                                                </StackLayout>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TSDateStartDateClicked" />
+                                                </StackLayout.GestureRecognizers>
+
+
                                             </StackLayout>
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TaxPeriodStartDateClicked" />
-                                            </StackLayout.GestureRecognizers>
 
-                                        </StackLayout>
-
-                                        <StackLayout
-                                            Grid.Column="1"
-                                            HorizontalOptions="FillAndExpand">
-                                            <Image
-                                                Margin="5,0"
-                                                HeightRequest="24"
-                                                HorizontalOptions="Center"
-                                                Source="arrowRight"
-                                                Style="{DynamicResource FilterArrow}"
-                                                WidthRequest="24" />
-
-                                        </StackLayout>
-
-                                        <StackLayout
-                                            Grid.Column="2"
-                                            HorizontalOptions="FillAndExpand"
-                                            Orientation="Horizontal">
-
-                                            <custom:GAZTBorderlessEntry
+                                            <StackLayout
+                                                Grid.Column="1"
                                                 HorizontalOptions="FillAndExpand"
-                                                IsEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
-                                                Text="{Binding TPToDate, StringFormat='{0:dd MMM yyyy}'}" />
-
-                                            <StackLayout HorizontalOptions="End">
-
-                                                <Image Margin="5,0">
-                                                    <Image.Source>
-                                                        <FontImageSource
-                                                            FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
-                                                            Size="24"
-                                                            Color="{StaticResource SecondaryNew}" />
-                                                    </Image.Source>
-                                                </Image>
+                                                Orientation="Horizontal">
+                                                <Image
+                                                    Margin="5,0"
+                                                    HeightRequest="24"
+                                                    HorizontalOptions="Center"
+                                                    Source="arrowRight"
+                                                    Style="{DynamicResource FilterArrow}"
+                                                    WidthRequest="24" />
 
                                             </StackLayout>
 
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer x:Name="EndDate" Tapped="TaxPeriodEndDateClicked" />
-                                            </StackLayout.GestureRecognizers>
+                                            <StackLayout
+                                                Grid.Column="2"
+                                                HorizontalOptions="FillAndExpand"
+                                                Orientation="Horizontal">
 
-                                        </StackLayout>
-                                    </Grid>
-                                </VerticalStackLayout>
-                            </Border>
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
+                                                    Text="{Binding TxToDate, StringFormat='{0:dd MMM yyyy}'}" />
+                                                <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                    <Image Margin="5,0">
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="UserIconFont"
+                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
+                                                                Size="24"
+                                                                Color="{StaticResource SecondaryNew}" />
+                                                        </Image.Source>
+                                                    </Image>
 
-                        </VerticalStackLayout>
+                                                </StackLayout>
 
-                        <custom:CustomDatePicker
-                            x:Name="TxDateNormalCalendar"
-                            Margin="2"
-                            Background="White"
-                            Closed="TxDateNormalCalendar_Closed"
-                            HorizontalOptions="FillAndExpand"
-                            OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
-                            CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
-                            ItemHeight="36"
-                            Mode="Dialog"
-                            SelectedItem="{Binding TodayDateNormal}"
-                            Style="{StaticResource PickerStyle}">
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TSDateEndDateClicked" />
+                                                </StackLayout.GestureRecognizers>
 
-                            <custom:CustomDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="white"/>
+                                            </StackLayout>
+                                        </Grid>
+
+                                    </VerticalStackLayout>
+                                </Border>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout HorizontalOptions="FillAndExpand">
+
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ASTaxperiod}" />
+
+                                <Border
+                                    Stroke="#B1B1B1"
+                                    StrokeThickness="1"
+                                    Style="{StaticResource GreyBorderFrame}">
+
+                                    <VerticalStackLayout Padding="10" HorizontalOptions="FillAndExpand">
+
+                                        <Grid ColumnDefinitions="*,auto,*" HorizontalOptions="FillAndExpand">
+
+                                            <StackLayout
+                                                Grid.Column="0"
+                                                HorizontalOptions="FillAndExpand"
+                                                Orientation="Horizontal">
+
+
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementFrom}"
+                                                    Text="{Binding TPFromDate, StringFormat='{0:dd MMM yyyy}'}" />
+
+                                                <StackLayout HorizontalOptions="End">
+                                                    <Image Margin="5,0">
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="UserIconFont"
+                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
+                                                                Size="24"
+                                                                Color="{StaticResource SecondaryNew}" />
+                                                        </Image.Source>
+                                                    </Image>
+                                                </StackLayout>
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="TaxPeriodStartDateClicked" />
+                                                </StackLayout.GestureRecognizers>
+
+                                            </StackLayout>
+
+                                            <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
+                                                <Image
+                                                    Margin="5,0"
+                                                    HeightRequest="24"
+                                                    HorizontalOptions="Center"
+                                                    Source="arrowRight"
+                                                    Style="{DynamicResource FilterArrow}"
+                                                    WidthRequest="24" />
+
+                                            </StackLayout>
+
+                                            <StackLayout
+                                                Grid.Column="2"
+                                                HorizontalOptions="FillAndExpand"
+                                                Orientation="Horizontal">
+
+                                                <custom:GAZTBorderlessEntry
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsEnabled="False"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ASAccountStatementTo}"
+                                                    Text="{Binding TPToDate, StringFormat='{0:dd MMM yyyy}'}" />
+
+                                                <StackLayout HorizontalOptions="End">
+
+                                                    <Image Margin="5,0">
+                                                        <Image.Source>
+                                                            <FontImageSource
+                                                                FontFamily="UserIconFont"
+                                                                Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"
+                                                                Size="24"
+                                                                Color="{StaticResource SecondaryNew}" />
+                                                        </Image.Source>
+                                                    </Image>
+
+                                                </StackLayout>
+
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer x:Name="EndDate" Tapped="TaxPeriodEndDateClicked" />
+                                                </StackLayout.GestureRecognizers>
+
+                                            </StackLayout>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </Border>
+
+                            </VerticalStackLayout>
+
+                            <custom:CustomDatePicker
+                                x:Name="TxDateNormalCalendar"
+                                Margin="2"
+                                Background="White"
+                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                Closed="TxDateNormalCalendar_Closed"
+                                HorizontalOptions="FillAndExpand"
+                                ItemHeight="36"
+                                Mode="Dialog"
+                                OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
+                                SelectedItem="{Binding TodayDateNormal}"
+                                Style="{StaticResource PickerStyle}">
+
+                                <custom:CustomDatePicker.ColumnHeaderView>
+                                    <syncfusion:PickerColumnHeaderView Height="46" Background="white" />
                                 </custom:CustomDatePicker.ColumnHeaderView>
 
-                            <custom:CustomDatePicker.SelectionView>
-                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                            </custom:CustomDatePicker.SelectionView>
+                                <custom:CustomDatePicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                </custom:CustomDatePicker.SelectionView>
 
 
-                            <custom:CustomDatePicker.SelectedTextStyle>
-                                <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
-                            </custom:CustomDatePicker.SelectedTextStyle>
+                                <custom:CustomDatePicker.SelectedTextStyle>
+                                    <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
+                                </custom:CustomDatePicker.SelectedTextStyle>
 
-                            <custom:CustomDatePicker.HeaderView>
+                                <custom:CustomDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.VRStartDate}" >
+                                    <syncfusion:PickerHeaderView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.VRStartDate}">
 
                                         <syncfusion:PickerHeaderView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White"/>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
                                         </syncfusion:PickerHeaderView.TextStyle>
 
                                     </syncfusion:PickerHeaderView>
 
-                            </custom:CustomDatePicker.HeaderView>
+                                </custom:CustomDatePicker.HeaderView>
 
 
-                            <custom:CustomDatePicker.FooterView>
+                                <custom:CustomDatePicker.FooterView>
 
-                                <syncfusion:PickerFooterView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
-                                    OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+                                    <syncfusion:PickerFooterView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                        OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
 
-                                    <syncfusion:PickerFooterView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="White" />
-                                    </syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerFooterView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                        </syncfusion:PickerFooterView.TextStyle>
 
-                                </syncfusion:PickerFooterView>
+                                    </syncfusion:PickerFooterView>
 
-                            </custom:CustomDatePicker.FooterView>
+                                </custom:CustomDatePicker.FooterView>
 
-                        </custom:CustomDatePicker>
+                            </custom:CustomDatePicker>
 
-                        <!--  HijriDatePicker  -->
-                        <custom:CustomHijriDatePicker
-                            x:Name="TxDateHijriCalendar"
-                            Margin="2"
-                            Background="White"
-                            Closed="TxDateNormalCalendar_Closed"
-                            OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
-                            CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
-                            HorizontalOptions="FillAndExpand"
-                            ItemHeight="36"
-                            Mode="Dialog"
-                            SelectedItem="{Binding TodayDateinHijri}">
+                            <!--  HijriDatePicker  -->
+                            <custom:CustomHijriDatePicker
+                                x:Name="TxDateHijriCalendar"
+                                Margin="2"
+                                Background="White"
+                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                Closed="TxDateNormalCalendar_Closed"
+                                HorizontalOptions="FillAndExpand"
+                                ItemHeight="36"
+                                Mode="Dialog"
+                                OkButtonClicked="TxDateNormalCalendar_OkButtonClicked"
+                                SelectedItem="{Binding TodayDateinHijri}">
 
-                            <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="white"/>
-                            </custom:CustomHijriDatePicker.ColumnHeaderView>
+                                <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                    <syncfusion:PickerColumnHeaderView Height="46" Background="white" />
+                                </custom:CustomHijriDatePicker.ColumnHeaderView>
 
-                            <custom:CustomHijriDatePicker.SelectionView>
-                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                            </custom:CustomHijriDatePicker.SelectionView>
+                                <custom:CustomHijriDatePicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                </custom:CustomHijriDatePicker.SelectionView>
 
-                            <custom:CustomHijriDatePicker.HeaderView>
+                                <custom:CustomHijriDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.VREndDate}" >
+                                    <syncfusion:PickerHeaderView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.VREndDate}">
 
-                                         <syncfusion:PickerHeaderView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White"/>
+                                        <syncfusion:PickerHeaderView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
                                         </syncfusion:PickerHeaderView.TextStyle>
 
                                     </syncfusion:PickerHeaderView>
 
-                            </custom:CustomHijriDatePicker.HeaderView>
+                                </custom:CustomHijriDatePicker.HeaderView>
 
-                            <custom:CustomHijriDatePicker.SelectedTextStyle>
-                                <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
-                            </custom:CustomHijriDatePicker.SelectedTextStyle>
+                                <custom:CustomHijriDatePicker.SelectedTextStyle>
+                                    <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
+                                </custom:CustomHijriDatePicker.SelectedTextStyle>
 
-                            <custom:CustomHijriDatePicker.FooterView>
+                                <custom:CustomHijriDatePicker.FooterView>
 
-                                <syncfusion:PickerFooterView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
-                                    OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+                                    <syncfusion:PickerFooterView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                        OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
 
-                                    <syncfusion:PickerFooterView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="White" />
-                                    </syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerFooterView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                        </syncfusion:PickerFooterView.TextStyle>
 
-                                </syncfusion:PickerFooterView>
+                                    </syncfusion:PickerFooterView>
 
-                            </custom:CustomHijriDatePicker.FooterView>
+                                </custom:CustomHijriDatePicker.FooterView>
 
-                        </custom:CustomHijriDatePicker>
+                            </custom:CustomHijriDatePicker>
 
-                        <custom:CustomDatePicker
-                            x:Name="TaxPeriodDateNormalCalendar"
-                            Margin="2"
-                            Background="White"
-                            HorizontalOptions="FillAndExpand"
-                            ItemHeight="36"
-                            Mode="Dialog"
-                            OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
-                            CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
-                            SelectedItem="{Binding TodayDateNormal}"
-                            Style="{StaticResource PickerStyle}">
+                            <custom:CustomDatePicker
+                                x:Name="TaxPeriodDateNormalCalendar"
+                                Margin="2"
+                                Background="White"
+                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                HorizontalOptions="FillAndExpand"
+                                ItemHeight="36"
+                                Mode="Dialog"
+                                OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
+                                SelectedItem="{Binding TodayDateNormal}"
+                                Style="{StaticResource PickerStyle}">
 
-                            <custom:CustomDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
-                            </custom:CustomDatePicker.ColumnHeaderView>
+                                <custom:CustomDatePicker.ColumnHeaderView>
+                                    <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                </custom:CustomDatePicker.ColumnHeaderView>
 
-                            <custom:CustomDatePicker.SelectionView>
-                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                            </custom:CustomDatePicker.SelectionView>
+                                <custom:CustomDatePicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                </custom:CustomDatePicker.SelectionView>
 
-                            <custom:CustomDatePicker.SelectedTextStyle>
-                                <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
-                            </custom:CustomDatePicker.SelectedTextStyle>
+                                <custom:CustomDatePicker.SelectedTextStyle>
+                                    <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
+                                </custom:CustomDatePicker.SelectedTextStyle>
 
-                            <custom:CustomDatePicker.HeaderView>
+                                <custom:CustomDatePicker.HeaderView>
 
-                                <syncfusion:PickerHeaderView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.VRStartDate}">
-                                    <syncfusion:PickerHeaderView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="white" />
-                                    </syncfusion:PickerHeaderView.TextStyle>
-
-                                    </syncfusion:PickerHeaderView>
-
-                            </custom:CustomDatePicker.HeaderView>
-
-
-                            <custom:CustomDatePicker.FooterView>
-
-                                <syncfusion:PickerFooterView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
-                                    OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
-
-                                    <syncfusion:PickerFooterView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="white" />
-                                    </syncfusion:PickerFooterView.TextStyle>
-
-                                </syncfusion:PickerFooterView>
-
-                            </custom:CustomDatePicker.FooterView>
-
-                        </custom:CustomDatePicker>
-
-                        <!--  HijriDatePicker  -->
-                        <custom:CustomHijriDatePicker
-                            x:Name="TaxPeriodDateHijriCalendar"
-                            Margin="2"
-                            Background="White"
-                            HorizontalOptions="FillAndExpand"
-                            ItemHeight="36"
-                            OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
-                            CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
-                            Mode="Dialog"
-                            SelectedItem="{Binding TodayDateinHijri}">
-
-                            <custom:CustomHijriDatePicker.SelectionView>
-                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                            </custom:CustomHijriDatePicker.SelectionView>
-
-                            <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                <syncfusion:PickerColumnHeaderView Height="46" />
-                            </custom:CustomHijriDatePicker.ColumnHeaderView>
-
-                            <custom:CustomHijriDatePicker.SelectedTextStyle>
-                                <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
-                            </custom:CustomHijriDatePicker.SelectedTextStyle>
-
-                            <custom:CustomHijriDatePicker.HeaderView>
-
-                                <syncfusion:PickerHeaderView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.VREndDate}" >
-
-                                    <syncfusion:PickerHeaderView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="white" />
-                                    </syncfusion:PickerHeaderView.TextStyle>
+                                    <syncfusion:PickerHeaderView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.VRStartDate}">
+                                        <syncfusion:PickerHeaderView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="white" />
+                                        </syncfusion:PickerHeaderView.TextStyle>
 
                                     </syncfusion:PickerHeaderView>
 
-                            </custom:CustomHijriDatePicker.HeaderView>
+                                </custom:CustomDatePicker.HeaderView>
 
-                            <custom:CustomHijriDatePicker.FooterView>
 
-                                <syncfusion:PickerFooterView
-                                    Height="46"
-                                    Background="{StaticResource NeutralBlack}"
-                                    CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
-                                    OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+                                <custom:CustomDatePicker.FooterView>
 
-                                    <syncfusion:PickerFooterView.TextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="White" />
-                                    </syncfusion:PickerFooterView.TextStyle>
+                                    <syncfusion:PickerFooterView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                        OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
 
-                                </syncfusion:PickerFooterView>
+                                        <syncfusion:PickerFooterView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="white" />
+                                        </syncfusion:PickerFooterView.TextStyle>
 
-                            </custom:CustomHijriDatePicker.FooterView>
-                        </custom:CustomHijriDatePicker>
+                                    </syncfusion:PickerFooterView>
 
-                        <buttons:SfButton
-                            x:Name="btnReasonContinue"
-                            Grid.Row="3"
-                            Grid.Column="0"
-                            Margin="0,60"
-                            Command="{Binding FilterBtnCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ACFilterApply}"
-                            VerticalOptions="End" />
+                                </custom:CustomDatePicker.FooterView>
 
-                    </VerticalStackLayout>
+                            </custom:CustomDatePicker>
 
-                </ScrollView>
+                            <!--  HijriDatePicker  -->
+                            <custom:CustomHijriDatePicker
+                                x:Name="TaxPeriodDateHijriCalendar"
+                                Margin="2"
+                                Background="White"
+                                CancelButtonClicked="TaxPeriodDateNormalCalendar_CancelButtonClicked"
+                                HorizontalOptions="FillAndExpand"
+                                ItemHeight="36"
+                                Mode="Dialog"
+                                OkButtonClicked="TaxPeriodDateNormalCalendar_OkButtonClicked"
+                                SelectedItem="{Binding TodayDateinHijri}">
+
+                                <custom:CustomHijriDatePicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                </custom:CustomHijriDatePicker.SelectionView>
+
+                                <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                    <syncfusion:PickerColumnHeaderView Height="46" />
+                                </custom:CustomHijriDatePicker.ColumnHeaderView>
+
+                                <custom:CustomHijriDatePicker.SelectedTextStyle>
+                                    <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
+                                </custom:CustomHijriDatePicker.SelectedTextStyle>
+
+                                <custom:CustomHijriDatePicker.HeaderView>
+
+                                    <syncfusion:PickerHeaderView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.VREndDate}">
+
+                                        <syncfusion:PickerHeaderView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="white" />
+                                        </syncfusion:PickerHeaderView.TextStyle>
+
+                                    </syncfusion:PickerHeaderView>
+
+                                </custom:CustomHijriDatePicker.HeaderView>
+
+                                <custom:CustomHijriDatePicker.FooterView>
+
+                                    <syncfusion:PickerFooterView
+                                        Height="46"
+                                        Background="{StaticResource NeutralBlack}"
+                                        CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                        OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+
+                                        <syncfusion:PickerFooterView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                        </syncfusion:PickerFooterView.TextStyle>
+
+                                    </syncfusion:PickerFooterView>
+
+                                </custom:CustomHijriDatePicker.FooterView>
+                            </custom:CustomHijriDatePicker>
+
+                            <buttons:SfButton
+                                x:Name="btnReasonContinue"
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Margin="0,60"
+                                Command="{Binding FilterBtnCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ACFilterApply}"
+                                VerticalOptions="End" />
+
+                        </VerticalStackLayout>
+
+                    </ScrollView>
                 </Grid>
             </Border>
 
-              <!--  Loader  -->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
         </Grid>
 

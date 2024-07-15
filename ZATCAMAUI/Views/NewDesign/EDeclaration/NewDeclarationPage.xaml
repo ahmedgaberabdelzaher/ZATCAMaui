@@ -97,11 +97,9 @@
                                 Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
-                                              TextColor="{StaticResource NeutralGreay}" />
-                                        <Span Text=" "/>
-                                        <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}"
-                                              TextColor="{StaticResource Primary}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}" TextColor="{StaticResource NeutralGreay}" />
+                                        <Span Text=" " />
+                                        <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" TextColor="{StaticResource Primary}" />
                                     </FormattedString>
                                 </Label.FormattedText>
 

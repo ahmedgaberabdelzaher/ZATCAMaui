@@ -79,12 +79,12 @@
                     Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}"
                     VerticalOptions="Center" />
 
-                 <StackLayout
+                <StackLayout
+                    Grid.Column="2"
                     HorizontalOptions="EndAndExpand"
                     Orientation="Horizontal"
                     Rotation="90"
                     Spacing="3"
-                    Grid.Column="2"
                     VerticalOptions="CenterAndExpand">
                     <BoxView
                         BackgroundColor="{StaticResource SecondaryNew}"
@@ -102,9 +102,9 @@
                         HeightRequest="5"
                         WidthRequest="5" />
 
-                     <StackLayout.GestureRecognizers>
-                             <TapGestureRecognizer Command="{Binding onMoreOptionClicked}" />
-                     </StackLayout.GestureRecognizers>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding onMoreOptionClicked}" />
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
 
 
@@ -118,9 +118,9 @@
                 Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView
+                    BackgroundColor="White"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    BackgroundColor="White"
                     VerticalScrollBarVisibility="Never">
 
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -128,25 +128,26 @@
                         <!--  Data Entry/calculations screen  -->
                         <Grid
                             Margin="5,10"
-                            RowSpacing="10"
-                            RowDefinitions="auto,auto,auto,auto,auto,auto,*"
                             BackgroundColor="Transparent"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding InstalmentPlanAgreementsVisible}"
+                            RowDefinitions="auto,auto,auto,auto,auto,auto,*"
+                            RowSpacing="10"
                             VerticalOptions="FillAndExpand">
 
-                             <commonView:PageIndicatorView
+                            <commonView:PageIndicatorView
                                 Margin="0,10"
-                                    HorizontalOptions="EndAndExpand"
-                                    Completed="{Binding MarkComplete}"
-                                    DotSize="12"
-                                    MaxNum="{Binding MaxIndex}"
-                                    MinNum="{Binding CurrentIndex}"
-                                    VerticalOptions="CenterAndExpand" />
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
+                                HorizontalOptions="EndAndExpand"
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" />
 
-                            <Grid Grid.Row="1"
-                                  RowSpacing="10"
-                                  RowDefinitions="auto,auto,auto">
+                            <Grid
+                                Grid.Row="1"
+                                RowDefinitions="auto,auto,auto"
+                                RowSpacing="10">
 
                                 <Label
                                     Grid.Row="0"
@@ -168,9 +169,10 @@
 
                             </Grid>
 
-                            <Grid Grid.Row="2"
-                                  RowSpacing="10"
-                                  RowDefinitions="auto,auto">
+                            <Grid
+                                Grid.Row="2"
+                                RowDefinitions="auto,auto"
+                                RowSpacing="10">
 
                                 <Label
                                     Grid.Row="0"
@@ -198,8 +200,7 @@
                                             Text="{Binding PickedFinancialStatement}" />
 
 
-                                        <Image
-                                            HorizontalOptions="Center">
+                                        <Image HorizontalOptions="Center">
                                             <Image.Source>
                                                 <FontImageSource
                                                     FontFamily="UserIconFont"
@@ -231,12 +232,13 @@
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
 
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                          RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
-                                          ColumnDefinitions="50*,50*"
-                                          ColumnSpacing="10"
-                                          RowSpacing="10"
-                                          VerticalOptions="FillAndExpand">
+                                    <Grid
+                                        ColumnDefinitions="50*,50*"
+                                        ColumnSpacing="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
+                                        RowSpacing="10"
+                                        VerticalOptions="FillAndExpand">
 
                                         <Label
                                             Grid.Row="0"
@@ -823,12 +825,13 @@
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
 
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                          RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
-                                          ColumnDefinitions="50*,50*"
-                                          ColumnSpacing="10"
-                                          RowSpacing="10"
-                                          VerticalOptions="FillAndExpand">
+                                    <Grid
+                                        ColumnDefinitions="50*,50*"
+                                        ColumnSpacing="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
+                                        RowSpacing="10"
+                                        VerticalOptions="FillAndExpand">
 
                                         <Label
                                             Grid.Row="0"
@@ -1396,12 +1399,13 @@
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
 
-                                    <Grid HorizontalOptions="FillAndExpand"
-                                          RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
-                                          ColumnDefinitions="50*,50*"
-                                          ColumnSpacing="10"
-                                          RowSpacing="10"
-                                          VerticalOptions="FillAndExpand">
+                                    <Grid
+                                        ColumnDefinitions="50*,50*"
+                                        ColumnSpacing="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto"
+                                        RowSpacing="10"
+                                        VerticalOptions="FillAndExpand">
 
                                         <Label
                                             Grid.Row="0"
@@ -1972,11 +1976,10 @@
                         <Grid
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsSelectionViewEnabled}"
-                            VerticalOptions="FillAndExpand"
-                            RowDefinitions="auto,auto,*">
+                            RowDefinitions="auto,auto,*"
+                            VerticalOptions="FillAndExpand">
 
-                            <Grid Grid.Row="0"
-                                  RowDefinitions="auto,auto,auto">
+                            <Grid Grid.Row="0" RowDefinitions="auto,auto,auto">
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
@@ -2026,21 +2029,21 @@
                             </Grid>
 
                             <buttons:SfButton
-                                    Margin="0,20"
-                                    Grid.Row="2"
-                                    VerticalOptions="End"
-                                    Clicked="SfButton_Clicked"
-                                    Command="{Binding ReasonContinueBtnTapped}"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" />
+                                Grid.Row="2"
+                                Margin="0,20"
+                                Clicked="SfButton_Clicked"
+                                Command="{Binding ReasonContinueBtnTapped}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
+                                VerticalOptions="End" />
                         </Grid>
 
                         <!--  Code for Zakat & VAT Agreeemtns  -->
                         <Grid
+                            ColumnDefinitions="50*,50*"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsAgreementViewEnabled}"
                             RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,*"
-                            ColumnDefinitions="50*,50*"
                             VerticalOptions="FillAndExpand">
 
                             <Grid
@@ -2255,17 +2258,16 @@
                             RowDefinitions="auto,auto,auto,auto,auto,auto,*"
                             VerticalOptions="FillAndExpand">
 
-                             <commonView:PageIndicatorView
-                                    Margin="20,25,0,0"
-                                    Completed="{Binding MarkComplete}"
-                                    DotSize="12"
-                                    HorizontalOptions="End"
-                                    MaxNum="{Binding MaxIndex}"
-                                    MinNum="{Binding CurrentIndex}"
-                                    VerticalOptions="CenterAndExpand" />
+                            <commonView:PageIndicatorView
+                                Margin="20,25,0,0"
+                                Completed="{Binding MarkComplete}"
+                                DotSize="12"
+                                HorizontalOptions="End"
+                                MaxNum="{Binding MaxIndex}"
+                                MinNum="{Binding CurrentIndex}"
+                                VerticalOptions="CenterAndExpand" />
 
-                            <Grid Grid.Row="1"
-                                  RowDefinitions="auto,auto,auto">
+                            <Grid Grid.Row="1" RowDefinitions="auto,auto,auto">
 
                                 <Label
                                     Grid.Row="0"
@@ -2371,9 +2373,9 @@
 
                             <Grid
                                 Grid.Row="3"
-                                RowSpacing="10"
+                                HorizontalOptions="FillAndExpand"
                                 RowDefinitions="auto,auto"
-                                HorizontalOptions="FillAndExpand">
+                                RowSpacing="10">
 
                                 <Label
                                     Grid.Row="0"
@@ -2394,7 +2396,7 @@
                                     Style="{StaticResource SfStyleGreyBorderFrame}">
 
                                     <StackLayout Orientation="Horizontal">
-                                       
+
                                         <Label
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="Small"
@@ -2509,10 +2511,11 @@
                                 </listView:SfListView>
                             </Grid>
 
-                            <Grid Grid.Row="5"
-                                  RowSpacing="10"
-                                  RowDefinitions="auto,auto"
-                                  HorizontalOptions="FillAndExpand">
+                            <Grid
+                                Grid.Row="5"
+                                HorizontalOptions="FillAndExpand"
+                                RowDefinitions="auto,auto"
+                                RowSpacing="10">
                                 <Label
                                     Grid.Row="0"
                                     FontFamily="{StaticResource SomarRegular}"
@@ -2562,23 +2565,23 @@
                             </Grid>
 
                             <buttons:SfButton
-                                    x:Name="btnAttachmentContinue"
-                                    Margin="0,16"
-                                    Grid.Row="6"
-                                    Background="{Binding DeclarationButtonBackGroundColor}"
-                                    Command="{Binding AttachmentsContinueBtnTapped}"
-                                    IsEnabled="{Binding IsDeclarationEnabled}"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}" />
+                                x:Name="btnAttachmentContinue"
+                                Grid.Row="6"
+                                Margin="0,16"
+                                Background="{Binding DeclarationButtonBackGroundColor}"
+                                Command="{Binding AttachmentsContinueBtnTapped}"
+                                IsEnabled="{Binding IsDeclarationEnabled}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}" />
 
                         </Grid>
 
                         <!--  Code for VAT Bill selection  -->
                         <Grid
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
                             IsVisible="{Binding IsVATBillsViewEnabled}"
-                            RowDefinitions="*">
+                            RowDefinitions="*"
+                            VerticalOptions="FillAndExpand">
 
                             <listView:SfListView
                                 x:Name="BillsVATListVIew"
@@ -2596,8 +2599,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.View>
-                                                <Grid HorizontalOptions="FillAndExpand"
-                                                      RowDefinitions="auto,auto,auto,auto,auto">
+                                                <Grid HorizontalOptions="FillAndExpand" RowDefinitions="auto,auto,auto,auto,auto">
 
                                                     <Grid
                                                         Grid.Row="0"
@@ -2671,8 +2673,8 @@
 
                                                     <Border
                                                         Padding="0"
-                                                        StrokeShape="RoundRectangle 12,12,12,12"
                                                         HorizontalOptions="FillAndExpand"
+                                                        StrokeShape="RoundRectangle 12,12,12,12"
                                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                                         <StackLayout
                                                             Padding="12"
@@ -2713,20 +2715,19 @@
 
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView
-                                            BackgroundColor="White"
-                                            CornerRadius="10">
+                                        <cards:SfCardView BackgroundColor="White" CornerRadius="10">
 
-                                            <Grid HorizontalOptions="FillAndExpand"
-                                                  VerticalOptions="FillAndExpand"
-                                                  RowDefinitions="*">
+                                            <Grid
+                                                HorizontalOptions="FillAndExpand"
+                                                RowDefinitions="*"
+                                                VerticalOptions="FillAndExpand">
 
                                                 <Grid
                                                     Padding="10"
-                                                    RowSpacing="0"
-                                                    RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
                                                     ColumnDefinitions="50*,50*"
                                                     HorizontalOptions="FillAndExpand"
+                                                    RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                                                    RowSpacing="0"
                                                     VerticalOptions="FillAndExpand">
 
                                                     <Label
@@ -2834,9 +2835,7 @@
                                 </listView:SfListView.ItemTemplate>
                                 <listView:SfListView.SelectedItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView
-                                            BackgroundColor="Transparent"
-                                            CornerRadius="10">
+                                        <cards:SfCardView BackgroundColor="Transparent" CornerRadius="10">
                                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Image
                                                     Aspect="AspectFill"
@@ -2989,12 +2988,9 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ViewCell.View>
-                                                <Grid  HorizontalOptions="FillAndExpand"
-                                                       RowDefinitions="auto,auto,auto,auto">
+                                                <Grid HorizontalOptions="FillAndExpand" RowDefinitions="auto,auto,auto,auto">
 
-                                                    <Grid
-                                                        Grid.Row="0"
-                                                        HorizontalOptions="End">
+                                                    <Grid Grid.Row="0" HorizontalOptions="End">
                                                         <commonView:PageIndicatorView
                                                             Margin="10,15,0,0"
                                                             Completed="{Binding MarkComplete}"
@@ -3017,9 +3013,10 @@
                                                         Style="{StaticResource BodyLabelGrey}"
                                                         Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentDisplayInstalmentSchedule}" />
 
-                                                    <BoxView Grid.Row="3"
-                                                             HeightRequest="1"
-                                                             Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                                    <BoxView
+                                                        Grid.Row="3"
+                                                        HeightRequest="1"
+                                                        Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                                 </Grid>
                                             </ViewCell.View>
@@ -3038,8 +3035,8 @@
                                                     <Border
                                                         Margin="0,10,0,0"
                                                         Padding="0"
-                                                        StrokeShape="RoundRectangle 10,10,10,10"
                                                         IsVisible="{Binding IsPenaltyVisible}"
+                                                        StrokeShape="RoundRectangle 10,10,10,10"
                                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
 
                                                         <StackLayout Padding="10" Orientation="Horizontal">
@@ -3203,12 +3200,10 @@
                         <Grid
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsSummaryViewEnabled}"
-                            VerticalOptions="FillAndExpand"
-                            RowDefinitions="auto,auto,auto">
+                            RowDefinitions="auto,auto,auto"
+                            VerticalOptions="FillAndExpand">
 
-                            <Grid
-                                Grid.Row="0"
-                                HorizontalOptions="End">
+                            <Grid Grid.Row="0" HorizontalOptions="End">
                                 <commonView:PageIndicatorView
                                     Margin="10,15,0,0"
                                     Completed="{Binding MarkComplete}"
@@ -3219,8 +3214,7 @@
                                     VerticalOptions="CenterAndExpand" />
                             </Grid>
 
-                            <Grid
-                                Grid.Row="1">
+                            <Grid Grid.Row="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
@@ -3644,8 +3638,7 @@
 
                             </Grid>
 
-                            <Grid Grid.Row="2"
-                                  RowDefinitions="auto,*">
+                            <Grid Grid.Row="2" RowDefinitions="auto,*">
 
 
                                 <StackLayout
@@ -3690,12 +3683,11 @@
                                     <Border
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        StrokeShape="RoundRectangle 10,10,10,10"
                                         IsVisible="False"
+                                        StrokeShape="RoundRectangle 10,10,10,10"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
 
-                                        <StackLayout Padding="10"
-                                                     Orientation="Horizontal">
+                                        <StackLayout Padding="10" Orientation="Horizontal">
 
 
 
@@ -3719,13 +3711,13 @@
 
                                 </StackLayout>
 
-                                 <buttons:SfButton
+                                <buttons:SfButton
                                     x:Name="SummarybtnContinue"
-                                    Margin="0,16"
                                     Grid.Row="1"
+                                    Margin="0,16"
                                     Command="{Binding SummaryContinueBtnTapped}"
                                     Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.Submit}"/>
+                                    Text="{x:Static ResourceManager:AppResources.Submit}" />
                             </Grid>
                         </Grid>
 
@@ -3736,7 +3728,7 @@
 
             </Border>
 
-             <!--  Loader  -->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>

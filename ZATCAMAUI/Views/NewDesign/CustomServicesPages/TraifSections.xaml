@@ -51,9 +51,9 @@
                 <!--  Back Image  -->
                 <Image
                     HorizontalOptions="Start"
+                    IsVisible="{Binding IsBackStepButtonVisible}"
                     Rotation="0"
                     Source="whiteRightBack.png"
-                    IsVisible="{Binding IsBackStepButtonVisible}"
                     Style="{DynamicResource BackButtonArrow}"
                     VerticalOptions="CenterAndExpand">
 
@@ -64,7 +64,7 @@
                             Value="LeftToRight">
                             <Setter Property="Rotation" Value="180" />
                         </DataTrigger>
-                            <DataTrigger
+                        <DataTrigger
                             Binding="{Binding IsSearchVIewVisible}"
                             TargetType="Image"
                             Value="true">
@@ -89,9 +89,9 @@
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 LineBreakMode="TailTruncation"
+                MaxLines="1"
                 Style="{StaticResource SectionTitleWhiteBold}"
                 Text="{Binding Title}"
-                MaxLines="1"
                 VerticalOptions="Center" />
 
             <!--  Download Image  -->
@@ -162,30 +162,223 @@
         </Grid>
         <!--#endregion Header-->
 
-         <Border
-            Padding="0"
+        <Border
             Grid.Row="1"
+            Padding="0"
             StrokeShape="RoundRectangle 15,15,0,0"
             VerticalOptions="FillAndExpand">
+            <Grid
+                BackgroundColor="White"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+
+
                 <Grid
+                    Padding="20"
+                    IsVisible="{Binding IsSectionView}"
+                    RowDefinitions="auto,*">
+
+                    <inputLayout:SfTextInputLayout
+                        ContainerBackground="White"
+                        ContainerType="Outlined"
+                        Hint="{x:Static ResourceManager:AppResources.SearchField}"
+                        InputViewPadding="16,0,16,0"
+                        LeadingViewPosition="Inside"
+                        OutlineCornerRadius="15"
+                        Stroke="#B1B1B1"
+                        VerticalOptions="CenterAndExpand">
+
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <Image Source="topsearchicon" />
+                        </inputLayout:SfTextInputLayout.LeadingView>
+
+                        <custom:GAZTBorderlessEntry
+                            HorizontalOptions="FillAndExpand"
+                            Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
+                            PlaceholderColor="#888888"
+                            Style="{StaticResource DefaultEntry}"
+                            VerticalTextAlignment="Center">
+
+                            <custom:GAZTBorderlessEntry.Behaviors>
+                                <xct:EventToCommandBehavior
+                                    Command="{Binding ViewSearchViewCommand}"
+                                    CommandParameter="{Binding SearchKey}"
+                                    EventName="Focused" />
+                            </custom:GAZTBorderlessEntry.Behaviors>
+                        </custom:GAZTBorderlessEntry>
+
+                    </inputLayout:SfTextInputLayout>
+
+                    <CollectionView
+                        Grid.Row="1"
+                        ItemSizingStrategy="MeasureAllItems"
+                        ItemsSource="{Binding TraiffSections}"
+                        SelectedItem="{Binding SelectedTraiffSections}"
+                        SelectionChangedCommand="{Binding TraiffSectionsSelectionChangedCommand}"
+                        SelectionMode="Single"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Frame
+                                        Padding="20,15,17,15"
+                                        BorderColor="#D8D8D8"
+                                        CornerRadius="14"
+                                        HasShadow="False">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                FontSize="16"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding Name}"
+                                                TextColor="{StaticResource Primary}" />
+                                            <Image
+                                                HeightRequest="20"
+                                                HorizontalOptions="EndAndExpand"
+                                                Rotation="180"
+                                                Source="LstArrow"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="10">
+                                                <Image.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding AppDirection}"
+                                                        TargetType="Image"
+                                                        Value="LeftToRight">
+                                                        <Setter Property="Rotation" Value="0" />
+                                                    </DataTrigger>
+
+                                                </Image.Triggers>
+
+                                            </Image>
+
+
+
+                                        </StackLayout>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+                </Grid>
+
+                <Grid IsVisible="{Binding IsChapterSection}">
+
+                    <CollectionView
+                        ItemsSource="{Binding TraiffChapters}"
+                        SelectedItem="{Binding SelectedTraiffChapters}"
+                        SelectionChangedCommand="{Binding TraiffChapterSelectionChangedCommand}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <custom:TraifItemsControl />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+                </Grid>
+
+                <Grid IsVisible="{Binding IsMainHarmonizedTariffs}">
+
+                    <CollectionView
+                        ItemsSource="{Binding MainHarmonizedTariffs}"
+                        SelectedItem="{Binding SelectedMainHarmonizedTariffs}"
+                        SelectionChangedCommand="{Binding TraiffHarmonizedChangedCommand}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <custom:TraifItemsControl />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+
+                <Grid IsVisible="{Binding IsSubHarmonizedTariffs}">
+
+                    <CollectionView
+                        x:Name="SubHarmonizedTariffsLst"
+                        ItemsSource="{Binding SubHarmonizedTariffs}"
+                        SelectedItem="{Binding SelectedSubHarmonizedTariffs}"
+                        SelectionChangedCommand="{Binding TraiffSubHarmonizedChangedCommand}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+
+                                <Grid x:Name="Item" Padding="24,6,24,6">
+
+                                    <Frame
+                                        Padding="20,15,17,15"
+                                        BorderColor="#D8D8D8"
+                                        CornerRadius="14"
+                                        HasShadow="False">
+
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                BindingContext="{Binding Source={x:Reference SubHarmonizedTariffsLst}, Path=BindingContext}"
+                                                Command="{Binding TraiffSubHarmonizedChangedCommand}"
+                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                        </Frame.GestureRecognizers>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                FontSize="16"
+                                                HorizontalOptions="StartAndExpand"
+                                                TextColor="{StaticResource Primary}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Code}" />
+                                                        <Span Text=" - " />
+                                                        <Span Text="{Binding Name}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Image
+                                                HeightRequest="22"
+                                                HorizontalOptions="EndAndExpand"
+                                                Source="LstDetailsIcon"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="20" />
+
+                                        </StackLayout>
+
+                                    </Frame>
+
+                                </Grid>
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </Grid>
+
+                <FlexLayout
+                    Margin="20"
                     BackgroundColor="White"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+                    Direction="Column"
+                    IsVisible="{Binding IsSearchVIewVisible}"
+                    JustifyContent="SpaceAround">
 
+                    <Grid
+                        Margin="0,0,0,0"
+                        ColumnDefinitions="*,auto"
+                        ColumnSpacing="10"
+                        RowDefinitions="auto">
 
-                    <Grid IsVisible="{Binding IsSectionView}"
-                          RowDefinitions="auto,*"
-                          Padding="20">
 
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
-                            InputViewPadding="16,0,16,0"
                             Hint="{x:Static ResourceManager:AppResources.SearchField}"
+                            InputViewPadding="16,0,16,0"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
-                            Stroke="#B1B1B1"
-                            VerticalOptions="CenterAndExpand">
+                            Stroke="#B1B1B1">
 
                             <inputLayout:SfTextInputLayout.LeadingView>
                                 <Image Source="topsearchicon" />
@@ -196,748 +389,252 @@
                                 Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
                                 PlaceholderColor="#888888"
                                 Style="{StaticResource DefaultEntry}"
+                                Text="{Binding SearchKey}"
                                 VerticalTextAlignment="Center">
 
+
                                 <custom:GAZTBorderlessEntry.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding SearchCommand}"
+                                        CommandParameter="{Binding SearchKey}"
+                                        EventName="Completed" />
+
                                     <xct:EventToCommandBehavior
                                         Command="{Binding ViewSearchViewCommand}"
                                         CommandParameter="{Binding SearchKey}"
                                         EventName="Focused" />
+
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
-
                         </inputLayout:SfTextInputLayout>
 
+                        <Label
+                            Grid.Column="1"
+                            Margin="0,15,0,15"
+                            HorizontalOptions="Start"
+                            Text="{x:Static ResourceManager:AppResources.Clear}"
+                            TextColor="#0996D4"
+                            VerticalOptions="CenterAndExpand">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ClearSearchTextCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                    </Grid>
+
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="Start"
+                        IsVisible="{Binding IsSearchFilterVisbible}"
+                        Text="{x:Static ResourceManager:AppResources.SearchFor}"
+                        TextColor="#002447" />
+
+                    <Grid
+                        ColumnDefinitions="*,*,*"
+                        ColumnSpacing="10"
+                        IsVisible="{Binding IsSearchFilterVisbible}">
+                        <Grid.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Frame">
+                                    <Setter Property="CornerRadius" Value="20" />
+                                    <Setter Property="Padding" Value="9" />
+                                    <Setter Property="HasShadow" Value="False" />
+
+                                </Style>
+                            </ResourceDictionary>
+                        </Grid.Resources>
+                        <Frame Grid.Column="0" BackgroundColor="#F5F5F5">
+                            <Label
+                                HorizontalOptions="Center"
+                                Text="{x:Static ResourceManager:AppResources.Word}"
+                                TextColor="#666666"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding SearchBy}"
+                                        TargetType="Label"
+                                        Value="1">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="1" />
+                            </Frame.GestureRecognizers>
+                            <Frame.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SearchBy}"
+                                    TargetType="Frame"
+                                    Value="1">
+                                    <Setter Property="BackgroundColor" Value="#0996D4" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                        </Frame>
+                        <Frame Grid.Column="1" BackgroundColor="#F5F5F5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="3" />
+                            </Frame.GestureRecognizers>
+                            <Frame.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SearchBy}"
+                                    TargetType="Frame"
+                                    Value="3">
+                                    <Setter Property="BackgroundColor" Value="#0996D4" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                            <Label
+                                HorizontalOptions="Center"
+                                Text="{x:Static ResourceManager:AppResources.HS}"
+                                TextColor="#666666"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding SearchBy}"
+                                        TargetType="Label"
+                                        Value="3">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </Frame>
+                        <Frame Grid.Column="2" BackgroundColor="#F5F5F5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="2" />
+                            </Frame.GestureRecognizers>
+                            <Label
+                                HorizontalOptions="Center"
+                                Text="{x:Static ResourceManager:AppResources.HSHeading}"
+                                TextColor="#666666"
+                                VerticalOptions="CenterAndExpand">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding SearchBy}"
+                                        TargetType="Label"
+                                        Value="2">
+                                        <Setter Property="TextColor" Value="White" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                            <Frame.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding SearchBy}"
+                                    TargetType="Frame"
+                                    Value="2">
+                                    <Setter Property="BackgroundColor" Value="#0996D4" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                        </Frame>
+                    </Grid>
+
+                    <Label
+                        Margin="0,0,0,10"
+                        IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
+                        TextColor="{StaticResource Primary}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding SearchRsltCount}" />
+                                <Span Text=" " />
+                                <Span Text="{x:Static ResourceManager:AppResources.SearchRsltCountText}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <FlexLayout FlexLayout.Grow="1">
                         <CollectionView
-                            ItemSizingStrategy="MeasureAllItems"
-                            ItemsSource="{Binding TraiffSections}"
-                            SelectedItem="{Binding SelectedTraiffSections}"
-                            SelectionChangedCommand="{Binding TraiffSectionsSelectionChangedCommand}"
+                            Margin="0,0,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
+                            ItemsSource="{Binding SearchResultLst}"
+                            SelectedItem="{Binding SelectedSearchResultLst}"
+                            SelectionChangedCommand="{Binding TraiffSearchSelectionChangedCommand}"
                             SelectionMode="Single"
-                            Grid.Row="1"
                             VerticalOptions="FillAndExpand"
                             VerticalScrollBarVisibility="Never">
 
                             <CollectionView.ItemsLayout>
-                                <GridItemsLayout
-                                    Orientation="Vertical"
-                                    VerticalItemSpacing="10" />
+                                <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
                             </CollectionView.ItemsLayout>
 
                             <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout>
+                                    <Grid
+                                        HorizontalOptions="FillAndExpand"
+                                        RowDefinitions="*"
+                                        VerticalOptions="FillAndExpand">
                                         <Frame
-                                            Padding="20,15,17,15"
+                                            Padding="10"
                                             BorderColor="#D8D8D8"
                                             CornerRadius="14"
-                                            HasShadow="False">
-                                            <StackLayout Orientation="Horizontal">
+                                            HasShadow="False"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand">
+                                            <StackLayout>
+
+                                                <Label Text="{Binding Code}" />
+
                                                 <Label
-                                                    FontSize="16"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    FontSize="12"
                                                     Text="{Binding Name}"
-                                                    TextColor="{StaticResource Primary}" />
-                                                <Image
-                                                    HeightRequest="20"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Source="LstArrow"
-                                                    Rotation="180"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    WidthRequest="10">
-                                                    <Image.Triggers>
-                                                        <DataTrigger
-                                                            Binding="{Binding AppDirection}"
-                                                            TargetType="Image"
-                                                            Value="LeftToRight">
-                                                            <Setter Property="Rotation" Value="0" />
-                                                        </DataTrigger>
+                                                    TextColor="#0996D4" />
 
-                                                    </Image.Triggers>
+                                                <BoxView HeightRequest="1" Color="#EEEEEE" />
 
-                                                </Image>
+                                                <StackLayout BindableLayout.ItemsSource="{Binding tariffreleaseprocedures}">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid
+                                                                ColumnDefinitions="auto,*"
+                                                                ColumnSpacing="10"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                VerticalOptions="FillAndExpand">
+                                                                <Label
+                                                                    FontSize="12"
+                                                                    Text="{Binding prcdr_code}"
+                                                                    TextColor="#002447" />
+                                                                <Label
+                                                                    Grid.Column="1"
+                                                                    FontSize="12"
+                                                                    LineBreakMode="WordWrap"
+                                                                    Text="{Binding rlse_prcdr_note}"
+                                                                    TextColor="#002447" />
+                                                            </Grid>
 
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
 
+                                                </StackLayout>
 
-                                        </StackLayout>
-                                        </Frame>
-                                    </StackLayout>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
+                                                <BoxView HeightRequest="1" Color="#EEEEEE" />
 
-                        </CollectionView>
-                    </Grid>
-
-                    <Grid IsVisible="{Binding IsChapterSection}">
-
-                        <CollectionView
-                            ItemsSource="{Binding TraiffChapters}"
-                            SelectedItem="{Binding SelectedTraiffChapters}"
-                            SelectionChangedCommand="{Binding TraiffChapterSelectionChangedCommand}"
-                            SelectionMode="Single">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <custom:TraifItemsControl />
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-
-                        
-                    </Grid>
-
-                    <Grid IsVisible="{Binding IsMainHarmonizedTariffs}">
-
-                        <CollectionView
-                            ItemsSource="{Binding MainHarmonizedTariffs}"
-                            SelectedItem="{Binding SelectedMainHarmonizedTariffs}"
-                            SelectionChangedCommand="{Binding TraiffHarmonizedChangedCommand}"
-                            SelectionMode="Single">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <custom:TraifItemsControl />
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-                    </Grid>
-
-                    <Grid IsVisible="{Binding IsSubHarmonizedTariffs}">
-
-                        <CollectionView
-                            x:Name="SubHarmonizedTariffsLst"
-                            ItemsSource="{Binding SubHarmonizedTariffs}"
-                            SelectedItem="{Binding SelectedSubHarmonizedTariffs}"
-                            SelectionChangedCommand="{Binding TraiffSubHarmonizedChangedCommand}">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-
-                                    <Grid x:Name="Item" Padding="24,6,24,6">
-
-                                        <Frame
-                                            Padding="20,15,17,15"
-                                            BorderColor="#D8D8D8"
-                                            CornerRadius="14"
-                                            HasShadow="False">
-
-                                            <Frame.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    BindingContext="{Binding Source={x:Reference SubHarmonizedTariffsLst}, Path=BindingContext}"
-                                                    Command="{Binding TraiffSubHarmonizedChangedCommand}"
-                                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                            </Frame.GestureRecognizers>
-
-                                            <StackLayout Orientation="Horizontal">
                                                 <Label
-                                                    FontSize="16"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    TextColor="{StaticResource Primary}">
+                                                    FontSize="12"
+                                                    HorizontalOptions="Start"
+                                                    TextColor="#002447">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding Code}" />
-                                                            <Span Text=" - " />
-                                                            <Span Text="{Binding Name}" />
+                                                            <Span Text="{x:Static ResourceManager:AppResources.Duty}" />
+                                                            <Span Text=": " />
+                                                            <Span Text="{Binding tariffdetails[0].dutyName}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-                                                <Image
-                                                    HeightRequest="22"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Source="LstDetailsIcon"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    WidthRequest="20" />
 
                                             </StackLayout>
-
                                         </Frame>
-
                                     </Grid>
-
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
-
                         </CollectionView>
-
-                    </Grid>
-
-                    <FlexLayout
-                        Margin="20"
-                        Direction="Column"
-                        JustifyContent="SpaceAround"
-                        BackgroundColor="White"
-                        IsVisible="{Binding IsSearchVIewVisible}">
-
-                        <Grid
-                            Margin="0,0,0,0"
-                            ColumnSpacing="10"
-                            ColumnDefinitions="*,auto"
-                            RowDefinitions="auto">
-
-
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
-                                Hint="{x:Static ResourceManager:AppResources.SearchField}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="#B1B1B1">
-
-                                <inputLayout:SfTextInputLayout.LeadingView>
-                                    <Image Source="topsearchicon" />
-                                </inputLayout:SfTextInputLayout.LeadingView>
-
-                                <custom:GAZTBorderlessEntry
-                                    HorizontalOptions="FillAndExpand"
-                                    Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
-                                    PlaceholderColor="#888888"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SearchKey}"
-                                    VerticalTextAlignment="Center">
-
-
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <xct:EventToCommandBehavior
-                                            Command="{Binding SearchCommand}"
-                                            CommandParameter="{Binding SearchKey}"
-                                            EventName="Completed" />
-
-                                        <xct:EventToCommandBehavior
-                                            Command="{Binding ViewSearchViewCommand}"
-                                            CommandParameter="{Binding SearchKey}"
-                                            EventName="Focused" />
-
-                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-
-                            <Label
-                                Grid.Column="1"
-                                Margin="0,15,0,15"
-                                HorizontalOptions="Start"
-                                Text="{x:Static ResourceManager:AppResources.Clear}"
-                                TextColor="#0996D4"
-                                VerticalOptions="CenterAndExpand">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ClearSearchTextCommand}" />
-                                </Label.GestureRecognizers>
-                            </Label>
-
-                        </Grid>
-
-                        <Label
-                            FontSize="16"
-                            HorizontalOptions="Start"
-                            IsVisible="{Binding IsSearchFilterVisbible}"
-                            Text="{x:Static ResourceManager:AppResources.SearchFor}"
-                            TextColor="#002447" />
-
-                        <Grid ColumnDefinitions="*,*,*"
-                                ColumnSpacing="10"
-                                IsVisible="{Binding IsSearchFilterVisbible}">
-                            <Grid.Resources>
-                                <ResourceDictionary>
-                                    <Style TargetType="Frame">
-                                        <Setter Property="CornerRadius" Value="20" />
-                                        <Setter Property="Padding" Value="9" />
-                                        <Setter Property="HasShadow" Value="False" />
-
-                                    </Style>
-                                </ResourceDictionary>
-                            </Grid.Resources>
-                            <Frame Grid.Column="0" BackgroundColor="#F5F5F5">
-                                <Label
-                                    HorizontalOptions="Center"
-                                    Text="{x:Static ResourceManager:AppResources.Word}"
-                                    TextColor="#666666"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding SearchBy}"
-                                            TargetType="Label"
-                                            Value="1">
-                                            <Setter Property="TextColor" Value="White" />
-                                        </DataTrigger>
-                                    </Label.Triggers>
-                                </Label>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="1" />
-                                </Frame.GestureRecognizers>
-                                <Frame.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding SearchBy}"
-                                        TargetType="Frame"
-                                        Value="1">
-                                        <Setter Property="BackgroundColor" Value="#0996D4" />
-                                    </DataTrigger>
-                                </Frame.Triggers>
-                            </Frame>
-                            <Frame Grid.Column="1" BackgroundColor="#F5F5F5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="3" />
-                                </Frame.GestureRecognizers>
-                                <Frame.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding SearchBy}"
-                                        TargetType="Frame"
-                                        Value="3">
-                                        <Setter Property="BackgroundColor" Value="#0996D4" />
-                                    </DataTrigger>
-                                </Frame.Triggers>
-                                <Label
-                                    HorizontalOptions="Center"
-                                    Text="{x:Static ResourceManager:AppResources.HS}"
-                                    TextColor="#666666"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding SearchBy}"
-                                            TargetType="Label"
-                                            Value="3">
-                                            <Setter Property="TextColor" Value="White" />
-                                        </DataTrigger>
-                                    </Label.Triggers>
-                                </Label>
-                            </Frame>
-                            <Frame Grid.Column="2" BackgroundColor="#F5F5F5">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding ChangeSearchByCommand}" CommandParameter="2" />
-                                </Frame.GestureRecognizers>
-                                <Label
-                                    HorizontalOptions="Center"
-                                    Text="{x:Static ResourceManager:AppResources.HSHeading}"
-                                    TextColor="#666666"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Label.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding SearchBy}"
-                                            TargetType="Label"
-                                            Value="2">
-                                            <Setter Property="TextColor" Value="White" />
-                                        </DataTrigger>
-                                    </Label.Triggers>
-                                </Label>
-                                <Frame.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding SearchBy}"
-                                        TargetType="Frame"
-                                        Value="2">
-                                        <Setter Property="BackgroundColor" Value="#0996D4" />
-                                    </DataTrigger>
-                                </Frame.Triggers>
-                            </Frame>
-                        </Grid>
-
-                        <Label
-                        Margin="0,0,0,10"
-                            IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
-                            TextColor="{StaticResource Primary}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding SearchRsltCount}" />
-                                    <Span Text=" " />
-                                    <Span Text="{x:Static ResourceManager:AppResources.SearchRsltCountText}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <FlexLayout FlexLayout.Grow="1">
-                            <CollectionView
-                                    Margin="0,0,0,0"
-                                    IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
-                                    ItemsSource="{Binding SearchResultLst}"
-                                    SelectedItem="{Binding SelectedSearchResultLst}"
-                                    SelectionChangedCommand="{Binding TraiffSearchSelectionChangedCommand}"
-                                    SelectionMode="Single"
-                                    HorizontalOptions="FillAndExpand"
-                                    VerticalOptions="FillAndExpand"
-                                    VerticalScrollBarVisibility="Never">
-
-                                    <CollectionView.ItemsLayout>
-                                        <LinearItemsLayout ItemSpacing="10"
-                                                            Orientation="Vertical" />
-                                    </CollectionView.ItemsLayout>
-
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand"
-                                                    RowDefinitions="*"
-                                                VerticalOptions="FillAndExpand">
-                                                <Frame
-                                                    Padding="10"
-                                                    BorderColor="#D8D8D8"
-                                                    CornerRadius="14"
-                                                    HorizontalOptions="FillAndExpand"
-                                                    VerticalOptions="FillAndExpand"
-                                                    HasShadow="False">
-                                                    <StackLayout>
-
-                                                        <Label Text="{Binding Code}" />
-
-                                                        <Label
-                                                            FontSize="12"
-                                                            Text="{Binding Name}"
-                                                            TextColor="#0996D4" />
-
-                                                        <BoxView HeightRequest="1" Color="#EEEEEE" />
-
-                                                        <StackLayout
-                                                BindableLayout.ItemsSource="{Binding tariffreleaseprocedures}">
-                                                            <BindableLayout.ItemTemplate>
-                                                                <DataTemplate>
-                                                                    <Grid ColumnDefinitions="auto,*"
-                                                                            ColumnSpacing="10"
-                                                                                    VerticalOptions="FillAndExpand"
-                                                                                    HorizontalOptions="FillAndExpand">
-                                                                        <Label
-                                                                            FontSize="12"
-                                                                            Text="{Binding prcdr_code}"
-                                                                            TextColor="#002447" />
-                                                                        <Label
-                                                                            FontSize="12"
-                                                                            Grid.Column="1"
-                                                                            LineBreakMode="WordWrap"
-                                                                            Text="{Binding rlse_prcdr_note}"
-                                                                            TextColor="#002447" />
-                                                                    </Grid>
-
-                                                                </DataTemplate>
-                                                            </BindableLayout.ItemTemplate>
-
-                                                        </StackLayout>
-
-                                                        <BoxView HeightRequest="1" Color="#EEEEEE" />
-
-                                                        <Label FontSize="12" TextColor="#002447"
-                                                               HorizontalOptions="Start">
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{x:Static ResourceManager:AppResources.Duty}" />
-                                                                    <Span Text=": " />
-                                                                    <Span Text="{Binding tariffdetails[0].dutyName}" />
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>
-
-                                                    </StackLayout>
-                                                </Frame>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
-                        </FlexLayout>
-
                     </FlexLayout>
 
-                    <Grid IsVisible="{Binding IsTarrifSearch}">
-                        <CollectionView
-                            x:Name="HarmonizedTariffsInSearchLst"
-                            ItemsSource="{Binding HarmonizedTariffslvl3}"
-                            SelectedItem="{Binding SelectedSearchTariffs}"
-                            SelectionChangedCommand="{Binding SelectedTarrifSearchSelectionChangedCommand}"
-                            SelectionMode="Single">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid x:Name="Item" Padding="24,6,24,6">
+                </FlexLayout>
 
-                                        <Frame
-                                            Padding="20,15,17,15"
-                                            BorderColor="#D8D8D8"
-                                            CornerRadius="14"
-                                            HasShadow="False">
-
-                                            <StackLayout Orientation="Horizontal">
-
-                                                <Label
-                                                    x:Name="nameLabl"
-                                                    FontSize="16"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    TextColor="{StaticResource Primary}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding Code}" />
-                                                            <Span Text=" - " />
-                                                            <Span Text="{Binding Name}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-
-                                                <!--  LstArrow  -->
-                                                <Image
-                                                    HeightRequest="22"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Source="LstArrow"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    WidthRequest="20">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer
-                                                            BindingContext="{Binding Source={x:Reference HarmonizedTariffsInSearchLst}, Path=BindingContext}"
-                                                            Command="{Binding TraiffSubHarmonizedChangedCommand}"
-                                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                                    </Image.GestureRecognizers>
-                                                    <Image.Triggers>
-                                                        <DataTrigger
-                                                            Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
-                                                            TargetType="Image"
-                                                            Value="RightToLeft">
-                                                            <Setter Property="Rotation" Value="180" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="0">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstArrow" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="2">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstArrow" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="5">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstArrow" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="1">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="3">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                        </DataTrigger>
-                                                    </Image.Triggers>
-                                                </Image>
-
-                                            </StackLayout>
-                                        </Frame>
-
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-
-                    </Grid>
-
-                    <!--  Harmonized Tarrifs  -->
-                    <Grid IsVisible="{Binding IsHarmonizedTarrifs}" VerticalOptions="FillAndExpand">
-
-                        <CollectionView
-                            x:Name="HarmonizedTariffsLst"
-                            ItemsSource="{Binding HarmonizedTariffs}"
-                            SelectedItem="{Binding SelectedHarmonizedTariffs}"
-                            SelectionChangedCommand="{Binding TraiffLevel1SelectionChangedCommand}"
-                            SelectionMode="Single">
-                            <CollectionView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid x:Name="Item" Padding="24,6,24,6">
-
-                                        <Frame
-                                            Padding="20,15,17,15"
-                                            BorderColor="#D8D8D8"
-                                            CornerRadius="14"
-                                            HasShadow="False">
-                                            <StackLayout Orientation="Horizontal">
-                                                <Label
-                                                    x:Name="nameLabl"
-                                                    FontSize="16"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    TextColor="{StaticResource Primary}">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding Code}" />
-                                                            <Span Text=" - " />
-                                                            <Span Text="{Binding Name}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                                <!--  LstArrow  -->
-                                                <Image
-                                                    HeightRequest="22"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Source="LstArrow"
-                                                    VerticalOptions="CenterAndExpand"
-                                                    WidthRequest="20">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer
-                                                            BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst}, Path=BindingContext}"
-                                                            Command="{Binding TraiffSubHarmonizedChangedCommand}"
-                                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                                    </Image.GestureRecognizers>
-                                                    <Image.Triggers>
-                                                        <DataTrigger
-                                                            Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
-                                                            TargetType="Image"
-                                                            Value="RightToLeft">
-                                                            <Setter Property="Rotation" Value="180" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="0">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstArrow" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="2">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstArrow" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="5">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstArrow" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="1">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding item_type}"
-                                                            TargetType="Image"
-                                                            Value="3">
-                                                            <!--  Item type 0 & 2& 5 have sub items  -->
-                                                            <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                        </DataTrigger>
-                                                    </Image.Triggers>
-                                                </Image>
-
-                                            </StackLayout>
-                                        </Frame>
-                                    </Grid>
-                                </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
-
-                        
-
-
-                    </Grid>
-
-
+                <Grid IsVisible="{Binding IsTarrifSearch}">
                     <CollectionView
-                        x:Name="HarmonizedTariffsLst2"
-                        IsVisible="{Binding IsHarmonizedTariffs2lvl}"
-                        ItemsSource="{Binding HarmonizedTariffslvl2}"
-                        SelectedItem="{Binding SelectedHarmonizedTariffslvl2}"
-                        SelectionChangedCommand="{Binding TraiffLevel2SelectionChangedCommand}"
-                        SelectionMode="Single">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid x:Name="Item" Padding="24,6,24,6">
-
-                                    <Frame
-                                        Padding="20,15,17,15"
-                                        BorderColor="#D8D8D8"
-                                        CornerRadius="14"
-                                        HasShadow="False">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label
-                                                x:Name="nameLabl"
-                                                FontSize="16"
-                                                HorizontalOptions="StartAndExpand"
-                                                TextColor="{StaticResource Primary}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding Code}" />
-                                                        <Span Text=" - " />
-                                                        <Span Text="{Binding Name}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <!--  LstArrow  -->
-                                            <Image
-                                                HeightRequest="22"
-                                                HorizontalOptions="EndAndExpand"
-                                                Source="LstArrow"
-                                                VerticalOptions="CenterAndExpand"
-                                                WidthRequest="20">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer
-                                                        BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst2}, Path=BindingContext}"
-                                                        Command="{Binding TraiffSubHarmonizedChangedCommand}"
-                                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                                </Image.GestureRecognizers>
-                                                <Image.Triggers>
-                                                    <DataTrigger
-                                                        Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
-                                                        TargetType="Image"
-                                                        Value="RightToLeft">
-                                                        <Setter Property="Rotation" Value="180" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="0">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstArrow" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="2">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstArrow" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="5">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstArrow" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="1">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="3">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                    </DataTrigger>
-                                                </Image.Triggers>
-                                            </Image>
-
-                                        </StackLayout>
-                                    </Frame>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
-                    <CollectionView
-                        x:Name="HarmonizedTariffsLst3"
-                        IsVisible="{Binding IsHarmonizedTariffs3lvl}"
+                        x:Name="HarmonizedTariffsInSearchLst"
                         ItemsSource="{Binding HarmonizedTariffslvl3}"
-                        SelectedItem="{Binding SelectedHarmonizedTariffslvl3}"
-                        SelectionChangedCommand="{Binding TraiffLevel3SelectionChangedCommand}"
+                        SelectedItem="{Binding SelectedSearchTariffs}"
+                        SelectionChangedCommand="{Binding SelectedTarrifSearchSelectionChangedCommand}"
                         SelectionMode="Single">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
@@ -948,7 +645,9 @@
                                         BorderColor="#D8D8D8"
                                         CornerRadius="14"
                                         HasShadow="False">
+
                                         <StackLayout Orientation="Horizontal">
+
                                             <Label
                                                 x:Name="nameLabl"
                                                 FontSize="16"
@@ -962,6 +661,7 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
+
                                             <!--  LstArrow  -->
                                             <Image
                                                 HeightRequest="22"
@@ -971,7 +671,7 @@
                                                 WidthRequest="20">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer
-                                                        BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst3}, Path=BindingContext}"
+                                                        BindingContext="{Binding Source={x:Reference HarmonizedTariffsInSearchLst}, Path=BindingContext}"
                                                         Command="{Binding TraiffSubHarmonizedChangedCommand}"
                                                         CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                                                 </Image.GestureRecognizers>
@@ -1024,103 +724,7 @@
 
                                         </StackLayout>
                                     </Frame>
-                                </Grid>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
 
-                    <CollectionView
-                        x:Name="HarmonizedTariffsLst4"
-                        IsVisible="{Binding IsHarmonizedTariffs4lvl}"
-                        ItemsSource="{Binding HarmonizedTariffslvl4}"
-                        SelectedItem="{Binding SelectedHarmonizedTariffslvl4}"
-                        SelectionChangedCommand="{Binding TraiffLevel4SelectionChangedCommand}"
-                        SelectionMode="Single">
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid x:Name="Item" Padding="24,6,24,6">
-
-                                    <Frame
-                                        Padding="20,15,17,15"
-                                        BorderColor="#D8D8D8"
-                                        CornerRadius="14"
-                                        HasShadow="False">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label
-                                                x:Name="nameLabl"
-                                                FontSize="16"
-                                                HorizontalOptions="StartAndExpand"
-                                                TextColor="{StaticResource Primary}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding Code}" />
-                                                        <Span Text=" - " />
-                                                        <Span Text="{Binding Name}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                            <!--  LstArrow  -->
-                                            <Image
-                                                HeightRequest="22"
-                                                HorizontalOptions="EndAndExpand"
-                                                Source="LstArrow"
-                                                VerticalOptions="CenterAndExpand"
-                                                WidthRequest="20">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer
-                                                        BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst4}, Path=BindingContext}"
-                                                        Command="{Binding TraiffSubHarmonizedChangedCommand}"
-                                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                                </Image.GestureRecognizers>
-                                                <Image.Triggers>
-                                                    <DataTrigger
-                                                        Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
-                                                        TargetType="Image"
-                                                        Value="RightToLeft">
-                                                        <Setter Property="Rotation" Value="180" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="0">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstArrow" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="2">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstArrow" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="5">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstArrow" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="1">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding item_type}"
-                                                        TargetType="Image"
-                                                        Value="3">
-                                                        <!--  Item type 0 & 2& 5 have sub items  -->
-                                                        <Setter Property="Source" Value="LstDetailsIcon" />
-
-                                                    </DataTrigger>
-                                                </Image.Triggers>
-                                            </Image>
-
-                                        </StackLayout>
-                                    </Frame>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -1128,11 +732,408 @@
 
                 </Grid>
 
+                <!--  Harmonized Tarrifs  -->
+                <Grid IsVisible="{Binding IsHarmonizedTarrifs}" VerticalOptions="FillAndExpand">
 
-            </Border>
+                    <CollectionView
+                        x:Name="HarmonizedTariffsLst"
+                        ItemsSource="{Binding HarmonizedTariffs}"
+                        SelectedItem="{Binding SelectedHarmonizedTariffs}"
+                        SelectionChangedCommand="{Binding TraiffLevel1SelectionChangedCommand}"
+                        SelectionMode="Single">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid x:Name="Item" Padding="24,6,24,6">
 
-        <Grid IsVisible="{Binding IsSectNote}"
-              Grid.RowSpan="2">
+                                    <Frame
+                                        Padding="20,15,17,15"
+                                        BorderColor="#D8D8D8"
+                                        CornerRadius="14"
+                                        HasShadow="False">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label
+                                                x:Name="nameLabl"
+                                                FontSize="16"
+                                                HorizontalOptions="StartAndExpand"
+                                                TextColor="{StaticResource Primary}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Code}" />
+                                                        <Span Text=" - " />
+                                                        <Span Text="{Binding Name}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <!--  LstArrow  -->
+                                            <Image
+                                                HeightRequest="22"
+                                                HorizontalOptions="EndAndExpand"
+                                                Source="LstArrow"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="20">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer
+                                                        BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst}, Path=BindingContext}"
+                                                        Command="{Binding TraiffSubHarmonizedChangedCommand}"
+                                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                                </Image.GestureRecognizers>
+                                                <Image.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                                        TargetType="Image"
+                                                        Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180" />
+                                                    </DataTrigger>
+                                                    <DataTrigger
+                                                        Binding="{Binding item_type}"
+                                                        TargetType="Image"
+                                                        Value="0">
+                                                        <!--  Item type 0 & 2& 5 have sub items  -->
+                                                        <Setter Property="Source" Value="LstArrow" />
+                                                    </DataTrigger>
+                                                    <DataTrigger
+                                                        Binding="{Binding item_type}"
+                                                        TargetType="Image"
+                                                        Value="2">
+                                                        <!--  Item type 0 & 2& 5 have sub items  -->
+                                                        <Setter Property="Source" Value="LstArrow" />
+                                                    </DataTrigger>
+                                                    <DataTrigger
+                                                        Binding="{Binding item_type}"
+                                                        TargetType="Image"
+                                                        Value="5">
+                                                        <!--  Item type 0 & 2& 5 have sub items  -->
+                                                        <Setter Property="Source" Value="LstArrow" />
+                                                    </DataTrigger>
+                                                    <DataTrigger
+                                                        Binding="{Binding item_type}"
+                                                        TargetType="Image"
+                                                        Value="1">
+                                                        <!--  Item type 0 & 2& 5 have sub items  -->
+                                                        <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                    </DataTrigger>
+                                                    <DataTrigger
+                                                        Binding="{Binding item_type}"
+                                                        TargetType="Image"
+                                                        Value="3">
+                                                        <!--  Item type 0 & 2& 5 have sub items  -->
+                                                        <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                    </DataTrigger>
+                                                </Image.Triggers>
+                                            </Image>
+
+                                        </StackLayout>
+                                    </Frame>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+
+
+                </Grid>
+
+
+                <CollectionView
+                    x:Name="HarmonizedTariffsLst2"
+                    IsVisible="{Binding IsHarmonizedTariffs2lvl}"
+                    ItemsSource="{Binding HarmonizedTariffslvl2}"
+                    SelectedItem="{Binding SelectedHarmonizedTariffslvl2}"
+                    SelectionChangedCommand="{Binding TraiffLevel2SelectionChangedCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="Item" Padding="24,6,24,6">
+
+                                <Frame
+                                    Padding="20,15,17,15"
+                                    BorderColor="#D8D8D8"
+                                    CornerRadius="14"
+                                    HasShadow="False">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            x:Name="nameLabl"
+                                            FontSize="16"
+                                            HorizontalOptions="StartAndExpand"
+                                            TextColor="{StaticResource Primary}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Code}" />
+                                                    <Span Text=" - " />
+                                                    <Span Text="{Binding Name}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <!--  LstArrow  -->
+                                        <Image
+                                            HeightRequest="22"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="LstArrow"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="20">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst2}, Path=BindingContext}"
+                                                    Command="{Binding TraiffSubHarmonizedChangedCommand}"
+                                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                            </Image.GestureRecognizers>
+                                            <Image.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                                    TargetType="Image"
+                                                    Value="RightToLeft">
+                                                    <Setter Property="Rotation" Value="180" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="0">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="2">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="5">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="1">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="3">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <CollectionView
+                    x:Name="HarmonizedTariffsLst3"
+                    IsVisible="{Binding IsHarmonizedTariffs3lvl}"
+                    ItemsSource="{Binding HarmonizedTariffslvl3}"
+                    SelectedItem="{Binding SelectedHarmonizedTariffslvl3}"
+                    SelectionChangedCommand="{Binding TraiffLevel3SelectionChangedCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="Item" Padding="24,6,24,6">
+
+                                <Frame
+                                    Padding="20,15,17,15"
+                                    BorderColor="#D8D8D8"
+                                    CornerRadius="14"
+                                    HasShadow="False">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            x:Name="nameLabl"
+                                            FontSize="16"
+                                            HorizontalOptions="StartAndExpand"
+                                            TextColor="{StaticResource Primary}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Code}" />
+                                                    <Span Text=" - " />
+                                                    <Span Text="{Binding Name}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <!--  LstArrow  -->
+                                        <Image
+                                            HeightRequest="22"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="LstArrow"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="20">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst3}, Path=BindingContext}"
+                                                    Command="{Binding TraiffSubHarmonizedChangedCommand}"
+                                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                            </Image.GestureRecognizers>
+                                            <Image.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                                    TargetType="Image"
+                                                    Value="RightToLeft">
+                                                    <Setter Property="Rotation" Value="180" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="0">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="2">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="5">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="1">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="3">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <CollectionView
+                    x:Name="HarmonizedTariffsLst4"
+                    IsVisible="{Binding IsHarmonizedTariffs4lvl}"
+                    ItemsSource="{Binding HarmonizedTariffslvl4}"
+                    SelectedItem="{Binding SelectedHarmonizedTariffslvl4}"
+                    SelectionChangedCommand="{Binding TraiffLevel4SelectionChangedCommand}"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid x:Name="Item" Padding="24,6,24,6">
+
+                                <Frame
+                                    Padding="20,15,17,15"
+                                    BorderColor="#D8D8D8"
+                                    CornerRadius="14"
+                                    HasShadow="False">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            x:Name="nameLabl"
+                                            FontSize="16"
+                                            HorizontalOptions="StartAndExpand"
+                                            TextColor="{StaticResource Primary}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding Code}" />
+                                                    <Span Text=" - " />
+                                                    <Span Text="{Binding Name}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <!--  LstArrow  -->
+                                        <Image
+                                            HeightRequest="22"
+                                            HorizontalOptions="EndAndExpand"
+                                            Source="LstArrow"
+                                            VerticalOptions="CenterAndExpand"
+                                            WidthRequest="20">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    BindingContext="{Binding Source={x:Reference HarmonizedTariffsLst4}, Path=BindingContext}"
+                                                    Command="{Binding TraiffSubHarmonizedChangedCommand}"
+                                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                            </Image.GestureRecognizers>
+                                            <Image.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding Source={x:Reference TraiffPage}, Path=FlowDirection}"
+                                                    TargetType="Image"
+                                                    Value="RightToLeft">
+                                                    <Setter Property="Rotation" Value="180" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="0">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="2">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="5">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstArrow" />
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="1">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                </DataTrigger>
+                                                <DataTrigger
+                                                    Binding="{Binding item_type}"
+                                                    TargetType="Image"
+                                                    Value="3">
+                                                    <!--  Item type 0 & 2& 5 have sub items  -->
+                                                    <Setter Property="Source" Value="LstDetailsIcon" />
+
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </Grid>
+
+
+        </Border>
+
+        <Grid Grid.RowSpan="2" IsVisible="{Binding IsSectNote}">
 
             <Grid
                 BackgroundColor="Black"
@@ -1169,13 +1170,11 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <ScrollView HeightRequest="650"
-                                VerticalScrollBarVisibility="Never">
+                    <ScrollView HeightRequest="650" VerticalScrollBarVisibility="Never">
                         <StackLayout BindableLayout.ItemsSource="{Binding SectionNotesLst}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding ChaptNote}"
-                                           LineBreakMode="WordWrap"/>
+                                    <Label LineBreakMode="WordWrap" Text="{Binding ChaptNote}" />
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
@@ -1219,13 +1218,11 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <ScrollView HeightRequest="650"
-                                VerticalScrollBarVisibility="Never">
+                    <ScrollView HeightRequest="650" VerticalScrollBarVisibility="Never">
                         <StackLayout BindableLayout.ItemsSource="{Binding ChapterNotesLst}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <Label Text="{Binding ChaptNote}"
-                                           LineBreakMode="WordWrap"/>
+                                    <Label LineBreakMode="WordWrap" Text="{Binding ChaptNote}" />
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
@@ -1312,9 +1309,7 @@
                                     FontSize="16"
                                     Text="{x:Static ResourceManager:AppResources.Duty}"
                                     TextColor="#042E66" />
-                                <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].dutyName}">
-
-                                </Label>
+                                <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].dutyName}" />
                                 <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date}">
                                     <Label.FormattedText>
                                         <FormattedString>

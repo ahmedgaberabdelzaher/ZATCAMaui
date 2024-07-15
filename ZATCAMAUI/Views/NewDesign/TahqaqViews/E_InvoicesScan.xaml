@@ -216,8 +216,8 @@
                                         <Border
                                             Padding="0"
                                             BackgroundColor="Orange"
-                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             Opacity=".1"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             VerticalOptions="FillAndExpand">
                                             <Border.Triggers>
                                                 <DataTrigger
@@ -318,18 +318,19 @@
                                         Text="{Binding VatAmount}" />
 
                                     <!--#region Cleared Status-->
-                                    <Grid IsVisible="{Binding IsClearedStatusVisible}"
-                                          HorizontalOptions="End"
-                                          VerticalOptions="CenterAndExpand"
-                                          Grid.Row="0"
-                                          Grid.Column="1"
-                                          RowDefinitions="auto">
+                                    <Grid
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        HorizontalOptions="End"
+                                        IsVisible="{Binding IsClearedStatusVisible}"
+                                        RowDefinitions="auto"
+                                        VerticalOptions="CenterAndExpand">
 
                                         <Border
                                             Padding="0"
                                             BackgroundColor="#62B34F"
-                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             Opacity=".1"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             VerticalOptions="FillAndExpand" />
 
                                         <Label
@@ -352,8 +353,8 @@
                             Margin="5,5,5,5"
                             Padding="12"
                             BackgroundColor="#00BBBD"
-                            StrokeShape="RoundRectangle 14,14,14,14"
-                            IsVisible="{Binding IsShowSubmitReport}">
+                            IsVisible="{Binding IsShowSubmitReport}"
+                            StrokeShape="RoundRectangle 14,14,14,14">
 
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />

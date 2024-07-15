@@ -22,7 +22,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
-            
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -102,10 +102,10 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
-                                        Source="arrowRight.png"
                                         Rotation="180"
+                                        Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" >
+                                        VerticalOptions="CenterAndExpand">
                                         <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding AppDirection}"
@@ -135,12 +135,12 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
-                                        Source="arrowRight.png"
                                         Rotation="180"
+                                        Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" >
+                                        VerticalOptions="CenterAndExpand">
 
-                                         <Image.Triggers>
+                                        <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding AppDirection}"
                                                 TargetType="Image"
@@ -169,12 +169,12 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
-                                        Source="arrowRight.png"
                                         Rotation="180"
+                                        Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" >
+                                        VerticalOptions="CenterAndExpand">
 
-                                         <Image.Triggers>
+                                        <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding AppDirection}"
                                                 TargetType="Image"
@@ -202,11 +202,11 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
-                                        Source="arrowRight.png"
                                         Rotation="180"
+                                        Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" >
-                                         <Image.Triggers>
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding AppDirection}"
                                                 TargetType="Image"
@@ -234,12 +234,12 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
-                                        Source="arrowRight.png"
                                         Rotation="180"
+                                        Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" >
+                                        VerticalOptions="CenterAndExpand">
 
-                                         <Image.Triggers>
+                                        <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding AppDirection}"
                                                 TargetType="Image"
@@ -548,8 +548,7 @@
 
                                     <custom:CustomSfPicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Height="46"
-                                                                     Background="{StaticResource Primary}">
+                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="White" />
@@ -646,7 +645,7 @@
             <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-           
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

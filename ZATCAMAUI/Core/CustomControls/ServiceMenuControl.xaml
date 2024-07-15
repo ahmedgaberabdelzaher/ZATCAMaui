@@ -32,9 +32,9 @@
                     TextColor="{StaticResource Primary}" />
                 <StackLayout
                     Grid.Column="1"
-                    Spacing="10"
                     HorizontalOptions="EndAndExpand"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    Spacing="10">
                     <Image
                         HeightRequest="20"
                         Source="LstViewIcon"
@@ -71,8 +71,7 @@
 
             </Grid>
 
-            <Grid  Grid.Row="1"
-                   ColumnDefinitions="*">
+            <Grid Grid.Row="1" ColumnDefinitions="*">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
@@ -85,52 +84,53 @@
 
                         <Grid.Triggers>
                             <DataTrigger
-                                        Binding="{Binding ItemCountPerRow}"
-                                        TargetType="Grid"
-                                        Value="1">
+                                Binding="{Binding ItemCountPerRow}"
+                                TargetType="Grid"
+                                Value="1">
                                 <Setter Property="ColumnDefinitions" Value="*" />
                             </DataTrigger>
                         </Grid.Triggers>
 
                         <BindableLayout.ItemTemplate>
-                           <DataTemplate>
+                            <DataTemplate>
 
                                 <Border
                                     x:Name="Item"
                                     Grid.Row="{Binding Row}"
-                                    StrokeShape="RoundRectangle 10,10,10,10"
-                                    Stroke="{StaticResource NeutralGreay}"
                                     Grid.Column="{Binding ColumnNo}"
                                     Margin="10,10,10,10"
-                                    Padding="10,0">
+                                    Padding="10,0"
+                                    Stroke="{StaticResource NeutralGreay}"
+                                    StrokeShape="RoundRectangle 10,10,10,10">
 
                                     <Border.Triggers>
                                         <DataTrigger
-                                                Binding="{Binding IsVerticalView}"
-                                                TargetType="Border"
-                                                Value="False">
+                                            Binding="{Binding IsVerticalView}"
+                                            TargetType="Border"
+                                            Value="False">
                                             <Setter Property="Padding" Value="0,20,0,20" />
                                         </DataTrigger>
                                     </Border.Triggers>
 
                                     <Border.GestureRecognizers>
                                         <TapGestureRecognizer
-                                                BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
-                                                Command="{Binding NavigateToServiceCommand}"
-                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                            BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                            Command="{Binding NavigateToServiceCommand}"
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                                     </Border.GestureRecognizers>
 
-                                    <Grid Margin="5"
-                                          RowDefinitions="auto,auto"
-                                          ColumnDefinitions="auto,*"
-                                          RowSpacing="10"
-                                          ColumnSpacing="10">
+                                    <Grid
+                                        Margin="5"
+                                        ColumnDefinitions="auto,*"
+                                        ColumnSpacing="10"
+                                        RowDefinitions="auto,auto"
+                                        RowSpacing="10">
 
                                         <Grid.Triggers>
                                             <DataTrigger
-                                                    Binding="{Binding IsVerticalView}"
-                                                    TargetType="Grid"
-                                                    Value="False">
+                                                Binding="{Binding IsVerticalView}"
+                                                TargetType="Grid"
+                                                Value="False">
                                                 <Setter Property="ColumnDefinitions" Value="*" />
                                                 <Setter Property="RowDefinitions" Value="*,*" />
                                                 <Setter Property="RowSpacing" Value="30" />
@@ -140,8 +140,8 @@
                                         </Grid.Triggers>
 
                                         <Image
-                                            Margin="0,10,0,0"
                                             Grid.RowSpan="2"
+                                            Margin="0,10,0,0"
                                             HeightRequest="40"
                                             HorizontalOptions="Center"
                                             Source="{Binding ImageSource}"
@@ -155,9 +155,9 @@
 
                                             <StackLayout.Triggers>
                                                 <DataTrigger
-                                                        Binding="{Binding IsVerticalView}"
-                                                        TargetType="StackLayout"
-                                                        Value="False">
+                                                    Binding="{Binding IsVerticalView}"
+                                                    TargetType="StackLayout"
+                                                    Value="False">
                                                     <Setter Property="Grid.Row" Value="1" />
                                                     <Setter Property="Grid.Column" Value="0" />
                                                     <Setter Property="VerticalOptions" Value="EndAndExpand" />
@@ -166,8 +166,9 @@
                                             </StackLayout.Triggers>
 
                                             <Label
-                                                Margin="0,5,0,5" Text="{Binding Name}"
+                                                Margin="0,5,0,5"
                                                 HorizontalOptions="Center"
+                                                Text="{Binding Name}"
                                                 VerticalOptions="Start">
 
                                                 <Label.Triggers>
@@ -181,18 +182,19 @@
 
                                             </Label>
 
-                                            <Label Text="{Binding ServiceDesc}"
-                                                   FontSize="10"
-                                                   LineBreakMode="WordWrap"
-                                                   FontFamily="{StaticResource SomarRegular}"/>
+                                            <Label
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="10"
+                                                LineBreakMode="WordWrap"
+                                                Text="{Binding ServiceDesc}" />
 
                                         </StackLayout>
 
                                     </Grid>
 
                                 </Border>
- 
-                           </DataTemplate>
+
+                            </DataTemplate>
                         </BindableLayout.ItemTemplate>
 
                     </Grid>
@@ -200,8 +202,8 @@
                 </ScrollView>
 
             </Grid>
-           
-           
+
+
 
         </Grid>
     </Grid>

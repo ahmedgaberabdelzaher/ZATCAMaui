@@ -38,8 +38,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.TypeItem}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -73,8 +73,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.Select}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -138,8 +138,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.OtherPurpose}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -175,10 +175,10 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
-            Hint="{x:Static ResourceManager:AppResources.Quantity}"
-            LeadingViewPosition="Inside"
             HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+            Hint="{x:Static ResourceManager:AppResources.Quantity}"
+            InputViewPadding="16,0,16,0"
+            LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
@@ -216,8 +216,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.Select}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -270,8 +270,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.Select}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -327,9 +327,9 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
-            Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
             HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+            Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -477,9 +477,9 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
-                InputViewPadding="16,0,16,0"
-                Hint="{x:Static ResourceManager:AppResources.Addattachments}"
                 HelperText="{x:Static ResourceManager:AppResources.PDFFileHintTwo}"
+                Hint="{x:Static ResourceManager:AppResources.Addattachments}"
+                InputViewPadding="16,0,16,0"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}"

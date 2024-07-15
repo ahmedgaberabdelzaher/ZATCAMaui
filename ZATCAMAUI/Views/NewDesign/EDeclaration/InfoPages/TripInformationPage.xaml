@@ -77,9 +77,7 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border
-                Grid.Row="1"
-                Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
@@ -351,8 +349,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.Select}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -412,8 +410,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.Select}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -474,8 +472,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="dd/MM/yyyy"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -483,15 +481,15 @@
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                 <custom:GAZTBorderlessEntry
-                                        x:Name="ArivalDateEntry"
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Keyboard="Text"
-                                        Placeholder="dd/MM/yyyy"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding ArrivalDepartureDateString}"
-                                        TextColor="#58595B" />
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="ArivalDateEntry"
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="dd/MM/yyyy"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding ArrivalDepartureDateString}"
+                                    TextColor="#58595B" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -502,21 +500,21 @@
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
-                              <DatePicker
-                                    x:Name="ArivalDate"
-                                    Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
-                                    Format="dd/MM/yyyy"
-                                    IsVisible="false"
-                                    MinimumDate="{Binding MinimumDate}">
+                            <DatePicker
+                                x:Name="ArivalDate"
+                                Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
+                                Format="dd/MM/yyyy"
+                                IsVisible="false"
+                                MinimumDate="{Binding MinimumDate}">
 
-                                    <DatePicker.Behaviors>
-                                        <xct:EventToCommandBehavior
-                                            Command="{Binding ArrivalSelectedDateCommand}"
-                                            CommandParameter="{x:Reference ArivalDateEntry}"
-                                            EventName="DateSelected" />
-                                    </DatePicker.Behaviors>
+                                <DatePicker.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding ArrivalSelectedDateCommand}"
+                                        CommandParameter="{x:Reference ArivalDateEntry}"
+                                        EventName="DateSelected" />
+                                </DatePicker.Behaviors>
 
-                              </DatePicker>
+                            </DatePicker>
 
                         </StackLayout>
 
@@ -537,8 +535,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="SV0000"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -572,8 +570,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.TravelPurpose}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -625,8 +623,8 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.TravelerCount}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -666,8 +664,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.CountryText}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -718,8 +716,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -770,8 +768,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.PlatesNumber}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -811,8 +809,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
                                 Hint="{x:Static ResourceManager:AppResources.PlatesLetter}"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">

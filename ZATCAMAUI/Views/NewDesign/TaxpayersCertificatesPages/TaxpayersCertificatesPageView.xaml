@@ -4,19 +4,19 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-    
+
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
@@ -63,14 +63,13 @@
             </Grid>
             <!--#endregion Header-->
 
-             <!--#region Body-->
+            <!--#region Body-->
             <Border
                 Grid.Row="1"
                 Padding="20"
                 Style="{StaticResource CommonTopCurves}">
 
-                <Grid RowDefinitions="auto,*"
-                      VerticalOptions="FillAndExpand">
+                <Grid RowDefinitions="auto,*" VerticalOptions="FillAndExpand">
 
 
                     <StackLayout Grid.Row="0" Spacing="5">
@@ -81,8 +80,8 @@
                             <custom:CustomSfPicker
                                 x:Name="TaxTypePicker"
                                 Background="White"
-                                ItemHeight="40"
                                 IsOpen="False"
+                                ItemHeight="40"
                                 Mode="Dialog"
                                 SelectionChanged="TaxTypePicker_SelectionChanged">
 
@@ -123,10 +122,11 @@
 
                                 <syncfusion:SfPicker.FooterView>
 
-                                    <syncfusion:PickerFooterView Height="46"
-                                                                 OkButtonText="{x:Static ResourceManager:AppResources.OKText}"
-                                                                 CancelButtonText="{x:Static ResourceManager:AppResources.CancelText}"
-                                                                 Background="{StaticResource Primary}">
+                                    <syncfusion:PickerFooterView
+                                        Height="46"
+                                        Background="{StaticResource Primary}"
+                                        CancelButtonText="{x:Static ResourceManager:AppResources.CancelText}"
+                                        OkButtonText="{x:Static ResourceManager:AppResources.OKText}">
 
                                         <syncfusion:PickerFooterView.TextStyle>
                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -137,9 +137,7 @@
                                 </syncfusion:SfPicker.FooterView>
                             </custom:CustomSfPicker>
 
-                            <Label
-                                Style="{StaticResource PageTitleBlack}"
-                                Text="{Binding FilterLabelText}" />
+                            <Label Style="{StaticResource PageTitleBlack}" Text="{Binding FilterLabelText}" />
 
                             <Image
                                 Grid.Row="0"
@@ -155,10 +153,10 @@
                                 </Image.Margin>
                             </Image>
 
-                            
+
 
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btn_Clicked"/>
+                                <TapGestureRecognizer Tapped="btn_Clicked" />
 
                             </Grid.GestureRecognizers>
                         </Grid>
@@ -169,9 +167,9 @@
 
 
                     <StackLayout Grid.Row="1">
-                    <!--  My Bills template UI Starts  -->
+                        <!--  My Bills template UI Starts  -->
 
-                    <!--  My Bills template UI Ends  ItemTapped="Bills_ItemTapped"  -->
+                        <!--  My Bills template UI Ends  ItemTapped="Bills_ItemTapped"  -->
 
                         <ListView
                             x:Name="List_Certificate"
@@ -189,15 +187,16 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                            <Grid Padding="15"
-                                                  RowDefinitions="auto"
-                                                  ColumnDefinitions="15*,85*">
+                                            <Grid
+                                                Padding="15"
+                                                ColumnDefinitions="15*,85*"
+                                                RowDefinitions="auto">
 
-                                               <Label
-                                                    Style="{StaticResource CaptionLabelBlack}"
-                                                    Text="{Binding Descript}"
+                                                <Label
                                                     Grid.Row="0"
                                                     Grid.Column="1"
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    Text="{Binding Descript}"
                                                     VerticalOptions="CenterAndExpand" />
 
                                                 <Image
@@ -226,7 +225,7 @@
                             Text="{x:Static ResourceManager:AppResources.Nocertificateavailable}"
                             VerticalOptions="Center" />
 
-                </StackLayout>
+                    </StackLayout>
 
 
                 </Grid>
@@ -234,7 +233,7 @@
 
             </Border>
 
-             <!--  Loader  -->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
 

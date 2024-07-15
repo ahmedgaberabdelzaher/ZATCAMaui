@@ -53,13 +53,13 @@
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
-            <!--Header 1-->
+            <!--  Header 1  -->
             <Grid
                 Padding="20,10"
                 ColumnDefinitions="*,2*,*"
                 IsVisible="{Binding IsMainPage}">
 
-                 <!--  Back Button  -->
+                <!--  Back Button  -->
                 <StackLayout IsVisible="{Binding IsBackStepButtonVisible}">
 
                     <!--  Back Image  -->
@@ -97,15 +97,15 @@
                     Text="{x:Static ResourceManager:AppResources.Inquiryaboutacustomsdeclaration}"
                     VerticalOptions="Center" />
 
-             </Grid>
+            </Grid>
 
-             <!--Header 2-->
+            <!--  Header 2  -->
             <Grid
-                 Padding="20,10"
+                Padding="20,10"
                 ColumnDefinitions="*,2*,*"
                 IsVisible="{Binding IsDetailsVisible}">
 
-                 <!--  Back Button  -->
+                <!--  Back Button  -->
                 <StackLayout IsVisible="{Binding IsBackStepButtonVisible}">
 
                     <!--  Back Image  -->
@@ -144,13 +144,13 @@
                     VerticalOptions="Center" />
             </Grid>
 
-             <!--Header 3-->
-             <Grid
+            <!--  Header 3  -->
+            <Grid
                 Padding="20,10"
                 ColumnDefinitions="*,2*,*"
                 IsVisible="{Binding IsStatmentDetailsVisible}">
 
-                 <!--  Back Button  -->
+                <!--  Back Button  -->
                 <StackLayout IsVisible="{Binding IsBackStepButtonVisible}">
 
                     <!--  Back Image  -->
@@ -189,14 +189,14 @@
                     VerticalOptions="Center" />
             </Grid>
 
-              <!--Header 4-->
-             <Grid
+            <!--  Header 4  -->
+            <Grid
                 Padding="20,10"
                 ColumnDefinitions="*,2*,*"
                 IsVisible="{Binding IsOTPView}">
 
-                 <!--  Back Button  -->
-                <StackLayout >
+                <!--  Back Button  -->
+                <StackLayout>
 
                     <!--  Back Image  -->
                     <Image
@@ -234,38 +234,35 @@
                     VerticalOptions="Center" />
             </Grid>
 
-             <!--Body-->
-             <Border
+            <!--  Body  -->
+            <Border
                 Grid.Row="1"
                 Padding="0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView BackgroundColor="White"
-                            VerticalScrollBarVisibility="Never">
+                <ScrollView BackgroundColor="White" VerticalScrollBarVisibility="Never">
 
                     <StackLayout>
 
                         <StackLayout.Resources>
-                                <ResourceDictionary>
-                                    <Style x:Key="titleLabel" TargetType="Label">
-                                        <Setter Property="FontSize" Value="24" />
-                                        <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                        <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
-                                    </Style>
-                                    <Style TargetType="Label">
-                                        <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
-                                    </Style>
-                                </ResourceDictionary>
-                            </StackLayout.Resources>
+                            <ResourceDictionary>
+                                <Style x:Key="titleLabel" TargetType="Label">
+                                    <Setter Property="FontSize" Value="24" />
+                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                                </Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                                </Style>
+                            </ResourceDictionary>
+                        </StackLayout.Resources>
 
                         <StackLayout
                             x:Name="Main"
                             Margin="24,10"
                             IsVisible="{Binding IsMainPage}">
 
-                            <Label
-                                Style="{x:StaticResource titleLabel}"
-                                Text="{x:Static ResourceManager:AppResources.Inquiryaboutacustomsdeclaration}" />
+                            <Label Style="{x:StaticResource titleLabel}" Text="{x:Static ResourceManager:AppResources.Inquiryaboutacustomsdeclaration}" />
 
                             <Label
                                 FontSize="16"
@@ -363,8 +360,8 @@
 
                             <!--  Hint Frame  -->
                             <Frame
-                                Padding="5"
                                 Margin="0,10"
+                                Padding="5"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 HasShadow="False"
@@ -389,33 +386,32 @@
 
 
                                 <inputLayout:SfTextInputLayout
-                                        ContainerType="Outlined"
-                                        ContainerBackground="White"
-                                        InputViewPadding="16,0,16,0"
-                                        Hint="{x:Static ResourceManager:AppResources.Port}"
-                                        OutlineCornerRadius="14">
+                                    ContainerBackground="White"
+                                    ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.Port}"
+                                    InputViewPadding="16,0,16,0"
+                                    OutlineCornerRadius="14">
 
-                                        <custom:GAZTBorderlessEntry
-                                            IsReadOnly="True"
-                                            Placeholder="{x:Static ResourceManager:AppResources.Port}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding SelectedPort.Name}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalTextAlignment="Center" />
+                                    <custom:GAZTBorderlessEntry
+                                        IsReadOnly="True"
+                                        Placeholder="{x:Static ResourceManager:AppResources.Port}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SelectedPort.Name}"
+                                        TextColor="{StaticResource NeutralBlack}"
+                                        VerticalTextAlignment="Center" />
 
-                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OpenInquiryFilterCommand}" />
-                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenInquiryFilterCommand}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Source="arrowDropdown.png" />
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Source="arrowDropdown.png" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
 
                             </StackLayout>
 
-                            <StackLayout x:Name="InquireByInformation"
-                                            IsVisible="{Binding IsFilterByDeclarationInformation}">
+                            <StackLayout x:Name="InquireByInformation" IsVisible="{Binding IsFilterByDeclarationInformation}">
 
                                 <StackLayout Margin="0,0,0,0">
 
@@ -428,33 +424,33 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                        <inputLayout:SfTextInputLayout
-                                            ContainerBackground="White"
-                                            ContainerType="Outlined"
-                                            InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.Declarationtype}"
-                                            OutlineCornerRadius="14">
+                                    <inputLayout:SfTextInputLayout
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.Declarationtype}"
+                                        InputViewPadding="16,0,16,0"
+                                        OutlineCornerRadius="14">
 
-                                                <custom:GAZTBorderlessEntry
-                                                        IsReadOnly="True"
-                                                        Placeholder="{x:Static ResourceManager:AppResources.Declarationtype}"
-                                                        Style="{StaticResource DefaultEntry}"
-                                                        Text="{Binding SelectedDeclarationType.Value}"
-                                                        TextColor="{StaticResource NeutralBlack}"
-                                                        VerticalTextAlignment="Center" />
+                                        <custom:GAZTBorderlessEntry
+                                            IsReadOnly="True"
+                                            Placeholder="{x:Static ResourceManager:AppResources.Declarationtype}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SelectedDeclarationType.Value}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
 
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
                                         <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding OpenDeclarationTypesLstCommand}" />
-                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                        </inputLayout:SfTextInputLayout>
+                                            <TapGestureRecognizer Command="{Binding OpenDeclarationTypesLstCommand}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    </inputLayout:SfTextInputLayout>
 
                                 </StackLayout>
 
-                                <StackLayout >
+                                <StackLayout>
 
                                     <Label Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
@@ -468,9 +464,9 @@
                                     <inputLayout:SfTextInputLayout
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.DeclarationNumber}"
                                         InputViewPadding="16,0,16,0"
-                                        OutlineCornerRadius="14"
-                                        Hint="{x:Static ResourceManager:AppResources.DeclarationNumber}">
+                                        OutlineCornerRadius="14">
 
                                         <custom:GAZTBorderlessEntry
                                             Keyboard="Numeric"
@@ -501,49 +497,46 @@
                                     </Label>
 
                                     <inputLayout:SfTextInputLayout
-                                            ContainerType="Outlined"
-                                            ContainerBackground="White"
-                                            InputViewPadding="16,0,16,0"
-                                            Hint="dd/MM/yyyy"
-                                            OutlineCornerRadius="14">
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        Hint="dd/MM/yyyy"
+                                        InputViewPadding="16,0,16,0"
+                                        OutlineCornerRadius="14">
 
-                                            <custom:GAZTBorderlessEntry
-                                                IsReadOnly="True"
-                                                Placeholder="dd/MM/yyyy"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding HijriDateToBeDisplayed}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                VerticalTextAlignment="Center" />
+                                        <custom:GAZTBorderlessEntry
+                                            IsReadOnly="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding HijriDateToBeDisplayed}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
 
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image HorizontalOptions="EndAndExpand" Source="calendar.png" />
-                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image HorizontalOptions="EndAndExpand" Source="calendar.png" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
 
-                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}"
-                                                                        CommandParameter="{x:Reference declarationdate}"/>
-                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}" CommandParameter="{x:Reference declarationdate}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                        </inputLayout:SfTextInputLayout>
+                                    </inputLayout:SfTextInputLayout>
 
                                     <!--  HijriDatePicker  -->
                                     <custom:CustomHijriDatePicker
+                                        x:Name="declarationdate"
                                         Margin="10,0"
                                         Background="White"
-                                        x:Name="declarationdate"
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="40"
-                                        SelectedItem="{Binding TodayDateinHijri}"
-                                        Mode="Dialog">
+                                        Mode="Dialog"
+                                        SelectedItem="{Binding TodayDateinHijri}">
 
                                         <custom:CustomHijriDatePicker.SelectionView>
-                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}"
-                                                                           />
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
                                         </custom:CustomHijriDatePicker.SelectionView>
 
                                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46"
-                                                                                Background="White"/>
+                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                         </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                         <custom:CustomHijriDatePicker.HeaderView>
@@ -553,8 +546,7 @@
                                                 Background="{StaticResource NeutralBlack}"
                                                 Text="{x:Static ResourceManager:AppResources.DeclarationDate}">
                                                 <syncfusion:PickerHeaderView.TextStyle>
-                                                    <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}"
-                                                                                TextColor="White"/>
+                                                    <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="White" />
                                                 </syncfusion:PickerHeaderView.TextStyle>
                                             </syncfusion:PickerHeaderView>
 
@@ -582,12 +574,11 @@
                                         </custom:CustomHijriDatePicker.Behaviors>
                                     </custom:CustomHijriDatePicker>
 
-                                    </StackLayout>
+                                </StackLayout>
 
                             </StackLayout>
 
-                            <StackLayout x:Name="InquireByBillInfo" 
-                                            IsVisible="{Binding IsFilterByBusInformation}">
+                            <StackLayout x:Name="InquireByBillInfo" IsVisible="{Binding IsFilterByBusInformation}">
 
 
                                 <StackLayout>
@@ -601,12 +592,12 @@
                                         </Label.FormattedText>
                                     </Label>
                                     <inputLayout:SfTextInputLayout
+                                        ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.Billofladingnumber}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="14"
-                                        ContainerBackground="White">
+                                        OutlineCornerRadius="14">
                                         <custom:GAZTBorderlessEntry
                                             Keyboard="Numeric"
                                             MaxLength="10"
@@ -623,7 +614,7 @@
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
 
-                                <StackLayout >
+                                <StackLayout>
 
                                     <Label Margin="0,5,0,0" Style="{StaticResource CaptionLabelGrey}">
                                         <Label.FormattedText>
@@ -635,24 +626,24 @@
                                     </Label>
 
                                     <inputLayout:SfTextInputLayout
-                                        ContainerType="Outlined"
                                         ContainerBackground="White"
-                                        InputViewPadding="16,0,16,0"
+                                        ContainerType="Outlined"
                                         Hint="{x:Static ResourceManager:AppResources.Shippingcompany}"
+                                        InputViewPadding="16,0,16,0"
                                         OutlineCornerRadius="14">
 
                                         <custom:GAZTBorderlessEntry
-                                                    HorizontalOptions="FillAndExpand"
-                                                    IsReadOnly="True"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.Shippingcompany}"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding SelectedCarrier.carr_name}"
-                                                    TextColor="{StaticResource NeutralBlack}"
-                                                    VerticalTextAlignment="Center" />
+                                            HorizontalOptions="FillAndExpand"
+                                            IsReadOnly="True"
+                                            Placeholder="{x:Static ResourceManager:AppResources.Shippingcompany}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SelectedCarrier.carr_name}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
 
-                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Image Source="arrowDropdown.png" />
-                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image Source="arrowDropdown.png" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
 
                                     </inputLayout:SfTextInputLayout>
 
@@ -669,16 +660,15 @@
                                 Background="#0996D4"
                                 Command="{Binding SubmitInquiryCommand}"
                                 CornerRadius="14"
-                                WidthRequest="350"
-                                Style="{StaticResource PrimaryButtonStyle}"
                                 HorizontalOptions="FillAndExpand"
+                                Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.Submit}"
-                                TextColor="White" />
+                                TextColor="White"
+                                WidthRequest="350" />
 
                         </StackLayout>
 
-                        <StackLayout Margin="20,0"
-                                     IsVisible="{Binding IsDetailsVisible}">
+                        <StackLayout Margin="20,0" IsVisible="{Binding IsDetailsVisible}">
 
                             <Label
                                 Margin="0,19,0,0"
@@ -693,12 +683,10 @@
 
                                 <StackLayout Margin="16">
 
-                                    <Grid Padding="8,0"
-                                            ColumnDefinitions="1.25*,*">
+                                    <Grid Padding="8,0" ColumnDefinitions="1.25*,*">
 
                                         <StackLayout>
-                                            <Label Style="{StaticResource BodyLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.Inferentialnumber}" />
+                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Inferentialnumber}" />
 
                                             <Label
                                                 FontSize="16"
@@ -731,11 +719,9 @@
 
                                     <StackLayout Margin="15">
 
-                                        <Label Style="{StaticResource BodyLabelGrey}"
-                                                Text="{x:Static ResourceManager:AppResources.NameForImprter}" />
+                                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NameForImprter}" />
 
-                                        <Label Style="{StaticResource BodyLabelBlack}"
-                                                Text="{Binding DeclarionByInformationInquireLst[0].arbc_impr_name}" />
+                                        <Label Style="{StaticResource BodyLabelBlack}" Text="{Binding DeclarionByInformationInquireLst[0].arbc_impr_name}" />
 
 
                                     </StackLayout>
@@ -750,8 +736,7 @@
                                 Text="{x:Static ResourceManager:AppResources.Statementitems}" />
 
 
-                            <StackLayout x:Name="StatatmentLst"
-                                            BindableLayout.ItemsSource="{Binding StatmentItemsLst}">
+                            <StackLayout x:Name="StatatmentLst" BindableLayout.ItemsSource="{Binding StatmentItemsLst}">
 
                                 <BindableLayout.ItemTemplate>
 
@@ -770,11 +755,9 @@
 
                                                     <StackLayout Grid.Column="0" Padding="8,0">
 
-                                                        <Label Style="{StaticResource BodyLabelGrey}"
-                                                                Text="{x:Static ResourceManager:AppResources.Customsitem}" />
+                                                        <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Customsitem}" />
 
-                                                        <Label Style="{StaticResource BodyLabelBlack}"
-                                                                Text="{Binding final_tariff_cd}" />
+                                                        <Label Style="{StaticResource BodyLabelBlack}" Text="{Binding final_tariff_cd}" />
 
                                                     </StackLayout>
 
@@ -838,8 +821,7 @@
                                 HasShadow="False">
 
                                 <StackLayout>
-                                    <StackLayout Margin="16"
-                                                    BindableLayout.ItemsSource="{Binding DeclarionFeesLst}">
+                                    <StackLayout Margin="16" BindableLayout.ItemsSource="{Binding DeclarionFeesLst}">
 
                                         <BindableLayout.ItemTemplate>
 
@@ -851,7 +833,7 @@
                                                         ColumnDefinitions="*,*"
                                                         RowDefinitions="auto,auto">
 
-                                                        <StackLayout >
+                                                        <StackLayout>
 
                                                             <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.FeeType}" />
 
@@ -867,9 +849,7 @@
 
                                                         </StackLayout>
 
-                                                        <StackLayout
-                                                            Grid.Row="1"
-                                                            Grid.ColumnSpan="2">
+                                                        <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
 
                                                             <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.FeeCost}" />
 
@@ -909,8 +889,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             Opacity=".1" />
 
-                                        <StackLayout Orientation="Horizontal"
-                                                        VerticalOptions="CenterAndExpand">
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
 
                                             <Label
                                                 FontSize="20"
@@ -934,8 +913,8 @@
                             </Frame>
 
                             <Frame
-                                Padding="5"
                                 Margin="0,10"
+                                Padding="5"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
                                 HasShadow="False"
@@ -954,149 +933,153 @@
                             IsVisible="{Binding IsStatmentDetailsVisible}">
 
                             <Frame
-                                    Padding="0"
-                                    BorderColor="LightGray"
-                                    CornerRadius="8"
-                                    HasShadow="False">
+                                Padding="0"
+                                BorderColor="LightGray"
+                                CornerRadius="8"
+                                HasShadow="False">
 
-                                    <Grid
-                                        Margin="16,16,16,0"
-                                        ColumnDefinitions="*,auto"
-                                        RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
-                                        RowSpacing="15">
+                                <Grid
+                                    Margin="16,16,16,0"
+                                    ColumnDefinitions="*,auto"
+                                    RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                                    RowSpacing="15">
 
 
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.Customsitem}" />
-                                        <Label
-                                            Grid.Row="1"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.final_tariff_cd}" />
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.Categoryseries}" />
-                                        <Label
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.item_seq}" />
-                                        <Label
-                                            Grid.Row="2"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.CountryofOrigin}" />
-                                        <Label
-                                            Grid.Row="2"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.crty_arbc_name}" />
-                                        <Label
-                                            Grid.Row="3"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.Valueinforeigncurrency}" />
-                                        <Label
-                                            Grid.Row="3"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.inv_cost}" />
-                                        <Label
-                                            Grid.Row="4"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.Countrycurrency}" />
-                                        <Label
-                                            Grid.Row="4"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.curcy_intl_cd}" />
-                                        <Label
-                                            Grid.Row="5"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.Measuringunit}" />
-                                        <Label
-                                            Grid.Row="5"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.msr_arbc_name}" />
-                                        <Label
-                                            Grid.Row="6"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.CustomsfeesSAR}" />
-                                        <Label
-                                            Grid.Row="6"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.orgnl_duty}" />
-                                        <Label
-                                            Grid.Row="7"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.CustomsvalueSAR}" />
-                                        <Label
-                                            Grid.Row="7"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.cif}" />
-                                        <Label
-                                            Grid.Row="8"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.Customsdutyrate}" />
-                                        <Label
-                                            Grid.Row="8"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.duty_rate}" />
-                                        <Label
-                                            Grid.Row="9"
-                                            Grid.Column="0"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{x:Static ResourceManager:AppResources.Quantity}" />
-                                        <Label
-                                            Grid.Row="9"
-                                            Grid.Column="1"
-                                            HorizontalOptions="EndAndExpand"
-                                            Style="{StaticResource BodyLabelBlack}"
-                                            Text="{Binding SelectedStatmentItems.inv_qty}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Customsitem}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.final_tariff_cd}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Categoryseries}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.item_seq}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CountryofOrigin}" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.crty_arbc_name}" />
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Valueinforeigncurrency}" />
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.inv_cost}" />
+                                    <Label
+                                        Grid.Row="4"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Countrycurrency}" />
+                                    <Label
+                                        Grid.Row="4"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.curcy_intl_cd}" />
+                                    <Label
+                                        Grid.Row="5"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Measuringunit}" />
+                                    <Label
+                                        Grid.Row="5"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.msr_arbc_name}" />
+                                    <Label
+                                        Grid.Row="6"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CustomsfeesSAR}" />
+                                    <Label
+                                        Grid.Row="6"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.orgnl_duty}" />
+                                    <Label
+                                        Grid.Row="7"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CustomsvalueSAR}" />
+                                    <Label
+                                        Grid.Row="7"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.cif}" />
+                                    <Label
+                                        Grid.Row="8"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Customsdutyrate}" />
+                                    <Label
+                                        Grid.Row="8"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.duty_rate}" />
+                                    <Label
+                                        Grid.Row="9"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Quantity}" />
+                                    <Label
+                                        Grid.Row="9"
+                                        Grid.Column="1"
+                                        HorizontalOptions="EndAndExpand"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.inv_qty}" />
 
-                                      
-                                        <Label Style="{StaticResource BodyLabelGrey}"
-                                                Grid.Row="10"
-                                                Text="{x:Static ResourceManager:AppResources.Customsitemdescription}" />
 
-                                        <Label  Grid.Row="11"
-                                                Style="{StaticResource BodyLabelBlack}"
-                                                Text="{Binding SelectedStatmentItems.tariff_desc}" />
+                                    <Label
+                                        Grid.Row="10"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.Customsitemdescription}" />
 
-                                        <Label Style="{StaticResource BodyLabelGrey}"
-                                               Grid.Row="12"
-                                                Text="{x:Static ResourceManager:AppResources.ItemDescriptions}" />
+                                    <Label
+                                        Grid.Row="11"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.tariff_desc}" />
 
-                                        <Label Style="{StaticResource BodyLabelBlack}"
-                                               Grid.Row="13"
-                                                Text="{Binding SelectedStatmentItems.item_desc}" />
+                                    <Label
+                                        Grid.Row="12"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.ItemDescriptions}" />
 
-                                    </Grid>
+                                    <Label
+                                        Grid.Row="13"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SelectedStatmentItems.item_desc}" />
 
-                                </Frame>
+                                </Grid>
+
+                            </Frame>
 
                             <Frame
                                 Margin="0,20,0,0"
@@ -1117,172 +1100,168 @@
                         </StackLayout>
 
 
-                        <!--OTP View-->
+                        <!--  OTP View  -->
                         <StackLayout
                             Margin="30"
-                            Spacing="35"
-                           IsVisible="{Binding IsOTPView}">
+                            IsVisible="{Binding IsOTPView}"
+                            Spacing="35">
 
-                             <StackLayout>
-                                    <Label Style="{StaticResource PageTitleBlack}"
-                                           Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
+                            <StackLayout>
+                                <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
 
+                                <Label
+                                    Padding="0,0,0,16"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.EnterVerificationCodeSentToMobile}" />
+
+                                <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+
+                                <StackLayout Padding="0,15,0,0">
                                     <Label
-                                        Padding="0,0,0,16"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"
                                         Style="{StaticResource BodyLabelGrey}"
-                                        Text="{x:Static ResourceManager:AppResources.EnterVerificationCodeSentToMobile}" />
+                                        Text="{Binding OTPSentOnThisMobileNumber}" />
 
-                                    <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+                                    <Grid
+                                        Margin="0,-10,0,0"
+                                        ColumnDefinitions="*"
+                                        FlowDirection="LeftToRight"
+                                        RowDefinitions="*">
 
-                                    <StackLayout Padding="0,15,0,0">
-                                        <Label
-                                            HorizontalOptions="Center"
-                                            HorizontalTextAlignment="Center"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Text="{Binding OTPSentOnThisMobileNumber}" />
+                                        <Grid
+                                            Grid.Row="0"
+                                            Padding="30,20,30,20"
+                                            ColumnDefinitions="*,*,*,*"
+                                            ColumnSpacing="20">
+                                            <Grid.Resources>
+                                                <ResourceDictionary>
+                                                    <Style TargetType="custom:GAZTBorderlessEntry">
+                                                        <Setter Property="Keyboard" Value="Numeric" />
+                                                        <Setter Property="FontAttributes" Value="Bold" />
+                                                        <Setter Property="FontSize" Value="Small" />
+                                                        <Setter Property="WidthRequest" Value="8" />
+                                                        <Setter Property="HorizontalTextAlignment" Value="Center" />
+                                                        <Setter Property="ReturnType" Value="Next" />
+                                                        <Setter Property="MaxLength" Value="1" />
+                                                        <Setter Property="TextColor" Value="#bbbbbb" />
+                                                        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                                                        <Setter Property="IsPassword" Value="True" />
 
-                                        <Grid Margin="0,-10,0,0"
-                                              RowDefinitions="*"
-                                              FlowDirection="LeftToRight"
-                                              ColumnDefinitions="*">
-
-                                            <Grid
-                                                Grid.Row="0"
-                                                Padding="30,20,30,20"
-                                                ColumnSpacing="20"
-                                                ColumnDefinitions="*,*,*,*">
-                                                <Grid.Resources>
-                                                    <ResourceDictionary>
-                                                        <Style TargetType="custom:GAZTBorderlessEntry">
-                                                            <Setter Property="Keyboard" Value="Numeric" />
-                                                            <Setter Property="FontAttributes" Value="Bold" />
-                                                            <Setter Property="FontSize" Value="Small" />
-                                                            <Setter Property="WidthRequest" Value="8" />
-                                                            <Setter Property="HorizontalTextAlignment" Value="Center" />
-                                                            <Setter Property="ReturnType" Value="Next" />
-                                                            <Setter Property="MaxLength" Value="1" />
-                                                            <Setter Property="TextColor" Value="#bbbbbb" />
-                                                            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-                                                            <Setter Property="IsPassword" Value="True" />
-
-                                                        </Style>
-                                                        <Style TargetType="inputLayout:SfTextInputLayout">
-                                                            <Setter Property="ContainerType" Value="Outlined" />
-                                                            <Setter Property="ContainerBackground" Value="White" />
-                                                            <Setter Property="OutlineCornerRadius" Value="8" />
-                                                            <Setter Property="Stroke" Value="{StaticResource Primary}" />
-                                                            <Setter Property="Margin" Value="0" />
+                                                    </Style>
+                                                    <Style TargetType="inputLayout:SfTextInputLayout">
+                                                        <Setter Property="ContainerType" Value="Outlined" />
+                                                        <Setter Property="ContainerBackground" Value="White" />
+                                                        <Setter Property="OutlineCornerRadius" Value="8" />
+                                                        <Setter Property="Stroke" Value="{StaticResource Primary}" />
+                                                        <Setter Property="Margin" Value="0" />
 
 
-                                                        </Style>
-                                                    </ResourceDictionary>
-                                                </Grid.Resources>
+                                                    </Style>
+                                                </ResourceDictionary>
+                                            </Grid.Resources>
 
-                                                <!--  First OTP Digit Start  -->
-                                                <inputLayout:SfTextInputLayout >
-                                                    <custom:GAZTBorderlessEntry x:Name="OTPFirstEntry"
-                                                                                Text="{Binding OTPFirstDigit}">
-                                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                                            <behaviors:OnlyNumericValuesBehaviour />
+                                            <!--  First OTP Digit Start  -->
+                                            <inputLayout:SfTextInputLayout>
+                                                <custom:GAZTBorderlessEntry x:Name="OTPFirstEntry" Text="{Binding OTPFirstDigit}">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:OnlyNumericValuesBehaviour />
 
-                                                            <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
-                                                            <xct:EventToCommandBehavior
-                                                                Command="{Binding GoToNextEntryCommand}"
-                                                                CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}"
-                                                                EventName="TextChanged" />
-                                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommand}"
+                                                            CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}"
+                                                            EventName="TextChanged" />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
 
-                                                    </custom:GAZTBorderlessEntry>
-                                                </inputLayout:SfTextInputLayout>
-                                                <!--  First OTP Digit End  -->
+                                                </custom:GAZTBorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                            <!--  First OTP Digit End  -->
 
-                                                <!--  Second OTP Digit Start  -->
-                                                <inputLayout:SfTextInputLayout Grid.Column="1">
-                                                    <custom:GAZTBorderlessEntry
-                                                        x:Name="OTPSecondEntry"
-                                                        ClassId="2"
-                                                        Text="{Binding OTPSecondDigit}">
-                                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                                            <behaviors:OnlyNumericValuesBehaviour />
-                                                            <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
-                                                            <xct:EventToCommandBehavior
-                                                                Command="{Binding GoToNextEntryCommand}"
-                                                                CommandParameter="{Binding Source={x:Reference OTPThirdEntry}}"
-                                                                EventName="TextChanged" />
+                                            <!--  Second OTP Digit Start  -->
+                                            <inputLayout:SfTextInputLayout Grid.Column="1">
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="OTPSecondEntry"
+                                                    ClassId="2"
+                                                    Text="{Binding OTPSecondDigit}">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommand}"
+                                                            CommandParameter="{Binding Source={x:Reference OTPThirdEntry}}"
+                                                            EventName="TextChanged" />
 
-                                                        </custom:GAZTBorderlessEntry.Behaviors>
-                                                    </custom:GAZTBorderlessEntry>
-                                                </inputLayout:SfTextInputLayout>
-                                                <!--  Second OTP Digit End  -->
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                            <!--  Second OTP Digit End  -->
 
-                                                <!--  Third OTP Digit Start  -->
-                                                <inputLayout:SfTextInputLayout Grid.Column="2"
-                                                                               >
-                                                    <custom:GAZTBorderlessEntry
-                                                        x:Name="OTPThirdEntry"
-                                                        ClassId="3"
-                                                        Text="{Binding OTPThirdDigit}">
-                                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                                            <behaviors:OnlyNumericValuesBehaviour />
-                                                            <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
-                                                            <xct:EventToCommandBehavior
-                                                                Command="{Binding GoToNextEntryCommand}"
-                                                                CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}"
-                                                                EventName="TextChanged" />
-                                                        </custom:GAZTBorderlessEntry.Behaviors>
-                                                    </custom:GAZTBorderlessEntry>
-                                                </inputLayout:SfTextInputLayout>
-                                                <!--  Third OTP Digit End  -->
+                                            <!--  Third OTP Digit Start  -->
+                                            <inputLayout:SfTextInputLayout Grid.Column="2">
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="OTPThirdEntry"
+                                                    ClassId="3"
+                                                    Text="{Binding OTPThirdDigit}">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                                        <xct:EventToCommandBehavior
+                                                            Command="{Binding GoToNextEntryCommand}"
+                                                            CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}"
+                                                            EventName="TextChanged" />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                            <!--  Third OTP Digit End  -->
 
-                                                <!--  Fourth OTP Digit Start  -->
-                                                <inputLayout:SfTextInputLayout Grid.Column="3">
-                                                    <custom:GAZTBorderlessEntry
-                                                        x:Name="OTPFourthEntry"
-                                                        Margin="0"
-                                                        ClassId="4"
-                                                        Text="{Binding OTPFourthDigit}">
-                                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                                            <behaviors:OnlyNumericValuesBehaviour />
-                                                            <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
-                                                        </custom:GAZTBorderlessEntry.Behaviors>
-                                                    </custom:GAZTBorderlessEntry>
-                                                </inputLayout:SfTextInputLayout>
-                                                <!--  Fourth OTP Digit End  -->
-
-                                            </Grid>
+                                            <!--  Fourth OTP Digit Start  -->
+                                            <inputLayout:SfTextInputLayout Grid.Column="3">
+                                                <custom:GAZTBorderlessEntry
+                                                    x:Name="OTPFourthEntry"
+                                                    Margin="0"
+                                                    ClassId="4"
+                                                    Text="{Binding OTPFourthDigit}">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                                        <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                                </custom:GAZTBorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                            <!--  Fourth OTP Digit End  -->
 
                                         </Grid>
 
+                                    </Grid>
 
-                                        <StackLayout
-                                            HorizontalOptions="Center"
-                                            Orientation="Horizontal">
-                                            <Image Source="clock" />
-                                            <Label
-                                                Style="{StaticResource CaptionLabelGrey}"
-                                                Text="{Binding LblCountDownTimer}"
-                                                VerticalOptions="Center" />
-                                        </StackLayout>
 
-                                        <buttons:SfButton   
-                                            Margin="0,16,0,0"
-                                            Background="Transparent"
-                                            Command="{Binding ResendOtpCommand}"
-                                            IsVisible="{Binding IsResendCodeEnabled}"
-                                            Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
-                                            TextColor="{Binding ResendOTPTextColor}"
-                                            VerticalOptions="EndAndExpand" />
-
+                                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                        <Image Source="clock" />
+                                        <Label
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{Binding LblCountDownTimer}"
+                                            VerticalOptions="Center" />
                                     </StackLayout>
+
+                                    <buttons:SfButton
+                                        Margin="0,16,0,0"
+                                        Background="Transparent"
+                                        Command="{Binding ResendOtpCommand}"
+                                        IsVisible="{Binding IsResendCodeEnabled}"
+                                        Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                        TextColor="{Binding ResendOTPTextColor}"
+                                        VerticalOptions="EndAndExpand" />
 
                                 </StackLayout>
 
+                            </StackLayout>
+
                             <buttons:SfButton
                                 x:Name="btn"
-                                WidthRequest="350"
                                 Command="{Binding VerifyOTPCommand}"
                                 Style="{StaticResource PrimaryButtonStyle}"
-                                Text="{x:Static ResourceManager:AppResources.Verify}" />
+                                Text="{x:Static ResourceManager:AppResources.Verify}"
+                                WidthRequest="350" />
                         </StackLayout>
 
                     </StackLayout>
@@ -1291,7 +1270,7 @@
 
             </Border>
 
-             <Grid
+            <Grid
                 Grid.RowSpan="2"
                 IsVisible="{Binding IsPortsPickerSearch}"
                 VerticalOptions="FillAndExpand">
@@ -1415,7 +1394,7 @@
 
                     </Grid>
                 </Border>
-             </Grid>
+            </Grid>
 
             <Grid
                 Grid.RowSpan="2"
@@ -1432,66 +1411,66 @@
                     VerticalOptions="FillAndExpand" />
                 <ScrollView VerticalScrollBarVisibility="Never">
                     <Border
-                    Padding="15"
-                    Margin="0"
-                    Stroke="White"
-                    Background="White"
-                    HorizontalOptions="Fill"
-                    StrokeShape="RoundRectangle 15,15,0,0"
-                    VerticalOptions="EndAndExpand">
+                        Margin="0"
+                        Padding="15"
+                        Background="White"
+                        HorizontalOptions="Fill"
+                        Stroke="White"
+                        StrokeShape="RoundRectangle 15,15,0,0"
+                        VerticalOptions="EndAndExpand">
 
-                    <StackLayout>
+                        <StackLayout>
 
-                        <Image
-                            HeightRequest="10"
-                            HorizontalOptions="CenterAndExpand"
-                            Source="Grabber"
-                            WidthRequest="38">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CloseisFeesDescriptionCommand}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-
-                        <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="28"
-                            Text="{x:Static ResourceManager:AppResources.FeeDescriptions}"
-                            TextColor="{StaticResource Primary}" />
-
-                        <Frame
-                            BackgroundColor="White"
-                            BorderColor="LightGray"
-                            CornerRadius="14"
-                            HasShadow="False"
-                            HorizontalOptions="Fill">
-
-                           <Label
+                            <Image
+                                HeightRequest="10"
                                 HorizontalOptions="CenterAndExpand"
-                                Text="{Binding FeesDescription.data}"
-                                TextColor="#999999" />
-                        </Frame>
-
-                        <Frame
-                            Margin="0,20,0,15"
-                            Padding="12"
-                            BackgroundColor="#0996D4"
-                            CornerRadius="14"
-                            HasShadow="False">
-
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CloseisFeesDescriptionCommand}" />
-                            </Frame.GestureRecognizers>
+                                Source="Grabber"
+                                WidthRequest="38">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CloseisFeesDescriptionCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
 
                             <Label
-                                HorizontalOptions="CenterAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.ZClose}"
-                                TextColor="#FFFFFF"
-                                VerticalOptions="CenterAndExpand" />
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="28"
+                                Text="{x:Static ResourceManager:AppResources.FeeDescriptions}"
+                                TextColor="{StaticResource Primary}" />
 
-                        </Frame>
-                    </StackLayout>
+                            <Frame
+                                BackgroundColor="White"
+                                BorderColor="LightGray"
+                                CornerRadius="14"
+                                HasShadow="False"
+                                HorizontalOptions="Fill">
 
-                </Border>
+                                <Label
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding FeesDescription.data}"
+                                    TextColor="#999999" />
+                            </Frame>
+
+                            <Frame
+                                Margin="0,20,0,15"
+                                Padding="12"
+                                BackgroundColor="#0996D4"
+                                CornerRadius="14"
+                                HasShadow="False">
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CloseisFeesDescriptionCommand}" />
+                                </Frame.GestureRecognizers>
+
+                                <Label
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.ZClose}"
+                                    TextColor="#FFFFFF"
+                                    VerticalOptions="CenterAndExpand" />
+
+                            </Frame>
+                        </StackLayout>
+
+                    </Border>
                 </ScrollView>
             </Grid>
 

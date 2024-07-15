@@ -18,16 +18,15 @@
         <!--  List of names inside frame  -->
         <Border Padding="20" Style="{StaticResource CommonTopCurves}">
 
-            <Grid RowDefinitions="auto,*"
-                    Padding="10">
+            <Grid Padding="10" RowDefinitions="auto,*">
 
                 <!--  Search Entry  -->
                 <inputLayout:SfTextInputLayout
                     ContainerBackground="White"
                     ContainerType="Outlined"
+                    Hint="{x:Static ResourceManager:AppResources.ZSearch}"
                     InputViewPadding="0"
                     LeadingViewPosition="Inside"
-                    Hint="{x:Static ResourceManager:AppResources.ZSearch}"
                     OutlineCornerRadius="10"
                     Stroke="{StaticResource NeutralGreay}"
                     VerticalOptions="Start">
@@ -57,47 +56,46 @@
 
                 </inputLayout:SfTextInputLayout>
 
-                <Grid RowDefinitions="*"
-                      Grid.Row="1"
-                      x:Name="itemList"
-                      ColumnDefinitions="*">
+                <Grid
+                    x:Name="itemList"
+                    Grid.Row="1"
+                    ColumnDefinitions="*"
+                    RowDefinitions="*">
 
-                    <CollectionView
-                    CollectionView.ItemsSource="{Binding BottomSheetList}"
-                    VerticalScrollBarVisibility="Never">
+                    <CollectionView CollectionView.ItemsSource="{Binding BottomSheetList}" VerticalScrollBarVisibility="Never">
 
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
-                    </CollectionView.ItemsLayout>
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
 
-                            <StackLayout x:Name="selectedItem">
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="18"
-                                    LineBreakMode="WordWrap"
-                                    Text="{Binding Name}"
-                                    TextColor="#002447">
+                                <StackLayout x:Name="selectedItem">
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="18"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding Name}"
+                                        TextColor="#002447">
 
-                                    <!--  Name  -->
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
-                                            Command="{Binding SelectedBottomItemCommand}"
-                                            CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                        <!--  Name  -->
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
+                                                Command="{Binding SelectedBottomItemCommand}"
+                                                CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
 
-                                <!--  Horizontal Line  -->
-                                <BoxView
-                                    Margin="0,10,0,0"
-                                    BackgroundColor="{StaticResource NeutralLightGrey}"
-                                    HeightRequest="1"
-                                    IsVisible="{Binding HasLine, Converter={StaticResource RemoveLastLineConverter}, ConverterParameter={x:Reference itemList}}"
-                                    VerticalOptions="Center"
-                                    WidthRequest="350" />
+                                    <!--  Horizontal Line  -->
+                                    <BoxView
+                                        Margin="0,10,0,0"
+                                        BackgroundColor="{StaticResource NeutralLightGrey}"
+                                        HeightRequest="1"
+                                        IsVisible="{Binding HasLine, Converter={StaticResource RemoveLastLineConverter}, ConverterParameter={x:Reference itemList}}"
+                                        VerticalOptions="Center"
+                                        WidthRequest="350" />
 
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer
@@ -105,10 +103,10 @@
                                             Command="{Binding SelectedBottomItemCommand}"
                                             CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
                                     </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
                 </Grid>
             </Grid>

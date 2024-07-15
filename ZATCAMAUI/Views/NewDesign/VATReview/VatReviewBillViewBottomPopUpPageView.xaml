@@ -58,9 +58,9 @@
 
                         <Grid
                             Padding="15"
-                            RowSpacing="0"
-                            RowDefinitions="auto"
                             ColumnDefinitions="*,auto"
+                            RowDefinitions="auto"
+                            RowSpacing="0"
                             VerticalOptions="FillAndExpand">
 
                             <StackLayout
@@ -112,11 +112,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRDocumentNo}" />
                                     <Label
+                                        x:Name="DocumentNumber"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="DocumentNumber" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -133,11 +133,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRSADADNumber}" />
                                     <Label
+                                        x:Name="SadadNumber"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="SadadNumber" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -154,11 +154,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRDateofPenalty}" />
                                     <Label
+                                        x:Name="DateofPenality"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="DateofPenality" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -175,11 +175,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRDescriptionofPenalty}" />
                                     <Label
+                                        x:Name="DescriptionOfPenality"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="DescriptionOfPenality" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -196,11 +196,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRPeriodKey}" />
                                     <Label
+                                        x:Name="Periodkey"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="Periodkey" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -217,11 +217,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRStartDate}" />
                                     <Label
+                                        x:Name="StartDate"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="StartDate" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -238,11 +238,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VREndDate}" />
                                     <Label
+                                        x:Name="EndDate"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="EndDate" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -259,11 +259,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRDueDate}" />
                                     <Label
+                                        x:Name="DueDate"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="DueDate" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout
@@ -283,11 +283,11 @@
                                         Style="{StaticResource ValueLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VRAmount}" />
                                     <Label
+                                        x:Name="Amount"
                                         Grid.Column="1"
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
-                                        Style="{StaticResource ValueLabelBlack}"
-                                        x:Name="Amount" />
+                                        Style="{StaticResource ValueLabelBlack}" />
                                 </Grid>
                             </StackLayout>
                         </StackLayout>

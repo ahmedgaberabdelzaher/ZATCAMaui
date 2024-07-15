@@ -38,8 +38,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.Select}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -93,8 +93,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.Select}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -159,8 +159,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.OtherPurpose}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -196,8 +196,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -242,8 +242,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
             Hint="{x:Static ResourceManager:AppResources.Select}"
+            InputViewPadding="16,0,16,0"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -398,8 +398,8 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
-                InputViewPadding="16,0,16,0"
                 Hint="{x:Static ResourceManager:AppResources.Addattachments}"
+                InputViewPadding="16,0,16,0"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}"

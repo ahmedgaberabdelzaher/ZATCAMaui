@@ -58,91 +58,89 @@
 
             </Grid>
             <!--#endregion Header-->
-             <!--#region Body-->
+            <!--#region Body-->
             <Border
                 Grid.Row="1"
                 Padding="0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView VerticalScrollBarVisibility="Never"
-                        Padding="20">
+                <ScrollView Padding="20" VerticalScrollBarVisibility="Never">
 
                     <StackLayout Spacing="30">
 
-                       <Grid RowDefinitions="auto,auto">
-                            <Label
-                                Style="{StaticResource ValueLabelBlack}"
-                                Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQ1}" />
+                        <Grid RowDefinitions="auto,auto">
+                            <Label Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQ1}" />
 
-                            <buttons:SfRadioGroup x:Name="RadioQ1"
-                                                    Grid.Row="1"
-                                                    Orientation="Horizontal">
+                            <buttons:SfRadioGroup
+                                x:Name="RadioQ1"
+                                Grid.Row="1"
+                                Orientation="Horizontal">
 
-                                    <buttons:SfRadioButton
-                                        x:Name="YesQ1"
-                                        CheckedColor="{StaticResource SecondaryNew}"
-                                        HorizontalOptions="StartAndExpand"
-                                        IsChecked="{Binding IsYesQ1Checked}"
-                                        StateChanged="YesQ1_StateChanged"
-                                        Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsYes}"
-                                        TextColor="{StaticResource Primary}"
-                                        UncheckedColor="{Binding rq1}" />
+                                <buttons:SfRadioButton
+                                    x:Name="YesQ1"
+                                    CheckedColor="{StaticResource SecondaryNew}"
+                                    HorizontalOptions="StartAndExpand"
+                                    IsChecked="{Binding IsYesQ1Checked}"
+                                    StateChanged="YesQ1_StateChanged"
+                                    Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsYes}"
+                                    TextColor="{StaticResource Primary}"
+                                    UncheckedColor="{Binding rq1}" />
 
-                                    <buttons:SfRadioButton
-                                        x:Name="NoQ1"
-                                        CheckedColor="{StaticResource SecondaryNew}"
-                                        HorizontalOptions="StartAndExpand"
-                                        IsChecked="{Binding IsNoQ1Checked}"
-                                        StateChanged="YesQ1_StateChanged"
-                                        Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsNo}"
-                                        TextColor="{StaticResource Primary}"
-                                        UncheckedColor="{Binding rq1}" />
+                                <buttons:SfRadioButton
+                                    x:Name="NoQ1"
+                                    CheckedColor="{StaticResource SecondaryNew}"
+                                    HorizontalOptions="StartAndExpand"
+                                    IsChecked="{Binding IsNoQ1Checked}"
+                                    StateChanged="YesQ1_StateChanged"
+                                    Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsNo}"
+                                    TextColor="{StaticResource Primary}"
+                                    UncheckedColor="{Binding rq1}" />
 
-                             </buttons:SfRadioGroup>
+                            </buttons:SfRadioGroup>
 
-                       </Grid>
+                        </Grid>
 
-                        <Grid RowDefinitions="auto,auto"
-                                  IsVisible="{Binding basedonQ1}">
+                        <Grid IsVisible="{Binding basedonQ1}" RowDefinitions="auto,auto">
 
                             <Label
-                                Style="{StaticResource ValueLabelBlack}"
                                 LineBreakMode="WordWrap"
+                                Style="{StaticResource ValueLabelBlack}"
                                 Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQ2}" />
 
-                            <buttons:SfRadioGroup x:Name="Radio1"
-                                                    Grid.Row="1"
-                                                    Orientation="Horizontal">
+                            <buttons:SfRadioGroup
+                                x:Name="Radio1"
+                                Grid.Row="1"
+                                Orientation="Horizontal">
 
-                                    <buttons:SfRadioButton
-                                        x:Name="Yes"
-                                        CheckedColor="{StaticResource SecondaryNew}"
-                                        HorizontalOptions="StartAndExpand"
-                                        IsChecked="{Binding IsYesQ2Checked}"
-                                        StateChanged="Yes_StateChanged"
-                                        Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsYes}"
-                                        TextColor="{StaticResource Primary}"
-                                        UncheckedColor="{Binding rq2}" />
+                                <buttons:SfRadioButton
+                                    x:Name="Yes"
+                                    CheckedColor="{StaticResource SecondaryNew}"
+                                    HorizontalOptions="StartAndExpand"
+                                    IsChecked="{Binding IsYesQ2Checked}"
+                                    StateChanged="Yes_StateChanged"
+                                    Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsYes}"
+                                    TextColor="{StaticResource Primary}"
+                                    UncheckedColor="{Binding rq2}" />
 
-                                    <buttons:SfRadioButton
-                                        x:Name="No"
-                                        CheckedColor="{StaticResource SecondaryNew}"
-                                        HorizontalOptions="StartAndExpand"
-                                        IsChecked="{Binding IsNoQ2Checked}"
-                                        StateChanged="Yes_StateChanged"
-                                        Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsNo}"
-                                        TextColor="{StaticResource Primary}"
-                                        UncheckedColor="{Binding rq2}" />
+                                <buttons:SfRadioButton
+                                    x:Name="No"
+                                    CheckedColor="{StaticResource SecondaryNew}"
+                                    HorizontalOptions="StartAndExpand"
+                                    IsChecked="{Binding IsNoQ2Checked}"
+                                    StateChanged="Yes_StateChanged"
+                                    Text="{x:Static ResourceManager:AppResources.ZProfitOnGoodsQOptionsNo}"
+                                    TextColor="{StaticResource Primary}"
+                                    UncheckedColor="{Binding rq2}" />
 
                             </buttons:SfRadioGroup>
 
                         </Grid>
 
                         <buttons:SfButton
-                                x:Name="btnSubmit"
-                                Clicked="OnSubmitButtonClicked"
-                                Style="{StaticResource PrimaryButtonStyle}"
-                                Text="{x:Static ResourceManager:AppResources.ZprofitsOnGoodsSubmit}"/>
+                            x:Name="btnSubmit"
+                            Clicked="OnSubmitButtonClicked"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZprofitsOnGoodsSubmit}" />
 
                         <buttons:SfButton
                             x:Name="btnCancel"
@@ -153,7 +151,7 @@
                     </StackLayout>
 
                 </ScrollView>
-            
+
             </Border>
 
             <!--  Loader  -->

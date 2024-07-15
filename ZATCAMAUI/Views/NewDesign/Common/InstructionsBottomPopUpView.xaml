@@ -9,9 +9,9 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    ios:Page.UseSafeArea="true"
     CloseWhenBackgroundIsClicked="False"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
@@ -26,7 +26,7 @@
             VerticalOptions="EndAndExpand">
 
 
-            <Grid RowDefinitions="auto,auto,*,*" >
+            <Grid RowDefinitions="auto,auto,*,*">
 
                 <Image
                     Margin="0,10,0,0"
@@ -39,10 +39,11 @@
                     </Image.GestureRecognizers>
                 </Image>
 
-                <StackLayout Margin="0,32,0,0"
-                      Orientation="Horizontal"
-                      Grid.Row="1"
-                      HorizontalOptions="StartAndExpand">
+                <StackLayout
+                    Grid.Row="1"
+                    Margin="0,32,0,0"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal">
 
                     <Image
                         Margin="0,0,5,0"
@@ -81,9 +82,10 @@
                             StrokeThickness="1"
                             Style="{StaticResource GreyBorderFrame}">
 
-                            <Grid Margin="8"
-                                  RowDefinitions="auto,auto"
-                                  ColumnDefinitions="auto,*">
+                            <Grid
+                                Margin="8"
+                                ColumnDefinitions="auto,*"
+                                RowDefinitions="auto,auto">
 
                                 <Image
                                     Grid.Row="0"
@@ -119,9 +121,7 @@
 
                         </Border>
 
-                        <StackLayout
-                                Spacing="10"
-                                Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
 
                             <custom:CheckboxCustom
                                 CheckChanged="CheckBox_CheckedChanged"
@@ -157,14 +157,14 @@
                 </ScrollView>
 
                 <buttons:SfButton
-                        Margin="0,24"
-                        Grid.Row="3"
-                        Background="{Binding ContinueBackGroundColor}"
-                        Command="{Binding InstructionsContinueClick}"
-                        IsEnabled="{Binding IsContinueEnabled}"
-                        Style="{StaticResource PrimaryButtonStyle}"
-                        Text="{Binding ButtonTitle}"
-                        VerticalOptions="End" />
+                    Grid.Row="3"
+                    Margin="0,24"
+                    Background="{Binding ContinueBackGroundColor}"
+                    Command="{Binding InstructionsContinueClick}"
+                    IsEnabled="{Binding IsContinueEnabled}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{Binding ButtonTitle}"
+                    VerticalOptions="End" />
 
             </Grid>
 
@@ -179,10 +179,11 @@
             <Grid RowDefinitions="auto,*,*">
 
 
-                <StackLayout Orientation="Horizontal"
-                        Margin="0,32,0,0"
-                        Spacing="10"
-                      HorizontalOptions="StartAndExpand">
+                <StackLayout
+                    Margin="0,32,0,0"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal"
+                    Spacing="10">
 
                     <Image
                         Margin="0,0,5,0"
@@ -205,7 +206,7 @@
                         VerticalOptions="CenterAndExpand" />
                 </StackLayout>
 
-                
+
                 <ScrollView
                     Grid.Row="1"
                     HorizontalScrollBarVisibility="Never"
@@ -222,9 +223,10 @@
                             StrokeThickness="1"
                             Style="{StaticResource GreyBorderFrame}">
 
-                            <Grid Margin="8"
-                                  RowDefinitions="auto,auto"
-                                  ColumnDefinitions="auto,*">
+                            <Grid
+                                Margin="8"
+                                ColumnDefinitions="auto,*"
+                                RowDefinitions="auto,auto">
 
                                 <Image
                                     Grid.Row="0"
@@ -260,10 +262,10 @@
                         </Border>
 
                         <StackLayout
-                            HorizontalOptions="StartAndExpand"
-                            Spacing="10"
                             Grid.Row="1"
-                            Orientation="Horizontal">
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10">
 
                             <custom:CheckboxCustom
                                 CheckChanged="CheckBox_CheckedChanged"
@@ -298,14 +300,14 @@
                     </Grid>
                 </ScrollView>
 
-                 <buttons:SfButton
-                        Margin="0,24"
-                        Grid.Row="2"
-                        Background="{Binding ContinueBackGroundColor}"
-                        Command="{Binding InstructionsContinueClick}"
-                        Style="{StaticResource PrimaryButtonStyle}"
-                        Text="{Binding ButtonTitle}"
-                        VerticalOptions="End" />
+                <buttons:SfButton
+                    Grid.Row="2"
+                    Margin="0,24"
+                    Background="{Binding ContinueBackGroundColor}"
+                    Command="{Binding InstructionsContinueClick}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{Binding ButtonTitle}"
+                    VerticalOptions="End" />
 
             </Grid>
         </Border>
@@ -339,9 +341,10 @@
                             StrokeThickness="1"
                             Style="{StaticResource GreyBorderFrame}">
 
-                            <Grid Margin="8"
-                                  RowDefinitions="auto,auto"
-                                  ColumnDefinitions="auto,*">
+                            <Grid
+                                Margin="8"
+                                ColumnDefinitions="auto,*"
+                                RowDefinitions="auto,auto">
 
 
                                 <Image
@@ -380,9 +383,10 @@
                             </Grid>
                         </Border>
 
-                        <StackLayout Orientation="Horizontal"
-                                     Spacing="10"
-                                     Grid.Row="1">
+                        <StackLayout
+                            Grid.Row="1"
+                            Orientation="Horizontal"
+                            Spacing="10">
 
                             <custom:CheckboxCustom
                                 CheckChanged="CheckBox_CheckedChanged"
@@ -418,14 +422,14 @@
                 </ScrollView>
 
                 <buttons:SfButton
-                        Margin="0,24"
-                        Grid.Row="2"
-                        Background="{Binding ContinueBackGroundColor}"
-                        Command="{Binding TermsContinueClick}"
-                        IsEnabled="{Binding IsContinueEnabled}"
-                        Style="{StaticResource PrimaryButtonStyle}"
-                        Text="{Binding ButtonTitle}"
-                        VerticalOptions="End" />
+                    Grid.Row="2"
+                    Margin="0,24"
+                    Background="{Binding ContinueBackGroundColor}"
+                    Command="{Binding TermsContinueClick}"
+                    IsEnabled="{Binding IsContinueEnabled}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{Binding ButtonTitle}"
+                    VerticalOptions="End" />
 
             </Grid>
         </Border>

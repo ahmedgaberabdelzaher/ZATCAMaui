@@ -249,8 +249,8 @@
                                         x:Name="FrmIDType"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -259,14 +259,14 @@
                                             <inputLayout:LabelStyle TextColor="#B00020" />
                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                          <custom:GAZTBorderlessEntry
-                                                FontFamily="{StaticResource SomarLight}"
-                                                FontSize="Small"
-                                                IsReadOnly="True"
-                                                IsSpellCheckEnabled="False"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding TxtIDType}" />
+                                        <custom:GAZTBorderlessEntry
+                                            FontFamily="{StaticResource SomarLight}"
+                                            FontSize="Small"
+                                            IsReadOnly="True"
+                                            IsSpellCheckEnabled="False"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding TxtIDType}" />
 
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png" Style="{StaticResource SmallIcon}" />
@@ -274,7 +274,7 @@
 
                                     </inputLayout:SfTextInputLayout>
 
-                                     <syncfusion:SfPicker
+                                    <syncfusion:SfPicker
                                         x:Name="DDlIDType"
                                         Background="White"
                                         CancelButtonClicked="IDType_CancelButtonClicked"
@@ -330,7 +330,7 @@
                                         </syncfusion:SfPicker.FooterView>
 
 
-                                     </syncfusion:SfPicker>
+                                    </syncfusion:SfPicker>
 
                                 </StackLayout>
 
@@ -352,8 +352,8 @@
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameIDError}"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.IDNumber}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -427,8 +427,8 @@
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameDOBError}"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="dd/MM/yyyy"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -581,8 +581,8 @@
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
                                         HasError="{Binding FrameNameError}"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZName}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -659,9 +659,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="False"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -702,9 +702,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameGccCountyError}"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCountry}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -813,9 +813,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameRegionError}"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                             IsVisible="{Binding SetStateListVisibility}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
@@ -930,9 +930,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameCityError}"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
                                             IsVisible="{Binding SetCityListVisibility}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
@@ -1033,9 +1033,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="False"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1070,9 +1070,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="False"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZPostalCode}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1105,9 +1105,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="False"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZBuildingNumber}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1142,9 +1142,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="False"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZUnitNumber}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZUnitNumber}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}"
@@ -1216,9 +1216,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameEmailError}"
+                                            Hint="{x:Static ResourceManager:AppResources.Email}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.Email}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1258,9 +1258,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameConfirmEmailError}"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZConfirmEmail}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1399,12 +1399,12 @@
                                     Margin="0,10,0,0"
                                     Padding="0"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout Padding="0,5"
-                                                 >
-                                        <Grid Padding="10,0,10,0"
-                                              RowDefinitions="auto"
-                                              ColumnSpacing="5"
-                                              ColumnDefinitions="auto,*,auto">
+                                    <StackLayout Padding="0,5">
+                                        <Grid
+                                            Padding="10,0,10,0"
+                                            ColumnDefinitions="auto,*,auto"
+                                            ColumnSpacing="5"
+                                            RowDefinitions="auto">
 
                                             <Image
                                                 Aspect="AspectFit"
@@ -1434,9 +1434,10 @@
                                             HeightRequest="1"
                                             HorizontalOptions="FillAndExpand"
                                             WidthRequest="380" />
-                                        <Grid Padding="10,5,10,10"
-                                              RowDefinitions="auto,auto,auto,auto"
-                                              ColumnDefinitions="40*,60*">
+                                        <Grid
+                                            Padding="10,5,10,10"
+                                            ColumnDefinitions="40*,60*"
+                                            RowDefinitions="auto,auto,auto,auto">
 
                                             <Label
                                                 Grid.Row="0"
@@ -1504,10 +1505,11 @@
                                     Padding="0"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout>
-                                        <Grid Margin="10,0,10,0"
-                                              RowDefinitions="auto"
-                                              ColumnSpacing="5"
-                                              ColumnDefinitions="auto,*,auto">
+                                        <Grid
+                                            Margin="10,0,10,0"
+                                            ColumnDefinitions="auto,*,auto"
+                                            ColumnSpacing="5"
+                                            RowDefinitions="auto">
 
                                             <Image
                                                 Grid.Row="0"
@@ -1651,9 +1653,10 @@
 
                                     <StackLayout Margin="0,5,0,5">
 
-                                        <Grid Padding="10,0,10,0"
-                                              RowDefinitions="auto"
-                                              ColumnDefinitions="auto,*,auto">
+                                        <Grid
+                                            Padding="10,0,10,0"
+                                            ColumnDefinitions="auto,*,auto"
+                                            RowDefinitions="auto">
 
                                             <Image
                                                 Grid.Row="0"
@@ -1803,9 +1806,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FramePasswordError}"
+                                            Hint="{x:Static ResourceManager:AppResources.NewPassword}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.NewPassword}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">
@@ -1857,9 +1860,9 @@
                                             ContainerBackground="White"
                                             ContainerType="Outlined"
                                             HasError="{Binding FrameConfirmPasswordError}"
+                                            Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                             HorizontalOptions="FillAndExpand"
                                             InputViewPadding="16,0,16,0"
-                                            Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                             LeadingViewPosition="Inside"
                                             OutlineCornerRadius="10"
                                             Stroke="{StaticResource Primary}">

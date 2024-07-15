@@ -4,12 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    TitleText="{x:Static ResourceManager:AppResources.TaxPayerSubsidyRequest}"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    TitleText="{x:Static ResourceManager:AppResources.TaxPayerSubsidyRequest}">
 
-     <newdesign:BaseContentPage.PancakeView>
-       <WebView
+    <newdesign:BaseContentPage.PancakeView>
+        <WebView
             x:Name="SubsidyWebView"
             Grid.Row="0"
             Grid.Column="0"

@@ -98,8 +98,7 @@
                 Padding="20,10,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <StackLayout HorizontalOptions="FillAndExpand"
-                             VerticalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <!--  Bullets  -->
                     <commonView:PageIndicatorView
@@ -140,7 +139,7 @@
                         VerticalScrollBarVisibility="Never">
 
                         <StackLayout>
-                   
+
 
                             <!--  Start step 2  -->
                             <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}">
@@ -234,8 +233,8 @@
                                         x:Name="FrmTIN"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.TIN}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -288,8 +287,8 @@
                                         x:Name="txtEntryName"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZIDType}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -389,8 +388,8 @@
                                         x:Name="FrmIDNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.NDIDNumber}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
                                         <custom:GAZTBorderlessEntry
@@ -453,8 +452,8 @@
                                         x:Name="FrmDBO"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="dd/MM/yyyy"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -603,8 +602,8 @@
                                         x:Name="FrmName"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZName}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -719,8 +718,8 @@
                                         x:Name="FrmCR"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZCRNumber}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -760,8 +759,8 @@
                                         x:Name="FrmLicenseNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -801,8 +800,8 @@
                                         x:Name="FrmlicenceNumberIssuedbyframe"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -904,8 +903,8 @@
                                         x:Name="FrmIssuedByCity"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1013,8 +1012,8 @@
                                         x:Name="FrmEmailAddress"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1049,8 +1048,8 @@
                                     <inputLayout:SfTextInputLayout
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZMobileNumber}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1109,8 +1108,8 @@
                                         x:Name="FrmPhoneNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1519,8 +1518,8 @@
                                     <inputLayout:SfTextInputLayout
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.NDNewPassword}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1563,8 +1562,8 @@
                                     <inputLayout:SfTextInputLayout
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
-                                        InputViewPadding="16,0,16,0"
                                         Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
+                                        InputViewPadding="16,0,16,0"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1991,7 +1990,7 @@
                                 </Border>
                             </StackLayout>
 
-                             <!--  terms and condition  CheckBox  -->
+                            <!--  terms and condition  CheckBox  -->
                             <StackLayout
                                 Margin="0,0"
                                 IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}"
@@ -2041,7 +2040,7 @@
 
                     </ScrollView>
 
-                    
+
 
                 </StackLayout>
 

@@ -71,11 +71,12 @@
             </Grid>
             <!--#endregion Header-->
 
-            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}"
-                    Padding="0">
+            <Border
+                Grid.Row="1"
+                Padding="0"
+                Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView VerticalScrollBarVisibility="Never"
-                            Padding="20">
+                <ScrollView Padding="20" VerticalScrollBarVisibility="Never">
 
                     <StackLayout>
 
@@ -93,9 +94,9 @@
                             <inputLayout:SfTextInputLayout
                                 x:Name="txtBundleType"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
-                                Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="8"
                                 Stroke="{StaticResource Primary}">
@@ -118,8 +119,8 @@
 
                             <custom:CustomSfPicker
                                 x:Name="BundleType"
-                                IsOpen="False"
                                 Background="White"
+                                IsOpen="False"
                                 ItemHeight="40"
                                 Mode="Dialog"
                                 SelectionChanged="BundleType_SelectionChanged">
@@ -163,8 +164,7 @@
 
                                 <custom:CustomSfPicker.FooterView>
 
-                                    <syncfusion:PickerFooterView Height="46"
-                                                                 Background="{StaticResource Primary}">
+                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                         <syncfusion:PickerFooterView.TextStyle>
                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -178,13 +178,13 @@
                             </custom:CustomSfPicker>
 
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnBundleTypeClicked"/>
+                                <TapGestureRecognizer Tapped="OnBundleTypeClicked" />
 
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <!--  End Of Type  -->
 
-                        <Label  Style="{StaticResource CaptionLabelGrey}">
+                        <Label Style="{StaticResource CaptionLabelGrey}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" />
@@ -197,9 +197,9 @@
                             <inputLayout:SfTextInputLayout
                                 x:Name="txtBundleNumber"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
-                                Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="8"
                                 Stroke="{StaticResource Primary}">
@@ -224,8 +224,8 @@
                             <custom:CustomSfPicker
                                 x:Name="BundleNumber"
                                 Background="White"
-                                ItemHeight="40"
                                 IsOpen="False"
+                                ItemHeight="40"
                                 Mode="Dialog"
                                 SelectionChanged="BundleNumber_SelectionChanged">
 
@@ -268,8 +268,7 @@
 
                                 <custom:CustomSfPicker.FooterView>
 
-                                    <syncfusion:PickerFooterView Height="46"
-                                                                 Background="{StaticResource Primary}">
+                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                         <syncfusion:PickerFooterView.TextStyle>
                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -282,7 +281,7 @@
                             </custom:CustomSfPicker>
 
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnBundleNumberClicked"/>
+                                <TapGestureRecognizer Tapped="OnBundleNumberClicked" />
 
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
@@ -317,10 +316,10 @@
 
                     </StackLayout>
 
-                </ScrollView> 
+                </ScrollView>
             </Border>
 
-             <!--  Loader  -->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>

@@ -35,18 +35,18 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
-            InputViewPadding="16,0,16,0"
-            Hint="{x:Static ResourceManager:AppResources.Select}"
-            LeadingViewPosition="Inside"
-            ShowHelperText="True"
             HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
+            InputViewPadding="16,0,16,0"
+            LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
+            ShowHelperText="True"
             Stroke="{StaticResource NeutralGreay}">
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                 <inputLayout:LabelStyle TextColor="#B00020" />
             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-              <inputLayout:SfTextInputLayout.HelperLabelStyle>
+            <inputLayout:SfTextInputLayout.HelperLabelStyle>
                 <inputLayout:LabelStyle TextColor="#58595B" />
             </inputLayout:SfTextInputLayout.HelperLabelStyle>
 
@@ -102,8 +102,8 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
-                InputViewPadding="16,0,16,0"
                 Hint="{x:Static ResourceManager:AppResources.Select}"
+                InputViewPadding="16,0,16,0"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}">
@@ -158,12 +158,12 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
-                InputViewPadding="16,0,16,0"
+                HelperText="{x:Static ResourceManager:AppResources.ProductValueHint}"
                 Hint="{x:Static ResourceManager:AppResources.Productvalue}"
+                InputViewPadding="16,0,16,0"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 ShowHelperText="True"
-                HelperText="{x:Static ResourceManager:AppResources.ProductValueHint}"
                 Stroke="{StaticResource NeutralGreay}">
                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                     <inputLayout:LabelStyle TextColor="#B00020" />
@@ -225,20 +225,20 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
-                InputViewPadding="16,0,16,0"
-                Hint="{x:Static ResourceManager:AppResources.Weight}"
-                LeadingViewPosition="Inside"
-                ShowHelperText="True"
                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                Hint="{x:Static ResourceManager:AppResources.Weight}"
+                InputViewPadding="16,0,16,0"
+                LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
+                ShowHelperText="True"
                 Stroke="{StaticResource NeutralGreay}">
                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                     <inputLayout:LabelStyle TextColor="#B00020" />
                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
                 <inputLayout:SfTextInputLayout.HelperLabelStyle>
-                <inputLayout:LabelStyle TextColor="#58595B" />
-            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+                    <inputLayout:LabelStyle TextColor="#58595B" />
+                </inputLayout:SfTextInputLayout.HelperLabelStyle>
 
                 <numericinput:SfNumericEntry
                     CustomFormat="N2"
@@ -274,20 +274,20 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
-                InputViewPadding="16,0,16,0"
                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-                ShowHelperText="True"
                 Hint="{x:Static ResourceManager:AppResources.Quantity}"
+                InputViewPadding="16,0,16,0"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
+                ShowHelperText="True"
                 Stroke="{StaticResource NeutralGreay}">
                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                     <inputLayout:LabelStyle TextColor="#B00020" />
                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
                 <inputLayout:SfTextInputLayout.HelperLabelStyle>
-                <inputLayout:LabelStyle TextColor="#58595B" />
-            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+                    <inputLayout:LabelStyle TextColor="#58595B" />
+                </inputLayout:SfTextInputLayout.HelperLabelStyle>
 
                 <numericinput:SfNumericEntry
                     CustomFormat="N2"

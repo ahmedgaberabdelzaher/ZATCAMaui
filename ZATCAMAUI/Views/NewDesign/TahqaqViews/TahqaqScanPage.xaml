@@ -177,9 +177,7 @@
                 Style="{StaticResource CommonTopCurves}">
                 <Grid RowDefinitions="*">
 
-                    <ScrollView
-                        IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}"
-                        VerticalScrollBarVisibility="Never">
+                    <ScrollView IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
 
                         <StackLayout Spacing="10">
 
@@ -214,9 +212,9 @@
                                 </Label>
 
                                 <inputLayout:SfTextInputLayout
+                                    ContainerBackground="White"
                                     ContainerType="Outlined"
                                     Hint="{x:Static ResourceManager:AppResources.EnterQrCodeHere}"
-                                    ContainerBackground="White"
                                     InputViewPadding="16,0,16,0"
                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
@@ -232,10 +230,10 @@
                             <Frame
                                 Margin="0,50"
                                 Padding="12"
-                                VerticalOptions="EndAndExpand"
                                 BackgroundColor="#00BBBD"
                                 CornerRadius="14"
-                                HasShadow="False">
+                                HasShadow="False"
+                                VerticalOptions="EndAndExpand">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GetDataForCodeCommand}" />
                                 </Frame.GestureRecognizers>
@@ -392,9 +390,10 @@
             </Border>
 
 
-            <Grid Grid.Row="0"
-                  Padding="15,10"
-                  ColumnDefinitions="10*,80*,10*">
+            <Grid
+                Grid.Row="0"
+                Padding="15,10"
+                ColumnDefinitions="10*,80*,10*">
 
                 <StackLayout Grid.Column="0">
                     <Image

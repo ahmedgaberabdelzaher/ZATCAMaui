@@ -67,7 +67,7 @@
             <Color x:Key="SuccessBg">#1A008000</Color>
             <Color x:Key="PartialBg">#1A0996d4</Color>
             <Color x:Key="ErrorBg">#1AAA0C19</Color>
-            
+
 
 
             <!--  Vat New UI  -->

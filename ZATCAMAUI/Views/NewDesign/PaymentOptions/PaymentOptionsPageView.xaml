@@ -26,10 +26,10 @@
         VerticalOptions="EndAndExpand">
 
         <Grid RowDefinitions="auto,auto,auto">
-             <Label
-                    Margin="10"
-                    Style="{StaticResource TPProfileLabelBlackBold}"
-                    Text="{x:Static ResourceManager:AppResources.PaymentMethod}" />
+            <Label
+                Margin="10"
+                Style="{StaticResource TPProfileLabelBlackBold}"
+                Text="{x:Static ResourceManager:AppResources.PaymentMethod}" />
 
             <StackLayout Grid.Row="1">
 

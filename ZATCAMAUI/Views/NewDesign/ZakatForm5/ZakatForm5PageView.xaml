@@ -4,16 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
-    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -52,13 +52,14 @@
 
         <Grid RowDefinitions="auto,*">
 
-            <!--Header-->
-            <Grid Grid.Row="0"
-                  Padding="15,10,15,10"
-                  RowDefinitions="auto,auto"
-                  ColumnDefinitions="40,100*,40">
+            <!--  Header  -->
+            <Grid
+                Grid.Row="0"
+                Padding="15,10,15,10"
+                ColumnDefinitions="40,100*,40"
+                RowDefinitions="auto,auto">
 
-               <Image
+                <Image
                     Grid.Row="0"
                     Grid.Column="1"
                     HeightRequest="50"
@@ -81,7 +82,7 @@
                     </Image.GestureRecognizers>
                 </Image>
 
-                
+
                 <commonView:PageIndicatorView
                     Grid.Row="1"
                     DotSize="12"
@@ -95,8 +96,7 @@
                 BackgroundColor="White"
                 StrokeShape="RoundRectangle 15,15,0,0">
 
-                <Grid RowSpacing="0"
-                      RowDefinitions="auto,*,auto">
+                <Grid RowDefinitions="auto,*,auto" RowSpacing="0">
 
 
                     <!--  Start Of Basic Information View  -->
@@ -3946,12 +3946,12 @@
 
             </Border>
 
-             <!--Loader-->
+            <!--  Loader  -->
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>
 
-        
+
 
 
 

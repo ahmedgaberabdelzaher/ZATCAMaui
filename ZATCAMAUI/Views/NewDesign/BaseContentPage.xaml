@@ -39,11 +39,13 @@
 
         <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
-        <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}"
-                          BackgroundColor="White"
-                          VerticalOptions="EndAndExpand" />
+        <controls:MsgView
+            Grid.RowSpan="2"
+            BackgroundColor="White"
+            IsVisible="{Binding IsShowMsgView}"
+            VerticalOptions="EndAndExpand" />
 
-         <!--  Bottom Sheet List  -->
+        <!--  Bottom Sheet List  -->
         <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
     </Grid>

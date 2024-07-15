@@ -175,7 +175,7 @@
                                 ValueText="{Binding Totaltaxablepurchases, Mode=TwoWay}" />
 
                         </StackLayout>
-                      
+
 
                         <!--  MerchantView  -->
                         <StackLayout IsVisible="{Binding IsMerchantCalc}">
@@ -218,8 +218,7 @@
                 </ScrollView>
             </Border>
 
-            <Grid ColumnDefinitions="10*,80*,10*"
-                Padding="20,5,20,5">
+            <Grid Padding="20,5,20,5" ColumnDefinitions="10*,80*,10*">
                 <StackLayout Grid.Column="0">
                     <Image
                         HorizontalOptions="Start"

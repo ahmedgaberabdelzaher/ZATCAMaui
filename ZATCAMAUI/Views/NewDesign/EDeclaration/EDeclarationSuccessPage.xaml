@@ -274,24 +274,24 @@
                                         LineBreakMode="WordWrap"
                                         Text="{x:Static ResourceManager:AppResources.ArrivingFromORDepartingTo}"
                                         TextColor="#999999"
-                                        VerticalOptions="Start" >
+                                        VerticalOptions="Start">
 
                                         <Label.Triggers>
 
-                                            <DataTrigger TargetType="Label"
-                                                         Binding="{Binding IsArrivingPlaneSelected}"
-                                                         Value="true">
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Label"
+                                                Value="true">
 
-                                                <Setter Property="Text"
-                                                        Value="{x:Static ResourceManager:AppResources.ArrivingFrom}"/>
+                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ArrivingFrom}" />
 
                                             </DataTrigger>
 
-                                            <DataTrigger TargetType="Label"
-                                                           Binding="{Binding IsArrivingPlaneSelected}"
-                                                           Value="false">
-                                                <Setter Property="Text"
-                                                        Value="{x:Static ResourceManager:AppResources.DepartingTo}"/>
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Label"
+                                                Value="false">
+                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.DepartingTo}" />
 
                                             </DataTrigger>
                                         </Label.Triggers>

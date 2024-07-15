@@ -44,7 +44,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.InternationalMobileNumber
 
                 if (searchPhrase.Length > 0)
                 {
-                    viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodes.Where(name => name.Landx.ToLower().Contains(searchPhrase.ToLower())));
+                    viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodes.
+                        Where(name => ( name.Landx.ToLower().Contains(searchPhrase.ToLower()) ) 
+                        ||  (name.Telefto.ToLower().Contains(searchPhrase.ToLower())) ));
                 }
                 else
                 {

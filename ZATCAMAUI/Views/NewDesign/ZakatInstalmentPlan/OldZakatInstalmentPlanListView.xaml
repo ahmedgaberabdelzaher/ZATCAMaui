@@ -96,14 +96,13 @@
             </Grid>
             <!--#endregion Header-->
 
-             <!--#region Body-->
+            <!--#region Body-->
             <Border
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid>
 
@@ -112,12 +111,11 @@
                             Margin="20,10,20,0"
                             BackgroundColor="Transparent"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
                             IsVisible="{Binding IsZakatLandingPageVisible}"
-                            RowDefinitions="auto,*">
+                            RowDefinitions="auto,*"
+                            VerticalOptions="FillAndExpand">
 
-                            <Grid Grid.Row="0"
-                                  RowDefinitions="auto,auto,auto">
+                            <Grid Grid.Row="0" RowDefinitions="auto,auto,auto">
 
                                 <Label
                                     Grid.Row="0"
@@ -137,8 +135,8 @@
                                 <BoxView
                                     Grid.Row="2"
                                     Grid.Column="0"
-                                    HeightRequest="1"
                                     Margin="0,5"
+                                    HeightRequest="1"
                                     Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                             </Grid>
@@ -175,16 +173,15 @@
                             </Grid>
                         </Grid>
 
-                        <!--Create Zakat Instalment-->
+                        <!--  Create Zakat Instalment  -->
                         <Grid
                             BackgroundColor="Transparent"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
                             IsVisible="{Binding CreateZakatInstalmentBtnVisible}"
-                            RowDefinitions="auto,*">
+                            RowDefinitions="auto,*"
+                            VerticalOptions="FillAndExpand">
 
-                            <Grid Grid.Row="0"
-                                  RowDefinitions="auto,auto">
+                            <Grid Grid.Row="0" RowDefinitions="auto,auto">
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
@@ -205,8 +202,8 @@
                                 Grid.Row="1"
                                 BackgroundColor="Transparent"
                                 HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"
-                                RowDefinitions="auto,*">
+                                RowDefinitions="auto,*"
+                                VerticalOptions="FillAndExpand">
 
                                 <Border
                                     Grid.Row="0"
@@ -215,8 +212,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     StrokeShape="RoundRectangle 15,15,15,15"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <Grid RowDefinitions="auto"
-                                          ColumnDefinitions="auto,*">
+                                    <Grid ColumnDefinitions="auto,*" RowDefinitions="auto">
                                         <Image
                                             Grid.Row="0"
                                             Grid.Column="0"
@@ -262,8 +258,8 @@
                                                 <Grid
                                                     Margin="0"
                                                     Padding="0"
-                                                    RowDefinitions="auto,auto,auto,auto,auto,auto"
-                                                    ColumnDefinitions="50*,50*">
+                                                    ColumnDefinitions="50*,50*"
+                                                    RowDefinitions="auto,auto,auto,auto,auto,auto">
 
                                                     <Label
                                                         Grid.Row="0"
@@ -330,11 +326,9 @@
                                                         Grid.Row="3"
                                                         Grid.Column="0"
                                                         Margin="0,5">
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}" />
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}" />
 
-                                                        <Label Style="{StaticResource ValueLabelBlack}"
-                                                               Text="{Binding dueamount}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding dueamount}" />
 
                                                     </StackLayout>
 
@@ -342,21 +336,17 @@
                                                         Grid.Row="3"
                                                         Grid.Column="1"
                                                         Margin="0,5">
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}" />
-                                                        <Label Style="{StaticResource ValueLabelBlack}"
-                                                               Text="{Binding instalmentAmount}" />
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding instalmentAmount}" />
                                                     </StackLayout>
 
                                                     <StackLayout
                                                         Grid.Row="4"
                                                         Grid.Column="0"
                                                         Margin="0,5">
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNumberOfInstalments}" />
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNumberOfInstalments}" />
 
-                                                        <Label Style="{StaticResource ValueLabelBlack}"
-                                                               Text="{Binding noOfInstalments}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding noOfInstalments}" />
                                                     </StackLayout>
 
                                                     <StackLayout
@@ -366,8 +356,7 @@
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="FillAndExpand">
 
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" />
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" />
                                                         <Label
                                                             HorizontalOptions="FillAndExpand"
                                                             Style="{StaticResource ValueLabelBlack}"
@@ -376,13 +365,10 @@
 
                                                     </StackLayout>
 
-                                                     <StackLayout  Grid.Row="5"
-                                                                   Margin="0,5">
-                                                        <Label Style="{StaticResource CaptionLabelGrey}"
-                                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}" />
+                                                    <StackLayout Grid.Row="5" Margin="0,5">
+                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}" />
 
-                                                        <Label Style="{StaticResource ValueLabelBlack}"
-                                                               Text="{Binding dateOfSubmission}" />
+                                                        <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding dateOfSubmission}" />
 
                                                     </StackLayout>
 
@@ -403,16 +389,16 @@
                         <Grid
                             BackgroundColor="Transparent"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
                             IsVisible="{Binding IsZakatSummaryVisible}"
-                            RowDefinitions="auto,auto">
+                            RowDefinitions="auto,auto"
+                            VerticalOptions="FillAndExpand">
 
                             <Grid
                                 Grid.Row="0"
-                                RowSpacing="15"
-                                RowDefinitions="auto,auto,auto,auto">
+                                RowDefinitions="auto,auto,auto,auto"
+                                RowSpacing="15">
 
-                                <StackLayout >
+                                <StackLayout>
                                     <Label
                                         FontSize="28"
                                         HorizontalOptions="StartAndExpand"
@@ -434,14 +420,15 @@
                                     Grid.Column="0"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                    <Grid RowDefinitions="auto,auto,*"
-                                          Padding="15"
-                                          RowSpacing="10">
+                                    <Grid
+                                        Padding="15"
+                                        RowDefinitions="auto,auto,*"
+                                        RowSpacing="10">
 
                                         <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Horizontal"
-                                                Spacing="10">
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            Spacing="10">
                                             <Image
                                                 Aspect="AspectFit"
                                                 HeightRequest="24"
@@ -456,9 +443,10 @@
                                                 VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
 
-                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                                 Grid.Row="1"
-                                                 HeightRequest="1"/>
+                                        <BoxView
+                                            Grid.Row="1"
+                                            HeightRequest="1"
+                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
 
                                         <listView:SfListView
@@ -475,13 +463,15 @@
                                             VerticalOptions="Center">
                                             <listView:SfListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Grid Margin="10,5,10,0"
-                                                          RowDefinitions="auto,auto,auto,auto,auto"
-                                                          Padding="0"
-                                                          ColumnDefinitions="50*,50*">
+                                                    <Grid
+                                                        Margin="10,5,10,0"
+                                                        Padding="0"
+                                                        ColumnDefinitions="50*,50*"
+                                                        RowDefinitions="auto,auto,auto,auto,auto">
 
                                                         <Label
-                                                            Grid.Row="0" Grid.ColumnSpan="2"
+                                                            Grid.Row="0"
+                                                            Grid.ColumnSpan="2"
                                                             HorizontalOptions="StartAndExpand"
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{Binding billNumber}" />
@@ -518,8 +508,10 @@
                                                                 Text="{Binding saadNumber}" />
                                                         </Grid>
 
-                                                        <Grid Grid.Row="3" Grid.ColumnSpan="2"
-                                                              ColumnDefinitions="auto,*">
+                                                        <Grid
+                                                            Grid.Row="3"
+                                                            Grid.ColumnSpan="2"
+                                                            ColumnDefinitions="auto,*">
 
                                                             <Label
                                                                 Grid.Column="0"
@@ -535,8 +527,10 @@
                                                                 Text="{Binding taxPeriod}" />
                                                         </Grid>
 
-                                                        <Grid Grid.Row="4" Grid.ColumnSpan="2"
-                                                              ColumnDefinitions="auto,*">
+                                                        <Grid
+                                                            Grid.Row="4"
+                                                            Grid.ColumnSpan="2"
+                                                            ColumnDefinitions="auto,*">
                                                             <Label
                                                                 Grid.Column="0"
                                                                 HorizontalOptions="StartAndExpand"
@@ -568,35 +562,36 @@
                                     Grid.Column="0"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                    <Grid Padding="15"
-                                          RowSpacing="10"
-                                          RowDefinitions="auto,auto,auto,auto">
+                                    <Grid
+                                        Padding="15"
+                                        RowDefinitions="auto,auto,auto,auto"
+                                        RowSpacing="10">
 
                                         <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Horizontal"
-                                                Spacing="10">
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            Spacing="10">
 
-                                                <Image
-                                                    Aspect="AspectFit"
-                                                    HeightRequest="24"
-                                                    HorizontalOptions="Start"
-                                                    Source="establishments"
-                                                    VerticalOptions="Center"
-                                                    WidthRequest="24" />
+                                            <Image
+                                                Aspect="AspectFit"
+                                                HeightRequest="24"
+                                                HorizontalOptions="Start"
+                                                Source="establishments"
+                                                VerticalOptions="Center"
+                                                WidthRequest="24" />
 
-                                                <Label
-                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAgrement}"
-                                                    VerticalOptions="CenterAndExpand" />
+                                            <Label
+                                                Style="{StaticResource SectionTitleBlackBold}"
+                                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAgrement}"
+                                                VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
 
-                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                                 Grid.Row="1"
-                                                 HeightRequest="1"/>
+                                        <BoxView
+                                            Grid.Row="1"
+                                            HeightRequest="1"
+                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                        <StackLayout Orientation="Horizontal"
-                                                     Grid.Row="2">
+                                        <StackLayout Grid.Row="2" Orientation="Horizontal">
 
                                             <Label
                                                 Grid.Column="0"
@@ -613,8 +608,7 @@
                                                 Text="{Binding NoOfInstalments}" />
                                         </StackLayout>
 
-                                       <StackLayout Orientation="Horizontal"
-                                                     Grid.Row="3">
+                                        <StackLayout Grid.Row="3" Orientation="Horizontal">
                                             <Label
                                                 Grid.Column="0"
                                                 HorizontalOptions="StartAndExpand"
@@ -638,38 +632,40 @@
                                     Grid.Column="0"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
 
-                                    <Grid Padding="15"
-                                          RowSpacing="10"
-                                          RowDefinitions="auto,auto,*">
+                                    <Grid
+                                        Padding="15"
+                                        RowDefinitions="auto,auto,*"
+                                        RowSpacing="10">
 
-                                         <StackLayout
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Horizontal"
-                                                Spacing="10">
-                                                <Image
-                                                    Grid.Row="0"
-                                                    Grid.Column="0"
-                                                    Aspect="AspectFit"
-                                                    HeightRequest="24"
-                                                    HorizontalOptions="Start"
-                                                    Source="ic_attachment"
-                                                    VerticalOptions="Center"
-                                                    WidthRequest="24" />
+                                        <StackLayout
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            Spacing="10">
+                                            <Image
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Aspect="AspectFit"
+                                                HeightRequest="24"
+                                                HorizontalOptions="Start"
+                                                Source="ic_attachment"
+                                                VerticalOptions="Center"
+                                                WidthRequest="24" />
 
-                                                <Label
-                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                    Text="{x:Static ResourceManager:AppResources.Attachments}"
-                                                    VerticalOptions="CenterAndExpand" />
+                                            <Label
+                                                Style="{StaticResource SectionTitleBlackBold}"
+                                                Text="{x:Static ResourceManager:AppResources.Attachments}"
+                                                VerticalOptions="CenterAndExpand" />
                                         </StackLayout>
 
-                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                                 HeightRequest="1"
-                                                 Grid.Row="1"/>
+                                        <BoxView
+                                            Grid.Row="1"
+                                            HeightRequest="1"
+                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                         <listView:SfListView
                                             x:Name="SummaryattachmentsListView"
-                                            AutoFitMode="Height"
                                             Grid.Row="2"
+                                            AutoFitMode="Height"
                                             HorizontalOptions="Center"
                                             IsScrollingEnabled="False"
                                             ItemSpacing="5"
@@ -687,7 +683,7 @@
                                                         RowDefinitions="auto,auto"
                                                         RowSpacing="0">
 
-                                                       <Image
+                                                        <Image
                                                             HeightRequest="25"
                                                             HorizontalOptions="StartAndExpand"
                                                             Source="documents_Green.png"
@@ -716,8 +712,8 @@
                             <Grid
                                 Grid.Row="1"
                                 HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand"
-                                RowDefinitions="auto,auto,auto,auto">
+                                RowDefinitions="auto,auto,auto,auto"
+                                VerticalOptions="FillAndExpand">
 
                                 <Grid
                                     Grid.Row="0"
@@ -729,8 +725,7 @@
                                         StrokeShape="RoundRectangle 10,10,10,10"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
 
-                                        <Grid Padding="10"
-                                              ColumnDefinitions="*,auto">
+                                        <Grid Padding="10" ColumnDefinitions="*,auto">
 
                                             <Label
                                                 Grid.Column="0"
@@ -782,12 +777,12 @@
 
                                 <buttons:SfButton
                                     x:Name="SummaryRevokebtnContinue"
-                                    Margin="0,16"
                                     Grid.Row="2"
-                                    IsVisible="{Binding IsZakatSummaryRevokeVisible}"
+                                    Margin="0,16"
                                     Command="{Binding SummaryRevokeBtnTapped}"
+                                    IsVisible="{Binding IsZakatSummaryRevokeVisible}"
                                     Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.ZVATRevokeButton}"/>
+                                    Text="{x:Static ResourceManager:AppResources.ZVATRevokeButton}" />
 
                                 <StackLayout
                                     Grid.Row="3"
@@ -803,7 +798,7 @@
                                     <buttons:SfButton
                                         Command="{Binding ZDownloadForm}"
                                         Style="{StaticResource PrimaryButtonStyle}"
-                                        Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"/>
+                                        Text="{x:Static ResourceManager:AppResources.ZDownloadForm}" />
 
                                 </StackLayout>
 
@@ -812,15 +807,14 @@
 
                         <Grid
                             HorizontalOptions="FillAndExpand"
-                            RowDefinitions="auto,auto,auto"
                             IsVisible="{Binding IsNoteViewVisible}"
+                            RowDefinitions="auto,auto,auto"
                             RowSpacing="20"
                             VerticalOptions="FillAndExpand">
 
 
 
-                            <Grid Grid.Row="0"
-                                  RowDefinitions="auto,auto,auto">
+                            <Grid Grid.Row="0" RowDefinitions="auto,auto,auto">
 
                                 <Label
                                     Grid.Row="0"
@@ -839,17 +833,17 @@
 
                             <Border
                                 Grid.Row="1"
-                                Stroke="Gray"
-                                StrokeThickness="0.2"
                                 Padding="10"
-                                StrokeShape="RoundRectangle 10,10,10,10"
                                 HorizontalOptions="FillAndExpand"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 10,10,10,10"
+                                StrokeThickness="0.2"
                                 VerticalOptions="StartAndExpand">
 
                                 <custom:GAZTBorderlessEditor
+                                    HeightRequest="155"
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
-                                    HeightRequest="155"
                                     Style="{StaticResource SectionTitleBlackBold}"
                                     Text="{Binding NoteEditor}"
                                     VerticalOptions="FillAndExpand"
@@ -858,35 +852,36 @@
                             </Border>
 
                             <buttons:SfButton
-                                    Margin="0,50"
-                                    Grid.Row="2"
-                                    VerticalOptions="Center"
-                                    Command="{Binding NoteContinueTapped}"
-                                    Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}" />
+                                Grid.Row="2"
+                                Margin="0,50"
+                                Command="{Binding NoteContinueTapped}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                                VerticalOptions="Center" />
                         </Grid>
 
                         <Grid
                             BackgroundColor="Transparent"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            IsVisible="{Binding IsOTPPageVisible}">
+                            IsVisible="{Binding IsOTPPageVisible}"
+                            VerticalOptions="FillAndExpand">
 
-                            <Grid RowDefinitions="auto,auto,auto,auto,auto"
-                                  RowSpacing="10">
+                            <Grid RowDefinitions="auto,auto,auto,auto,auto" RowSpacing="10">
 
                                 <Label
                                     FontSize="28"
                                     Style="{StaticResource SectionTitleBlackBold}"
                                     Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
 
-                                <Label Style="{StaticResource BodyLabelGrey}"
-                                        Grid.Row="1"
-                                        Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" />
 
-                                <BoxView HeightRequest="1"
-                                            Grid.Row="2"
-                                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                <BoxView
+                                    Grid.Row="2"
+                                    HeightRequest="1"
+                                    Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                                 <StackLayout Grid.Row="3">
 
@@ -896,14 +891,14 @@
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{Binding OTPSentOnThisMobileNumber}" />
 
-                                    <Grid RowDefinitions="*"
-                                          ColumnDefinitions="*">
+                                    <Grid ColumnDefinitions="*" RowDefinitions="*">
 
-                                        <Grid Grid.Row="0"
-                                                Padding="30,20,30,20"
-                                                ColumnSpacing="20"
-                                                FlowDirection="LeftToRight"
-                                                ColumnDefinitions="*,*,*,*">
+                                        <Grid
+                                            Grid.Row="0"
+                                            Padding="30,20,30,20"
+                                            ColumnDefinitions="*,*,*,*"
+                                            ColumnSpacing="20"
+                                            FlowDirection="LeftToRight">
 
 
                                             <!--  First OTP Digit Start  -->
@@ -1017,9 +1012,10 @@
 
                                     </Grid>
 
-                                    <StackLayout HorizontalOptions="Center"
-                                                    Orientation="Horizontal"
-                                                    Spacing="10">
+                                    <StackLayout
+                                        HorizontalOptions="Center"
+                                        Orientation="Horizontal"
+                                        Spacing="10">
 
                                         <Image Source="clock" />
 
@@ -1043,13 +1039,13 @@
                                 </StackLayout>
 
                                 <buttons:SfButton
-                                        x:Name="btnprimary"
-                                        Grid.Row="4"
-                                        Margin="0,10"
-                                        Command="{Binding OnContinueClick}"
-                                        IsEnabled="{Binding ContinueButtonEnability}"
-                                        Style="{StaticResource PrimaryButtonStyle}"
-                                        Text="{x:Static ResourceManager:AppResources.UnlockAccountVerify}" />
+                                    x:Name="btnprimary"
+                                    Grid.Row="4"
+                                    Margin="0,10"
+                                    Command="{Binding OnContinueClick}"
+                                    IsEnabled="{Binding ContinueButtonEnability}"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Text="{x:Static ResourceManager:AppResources.UnlockAccountVerify}" />
 
                             </Grid>
 
@@ -1059,14 +1055,13 @@
                             Margin="20,10,20,0"
                             BackgroundColor="Transparent"
                             HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding IsDueBillsVisible}"
                             RowDefinitions="auto,auto,*,*"
                             RowSpacing="10"
-                            IsVisible="{Binding IsDueBillsVisible}"
                             VerticalOptions="FillAndExpand">
 
 
-                            <Grid Grid.Row="0"
-                                  RowDefinitions="auto,auto">
+                            <Grid Grid.Row="0" RowDefinitions="auto,auto">
 
                                 <Label
                                     Grid.Row="0"
@@ -1113,10 +1108,10 @@
                                             <Grid
                                                 Margin="0"
                                                 Padding="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                RowSpacing="0"
-                                                RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
                                                 ColumnDefinitions="50*,50*"
+                                                HorizontalOptions="FillAndExpand"
+                                                RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                                                RowSpacing="0"
                                                 VerticalOptions="FillAndExpand">
 
                                                 <Label
@@ -1258,10 +1253,10 @@
                                             <Grid
                                                 Margin="0"
                                                 Padding="0"
-                                                HorizontalOptions="FillAndExpand"
-                                                RowSpacing="0"
                                                 ColumnDefinitions="50*,50*"
+                                                HorizontalOptions="FillAndExpand"
                                                 RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
+                                                RowSpacing="0"
                                                 VerticalOptions="FillAndExpand">
 
                                                 <Label
@@ -1351,7 +1346,7 @@
                             </listView:SfListView>
 
                         </Grid>
-                   
+
                     </Grid>
 
                 </ScrollView>
@@ -1361,7 +1356,7 @@
             <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>
-      
+
     </ContentPage.Content>
 </ContentPage>
 

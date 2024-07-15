@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
 
-     <Grid
+    <Grid
         Grid.RowSpan="2"
         Margin="0"
         VerticalOptions="FillAndExpand">
@@ -31,25 +31,26 @@
             VerticalOptions="FillAndExpand" />
 
         <Border
-            Padding="0"
             Margin="0"
-            StrokeThickness="1.5"
-            Stroke="#EBEBEB"
+            Padding="0"
             Background="White"
             HorizontalOptions="Fill"
+            Stroke="#EBEBEB"
             StrokeShape="RoundRectangle 15,15,0,0"
+            StrokeThickness="1.5"
             VerticalOptions="EndAndExpand">
 
-            <StackLayout Padding="20,10"
-                         Spacing="15"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand">
+            <StackLayout
+                Padding="20,10"
+                HorizontalOptions="FillAndExpand"
+                Spacing="15"
+                VerticalOptions="FillAndExpand">
 
                 <Label
                     HorizontalOptions="Fill"
                     LineBreakMode="WordWrap"
                     Style="{StaticResource BodyLabelBlack}"
-                    Text="{Binding MessageTxt}"  />
+                    Text="{Binding MessageTxt}" />
 
                 <buttons:SfButton
                     Command="{Binding CloseMsgViewCommand}"

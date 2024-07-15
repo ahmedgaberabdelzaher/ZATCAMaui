@@ -14,11 +14,11 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    ios:Page.UseSafeArea="true"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     Title="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationTile}"
+    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.BackButtonTitle=""
@@ -1085,11 +1085,12 @@
                                                                     TextColor="#010101" />
                                                             </StackLayout>
                                                             <StackLayout>
-                                                                <Label Text="{x:Static ResourceManager:AppResources.SelectAnswerMessage}"
-                                                                       TextColor="Blue"
-                                                                       Style="{StaticResource GAZTSmallBlackLblMediumFont}"
-                                                                       x:Name="Question1_Error"
-                                                                       IsVisible="True"/>
+                                                                <Label
+                                                                    x:Name="Question1_Error"
+                                                                    IsVisible="True"
+                                                                    Style="{StaticResource GAZTSmallBlackLblMediumFont}"
+                                                                    Text="{x:Static ResourceManager:AppResources.SelectAnswerMessage}"
+                                                                    TextColor="Blue" />
                                                             </StackLayout>
 
                                                         </StackLayout>
@@ -1167,11 +1168,12 @@
                                                                     TextColor="#010101" />
                                                             </StackLayout>
                                                             <StackLayout>
-                                                                <Label Text="{x:Static ResourceManager:AppResources.SelectAnswerMessage}"
-                                                                       TextColor="Blue"
-                                                                       Style="{StaticResource GAZTSmallBlackLblMediumFont}"
-                                                                       x:Name="Question2_Error"
-                                                                       IsVisible="True"/>
+                                                                <Label
+                                                                    x:Name="Question2_Error"
+                                                                    IsVisible="True"
+                                                                    Style="{StaticResource GAZTSmallBlackLblMediumFont}"
+                                                                    Text="{x:Static ResourceManager:AppResources.SelectAnswerMessage}"
+                                                                    TextColor="Blue" />
                                                             </StackLayout>
 
                                                         </StackLayout>
@@ -1737,8 +1739,7 @@
 
                                                                 <syncfusion:SfPicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"
-                                                                                                  Background="{StaticResource Primary}">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -2373,8 +2374,8 @@
                                                     BackgroundColor="White"
                                                     ColumnSpacing="0"
                                                     HorizontalOptions="FillAndExpand"
-                                                    RowSpacing="15"
                                                     IsVisible="{Binding IsDeclarationViewEnabled}"
+                                                    RowSpacing="15"
                                                     VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto" />
@@ -2435,8 +2436,8 @@
                                                                 Background="White"
                                                                 ItemHeight="40"
                                                                 Mode="Dialog"
-                                                                SelectionChanged="DDlContactIDType_SelectionChanged_1"
-                                                                OkButtonClicked="DDlIDTypeSR_OkayButtonClicked">
+                                                                OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"
+                                                                SelectionChanged="DDlContactIDType_SelectionChanged_1">
 
                                                                 <syncfusion:SfPicker.TextStyle>
                                                                     <syncfusion:PickerTextStyle FontSize="13" TextColor="{StaticResource NeutralGreay}" />
@@ -2626,7 +2627,7 @@
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
                                                                         Background="{StaticResource Primary}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}">
 
                                                                         <syncfusion:PickerHeaderView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -2638,8 +2639,7 @@
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46"
-                                                                                                 Background="{StaticResource Primary}">
+                                                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
                                                                             <syncfusion:PickerTextStyle TextColor="White" />
@@ -2690,39 +2690,57 @@
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
                                                 </Grid>
-                                                <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding IsDeclarationViewEnabledNew}"
-                                                      ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                                                <Grid
+                                                    Padding="0"
+                                                    BackgroundColor="White"
+                                                    ColumnSpacing="0"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    IsVisible="{Binding IsDeclarationViewEnabledNew}"
+                                                    RowSpacing="15"
+                                                    VerticalOptions="FillAndExpand">
                                                     <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="auto" />
+                                                        <RowDefinition Height="*" />
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50*"/>
-                                                        <ColumnDefinition Width="50*"/>
+                                                        <ColumnDefinition Width="50*" />
+                                                        <ColumnDefinition Width="50*" />
                                                     </Grid.ColumnDefinitions>
-                                                    
-                                                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+
+                                                    <Grid
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        Grid.ColumnSpan="2">
                                                         <Grid.RowDefinitions>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="auto"/>
-                                                            <RowDefinition Height="1"/>
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="1" />
                                                         </Grid.RowDefinitions>
                                                         <StackLayout>
-                                   
-                                                            <StackLayout  Orientation="Horizontal">
-                                                                <custom:CheckboxCustom  MinimumHeightRequest="32" MinimumWidthRequest="32" VerticalOptions="Start" IsChecked="{Binding IsDeclarationChecked}">
-                                                                </custom:CheckboxCustom>
-                                                                <Label HeightRequest="350"
-                                                                       TextType="Html" Text="{Binding Zterms}" HorizontalTextAlignment="{Binding TermsAlignment}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CheckboxUnselectedFontStyle}"/>
-                                       
+
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:CheckboxCustom
+                                                                    IsChecked="{Binding IsDeclarationChecked}"
+                                                                    MinimumHeightRequest="32"
+                                                                    MinimumWidthRequest="32"
+                                                                    VerticalOptions="Start" />
+                                                                <Label
+                                                                    HeightRequest="350"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    HorizontalTextAlignment="{Binding TermsAlignment}"
+                                                                    Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                                                    Text="{Binding Zterms}"
+                                                                    TextType="Html"
+                                                                    VerticalOptions="FillAndExpand" />
+
                                                             </StackLayout>
                                                         </StackLayout>
                                                     </Grid>
-                                                   
+
                                                 </Grid>
                                             </StackLayout>
                                         </StackLayout>
