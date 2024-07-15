@@ -60,7 +60,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<!--<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />-->
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*png" />
@@ -93,6 +93,48 @@
 	  <None Remove="Platforms\Android\Resources\drawable-hdpi\Payment.png" />
 	  <None Remove="ViewModel\NewDesignViewModel\IBanAccManagementsViewModel\" />
 	  <None Remove="Views\NewDesign\IBanAccountsManagementPages\" />
+	  <None Remove="Assets.xcassets\Contents.json" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-76x76%402x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-29x29%401x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\icon.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-40x40%401x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-20x20%401x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-40x40%402x-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-20x20%402x-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-83.5x83.5%402x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\AppStore.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-20x20%403x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Contents.json" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-20x20%402x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-29x29%403x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-40x40%402x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-29x29%402x-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-60x60%403x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-60x60%402x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-76x76%401x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-40x40%403x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-29x29%402x.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\1024.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\76.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\60.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\120-2.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\58.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\167.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\120-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\29.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\180-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\120.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\40-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\80-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\20.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\40-2.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\Contents.json" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\180.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\80.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\40.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\58-1.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\87.png" />
+	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\152.png" />
 	</ItemGroup>
 
 
@@ -1022,8 +1064,8 @@
 
 
 	<ItemGroup>
-	<!-- <InterfaceDefinition Include="Platforms\iOS\Resources\LaunchScreen.storyboard" />
-	  <EmbeddedResource Include="Platforms\iOS\Resources\zatca.css" />-->
+	 <!--<InterfaceDefinition Include="Platforms\iOS\Resources\LaunchScreen.storyboard" />-->
+	  <!--<EmbeddedResource Include="Platforms\iOS\Resources\zatca.css" />-->
 	  <BundleResource Include="Platforms\iOS\Resources\SuccessQr.png" />
 	  <BundleResource Include="Platforms\iOS\Resources\AboutZatca.png" />
 	  <BundleResource Include="Platforms\iOS\Resources\AboutZatca@2x.png" />
@@ -4340,6 +4382,9 @@
 	  <PackageReference Include="Xamarin.AndroidX.Collection" Version="1.3.0.2" />-->
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ImageAsset Include="Assets.xcassets\Contents.json" />
+	</ItemGroup>
 	<ItemGroup>
 	  <ImageAsset Update="Platforms\iOS\Assets.xcassets\AppIcon-1.appiconset\Icon-App-76x76%402x.png">
 	    <Link>Assets.xcassets\AppIcon-1.appiconset\Icon-App-76x76%402x.png</Link>

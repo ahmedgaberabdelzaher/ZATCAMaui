@@ -342,6 +342,7 @@
             public DateTime? Abrzu { get; set; }
             public string Msgflg { get; set; }
             public string Pentyp { get; set; }
+            public string OVERDUEFG { get; set; }
             public string Cokey { get; set; }
             public string Msgtxt { get; set; }
             public string Opbel { get; set; }
@@ -365,8 +366,16 @@
             public string Aenam { get; set; }
             public string TrnTyp { get; set; }
             public DateTime? DecDt { get; set; }
+            public DateTime? LastFulfilledDt { get; set; }
+            public string Secamt { get; set; }
+            public string PenPaidAmt { get; set; }
+            public string Bgmsgflg { get; set; }
+            public string Bgmsgtxt { get; set; }
+            //public string Unpaidamt { get; set; }
+            //public string Unpayfg { get; set; }
+
         }
-     
+
         public class RejectedFormSet
         {
             public List<AppRefNumResult> results { get; set; }
@@ -555,8 +564,10 @@
         public string Bkext { get; set; }
         public string Sopbel { get; set; }
         public string Perslt { get; set; }
+        //public string Unpaidamt { get; set; }
+        //public string Unpayfg { get; set; }
     }
- 
+
     public class MainReasonSetResults
     {
         public Metadata4 __metadata { get; set; }
@@ -634,6 +645,7 @@
             public string Actnm { get; set; }
             public string Golivefg { get; set; }
             public string DecDt { get; set; }
+            public string OVERDUEFG { get; set; }
             public string Appfg { get; set; }
             public string Persl { get; set; }
             public string Actno { get; set; }
@@ -677,6 +689,7 @@
             public string StepNumberx { get; set; }
             public string TxnTpx { get; set; }
             public string UserTypx { get; set; }
+            public string Cr6490Fg { get; set; }
             public ReasonSet ReasonSet { get; set; }
             public AddressSet1 AddressSet { get; set; }
             public NotesSetGet NotesSet { get; set; }
@@ -811,6 +824,7 @@
         public string DateToOld { get; set; }
         public string PeriodKey { get; set; }
         public bool DecFlg1 { get; set; }
+        public string OVERDUEFG { get; set; }
         public bool DecFlg2 { get; set; }
         public string DecIdNo { get; set; }
         public string Declarationdt { get; set; }

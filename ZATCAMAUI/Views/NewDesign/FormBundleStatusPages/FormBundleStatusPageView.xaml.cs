@@ -20,7 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             InitializeComponent();
             BindingContext = viewModel;
             viewModel.ClearData();
-            ChangeAeroIcon();
             SetPickerFont();
             OnPageLoad();
         }
@@ -75,17 +74,6 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             }
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
         public async void OnPageLoad()
         {
             await Task.Run(() =>
@@ -120,11 +108,6 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             }
         }
 
-        private void BundleType_OkButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void BundleNumber_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
             try
@@ -144,11 +127,6 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
 
 
             }
-        }
-
-        private void BundleNumber_OkButtonClicked(object sender, EventArgs e)
-        {
-
         }
 
         private void OnBundleNumberClicked(object sender, EventArgs e)
@@ -174,10 +152,7 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
             }
         }
 
-        private void BundleType_Closed(object sender, EventArgs e)
-        {
 
-        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

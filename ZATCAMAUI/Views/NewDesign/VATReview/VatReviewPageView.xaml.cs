@@ -1,12 +1,10 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+﻿using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ItemTappedEventArgs = Syncfusion.Maui.ListView.ItemTappedEventArgs;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.VATReview
 {
@@ -19,26 +17,27 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         public VatReviewPageView()
         {
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
 
             ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
 
             viewModel = App.Locator.VatReviewView;
-            BindingContext = viewModel;
+            this.BindingContext = viewModel;
             viewModel.vRInterface = (ViewModel.NewDesignViewModel.VATReviewViewModel.VatReviewInterface)this;
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             viewModel.ResetData();
 
             _ = viewModel.VatReviewReasonDropDownData();
-
-
             viewModel.setMoreOptioButtons();
 
+        }
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
         public void ChangeAeroIcon()
         {
@@ -55,13 +54,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
             getYesCommand();
             getNoCommand();
+
+
+
 
             MessagingCenter.Unsubscribe<object, int>(this, "draftRequest");
             MessagingCenter.Unsubscribe<object, int>(this, "draftSecurity");
@@ -70,15 +67,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             try
             {
                 MessagingCenter.Subscribe<object, int>(this, "draftRequest", (sender, arg) =>
-            {
-                DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
+                {
+                    DisputeAmountListView.SelectedItem = viewModel.DisputeAmountPaymentOptions[arg];
 
-            });
+                });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
             try
@@ -99,10 +96,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -123,9 +120,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                         dt1 = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
                         viewModel.PickedDateFullMonth = dt1;
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
-
+                        Console.WriteLine(e);
                     }
                     viewModel.PickedDate = arg.SelectedValue;
                     viewModel.ValidateIdNumber();
@@ -253,10 +250,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -282,10 +279,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -316,16 +313,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                 viewModel.ReportDetails = Report_Details_Tx.Text;
                 viewModel.EnableReportDetailsConButton();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
 
 
-        private void SADAD_CheckBox_CheckedChanged(object sender, bool e)
+        private void SADAD_CheckBox_CheckedChanged(object sender, Boolean e)
         {
             viewModel.EnableSecurityPaymentsConButton();
 
@@ -366,10 +363,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
                 viewModel.EnableSecurityPaymentsConButton();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -378,6 +375,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             viewModel.ReportDetails = Report_Details_Tx.Text;
             viewModel.EnableReportDetailsConButton();
         }
+        private void LateFiling_Details_UnFocused(object sender, FocusEventArgs e)
+        {
+            viewModel.LateFlngDetails = LateFiling_Details_Txx.Text;
+            viewModel.EnableLateFilingsDetailsConButton();
+        }
+
 
         private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)
         {
@@ -391,10 +394,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             {
                 viewModel._idNumber = e.NewTextValue;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -403,15 +406,21 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             viewModel.ValidateIdNumber();
         }
 
-        private void CheckBox_CheckedChanged(object sender, bool e)
+        private void CheckBox_CheckedChanged(object sender, Boolean e)
         {
             viewModel.EnableSecurityPaymentsConButton();
         }
 
-        private void DecCheckBox_CheckedChanged(object sender, bool e)
+        private void DecCheckBox_CheckedChanged(object sender, Boolean e)
         {
             viewModel.EnableDeclarationConButton();
         }
+
+        private void DecCheckBox_CheckedChanged1(object sender, Boolean e)
+        {
+            viewModel.EnableDeclarationConButton();
+        }
+
         private void Dispute_Details_UnFocused(object sender, FocusEventArgs e)
         {
             viewModel.DisputeDetailsDesc = Dispute_Details_Tx.Text;
@@ -421,8 +430,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         {
             viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(rrAmountTxt.Text.ToString());
 
-            if (!string.IsNullOrEmpty(viewModel.RequestedReviewAmount) && !string.IsNullOrEmpty(viewModel.TotalTaxLiability) &&
-                double.Parse(viewModel.RequestedReviewAmount) > double.Parse(viewModel.TotalTaxLiability))
+            if (!String.IsNullOrEmpty(viewModel.RequestedReviewAmount) && !String.IsNullOrEmpty(viewModel.TotalTaxLiability) &&
+                Double.Parse(viewModel.RequestedReviewAmount) > Double.Parse(viewModel.TotalTaxLiability))
             {
                 viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(viewModel.TotalTaxLiability);
             }
@@ -439,8 +448,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                 {
                     viewModel.IsRRAmountEdit = false;
                     viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInfull;
-                    //                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
                     viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(viewModel.TotalTaxLiability.ToString());
+                    viewModel.FetchSecurityAmount();
                 }
                 else if (selectedITem.SelectionTitle.Equals(AppResources.VRInpartial))
                 {
@@ -449,10 +458,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                     viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInpartial;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -471,6 +480,28 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                 viewModel.EnablebankGuranteeSecurityView();
             }
             viewModel.EnableSecurityPaymentsConButton();
+        }
+
+        private void LateFiling_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.charCountLateFilingDetails = LateFiling_Details_Txx.Text.Length + "/" + 3000;
+            viewModel.LateFlngDetails = LateFiling_Details_Txx.Text;
+
+            viewModel.EnableLateFilingsDetailsConButton();
+
+
+        }
+
+        private async void OnInfoButtonTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatReviewLateFilingInfo));
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 

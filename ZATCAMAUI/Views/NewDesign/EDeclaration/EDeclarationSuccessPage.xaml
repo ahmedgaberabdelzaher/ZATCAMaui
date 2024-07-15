@@ -64,12 +64,12 @@
                             TextColor="#002447" />
 
                         <!--#region Disclaimer-->
-                        <Frame
+                        <Border
                             Margin="0,10"
                             Padding="5"
                             BackgroundColor="#FCECCD"
-                            BorderColor="#FCECCD"
-                            CornerRadius="8"
+                            Stroke="#FCECCD"
+                            StrokeShape="RoundRectangle 8,8,8,8"
                             Style="{StaticResource CommonTopCurves}">
 
                             <StackLayout Orientation="Horizontal" Spacing="8">
@@ -87,15 +87,15 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Disclaimer-->
 
                         <!--#region Frame Declaration Values-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,10"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 15,15,15,15"
                             Style="{StaticResource CommonTopCurves}">
 
                             <!--  Frame Content  -->
@@ -274,7 +274,30 @@
                                         LineBreakMode="WordWrap"
                                         Text="{x:Static ResourceManager:AppResources.ArrivingFromORDepartingTo}"
                                         TextColor="#999999"
-                                        VerticalOptions="Start" />
+                                        VerticalOptions="Start" >
+
+                                        <Label.Triggers>
+
+                                            <DataTrigger TargetType="Label"
+                                                         Binding="{Binding IsArrivingPlaneSelected}"
+                                                         Value="true">
+
+                                                <Setter Property="Text"
+                                                        Value="{x:Static ResourceManager:AppResources.ArrivingFrom}"/>
+
+                                            </DataTrigger>
+
+                                            <DataTrigger TargetType="Label"
+                                                           Binding="{Binding IsArrivingPlaneSelected}"
+                                                           Value="false">
+                                                <Setter Property="Text"
+                                                        Value="{x:Static ResourceManager:AppResources.DepartingTo}"/>
+
+                                            </DataTrigger>
+                                        </Label.Triggers>
+
+
+                                    </Label>
 
                                     <!--  Coming/Going from/to Value Label  -->
                                     <Label
@@ -364,15 +387,15 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Declaration Values-->
 
                         <!--#region Frame Contains Total Fees-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,10"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 15,15,15,15"
                             Style="{StaticResource CommonTopCurves}">
 
                             <!--  Frame Content  -->
@@ -484,15 +507,15 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Contains Total Fees-->
 
                         <!--#region Frame Contains Details Fees-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,15"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 15,15,15,15"
                             Style="{StaticResource CommonTopCurves}">
 
                             <!--  Frame Content  -->
@@ -578,7 +601,7 @@
                                 <!--#endregion Payment Values-->
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Contains Fees-->
 
                         <!--  Pay Now Button  -->

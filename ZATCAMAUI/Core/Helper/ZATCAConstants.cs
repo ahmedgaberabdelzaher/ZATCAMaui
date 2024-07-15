@@ -373,6 +373,7 @@ namespace ZATCAMAUI.Core.Helper
 
         public static string GetVATObjSuspensionDetailSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=";
 
+        public static string GetVATDeRegistrationDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_DECLARE_SRV/DeclareSet(Fbnum=";
         #endregion
 
 

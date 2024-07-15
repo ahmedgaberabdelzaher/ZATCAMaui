@@ -27,11 +27,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             {
                 InitializeComponent();
 
-               NavigationPage.SetBackButtonTitle(this, "");
-
-                //App.IsArabic = true;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.OldZakatInstalmentPlanListPageView;
                 BindingContext = viewModel;
@@ -46,17 +41,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
             }
 
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
         }
 
         async void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
@@ -83,10 +67,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             try
             {
                 base.OnAppearing();
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
 
                 viewModel.ResetData();
                 viewModel.EnableCreateZakatInstalment();

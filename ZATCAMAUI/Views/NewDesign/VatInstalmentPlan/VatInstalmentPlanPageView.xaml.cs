@@ -23,11 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
             try
             {
                 InitializeComponent();
-                NavigationPage.SetBackButtonTitle(this, "");
-
-                //App.IsArabic = true;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.VatInstalmentPlanPageView;
                 BindingContext = viewModel;
@@ -38,7 +33,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                 {
                     viewModel.IsLoading = true;
                     await GetVAtInstalmentData();
-
+                    viewModel.IsLoading = false;
                 });
 
                 viewModel.setMoreOptioButtons();
@@ -124,18 +119,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
             {
 
 
-            }
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 
@@ -296,10 +279,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
                 base.OnAppearing();
                 getYesCommand();
                 getNoCommand();
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
 
                 viewModel.FirstTerms = false;
                 viewModel.SecondTerms = false;

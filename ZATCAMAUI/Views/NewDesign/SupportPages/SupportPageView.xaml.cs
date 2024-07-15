@@ -1,10 +1,7 @@
 ﻿
 
 using Maui.GoogleMaps;
-using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM;
@@ -12,7 +9,7 @@ using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.SupportPages
 {
-  
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SupportPageView : ContentPage
     {
@@ -23,18 +20,12 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
             InitializeComponent();
             viewModel = App.Locator.SupportPageView;
             BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
             App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
             SetPickerFont();
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -207,10 +198,6 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
             BranchLocation.IsOpen = true;
         }
 
-        private void BranchLocation_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-
-        }
 
         private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
@@ -357,18 +344,7 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
             {
                 PhoneDialer.Open(InternationalPhone.Text);
             }
-            catch (ArgumentNullException ex)
-            {
-
-
-                // Number was null or white space
-            }
-            catch (FeatureNotSupportedException ex)
-            {
-
-
-                // Phone Dialer is not supported on this device.
-            }
+           
             catch (Exception)
             {
                 // Other error has occurred.
@@ -383,18 +359,7 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
             {
                 PhoneDialer.Open(LocalPhone.Text);
             }
-            catch (ArgumentNullException ex)
-            {
-                // Number was null or white space
-
-
-            }
-            catch (FeatureNotSupportedException ex)
-            {
-                // Phone Dialer is not supported on this device.
-
-
-            }
+           
             catch (Exception)
             {
                 // Other error has occurred.

@@ -15,10 +15,8 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    xmlns:system="clr-namespace:System;assembly=netstandard"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
     x:Name="VATRegistration"
     ios:Page.UseSafeArea="true"
@@ -50,15 +48,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <!--<Grid Padding="15,5,15,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="72"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5*"/>
-                            <ColumnDefinition Width="90*"/>
-                            <ColumnDefinition Width="5*"/>
-                        </Grid.ColumnDefinitions>-->
                 <Grid Grid.Row="0">
 
                     <Grid.ColumnDefinitions>
@@ -587,12 +576,12 @@
                                                         </Label>
                                                     </StackLayout>
 
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10"
+                                                        IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -654,7 +643,48 @@
                                                             </Grid>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
+
+                                                    <Border Stroke="#bbbbbb"
+                                                           BackgroundColor="White"
+                                                           StrokeShape="RoundRectangle 10,10,10,10"
+                                                           Padding="15,20,15,20"
+                                                           IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}">
+                                                        <StackLayout>
+
+                                                            <Grid RowDefinitions="auto"
+                                                                  ColumnDefinitions="20,*">
+
+                                                                <Image HorizontalOptions="Center"
+                                                                       Grid.Row="0" Grid.Column="0"
+                                                                       VerticalOptions="Start">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont"
+                                                                                         Color="#909090"
+                                                                                         Size="30"
+                                                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
+                                                                    </Image.Source>
+                                                                </Image>
+
+                                                                <StackLayout Grid.Column="1"
+                                                                             Grid.Row="0"
+                                                                             Spacing="0"
+                                                                             VerticalOptions="Start">
+
+                                                                    <Label Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsFirstLine}"
+                                                                           HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}"/>
+
+                                                                    <Label Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsSecondLine}"
+                                                                           HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}"/>
+
+                                                                    <Label Text="{x:Static ResourceManager:AppResources.ZZZNewVATRAdditionalInformationInstrunctionsThirdLine}"
+                                                                           HorizontalOptions="Start" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}"/>
+
+                                                                </StackLayout>
+                                                            </Grid>
+                                                        </StackLayout>
+
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="7">
@@ -758,7 +788,6 @@
                                                                 Grid.Row="1"
                                                                 Margin="2"
                                                                 Background="White"
-                                                                CancelButtonClicked="DpEStartDate_CancelButtonClicked"
                                                                 Closed="DpEStartDate_Closed"
                                                                 FutureDay="False"
                                                                 HorizontalOptions="FillAndExpand"
@@ -786,17 +815,24 @@
 
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
-                                                                        Background="White"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                        Background="{StaticResource PrimaryColor}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+
+                                                                          <syncfusion:PickerHeaderView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                                                        </syncfusion:PickerHeaderView.TextStyle>
+
+                                                                    </syncfusion:PickerHeaderView>
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46"
+                                                                                                 Background="{StaticResource PrimaryColor}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
                                                                         </syncfusion:PickerFooterView.TextStyle>
 
                                                                     </syncfusion:PickerFooterView>
@@ -806,26 +842,164 @@
                                                             </custom:CustomDatePicker>
                                                         </Grid>
                                                     </StackLayout>
+
+                                                     <StackLayout IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}">
+
+                                                            <StackLayout>
+
+                                                                <Label 
+                                                                       Padding="0,0,0,0"
+                                                                       HorizontalOptions="Start"
+                                                                       Style="{StaticResource ComponentHeaderBlackBold}">
+
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span  Text="{x:Static ResourceManager:AppResources.VATRNewVATEligibleStartDate}"  />
+                                                                            <Span  Text="*" TextColor="#ff0000"/>
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+
+                                                                <inputLayout:SfTextInputLayout 
+                                                                            HorizontalOptions="FillAndExpand"
+                                                                            x:Name="FrmENewStartDate"
+                                                                            LeadingViewPosition="Inside"
+                                                                            ContainerType="Outlined"
+                                                                            Style="{StaticResource TextInputLayout}"
+                                                                            Stroke="#005e4b"
+                                                                            InputViewPadding="16,0,16,0">
+
+                                                                        <custom:GAZTBorderlessEntry
+                                                                                x:Name="NewDateEntry"
+                                                                                Focused="DateEntry_Focused"
+                                                                                TextChanged="DateEntry_TextChanged_1"
+                                                                                IsEnabled="False"
+                                                                                Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
+                                                                                Unfocused="DateEntry_Unfocused"
+                                                                                Placeholder="DD/MM/YYYY"
+                                                                                Style="{StaticResource DefaultEntry}" />
+
+                                                                    
+
+                                                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                                                            <Image HorizontalOptions="EndAndExpand">
+
+                                                                                <Image.Source>
+                                                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                                            Color="DarkGreen"
+                                                                                            Size="20"
+                                                                                            Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                                                </Image.Source>
+
+                                                                                <Image.GestureRecognizers>
+                                                                                    <TapGestureRecognizer  Tapped="NewVATEligibleDateClicked" />
+                                                                                </Image.GestureRecognizers>
+
+                                                                            </Image>
+
+                                                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                                </inputLayout:SfTextInputLayout>
+
+                                                                <custom:CustomDatePicker
+						                                            Margin="2" 
+                                                                    Background="White"
+                                                                    FutureDay="False"
+                                                                    Mode="Dialog"
+                                                                    IsOpen="False"
+						                                            x:Name="DpENewStartDate"
+                                                                    OkButtonClicked="DpENewDate_OkButtonClicked"
+                                                                    Closed="DpENewStartDate_Closed"
+                                                                    SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
+                                                                    HorizontalOptions="FillAndExpand"
+						                                            ItemHeight="45" >
+
+                                                                <custom:CustomDatePicker.ColumnHeaderView>
+                                                                    <syncfusion:PickerColumnHeaderView Height="46" />
+                                                                </custom:CustomDatePicker.ColumnHeaderView>
+
+
+                                                                <custom:CustomDatePicker.SelectionView>
+                                                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                                                </custom:CustomDatePicker.SelectionView>
+
+                                                                <custom:CustomDatePicker.SelectedTextStyle>
+                                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                                                </custom:CustomDatePicker.SelectedTextStyle>
+
+                                                                <custom:CustomDatePicker.HeaderView>
+
+                                                                    <syncfusion:PickerHeaderView
+                                                                        Height="46"
+                                                                        Background="{StaticResource PrimaryColor}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+
+                                                                         <syncfusion:PickerHeaderView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                                                        </syncfusion:PickerHeaderView.TextStyle>
+
+                                                                    </syncfusion:PickerHeaderView>
+
+                                                                </custom:CustomDatePicker.HeaderView>
+
+                                                                <custom:CustomDatePicker.FooterView>
+
+                                                                    <syncfusion:PickerFooterView Height="46"
+                                                                                                 Background="{StaticResource PrimaryColor}">
+
+                                                                        <syncfusion:PickerFooterView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="White"/>
+                                                                        </syncfusion:PickerFooterView.TextStyle>
+
+                                                                    </syncfusion:PickerFooterView>
+
+                                                                </custom:CustomDatePicker.FooterView>
+
+                                                            </custom:CustomDatePicker>
+
+                                                                <StackLayout.GestureRecognizers>
+                                                                            <TapGestureRecognizer  Tapped="btn2_Clicked" />
+                                                                </StackLayout.GestureRecognizers>
+
+                                                            </StackLayout>
+
+                                                            <StackLayout Orientation="Horizontal"
+                                                                         Spacing="10">
+
+                                                                <custom:CheckboxCustom
+                                                                        IsChecked="{Binding BindingContext.IsNewStartDateInfoChecked,Source={x:Reference VATRegistration}}"
+                                                                        Style="{StaticResource CheckboxHeightWidth32}"
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        CheckChanged="AddAdditionalInfo_CheckedChanged"/>
+
+                                                                    <Label  HorizontalOptions="Start"
+                                                                            HorizontalTextAlignment="Start"
+                                                                            Style="{DynamicResource IsInstrunctionCheckedStyle}">
+
+                                                                        <Label.FormattedText> 
+                                                                            <FormattedString>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZNewVatDateTerms}"/>
+                                                                            </FormattedString>
+                                                                        </Label.FormattedText>
+                                                                    </Label>
+                                                            </StackLayout>
+                                                    </StackLayout>
                                                     <!--  End Of Read Only or pre-populated {Binding TodayDate}"  -->
                                                     <!--  Start Of Additional Information  -->
-                                                    <StackLayout Grid.Row="8" IsEnabled="{Binding BindingContext.IsAddAdditionalInfoChecked, Source={x:Reference VATRegistration}}">
+                                                    <StackLayout Grid.Row="8"
+                                                                 IsEnabled="{Binding BindingContext.IsAddAdditionalInfoChecked, Source={x:Reference VATRegistration}}">
                                                         <Label
                                                             Padding="0,0,0,0"
                                                             Style="{StaticResource ComponentHeaderBlackBold}"
                                                             Text="{x:Static ResourceManager:AppResources.VATRImportExport}" />
-                                                        <Grid ColumnSpacing="30">
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto" />
-                                                                <RowDefinition Height="auto" />
-                                                            </Grid.RowDefinitions>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="auto" />
-                                                                <ColumnDefinition Width="auto" />
-                                                            </Grid.ColumnDefinitions>
+
+                                                        <Grid ColumnSpacing="30"
+                                                              RowDefinitions="auto,auto"
+                                                              ColumnDefinitions="auto,auto">
 
                                                             <!--#endregion-->
                                                             <!--#region Modified View for Imorter Exporter-->
-
 
                                                             <cards:SfCardView
                                                                 Grid.Row="0"
@@ -835,29 +1009,36 @@
                                                                 HeightRequest="104"
                                                                 IsEnabled="{Binding BindingContext.TaxPayerDetails.ImporterNoRB, Source={x:Reference VATRegistration}}"
                                                                 WidthRequest="171">
-                                                                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="104" />
-                                                                    </Grid.RowDefinitions>
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="171" />
-                                                                    </Grid.ColumnDefinitions>
+
+                                                                <Grid HorizontalOptions="FillAndExpand"
+                                                                      VerticalOptions="FillAndExpand"
+                                                                      RowDefinitions="104"
+                                                                      ColumnDefinitions="171">
+
                                                                     <Image
                                                                         Aspect="Fill"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         Source="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.ImporterImageSource}"
                                                                         VerticalOptions="FillAndExpand" />
-                                                                    <StackLayout Style="{StaticResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+
+                                                                    <StackLayout Style="{StaticResource CardParentStacklayout}"
+                                                                                 VerticalOptions="EndAndExpand">
+
                                                                         <Label
                                                                             Style="{StaticResource CardLabelBlack}"
                                                                             Text="{x:Static ResourceManager:AppResources.VATRImporter}"
                                                                             TextColor="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.ImporterTextColor}" />
+
                                                                     </StackLayout>
+
                                                                     <Grid.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="TappendOnImporter" />
                                                                     </Grid.GestureRecognizers>
+
                                                                 </Grid>
+
                                                             </cards:SfCardView>
+
                                                             <cards:SfCardView
                                                                 Grid.Row="0"
                                                                 Grid.Column="1"
@@ -1085,12 +1266,11 @@
                                                         HorizontalTextAlignment="Center"
                                                         Style="{StaticResource BodyLabelBlackMedium}"
                                                         Text="{Binding SliderLable1EligibilityText}" />
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,10,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 HorizontalTextAlignment="Start"
@@ -1148,16 +1328,15 @@
                                                         </StackLayout>
 
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 HorizontalTextAlignment="Start"
@@ -1214,16 +1393,15 @@
                                                         </StackLayout>
 
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 Style="{StaticResource BodyLabelBlack}"
@@ -1326,16 +1504,15 @@
                                                             </Grid>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 HorizontalTextAlignment="Start"
@@ -1443,7 +1620,7 @@
 
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout
@@ -1467,12 +1644,11 @@
                                                     </Label>
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -1507,7 +1683,7 @@
                                                             </Grid>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="8">
@@ -1656,12 +1832,11 @@
 
                                                         </StackLayout>
                                                     </StackLayout>
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -1696,7 +1871,7 @@
                                                             </Grid>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <!--#region Modified-->
@@ -1935,14 +2110,11 @@
                                                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                                             <StackLayout IsVisible="{Binding DOBMandatoryVisibility}" Orientation="Horizontal">
                                                                                 <custom:GAZTBorderlessEntry
-                                                                                    Focused="DateEntry_Focused_1"
                                                                                     HorizontalOptions="FillAndExpand"
                                                                                     IsEnabled="False"
                                                                                     Placeholder="YYYY/MM/DD"
                                                                                     Style="{StaticResource DefaultEntry}"
-                                                                                    Text="{Binding DOB}"
-                                                                                    TextChanged="DateEntry_TextChanged"
-                                                                                    Unfocused="DateEntry_Unfocused_1" />
+                                                                                    Text="{Binding DOB}" />
                                                                                 <Image HorizontalOptions="End">
                                                                                     <Image.Source>
                                                                                         <FontImageSource
@@ -1965,7 +2137,6 @@
                                                                             Grid.Row="1"
                                                                             Margin="2"
                                                                             Background="#EAF7CC"
-                                                                            CancelButtonClicked="DOB_CancelButtonClicked"
                                                                             HorizontalOptions="FillAndExpand"
                                                                             ItemHeight="45"
                                                                             Mode="Dialog"
@@ -1989,17 +2160,24 @@
 
                                                                                 <syncfusion:PickerHeaderView
                                                                                     Height="46"
-                                                                                    Background="{StaticResource Primary}"
-                                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                                    Background="{StaticResource PrimaryColor}"
+                                                                                    Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+
+                                                                                     <syncfusion:PickerHeaderView.TextStyle>
+                                                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                                                    </syncfusion:PickerHeaderView.TextStyle>
+
+                                                                                </syncfusion:PickerHeaderView>
 
                                                                             </custom:CustomDatePicker.HeaderView>
 
                                                                             <custom:CustomDatePicker.FooterView>
 
-                                                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                                                <syncfusion:PickerFooterView Height="46"
+                                                                                                             Background="{StaticResource PrimaryColor}">
 
                                                                                     <syncfusion:PickerFooterView.TextStyle>
-                                                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
+                                                                                         <syncfusion:PickerTextStyle TextColor="White" />
                                                                                     </syncfusion:PickerFooterView.TextStyle>
 
                                                                                 </syncfusion:PickerFooterView>
@@ -2247,7 +2425,6 @@
                                                                 Grid.Row="1"
                                                                 Margin="10,0,10,0"
                                                                 Background="White"
-                                                                CancelButtonClicked="DDlIDTypeFR_CancelButtonClicked"
                                                                 ItemHeight="40"
                                                                 Mode="Dialog"
                                                                 OkButtonClicked="DDlIDTypeFR_OkButtonClicked"
@@ -2407,14 +2584,11 @@
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <custom:GAZTBorderlessEntry
                                                                         x:Name="DateEntryFR"
-                                                                        Focused="DateEntry_Focused_1"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         IsEnabled="False"
                                                                         Placeholder="YYYY/MM/DD"
                                                                         Style="{StaticResource DefaultEntry}"
-                                                                        Text="{Binding DOB}"
-                                                                        TextChanged="DateEntry_TextChanged"
-                                                                        Unfocused="DateEntry_Unfocused_1" />
+                                                                        Text="{Binding DOB}" />
                                                                     <Image HorizontalOptions="End">
                                                                         <Image.Source>
                                                                             <FontImageSource
@@ -2460,17 +2634,24 @@
 
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
-                                                                        Background="{StaticResource Primary}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                        Background="{StaticResource PrimaryColor}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+
+                                                                        <syncfusion:PickerHeaderView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                                                        </syncfusion:PickerHeaderView.TextStyle>
+
+                                                                    </syncfusion:PickerHeaderView>
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46"
+                                                                                                 Background="{StaticResource PrimaryColor}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource PrimaryColor}" />
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
                                                                         </syncfusion:PickerFooterView.TextStyle>
 
                                                                     </syncfusion:PickerFooterView>
@@ -2632,10 +2813,9 @@
                                                     Text="{x:Static ResourceManager:AppResources.VATRReviewInformation}" />
                                                 <BoxView Margin="0,24,0,0" Style="{StaticResource lineSeperator}" />
                                             </StackLayout>
-                                            <Frame
+                                            <Border
                                                 Margin="0,32,0,0"
                                                 Padding="0,0,0,2"
-                                                HasShadow="False"
                                                 Style="{StaticResource ComponentGrayFrame}">
                                                 <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                                     <Image Margin="10,0,10,0" Style="{StaticResource SmallIcon}">
@@ -2654,10 +2834,10 @@
                                                         Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}"
                                                         VerticalOptions="CenterAndExpand" />
                                                 </StackLayout>
-                                            </Frame>
+                                            </Border>
 
                                             <!--  Taxpayer Details Summery  -->
-                                            <Frame Margin="0,32,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
+                                            <Border Margin="0,32,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
                                                 <StackLayout Spacing="0">
                                                     <Grid
                                                         Padding="10"
@@ -2708,26 +2888,23 @@
                                                             <ColumnDefinition Width="60*" />
                                                             <ColumnDefinition Width="40*" />
                                                         </Grid.ColumnDefinitions>
-                                                        <Label
-                                                            Grid.Row="0"
-                                                            Grid.Column="0"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            Text="{x:Static ResourceManager:AppResources.VATRVATEligibleStartDate}" />
-                                                        <Label
-                                                            Grid.Row="0"
-                                                            Grid.Column="1"
-                                                            HorizontalOptions="End"
-                                                            Style="{StaticResource BodyLabelBlackMedium}"
-                                                            Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" />
+                                                    <Label IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}"
+                                                           Grid.Row="0" Grid.Column="0"
+                                                           Text="{x:Static ResourceManager:AppResources.VATRVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                        <Label IsVisible="{Binding BindingContext.VatEligibleStartDateInsVisible,Source={x:Reference VATRegistration}}" Grid.Row="0" Grid.Column="1" HorizontalOptions="End"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}"
+                                                               Style="{StaticResource BodyLabelBlackMedium}"/>
+                                                        <Label IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}" Grid.Row="0" Grid.Column="0"   Text="{x:Static ResourceManager:AppResources.VATRNewVATEligibleStartDate}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="End" IsVisible="{Binding BindingContext.IsNewVatEligibleDateInsVisible,Source={x:Reference VATRegistration}}"  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.NewVatEligibleStartDate}"
+                                                               Style="{StaticResource BodyLabelBlackMedium}"/>
+
                                                     </Grid>
 
 
                                                 </StackLayout>
-                                            </Frame>
+                                            </Border>
 
                                             <!--  Sales Details Summery  -->
-                                            <Frame Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
+                                            <Border Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
                                                 <StackLayout Spacing="0">
                                                     <Grid
                                                         Padding="10"
@@ -2805,8 +2982,8 @@
                                                     </Grid>
 
                                                 </StackLayout>
-                                            </Frame>
-                                            <Frame Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
+                                            </Border>
+                                            <Border Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
                                                 <StackLayout Spacing="0">
                                                     <Grid
                                                         Padding="10"
@@ -2884,8 +3061,8 @@
                                                     </Grid>
 
                                                 </StackLayout>
-                                            </Frame>
-                                            <Frame Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
+                                            </Border>
+                                            <Border Margin="0,24,0,0" Style="{StaticResource ComponentFrameWithRadius14}">
                                                 <StackLayout Spacing="0">
                                                     <Grid
                                                         Padding="10"
@@ -3033,13 +3210,14 @@
 
                                                     </Grid>
                                                 </StackLayout>
-                                            </Frame>
+                                            </Border>
                                             <Grid
                                                 Margin="0,24,0,0"
                                                 ColumnDefinitions="1*,2*,7*"
                                                 ColumnSpacing="10"
                                                 HeightRequest="32"
-                                                WidthRequest="32">
+                                                WidthRequest="32"
+                                                IsVisible="{Binding IsDeclarationViewEnabled}">
                                                 <custom:CheckboxCustom
                                                     Grid.Row="0"
                                                     Grid.Column="0"
@@ -3064,7 +3242,7 @@
                                                     </Label.Margin>
                                                 </Label>
                                             </Grid>
-                                            <StackLayout>
+                                            <StackLayout IsVisible="{Binding IsDeclarationViewEnabled}">
                                                 <Label
                                                     Margin="0,20,0,15"
                                                     Style="{StaticResource GAZTSmallGrayLblMediumFont}"
@@ -3075,12 +3253,9 @@
                                                     ColumnSpacing="0"
                                                     HorizontalOptions="FillAndExpand"
                                                     RowSpacing="15"
+                                                    RowDefinitions="auto,auto,auto"
                                                     VerticalOptions="FillAndExpand">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto" />
-                                                        <RowDefinition Height="auto" />
-                                                        <RowDefinition Height="auto" />
-                                                    </Grid.RowDefinitions>
+
                                                     <StackLayout Grid.Row="0">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
@@ -3129,16 +3304,15 @@
                                                                 Clicked="btnContactID_Clicked"
                                                                 FontSize="Small"
                                                                 IsEnabled="{Binding Declaration.IDTypeOrNoPicker}" />
-                                                            <syncfusion:SfPicker
+                                                            <custom:CustomSfPicker
                                                                 x:Name="DDlContactIDType"
                                                                 Grid.Row="1"
                                                                 Margin="0,0,0,0"
                                                                 Background="White"
-                                                                CancelButtonClicked="IDTypeSR_CancelButtonClicked"
                                                                 ItemHeight="40"
                                                                 Mode="Dialog"
                                                                 OkButtonClicked="DDlIDTypeSR_OkayButtonClicked"
-                                                                SelectionChanged="DDlIDTypeSR_OkayButtonClicked">
+                                                                SelectionChanged="DDlContactIDType_SelectionChanged_1">
 
 
                                                                 <syncfusion:SfPicker.HeaderView>
@@ -3187,9 +3361,10 @@
 
                                                                 </syncfusion:SfPicker.FooterView>
 
-                                                            </syncfusion:SfPicker>
+                                                            </custom:CustomSfPicker>
                                                         </Grid>
                                                     </StackLayout>
+
                                                     <StackLayout Grid.Row="1">
                                                         <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
@@ -3232,6 +3407,7 @@
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
+
                                                     <StackLayout Grid.Row="2" Grid.Column="0">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
@@ -3303,7 +3479,6 @@
                                                                 Grid.Row="1"
                                                                 Margin="2"
                                                                 Background="White"
-                                                                CancelButtonClicked="ContactDOBPicker_CancelButtonClicked"
                                                                 Closed="ContactDOBPicker_Closed"
                                                                 HorizontalOptions="FillAndExpand"
                                                                 ItemHeight="45"
@@ -3328,17 +3503,24 @@
 
                                                                     <syncfusion:PickerHeaderView
                                                                         Height="46"
-                                                                        Background="{StaticResource Primary}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                                                        Background="{StaticResource PrimaryColor}"
+                                                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+
+                                                                         <syncfusion:PickerHeaderView.TextStyle>
+                                                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                                                        </syncfusion:PickerHeaderView.TextStyle>
+
+                                                                    </syncfusion:PickerHeaderView>
 
                                                                 </custom:CustomDatePicker.HeaderView>
 
                                                                 <custom:CustomDatePicker.FooterView>
 
-                                                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                                                    <syncfusion:PickerFooterView Height="46"
+                                                                                                 Background="{StaticResource PrimaryColor}">
 
                                                                         <syncfusion:PickerFooterView.TextStyle>
-                                                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                            <syncfusion:PickerTextStyle TextColor="White"/>
                                                                         </syncfusion:PickerFooterView.TextStyle>
 
                                                                     </syncfusion:PickerFooterView>
@@ -3348,6 +3530,7 @@
                                                             </custom:CustomDatePicker>
                                                         </Grid>
                                                     </StackLayout>
+
                                                     <StackLayout Grid.Row="3">
                                                         <Label Grid.Row="0" Style="{StaticResource ComponentHeaderBlackBold}">
 
@@ -3386,8 +3569,55 @@
                                                             </custom:GAZTBorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
+
                                                 </Grid>
                                             </StackLayout>
+
+                                            <Grid IsVisible="{Binding IsDeclarationViewEnabledNew}"
+                                                  BackgroundColor="Transparent"
+                                                  Margin="20,10,20,0"
+                                                  RowDefinitions="auto"
+                                                  ColumnDefinitions="auto"
+                                                  HorizontalOptions="FillAndExpand"
+                                                  VerticalOptions="FillAndExpand">
+
+                                                <Grid Grid.Row="0"
+                                                      Grid.Column="0"
+                                                      RowDefinitions="auto"
+                                                      Grid.ColumnSpan="2">
+
+                                                    <StackLayout Grid.Row="0">
+
+                                                        <StackLayout  Orientation="Horizontal">
+
+                                                            <custom:CheckboxCustom MinimumHeightRequest="32"
+                                                                                   MinimumWidthRequest="32"
+                                                                                   VerticalOptions="Start"
+                                                                                   IsChecked="{Binding IsDeclarationChecked}"/>
+
+                                                            <Label HeightRequest="350"
+                                                                   Text="{Binding Zterms}"
+                                                                   HorizontalTextAlignment="Start"
+                                                                   VerticalOptions="FillAndExpand"
+                                                                   HorizontalOptions="FillAndExpand"
+                                                                   TextType="Html"
+                                                                   Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                                                   IsVisible="{Binding ShouldShowEN}"/>
+
+                                                            <Label HeightRequest="350"
+                                                                    Text="{Binding Zterms}"
+                                                                    HorizontalTextAlignment="{Binding TermsAlignment}"
+                                                                    VerticalOptions="FillAndExpand"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    TextType="Html"
+                                                                    Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                                                    IsVisible="{Binding ShouldShowAR}" />
+
+                                                        </StackLayout>
+
+                                                    </StackLayout>
+                                                </Grid>
+                                            </Grid>
                                         </StackLayout>
                                     </Grid>
 

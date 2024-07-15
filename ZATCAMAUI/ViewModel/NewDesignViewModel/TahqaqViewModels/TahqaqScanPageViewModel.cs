@@ -772,112 +772,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         }
 
-        public async Task GetQrDataEradApiOld(string TinNo)
-        {
-            try
-            {
-                IsLoading = true;
-                if (NetworkCheck.IsInternet())
-                {
-                    IsClearedStatusVisible = false;
-                    var body = new EradQrBody() { IDTYPE = "3", IDNUMBER = TinNo };
-                    VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp("A", "3", TinNo);
-                    //// Old APi T2
-                    // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
-                    // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
-                    if (vatLookUp.d != null)
-                    {
-                        //   var content =await data.Content.ReadAsStringAsync();
-                        ///  var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
-                        var EInvEnfStatus = vatLookUp.d.results[0].EinvEnfStatus == "" ? 0 : int.Parse(vatLookUp.d.results[0].EinvEnfStatus);
-                        if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))
-                        {
-
-                            if (NoofTags == 5 && EInvEnfStatus == 0)
-                            {
-                                RegistredStatusWithDisplaQRRslt();
-                            }
-                            else if (NoofTags == 5 && EInvEnfStatus == 1)
-                            {
-                                IsShowMsgView = true;
-                                MessageTxt = AppResources.InvalidQrMessage;
-                            }
-                            else if (NoofTags == 9 && EInvEnfStatus == 1)
-                            {
-                                RegistredStatusWithDisplaQRRslt();
-
-                            }
-                            else if (NoofTags == 8 && EInvEnfStatus == 1)
-                            {
-                                RegistredStatusWithDisplaQRRslt();
-                                IsClearedStatusVisible = true;
-
-                            }
-                            else
-                            {
-                                if (NoofTags == 8)
-                                {
-                                    RegistredStatusWithDisplaQRRslt();
-                                    // IsShowSubmitReport = false;
-                                }
-                                else
-                                {
-                                    RegistredStatusWithDisplaQRRslt();
-                                }
-                            }
-                        }
-                        else
-                        {
-                            /* if (NoofTags == 5)
-                             {*/
-                            RegisterStatus = AppResources.NotRegistered;
-                            IsShowSubmitReport = true;
-                            IsShowRsltView = true;
-                            IsShowScanView = false;
-                            /* }
-                            else
-                             {
-                                 IsShowMsgView = true;
-                                 MessageTxt = AppResources.InvalidQrMessage;
-                             }*/
-                        }
-
-                    }
-                    /*else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                    {
-                        RegisterStatus = AppResources.NotRegistered;
-                        IsShowSubmitReport = true;
-                    }*/
-                    else
-                    {
-                        IsShowMsgView = true;
-                        MessageTxt = AppResources.unableToVerify;
-                        // RegisterStatus = AppResources.unableToVerify;
-                    }
-
-
-                }
-                else
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.unableToVerify;
-                    // RegisterStatus = AppResources.unableToVerify;
-                }
-
-                IsLoading = false;
-            }
-            catch (Exception)
-            {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.unableToVerify;
-            }
-            finally
-            {
-                IsLoading = false;
-                IsScanning = false;
-            }
-
-        }
 
         public async Task GetQrDataEradApi(string TinNo)
         {
@@ -887,7 +781,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 if (NetworkCheck.IsInternet())
                 {
                     IsClearedStatusVisible = false;
-                    var body = new EradQrBody() { idType = "3", idNumber = TinNo };
+                    var body = new EradQrBody() { idType = "3", idNumber = TinNo.Replace(" ", "") };
                     var res = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
                     var content = await res.Content.ReadAsStringAsync();
                     var result = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<VATLokupsDP>>(content);
@@ -897,8 +791,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                     // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
                     if (qrResponseData != null && qrResponseData.lookups != null & qrResponseData.lookups.Count > 0)
                     {
-                        //   var content =await data.Content.ReadAsStringAsync();
-                        ///  var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
 
                         if (qrResponseData.lookups[0].einvEnfStatus == null)
                         {
@@ -933,7 +825,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 if (NoofTags == 8)
                                 {
                                     RegistredStatusWithDisplaQRRslt();
-                                    // IsShowSubmitReport = false;
                                 }
                                 else
                                 {
@@ -943,31 +834,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                         else
                         {
-                            /* if (NoofTags == 5)
-                             {*/
                             RegisterStatus = AppResources.NotRegistered;
                             IsShowSubmitReport = true;
                             IsShowRsltView = true;
                             IsShowScanView = false;
-                            /* }
-                            else
-                             {
-                                 IsShowMsgView = true;
-                                 MessageTxt = AppResources.InvalidQrMessage;
-                             }*/
                         }
 
                     }
-                    /*else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                    {
-                        RegisterStatus = AppResources.NotRegistered;
-                        IsShowSubmitReport = true;
-                    }*/
+
                     else
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.unableToVerify;
-                        // RegisterStatus = AppResources.unableToVerify;
                     }
 
 
@@ -976,12 +854,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.unableToVerify;
-                    // RegisterStatus = AppResources.unableToVerify;
                 }
 
                 IsLoading = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.unableToVerify;

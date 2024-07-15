@@ -10864,4 +10864,62 @@ info@zatca.gov.sa</value>
       <data name="ExpressBillNumber" xml:space="preserve">
     <value>رقم الشحنة</value>
   </data>
+    <!--CR6490-->
+	<data name="TotalPenalties" xml:space="preserve">
+    <value>مبلغ الغرامات المستحقة</value>
+  </data>
+<!--  <data name="UnpaidAmount" xml:space="preserve">
+    <value>المبلغ الغير مدفوع</value>
+  </data>
+ 
+  <data name="UnpaidInfoMessage" xml:space="preserve">
+    <value>مبلغ الضمان يساوي 25% من أجمالي مبلغ الغرامة</value>
+  </data>-->
+   <data name="VRPaidAmount" xml:space="preserve">
+    <value>المبلغ المدفوع </value>
+  </data>
+    <data name="VatReviewLateObj" xml:space="preserve">
+    <value>التأخر في تقديم الاعتراض</value>
+  </data>
+   <data name="VatLateFilingObjection" xml:space="preserve">
+    <value>أسباب تجاوز المدة النظامية لتقديم الاعتراض</value>
+  </data>
+  <data name="VATReviewlateFilingHint" xml:space="preserve">
+    <value>في حال كان التأخر في تقديم الاعتراض بسبب خلل تقني نأمل كتابة رقم التذكرة</value>
+  </data>
+  <data name="VatReviewLateFilingInfo" xml:space="preserve">
+    <value>نصت المادة الثانية من قواعد عمل اللجان الضريبية على الاعتراض على قرارات الهيئة خلال ٦٠ يوماً من تاريخ التبليغ، لذا نأمل بيان أسباب عدم الالتزام وارفاق المستندات الداعمة لذلك</value>
+  </data>
+   <data name="ZZZNewVATRAdditionalInformationInstrunctionsFirstLine" xml:space="preserve">
+    <value>1.تاريخ بداية الخضوع لضريبة القيمة المضافة المعدل يجب أن يكون أكبر من او يساوي 01 / 01 / 2018 م وأقل من تاريخ بداية الخضوع الحالي.</value>
+  </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsSecondLine" xml:space="preserve">
+    <value>2.تاريخ بداية الخضوع لضريبة القيمة المضافة المعدل يمكن أن يكون خلال إيقاف التسجيل لضريبة القيمة المضافة.</value>
+  </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsThirdLine" xml:space="preserve">
+    <value>3.اليوم المدخل في تاريخ الخضوع المعدل يجب أن يكون في بداية الشهر.</value>
+  </data>
+  <data name="ZZZZNewVatDateTerms" xml:space="preserve">
+    <value>أقرُ وأتعهَد بالموافقة على تعديل تاريخ نفاذ التسجيل في ضريبة القيمةالمضافة، وبالدراية الكاملة عن المخالفات والعقوبات التي قد تترتب على ذلك وبتحملي لكافة الآثار النظامية المترتبة عن هذا الإجراء، وأن الهيئة غير مسؤولة سواء بشكل كامل أو جزئي عن أي خطأ أو ضرر مباشر أو غير مباشر، عرضي أو تبعي أو عقابي، خاصاً كان أو عاماً، كما أنَ الهيئة لا تتحمَل أيَ مسؤولية عن أي فرصة ضائعة أو خسارة أو ضرر نتج عن أي من المعلومات أو البيانات المدخلة.</value>
+  </data>
+   <data name="VATRNewVATEligibleStartDate" xml:space="preserve">
+    <value>تاريخ بداية الخضوع لضريبة القيمة المضافة الجديدة</value>
+  </data>
+  <!--END OF CR6490-->
+  <data name="DepartingTo" xml:space="preserve">
+    <value>مغادر إلى</value>
+  </data>
+   <data name="ArrivingFrom" xml:space="preserve">
+    <value>الوصول من</value>
+  </data>
+      <!--start of VAT Refund Prod-->
+  <data name="VATRefundReqMessageInfo" xml:space="preserve">
+    <value>ملاحظة
+عزيزنا المكلف في حال وجود نسخة محفوظة كمسودة على الإقرارات المقدمة لن تتمكن من تقديمها في طلب الاسترداد, يرجى إلغاؤها أو تقديمها.
+  </value>
+  </data>
+    <data name="ZMaximumnoof9attachmentscanbeuploaded1" xml:space="preserve">
+    <value>لا يمكن تحميل أكثر من 9 مرفقات</value>
+  </data>
+   <!--end of VAT Refund Prod-->
 </root>

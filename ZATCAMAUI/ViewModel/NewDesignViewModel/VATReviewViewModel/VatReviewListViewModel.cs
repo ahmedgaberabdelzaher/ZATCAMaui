@@ -10,6 +10,7 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.VATReviewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Views.NewDesign.VATReview;
 using static ZATCAMAUI.Models.VATReviewModel.VATObjectionFormModel;
 using Result3 = ZATCAMAUI.Models.VATReviewModel.VATObjectionListModel.Result3;
 
@@ -657,13 +658,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             //AddOutletDecisionOptions();
         }
 
-        public void ShowVatReviewPage()
+        public async Task ShowVatReviewPage()
         {
 
             App.selectedVATItem = "";
             App.selectedVATItemFbust = "";
-            //await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
-            _navigationService.NavigateTo(App.VatReviewPageView);
+            await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
         }
 
         public void ResetListData()

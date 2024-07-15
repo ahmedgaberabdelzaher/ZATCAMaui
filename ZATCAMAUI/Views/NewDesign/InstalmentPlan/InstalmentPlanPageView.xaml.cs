@@ -1,9 +1,6 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.ListView;
+﻿using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Models.InstalmentPlanModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.InstalmentPlan
 {
@@ -19,11 +16,6 @@ namespace ZATCAMAUI.Views.NewDesign.InstalmentPlan
             {
                 InitializeComponent();
 
-                NavigationPage.SetBackButtonTitle(this, "");
-
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
-
                 viewModel = App.Locator.InstalmentPlanPageView;
                 BindingContext = viewModel;
                 viewModel.AddOutletDecisionOptions();
@@ -35,25 +27,8 @@ namespace ZATCAMAUI.Views.NewDesign.InstalmentPlan
             }
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-        }
-
+       
+        
         public void outletDecisionOptionsListView_SelectionChanged(object sender,ItemSelectionChangedEventArgs e)
         {
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;

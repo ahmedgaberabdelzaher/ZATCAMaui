@@ -412,7 +412,7 @@
                                 Mode="Dialog"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
                                 SelectedItem="{Binding TodayDate}"
-                                SelectionChanged="DpDbo_SelectionChanged">
+                                >
 
                                 <custom:CustomDatePicker.ColumnHeaderView>
                                     <syncfusion:PickerColumnHeaderView Height="46" />
@@ -431,18 +431,25 @@
 
                                     <syncfusion:PickerHeaderView
                                         Height="46"
-                                        Background="#EAF7CC"
-                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                        Background="{StaticResource Primary}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" >
+
+                                          <syncfusion:PickerHeaderView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                        </syncfusion:PickerHeaderView.TextStyle>
+
+                                    </syncfusion:PickerHeaderView>
 
                                 </custom:CustomDatePicker.HeaderView>
 
 
                                 <custom:CustomDatePicker.FooterView>
 
-                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                    <syncfusion:PickerFooterView Height="46"
+                                                                 Background="{StaticResource Primary}">
 
                                         <syncfusion:PickerFooterView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                            <syncfusion:PickerTextStyle TextColor="White" />
                                         </syncfusion:PickerFooterView.TextStyle>
 
                                     </syncfusion:PickerFooterView>
@@ -463,7 +470,7 @@
                                 Mode="Dialog"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
                                 SelectedItem="{Binding TodayDateinHijri}"
-                                SelectionChanged="DpDbo_SelectionChanged">
+                                >
 
                                 <custom:CustomHijriDatePicker.SelectionView>
                                     <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
@@ -592,7 +599,7 @@
                                     Mode="Dialog"
                                     OkButtonClicked="DOBpicker_OkButtonClicked"
                                     SelectedItem="{Binding TodayDate}"
-                                    SelectionChanged="DpDbo_SelectionChanged">
+                                    >
 
                                     <custom:CustomDatePicker.ColumnHeaderView>
                                         <syncfusion:PickerColumnHeaderView Height="46" />
@@ -644,7 +651,7 @@
                                     Mode="Dialog"
                                     OkButtonClicked="DOBpicker_OkButtonClicked"
                                     SelectedItem="{Binding TodayDateinHijri}"
-                                    SelectionChanged="DpDbo_SelectionChanged">
+                                    >
 
                                     <custom:CustomHijriDatePicker.SelectionView>
                                         <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
@@ -886,7 +893,7 @@
                                 Mode="Dialog"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
                                 SelectedItem="{Binding TodayDate}"
-                                SelectionChanged="DpDOB_SelectionChanged">
+                                >
 
                                 <custom:CustomDatePicker.ColumnHeaderView>
                                     <syncfusion:PickerColumnHeaderView Height="46" />
@@ -938,7 +945,7 @@
                                 Mode="Dialog"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
                                 SelectedItem="{Binding TodayDateinHijri}"
-                                SelectionChanged="DpDOB_SelectionChanged">
+                                >
 
                                 <custom:CustomHijriDatePicker.SelectionView>
                                     <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />

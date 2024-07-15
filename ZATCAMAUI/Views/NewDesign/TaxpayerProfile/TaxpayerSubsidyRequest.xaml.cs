@@ -1,15 +1,11 @@
-﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using ZATCAMAUI.Core.Helper;
+﻿using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TaxpayerSubsidyRequest : ContentPage
+    public partial class TaxpayerSubsidyRequest : BaseContentPage
     {
         #region Variable
         TaxpayerSubsidyViewModel viewModel;
@@ -24,11 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                 InitializeComponent();
 
                 viewModel = App.Locator.TaxpayerSubsidyRequest;
-                On<iOS>().SetUseSafeArea(true);
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-                ChangeAeroIcon();
                 BindingContext = viewModel;
                 viewModel.WebUrl = ZATCAConstants.TaxpayerSubsidyRequest;
 
@@ -39,26 +30,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         }
         #endregion
         #region Method
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
         private void BackButtonClicked(object sender, EventArgs e)
         {
             if (SubsidyWebView.CanGoBack)

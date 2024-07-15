@@ -243,7 +243,8 @@ namespace ZATCAMAUI.Core.Mangers
 
         }
 
-        public async static Task<VATObjectionSecurityAmountModel> GAZTGetVATObjectionSecurityAmount(decimal disamt, decimal liaamt, decimal clramt)
+        public async static Task<VATObjectionSecurityAmountModel> GAZTGetVATObjectionSecurityAmount(Decimal disamt, Decimal liaamt, Decimal clramt, string fbnum, string rvrsn, string rvsbrsn)
+
         {
             VATObjectionSecurityAmountModel _vATObjectionSecurityAmountModel = new VATObjectionSecurityAmountModel();
 
@@ -254,7 +255,11 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     string amttp = "P";
                     char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.GetVATObjectionSecurityURL + "Disamt=" + disamt + "m,Liaamt=" + liaamt + "m,Clramt=" + clramt + "m,Amttp='" + amttp + "')?$format=json";
+                    string disamtRes = disamt.ToString("0");
+                    string liaamtRes = liaamt.ToString("0");
+                    string clramtRes = clramt.ToString("0");
+                    string url = ZATCAConstants.GetVATObjectionSecurityURL + "Disamt=" + disamtRes + "m,Liaamt=" + liaamtRes + "m,Clramt=" + clramtRes + "m,Amttp='" + amttp + "',Fbnum='" + fbnum + "',RvRsn='" + rvrsn + "',RvSubRsn='" + rvsbrsn + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Sectp='',Opbel='')?$format=json";
+
                     HttpResponseMessage vATObjectionSecurityAmountResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (vATObjectionSecurityAmountResponse != null)
                     {

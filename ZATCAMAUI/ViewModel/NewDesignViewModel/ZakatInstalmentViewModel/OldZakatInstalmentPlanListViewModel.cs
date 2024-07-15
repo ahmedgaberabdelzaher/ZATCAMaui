@@ -123,11 +123,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             ReqInstalmentBtnTapped = new Command(() =>
             {
-                //CheckDueInvoices();
+                IsLoading = true;
 
                 App.selectedZakatItem = "";
 
                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanPageView);
+
+                IsLoading = false;
             });
             SummaryContinueBtnTapped = new Command(() =>
             {

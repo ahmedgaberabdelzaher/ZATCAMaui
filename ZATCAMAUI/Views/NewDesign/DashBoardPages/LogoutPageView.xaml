@@ -16,40 +16,32 @@
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="auto,auto">
+
             <StackLayout Grid.Row="0" Spacing="0">
                 <Label
                     x:Name="confirmationText"
                     Margin="10"
                     Style="{StaticResource BodyLabelBlack}" />
             </StackLayout>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50*" />
-                    <ColumnDefinition Width="50*" />
-                </Grid.ColumnDefinitions>
+            <HorizontalStackLayout
+                        Spacing="30"
+                        Grid.Row="1"
+                        HorizontalOptions="CenterAndExpand">
+
                 <buttons:SfButton
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Clicked="OnOkayButtonClicked"
                     HorizontalOptions="FillAndExpand"
+                    Clicked="OnOkayButtonClicked"
+                    WidthRequest="150"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZYes}" />
                 <buttons:SfButton
-                    Grid.Row="0"
-                    Grid.Column="1"
+                    WidthRequest="150"
                     Clicked="OnCancelClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZNo}"
                     VerticalOptions="FillAndExpand" />
-            </Grid>
+            </HorizontalStackLayout>
         </Grid>
     </Border>
 </pages:PopupPage>

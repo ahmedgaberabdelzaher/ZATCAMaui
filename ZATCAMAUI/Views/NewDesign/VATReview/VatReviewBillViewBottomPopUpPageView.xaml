@@ -59,14 +59,9 @@
                         <Grid
                             Padding="15"
                             RowSpacing="0"
+                            RowDefinitions="auto"
+                            ColumnDefinitions="*,auto"
                             VerticalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
 
                             <StackLayout
                                 Grid.Row="0"
@@ -121,7 +116,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBDocumentNumber}" />
+                                        x:Name="DocumentNumber" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -142,7 +137,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBSadadNumber}" />
+                                        x:Name="SadadNumber" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -163,7 +158,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBDateofPenality}" />
+                                        x:Name="DateofPenality" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -184,7 +179,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBDescriptionOfPenality}" />
+                                        x:Name="DescriptionOfPenality" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -205,7 +200,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBPeriodkey}" />
+                                        x:Name="Periodkey" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -226,7 +221,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBStartDate}" />
+                                        x:Name="StartDate" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -247,7 +242,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBEndDate}" />
+                                        x:Name="EndDate" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -268,7 +263,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBDueDate}" />
+                                        x:Name="DueDate" />
                                 </Grid>
                             </StackLayout>
                             <StackLayout
@@ -292,7 +287,7 @@
                                         HorizontalOptions="EndAndExpand"
                                         HorizontalTextAlignment="End"
                                         Style="{StaticResource ValueLabelBlack}"
-                                        Text="{Binding VBAmount}" />
+                                        x:Name="Amount" />
                                 </Grid>
                             </StackLayout>
                         </StackLayout>

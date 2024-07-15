@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+﻿using RGPopup.Maui.Services;
 using Syncfusion.Maui.Buttons;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -21,8 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
                 InitializeComponent();
                 viewModel = App.Locator.NewYesorNoView;
                 BindingContext = viewModel;
-                On<iOS>().SetUseSafeArea(true);
-                ChangeAeroIcon();
                 MakeFalse();
             }
             catch (Exception)
@@ -30,26 +26,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
 
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-        }
         private async void OnSubmitButtonClicked(object sender, EventArgs e)
         {
             if (YesQ1.IsChecked == false && NoQ1.IsChecked == false)

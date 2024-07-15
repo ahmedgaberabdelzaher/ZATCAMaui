@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using RGPopup.Maui.Services;
@@ -19,10 +18,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 using ZATCAMAUI.Views.NewDesign.VATReview;
-using static ZATCAMAUI.Models.VATReviewModel.VATObjectionFormModel;
-using static ZATCAMAUI.Models.VATReviewModel.VATObjectionRejectedFormModel;
 using static ZATCAMAUI.Models.VATReviewModel.VATObjectionSummaryInputModel;
-using static ZATCAMAUI.Models.VATReviewModel.VATObjectionSummaryInputModel.VATReviewRequestVTGRModel;
 using Metadata = ZATCAMAUI.Models.VATReviewModel.Metadata;
 using NotesSet = ZATCAMAUI.Models.VATReviewModel.NotesSet;
 
@@ -37,6 +33,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             ReviewReason,
             ReviewDetails,
             ReportDetails,
+            LateFiling,
             SecurityPayments,
             Declaration,
             Summary
@@ -57,6 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public ICommand ReviewReasonConBtnTapped { get; set; }
         public ICommand ReviewDetailsConBtnTapped { get; set; }
         public ICommand ReportDetailsConBtnTapped { get; set; }
+        public ICommand LateFilingContdButtonClicked { get; set; }
         public ICommand SecurityPaymentConBtnTapped { get; set; }
         public ICommand DeclarationConBtnTapped { get; set; }
         public ICommand SummaryConBtnTapped { get; set; }
@@ -68,6 +66,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public ICommand ViewApplicationTapped { get; set; }
         public ICommand NewAttachmentTapped { get; set; }
         public ICommand NewBankGuranteeAttachmentTapped { get; set; }
+        public ICommand LateFilingAttachmentTapped { get; set; }
         public ICommand ReviewReasonCommand { get; set; }
         public ICommand SubReviewReasonCommand { get; set; }
         public ICommand ShowDatePicker { get; set; }
@@ -75,6 +74,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public ICommand ApplicationNumRefCommand { get; set; }
         public ICommand SadadGenerateBtnTapped { get; set; }
         public ICommand GoBackToReportDetails { get; set; }
+        public ICommand GoBackToLateFilingDetails { get; set; }
         public ICommand onMoreOptionClicked { get; set; }
 
         #endregion
@@ -82,10 +82,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
+        public DateTime lastDate;
+
         int selectedPage = (int)PagesEnum.ReviewReason;
 
-        private List<string> _ListOfActionButtonsApplicable;
-        public List<string> ListOfActionButtonsApplicable
+        public string lastFulfilmentDate = string.Empty;
+        public string SadadlastFulfilmentDate = string.Empty;
+        public string OverdueFlag = string.Empty;
+
+        private List<String> _ListOfActionButtonsApplicable;
+        public List<String> ListOfActionButtonsApplicable
         {
             get
             {
@@ -113,7 +119,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        
+        private bool _isLoading = false;
+
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                if (_isLoading == value) return;
+
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
         private bool _isReviewReasonVisible = false;
 
@@ -171,6 +189,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        private bool _lateFilingObjectionsVisible = false;
+
+        public bool LateFilingObjectionsVisible
+        {
+            get { return _lateFilingObjectionsVisible; }
+            set
+            {
+                if (_lateFilingObjectionsVisible == value) return;
+
+                _lateFilingObjectionsVisible = value;
+                RaisePropertyChanged("LateFilingObjectionsVisible");
+            }
+        }
+
+        private bool _lateFilingObjectionsSummaryVisible = false;
+
+        public bool LateFilingObjectionsSummaryVisible
+        {
+            get { return _lateFilingObjectionsSummaryVisible; }
+            set
+            {
+                if (_lateFilingObjectionsSummaryVisible == value) return;
+
+                _lateFilingObjectionsSummaryVisible = value;
+                RaisePropertyChanged("LateFilingObjectionsSummaryVisible");
+            }
+        }
+
         private bool _declarationVisible = false;
 
         public bool DeclarationVisible
@@ -182,6 +228,72 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 _declarationVisible = value;
                 RaisePropertyChanged("DeclarationVisible");
+            }
+        }
+
+
+        private bool _isDeclarationViewEnabled;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabled == value) return;
+
+                _isDeclarationViewEnabled = value;
+                RaisePropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+
+        private bool _isDeclarationViewEnabledNew;
+        public bool IsDeclarationViewEnabledNew
+        {
+            get
+            {
+                return _isDeclarationViewEnabledNew;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledNew == value) return;
+
+                _isDeclarationViewEnabledNew = value;
+                RaisePropertyChanged("IsDeclarationViewEnabledNew");
+            }
+        }
+
+        public VATDeregDeclaration _vatDeregDeclaration;
+        public VATDeregDeclaration VatDeregDeclaration
+        {
+            get
+            {
+                return _vatDeregDeclaration;
+            }
+            set
+            {
+                if (_vatDeregDeclaration == value) return;
+
+                _vatDeregDeclaration = value;
+                RaisePropertyChanged("VatDeregDeclaration");
+            }
+        }
+
+        public string _zterms;
+        public string Zterms
+        {
+            get
+            {
+                return _zterms;
+            }
+            set
+            {
+                if (_zterms == value) return;
+
+                _zterms = value;
+                RaisePropertyChanged("Zterms");
             }
         }
 
@@ -491,6 +603,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        public string _lateFlngDetails = "";
+
+        public string LateFlngDetails
+        {
+            get { return _lateFlngDetails; }
+            set
+            {
+                if (_lateFlngDetails == value) return;
+
+                _lateFlngDetails = value;
+                RaisePropertyChanged("LateFlngDetails");
+            }
+        }
+
         public string _sADADNumber = "";
 
         public string SADADNumber
@@ -662,6 +788,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        private int _MaxIndex = 6;
+
+        public int MaxIndex
+        {
+            get { return _MaxIndex; }
+            set
+            {
+                if (_MaxIndex == value) return;
+
+                _MaxIndex = value;
+                RaisePropertyChanged("MaxIndex");
+            }
+        }
+
+
         private bool isGeneratingFormbundle = false;
 
         public bool IsGeneratingFormbundle
@@ -724,6 +865,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 isReportDetailsEditable = value;
                 RaisePropertyChanged("IsReportDetailsEditable");
+            }
+        }
+        private bool _isLateFilingDetailsEditable = true;
+        public bool IsLateFilingDetailsEditable
+        {
+            get
+            {
+                return _isLateFilingDetailsEditable;
+            }
+            set
+            {
+                if (_isLateFilingDetailsEditable == value) return;
+
+                _isLateFilingDetailsEditable = value;
+                RaisePropertyChanged("IsLateFilingDetailsEditable");
             }
         }
         private bool isDisputeDetailsEditable = true;
@@ -856,7 +1012,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 if (_isReviewReasonEnabled == value) return;
 
                 _isReviewReasonEnabled = value;
-                ReviewReasonButtonBackGroundColor = _isReviewReasonEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
+                ReviewReasonButtonBackGroundColor = (_isReviewReasonEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsReviewReasonEnabled");
             }
         }
@@ -888,11 +1044,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 if (_isReportDetailsEnabled == value) return;
 
                 _isReportDetailsEnabled = value;
-                ReportDetailsButtonBackGroundColor = _isReportDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
+                ReportDetailsButtonBackGroundColor = (_isReportDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsReportDetailsEnabled");
             }
         }
 
+        private bool _isLateFlngDetailsEnabled = false;
+
+        public bool IsLateFlngDetailsEnabled
+        {
+            get { return _isLateFlngDetailsEnabled; }
+            set
+            {
+                if (_isLateFlngDetailsEnabled == value) return;
+
+                _isLateFlngDetailsEnabled = value;
+                LateFilingDetailsButtonBackGroundColor = Color.FromHex(_isLateFlngDetailsEnabled ? "#0996d4" : "#9EA4A9");
+                RaisePropertyChanged("IsLateFlngDetailsEnabled");
+            }
+        }
+
+        // private Color _reportDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
         private Color _reportDetailsButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
 
         public Color ReportDetailsButtonBackGroundColor
@@ -920,7 +1092,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 if (_isReviewDetailsEnabled == value) return;
 
                 _isReviewDetailsEnabled = value;
-                ReviewDetailsButtonBackGroundColor = _isReviewDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
+                ReviewDetailsButtonBackGroundColor = (_isReviewDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsReviewDetailsEnabled");
             }
         }
@@ -942,6 +1114,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        private Color _LateFilingDetailsButtonBackGroundColor = Color.FromHex("#d49504");
+
+        public Color LateFilingDetailsButtonBackGroundColor
+        {
+            get { return _LateFilingDetailsButtonBackGroundColor; }
+            set
+            {
+                if (_LateFilingDetailsButtonBackGroundColor == value)
+                {
+                    return;
+                }
+
+                _LateFilingDetailsButtonBackGroundColor = value;
+                RaisePropertyChanged("LateFilingDetailsButtonBackGroundColor");
+            }
+        }
+
         private bool _isSecurityPaymentEnabled = false;
 
         public bool IsSecurityPaymentEnabled
@@ -952,7 +1141,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 if (_isSecurityPaymentEnabled == value) return;
 
                 _isSecurityPaymentEnabled = value;
-                SecurityPaymentButtonBackGroundColor = _isSecurityPaymentEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
+                SecurityPaymentButtonBackGroundColor = (_isSecurityPaymentEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsSecurityPaymentEnabled");
             }
         }
@@ -983,7 +1172,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 if (_isDeclarationEnabled == value) return;
 
                 _isDeclarationEnabled = value;
-                DeclarationButtonBackGroundColor = _isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
+                DeclarationButtonBackGroundColor = (_isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsDeclarationEnabled");
             }
         }
@@ -1187,6 +1376,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 RaisePropertyChanged("VAVatReturnReferenceNo");
             }
         }
+
+        ////ViewBill Fixes --- >
+        //public VATObjectionFormViewBillModel _billFormModelfrPopup { get; set; }
+        //public VATObjectionFormViewBillModel BillFormModelfrPopup
+        //{
+        //    get
+        //    {
+        //        return _billFormModelfrPopup;
+        //    }
+        //    set
+        //    {
+        //        if (_billFormModelfrPopup == value) return;
+        //        _billFormModelfrPopup = value;
+        //        RaisePropertyChanged("BillFormModelfrPopup");
+        //    }
+        //}
+
+        ////End -->
 
         public string _vATaxPeriod = "";
         public string VATaxPeriod
@@ -1406,6 +1613,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 RaisePropertyChanged("TotalTaxLiability");
             }
         }
+
+        public string _totalPenalities = "";
+        public string TotalPenalities
+        {
+            get { return _totalPenalities; }
+            set
+            {
+                if (_totalPenalities == value) return;
+
+                _totalPenalities = value;
+                RaisePropertyChanged("TotalPenalities");
+            }
+        }
         public string _taxPaid = "";
         public string TaxPaid
         {
@@ -1416,6 +1636,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 _taxPaid = value;
                 RaisePropertyChanged("TaxPaid");
+            }
+        }
+
+        public string _unpaidAmount = "";
+        public string UnpaidAmount
+        {
+            get { return _unpaidAmount; }
+            set
+            {
+                if (_unpaidAmount == value) return;
+
+                _unpaidAmount = value;
+                RaisePropertyChanged("UnpaidAmount");
+            }
+        }
+
+        public string _taxPaidLable = AppResources.VRTaxPaid;
+        public string TaxPaidLable
+        {
+            get { return _taxPaidLable; }
+            set
+            {
+                if (_taxPaidLable == value) return;
+
+                _taxPaidLable = value;
+                RaisePropertyChanged("TaxPaidLable");
             }
         }
 
@@ -1463,6 +1709,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 isPenlaityAmountVisible = value;
                 RaisePropertyChanged("IsPenlaityAmountVisible");
+            }
+        }
+
+        private bool isTotalPenaltiesVisible = false;
+        public bool IsTotalPenaltiesVisible
+        {
+            get
+            {
+                return isTotalPenaltiesVisible;
+            }
+            set
+            {
+                if (isTotalPenaltiesVisible == value) return;
+
+                isTotalPenaltiesVisible = value;
+                RaisePropertyChanged("IsTotalPenaltiesVisible");
             }
         }
         public DateTime? vRTIDEffectiveDateFrom = null;
@@ -1925,6 +2187,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        private bool _isTaxPaidVisible = false;
+        public bool IsTaxPaidVisible
+        {
+            get { return _isTaxPaidVisible; }
+            set
+            {
+                if (_isTaxPaidVisible == value) return;
+
+                _isTaxPaidVisible = value;
+                RaisePropertyChanged("IsTaxPaidVisible");
+            }
+        }
+        private bool _isUnpaidAmtVisible = true;
+        public bool IsUnpaidAmtVisible
+        {
+            get { return _isUnpaidAmtVisible; }
+            set
+            {
+                if (_isUnpaidAmtVisible == value) return;
+
+                _isUnpaidAmtVisible = value;
+                RaisePropertyChanged("IsUnpaidAmtVisible");
+            }
+        }
+
+
+
         private bool isDraftClicked = false;
         public bool IsDraftClicked
         {
@@ -1996,6 +2285,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        private string _charCountLateFilingDetails = 0 + "/" + 3000;
+        public string charCountLateFilingDetails
+        {
+            get
+            {
+                return _charCountReportDetails;
+            }
+            set
+            {
+                if (_charCountReportDetails == value) return;
+
+                _charCountReportDetails = value;
+                RaisePropertyChanged("charCountLateFilingDetails");
+            }
+        }
+
         private bool fullPaymentCheckBox = false;
         public bool FullPaymentCheckBox
         {
@@ -2016,7 +2321,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
          };
 
         public bool MarkComplete { get; private set; } = false;
-        public int MaxIndex { get; private set; } = 6;
+        //public int MaxIndex { get; private set; } = 6;
 
         private Color _declarationButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
 
@@ -2052,6 +2357,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _vatDeregistrationSummaryDeclarationData = value;
                 }
                 RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
+            }
+        }
+
+        public VATObjectionFormViewBillModel _billFormModelfrPopup { get; set; }
+        public VATObjectionFormViewBillModel BillFormModelfrPopup
+        {
+            get
+            {
+                return _billFormModelfrPopup;
+            }
+            set
+            {
+                if (_billFormModelfrPopup == value) return;
+                _billFormModelfrPopup = value;
+                RaisePropertyChanged("BillFormModelfrPopup");
             }
         }
 
@@ -2154,6 +2474,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        public ObservableCollection<Attachment> _lateFilingAttachmentsListViewData { get; set; }
+
+        public ObservableCollection<Attachment> LateFilingAttachmentsListViewData
+        {
+            get { return _lateFilingAttachmentsListViewData; }
+
+            set
+            {
+                if (_lateFilingAttachmentsListViewData == value)
+                {
+                    return;
+                }
+
+                _lateFilingAttachmentsListViewData = value;
+                RaisePropertyChanged("LateFilingAttachmentsListViewData");
+            }
+        }
+
         public ObservableCollection<Attachment> bankGuranteeAttachmentsListViewData { get; set; }
 
         public ObservableCollection<Attachment> BankGuranteeAttachmentsListViewData
@@ -2231,8 +2569,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 RaisePropertyChanged("VRVGAttachmentsListViewData");
             }
         }
-        public ObservableCollection<TABLESetResult> vRVGTinsListViewData { get; set; }
-        public ObservableCollection<TABLESetResult> VRVGTinsListViewData
+        public ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult> vRVGTinsListViewData { get; set; }
+        public ObservableCollection<VATReviewRequestVTGRModel.TABLESetResult> VRVGTinsListViewData
         {
             get { return vRVGTinsListViewData; }
             set
@@ -2323,6 +2661,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 RaisePropertyChanged("DefaultSecurity");
             }
         }
+
+
         public class SelectionModel
         {
             public SelectionModel()
@@ -2691,6 +3031,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 RaisePropertyChanged("VrVRImportExportText");
             }
         }
+
+        private string _lastFulfilmentDate = string.Empty;
+        public string LastFulfilmentDateText
+        {
+            get
+            {
+                return _lastFulfilmentDate;
+            }
+            set
+            {
+                if (_lastFulfilmentDate == value) return;
+
+                _lastFulfilmentDate = value;
+                RaisePropertyChanged("LastFulfilmentDateText");
+            }
+        }
+
+        private string _sadadLastFulfilmentDateText = string.Empty;
+        public string SadadLastFulfilmentDateText
+        {
+            get
+            {
+                return _sadadLastFulfilmentDateText;
+            }
+            set
+            {
+                if (_sadadLastFulfilmentDateText == value) return;
+
+                _sadadLastFulfilmentDateText = value;
+                RaisePropertyChanged("SadadLastFulfilmentDateText");
+            }
+        }
         private string _VrVRAttachmentName = string.Empty;
         public string VrVRAttachmentName
         {
@@ -2768,6 +3140,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 RaisePropertyChanged("OptionTextLabel");
             }
         }
+
         private Dictionary<string, string> IDTypeDictionary = null;
         private Dictionary<string, string> VGSupplicesDictionary = null;
         private Dictionary<string, string> VGPurchasesDictionary = null;
@@ -2775,18 +3148,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
         private bool _isBankGuranteeAttachments = false;
-        private ReviewReason selectedReviewReason;
-        private SubReason selectedSubReviewReason;
-        private AppRefNumResult selectedApplicationRef;
-        private List<ReviewReason> reviewReasonList;
-        private List<SubReason> subReviewReasonList;
-        private List<AppRefNumResult> appRefNumList;
+        private bool _isReportDetailsAttachments = false;
+        private bool _isLateFilingAttachments = false;
+
+        private VATObjectionFormModel.ReviewReason selectedReviewReason;
+        private VATObjectionFormModel.SubReason selectedSubReviewReason;
+        private VATObjectionRejectedFormModel.AppRefNumResult selectedApplicationRef;
+        private List<VATObjectionFormModel.ReviewReason> reviewReasonList;
+        private List<VATObjectionFormModel.SubReason> subReviewReasonList;
+        private List<VATObjectionRejectedFormModel.AppRefNumResult> appRefNumList;
         private VATObjectionSummaryModel modelVATReview;
         private VATObjectionRejectedFormModel _VATObjectionRejected;
 
         public VatReviewInterface vRInterface { get; set; }
 
-        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public VatReviewViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {
 
 
@@ -2812,6 +3188,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             ReviewDetailsConBtnTapped = new Command(() => { ReviewDetailsConBtnClicked(); });
             ReportDetailsConBtnTapped = new Command(() => { ReportDetailsConBtnClicked(); });
+            LateFilingContdButtonClicked = new Command(() => { LateFilingConBtnClicked(); });
             SecurityPaymentConBtnTapped = new Command(() => { SecurityPaymentConBtnClicked(); });
 
             DeclarationConBtnTapped = new Command(() => { DeclarationConBtnClicked(); });
@@ -2824,6 +3201,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             ViewApplicationTapped = new Command(() => { ViewApplicationClicked(); });
             NewAttachmentTapped = new Command(() => { NewAttachmentClicked(); });
             NewBankGuranteeAttachmentTapped = new Command(NewBankGuranteeAttachmentClicked);
+            LateFilingAttachmentTapped = new Command(LateFilingAttachmentClicked);
             ReviewReasonCommand = new Command(() => { showReviewReasonPickerDialog(); });
             SubReviewReasonCommand = new Command(() => { showSubReviewReasonPickerDialog(); });
             ApplicationNumRefCommand = new Command(() => { showAppRefNumberPickerDialog(); });
@@ -2831,6 +3209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             ShowDatePicker = new Command(() => { showDatePickerDialog(); });
             IdTypeSpinnerTapped = new Command(() => { showIdTypePickerDialog(); });
             GoBackToReportDetails = new Command(() => { EnableReportDetailsView(); });
+            GoBackToLateFilingDetails = new Command(() => { EnableLateFilingDetailsView(); });
             onMoreOptionClicked = new Command(() =>
             {
                 PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
@@ -2950,8 +3329,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-
-
         }
         public async Task OnSaveDraftClicked()
         {
@@ -2965,8 +3342,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 modelVATReview = vatReviewResponse;
 
                 IsDraftClicked = false;
-
-
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -3022,6 +3397,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         //await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                     });
                 }
+                //MainThread.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                //});
             }
 
 
@@ -3061,6 +3440,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
 
                 _isBankGuranteeAttachments = false;
+                _isReportDetailsAttachments = true;
+                _isLateFilingAttachments = false;
 
 
                 if (string.IsNullOrEmpty(SADADNumber))
@@ -3072,9 +3453,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
-
+                
             }
             catch (InternetException ex)
             {
@@ -3084,9 +3465,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception )
             {
-
             }
         }
 
@@ -3101,7 +3481,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             try
             {
                 _isBankGuranteeAttachments = true;
-
+                _isReportDetailsAttachments = false;
+                _isLateFilingAttachments = false;
 
                 await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
                     BankGuranteeAttachmentsListViewData.ToList(),
@@ -3109,9 +3490,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     modelVATReview.d.ReturnIdx));
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException)
             {
-
+                
             }
             catch (InternetException ex)
             {
@@ -3121,9 +3502,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception )
             {
+                
+            }
+        }
 
+        public async void LateFilingAttachmentClicked()
+        {
+            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (LateFilingAttachmentsListViewData == null)
+            {
+                LateFilingAttachmentsListViewData = new ObservableCollection<Attachment>();
+            }
+
+            try
+            {
+                _isBankGuranteeAttachments = false;
+                _isLateFilingAttachments = true;
+                _isReportDetailsAttachments = false;
+
+                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    LateFilingAttachmentsListViewData.ToList(),
+                    WhichAttachment.VatReviewLateFiling,
+                    modelVATReview.d.ReturnIdx));
+
+            }
+            catch (GAZTUnlockAccountException )
+            {
+                
+            }
+            catch (InternetException ex)
+            {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception )
+            {
+                
             }
         }
 
@@ -3180,15 +3599,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 IsSecurityPaymentsTabVisible = true;
                 IsPenlaityAmountVisible = true;
+                IsTaxPaidVisible = true;
+
             }
             else
             {
                 IsSecurityPaymentsTabVisible = false;
                 IsPenlaityAmountVisible = false;
+                IsTaxPaidVisible = false;
             }
             if (selectedReviewReason.ProcCD == "VTPC" || selectedReviewReason.ProcCD == "VTPN")
             {
                 ViewApplicationTypeText = AppResources.VRViewBill;
+                TaxPaidLable = AppResources.VRPaidAmount;
             }
             else
             {
@@ -3203,7 +3626,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 IsAssessPayOptionVisible = false;
             }
-
+            if (IsAssessPayOptionVisible)
+            {
+                IsTaxPaidVisible = true;
+            }
+            if (selectedReviewReason.ProcCD == "VTAS" && modelVATReview.d.Cr6490Fg == "X")
+            {
+                IsTotalPenaltiesVisible = true;
+            }
+            else
+            {
+                IsTotalPenaltiesVisible = false;
+            }
             EnableReviewDetailsConButton();
         }
 
@@ -3218,16 +3652,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 foreach (var refNum in results)
                 {
-                    if (!string.IsNullOrEmpty(refNum.Opbel))
+                    if (refNum.Fbtyp == "VTPC" || refNum.Fbtyp == "VTPN")
                     {
-                        appRefNums.Add(refNum.Opbel);
+                        if (!string.IsNullOrEmpty(refNum.Opbel))
+                        {
+                            appRefNums.Add(refNum.Opbel);
+                        }
+                        else if (!string.IsNullOrEmpty(refNum.Fbnum))
+                        {
+                            appRefNums.Add(refNum.Fbnum);
+                        }
                     }
-                    else if (!string.IsNullOrEmpty(refNum.Fbnum))
+                    else
                     {
                         appRefNums.Add(refNum.Fbnum);
                     }
-
-
                 }
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
@@ -3269,10 +3708,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
-
-
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3295,10 +3734,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
-
-
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3321,10 +3760,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
-
-
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3347,10 +3786,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
-
-
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3372,13 +3811,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     EnableReportDetailsView();
                     EnableReviewDetailsConButton();
 
+
                 }
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (GAZTUnlockAccountException ex)
             {
-
-
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3410,8 +3850,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3432,7 +3872,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                     if (IsSecurityPaymentsTabVisible)
                     {
-                        EnableSecurityPaymentsView();
+                        if (OverdueFlag == "X")
+                            EnableLateFilingDetailsView();
+                        else
+                            EnableSecurityPaymentsView();
                     }
                     else
                     {
@@ -3442,9 +3885,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
             }
-            catch (GAZTUnlockAccountException )
+            catch (InternetException ex)
             {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
 
+        private void LateFilingConBtnClicked()
+        {
+            try
+            {
+                if (IsLateFlngDetailsEnabled)
+                {
+                    if (IsSecurityPaymentsTabVisible)
+                    {
+                        EnableSecurityPaymentsView();
+                    }
+                    else
+                    {
+                        EnableDeclarationView();
+                    }
+
+                }
 
             }
             catch (InternetException ex)
@@ -3473,11 +3939,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             }
-            catch (GAZTUnlockAccountException )
-            {
-
-
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3499,11 +3960,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             }
-            catch (GAZTUnlockAccountException )
-            {
-
-
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3518,6 +3974,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         {
             try
             {
+
                 IsGeneratingFormbundle = false;
                 IsSadadRefeshVisible = false;
                 modelVATReview.d.Operationx = "01";
@@ -3531,13 +3988,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     modelVATReview = vatReviewResponse;
                     VATReferanceNumber = modelVATReview.d.Fbnumx;
 
-                    await Application.Current.MainPage.Navigation.PushAsync(new VatReviewSuccessPageView());
+                    await Application.Current.MainPage.Navigation.PushAsync(new VatReviewSuccessPageView(modelVATReview));
                 }
-
-            }
-            catch (GAZTUnlockAccountException )
-            {
-
 
             }
             catch (InternetException ex)
@@ -3561,12 +4013,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 VATObjectionSecurityAmount(Convert.ToDecimal(RequestedReviewAmount),
                     Convert.ToDecimal(selectedApplicationRef.Liaamt),
-                    Convert.ToDecimal(selectedApplicationRef.Clramt));
+                    Convert.ToDecimal(selectedApplicationRef.Clramt), selectedApplicationRef.Fbnum);
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-
+                
+                
             }
         }
 
@@ -3617,11 +4069,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             }
-            catch (GAZTUnlockAccountException )
-            {
-
-
-            }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3641,6 +4088,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             ReviewDetailsVisible = false;
             ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
+            LateFilingObjectionsVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.ReviewReason;
@@ -3652,11 +4100,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = true;
+            LateFilingObjectionsVisible = false;
             ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.ReviewDetails;
+        }
+        private void EnableLateFilingDetailsView()
+        {
+            CurrentIndex = 4;
+            IsBackVisible = true;
+            ReviewReasonVisible = false;
+            ReviewDetailsVisible = false;
+            LateFilingObjectionsVisible = true;
+            ReportDetailsVisible = false;
+            SecurityPaymentVisible = false;
+            DeclarationVisible = false;
+            SummaryVisible = false;
+            selectedPage = (int)PagesEnum.LateFiling;
         }
 
         private void EnableReportDetailsView()
@@ -3666,6 +4128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             ReviewReasonVisible = false;
             ReportDetailsVisible = true;
             ReviewDetailsVisible = false;
+            LateFilingObjectionsVisible = false;
             SecurityPaymentVisible = false;
             DeclarationVisible = false;
             SummaryVisible = false;
@@ -3674,9 +4137,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         private void EnableSecurityPaymentsView()
         {
-            CurrentIndex = 4;
+            if (OverdueFlag == "X")
+                CurrentIndex = 5;
+            else
+                CurrentIndex = 4;
+
             IsBackVisible = true;
             ReviewReasonVisible = false;
+            LateFilingObjectionsVisible = false;
             ReportDetailsVisible = false;
             ReviewDetailsVisible = false;
             SecurityPaymentVisible = true;
@@ -3687,13 +4155,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         private void EnableDeclarationView()
         {
-            CurrentIndex = 5;
+            if (OverdueFlag == "X")
+                CurrentIndex = 6;
+            else
+                CurrentIndex = 5;
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReviewDetailsVisible = false;
             ReportDetailsVisible = false;
             SecurityPaymentVisible = false;
+            LateFilingObjectionsVisible = false;
             DeclarationVisible = true;
+
+            if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
+            {
+                IsDeclarationViewEnabled = true;
+                IsDeclarationViewEnabledNew = false;
+            }
+            else
+            {
+                Zterms = VatDeregDeclaration.D.Zterms;
+                IsDeclarationViewEnabled = false;
+                IsDeclarationViewEnabledNew = true;
+            }
+
+
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.Declaration;
 
@@ -3702,12 +4188,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         private void EnableSummaryView()
         {
-            CurrentIndex = 6;
+            if (OverdueFlag == "X")
+            {
+                CurrentIndex = 7;
+                LateFilingObjectionsSummaryVisible = true;
+            }
+
+            else
+            {
+                CurrentIndex = 6;
+                LateFilingObjectionsSummaryVisible = false;
+            }
+
             IsBackVisible = true;
             ReviewReasonVisible = false;
             ReportDetailsVisible = false;
             ReviewDetailsVisible = false;
             SecurityPaymentVisible = false;
+            LateFilingObjectionsVisible = false;
             DeclarationVisible = false;
             SummaryVisible = true;
             selectedPage = (int)PagesEnum.Summary;
@@ -3826,6 +4324,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         public void MakeViewOnlyItems()
         {
             IsReportDetailsEditable = false;
+            IsLateFilingDetailsEditable = false;
             DAPOptionsEditable = false;
             IsRRAmountEdit = false;
             IsDisputeDetailsEditable = false;
@@ -3909,10 +4408,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 EnableSecurityPaymentsConButton();
             }
-            else
+            else if (_isReportDetailsAttachments)
             {
                 AttachmentsListViewData = attachmentsListViewData;
+
                 EnableReviewDetailsConButton();
+            }
+            else if (_isLateFilingAttachments)
+            {
+                LateFilingAttachmentsListViewData = attachmentsListViewData;
+                EnableLateFilingsDetailsConButton();
+                //EnableSecurityPaymentsConButton();
             }
 
 
@@ -3945,12 +4451,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     });
                 }
 
-                //check.Add(new VATDeregistrationSummaryModel
-                //{
-                //    SummaryTitle = AppResources.VatDeregRequestType,
-                //    SummaryData = requestType,
-                //    IsEditVisible = true
-                //});
                 check.Add(new VATDeregistrationSummaryModel
                 {
                     SummaryTitle = AppResources.VatDeregReasonTitle,
@@ -3959,10 +4459,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 });
                 VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-
+                
+                
             }
         }
         public void PopulateVatDeRegAttachments(List<Attachment> attachments)
@@ -3970,17 +4470,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             var attachmentsListViewData = new ObservableCollection<Attachment>();
             foreach (Attachment attachemnt in attachments)
             {
-                if (attachemnt.Dotyp == "ZVTD" || attachemnt.Dotyp == "ZVTG" || attachemnt.Dotyp == "ZVTH" || attachemnt.Dotyp == "ZVTI")
+                if (attachemnt.Dotyp == "ZVTD" || attachemnt.Dotyp == "ZVTG" || attachemnt.Dotyp == "ZVTH" || attachemnt.Dotyp == "ZVTI" || attachemnt.Dotyp == "ZVRA")
                 {
                     attachmentsListViewData.Add(attachemnt);
                 }
             }
             VatDeRegAttachmentsList = attachmentsListViewData;
+
         }
 
         public void PopulateVatDeRegSummaryDeclarationData(string idType, string iDNumber, string dateOfBirth, string contactPersonName)
         {
-            //VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>();
             List<VATDeregistrationSummaryModel> check = new List<VATDeregistrationSummaryModel>();
             try
             {
@@ -3997,12 +4497,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     IsEditVisible = true
                 });
 
-                //check.Add(new VATDeregistrationSummaryModel
-                //{
-                //    SummaryTitle = AppResources.VatDeregDOBTitle,
-                //    SummaryData = dateOfBirth,
-                //    IsEditVisible = true
-                //});
 
                 if (!string.IsNullOrEmpty(dateOfBirth))
                 {
@@ -4023,10 +4517,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 });
                 VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-
+                
+                
             }
         }
 
@@ -4044,8 +4538,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 case (int)PagesEnum.ReportDetails:
                     EnableReviewReasonView();
                     break;
-                case (int)PagesEnum.SecurityPayments:
+                case (int)PagesEnum.LateFiling:
                     EnableReviewDetailsView();
+                    break;
+                case (int)PagesEnum.SecurityPayments:
+                    if (OverdueFlag == "X")
+                    {
+                        EnableLateFilingDetailsView();
+                    }
+                    else
+                    {
+                        EnableReviewDetailsView();
+                    }
+
                     break;
                 case (int)PagesEnum.Declaration:
                     if (IsSecurityPaymentsTabVisible)
@@ -4093,12 +4598,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 ResetDataAfterAppRefNumPicked();
                 setDataBasedOnAppRefNum(ApplicationRefPickerModel.SelectedValue);
 
-                /*var billNumberObj= appRefNumList.Find(appRef => (appRef.Fbnum == ApplicationRefNumber) || (appRef.Opbel == ApplicationRefNumber));
-
-                                if (billNumberObj.Msgflg == "X")
-                                {
-                                    await _dialogService.ShowMessage(billNumberObj.Msgtxt, AppResources.CRWarning);
-                                }*/
             }
         }
 
@@ -4144,13 +4643,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public async void setDataBasedOnAppRefNum(string appRefNum)
         {
+            selectedApplicationRef = appRefNumList.Find(appRef => (appRef.Fbnum == appRefNum) || (appRef.Opbel == appRefNum));
 
-
-
-            selectedApplicationRef = appRefNumList.Find(appRef => appRef.Fbnum == appRefNum || appRef.Opbel == appRefNum);
-
-
-
+            if (selectedApplicationRef.Fbtyp == "VTPN")
+            {
+                ApplicationRefNumber = selectedApplicationRef.Opbel;
+            }
+            else if (selectedApplicationRef.Fbtyp == "VTPC")
+            {
+                ApplicationRefNumber = selectedApplicationRef.Fbnum;
+            }
+            else
+            {
+                ApplicationRefNumber = appRefNum;
+            }
 
             if (selectedApplicationRef != null)
             {
@@ -4210,24 +4716,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     string[] dts = null;
                     dts = dateStr.Split('/');
 
-                    //if (App.IsArabic)
-                    //{
+                    
 
                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                    //}
-                    //else
-                    //{
-
-                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                    //}
 
 
                     strRequestedDate = dt1;
                 }
 
-                //PickedDate = strRequestedDate;
 
                 FormattedRequestDate = strRequestedDate;
 
@@ -4240,38 +4737,86 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 string strTaxPeriodFrom = "";
                 if (selectedApplicationRef.Abrzu != null)
                 {
+                    try
+                    {
+                        DateTime dateStart = new DateTime();
 
-                    DateTime dateStart = new DateTime();
+                        dateStart = (DateTime)selectedApplicationRef.Abrzu;
 
-                    dateStart = (DateTime)selectedApplicationRef.Abrzu;
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                    GregorianCalendar hjCalendar = new GregorianCalendar();
-                    int year = hjCalendar.GetYear(dateStart);
-                    int month = hjCalendar.GetMonth(dateStart);
-                    int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                    string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
+                        string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
 
 
-                    string dt1 = string.Empty;
-                    string[] dts = null;
-                    dts = dateStr.Split('/');
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = dateStr.Split('/');
 
-                    //if (App.IsArabic)
-                    //{
+                       
+                        dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
 
-                    dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
-                    //}
-                    //else
-                    //{
-
-                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                    //}
-
-                    strTaxPeriodFrom = dt1;
+                        
+                        strTaxPeriodFrom = dt1;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
+                else
+                {
+
+                }
+
+                OverdueFlag = selectedApplicationRef.OVERDUEFG;
+                if (OverdueFlag == "X")
+                    MaxIndex = 7;
+                else
+                    MaxIndex = 6;
+                CurrentIndex = 1;
+
+
+
+                if (selectedApplicationRef.LastFulfilledDt == null)
+                {
+                    lastFulfilmentDate = "";
+                }
+                else
+                {
+                    try
+                    {
+                        lastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt);
+                    }
+                    catch (Exception)
+                    {
+                        lastFulfilmentDate = "";
+                    }
+                }
+
+                try
+                {
+                    SadadlastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt);
+                }
+                catch (Exception)
+                {
+                    SadadlastFulfilmentDate = "";
+                }// SadadlastFulfilmentDate = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(selectedApplicationRef.LastFulfilledDt.Value.AddDays(1));
+
+
+                if (OverdueFlag == "X")
+                {
+                    LastFulfilmentDateText = AppResources.VRSecurityBankGurrantCheckBoxDesc1;
+                    SadadLastFulfilmentDateText = AppResources.VRSecuritySadadCheckBoxDesc1;
+                }
+                else
+                {
+                    LastFulfilmentDateText = string.Format(AppResources.VRSecurityBankGuarante, lastFulfilmentDate);
+                    SadadLastFulfilmentDateText = string.Format(AppResources.VRSecuritySadadCheckBoxDesc, SadadlastFulfilmentDate);
+                }
+
 
                 string strTaxPeriodTo = "";
                 if (selectedApplicationRef.Abrzo != null)
@@ -4294,18 +4839,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     string[] dts = null;
                     dts = dateStr.Split('/');
 
-                    //if (App.IsArabic)
-                    //{
-
                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
-                    //}
-                    //else
-                    //{
-
-                    //    dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-
-                    //}
 
                     strTaxPeriodTo = dt1;
                 }
@@ -4313,29 +4847,74 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 FormattedTaxperdioFromDate = strTaxPeriodFrom;
                 FormattedTaxperdioToDate = strTaxPeriodTo;
 
+                //draft 
+                //PenalityAmountInQuestion = modelVATReview.d.SecurityDtl.Penamount;
+
+                //New app
                 PenalityAmountInQuestion = selectedApplicationRef.Penamount;
 
-                TotalTaxLiability = selectedApplicationRef.Liaamt;
-                TaxPaid = selectedApplicationRef.Clramt;
+                TotalTaxLiability = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
+                try
+                {
+                    if (selectedApplicationRef.Fbtyp == "VTPC" || selectedApplicationRef.Fbtyp == "VTPN")
+                    {
+                        var rejectedForm = _VATObjectionRejected.d.RejectedFormSet.results.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();//x => x.Opbel == appRefNum
+                        if (rejectedForm != null)
+                        {
+                            TaxPaid = UtilityManager.GetCommaSeparatedAmount(rejectedForm.PenPaidAmt.ToString());
+                        }
+                    }
+                    else
+                    {
+                        TaxPaid = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Clramt.ToString());
+                    }
+
+                }
+
+
+                catch (Exception )
+                {
+                }
+
+
                 RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Liaamt.ToString());
-
-                SecurityAmount =
-                    (double.Parse(selectedApplicationRef.Liaamt) - double.Parse(selectedApplicationRef.Clramt))
-                    .ToString();
-
-                if (double.Parse(SecurityAmount) < 0)
+                try
                 {
-                    SecurityAmount = "0.0";
+                    SecurityAmount =
+                   (Double.Parse(selectedApplicationRef.Liaamt) - Double.Parse(selectedApplicationRef.Clramt))
+                   .ToString();
+                    var secAmount = _VATObjectionRejected.d.RejectedFormSet.results.Where(x => x.Opbel == appRefNum || x.Fbnum == appRefNum).FirstOrDefault();//x => x.Opbel == appRefNum
+                    //var secAmount = modelVATReview.d.SecurityDtl.Secamt;
+                    if (secAmount != null)
+                    {
+                        SecurityAmount = secAmount.Secamt;
+                    }
+
+                }
+                catch (Exception )
+                {
+                }
+                try
+                {
+                    if (Double.Parse(SecurityAmount) < 0)
+                    {
+                        SecurityAmount = "0.0";
+                    }
+
+                    if (modelVATReview.d.SecurityDtl.SeczeroFlg == "S")
+                    {
+                        SecurityAmount = "0.0";
+                    }
+                }
+                catch (Exception )
+                {
+
                 }
 
-                if (modelVATReview.d.SecurityDtl.SeczeroFlg == "S")
-                {
-                    SecurityAmount = "0.0";
-                }
 
                 try
                 {
-                    if (double.Parse(SecurityAmount) == 0)
+                    if (Double.Parse(SecurityAmount) == 0)
                     {
                         IsSecurityAmountMorethanZero = false;
                     }
@@ -4345,10 +4924,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     EnableSecurityPaymentsConButton();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
                 if (selectedApplicationRef.Msgflg == "X")
@@ -4376,7 +4955,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning);
+                        await _dialogService.ShowMessage(AppResources.VATWarningAssessment, AppResources.CRWarning, AppResources.OKText, () =>
+                        {
+                            //CR6490 new enhancements
+                            TotalPenalities = UtilityManager.GetCommaSeparatedAmount(selectedApplicationRef.Penamount.ToString());
+                            if (selectedApplicationRef?.Bgmsgflg == "X")
+                            {
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(selectedApplicationRef?.Bgmsgtxt, AppResources.CRWarning);
+                                });
+                            }
+                        });
+
                         EnableReviewReasonConButton();
                     });
                 }
@@ -4385,6 +4976,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.VATWarningPenalties, AppResources.CRWarning);
+
                         EnableReviewReasonConButton();
                     });
                 }
@@ -4425,7 +5017,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             if (IDType == AppResources.VFCGCCID)
             {
                 IsDOBVisible = false;
-                ContractPersonEditable = true;
+                ContractPersonEditable = false;
             }
             else
             {
@@ -4641,10 +5233,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-
+                
+                
 
             }
         }
@@ -4708,6 +5300,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             TaxPeriodTo = null;
             PenalityAmountInQuestion = "";
             ReportDetails = "";
+            LateFlngDetails = "";
             SADADNumber = "";
             SecurityAmount = "";
             IDNumber = "";
@@ -4722,6 +5315,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             IsReviewReasonEnabled = false;
             ReviewReasonButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
             IsReviewDetailsEnabled = false;
+            //ReviewDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
+            LateFilingDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
             ReviewDetailsButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
             IsSecurityPaymentEnabled = false;
             SecurityPaymentButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -4732,6 +5327,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             SadadGenerateProgressVisible = false;
             SadadAmountVisible = false;
             BankGuranteeAttachmentsListViewData = null;
+            LateFilingAttachmentsListViewData = null;
             IsSadadCheckBox3 = false;
             IsSadadCheckBox1 = false;
             IsApplicationVisible = false;
@@ -4744,6 +5340,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             DefaultReq = 0;
 
             IsReportDetailsEditable = true;
+            IsLateFilingDetailsEditable = true;
             DAPOptionsEditable = true;
             IsRRAmountEdit = false;
             IsDisputeDetailsEditable = true;
@@ -4791,9 +5388,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
+        public void EnableLateFilingsDetailsConButton()
+        {
+            if (!string.IsNullOrEmpty(LateFlngDetails) && LateFilingAttachmentsListViewData != null && LateFilingAttachmentsListViewData.Count > 0)
+            {
+                IsLateFlngDetailsEnabled = true;
+            }
+            else
+            {
+                IsLateFlngDetailsEnabled = false; ;
+            }
+        }
+
+
         public void EnableReviewDetailsConButton()
         {
-            if (IsAssessPayOptionVisible && (DisputeDetailsDesc == "" || RequestedReviewAmount == ""))
+            if ((IsAssessPayOptionVisible && (DisputeDetailsDesc == "" || RequestedReviewAmount == "")))
             {
                 IsReviewDetailsEnabled = false;
             }
@@ -4812,13 +5422,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             else if (IsSadadSecuritySelected)
             {
 
-                /*if (SecurityAmount == "" || !IsSadadCheckBox3)
-                {
-
-                    IsSecurityPaymentEnabled = false;
-
-
-                }*/
+                
                 if (SADADNumber == "" || !IsSadadCheckBox3)
                 {
                     IsSecurityPaymentEnabled = false;
@@ -4856,8 +5460,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 IsLoading = true;
             });
-            //if (attachment.Filename.Contains("."))
-            //string Extention = attachment.Filename.Split('.')[1];
+
             if (attachment.FileExtn.Equals("PDF") || attachment.FileExtn.Equals("pdf"))
             {
                 if (attachment.DocUrl != null)
@@ -4880,14 +5483,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public void EnableDeclarationConButton()
         {
-            if (ContactPersonName == "" || !IsIDVerified || !IsDECCheckBox)
-            {
-                IsDeclarationEnabled = false;
-            }
-            else
+            if (IsDeclarationViewEnabledNew && IsDECCheckBox)
             {
                 IsDeclarationEnabled = true;
             }
+            else
+            {
+                if (ContactPersonName == "" || !IsIDVerified || !IsDECCheckBox)
+                {
+                    IsDeclarationEnabled = false;
+                }
+                else
+                {
+                    IsDeclarationEnabled = true;
+                }
+            }
+
         }
         public async void ShowInstructionsDialog()
         {
@@ -4921,7 +5532,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             await fetchApplicationRefNums(SubReviewReason, modelVATReview.d.Fbnumx, modelVATReview.d.SecurityDtl.Sopbel);
-            ApplicationRefNumber = modelVATReview.d.RejFb;
+            ApplicationRefNumber = modelVATReview.d.RejFb; //cr6490
             setDataBasedOnAppRefNum(ApplicationRefNumber);
 
 
@@ -4968,6 +5579,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             var bankAttachments = new ObservableCollection<Attachment>();
             var attachments = new ObservableCollection<Attachment>();
+            var lateFilngAttachments = new ObservableCollection<Attachment>();
             foreach (var attach in modelVATReview.d.AttdetSet.results)
             {
                 if (attach.Dotyp == "RAGA")
@@ -4978,9 +5590,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     bankAttachments.Add(attach);
                 }
+                else if (attach.Dotyp == "ZVRA")
+                {
+                    lateFilngAttachments.Add(attach);
+                }
             }
             BankGuranteeAttachmentsListViewData = bankAttachments;
             AttachmentsListViewData = attachments;
+            LateFilingAttachmentsListViewData = lateFilngAttachments;
 
 
             if (modelVATReview.d.SecurityDtl.ChkBank == "X")
@@ -5031,7 +5648,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 foreach (var note in modelVATReview.d.NotesSet.results)
                 {
-                    if (note.Rcodez == "RAVT_SDCAS" && !string.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(DisputeDetailsDesc))
+                    if (note.Rcodez == "RAVT_SDCAS" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(DisputeDetailsDesc))
                     {
                         DisputeDetailsDesc = note.Strline;
 
@@ -5040,12 +5657,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 }
 
                 foreach (var note in modelVATReview.d.NotesSet.results)
-
                 {
 
-                    if (note.Rcodez == "RAVT_BOX" && !string.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(ReportDetails))
+                    if (note.Rcodez == "RAVT_BOX" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(ReportDetails))
                     {
                         ReportDetails = note.Strline;
+
+                    }
+
+                }
+                foreach (var note in modelVATReview.d.NotesSet.results)
+                {
+
+                    if (note.Rcodez == "RVT_OVRDUE" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(LateFlngDetails))
+                    {
+                        LateFlngDetails = string.Concat(LateFlngDetails, note.Strline);
 
                     }
 
@@ -5091,6 +5717,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             EnableReportDetailsConButton();
+            EnableLateFilingsDetailsConButton();
             EnableDeclarationConButton();
             EnableReviewDetailsConButton();
             EnableSecurityPaymentsConButton();
@@ -5176,11 +5803,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
-
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() => { IsLoading = false; });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -5198,8 +5824,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 await Task.Run(async () =>
                 {
                     IsLoading = true;
-                    //VATReview = null;
-                    //VATObjectionSummaryModel modelVATReview = new VATObjectionSummaryModel();
                     VATObjectionFormModel.VATReviewsReturnModel modelVATReviewsReturn =
                         new VATObjectionFormModel.VATReviewsReturnModel();
                     try
@@ -5209,12 +5833,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         {
 
                             modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary(App.selectedVATItem);
-
+                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(App.selectedVATItem);
                         }
                         else
                         {
                             modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary("");
-
+                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(modelVATReview.d.Fbnumx);
                         }
 
 
@@ -5222,8 +5846,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         if (modelVATReview != null && modelVATReview.d != null)
                         {
 
-                            //modelVATReviewsReturn.ListReviewReason lstReasons =new modelVATReviewsReturn.ListReviewReason;
-                            // List<Dictionary<string, string>> reasonDDL = new List<Dictionary<string, string>>();
                             List<VATObjectionFormModel.ReviewReason> reasonList =
                                 new List<VATObjectionFormModel.ReviewReason>();
                             if (modelVATReview.d.MainReasonSet.results.Count > 0)
@@ -5271,6 +5893,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                             }
                             setReviewReasonPickerModel();
+
+
                         }
 
                         else
@@ -5287,13 +5911,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        //throw ex;
 
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             IsLoading = false;
-                            //_navigationService.GoBack();
                         });
                     }
                     catch (InternetException ex)
@@ -5319,10 +5941,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-
                 await Task.Run(() => { IsLoading = false; });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -5348,11 +5968,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 VATObjectionEnableSubmitModel _VATObjectionEnableSubmit = new VATObjectionEnableSubmitModel();
                 _VATObjectionEnableSubmit = await VATObjectionWebServiceManager.GAZTGetVATObjectionEnableSubmit(statusx, rvRsn, rvSubRsn, rejFb);
 
-                if (_VATObjectionEnableSubmit != null && _VATObjectionEnableSubmit.d != null)
-                {
-                    //setApplicationRefPickerModel(_VATObjectionEnableSubmit);
-                }
-
+               
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5382,9 +5998,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception )
             {
-
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5421,9 +6037,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception )
             {
-
+                
             }
         }
 
@@ -5435,12 +6051,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     IsLoading = true;
                 });
-                //VATObjectionRejectedFormModel _VATObjectionRejected = new VATObjectionRejectedFormModel();
 
                 _VATObjectionRejected = await VATObjectionWebServiceManager.GAZTGetVATObjectionFormRejected(fbustx, RvRsn, rvSubRsn, UserTypx, fbnumx, sopbel);
                 if (_VATObjectionRejected != null && _VATObjectionRejected.d != null)
                 {
                     setApplicationRefPickerModel(_VATObjectionRejected.d.RejectedFormSet.results);
+                    
                 }
                 await Task.Run(() =>
                 {
@@ -5471,7 +6087,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (Exception ex)
             {
-
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5561,9 +6177,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5571,7 +6187,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
         }
 
-        public async void VATObjectionSecurityAmount(decimal disamt, decimal liaamt, decimal clramt)
+        public async void VATObjectionSecurityAmount(Decimal disamt, Decimal liaamt, Decimal clramt, string fbnum)
         {
 
             try
@@ -5582,14 +6198,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 });
 
                 VATObjectionSecurityAmountModel _VATObjectionSecurityAmount = new VATObjectionSecurityAmountModel();
-                _VATObjectionSecurityAmount = await VATObjectionWebServiceManager.GAZTGetVATObjectionSecurityAmount(disamt, liaamt, clramt);
+                _VATObjectionSecurityAmount = await VATObjectionWebServiceManager.GAZTGetVATObjectionSecurityAmount(disamt, liaamt, clramt, fbnum, selectedReviewReason.ProcCD, selectedSubReviewReason.Code);
 
                 if (_VATObjectionSecurityAmount != null && _VATObjectionSecurityAmount.d != null)
                 {
                     SecurityAmount = _VATObjectionSecurityAmount.d.Secamt;
                     try
                     {
-                        if (double.Parse(SecurityAmount) == 0)
+                        if (Double.Parse(SecurityAmount) == 0)
                         {
                             IsSecurityAmountMorethanZero = false;
                         }
@@ -5600,10 +6216,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         EnableSecurityPaymentsConButton();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
-
+                        
+                        
                     }
 
                 }
@@ -5635,9 +6251,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5695,10 +6311,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
-
+            catch (Exception ex)
             {
-
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5732,9 +6347,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 VBSadadNumber = item.Vtre2;
                                 VBDescriptionOfPenality = item.Desc;
                                 VBPeriodkey = item.Perslt;
-
                                 VBAmount = item.Betrh;
+                                // ---> ViewBill issues --->
 
+                                billFormModel.DocumentNumber = VBDocumentNumber;
+                                billFormModel.SadadNumber = VBSadadNumber;
+                                billFormModel.DescriptionOfPenality = VBDescriptionOfPenality;
+                                billFormModel.Periodkey = VBPeriodkey;
+                                billFormModel.Amount = VBAmount;
+
+                                // -----> END ----<
 
                                 string strFormatedDateofPenality = "";
                                 if (item.Bldat != null)
@@ -5756,7 +6378,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
+
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                  
                                     strFormatedDateofPenality = dt1;
 
                                 }
@@ -5781,7 +6406,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
+                                   
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                   
                                     strFormatedDueDate = dt1;
 
                                 }
@@ -5806,8 +6434,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
-
+                                    
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
                                     strFormatedStartDate = dt1;
 
                                 }
@@ -5832,7 +6461,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     string dt1 = string.Empty;
                                     string[] dts = null;
                                     dts = dateStr.Split('/');
+                                    
+
                                     dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+                                   
                                     strFormatedEndDate = dt1;
 
                                 }
@@ -5842,9 +6475,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 VBEndDate = strFormatedEndDate; //item.Abrzo.ToString();
                                 VBDueDate = strFormatedDueDate; //item.Studt.ToString();
 
-                            }
+                                /// -----> ViewBill --->
+                                /// 
+                                billFormModel.DueDate = VBDueDate;
+                                billFormModel.EndDate = VBEndDate;
+                                billFormModel.DateofPenality = VBDateofPenality;
+                                billFormModel.StartDate = VBStartDate;
 
-                            await PopupNavigation.Instance.PushAsync(new VatReviewBillViewBottomPopUpPageView());
+                                //------>end ------>
+                            }
+                            BillFormModelfrPopup = billFormModel;
+                            await PopupNavigation.Instance.PushAsync(new VatReviewBillViewBottomPopUpPageView(BillFormModelfrPopup));
 
                         }
 
@@ -5858,10 +6499,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         }
                         IsLoading = false;
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
+
                     catch (InternetException ex)
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
@@ -5888,10 +6526,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5928,6 +6566,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             _postData.DateToOld = modelVATReview.d.DateToOld;
             _postData.DecDt = modelVATReview.d.DecDt;
             _postData.DecFlg1 = modelVATReview.d.DecFlg1;
+            _postData.OVERDUEFG = OverdueFlag;
             _postData.DecFlg2 = modelVATReview.d.DecFlg2;
             _postData.DecIdNo = modelVATReview.d.DecIdNo;
             _postData.Declarationdt = modelVATReview.d.DecDt;
@@ -6014,6 +6653,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
 
             NotesSetResults notes = new NotesSetResults();
+            var noteSetList = new List<NotesSetResults>();
             if (ReportDetails != null)
             {
 
@@ -6039,8 +6679,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             notes.Erftmz = null;
             notes.Erfusrz = "";
             notes.Lineno = 1;
-            notes.Noteno = "";
-            notes.Notenoz = "";
+            notes.Noteno = "1";
+            notes.Notenoz = "1";
             notes.Rcodez = "RAVT_BOX";
             notes.Refnamez = "";
             notes.Tdformat = "";
@@ -6049,7 +6689,58 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             notes.DataVersionz = "00000";
             notes.ByGpartz = App.LoginDataRetrieved.TIN;
 
+            NotesSetResults notes2 = new NotesSetResults();
+            if (OverdueFlag == "X")
+            {
+                /*--------adding noteset in late filing--------*/
+                if (LateFlngDetails != null)
+                {
 
+                }
+                else
+                {
+                    notes2.Tdline = "";
+
+                }
+
+                string input = LateFlngDetails.ToString();
+                double partSize = 132;
+                int k = 0;
+                int lineNumber = 1;
+                IEnumerable<string> splitteNotes = input
+                    .ToLookup(c => Math.Floor(k++ / partSize))
+                    .Select(e => new String(e.ToArray()));
+                foreach (var splittedNotesData in splitteNotes)
+                {
+                    notes2 = new NotesSetResults();
+                    Metadata _metdata2 = new Metadata();
+
+                    _metdata2.uri = ZATCAConstants.VATObjectionsNotesSet;
+                    _metdata2.type = "ZDP_VAT_NW_REV_SRV.Notes";
+                    _metdata2.id = ZATCAConstants.VATObjectionsNotesSet;
+                    notes2.__metadata = _metdata;
+                    notes2.AttByz = "TP";
+                    notes2.ElemNo = 0;
+
+                    notes2.Erfdtz = null;
+                    notes2.Erftmz = null;
+                    notes2.Erfusrz = "";
+                    notes2.Lineno = lineNumber;
+                    notes2.Noteno = "2";
+                    notes2.Notenoz = "2";
+                    notes2.Rcodez = "RVT_OVRDUE";
+                    notes2.Tdline = splittedNotesData;
+                    notes2.Refnamez = "";
+                    notes2.Tdformat = "";
+                    notes2.XInvoicez = "";
+                    notes2.XObsoletez = "";
+                    notes2.DataVersionz = "00000";
+                    notes2.ByGpartz = App.LoginDataRetrieved.TIN;
+                    noteSetList.Add(notes2);
+                    lineNumber++;
+                }
+                /*-------end of note set  addition in latefiling---------*/
+            }
 
             NotesSetResults notes1 = new NotesSetResults();
             if (DisputeDetailsDesc != null)
@@ -6076,7 +6767,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             notes1.Erfdtz = null;
             notes1.Erftmz = null;
             notes1.Erfusrz = "";
-            notes1.Lineno = 1;
+            notes1.Lineno = 3;
             notes1.Noteno = "3";
             notes1.Notenoz = "3";
             notes1.Rcodez = "RAVT_SDCAS";
@@ -6088,7 +6779,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             notes1.ByGpartz = App.LoginDataRetrieved.TIN;
 
             var NotesetResult = new NotesSet();
-            var noteSetList = new List<NotesSetResults>();
+
             noteSetList.Add(notes);
             noteSetList.Add(notes1);
 
@@ -6107,16 +6798,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             if (IsRRAmountEdit)
             {
-
                 _postData.SecurityDtl.Amttp = "P";
-
             }
             else
             {
-
                 _postData.SecurityDtl.Amttp = "F";
-
             }
+
 
 
 
@@ -6175,7 +6863,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
 
 
-            if (string.IsNullOrEmpty(ApplicationRefNumber))
+            //if (string.IsNullOrEmpty(ApplicationRefNumber))
+            if (string.IsNullOrEmpty(selectedApplicationRef.Fbnum))
             {
 
                 _postData.RejFb = "";
@@ -6184,7 +6873,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             else
             {
 
-                _postData.RejFb = ApplicationRefNumber;
+                //_postData.RejFb = ApplicationRefNumber;
+                _postData.RejFb = selectedApplicationRef.Fbnum;
             }
 
 
@@ -6206,12 +6896,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     IsLoading = true;
                 });
-
-
-                //RequestDate;
-                //TaxPeriodFrom;
-                //TaxPeriodTo;
-                //PickedDate;
 
                 modelVATReview.d.AgreeFg = true;
                 modelVATReview.d.Appfg = "N";
@@ -6239,6 +6923,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     modelVATReview.d.DateFrm = selectedApplicationRef.DateFrm;
                     modelVATReview.d.DateFrmOld = selectedApplicationRef.DateFrm;
                     modelVATReview.d.DecDt = RequestDate.ToString();
+                    modelVATReview.d.OVERDUEFG = OverdueFlag;
 
                     var strDecDate = "";
                     if (!string.IsNullOrEmpty(RequestDate.ToString()))
@@ -6300,7 +6985,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         }
 
                         modelVATReview.d.SecurityDtl.DataVersion = "00001";
-                        modelVATReview.d.SecurityDtl.Disamt = double.Parse(RequestedReviewAmount) + "";
+                        modelVATReview.d.SecurityDtl.Disamt = (Double.Parse(RequestedReviewAmount)) + "";
                         modelVATReview.d.SecurityDtl.Liaamt = selectedApplicationRef.Liaamt;
                         modelVATReview.d.SecurityDtl.Opbel = selectedApplicationRef.Opbel;
                         modelVATReview.d.SecurityDtl.Penamount = selectedApplicationRef.Penamount;
@@ -6321,22 +7006,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 request.Operationx = modelVATReview.d.Operationx;
 
-                //if (IsGeneratingFormbundle || IsDraftClicked)
-                //{
-
-                //    request.Operationx = "05";
-                //}
-                //else
-                //{
-
-                //    request.Operationx = "01";
-                //}
-
-
-
-
-
-
+               
                 response = await VATObjectionWebServiceManager.SaveVatReviewObjection(request);
 
 
@@ -6351,10 +7021,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         return response;
 
                     }
-                    catch (Exception)
+                    catch (Exception )
                     {
-
-
                         IsLoading = false;
                         return null;
 
@@ -6382,10 +7050,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 return response;
             }
 
-            catch (Exception)
+            catch (Exception )
             {
-
-
                 return response;
             }
 
@@ -6397,7 +7063,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             // JavaScript uses the unix epoch of 1/1/1970. Note, it's important to call ToLocalTime()
             // after doing the time conversion, otherwise we'd have to deal with daylight savings hooey.
             DateTime unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            double milliseconds = Convert.ToDouble(jsonDate);
+            Double milliseconds = Convert.ToDouble(jsonDate);
             DateTime dateTime = unixEpoch.AddMilliseconds(milliseconds).ToLocalTime();
 
             return dateTime;
@@ -6466,7 +7132,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            _navigationService.NavigateTo(App.VatReviewViewApplicationPageView);
+                            _navigationService.NavigateTo(App.VatReviewViewApplicationPageView, this);
 
                         });
                     }
@@ -6494,10 +7160,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6636,18 +7302,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-
-
+                
+                
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6739,10 +7405,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6849,10 +7515,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6959,10 +7625,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -7003,9 +7669,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             {
                                 VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50;
                             }
-                            catch (Exception)
+                            catch (Exception e)
                             {
-
+                                Console.WriteLine(e);
                             }
 
 
@@ -7120,10 +7786,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -7311,10 +7977,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception )
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;

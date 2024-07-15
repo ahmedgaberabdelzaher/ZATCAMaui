@@ -1,7 +1,8 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Newtonsoft.Json;
 using RGPopup.Maui.Services;
+using Syncfusion.Maui.Buttons;
+using Syncfusion.Maui.ListView;
 using Syncfusion.Maui.Picker;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Text.RegularExpressions;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.Template;
@@ -19,7 +21,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
+using Page = Microsoft.Maui.Controls.Page;
 using Slider = Microsoft.Maui.Controls.Slider;
 
 namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
@@ -35,18 +37,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             try
             {
                 InitializeComponent();
-                Resources["IsInstrunctionCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxUnselectedFontStyle"];
-                Resources["IsDeclarationCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxUnselectedFontStyle"];
-                Resources["IsAddAdditionalInfoCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxUnselectedFontStyle"];
-                Resources["IsFDChangeSectionCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxUnselectedFontStyle"];
-                Resources["IsChangeEmailCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxUnselectedFontStyle"];
-
-
-                Resources["IsAddNewRepresentativeCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsAddAdditionalInfoCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsFDChangeSectionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsChangeEmailCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
+                Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 viewModel = App.Locator.VATAmendReactivationPageView;
-                On<iOS>().SetUseSafeArea(true);
-               NavigationPage.SetBackButtonTitle(this, "");
-                BindingContext = viewModel;
+
+                this.BindingContext = viewModel;
                 if (App.IsArabic)
                 {
                     label1.HorizontalTextAlignment = TextAlignment.End;
@@ -67,12 +66,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 clearDATA();
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
+                viewModel.IsNewStartDateInfoChecked = false;
+                viewModel.NewVatEligibleStartDate = string.Empty;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                 viewModel.SetDefaultDate();
+                //InitializeCalenderPopup();
+                SetLTR();
                 Task.Run(async () =>
                 {
                     try
@@ -80,6 +83,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.IsLoading = true;
                         await GetVatRegistrationData();
                         NewFRDOBField.IsVisible = false;
+
                         viewModel.SetUIAvailability();
                         if (!viewModel.IsChangeEmailChecked)
                         {
@@ -90,12 +94,22 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                             viewModel.IsTaxPayerIBANEnabled = false;
                         }
 
+
                         if (App.VATType == PageExecutionType.Amend)
                         {
                             viewModel.Declaration.IDTypeOrNoEntry = false;
                             viewModel.Declaration.ContactNameEntry = false;
 
                         }
+
+
+                        if (viewModel.VATRegistrationData.d.PendingIbanMsg != "")
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIncomplete));
+
+                        }
+
+
                     }
                     catch (Exception)
                     {
@@ -107,6 +121,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
+
+
+
         }
         public void clearDATA()
         {
@@ -127,6 +144,20 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             EntryPhoneNumber.Text = string.Empty;
             EntryIDNo.Text = string.Empty;
         }
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+
+            }
+
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -139,7 +170,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DpEStartDate_Closed(object sender, EventArgs e)
+        private async void DpEStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -148,6 +179,23 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+        private async void DpENewStartDate_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedItem = DpENewStartDate.SelectedItem as List<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.NewVatEligibleStartDate = day + "/" + month + "/" + year;
+
             }
             catch (Exception)
             {
@@ -155,7 +203,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DpEStartDate_OkButtonClicked(object sender, EventArgs e)
+        private async void DpEStartDate_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -164,16 +212,28 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
             catch (Exception)
             {
 
             }
         }
-
-        private void DpEStartDate_CancelButtonClicked(object sender, EventArgs e)
+        private async void DpENewDate_OkButtonClicked(object sender, EventArgs e)
         {
+            try
+            {
+                var selectedItem = DpENewStartDate.SelectedItem as List<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.NewVatEligibleStartDate = day + "/" + month + "/" + year;
+                //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
+            }
+            catch (Exception)
+            {
 
+            }
         }
 
         private void btn1_Clicked(object sender, EventArgs e)
@@ -181,6 +241,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             if (App.VATType == PageExecutionType.Reactivation)
             {
                 DpEStartDate.IsOpen = true;
+            }
+        }
+        private void btn2_Clicked(object sender, EventArgs e)
+        {
+            if (App.VATType == PageExecutionType.Amend)
+            {
+                DpENewStartDate.IsOpen = true;
             }
         }
 
@@ -242,7 +309,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         private bool JsonCompare(object obj, object another)
         {
             if (ReferenceEquals(obj, another)) return true;
-            if (obj == null || another == null) return false;
+            if ((obj == null) || (another == null)) return false;
             if (obj.GetType() != another.GetType()) return false;
 
             var objJson = JsonConvert.SerializeObject(obj);
@@ -266,6 +333,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     step2Validation();
                     setAttachmentImporterExporterVisibility();
+
+                    if (App.isVatEffectDateNav)
+                    {
+                        viewModel.CheckCR1450FieldsValid();
+                    }
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep3)
                 {
@@ -324,6 +396,37 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     viewModel.CurrentStep = AppResources.ZTEReportCategorySubmitBtn;
                     viewModel.SetVisibility();
                     viewModel.IsSummaryVisible = true;
+
+                    if (viewModel.VatDeregDeclaration != null && viewModel.VatDeregDeclaration.D != null && string.IsNullOrEmpty(viewModel.VatDeregDeclaration.D.Zterms))
+                    {
+                        viewModel.IsDeclarationViewEnabled = true;
+                        viewModel.IsDeclarationViewEnabledNew = false;
+                    }
+                    else
+                    {
+                        viewModel.IsDeclarationViewEnabled = false;
+                        viewModel.IsDeclarationViewEnabledNew = true;
+                        viewModel.Zterms = viewModel.VatDeregDeclaration.D.Zterms;
+                        if (App.IsArabic)
+                        {
+                            viewModel.ShouldShowAR = true;
+                            viewModel.ShouldShowEN = false;
+                            if (Device.RuntimePlatform == Device.Android)
+                            {
+                                viewModel.TermsAlignment = TextAlignment.Start;
+                            }
+                            else
+                            {
+                                viewModel.TermsAlignment = TextAlignment.End;
+                            }
+                        }
+                        else
+                        {
+                            viewModel.ShouldShowEN = true;
+                            viewModel.ShouldShowAR = false;
+                        }
+                    }
+
                     SetfifthBoxColor();
                     if (viewModel.CurrentIndex == 4)
                         viewModel.CurrentIndex++;
@@ -352,7 +455,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ImFg))
                 {
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                    viewModel.ImporterTextColor = (Color)Application.Current.Resources["Primary"];
+                    viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
@@ -360,7 +463,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("0"))
                     {
                         viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                        viewModel.ImporterTextColor = (Color)Application.Current.Resources["Primary"]; ;
+                        viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"]; ;
                         viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("1"))
@@ -374,9 +477,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ExFg))
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-
-
-                    viewModel.ExporterTextColor = (Color)Application.Current.Resources["Primary"];
+                    viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
@@ -384,9 +485,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("0"))
                     {
                         viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-
-
-                        viewModel.ExporterTextColor = (Color)Application.Current.Resources["Primary"];
+                        viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                         viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("1"))
@@ -474,47 +573,73 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             if (viewModel.IsDeclarationChecked == true)
             {
+
                 bool flag = true;
                 if (App.VATType == PageExecutionType.Reactivation)
                 {
-                    if (viewModel.SelectedIdTypeSR == null)
+                    if (!viewModel.IsDeclarationViewEnabledNew) //When Zterms is empty then only do the validation of ID Details.
                     {
-                        flag = false;
-                    }
-                    if (string.IsNullOrEmpty(viewModel.IdNumberSR))
-                    {
-                        flag = false;
-                        viewModel.FrameContactIDError = true;
-                    }
-                    if (string.IsNullOrEmpty(viewModel.FirstNameSR))
-                    {
-                        flag = false;
-                        FrmContactName.HasError = true;
+                        if (viewModel.SelectedIdTypeSR == null)
+                        {
+                            flag = false;
+                        }
+                        if (string.IsNullOrEmpty(viewModel.IdNumberSR))
+                        {
+                            flag = false;
+                            viewModel.FrameContactIDError = true;
+                        }
+                        if (string.IsNullOrEmpty(viewModel.FirstNameSR))
+                        {
+                            flag = false;
+                            FrmContactName.HasError = true;
 
-                    }
-                    if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
-                    {
-                        flag = false;
-                        viewModel.FrameContactDOBError = true;
+                        }
+                        if (btnSR.IsVisible && string.IsNullOrEmpty(viewModel.ContactDOB))
+                        {
+                            flag = false;
+                            viewModel.FrameContactDOBError = true;
 
+                        }
                     }
                 }
                 if (flag)
                 {
                     if (App.VATType == PageExecutionType.Amend)
                     {
-                        if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
+                        if (App.isVatEffectDateNav)
                         {
-                            await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage, string.Empty));
-                            return;
                         }
+                        else
+                        {
+                            if (!viewModel.IsAddAdditionalInfoChecked && !viewModel.IsFDChangeSectionEnabled && !viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
+                            {
+                                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.ZZVATAmendNoChangesMadeSubmitMessage, string.Empty));
+                                return;
+                            }
+                        }
+
+
                     }
                     viewModel.VATRegistrationDetailsData.d.Operationz = "01";
 
                     Models.VATRegistrationDetails response = await viewModel.SubmitClicked();
                     if (response != null)
                     {
-                        viewModel._navigationService.NavigateTo(App.VATAmendReactivationSuccessfulPageView, response);
+                        if (response.d.Operationz.Equals("25"))
+                        {
+                            if (Navigation.NavigationStack.Count > 0)
+                            {
+                                Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                                Navigation.RemovePage(pg1);
+                                this.Navigation.PopAsync();
+                            }
+                            //viewModel._navigationService.GoBack();
+                        }
+                        else
+                        {
+                            viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
+                        }
+                        //viewModel._navigationService.NavigateTo(App.VATAmendReactivationSuccessfulPageView, response);
                     }
 
                 }
@@ -564,7 +689,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 else
                 {
                     string[] year = viewModel.VatEligibleStartDate.Split('/');
-                    int yearnumber = int.Parse(year[2]);
+                    int yearnumber = Int32.Parse(year[2]);
                     if (yearnumber >= 2018)
                     {
                         viewModel.IsContinueButtonEnable = true;
@@ -598,12 +723,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         }
         public void step3Validation()
         {
-
             if (!string.IsNullOrEmpty(DateEntry.Text))
             {
 
                 string[] year = DateEntry.Text.Split('/');
-                int yearnumber = int.Parse(year[2]);
+                int yearnumber = Int32.Parse(year[2]);
                 if (yearnumber >= 2018)
                 {
                     viewModel.CurrentStep = AppResources.VATRStep4;
@@ -639,7 +763,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 FrmEStartDate.Focus();
                 FrmEStartDate.HasError = true;
             }
-
         }
         public async void setDefaultAnswerThree()
         {
@@ -1050,9 +1173,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             try
             {
                 base.OnAppearing();
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
 
                 if (Device.RuntimePlatform == Device.Android)
                 {
@@ -1061,8 +1181,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 }
                 else
                 {
-                   NavigationPage.SetBackButtonTitle(this, "");
-                    //Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
                     DDlIDType.BackgroundColor = (Color)Application.Current.Resources["White"];
                     DDlContactIDType.BackgroundColor = (Color)Application.Current.Resources["White"];
                 }
@@ -1070,51 +1188,54 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
                 {
                     if (res)
-                        Resources["IsInstrunctionCheckedStyle"] = Application.Current.Resources["CheckboxSelectedFontStyle"];
+                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                     else
-                        Resources["IsInstrunctionCheckedStyle"] = Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                        Resources["IsInstrunctionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsDeclarationChecked", (obj, res) =>
                 {
                     if (res)
-                        Resources["IsDeclarationCheckedStyle"] = Application.Current.Resources["CheckboxSelectedFontStyle"];
+                        Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                     else
-                        Resources["IsDeclarationCheckedStyle"] = Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                        Resources["IsDeclarationCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsAddAdditionalInfoChecked", (obj, res) =>
                 {
                     if (res)
-                        Resources["IsAddAdditionalInfoCheckedStyle"] = Application.Current.Resources["CheckboxSelectedFontStyle"];
+                        Resources["IsAddAdditionalInfoCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                     else
-
-                        Resources["IsAddAdditionalInfoCheckedStyle"] = Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                        Resources["IsAddAdditionalInfoCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsFDChangeSectionChecked", (obj, res) =>
                 {
                     if (res)
-
-                        Resources["IsFDChangeSectionCheckedStyle"] = Application.Current.Resources["CheckboxSelectedFontStyle"];
+                        Resources["IsFDChangeSectionCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                     else
-                        Resources["IsFDChangeSectionCheckedStyle"] = Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                        Resources["IsFDChangeSectionCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", (obj, res) =>
                 {
                     if (res)
-                        Resources["IsChangeEmailCheckedStyle"] = Application.Current.Resources["CheckboxSelectedFontStyle"];
+                        Resources["IsChangeEmailCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                     else
-                        Resources["IsChangeEmailCheckedStyle"] = Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                        Resources["IsChangeEmailCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<VATAmendReactivationPageViewModel, bool>(this, "IsAddNewRepresentativeChecked", (obj, res) =>
                 {
                     if (res)
-                        Resources["IsAddNewRepresentativeCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxSelectedFontStyle"];
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                     else
-                        Resources["IsAddNewRepresentativeCheckedStyle"] = Microsoft.Maui.Controls.Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                 });
                 MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) => { PopupNavigation.Instance.PopAsync(); });
                 MessagingCenter.Subscribe<CalendarPickerPageView, GenericDatePickerModel>(this, "DatePickerSelectedItem", (sender, arg) =>
                 {
-                    viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
+                    //await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
+                    //viewModel.VatEligibleStartDate = DateTime.Parse(arg.SelectedValue).Date.ToString("dd/MM/yyyy").Replace('-', '/');
+                    if (App.isVatEffectDateNav)
+                        viewModel.GetNewVatEligibleDateAsync(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
+                    else
+                        viewModel.getVatEligibleDate(DateTime.Parse(arg.SelectedValue).Date.ToString("yyyy-MM-dd"));
                 });
                 MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {
@@ -1141,7 +1262,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                                         }
                                     }
                                 }
-                                viewModel.VATRegistrationDetailsData.d.OptIban = string.Empty;
+                                viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
                                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                             }
                             else
@@ -1156,7 +1277,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     }
                 });
 
-               MessagingCenter.Subscribe<object, ATTDETSet>(this, "AttachmentReceived", (sender, arg) =>
+                MessagingCenter.Subscribe<object, ATTDETSet>(this, "AttachmentReceived", (sender, arg) =>
                 {
                     if (arg != null)
                     {
@@ -1515,15 +1636,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
-        private void DDlIDType_OkButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DDlIDType_CancelButtonClicked(object sender, EventArgs e)
-        {
-
-        }
         private void DDlIDType_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
             try
@@ -1685,18 +1797,18 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             PopupNavigation.Instance.PushAsync(new VATRegistrationMenuPopUp());
         }
 
-        private void VATFaqTapped(object sender, EventArgs e)
+        private async void VATFaqTapped(object sender, EventArgs e)
         {
             try
             {
                 if (App.IsArabic)
                 {
 
-                    Launcher.OpenAsync(new Uri("https://zatca.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx"));
+                    await Launcher.OpenAsync(new Uri(ZATCAConstants.GAZTFAQARUrl));
                 }
                 else
                 {
-                    Launcher.OpenAsync(new Uri("https://zatca.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx"));
+                    await Launcher.OpenAsync(new Uri(ZATCAConstants.GAZTFAQEnUrl));
 
                 }
             }
@@ -1727,7 +1839,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
                 {
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                    viewModel.ImporterTextColor = (Color)Application.Current.Resources["Primary"];
+                    viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
@@ -1763,7 +1875,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                    viewModel.ExporterTextColor = (Color)Application.Current.Resources["Primary"];
+                    viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
@@ -1781,12 +1893,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            string OperationCode = string.Empty;
+            String OperationCode = String.Empty;
             try
             {
                 if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
                 {
-                    string action = string.Empty;
+                    String action = string.Empty;
                     VATAmendReactivationMoreOptionPopUp popUp = new VATAmendReactivationMoreOptionPopUp(viewModel.ListOfActionButtonsApplicableForRegistration);
                     popUp.OnItemSelect = async (args) =>
                     {
@@ -1966,6 +2078,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                     };
                     await PopupNavigation.Instance.PushAsync(popUp);
 
+
+                    //  String action = await DisplayActionSheet("", AppResources.VATAmendRegistrationCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
+
                 }
             }
             catch (Exception)
@@ -1977,13 +2092,11 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         {
             try
             {
-                var picker = (SfPicker)sender;
                 viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                 viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
                 if (!viewModel.TxtIDTypeSR.Equals(AppResources.ZZGCCID))
                 {
-                  
-                    if (picker.Columns[0].SelectedIndex == 0)
+                    if (viewModel.IdTypeListSR[DDlContactIDType.Columns[0].SelectedIndex] != null)
                     {
                         FrmContactDBO.IsVisible = false;
                         btnSR.IsVisible = false;
@@ -2056,15 +2169,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DDlIDTypeFR_CancelButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IDTypeSR_CancelButtonClicked(object sender, EventArgs e)
-        {
-
-        }
 
         private async void ImporterExporterAttachment(object sender, EventArgs e)
         {
@@ -2092,7 +2196,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
-                await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData, WhichAttachment.VATAmendRegistration, isImporter));
+                await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData,WhichAttachment.VATAmendRegistration, isImporter));
             }
             catch (Exception)
             {
@@ -2101,7 +2205,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
 
 
-        private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
+        private void OnPageSelectedForIban(object sender, Microsoft.Maui.Controls.SelectionChangedEventArgs e)
         {
             try
             {
@@ -2110,21 +2214,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             catch (Exception)
             {
             }
-        }
-
-        private void DateEntry_Focused_1(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void DateEntry_Unfocused_1(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         public async Task<bool> ValidateIDNumber()
@@ -2915,10 +3004,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void DOB_CancelButtonClicked(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn4_Clicked(object sender, EventArgs e)
         {
@@ -3185,11 +3270,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
 
             }
-        }
-
-        private void ContactDOBPicker_CancelButtonClicked(object sender, EventArgs e)
-        {
-
         }
 
         public async void ValidateIDNumberContact()
@@ -3557,16 +3637,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-
-        private void Slider_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
-
-        private void Slider1_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
 
         private void slider1_completed(object sender, EventArgs e)
         {
@@ -3954,7 +4024,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 if (!string.IsNullOrEmpty(DateEntry.Text))
                 {
                     string[] year = viewModel.VatEligibleStartDate.Split('/');
-                    int yearnumber = int.Parse(year[2]);
+                    int yearnumber = Int32.Parse(year[2]);
                     if (yearnumber >= 2018)
                     {
                         FrmEStartDate.HasError = false;
@@ -3973,10 +4043,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        public void validDateAnswer1present()
-        {
-        }
-
         private void ContactDateEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.ContactDOB))
@@ -3991,11 +4057,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             {
                 FrmContactName.HasError = false;
             }
-        }
-
-        private void DateEntry_TextChanged_2(object sender, TextChangedEventArgs e)
-        {
-
         }
 
         private void EntryContactIDNumber_TextChanged(object sender, TextChangedEventArgs e)
@@ -4050,9 +4111,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         ShowValidationPopup(message);
                         // str.HasError = true;
                     }
-                    //  else
-                    //str.HasError = false;
-                    //}
                 }
             }
         }
@@ -4114,7 +4172,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         }
 
-        private void FDChangeSection_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void FDChangeSection_CheckedChanged(object sender, Syncfusion.Maui.Buttons.CheckedChangedEventArgs e)
         {
             viewModel.IsFDChangeSectionEnabled = ((CheckBox)sender).IsChecked;
         }
@@ -4127,6 +4185,33 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
         private async void VATEligibleDateClicked(object sender, EventArgs e)
         {
             if (App.VATType == PageExecutionType.Reactivation)
+            {
+                GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
+                genericDatePickerModel.DatePickerTitle = "";
+                genericDatePickerModel.PickerId = "EndDateTypePicker";
+                try
+                {
+                    var ssd = App.Locator.CalendarPickerPageView.SelectedDate;
+                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                }
+                catch (GAZTUnlockAccountException)
+                {
+
+                }
+                catch (InternetException ex)
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        viewModel._navigationService.GoBack();
+                    });
+                }
+            }
+        }
+
+        private async void NewVATEligibleDateClicked(object sender, TappedEventArgs e)
+        {
+            if (App.VATType == PageExecutionType.Amend)
             {
                 GenericDatePickerModel genericDatePickerModel = new GenericDatePickerModel();
                 genericDatePickerModel.DatePickerTitle = "";
@@ -4263,6 +4348,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
         private async void AddNewRepresentative_Tapped(object sender, EventArgs e)
         {
+            if (App.isVatEffectDateNav)
+            {
+                return;
+            }
             if (!viewModel.IsAddNewRepresentativeChecked && !viewModel.IsChangeEmailChecked)
             {
                 var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.VATAmendAddNewFinancialRepresentativeWarning);
@@ -4280,7 +4369,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.MobNumberSum =
                         viewModel.SmtpAddrSum = string.Empty;
                         viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.FirstOrDefault()?.Name;
-                        Resources["IsAddNewRepresentativeCheckedStyle"] = Application.Current.Resources["CheckboxSelectedFontStyle"];
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
                     }
                     else
                     {
@@ -4307,7 +4396,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         viewModel.MobNumberSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].MobNumber;
                         viewModel.SmtpAddrSum = viewModel.VATRegistrationData.d.CONTACTDTSet.results[0].SmtpAddr;
                         viewModel.TxtIDTypeSum = viewModel.IdTypeListFR.Where(x => x.ID == viewModel.VATRegistrationData.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
-                        Resources["IsAddNewRepresentativeCheckedStyle"] = Application.Current.Resources["CheckboxUnselectedFontStyle"];
+                        Resources["IsAddNewRepresentativeCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
                     }
                 };
                 await PopupNavigation.Instance.PushAsync(confirmPopup);
@@ -4384,7 +4473,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void importerExporterLV_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
+        private void importerExporterLV_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {
             var selectedItem = e.AddedItems[0] as ListViewCardTemplateModel;
             if (selectedItem.SelectedCardIcon == "vat_tile_IbanCard_background" && selectedItem.CardLabel == AppResources.VATRImporter)
@@ -4405,30 +4494,30 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             }
         }
 
-        private void SfCheckBox_StateChanged(object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
+        private void SfCheckBox_StateChanged(object sender, StateChangedEventArgs e)
         {
             try
             {
                 viewModel.IsFDChangeSectionEnabled = e.IsChecked == true ? true : false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
-        private void AddAdditionalInfo_StateChanged(object sender, Syncfusion.Maui.Buttons.StateChangedEventArgs e)
+        private void AddAdditionalInfo_StateChanged(object sender, StateChangedEventArgs e)
         {
             try
             {
                 viewModel.IsTaxPayerIBANEnabled = e.IsChecked == true ? true : false;
                 viewModel.IsTaxPayerEligDateEnabled = e.IsChecked == true ? true : false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -4439,27 +4528,62 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsTaxPayerIBANEnabled = e;
                 viewModel.IsTaxPayerEligDateEnabled = e;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
-        private void SfCheckBox_StateChanged(object sender, bool e)
-        {
-
-        }
         private void FD_CheckedCanged(object sender, bool e)
         {
             try
             {
                 viewModel.IsFDChangeSectionEnabled = e;
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
+        }
+
+        private void IBANAccManagementTapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
+
+        }
+
+        void DDlContactIDType_SelectionChanged_1(System.Object sender, Syncfusion.Maui.Picker.PickerSelectionChangedEventArgs e)
+        {
+            try
+            {
+                viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
+                viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
+                if (!viewModel.TxtIDTypeSR.Equals(AppResources.ZZGCCID))
+                {
+                    if (viewModel.IdTypeListSR[DDlContactIDType.Columns[0].SelectedIndex] != null)
+                    {
+                        FrmContactDBO.IsVisible = false;
+                        btnSR.IsVisible = false;
+                        lblDOB.IsVisible = false;
+                    }
+                    else
+                    {
+                        FrmContactDBO.IsVisible = true;
+                        btnSR.IsVisible = true;
+                        lblDOB.IsVisible = true;
+                    }
+                }
+                else
+                {
+                    FrmContactDBO.IsVisible = false;
+                    btnSR.IsVisible = false;
+                    lblDOB.IsVisible = false;
+                }
+            }
             catch (Exception)
             {
-
-
             }
         }
     }

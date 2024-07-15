@@ -1,13 +1,10 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.ListView;
+﻿using Syncfusion.Maui.ListView;
 using System.Collections.Specialized;
 using ZATCAMAUI.Models.InstalmentPlanModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel;
 using static ZATCAMAUI.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
 using static ZATCAMAUI.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails.DisplayInstallmentAgreementSchedulePlan;
 using ItemTappedEventArgs = Syncfusion.Maui.ListView.ItemTappedEventArgs;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 {
@@ -26,12 +23,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
             try
             {
                 InitializeComponent();
-
-                NavigationPage.SetBackButtonTitle(this, "");
-
-                //App.IsArabic = true;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.VatInstalmentPlanListPageView;
                 BindingContext = viewModel;
@@ -73,10 +64,6 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
             {
                 base.OnAppearing();
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
                 viewModel.EnableVATLandingPage();
                 viewModel.AddOutletDecisionOptions();
 
@@ -109,17 +96,7 @@ namespace ZATCAMAUI.Views.NewDesign.VatInstalmentPlan
 
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
         async void outletDecisionOptionsListView_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {

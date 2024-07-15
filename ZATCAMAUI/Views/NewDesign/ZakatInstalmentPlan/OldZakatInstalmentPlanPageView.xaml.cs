@@ -26,12 +26,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             try
             {
                 InitializeComponent();
-
-                // Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
-                //App.IsArabic = true;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.OldZakatInstalmentPlanPageView;
 
                 viewModel.MinInstalments = 1;
@@ -66,17 +60,10 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
 
-                });
-                await Task.Run(async () =>
-                {
-                    await viewModel.OnPageLoad();
-
-                });
-
+                viewModel.IsLoading = true;
+                await viewModel.OnPageLoad();
+                viewModel.IsLoading = false;
             }
             catch (Exception)
             {
@@ -85,17 +72,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             }
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         private void Frequncy_Selected(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
@@ -324,11 +300,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
             try
             {
                 base.OnAppearing();
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
                 viewModel.IsZakat = Preferences.Get("isZakat", false);
                 viewModel.IsPenaltyVisible = !Preferences.Get("isZakat", false);
 
@@ -503,7 +474,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                 {
                     if (arg != null)
                     {
-                        Device.BeginInvokeOnMainThread(() =>
+                        MainThread.BeginInvokeOnMainThread(() =>
                         {
 
                             try

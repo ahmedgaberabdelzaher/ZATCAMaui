@@ -127,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             }
         }
 
-        private string _buttonTitle = "";
+        private string _buttonTitle = string.Empty;
         public string ButtonTitle
         {
             get

@@ -1581,17 +1581,19 @@
                                             <!--  Contact Zatca For Audit Case ends  -->
                                             <!--  CR6264 starts  -->
 
-                                            <StackLayout
+                                            <Grid
                                                 x:Name="tileUpdatedView"
                                                 IsVisible="{Binding istileUpdated}"
-                                                Orientation="Horizontal"
-                                                Spacing="20">
+                                                ColumnDefinitions="auto,*"
+                                                ColumnSpacing="20">
                                                 <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
-                                                <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
-                                                <StackLayout.GestureRecognizers>
+                                                <Label Style="{StaticResource ButtonLabelWhiteBold}"
+                                                       Grid.Column="1"
+                                                       Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
+                                                <Grid.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="ProfitOnGoods_Tapped" />
-                                                </StackLayout.GestureRecognizers>
-                                            </StackLayout>
+                                                </Grid.GestureRecognizers>
+                                            </Grid>
                                             <BoxView
                                                 x:Name="tileUpdatedBoxView"
                                                 IsVisible="{Binding istileUpdated}"

@@ -26,9 +26,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     Label_Name.Text = response.d.TinNm;
                     Label_ApplicationNumber.Text = response.d.Fbnumz;
-                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.VatTaxDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    //Label_Date.Text = response.d.GoLiveDt;
-                    //   Label_Date.Text = StartdateToshow;
                     Label_Date.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 }
             }
