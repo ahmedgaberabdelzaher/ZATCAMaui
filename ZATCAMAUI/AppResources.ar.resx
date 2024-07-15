@@ -10878,7 +10878,7 @@ info@zatca.gov.sa</value>
    <data name="VRPaidAmount" xml:space="preserve">
     <value>المبلغ المدفوع </value>
   </data>
-    <data name="VatReviewLateObj" xml:space="preserve">
+  <data name="VatReviewLateObj" xml:space="preserve">
     <value>التأخر في تقديم الاعتراض</value>
   </data>
    <data name="VatLateFilingObjection" xml:space="preserve">
