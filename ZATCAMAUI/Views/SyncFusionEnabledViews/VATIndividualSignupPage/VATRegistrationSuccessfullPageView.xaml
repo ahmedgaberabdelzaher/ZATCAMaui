@@ -49,12 +49,11 @@
                     StrokeShape="RoundRectangle 20,20,0,0"
                     VerticalOptions="EndAndExpand">
                     <StackLayout>
-                        <Frame
+                        <Border
                             Margin="0,20,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <Grid Padding="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
@@ -75,13 +74,12 @@
                                     Style="{StaticResource ValueLabelBlack}"
                                     VerticalOptions="Center" />
                             </Grid>
-                        </Frame>
-                        <Frame
+                        </Border>
+                        <Border
                             Margin="0,20,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <Label
                                     FontSize="11"
@@ -107,16 +105,15 @@
                                     </Image>
                                 </StackLayout>
                             </StackLayout>
-                            <Frame.GestureRecognizers>
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Image_Copy_Tapped" />
-                            </Frame.GestureRecognizers>
-                        </Frame>
-                        <Frame
+                            </Border.GestureRecognizers>
+                        </Border>
+                        <Border
                             Margin="0,20,0,10"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <Label
                                     FontSize="11"
@@ -131,7 +128,7 @@
                                     Style="{StaticResource ValueLabelBlack}"
                                     VerticalOptions="Center" />
                             </StackLayout>
-                        </Frame>
+                        </Border>
                         <!--  VATRgotologinpage  -->
                         <buttons:SfButton
                             x:Name="btnDashboard"

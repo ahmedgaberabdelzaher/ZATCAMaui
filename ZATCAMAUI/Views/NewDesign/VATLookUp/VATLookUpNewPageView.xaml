@@ -245,7 +245,7 @@
                         BarcodesDetected="zxing_BarcodesDetected" />
 
                     <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
-                        <Frame BackgroundColor="Black" Opacity=".44" />
+                        <Border BackgroundColor="Black" Opacity=".44" />
 
                         <StackLayout Margin="0,30,0,30">
 
@@ -332,7 +332,7 @@
 
 
                     <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
-                        <Frame BackgroundColor="Black" Opacity=".44" />
+                        <Border BackgroundColor="Black" Opacity=".44" />
                         <StackLayout>
                             <Label
                                 Grid.Row="3"
@@ -346,19 +346,18 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Frame
+                            <Border
                                 Grid.Row="4"
                                 Margin="21,27,27,40"
                                 Padding="12"
                                 BackgroundColor="Transparent"
-                                CornerRadius="14"
-                                HasShadow="False">
+                                StrokeShape="RoundRectangle 14,14,14,14">
 
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
                         </StackLayout>
                     </Grid>
                 </Grid>
@@ -428,12 +427,11 @@
 
 
                             </Label>
-                            <Frame
+                            <Border
                                 Margin="0"
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
                                 <StackLayout Margin="16">
                                     <Grid Padding="8,0" ColumnDefinitions="1.25*,*">
                                         <Label
@@ -443,29 +441,28 @@
                                             Text="{Binding Name}"
                                             TextColor="{StaticResource PrimaryColor}" />
                                         <Grid Grid.Column="1" RowDefinitions="auto">
-                                            <Frame
+                                            <Border
                                                 Padding="0"
                                                 BackgroundColor="#62B34F"
-                                                CornerRadius="14"
-                                                HasShadow="False"
+                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 Opacity=".1"
                                                 VerticalOptions="FillAndExpand">
-                                                <Frame.Triggers>
+                                                <Border.Triggers>
                                                     <DataTrigger
                                                         Binding="{Binding IsVatLookUp}"
-                                                        TargetType="Frame"
+                                                        TargetType="Border"
                                                         Value="false">
                                                         <Setter Property="BackgroundColor" Value="#E84A41" />
                                                     </DataTrigger>
                                                     <DataTrigger
                                                         Binding="{Binding IsVatLookUp}"
-                                                        TargetType="Frame"
+                                                        TargetType="Border"
                                                         Value="true">
                                                         <Setter Property="BackgroundColor" Value="#62B34F" />
                                                     </DataTrigger>
-                                                </Frame.Triggers>
+                                                </Border.Triggers>
 
-                                            </Frame>
+                                            </Border>
                                             <Label
                                                 Margin="10,3,10,3"
                                                 HorizontalOptions="CenterAndExpand"
@@ -549,7 +546,7 @@
                                         Text="{Binding Region}" />
 
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </StackLayout>
                     </ScrollView>

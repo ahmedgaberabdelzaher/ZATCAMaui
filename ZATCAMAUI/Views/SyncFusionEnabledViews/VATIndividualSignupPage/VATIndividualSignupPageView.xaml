@@ -65,10 +65,10 @@
                             Grid.Column="0"
                             Aspect="AspectFill"
                             Source="{Binding ImageIndividualTile}" />
-                        <Frame
+                        <Border
                             Margin="5"
                             BackgroundColor="Transparent"
-                            CornerRadius="5"
+                            StrokeShape="RoundRectangle 5,5,5,5"
                             HeightRequest="100">
                             <!--  Text="Individual Registration"  -->
 
@@ -100,10 +100,10 @@
                                     TextColor="{Binding IndividualTileColor}"
                                     VerticalOptions="End" />
                             </Grid>
-                            <Frame.GestureRecognizers>
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}" />
-                            </Frame.GestureRecognizers>
-                        </Frame>
+                            </Border.GestureRecognizers>
+                        </Border>
                     </Grid>
 
 
@@ -116,10 +116,10 @@
                             Grid.Column="0"
                             Aspect="AspectFill"
                             Source="{Binding ImageEstimatedTile}" />
-                        <Frame
+                        <Border
                             Margin="5"
                             BackgroundColor="Transparent"
-                            CornerRadius="5"
+                            StrokeShape="RoundRectangle 5,5,5,5"
                             HeightRequest="100">
 
                             <Grid>
@@ -148,11 +148,11 @@
                                     TextColor="{Binding EstimatedTileColor}"
                                     VerticalOptions="End" />
                             </Grid>
-                            <Frame.GestureRecognizers>
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding EstablishmentSignupCommand}" />
-                            </Frame.GestureRecognizers>
+                            </Border.GestureRecognizers>
 
-                        </Frame>
+                        </Border>
 
                     </Grid>
                     <!--  Establishment signup block  -->

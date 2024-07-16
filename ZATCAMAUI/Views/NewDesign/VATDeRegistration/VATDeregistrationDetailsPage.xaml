@@ -1065,14 +1065,14 @@
                                 Grid.ColumnSpan="2"
                                 RowDefinitions="auto,auto,1">
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VatDeregDeclarationTitle}" />
 
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     HorizontalOptions="StartAndExpand"

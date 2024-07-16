@@ -2150,11 +2150,10 @@
                                             Style="{StaticResource SectionTitleBlackBold}"
                                             Text="{Binding NoOfInstalments}" />
 
-                                        <Frame
+                                        <Border
                                             Padding="0"
                                             BackgroundColor="Transparent"
-                                            CornerRadius="10"
-                                            HasShadow="False"
+                                            StrokeShape="RoundRectangle 10,10,10,10"
                                             IsVisible="{Binding InstalmentSliderVisible}">
                                             <StackLayout>
                                                 <Slider
@@ -2169,7 +2168,7 @@
                                                     Value="{Binding NumberOFInstalmentSliderValue}" />
 
                                             </StackLayout>
-                                        </Frame>
+                                        </Border>
                                         <StackLayout
                                             Padding="10"
                                             IsVisible="{Binding InstalmentSliderVisible}"
@@ -2198,10 +2197,9 @@
                                 Grid.ColumnSpan="2"
                                 Margin="0,10,0,0">
 
-                                <Frame
+                                <Border
                                     Padding="0"
-                                    CornerRadius="10"
-                                    HasShadow="False"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}">
                                     <StackLayout Padding="10" Orientation="Horizontal">
 
@@ -2226,7 +2224,7 @@
 
 
                                     </StackLayout>
-                                </Frame>
+                                </Border>
                             </Grid>
 
 

@@ -73,12 +73,11 @@
                     StrokeShape="RoundRectangle 20,20,0,0"
                     VerticalOptions="EndAndExpand">
                     <StackLayout>
-                        <Frame
+                        <Border
                             Margin="0,20,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <Label
                                     FontFamily="{StaticResource SomarSemiBold}"
@@ -108,7 +107,7 @@
                                     </Image>
                                 </StackLayout>
                             </StackLayout>
-                        </Frame>
+                        </Border>
 
                         <buttons:SfButton
                             x:Name="btnDashboard"

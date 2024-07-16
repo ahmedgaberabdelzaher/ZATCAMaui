@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
@@ -24,11 +23,10 @@
                 Text="Instructions and Conditions" />
             <ScrollView Grid.Row="1">
                 <StackLayout Padding="5" Spacing="15">
-                    <Frame
+                    <Border
                         Padding="15"
-                        BorderColor="LightGray"
-                        CornerRadius="12"
-                        HasShadow="False">
+                        Stroke="LightGray"
+                        StrokeShape="RoundRectangle 12,12,12,12">
                         <StackLayout>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="ic_vat_info" />
@@ -40,7 +38,7 @@
                             </StackLayout>
                             <Label Style="{StaticResource BodyLabelBlack}" Text="The adjustment amount entered is more than 10% larger than the amount of domestic standard-rated sales. please verify the amount entered in the return or continue if the amount entered is correct." />
                         </StackLayout>
-                    </Frame>
+                    </Border>
                     <StackLayout Margin="10" Orientation="Horizontal">
 
                         <buttons:SfCheckBox IsChecked="{Binding IsVatTermsChecked}" />

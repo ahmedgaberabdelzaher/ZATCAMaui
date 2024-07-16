@@ -34,9 +34,9 @@
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="23">
                     <Grid.Resources>
                         <ResourceDictionary>
-                            <Style TargetType="Frame">
-                                <Setter Property="CornerRadius" Value="15" />
-                                <Setter Property="BorderColor" Value="#DDDDDD" />
+                            <Style TargetType="Border">
+                                <Setter Property="StrokeShape" Value="RoundRectangle 15,15,15,15" />
+                                <Setter Property="Stroke" Value="#DDDDDD" />
                                 <Setter Property="Padding" Value="15" />
                             </Style>
                             <Style TargetType="Image">
@@ -46,19 +46,19 @@
                             </Style>
                         </ResourceDictionary>
                     </Grid.Resources>
-                    <Frame Grid.Column="0" CornerRadius="20">
-                        <Frame.GestureRecognizers>
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 20,20,20,20">
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavigateToNewEDeclerationCommand}" />
-                        </Frame.GestureRecognizers>
+                        </Border.GestureRecognizers>
                         <StackLayout>
                             <Image Source="EDeclerationicon" />
                             <Label HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.eDeclaration}" />
                         </StackLayout>
-                    </Frame>
-                    <Frame Grid.Column="1" CornerRadius="20">
-                        <Frame.GestureRecognizers>
+                    </Border>
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 20,20,20,20">
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding NavigateToPreviousEDeclerationCommand}" />
-                        </Frame.GestureRecognizers>
+                        </Border.GestureRecognizers>
                         <StackLayout>
                             <Image Source="EDeclerationicon" />
                             <Label
@@ -66,7 +66,7 @@
                                 Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
                                 TextColor="#002447" />
                         </StackLayout>
-                    </Frame>
+                    </Border>
                 </Grid>
             </StackLayout>
         </Border>

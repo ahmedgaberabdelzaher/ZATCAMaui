@@ -120,12 +120,12 @@
 
                                 <DataTemplate>
 
-                                    <Frame
+                                    <Border
                                         x:Name="selectedItem"
                                         Padding="10"
                                         BackgroundColor="{Binding QuestionBackgroundColor}"
-                                        BorderColor="#E6E6E6"
-                                        CornerRadius="10"
+                                        Stroke="#E6E6E6"
+                                        StrokeShape="RoundRectangle 10,10,10,10"
                                         HorizontalOptions="FillAndExpand"
                                         VerticalOptions="StartAndExpand">
 
@@ -193,30 +193,30 @@
 
                                         </StackLayout>
 
-                                        <Frame.GestureRecognizers>
+                                        <Border.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
                                                 Command="{Binding SelectedCheckBoxQuestionsCommand}"
                                                 CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
-                                        </Frame.GestureRecognizers>
+                                        </Border.GestureRecognizers>
 
-                                        <Frame.Triggers>
+                                        <Border.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsChecked}"
-                                                TargetType="Frame"
+                                                TargetType="Border"
                                                 Value="true">
                                                 <Setter Property="BackgroundColor" Value="#0996D4" />
                                             </DataTrigger>
                                             <DataTrigger
                                                 Binding="{Binding IsChecked}"
-                                                TargetType="Frame"
+                                                TargetType="Border"
                                                 Value="false">
                                                 <Setter Property="BackgroundColor" Value="Transparent" />
                                             </DataTrigger>
 
-                                        </Frame.Triggers>
+                                        </Border.Triggers>
 
-                                    </Frame>
+                                    </Border>
 
                                 </DataTemplate>
 

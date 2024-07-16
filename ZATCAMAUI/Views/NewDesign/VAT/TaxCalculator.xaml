@@ -197,22 +197,21 @@
                                 ValueText="{Binding Totalnontaxablepurchases}" />
                         </StackLayout>
 
-                        <Frame
+                        <Border
                             Margin="0,27,0,40"
                             Padding="12"
                             BackgroundColor="#0996D4"
-                            CornerRadius="14"
-                            HasShadow="False">
-                            <Frame.GestureRecognizers>
+                            StrokeShape="RoundRectangle 14,14,14,14">
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding CalculateTaxCommand}" />
-                            </Frame.GestureRecognizers>
+                            </Border.GestureRecognizers>
 
                             <Label
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.CalculateTheAmount}"
                                 TextColor="White" />
-                        </Frame>
+                        </Border>
                     </StackLayout>
 
                 </ScrollView>

@@ -27,5 +27,8 @@
         public string ASubmit { get; set; }
         public string Fbnum { get; set; }
         public string ACountry { get; set; }
+        public string AAbsherGuid { get; set; }
+        public string AAbsherOtp { get; set; }
+
     }
 }

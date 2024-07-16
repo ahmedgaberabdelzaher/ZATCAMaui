@@ -74,17 +74,16 @@
 
                                     <BoxView HeightRequest="1" Color="#EBEBEB" />
 
-                                    <Frame
+                                    <Border
                                         Padding="5"
                                         BackgroundColor="#0996D4"
-                                        BorderColor="#0996D4"
-                                        HasShadow="False"
+                                        Stroke="#0996D4"
                                         Opacity=".5">
                                         <Label
                                             FontSize="14"
                                             Text="{x:Static ResourceManager:AppResources.RequestInformation}"
                                             TextColor="White" />
-                                    </Frame>
+                                    </Border>
 
                                     <StackLayout>
 
@@ -258,17 +257,16 @@
                                         <!--  HijriDatePicker  -->
                                     </StackLayout>
 
-                                    <Frame
+                                    <Border
                                         Margin="0,20,0,10"
                                         Padding="12"
                                         BackgroundColor="#0996D4"
-                                        CornerRadius="14"
-                                        HasShadow="False"
+                                        StrokeShape="RoundRectangle 14,14,14,14"
                                         HorizontalOptions="FillAndExpand">
 
-                                        <Frame.GestureRecognizers>
+                                        <Border.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding InquireCommand}" />
-                                        </Frame.GestureRecognizers>
+                                        </Border.GestureRecognizers>
 
                                         <Label
                                             FontFamily="{StaticResource SomarSemiBold}"
@@ -277,7 +275,7 @@
                                             Text="{x:Static ResourceManager:AppResources.Submit}"
                                             TextColor="White"
                                             VerticalOptions="CenterAndExpand" />
-                                    </Frame>
+                                    </Border>
 
                                     <Label
                                         FontSize="16"
@@ -310,17 +308,16 @@
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
 
-                            <Frame
+                            <Border
                                 Padding="17,32,17,32"
-                                BorderColor="#B8BABA"
-                                CornerRadius="14"
-                                HasShadow="False"
+                                Stroke="#B8BABA"
+                                StrokeShape="RoundRectangle 14,14,14,14"
                                 VerticalOptions="StartAndExpand">
                                 <Label
                                     FontSize="16"
                                     Text="{Binding InsuranceCheckList.data}"
                                     TextColor="#002447" />
-                            </Frame>
+                            </Border>
 
                         </Grid>
                     </Border>

@@ -358,20 +358,19 @@
 
                             </StackLayout>
 
-                            <!--  Hint Frame  -->
-                            <Frame
+                            <!--  Hint Border  -->
+                            <Border
                                 Margin="0,10"
                                 Padding="5"
                                 BackgroundColor="#0996D4"
-                                BorderColor="#0996D4"
-                                HasShadow="False"
+                                Stroke="#0996D4"
                                 IsVisible="{Binding IsFilterByBusInformation}"
                                 Opacity=".5">
                                 <Label
                                     FontSize="14"
                                     Text="{x:Static ResourceManager:AppResources.BillInfoInquiryHint}"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
 
                             <StackLayout Margin="0,19,0,0">
 
@@ -675,11 +674,10 @@
                                 Style="{x:StaticResource titleLabel}"
                                 Text="{x:Static ResourceManager:AppResources.Importerinformation}" />
 
-                            <Frame
+                            <Border
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
 
                                 <StackLayout Margin="16">
 
@@ -697,11 +695,10 @@
 
                                         <Grid Grid.Column="1" RowDefinitions="auto">
 
-                                            <Frame
+                                            <Border
                                                 Padding="0"
-                                                BorderColor="#F5BF58"
-                                                CornerRadius="14"
-                                                HasShadow="False"
+                                                Stroke="#F5BF58"
+                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 VerticalOptions="FillAndExpand" />
 
                                             <Label
@@ -728,7 +725,7 @@
 
                                 </StackLayout>
 
-                            </Frame>
+                            </Border>
 
                             <Label
                                 Margin="0,34,0,5"
@@ -742,12 +739,11 @@
 
                                     <DataTemplate>
 
-                                        <Frame
+                                        <Border
                                             Margin="0,10,0,10"
                                             Padding="0"
-                                            BorderColor="LightGray"
-                                            CornerRadius="8"
-                                            HasShadow="False">
+                                            Stroke="LightGray"
+                                            StrokeShape="RoundRectangle 8,8,8,8">
 
                                             <StackLayout Margin="16">
 
@@ -802,7 +798,7 @@
 
 
                                             </StackLayout>
-                                        </Frame>
+                                        </Border>
 
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
@@ -814,11 +810,10 @@
                                 Style="{x:StaticResource titleLabel}"
                                 Text="{x:Static ResourceManager:AppResources.Feedetails}" />
 
-                            <Frame
+                            <Border
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
 
                                 <StackLayout>
                                     <StackLayout Margin="16" BindableLayout.ItemsSource="{Binding DeclarionFeesLst}">
@@ -881,11 +876,10 @@
                                     </StackLayout>
 
                                     <Grid Margin="16">
-                                        <Frame
+                                        <Border
                                             Margin="-16"
                                             BackgroundColor="#0996D4"
-                                            CornerRadius="8"
-                                            HasShadow="False"
+                                            StrokeShape="RoundRectangle 8,8,8,8"
                                             HorizontalOptions="FillAndExpand"
                                             Opacity=".1" />
 
@@ -910,20 +904,19 @@
 
                                 </StackLayout>
 
-                            </Frame>
+                            </Border>
 
-                            <Frame
+                            <Border
                                 Margin="0,10"
                                 Padding="5"
                                 BackgroundColor="#0996D4"
-                                BorderColor="#0996D4"
-                                HasShadow="False"
+                                Stroke="#0996D4"
                                 Opacity=".5">
                                 <Label
                                     FontSize="14"
                                     Text="{x:Static ResourceManager:AppResources.FeesHint}"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
 
                         </StackLayout>
 
@@ -932,11 +925,10 @@
                             Margin="24,55,24,24"
                             IsVisible="{Binding IsStatmentDetailsVisible}">
 
-                            <Frame
+                            <Border
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
 
                                 <Grid
                                     Margin="16,16,16,0"
@@ -1079,23 +1071,22 @@
 
                                 </Grid>
 
-                            </Frame>
+                            </Border>
 
-                            <Frame
+                            <Border
                                 Margin="0,20,0,0"
                                 Padding="12"
                                 BackgroundColor="#0996D4"
-                                CornerRadius="14"
-                                HasShadow="False">
-                                <Frame.GestureRecognizers>
+                                StrokeShape="RoundRectangle 14,14,14,14">
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenFeesDescriptionCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
                                 <Label
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.FeeDescriptions}"
                                     TextColor="#FFFFFF"
                                     VerticalOptions="CenterAndExpand" />
-                            </Frame>
+                            </Border>
 
                         </StackLayout>
 
@@ -1437,29 +1428,27 @@
                                 Text="{x:Static ResourceManager:AppResources.FeeDescriptions}"
                                 TextColor="{StaticResource Primary}" />
 
-                            <Frame
+                            <Border
                                 BackgroundColor="White"
-                                BorderColor="LightGray"
-                                CornerRadius="14"
-                                HasShadow="False"
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 14,14,14,14"
                                 HorizontalOptions="Fill">
 
                                 <Label
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{Binding FeesDescription.data}"
                                     TextColor="#999999" />
-                            </Frame>
+                            </Border>
 
-                            <Frame
+                            <Border
                                 Margin="0,20,0,15"
                                 Padding="12"
                                 BackgroundColor="#0996D4"
-                                CornerRadius="14"
-                                HasShadow="False">
+                                StrokeShape="RoundRectangle 14,14,14,14">
 
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CloseisFeesDescriptionCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
 
                                 <Label
                                     HorizontalOptions="CenterAndExpand"
@@ -1467,7 +1456,7 @@
                                     TextColor="#FFFFFF"
                                     VerticalOptions="CenterAndExpand" />
 
-                            </Frame>
+                            </Border>
                         </StackLayout>
 
                     </Border>

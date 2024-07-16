@@ -195,11 +195,11 @@
 
                     </Grid>
 
-                    <!--  Add new report Frame  -->
-                    <Frame
+                    <!--  Add new report Border  -->
+                    <Border
                         Padding="15"
-                        BorderColor="#EBEBEB"
-                        CornerRadius="12"
+                        Stroke="#EBEBEB"
+                        StrokeShape="RoundRectangle 12,12,12,12"
                         IsVisible="{Binding MyReportsList, Converter={StaticResource ListIsNotNullOrEmptyConverter}}">
 
                         <StackLayout Orientation="Horizontal">
@@ -223,11 +223,11 @@
 
                         </StackLayout>
 
-                        <Frame.GestureRecognizers>
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding AddNewReportCommand}" />
-                        </Frame.GestureRecognizers>
+                        </Border.GestureRecognizers>
 
-                    </Frame>
+                    </Border>
 
                     <!--  MyReports List  -->
                     <CollectionView
@@ -287,13 +287,13 @@
 
                             <DataTemplate>
 
-                                <!--  Report list Frame  -->
+                                <!--  Report list Border  -->
 
-                                <Frame
+                                <Border
                                     x:Name="Item"
                                     Padding="0"
-                                    BorderColor="#EBEBEB"
-                                    CornerRadius="12">
+                                    Stroke="#EBEBEB"
+                                    StrokeShape="RoundRectangle 12,12,12,12">
 
                                     <StackLayout Padding="25,20">
 
@@ -323,73 +323,73 @@
                                                 HorizontalOptions="EndAndExpand"
                                                 VerticalOptions="CenterAndExpand">
 
-                                                <Frame
+                                                <Border
                                                     Padding="5"
                                                     BackgroundColor="#0996D4"
-                                                    BorderColor="#EBEBEB"
-                                                    CornerRadius="15"
+                                                    Stroke="#EBEBEB"
+                                                    StrokeShape="RoundRectangle 14,14,14,14"
                                                     Opacity="0.1">
 
-                                                    <Frame.Triggers>
+                                                    <Border.Triggers>
 
                                                         <!--  Closed status  -->
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="3">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="4">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="17">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="18">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="20">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="21">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="22">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="23">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="24">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="25">
                                                             <Setter Property="BackgroundColor" Value="#62B34F" />
                                                         </DataTrigger>
@@ -398,7 +398,7 @@
                                                         <!--  Open status  -->
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="0">
                                                             <Setter Property="BackgroundColor" Value="#0996D4" />
                                                         </DataTrigger>
@@ -406,7 +406,7 @@
                                                         <!--  Open status  -->
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="1">
                                                             <Setter Property="BackgroundColor" Value="#0996D4" />
                                                         </DataTrigger>
@@ -414,20 +414,20 @@
                                                         <!--  In progress status  -->
                                                         <DataTrigger
                                                             Binding="{Binding reportStatus}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="2">
                                                             <Setter Property="BackgroundColor" Value="#0996D4" />
                                                         </DataTrigger>
 
-                                                    </Frame.Triggers>
+                                                    </Border.Triggers>
 
-                                                </Frame>
+                                                </Border>
 
                                                 <!--  Status Label  -->
-                                                <Frame
+                                                <Border
                                                     Padding="5"
                                                     BackgroundColor="Transparent"
-                                                    CornerRadius="15">
+                                                    StrokeShape="RoundRectangle 14,14,14,14">
 
                                                     <Label
                                                         FontFamily="{StaticResource SomarRegular}"
@@ -543,7 +543,7 @@
 
                                                     </Label>
 
-                                                </Frame>
+                                                </Border>
 
                                             </Grid>
 
@@ -622,14 +622,14 @@
 
                                     </StackLayout>
 
-                                    <Frame.GestureRecognizers>
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer
                                             BindingContext="{Binding Source={x:Reference reportsList}, Path=BindingContext}"
                                             Command="{Binding SelectedReportItemCommand}"
                                             CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                    </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
 
-                                </Frame>
+                                </Border>
 
                             </DataTemplate>
 

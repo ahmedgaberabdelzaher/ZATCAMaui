@@ -73,11 +73,11 @@
                         <!--#endregion Header & close-->
 
                         <!--#region Frame Contains Product list-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,20"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 14,14,14,14"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource CommonTopCurves}"
                             VerticalOptions="FillAndExpand">
@@ -254,7 +254,7 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Contains Product list-->
 
                         <!--#region Fees Details-->

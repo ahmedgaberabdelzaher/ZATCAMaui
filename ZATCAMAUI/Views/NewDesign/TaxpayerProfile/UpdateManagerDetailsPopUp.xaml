@@ -40,7 +40,7 @@
 
                 <BoxView Style="{StaticResource SeparatorStyle}" />
                 <StackLayout Padding="24,16,24,0">
-                    <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ManagerDetailsTitle}" />
+                    <Label Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ManagerDetailsTitle}" />
 
 
                 </StackLayout>
@@ -59,18 +59,18 @@
                                 Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Margin="8" BackgroundColor="White">
                                     <StackLayout Margin="8,0,8,0" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="14"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.IDNumber}" />
 
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
@@ -84,18 +84,18 @@
 
                                     </StackLayout>
                                     <StackLayout Margin="8,0,8,0" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="14"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.ManagerName}" />
 
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
@@ -126,7 +126,7 @@
                                                 Grid.Column="0"
                                                 Margin="8,0,4,0"
                                                 Orientation="Vertical">
-                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ManagerDetailsDob}" />
+                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ManagerDetailsDob}" />
                                                 <StackLayout HorizontalOptions="StartAndExpand">
 
                                                     <Border
@@ -139,7 +139,7 @@
                                                             Orientation="Horizontal">
 
 
-                                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding BirthDt}" />
+                                                            <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding BirthDt}" />
 
                                                             <StackLayout
                                                                 HorizontalOptions="End"
@@ -176,18 +176,18 @@
                                                 Grid.Column="1"
                                                 Margin="8,0,8,0"
                                                 Orientation="Vertical">
-                                                <custom:CustomLabel
+                                                <Label
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="14"
                                                     HorizontalOptions="StartAndExpand"
                                                     Style="{StaticResource CaptionLabelGrey}">
-                                                    <custom:CustomLabel.FormattedText>
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
 
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
                                                 <Border Padding="8" Style="{StaticResource GreyBorderFrame}">
                                                     <custom:GAZTBorderlessEntry
@@ -207,18 +207,18 @@
 
                                     </StackLayout>
                                     <StackLayout Margin="8,0,8,0" Orientation="Vertical">
-                                        <custom:CustomLabel
+                                        <Label
                                             FontFamily="{StaticResource SomarRegular}"
                                             FontSize="14"
                                             HorizontalOptions="StartAndExpand"
                                             Style="{StaticResource CaptionLabelGrey}">
-                                            <custom:CustomLabel.FormattedText>
+                                            <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static ResourceManager:AppResources.Email}" />
 
                                                 </FormattedString>
-                                            </custom:CustomLabel.FormattedText>
-                                        </custom:CustomLabel>
+                                            </Label.FormattedText>
+                                        </Label>
 
                                         <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
                                             <custom:GAZTBorderlessEntry
@@ -240,7 +240,7 @@
                     </listView:SfListView.ItemTemplate>
                 </listView:SfListView>
 
-                <custom:CustomLabel
+                <Label
                     x:Name="NoDataLable"
                     Grid.Row="0"
                     HorizontalOptions="Center"

@@ -42,16 +42,16 @@
                     <Grid ColumnDefinitions="*,15,*" RowDefinitions="auto">
 
                         <!--#region Individula Option-->
-                        <Frame
+                        <Border
                             Grid.Column="0"
                             Margin="0"
                             Padding="0"
-                            CornerRadius="14">
+                            StrokeShape="RoundRectangle 14,14,14,14">
 
-                            <Frame.GestureRecognizers>
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1" />
 
-                            </Frame.GestureRecognizers>
+                            </Border.GestureRecognizers>
 
                             <Grid Grid.Column="0">
 
@@ -105,15 +105,15 @@
 
                             </Grid>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion-->
 
                         <!--#region Entity Option-->
-                        <Frame
+                        <Border
                             Grid.Column="2"
                             Margin="0"
                             Padding="0"
-                            CornerRadius="14">
+                            StrokeShape="RoundRectangle 14,14,14,14">
                             <Grid Grid.Column="2">
 
                                 <Grid.GestureRecognizers>
@@ -169,7 +169,7 @@
                                     </Label>
                                 </StackLayout>
                             </Grid>
-                        </Frame>
+                        </Border>
                         <!--#endregion-->
                     </Grid>
                     <!--#endregion-->
@@ -259,12 +259,12 @@
                         </StackLayout>
 
                         <!--  ADD Button  -->
-                        <Frame
+                        <Border
                             Margin="0,0,0,20"
                             Padding="12"
                             BackgroundColor="White"
-                            BorderColor="#4FBBBD"
-                            CornerRadius="14">
+                            Stroke="#4FBBBD"
+                            StrokeShape="RoundRectangle 14,14,14,14">
                             <Label
                                 FontFamily="{StaticResource FontSomarBold}"
                                 FontSize="16"
@@ -272,11 +272,11 @@
                                 Text="{x:Static ResourceManager:AppResources.AddNewCR}"
                                 TextColor="#4FBBBD"
                                 VerticalOptions="CenterAndExpand" />
-                            <Frame.GestureRecognizers>
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="1" />
 
-                            </Frame.GestureRecognizers>
-                        </Frame>
+                            </Border.GestureRecognizers>
+                        </Border>
 
                     </StackLayout>
                     <!--#endregion-->
@@ -323,10 +323,10 @@
                     <!--#endregion-->
 
                     <!--#region National Address-->
-                    <Frame
+                    <Border
                         Padding="7"
-                        BorderColor="Gray"
-                        CornerRadius="15">
+                        Stroke="Gray"
+                        StrokeShape="RoundRectangle 14,14,14,14">
                         <StackLayout>
                             <Label
                                 Margin="0,10"
@@ -524,7 +524,7 @@
 
                             </Grid>
                         </StackLayout>
-                    </Frame>
+                    </Border>
 
                     <!--#endregion-->
 

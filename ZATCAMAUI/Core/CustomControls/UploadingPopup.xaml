@@ -34,10 +34,10 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
 
-                <!--  Image Frame  -->
-                <Frame
-                    BorderColor="#BCBCBB"
-                    CornerRadius="25"
+                <!--  Image Border  -->
+                <Border
+                    Stroke="#BCBCBB"
+                    StrokeShape="RoundRectangle 25,25,25,25"
                     Style="{StaticResource CommonTopCurves}">
 
                     <StackLayout Spacing="10">
@@ -64,18 +64,18 @@
 
                     </StackLayout>
 
-                    <Frame.GestureRecognizers>
+                    <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SelectedUploadLabelCommand}" CommandParameter="image" />
 
-                    </Frame.GestureRecognizers>
-                </Frame>
+                    </Border.GestureRecognizers>
+                </Border>
 
 
-                <!--  File Frame  -->
-                <Frame
+                <!--  File Border  -->
+                <Border
                     Grid.Column="1"
-                    BorderColor="#BCBCBB"
-                    CornerRadius="25"
+                    Stroke="#BCBCBB"
+                    StrokeShape="RoundRectangle 25,25,25,25"
                     Style="{StaticResource CommonTopCurves}">
 
                     <StackLayout Spacing="10">
@@ -99,11 +99,11 @@
 
                     </StackLayout>
 
-                    <Frame.GestureRecognizers>
+                    <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SelectedUploadLabelCommand}" CommandParameter="file" />
 
-                    </Frame.GestureRecognizers>
-                </Frame>
+                    </Border.GestureRecognizers>
+                </Border>
 
             </Grid>
 

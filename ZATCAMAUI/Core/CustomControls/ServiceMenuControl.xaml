@@ -7,9 +7,9 @@
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
-                <Style TargetType="Frame">
-                    <Setter Property="CornerRadius" Value="15" />
-                    <Setter Property="BorderColor" Value="#DDDDDD" />
+                <Style TargetType="Border">
+                    <Setter Property="StrokeShape" Value="RoundRectangle 15,15,15,15" />
+                    <Setter Property="Stroke" Value="#DDDDDD" />
                     <Setter Property="Padding" Value="15" />
                 </Style>
                 <Style TargetType="Image">

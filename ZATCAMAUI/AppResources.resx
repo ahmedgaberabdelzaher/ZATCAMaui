@@ -11013,4 +11013,13 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Maximum no. of 9 attachments can be uploaded.</value>
   </data>
    <!--end of VAT Refund Prod-->
+      <!--Captcha Resources-->
+  <data name="CaptchaCode" xml:space="preserve">
+    <value>Captcha Code</value>
+  </data>
+  <data name="EnterCaptchaMsg" xml:space="preserve">
+    <value>Please enter captcha code.</value>
+  </data>
+  <!-- END of Captcha Resources-->
+
 </root>

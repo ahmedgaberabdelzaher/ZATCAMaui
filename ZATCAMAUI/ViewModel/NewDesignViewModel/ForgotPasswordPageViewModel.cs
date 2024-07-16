@@ -10,6 +10,7 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
+using Newtonsoft.Json.Linq;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -22,6 +23,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         private string captcha = string.Empty;
         private string GUID = string.Empty;
+        //public ICommand OnSubmitClicked { get; set; }
+        //public ICommand OnCaptchaRegenerateClicked { get; set; }
+        //public ICommand OnChangePasswordSubmitClicked { get; set; }
         public Command OnResendOTPClicked { get; set; }
         public Command OnValidateOTPClicked { get; set; }
         public Command OnUserNameCardClicked { get; set; }
@@ -31,6 +35,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public Command OnLogInClick { get; set; }
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
+        //public ICommand OnLoginPageLinkClicked { get; set; }
+        //public ICommand BackButtonClicked { get; set; }
         public ICommand OnContinueClick { get; set; }
 
         public int currentAttempts = 0;
@@ -346,7 +352,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        private bool _userIDLayoutVisibility = true;
+        private bool _userIDLayoutVisibility = false;
         public bool UserIDLayoutVisibility
         {
             get
@@ -381,7 +387,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
 
-    
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                if (_isLoading == value) return;
+
+                _isLoading = value;
+                RaisePropertyChanged(() => IsLoading);
+            }
+        }
 
 
         // * OTP Verification Properties
@@ -552,14 +572,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userNameLayoutVisibility == value) return;
 
                 _userNameLayoutVisibility = value;
-                if (_userNameLayoutVisibility)
-                {
-                    UserIDLayoutVisibility = false;
-                }
-                else
-                {
-                    UserIDLayoutVisibility = true;
-                }
+                //if (_userNameLayoutVisibility)
+                //{
+                //    UserIDLayoutVisibility = false;
+                //}
+                //else
+                //{
+                //    UserIDLayoutVisibility = true;
+                //}
                 RaisePropertyChanged(() => UserNameLayoutVisibility);
             }
         }
@@ -937,8 +957,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TINs");
             }
         }
-        private string _txtSelectedUsernameAndPassword;
-        public string TxtSelectedUsernameAndPassword
+        private String _txtSelectedUsernameAndPassword;
+        public String TxtSelectedUsernameAndPassword
         {
             get
             {
@@ -952,8 +972,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TxtSelectedUsernameAndPassword");
             }
         }
-        private string _txtSelectTaxpayerType;
-        public string TxtSelectTaxpayerType
+        private String _txtSelectTaxpayerType;
+        public String TxtSelectTaxpayerType
         {
             get
             {
@@ -967,8 +987,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TxtSelectTaxpayerType");
             }
         }
-        private string _txtTIN;
-        public string TxtTIN
+        private String _txtTIN;
+        public String TxtTIN
         {
             get
             {
@@ -1598,10 +1618,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged(nameof(IndividualOrPersonalBusinessTextColor));
             }
         }
+        private string imageBase64;
+        public string ImageBase64
+        {
+            get { return imageBase64; }
+            set
+            {
+                imageBase64 = value;
+                RaisePropertyChanged("ImageBase64");
 
+                Image = ImageSource.FromStream(
+                    () => new MemoryStream(Convert.FromBase64String(imageBase64)));
+            }
+        }
+
+        private ImageSource image;
+        public ImageSource Image
+        {
+            get { return image; }
+            set
+            {
+                image = value;
+                RaisePropertyChanged("Image");
+            }
+        }
         #endregion
         #region Constructor
-        public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
             if (navigationService == null)
             {
@@ -1614,7 +1657,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             _dialogService = dialogService;
 
-          
+
+
+
             OnContinueClick = new Command(async () =>
             {
                 if (StartPage == 2)
@@ -1637,7 +1682,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             else
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
-
                             }
                         }
 
@@ -1661,14 +1705,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             else
                             {
                                 IDNumber = Email;
-                                if (!string.IsNullOrEmpty(Email))
+                                if (!string.IsNullOrEmpty(Email)) //Forgot Password
                                 {
-                                    await SendOTPToRegisterMobileNumber();
+                                    if (!string.IsNullOrEmpty(Captcha))
+                                    {
+                                        await SendOTPToRegisterMobileNumber();
+                                    }
+                                    else
+                                    {
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.EnterCaptchaMsg));
+                                    }
                                 }
                                 else
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TypeYourUserName));
-
                                 }
                             }
 
@@ -1686,8 +1736,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         else
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
-
-                           
                         }
                     }
                     else if (StartPage == 3)
@@ -1701,7 +1749,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             else
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNewpasswordandconfirmpassworddoesnotmatch));
- 
                             }
 
                         }
@@ -1709,32 +1756,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PasswordValidationMesseg));
 
-
                         }
                     }
 
                 }
-                else if (IsUserNameCardTapped == true)
+                else if (IsUserNameCardTapped == true) // Forgot Username
                 {
                     if (!string.IsNullOrEmpty(IDNumber))
                     {
-                        await SendIDNumberToUsernameEmail();
+                        if (!string.IsNullOrEmpty(Captcha))
+                        {
+                            await SendIDNumberToUsernameEmail();
+                        }
+                        else
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.EnterCaptchaMsg));
+                        }
                     }
                     else
                     {
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDTypeyourIDNumber));
-
-
                     }
-
-
                 }
                 else if (IsUserNameCardTapped == false && IsPasswordCardTapped == false)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZPleaseSelect));
 
+                }
+                else
+                {
 
                 }
+
+
 
             });
 
@@ -1782,8 +1836,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             });
 
-
-
         }
         #endregion Constructor
         #region Method
@@ -1810,7 +1862,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             else
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Pleaseenterconfirmationcodesenttoyourmobilenumber));
-
 
             }
         }
@@ -1847,6 +1898,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             if (SelectedForgotType.id.Equals("2"))
             {
                 IDNumberOrCorporateIDOrUserName = AppResources.UserName;
+                //MainThread.BeginInvokeOnMainThread(() => {
                 IsTaxPayerTypeEnable = false;
                 SelectedTaxPayerType = null;
                 IsIDTypeVisible = false;
@@ -1862,7 +1914,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             if (SelectedTaxPayerType.id.Equals("1"))
             {
-                if (!SelectedForgotType.id.Equals("2"))
+                if (!(SelectedForgotType.id.Equals("2")))
                 {
                     IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
                 }
@@ -1927,99 +1979,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             return IsAllDataAvailable;
         }
-        public StringBuilder GetCaptcha()
+        
+        public async Task GetCaptchImage(String ApplicationCode)
         {
-            StringBuilder Captcha;
-            try
+            IsLoading = true;
+            string result = await WebServiceManager.GetCaptchaImage(ApplicationCode, GUID);
+            JObject data = JObject.Parse(result);
+            if (data != null)
             {
-                Random random = new Random();
-                string combination = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-                StringBuilder captcha = new StringBuilder();
-                for (int i = 0; i < 6; i++)
-                    captcha.Append(combination[random.Next(combination.Length)]);
-                //Session["captcha"] = captcha.ToString();
-                //imgCaptcha.ImageUrl = "~/Captcha/GenerateCaptcha.aspx?" + DateTime.Now.Ticks.ToString();
-                Captcha = captcha;
-            }
-            catch
-            {
-                throw;
-            }
-            return Captcha;
-        }
-        public bool ValidateCaptcha()
-        {
-            bool isValidCaptcha = false;
-            isValidCaptcha = EnteredCaptchaValue.Equals(Captcha);
-            if (EnteredCaptchaValue.Equals(Captcha))
-            {
-                isValidCaptcha = true;
-                EnteredCaptchaValue = string.Empty;
-            }
-            else
-            {
-                // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
-                isValidCaptcha = false;
-            }
-            return isValidCaptcha;
-        }
-        public async Task GetCaptchAndGUID()
-        {
-            try
-            {
-
-                IsLoading = true;
-                Enabled = false;
-
-
-                string lang = UtilityManager.GetLanguageParameter();
-                string st = ZATCAConstants.CaptchaAndGUID;
-                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
-                Metadata metadata = new Metadata();
-                metadata.id = st;
-                metadata.uri = st;
-                metadata.type = type;
-
-                GetCaptcha d = new GetCaptcha();
-                d.__metadata = metadata;
-                d.Captcha = "";
-                d.Guid = "";
-                d.Taxpayer = "";
-                d.Refresh = "";
-                d.Application = "FPWD";
-
-                forgotPasswordOTP.d = d;
-                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
-                {
-                    captcha = forgotPasswordOTP.d.Captcha;
-                    GUID = forgotPasswordOTP.d.Guid;
-                    IsAPICalledSuccessfully = true;
-                }
-                else
-                {
-
-                }
-
-
-                IsLoading = false;
+                ImageBase64 = data.GetValue("cval").ToString();
+                GUID = data.GetValue("lgid").ToString();
+                IsAPICalledSuccessfully = true;
+                Captcha = string.Empty;
             }
 
-            catch (InternetException ex)
-            {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-
-                    SetIDNumberEnability = true;
-                    IDNumber = string.Empty;
-                });
-            }
+            IsLoading = false;
         }
         private async Task SendOTPToRegisterMobileNumber()
         {
@@ -2065,7 +2039,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         d.NewPwd = "";
                         d.CnfPwd = "";
                         d.Application = "FPWD";
-                        d.Captcha = captcha;
+                        d.Captcha = Captcha;
                         d.Guid = GUID;
                         forgotPasswordOTP.d = d;
                         forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(forgotPasswordOTP);
@@ -2093,7 +2067,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                             MobileNumber = forgotPasswordOTP.d.MobileNo;
                             OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
-
+                            Captcha = forgotPasswordOTP.d.Captcha;
                         }
 
                     }
@@ -2101,7 +2075,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         IsAPICalledSuccessfully = false;
                         SetIDNumberEnability = true;
-                        IDNumber = string.Empty;
+                        IDNumber = String.Empty;
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     }
                     catch (Exception)
@@ -2119,12 +2093,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
+                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
 
                     SetIDNumberEnability = true;
-                    IDNumber = string.Empty;
+                    IDNumber = String.Empty;
+                    // UserIDLayoutVisibility = true;
                 });
             }
         }
@@ -2256,7 +2232,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                     OTPSecondDigit = string.Empty;
                                     OTPThirdDigit = string.Empty;
                                     OTPFourthDigit = string.Empty;
-                                    string message = string.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
+                                    String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
                                 });
@@ -2286,7 +2262,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (InternetException ex)
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2323,7 +2298,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     d.Minutes = 0;
                     d.Name = "";
                     d.Attempts = 0;
-                    d.Captcha = captcha;
+                    d.Captcha = Captcha;
                     d.Guid = GUID;
                     d.NewPwd = "";
                     d.CnfPwd = "";
@@ -2335,11 +2310,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                     if (forgotPassword?.d != null)
                     {
-                        //IsAPICalledSuccessfully = true;
-                        //RecoverUserNameLayout = true;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await SendUserNameToRegidteredEmail();
+
+
                         });
                     }
                     else
@@ -2362,6 +2337,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
+                //   await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2420,6 +2396,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
+                            //  _navigationService.NavigateTo(App.GAZTNewDesignRecoverUsername);
                             await Application.Current.MainPage.Navigation.PopModalAsync(true);
                             await Application.Current.MainPage.Navigation.PushModalAsync(new GAZTNewDesignRecoverUsernamePageView());
                         });
@@ -2443,6 +2420,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
+                //   await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2494,10 +2472,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         d.Minutes = 0;
                         d.Name = "";
                         d.Attempts = 0;
-                        d.Captcha = captcha;
+                        d.Captcha = Captcha;
                         d.Guid = GUID;
                         d.Application = "FPWD";
-                        // d.otPasswordOTP.d.Dob = "/Date(1576886400000)/";
                         d.NewPwd = NewPassword;
                         d.CnfPwd = ConfirmPassword;
                         d.RdBt = "P";
@@ -2582,7 +2559,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             break;
                         }
                     }
-
                     _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
                     _navigation.NavigationStack.ToList().Clear();
 
@@ -2807,7 +2783,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             RecoverPasswordLayout = false;
             VerificationCodeVisibility = false;
             ForgotUserNameCardLayoutVisibility = false;
-            UserIDLayoutVisibility = true;
+            UserIDLayoutVisibility = false;
             DefaultCardLayoutVisibility = true;
             UserNameLayoutVisibility = false;
             IDNumber = string.Empty;
@@ -2845,6 +2821,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
         {
             countDownSeconds--;
+
 
             if (countDownSeconds <= 9 && countDownSeconds > 0)
                 LblCountDownTimer = "0:0" + countDownSeconds.ToString();
@@ -2888,7 +2865,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         private bool CheckOnlyNumber(char letter)
         {
-            if (letter >= 48 && letter <= 57)
+            if ((letter >= 48 && letter <= 57))
             {
                 return true;
             }

@@ -92,10 +92,10 @@
                             WidthRequest="20" />
 
                         <!--#region Frame Contains Fees-->
-                        <Frame
+                        <Border
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 14,14,14,14"
                             Style="{StaticResource CommonTopCurves}">
 
                             <!--  Frame Content  -->
@@ -189,7 +189,7 @@
                                 </Grid>
                                 <!--#endregion Payment Values-->
                             </StackLayout>
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Contains Fees-->
 
                         <!--#region Payment Cards-->

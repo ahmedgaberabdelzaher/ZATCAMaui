@@ -22,14 +22,20 @@ namespace ZATCAMAUI.Core.Helper
         public static string PreProdPaymentSapClinet = "500";
         public static string ProdPaymentSapClinet = "500";
 
+        /* Captcha Application codes  */
+        public static string VTIA = "C1"; //VAT Signup
+        public static string PUSR = "C2"; //Establishment Signup
+        public static string FPWD = "C3"; //Forgot Password and Unlock Account
+        public static string FUSR = "C4"; //Forgot Username
+
         public static string DevBaseUrlForODataServices = "https://sapgatewayd.zatca.gov.sa:443";
         public static string DevBaseUrlForAuthentication = "https://logind.zatca.gov.sa:443";
 
         public static string QABaseUrlForODataServices = "https://sapgatewayqa.zatca.gov.sa";
-        public static string QABaseUrlForAuthentication = "https://loginqa.zatca.zatca.sa:443";
+        public static string QABaseUrlForAuthentication = "https://loginqa.zatca.gov.sa:443";
 
         public static string UatBaseUrlForODataServices = "https://sapgatewayuat.zatca.gov.sa";
-        public static string UatBaseUrlForAuthentication = "https://loginu.gazt.zatca.sa";
+        public static string UatBaseUrlForAuthentication = "https://loginu.zatca.gov.sa";
 
         public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.zatca.gov.sa";
         public static string PreProdBaseUrlForAuthentication = "https://logint.zatca.gov.sa";
@@ -52,6 +58,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string LanguageCookieNameForLogin = "langMobile";
 
         #endregion
+
         /*
         public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
@@ -65,21 +72,50 @@ namespace ZATCAMAUI.Core.Helper
            public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
        */
 
+
+        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = DevDomainForCookies;
+        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
+        //public static string CaptchaBaseUrl = DevBaseUrlForAuthentication;
+
+        //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = QADomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        //public static string CaptchaBaseUrl = QABaseUrlForAuthentication;
+
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
         /*
-        public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = PreprodDomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-    */
+                public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;/////3100047063
+                public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+                public static string DomainUrlForCookies = PreprodDomainForCookies;
+                public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+           */
         public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = ProdDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        public static string CaptchaBaseUrl = ProdBaseUrlForAuthentication;
 
+
+
+        //public static string CaptchaBaseUrl = UatBaseUrlForAuthentication;
+
+        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = PreprodDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        //public static string CaptchaBaseUrl = PreProdBaseUrlForAuthentication;
+
+        //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = ProdDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        //public static string CaptchaBaseUrl = ProdBaseUrlForAuthentication;
 
 
 
@@ -91,6 +127,10 @@ namespace ZATCAMAUI.Core.Helper
         //https://sapgatewayqa.gazt.gov.sa/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165
 
         public static string CaptchaAndGUID = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CREATE_CAPTCHA_SRV/HeaderSet";
+        public static string GetAbsherPassword = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/GetAbsherOTPSet";//PenTest
+        public static string ValidateAbsher = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/ValidateAbsherOTPSet";
+        public static string GAZTSiguupValidateIDTypesDeclZakat = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/taxpayer_nameSet";//PENTEST Chnage
+
         public static string ForgotPasswordServiceName = "ZDP_FRGT_USRNM_PWD_SRV";// service name has been used in Metadata in ForgotUserNamePassword Page
         public static string JSONContentType = "application/json";
         public static string GAZTSOAPWebRequestForAuthenticationService = BaseUrlOfAuthentication + "/local~mblgapi/AuthenticatedService";
@@ -123,7 +163,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string GAZTDeteleAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
         public static string GAZTDeteleAttachmentNew = BaseUrlOfODataServices + "/sap/opu/odata/SAP/";
         public static string GAZTGetVATDeclarationCalculationDataUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum=";
-        public static string GAZTGetSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=enabled&sap-language=í";
+        public static string GAZTGetSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=enabled&sap-language=’";
         public static string GAZTGetZakatReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet(Fbnumz='";
         public static string GAZTGetZakatReturnList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='";
         public static string GAZTSaveEstimatedZaktReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZDP_FZ12_SRV/HeaderSet?saml2=enabled&sap-language=";
@@ -372,8 +412,8 @@ namespace ZATCAMAUI.Core.Helper
         public static string GetVATObjViewApplicationDREGSuspensionReasonSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetReasonSet?$filter=TxnTp eq 'VT_SUSP' and Lang eq 'E'&$format=json";
 
         public static string GetVATObjSuspensionDetailSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=";
-
         public static string GetVATDeRegistrationDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_DECLARE_SRV/DeclareSet(Fbnum=";
+
         #endregion
 
 
@@ -483,6 +523,9 @@ namespace ZATCAMAUI.Core.Helper
         public static string GetIBANAcoountFormGUID = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanListSet(Fbnum='')?sap-language=";
         #endregion
 
+        #region Image captcha
+        public static string GAZTGetCaptchaImage = CaptchaBaseUrl + "/captcha/api/code?aId="; //1 - C1. 1. Refresh - return previous LGID
+        #endregion
         public static string GAZTChatPartialUrlen = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/en/index_PROD.html";
         public static string GAZTChatPartialUrlar = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/ar/index_PROD.html";
 
@@ -574,147 +617,147 @@ namespace ZATCAMAUI.Core.Helper
             {"",""},
       {
         "90701",
-  "ÂÌ∆… «·« ’«·«  Ê«·›÷«¡ Ê«· ﬁ‰Ì…"
+  "هيئة الاتصالات والفضاء والتقنية"
       },
                    {
             "90702",
- "Ê“«—… «· Ã«—…"
+ "وزارة التجارة"
                   },
                   {
             "90703",
- "Ê“«—… «·’Õ…"
+ "وزارة الصحة"
                   },
                   {
             "90704",
- " Ê“«—… «·≈⁄·«„"
+ " وزارة الإعلام"
                   },
                   {
             "90705",
- " Ê“«—… «·»Ì∆… Ê«·„Ì«Â Ê«·“—«⁄…"
+ " وزارة البيئة والمياه والزراعة"
                   },
                   {
             "90706",
- " Ê“«—… «·‘ƒÊ‰ «·»·œÌ… Ê«·ﬁ—ÊÌ…"
+ " وزارة الشؤون البلدية والقروية"
                   },
                   {
             "90707",
- " Ê“«—… «· ⁄·Ì„"
+ " وزارة التعليم"
                   },
                   {
             "90708",
- " «·„ƒ””… «·⁄«„… ·· œ—Ì» «· ﬁ‰Ì Ê«·„Â‰Ì"
+ " المؤسسة العامة للتدريب التقني والمهني"
                   },
                   {
             "90709",
- " Ê“«—… «·„Ê«—œ «·»‘—Ì… Ê«· ‰„Ì… «·«Ã „«⁄Ì…"
+ " وزارة الموارد البشرية والتنمية الاجتماعية"
                   },
                   {
             "90710",
- " Ê“«—… «·‘ƒÊ‰ «·≈”·«„Ì… Ê«·√Êﬁ«› Ê«·œ⁄Ê… Ê«·≈—‘«œ"
+ " وزارة الشؤون الإسلامية والأوقاف والدعوة والإرشاد"
                   },
                   {
             "90711",
- " Ê“«—… «·ÕÃ Ê«·⁄„—…"
+ " وزارة الحج والعمرة"
                   },
                   {
             "90712",
- " Ê“«—… «·«” À„«—"
+ " وزارة الاستثمار"
                   },
                   {
             "90713",
- " «·‘—ﬂ… «·”⁄ÊœÌ… ··ﬂÂ—»«¡"
+ " الشركة السعودية للكهرباء"
                   },
                   {
             "90714",
- " „ƒ””… «·‰ﬁœ «·⁄—»Ì «·”⁄ÊœÌ"
+ " مؤسسة النقد العربي السعودي"
                   },
                   {
             "90715",
- " «·ÂÌ∆… «·⁄«„… ··ÿÌ—«‰ «·„œ‰Ì"
+ " الهيئة العامة للطيران المدني"
                   },
                   {
             "90716",
- " Ê“«—… «·œ«Œ·Ì…"
+ " وزارة الداخلية"
                   },
                   {
             "90717",
- " Ê“«—… «·‰ﬁ·"
+ " وزارة النقل"
                   },
                   {
             "90719",
- " ‰›” «·ÃÂ… «·ÕﬂÊ„Ì…"
+ " نفس الجهة الحكومية"
                   },
                   {
             "90721",
- " «·√„«‰« "
+ " الأمانات"
                   },
                   {
             "90722",
- " «·ÂÌ∆… «·”⁄ÊœÌ… ··„Õ«”»Ì‰ «·ﬁ«‰Ê‰ÌÌ‰"
+ " الهيئة السعودية للمحاسبين القانونيين"
                   },
                   {
             "90723",
- " Ê“«—… «·”Ì«Õ…"
+ " وزارة السياحة"
                   },
                   {
             "90725",
- " Ê“«—… «·⁄œ·"
+ " وزارة العدل"
                   },
                   {
             "90729",
- " «·ÂÌ∆… «·”⁄ÊœÌ… ··„Â‰œ”Ì‰"
+ " الهيئة السعودية للمهندسين"
                   },
                   {
             "90724",
- " Ê“«—… «·’‰«⁄… Ê«·À—Ê… «·„⁄œ‰Ì…"
+ " وزارة الصناعة والثروة المعدنية"
                   },
                   {
             "90740",
- " Ê“«—… «·—Ì«÷…"
+ " وزارة الرياضة"
                   },
                   {
             "90731",
- " «·ÂÌ∆… «·”⁄ÊœÌ… ··ÕÌ«… «·›ÿ—Ì…"
+ " الهيئة السعودية للحياة الفطرية"
                   },
                   {
             "90732",
- " «·ÂÌ∆… «·”⁄ÊœÌ… ··„œ‰ «·’‰«⁄Ì… Ê„‰«ÿﬁ «· ﬁ‰Ì…"
+ " الهيئة السعودية للمدن الصناعية ومناطق التقنية"
                   },
                   {
             "90733",
- " «·ÂÌ∆… «·⁄«„… ··√—’«œ ÊÕ„«Ì… «·»Ì∆…"
+ " الهيئة العامة للأرصاد وحماية البيئة"
                   },
                   {
             "90735",
- "«·ÂÌ∆… «·⁄«„… ··€–«¡ Ê«·œÊ«¡"
+ "الهيئة العامة للغذاء والدواء"
                   },
                   {
             "90736",
- " «·ÂÌ∆… «·⁄«„… ··„Ê«‰∆"
+ " الهيئة العامة للموانئ"
                   },
                   {
             "90737",
- " ÂÌ∆… «·”Êﬁ «·„«·Ì…"
+ " هيئة السوق المالية"
                   },
                   {
             "90738",
- " ÂÌ∆…  ‰ŸÌ„ «·ﬂÂ—»«¡ Ê«·≈‰ «Ã «·„“œÊÃ"
+ " هيئة تنظيم الكهرباء والإنتاج المزدوج"
                   },
                   {
             "90739",
- " Ê“«—… «·√”ﬂ«‰"
+ " وزارة الأسكان"
                   },
                   {
             "90741",
- " Ê“«—… «·ÿ«ﬁ…"
+ " وزارة الطاقة"
                   },
                   {
             "90742",
- "ÂÌ∆… «·≈⁄·«„ «·„—∆Ì Ê«·„”„Ê⁄"
+ "هيئة الإعلام المرئي والمسموع"
                   },
                   {
             "90718",
- " √Œ—Ï"
+ " أخرى"
                   },
         };
 

@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
@@ -1351,6 +1352,70 @@
                                         </Border>
 
                                     </StackLayout>
+
+                                     <StackLayout>
+
+                                        <Label
+                                            Style="{StaticResource CardLabelBlack}"
+                                            HorizontalOptions="Start" >
+
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.CaptchaCode}" />
+                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+
+                                        </Label>
+
+                                        <inputLayout:SfTextInputLayout  
+                                            ContainerType="Outlined"
+                                            OutlineCornerRadius="10"
+                                            Stroke="{StaticResource Primary}"
+                                            Hint="{x:Static ResourceManager:AppResources.CaptchaCode}" 
+                                            HorizontalOptions="FillAndExpand"
+                                            LeadingViewPosition="Inside"
+                                            HasError="{Binding FrameCaptchaError}" 
+                                            InputViewPadding="16,0,16,0" >
+
+                                             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                                <inputLayout:LabelStyle TextColor="#B00020" />
+                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarLight}"
+                                                Text="{Binding Captcha}"
+                                                Placeholder="{x:Static ResourceManager:AppResources.CaptchaCode}" 
+                                                FontSize="Small"
+                                                Keyboard="Plain"
+                                                Style="{StaticResource DefaultEntry}"/>
+
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <StackLayout Orientation="Horizontal"
+                                                             Spacing="5">
+
+                                                    <Image Source="{Binding Path=Image}"
+                                                           HeightRequest="80"
+                                                           WidthRequest="150"/>
+
+                                                    <Image >
+                                                        <Image.Source>
+                                                            <FontImageSource FontFamily="UserIconFont"
+                                                                            Color="{StaticResource SecondaryNew}" Size="32"
+                                                                            Glyph="{x:Static FontImage:IconFonts.RefreshCircle}"/>
+                                                        </Image.Source>
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="RefreshCaptchaClicked" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+
+                                                </StackLayout>
+
+                                            </inputLayout:SfTextInputLayout.TrailingView>
+
+                                        </inputLayout:SfTextInputLayout>
+           
+                                     </StackLayout>
 
                                 </StackLayout>
 

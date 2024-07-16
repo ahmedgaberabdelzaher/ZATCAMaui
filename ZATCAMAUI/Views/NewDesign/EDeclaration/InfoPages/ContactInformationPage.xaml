@@ -189,16 +189,16 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Phone Label  -->
-                                <controls:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                    <controls:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </controls:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                </controls:CustomLabel>
+                                </Label>
 
                                 <!--  Phone Entry  -->
                                 <inputLayout:SfTextInputLayout
@@ -225,7 +225,7 @@
                                             Spacing="0"
                                             WidthRequest="45">
 
-                                            <controls:CustomLabel
+                                            <Label
                                                 FontSize="14"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{Binding SubmitModel.travelerDeclaration.CountryCode}"
@@ -256,16 +256,16 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Email Label  -->
-                                <controls:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                    <controls:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </controls:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                </controls:CustomLabel>
+                                </Label>
 
                                 <!--  Email Entry  -->
                                 <inputLayout:SfTextInputLayout
@@ -292,16 +292,16 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Address Label  -->
-                                <controls:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                    <controls:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </controls:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                </controls:CustomLabel>
+                                </Label>
 
                                 <!--  Address Entry  -->
                                 <inputLayout:SfTextInputLayout

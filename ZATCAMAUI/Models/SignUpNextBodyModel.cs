@@ -65,5 +65,13 @@ namespace ZATCAMAUI.Models
         [DataMember]
 
         public string ACountry { get; set; }
+
+        [DataMember]
+
+        public string AAbsherGuid { get; set; } = "";
+        [DataMember]
+
+        public string AAbsherOtp { get; set; } = "";
+
     }
 }

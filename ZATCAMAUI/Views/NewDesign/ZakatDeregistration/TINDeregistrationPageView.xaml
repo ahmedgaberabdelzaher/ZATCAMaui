@@ -1609,12 +1609,11 @@
                                             Text="{Binding FieldTitle}"
                                             VerticalTextAlignment="Start" />
 
-                                        <Frame
+                                        <Border
                                             Margin="0,10,0,0"
                                             Padding="12"
-                                            BorderColor="#B1B1B1"
-                                            CornerRadius="15"
-                                            HasShadow="False"
+                                            Stroke="#B1B1B1"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             HeightRequest="30">
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:GAZTBorderlessEntry
@@ -1638,13 +1637,13 @@
                                                     </Image.Source>
                                                 </Image>
                                             </StackLayout>
-                                            <Frame.GestureRecognizers>
+                                            <Border.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     CommandParameter="{Binding .}"
                                                     NumberOfTapsRequired="1"
                                                     Tapped="AddAttachment_Tapped" />
-                                            </Frame.GestureRecognizers>
-                                        </Frame>
+                                            </Border.GestureRecognizers>
+                                        </Border>
                                         <Label
                                             Margin="0,10,0,0"
                                             HorizontalOptions="StartAndExpand"

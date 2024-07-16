@@ -1030,9 +1030,6 @@
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
 
-                                            <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Center" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                       HasShadow="False">
-                                            </Frame>-->
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"

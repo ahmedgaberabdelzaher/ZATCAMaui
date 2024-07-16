@@ -356,11 +356,10 @@
                                             Style="{StaticResource SectionTitleBlack}"
                                             Text="{Binding NoOfInstalments}" />
 
-                                        <Frame
+                                        <Border
                                             Padding="0"
                                             BackgroundColor="Transparent"
-                                            CornerRadius="10"
-                                            HasShadow="False">
+                                            StrokeShape="RoundRectangle 10,10,10,10">
                                             <StackLayout>
                                                 <Slider
                                                     Margin="5,5,5,10"
@@ -374,7 +373,7 @@
                                                     Value="{Binding NoOfInstalments}" />
 
                                             </StackLayout>
-                                        </Frame>
+                                        </Border>
                                         <StackLayout Padding="10" Orientation="Horizontal">
 
 
@@ -407,12 +406,11 @@
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
 
-                                <Frame
+                                <Border
                                     Grid.Row="0"
                                     Margin="0,20,0,0"
                                     Padding="0"
-                                    CornerRadius="12"
-                                    HasShadow="False"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     HorizontalOptions="FillAndExpand"
                                     IsVisible="False"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}">
@@ -429,7 +427,7 @@
                                             Style="{StaticResource SectionTitleBlack}"
                                             Text="{Binding TotalAmountSAR, Converter={StaticResource commaSeparatorConverter}}" />
                                     </StackLayout>
-                                </Frame>
+                                </Border>
 
                                 <Grid Grid.Row="1">
 
@@ -1008,12 +1006,11 @@
                                                         Margin="0,20,0,0"
                                                         VerticalOptions="End">
 
-                                                        <Frame
+                                                        <Border
                                                             Grid.Row="0"
                                                             Margin="0,0,0,0"
                                                             Padding="0"
-                                                            CornerRadius="12"
-                                                            HasShadow="False"
+                                                            StrokeShape="RoundRectangle 12,12,12,12"
                                                             HorizontalOptions="FillAndExpand"
                                                             Style="{StaticResource SfStyleForZakatPlanGreen}">
                                                             <StackLayout
@@ -1030,7 +1027,7 @@
                                                                     Text="{Binding VATPenalityAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}" />
                                                             </StackLayout>
 
-                                                        </Frame>
+                                                        </Border>
 
                                                     </Grid>
 
@@ -1039,12 +1036,11 @@
                                                         Grid.Column="0"
                                                         Margin="0,10,0,0"
                                                         VerticalOptions="End">
-                                                        <Frame
+                                                        <Border
                                                             Grid.Row="0"
                                                             Margin="0,20,0,0"
                                                             Padding="0"
-                                                            CornerRadius="12"
-                                                            HasShadow="False"
+                                                            StrokeShape="RoundRectangle 12,12,12,12"
                                                             HorizontalOptions="FillAndExpand"
                                                             Style="{StaticResource SfStyleForZakatPlanGreen}">
                                                             <StackLayout
@@ -1060,7 +1056,7 @@
                                                                     Style="{StaticResource SectionTitleBlack}"
                                                                     Text="{Binding VATBillDueAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}" />
                                                             </StackLayout>
-                                                        </Frame>
+                                                        </Border>
                                                     </Grid>
 
 
@@ -1595,12 +1591,11 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Margin="0,10,0,0">
-                                    <Frame
+                                    <Border
                                         Grid.Row="0"
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        CornerRadius="12"
-                                        HasShadow="False"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                         <Grid Padding="10,3,10,2" HorizontalOptions="FillAndExpand">
@@ -1627,7 +1622,7 @@
                                                 Style="{StaticResource SectionTitleBlackBold}"
                                                 Text="{Binding MonthlyInstalment, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}" />
                                         </Grid>
-                                    </Frame>
+                                    </Border>
                                 </Grid>
 
                                 <Grid
@@ -1635,12 +1630,11 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2"
                                     Margin="0,10,0,0">
-                                    <Frame
+                                    <Border
                                         Grid.Row="0"
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        CornerRadius="12"
-                                        HasShadow="False"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                         <StackLayout
@@ -1656,7 +1650,7 @@
                                                 Style="{StaticResource SectionTitleBlackBold}"
                                                 Text="{Binding VATPenalityAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}" />
                                         </StackLayout>
-                                    </Frame>
+                                    </Border>
                                 </Grid>
 
 
@@ -1667,12 +1661,11 @@
                                     Grid.ColumnSpan="2"
                                     Margin="0,10,0,0">
 
-                                    <Frame
+                                    <Border
                                         Grid.Row="0"
                                         Margin="0,10,0,0"
                                         Padding="0"
-                                        CornerRadius="12"
-                                        HasShadow="False"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand"
                                         Style="{StaticResource SfStyleForZakatPlanGreen}">
                                         <StackLayout
@@ -1688,7 +1681,7 @@
                                                 Style="{StaticResource SectionTitleBlackBold}"
                                                 Text="{Binding VATBillDueAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}" />
                                         </StackLayout>
-                                    </Frame>
+                                    </Border>
                                 </Grid>
 
                                 <Grid

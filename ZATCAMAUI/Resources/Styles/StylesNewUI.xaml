@@ -341,19 +341,17 @@
         <Setter Property="Margin" Value="0,10,0,0" />
     </Style>
 
-    <Style x:Key="InputTableFrameStyle" TargetType="Frame">
-        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+    <Style x:Key="InputTableFrameStyle" TargetType="Border">
+        <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 8,8,8,8" />
         <Setter Property="Margin" Value="10" />
-        <Setter Property="HasShadow" Value="False" />
     </Style>
     <Style x:Key="GreyBorderFrameWithShadow" TargetType="Border">
         <!--<Setter Property="Margin" Value="10,0,10,0" />
          <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
-        <!--<Setter Property="HasShadow" Value="False" />-->
         <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
         <!--<Setter Property="Shadow" Value="{StaticResource NeutralLightGrey}" />-->
     </Style>
@@ -863,19 +861,18 @@
         <Setter Property="HeightRequest" Value="80" />
         <Setter Property="WidthRequest" Value="171" />
     </Style>
-    <Style x:Key="ComponentGrayFrame" TargetType="Frame">
+    <Style x:Key="ComponentGrayFrame" TargetType="Border">
         <Setter Property="BackgroundColor" Value="#E2EFED" />
-        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="HeightRequest" Value="56" />
         <Setter Property="WidthRequest" Value="366" />
 
     </Style>
-    <Style x:Key="ComponentFrameWithRadius14" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="14" />
+    <Style x:Key="ComponentFrameWithRadius14" TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="HasShadow" Value="False" />
-        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
     </Style>
     <Style x:Key="ComponentStackWithHeight80" TargetType="StackLayout">
         <Setter Property="HeightRequest" Value="80" />

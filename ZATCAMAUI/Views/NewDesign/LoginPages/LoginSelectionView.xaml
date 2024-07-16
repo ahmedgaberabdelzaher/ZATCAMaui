@@ -68,18 +68,18 @@
                     HorizontalOptions="CenterAndExpand"
                     Text="{x:Static ResourceManager:AppResources.ZZZDontHaveAccount}"
                     TextColor="White" />
-                <Frame
+                <Border
                     Padding="10"
                     BackgroundColor="#4FBBBD"
-                    CornerRadius="15">
+                    StrokeShape="RoundRectangle 14,14,14,14">
                     <Label
                         HorizontalOptions="CenterAndExpand"
                         Text="{x:Static ResourceManager:AppResources.CreateAccount}"
                         TextColor="White" />
-                    <Frame.GestureRecognizers>
+                    <Border.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToZakatRegistrationCommand}" />
-                    </Frame.GestureRecognizers>
-                </Frame>
+                    </Border.GestureRecognizers>
+                </Border>
             </StackLayout>
         </StackLayout>
         <controls:BottomMenu

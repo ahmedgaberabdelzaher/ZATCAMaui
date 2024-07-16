@@ -10922,4 +10922,13 @@ info@zatca.gov.sa</value>
     <value>لا يمكن تحميل أكثر من 9 مرفقات</value>
   </data>
    <!--end of VAT Refund Prod-->
+   <!--Captcha Resources-->
+  <data name="CaptchaCode" xml:space="preserve">
+    <value>كود الكابتشا</value>
+  </data>
+  <data name="EnterCaptchaMsg" xml:space="preserve">
+    <value>الرجاء إدخال رمز التحقق</value>
+  </data>
+  <!-- END of Captcha Resources-->
+
 </root>

@@ -15,6 +15,7 @@ using ZATCAMAUI.Core.Mangers;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Helper;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 {
@@ -37,7 +38,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsDeclarationCheckedForInstruction = false;
                 IsTermsAndConditionPage = true;
 
-                ChangeAeroIcon();
                 SetLTR();
                 ClearFields();
                 SetPickerFont();
@@ -289,17 +289,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         protected async override void OnAppearing()
         {
@@ -334,9 +323,27 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.MobileCountryCode = arg;
             });
 
+            MessagingCenter.Subscribe<Object, object>(this, "Otpvalidated", async (sender, arg) =>
+            {
+                if (arg.Equals("error"))
+                {
+                    viewModel._navigationService.GoBack();
+                }
+                else
+                {
+                    viewModel.OtpMDl = arg as OTPModelvalidatedD;
+                    ValidateIDNumber();
+                }
+            });
+
             try
             {
-                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+                    viewModel.MobileCountryCode = mobileData.Where(x => x.Telefto == viewModel.TxtCountryCode).FirstOrDefault().Land1;
+                });
+
             }
             catch (Exception)
             {
@@ -1002,7 +1009,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     try
 
                     {
-                        string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                        string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0001", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
                         IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         if (SignupIsIDTypeValid.d == null)
                         {
@@ -1053,7 +1060,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                            string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0001", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
@@ -1149,7 +1156,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 {
                     try
                     {
-                        string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                        string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0002", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
                         IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         if (SignupIsIDTypeValid.d == null)
                         {
@@ -1198,7 +1205,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                            string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0002", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
@@ -1468,7 +1475,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
         }
       
-        private void DpDbo_Closed(object sender, EventArgs e)
+        private async void DpDbo_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -1550,12 +1557,150 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             {
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
-                    ValidateIDNumber();
+                    try
+                    {
+                       await getCaptcha();
+                    }
+                    catch (Exception)
+                    {
+                    }
                 }
 
             }
         }
+        public OTPModelD otpResponse { get; set; }
+        public async Task getCaptcha()
+        {
+            try
+            {
+                GenerateCaptchaGUID forgotPasswordOTP1 = new GenerateCaptchaGUID();
+                string lang = UtilityManager.GetLanguageParameter();
+                string st = ZATCAConstants.CaptchaAndGUID;
+                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                Metadata metadata = new Metadata();
+                metadata.id = st;
+                metadata.uri = st;
+                metadata.type = type;
 
+                GetCaptcha d = new GetCaptcha();
+                d.__metadata = metadata;
+                d.Captcha = "";
+                d.Guid = "";
+                d.Taxpayer = "";
+                d.Refresh = "";
+                d.Application = "AOTP";
+
+                forgotPasswordOTP1.d = d;
+                viewModel.IsLoading = true;
+                GenerateCaptchaGUID forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP1);
+                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                {
+                    GenerateCaptchaGUID forgotPasswordOTP3 = new GenerateCaptchaGUID();
+
+                    d.__metadata = metadata;
+                    d.Application = forgotPasswordOTP.d.Application;
+                    d.Guid = forgotPasswordOTP.d.Guid;
+                    d.Taxpayer = "";
+                    d.Refresh = "X";
+                    d.Captcha = forgotPasswordOTP.d.Captcha;
+
+                    forgotPasswordOTP3.d = d;
+
+                    GenerateCaptchaGUID forgotPasswordOTP2 = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP3);
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        // IsLoading = false;
+                        string IdTYpe = "";
+                        if (viewModel.SelectedSignUpUsing.ID == 1)
+                        {
+                            IdTYpe = "ZS001";
+                        }
+                        if (viewModel.SelectedSignUpUsing.ID == 2)
+                        {
+                            IdTYpe = "ZS002";
+                        }
+                        if (viewModel.SelectedSignUpUsing.ID == 3)
+                        {
+                            IdTYpe = "ZS003";
+                        }
+
+                        string DBO = string.Empty;
+                        if (viewModel.IsHijriCal)
+                        {
+
+                            var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
+                            string month = selectedItem[1].ToString();
+                            string day = selectedItem[0].ToString();
+                            string year = selectedItem[2].ToString();
+                            viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            DBO = year + month + day;
+                        }
+                        else
+                        {
+                            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                            string month = selectedItem[1].ToString();
+                            string day = selectedItem[0].ToString();
+                            string year = selectedItem[2].ToString();
+                            viewModel.PkrDBO = year + "/" + month + "/" + day;
+                            DBO = year + month + day;
+                        }
+
+                        getGuiD guid = new getGuiD();
+                        guid.d = forgotPasswordOTP2.d;
+                        guid.Idnum = viewModel.TxtIDNumber;
+                        guid.idtype = IdTYpe;
+                        guid.TpDOb = DBO;
+                        if (IdTYpe != "ZS003")
+                        {
+                            OTPModelD otp = new OTPModelD();
+                            OtpPageResult d = new OtpPageResult();
+                            d.Captcha = guid.d.Captcha;
+                            d.Guid16 = guid.d.Guid;
+                            d.Idnum = guid.Idnum;
+                            d.Idtype = guid.idtype;
+                            d.TaxpDob = guid.TpDOb;
+
+                            otp.d = d;
+
+                            await Task.Run(async () =>
+                            {
+                                otpResponse = new OTPModelD();
+                                otpResponse = await WebServiceManager.getValidateAbsher(otp, true);
+
+                            });
+                            if (otpResponse == null)
+                            {
+                                viewModel.IsLoading = false;
+                                FrmIDNumber.HasError = true;
+                                FrmDBO.HasError = true;
+                                EntryIDNumber.Text = string.Empty;
+                                DateEntry.Text = string.Empty;
+                            }
+                            else
+                            {
+
+                                await viewModel.StepfivedataValidation(otpResponse);
+                            }
+                        }
+                        else
+                        {
+                            viewModel.IsLoading = false;
+                        }
+                    });
+                    viewModel.IsLoading = false;
+                }
+                else
+                {
+                    viewModel.IsLoading = false;
+                }
+
+            }
+            catch (Exception)
+            {
+                viewModel.IsLoading = false;
+            }
+
+        }
         private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
@@ -1830,7 +1975,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             }
 
 
-
+            SiguupModel.AAbsherGuid = viewModel.OtpMDl.d.Guid16;
+            SiguupModel.AAbsherOtp = viewModel.OtpMDl.d.OtpCode;
             SiguupModel.AType = "1";
             SiguupModel.AFirstname = viewModel.TxtName;
             SiguupModel.ALastname = ".";
@@ -2351,6 +2497,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                         string year = selectedItem[2].ToString();
                                         SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                     }
+
+                                    SiguupModel.AAbsherGuid = viewModel.OtpMDl.d.Guid16;
+                                    SiguupModel.AAbsherOtp = viewModel.OtpMDl.d.OtpCode;
                                     SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
@@ -2620,6 +2769,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     string year = selectedItem[2].ToString();
                                     SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 }
+                                SiguupModel.AAbsherGuid = viewModel.OtpMDl.d.Guid16;
+                                SiguupModel.AAbsherOtp = viewModel.OtpMDl.d.OtpCode;
                                 SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
@@ -2918,6 +3069,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     string year = selectedItem[2].ToString();
                                     SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 }
+                                SiguupModel.AAbsherGuid = viewModel.OtpMDl.d.Guid16;
+                                SiguupModel.AAbsherOtp = viewModel.OtpMDl.d.OtpCode;
                                 SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
@@ -3183,6 +3336,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 string year = selectedItem[2].ToString();
                                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                             }
+                            SiguupModel.AAbsherGuid = viewModel.OtpMDl.d.Guid16;
+                            SiguupModel.AAbsherOtp = viewModel.OtpMDl.d.OtpCode;
                             SiguupModel.AType = "1";
                             SiguupModel.AFirstname = viewModel.TxtName;
                             SiguupModel.ALastname = ".";

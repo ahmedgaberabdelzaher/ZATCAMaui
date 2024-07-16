@@ -187,11 +187,10 @@
                                             <!--  Price value Frame & label  -->
                                             <Grid Grid.Row="1" Grid.Column="2">
 
-                                                <Frame
+                                                <Border
                                                     Padding="15"
                                                     BackgroundColor="#0996D4"
-                                                    CornerRadius="15"
-                                                    HasShadow="False"
+                                                    StrokeShape="RoundRectangle 14,14,14,14"
                                                     Opacity="0.15"
                                                     VerticalOptions="Start" />
 

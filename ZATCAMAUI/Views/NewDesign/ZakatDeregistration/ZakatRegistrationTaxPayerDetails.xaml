@@ -116,12 +116,11 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="1" />
                     </Grid.RowDefinitions>
-                    <Frame
+                    <Border
                         Margin="0,10,0,0"
                         Padding="0"
-                        BorderColor="LightGray"
-                        CornerRadius="8"
-                        HasShadow="False">
+                        Stroke="LightGray"
+                        StrokeShape="RoundRectangle 8,8,8,8">
                         <StackLayout>
 
                             <Grid Padding="5" RowSpacing="0">
@@ -134,16 +133,14 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
 
-                                <Frame
+                                <Border
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Margin="10,10,10,0"
                                     BackgroundColor="Transparent"
-                                    CornerRadius="32"
-                                    HasShadow="False"
+                                    StrokeShape="RoundRectangle 32,32,32,32"
                                     HeightRequest="24"
                                     HorizontalOptions="Start"
-                                    IsClippedToBounds="True"
                                     Opacity=".2"
                                     VerticalOptions="Center"
                                     WidthRequest="24" />
@@ -247,7 +244,7 @@
 
                             </StackLayout>
                         </StackLayout>
-                    </Frame>
+                    </Border>
 
 
 

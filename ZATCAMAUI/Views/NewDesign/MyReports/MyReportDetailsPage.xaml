@@ -87,7 +87,7 @@
                 Style="{StaticResource CommonTopCurves}">
 
 
-                <Frame BorderColor="#EBEBEB" CornerRadius="12">
+                <Border Stroke="#EBEBEB" StrokeShape="RoundRectangle 12,12,12,12">
 
                     <ScrollView VerticalScrollBarVisibility="Never">
 
@@ -499,7 +499,7 @@
 
                     </ScrollView>
 
-                </Frame>
+                </Border>
 
 
 

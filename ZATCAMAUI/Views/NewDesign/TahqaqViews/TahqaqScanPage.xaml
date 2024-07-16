@@ -48,7 +48,7 @@
 
                     <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
 
-                        <Frame BackgroundColor="Black" Opacity=".44" />
+                        <Border BackgroundColor="Black" Opacity=".44" />
 
                         <StackLayout Margin="0,60,0,50">
 
@@ -132,7 +132,7 @@
                     </Grid>
 
                     <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
-                        <Frame BackgroundColor="Black" Opacity=".44" />
+                        <Border BackgroundColor="Black" Opacity=".44" />
                         <StackLayout>
                             <Label
                                 Grid.Row="3"
@@ -149,22 +149,21 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Frame
+                            <Border
                                 Grid.Row="4"
                                 Margin="21,27,27,40"
                                 Padding="12"
                                 BackgroundColor="#00BBBD"
-                                CornerRadius="14"
-                                HasShadow="False">
-                                <Frame.GestureRecognizers>
+                                StrokeShape="RoundRectangle 14,14,14,14">
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding EnterCodeCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.VerificationForm}"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
                         </StackLayout>
                     </Grid>
                 </Grid>
@@ -227,22 +226,21 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                            <Frame
+                            <Border
                                 Margin="0,50"
                                 Padding="12"
                                 BackgroundColor="#00BBBD"
-                                CornerRadius="14"
-                                HasShadow="False"
+                                StrokeShape="RoundRectangle 14,14,14,14"
                                 VerticalOptions="EndAndExpand">
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GetDataForCodeCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.Send}"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
                         </StackLayout>
                     </ScrollView>
 
@@ -276,12 +274,11 @@
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.Correcttaxstamp}"
                                 TextColor="{StaticResource PrimaryColor}" />
-                            <Frame
+                            <Border
                                 Margin="0"
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
                                 <StackLayout Margin="16">
                                     <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.QRCode}" />
                                     <Label Style="{StaticResource BodyLabelBlack}" Text="{Binding scanCode}" />
@@ -318,7 +315,7 @@
                                             Text="{Binding QrRslt.DateOfManufacture, StringFormat='{0:dd/MM/yyy}'}" />
                                     </Grid>
                                 </StackLayout>
-                            </Frame>
+                            </Border>
                         </StackLayout>
                     </ScrollView>
 
@@ -355,21 +352,20 @@
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.Incorrecttaxstamp}"
                                 TextColor="{StaticResource PrimaryColor}" />
-                            <Frame
+                            <Border
                                 Margin="21,50,27,27"
                                 Padding="12"
                                 BackgroundColor="#00BBBD"
-                                CornerRadius="14"
-                                HasShadow="False">
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.Submitareport}"
                                     TextColor="White" />
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />
-                                </Frame.GestureRecognizers>
-                            </Frame>
+                                </Border.GestureRecognizers>
+                            </Border>
                             <Label
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"

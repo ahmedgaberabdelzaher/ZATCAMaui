@@ -46,11 +46,10 @@
                 <Label FontFamily="{StaticResource SomarBold}" Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
             </StackLayout>
             <StackLayout Padding="15,0,15,15">
-                <Frame
+                <Border
                     Padding="0"
-                    BorderColor="LightGray"
-                    CornerRadius="8"
-                    HasShadow="False">
+                    Stroke="LightGray"
+                    StrokeShape="RoundRectangle 8,8,8,8">
                     <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal">
                         <StackLayout
                             Padding="5,8,0,8"
@@ -141,7 +140,7 @@
 
                         </StackLayout>
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
             <buttons:SfButton
                 x:Name="btnAddAccount"

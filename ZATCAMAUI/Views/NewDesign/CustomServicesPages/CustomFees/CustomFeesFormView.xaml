@@ -40,10 +40,10 @@
                         TextColor="#14395B" />
 
                     <!--#region Hint view-->
-                    <Frame
+                    <Border
                         Padding="10"
-                        BorderColor="#E6E6E6"
-                        CornerRadius="10"
+                        Stroke="#E6E6E6"
+                        StrokeShape="RoundRectangle 10,10,10,10"
                         HorizontalOptions="FillAndExpand">
 
                         <Grid
@@ -82,7 +82,7 @@
                                 TextColor="Gray" />
 
                         </Grid>
-                    </Frame>
+                    </Border>
                     <!--#endregion-->
 
                     <!--#region Material Selection-->
@@ -362,14 +362,14 @@
                     </view:TobacoView>
                     <!--#region-->
 
-                    <Frame
+                    <Border
                         Margin="0,40,0,0"
                         Padding="10"
                         BackgroundColor="#0996D4"
-                        CornerRadius="14">
-                        <Frame.GestureRecognizers>
+                        StrokeShape="RoundRectangle 14,14,14,14">
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding CalculateCommand}" />
-                        </Frame.GestureRecognizers>
+                        </Border.GestureRecognizers>
                         <Label
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
@@ -380,7 +380,7 @@
                             </Label.GestureRecognizers>
 
                         </Label>
-                    </Frame>
+                     </Border>
 
                 </StackLayout>
             </ScrollView>
@@ -403,10 +403,10 @@
                         VerticalOptions="FillAndExpand"
                         VerticalScrollBarVisibility="Never">
 
-                        <Frame
+                        <Border
                             Padding="15,10"
-                            BorderColor="#E6E6E6"
-                            CornerRadius="10"
+                            Stroke="#E6E6E6"
+                            StrokeShape="RoundRectangle 10,10,10,10"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="StartAndExpand">
 
@@ -600,11 +600,10 @@
 
                                 <Grid Margin="0">
 
-                                    <Frame
+                                    <Border
                                         Margin="-16"
                                         BackgroundColor="#0996D4"
-                                        CornerRadius="8"
-                                        HasShadow="False"
+                                        StrokeShape="RoundRectangle 8,8,8,8"
                                         HorizontalOptions="FillAndExpand"
                                         Opacity=".1" />
 
@@ -639,7 +638,7 @@
 
                             </StackLayout>
 
-                        </Frame>
+                         </Border>
 
                     </ScrollView>
 

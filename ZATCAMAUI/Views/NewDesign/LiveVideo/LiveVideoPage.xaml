@@ -83,15 +83,14 @@
                         TextColor="#58595B" />
 
                     <!--  Video URL  -->
-                    <Frame
+                    <Border
                         Padding="0"
-                        BorderColor="#EBEBEB"
-                        CornerRadius="20"
+                        Stroke="#EBEBEB"
+                        StrokeShape="RoundRectangle 20,20,20,20"
                         HeightRequest="250"
-                        IsClippedToBounds="True"
                         WidthRequest="470">
                         <WebView Source="{Binding VideoUrl}" />
-                    </Frame>
+                    </Border>
 
                     <!--  Live Video Sub Title Label  -->
                     <Label
@@ -122,13 +121,12 @@
 
                             <DataTemplate>
 
-                                <Frame
+                                <Border
                                     x:Name="Item"
                                     Padding="0"
-                                    BorderColor="#EBEBEB"
-                                    CornerRadius="20"
+                                    Stroke="#EBEBEB"
+                                    StrokeShape="RoundRectangle 20,20,20,20"
                                     HeightRequest="150"
-                                    IsClippedToBounds="True"
                                     WidthRequest="140">
 
                                     <StackLayout Padding="0">
@@ -165,16 +163,16 @@
 
                                     </StackLayout>
 
-                                    <Frame.GestureRecognizers>
+                                    <Border.GestureRecognizers>
 
                                         <TapGestureRecognizer
                                             BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
                                             Command="{Binding SelectedVideoItemCommand}"
                                             CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
 
-                                    </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
 
-                                </Frame>
+                                </Border>
                             </DataTemplate>
 
                         </CollectionView.ItemTemplate>

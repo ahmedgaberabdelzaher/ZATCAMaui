@@ -1039,11 +1039,11 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <!--  Not need Reward Hinf Note  -->
-                            <Frame
+                            <Border
                                 Padding="10"
                                 BackgroundColor="White"
-                                BorderColor="#E6E6E6"
-                                CornerRadius="10"
+                                Stroke="#E6E6E6"
+                                StrokeShape="RoundRectangle 10,10,10,10"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand">
                                 <StackLayout
@@ -1060,7 +1060,7 @@
 
                                 </StackLayout>
 
-                            </Frame>
+                            </Border>
 
 
                             <!--  Full name Field  -->

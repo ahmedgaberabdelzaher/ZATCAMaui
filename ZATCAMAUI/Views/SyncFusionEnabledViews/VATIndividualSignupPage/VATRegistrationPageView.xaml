@@ -517,12 +517,11 @@
                                                         Style="{StaticResource SectionTitleBlackBold}"
                                                         Text="{x:Static ResourceManager:AppResources.VATRAdditionalInformation}" />
 
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -595,7 +594,7 @@
                                                             </Grid>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
 
@@ -1018,12 +1017,11 @@
                                                         Style="{StaticResource GAZTSmallBlackLbl}"
                                                         Text="{Binding SliderLable1EligibilityText}"
                                                         TextColor="{StaticResource Primary}" />
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,10,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 HorizontalTextAlignment="Start"
@@ -1096,16 +1094,15 @@
                                                         </StackLayout>
 
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 HorizontalTextAlignment="Start"
@@ -1179,16 +1176,15 @@
                                                         </StackLayout>
 
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 Style="{StaticResource GAZTMicroMediumGrayLabel}"
@@ -1298,16 +1294,15 @@
 
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
                                                             <Label
                                                                 HorizontalTextAlignment="Start"
@@ -1415,16 +1410,15 @@
                                                             </StackLayout>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -1459,7 +1453,7 @@
                                                             </Grid>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="8">
@@ -1549,12 +1543,11 @@
                                         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
                                             <StackLayout Spacing="0">
                                                 <StackLayout Margin="0,0,0,5" Spacing="0">
-                                                    <Frame
+                                                    <Border
                                                         Padding="15,20,15,20"
                                                         BackgroundColor="White"
-                                                        BorderColor="#bbbbbb"
-                                                        CornerRadius="10"
-                                                        HasShadow="False">
+                                                        Stroke="#bbbbbb"
+                                                        StrokeShape="RoundRectangle 10,10,10,10">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -1566,7 +1559,7 @@
                                                                     <ColumnDefinition Width="20" />
                                                                     <ColumnDefinition Width="*" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static ResourceManager:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
+
                                                                 <Image
                                                                     Grid.Row="0"
                                                                     Grid.Column="0"
@@ -1589,7 +1582,7 @@
                                                             </Grid>
                                                         </StackLayout>
 
-                                                    </Frame>
+                                                    </Border>
 
                                                 </StackLayout>
                                                 <Grid
@@ -2083,11 +2076,10 @@
                                             <BoxView Margin="0,0,0,15" Style="{StaticResource lineSeperator}" />
                                         </StackLayout>
                                         <StackLayout Grid.Row="1">
-                                            <Frame
+                                            <Border
                                                 Padding="0"
                                                 BackgroundColor="#cee0dd"
-                                                CornerRadius="10"
-                                                HasShadow="False">
+                                                StrokeShape="RoundRectangle 10,10,10,10">
                                                 <StackLayout Padding="10" Orientation="Horizontal">
                                                     <Image>
                                                         <Image.Source>
@@ -2100,7 +2092,7 @@
                                                     </Image>
                                                     <Label Style="{StaticResource GAZTSmallBlackLbl}" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}" />
                                                 </StackLayout>
-                                            </Frame>
+                                            </Border>
                                             <!--  Taxpayer Details Summery  -->
                                             <Border
                                                 Margin="0,10,0,0"

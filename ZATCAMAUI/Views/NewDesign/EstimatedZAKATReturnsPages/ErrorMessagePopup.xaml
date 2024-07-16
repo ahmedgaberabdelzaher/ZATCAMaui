@@ -22,15 +22,15 @@
                 x:Name="InfromatationText"
                 HorizontalTextAlignment="Start"
                 Style="{StaticResource BodyLabelBlack}" />
-            <custom:CustomLabel HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelBlack}">
-                <custom:CustomLabel.FormattedText>
+            <Label HorizontalOptions="StartAndExpand" Style="{StaticResource BodyLabelBlack}">
+                <Label.FormattedText>
                     <FormattedString>
                         <Span FontFamily="{StaticResource Somar-Regular}" Text="{x:Static ResourceManager:AppResources.LinkText}" />
 
                     </FormattedString>
-                </custom:CustomLabel.FormattedText>
+                </Label.FormattedText>
 
-            </custom:CustomLabel>
+            </Label>
 
             <Button
                 x:Name="Link"

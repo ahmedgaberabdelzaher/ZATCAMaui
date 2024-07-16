@@ -55,11 +55,11 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView>
-                                    <Frame
+                                    <Border
                                         Margin="0,0,0,10"
                                         Padding="0,0,0,0"
-                                        BorderColor="#C9C9C9"
-                                        CornerRadius="0">
+                                        Stroke="#C9C9C9"
+                                        StrokeShape="RoundRectangle 0,0,0,0">
                                         <StackLayout
                                             Margin="1,2,1,2"
                                             Padding="0"
@@ -132,7 +132,7 @@
                                                 </Label>
                                             </Grid>
                                         </StackLayout>
-                                    </Frame>
+                                    </Border>
                                 </ContentView>
                             </ViewCell>
                         </DataTemplate>

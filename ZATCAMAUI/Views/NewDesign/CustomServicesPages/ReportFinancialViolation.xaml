@@ -114,10 +114,9 @@
                                 Text="{x:Static ResourceManager:AppResources.SelectTheOptionAndCompleteDetails}"
                                 TextColor="#999999" />
                             <BoxView HeightRequest="1" Color="#EBEBEB" />
-                            <Frame
-                                BorderColor="#EBEBEB"
-                                CornerRadius="14"
-                                HasShadow="False">
+                            <Border
+                                Stroke="#EBEBEB"
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <Grid ColumnDefinitions="auto,*" RowDefinitions="auto,*">
                                     <Label
                                         Grid.Row="0"
@@ -163,7 +162,7 @@
                                         Source="InfoIcon"
                                         WidthRequest="22" />
                                 </Grid>
-                            </Frame>
+                            </Border>
                             <StackLayout Margin="0,10,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
                                 <Label Style="{StaticResource CaptionLabelGrey}">
@@ -493,16 +492,15 @@
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>
-                                <Frame
+                                <Border
                                     Margin="0,30,0,34"
                                     Padding="12"
                                     BackgroundColor="White"
-                                    BorderColor="#0996D4"
-                                    CornerRadius="14"
-                                    HasShadow="False">
-                                    <Frame.GestureRecognizers>
+                                    Stroke="#0996D4"
+                                    StrokeShape="RoundRectangle 14,14,14,14">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
-                                    </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
                                     <StackLayout Orientation="Horizontal">
                                         <Image
                                             Margin="0,0,7,0"
@@ -516,7 +514,7 @@
                                             VerticalOptions="CenterAndExpand" />
 
                                     </StackLayout>
-                                </Frame>
+                                </Border>
 
                                 <StackLayout Orientation="Horizontal">
                                     <Image
@@ -547,23 +545,22 @@
                                     </Label>
                                 </StackLayout>
 
-                                <Frame
+                                <Border
                                     Margin="0,34,0,15"
                                     Padding="12"
                                     BackgroundColor="#0996D4"
-                                    CornerRadius="14"
-                                    HasShadow="False"
+                                    StrokeShape="RoundRectangle 14,14,14,14"
                                     HorizontalOptions="FillAndExpand">
-                                    <Frame.GestureRecognizers>
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SendTicketCommand}" />
-                                    </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
                                     <Label
                                         FontSize="16"
                                         HorizontalOptions="CenterAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.Send}"
                                         TextColor="White"
                                         VerticalOptions="CenterAndExpand" />
-                                </Frame>
+                                </Border>
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
@@ -612,17 +609,15 @@
                 <StackLayout>
                     <Grid>
 
-                        <Frame
+                        <Border
                             BackgroundColor="#0996D4"
-                            BorderColor="#0996D4"
-                            CornerRadius="14"
-                            HasShadow="False"
+                            Stroke="#0996D4"
+                            StrokeShape="RoundRectangle 14,14,14,14"
                             Opacity=".1" />
-                        <Frame
+                        <Border
                             BackgroundColor="Transparent"
-                            BorderColor="#0996D4"
-                            CornerRadius="14"
-                            HasShadow="False">
+                            Stroke="#0996D4"
+                            StrokeShape="RoundRectangle 14,14,14,14">
                             <Grid
                                 ColumnDefinitions="auto,*"
                                 ColumnSpacing="5"
@@ -652,25 +647,24 @@
                                     TextColor="#002447" />
 
                             </Grid>
-                        </Frame>
+                        </Border>
                     </Grid>
-                    <Frame
+                    <Border
                         Margin="0,37,0,0"
                         Padding="12"
                         BackgroundColor="#0996D4"
-                        CornerRadius="14"
-                        HasShadow="False"
+                        StrokeShape="RoundRectangle 14,14,14,14"
                         HorizontalOptions="FillAndExpand">
-                        <Frame.GestureRecognizers>
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding BackCommand}" />
-                        </Frame.GestureRecognizers>
+                        </Border.GestureRecognizers>
                         <Label
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.Backtomainmenu}"
                             TextColor="White"
                             VerticalOptions="CenterAndExpand" />
-                    </Frame>
+                    </Border>
                 </StackLayout>
             </Border>
         </StackLayout>

@@ -25,13 +25,12 @@
 
             <converters:EstablishmentSignUPTabEnumToVisibilityConverters x:Key="enumToVisibilityConverter" />
 
-            <Style x:Key="circleFrame" TargetType="Frame">
+            <Style x:Key="circleFrame" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}" />
-                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 25,25,25,25" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="HeightRequest" Value="25" />
                 <Setter Property="WidthRequest" Value="25" />
-                <Setter Property="HasShadow" Value="False" />
             </Style>
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="180" />

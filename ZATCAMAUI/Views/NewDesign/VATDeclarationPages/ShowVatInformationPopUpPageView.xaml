@@ -43,11 +43,10 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Margin="0,0,0,7" Spacing="15">
-                                <Frame
+                                <Border
                                     Padding="15"
-                                    BorderColor="{StaticResource DarkGrayTextColor}"
-                                    CornerRadius="12"
-                                    HasShadow="False">
+                                    Stroke="{StaticResource DarkGrayTextColor}"
+                                    StrokeShape="RoundRectangle 12,12,12,12">
                                     <StackLayout>
                                         <StackLayout IsVisible="{Binding IsHeaderAvailable}">
                                             <StackLayout Orientation="Horizontal">
@@ -74,7 +73,7 @@
                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding Message}" />
                                         </StackLayout>
                                     </StackLayout>
-                                </Frame>
+                                </Border>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

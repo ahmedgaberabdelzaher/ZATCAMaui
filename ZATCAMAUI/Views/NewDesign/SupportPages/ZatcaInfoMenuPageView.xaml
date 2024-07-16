@@ -96,11 +96,10 @@
                                 </Border.GestureRecognizers>
                             </Border>
 
-                            <Frame
+                            <Border
                                 Padding="5"
-                                BorderColor="{StaticResource NeutralLightGrey}"
-                                CornerRadius="14"
-                                HasShadow="False"
+                                Stroke="{StaticResource NeutralLightGrey}"
+                                StrokeShape="RoundRectangle 14,14,14,14"
                                 IsVisible="{x:Static settings:PageSettings.IsIncludeLapFees}">
                                 <StackLayout
                                     Padding="16,8,16,8"
@@ -118,15 +117,14 @@
                                         Style="{DynamicResource BackButtonArrow}"
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NavigateToInquireaboutPaymentofInsurance}" />
-                                </Frame.GestureRecognizers>
-                            </Frame>
-                            <Frame
+                                </Border.GestureRecognizers>
+                            </Border>
+                            <Border
                                 Padding="5"
-                                BorderColor="{StaticResource NeutralLightGrey}"
-                                CornerRadius="14"
-                                HasShadow="False">
+                                Stroke="{StaticResource NeutralLightGrey}"
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -146,10 +144,10 @@
                                         Style="{DynamicResource BackButtonArrow}"
                                         VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding NavigateToCustomsDeclarationforTravelers}" />
-                                </Frame.GestureRecognizers>
-                            </Frame>
+                                </Border.GestureRecognizers>
+                            </Border>
                         </StackLayout>
                     </ScrollView>
                     <!--  Parent View End  -->

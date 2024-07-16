@@ -52,9 +52,8 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame
+                            <Border
                                 Padding="0"
-                                HasShadow="False"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand">
                                 <Grid Margin="20,0,20,0">
@@ -86,7 +85,7 @@
                                             VerticalOptions="Start" />
                                     </StackLayout>
                                 </Grid>
-                            </Frame>
+                            </Border>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

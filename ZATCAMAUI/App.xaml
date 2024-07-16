@@ -559,12 +559,11 @@
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource MaroonLabelTextColor}" />
             </Style>
-            <Style x:Key="FrameStyle" TargetType="Frame">
+            <Style x:Key="FrameStyle" TargetType="Border">
 
-                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 0,0,0,0" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
-                <Setter Property="BorderColor" Value="#B1B1B1" />
-                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Stroke" Value="#B1B1B1" />
             </Style>
             <Style
                 x:Key="MiniBlackLabelStyle"
@@ -723,32 +722,28 @@
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
-            <Style x:Key="GAZTFrameStyleForEntry" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2" />
+            <Style x:Key="GAZTFrameStyleForEntry" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 2,2,2,2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
-                <Setter Property="BorderColor" Value="#B1B1B1" />
-                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Stroke" Value="#B1B1B1" />
                 <Setter Property="Margin" Value="10,2,10,1" />
             </Style>
-            <Style x:Key="GAZTFrameStyleForEntryValidationRed" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2" />
+            <Style x:Key="GAZTFrameStyleForEntryValidationRed" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 2,2,2,2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
-                <Setter Property="BorderColor" Value="Red" />
-                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Stroke" Value="Red" />
                 <Setter Property="Margin" Value="10,2,10,1" />
             </Style>
-            <Style x:Key="GAZTFrameStyleForVATReturnEditor" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2" />
+            <Style x:Key="GAZTFrameStyleForVATReturnEditor" TargetType="Border">
+               <Setter Property="StrokeShape" Value="RoundRectangle 2,2,2,2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
-                <Setter Property="BorderColor" Value="#B1B1B1" />
-                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Stroke" Value="#B1B1B1" />
                 <Setter Property="Margin" Value="10,2,10,1" />
             </Style>
-            <Style x:Key="GAZTFrameStyleForButton" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="4" />
+            <Style x:Key="GAZTFrameStyleForButton" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
-                <Setter Property="HasShadow" Value="True" />
-                <Setter Property="Margin" Value="10,10,10,1" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 4,4,4,4" />
+                <Setter Property="Stroke" Value="#B1B1B1" />
                 <Setter Property="Padding" Value="0,22,0,22" />
             </Style>
             <Style x:Key="GAZTImageStyleForEntry" TargetType="Image">
@@ -896,11 +891,10 @@
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <!--  commented as we are provideing bold font family inline  -->
             </Style>
-            <Style x:Key="GAZTFrameStyleEntryForLableBackground" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2" />
+            <Style x:Key="GAZTFrameStyleEntryForLableBackground" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 2,2,2,2" />
                 <Setter Property="BackgroundColor" Value="#E6EFED" />
-                <Setter Property="BorderColor" Value="#F4FCFD" />
-                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Stroke" Value="#F4FCFD" />
                 <Setter Property="Margin" Value="0,-2,0,2" />
                 <Setter Property="Padding" Value="25" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
@@ -921,11 +915,10 @@
                 <Setter Property="Margin" Value="15,5,15,5" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
-            <Style x:Key="GAZTFrameGridStyleForEntry" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2" />
+            <Style x:Key="GAZTFrameGridStyleForEntry" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 2,2,2,2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
-                <Setter Property="BorderColor" Value="#B1B1B1" />
-                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="Stroke" Value="#B1B1B1" />
                 <Setter Property="Margin" Value="0" />
             </Style>
             <Style
@@ -1257,13 +1250,12 @@
             <Style
                 x:Key="GAZTStandardFrameStyle"
                 x:Name="GAZTStandardFrameStyle"
-                TargetType="Frame">
+                TargetType="Border">
                 <!--  Medium font  -->
-                <Setter Property="BorderColor" Value="{DynamicResource NewGrayColor}" />
+                <Setter Property="Stroke" Value="{DynamicResource NewGrayColor}" />
                 <Setter Property="Padding" Value="0" />
-                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 8,8,8,8" />
                 <Setter Property="Margin" Value="10" />
-                <Setter Property="HasShadow" Value="False" />
 
             </Style>
 
@@ -1320,9 +1312,6 @@
                 </Setter>
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
-            </Style>
-            <Style TargetType="Frame">
-                <Setter Property="HasShadow" Value="False" />
             </Style>
         </ResourceDictionary>
 

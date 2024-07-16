@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RGPopup.Maui.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -223,7 +224,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsCitizen");
             }
         }
-       
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                if (_isLoading == value) return;
+
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         private bool _isOTPEncripted = true;
         public bool IsOTPEncripted
         {
@@ -448,6 +463,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _frameMobileNumberError = value;
                 RaisePropertyChanged("FrameMobileNumberError");
+            }
+        }
+        private bool _frameCaptchaError = false;
+        public bool FrameCaptchaError
+        {
+            get
+            {
+                return _frameCaptchaError;
+            }
+            set
+            {
+                if (_frameCaptchaError == value) return;
+
+                _frameCaptchaError = value;
+                RaisePropertyChanged("FrameCaptchaError");
             }
         }
         private bool _frameNameError = false;
@@ -1632,6 +1662,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("Captcha");
             }
         }
+        private string mobileCountry = string.Empty;
+        public string MobileCountry
+        {
+            get
+            {
+                return mobileCountry;
+            }
+            set
+            {
+                if (mobileCountry == value) return;
+
+                mobileCountry = value;
+                RaisePropertyChanged("MobileCountry");
+            }
+        }
         private string guid = string.Empty;
         public string Guid
         {
@@ -1647,6 +1692,45 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("Guid");
             }
         }
+
+        private string imageBase64;
+        public string ImageBase64
+        {
+            get { return imageBase64; }
+            set
+            {
+                imageBase64 = value;
+                RaisePropertyChanged("ImageBase64");
+
+                Image = ImageSource.FromStream(
+                    () => new MemoryStream(Convert.FromBase64String(imageBase64)));
+            }
+        }
+
+        private ImageSource image;
+        public ImageSource Image
+        {
+            get { return image; }
+            set
+            {
+                image = value;
+                RaisePropertyChanged("Image");
+            }
+        }
+
+        private string _lgid = null;
+        public string LgId
+        {
+            get
+            {
+                return _lgid;
+            }
+            set
+            {
+                _lgid = value;
+                RaisePropertyChanged("LgId");
+            }
+        }
         public bool IsAPICalledSuccessfully = true;
         private object date1DOB;
 
@@ -1654,7 +1738,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #endregion
 
         #region Constructor
-        public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
             //IsGulf = isGulf;
             if (navigationService == null)
@@ -1669,8 +1753,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
 
 
-            //this.DateSelectedCommand = new Command<DateSelectionArgs>(this.HandleDateSelected);
-
             OnContinueButtonClick = new Command(async () =>
             {
                 if (IsVerifyOTPEnabled)
@@ -1681,7 +1763,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             });
             OnResendButtonClick = new Command(async () =>
             {
-                // ContinueButtonText = AppResources.ZZZZContinue;
 
                 if (IsResendOTPEnabled)
                 {
@@ -1700,13 +1781,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             });
 
             OnBackButtonClick = new Command(() =>
-                {
-                    SetBackFormVisibility();
-                });
+            {
+                SetBackFormVisibility();
+            });
             GoButtonClick = new Command(() =>
-                 {
-                     _navigationService.GoBack();
-                 });
+            {
+                _navigationService.GoBack();
+            });
         }
         #endregion
 
@@ -1793,8 +1874,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 SignUpCaseIdD = await TaxEvasionWebServiceManager.GAZTGetVATSignUpCaseId();// working
 
 
-                //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
-                //var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
             }
             catch (GAZTException gex)
             {
@@ -1820,7 +1899,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 IsLoading = false;
 
-                //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 _navigationService.GoBack();
 
@@ -1833,11 +1911,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // IsLoading = false;
-
-                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                    //_navigationService.GoBack();
                 });
             }
 
@@ -1846,7 +1920,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    //_dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
@@ -1857,9 +1930,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    // IsLoading = false;
-
-                    //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
@@ -1931,6 +2001,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 messageforuserr = AppResources.ZZPleasefillthemandatoryfields;
                 FrameMobileNumberError = true;
             }
+            if (string.IsNullOrEmpty(Captcha))
+            {
+                showErrorMessage = true;
+                messageforuserr = AppResources.ZZPleasefillthemandatoryfields;
+                FrameCaptchaError = true;
+            }
             if (!string.IsNullOrEmpty(ConfirmEmail) && !string.IsNullOrEmpty(Email))
             {
                 if (Email.ToLower() != ConfirmEmail.ToLower())
@@ -1944,7 +2020,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             if (showErrorMessage)
             {
-                //_dialogService.ShowMessage(messageforuserr, AppResources.Information);
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageforuserr));
             }
             else
@@ -1953,7 +2028,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 SummeryView = true;
                 CurrentIndex = 4;
                 ContinueButtonText = AppResources.Confirm;
-                // currentStep++;
             }
 
 
@@ -1992,7 +2066,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             if (showErrorMesage)
             {
-                //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
             }
             else
@@ -2001,7 +2074,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 ContactInformationView = true;
                 CurrentIndex = 3;
                 ContinueButtonText = AppResources.ZZZZContinue;
-                //currentStep++;
             }
         }
 
@@ -2097,14 +2169,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 IndividualRegistrationView = false;
                                 NationalAddressView = true;
-                                //  currentStep++;
                                 await Task.Run(() =>
                                 {
                                     IsLoading = true;
                                 });
                                 await Task.Run(async () =>
                                 {
-                                    //IsLoading = true;
 
                                     try
                                     {
@@ -2136,23 +2206,19 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                         {
                                             IsLoading = false;
 
-                                            //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                             _navigationService.GoBack();
                                         });
                                     }
-                                    catch (HttpRequestException )
-
+                                    catch (HttpRequestException ex)
                                     {
+
+
                                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                                         MainThread.BeginInvokeOnMainThread(async () =>
                                         {
-                                            // IsLoading = false;
-
-                                            //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                                            //_navigationService.GoBack();
                                         });
                                     }
 
@@ -2161,7 +2227,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                     {
                                         MainThread.BeginInvokeOnMainThread(async () =>
                                         {
-                                            //_dialogService.ShowMessage(ex.Message, AppResources.Information);
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                         });
                                     }
@@ -2173,9 +2238,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                         MainThread.BeginInvokeOnMainThread(async () =>
                                         {
-                                            // IsLoading = false;
-
-                                            //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                                         });
@@ -2196,9 +2258,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                     FrameIDError = true;
                                     FrameDOBError = true;
-                                    //_dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
                                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Wrong Id"));
-                                    //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
 
                                 });
 
@@ -2210,7 +2270,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
                 else
                 {
-                    //_dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                 }
             }
@@ -2571,71 +2630,32 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             lst = signUpIdTypeList;
             GCCCountryList = lst;
         }
-
-        public async Task GetCaptchAndGUID()
+        public async Task GetCaptchImage()
         {
-            try
+            IsLoading = true;
+            string result = await WebServiceManager.GetCaptchaImage("C6", LgId);
+            JObject data = JObject.Parse(result);
+            if (data != null)
             {
-
-                IsLoading = true;
-
-
-                string lang = UtilityManager.GetLanguageParameter();
-                string st = ZATCAConstants.CaptchaAndGUID;
-                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                Metadata metadata = new Metadata();
-                metadata.id = st;
-                metadata.uri = st;
-                metadata.type = type;
-
-                GetCaptcha d = new GetCaptcha();
-                d.__metadata = metadata;
-                d.Captcha = "";
-                d.Guid = "";
-                d.Taxpayer = "";
-                d.Refresh = "";
-                d.Application = "VTIA";
-
-                forgotPasswordOTP.d = d;
-                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
-
-                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
-                {
-                    Guid = forgotPasswordOTP.d.Guid;
-                    Captcha = forgotPasswordOTP.d.Captcha;
-                }
-                else
-                {
-
-                }
-
-
-                IsLoading = false;
+                ImageBase64 = data.GetValue("cval").ToString();
+                LgId = data.GetValue("lgid").ToString();
             }
 
-            catch (InternetException ex)
-            {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-
-                });
-            }
+            IsLoading = false;
         }
+        
 
 
         public async Task SetRequestObjectFirst()
         {
             try
             {
-                
 
                 var Bdt1 = string.Empty;
                 string date1 = DOB;
                 DateTime dt = Convert.ToDateTime(date1);
                 dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
-                long unixTimestamp = (long)dt.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+                long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
                 unixTimestamp = unixTimestamp * 1000;
                 Bdt1 = "" + "/Date(" + unixTimestamp + ")/";
 
@@ -2661,7 +2681,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     }
                 }
-
                 string submitValue;
                 if (currentStep == 4)
                 {
@@ -2674,7 +2693,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 var Mguid = string.Empty;
                 if (IsCitizen)
                 {
-
                     List<string> strings = new List<string>(
      App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
                     var guid = strings[1];
@@ -2690,7 +2708,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
-                   
                     Type = "1",
                     IdType = SelectedIdType.ID,//"ZS0018",
                     Idnumber = IdNumber,
@@ -2703,7 +2720,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
                     Country = _Country,
-                    MobileCountry = MobileCountryCode,
+                    MobileCountry = MobileCountry,
 
                     Building = BuildingNumber,
                     Floor = UnitNumber,
@@ -2714,7 +2731,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Mobile = newCountryCodeString + MobileNumber,
                     //Mobile = "00966" + MobileNumber,
                     //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
-                    CaseGuid = Guid,
+                    CaseGuid = LgId,
 
                     Birthdt = Bdt1,//"/Date(1577846576000)/",
                     Password = Password,
@@ -2723,6 +2740,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Submit = submitValue,
                     Captcha = Captcha,
                     Mguid = Mguid
+
 
                 };
 
@@ -2738,76 +2756,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     StringBuilder Message = new StringBuilder();
                     foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        if (itemerror.code.Contains("ZD_ZVTX/006"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage6);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/007"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage7);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/008"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage8);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/009"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage9);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0010"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage10);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0011"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage11);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/001"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage1);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/002"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage2);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/003"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage3);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/004"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage4);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/005"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage5);
-                        }
-
-                        if (itemerror.code.Contains("ZD_ZREG/303"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErrorMessage303);
-                        }
-
+                        Message.AppendLine(itemerror.message);
                     }
+                    Message = Message.Replace("An exception was raised", "");
                     OTP = string.Empty;
-
-
-                    //_dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-
-
                 }
                 else
                 {
@@ -2852,8 +2805,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
+                ///only for dev purpose
+                ///
 #if DEBUG
-                await Application.Current.MainPage.DisplayAlert("Error", ex.ToString(), "OK");
+                await App.Current.MainPage.DisplayAlert("Error", ex.ToString(), "OK");
 #endif
 
             }
@@ -2864,8 +2819,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 string[] date1 = DOB.Split('/');
-
-                int unixTimestamp = (int)dateTime.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+                Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                 var Bdt = date1[0] + "-" + date1[1] + "-" + date1[2] + "T00:00:00";
                 string _City = string.Empty;
                 string _Region = string.Empty;
@@ -2892,6 +2846,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 string submitValue;
                 submitValue = "";
+                var Mguid = string.Empty;
+                if (IsCitizen)
+                {
+                    List<string> strings = new List<string>(
+                        App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
+                    var guid = strings[1];
+                    Mguid = guid;
+                }
+                else
+                {
+                    Mguid = string.Empty;
+                }
                 VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
                     Type = "1",
@@ -2901,11 +2867,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Lastname = ".",
                     PostCode1 = "00000",
                     City1 = _City,
-
                     Region = _Region,
-
                     Country = _Country,
-                    MobileCountry = MobileCountryCode,
+                    MobileCountry = MobileCountry,
                     Building = BuildingNumber,
                     Floor = UnitNumber,
                     Street = Neighborhood,
@@ -2913,15 +2877,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Endda = "/Date(253402251010000)/",
                     Email = Email,
                     Mobile = newCountryCodeString + MobileNumber,
-
-                    CaseGuid = Guid,
+                    CaseGuid = LgId,
                     Birthdt = Bdt,//"/Date(1577846576000)/",
-
                     Password = "",
                     SmsCode = "",
                     EmailCode = "",
                     Submit = submitValue,
-                    Captcha = Captcha
+                    Captcha = Captcha,
+                    Mguid = Mguid,
                 };
 
                 string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
@@ -2945,74 +2908,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     StringBuilder Message = new StringBuilder();
                     foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        if (itemerror.code.Contains("ZD_ZVTX/006"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage6);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/007"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage7);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/008"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage8);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/009"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage9);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0010"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage10);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0011"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage11);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/001"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage1);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/002"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage2);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/003"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage3);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/004"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage4);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/005"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage5);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/005"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage5);
-                        }
-                        if (itemerror.code.Contains("ZD_ZREG/303"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErrorMessage303);
-                        }
-
+                        Message.AppendLine(itemerror.message);
                     }
-                    //_dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                    Message = Message.Replace("An exception was raised", "");
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                 }
                 else
@@ -3026,9 +2924,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception)
             {
-
-
-
                 string MessageForTheUser = AppResources.Somethingwentwrong;
 
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -3042,6 +2937,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+       
         public void SetcolorForDots(string visiliblityItemName)
         {
             if (visiliblityItemName.Equals("IndividualRegistrationView"))
@@ -3120,7 +3016,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (TotalSec > 0)
                         {
                             IsResendOTPEnabled = false;
-                            //TimerStart(TotalSec);
                             ButtonDisableColor = Colors.Gray;
                         }
 
@@ -3136,7 +3031,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         return false;
                     }
-
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
@@ -3149,6 +3043,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         IsOTPEntryEnable = false;
                         return false;
                     }
+                    //else if(TotalSec <0)
+                    //{
+                    //    TotalSec = 120;
+                    //}
                     TotalSec = TotalSec - 1;
                     App.CurrentTimeDifference = TotalSec;
                     numberOfSeconds = TotalSec;

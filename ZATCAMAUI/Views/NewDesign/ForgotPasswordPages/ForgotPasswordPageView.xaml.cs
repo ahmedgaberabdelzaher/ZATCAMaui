@@ -1,6 +1,5 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Syncfusion.Maui.Picker;
+﻿using Syncfusion.Maui.Picker;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -20,7 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             try
             {
                 InitializeComponent();
-                NavigationPage.SetBackButtonTitle(this, " ");
 
                 viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
                 BindingContext = viewModel;
@@ -29,7 +27,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
                 SetPickerFont();
                 viewModel.StartPage = 1;
-                On<iOS>().SetUseSafeArea(true);
             }
             catch (Exception)
             {
@@ -76,7 +73,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             viewModel.IsUserNameCardTapped = false;
 
             viewModel.IsPasswordCardTapped = true;
-
+            viewModel.UserIDLayoutVisibility = false;
             viewModel.SetPasswordCardLayoutVisibility();
             viewModel.PasswordCardBackgroundImg = "FP_selected_tile";
             viewModel.UserNameCardBackgroundImg = "FP_unselected_tile";
@@ -101,7 +98,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             viewModel.IDNumber = string.Empty;
             viewModel.UserNameLabelText = AppResources.UserName;
 
-            viewModel.GetCaptchAndGUID();
+            _ = viewModel.GetCaptchImage(ZATCAConstants.FUSR);
 
             viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
 
@@ -112,8 +109,10 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
         private async void OnUserNameCardClicked(object sender, EventArgs e)
         {
-            viewModel.IsUserNameCardTapped = true;
+            
             viewModel.IsPasswordCardTapped = false;
+            viewModel.IsUserNameCardTapped = true;
+            viewModel.UserIDLayoutVisibility = true;
             viewModel.SetUserNameCardVisibility();
             viewModel.PasswordCardBackgroundImg = "FP_unselected_tile";
             viewModel.UserNameCardBackgroundImg = "FP_selected_tile";
@@ -135,7 +134,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             viewModel.ContinueORConfirmButtonText = AppResources.Confirm;
             viewModel.IsContinueButtonVisibe = viewModel.ValidateFirstStep();
 
-            await viewModel.GetCaptchAndGUID();
+            _ = viewModel.GetCaptchImage(ZATCAConstants.FPWD);
 
 
         }
@@ -302,10 +301,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
                 base.OnAppearing();
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
 
                 if (Device.RuntimePlatform == Device.Android)
                 {
@@ -349,5 +344,11 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             Picker_Tins.IsOpen = true;
 
         }
+        void RefreshCaptchaClicked(System.Object sender, System.EventArgs e)
+        {
+            _ = viewModel.IsPasswordCardTapped ? viewModel.GetCaptchImage(ZATCAConstants.FPWD) : viewModel.GetCaptchImage(ZATCAConstants.FUSR);
+            viewModel.Captcha = string.Empty;
+        }
+
     }
 }

@@ -85,7 +85,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.DOBddyymm = string.Empty;
                 viewModel.DOB = string.Empty;
                 SetPickerFont();
-                _ = viewModel.GetCaptchAndGUID();
+                 _ = viewModel.GetCaptchImage();
+
             }
             catch (Exception ex)
             {
@@ -902,7 +903,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 try
                 {
-                    mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+                        viewModel.MobileCountry = mobileData.Where(x => x.Telefto == viewModel.TxtCountryCode).FirstOrDefault().Land1;
+                    });
+
                 }
                 catch (Exception)
                 {
@@ -1398,6 +1404,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
             }
+        }
+        void RefreshCaptchaClicked(System.Object sender, System.EventArgs e)
+        {
+            viewModel.GetCaptchImage();
+            viewModel.Captcha = string.Empty;
         }
 
     }
