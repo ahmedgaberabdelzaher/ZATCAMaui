@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Acr.UserDialogs;
 using GalaSoft.MvvmLight.Views;
 using Maui.GoogleMaps;
+using Microsoft.Maui.Handlers;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Controls;
 using ZATCAMAUI.Core.AppConfigurations;
@@ -392,9 +393,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                     {
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-
 #if ANDROID
-                                var handler = control.Handler as IDatePickerHandler;
+
+                            var handler = control.Handler as IDatePickerHandler;
                                 handler.PlatformView.PerformClick();
 #endif
 #if IOS
@@ -786,7 +787,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
-        #endregion
+#endregion
 
         public SubmitReportViewModel(ISubmitReportServices submitReportServices, INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
