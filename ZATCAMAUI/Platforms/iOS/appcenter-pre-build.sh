@@ -23,7 +23,7 @@ echo "EXECUTING APPCENTER_PRE_BUILD SCRIPT"
 
 # Updating  Info.plist ref URL : "https://montemagno.com/vs-app-center-custom-build-scripts-for-production-apps/"
 
-PLIST_PATH=$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT.iOS/Info.plist
+PLIST_PATH=$APPCENTER_SOURCE_DIRECTORY/ZATCAMAUI/ZATCAMAUI/Platforms/iOS/Info.plist
 
 # Print out file before any change
 cat $PLIST_PATH
@@ -42,7 +42,7 @@ then
 fi
 echo "Getting file path"
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT/AppConfigurations/PageSettings.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/ZATCAMAUI/ZATCAMAUI/Core/AppConfigurations/PageSettings.cs
 
 echo "Updating file path to $APP_CONSTANT_FILE"
 
