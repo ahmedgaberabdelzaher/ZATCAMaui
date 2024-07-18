@@ -46,7 +46,8 @@
                             <Label
                                 Margin="0,0,0,20"
                                 FontSize="18"
-                                HorizontalOptions="StartAndExpand"
+                                HorizontalOptions="Start"
+                                LineBreakMode="WordWrap"
                                 Text="{x:Static ResourceManager:AppResources.CartHeader}"
                                 TextColor="#232323"
                                 VerticalOptions="Center" />
@@ -72,11 +73,11 @@
                         <!--#endregion Header & close-->
 
                         <!--#region Frame Contains Product list-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,20"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 14,14,14,14"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource CommonTopCurves}"
                             VerticalOptions="FillAndExpand">
@@ -253,7 +254,7 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Contains Product list-->
 
                         <!--#region Fees Details-->
@@ -318,7 +319,7 @@
                                     </Label>
 
                                     <!--  CustomsFeesDisclaimer Image  -->
-                                    <Image
+                                    <ImageButton
                                         Aspect="AspectFit"
                                         Source="info"
                                         ToolTipProperties.Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
@@ -351,7 +352,7 @@
                                     </Label>
 
                                     <!--  VATCertificates Image  -->
-                                    <Image
+                                    <ImageButton
                                         Aspect="AspectFit"
                                         Source="info"
                                         ToolTipProperties.Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}" />
@@ -403,7 +404,7 @@
                                         VerticalOptions="Start" />
 
                                     <!--  Total Disclaimer Image  -->
-                                    <Image
+                                    <ImageButton
                                         Margin="5,0"
                                         Aspect="AspectFit"
                                         Source="info"

@@ -368,7 +368,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                     try
                     {
                         var dateTime = date.SelectedDate;
-                        DeclarationDateString = DateTimeHelper.DateTimeFormater(dateTime);
+                        DeclarationDateString = DateTimeHelper.DateTimeFormater(dateTime,"dd-MM-yyyy");
 
                     }
                     catch (Exception)

@@ -31,19 +31,19 @@
                 BindableLayout.ItemsSource="{Binding MenuLst}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Frame
+                        <Border
                             x:Name="Item"
                             Margin="0,15,0,0"
                             Padding="22"
-                            BorderColor="#DDDDDD"
-                            CornerRadius="15">
-                            <Frame.GestureRecognizers>
+                            Stroke="#DDDDDD"
+                            StrokeShape="RoundRectangle 14,14,14,14">
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer
                                     BindingContext="{Binding Source={x:Reference HomeMenuLst}, Path=BindingContext}"
                                     Command="{Binding NavigateCommand}"
                                     CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
 
-                            </Frame.GestureRecognizers>
+                            </Border.GestureRecognizers>
                             <Grid ColumnDefinitions="30,*">
                                 <Image
                                     Grid.Column="0"
@@ -55,7 +55,7 @@
                                     Text="{Binding Name}"
                                     VerticalOptions="CenterAndExpand" />
                             </Grid>
-                        </Frame>
+                        </Border>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>

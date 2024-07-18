@@ -2429,7 +2429,8 @@ namespace ZATCAMAUI.Core.Mangers
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
-                    String url = ZATCAConstants.GAZTSiguupValidateGCCIDType + "(Guid16='',OtpCode='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    string url = ZATCAConstants.GAZTSiguupValidateIDTypesDeclZakat + "(Guid16='',OtpCode='0000',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+
                     var uri = new Uri(url);
                     HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
                     if (SignupIsIDTypeValidList != null)
@@ -6429,5 +6430,260 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        public static async Task<OTPModelD> getValidateAbsher(OTPModelD readCaptcha, bool Absher)
+        {
+
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    OTPModelD forgotPasswordCaptcha = new OTPModelD();
+                    string url = "";
+                    if (Absher == true)
+                    {
+                        url = ZATCAConstants.GetAbsherPassword;
+                    }
+                    else
+                    {
+                        url = ZATCAConstants.ValidateAbsher;
+                    }
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
+                    var serilized = JsonConvert.SerializeObject(readCaptcha);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    forgotPasswordCaptcha = JsonConvert.DeserializeObject<OTPModelD>(detailJson);
+                    if (!string.IsNullOrEmpty(detailJson) && forgotPasswordCaptcha.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
+                            return null;
+                        }
+                    }
+                    return forgotPasswordCaptcha;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public static async Task<OTPModelvalidatedD> ValidateAbsher(OTPModelvalidateD readCaptcha, bool Absher)
+        {
+
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    OTPModelvalidatedD forgotPasswordCaptcha = new OTPModelvalidatedD();
+                    string url = "";
+                    if (Absher == true)
+                    {
+                        url = ZATCAConstants.GetAbsherPassword;
+                    }
+                    else
+                    {
+                        url = ZATCAConstants.ValidateAbsher;
+                    }
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
+                    var serilized = JsonConvert.SerializeObject(readCaptcha);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    forgotPasswordCaptcha = JsonConvert.DeserializeObject<OTPModelvalidatedD>(detailJson);
+                    if (!string.IsNullOrEmpty(detailJson) && forgotPasswordCaptcha.d == null)
+                    {
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            string errorMessage = string.Empty;
+                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                            errorMessage = WithReplacedString;
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
+                            return null;
+                        }
+                    }
+                    return forgotPasswordCaptcha;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public async static Task<string> GAZTValidateIDTypesZAKATDelecration(string IDType, string IDNumber, string DBO, OTPModelvalidatedD otpModelD)
+        {
+            if (NetworkCheck.IsInternet())
+            {
+                IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    string url = ZATCAConstants.GAZTSiguupValidateIDTypesDeclZakat + "(Guid16='" + otpModelD.d.Guid16 + "',OtpCode='" + otpModelD.d.OtpCode + "',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json";
+                    var uri = new Uri(url);
+                    HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
+                    if (SignupIsIDTypeValidList != null)
+                    {
+                        if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = SignupIsIDTypeValidList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == string.Compare(NewToken, "Token has expaired")) || (0 == string.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
+                    }
+                    return IsIDTypeValidList;
+                }
+
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (Exception )
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public static async Task<string> GetCaptchaImage(string ReqCode, string LgId = null)
+        {
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    string requestUrl = string.Empty;
+                    if (LgId == null)
+                    {
+                        requestUrl = ZATCAConstants.GAZTGetCaptchaImage + ReqCode;
+                    }
+                    else
+                    {
+                        requestUrl = ZATCAConstants.GAZTGetCaptchaImage + ReqCode + "&lgid=" + LgId;
+                    }
+                    HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(requestUrl);
+                    if (requestUrl.Contains(ZATCAConstants.DevBaseUrlForAuthentication))
+                    {
+                        myHttpWebRequest.Referer = ZATCAConstants.DevBaseUrlForODataServices + "/";
+                        myHttpWebRequest.Headers["Origin"] = ZATCAConstants.DevBaseUrlForODataServices;
+                    }
+                    else if (requestUrl.Contains(ZATCAConstants.QABaseUrlForAuthentication))
+                    {
+                        myHttpWebRequest.Referer = ZATCAConstants.QABaseUrlForODataServices + "/";
+                        myHttpWebRequest.Headers["Origin"] = ZATCAConstants.QABaseUrlForODataServices;
+                    }
+                    else if (requestUrl.Contains(ZATCAConstants.UatBaseUrlForAuthentication))
+                    {
+                        myHttpWebRequest.Referer = ZATCAConstants.UatBaseUrlForODataServices + "/";
+                        myHttpWebRequest.Headers["Origin"] = ZATCAConstants.UatBaseUrlForODataServices;
+                    }
+                    else if (requestUrl.Contains(ZATCAConstants.PreProdBaseUrlForAuthentication))
+                    {
+                        myHttpWebRequest.Referer = ZATCAConstants.PreProdBaseUrlForODataServices + "/";
+                        myHttpWebRequest.Headers["Origin"] = ZATCAConstants.PreProdBaseUrlForODataServices;
+                    }
+                    else if (requestUrl.Contains(ZATCAConstants.ProdBaseUrlForAuthentication))
+                    {
+                        myHttpWebRequest.Referer = ZATCAConstants.ProdBaseUrlForODataServices + "/";
+                        myHttpWebRequest.Headers["Origin"] = ZATCAConstants.ProdBaseUrlForODataServices;
+                    }
+                    HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
+                    if (myHttpWebResponse != null)
+                    {
+                        if (myHttpWebResponse.StatusDescription == "OK")
+                        {
+                            Stream dataStream = myHttpWebResponse.GetResponseStream();
+                            StreamReader reader = new StreamReader(dataStream);
+                            string responseFromServer = reader.ReadToEnd();
+                            // Display the content.
+                            //dynamic data = JObject.Parse(responseFromServer);
+                            return responseFromServer;
+                        }
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.Nodataavailable))
+                    {
+                        throw new Exception(AppResources.Nodataavailable);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
     }
 }

@@ -896,18 +896,18 @@
 
                         </inputLayout:SfTextInputLayout>
 
-                        <custom:CustomLabel
+                        <Label
                             Margin="0,10,0,0"
                             HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}"
                             VerticalOptions="Center">
-                            <custom:CustomLabel.FormattedText>
+                            <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZLicenseName}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                            </Label.FormattedText>
+                        </Label>
                         <inputLayout:SfTextInputLayout
                             Margin="0,-6,0,-6"
                             ContainerType="Outlined"

@@ -132,8 +132,6 @@
                                 VerticalOptions="CenterAndExpand" />
 
                             <StackLayout Orientation="Horizontal">
-                                <!--<Label Text="{x:Static ResourceManager:AppResources.ASFBNum}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start"></Label>
-                                <Label Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Text=": "></Label>-->
                                 <Label
                                     x:Name="LableFbNum"
                                     HorizontalOptions="StartAndExpand"
@@ -141,14 +139,13 @@
                                     VerticalOptions="CenterAndExpand" />
                             </StackLayout>
                         </StackLayout>
-                        <Frame
+                        <Border
                             x:Name="FrameCardStatus"
                             Grid.Row="0"
                             Grid.Column="1"
                             Padding="10,10,10,10"
                             BackgroundColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
-                            CornerRadius="14"
-                            HasShadow="False"
+                            StrokeShape="RoundRectangle 14,14,14,14"
                             HeightRequest="20"
                             HorizontalOptions="FillAndExpand"
                             Opacity=".2"
@@ -159,11 +156,6 @@
                             Padding="10,0,10,0"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="FillAndExpand">
-                            <!--<Label Style="{StaticResource CaptionLabelBlack}" Text="{Binding Betrh}"
-                                               TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                                                        </Label>-->
-
-
 
                             <Label
                                 x:Name="LableCardStatus"
@@ -259,11 +251,10 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <Frame
+                            <Border
                                 x:Name="TaxTypeDesc"
                                 Grid.Row="0"
-                                CornerRadius="8"
-                                HasShadow="False"
+                                StrokeShape="RoundRectangle 8,8,8,8"
                                 HorizontalOptions="FillAndExpand"
                                 Opacity=".2"
                                 VerticalOptions="FillAndExpand" />
@@ -290,11 +281,10 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <Frame
+                    <Border
                         x:Name="CardAmount"
                         Grid.Row="0"
-                        CornerRadius="20"
-                        HasShadow="False"
+                        StrokeShape="RoundRectangle 20,20,20,20"
                         HorizontalOptions="FillAndExpand"
                         Opacity=".2" />
                     <StackLayout
@@ -326,11 +316,10 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <Frame
+                    <Border
                         x:Name="CardAmountRemaining"
                         Grid.Row="0"
-                        CornerRadius="20"
-                        HasShadow="False"
+                        StrokeShape="RoundRectangle 20,20,20,20"
                         HorizontalOptions="FillAndExpand"
                         Opacity=".2" />
                     <StackLayout

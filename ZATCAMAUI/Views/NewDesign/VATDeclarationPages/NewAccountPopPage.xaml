@@ -32,11 +32,10 @@
             </StackLayout>
 
             <StackLayout Padding="0,0,0,15" FlowDirection="LeftToRight">
-                <Frame
+                <Border
                     Padding="0"
-                    BorderColor="LightGray"
-                    CornerRadius="8"
-                    HasShadow="False">
+                    Stroke="LightGray"
+                    StrokeShape="RoundRectangle 8,8,8,8">
                     <StackLayout Orientation="Horizontal">
                         <StackLayout
                             Padding="5,8,0,8"
@@ -147,7 +146,7 @@
                         </StackLayout>
                     </StackLayout>
 
-                </Frame>
+                </Border>
             </StackLayout>
 
             <buttons:SfButton

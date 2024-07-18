@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using RGPopup.Maui.Services;
 using Syncfusion.Maui.ListView;
@@ -27,7 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
         {
             InitializeComponent();
             viewModel = App.Locator.VATDeregistrationDetailsPage;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             ChangeAeroIcon();
             ChangeArrowDirection();
@@ -42,6 +39,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
 
             viewModel.VoidIsVisible = false;
             ContactName.IsEnabled = true;
+            if (App.IsArabic && Device.RuntimePlatform == Device.iOS)
+            {
+                viewModel.TermsAlignment = TextAlignment.End;
+            }
+            else
+            {
+                viewModel.TermsAlignment = TextAlignment.Start;
+            }
+
         }
 
         public void ChangeArrowDirection()
@@ -231,9 +237,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             ChangeArrowDirection();
             MessagingCenterCallBacks();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             if (viewModel.VATDeRegistrationDetailsData != null)
             {
                 if (viewModel.VATDeRegistrationDetailsData.d != null)

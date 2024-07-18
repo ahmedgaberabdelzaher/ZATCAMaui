@@ -7,9 +7,9 @@
     <Grid>
         <Grid.Resources>
             <ResourceDictionary>
-                <Style TargetType="Frame">
-                    <Setter Property="CornerRadius" Value="15" />
-                    <Setter Property="BorderColor" Value="#DDDDDD" />
+                <Style TargetType="Border">
+                    <Setter Property="StrokeShape" Value="RoundRectangle 15,15,15,15" />
+                    <Setter Property="Stroke" Value="#DDDDDD" />
                     <Setter Property="Padding" Value="15" />
                 </Style>
                 <Style TargetType="Image">
@@ -32,9 +32,9 @@
                     TextColor="{StaticResource Primary}" />
                 <StackLayout
                     Grid.Column="1"
-                    Spacing="10"
                     HorizontalOptions="EndAndExpand"
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    Spacing="10">
                     <Image
                         HeightRequest="20"
                         Source="LstViewIcon"
@@ -71,116 +71,139 @@
 
             </Grid>
 
-            <CollectionView
-                x:Name="menu"
-                Grid.Row="1"
-                Margin="0,18,0,0"
-                ItemSizingStrategy="MeasureFirstItem"
-                ItemsSource="{Binding CustomeMenuLst}">
+            <Grid Grid.Row="1" ColumnDefinitions="*">
 
-                <CollectionView.ItemsLayout>
-                   <GridItemsLayout Orientation="Vertical"
-                                    Span="2"
-                                    VerticalItemSpacing="10"
-                                    HorizontalItemSpacing="10" />
-                </CollectionView.ItemsLayout>
+                <ScrollView VerticalScrollBarVisibility="Never">
 
-                <CollectionView.Triggers>
-                    <DataTrigger
-                        Binding="{Binding ItemCountPerRow}"
-                        TargetType="CollectionView"
-                        Value="1">
-                        <Setter Property="ItemsLayout" >
+                    <Grid
+                        x:Name="menu"
+                        Margin="0,18,0,0"
+                        BindableLayout.ItemsSource="{Binding CustomeMenuLst}"
+                        ColumnDefinitions="*,*"
+                        RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto">
 
-                            <GridItemsLayout Orientation="Vertical"
-                                              VerticalItemSpacing="10"/>
-                        </Setter>
-                    </DataTrigger>
-                </CollectionView.Triggers>
+                        <Grid.Triggers>
+                            <DataTrigger
+                                Binding="{Binding ItemCountPerRow}"
+                                TargetType="Grid"
+                                Value="1">
+                                <Setter Property="ColumnDefinitions" Value="*" />
+                            </DataTrigger>
+                        </Grid.Triggers>
 
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                                <Border
+                                    x:Name="Item"
+                                    Grid.Row="{Binding Row}"
+                                    Grid.Column="{Binding ColumnNo}"
+                                    Margin="10,10,10,10"
+                                    Padding="10,0"
+                                    Stroke="{StaticResource NeutralGreay}"
+                                    StrokeShape="RoundRectangle 10,10,10,10">
 
-                        <Frame
-                            x:Name="Item"
-                            HasShadow="False"
-                            Grid.Row="{Binding Row}"
-                            Grid.Column="{Binding ColumnNo}"
-                            Margin="0,0,10,10"
-                            Padding="10,0">
-                            <Frame.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding IsVerticalView}"
-                                    TargetType="Frame"
-                                    Value="False">
-                                    <Setter Property="Padding" Value="10,20,10,10" />
-                                </DataTrigger>
-                            </Frame.Triggers>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
-                                    Command="{Binding NavigateToServiceCommand}"
-                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                            </Frame.GestureRecognizers>
-                            <StackLayout Margin="5"
-                                         Spacing="0">
-                                <StackLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding IsVerticalView}"
-                                        TargetType="StackLayout"
-                                        Value="true">
-                                        <Setter Property="Orientation" Value="Horizontal" />
-                                        <Setter Property="Spacing" Value="5" />
-                                    </DataTrigger>
-                                </StackLayout.Triggers>
-                                <Image
-                                    Margin="0,5,0,0"
-                                    HeightRequest="37"
-                                    HorizontalOptions="Center"
-                                    Source="{Binding ImageSource}"
-                                    VerticalOptions="Start"
-                                    WidthRequest="29" />
-                                <StackLayout>
-                                    <Label
-                                        Margin="0,5,0,5"
-                                        HorizontalOptions="Center"
-                                        Text="{Binding Name}"
-                                        
-                                        VerticalOptions="Start">
-                                        <Label.Triggers>
+                                    <Border.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsVerticalView}"
+                                            TargetType="Border"
+                                            Value="False">
+                                            <Setter Property="Padding" Value="0,20,0,20" />
+                                        </DataTrigger>
+                                    </Border.Triggers>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                            Command="{Binding NavigateToServiceCommand}"
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Grid
+                                        Margin="5"
+                                        ColumnDefinitions="auto,*"
+                                        ColumnSpacing="10"
+                                        RowDefinitions="auto,auto"
+                                        RowSpacing="10">
+
+                                        <Grid.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsVerticalView}"
-                                                TargetType="Label"
-                                                Value="true">
-                                                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                                                TargetType="Grid"
+                                                Value="False">
+                                                <Setter Property="ColumnDefinitions" Value="*" />
+                                                <Setter Property="RowDefinitions" Value="*,*" />
+                                                <Setter Property="RowSpacing" Value="30" />
+                                                <Setter Property="ColumnSpacing" Value="20" />
                                             </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                    <Label
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="10"
-                                        LineBreakMode="WordWrap"
-                                        Text="{Binding ServiceDesc}">
 
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsVerticalView}"
-                                                TargetType="Label"
-                                                Value="true">
-                                                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
-                                                <Setter Property="VerticalOptions" Value="FillAndExpand" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
+                                        </Grid.Triggers>
 
-                                    </Label>
-                                </StackLayout>
-                            </StackLayout>
-                        </Frame>
+                                        <Image
+                                            Grid.RowSpan="2"
+                                            Margin="0,10,0,0"
+                                            HeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            Source="{Binding ImageSource}"
+                                            VerticalOptions="Start"
+                                            WidthRequest="40" />
 
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+
+
+
+                                        <StackLayout Grid.Column="1">
+
+                                            <StackLayout.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding IsVerticalView}"
+                                                    TargetType="StackLayout"
+                                                    Value="False">
+                                                    <Setter Property="Grid.Row" Value="1" />
+                                                    <Setter Property="Grid.Column" Value="0" />
+                                                    <Setter Property="VerticalOptions" Value="EndAndExpand" />
+                                                </DataTrigger>
+
+                                            </StackLayout.Triggers>
+
+                                            <Label
+                                                Margin="0,5,0,5"
+                                                HorizontalOptions="Center"
+                                                Text="{Binding Name}"
+                                                VerticalOptions="Start">
+
+                                                <Label.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding IsVerticalView}"
+                                                        TargetType="Label"
+                                                        Value="true">
+                                                        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                                                    </DataTrigger>
+                                                </Label.Triggers>
+
+                                            </Label>
+
+                                            <Label
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="10"
+                                                LineBreakMode="WordWrap"
+                                                Text="{Binding ServiceDesc}" />
+
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                </Border>
+
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
+                    </Grid>
+
+                </ScrollView>
+
+            </Grid>
+
+
 
         </Grid>
     </Grid>

@@ -94,14 +94,13 @@
                             VerticalOptions="Start">
 
                             <!--  SubmitReport Card  -->
-                            <Frame
+                            <Border
                                 Padding="0"
                                 BackgroundColor="White"
-                                BorderColor="#E6E6E6"
-                                CornerRadius="10"
+                                Stroke="#E6E6E6"
+                                StrokeShape="RoundRectangle 10,10,10,10"
                                 HeightRequest="120"
                                 HorizontalOptions="StartAndExpand"
-                                IsClippedToBounds="True"
                                 VerticalOptions="StartAndExpand"
                                 WidthRequest="171">
 
@@ -128,21 +127,20 @@
 
                                 </StackLayout>
 
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GoToSubmitReportCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
 
-                            </Frame>
+                            </Border>
 
                             <!--  Show Reports Card  -->
-                            <Frame
+                            <Border
                                 Padding="0"
                                 BackgroundColor="White"
-                                BorderColor="#E6E6E6"
-                                CornerRadius="10"
+                                Stroke="#E6E6E6"
+                                StrokeShape="RoundRectangle 10,10,10,10"
                                 HeightRequest="120"
                                 HorizontalOptions="StartAndExpand"
-                                IsClippedToBounds="True"
                                 VerticalOptions="StartAndExpand"
                                 WidthRequest="171">
 
@@ -169,37 +167,37 @@
 
                                 </StackLayout>
 
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GoToPerviousReportsCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
 
-                            </Frame>
+                            </Border>
 
 
                         </StackLayout>
 
                         <!--  Report Note  -->
-                        <Frame
+                        <Border
                             Padding="10"
                             BackgroundColor="White"
-                            BorderColor="#E6E6E6"
-                            CornerRadius="10"
+                            Stroke="#E6E6E6"
+                            StrokeShape="RoundRectangle 10,10,10,10"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="StartAndExpand">
 
                             <StackLayout
-                                HorizontalOptions="CenterAndExpand"
+                                HorizontalOptions="FillAndExpand"
                                 Orientation="Horizontal"
                                 Spacing="10"
-                                VerticalOptions="CenterAndExpand">
+                                VerticalOptions="FillAndExpand">
 
                                 <!--  info icon  -->
                                 <Image
                                     Aspect="AspectFit"
                                     HeightRequest="20"
-                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalOptions="Start"
                                     Source="information.png"
-                                    VerticalOptions="CenterAndExpand"
+                                    VerticalOptions="StartAndExpand"
                                     WidthRequest="20" />
 
                                 <!--  ReportsNote Label  -->
@@ -212,7 +210,7 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
 
                     </StackLayout>
 

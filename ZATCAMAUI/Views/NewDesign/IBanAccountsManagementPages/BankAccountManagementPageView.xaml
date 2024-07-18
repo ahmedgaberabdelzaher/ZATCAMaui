@@ -177,12 +177,11 @@
 
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Frame
+                                        <Border
                                             Grid.Column="0"
                                             Margin="0,15,0,0"
                                             Padding="10"
-                                            CornerRadius="15"
-                                            HasShadow="True"
+                                            StrokeShape="RoundRectangle 15,15,15,15"
                                             Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <StackLayout Padding="0" Spacing="0">
                                                 <Grid Padding="10" RowSpacing="0">
@@ -227,12 +226,11 @@
                                                         HorizontalOptions="End"
                                                         IsVisible="{Binding isUpdateDisabled}">
 
-                                                        <Frame
+                                                        <Border
                                                             Grid.Row="0"
                                                             Padding="16,8,16,8"
                                                             BackgroundColor="Gray"
-                                                            CornerRadius="14"
-                                                            HasShadow="False"
+                                                            StrokeShape="RoundRectangle 14,14,14,14"
                                                             HeightRequest="20"
                                                             HorizontalOptions="FillAndExpand"
                                                             Opacity=".8">
@@ -247,7 +245,7 @@
                                                                     Text="{Binding StatusText}"
                                                                     VerticalOptions="CenterAndExpand" />
                                                             </StackLayout>
-                                                        </Frame>
+                                                        </Border>
 
 
                                                         <StackLayout.GestureRecognizers>
@@ -263,35 +261,34 @@
                                                         HorizontalOptions="End"
                                                         IsVisible="{Binding isUpdateEnabled}">
 
-                                                        <Frame
+                                                        <Border
                                                             Grid.Row="0"
                                                             Padding="16,8,16,8"
                                                             BackgroundColor="{StaticResource Primary}"
-                                                            CornerRadius="14"
-                                                            HasShadow="False"
+                                                            StrokeShape="RoundRectangle 14,14,14,14"
                                                             HeightRequest="20"
                                                             HorizontalOptions="FillAndExpand"
                                                             Opacity=".8">
-                                                            <Frame.Triggers>
+                                                            <Border.Triggers>
                                                                 <DataTrigger
                                                                     Binding="{Binding StatusText}"
-                                                                    TargetType="Frame"
+                                                                    TargetType="Border"
                                                                     Value="{x:Static ResourceManager:AppResources.IBanDeactivate}">
                                                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
                                                                 </DataTrigger>
                                                                 <DataTrigger
                                                                     Binding="{Binding StatusText}"
-                                                                    TargetType="Frame"
+                                                                    TargetType="Border"
                                                                     Value="{x:Static ResourceManager:AppResources.IBANUpdate}">
                                                                     <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
                                                                 </DataTrigger>
                                                                 <DataTrigger
                                                                     Binding="{Binding StatusText}"
-                                                                    TargetType="Frame"
+                                                                    TargetType="Border"
                                                                     Value="{x:Static ResourceManager:AppResources.IBanActivate}">
                                                                     <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
                                                                 </DataTrigger>
-                                                            </Frame.Triggers>
+                                                            </Border.Triggers>
                                                             <StackLayout
                                                                 Grid.Row="0"
                                                                 HorizontalOptions="CenterAndExpand"
@@ -303,7 +300,7 @@
                                                                     Text="{Binding StatusText}"
                                                                     VerticalOptions="CenterAndExpand" />
                                                             </StackLayout>
-                                                        </Frame>
+                                                        </Border>
 
 
                                                         <StackLayout.GestureRecognizers>
@@ -433,7 +430,7 @@
                                                 </Grid>
 
                                             </StackLayout>
-                                        </Frame>
+                                        </Border>
                                     </DataTemplate>
                                 </listView:SfListView.ItemTemplate>
                             </listView:SfListView>

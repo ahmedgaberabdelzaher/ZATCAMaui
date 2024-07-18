@@ -41,7 +41,7 @@ namespace ZATCAMAUI
         public static string GUIDFrSSO { get; set; }
         public static bool successMsg { get; set; }
         public static bool isAndroidUrlloaded = false;
-
+        public static bool isVatEffectDateNav = false;
         public static Stopwatch stopWatch = new Stopwatch();
         public const int defaultTimespan = 30;
         public const int defaultTimespanForLogin = 6;

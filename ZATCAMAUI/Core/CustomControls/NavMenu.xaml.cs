@@ -6,6 +6,7 @@ namespace ZATCAMAUI.Core.CustomControls
         public NavMenu()
         {
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
     }
 }

@@ -12,6 +12,7 @@ namespace ZATCAMAUI.Views.NewDesign.HomePages
             viewModel.GetSideMenuLst();
             viewModel.CurrentTab = 2;
             InitializeComponent();
+            FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
         }
     }
 }

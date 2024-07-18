@@ -254,15 +254,14 @@
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                            <Frame
+                            <Border
                                 Padding="16"
-                                BorderColor="{StaticResource NeutralLightGrey}"
-                                CornerRadius="16"
-                                HasShadow="False">
+                                Stroke="{StaticResource NeutralLightGrey}"
+                                StrokeShape="RoundRectangle 16,16,16,16">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout>
 
-                                        <custom:CustomLabel
+                                        <Label
                                             Margin="0,0,0,0"
                                             Style="{StaticResource ValueLabelBlackMedium}"
                                             Text="{x:Static ResourceManager:AppResources.ManagerDetails}" />
@@ -274,7 +273,7 @@
                                         </Image.GestureRecognizers>
                                     </Image>
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </StackLayout>
 

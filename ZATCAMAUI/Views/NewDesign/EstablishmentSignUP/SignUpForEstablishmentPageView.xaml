@@ -25,13 +25,12 @@
 
             <converters:EstablishmentSignUPTabEnumToVisibilityConverters x:Key="enumToVisibilityConverter" />
 
-            <Style x:Key="circleFrame" TargetType="Frame">
+            <Style x:Key="circleFrame" TargetType="Border">
                 <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}" />
-                <Setter Property="CornerRadius" Value="25" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 25,25,25,25" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="HeightRequest" Value="25" />
                 <Setter Property="WidthRequest" Value="25" />
-                <Setter Property="HasShadow" Value="False" />
             </Style>
             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                 <Setter Property="Rotation" Value="180" />
@@ -126,12 +125,10 @@
                         Style="{StaticResource SeparatorStyle}"
                         VerticalOptions="Start" />
 
-
                     <!--  step 1  -->
                     <WebView
                         x:Name="TCWebView"
-                        HeightRequest="{OnPlatform Android=490,
-                                                   iOS=590}"
+                        HeightRequest="550"
                         IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}" />
 
                     <ScrollView
@@ -141,6 +138,7 @@
                         VerticalScrollBarVisibility="Never">
 
                         <StackLayout>
+
 
                             <!--  Start step 2  -->
                             <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.IndividualInformation}}">
@@ -234,8 +232,8 @@
                                         x:Name="FrmTIN"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.TIN}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -288,8 +286,8 @@
                                         x:Name="txtEntryName"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZIDType}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -389,8 +387,8 @@
                                         x:Name="FrmIDNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.NDIDNumber}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
                                         <custom:GAZTBorderlessEntry
@@ -453,8 +451,8 @@
                                         x:Name="FrmDBO"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="dd/MM/yyyy"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -603,8 +601,8 @@
                                         x:Name="FrmName"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZName}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10"
                                         Stroke="{StaticResource NeutralGreay}">
@@ -719,8 +717,8 @@
                                         x:Name="FrmCR"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZCRNumber}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -760,8 +758,8 @@
                                         x:Name="FrmLicenseNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -801,8 +799,8 @@
                                         x:Name="FrmlicenceNumberIssuedbyframe"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -904,8 +902,8 @@
                                         x:Name="FrmIssuedByCity"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1013,8 +1011,8 @@
                                         x:Name="FrmEmailAddress"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1049,8 +1047,8 @@
                                     <inputLayout:SfTextInputLayout
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZMobileNumber}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1109,8 +1107,8 @@
                                         x:Name="FrmPhoneNumber"
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZPhoneNumber}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1169,12 +1167,8 @@
                                                 ContainerBackground="White"
                                                 ContainerType="Outlined"
                                                 HasError="False"
-                                                IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
-                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPFirstEntry"
                                                     BackgroundColor="Red"
@@ -1206,12 +1200,8 @@
                                                 ContainerBackground="White"
                                                 ContainerType="Outlined"
                                                 HasError="False"
-                                                IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
-                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPSecondEntry"
                                                     FontFamily="{StaticResource SomarBold}"
@@ -1242,12 +1232,8 @@
                                                 ContainerBackground="White"
                                                 ContainerType="Outlined"
                                                 HasError="False"
-                                                IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
-                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPThirdEntry"
                                                     FontFamily="{StaticResource SomarBold}"
@@ -1278,12 +1264,8 @@
                                                 ContainerBackground="White"
                                                 ContainerType="Outlined"
                                                 HasError="False"
-                                                IsHintAlwaysFloated="True"
                                                 OutlineCornerRadius="8"
                                                 Stroke="{StaticResource Primary}">
-                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="OTPFourthEntry"
                                                     FontFamily="{StaticResource SomarBold}"
@@ -1354,12 +1336,8 @@
                                                     ContainerBackground="White"
                                                     ContainerType="Outlined"
                                                     HasError="False"
-                                                    IsHintAlwaysFloated="True"
                                                     OutlineCornerRadius="8"
                                                     Stroke="{StaticResource Primary}">
-                                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="MobOTPFirstEntry"
                                                         FontFamily="{StaticResource SomarBold}"
@@ -1390,12 +1368,8 @@
                                                     ContainerBackground="White"
                                                     ContainerType="Outlined"
                                                     HasError="False"
-                                                    IsHintAlwaysFloated="True"
                                                     OutlineCornerRadius="8"
                                                     Stroke="{StaticResource Primary}">
-                                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="MobOTPSecondEntry"
                                                         FontFamily="{StaticResource SomarBold}"
@@ -1427,12 +1401,8 @@
                                                     ContainerBackground="White"
                                                     ContainerType="Outlined"
                                                     HasError="False"
-                                                    IsHintAlwaysFloated="True"
                                                     OutlineCornerRadius="8"
                                                     Stroke="{StaticResource Primary}">
-                                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="MobOTPThirdEntry"
                                                         FontFamily="{StaticResource SomarBold}"
@@ -1464,12 +1434,8 @@
                                                     ContainerBackground="White"
                                                     ContainerType="Outlined"
                                                     HasError="False"
-                                                    IsHintAlwaysFloated="True"
                                                     OutlineCornerRadius="8"
                                                     Stroke="{StaticResource Primary}">
-                                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="MobOTPFourthEntry"
                                                         FontFamily="{StaticResource SomarBold}"
@@ -1551,8 +1517,8 @@
                                     <inputLayout:SfTextInputLayout
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.NDNewPassword}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -1595,8 +1561,8 @@
                                     <inputLayout:SfTextInputLayout
                                         ContainerBackground="White"
                                         ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
                                         LeadingViewPosition="Inside"
                                         OutlineCornerRadius="10">
 
@@ -2025,10 +1991,9 @@
 
                             <!--  terms and condition  CheckBox  -->
                             <StackLayout
-                                Margin="0,10"
+                                Margin="0,0"
                                 IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.TermsAndConditions}}"
-                                Orientation="Horizontal"
-                                VerticalOptions="EndAndExpand">
+                                Orientation="Horizontal">
 
                                 <!--  terms and condition  CheckBox  -->
                                 <custom:CheckboxCustom
@@ -2051,9 +2016,7 @@
                                 IsEnabled="{Binding IsNextButtonEnable}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{Binding NextBTN}"
-                                VerticalOptions="EndAndExpand"
-                                WidthRequest="{OnPlatform Android=310,
-                                                          iOS=380}">
+                                VerticalOptions="EndAndExpand">
                                 <buttons:SfButton.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IsNextButtonEnable}"
@@ -2072,7 +2035,11 @@
 
                         </StackLayout>
 
+
+
                     </ScrollView>
+
+
 
                 </StackLayout>
 

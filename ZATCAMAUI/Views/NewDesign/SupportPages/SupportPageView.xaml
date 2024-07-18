@@ -5,8 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
@@ -24,36 +22,69 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackArrowTapped" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{Binding PageTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
 
             <Border
                 Grid.Row="1"
-                Padding="20,20,20,0"
+                Padding="0"
                 Style="{StaticResource CommonTopCurves}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
+
+                <Grid RowDefinitions="*">
                     <!--  Parent View Starts  -->
                     <ScrollView
                         Grid.Row="0"
-                        Padding="0,0,0,32"
+                        Padding="20"
                         IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:SupportTabEnum.Parent}}"
                         VerticalScrollBarVisibility="Never">
-                        <StackLayout Padding="0,12,0,0" Spacing="24">
+
+                        <StackLayout Spacing="35">
 
                             <Border Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout
@@ -71,9 +102,20 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
+                                        Rotation="180"
                                         Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" />
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="LeftToRight">
+                                                <Setter Property="Rotation" Value="0" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+
+                                    </Image>
                                 </StackLayout>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Aboutus_Tapped" />
@@ -93,14 +135,27 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
+                                        Rotation="180"
                                         Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" />
+                                        VerticalOptions="CenterAndExpand">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="LeftToRight">
+                                                <Setter Property="Rotation" Value="0" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+
+                                    </Image>
                                 </StackLayout>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped" />
                                 </Border.GestureRecognizers>
                             </Border>
+
                             <Border Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout
                                     Padding="16,8,16,8"
@@ -114,9 +169,21 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
+                                        Rotation="180"
                                         Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" />
+                                        VerticalOptions="CenterAndExpand">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="LeftToRight">
+                                                <Setter Property="Rotation" Value="0" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+
+                                    </Image>
                                 </StackLayout>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnFAQTapped" />
@@ -135,9 +202,20 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
+                                        Rotation="180"
                                         Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" />
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="LeftToRight">
+                                                <Setter Property="Rotation" Value="0" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+
+                                    </Image>
                                 </StackLayout>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnChatTapped" />
@@ -156,9 +234,21 @@
                                         VerticalTextAlignment="Center" />
                                     <Image
                                         HorizontalOptions="EndAndExpand"
+                                        Rotation="180"
                                         Source="arrowRight.png"
                                         Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" />
+                                        VerticalOptions="CenterAndExpand">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="LeftToRight">
+                                                <Setter Property="Rotation" Value="0" />
+                                            </DataTrigger>
+                                        </Image.Triggers>
+
+                                    </Image>
                                 </StackLayout>
                                 <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnContactUsTapped" />
@@ -179,8 +269,6 @@
                     <!--  FAQ View End  -->
 
                     <!--  Chat View Ends  -->
-
-
                     <Grid
                         Padding="0,0,0,0"
                         BackgroundColor="AliceBlue"
@@ -196,9 +284,6 @@
                             Navigated="ChatWebView_Navigated"
                             Navigating="ChatWebView_Navigating" />
                     </Grid>
-
-
-
                     <!--  Chat View Ends  -->
 
                     <!--  ContactUs View Starts  -->
@@ -210,7 +295,6 @@
                             </Grid.RowDefinitions>
                             <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
                                 <StackLayout>
-                                    <!--<WebView x:Name="ContactUsWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />-->
                                     <Label
                                         Grid.Column="1"
                                         Style="{StaticResource SectionTitleBlackBold}"
@@ -423,8 +507,7 @@
                                     Grid.Column="0"
                                     Margin="10,0,10,0"
                                     ItemHeight="40"
-                                    Mode="Dialog"
-                                    SelectionChanged="BranchLocation_SelectionChanged">
+                                    Mode="Dialog">
 
 
                                     <custom:CustomSfPicker.SelectionView>
@@ -465,10 +548,10 @@
 
                                     <custom:CustomSfPicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
 
                                             <syncfusion:PickerFooterView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                <syncfusion:PickerTextStyle TextColor="White" />
                                             </syncfusion:PickerFooterView.TextStyle>
 
                                         </syncfusion:PickerFooterView>
@@ -555,68 +638,14 @@
                         </StackLayout>
                     </ScrollView>
                     <!--  Branch Locator Ends  -->
+
                 </Grid>
             </Border>
-            <Grid
-                Grid.Row="1"
-                Margin="0,0,0,0"
-                IsVisible="{Binding IsLoading}">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
 
-            <Grid Grid.Row="0" Padding="20,5,20,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*" />
-                    <ColumnDefinition Width="80*" />
-                    <ColumnDefinition Width="10*" />
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Column="0">
-                    <Image
-                        HorizontalOptions="Start"
-                        Source="arrowLeftwhite.png"
-                        Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" />
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnBackArrowTapped" />
-                    </StackLayout.GestureRecognizers>
-                </StackLayout>
-                <Label
-                    Grid.Column="1"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{Binding PageTitle}"
-                    VerticalOptions="Center" />
-            </Grid>
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

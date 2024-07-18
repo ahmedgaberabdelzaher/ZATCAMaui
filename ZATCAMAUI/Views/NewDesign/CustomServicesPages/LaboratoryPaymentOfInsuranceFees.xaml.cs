@@ -1,8 +1,9 @@
-﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels;
+﻿using ZATCAMAUI.Core.CustomControls;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels;
 
 namespace ZATCAMAUI.Views.NewDesign.CustomServicesPages
 {
-    public partial class LaboratoryPaymentOfInsuranceFees : ContentPage
+    public partial class LaboratoryPaymentOfInsuranceFees :BaseContentPage
     {
         LaboratoryPaymentOfInsuranceFeesViewModel viewModel;
         public LaboratoryPaymentOfInsuranceFees()
@@ -11,5 +12,6 @@ namespace ZATCAMAUI.Views.NewDesign.CustomServicesPages
             BindingContext = viewModel;
             InitializeComponent();
         }
+
     }
 }

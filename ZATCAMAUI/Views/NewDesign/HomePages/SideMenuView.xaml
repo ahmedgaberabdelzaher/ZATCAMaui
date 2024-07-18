@@ -16,13 +16,13 @@
             HeightRequest="110"
             HorizontalOptions="CenterAndExpand"
             Source="ZatcaLogoWithTitle"
-            VerticalOptions="StartAndExpand"
+            VerticalOptions="Start"
             WidthRequest="190" />
-
 
         <CollectionView
             x:Name="menu"
             Grid.Row="1"
+            Margin="0,0,0,80"
             CollectionView.ItemsSource="{Binding SideMenuServiceLst}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -75,8 +75,6 @@
         </CollectionView>
 
         <custom:BottomMenu Grid.Row="2" VerticalOptions="EndAndExpand" />
-
-
 
     </Grid>
 

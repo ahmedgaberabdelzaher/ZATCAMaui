@@ -37,11 +37,10 @@
                     <StackLayout>
 
                         <!--#region Frame Contains Image and Text-->
-                        <Frame
+                        <Border
                             Padding="20,25"
-                            BorderColor="Transparent"
-                            CornerRadius="15"
-                            HasShadow="False">
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 14,14,14,14">
 
                             <StackLayout>
                                 <!--  Header 1 Label  -->
@@ -112,7 +111,7 @@
 
 
 
-                        </Frame>
+                        </Border>
 
                         <!--  Next Button  -->
                         <buttons:SfButton

@@ -16,7 +16,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+            <Grid Padding="15,10" ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 
@@ -87,18 +87,14 @@
                         </Label>
 
                         <!--  Horizontal Line  -->
-                        <BoxView
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="2" />
 
                         <!--  ConfirmOpenningNafath Label  -->
-                        <Frame
+                        <Border
                             Margin="0,30,0,0"
                             Padding="10"
-                            BorderColor="Black"
-                            CornerRadius="20"
-                            HasShadow="False"
+                            Stroke="Black"
+                            StrokeShape="RoundRectangle 20,20,20,20"
                             HeightRequest="50"
                             HorizontalOptions="CenterAndExpand"
                             VerticalOptions="Start"
@@ -115,7 +111,7 @@
                                 VerticalOptions="CenterAndExpand"
                                 VerticalTextAlignment="Center" />
 
-                        </Frame>
+                        </Border>
 
                         <!--  Cancel Button  -->
                         <buttons:SfButton

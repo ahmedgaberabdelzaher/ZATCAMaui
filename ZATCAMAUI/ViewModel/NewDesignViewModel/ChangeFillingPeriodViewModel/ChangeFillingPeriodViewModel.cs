@@ -357,6 +357,70 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 RaisePropertyChanged("IsDeclarationEnabled");
             }
         }
+        private bool _isDeclarationViewEnabledNew = false;
+        public bool IsDeclarationViewEnabledNew
+        {
+            get
+            {
+                return _isDeclarationViewEnabledNew;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledNew == value) return;
+
+                _isDeclarationViewEnabledNew = value;
+                RaisePropertyChanged("IsDeclarationViewEnabledNew");
+            }
+        }
+
+        private bool _isDeclarationViewEnabledOld = false;
+        public bool IsDeclarationViewEnabledOld
+        {
+            get
+            {
+                return _isDeclarationViewEnabledOld;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledOld == value) return;
+
+                _isDeclarationViewEnabledOld = value;
+                RaisePropertyChanged("IsDeclarationViewEnabledOld");
+            }
+        }
+
+        public VATDeregDeclaration _vatDeregDeclaration;
+        public VATDeregDeclaration VatDeregDeclaration
+        {
+            get
+            {
+                return _vatDeregDeclaration;
+            }
+            set
+            {
+                if (_vatDeregDeclaration == value) return;
+
+                _vatDeregDeclaration = value;
+                RaisePropertyChanged("VatDeregDeclaration");
+            }
+        }
+
+        public string _zterms;
+        public string Zterms
+        {
+            get
+            {
+                return _zterms;
+            }
+            set
+            {
+                if (_zterms == value) return;
+
+                _zterms = value;
+                RaisePropertyChanged("Zterms");
+            }
+        }
+
         private Color _declarationButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
         public Color DeclarationButtonBackGroundColor
         {
@@ -503,6 +567,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 _effectiveDateResponse = value;
                 RaisePropertyChanged("EffectiveDateResponse");
+            }
+        }
+        private TextAlignment _termsAlignment;
+        public TextAlignment TermsAlignment
+        {
+            get { return _termsAlignment; }
+            set
+            {
+                if (_termsAlignment == value) return;
+                _termsAlignment = value;
+                RaisePropertyChanged("TermsAlignment");
             }
         }
 
@@ -1326,6 +1401,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
+            IsDeclarationViewEnabledNew = false;
             IsBackVisible = true;
             selectedPage = (int)PagesEnum.FrequencyDetailsView;
         }
@@ -1337,6 +1413,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsAttachmentsViewEnabled = true;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
+            IsDeclarationViewEnabledNew = false;
             IsBackVisible = true;
             selectedPage = (int)PagesEnum.AttachmentsView;
         }
@@ -1347,6 +1424,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsFrequencyViewEnabled = false;
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = true;
+            if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
+            {
+                IsDeclarationViewEnabledOld = true;
+                IsDeclarationViewEnabledNew = false;
+            }
+            else
+            {
+                IsDeclarationViewEnabledOld = false;
+                IsDeclarationViewEnabledNew = true;
+                Zterms = VatDeregDeclaration.D.Zterms;
+            }
+
             IsSummaryViewEnabled = false;
             IsBackVisible = true;
             selectedPage = (int)PagesEnum.DeclarationView;
@@ -1666,13 +1755,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void EnableDeclaration()
         {
-            if (ContactPersonName == "" || !IsIDVerified || !IsCheckboxChecked)
+            if (IsDeclarationViewEnabledNew && IsCheckboxChecked)
             {
-                IsDeclarationEnabled = false;
+                IsDeclarationEnabled = true;
             }
             else
             {
-                IsDeclarationEnabled = true;
+                if (ContactPersonName == "" || !IsIDVerified || !IsCheckboxChecked)
+                {
+                    IsDeclarationEnabled = false;
+                }
+                else
+                {
+                    IsDeclarationEnabled = true;
+                }
             }
         }
 
@@ -2143,6 +2239,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 IsDecCheckBoxVisible = true;
                             }
                             await GetEffectiveDateList();
+                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(resultData.d.Fbnumz);
                         }
                         else
                         {

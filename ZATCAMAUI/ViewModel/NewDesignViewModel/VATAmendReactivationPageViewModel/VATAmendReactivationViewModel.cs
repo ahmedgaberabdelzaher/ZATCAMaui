@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using RGPopup.Maui.Services;
+using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using ZATCAMAUI.Core.Enums;
@@ -1991,6 +1992,52 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                 RaisePropertyChanged("IsNewAccountClicked");
             }
         }
+        private bool _isNewVatEligibleDateInsVisible = false;
+        public bool IsNewVatEligibleDateInsVisible
+        {
+            get
+            {
+                return _isNewVatEligibleDateInsVisible;
+            }
+            set
+            {
+                if (_isNewVatEligibleDateInsVisible == value) return;
+
+                _isNewVatEligibleDateInsVisible = value;
+                RaisePropertyChanged("IsNewVatEligibleDateInsVisible");
+            }
+        }
+        private bool _vatEligibleStartDateInsVisible = true;
+        public bool VatEligibleStartDateInsVisible
+        {
+            get
+            {
+                return _vatEligibleStartDateInsVisible;
+            }
+            set
+            {
+                if (_vatEligibleStartDateInsVisible == value) return;
+
+                _vatEligibleStartDateInsVisible = value;
+                RaisePropertyChanged("VatEligibleStartDateInsVisible");
+            }
+        }
+
+        private bool _isCheckEnabled = true;
+        public bool IsCheckEnabled
+        {
+            get
+            {
+                return _isCheckEnabled;
+            }
+            set
+            {
+                if (_isCheckEnabled == value) return;
+
+                _isCheckEnabled = value;
+                RaisePropertyChanged("IsCheckEnabled");
+            }
+        }
 
         private string _isNewAccountText;
         public string NewAccountText
@@ -2219,6 +2266,68 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                 }
             }
         }
+        private bool _isDeclarationViewEnabled;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabled == value) return;
+
+                _isDeclarationViewEnabled = value;
+                RaisePropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+
+        private bool _isDeclarationViewEnabledNew;
+        public bool IsDeclarationViewEnabledNew
+        {
+            get
+            {
+                return _isDeclarationViewEnabledNew;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledNew == value) return;
+
+                _isDeclarationViewEnabledNew = value;
+                RaisePropertyChanged("IsDeclarationViewEnabledNew");
+            }
+        }
+        public VATDeregDeclaration _vatDeregDeclaration;
+        public VATDeregDeclaration VatDeregDeclaration
+        {
+            get
+            {
+                return _vatDeregDeclaration;
+            }
+            set
+            {
+                if (_vatDeregDeclaration == value) return;
+
+                _vatDeregDeclaration = value;
+                RaisePropertyChanged("VatDeregDeclaration");
+            }
+        }
+        public string _zterms;
+        public string Zterms
+        {
+            get
+            {
+                return _zterms;
+            }
+            set
+            {
+                if (_zterms == value) return;
+
+                _zterms = value;
+                RaisePropertyChanged("Zterms");
+            }
+        }
 
         #region Item Availability Properties
 
@@ -2292,6 +2401,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
 
                 _declaration = value;
                 RaisePropertyChanged("Declaration");
+            }
+        }
+        private bool shouldShowAR = false;
+        public bool ShouldShowAR
+        {
+            get { return shouldShowAR; }
+            set
+            {
+                if (shouldShowAR == value) return;
+
+                shouldShowAR = value;
+                RaisePropertyChanged("ShouldShowAR");
+            }
+        }
+        private bool shouldShowEN = false;
+        public bool ShouldShowEN
+        {
+            get { return shouldShowEN; }
+            set
+            {
+                if (shouldShowEN == value) return;
+
+                shouldShowEN = value;
+                RaisePropertyChanged("ShouldShowEN");
+            }
+        }
+
+        private TextAlignment _termsAlignment;
+        public TextAlignment TermsAlignment
+        {
+            get { return _termsAlignment; }
+            set
+            {
+                if (_termsAlignment == value) return;
+                _termsAlignment = value;
+                RaisePropertyChanged("TermsAlignment");
             }
         }
 
@@ -2894,10 +3039,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                             pageType = "04";
 
                         vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData(pageType);
-                        //  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATRegistration.d.Fbnumz);
 
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
+                            if (App.VATType == PageExecutionType.Amend)
+                            {
+                                if (App.isVatEffectDateNav)
+                                {
+                                    if (vATRegistration.d.TxnTpz == "VT_EFDT")
+                                    {
+                                        IsCheckEnabled = false;
+                                        IsChangeEmailCheckBoxEnabled = false;
+                                        IsAddFinancialRepresentativeCheckBoxEnabled = false;
+                                        VatEligibleStartDateInsVisible = false;
+                                        IsNewVatEligibleDateInsVisible = true;
+                                    }
+
+                                    else
+                                        IsCheckEnabled = true;
+
+                                }
+                            }
                             //step 4 and 5 data set
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
@@ -2907,7 +3070,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                                     {
                                         MainThread.BeginInvokeOnMainThread(() =>
                                         {
-                                            IsChangeEmailCheckBoxEnabled = true;
+                                            if (App.isVatEffectDateNav)
+                                            {
+                                                if (vATRegistration.d.TxnTpz == "VT_EFDT")
+                                                {
+                                                    IsCheckEnabled = false;
+                                                    IsChangeEmailCheckBoxEnabled = false;
+                                                    IsAddFinancialRepresentativeCheckBoxEnabled = false;
+                                                    VatEligibleStartDateInsVisible = false;
+                                                    IsNewVatEligibleDateInsVisible = true;
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                IsChangeEmailCheckBoxEnabled = true;
+                                            }
+
                                         });
                                     }
 
@@ -3078,6 +3257,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                             switch (App.VATType)
                             {
                                 case PageExecutionType.Amend:
+                                    if (App.isVatEffectDateNav)
+                                    {
+                                        if (vATRegistration.d.TxnTpz == "VT_EFDT")
+                                        {
+                                            IsCheckEnabled = false;
+                                            IsChangeEmailCheckBoxEnabled = false;
+                                            IsAddFinancialRepresentativeCheckBoxEnabled = false;
+                                        }
+                                        else
+                                            IsCheckEnabled = true;
+
+                                    }
+
+                                    IsInstrunctionChecked = true;
+                                    break;
                                 case PageExecutionType.Reactivation:
                                     IsInstrunctionChecked = true;
                                     break;
@@ -3374,10 +3568,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                         {
                             if (!string.IsNullOrEmpty(vATcommencementData.d.__metadata.uri))
                             {
-                                string dateSource = await filerDateFromResponse(vATcommencementData.d.__metadata.uri);
-
-                                // VatEligibleStartDate = String.Join("-", dateSource.Split('-').Reverse());
-                                VatEligibleStartDate = UtilityManager.ConvertDateFormatToDDMMYYYYY(dateSource);
+                                string dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(vATcommencementData.d.VatTaxDt);
+                                VatEligibleStartDate = dateSource;
                             }
                             IsLoading = false;
                         }

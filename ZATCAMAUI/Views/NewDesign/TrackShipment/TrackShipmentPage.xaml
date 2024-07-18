@@ -67,16 +67,16 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="20,5,20,0"
+                Padding="10,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
                     <ScrollView VerticalScrollBarVisibility="Never">
 
-                        <StackLayout Padding="10" Spacing="20">
+                        <StackLayout Padding="10" Spacing="10">
 
                             <!--  Title  -->
-                            <StackLayout Margin="0,20,0,-15" Orientation="Horizontal">
+                            <StackLayout Margin="0,20,0,0" Orientation="Horizontal">
 
                                 <!--  Select Shipment Type Label  -->
                                 <Label
@@ -90,7 +90,7 @@
                                 <Image
                                     Aspect="AspectFit"
                                     HeightRequest="30"
-                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalOptions="End"
                                     Source="{Binding DrawShipmentTrack.ShipmentCardImage}"
                                     WidthRequest="40" />
 
@@ -122,8 +122,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.PortName}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -158,10 +158,7 @@
                             </StackLayout>
 
                             <!--  Search by Label  -->
-                            <Label
-                                Margin="0,0,0,-15"
-                                IsVisible="{Binding DrawShipmentTrack.HasSearchBy}"
-                                Style="{StaticResource CaptionLabelGrey}">
+                            <Label IsVisible="{Binding DrawShipmentTrack.HasSearchBy}" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.SearchBy}" />
@@ -358,7 +355,7 @@
                                                 </DataTrigger>
                                                 <DataTrigger
                                                     Binding="{Binding IsExpressShipment}"
-                                                    TargetType="custom:CustomLabel"
+                                                    TargetType="Label"
                                                     Value="true">
                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
                                                 </DataTrigger>
@@ -395,8 +392,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -435,8 +432,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="dd-MM-yyyy"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -444,81 +441,15 @@
                                         <inputLayout:LabelStyle TextColor="#B00020" />
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                    <Grid Padding="10">
-                                        <!--  HijriDatePicker  -->
-                                        <custom:CustomHijriDatePicker
-                                            x:Name="declarationDate"
-                                            Margin="2"
-                                            Background="White"
-                                            CancelButtonClicked="declarationDate_CancelButtonClicked"
-                                            FlowDirection="RightToLeft"
-                                            HorizontalOptions="FillAndExpand"
-                                            IsOpen="False"
-                                            ItemHeight="45"
-                                            Mode="Dialog">
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd-MM-yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding DeclarationDateString}"
+                                        TextColor="#58595B" />
 
-
-                                            <custom:CustomHijriDatePicker.SelectedTextStyle>
-                                                <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="{StaticResource NeutralBlack}" />
-                                            </custom:CustomHijriDatePicker.SelectedTextStyle>
-
-                                            <custom:CustomHijriDatePicker.SelectionView>
-                                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                            </custom:CustomHijriDatePicker.SelectionView>
-
-                                            <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                                <syncfusion:PickerColumnHeaderView Height="46" />
-                                            </custom:CustomHijriDatePicker.ColumnHeaderView>
-
-                                            <custom:CustomHijriDatePicker.HeaderView>
-
-                                                <syncfusion:PickerHeaderView
-                                                    Height="46"
-                                                    Background="White"
-                                                    Text="{x:Static ResourceManager:AppResources.DeclarationDate}">
-
-                                                    <syncfusion:PickerHeaderView.TextStyle>
-                                                        <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" />
-                                                    </syncfusion:PickerHeaderView.TextStyle>
-                                                </syncfusion:PickerHeaderView>
-
-                                            </custom:CustomHijriDatePicker.HeaderView>
-
-                                            <custom:CustomHijriDatePicker.TextStyle>
-                                                <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" />
-                                            </custom:CustomHijriDatePicker.TextStyle>
-
-                                            <custom:CustomHijriDatePicker.FooterView>
-
-                                                <syncfusion:PickerFooterView Height="46" Background="White">
-
-                                                    <syncfusion:PickerFooterView.TextStyle>
-                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Secondary}" />
-                                                    </syncfusion:PickerFooterView.TextStyle>
-
-                                                </syncfusion:PickerFooterView>
-
-                                            </custom:CustomHijriDatePicker.FooterView>
-
-                                            <custom:CustomHijriDatePicker.Behaviors>
-                                                <xct:EventToCommandBehavior
-                                                    Command="{Binding SelectedDateCommand}"
-                                                    CommandParameter="{x:Reference declarationDate}"
-                                                    EventName="SelectionChanged" />
-                                            </custom:CustomHijriDatePicker.Behaviors>
-
-                                        </custom:CustomHijriDatePicker>
-
-                                        <custom:GAZTBorderlessEntry
-                                            InputTransparent="True"
-                                            IsReadOnly="True"
-                                            Keyboard="Text"
-                                            Placeholder="dd/MM/yyyy"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding DeclarationDateString}"
-                                            TextColor="#58595B" />
-
-                                    </Grid>
 
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Aspect="AspectFit" Source="greyCalender" />
@@ -530,7 +461,67 @@
 
                                 </inputLayout:SfTextInputLayout>
 
+                                <!--  HijriDatePicker  -->
+                                <custom:CustomHijriDatePicker
+                                    x:Name="declarationDate"
+                                    Background="White"
+                                    CancelButtonClicked="declarationDate_CancelButtonClicked"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsOpen="False"
+                                    ItemHeight="45"
+                                    Mode="Dialog">
 
+
+                                    <custom:CustomHijriDatePicker.SelectedTextStyle>
+                                        <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="White" />
+                                    </custom:CustomHijriDatePicker.SelectedTextStyle>
+
+                                    <custom:CustomHijriDatePicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomHijriDatePicker.SelectionView>
+
+                                    <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
+                                    </custom:CustomHijriDatePicker.ColumnHeaderView>
+
+                                    <custom:CustomHijriDatePicker.HeaderView>
+
+                                        <syncfusion:PickerHeaderView
+                                            Height="46"
+                                            Background="{StaticResource NeutralBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.DeclarationDate}">
+
+                                            <syncfusion:PickerHeaderView.TextStyle>
+                                                <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="White" />
+                                            </syncfusion:PickerHeaderView.TextStyle>
+                                        </syncfusion:PickerHeaderView>
+
+                                    </custom:CustomHijriDatePicker.HeaderView>
+
+                                    <custom:CustomHijriDatePicker.TextStyle>
+                                        <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" />
+                                    </custom:CustomHijriDatePicker.TextStyle>
+
+                                    <custom:CustomHijriDatePicker.FooterView>
+
+                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
+
+                                            <syncfusion:PickerFooterView.TextStyle>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
+                                            </syncfusion:PickerFooterView.TextStyle>
+
+                                        </syncfusion:PickerFooterView>
+
+                                    </custom:CustomHijriDatePicker.FooterView>
+
+                                    <custom:CustomHijriDatePicker.Behaviors>
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding SelectedDateCommand}"
+                                            CommandParameter="{x:Reference declarationDate}"
+                                            EventName="SelectionChanged" />
+                                    </custom:CustomHijriDatePicker.Behaviors>
+
+                                </custom:CustomHijriDatePicker>
 
                             </StackLayout>
 
@@ -566,8 +557,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.BillNumber}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -617,8 +608,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.ContainerNumber}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">

@@ -39,7 +39,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Frame
+                <Border
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -52,7 +52,7 @@
                     Style="{StaticResource GAZTSmallGreenLabelStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZVatNotes}"
                     VerticalOptions="Center" />
-                <Frame
+                <Border
                     Grid.Row="1"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"

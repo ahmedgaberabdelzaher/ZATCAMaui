@@ -1812,10 +1812,42 @@
 
                             </Grid>
 
+                            <StackLayout
+                                Grid.Row="1"
+                                IsVisible="{Binding IsDeclarationViewEnabledNew}"
+                                Orientation="Horizontal"
+                                VerticalOptions="StartAndExpand">
+
+                                <custom:CheckboxCustom
+                                    IsChecked="{Binding IsDECCheckBox}"
+                                    MinimumHeightRequest="32"
+                                    MinimumWidthRequest="32"
+                                    VerticalOptions="Start" />
+                                <Label
+                                    HeightRequest="350"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    IsVisible="{Binding ShouldShowAR}"
+                                    Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                    Text="{Binding Zterms}"
+                                    TextType="Html"
+                                    VerticalOptions="FillAndExpand" />
+                                <Label
+                                    HeightRequest="350"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    IsVisible="{Binding ShouldShowEN}"
+                                    Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                    Text="{Binding Zterms}"
+                                    TextType="Html"
+                                    VerticalOptions="FillAndExpand" />
+
+                            </StackLayout>
 
                             <Label
                                 Grid.Row="1"
                                 HorizontalOptions="StartAndExpand"
+                                IsVisible="{Binding IsDeclarationViewEnabled}"
                                 Style="{StaticResource BodyLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -1829,6 +1861,7 @@
                             <Border
                                 Grid.Row="2"
                                 Padding="10,0,10,0"
+                                IsVisible="{Binding IsDeclarationViewEnabled}"
                                 Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1843,6 +1876,7 @@
                             <Label
                                 Grid.Row="3"
                                 HorizontalOptions="StartAndExpand"
+                                IsVisible="{Binding IsDeclarationViewEnabled}"
                                 Style="{StaticResource BodyLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -1856,6 +1890,7 @@
                             <Border
                                 Grid.Row="4"
                                 Padding="10,0,10,0"
+                                IsVisible="{Binding IsDeclarationViewEnabled}"
                                 Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
                                     <custom:GAZTBorderlessEntry
@@ -2113,12 +2148,11 @@
 
                                 </Border>
 
-                                <Frame
+                                <Border
                                     Margin="0,10,0,0"
                                     Padding="0"
-                                    CornerRadius="12"
-                                    HasShadow="False"
                                     HorizontalOptions="FillAndExpand"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}"
                                     VerticalOptions="FillAndExpand">
                                     <Grid
@@ -2154,14 +2188,13 @@
                                         </Label>
 
                                     </Grid>
-                                </Frame>
+                                </Border>
 
-                                <Frame
+                                <Border
                                     Margin="0,10,0,0"
                                     Padding="0"
-                                    CornerRadius="12"
-                                    HasShadow="False"
                                     HorizontalOptions="FillAndExpand"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}"
                                     VerticalOptions="FillAndExpand">
                                     <Grid
@@ -2197,14 +2230,13 @@
                                         </Label>
 
                                     </Grid>
-                                </Frame>
+                                </Border>
 
-                                <Frame
+                                <Border
                                     Margin="0,10,0,0"
                                     Padding="0"
-                                    CornerRadius="12"
-                                    HasShadow="False"
                                     HorizontalOptions="FillAndExpand"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     Style="{StaticResource SfStyleForZakatPlanGreen}"
                                     VerticalOptions="FillAndExpand">
                                     <Grid
@@ -2240,7 +2272,7 @@
                                         </Label>
 
                                     </Grid>
-                                </Frame>
+                                </Border>
 
 
                                 <Border
@@ -2419,6 +2451,7 @@
                                 <Border
                                     Margin="0,16,0,10"
                                     Padding="0,0,0,16"
+                                    IsVisible="{Binding IsDeclarationViewEnabled}"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
 
                                     <StackLayout Orientation="Vertical">

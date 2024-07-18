@@ -154,16 +154,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             default:
                                 break;
                         }
-                        /*if (tab=="1")
-                        {
-                           
-                            return;
-                        }
-                        else if (tab =="3")
-                        {
-                            _navigationService.NavigateTo($"/LiveVideoPage");
-                            return;
-                        }*/
                         var di = AppDirection;
                         if (tab == "1")
                         {
@@ -282,6 +272,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 RaisePropertyChanged();
             }
         }
+
+        bool isShowBottomSheet { get; set; }
+
+        public bool IsShowBottomSheet
+        {
+            get { return isShowBottomSheet; }
+
+            set
+            {
+                isShowBottomSheet = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public virtual ICommand CloseMsgViewCommand
         {
             get

@@ -1,8 +1,6 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Models.VATReviewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
 using Application = Microsoft.Maui.Controls.Application;
 
@@ -13,31 +11,22 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
     public partial class VatReviewSuccessPageView : ContentPage
     {
         public VatReviewViewModel viewModel;
-        public VatReviewSuccessPageView()
+        public VATObjectionSummaryModel modelclass3;
+        public VatReviewSuccessPageView(VATObjectionSummaryModel modelclass)
         {
             InitializeComponent();
 
             ChangeAeroIcon();
-            On<iOS>().SetUseSafeArea(true);
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             viewModel = App.Locator.VatReviewSuccessView;
 
             BindingContext = viewModel;
-        }
-
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
+            VATApplicationID.Text = modelclass.d.Fbnumx;
+            viewModel.VATReferanceNumber = modelclass.d.Fbnumx;
+            modelclass3 = modelclass;
 
         }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -46,7 +35,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
             }
             else
             {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
+                Resources["StyleReverseBack"] = Application.Current.Resources[""];
             }
         }
 

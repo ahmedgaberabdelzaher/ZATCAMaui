@@ -166,13 +166,12 @@
                 </Border>
                 <!--  Distributive  -->
                 <!--  Summery  -->
-                <Frame
+                <Border
                     Margin="0,10,0,10"
                     Padding="0"
                     BackgroundColor="AliceBlue"
-                    BorderColor="AliceBlue"
-                    CornerRadius="8"
-                    HasShadow="False">
+                    Stroke="AliceBlue"
+                    StrokeShape="RoundRectangle 8,8,8,8">
                     <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
                         <Image>
                             <Image.Source>
@@ -188,7 +187,7 @@
                             Style="{StaticResource ValueLabelBlack}"
                             Text="TIN Number" />
                     </StackLayout>
-                </Frame>
+                </Border>
                 <!--  Summery  -->
                 <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
@@ -208,13 +207,12 @@
                     </StackLayout>
                 </Border>
                 <!--  Total Small  -->
-                <Frame
+                <Border
                     Margin="0,10,0,10"
                     Padding="0"
                     BackgroundColor="AliceBlue"
-                    BorderColor="AliceBlue"
-                    CornerRadius="8"
-                    HasShadow="False">
+                    Stroke="AliceBlue"
+                    StrokeShape="RoundRectangle 8,8,8,8">
                     <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
                         <Label
                             HorizontalOptions="Start"
@@ -237,7 +235,7 @@
                             </Image>
                         </StackLayout>
                     </StackLayout>
-                </Frame>
+                </Border>
                 <!--  Total Small  -->
 
                 <!--  Inbox Unread  -->
@@ -656,12 +654,11 @@
 
                 </inputLayout:SfTextInputLayout>
 
-                <Frame
+                <Border
                     Margin="0,10,0,0"
                     Padding="0"
-                    BorderColor="#B1B1B1"
-                    CornerRadius="8"
-                    HasShadow="False"
+                    Stroke="#B1B1B1"
+                    StrokeShape="RoundRectangle 8,8,8,8"
                     HeightRequest="50">
                     <Grid Padding="5" ColumnSpacing="2">
                         <Grid.RowDefinitions>
@@ -748,16 +745,15 @@
                             Text="{Binding MobileNumber}" />
 
                     </Grid>
-                </Frame>
+                </Border>
 
                 <!--  Range Input Box  -->
                 <!--<Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>-->
-                <Frame
+                <Border
                     Margin="0,10,0,0"
                     Padding="0"
-                    BorderColor="#B1B1B1"
-                    CornerRadius="8"
-                    HasShadow="False"
+                    Stroke="#B1B1B1"
+                    StrokeShape="RoundRectangle 8,8,8,8"
                     HeightRequest="50">
                     <Grid Padding="5" ColumnSpacing="2">
                         <Grid.RowDefinitions>
@@ -800,17 +796,16 @@
                             Source="icon.png" />
 
                     </Grid>
-                </Frame>
+                </Border>
 
 
                 <!--  IBAN Input Box  -->
 
-                <Frame
+                <Border
                     Margin="0,10,0,0"
                     Padding="0"
-                    BorderColor="#B1B1B1"
-                    CornerRadius="8"
-                    HasShadow="False"
+                    Stroke="#B1B1B1"
+                    StrokeShape="RoundRectangle 8,8,8,8"
                     HeightRequest="50">
                     <Grid Padding="5" ColumnSpacing="2">
                         <Grid.RowDefinitions>
@@ -941,7 +936,7 @@
 
 
                     </Grid>
-                </Frame>
+                </Border>
 
             </StackLayout>
         </ScrollView>

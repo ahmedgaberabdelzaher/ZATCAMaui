@@ -2210,13 +2210,11 @@
                                                     IsVisible="{Binding ShowDeleteIcon}"
                                                     ShowIcon="True"
                                                     Style="{StaticResource NoBackgroundButtonStyle}" />
-                                                <!--<buttons:SfButton ShowIcon="True" ImageSource="ic_Delete_disabled.png" IsEnabled="False" IsVisible="{Binding ShowDeleteIcon,Converter={StaticResource BoolConverter}}"
-                                                                              Style="{StaticResource NoBackgroundButtonStyle}"  Padding="5" HorizontalOptions="EndAndExpand" />-->
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="0">
-                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
+                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
                                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{Binding ActNo}"
@@ -2224,9 +2222,9 @@
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="1">
-                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
+                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
                                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         Grid.Row="1"
                                                         Grid.Column="0"
                                                         Style="{StaticResource ValueLabelBlack}"
@@ -2235,9 +2233,9 @@
                                                 </StackLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="1" Grid.Column="2">
-                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
+                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
                                                 <StackLayout HorizontalOptions="StartAndExpand">
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         Style="{StaticResource ValueLabelBlack}"
                                                         Text="{Binding Crlicenceno}"
@@ -2259,7 +2257,7 @@
                                                 <ViewCell>
                                                     <ViewCell.View>
                                                         <StackLayout x:Name="rootArea" Orientation="Vertical">
-                                                            <custom:CustomLabel
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2296,8 +2294,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="0"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2308,8 +2306,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="1"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2320,8 +2318,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="2"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2332,8 +2330,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="3"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2344,8 +2342,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="4"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2356,8 +2354,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="5"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2368,8 +2366,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="6"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2380,8 +2378,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="7"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2392,8 +2390,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="8"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2404,8 +2402,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="9"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2419,7 +2417,7 @@
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
                                                 <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
                                                         Style="{StaticResource CaptionLabelGrey}"
@@ -2443,7 +2441,7 @@
                                                 <ViewCell>
                                                     <ViewCell.View>
                                                         <StackLayout x:Name="rootArea" Orientation="Vertical">
-                                                            <custom:CustomLabel
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2480,8 +2478,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="0"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceNumber}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceNumber}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2492,8 +2490,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="1"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceName}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceName}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2504,8 +2502,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="2"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2516,8 +2514,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="3"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2528,8 +2526,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="4"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2540,8 +2538,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="5"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2552,8 +2550,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="6"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2564,8 +2562,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="7"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2576,8 +2574,8 @@
                                                             Grid.Row="0"
                                                             Grid.Column="8"
                                                             Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <custom:CustomLabel
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                            <Label
                                                                 HorizontalOptions="StartAndExpand"
                                                                 HorizontalTextAlignment="Start"
                                                                 Style="{StaticResource ValueLabelBlack}"
@@ -2591,7 +2589,7 @@
                                         <listView:SfListView.FooterTemplate>
                                             <DataTemplate>
                                                 <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
-                                                    <custom:CustomLabel
+                                                    <Label
                                                         HorizontalOptions="StartAndExpand"
                                                         HorizontalTextAlignment="Start"
                                                         Style="{StaticResource CaptionLabelGrey}"
@@ -2901,13 +2899,13 @@
                                                 Source="unselected171x136"
                                                 VerticalOptions="FillAndExpand" />
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <custom:CustomLabel
+                                                <Label
                                                     LineHeight="0.8"
                                                     Style="{DynamicResource CardLabelBlack}"
                                                     Text="{Binding FinPeriodText}" />
 
-                                                <custom:CustomLabel LineHeight="0.8" Style="{DynamicResource CardLabelBlack}">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label LineHeight="0.8" Style="{DynamicResource CardLabelBlack}">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
                                                             <Span Text=" " />
@@ -2915,8 +2913,8 @@
                                                             <Span Text=" " />
                                                             <Span Text="{Binding ToDate, StringFormat='{0:yyyy/MM/dd}'}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
 
                                             </StackLayout>
                                         </Grid>
@@ -2943,13 +2941,13 @@
                                                 Source="selected171x136"
                                                 VerticalOptions="FillAndExpand" />
                                             <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
-                                                <custom:CustomLabel
+                                                <Label
                                                     LineHeight="0.8"
                                                     Style="{DynamicResource CardLabelWhite}"
                                                     Text="{Binding FinPeriodText}" />
 
-                                                <custom:CustomLabel LineHeight="0.8" Style="{DynamicResource CardLabelWhite}">
-                                                    <custom:CustomLabel.FormattedText>
+                                                <Label LineHeight="0.8" Style="{DynamicResource CardLabelWhite}">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding FromDate, StringFormat='{0:yyyy/MM/dd}'}" />
                                                             <Span Text=" " />
@@ -2957,8 +2955,8 @@
                                                             <Span Text=" " />
                                                             <Span Text="{Binding ToDate, StringFormat='{0:yyyy/MM/dd}'}" />
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
-                                                </custom:CustomLabel>
+                                                    </Label.FormattedText>
+                                                </Label>
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView>

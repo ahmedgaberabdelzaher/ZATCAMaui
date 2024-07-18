@@ -127,7 +127,7 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
 
         public DateTime passIssuingDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
-        DateTime _passExpiryDate;
+        DateTime _passExpiryDate = DateTime.Now.Date;
         public DateTime passExpiryDate { get { return _passExpiryDate; }
             set {
 

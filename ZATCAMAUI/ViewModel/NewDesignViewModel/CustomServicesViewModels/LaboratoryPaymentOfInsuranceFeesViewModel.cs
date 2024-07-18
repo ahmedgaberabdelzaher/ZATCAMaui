@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.CustomServices;
@@ -91,6 +92,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
         }
 
+        string titleText = AppResources.InquireaboutPaymentofInsuranceTitle;
+
+        public string TitleText
+        {
+            get { return titleText; }
+
+            set
+            {
+                titleText = value;
+                RaisePropertyChanged();
+            }
+        }
+
         bool isDetailsView { get; set; }
 
         public bool IsDetailsView
@@ -150,6 +164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                             IsMainView = false;
                             IsDetailsView = true;
+                            TitleText = AppResources.InquiryResult;
                         }
                     }
                     else
@@ -183,13 +198,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     }
                     else if (IsMainView)
                     {
-
                         _navigationService.GoBack();
                     }
                     else
                     {
                         IsMainView = true;
                         IsDetailsView = false;
+                        TitleText = AppResources.InquireaboutPaymentofInsuranceTitle;
                     }
                     ClearData();
 
@@ -227,19 +242,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command(() =>
+                return new Command((sender) =>
                 {
-                    IsOpenHijriPicker = true;
-                });
-            }
-        }
-        public ICommand CloseHijriPickerCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    IsOpenHijriPicker = false;
+                    var date = sender as CustomHijriDatePicker;
+                    date.IsOpen = true;
                 });
             }
         }

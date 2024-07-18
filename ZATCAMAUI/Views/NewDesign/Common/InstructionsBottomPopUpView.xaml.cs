@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using RGPopup.Maui.Pages;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 
@@ -42,7 +41,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         {
             InitializeComponent();
             _viewModel = App.Locator.InstructionsBottomPopUpView;
-            On<iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
             _viewModel.Description = instructionString;
             _viewModel.CheckBoxDescription = checkBoxString;
@@ -67,7 +65,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         {
             InitializeComponent();
             _viewModel = App.Locator.InstructionsBottomPopUpView;
-            On<iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
             _viewModel.Description = instructionString;
             _viewModel.CheckBoxDescription = checkBoxString;
@@ -96,9 +93,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             {
                 base.OnAppearing();
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                this.Padding = safeInsets;
 
                 if (isCheckboxchecked)
                 {

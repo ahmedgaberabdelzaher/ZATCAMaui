@@ -1046,15 +1046,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         }
 
 
-        private void DpDOB_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-
-        }
-        private void DpDbo_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-
-        }
-
         void BorderlessTINEntry_Unfocused(object sender, FocusEventArgs e)
         {
             PopUp popUp = new PopUp();

@@ -10954,4 +10954,72 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <data name="ExpressBillNumber" xml:space="preserve">
     <value>Shipment Number</value>
   </data>
+      <!--Start of CR6490 -->
+	<data name="TotalPenalties" xml:space="preserve">
+    <value>Total Penalties</value>
+  </data>
+<!--  <data name="UnpaidAmount" xml:space="preserve">
+    <value>Unpaid Amount</value>
+  </data>
+  <data name="UnpaidInfoMessage" xml:space="preserve">
+    <value>The guarantee amount is equal to 25% of the total fine amount</value>
+  </data>-->
+  	<data name="VRPaidAmount" xml:space="preserve">
+    <value>Paid Amount</value>
+  </data>
+  	<data name="VRSecuritySadadCheckBoxDesc" xml:space="preserve">
+    <value>I acknowledge that my request to the Zakat, Tax and Customs Authority will not be processed until the SADAD bill is submitted on or before {0}</value>
+  </data>
+  	<data name="VatReviewLateObj" xml:space="preserve">
+    <value>Late filing an objection</value>
+  </data>
+  	<data name="VatLateFilingObjection" xml:space="preserve">
+    <value>Reasons for exceeding the statutory period for filing an objection</value>
+  </data>
+	<data name="VATReviewlateFilingHint" xml:space="preserve">
+    <value>If the submission delay was due to technical issue, please write the ticket number</value>
+  </data>
+  	<data name="VatReviewLateFilingInfo" xml:space="preserve">
+    <value>The second article of the tax committees’ work rules stipulated that objecting to the Authority’s decisions within 60 days from the date of notification, therefore, please explain the reasons for non-compliance and attach supporting documents</value>
+  </data>
+  <data name="ZZZNewVATRAdditionalInformationInstrunctionsFirstLine" xml:space="preserve">
+    <value>1. The start date of the new VAT Eligibility Commencement date must be greater than or equal to 01/01/2018 and less than the current VAT start date.</value>
+  </data>
+	<data name="ZZZNewVATRAdditionalInformationInstrunctionsSecondLine" xml:space="preserve">
+    <value>2. The start date of the new VAT Eligibility Commencement date can be during or prior VAT Deregistration period.</value>
+  </data>
+	<data name="ZZZNewVATRAdditionalInformationInstrunctionsThirdLine" xml:space="preserve">
+    <value>3.The day entered in the new VAT Eligibility commencement date must be from the beginning of the month</value>
+  </data>
+  <data name="ZZZZNewVatDateTerms" xml:space="preserve">
+    <value>I acknowledge and pledge my consent on amending the effective date of registration for VAT. I acknowledge my full awareness of the violations and penalties that may result from this procedure. I hold myself liable to all legal effects resulting from this procedure, and that the General Authority of Zakat and Tax is not liable, in whole or in part, for any direct or non-direct error or damage, whether accidental, consequential, or punitive, whether private or public. General Authority of Zakat and Tax is not liable to any missed opportunity, loss or damage resulting from any of the information or data entered.</value>
+  </data>
+  <data name="VATRNewVATEligibleStartDate" xml:space="preserve">
+    <value>New VAT Eligibility Commencement Date</value>
+  </data>
+   <!--END of CR6490 -->
+  <data name="DepartingTo" xml:space="preserve">
+    <value>Departing To</value>
+  </data>
+    <data name="ArrivingFrom" xml:space="preserve">
+    <value>Arriving From</value>
+  </data>
+     <!--start of VAT Refund Prod-->
+  <data name="VATRefundReqMessageInfo" xml:space="preserve">
+    <value>Dear taxpayer,
+     If you have a draft copy saved on your submitted returns, you won't be able to include it in the refund request. Please either cancel or submit it.</value>
+  </data>
+  	<data name="ZMaximumnoof9attachmentscanbeuploaded1" xml:space="preserve">
+    <value>Maximum no. of 9 attachments can be uploaded.</value>
+  </data>
+   <!--end of VAT Refund Prod-->
+      <!--Captcha Resources-->
+  <data name="CaptchaCode" xml:space="preserve">
+    <value>Captcha Code</value>
+  </data>
+  <data name="EnterCaptchaMsg" xml:space="preserve">
+    <value>Please enter captcha code.</value>
+  </data>
+  <!-- END of Captcha Resources-->
+
 </root>

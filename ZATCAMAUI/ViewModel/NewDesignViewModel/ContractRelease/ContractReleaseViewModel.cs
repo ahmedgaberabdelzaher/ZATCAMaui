@@ -16,6 +16,7 @@ using ZATCAMAUI.Models.ContractRelease;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.ContractReleasePages;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
 using Metadata = ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse.Metadata;
@@ -761,6 +762,107 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("ContractReleaseData");
             }
         }
+        private bool _isDeclarationViewEnabled;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabled == value) return;
+
+                _isDeclarationViewEnabled = value;
+                RaisePropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+
+        private bool _isDeclarationViewEnabledNew;
+        public bool IsDeclarationViewEnabledNew
+        {
+            get
+            {
+                return _isDeclarationViewEnabledNew;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledNew == value) return;
+
+                _isDeclarationViewEnabledNew = value;
+                RaisePropertyChanged("IsDeclarationViewEnabledNew");
+            }
+        }
+
+        public VATDeregDeclaration _vatDeregDeclaration;
+        public VATDeregDeclaration VatDeregDeclaration
+        {
+            get
+            {
+                return _vatDeregDeclaration;
+            }
+            set
+            {
+                if (_vatDeregDeclaration == value) return;
+
+                _vatDeregDeclaration = value;
+                RaisePropertyChanged("VatDeregDeclaration");
+            }
+        }
+
+        public string _zterms;
+        public string Zterms
+        {
+            get
+            {
+                return _zterms;
+            }
+            set
+            {
+                if (_zterms == value) return;
+
+                _zterms = value;
+                RaisePropertyChanged("Zterms");
+            }
+        }
+        private bool isDECCheckBox = false;
+        public bool IsDECCheckBox
+        {
+            get { return isDECCheckBox; }
+            set
+            {
+                if (isDECCheckBox == value) return;
+
+                isDECCheckBox = value;
+                RaisePropertyChanged("IsDECCheckBox");
+            }
+        }
+
+        private bool shouldShowAR = false;
+        public bool ShouldShowAR
+        {
+            get { return shouldShowAR; }
+            set
+            {
+                if (shouldShowAR == value) return;
+
+                shouldShowAR = value;
+                RaisePropertyChanged("ShouldShowAR");
+            }
+        }
+        private bool shouldShowEN = false;
+        public bool ShouldShowEN
+        {
+            get { return shouldShowEN; }
+            set
+            {
+                if (shouldShowEN == value) return;
+
+                shouldShowEN = value;
+                RaisePropertyChanged("ShouldShowEN");
+            }
+        }
 
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -769,7 +871,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
         public ContractReleaseInterface contractReleaseInterface { get; set; }
 
-        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) :base(navigationService, dialogService)
+        public ContractReleaseViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             _navigationService = navigationService;
 
@@ -1189,10 +1291,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                if (!IsDeclarationEnabled)
+                if (IsDeclarationViewEnabledNew)
                 {
-                    return;
+                    IsDeclarationEnabled = true;
+                    if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
+                    {
+                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        return;
+                    }
                 }
+                else
+                {
+                    if (!IsDeclarationEnabled)
+                    {
+                        return;
+                    }
+                }
+
                 EnableSummaryView();
             }
             catch (GAZTUnlockAccountException ex)
@@ -1435,20 +1550,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception)
 
-/* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-Before:
-            {
-                
-                
-
-                return "";
-After:
-            {
+            /* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
+            Before:
+                        {
 
 
 
-                return "";
-*/
+                            return "";
+            After:
+                        {
+
+
+
+                            return "";
+            */
             {
 
 
@@ -1464,7 +1579,11 @@ After:
             try
             {
                 request.d.__metadata = ContractReleaseData.d.__metadata;
-                request.d.AAgreeTm = ContractReleaseData.d.AAgreeTm;
+                DateTime dateTime = DateTime.Now;
+                var h = dateTime.Hour;
+                var m = dateTime.Minute;
+                var s = dateTime.Second;
+                request.d.AAgreeTm = "PT" + h + "H" + m + "M" + s + "S";// ContractReleaseData.d.AAgreeTm;
                 request.d.ABranch = ContractReleaseData.d.ABranch;
                 request.d.ACalTp = ContractReleaseData.d.ACalTp;
                 request.d.AContChk = ContractReleaseData.d.AContChk;
@@ -1521,6 +1640,7 @@ After:
                 request.d.AComments = Remarks.ToString();
                 request.d.ARemark = Remarks.ToString();
 
+                request.d.DecFg = IsDECCheckBox ? "X" : "";
                 request.d.ADoc1 = "0";
                 request.d.ADoc2 = "1";
                 request.d.ADoc3 = "1";
@@ -1784,6 +1904,28 @@ After:
             AttachmentsVisible = false;
             RemarksAndDescVisible = false;
             DeclarationVisible = true;
+            if (VatDeregDeclaration != null && VatDeregDeclaration.D != null && string.IsNullOrEmpty(VatDeregDeclaration.D.Zterms))
+            {
+                IsDeclarationViewEnabled = true;
+                IsDeclarationViewEnabledNew = false;
+            }
+            else
+            {
+                Zterms = VatDeregDeclaration.D.Zterms;
+                IsDeclarationViewEnabled = false;
+                IsDeclarationViewEnabledNew = true;
+                if (App.IsArabic)
+                {
+                    ShouldShowAR = true;
+                    ShouldShowEN = false;
+                }
+                else
+                {
+                    ShouldShowEN = true;
+                    ShouldShowAR = false;
+                }
+
+            }
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.CrDeclarationView;
         }
@@ -1839,6 +1981,7 @@ After:
                         ContractReleaseData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseRequestData();
                         if (ContractReleaseData != null && ContractReleaseData.d != null)
                         {
+                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(ContractReleaseData.d.Fbnum);
                             bindDataToUI();
 
                             if (ContractReleaseData.d.ACalTp == "H")
@@ -2061,13 +2204,20 @@ After:
 
         public void EnableDeclarationContinue()
         {
-            if (ContactPersonName == "" || Designation == "")
+            if (IsDeclarationViewEnabledNew)
             {
-                IsDeclarationEnabled = false;
+                IsDeclarationEnabled = true;
             }
             else
             {
-                IsDeclarationEnabled = true;
+                if (ContactPersonName == "" || Designation == "")
+                {
+                    IsDeclarationEnabled = false;
+                }
+                else
+                {
+                    IsDeclarationEnabled = true;
+                }
             }
         }
 
@@ -2146,5 +2296,6 @@ After:
         }
 
         #endregion
+        
     }
 }

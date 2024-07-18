@@ -7,7 +7,6 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -58,12 +57,11 @@
                         <StackLayout>
 
 
-                            <Frame
+                            <Border
                                 Margin="10,5,10,5"
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
@@ -82,6 +80,7 @@
                                         VerticalOptions="Center" />
 
                                     <Label
+                                        x:Name="VATApplicationID"
                                         Grid.Row="0"
                                         Grid.Column="1"
                                         FontSize="15"
@@ -103,7 +102,7 @@
                                         <TapGestureRecognizer Tapped="Instalment_copy_Tapped" />
                                     </Grid.GestureRecognizers>
                                 </Grid>
-                            </Frame>
+                            </Border>
 
 
 

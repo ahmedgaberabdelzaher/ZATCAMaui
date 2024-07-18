@@ -34,6 +34,7 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}" TextColor="{StaticResource NeutralGreay}" />
+                            <Span Text=" " />
                             <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" TextColor="{StaticResource Primary}" />
                         </FormattedString>
                     </Label.FormattedText>
@@ -273,8 +274,8 @@
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
+                            Hint="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -309,8 +310,8 @@
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
+                            Hint="{x:Static ResourceManager:AppResources.IDResidencePassportNumber}"
                             InputViewPadding="16,0,16,0"
-                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">

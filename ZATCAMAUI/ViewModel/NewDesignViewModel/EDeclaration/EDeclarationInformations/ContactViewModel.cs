@@ -57,37 +57,44 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
             {
                 return new Command(async _ =>
                 {
-
-                    isNationalitySelected = false;
-                    isItsSourceSelected = false;
-                    isPortSelected = false;
-                    isComingGoingSelected = false;
-                    isTravelPurposeSelected = false;
-                    isPlatesCountrySelected = false;
-                    isPlatesCitySelected = false;
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>();
-
-                    if (countryWithFlags.Count == 0)
+                    try
                     {
-                        IsLoading = true;
-                        await Task.Delay(1000);
-                        foreach (var item in CountryCodeHelper.CountriesWithFlags)
+                        isNationalitySelected = false;
+                        isItsSourceSelected = false;
+                        isPortSelected = false;
+                        isComingGoingSelected = false;
+                        isTravelPurposeSelected = false;
+                        isPlatesCountrySelected = false;
+                        isPlatesCitySelected = false;
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>();
+
+                        if (countryWithFlags.Count == 0)
                         {
-                            BottomSheetList.Add(new BottomSheetModel()
+                            IsLoading = true;
+                            await Task.Delay(1000);
+                            foreach (var item in CountryCodeHelper.CountriesWithFlags)
                             {
-                                Name = $"({item[0]}) {item[1]} {item[2]}"
-                            });
+                                BottomSheetList.Add(new BottomSheetModel()
+                                {
+                                    Name = $"({item[0]}) {item[1]} {item[2]}"
+                                });
+                            }
+                            countryWithFlags = BottomSheetList;
+                            IsLoading = false;
                         }
-                        countryWithFlags = BottomSheetList;
+
+                        else
+                            BottomSheetList = new ObservableCollection<BottomSheetModel>(countryWithFlags);
+
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ZZZZCountry;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    }
+                    catch (Exception)
+                    {
                         IsLoading = false;
                     }
-
-                    else
-                        BottomSheetList = new ObservableCollection<BottomSheetModel>(countryWithFlags);
-
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ZZZZCountry;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    
 
                 });
             }

@@ -119,7 +119,7 @@
 
                         <StackLayout Orientation="Horizontal">
 
-                            <custom:CustomLabel
+                            <Label
                                 FontAttributes="Bold"
                                 FontSize="28"
                                 HorizontalOptions="Start"
@@ -509,11 +509,10 @@
 
                         </Border>
 
-                        <Frame
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            CornerRadius="12"
-                            HasShadow="False"
+                            StrokeShape="RoundRectangle 12,12,12,12"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                             VerticalOptions="FillAndExpand">
@@ -548,13 +547,12 @@
                                     </Label.FormattedText>
                                 </Label>
                             </Grid>
-                        </Frame>
+                        </Border>
 
-                        <Frame
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            CornerRadius="12"
-                            HasShadow="False"
+                            StrokeShape="RoundRectangle 12,12,12,12"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                             VerticalOptions="FillAndExpand">
@@ -589,13 +587,12 @@
                                     </Label.FormattedText>
                                 </Label>
                             </Grid>
-                        </Frame>
+                        </Border>
 
-                        <Frame
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            CornerRadius="12"
-                            HasShadow="False"
+                            StrokeShape="RoundRectangle 12,12,12,12"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource SfStyleForZakatPlanGreen}"
                             VerticalOptions="FillAndExpand">
@@ -630,7 +627,7 @@
                                     </Label.FormattedText>
                                 </Label>
                             </Grid>
-                        </Frame>
+                        </Border>
 
                         <Border
                             Margin="0,16,0,10"

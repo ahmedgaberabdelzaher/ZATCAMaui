@@ -5,9 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentView.Content>
         <Border
+            Padding="16,8"
             BackgroundColor="#002447"
             StrokeShape="RoundRectangle 15,15,0,0"
-            Padding="16,8"
             VerticalOptions="EndAndExpand">
 
             <Border.Resources>

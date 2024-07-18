@@ -91,7 +91,7 @@
                                             <ColumnDefinition Width="15*" />
                                             <ColumnDefinition Width="85*" />
                                         </Grid.ColumnDefinitions>
-                                        <Frame
+                                        <Border
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -295,7 +295,7 @@
                                             <ColumnDefinition Width="15*" />
                                             <ColumnDefinition Width="90*" />
                                         </Grid.ColumnDefinitions>
-                                        <Frame
+                                        <Border
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -461,7 +461,7 @@
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
                                         </inputLayout:SfTextInputLayout>
-                                        <Frame
+                                        <Border
                                             Grid.Row="8"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -579,7 +579,7 @@
                                             FontFamily="{StaticResource GAZT_FONT_BOLD}"
                                             Style="{StaticResource GAZTSmallGreenLabelStyle}"
                                             Text="{x:Static ResourceManager:AppResources.ZVatAddress}" />
-                                        <Frame
+                                        <Border
                                             Grid.Row="14"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -824,7 +824,7 @@
 
                                         </Grid>
 
-                                        <Frame
+                                        <Border
                                             Grid.Row="2"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -2115,7 +2115,7 @@
                                                 Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" />
                                         </Grid>
-                                        <Frame
+                                        <Border
                                             Grid.Row="24"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -4555,7 +4555,7 @@
                                             <ColumnDefinition Width="15*" />
                                             <ColumnDefinition Width="90*" />
                                         </Grid.ColumnDefinitions>
-                                        <Frame
+                                        <Border
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -4952,21 +4952,21 @@
 
 
                                                 </syncfusion:SfPicker>
-                                                <Frame
+                                                <Border
                                                     Grid.Row="1"
                                                     Grid.Column="0"
                                                     Grid.ColumnSpan="2"
                                                     IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsTextBoxVisibleForIban}"
                                                     Style="{StaticResource GAZTFrameStyleForEntry}">
-                                                    <Frame.Triggers>
+                                                    <Border.Triggers>
                                                         <DataTrigger
                                                             Binding="{Binding IsIBANValid}"
-                                                            TargetType="Frame"
+                                                            TargetType="Border"
                                                             Value="false">
-                                                            <Setter Property="BorderColor" Value="#e84941" />
+                                                            <Setter Property="Stroke" Value="#e84941" />
                                                         </DataTrigger>
-                                                    </Frame.Triggers>
-                                                </Frame>
+                                                    </Border.Triggers>
+                                                </Border>
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="IbanNumber"
                                                     Grid.Row="1"
@@ -4991,7 +4991,7 @@
                                                     VerticalOptions="EndAndExpand" />
                                             </Grid>
                                         </StackLayout>
-                                        <Frame
+                                        <Border
                                             Grid.Row="5"
                                             Grid.Column="0"
                                             Grid.ColumnSpan="2"
@@ -5188,7 +5188,7 @@
                         </tabView:SfTabItem>
                     </tabView:SfTabView>
 
-                    <Frame
+                    <Border
                         Grid.Row="0"
                         Grid.Column="0"
                         IsVisible="{Binding IsVisibleCreditCarriedLabel}"

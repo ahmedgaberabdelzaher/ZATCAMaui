@@ -259,23 +259,23 @@
                         </StackLayout>
 
                         <!--  Not need Reward Hinf Note  -->
-                        <Frame
+                        <Border
                             Padding="10"
                             BackgroundColor="White"
-                            BorderColor="#E6E6E6"
-                            CornerRadius="10"
+                            Stroke="#E6E6E6"
+                            StrokeShape="RoundRectangle 10,10,10,10"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="false"
                             VerticalOptions="StartAndExpand">
-                            <Frame.Triggers>
+                            <Border.Triggers>
                                 <DataTrigger
                                     Binding="{Binding SubmitReport.IsNeedReward}"
-                                    TargetType="Frame"
+                                    TargetType="Border"
                                     Value="false">
                                     <Setter Property="IsVisible" Value="true" />
 
                                 </DataTrigger>
-                            </Frame.Triggers>
+                            </Border.Triggers>
                             <StackLayout
                                 HorizontalOptions="CenterAndExpand"
                                 Orientation="Horizontal"
@@ -293,7 +293,7 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--  Report Note8 Label  -->
                         <Label
                             Margin="0,0,0,25"

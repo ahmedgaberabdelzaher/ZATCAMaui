@@ -1,13 +1,8 @@
-﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+﻿using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -22,17 +17,13 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             viewModel.ClearData();
             ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber = true;
             if (AttachmentPopUpViewModel.SalesDetailList != null)
                 AttachmentPopUpViewModel.SalesDetailList.Clear();
             IsGoingFirstTimeOnAttachmentPage = true;
-            NavigationPage.SetBackButtonTitle(this, " ");
-            TotalVATSales.Text = "NA";
 
-            ChangeAeroIcon();
             ZAKATReturnDetailsViewModel.Fbguid = fbguid;
             IsComingFromAttachmentPage = false;
         }
@@ -40,8 +31,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            //  viewModel.ClearData();
-            //            viewModel.DesClaimerVisibility = false;
             try
             {
                 MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToReleaseTheReturn");
@@ -65,11 +54,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-            //date.Text = viewModel.Abrzu;
             if (IsComingFromAttachmentPage == false)
             {
                 await viewModel.OnPageLoad(ZAKATReturnDetailsViewModel.Fbguid);
@@ -198,82 +182,35 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
 
             }
+
+
             getYesCommandToReleaseTheReturn();
             getYesCommandToAmendTheReturn();
 
             getNoCommand();
 
-
-            try
+            MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
             {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
-                {
-                    viewModel.MadaPaymentSelectedAsync();
-                });
-            }
-            catch (Exception)
+                viewModel.MadaPaymentSelectedAsync();
+            });
+            MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
             {
+                viewModel.ApplePaySelected();
+            });
 
-
-            }
-
-            try
+            MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
             {
-                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
-                {
-                    viewModel.ApplePaySelected();
-                });
-            }
-            catch (Exception)
+                viewModel.gotoSuccessPage();
+            });
+            MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
             {
 
+                viewModel.ApplePayTokenData = arg.ToString();
 
-            }
-
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
-                {
-                    viewModel.gotoSuccessPage();
-                });
-            }
-            catch (Exception)
-            {
+                await viewModel.UpdateApplePayPaymentGuid();
 
 
-            }
-
-            try
-            {
-                MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
-                {
-
-                    viewModel.ApplePayTokenData = arg.ToString();
-
-                    await viewModel.UpdateApplePayPaymentGuid();
-
-
-                });
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
+            });
         }
 
         protected async void OnReleaseBillsButtonClicked(object sender, EventArgs e)
@@ -442,7 +379,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (viewModel.IsCurrentZAKATTaxLess)
                 {
                     await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeartaxpayerbasedonthesubmittedamendments));
-                   
+
                 }
                 else
                 {
@@ -456,7 +393,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
 
-                    // await viewModel._dialogService.ShowMessageBox(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit, AppResources.Alerts);
+                   
                 });
 
             }
@@ -508,20 +445,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZImportsvaluex115));
         }
 
-        //private void OnImportFromPointOfSalesInfoClicked(object sender, EventArgs e)
-        //{
-        //    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
-        //}
 
         private void OnContactFromETIMADSystemInfoClicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
         }
-
-        //private void OnExportInfoClicked(object sender, EventArgs e)
-        //{
-        //    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
-        //}
 
         private void OnPurchaseInfoClicked(object sender, EventArgs e)
         {
@@ -631,12 +559,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 {
                     ImportValue.Text = ImportValue.Text.Replace(",", "");
 
-/* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-Before:
-                    ImportValue.TextColor = (Color)App.Current.Resources["Primary"];;
-After:
-                    ImportValue.TextColor = (Color)Microsoft.Maui.Controls.Application.Current.Resources["Primary"];;
-*/
                     ImportValue.TextColor = (Color)Microsoft.Maui.Controls.Application.Current.Resources["Primary"]; ;
                 }
             }
@@ -657,12 +579,6 @@ After:
                 {
                     ImportValue.Text = UtilityManager.GetCommaSeparatedAmount(ImportValue.Text);
 
-/* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-Before:
-                    ImportValue.TextColor = (Color)App.Current.Resources["Primary"];;
-After:
-                    ImportValue.TextColor = (Color)Microsoft.Maui.Controls.Application.Current.Resources["Primary"];;
-*/
                     ImportValue.TextColor = (Color)Microsoft.Maui.Controls.Application.Current.Resources["Primary"]; ;
                 }
             }
@@ -670,13 +586,6 @@ After:
             {
             }
         }
-
-
-
-
-
-
-
 
         private void SalesFromPointOfSalesInputFocused(object sender, FocusEventArgs e)
         {
@@ -912,9 +821,5 @@ After:
             viewModel.CheckBoxStatus = checkBox.IsChecked;
         }
 
-        private void PayNowButtonClicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

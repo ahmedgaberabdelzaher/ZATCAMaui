@@ -458,7 +458,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             }
 
                         }
+                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
+                        {
 
+                            if (VatAttachmentsList != null)
+                            {
+                                int ListCount = VatAttachmentsList.Count();
+                                if (ListCount >= 9)
+                                {
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof9attachmentscanbeuploaded1));
+
+                                    return;
+                                }
+                            }
+
+                        }
                         else if (IsComeForWhichAttachment == WhichAttachment.ContractReleaseCopy || IsComeForWhichAttachment == WhichAttachment.ContractReleaseInvoice || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountOne || IsComeForWhichAttachment == WhichAttachment.IBANBankAccountTwo)
                         {
                             if (VatAttachmentsList != null)
@@ -1092,6 +1106,13 @@ After:
                         else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
+                        }
+                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
+                        {
+                            APiMethod = "ZDP_INDTAX_ATT_SRV";
+                            AttachmentName = AttachmentName.Replace("-", "_").Replace(" ", "");
+                            string attName = "1SpaceAdded-SpaceAdded" + AttachmentName;
+                            AttachmentName = attName;
                         }
                         else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
                         {

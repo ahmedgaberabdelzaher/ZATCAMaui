@@ -38,7 +38,7 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Frame
+            <Border
                 HorizontalOptions="FillAndExpand"
                 Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"
                 VerticalOptions="StartAndExpand">
@@ -49,7 +49,7 @@
                     Style="{StaticResource GAZTSmallGreenLabelStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZVatcreditcarriedforward}"
                     VerticalOptions="Center" />
-            </Frame>
+            </Border>
             <StackLayout
                 Margin="10,10,10,0"
                 HorizontalOptions="FillAndExpand"

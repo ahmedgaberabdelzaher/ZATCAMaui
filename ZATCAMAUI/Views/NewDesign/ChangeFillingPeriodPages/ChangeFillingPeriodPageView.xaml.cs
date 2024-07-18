@@ -1,7 +1,4 @@
-﻿using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
+﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
@@ -26,15 +23,21 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             {
                 InitializeComponent();
 
-                NavigationPage.SetBackButtonTitle(this, "");
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
 
                 viewModel = App.Locator.ChangeFillingPeriodPageView;
                 BindingContext = viewModel;
                 viewModel.cFInterface = (Core.Interfaces.IChangeFillingInterface)this;
                 viewModel.ResetData();
                 _ = viewModel.GetVATChangeFillingData();
+                if (App.IsArabic && Device.RuntimePlatform == Device.iOS)
+                {
+                    viewModel.TermsAlignment = TextAlignment.End;
+                }
+                else
+                {
+                    viewModel.TermsAlignment = TextAlignment.Start;
+                }
+
             }
             catch (Exception)
             {
@@ -56,10 +59,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
+            
 
             getYesCommand();
             getNoCommand();

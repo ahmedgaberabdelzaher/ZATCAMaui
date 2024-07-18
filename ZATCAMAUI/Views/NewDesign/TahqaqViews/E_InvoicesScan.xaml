@@ -35,7 +35,7 @@
 
                 <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
 
-                    <Frame BackgroundColor="Black" Opacity=".44" />
+                    <Border BackgroundColor="Black" Opacity=".44" />
 
                     <StackLayout Margin="0,30,0,30">
 
@@ -130,7 +130,7 @@
 
                 <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
 
-                    <Frame BackgroundColor="Black" Opacity=".44" />
+                    <Border BackgroundColor="Black" Opacity=".44" />
 
                     <StackLayout>
 
@@ -147,19 +147,18 @@
                             </Label.FormattedText>
                         </Label>
 
-                        <Frame
+                        <Border
                             Grid.Row="4"
                             Margin="21,27,27,40"
                             Padding="12"
                             BackgroundColor="Transparent"
-                            CornerRadius="14"
-                            HasShadow="False">
+                            StrokeShape="RoundRectangle 14,14,14,14">
 
                             <Label
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
                                 TextColor="White" />
-                        </Frame>
+                        </Border>
 
                     </StackLayout>
 
@@ -199,12 +198,11 @@
                             Text="{x:Static ResourceManager:AppResources.Correcttaxinvoice}"
                             TextColor="{StaticResource PrimaryColor}" />
 
-                        <Frame
+                        <Border
                             Margin="0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 14,14,14,14">
                             <StackLayout Margin="16">
 
                                 <Grid Padding="8,0" ColumnDefinitions="1.25*,*">
@@ -215,23 +213,22 @@
                                         Text="{Binding SellerName}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                     <Grid Grid.Column="1" RowDefinitions="auto">
-                                        <Frame
+                                        <Border
                                             Padding="0"
                                             BackgroundColor="Orange"
-                                            CornerRadius="14"
-                                            HasShadow="False"
                                             Opacity=".1"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             VerticalOptions="FillAndExpand">
-                                            <Frame.Triggers>
+                                            <Border.Triggers>
                                                 <DataTrigger
                                                     Binding="{Binding RegisterStatus}"
-                                                    TargetType="Frame"
+                                                    TargetType="Border"
                                                     Value="{x:Static ResourceManager:AppResources.Registered}">
                                                     <Setter Property="BackgroundColor" Value="#62B34F" />
                                                 </DataTrigger>
-                                            </Frame.Triggers>
+                                            </Border.Triggers>
 
-                                        </Frame>
+                                        </Border>
                                         <Label
                                             Margin="10,3,10,3"
                                             HorizontalOptions="CenterAndExpand"
@@ -284,7 +281,7 @@
                                             <DataTrigger
                                                 Binding="{Binding AppDirection}"
                                                 TargetType="Label"
-                                                Value="RTL">
+                                                Value="RightToLeft">
                                                 <Setter Property="HorizontalTextAlignment" Value="End" />
                                             </DataTrigger>
 
@@ -309,30 +306,31 @@
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
+                                        IsVisible="False"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.VATAmount}" />
 
                                     <Label
                                         Grid.Row="1"
                                         Grid.Column="0"
+                                        IsVisible="False"
                                         Style="{StaticResource BodyLabelBlack}"
                                         Text="{Binding VatAmount}" />
 
                                     <!--#region Cleared Status-->
                                     <Grid
                                         Grid.Row="0"
-                                        Grid.RowSpan="2"
                                         Grid.Column="1"
                                         HorizontalOptions="End"
                                         IsVisible="{Binding IsClearedStatusVisible}"
-                                        RowDefinitions="auto">
+                                        RowDefinitions="auto"
+                                        VerticalOptions="CenterAndExpand">
 
-                                        <Frame
+                                        <Border
                                             Padding="0"
                                             BackgroundColor="#62B34F"
-                                            CornerRadius="14"
-                                            HasShadow="False"
                                             Opacity=".1"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             VerticalOptions="FillAndExpand" />
 
                                         <Label
@@ -349,19 +347,18 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
 
-                        <Frame
+                        <Border
                             Margin="5,5,5,5"
                             Padding="12"
                             BackgroundColor="#00BBBD"
-                            CornerRadius="14"
-                            HasShadow="False"
-                            IsVisible="{Binding IsShowSubmitReport}">
+                            IsVisible="{Binding IsShowSubmitReport}"
+                            StrokeShape="RoundRectangle 14,14,14,14">
 
-                            <Frame.GestureRecognizers>
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />
-                            </Frame.GestureRecognizers>
+                            </Border.GestureRecognizers>
 
                             <Label
                                 FontSize="16"
@@ -369,7 +366,7 @@
                                 Text="{x:Static ResourceManager:AppResources.Submitareport}"
                                 TextColor="White" />
 
-                        </Frame>
+                        </Border>
 
                     </StackLayout>
 
@@ -387,7 +384,7 @@
             TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}">
             <controls:Header.Padding>
                 <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="iOS" Value="0,35,0,10" />
+                    <On Platform="iOS" Value="0,45,0,10" />
                     <On Platform="Android" Value="0,35,0,10" />
                 </OnPlatform>
             </controls:Header.Padding>

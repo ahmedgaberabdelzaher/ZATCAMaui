@@ -38,14 +38,16 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
+            Hint="{x:Static ResourceManager:AppResources.TypeItem}"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
+
             <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                 <inputLayout:LabelStyle TextColor="#B00020" />
             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
             <custom:GAZTBorderlessEntry
                 Placeholder="{x:Static ResourceManager:AppResources.TypeItem}"
                 Style="{StaticResource DefaultEntry}"
@@ -71,8 +73,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -136,8 +138,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
+            Hint="{x:Static ResourceManager:AppResources.OtherPurpose}"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -173,8 +175,9 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
+            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+            Hint="{x:Static ResourceManager:AppResources.Quantity}"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -196,12 +199,6 @@
 
         </inputLayout:SfTextInputLayout>
 
-        <Label
-            Margin="3,-10,3,3"
-            FontSize="12"
-            Text="{x:Static ResourceManager:AppResources.NumberHint}"
-            TextColor="#58595B" />
-
     </StackLayout>
     <!--#endregion-->
 
@@ -219,8 +216,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -273,8 +270,8 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
+            Hint="{x:Static ResourceManager:AppResources.Select}"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -330,8 +327,9 @@
         <inputLayout:SfTextInputLayout
             ContainerBackground="White"
             ContainerType="Outlined"
+            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+            Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
             InputViewPadding="16,0,16,0"
-            IsHintAlwaysFloated="True"
             LeadingViewPosition="Inside"
             OutlineCornerRadius="15"
             Stroke="{StaticResource NeutralGreay}">
@@ -354,12 +352,6 @@
                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
             </inputLayout:SfTextInputLayout.TrailingView>
         </inputLayout:SfTextInputLayout>
-
-        <Label
-            Margin="3,-10,3,3"
-            FontSize="12"
-            Text="{x:Static ResourceManager:AppResources.NumberHint}"
-            TextColor="#58595B" />
 
     </StackLayout>
     <!--#endregion TotalValue Field-->
@@ -485,8 +477,9 @@
             <inputLayout:SfTextInputLayout
                 ContainerBackground="White"
                 ContainerType="Outlined"
+                HelperText="{x:Static ResourceManager:AppResources.PDFFileHintTwo}"
+                Hint="{x:Static ResourceManager:AppResources.Addattachments}"
                 InputViewPadding="16,0,16,0"
-                IsHintAlwaysFloated="True"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
                 Stroke="{StaticResource NeutralGreay}"
@@ -512,16 +505,9 @@
 
             </inputLayout:SfTextInputLayout>
 
-            <Label
-                Margin="3,-10,3,3"
-                FontSize="12"
-                Text="{x:Static ResourceManager:AppResources.PDFFileHintTwo}"
-                TextColor="#58595B" />
-
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
             </StackLayout.GestureRecognizers>
-
 
 
         </StackLayout>

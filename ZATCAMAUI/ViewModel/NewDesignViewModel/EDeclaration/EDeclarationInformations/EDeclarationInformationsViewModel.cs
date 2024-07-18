@@ -357,6 +357,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                 });
             }
         }
+
         public void BackMethod()
         {
             if (IsShowBottomSheet)

@@ -26,11 +26,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+        <Grid RowDefinitions="auto,*">
 
             <Border
                 Grid.Row="1"
@@ -52,7 +48,7 @@
 
                     <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
 
-                        <Frame BackgroundColor="Black" Opacity=".44" />
+                        <Border BackgroundColor="Black" Opacity=".44" />
 
                         <StackLayout Margin="0,60,0,50">
 
@@ -136,7 +132,7 @@
                     </Grid>
 
                     <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
-                        <Frame BackgroundColor="Black" Opacity=".44" />
+                        <Border BackgroundColor="Black" Opacity=".44" />
                         <StackLayout>
                             <Label
                                 Grid.Row="3"
@@ -153,22 +149,21 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Frame
+                            <Border
                                 Grid.Row="4"
                                 Margin="21,27,27,40"
                                 Padding="12"
                                 BackgroundColor="#00BBBD"
-                                CornerRadius="14"
-                                HasShadow="False">
-                                <Frame.GestureRecognizers>
+                                StrokeShape="RoundRectangle 14,14,14,14">
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding EnterCodeCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.VerificationForm}"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
                         </StackLayout>
                     </Grid>
                 </Grid>
@@ -176,36 +171,36 @@
 
             <Border
                 Grid.Row="1"
-                Padding="20,20,20,0"
+                Padding="15,0"
                 IsVisible="{Binding IsCheckWithCode}"
                 Style="{StaticResource CommonTopCurves}">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <ScrollView
-                        Grid.Row="0"
-                        Padding="0,0,0,32"
-                        IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}"
-                        VerticalScrollBarVisibility="Never">
-                        <StackLayout Padding="0,12,0,0">
+                <Grid RowDefinitions="*">
+
+                    <ScrollView IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
+
+                        <StackLayout Spacing="10">
+
                             <StackLayout
                                 x:Name="Main"
-                                Margin="24,10,24,0"
+                                Margin="0"
                                 IsVisible="{Binding IsMainPage}">
+
                                 <Label
                                     Margin="0,34,0,5"
                                     FontSize="26"
                                     Text="{x:Static ResourceManager:AppResources.VerificationForm}"
                                     TextColor="#58595B" />
+
                                 <Label
                                     FontSize="14"
                                     IsVisible="False"
                                     Text="{x:Static ResourceManager:AppResources.VerificationFormHint}"
                                     TextColor="#868894" />
+
                                 <BoxView HeightRequest="1" Color="#EBEBEB" />
                             </StackLayout>
-                            <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
+
+                            <StackLayout Margin="0,0,0,0" Style="{StaticResource SFTaxPayerProfile}">
 
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
@@ -214,14 +209,15 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+
                                 <inputLayout:SfTextInputLayout
-                                    Margin="0,-10,0,0"
+                                    ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.EnterQrCodeHere}"
                                     InputViewPadding="16,0,16,0"
                                     IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="14"
-                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    OutlineCornerRadius="14">
                                     <custom:GAZTBorderlessEntry
                                         Placeholder="{x:Static ResourceManager:AppResources.EnterQrCodeHere}"
                                         Style="{StaticResource DefaultEntry}"
@@ -229,29 +225,28 @@
                                         VerticalTextAlignment="Center" />
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
-                            <Frame
-                                Margin="21,27,27,40"
+
+                            <Border
+                                Margin="0,50"
                                 Padding="12"
                                 BackgroundColor="#00BBBD"
-                                CornerRadius="14"
-                                HasShadow="False">
-                                <Frame.GestureRecognizers>
+                                StrokeShape="RoundRectangle 14,14,14,14"
+                                VerticalOptions="EndAndExpand">
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding GetDataForCodeCommand}" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.Send}"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
                         </StackLayout>
                     </ScrollView>
 
-
-
-
                 </Grid>
             </Border>
+
             <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
@@ -279,12 +274,11 @@
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.Correcttaxstamp}"
                                 TextColor="{StaticResource PrimaryColor}" />
-                            <Frame
+                            <Border
                                 Margin="0"
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
                                 <StackLayout Margin="16">
                                     <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.QRCode}" />
                                     <Label Style="{StaticResource BodyLabelBlack}" Text="{Binding scanCode}" />
@@ -321,7 +315,7 @@
                                             Text="{Binding QrRslt.DateOfManufacture, StringFormat='{0:dd/MM/yyy}'}" />
                                     </Grid>
                                 </StackLayout>
-                            </Frame>
+                            </Border>
                         </StackLayout>
                     </ScrollView>
 
@@ -330,6 +324,7 @@
 
                 </Grid>
             </Border>
+
             <Border
                 Grid.Row="1"
                 Padding="20,20,20,0"
@@ -357,21 +352,20 @@
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.Incorrecttaxstamp}"
                                 TextColor="{StaticResource PrimaryColor}" />
-                            <Frame
+                            <Border
                                 Margin="21,50,27,27"
                                 Padding="12"
                                 BackgroundColor="#00BBBD"
-                                CornerRadius="14"
-                                HasShadow="False">
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.Submitareport}"
                                     TextColor="White" />
-                                <Frame.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />
-                                </Frame.GestureRecognizers>
-                            </Frame>
+                                </Border.GestureRecognizers>
+                            </Border>
                             <Label
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
@@ -392,12 +386,11 @@
             </Border>
 
 
-            <Grid Grid.Row="0" Padding="20,5,20,5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*" />
-                    <ColumnDefinition Width="80*" />
-                    <ColumnDefinition Width="10*" />
-                </Grid.ColumnDefinitions>
+            <Grid
+                Grid.Row="0"
+                Padding="15,10"
+                ColumnDefinitions="10*,80*,10*">
+
                 <StackLayout Grid.Column="0">
                     <Image
                         HorizontalOptions="Start"
@@ -418,6 +411,7 @@
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
+
                 <Label
                     Grid.Column="1"
                     HorizontalOptions="Center"
@@ -426,10 +420,12 @@
                     Text="{x:Static ResourceManager:AppResources.TahqaqService}"
                     VerticalOptions="Center" />
             </Grid>
+
             <custom:Loader
                 Grid.Row="0"
                 Grid.RowSpan="2"
                 IsVisible="{Binding IsLoading}" />
+
             <custom:MsgView
                 Grid.Row="0"
                 Grid.RowSpan="2"

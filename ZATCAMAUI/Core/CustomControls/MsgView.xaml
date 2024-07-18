@@ -7,10 +7,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons">
     <ContentView.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--<ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
-            </ResourceDictionary.MergedDictionaries>
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
             </Style>
@@ -20,7 +16,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
 
-     <Grid
+    <Grid
         Grid.RowSpan="2"
         Margin="0"
         VerticalOptions="FillAndExpand">
@@ -30,29 +26,31 @@
         </Grid.GestureRecognizers>
 
         <StackLayout
-            BackgroundColor="Black"
+            BackgroundColor="Transparent"
             Opacity="0.4"
             VerticalOptions="FillAndExpand" />
 
         <Border
-            Padding="0"
             Margin="0"
-            Stroke="White"
+            Padding="0"
             Background="White"
             HorizontalOptions="Fill"
+            Stroke="#EBEBEB"
             StrokeShape="RoundRectangle 15,15,0,0"
+            StrokeThickness="1.5"
             VerticalOptions="EndAndExpand">
 
-            <StackLayout Padding="20,10"
-                         Spacing="15"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand">
+            <StackLayout
+                Padding="20,10"
+                HorizontalOptions="FillAndExpand"
+                Spacing="15"
+                VerticalOptions="FillAndExpand">
 
                 <Label
-                    HorizontalOptions="StartAndExpand"
-                    HorizontalTextAlignment="Start"
+                    HorizontalOptions="Fill"
+                    LineBreakMode="WordWrap"
                     Style="{StaticResource BodyLabelBlack}"
-                   Text="{Binding MessageTxt}"  />
+                    Text="{Binding MessageTxt}" />
 
                 <buttons:SfButton
                     Command="{Binding CloseMsgViewCommand}"

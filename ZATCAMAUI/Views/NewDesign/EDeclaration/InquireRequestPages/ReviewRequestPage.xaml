@@ -97,17 +97,15 @@
                         <BoxView
                             Margin="0,0,0,10"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                            HeightRequest="2" />
 
                         <!--#region Disclaimer-->
-                        <Frame
-                            Margin="0,0,0,5"
+                        <Border
+                            Margin="0,0,0,15"
                             Padding="5"
                             BackgroundColor="#FCECCD"
-                            BorderColor="#FCECCD"
-                            CornerRadius="8"
-                            HasShadow="False"
+                            Stroke="#FCECCD"
+                            StrokeShape="RoundRectangle 8,8,8,8"
                             Style="{StaticResource CommonTopCurves}">
 
                             <StackLayout Orientation="Horizontal" Spacing="8">
@@ -125,16 +123,15 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Disclaimer-->
 
                         <!--#region Frame Declaration Values-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,10"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
-                            HasShadow="False"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 15,15,15,15"
                             Style="{StaticResource CommonTopCurves}">
 
                             <!--  Frame Content  -->
@@ -166,10 +163,10 @@
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
+                                    Margin="0,0,0,5"
                                     BackgroundColor="#E6E6E6"
                                     HeightRequest="2"
-                                    HorizontalOptions="FillAndExpand"
-                                    WidthRequest="20" />
+                                    HorizontalOptions="FillAndExpand" />
 
                                 <!--#region Declaration Values-->
                                 <Grid
@@ -389,16 +386,15 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Declaration Values-->
 
                         <!--#region Frame Contains Fees-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,10"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
-                            HasShadow="False"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 15,15,15,15"
                             Style="{StaticResource CommonTopCurves}">
 
                             <!--  Frame Content  -->
@@ -430,10 +426,10 @@
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
+                                    Margin="0,0,0,5"
                                     BackgroundColor="#E6E6E6"
                                     HeightRequest="2"
-                                    HorizontalOptions="FillAndExpand"
-                                    WidthRequest="20" />
+                                    HorizontalOptions="FillAndExpand" />
 
                                 <!--#region Payment Values-->
                                 <StackLayout x:Name="inquireList" BindableLayout.ItemsSource="{Binding InquireList}">
@@ -510,15 +506,16 @@
 
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Contains Fees-->
 
                         <!--#region Frame Contains Details Fees-->
-                        <Frame
+                        <Border
                             Margin="0,0,0,15"
                             Padding="15"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="15"
+                            IsVisible="{Binding IsNotEmptyDetailsTotalFeesList}"
+                            Stroke="#EBEBEB"
+                            StrokeShape="RoundRectangle 15,15,15,15"
                             Style="{StaticResource CommonTopCurves}">
 
                             <!--  Frame Content  -->
@@ -550,10 +547,10 @@
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
+                                    Margin="0,0,0,5"
                                     BackgroundColor="#E6E6E6"
                                     HeightRequest="2"
-                                    HorizontalOptions="FillAndExpand"
-                                    WidthRequest="20" />
+                                    HorizontalOptions="FillAndExpand" />
 
                                 <!--#region Details Fees Values-->
                                 <StackLayout BindableLayout.ItemsSource="{Binding DetailsTotalFeesList}">
@@ -604,7 +601,7 @@
                                 <!--#endregion Payment Values-->
                             </StackLayout>
 
-                        </Frame>
+                        </Border>
                         <!--#endregion Frame Contains Fees-->
 
 

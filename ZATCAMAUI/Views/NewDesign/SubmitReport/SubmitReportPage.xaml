@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
@@ -191,8 +192,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ReportType}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}"
@@ -245,8 +246,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ReportCategory}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}"
@@ -297,6 +298,7 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ReportCategory}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -348,8 +350,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ReportMissingField}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}"
@@ -438,8 +440,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ReportLocationPlaceholder}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -489,21 +491,56 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 HasError="{Binding SubmitReport.HasViolationDate}"
-                                IsHintAlwaysFloated="True"
+                                Hint="dd/MM/yyyy"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
+
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
 
-                                <DatePicker Date="{Binding SelectedDate}" />
+                                <custom:GAZTBorderlessEntry
+                                    x:Name="violationDateEntry"
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="dd/MM/yyyy"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding ViolationDateDateString}"
+                                    TextColor="#58595B">
+
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference violationDate}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference violationDate}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="menu_calendar" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
 
+                            <DatePicker
+                                x:Name="violationDate"
+                                Date="{Binding SelectedDate}"
+                                Format="dd/MM/yyyy"
+                                IsVisible="false"
+                                MaximumDate="{Binding MaximumDate}">
+
+                                <DatePicker.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding SelectedDateCommand}"
+                                        CommandParameter="{x:Reference violationDateEntry}"
+                                        EventName="DateSelected" />
+                                </DatePicker.Behaviors>
+
+                            </DatePicker>
                         </StackLayout>
 
                         <!--  Uploaded file Field  -->
@@ -525,7 +562,6 @@
                                 ContainerType="Outlined"
                                 HelperText="{x:Static ResourceManager:AppResources.ReportAttachmentHelperText}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}"
@@ -626,8 +662,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.TIN}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -661,8 +697,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -690,8 +726,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -724,8 +760,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.WorkType}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -759,8 +795,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.NDFacilityAddress}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -795,8 +831,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -842,8 +878,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ReportCity}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -896,8 +932,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -931,8 +967,8 @@
                             <inputLayout:SfTextInputLayout
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
+                                Hint="{x:Static ResourceManager:AppResources.ReportStreetName}"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -1003,11 +1039,11 @@
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>
                             <!--  Not need Reward Hinf Note  -->
-                            <Frame
+                            <Border
                                 Padding="10"
                                 BackgroundColor="White"
-                                BorderColor="#E6E6E6"
-                                CornerRadius="10"
+                                Stroke="#E6E6E6"
+                                StrokeShape="RoundRectangle 10,10,10,10"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="StartAndExpand">
                                 <StackLayout
@@ -1024,7 +1060,7 @@
 
                                 </StackLayout>
 
-                            </Frame>
+                            </Border>
 
 
                             <!--  Full name Field  -->
@@ -1087,8 +1123,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.ReportFullName}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -1108,10 +1144,7 @@
                             <!--  Nationl Id Field  -->
                             <StackLayout Spacing="0">
 
-                                <!--  Nationl Id Label  -->
-
-
-                                <!--  Name Label  -->
+                                <!--  NationaID Label  -->
                                 <Label IsVisible="{Binding IsreporterDataMandatory}" Style="{StaticResource CaptionLabelGrey}">
 
                                     <Label.FormattedText>
@@ -1164,12 +1197,12 @@
                                     </Label.Triggers>
                                 </Label>
 
-                                <!--  Name Entry  -->
+                                <!--  NationaID Entry  -->
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.NationaID}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -1178,12 +1211,17 @@
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="NationalIdEntry"
-                                        Keyboard="Text"
+                                        Keyboard="Numeric"
                                         MaxLength="10"
                                         Placeholder="{x:Static ResourceManager:AppResources.NationaID}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitReport.ReporterNationalId}"
-                                        TextColor="#58595B" />
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviors:NumericValidationBehavior />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+
+                                    </custom:GAZTBorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
@@ -1248,8 +1286,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -1325,8 +1363,8 @@
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     InputViewPadding="0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">

@@ -105,9 +105,9 @@
                                     VerticalOptions="CenterAndExpand">
 
                                     <Grid HorizontalOptions="StartAndExpand">
-                                        <Frame
+                                        <Border
                                             BackgroundColor="White"
-                                            CornerRadius="15"
+                                            StrokeShape="RoundRectangle 14,14,14,14"
                                             Opacity="0.1" />
 
                                         <StackLayout
@@ -244,9 +244,9 @@
                                         </Border.StrokeShape>
                                         <Grid HorizontalOptions="StartAndExpand">
 
-                                            <Frame
+                                            <Border
                                                 BackgroundColor="White"
-                                                CornerRadius="15"
+                                                StrokeShape="RoundRectangle 14,14,14,14"
                                                 Opacity="0.1" />
                                             <StackLayout
                                                 Padding="12,5,12,5"
@@ -1024,38 +1024,38 @@
 
                                                                     </StackLayout>
 
-                                                                    <Frame
+                                                                    <Border
                                                                         Grid.Row="0"
                                                                         Grid.Column="1"
                                                                         Padding="15"
                                                                         BackgroundColor="{StaticResource Primary}"
-                                                                        CornerRadius="14"
+                                                                        StrokeShape="RoundRectangle 14,14,14,14"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         Opacity=".2"
                                                                         VerticalOptions="CenterAndExpand">
 
-                                                                        <Frame.Triggers>
+                                                                        <Border.Triggers>
                                                                             <DataTrigger
                                                                                 Binding="{Binding StatusText}"
-                                                                                TargetType="Frame"
+                                                                                TargetType="Border"
                                                                                 Value="{x:Static ResourceManager:AppResources.Paid}">
                                                                                 <Setter Property="BackgroundColor" Value="{StaticResource SuccessBg}" />
                                                                             </DataTrigger>
                                                                             <DataTrigger
                                                                                 Binding="{Binding StatusText}"
-                                                                                TargetType="Frame"
+                                                                                TargetType="Border"
                                                                                 Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
                                                                                 <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                                             </DataTrigger>
                                                                             <DataTrigger
                                                                                 Binding="{Binding StatusText}"
-                                                                                TargetType="Frame"
+                                                                                TargetType="Border"
                                                                                 Value="{x:Static ResourceManager:AppResources.UnPaid}">
                                                                                 <Setter Property="BackgroundColor" Value="{StaticResource ErrorBg}" />
                                                                             </DataTrigger>
-                                                                        </Frame.Triggers>
+                                                                        </Border.Triggers>
 
-                                                                    </Frame>
+                                                                    </Border>
 
                                                                     <StackLayout
                                                                         Grid.Row="0"
@@ -1543,7 +1543,7 @@
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
-                                                <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.GeneralServices}" />
+                                                <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.GeneralServices}" />
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="General_Services_Tapped" />
                                                 </StackLayout.GestureRecognizers>
@@ -1571,7 +1571,7 @@
                                                 Spacing="20">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                                     <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
-                                                    <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ContactZatcaEmp}" />
+                                                    <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ContactZatcaEmp}" />
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="ContactZatcaEmp_Tapped" />
                                                     </StackLayout.GestureRecognizers>
@@ -1581,17 +1581,20 @@
                                             <!--  Contact Zatca For Audit Case ends  -->
                                             <!--  CR6264 starts  -->
 
-                                            <StackLayout
+                                            <Grid
                                                 x:Name="tileUpdatedView"
-                                                IsVisible="{Binding istileUpdated}"
-                                                Orientation="Horizontal"
-                                                Spacing="20">
+                                                ColumnDefinitions="auto,*"
+                                                ColumnSpacing="20"
+                                                IsVisible="{Binding istileUpdated}">
                                                 <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
-                                                <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
-                                                <StackLayout.GestureRecognizers>
+                                                <Label
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource ButtonLabelWhiteBold}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
+                                                <Grid.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="ProfitOnGoods_Tapped" />
-                                                </StackLayout.GestureRecognizers>
-                                            </StackLayout>
+                                                </Grid.GestureRecognizers>
+                                            </Grid>
                                             <BoxView
                                                 x:Name="tileUpdatedBoxView"
                                                 IsVisible="{Binding istileUpdated}"
@@ -1742,35 +1745,35 @@
                                 Margin="10"
                                 ColumnDefinitions="*,*"
                                 ColumnSpacing="10">
-                                <Frame
+                                <Border
                                     Grid.Column="0"
                                     Padding="12"
                                     BackgroundColor="#0996D4"
-                                    CornerRadius="14">
-                                    <Frame.GestureRecognizers>
+                                    StrokeShape="RoundRectangle 14,14,14,14">
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="1" />
-                                    </Frame.GestureRecognizers>
+                                    </Border.GestureRecognizers>
                                     <Label
                                         FontSize="16"
                                         HorizontalOptions="CenterAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.questionnaire}"
                                         TextColor="White" />
-                                </Frame>
-                                <Frame
+                                </Border>
+                                <Border
                                     Grid.Column="1"
                                     Padding="12"
                                     BackgroundColor="White"
-                                    BorderColor="#4FBBBD"
-                                    CornerRadius="14">
+                                    Stroke="#4FBBBD"
+                                    StrokeShape="RoundRectangle 14,14,14,14">
                                     <Label
                                         FontSize="16"
                                         HorizontalOptions="CenterAndExpand"
                                         Text="{x:Static ResourceManager:AppResources.NDSkip}"
                                         TextColor="#0996D4" />
-                                    <Frame.GestureRecognizers>
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="0" />
-                                    </Frame.GestureRecognizers>
-                                </Frame>
+                                    </Border.GestureRecognizers>
+                                </Border>
                             </Grid>
 
                         </StackLayout>
@@ -1790,18 +1793,18 @@
                                 </DataTrigger>
                             </StackLayout.Triggers>
 
-                            <Frame
+                            <Border
                                 Margin="0"
                                 Padding="9"
                                 BackgroundColor="White"
-                                BorderColor="#4FBBBD"
-                                CornerRadius="14">
+                                Stroke="#4FBBBD"
+                                StrokeShape="RoundRectangle 14,14,14,14">
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="FillAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.SurveyQ1}"
                                     TextColor="#0996D4" />
-                            </Frame>
+                            </Border>
 
                             <StackLayout
                                 x:Name="menu"
@@ -1849,14 +1852,14 @@
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding QuestionTxt}"
                                 TextColor="{StaticResource Primary}" />
-                            <Frame
+                            <Border
                                 Padding="9"
                                 BackgroundColor="White"
-                                BorderColor="#4FBBBD"
-                                CornerRadius="14"
+                                Stroke="#4FBBBD"
+                                StrokeShape="RoundRectangle 14,14,14,14"
                                 HeightRequest="100">
                                 <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " Text="{Binding SQAnswer}" />
-                            </Frame>
+                            </Border>
                             <Frame
                                 Grid.Column="0"
                                 Padding="12"
@@ -1908,20 +1911,20 @@
                                 HorizontalOptions="StartAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.SurveyThankMsg}"
                                 TextColor="{StaticResource Primary}" />
-                            <Frame
+                            <Border
                                 Grid.Column="0"
                                 Padding="12"
                                 BackgroundColor="#0996D4"
-                                CornerRadius="14">
-                                <Frame.GestureRecognizers>
+                                StrokeShape="RoundRectangle 14,14,14,14">
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SurveyNextCommand}" CommandParameter="4" />
-                                </Frame.GestureRecognizers>
+                                </Border.GestureRecognizers>
                                 <Label
                                     FontSize="16"
                                     HorizontalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.Form5Finish}"
                                     TextColor="White" />
-                            </Frame>
+                            </Border>
                         </StackLayout>
                         <!--#endregion-->
 

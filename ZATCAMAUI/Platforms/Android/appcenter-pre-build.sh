@@ -23,7 +23,7 @@ echo "EXECUTING APPCENTER_PRE_BUILD SCRIPT"
 
 # Updating Manifest ref URL : "https://montemagno.com/vs-app-center-custom-build-scripts-for-production-apps/"
 
-MANIFEST_PATH="$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT.Android/Properties/AndroidManifest.xml"
+MANIFEST_PATH="$APPCENTER_SOURCE_DIRECTORY/ZATCAMAUI/ZATCAMAUI/Platforms/Android/AndroidManifest.xml"
 
 # Print out file before any change
 cat $MANIFEST_PATH
@@ -48,7 +48,7 @@ then
 fi
 echo "Getting file path"
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT/AppConfigurations/PageSettings.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/ZATCAMAUI/ZATCAMAUI/Core/AppConfigurations/PageSettings.cs
 
 echo "Updating file path to $APP_CONSTANT_FILE"
 

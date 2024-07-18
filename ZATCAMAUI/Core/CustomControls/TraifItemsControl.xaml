@@ -5,11 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     FlowDirection="{Binding AppDirection}">
     <Grid x:Name="TraiffPage" Padding="24,6,24,6">
-        <Frame
+        <Border
             Padding="20,15,17,15"
-            BorderColor="#D8D8D8"
-            CornerRadius="14"
-            HasShadow="False">
+            Stroke="#D8D8D8"
+            StrokeShape="RoundRectangle 14,14,14,14">
             <StackLayout Orientation="Horizontal">
                 <Label
                     x:Name="nameLabl"
@@ -43,7 +42,7 @@
                 </Image>
 
             </StackLayout>
-        </Frame>
+        </Border>
     </Grid>
 
 </ContentView>

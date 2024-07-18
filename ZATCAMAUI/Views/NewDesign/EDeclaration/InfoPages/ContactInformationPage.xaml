@@ -67,15 +67,12 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border
-                Grid.Row="1"
-                Padding="20,5,20,0"
-                Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
                     <ScrollView VerticalScrollBarVisibility="Never">
 
-                        <StackLayout Padding="10" VerticalOptions="FillAndExpand">
+                        <StackLayout VerticalOptions="FillAndExpand">
 
                             <!--  Circle view  -->
                             <Grid
@@ -88,18 +85,17 @@
 
                                 <!--  Circle button 1  -->
                                 <ImageButton
-                                    Margin="-5,0"
                                     Padding="5"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
                                     BorderWidth="1"
                                     CornerRadius="15"
-                                    HeightRequest="39"
+                                    HeightRequest="30"
                                     HorizontalOptions="EndAndExpand"
                                     InputTransparent="True"
                                     Source="reportCheckMark.png"
                                     VerticalOptions="CenterAndExpand"
-                                    WidthRequest="39" />
+                                    WidthRequest="30" />
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
@@ -112,18 +108,17 @@
                                 <!--  Circle button 2  -->
                                 <ImageButton
                                     Grid.Column="2"
-                                    Margin="-5,0"
                                     Padding="5"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
                                     BorderWidth="1"
                                     CornerRadius="15"
-                                    HeightRequest="39"
+                                    HeightRequest="30"
                                     HorizontalOptions="StartAndExpand"
                                     InputTransparent="True"
                                     Source="reportCheckMark.png"
                                     VerticalOptions="CenterAndExpand"
-                                    WidthRequest="39" />
+                                    WidthRequest="30" />
 
 
                                 <!--  Horizontal Line  -->
@@ -137,18 +132,17 @@
                                 <!--  Circle button 3  -->
                                 <ImageButton
                                     Grid.Column="4"
-                                    Margin="-5,0"
                                     Padding="5"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
                                     BorderWidth="1"
                                     CornerRadius="15"
-                                    HeightRequest="39"
+                                    HeightRequest="30"
                                     HorizontalOptions="StartAndExpand"
                                     InputTransparent="True"
                                     Source="reportCheckMark.png"
                                     VerticalOptions="CenterAndExpand"
-                                    WidthRequest="39" />
+                                    WidthRequest="30" />
 
                                 <!--  Horizontal Line  -->
                                 <BoxView
@@ -195,23 +189,23 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Phone Label  -->
-                                <controls:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                    <controls:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </controls:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                </controls:CustomLabel>
+                                </Label>
 
                                 <!--  Phone Entry  -->
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     InputViewPadding="0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -231,7 +225,7 @@
                                             Spacing="0"
                                             WidthRequest="45">
 
-                                            <controls:CustomLabel
+                                            <Label
                                                 FontSize="14"
                                                 Style="{StaticResource CaptionLabelGrey}"
                                                 Text="{Binding SubmitModel.travelerDeclaration.CountryCode}"
@@ -262,23 +256,23 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Email Label  -->
-                                <controls:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                    <controls:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </controls:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                </controls:CustomLabel>
+                                </Label>
 
                                 <!--  Email Entry  -->
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
@@ -298,23 +292,23 @@
                             <StackLayout Spacing="0">
 
                                 <!--  Address Label  -->
-                                <controls:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <Label Style="{StaticResource CaptionLabelGrey}">
 
-                                    <controls:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
-                                    </controls:CustomLabel.FormattedText>
+                                    </Label.FormattedText>
 
-                                </controls:CustomLabel>
+                                </Label>
 
                                 <!--  Address Entry  -->
                                 <inputLayout:SfTextInputLayout
                                     ContainerBackground="White"
                                     ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.AddressKSA}"
                                     InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">

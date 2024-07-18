@@ -124,26 +124,26 @@
 
 
             </StackLayout>
-            <Frame
+            <Border
                 Grid.Row="2"
                 Grid.ColumnSpan="3"
-                CornerRadius="10"
+                StrokeShape="RoundRectangle 10,10,10,10"
                 HeightRequest="24"
                 Opacity="0.5"
                 WidthRequest="24">
-                <Frame.Margin>
+                <Border.Margin>
                     <OnPlatform x:TypeArguments="Thickness">
                         <On Platform="iOS" Value="2,-6,2,0" />
                         <On Platform="Android" Value="2,-6,2,0" />
                     </OnPlatform>
-                </Frame.Margin>
-                <Frame.HeightRequest>
+                </Border.Margin>
+                <Border.HeightRequest>
                     <OnPlatform x:TypeArguments="x:Double">
                         <On Platform="iOS" Value="4" />
                         <On Platform="Android" Value="4" />
                     </OnPlatform>
-                </Frame.HeightRequest>
-            </Frame>
+                </Border.HeightRequest>
+            </Border>
 
             <StackLayout
                 Grid.Row="2"

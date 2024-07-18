@@ -7,6 +7,9 @@
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
     TitleText="{x:Static ResourceManager:AppResources.RateUs}">
     <newdesign:BaseContentPage.PancakeView>
-        <WebView Navigating="WebView_Navigating" Source="https://s2c.gazt.gov.sa/A/da86d394" />
+        <WebView
+            Navigated="WebView_Navigated"
+            Navigating="WebView_Navigating"
+            Source="https://s2c.gazt.gov.sa/A/da86d394" />
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>

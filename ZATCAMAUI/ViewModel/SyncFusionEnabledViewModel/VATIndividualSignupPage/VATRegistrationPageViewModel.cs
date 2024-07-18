@@ -26,6 +26,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #region Variable
 
+        
         private int _currenrIndex = 1;
         public int CurrentIndex
         {
@@ -655,7 +656,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-       
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                if (_isLoading == value) return;
+
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
 
         private List<String> _ListOfActionButtonsApplicableForRegistration;
         public List<String> ListOfActionButtonsApplicableForRegistration
@@ -1762,10 +1777,84 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
+        private bool _isDeclarationViewEnabled;
+        public bool IsDeclarationViewEnabled
+        {
+            get
+            {
+                return _isDeclarationViewEnabled;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabled == value) return;
+
+                _isDeclarationViewEnabled = value;
+                RaisePropertyChanged("IsDeclarationViewEnabled");
+            }
+        }
+
+
+        private bool _isDeclarationViewEnabledNew;
+        public bool IsDeclarationViewEnabledNew
+        {
+            get
+            {
+                return _isDeclarationViewEnabledNew;
+            }
+            set
+            {
+                if (_isDeclarationViewEnabledNew == value) return;
+
+                _isDeclarationViewEnabledNew = value;
+                RaisePropertyChanged("IsDeclarationViewEnabledNew");
+            }
+        }
+        public VATDeregDeclaration _vatDeregDeclaration;
+        public VATDeregDeclaration VatDeregDeclaration
+        {
+            get
+            {
+                return _vatDeregDeclaration;
+            }
+            set
+            {
+                if (_vatDeregDeclaration == value) return;
+
+                _vatDeregDeclaration = value;
+                RaisePropertyChanged("VatDeregDeclaration");
+            }
+        }
+        public string _zterms;
+        public string Zterms
+        {
+            get
+            {
+                return _zterms;
+            }
+            set
+            {
+                if (_zterms == value) return;
+
+                _zterms = value;
+                RaisePropertyChanged("Zterms");
+            }
+        }
+
+        private TextAlignment _termsAlignment;
+        public TextAlignment TermsAlignment
+        {
+            get { return _termsAlignment; }
+            set
+            {
+                if (_termsAlignment == value) return;
+                _termsAlignment = value;
+                RaisePropertyChanged("TermsAlignment");
+            }
+        }
         public bool isLoadedAlready { get; private set; }
         #endregion
 
-        public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {
             if (navigationService == null)
             {
@@ -1803,7 +1892,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 var Bdt = DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString() + "T00:00:00";
                 if (!string.IsNullOrEmpty(VatEligibleStartDate))
                 {
-                  
+                    //var dateTime = new DateTime(year, month, day, 10, 2, 0, DateTimeKind.Local);
+                    //var dateTimeOffset = new DateTimeOffset(dateTime);
+                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                    // Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                     string[] date1 = VatEligibleStartDate.Split('/');
                     Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
 
@@ -1823,7 +1916,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
 
                 //Step 5
+                /* if (IsDeclarationChecked)
+                 {*/
                 VATRegistrationDetailsData.d.Decfg = "1";
+                /*}
+                else
+                {
+                    VATRegistrationDetailsData.d.Decfg = "0";
+                }*/
                 if (SelectedIdTypeSR != null)
                 {
                     VATRegistrationDetailsData.d.DecidTy = SelectedIdTypeSR.ID;
@@ -2056,7 +2156,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         private String GetLocalisedButtonString(String ButtonName)
         {
-            string LocalisedButtonString = String.Empty;
+            String LocalisedButtonString = String.Empty;
+
+            //if (0 == String.Compare(ButtonName, "Submit"))
+            //{
+            //    LocalisedButtonString = AppResources.Submit;
+            //}
 
             if (0 == String.Compare(ButtonName, "SaveasDraft"))
             {
@@ -2069,7 +2174,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             else if (0 == String.Compare(ButtonName, "Void"))
             {
                 LocalisedButtonString = AppResources.ZZVoid;
-            }           
+            }
+            //else if (0 == String.Compare(ButtonName, "Validate"))
+            //{
+            //    LocalisedButtonString = AppResources.ZZValidate;
+            //}            
 
             return LocalisedButtonString;
         }
@@ -2090,6 +2199,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 try
                 {
                     vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData();
+                    VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATRegistration.d.Fbnumz);
 
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2152,6 +2262,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
                         if (vATRegistration.d.CrStdt != null)
                         {
+                            VatRegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""");
                             StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                         }
                         VATRegistrationDetailsData = vATRegistration;
@@ -2267,19 +2378,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         IsLoading = false;
                         _navigationService.GoBack();
                     });
-                    //   await Task.Run(() =>
-                    //   {
-                    //  });
                 }
                 IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
-
-                //});
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;

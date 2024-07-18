@@ -60,35 +60,35 @@
                         Style="{StaticResource BodyLabelBlack}"
                         Text="{x:Static ResourceManager:AppResources.SurveyIntroMsg}" />
                     <Grid Margin="10" ColumnDefinitions="*,*">
-                        <Frame
+                        <Border
                             Grid.Column="0"
                             Padding="12"
                             BackgroundColor="#0996D4"
-                            CornerRadius="14">
-                            <Frame.GestureRecognizers>
+                            StrokeShape="RoundRectangle 14,14,14,14">
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="1" />
-                            </Frame.GestureRecognizers>
+                            </Border.GestureRecognizers>
                             <Label
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.questionnaire}"
                                 TextColor="White" />
-                        </Frame>
-                        <Frame
+                        </Border>
+                        <Border
                             Grid.Column="1"
                             Padding="12"
                             BackgroundColor="White"
-                            BorderColor="#4FBBBD"
-                            CornerRadius="14">
+                            Stroke="#4FBBBD"
+                            StrokeShape="RoundRectangle 14,14,14,14">
                             <Label
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.NDSkip}"
                                 TextColor="#0996D4" />
-                            <Frame.GestureRecognizers>
+                            <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="0" />
-                            </Frame.GestureRecognizers>
-                        </Frame>
+                            </Border.GestureRecognizers>
+                        </Border>
                     </Grid>
 
                 </StackLayout>
@@ -106,18 +106,18 @@
                             <Setter Property="IsVisible" Value="true" />
                         </DataTrigger>
                     </StackLayout.Triggers>
-                    <Frame
+                    <Border
                         Margin="0"
                         Padding="9"
                         BackgroundColor="White"
-                        BorderColor="#4FBBBD"
-                        CornerRadius="14">
+                        Stroke="#4FBBBD"
+                        StrokeShape="RoundRectangle 14,14,14,14">
                         <Label
                             FontSize="16"
                             HorizontalOptions="FillAndExpand"
                             Text="{x:Static ResourceManager:AppResources.SurveyQ1}"
                             TextColor="#0996D4" />
-                    </Frame>
+                    </Border>
                     <StackLayout
                         x:Name="menu"
                         BindableLayout.ItemsSource="{Binding ImojiesLst}"
@@ -162,28 +162,28 @@
                         HorizontalOptions="StartAndExpand"
                         Text="{Binding QuestionTxt}"
                         TextColor="{StaticResource Primary}" />
-                    <Frame
+                    <Border
                         Padding="9"
                         BackgroundColor="White"
-                        BorderColor="#4FBBBD"
-                        CornerRadius="14"
+                        Stroke="#4FBBBD"
+                        StrokeShape="RoundRectangle 14,14,14,14"
                         HeightRequest="100">
                         <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " Text="{Binding SQAnswer}" />
-                    </Frame>
-                    <Frame
+                    </Border>
+                    <Border
                         Grid.Column="0"
                         Padding="12"
                         BackgroundColor="#0996D4"
-                        CornerRadius="14">
-                        <Frame.GestureRecognizers>
+                        StrokeShape="RoundRectangle 14,14,14,14">
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding AddSurveyCommand}" CommandParameter="0" />
-                        </Frame.GestureRecognizers>
+                        </Border.GestureRecognizers>
                         <Label
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.Send}"
                             TextColor="White" />
-                    </Frame>
+                    </Border>
                 </StackLayout>
                 <!--#endregion-->
                 <!--#endregion SurveyEnd-->
@@ -220,20 +220,20 @@
                         HorizontalOptions="StartAndExpand"
                         Text="{x:Static ResourceManager:AppResources.SurveyThankMsg}"
                         TextColor="{StaticResource Primary}" />
-                    <Frame
+                    <Border
                         Grid.Column="0"
                         Padding="12"
                         BackgroundColor="#0996D4"
-                        CornerRadius="14">
-                        <Frame.GestureRecognizers>
+                        StrokeShape="RoundRectangle 14,14,14,14">
+                        <Border.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SurveyNextCommand}" CommandParameter="4" />
-                        </Frame.GestureRecognizers>
+                        </Border.GestureRecognizers>
                         <Label
                             FontSize="16"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.Form5Finish}"
                             TextColor="White" />
-                    </Frame>
+                    </Border>
                 </StackLayout>
                 <!--#endregion-->
 

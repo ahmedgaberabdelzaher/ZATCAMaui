@@ -29,8 +29,8 @@
                     ContainerBackground="White"
                     ContainerType="Outlined"
                     HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
+                    Hint="{x:Static ResourceManager:AppResources.Select}"
                     InputViewPadding="16,0,16,0"
-                    IsHintAlwaysFloated="True"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15"
                     Stroke="{StaticResource NeutralGreay}">
@@ -83,8 +83,8 @@
                     <inputLayout:SfTextInputLayout
                         ContainerBackground="White"
                         ContainerType="Outlined"
+                        Hint="{x:Static ResourceManager:AppResources.Select}"
                         InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
@@ -137,8 +137,8 @@
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                        Hint="{x:Static ResourceManager:AppResources.Quantity}"
                         InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">
@@ -179,8 +179,8 @@
                         ContainerBackground="White"
                         ContainerType="Outlined"
                         HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                        Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                         InputViewPadding="16,0,16,0"
-                        IsHintAlwaysFloated="True"
                         LeadingViewPosition="Inside"
                         OutlineCornerRadius="15"
                         Stroke="{StaticResource NeutralGreay}">

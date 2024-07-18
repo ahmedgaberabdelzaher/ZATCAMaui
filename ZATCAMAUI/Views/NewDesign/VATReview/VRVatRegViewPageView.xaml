@@ -130,12 +130,11 @@
                     <StackLayout Grid.Row="1">
 
 
-                        <Frame
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout>
 
                                 <Grid Padding="5" RowSpacing="0">
@@ -218,14 +217,13 @@
 
                                 </Grid>
                             </StackLayout>
-                        </Frame>
+                        </Border>
                         <!--  Bank Details Summery  -->
-                        <Frame
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout>
 
                                 <Grid Padding="5" RowSpacing="0">
@@ -312,14 +310,13 @@
 
 
                             </StackLayout>
-                        </Frame>
+                        </Border>
                         <!--  Sales Details Summery  -->
-                        <Frame
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout>
                                 <Grid Padding="5" RowSpacing="0">
                                     <Grid.RowDefinitions>
@@ -411,14 +408,13 @@
                                         Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.quesTion4answerSelected}" />
                                 </Grid>
                             </StackLayout>
-                        </Frame>
+                        </Border>
 
-                        <Frame
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout>
                                 <Grid Padding="5" RowSpacing="0">
                                     <Grid.RowDefinitions>
@@ -548,13 +544,12 @@
                                         Text="{Binding Source={x:Reference Name=VATRDMainGrid}, Path=BindingContext.SmtpAddrFR}" />
                                 </Grid>
                             </StackLayout>
-                        </Frame>
-                        <Frame
+                        </Border>
+                        <Border
                             Margin="0,10,0,0"
                             Padding="0"
-                            BorderColor="LightGray"
-                            CornerRadius="8"
-                            HasShadow="False">
+                            Stroke="LightGray"
+                            StrokeShape="RoundRectangle 8,8,8,8">
                             <StackLayout Padding="0">
                                 <Grid Padding="5" RowSpacing="0">
                                     <Grid.RowDefinitions>
@@ -647,7 +642,7 @@
                                 </Grid>
 
                             </StackLayout>
-                        </Frame>
+                        </Border>
                     </StackLayout>
                 </Grid>
 

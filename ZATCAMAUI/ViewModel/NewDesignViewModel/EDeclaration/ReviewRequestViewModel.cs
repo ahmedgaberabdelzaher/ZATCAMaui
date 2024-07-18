@@ -17,6 +17,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
         ObservableCollection<BottomSheetModel> _DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
         public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; RaisePropertyChanged(); } }
 
+        bool isNotEmptyDetailsTotalFeesList;
+        public bool IsNotEmptyDetailsTotalFeesList { get { return isNotEmptyDetailsTotalFeesList; } set { isNotEmptyDetailsTotalFeesList = value; RaisePropertyChanged(); } }
+
         TravelerDeclarationResponse _Inquire = new TravelerDeclarationResponse();
         public TravelerDeclarationResponse Inquire { get { return _Inquire; } set { _Inquire = value; RaisePropertyChanged(); } }
 
@@ -61,6 +64,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
                             Inquire.currency?.ForEach(c => { InquireList.Add(new BottomSheetModel { Name = c.Name }); });
                             Inquire.restricted?.ForEach(r => { InquireList.Add(new BottomSheetModel { Name = r.Name, Id = $"(x {r.count.ToString()})" }); });
                             Inquire.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = Math.Round(f.value, 2).ToString() }); });
+
+                            IsNotEmptyDetailsTotalFeesList = Inquire.fees != null && Inquire.fees.Count > 0 ? true : false;
                         }
                     }
                     catch (Exception)

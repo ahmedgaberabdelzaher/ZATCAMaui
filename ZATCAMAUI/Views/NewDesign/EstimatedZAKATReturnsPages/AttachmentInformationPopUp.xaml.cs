@@ -12,6 +12,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         public AttachmentInformationPopUp(string infromationText)
         {
             InitializeComponent();
+            this.FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             InfromatationText.Text = infromationText;
         }
 

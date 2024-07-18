@@ -34,11 +34,10 @@
                 Grid.Row="1"
                 Margin="0,0,0,7"
                 Spacing="15">
-                <Frame
+                <Border
                     Padding="15"
-                    BorderColor="{StaticResource DarkGrayTextColor}"
-                    CornerRadius="12"
-                    HasShadow="False">
+                    Stroke="{StaticResource DarkGrayTextColor}"
+                    StrokeShape="RoundRectangle 12,12,12,12">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="ic_vat_info" />
@@ -50,18 +49,17 @@
                         </StackLayout>
                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZToolTipPrivateHealthcareAmount}" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
 
             <StackLayout
                 Grid.Row="2"
                 Margin="0,0,0,300"
                 Spacing="15">
-                <Frame
+                <Border
                     Padding="15"
-                    BorderColor="{StaticResource DarkGrayTextColor}"
-                    CornerRadius="12"
-                    HasShadow="False">
+                    Stroke="{StaticResource DarkGrayTextColor}"
+                    StrokeShape="RoundRectangle 12,12,12,12">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="ic_vat_info" />
@@ -73,7 +71,7 @@
                         </StackLayout>
                         <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZToolTipPrivateHealthcareAdjustment}" />
                     </StackLayout>
-                </Frame>
+                </Border>
             </StackLayout>
 
 

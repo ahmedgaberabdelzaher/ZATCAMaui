@@ -121,10 +121,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             }
         }
 
-        void PPicker_btn_Clicked(object sender, EventArgs e)
+        void PPicker_btn_Clicked(object sender, TappedEventArgs e)
         {
-            //if (viewModel.IsNameVisible)
-            //    return;
             viewModel.IsNameVisible = false;
             PPicker.IsOpen = true;
         }
@@ -181,6 +179,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 
 
             });
+        }
+
+        void PPicker_OkButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            PPicker.IsOpen = false;
+        }
+
+        void PPicker_CancelButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            PPicker.IsOpen = false;
         }
     }
 }

@@ -192,14 +192,13 @@
                                                         HeightRequest="1"
                                                         Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                                    <Frame
+                                                    <Border
                                                         Grid.Row="4"
                                                         Grid.ColumnSpan="3"
                                                         Margin="0,10,0,20"
                                                         Padding="0"
-                                                        BorderColor="Gray"
-                                                        CornerRadius="12"
-                                                        HasShadow="False">
+                                                        Stroke="Gray"
+                                                        StrokeShape="RoundRectangle 12,12,12,12">
                                                         <SearchBar
                                                             Margin="0"
                                                             FontSize="Small"
@@ -212,7 +211,7 @@
                                                             TextChanged="SearchItem_PropertyChanged"
                                                             TextColor="{StaticResource PrimaryColor}"
                                                             VerticalOptions="FillAndExpand" />
-                                                    </Frame>
+                                                    </Border>
 
                                                 </Grid>
 
@@ -888,11 +887,10 @@
 
                         <Grid HorizontalOptions="FillAndExpand">
 
-                            <Frame
+                            <Border
                                 Margin="0,20,0,0"
                                 Padding="10,3,10,3"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource SfStyleForZakatPlanGreen}">
                                 <Label
@@ -900,23 +898,22 @@
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VRSecurityNote1}" />
 
-                            </Frame>
+                            </Border>
                         </Grid>
 
                         <Grid HorizontalOptions="FillAndExpand">
 
-                            <Frame
+                            <Border
                                 Margin="0,20,0,0"
                                 Padding="10,3,10,3"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource SfStyleForZakatPlanGreen}">
                                 <Label
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{x:Static ResourceManager:AppResources.VRSecurityNote2}" />
-                            </Frame>
+                            </Border>
                         </Grid>
 
                         <StackLayout IsVisible="{Binding IsBankGurantSecuritySelected}" Orientation="Vertical">
@@ -1163,11 +1160,10 @@
 
                         </StackLayout>
 
-                        <Frame
+                        <Border
                             Margin="0,20,0,0"
                             Padding="0"
-                            CornerRadius="12"
-                            HasShadow="False"
+                            StrokeShape="RoundRectangle 12,12,12,12"
                             HorizontalOptions="FillAndExpand"
                             Style="{StaticResource SfStyleForZakatPlanGreen}">
                             <StackLayout
@@ -1183,7 +1179,7 @@
                                     Style="{StaticResource SectionTitleBlack}"
                                     Text="{Binding SecurityAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}" />
                             </StackLayout>
-                        </Frame>
+                        </Border>
 
                         <buttons:SfButton
                             Margin="0,16,0,16"
@@ -1268,12 +1264,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOFullName}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1284,7 +1279,7 @@
                                         Text="{Binding RepFullName}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1306,12 +1301,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOPhoneNo}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1322,7 +1316,7 @@
                                         Text="{Binding RepPhoneNo}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1344,12 +1338,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOFaxNo}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1360,7 +1353,7 @@
                                         Text="{Binding RepFaxNo}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1382,12 +1375,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOElectronicMail}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1398,7 +1390,7 @@
                                         Text="{Binding RepElectronicMail}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1420,12 +1412,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.CRDesignation}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1436,7 +1427,7 @@
                                         Text="{Binding RepDesignation}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1458,12 +1449,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOBuildingName}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1474,7 +1464,7 @@
                                         Text="{Binding RepBuildingName}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1496,12 +1486,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOLevelStreetNumber}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1512,7 +1501,7 @@
                                         Text="{Binding RepLevelStreetNumber}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1534,12 +1523,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOCityTown}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1550,7 +1538,7 @@
                                         Text="{Binding RepCity}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
 
@@ -1599,12 +1587,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZONameOfTheApplicantStar}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1615,7 +1602,7 @@
                                         Text="{Binding ApplicantName}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
                         <Grid
@@ -1637,12 +1624,11 @@
                                 Style="{StaticResource MiniNewGrayLabelStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZOPositionCapacityStar}" />
 
-                            <Frame
+                            <Border
                                 Grid.Row="1"
                                 Padding="8"
-                                BorderColor="Gray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="Gray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand">
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                     <custom:GAZTBorderlessEntry
@@ -1653,15 +1639,14 @@
                                         Text="{Binding Capacity}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
                         </Grid>
 
-                        <Frame
+                        <Border
                             Grid.Row="12"
                             Grid.ColumnSpan="2"
-                            Margin="-20,10,-20,10"
-                            HasShadow="False"
+                            Margin="-20,10"
                             HorizontalOptions="FillAndExpand"
                             VerticalOptions="End">
 
@@ -1670,7 +1655,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" />
-                        </Frame>
+                        </Border>
                     </Grid>
 
                     <Grid
@@ -1853,11 +1838,10 @@
 
                             </Border>
 
-                            <Frame
+                            <Border
                                 Margin="0,10,0,0"
                                 Padding="0"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource SfStyleForZakatPlanGreen}"
                                 VerticalOptions="FillAndExpand">
@@ -1887,13 +1871,12 @@
                                         Text="{Binding RevisedAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}"
                                         VerticalOptions="CenterAndExpand" />
                                 </Grid>
-                            </Frame>
+                            </Border>
 
-                            <Frame
+                            <Border
                                 Margin="0,10,0,0"
                                 Padding="0"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource SfStyleForZakatPlanGreen}"
                                 VerticalOptions="FillAndExpand">
@@ -1923,7 +1906,7 @@
                                         Text="{Binding DisputeAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}"
                                         VerticalOptions="CenterAndExpand" />
                                 </Grid>
-                            </Frame>
+                            </Border>
 
 
 
@@ -2244,11 +2227,10 @@
 
                             </Border>
 
-                            <Frame
+                            <Border
                                 Margin="0,10,0,0"
                                 Padding="0"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource SfStyleForZakatPlanGreen}"
                                 VerticalOptions="FillAndExpand">
@@ -2278,7 +2260,7 @@
                                         Text="{Binding VATReferanceNumber}"
                                         VerticalOptions="CenterAndExpand" />
                                 </Grid>
-                            </Frame>
+                            </Border>
 
                             <buttons:SfButton
                                 Margin="0,16,0,16"

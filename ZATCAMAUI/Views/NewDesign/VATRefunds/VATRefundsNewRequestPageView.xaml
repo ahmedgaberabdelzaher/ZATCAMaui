@@ -468,15 +468,14 @@
 
                             </StackLayout>
                         </Border>
-                        <Frame
+                        <Border
                             Grid.Row="5"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Margin="0,16,0,8"
                             Padding="18"
                             BackgroundColor="{StaticResource Primary}"
-                            CornerRadius="15"
-                            HasShadow="False"
+                           StrokeShape="RoundRectangle 15,15,15,15"
                             HeightRequest="24"
                             HorizontalOptions="FillAndExpand"
                             Opacity="0.1" />

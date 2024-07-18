@@ -58,15 +58,12 @@
                         VerticalOptions="EndAndExpand">
                         <StackLayout>
 
-
-
-
-                            <Frame
+                            <Border
                                 Margin="10,5,10,5"
                                 Padding="0"
-                                BorderColor="LightGray"
-                                CornerRadius="8"
-                                HasShadow="False">
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 8,8,8,8">
+
                                 <Grid Padding="10">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto" />
@@ -109,7 +106,7 @@
                                         <TapGestureRecognizer Tapped="Instalment_copy_Tapped" />
                                     </Grid.GestureRecognizers>
                                 </Grid>
-                            </Frame>
+                            </Border>
 
 
 

@@ -215,13 +215,12 @@
                                     <ColumnDefinition Width="50*" />
                                     <ColumnDefinition Width="50*" />
                                 </Grid.ColumnDefinitions>
-                                <Frame
+                                <Border
                                     Grid.Row="0"
                                     Margin="10"
                                     Padding="10,3,10,3"
-                                    BorderColor="Gray"
-                                    CornerRadius="12"
-                                    HasShadow="False"
+                                    Stroke="Gray"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
                                     <Grid
@@ -248,16 +247,15 @@
                                             Style="{StaticResource ValueLabelBlackBold}"
                                             Text="{Binding CurrentFrequency}" />
                                     </Grid>
-                                </Frame>
+                                </Border>
 
-                                <Frame
+                                <Border
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Margin="10"
                                     Padding="10,3,10,3"
-                                    BorderColor="Gray"
-                                    CornerRadius="12"
-                                    HasShadow="False"
+                                    Stroke="Gray"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="FillAndExpand">
                                     <Grid
@@ -289,7 +287,7 @@
                                             Text="{Binding NewFrequency}"
                                             VerticalOptions="Start" />
                                     </Grid>
-                                </Frame>
+                                </Border>
                             </Grid>
 
                             <Grid
@@ -321,13 +319,12 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Frame
+                                <Border
                                     Grid.Row="1"
                                     Margin="0,5,0,0"
                                     Padding="10,0,10,0"
-                                    BorderColor="Gray"
-                                    CornerRadius="12"
-                                    HasShadow="False"
+                                    Stroke="Gray"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     HorizontalOptions="FillAndExpand">
                                     <StackLayout
                                         HorizontalOptions="FillAndExpand"
@@ -357,10 +354,10 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </StackLayout>
-                                    <Frame.GestureRecognizers>
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding EffectiveDateSpinnerClicked}" />
-                                    </Frame.GestureRecognizers>
-                                </Frame>
+                                    </Border.GestureRecognizers>
+                                </Border>
 
                             </Grid>
 
@@ -412,22 +409,21 @@
                                 </Grid>
                             </StackLayout>
 
-                            <Frame
+                            <Border
                                 Grid.Row="4"
                                 Grid.ColumnSpan="2"
-                                Margin="-20,0,-20,0"
-                                HasShadow="False"
+                                Margin="-20,0"
                                 VerticalOptions="End">
 
                                 <buttons:SfButton
-                                    Background="{Binding FrequencyDetailsButtonBackGroundColor}"
+                                    BackgroundColor="{Binding FrequencyDetailsButtonBackGroundColor}"
                                     Command="{Binding FrequencyContinueBtnTapped}"
                                     HeightRequest="48"
                                     Style="{StaticResource PrimaryButtonStyle}"
                                     Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                     WidthRequest="366" />
 
-                            </Frame>
+                            </Border>
                         </Grid>
 
 
@@ -741,14 +737,13 @@
                                 </Grid>
                             </StackLayout>
 
-                            <Frame
+                            <Border
                                 Grid.Row="3"
                                 Grid.ColumnSpan="2"
                                 Margin="0,10,0,0"
                                 Padding="15"
-                                BorderColor="LightGray"
-                                CornerRadius="12"
-                                HasShadow="False"
+                                Stroke="LightGray"
+                                StrokeShape="RoundRectangle 12,12,12,12"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand">
                                 <StackLayout
@@ -775,18 +770,17 @@
                                         VerticalOptions="FillAndExpand" />
 
                                 </StackLayout>
-                            </Frame>
+                            </Border>
 
-                            <Frame
+                            <Border
                                 Grid.Row="4"
                                 Grid.ColumnSpan="2"
-                                Margin="-20,0,-20,0"
-                                HasShadow="False"
+                                Margin="-20,0"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="End">
 
                                 <buttons:SfButton
-                                    Background="{Binding AttachButtonBackGroundColor}"
+                                    BackgroundColor="{Binding AttachButtonBackGroundColor}"
                                     Command="{Binding AttachmentsContinueBtnTapped}"
                                     HeightRequest="48"
                                     HorizontalOptions="FillAndExpand"
@@ -794,7 +788,7 @@
                                     Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                     WidthRequest="366" />
 
-                            </Frame>
+                            </Border>
 
                         </StackLayout>
 
@@ -815,8 +809,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*" />
-                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
 
                             <Grid
@@ -847,14 +840,48 @@
                                     Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                             </Grid>
+                            <Grid
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                IsVisible="{Binding IsDeclarationViewEnabledNew}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Row="0">
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CheckboxCustom
+                                            CheckChanged="CheckBox_CheckedChanged"
+                                            IsChecked="{Binding IsCheckboxChecked}"
+                                            MinimumHeightRequest="32"
+                                            MinimumWidthRequest="32"
+                                            VerticalOptions="Start" />
+
+
+                                        <Label
+                                            HeightRequest="350"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="{Binding TermsAlignment}"
+                                            Style="{StaticResource CheckboxUnselectedFontStyle}"
+                                            Text="{Binding Zterms}"
+                                            TextType="Html"
+                                            VerticalOptions="FillAndExpand" />
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
 
                             <StackLayout
                                 Grid.Row="1"
                                 Grid.ColumnSpan="2"
                                 Margin="0,25,0,10"
                                 HorizontalOptions="FillAndExpand"
+                                IsVisible="{Binding IsDeclarationViewEnabledOld}"
                                 Orientation="Horizontal"
                                 VerticalOptions="End">
+
+
 
                                 <StackLayout Orientation="Horizontal">
                                     <custom:CheckboxCustom
@@ -890,6 +917,7 @@
                                 Grid.ColumnSpan="2"
                                 ColumnSpacing="0"
                                 HeightRequest="80"
+                                IsVisible="{Binding IsDeclarationViewEnabledOld}"
                                 RowSpacing="0"
                                 WidthRequest="171">
 
@@ -915,13 +943,12 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Frame
+                                <Border
                                     Grid.Row="1"
                                     Margin="0,5,0,0"
                                     Padding="10,0,10,0"
-                                    BorderColor="Gray"
-                                    CornerRadius="12"
-                                    HasShadow="False"
+                                    Stroke="Gray"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     HorizontalOptions="FillAndExpand">
                                     <StackLayout
                                         HorizontalOptions="FillAndExpand"
@@ -948,13 +975,14 @@
                                             </Image.GestureRecognizers>
                                         </Image>
                                     </StackLayout>
-                                </Frame>
+                                </Border>
 
                             </Grid>
                             <StackLayout
                                 Grid.Row="3"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="2">
+                                Grid.ColumnSpan="2"
+                                IsVisible="{Binding IsDeclarationViewEnabledOld}">
 
                                 <Grid HeightRequest="80" WidthRequest="366">
 
@@ -978,13 +1006,12 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Frame
+                                    <Border
                                         Grid.Row="1"
                                         Margin="0,5,0,0"
                                         Padding="10,0,10,0"
-                                        BorderColor="Gray"
-                                        CornerRadius="12"
-                                        HasShadow="False"
+                                        Stroke="Gray"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand">
 
                                         <StackLayout
@@ -1002,7 +1029,7 @@
                                                 VerticalOptions="CenterAndExpand" />
 
                                         </StackLayout>
-                                    </Frame>
+                                    </Border>
 
                                 </Grid>
 
@@ -1033,13 +1060,12 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <Frame
+                                    <Border
                                         Grid.Row="1"
                                         Margin="0,5,0,0"
                                         Padding="10,0,10,0"
-                                        BorderColor="Gray"
-                                        CornerRadius="12"
-                                        HasShadow="False"
+                                        Stroke="Gray"
+                                        StrokeShape="RoundRectangle 12,12,12,12"
                                         HorizontalOptions="FillAndExpand">
                                         <StackLayout
                                             HorizontalOptions="FillAndExpand"
@@ -1062,20 +1088,19 @@
                                                 </Image.GestureRecognizers>
                                             </Image>
                                         </StackLayout>
-                                    </Frame>
+                                    </Border>
 
                                 </Grid>
 
 
 
                             </StackLayout>
-
-                            <Grid />
                             <Grid
                                 Grid.Row="4"
                                 Grid.ColumnSpan="2"
                                 ColumnSpacing="0"
                                 HeightRequest="80"
+                                IsVisible="{Binding IsDeclarationViewEnabledOld}"
                                 RowSpacing="0"
                                 WidthRequest="171">
 
@@ -1101,13 +1126,12 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <Frame
+                                <Border
                                     Grid.Row="1"
                                     Margin="0,5,0,0"
                                     Padding="10,0,10,0"
-                                    BorderColor="Gray"
-                                    CornerRadius="12"
-                                    HasShadow="False"
+                                    Stroke="Gray"
+                                    StrokeShape="RoundRectangle 12,12,12,12"
                                     HorizontalOptions="FillAndExpand">
                                     <StackLayout
                                         HorizontalOptions="FillAndExpand"
@@ -1124,17 +1148,17 @@
                                             Unfocused="ContactPersonTextUnFocus"
                                             VerticalOptions="CenterAndExpand" />
                                     </StackLayout>
-                                </Frame>
+                                </Border>
                             </Grid>
-                            <Frame
+
+                            <Border
                                 Grid.Row="5"
                                 Grid.ColumnSpan="2"
-                                Margin="-20,0,-20,0"
-                                HasShadow="False"
+                                Margin="-20,0"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="End">
                                 <buttons:SfButton
-                                    Background="{Binding DeclarationButtonBackGroundColor}"
+                                    BackgroundColor="{Binding DeclarationButtonBackGroundColor}"
                                     Command="{Binding DeclarationContinueBtnTapped}"
                                     HeightRequest="48"
                                     HorizontalOptions="FillAndExpand"
@@ -1142,7 +1166,7 @@
                                     Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
                                     WidthRequest="366" />
 
-                            </Frame>
+                            </Border>
                         </Grid>
 
                         <!--  Summary screens  -->
@@ -1206,10 +1230,6 @@
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
-
-                                            <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                        </Frame>-->
 
                                             <StackLayout
                                                 Grid.Row="0"
@@ -1339,9 +1359,6 @@
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
 
-                                            <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                                HasShadow="False">
-                                        </Frame>-->
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"
@@ -1391,6 +1408,9 @@
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
                                                     <Grid Padding="5,0">
+                                                        <!--<Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>-->
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
@@ -1419,6 +1439,9 @@
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
                                                     <Grid Padding="5,0">
+                                                        <!--<Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>-->
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
@@ -1446,6 +1469,9 @@
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
                                                     <Grid Padding="5,0">
+                                                        <!--<Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
+                                                    </Grid.RowDefinitions>-->
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
                                                             <ColumnDefinition Width="*" />
@@ -1473,6 +1499,7 @@
                                     Grid.Row="5"
                                     Grid.ColumnSpan="2"
                                     Margin="0,16,0,10"
+                                    IsVisible="{Binding IsDeclarationViewEnabledOld}"
                                     Style="{StaticResource GreyBorderFrameWithShadow}">
                                     <StackLayout Padding="0">
                                         <Grid Padding="15" RowSpacing="0">
@@ -1485,9 +1512,9 @@
                                                 <ColumnDefinition Width="auto" />
                                             </Grid.ColumnDefinitions>
 
-                                            <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                            <!--<Border Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>-->
+                                        </Border>-->
                                             <StackLayout
                                                 Grid.Row="0"
                                                 Grid.Column="0"

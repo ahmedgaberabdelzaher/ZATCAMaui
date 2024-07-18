@@ -345,6 +345,14 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public string Source { get; set; }
         [DataMember]
+        public string NresFg { get; set; }
+        [DataMember]
+        public string NresBgTo { get; set; }
+        [DataMember]
+        public string NresBgFrom { get; set; }
+        [DataMember]
+        public string PendingIbanMsg { get; set; }
+        [DataMember]
         public string AgrFg { get; set; }
         [DataMember]
         public string Decname { get; set; }
@@ -470,146 +478,6 @@ namespace ZATCAMAUI.Models
         public QUESLISTSet QUESLISTSet { get; set; }
     }
 
-    //[Serializable]
-    //
-    //[DataContract]
-    //public class vATRegistrationTest
-    //{
-    //    [DataMember]
-    //    public __metadata __metadata { get; set; }
-    //    [DataMember]
-    //    public string SmartReg { get; set; }
-    //    [DataMember]
-    //    public string Source { get; set; }
-    //    [DataMember]
-    //    public string AgrFg { get; set; }
-    //    [DataMember]
-    //    public string Decname { get; set; }
-    //    [DataMember]
-    //    public string ConfTaxDt { get; set; }
-    //    [DataMember]
-    //    public string CrNm { get; set; }
-    //    [DataMember]
-    //    public string CrNo { get; set; }
-    //    [DataMember]
-    //    public string CrStdt { get; set; }
-    //    [DataMember]
-    //    public string DataVersion { get; set; }
-    //    [DataMember]
-    //    public string Decconno { get; set; }
-    //    [DataMember]
-    //    public string Decdate { get; set; }
-    //    [DataMember]
-    //    public string Decdesignation { get; set; }
-    //    [DataMember]
-    //    public string Decfg { get; set; }
-    //    [DataMember]
-    //    public string DecidNo { get; set; }
-    //    [DataMember]
-    //    public string DecidTy { get; set; }
-    //    [DataMember]
-    //    public string Euser { get; set; }
-    //    [DataMember]
-    //    public string ExAttch { get; set; }
-    //    [DataMember]
-    //    public string ExFg { get; set; }
-    //    [DataMember]
-    //    public string Fbguid { get; set; }
-    //    [DataMember]
-    //    public string Fbnumz { get; set; }
-    //    [DataMember]
-    //    public string FormGuid { get; set; }
-    //    [DataMember]
-    //    public string Formprocz { get; set; }
-    //    [DataMember]
-    //    public string FutureDt { get; set; }
-    //    [DataMember]
-    //    public string GlobalCalTy { get; set; }
-    //    [DataMember]
-    //    public string GoLiveDt { get; set; }
-    //    [DataMember]
-    //    public string Gpartz { get; set; }
-    //    [DataMember]
-    //    public string Iban { get; set; }
-    //    [DataMember]
-    //    public string ImAttch { get; set; }
-    //    [DataMember]
-    //    public string ImFg { get; set; }
-    //    [DataMember]
-    //    public string Langz { get; set; }
-    //    [DataMember]
-    //    public string Mandt { get; set; }
-    //    [DataMember]
-    //    public string NewRegTy { get; set; }
-    //    [DataMember]
-    //    public string NewRegTyFrDt { get; set; }
-    //    [DataMember]
-    //    public string Officerz { get; set; }
-    //    [DataMember]
-    //    public string Operationz { get; set; }
-    //    [DataMember]
-    //    public string OptIban { get; set; }
-    //    [DataMember]
-    //    public string PortalUsrz { get; set; }
-    //    [DataMember]
-    //    public string ReaFg { get; set; }
-    //    [DataMember]
-    //    public string Reason { get; set; }
-    //    [DataMember]
-    //    public string RegTy { get; set; }
-    //    [DataMember]
-    //    public string ResidencyTy { get; set; }
-    //    [DataMember]
-    //    public string ReturnIdz { get; set; }
-    //    [DataMember]
-    //    public string Statusz { get; set; }
-    //    [DataMember]
-    //    public string StepNumberz { get; set; }
-    //    [DataMember]
-    //    public string Stp2Cbbox { get; set; }
-    //    [DataMember]
-    //    public string Stp3Cbbox { get; set; }
-    //    [DataMember]
-    //    public string Stp4Cbbox1 { get; set; }
-    //    [DataMember]
-    //    public string Stp4Cbbox2 { get; set; }
-    //    [DataMember]
-    //    public string TinNm { get; set; }
-    //    [DataMember]
-    //    public string ToSflg { get; set; }
-    //    [DataMember]
-    //    public string TxnTpz { get; set; }
-    //    [DataMember]
-    //    public string UserTypz { get; set; }
-    //    [DataMember]
-    //    public string VatDt { get; set; }
-    //    [DataMember]
-    //    public string VatTaxDt { get; set; }
-    //    [DataMember]
-    //    public ADDRESSSet ADDRESSSet { get; set; }
-    //    [DataMember]
-    //    public NOTESSet NOTESSet { get; set; }
-    //    [DataMember]
-    //    public CONTACTDTSet CONTACTDTSet { get; set; }
-    //    [DataMember]
-    //    public ELGBL_DOCSetforsubmit ELGBL_DOCSet { get; set; }
-    //    [DataMember]
-    //    public CONTACT_PERSONSet CONTACT_PERSONSet { get; set; }
-    //    [DataMember]
-    //    public QUESTIONSSet QUESTIONSSet { get; set; }
-    //    [DataMember]
-    //    public QUESCONFIG_MSet QUESCONFIG_MSet { get; set; }
-    //    [DataMember]
-    //    public ATTDETSet ATTDETSet { get; set; }
-    //    [DataMember]
-    //    public IBANSet IBANSet { get; set; }
-    //    [DataMember]
-    //    public QUESLISTSet QUESLISTSet { get; set; }
-    //}
-
-    //[Serializable]
- 
-    //[DataContract]
     public class QUESCONFIG_MSet
     {
         //[DataMember]

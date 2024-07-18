@@ -21,10 +21,10 @@
 
             <ScrollView Grid.Row="1">
                 <StackLayout Spacing="15">
-                    <Frame
+                    <Border
                         Padding="15"
-                        BorderColor="{StaticResource DarkGrayTextColor}"
-                        CornerRadius="12">
+                        Stroke="{StaticResource DarkGrayTextColor}"
+                        StrokeShape="RoundRectangle 12,12,12,12">
                         <StackLayout>
 
                             <StackLayout Orientation="Horizontal">
@@ -42,7 +42,7 @@
                                 Text="The adjustment amount entered is more than 10% larger than the amount of domestic standard-rated sales. please verify the amount entered in the return or continue if the amount entered is correct." />
 
                         </StackLayout>
-                    </Frame>
+                    </Border>
                 </StackLayout>
             </ScrollView>
 

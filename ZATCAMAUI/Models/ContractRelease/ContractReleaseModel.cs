@@ -137,6 +137,7 @@
             public string Status { get; set; }
             public string Textnote { get; set; }
             public string Xvoidz { get; set; }
+            public string DecFg { get; set; }
             public AttDetSetResult AttDetSet { get; set; }
             public ZnotesSetResult znotesSet { get; set; }
         }
@@ -209,6 +210,7 @@
             public string Status { get; set; }
             public string Textnote { get; set; }
             public string Xvoidz { get; set; }
+            public string DecFg { get; set; }
             public AttDetSet[] AttDetSet { get; set; }
             public ZnotesSet[] znotesSet { get; set; }
         }

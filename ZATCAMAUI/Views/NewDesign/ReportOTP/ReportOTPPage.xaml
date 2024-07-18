@@ -131,11 +131,11 @@
 
                         <Grid
                             Padding="0"
-                            ColumnDefinitions="50,50,50,50"
+                            ColumnDefinitions="55,55,55,55"
                             ColumnSpacing="20"
                             FlowDirection="LeftToRight"
                             HorizontalOptions="CenterAndExpand"
-                            RowDefinitions="50"
+                            RowDefinitions="65"
                             VerticalOptions="Start">
 
                             <!--  First OTP  -->

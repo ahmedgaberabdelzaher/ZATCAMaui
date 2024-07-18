@@ -137,13 +137,13 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource PageTitleBlack}"
                                 Text="{x:Static ResourceManager:AppResources.CRRequestDetails}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Margin="0,-10,0,15"
@@ -164,18 +164,18 @@
                             </Grid.RowDefinitions>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource ValueLabelBlack}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.IBANAccName}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Border
                                 Grid.Row="1"
@@ -203,18 +203,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource ValueLabelBlack}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.IBANIdType}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Border
                                 Grid.Row="1"
@@ -229,7 +229,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         HorizontalOptions="FillAndExpand"
@@ -264,18 +264,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource ValueLabelBlack}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding IdNumberTitle}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Border
                                 Grid.Row="1"
@@ -323,12 +323,11 @@
 
                         </Grid>
                         <StackLayout Grid.Row="4" Margin="0,0,0,15">
-                            <Frame
+                            <Border
                                 Padding="15,20,15,20"
                                 BackgroundColor="White"
-                                BorderColor="#bbbbbb"
-                                CornerRadius="10"
-                                HasShadow="False">
+                                Stroke="#bbbbbb"
+                                StrokeShape="RoundRectangle 10,10,10,10">
                                 <StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -361,18 +360,17 @@
                                             Text="{x:Static ResourceManager:AppResources.IBANRefundInfo}" />
                                     </Grid>
                                 </StackLayout>
-                            </Frame>
+                            </Border>
                         </StackLayout>
                         <StackLayout
                             Grid.Row="5"
                             Margin="0,0,0,15"
                             IsVisible="{Binding IsIdInfoVisibility}">
-                            <Frame
+                            <Border
                                 Padding="15,20,15,20"
                                 BackgroundColor="White"
-                                BorderColor="#bbbbbb"
-                                CornerRadius="10"
-                                HasShadow="False">
+                                Stroke="#bbbbbb"
+                                StrokeShape="RoundRectangle 10,10,10,10">
                                 <StackLayout>
                                     <Grid>
                                         <Grid.RowDefinitions>
@@ -405,7 +403,7 @@
                                             Text="{Binding IdNumberInfo}" />
                                     </Grid>
                                 </StackLayout>
-                            </Frame>
+                            </Border>
                         </StackLayout>
 
                         <Grid Grid.Row="6" WidthRequest="171">
@@ -415,18 +413,18 @@
                             </Grid.RowDefinitions>
 
 
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource ValueLabelBlack}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.IBAN}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Border
                                 Grid.Row="1"
@@ -455,18 +453,18 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource ValueLabelBlack}">
-                                <custom:CustomLabel.FormattedText>
+                                <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.IBANBankName}" />
                                         <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                     </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                                </Label.FormattedText>
+                            </Label>
 
                             <Border
                                 Grid.Row="1"
@@ -481,7 +479,7 @@
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
-                                    <custom:CustomLabel
+                                    <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         HorizontalOptions="FillAndExpand"
@@ -597,20 +595,20 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     FontFamily="{StaticResource SomarBold}"
                                     FontSize="15"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource MicroGrayLabelStyle}"
                                     TextColor="{StaticResource PrimaryColor}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.IBANAttachment1}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text=" *" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <Border
                                     Grid.Row="1"
                                     Margin="0,0,0,10"
@@ -624,7 +622,7 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             FontFamily="{StaticResource SomarRegular}"
@@ -732,20 +730,20 @@
                                     <RowDefinition Height="auto" />
                                     <RowDefinition Height="auto" />
                                 </Grid.RowDefinitions>
-                                <custom:CustomLabel
+                                <Label
                                     Grid.Row="0"
                                     FontFamily="{StaticResource SomarBold}"
                                     FontSize="15"
                                     HorizontalOptions="StartAndExpand"
                                     Style="{StaticResource MicroGrayLabelStyle}"
                                     TextColor="{StaticResource PrimaryColor}">
-                                    <custom:CustomLabel.FormattedText>
+                                    <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.IBANAttachment2}" />
                                             <Span Style="{StaticResource MandatoryRedColorLabel}" Text=" *" />
                                         </FormattedString>
-                                    </custom:CustomLabel.FormattedText>
-                                </custom:CustomLabel>
+                                    </Label.FormattedText>
+                                </Label>
                                 <Border
                                     Grid.Row="1"
                                     Margin="0,0,0,10"
@@ -759,7 +757,7 @@
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
-                                        <custom:CustomLabel
+                                        <Label
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             FontFamily="{StaticResource SomarRegular}"
@@ -831,13 +829,13 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="0"
                                 Grid.Column="0"
                                 HorizontalOptions="StartAndExpand"
                                 Style="{StaticResource PageTitleBlack}"
                                 Text="{x:Static ResourceManager:AppResources.CRSummary}" />
-                            <custom:CustomLabel
+                            <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
                                 Margin="0,-10,0,15"
@@ -865,15 +863,13 @@
                                         <ColumnDefinition Width="auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame
+                                    <Border
                                         Grid.Row="0"
                                         Grid.Column="0"
                                         BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                        CornerRadius="32"
-                                        HasShadow="False"
+                                        StrokeShape="RoundRectangle 32,32,32,32"
                                         HeightRequest="24"
                                         HorizontalOptions="Start"
-                                        IsClippedToBounds="True"
                                         Opacity=".2"
                                         VerticalOptions="Center"
                                         WidthRequest="24" />
@@ -1050,7 +1046,7 @@
                                             IsChecked="{Binding IsInstrunctionChecked}"
                                             VerticalOptions="Start"
                                             WidthRequest="32" />
-                                        <custom:CustomLabel
+                                        <Label
                                             x:Name="AckText"
                                             Grid.Row="0"
                                             Grid.Column="1"

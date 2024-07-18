@@ -102,7 +102,7 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="0"
+                Padding="10,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
@@ -297,24 +297,24 @@
                             <StackLayout>
 
                                 <!--#region Hint view-->
-                                <Frame
+                                <Border
                                     Padding="10"
                                     BackgroundColor="White"
-                                    BorderColor="#E6E6E6"
-                                    CornerRadius="10"
+                                    Stroke="#E6E6E6"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="StartAndExpand">
 
-                                    <Frame.Triggers>
+                                    <Border.Triggers>
                                         <DataTrigger
                                             Binding="{Binding QFlow}"
-                                            TargetType="Frame"
+                                            TargetType="Border"
                                             Value="4">
                                             <Setter Property="IsVisible" Value="false" />
 
                                         </DataTrigger>
 
-                                    </Frame.Triggers>
+                                    </Border.Triggers>
 
                                     <StackLayout
                                         HorizontalOptions="Start"
@@ -407,7 +407,7 @@
 
                                     </StackLayout>
 
-                                </Frame>
+                                </Border>
                                 <!--#endregion Hint view-->
 
                                 <!--#region TobacoProduct-->
@@ -442,20 +442,20 @@
                                     Text="{x:Static ResourceManager:AppResources.AddItem}"
                                     WidthRequest="350" />
 
-                                <!--  Card Frame  -->
-                                <Frame
+                                <!--  Card Border  -->
+                                <Border
                                     Padding="10"
                                     BackgroundColor="{StaticResource Primary}"
-                                    CornerRadius="10"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
                                     HorizontalOptions="FillAndExpand"
                                     VerticalOptions="StartAndExpand">
 
                                     <StackLayout Orientation="Horizontal" Spacing="10">
 
-                                        <Frame
+                                        <Border
                                             Padding="10"
                                             BackgroundColor="White"
-                                            CornerRadius="10"
+                                            StrokeShape="RoundRectangle 10,10,10,10"
                                             HorizontalOptions="Start"
                                             VerticalOptions="Center">
 
@@ -473,7 +473,7 @@
                                                 </Label.FormattedText>
                                             </Label>
 
-                                        </Frame>
+                                        </Border>
 
                                         <!--  Total Fees Payable Label  -->
                                         <Label
@@ -485,10 +485,10 @@
                                             VerticalOptions="CenterAndExpand" />
 
                                     </StackLayout>
-                                    <Frame.GestureRecognizers>
+                                    <Border.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenCartCommand}" />
-                                    </Frame.GestureRecognizers>
-                                </Frame>
+                                    </Border.GestureRecognizers>
+                                </Border>
                             </StackLayout>
                             <!--#endregion Submit and Card-->
 

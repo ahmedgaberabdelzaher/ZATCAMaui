@@ -81,5 +81,15 @@ namespace ZATCAMAUI.Core.Mangers
             HttpResponseMessage response = await client.PostAsync(uri, contentPost);
             return response;
         }
+
+        public static async Task<HttpResponseMessage> MakeGetAPICallForCaptcha(String URL, bool istoken, string token)
+        {
+            HttpClient client = new HttpClient(App.httpClientHandler);
+
+            var uri = new Uri(URL);
+            HttpResponseMessage response = await client.GetAsync(uri);
+            return response;
+        }
+
     }
 }

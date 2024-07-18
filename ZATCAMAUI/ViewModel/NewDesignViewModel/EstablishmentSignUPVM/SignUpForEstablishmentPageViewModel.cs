@@ -1935,6 +1935,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 RaisePropertyChanged("NumSymbol");
             }
         }
+
+        private OTPModelvalidatedD _otpMDl;
+        public OTPModelvalidatedD OtpMDl
+        {
+            get
+            {
+                return _otpMDl;
+            }
+            set
+            {
+                if (_otpMDl == value) return;
+                _otpMDl = value;
+                RaisePropertyChanged("OtpMDl");
+            }
+        }
         // * End
         #endregion
 
@@ -2421,6 +2436,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                             CreateModel.AType = SignUpModelRootObjectM.d.AType;
                             CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
                             CreateModel.ACaptcha = SignUpModelRootObjectM.d.ACaptcha;
+                            CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
+                            CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
                             string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                             if (ResultFirstSubmitModel.d == null)
@@ -2945,6 +2962,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
                 CreateModel.ASubmit = "X";
                 CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
+                if (OtpMDl != null && OtpMDl.d != null)
+                {
+                    CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
+                    CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
+                }
+                else
+                {
+                    CreateModel.AAbsherGuid = string.Empty;
+                    CreateModel.AAbsherOtp = string.Empty;
+                }
+
                 string ResultFirstSubmit = await WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
                 if (ResultFirstSubmit != null)
                 {
@@ -3087,6 +3115,40 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
             otpTimer.Enabled = true;
         }
+
+        public async Task StepfivedataValidation(OTPModelD otpRecvided)
+        {
+            OTPModelvalidateD otp = new OTPModelvalidateD();
+            otpVlidate d = new otpVlidate();
+            this.IsLoading = true;
+            if (otpRecvided != null)
+            {
+                d.Captcha = otpRecvided.d.Captcha;
+                d.Guid16 = otpRecvided.d.Guid16;
+                d.Idnum = otpRecvided.d.Idnum;
+                d.OtpCode = "0106";//OTP;
+                otp.d = d;
+                await Task.Run(async () =>
+                {
+                    OTPModelvalidatedD otpRecvided2 = await WebServiceManager.ValidateAbsher(otp, false);
+                    if (otpRecvided2 != null)
+                    {
+                        MessagingCenter.Send<Object, object>(this, "Otpvalidated", otpRecvided2);
+                        
+                    }
+                    else
+                    {
+                        MessagingCenter.Send<Object, object>(this, "Otpvalidated", "error");
+                    }
+                });
+            }
+            else
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                return;
+            }
+        }
+
         #endregion
 
     }
