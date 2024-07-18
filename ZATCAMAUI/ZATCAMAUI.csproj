@@ -171,6 +171,12 @@
 	  <Compile Update="Syncfusion.SfPicker.XForms.ar-AE.Designer.cs">
 	    <DependentUpon>Syncfusion.SfPicker.XForms.ar-AE.resx</DependentUpon>
 	  </Compile>
+	  <Compile Update="AppResources.ar.Designer.cs">
+	    <DependentUpon>AppResources.ar.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="AppResources.Designer.cs">
+	    <DependentUpon>AppResources.resx</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
