@@ -266,10 +266,9 @@
                                 <Grid>
 
                                     <inputLayout:SfTextInputLayout
-                                        Margin="0,-10,0,0"
                                         ContainerType="Outlined"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
+                                        Hint="{x:Static ResourceManager:AppResources.ReportType}"
                                         OutlineCornerRadius="14"
                                         Style="{StaticResource InputTableTextInputLayoutStyleWuthoutHeighandWidth}">
                                         <Grid>
@@ -277,6 +276,7 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     IsReadOnly="True"
+                                                    InputTransparent="True"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ReportType}"
                                                     Style="{StaticResource DefaultEntryWithoutHeigh}"
                                                     Text="{Binding SelectedBalaghType.Name}"
@@ -346,6 +346,7 @@
 
                                                 <custom:GAZTBorderlessEntry
                                                     IsReadOnly="True"
+                                                    InputTransparent="True"
                                                     Placeholder="{x:Static ResourceManager:AppResources.ReportLocation}"
                                                     Style="{StaticResource DefaultEntryWithoutHeigh}"
                                                     Text="{Binding SelectedPort.Name}"

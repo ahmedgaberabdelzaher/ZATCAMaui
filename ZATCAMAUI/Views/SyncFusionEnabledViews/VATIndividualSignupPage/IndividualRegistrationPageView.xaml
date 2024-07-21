@@ -264,6 +264,7 @@
                                             FontFamily="{StaticResource SomarLight}"
                                             FontSize="Small"
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             IsSpellCheckEnabled="False"
                                             Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
                                             Style="{StaticResource DefaultEntry}"

@@ -107,6 +107,7 @@
 
                                             <custom:GAZTBorderlessEntry
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Placeholder="{x:Static ResourceManager:AppResources.Port}"
                                                 Style="{StaticResource DefaultEntryWithoutHeigh}"
                                                 Text="{Binding SelectedPort.Name}"
@@ -182,6 +183,7 @@
                                             Stroke="{StaticResource NeutralGreay}">
                                             <custom:GAZTBorderlessEntry
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Placeholder="dd/MM/yyyy"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding HijriDateToBeDisplayed}"

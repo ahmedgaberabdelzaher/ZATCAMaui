@@ -149,6 +149,7 @@
                                     Grid.Column="0"
                                     Margin="20,0,20,0"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                     Text="{Binding AttachmentName}" />
                             </inputLayout:SfTextInputLayout>

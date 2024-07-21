@@ -721,6 +721,7 @@
                                 <custom:GAZTBorderlessEntry
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding TaxPeriodOfCase}"
                                     TextColor="{StaticResource Primary}" />
@@ -751,6 +752,7 @@
                                 <custom:GAZTBorderlessEntry
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding FormattedTaxperdioFromDate}"
                                     TextColor="{StaticResource Primary}" />
@@ -783,6 +785,7 @@
                                 <custom:GAZTBorderlessEntry
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding FormattedTaxperdioToDate}"
                                     TextColor="{StaticResource Primary}" />
@@ -812,6 +815,7 @@
                                 <custom:GAZTBorderlessEntry
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding PenalityAmountInQuestion, Converter={StaticResource commaSeparatorConverter}}"
                                     TextColor="{StaticResource Primary}" />
@@ -841,6 +845,7 @@
                                 <custom:GAZTBorderlessEntry
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding TotalTaxLiability}"
                                     TextColor="{StaticResource Primary}" />
@@ -870,6 +875,7 @@
                                 <custom:GAZTBorderlessEntry
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding TotalPenalities}"
                                     TextColor="{StaticResource Primary}" />
@@ -899,33 +905,14 @@
                                 <custom:GAZTBorderlessEntry
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding TaxPaid}"
                                     TextColor="{StaticResource Primary}" />
                             </Border>
 
                         </Grid>
-                        <!--<Grid IsVisible="{Binding IsUnpaidAmtVisible}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <Label Grid.Row="0" Grid.ColumnSpan="2"
-                                                Text="{x:Static ResourceManager:AppResources.UnpaidAmount}"
-                                                HorizontalOptions="StartAndExpand"
-                                                FontFamily="{StaticResource SomarRegular}"
-                                                Style="{StaticResource MicroGrayLabelStyle}" />
 
-                            <Border Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10" Padding="10"
-                                             Style="{StaticResource GreyBorderFrame}">
-                                <custom:GAZTBorderlessEntry IsReadOnly="True"
-                                                        Text="{Binding UnpaidAmount,Converter={StaticResource commaSeparatorConverter}}"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        TextColor="{StaticResource Primary}"
-                                                        Style="{StaticResource BodyLabelBlack}" />
-                            </Border>
-
-                        </Grid>-->
                         <StackLayout IsVisible="{Binding IsAssessPayOptionVisible}">
 
                             <Label

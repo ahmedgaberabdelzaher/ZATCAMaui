@@ -239,6 +239,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="reportRegionEntry"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.UnifiedNumber}"
                                     Style="{StaticResource DefaultEntry}"
@@ -308,6 +309,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="TinEntry"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                     Style="{StaticResource DefaultEntry}"
@@ -634,6 +636,7 @@
 
                             <custom:GAZTBorderlessEntry
                                 IsReadOnly="True"
+                                InputTransparent="True"
                                 Keyboard="Text"
                                 Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
                                 Style="{StaticResource DefaultEntry}"
@@ -679,6 +682,7 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Keyboard="Text"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding fileFullName}"

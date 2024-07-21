@@ -118,6 +118,7 @@
                                 Grid.Row="2"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 IsReadOnly="True"
+                                InputTransparent="True"
                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                 Text="{Binding OldValue}"
                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}">
@@ -199,6 +200,7 @@
                                 Grid.Column="0"
                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 IsReadOnly="True"
+                                InputTransparent="True"
                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                 Text="{Binding AttachmentName}"
                                 TextColor="{StaticResource PrimaryColor}" />

@@ -326,6 +326,7 @@
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Placeholder="{x:Static ResourceManager:AppResources.TINS}"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Gpartz}"
@@ -357,6 +358,7 @@
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding TinNm}" />
                                                     </inputLayout:SfTextInputLayout>
@@ -382,6 +384,7 @@
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding CrNo}">
                                                             <custom:GAZTBorderlessEntry.Behaviors>
@@ -406,6 +409,7 @@
                                                         <custom:GAZTBorderlessEntry
                                                             FontSize="Small"
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding CrNm}"
                                                             TextColor="#bbbbbb" />
@@ -435,6 +439,7 @@
                                                                 x:Name="Entry_CrStdt"
                                                                 Margin="0"
                                                                 IsReadOnly="True"
+                                                                InputTransparent="True"
                                                                 Style="{StaticResource DefaultEntry}"
                                                                 Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.StartdateToshow}" />
                                                         </StackLayout>
@@ -461,6 +466,7 @@
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineOne}" />
                                                     </inputLayout:SfTextInputLayout>
@@ -479,6 +485,7 @@
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineTwo}" />
                                                     </inputLayout:SfTextInputLayout>
@@ -504,6 +511,7 @@
                                                         </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                                         <custom:GAZTBorderlessEntry
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Style="{StaticResource DefaultEntry}"
                                                             Text="{Binding Source}" />
 

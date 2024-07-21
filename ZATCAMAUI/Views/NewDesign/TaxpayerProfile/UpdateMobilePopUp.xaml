@@ -78,6 +78,7 @@
                                     FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Keyboard="Telephone"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CurrentMobileNumberEntryText}"

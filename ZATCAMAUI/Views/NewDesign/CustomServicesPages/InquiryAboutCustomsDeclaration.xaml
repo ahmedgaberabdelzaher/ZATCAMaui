@@ -393,6 +393,7 @@
 
                                     <custom:GAZTBorderlessEntry
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Placeholder="{x:Static ResourceManager:AppResources.Port}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SelectedPort.Name}"
@@ -432,6 +433,7 @@
 
                                         <custom:GAZTBorderlessEntry
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="{x:Static ResourceManager:AppResources.Declarationtype}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SelectedDeclarationType.Value}"
@@ -504,6 +506,7 @@
 
                                         <custom:GAZTBorderlessEntry
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="dd/MM/yyyy"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding HijriDateToBeDisplayed}"
@@ -634,6 +637,7 @@
                                         <custom:GAZTBorderlessEntry
                                             HorizontalOptions="FillAndExpand"
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="{x:Static ResourceManager:AppResources.Shippingcompany}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SelectedCarrier.carr_name}"
