@@ -1,14 +1,9 @@
-﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+﻿using RGPopup.Maui.Services;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZXing.Net.Maui;
-using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 {
@@ -24,12 +19,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 
             viewModel = App.Locator.VATLookUpNewPageView;
             BindingContext = viewModel;
-
             SetPickerFont();
-            ChangeAeroIcon();
-            //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
-
-            NavigationPage.SetBackButtonTitle(this, "");
             viewModel.ResetFormData();
             viewModel.IsTooltipEnableVisible = false;
             viewModel.TxtSearchParameter = string.Empty;
@@ -37,10 +27,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             viewModel.MaxDigids = "15";
             viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
 
-            btnScan.Clicked += async (a, e) =>
+            btnScan.Clicked += (a, e) =>
             {
                 viewModel.IsShowScanView = true;
-                MainGrid.Children.Add(zxing);
+                zxing.IsDetecting = true;
                 zxing.AutoFocus();
             };
 
@@ -90,36 +80,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             }
 
         }
+
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                PPicker.Background = (Color)Application.Current.Resources["PickerBgGray"];
-            }
-            else
-            {
-                PPicker.Background = (Color)Application.Current.Resources["White"];
-            }
 
             MessagingCenter.Send(this, "ScanData", "abc");
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
 
         void PPicker_btn_Clicked(object sender, TappedEventArgs e)
         {
@@ -162,14 +129,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             {
                 try
                 {
+                    zxing.IsDetecting = false;
                     foreach (var barcode in e.Results)
                     {
-                        Console.WriteLine($"Barcodes: {barcode.Format} -> {barcode.Value}");
                         barcodeResultValue = barcode.Value;
                     }
-                    //  MessagingCenter.Send(this, "ScanData", result.Text);
+
                     viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
-                    // viewModel.LookupNumber = result.Text;
                     viewModel.getBarcodeData(barcodeResultValue);
                 }
                 catch (Exception)
@@ -181,14 +147,5 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             });
         }
 
-        void PPicker_OkButtonClicked(System.Object sender, System.EventArgs e)
-        {
-            PPicker.IsOpen = false;
-        }
-
-        void PPicker_CancelButtonClicked(System.Object sender, System.EventArgs e)
-        {
-            PPicker.IsOpen = false;
-        }
     }
 }

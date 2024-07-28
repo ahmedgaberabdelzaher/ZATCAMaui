@@ -34,7 +34,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
                 <StackLayout>
 
@@ -77,9 +77,12 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <Border Grid.Row="1"
+                    Padding="10,0"
+                    Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView VerticalScrollBarVisibility="Never">
+                <ScrollView VerticalScrollBarVisibility="Never"
+                            Padding="0">
 
                     <StackLayout VerticalOptions="FillAndExpand">
 
@@ -217,10 +220,8 @@
 
                             <!--  Passport Card  -->
                             <Grid
-                                HeightRequest="94"
-                                HorizontalOptions="StartAndExpand"
-                                VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                HeightRequest="110"
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="QSelected.png">
@@ -231,6 +232,8 @@
                                             TargetType="Image"
                                             Value="True">
                                             <Setter Property="Source" Value="QSelected.png" />
+                                            <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                         <DataTrigger
@@ -238,6 +241,8 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QUnselected.png" />
+                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                     </Image.Triggers>
@@ -281,7 +286,7 @@
                             </Grid>
 
                             <!--  National ID card  -->
-                            <Grid HeightRequest="94" WidthRequest="171">
+                            <Grid HeightRequest="110" WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="QUnselected.png">
@@ -292,6 +297,8 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QSelected.png" />
+                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                         <DataTrigger
@@ -299,6 +306,8 @@
                                             TargetType="Image"
                                             Value="True">
                                             <Setter Property="Source" Value="QUnselected.png" />
+                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                     </Image.Triggers>
@@ -488,7 +497,12 @@
                                         <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
                                     </custom:GAZTBorderlessEntry.GestureRecognizers>
                                 </custom:GAZTBorderlessEntry>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
                                 <inputLayout:SfTextInputLayout.TrailingView>
+
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
@@ -626,10 +640,8 @@
 
                             <!--  Male card  -->
                             <Grid
-                                HeightRequest="94"
-                                HorizontalOptions="StartAndExpand"
-                                VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                HeightRequest="110"
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="QSelected.png">
@@ -640,6 +652,8 @@
                                             TargetType="Image"
                                             Value="True">
                                             <Setter Property="Source" Value="QSelected.png" />
+                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                         <DataTrigger
@@ -647,6 +661,8 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QUnselected.png" />
+                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                     </Image.Triggers>
@@ -691,10 +707,8 @@
 
                             <!--  Female Card  -->
                             <Grid
-                                HeightRequest="94"
-                                HorizontalOptions="StartAndExpand"
-                                VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                HeightRequest="110"
+                                WidthRequest="160">
 
                                 <!--  Background image selected  -->
                                 <Image Aspect="Fill" Source="QUnselected.png">
@@ -705,6 +719,8 @@
                                             TargetType="Image"
                                             Value="False">
                                             <Setter Property="Source" Value="QSelected.png" />
+                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                         <DataTrigger
@@ -712,6 +728,8 @@
                                             TargetType="Image"
                                             Value="True">
                                             <Setter Property="Source" Value="QUnselected.png" />
+                                             <Setter Property="HeightRequest" Value="110" />
+                                            <Setter Property="WidthRequest" Value="160" />
                                         </DataTrigger>
 
                                     </Image.Triggers>
@@ -838,6 +856,11 @@
                                         <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
                                     </custom:GAZTBorderlessEntry.GestureRecognizers>
                                 </custom:GAZTBorderlessEntry>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>

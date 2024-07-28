@@ -9,7 +9,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    ios:Page.UseSafeArea="False"
+    ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -38,12 +38,6 @@
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="iOS" Value="0,38,0,15" />
-            <On Platform="Android" Value="0" />
-        </OnPlatform>
-    </ContentPage.Padding>
     <ContentPage.Content>
 
         <Grid Padding="0" RowDefinitions="Auto,*">
@@ -103,6 +97,7 @@
 
                     <CollectionView
                         x:Name="videosList"
+                        Margin="{x:OnPlatform Android= '0,0,0,75',iOS= '0'}"
                         CollectionView.ItemsSource="{Binding LiveVideosList}"
                         HorizontalOptions="FillAndExpand"
                         ItemSizingStrategy="MeasureAllItems"

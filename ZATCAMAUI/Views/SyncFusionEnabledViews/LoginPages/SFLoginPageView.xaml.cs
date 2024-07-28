@@ -6,10 +6,8 @@ using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
-using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount;
 using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 {
@@ -34,7 +32,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
                 App.VATType = PageExecutionType.Register;
                 App.ZAKATType = PageExecutionType.Register;
-                NavigationPage.SetBackButtonTitle(this, " ");
                 viewModel = App.Locator.SFLoginPageView;
 
                 this.BindingContext = viewModel;
@@ -152,11 +149,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                     }
                 }
 
-                //var safeInsets = On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SafeAreaInsets();
-                //if (Device.RuntimePlatform == Device.iOS && safeInsets.Bottom == 0)
-                //{
-                //    loginGrid.Margin = new Thickness(0, -50, 0, -30);
-                //}
             }
             catch (Exception )
             {

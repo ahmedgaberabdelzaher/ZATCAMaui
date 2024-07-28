@@ -27,7 +27,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
                 <!--  Back Button  -->
                 <StackLayout>
@@ -433,14 +433,12 @@
                             <!--#region Submit and Card-->
                             <StackLayout
                                 Margin="0,10"
-                                Spacing="10"
-                                WidthRequest="350">
+                                Spacing="10">
                                 <!--  Add Item Button  -->
                                 <buttons:SfButton
                                     Command="{Binding AddCommand}"
                                     Style="{StaticResource PrimaryButtonStyle}"
-                                    Text="{x:Static ResourceManager:AppResources.AddItem}"
-                                    WidthRequest="350" />
+                                    Text="{x:Static ResourceManager:AppResources.AddItem}"/>
 
                                 <!--  Card Border  -->
                                 <Border
@@ -498,8 +496,7 @@
                                 Command="{Binding NextCommand}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.ZZNext}"
-                                VerticalOptions="EndAndExpand"
-                                WidthRequest="350" />
+                                VerticalOptions="EndAndExpand" />
 
                             <!--  Prevoius Button  -->
                             <buttons:SfButton

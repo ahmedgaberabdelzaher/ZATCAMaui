@@ -51,6 +51,7 @@
 
                     <Border
                         Padding="0"
+                        Stroke="Transparent"
                         StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
 
@@ -191,7 +192,10 @@
                                                 VerticalTextAlignment="Center" />
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image HorizontalOptions="EndAndExpand" Source="calendar.png" />
+                                                <Image HorizontalOptions="EndAndExpand"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
+                                                       Source="calendar.png" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
 
                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -301,6 +305,7 @@
 
                     <Border
                         Padding="0"
+                        Stroke="Transparent"
                         StrokeShape="RoundRectangle 15,15,0,0"
                         VerticalOptions="FillAndExpand">
                         <Grid

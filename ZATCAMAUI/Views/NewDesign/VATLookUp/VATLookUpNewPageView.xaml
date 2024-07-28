@@ -53,19 +53,22 @@
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <custom:GAZTBorderlessEntry
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding TxtSearchParameter}"
                                         TextColor="{StaticResource Primary}" />
+
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
                                 </inputLayout:SfTextInputLayout>
 
-                                <syncfusion:SfPicker
+                                <custom:CustomSfPicker
                                     x:Name="PPicker"
                                     Background="white"
-                                    CancelButtonClicked="PPicker_CancelButtonClicked"
                                     IsOpen="False"
                                     ItemHeight="40"
                                     Mode="Dialog"
-                                    OkButtonClicked="PPicker_OkButtonClicked"
                                     SelectionChanged="PPicker_SelectionChanged">
 
                                     <syncfusion:SfPicker.TextStyle>
@@ -117,7 +120,7 @@
 
                                     </syncfusion:SfPicker.FooterView>
 
-                                </syncfusion:SfPicker>
+                                </custom:CustomSfPicker>
 
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
@@ -225,13 +228,10 @@
             </Border>
 
             <!--#region Scan View-->
-            <Border
-                Grid.Row="1"
-                Margin="0"
-                Padding="0"
-                IsVisible="{Binding IsShowScanView}"
-                Style="{StaticResource CommonTopCurves}">
-                <Grid Padding="0,0,0,0" RowDefinitions="1.2*,*,*,*,*">
+            <Grid Padding="0,0,0,0"
+                  Grid.Row="1"
+                  IsVisible="{Binding IsShowScanView}"
+                  RowDefinitions="1.2*,*,*,*,*">
                     <Grid
                         x:Name="MainGrid"
                         Grid.RowSpan="5"
@@ -360,8 +360,7 @@
                             </Border>
                         </StackLayout>
                     </Grid>
-                </Grid>
-            </Border>
+            </Grid>
 
             <!--#endregion-->
 

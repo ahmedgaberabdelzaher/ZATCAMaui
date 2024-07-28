@@ -9,7 +9,7 @@
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:rotator="clr-namespace:Syncfusion.Maui.Rotator;assembly=Syncfusion.Maui.Rotator"
-    ios:Page.UseSafeArea="False"
+    ios:Page.UseSafeArea="True"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -107,12 +107,6 @@
                 MaxNum="{Binding MaxIndex}"
                 MinNum="{Binding SelectedIndex}" />
             <StackLayout Grid.Row="0" Orientation="Horizontal">
-                <StackLayout.Margin>
-                    <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="0,35,0,0" />
-                        <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
-                    </OnPlatform>
-                </StackLayout.Margin>
                 <!--  Skip button  -->
 
                 <buttons:SfButton

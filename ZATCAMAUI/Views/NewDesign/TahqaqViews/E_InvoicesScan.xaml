@@ -12,14 +12,10 @@
     <Grid RowDefinitions="auto,*">
 
         <!--#region Scan View-->
-        <Border
-            Grid.Row="1"
-            Margin="0"
-            Padding="0"
-            IsVisible="{Binding IsShowScanView}"
-            Style="{StaticResource CommonTopCurves}">
-
-            <Grid Padding="0,0,0,0" RowDefinitions="1.2*,*,*,*,*">
+        <Grid Padding="0,0,0,0"
+                  Grid.Row="1"
+                  IsVisible="{Binding IsShowScanView}"
+                  RowDefinitions="1.2*,*,*,*,*">
 
                 <Grid
                     x:Name="MainGrid"
@@ -165,7 +161,6 @@
                 </Grid>
 
             </Grid>
-        </Border>
         <!--#endregion Scan View-->
 
         <!--#region Success Result View-->
@@ -381,15 +376,8 @@
         <controls:Header
             Grid.Row="0"
             Padding="0,35,0,10"
-            TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}">
-            <controls:Header.Padding>
-                <OnPlatform x:TypeArguments="Thickness">
-                    <On Platform="iOS" Value="0,45,0,10" />
-                    <On Platform="Android" Value="0,35,0,10" />
-                </OnPlatform>
-            </controls:Header.Padding>
+            TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}"/>
 
-        </controls:Header>
 
         <controls:MsgView
             Grid.Row="0"

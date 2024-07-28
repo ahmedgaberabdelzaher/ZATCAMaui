@@ -12,7 +12,7 @@
     TitleText="{x:Static ResourceManager:AppResources.eDeclaration}">
     <newdesign:BaseContentPage.PancakeView>
         <ScrollView VerticalScrollBarVisibility="Never">
-            <StackLayout Padding="10">
+            <StackLayout Padding="15">
 
                 <!--#region Header-->
 
@@ -50,8 +50,7 @@
                 <BoxView
                     Margin="0,0,0,0"
                     BackgroundColor="{StaticResource NeutralLightGrey}"
-                    HeightRequest="1"
-                    WidthRequest="350" />
+                    HeightRequest="1" />
 
                 <!--#endregion-->
 
@@ -66,16 +65,14 @@
                 </Label>
 
                 <!--#region Visitor&Citizen/Review previous Options-->
-                <StackLayout Margin="0,0,0,10" Spacing="20">
+                <VerticalStackLayout Spacing="20">
 
                     <!--#region Visitor/Citizen Options-->
-                    <Grid
-                        ColumnDefinitions="*,*"
-                        ColumnSpacing="15"
-                        HeightRequest="130">
+                    <HorizontalStackLayout Spacing="10">
 
                         <!--#region Visitor Option-->
-                        <Grid HorizontalOptions="Start">
+                        <Grid HeightRequest="110"
+                              WidthRequest="160">
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}" CommandParameter="1" />
@@ -83,14 +80,15 @@
 
                             <Image
                                 Aspect="Fill"
-                                Source="QUnselected"
-                                WidthRequest="171">
+                                Source="UnselectedCard">
                                 <Image.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IdentityType}"
                                         TargetType="Image"
                                         Value="1">
-                                        <Setter Property="Source" Value="QSelected" />
+                                        <Setter Property="Source" Value="Unselected" />
+                                        <Setter Property="WidthRequest" Value="150" />
+                                        <Setter Property="HeightRequest" Value="110" />
                                     </DataTrigger>
                                 </Image.Triggers>
                             </Image>
@@ -131,20 +129,24 @@
                         <!--#endregion Visitor-->
 
                         <!--#region Citizen Option-->
-                        <Grid Grid.Column="1" HorizontalOptions="Start">
+                        <Grid HeightRequest="110"
+                                WidthRequest="160">
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}" CommandParameter="2" />
 
                             </Grid.GestureRecognizers>
 
-                            <Image Aspect="Fill" Source="QUnselected.png">
+                            <Image Aspect="Fill"
+                                   Source="UnselectedCard.png">
                                 <Image.Triggers>
                                     <DataTrigger
                                         Binding="{Binding IdentityType}"
                                         TargetType="Image"
                                         Value="2">
-                                        <Setter Property="Source" Value="QSelected" />
+                                        <Setter Property="Source" Value="Unselected" />
+                                        <Setter Property="WidthRequest" Value="150" />
+                                        <Setter Property="HeightRequest" Value="110" />
                                     </DataTrigger>
                                 </Image.Triggers>
                             </Image>
@@ -185,28 +187,30 @@
                         </Grid>
                         <!--#endregion Citizen-->
 
-                    </Grid>
+                    </HorizontalStackLayout>
                     <!--#endregion Visitor/Citizen-->
 
                     <!--#region Review previous Option-->
                     <Grid
-                        HeightRequest="130"
+                        HeightRequest="120"
                         HorizontalOptions="Start"
                         VerticalOptions="Start"
-                        WidthRequest="175">
+                        WidthRequest="160">
 
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ReviewPreviousCommand}" />
 
                         </Grid.GestureRecognizers>
 
-                        <Image Aspect="Fill" Source="QUnselected.png">
+                        <Image Aspect="Fill" Source="UnselectedCard.png">
                             <Image.Triggers>
                                 <DataTrigger
                                     Binding="{Binding ShowReviewEntries}"
                                     TargetType="Image"
                                     Value="true">
-                                    <Setter Property="Source" Value="QSelected" />
+                                    <Setter Property="Source" Value="Unselected" />
+                                    <Setter Property="WidthRequest" Value="160" />
+                                    <Setter Property="HeightRequest" Value="110" />
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -224,6 +228,7 @@
                                     TargetType="Image"
                                     Value="true">
                                     <Setter Property="Source" Value="unselectedreviewapreviousrequest.png" />
+
                                 </DataTrigger>
                             </Image.Triggers>
                         </Image>
@@ -248,7 +253,7 @@
                     </Grid>
                     <!--#endregion Review previous-->
 
-                </StackLayout>
+                </VerticalStackLayout>
                 <!--#endregion Visitor&Citizen/Review previous View-->
 
                 <!--#region Review Option Entries-->

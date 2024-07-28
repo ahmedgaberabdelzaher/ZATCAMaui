@@ -115,17 +115,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command<string>(async (e) =>
                 {
-                    IsAddNewCR = e == "1" ? true : false;
-                    if (!IsAddNewCR)
+                    // Don't remove try & catch as there is an Known issue in Syncfusion text-input
+                    // Can't dispose empty object 
+                    try
                     {
-                        await PopupNavigation.Instance.PopAsync(true);
-                        CRNo = "";
+                        IsAddNewCR = e == "1" ? true : false;
+                        if (!IsAddNewCR)
+                        {
+                            await PopupNavigation.Instance.PopAsync(true);
+                            CRNo = "";
+                        }
+                        else
+                        {
+                            NewCrPopupView poupWindow = new NewCrPopupView();
+                            await PopupNavigation.Instance.PushAsync(poupWindow);
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        NewCrPopupView poupWindow = new NewCrPopupView();
-                        await PopupNavigation.Instance.PushAsync(poupWindow);
+
                     }
+                    
                 });
             }
         }
@@ -304,6 +314,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
                         else
                         {
+                            await PopupNavigation.Instance.PopAsync(true);
                             MessageTxt = AppResources.RequiredData;
                             IsShowMsgView = true;
                             IsLoading = false;

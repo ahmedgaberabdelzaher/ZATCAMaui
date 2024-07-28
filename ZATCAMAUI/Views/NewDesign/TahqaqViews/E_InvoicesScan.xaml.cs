@@ -24,7 +24,6 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
                 TryInverted = true,
              
             };
-          
 
         }
 
@@ -57,11 +56,12 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
+                    
                     if (!scanFinished)
                     {
+                        zxing.IsDetecting = false;
                         foreach (var barcode in e.Results)
                         {
-                            Console.WriteLine($"Barcodes: {barcode.Format} -> {barcode.Value}");
                             barcodeResultValue = barcode.Value;
                         }
                             

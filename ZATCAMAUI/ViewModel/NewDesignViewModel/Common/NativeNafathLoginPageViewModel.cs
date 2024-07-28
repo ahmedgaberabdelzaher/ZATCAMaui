@@ -135,25 +135,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                                 var navigation = Application.Current.MainPage.Navigation;
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
                                 IsLoading = false;
-                                // navigation.InsertPageBefore(new NativeNafathPage(""),currentPage);
                                 _navigationService.GoBack();
                                 return;
                             }
                             if (data.result.status == "WAITING")
                             {
                                 await GetNafathStatus();
-                                //return;
                             }
 
 
                             userData = data;
                             if (userData != null && userData.result.userInfo != null)
                             {
-
-
-                                /*var navigation = Application.Current.MainPage.Navigation;
-                                var currentPage = navigation.NavigationStack.LastOrDefault();
-                                navigation.InsertPageBefore(new TransactionReceptionView(userData), currentPage);*/
                                 await GetNafathCustomProfile(userData.result.userInfo.id.ToString(), userData.result.userInfo.dateOfBirthH.Replace('-', '/'), userData.result.userInfo.dateOfBirthG, userData.result.userInfo.idInfo.idExpiryDateG, userData.result.userInfo.idInfo.idIssueDateG);
                                 return;
                             }
@@ -230,7 +223,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
                         HandleUnRegisteredUser();
                         var navigation = Application.Current.MainPage.Navigation;
                         var currentPage = navigation.NavigationStack.LastOrDefault();
-                        //  _navigationService.NavigateTo("RegisterZATCAUserPage",2);
                         IsLoading = false;
                         NationalIqamaId = "";
                         navigation.InsertPageBefore(new RegisterZATCAUserPage(2), currentPage);

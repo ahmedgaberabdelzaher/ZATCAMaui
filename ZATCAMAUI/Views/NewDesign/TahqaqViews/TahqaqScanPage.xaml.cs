@@ -37,6 +37,7 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
         {
             try
             {
+                zxing.IsDetecting = false;
                 foreach (var barcode in e.Results)
                 {
                     Console.WriteLine($"Barcodes: {barcode.Format} -> {barcode.Value}");

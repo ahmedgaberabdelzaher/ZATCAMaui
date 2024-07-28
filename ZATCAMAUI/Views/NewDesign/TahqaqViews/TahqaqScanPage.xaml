@@ -28,13 +28,10 @@
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
-            <Border
-                Grid.Row="1"
-                Margin="0"
-                Padding="0"
-                IsVisible="{Binding IsShowScanView}"
-                Style="{StaticResource CommonTopCurves}">
-                <Grid Padding="0,0,0,0" RowDefinitions="auto,auto,*,auto,auto">
+            <Grid Padding="0,0,0,0"
+                      Grid.Row="1"
+                      IsVisible="{Binding IsShowScanView}"
+                      RowDefinitions="auto,auto,*,auto,auto">
                     <Grid
                         x:Name="MainGrid"
                         Grid.RowSpan="5"
@@ -167,7 +164,6 @@
                         </StackLayout>
                     </Grid>
                 </Grid>
-            </Border>
 
             <Border
                 Grid.Row="1"

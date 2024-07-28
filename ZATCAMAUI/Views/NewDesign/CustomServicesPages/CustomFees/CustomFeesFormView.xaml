@@ -127,6 +127,9 @@
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Image Aspect="AspectFit" Source="greyDropDown" />
                             </inputLayout:SfTextInputLayout.TrailingView>
+                             <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
+                            </inputLayout:SfTextInputLayout.GestureRecognizers>
                         </inputLayout:SfTextInputLayout>
 
                         <StackLayout.GestureRecognizers>
@@ -387,7 +390,8 @@
 
             <Grid Grid.Row="0" IsVisible="{Binding IsshowFeesView}">
 
-                <Grid RowDefinitions="*">
+                <Grid RowDefinitions="auto,*"
+                      RowSpacing="10">
 
                     <Label
                         FontFamily="{StaticResource SomarBold}"
@@ -401,6 +405,7 @@
                     <ScrollView
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand"
+                        Grid.Row="1"
                         VerticalScrollBarVisibility="Never">
 
                         <Border
