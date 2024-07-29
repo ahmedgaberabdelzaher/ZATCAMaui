@@ -534,6 +534,61 @@
 
                             </StackLayout>
 
+                            <!--  Importer Year for Express E-Declaration Field  -->
+                            <StackLayout Spacing="0"
+                                         IsVisible="{Binding DrawShipmentTrack.HasImportYear}">
+
+                                <!--  Importer Year for Express E-Declaration Label  -->
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ImporterYear}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <!--  Importer Year for Express E-Declaration Entry  -->
+                                <inputLayout:SfTextInputLayout
+                                    ContainerBackground="White"
+                                    ContainerType="Outlined"
+                                    Stroke="{StaticResource NeutralGreay}"
+                                    Hint="{x:Static ResourceManager:AppResources.ImporterYear}"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="15">
+
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding ShipmentImporterYear}"
+                                        TextColor="#58595B">
+
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                    </custom:GAZTBorderlessEntry>
+
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                </inputLayout:SfTextInputLayout>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
+                                </StackLayout.GestureRecognizers>
+
+                            </StackLayout>
+
                             <!--  Bill Number Field  -->
                             <StackLayout IsVisible="{Binding DrawShipmentTrack.HasBillNumber}" Spacing="0">
 

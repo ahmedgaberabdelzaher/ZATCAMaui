@@ -337,13 +337,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("CreateE_Declaration", AppResources.Transactiondescription);
                             break;
                         case "CustomFeesCalculator":
-                            //  _navigationService.NavigateTo("CreateE_Declaration", AppResources.CustomFeesCalculator);
                             _navigationService.NavigateTo("CustomFeesFormView"); 
 
                             break;
                         case "IAMLoginView":
                             _navigationService.NavigateTo("NativeNafathPage", "TransactionReceptionView");
-                            // _navigationService.NavigateTo("IAMLoginView", 2);
                             break;
                         default:
                             _navigationService.NavigateTo(menuItem.ID);

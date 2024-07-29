@@ -10268,7 +10268,7 @@ Zakat, Tax and Customs Authority
     <value>Other Fees</value>
   </data>
 	<data name="CIFValue" xml:space="preserve">
-    <value>CIF Value</value>
+      <value>Shipment Value</value>
   </data>
 	<data name="ShipmentTrackingSubTitle" xml:space="preserve">
     <value>For more accurate results, please enter Declaration Details.</value>
@@ -11004,6 +11004,18 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <data name="ArrivingFrom" xml:space="preserve">
     <value>Arriving From</value>
   </data>
+      <data name="CarrierCompany" xml:space="preserve">
+    <value>CarrierCompany</value>
+  </data>
+    <data name="CustomFeesDisclaimer" xml:space="preserve">
+    <value>Shipment value * 15%.</value>
+  </data>
+    <data name="TrackVATDisclaimer" xml:space="preserve">
+    <value>(Shipment value + Customs duties + Other fees) * 15%.</value>
+  </data>
+  <data name="TrackTotalDisclaimer" xml:space="preserve">
+    <value>Customs duties + VAT + Custom fees + Excise fees 'if exist'</value>
+  </data>
      <!--start of VAT Refund Prod-->
   <data name="VATRefundReqMessageInfo" xml:space="preserve">
     <value>Dear taxpayer,
@@ -11021,4 +11033,8 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Please enter captcha code.</value>
   </data>
   <!-- END of Captcha Resources-->
+    <data name="ImporterYear" xml:space="preserve">
+    <value>Importer Year</value>
+  </data>
+
 </root>
