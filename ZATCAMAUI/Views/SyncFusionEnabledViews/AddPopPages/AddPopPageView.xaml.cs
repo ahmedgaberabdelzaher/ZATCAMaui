@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage;
 
@@ -89,13 +89,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages
        
         private void OnClose(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
         private void CloseImage_Tapped(object sender, EventArgs e)
         {
             viewModel.IsBold = "Bold";
             viewModel.IsRed = "{StaticResource ForgotPasswordGrayTextColor}";
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
     }
 }

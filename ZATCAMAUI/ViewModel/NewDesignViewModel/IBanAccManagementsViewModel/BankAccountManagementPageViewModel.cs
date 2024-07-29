@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using static ZATCAMAUI.Models.IBanManagementListModel;
@@ -152,7 +152,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                         {
                             await LoadAllIBanAccounts();
                         };
-                        await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                        await MopupService.Instance.PushAsync(somewarningpopup);
                     }
                     else if (actionFlag == "A")
                     {
@@ -165,7 +165,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                         {
                             await LoadAllIBanAccounts();
                         };
-                        await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                        await MopupService.Instance.PushAsync(somewarningpopup);
                     }
 
 
@@ -286,7 +286,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
                         if (MissingIfoMatch != null || RejectMatch != null)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIncomplete));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANIncomplete));
 
                         }
                     }

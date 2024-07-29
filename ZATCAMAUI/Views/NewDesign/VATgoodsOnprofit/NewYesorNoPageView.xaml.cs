@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Services;
+﻿using Mopups.Services;
 using Syncfusion.Maui.Buttons;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -31,7 +31,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
         {
             if (YesQ1.IsChecked == false && NoQ1.IsChecked == false)
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
                 viewModel.rq1 = (Color)Application.Current.Resources["Red"];
                 return;
             }
@@ -39,7 +39,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
 
             if (viewModel.QA1 == "R" || viewModel.QA1 == "r")
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZProfitOnGoodsQ1M01Validation));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZProfitOnGoodsQ1M01Validation));
                 // IsLoading = false;
                 return;
             }
@@ -49,7 +49,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATgoodsOnprofit
             {
                 if (Yes.IsChecked == false && No.IsChecked == false)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsM02Vaidation));
                     viewModel.rq2 = (Color)Application.Current.Resources["Red"];
                     return;
                 }

@@ -2,7 +2,7 @@
 using System.Text;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -109,7 +109,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         {
             try
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 MessagingCenter.Send<object, string>(this, "InstructionsConfirmed", "NavigateToNewRequestPageView");
             }
             catch (GAZTUnlockAccountException ex)
@@ -151,7 +151,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         IsInstructionsVisible = false;
 
                         await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                     });
 
                 }
@@ -186,7 +186,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     }
 
                     await _dialogService.ShowMessage(message, AppResources.Information);
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                 }
                 catch (Exception)
                 {
@@ -204,7 +204,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     {
                         IsInstructionsVisible = false;
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                     });
 
                 }

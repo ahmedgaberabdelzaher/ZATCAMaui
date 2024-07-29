@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Services.Interface;
@@ -10,6 +9,7 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 using ZATCAMAUI.Models.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -94,10 +94,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(async () =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
                     HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                     _navigationService.NavigateTo("ChooseQuestionsPage");
+
                 });
             }
         }
@@ -108,8 +109,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(async _ =>
                 {
-                    EDeclarationTermsPopupPage poupWindow = new EDeclarationTermsPopupPage();
-                    await PopupNavigation.Instance.PushAsync(poupWindow);
+                   EDeclarationTermsPopupPage poupWindow = new EDeclarationTermsPopupPage();
+                    await MopupService.Instance.PushAsync(poupWindow);
 
                 });
             }

@@ -1,5 +1,5 @@
 ﻿
-using RGPopup.Maui.Pages;
+using Mopups.Pages;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 
 namespace ZATCAMAUI.Views.NewDesign.Common

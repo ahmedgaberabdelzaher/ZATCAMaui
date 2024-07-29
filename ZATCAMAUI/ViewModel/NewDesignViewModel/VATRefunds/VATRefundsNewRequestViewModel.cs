@@ -2,7 +2,7 @@
 using System.Text;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -393,12 +393,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (ListOfActionButtonsApplicable == null)
                 {
                     setMoreOptioButtons();
-                    await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                    await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
 
                 }
                 else
                 {
-                    await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                    await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
                 }
             });
         }
@@ -484,7 +484,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             newDesignPopUp.HeaderWithInfos = headerWithInfos;
             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+            await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
 
         }
         public bool isDraftClicked = false;
@@ -543,7 +543,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                     });
@@ -697,7 +697,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                     _navigationService.GoBack();
                 }
                 catch (Exception)
@@ -847,7 +847,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                     _navigationService.GoBack();
                 }
                 catch (Exception)
@@ -934,7 +934,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             genericPickerModel.PickerTitle = AppResources.ZZIDType;
             genericPickerModel.PickerId = "idTypePicker";
 
-            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
         public async void OnIbanNumberClicked()
@@ -953,7 +953,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 genericPickerModel.PickerTitle = AppResources.IDNumber;
                 genericPickerModel.PickerId = "idNumberPicker";
 
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
             else
             {
@@ -972,7 +972,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             }
         }
 
@@ -1075,21 +1075,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             if (SelectedIdtype == string.Empty || SelectedIdtype == AppResources.ZZIDType)
             {
                 popUp.Message = AppResources.ZPleaseselectparametertype;
-                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 return;
             }
 
             if (SelectedIdNumber == string.Empty || SelectedIdNumber == AppResources.IDNumber)
             {
                 popUp.Message = AppResources.ZVatRefundInformationSelectIBANIDNumber;
-                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 return;
             }
 
             if (SelectedIbanData == null)
             {
                 popUp.Message = AppResources.ZVatRefundInformationSelectIBAN;
-                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 return;
             }
 

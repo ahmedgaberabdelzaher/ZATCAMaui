@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -1136,7 +1136,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                             };
                         }
-                        await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                        await MopupService.Instance.PushAsync(VisitPortalPopup);
                     }
                     catch (Exception)
                     {

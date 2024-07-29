@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
@@ -28,32 +28,32 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         }
         private async void OnOverdueReturnClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 2);
         }
 
         private async void OnMyReturnsClickedForZAKAT(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 5);
         }
 
 
         private async void OnMyReturnsClickedForVATDeclaration(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 6);
         }
 
         private async void OnCorrespondanceClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.TaxpayersCertificatesPageView);
         }
 
         private async void OnGetSupportClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.SupportPageView);
         }
 
@@ -65,12 +65,12 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 ReadInbox.TranslateTo(0, 500, 1200);
                 GetSupport.TranslateTo(0, 500, 1200);
             });
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
         }
 
         private async void OnMyReturnsClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 4);
         }
 
@@ -78,7 +78,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             BillInfo billInfo = new BillInfo();
             billInfo.BillTypeName = AppResources.All;
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
     }

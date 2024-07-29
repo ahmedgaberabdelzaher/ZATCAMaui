@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
 {
@@ -21,12 +21,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
                 return;
             }
             OnVoidSelect?.Invoke(notes.Text);
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
         }
 
         async void CancelButton_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
         }
 
         void notes_TextChanged(object sender, TextChangedEventArgs e)

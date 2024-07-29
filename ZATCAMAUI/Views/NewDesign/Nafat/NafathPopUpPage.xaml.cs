@@ -1,7 +1,7 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat;
 
 namespace ZATCAMAUI.Views.NewDesign.Nafat
@@ -26,7 +26,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
             CitigenImage.Source = "vat_tile_IbanCard_background_white.png";
             CitigenText.TextColor = Colors.CadetBlue;
 
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "Gulf");
         }
         private async void TappedCitizen(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
 
             App.GUIDFrSSO = "";
 
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             try
             {
                 viewModel._navigationService.NavigateTo(App.NafathLoginPageView);

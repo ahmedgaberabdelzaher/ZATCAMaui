@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -25,7 +25,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
         private async void ContinueButtonClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             MessagingCenter.Send<object, string>(this, "MultipleBillsContinue", "Yes");
         }
     }

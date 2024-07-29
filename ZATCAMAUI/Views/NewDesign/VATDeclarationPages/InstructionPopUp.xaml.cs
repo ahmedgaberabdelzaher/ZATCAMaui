@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Pages;
+﻿using Mopups.Pages;
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;

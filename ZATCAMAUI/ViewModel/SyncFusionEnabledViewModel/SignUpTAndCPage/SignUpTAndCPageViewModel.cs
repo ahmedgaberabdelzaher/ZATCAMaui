@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -102,7 +102,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                     }
                 }
                 catch (Exception)

@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers;
@@ -117,7 +117,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         private void PopupClose_Clicked(object sender, EventArgs e)
         {
 
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
 
             try
             {
@@ -135,7 +135,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         private void PopupCancel_Clicked(object sender, EventArgs e)
         {
 
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
 
         }
 

@@ -2,7 +2,7 @@
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using Syncfusion.Maui.ProgressBar;
 using System.Globalization;
@@ -868,7 +868,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             }
             else
             {
-                PopupNavigation.Instance.PushAsync(new InfoPopUpPage());
+                MopupService.Instance.PushAsync(new InfoPopUpPage());
             }
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -983,7 +983,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             {
 
                 var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnQuickAction_Tapped", "Quick Actions");
-                await PopupNavigation.Instance.PushAsync(new QuickActionPopUpPageView());
+                await MopupService.Instance.PushAsync(new QuickActionPopUpPageView());
 
 
                 Instrumentation.EndCall(callTracker);
@@ -1064,7 +1064,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new LogoutPageView(AppResources.LogoutConfirmationMessage));
+                await MopupService.Instance.PushAsync(new LogoutPageView(AppResources.LogoutConfirmationMessage));
             }
             catch (Exception)
             {
@@ -1345,7 +1345,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
+                MopupService.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
             });
 
             Instrumentation.EndCall(callTracker);

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using ZATCAMAUI.Views.NewDesign.Nafat;
 
@@ -64,7 +64,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.IsLoading = true;
             viewModel.IndividualBackImg = "vat_tile_listofsignup.png";
             viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
-           await PopupNavigation.Instance.PushAsync(new NafathPopUpPage());//CR6094
+           await MopupService.Instance.PushAsync(new NafathPopUpPage());//CR6094
         }
 
         private void OnBackArrowTapped(object sender, TappedEventArgs e)

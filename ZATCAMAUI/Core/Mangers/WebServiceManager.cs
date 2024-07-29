@@ -1,7 +1,7 @@
 ﻿using AppDynamics.Agent;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Http.Headers;
@@ -6026,7 +6026,7 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     else
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
                         if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -6095,7 +6095,7 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     else
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                         ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
                         if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -6473,7 +6473,7 @@ namespace ZATCAMAUI.Core.Mangers
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
                             String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
                             return null;
                         }
                     }
@@ -6534,7 +6534,7 @@ namespace ZATCAMAUI.Core.Mangers
                             errorMessage += errorMesg.error.innererror.errordetails[1].message;
                             string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                             errorMessage = WithReplacedString;
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
                             return null;
                         }
                     }

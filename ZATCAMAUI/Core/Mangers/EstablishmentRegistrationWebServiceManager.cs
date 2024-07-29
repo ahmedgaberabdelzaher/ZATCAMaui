@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
@@ -1287,9 +1287,9 @@ namespace ZATCAMAUI.Core.Mangers
                                 if (financial.d.UpdFlg)
                                 {
                                     if (pageType.Equals("2"))
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZCRUpdateSuccess));
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZCRUpdateSuccess));
                                     else if (pageType.Equals("1"))
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZLicenseUpdateSuccess));
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZLicenseUpdateSuccess));
                                 }
                             }
                         }
@@ -1305,7 +1305,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                                 var errorMsg = errorMesgs.error.innererror.errordetails[0].message;
 
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(errorMsg));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMsg));
 
                             }
                         }

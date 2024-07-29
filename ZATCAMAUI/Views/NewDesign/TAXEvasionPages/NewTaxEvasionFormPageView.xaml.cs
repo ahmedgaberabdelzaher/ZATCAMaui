@@ -3,7 +3,7 @@
 using Maui.GoogleMaps;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel;
@@ -111,7 +111,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
         {
 
 
-            await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("SelectAttachment"));
+            await MopupService.Instance.PushAsync(new ZAKATOkCancelPopUpView("SelectAttachment"));
 
         }
 
@@ -397,15 +397,15 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                 }
                 if (TxtTIN.Text.Substring(0, 1) != "3")
                 {
-                    //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionTINValidationMessage));
+                    //  MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionTINValidationMessage));
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     // TxtTIN.Focus();
                 }
                 else if (TxtTIN.Text.Length < 10)
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionTINDigitValidationMessage));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionTINDigitValidationMessage));
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                 }
@@ -433,14 +433,14 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                     if (TVatNumber.Text.Length < 15)
                     {
 
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionVATDigitValidationMessage));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionVATDigitValidationMessage));
                         FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
                     }
                     else if (TVatNumber.Text.Substring(0, 1) != "1")
 
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionVATNumValidationMessage));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTaxEvasionVATNumValidationMessage));
                         FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
                     }
@@ -590,8 +590,8 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidMobileNoError));
+                        //MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidMobileNoError));
                         FrmNumber.HasError = true;
                         TMobNumber.Text = string.Empty;
                     }
@@ -618,8 +618,8 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                         {
                             popUp.FlowDirections = "LeftToRight";
                         }
-                        // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidMobileNoError));
+                        // MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZInvalidMobileNoError));
                         FrmNumber.HasError = true;
                         TMobNumber.Text = string.Empty;
                     }

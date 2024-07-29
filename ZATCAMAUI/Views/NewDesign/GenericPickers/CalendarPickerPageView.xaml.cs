@@ -1,7 +1,7 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Models;
@@ -193,7 +193,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
         private async void PopupClose_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
 
             if (viewModel.IsFutureDatePickerVisible == true)
             {

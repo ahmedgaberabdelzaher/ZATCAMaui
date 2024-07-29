@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.Core.Chips;
 using Syncfusion.Maui.ListView;
 using System.Collections.ObjectModel;
@@ -37,12 +37,12 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             }
             MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
                 viewModel._navigationService.GoBack();
             });
             MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse", (obj, res) =>
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
                 viewModel._navigationService.GoBack();
             });
             MessagingCenter.Subscribe<Application>(this, "BackButtonPressed", (args) =>
@@ -308,7 +308,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                     viewModel.OnRentAttachmentDeleteButtonTapped(data);
                 }
             };
-            await PopupNavigation.Instance.PushAsync(confirmPopup);
+            await MopupService.Instance.PushAsync(confirmPopup);
         }
 
         async void TapPassportDeleteGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -332,7 +332,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
                     viewModel.OnPassportAttachmentDeleteButtonTapped(data);
                 }
             };
-            await PopupNavigation.Instance.PushAsync(confirmPopup);
+            await MopupService.Instance.PushAsync(confirmPopup);
         }
 
         void SfChipGroup_SelectionChanging(object sender, SelectionChangingEventArgs e)

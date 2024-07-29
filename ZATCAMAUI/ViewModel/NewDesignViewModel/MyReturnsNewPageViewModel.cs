@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
@@ -369,7 +369,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                                     };
                                 }
-                                await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                                await MopupService.Instance.PushAsync(VisitPortalPopup);
 
                             }
                         }
@@ -404,7 +404,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 };
                             }
 
-                            await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                            await MopupService.Instance.PushAsync(VisitPortalPopup);
 
                         }
                         if (_selectedListItem.TaxType.Equals("WHTX"))
@@ -432,7 +432,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 };
                             }
 
-                            await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                            await MopupService.Instance.PushAsync(VisitPortalPopup);
 
 
                         }
@@ -441,7 +441,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         string messageTodisplay = string.Empty;
                         messageTodisplay = _selectedListItem.Msg;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messageTodisplay));
 
 
                     }
@@ -499,7 +499,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 IsLoading = false;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                             });
 
@@ -512,11 +512,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             IsLoading = false;
                             if (SelectedReturnsVAT.Stat == "E0020")
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZGotothePortalForVAT));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZGotothePortalForVAT));
                             }
                             else
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
                             }
                         });
 
@@ -530,7 +530,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -608,12 +608,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 _navigationService.GoBack();
                             }
                             else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                 _navigationService.GoBack();
                             }
                             else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
@@ -629,7 +629,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
                     PopToRootPage();
                 });
             }
@@ -637,7 +637,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     PopToRootPage();
                 });
             }
@@ -910,7 +910,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 if (PickerModel != null)
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
             catch (GAZTUnlockAccountException)
             {

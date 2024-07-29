@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage
+<Mopups:PopupPage
     x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.GAZTNewDesignShowVatInformationPopUpPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -9,14 +9,14 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <pages:PopupPage.Resources>
+    <Mopups:PopupPage.Resources>
         <ResourceDictionary>
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
         </ResourceDictionary>
-    </pages:PopupPage.Resources>
+    </Mopups:PopupPage.Resources>
     <Border
         x:Name="MainPanCakeView"
         Padding="15"
@@ -132,6 +132,6 @@
             </StackLayout>
         </Grid>
     </Border>
-</pages:PopupPage>
+</Mopups:PopupPage>
 
 

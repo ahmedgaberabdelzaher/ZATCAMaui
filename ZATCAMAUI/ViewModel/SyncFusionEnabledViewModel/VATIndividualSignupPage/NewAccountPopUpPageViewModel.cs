@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
@@ -161,7 +161,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             GoButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             });
         }
     }

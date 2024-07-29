@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Page = Microsoft.Maui.Controls.Page;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
@@ -65,7 +65,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                 newDesignPopUp.MainHeader = AppResources.Copied;
-                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
 

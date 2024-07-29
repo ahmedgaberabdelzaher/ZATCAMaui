@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -244,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                 MainThread.BeginInvokeOnMainThread(async () =>
                                                 {
                                                     AttachmentName = string.Empty;
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                                     //   await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                                     IsLoading = false;
@@ -257,7 +257,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                             MainThread.BeginInvokeOnMainThread(async () =>
                                             {
                                                 AttachmentName = string.Empty;
-                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFilesizemustbelessthan5MB));
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFilesizemustbelessthan5MB));
 
                                                 //  await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
                                                 IsLoading = false;
@@ -269,7 +269,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                         MainThread.BeginInvokeOnMainThread(async () =>
                                         {
                                             AttachmentName = string.Empty;
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                                             //   await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                             IsLoading = false;
@@ -280,7 +280,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 {
                                     MainThread.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
 
                                         //await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
                                         IsLoading = false;
@@ -294,7 +294,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 IsLoading = false;
                                 MainThread.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                     // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                 });
@@ -308,7 +308,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 AttachmentName = string.Empty;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                                 //  await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                 IsLoading = false;
@@ -320,7 +320,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         IsLoading = false;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                             //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         });
@@ -404,7 +404,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                         //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
@@ -448,7 +448,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                         //  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });

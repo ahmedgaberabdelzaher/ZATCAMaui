@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Core.Helper;
@@ -97,7 +97,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                                  //MessagingCenter.Send<UpdateEmailPopUp>(this, "redirectToLogin");
                              }
                          };
-                        await PopupNavigation.Instance.PushAsync(confirmPopup);
+                        await MopupService.Instance.PushAsync(confirmPopup);
                     }
                     else
                     {
@@ -131,7 +131,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             catch (Exception ex)
             {
                 viewModel.IsLoading = false;
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
             }
@@ -268,12 +268,12 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
         private async void CloseAllPopup()
         {
-            await PopupNavigation.Instance.PopAllAsync();
+            await MopupService.Instance.PopAllAsync();
         }
 
         async void OnBackArrowTapped(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAllAsync();
+            await MopupService.Instance.PopAllAsync();
         }
 
         protected override void OnAppearing()

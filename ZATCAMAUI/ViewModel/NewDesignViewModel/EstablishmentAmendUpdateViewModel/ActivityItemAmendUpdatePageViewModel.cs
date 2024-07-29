@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -748,7 +748,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "LicenseCountryPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException)
                 {
@@ -801,7 +801,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "LicenseIssueByPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException)
                 {
@@ -851,7 +851,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                         genericPickerModel.PickerId = "LicenseCityPicker";
 
-                        PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                        MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                     }
                     catch (GAZTUnlockAccountException)
                     {
@@ -920,7 +920,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "MainGroupPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -968,7 +968,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "SubGroupPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -1016,7 +1016,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     //genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                     genericPickerModel.PickerId = "ActivityPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -1477,7 +1477,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
                             IsLoading = false;
                         });
                     }
@@ -1808,7 +1808,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     if (errorID.Contains("896"))
                     {
-                        await PopupNavigation.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
+                        await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
                     }
                     else
                     {
@@ -1995,7 +1995,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             };
-            await PopupNavigation.Instance.PushAsync(confirmPopup);
+            await MopupService.Instance.PushAsync(confirmPopup);
         }
 
         private async Task<bool> ValidateForm()
@@ -2004,47 +2004,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             {
                 if (CRIssueCountry == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CRIssueBy))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
                     return false;
                 }
                 else if (CRIssueCity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CRNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRNumber));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CrName))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRName));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRName));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CRValidFrom))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRValidFrom));
                     return false;
                 }
                 else if (CRMainGroup == null && ActivityDetails.MainGroup == true)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
                 else if (CRSubGroup == null && ActivityDetails.SubGroup == true)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
                 else if (CRAcitivity == null && ActivityDetails.Activity == true)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;
                 }
                 else
@@ -2056,47 +2056,47 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             {
                 if (LicenseIssueCountry == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCountry));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(LicenseIssueBy))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueBy));
                     return false;
                 }
                 else if (LicenseIssueCity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAIssueCity));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(LicenseNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACLicense));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACLicense));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(ValidFrom))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateALicenseValidFrom));
                     return false;
                 }
                 else if (LicenseMainGroup == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAMainGroup));
                     return false;
                 }
                 else if (LicenseSubGroup == null && LicenseDetails.SubGroup)
                 { 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
                 else if (LicenseAcitivity == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateActivity));
                     return false;
                 }
                 else if (string.IsNullOrEmpty(LicenseName))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateLicenseName));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateLicenseName));
                     return false;
                 }
                 else

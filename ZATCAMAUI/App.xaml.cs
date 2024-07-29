@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Environment = System.Environment;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.AppConfigurations;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Enums;
@@ -833,7 +833,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                {
-                   PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
+                   MopupService.Instance.PushAsync(ActivityIndicatorView, true);
                });
             }
             catch (Exception)
@@ -1026,8 +1026,8 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    PopupNavigation.Instance.PopAsync(true);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    MopupService.Instance.PopAsync(true);
             });
         }
 

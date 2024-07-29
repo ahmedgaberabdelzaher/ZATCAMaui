@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -75,7 +75,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             });
             MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 if (arg != null)
                 {
                     string savemessage = arg.ToString();
@@ -346,7 +346,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
         private void NewAccount_Clicked(object sender, EventArgs e)
         {
             // viewModel.IsNewAccountClicked = true;
-            PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty));
+            MopupService.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty));
         }
 
         void ContinueButton_Tapped(object sender, EventArgs e)

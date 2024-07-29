@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -28,7 +28,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
 
             MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
                 viewModel._navigationService.GoBack();
             });
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
@@ -155,7 +155,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
                         viewModel.OnRentAttachmentDeleteButtonTapped(data);
                     }
                 };
-                await PopupNavigation.Instance.PushAsync(confirmPopup);
+                await MopupService.Instance.PushAsync(confirmPopup);
             }
             catch (Exception)
             {
@@ -189,7 +189,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
                         viewModel.OnPassportAttachmentDeleteButtonTapped(data);
                     }
                 };
-                await PopupNavigation.Instance.PushAsync(confirmPopup);
+                await MopupService.Instance.PushAsync(confirmPopup);
             }
             catch (Exception)
             {

@@ -1,7 +1,7 @@
 ﻿using System.Timers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.TPProfile;
@@ -157,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                                 NewMobileNumberEntryText = string.Empty;
                                 if (ch >= 48 && ch <= 57)
                                 {
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDMobileNumberMustStartWithFive));
+                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDMobileNumberMustStartWithFive));
                                 }
                             }
                         }
@@ -522,9 +522,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             else
                 popUp.FlowDirections = "LeftToRight";
 
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
 
-            // PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            // MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Models.PaymentModel;
 
@@ -76,14 +76,14 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             {
                 MessagingCenter.Send<object, string>(this, "Card_Payment", "Yes");
                 OnSelect?.Invoke("Card_Payment");
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
 
             }
             else if (selectedItem.CardLabel == AppResources.Sadad)
             {
                 MessagingCenter.Send<object, string>(this, "SADAD", "Yes");
                 OnSelect?.Invoke("SADAD");
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
             }
 
         }

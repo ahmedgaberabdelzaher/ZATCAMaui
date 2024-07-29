@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
@@ -2647,7 +2647,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 
                         };
                     }
-                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                    await MopupService.Instance.PushAsync(VisitPortalPopup);
                 }
                 catch (Exception)
                 {
@@ -2971,7 +2971,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 {
                     Pop.FlowDirections = "LeftToRight";
                 }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                MopupService.Instance.PushAsync(new AddPopPageView(Pop));
             }
         }
         public void SetCommasforAll()
@@ -3729,7 +3729,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                                 Pop.IsRed = "#e84941";
                                 Pop.IsBold = "Bold";
                                 Pop.Message = Masseges.ToString();
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                                 SelectedIndex = 2;
                                 PageSelectedItem = VatTabbledPageList[2];
                             }
@@ -4562,7 +4562,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
                     //});
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT));
 
                 }
                 string FormBundleNumber = VATDeclarationData.d.Fbnum;

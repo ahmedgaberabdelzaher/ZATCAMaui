@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models;
@@ -49,7 +49,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void Close_Tapped(object sender, EventArgs e)
         {
 
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
 
         }
 
@@ -61,7 +61,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 MessagingCenter.Send(this, "SelectedItem", dataItem.Telefto.ToString());
 
                 MessagingCenter.Send(this, "SelectedCountryCode", dataItem.Land1.ToString());
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             }
             catch (Exception)
             {

@@ -1,6 +1,6 @@
 ﻿using Maui.GoogleMaps;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport;
 
 namespace ZATCAMAUI.Controls
@@ -37,7 +37,7 @@ namespace ZATCAMAUI.Controls
         }
         void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync(true);
+            MopupService.Instance.PopAsync(true);
         }
 
         async void map_MapLongClicked(System.Object sender, MapLongClickedEventArgs e)

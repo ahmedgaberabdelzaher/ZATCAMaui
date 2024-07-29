@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Text;
@@ -1899,7 +1899,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 IsLoading = false;
 
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 _navigationService.GoBack();
 
             }
@@ -1911,7 +1911,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
 
@@ -1920,7 +1920,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
             catch (Exception)
@@ -1930,7 +1930,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
             }
@@ -2020,7 +2020,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             if (showErrorMessage)
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(messageforuserr));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(messageforuserr));
             }
             else
             {
@@ -2066,7 +2066,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             if (showErrorMesage)
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
             }
             else
             {
@@ -2206,7 +2206,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                         {
                                             IsLoading = false;
 
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                             _navigationService.GoBack();
                                         });
                                     }
@@ -2218,7 +2218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                         MainThread.BeginInvokeOnMainThread(async () =>
                                         {
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                                         });
                                     }
 
@@ -2227,7 +2227,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                     {
                                         MainThread.BeginInvokeOnMainThread(async () =>
                                         {
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                         });
                                     }
                                     catch (Exception)
@@ -2238,7 +2238,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                         MainThread.BeginInvokeOnMainThread(async () =>
                                         {
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                                         });
                                     }
@@ -2258,7 +2258,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                     FrameIDError = true;
                                     FrameDOBError = true;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("Wrong Id"));
+                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp("Wrong Id"));
 
                                 });
 
@@ -2270,7 +2270,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
                 else
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillthemandatoryfields));
                 }
             }
         }
@@ -2390,8 +2390,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopMsg.ToString()));
+                    //MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(PopMsg.ToString()));
 
                 }
             }
@@ -2760,7 +2760,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     Message = Message.Replace("An exception was raised", "");
                     OTP = string.Empty;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                 }
                 else
                 {
@@ -2802,7 +2802,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IsLoading = false;
                     IsVerifyOTPEnabled = true;
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
                 ///only for dev purpose
@@ -2911,7 +2911,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         Message.AppendLine(itemerror.message);
                     }
                     Message = Message.Replace("An exception was raised", "");
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                 }
                 else
                 {
@@ -2931,7 +2931,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IsLoading = false;
 
                     IsVerifyOTPEnabled = true;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                 });
             }

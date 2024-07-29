@@ -6,10 +6,11 @@ using System.Collections.ObjectModel;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Helper;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
 using ZATCAMAUI.Models.BaseModels;
 using Result = ZATCAMAUI.Models.EDeclerationsModel.SubmitModels.Result;
+using Mopups.Services;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -44,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                     {
 
                         AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
-                        await PopupNavigation.Instance.PushAsync(poupWindow);
+                        await MopupService.Instance.PushAsync(poupWindow);
                     }
 
                 });
@@ -163,7 +164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                 {
                     if (SubmitModel.travelerDeclaration.IsTermsChecked)
                     {
-                        await PopupNavigation.Instance.PopAsync(true);
+                        await MopupService.Instance.PopAsync(true);
                         SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.CountryCode + MobileNumber;
                         var res = await SubmitDecleration();
                         if (res)

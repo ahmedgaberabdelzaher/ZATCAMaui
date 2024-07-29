@@ -6,7 +6,7 @@ using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PanCardView.Extensions;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -1761,7 +1761,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             if (Convert.ToDateTime(x.APermitValfrDtHTb) > SingleOutletDeregistrationDate)
                             {
                                 // _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-                                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
+                                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
                                 x.APermitDeregDisplayDate = string.Empty;
                             }
                         }
@@ -1858,7 +1858,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 if (Convert.ToDateTime(x.APermitValfrDtHTb) > Convert.ToDateTime(SingleDeregistrationDate))
                                 {
                                     //_dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
+                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
 
                                     x.APermitDeregDisplayDate = string.Empty;
                                 }
@@ -2698,7 +2698,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             tempIdTypePermitSetResult = permitSetResult;
 
-            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
         public PermitSetResult tempIdTypePermitSetResult = new PermitSetResult();
@@ -2718,7 +2718,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             tempIdTypePermitSetResult = permitSetResult;
 
-            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
         public async void OnIdTypeClicked()
@@ -2735,7 +2735,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             genericPickerModel.PickerTitle = AppResources.ZZIDType;
             genericPickerModel.PickerId = "idTypePicker";
 
-            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
         #endregion
@@ -2850,7 +2850,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 await OnSaveAsDraftClicked();
             };
-            await PopupNavigation.Instance.PushAsync(popUp);
+            await MopupService.Instance.PushAsync(popUp);
 
         }
         public async void LoadReasonSet()
@@ -2986,7 +2986,7 @@ After:
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         // await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                     });
                 }
@@ -3050,7 +3050,7 @@ After:
                 genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                 genericPickerModel.PickerId = "reasonPicker";
 
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3061,7 +3061,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -3086,7 +3086,7 @@ After:
                 genericPickerModel.PickerTitle = AppResources.TinDeregistrationReason;
                 genericPickerModel.PickerId = "permitTypeReasonPicker";
 
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3097,7 +3097,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -3116,7 +3116,7 @@ After:
             genericDatePickerModel.PickerId = "PermitTypeDobPickerDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3128,7 +3128,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -3143,7 +3143,7 @@ After:
             genericDatePickerModel.PickerId = "_DOBDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3155,7 +3155,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -3199,7 +3199,7 @@ After:
             {
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                    await MopupService.Instance.PushAsync(App.ActivityIndicatorView, false);
 
 
                     string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, SelectedIdNumber, dob);
@@ -3250,7 +3250,7 @@ After:
                             FrameIDError = true;
 
                             // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
                         else
@@ -3259,7 +3259,7 @@ After:
 
 
                             //await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
                     }
@@ -3267,8 +3267,8 @@ After:
                     {
                         FrameIDError = false;
                     }
-                    if (PopupNavigation.PopupStack.Count() > 0)
-                        await PopupNavigation.PopAsync();
+                    if (MopupService.Instance.PopupStack.Count() > 0)
+                        await MopupService.Instance.PopAsync();
                 }
                 catch
                 {
@@ -3279,21 +3279,21 @@ After:
 
                         if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             FrameIDError = true;
                             //await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
                         else
                         {
                             //FrmIDNumber.HasError = false;
                             FrameIDError = false;
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             //await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
 
@@ -3326,11 +3326,11 @@ After:
 
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
 
                             //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             _navigationService.GoBack();
                         });
@@ -3339,10 +3339,10 @@ After:
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
                         });
@@ -3369,10 +3369,10 @@ After:
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             // IsLoading = false;
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
                         });
@@ -3397,10 +3397,10 @@ After:
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
                         });
@@ -3444,11 +3444,11 @@ After:
             {
                 try
                 {
-                    //if(PopupNavigation.Instance.PopupStack.Count > 1)
+                    //if(MopupService.Instance.PopupStack.Count > 1)
                     //{
-                    //    await PopupNavigation.Instance.PopAsync();
+                    //    await MopupService.Instance.PopAsync();
                     //}
-                    await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                    await MopupService.Instance.PushAsync(App.ActivityIndicatorView, false);
 
 
                     string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, SelectedIdNumber, dob);
@@ -3515,7 +3515,7 @@ After:
                             FrameIDError = true;
 
                             //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
                         else
@@ -3524,7 +3524,7 @@ After:
 
 
                             // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
                     }
@@ -3532,8 +3532,8 @@ After:
                     {
                         FrameIDError = false;
                     }
-                    if (PopupNavigation.PopupStack.Count() > 0)
-                        await PopupNavigation.PopAsync();
+                    if (MopupService.Instance.PopupStack.Count() > 0)
+                        await MopupService.Instance.PopAsync();
                 }
                 catch (Exception _ex)
                 {
@@ -3544,21 +3544,21 @@ After:
 
                         if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             FrameIDError = true;
                             //await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
                         else
                         {
                             //FrmIDNumber.HasError = false;
                             FrameIDError = false;
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
 
@@ -3592,11 +3592,11 @@ After:
 
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
 
                             //   await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             _navigationService.GoBack();
                         });
@@ -3605,10 +3605,10 @@ After:
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
                         });
@@ -3620,10 +3620,10 @@ After:
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             // IsLoading = false;
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
                         });
@@ -3635,10 +3635,10 @@ After:
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
                         });
@@ -3667,7 +3667,7 @@ After:
             {
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                    await MopupService.Instance.PushAsync(App.ActivityIndicatorView, false);
 
 
                     string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(idTypeCode, selectedPermit?.APermitIdNoTb, dob);
@@ -3720,7 +3720,7 @@ After:
                             FrameIDError = true;
 
                             //await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
                         else
@@ -3729,7 +3729,7 @@ After:
 
 
                             // await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                         }
                     }
@@ -3737,8 +3737,8 @@ After:
                     {
                         FrameIDError = false;
                     }
-                    if (PopupNavigation.PopupStack.Count() > 0)
-                        await PopupNavigation.PopAsync();
+                    if (MopupService.Instance.PopupStack.Count() > 0)
+                        await MopupService.Instance.PopAsync();
                 }
                 catch (Exception _ex)
                 {
@@ -3749,21 +3749,21 @@ After:
 
                         if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             FrameIDError = true;
                             // await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
                         else
                         {
                             //FrmIDNumber.HasError = false;
                             FrameIDError = false;
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             //  await _dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
 
                         }
 
@@ -3801,11 +3801,11 @@ After:
 
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
 
                             //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             _navigationService.GoBack();
                         });
@@ -3814,10 +3814,10 @@ After:
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             //    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
                         });
@@ -3829,10 +3829,10 @@ After:
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             // IsLoading = false;
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
                         });
@@ -3845,10 +3845,10 @@ After:
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            if (PopupNavigation.PopupStack.Count() > 0)
-                                await PopupNavigation.PopAsync();
+                            if (MopupService.Instance.PopupStack.Count() > 0)
+                                await MopupService.Instance.PopAsync();
                             // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
 
                             //_navigationService.GoBack();
                         });
@@ -3922,7 +3922,7 @@ After:
                                 FrameIDError = true;
 
                                 //await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                             }
                             else
@@ -3934,7 +3934,7 @@ After:
                                 });
 
                                 //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                             }
                         }
@@ -4001,7 +4001,7 @@ After:
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                             IsLoading = false;
                             _navigationService.GoBack();
@@ -4019,7 +4019,7 @@ After:
                 {
                     IsLoading = false;
                     //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -4032,7 +4032,7 @@ After:
                 {
                     IsLoading = false;
                     // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                 });
             }
@@ -4047,7 +4047,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                     _navigationService.GoBack();
                 });
@@ -4091,7 +4091,7 @@ After:
                                 FrameIDError = true;
 
                                 //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                             }
                             else
@@ -4103,7 +4103,7 @@ After:
                                 });
 
                                 //  await _dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
                             }
                         }
@@ -4148,7 +4148,7 @@ After:
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                             IsLoading = false;
                             _navigationService.GoBack();
@@ -4168,7 +4168,7 @@ After:
                 {
                     IsLoading = false;
                     // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -4182,7 +4182,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -4576,7 +4576,7 @@ After:
                 else
                 {
                     //    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                 }
             }
@@ -4612,34 +4612,6 @@ After:
                         }
                     case ProcessStep.Step3:
                         {
-                            try
-                            {
-                                //foreach (Attachment selectedAttachment in TinDeregistrationData.AttDetSet.Results)
-                                //{
-                                //    string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(selectedAttachment.Filename, TinDeregistrationData.CaseGuid, "", selectedAttachment.Doguid);
-                                //    if (results == "X")
-                                //    {
-                                //        foreach (TinDeregestrationAttachmentsModel attachmentsModelsTemp in AttachmentsListViewData)
-                                //        {
-                                //            //   UploadedAttachmentFileType = attachmentsModelsTemp.FieldTitle;
-                                //            if (selectedAttachment.Dotyp == attachmentsModelsTemp.DocType && attachmentsModelsTemp.AttachmentTypeList.Any(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp))
-                                //            {
-                                //                var index = attachmentsModelsTemp.AttachmentTypeList.Where(p => p.Filename == selectedAttachment.Filename && p.Dotyp == selectedAttachment.Dotyp).FirstOrDefault();
-                                //                if (index != null)
-                                //                    attachmentsModelsTemp.AttachmentTypeList.Remove(index);
-                                //            }
-                                //        }
-                                //    }
-                                //}
-
-                            }
-                            catch (Exception)
-                            {
-
-
-                                return;
-                            }
-
                             if (isSaveAsDraftCalledForAttachment == true)
                             {
                                 AttachmentsListViewData.Clear();
@@ -4681,7 +4653,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -4698,28 +4670,28 @@ After:
                     if (SelectedReason == null)
                     {
                         //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletOption == null)
                     {
                         //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletOption.OutletOptionIndex == null)
                     {
                         // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (IsDeRegistrationValid == false)
                     {
                         // await _dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -4911,7 +4883,7 @@ After:
                         else
                         {
                             //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
                         }
@@ -4928,7 +4900,7 @@ After:
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedReason.ReasonDesc) || string.IsNullOrEmpty(SelectedIdtype))
                     {
                         // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -4937,7 +4909,7 @@ After:
                         if (TINNumber == App.LoginDataRetrieved.TIN)
                         {
                             //   await _dialogService.ShowMessage(AppResources.TinDeregistrationSameNotAllow, AppResources.Alerts);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
                         }
@@ -4946,7 +4918,7 @@ After:
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype)) // If Taxpayer enter TIN Number, That will point one of the Id Type from the list
                             {
                                 // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -4956,7 +4928,7 @@ After:
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
                                 //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -4966,7 +4938,7 @@ After:
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
                                 //await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -4976,7 +4948,7 @@ After:
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(PickerDOBDateDisplay) || string.IsNullOrEmpty(FirstNameFromIdType) || string.IsNullOrEmpty(IDTypeDataModel.Name2) || string.IsNullOrEmpty(PickerDobToDisplay) || string.IsNullOrEmpty(SelectedIdtype))
                             {
                                 //    await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -4996,7 +4968,7 @@ After:
                     if (SelectedReason == null)
                     {
                         //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -5011,7 +4983,7 @@ After:
                     if (SelectedReason == null || string.IsNullOrEmpty(PickerDobToDisplay))
                     {
                         // await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -5029,8 +5001,8 @@ After:
                     outletEditIsVisible = false;
                 }
 
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAllAsync();
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAllAsync();
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -5042,7 +5014,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5059,7 +5031,7 @@ After:
                     if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SingleDeregistrationDate) || string.IsNullOrEmpty(SelectedIdtype))
                     {
                         //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -5070,7 +5042,7 @@ After:
                             if (string.IsNullOrEmpty(SelectedIdNumber))
                             {
                                 //  await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -5080,7 +5052,7 @@ After:
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
                                 //   await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -5089,7 +5061,7 @@ After:
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || DobText.IsEditable && string.IsNullOrEmpty(SelectedDob) || FirstNameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.Name1) || SurnameText.IsEditable && string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -5098,7 +5070,7 @@ After:
                         {
                             if (string.IsNullOrEmpty(SelectedIdNumber) || string.IsNullOrEmpty(SelectedDob) || string.IsNullOrEmpty(IDTypeDataModel.Name1) || string.IsNullOrEmpty(IDTypeDataModel.Name2))
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                                 return;
                             }
@@ -5116,19 +5088,19 @@ After:
                     //TODO validation for transfer/close to indiviual case missing
                     if (SelectedReason == null)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDate)) != null)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDregRsnTb)) != null)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -5138,18 +5110,18 @@ After:
 
                         if (transferrred.FirstOrDefault(x => x.APermitTransTinTb == App.LoginDataRetrieved.TIN) != null)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationSameNotAllow));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationSameNotAllow));
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitIdNoTb)) != null)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
                         }
                         else if (transferrred.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDobDate)) != null)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             return;
                         }
@@ -5160,7 +5132,7 @@ After:
                 {
                     if (SelectedReason == null || string.IsNullOrEmpty(SingleDeregistrationDate))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -5213,8 +5185,8 @@ After:
                     outletEditIsVisible = false;
                 }
 
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAllAsync();
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAllAsync();
             }
             catch (GAZTUnlockAccountException)
             {
@@ -5225,7 +5197,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5234,7 +5206,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                 });
             }
@@ -5244,7 +5216,7 @@ After:
         {
             try
             {
-                 await PopupNavigation.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc, this));
+                 await MopupService.Instance.PushAsync(new TINDeregistrationCloseIndividualOutletsPageView(SelectedReason.ReasonDesc, this));
             }
             catch (GAZTUnlockAccountException)
             {
@@ -5254,7 +5226,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5282,7 +5254,7 @@ After:
             if (!IsOutletContinueButtonEnabled)
             {
                 //     await _dialogService.ShowMessage(AppResources.ZZPleasefillallthemandatoryfields, AppResources.Alerts);
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                 return;
             }
@@ -5312,7 +5284,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5341,7 +5313,7 @@ After:
                         isMandatoryDocAttached = TinDeregistrationData.AttDetSet.Results.Any(attachedDocs => attachedDocs.Dotyp == reqAttachment.DocType);
                         if (!isMandatoryDocAttached)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                             break;
                         }
@@ -5361,7 +5333,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5382,7 +5354,7 @@ After:
                         PopulateSummaryDeclarationData();
                         if (TinDeregistrationData.ADecName == string.Empty || TinDeregistrationData.ADecDesig == string.Empty || TinDeregistrationData.ADecTelNo == string.Empty)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         }
                         else
@@ -5401,7 +5373,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5427,7 +5399,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5464,7 +5436,7 @@ After:
 
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                    await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
@@ -5475,7 +5447,7 @@ After:
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                         _navigationService.GoBack();
                     });
@@ -5490,7 +5462,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5507,13 +5479,13 @@ After:
 
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+                    await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
                 }
                 catch (InternetException ex)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                         _navigationService.GoBack();
                     });
@@ -5523,7 +5495,7 @@ After:
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -5832,7 +5804,7 @@ After:
         public async void NewAttachmentClicked()
         {
 
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             try
             {
                 foreach (TinDeregestrationAttachmentsModel tinDeregestrationAttachmentsModel in AttachmentsListViewData)
@@ -5870,7 +5842,7 @@ After:
                 }
 
                 numberOfAttachmentSentToAttachmentPopUp = attachmentsList.Count;
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(attachmentsList, WhichAttachment.TINDeregistration
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(attachmentsList, WhichAttachment.TINDeregistration
                         , TinDeregistrationData.CaseGuid, SelectedAttachment.DocType));
 
             }
@@ -5883,7 +5855,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     _navigationService.GoBack();
                 });
@@ -6120,7 +6092,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                 });
             }
@@ -6136,7 +6108,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // await _dialogService.ShowMessage(message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
                 });
             }
@@ -6168,7 +6140,7 @@ After:
                 //{
                 //    App.DisplayProgressView();
                 //});
-                await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView);
+                await MopupService.Instance.PushAsync(App.ActivityIndicatorView);
 
                 try
                 {
@@ -6472,7 +6444,7 @@ After:
                         string number = TinDeregistrationData.Fbnum;
                         string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
                         // await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
 
                         //await Task.Run(() =>
                         //{
@@ -6499,7 +6471,7 @@ After:
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                     });
                 }
@@ -6517,7 +6489,7 @@ After:
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         // await _dialogService.ShowMessage(message, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
                     });
                 }
@@ -6550,7 +6522,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //  await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                 });
             }
@@ -6568,7 +6540,7 @@ After:
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     // await _dialogService.ShowMessage(message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
                 });
             }
@@ -6579,8 +6551,8 @@ After:
             }
             finally
             {
-                if (PopupNavigation.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(true);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(true);
             }
         }
 
@@ -6594,7 +6566,7 @@ After:
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
 
@@ -6605,7 +6577,7 @@ After:
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
                     }
@@ -6615,7 +6587,7 @@ After:
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
                         }
                         break;
@@ -6626,7 +6598,7 @@ After:
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
                             isSaveAsDraftCalledForAttachment = true;
                         }
@@ -6639,7 +6611,7 @@ After:
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
                         }
                         else

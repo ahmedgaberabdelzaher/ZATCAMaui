@@ -1,7 +1,7 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Core.Mangers;
@@ -204,12 +204,12 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
         private async void CloseAllPopup()
         {
-            await PopupNavigation.Instance.PopAllAsync();
+            await MopupService.Instance.PopAllAsync();
         }
 
         async void OnBackArrowTapped(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAllAsync();
+            await MopupService.Instance.PopAllAsync();
         }
 
         protected override void OnAppearing()
@@ -282,7 +282,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(currentMobileData));
+            MopupService.Instance.PushAsync(new InternationalCodeSearchPage(currentMobileData));
         }
     }
 }

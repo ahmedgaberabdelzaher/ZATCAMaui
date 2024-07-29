@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -144,7 +144,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
 
                     //removed based on CR6100 Hyper care
-                    //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     _navigationService.GoBack();
                 });
             }
@@ -154,7 +154,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -205,7 +205,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using ZATCAMAUI.Views.NewDesign.Common;
@@ -42,7 +42,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
 
             MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 string message = arg;
                 if (message.Equals("DEACTIVATE"))
                 {
@@ -112,7 +112,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
             var selectedLv = sender as SfListView;
             selectedItem = (IbanListSetResult)selectedLv.SelectedItem;
             App.SelectedIBAN = selectedItem.Fbnum;
-            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("" + selectedItem.Bkext));
+            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("" + selectedItem.Bkext));
             if (selectedItem.VisibleUpdate != null)
             {
                 if (selectedItem.VisibleUpdate == "")
@@ -143,7 +143,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                 {
                     var listOfActionButtonsApplicable = new List<string>();
                     listOfActionButtonsApplicable.Add(textToDisplayInButton);
-                    await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(listOfActionButtonsApplicable));
+                    await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(listOfActionButtonsApplicable));
 
                 }
 

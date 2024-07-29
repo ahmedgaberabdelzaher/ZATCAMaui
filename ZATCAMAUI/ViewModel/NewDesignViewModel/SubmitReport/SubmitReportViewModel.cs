@@ -6,7 +6,7 @@ using Acr.UserDialogs;
 using GalaSoft.MvvmLight.Views;
 using Maui.GoogleMaps;
 using Microsoft.Maui.Handlers;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Controls;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.CustomControls;
@@ -217,7 +217,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(async () =>
                 {
                     UploadingPopup poupUploadingWindow = new UploadingPopup();
-                    await PopupNavigation.Instance.PushAsync(poupUploadingWindow);
+                    await MopupService.Instance.PushAsync(poupUploadingWindow);
 
                 });
             }
@@ -229,7 +229,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command<string>(async (selectedLabel) =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
                     await PickAndShow(selectedLabel, new PickOptions() { PickerTitle = "Pick Files" });
 
                 });
@@ -432,7 +432,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
                 });
 
             }
@@ -1055,7 +1055,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             if (await GetCurrentLocation())
             {
                 MapPage poupMapWindow = new MapPage();
-                await PopupNavigation.Instance.PushAsync(poupMapWindow);
+                await MopupService.Instance.PushAsync(poupMapWindow);
                 await Task.Delay(1000);
                 var zoomLevel = 10.71; // pick a value between 1 and 18
                 var latlongdeg = 360 / Math.Pow(2, zoomLevel);

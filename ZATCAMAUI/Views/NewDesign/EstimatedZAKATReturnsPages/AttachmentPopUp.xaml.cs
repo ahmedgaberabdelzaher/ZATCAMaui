@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Net;
 using ZATCAMAUI.Models;
@@ -74,7 +74,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                     AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].estimateZakatAttachment.Clear();
                 }
                 viewModel.ObjectionReason = string.Empty;
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
 
             }
             catch (Exception)
@@ -88,7 +88,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].ChangeReason = viewModel.ObjectionReason;
 
             viewModel.ObjectionReason = string.Empty;
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
 
         private async void OnAttachmentClicked(object sender, EventArgs e)
@@ -115,7 +115,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                     {
                         QuestionMark = "?";
                     }
-                    await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + QuestionMark));
+                    await MopupService.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + QuestionMark));
 
                 }
             }
@@ -192,14 +192,14 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                     if (attachment.DocUrl != null)
                     {
                         viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
 
                     }
                 }
                 else
                 {
                     await email(attachment.Doguid, attachment);
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
 
                 }
                 if (sender is ListView lv) lv.SelectedItem = null;

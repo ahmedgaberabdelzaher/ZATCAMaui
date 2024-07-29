@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -897,7 +897,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
             catch (InternetException ex)
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 await Task.Run(() =>
@@ -917,7 +917,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                 });
             }
         }
@@ -961,7 +961,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                             popUp.FlowDirections = "LeftToRight";
                         }
 
-                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                     }
                 }
                 else
@@ -995,10 +995,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         OtpFourthDigit = string.Empty;
 
 
-                        if (PopupNavigation.Instance.PopupStack.Count > 0)
-                            await PopupNavigation.Instance.PopAsync(true);
+                        if (MopupService.Instance.PopupStack.Count > 0)
+                            await MopupService.Instance.PopAsync(true);
 
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
 
@@ -1008,12 +1008,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             IsOtpAPICalled = false;
-                            if (PopupNavigation.Instance.PopupStack.Count > 0)
-                                await PopupNavigation.Instance.PopAsync(true);
+                            if (MopupService.Instance.PopupStack.Count > 0)
+                                await MopupService.Instance.PopAsync(true);
 
 
 
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
                         });
                     }
@@ -1030,7 +1030,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
                             App.HideProgressView();
 
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
 
                         });
@@ -1159,7 +1159,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 }
             }
             else
@@ -1182,7 +1182,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
 
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                         _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
                     });
 

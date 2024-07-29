@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 
 namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
@@ -70,7 +70,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             else if (_confirmationText.Equals("SelectAttachment"))
             {
-               await PopupNavigation.Instance.PopAsync();
+               await MopupService.Instance.PopAsync();
                 MessagingCenter.Send<Object, string>(this, "OnCameraClicked", "Yes");
                 return;
             }
@@ -79,7 +79,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Send<Object, string>(this, "YesPressedToAmendheReturn", "Yes");
             }
             OnSelect?.Invoke("Yes");
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
 
         }
 
@@ -87,13 +87,13 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             if (_confirmationText.Equals("SelectAttachment"))
             {
-               await PopupNavigation.Instance.PopAsync();
+               await MopupService.Instance.PopAsync();
                 MessagingCenter.Send<Object, string>(this, "OnGalleryClicked", "No");
                 return;
                 
             }
             OnSelect?.Invoke("No");
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
         }
     }
 }

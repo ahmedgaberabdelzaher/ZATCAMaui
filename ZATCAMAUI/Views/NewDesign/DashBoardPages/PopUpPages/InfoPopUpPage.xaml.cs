@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using System.Globalization;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -33,7 +33,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages
                     App.TP = null;
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                         await LogOutFromPopup();
                     });
                 }
@@ -46,7 +46,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages
                     App.TP = null;
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                         await LogOutFromPopup();
                     });
                 }

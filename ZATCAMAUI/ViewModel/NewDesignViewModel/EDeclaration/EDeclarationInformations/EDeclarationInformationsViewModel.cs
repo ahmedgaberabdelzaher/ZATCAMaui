@@ -7,7 +7,7 @@ using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.AppConfigurations;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
@@ -311,7 +311,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
             {
                 return new Command(async () =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
 
                 });
             }

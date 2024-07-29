@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ChageFillingPeriodModel;
 using ZATCAMAUI.Core.Interfaces;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 using ZATCAMAUI.Core.Exceptions;
@@ -624,7 +624,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             });
             onMoreOptionClicked = new Command(async () =>
             {
-                await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
 
             CloseClick = new Command(() =>
@@ -769,7 +769,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                             });
                         }
                         else
@@ -828,7 +828,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             newDesignPopUp.HeaderWithInfos = headerWithInfos;
             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+            await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
         }
 
         public async void VATSetReturnVoidAsync()
@@ -866,7 +866,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                                 _navigationService.GoBack();
                             });
                         }
@@ -890,7 +890,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                                     _navigationService.GoBack();
                                 });
                             }
@@ -909,7 +909,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                     WebServiceManager.ErrorMessageForVAT = string.Empty;
                                 });
@@ -1027,9 +1027,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
 
                             IDNumber = string.Empty;
                         }
@@ -1056,9 +1056,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                                 IDNumber = string.Empty;
                             }
@@ -1088,9 +1088,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
 
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else
@@ -1116,8 +1116,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                                 IDNumber = string.Empty;
                             }
@@ -1147,8 +1147,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
 
                             IDNumber = string.Empty;
                         }
@@ -1165,8 +1165,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
 
                             IDNumber = string.Empty;
                         }
@@ -1194,7 +1194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
                 {
-                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+                    await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
                 instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
                 continueString: AppResources.CRContinue,
                 isEditable: true,
@@ -1203,7 +1203,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 else
                 {
-                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+                    await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
                                     instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
                                     continueString: AppResources.CRContinue,
                                     _dialogType: InstructionsBottomPopUpViewModel.DialogType
@@ -1212,7 +1212,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             else
             {
-                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
                                    instructionString: AppResources.VFCInstructions, checkBoxString: AppResources.VFCCheckBoxDesc,
                                    continueString: AppResources.CRContinue,
                                    _dialogType: InstructionsBottomPopUpViewModel.DialogType
@@ -1223,7 +1223,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
             catch (GAZTUnlockAccountException)
             {
@@ -1243,7 +1243,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             try
             {
                 selectedPicker = PickerEnum.EffectiveDate;
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(EffectiveDatePickerModel));
+                await MopupService.Instance.PushAsync(new PickerPageView(EffectiveDatePickerModel));
             }
             catch (GAZTUnlockAccountException )
             {
@@ -1267,7 +1267,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             try
             {
                 selectedPicker = PickerEnum.IdType;
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
+                await MopupService.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
             }
             catch (GAZTUnlockAccountException)
             {
@@ -1347,14 +1347,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             try
             {
-                if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+                if (MopupService.Instance.PopupStack.Count > 0) return;
                 if (SelectedOutletOptionIndex == 0)
                 {
                     if (YearsattachmentsListViewData == null)
                     {
                         YearsattachmentsListViewData = new ObservableCollection<Attachment>();
                     }
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                  YearsattachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriod2Years, ChangeFillingResponse.d.ReturnIdz));
                 }
                 else if (SelectedOutletOptionIndex == 1)
@@ -1363,7 +1363,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     {
                         MonthsattachmentsListViewData = new ObservableCollection<Attachment>();
                     }
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                  MonthsattachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriod12Months, ChangeFillingResponse.d.ReturnIdz));
                 }
                 else
@@ -1372,7 +1372,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     {
                         OtherAttachmentsListViewData = new ObservableCollection<Attachment>();
                     }
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                  OtherAttachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriodOtherDoc, ChangeFillingResponse.d.ReturnIdz));
                 }
             }

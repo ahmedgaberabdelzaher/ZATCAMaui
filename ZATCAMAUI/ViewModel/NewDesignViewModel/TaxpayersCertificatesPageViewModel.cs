@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
@@ -299,13 +299,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (InternetException ex)
             {
                 //_dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 _navigationService.GoBack();
             }
             catch (Exception)
 
             {
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
         public void FilterCertificateOnBasisOfType()
@@ -390,7 +390,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         IsLoading = false;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                     });
                 }
             }
@@ -406,7 +406,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         IsLoading = false;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                     });
                 }
             }

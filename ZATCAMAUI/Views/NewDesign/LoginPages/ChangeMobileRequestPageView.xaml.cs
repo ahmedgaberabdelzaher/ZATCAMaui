@@ -2,7 +2,7 @@
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -144,7 +144,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
         }
         private void CountryCodeTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(viewModel.CountryCodesList));
+            MopupService.Instance.PushAsync(new InternationalCodeSearchPage(viewModel.CountryCodesList));
         }
 
         private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
@@ -187,7 +187,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                     viewModel.IsAllValidContactDataEnteredMobileNbr = false;
 
                     EntryMobileNumber.Text = string.Empty;
@@ -202,7 +202,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
             {
                 Message.AppendLine(AppResources.EnterMobileNumber);
                 popUp.Message = Message.ToString();
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
             
         }
@@ -259,7 +259,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
                     viewModel.OnRentAttachmentDeleteButtonTapped(data);
                 }
             };
-            await PopupNavigation.Instance.PushAsync(confirmPopup);
+            await MopupService.Instance.PushAsync(confirmPopup);
         }
 
         void PhoneNumberTextChanged(System.Object sender, TextChangedEventArgs e)

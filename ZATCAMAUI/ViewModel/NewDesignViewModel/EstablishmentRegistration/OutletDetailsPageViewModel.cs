@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Mangers;
@@ -626,7 +626,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                     }
                 };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                MopupService.Instance.PushAsync(poupWindow);
             });
             OnProvinanceSelectButtonClick = new Command((str) =>
             {
@@ -667,7 +667,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                         }
                     };
-                    PopupNavigation.Instance.PushAsync(poupWindow);
+                    MopupService.Instance.PushAsync(poupWindow);
                 }
             });
             OnCitySelectButtonClick = new Command((str) =>
@@ -709,7 +709,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                         }
                     };
-                    PopupNavigation.Instance.PushAsync(poupWindow);
+                    MopupService.Instance.PushAsync(poupWindow);
                 }
             });
         }
@@ -751,7 +751,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 }
 
             }
@@ -862,7 +862,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         IsLoading = false;
                         if (ex is HTTPBadRequestException)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                         }
                     }
                     finally
@@ -1062,7 +1062,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     {
                                         populateAddress(item as OutletAddress);
                                     };
-                                    await PopupNavigation.Instance.PushAsync(addressPickerPopPage);
+                                    await MopupService.Instance.PushAsync(addressPickerPopPage);
                                 }
                             }
                         }
@@ -1094,14 +1094,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (taxPayerDetails?.Nreg_ActivitySet.results?.Count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
                     return false;
                 }
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M").ToList();
                 var count = mainactivity.Count();
                 if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
                     return false;
                 }
             }
@@ -1109,103 +1109,103 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (string.IsNullOrWhiteSpace(BuildingNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddBuildingNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(FloorNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddFloorNumber));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddFloorNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(Street))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddStreet));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddStreet));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(Quarter))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddQuarter));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddQuarter));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(PostalCode))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostal));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostal));
                     return false;
                 }
                 else if (PostalCode.Length <= 1)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostalCode5));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddPostalCode5));
                     return false;
                 }
                 else if (PostalCode == "12345")
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTInValidPostalCode));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTInValidPostalCode));
                     return false;
                 }
                 else if (Country == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCountry));
                     return false;
                 }
                 else if (Provinance == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddProvinance));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddProvinance));
                     return false;
                 }
                 else if (City == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddCity));
                     return false;
                 }
                 else
                 if (string.IsNullOrWhiteSpace(BuildingNumberSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddBuildingNumber));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddBuildingNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(FloorNumberSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddFloorNumber));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddFloorNumber));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(StreetSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddStreet));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddStreet));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(QuarterSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddQuarter));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddQuarter));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(PostalCodeSame))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostal));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostal));
                     return false;
                 }
                 else if (PostalCodeSame.Length <= 1)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostalCode5));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddPostalCode5));
                     return false;
                 }
                 else if (PostalCodeSame == "12345")
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("12345 is invalid postal's postal codes"));
                     return false;
                 }
                 else if (CountrySame == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCountry));
                     return false;
                 }
                 else if (ProvinanceSame == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddProvinance));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddProvinance));
                     return false;
                 }
                 else if (CitySame == null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCity));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAddCity));
                     return false;
                 }
             }
@@ -1213,7 +1213,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (string.IsNullOrWhiteSpace(OutletName))
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletName));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOutletName));
                     return false;
                 }
             }
@@ -1256,7 +1256,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (errorID.Contains("896"))
                     {
-                        await PopupNavigation.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
+                        await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
                     }
                     else
                     {

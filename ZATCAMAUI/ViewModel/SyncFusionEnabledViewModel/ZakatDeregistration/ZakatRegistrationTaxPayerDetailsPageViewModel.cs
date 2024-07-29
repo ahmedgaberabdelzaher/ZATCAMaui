@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration;
@@ -54,29 +54,29 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     someThingWhentWrong.OnDone = () =>
                     {
                         isLoading = false;
-                        if (PopupNavigation.PopupStack.Count > 0)
-                            PopupNavigation.PopAllAsync();
+                        if (MopupService.Instance.PopupStack.Count > 0)
+                            MopupService.Instance.PopAllAsync();
                         currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                         _navigationService.GoBack();
                     };
 
-                    await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
+                    await MopupService.Instance.PushAsync(someThingWhentWrong);
                 }
-                if (PopupNavigation.PopupStack.Count > 0 && retVal)
-                    await PopupNavigation.PopAsync();
+                if (MopupService.Instance.PopupStack.Count > 0 && retVal)
+                    await MopupService.Instance.PopAsync();
 
             }
             catch (InternetException)
             {
                 //  isLoading = true;
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(true);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(true);
 
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
                 });
 
             }
@@ -95,16 +95,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
 
                 }
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(true);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(true);
 
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
             }
             catch (Exception)
             {
-                if (PopupNavigation.PopupStack.Count > 0)
-                    await PopupNavigation.PopAsync();
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync();
             }
 
         }

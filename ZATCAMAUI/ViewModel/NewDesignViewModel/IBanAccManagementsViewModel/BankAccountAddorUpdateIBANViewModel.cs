@@ -1,6 +1,6 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
@@ -574,7 +574,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
         public async Task AddAttachmentTestOne()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             if (IBANBankListViewDataOne == null)
             {
                 IBANBankListViewDataOne = new ObservableCollection<Attachment>();
@@ -583,7 +583,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             try
             {
                 SelectedAttachmentNumber = (int)WhichAttachment.IBANBankAccountOne;
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                      IBANBankListViewDataOne.ToList(),
                      WhichAttachment.IBANBankAccountOne, IBANAccountDataFormGuid.d.FormGuid
                     ));
@@ -607,7 +607,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
         }
         public async Task AddAttachmentTestTwo()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             if (IBANBankListViewDataTwo == null)
             {
                 IBANBankListViewDataTwo = new ObservableCollection<Attachment>();
@@ -616,7 +616,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             try
             {
                 SelectedAttachmentNumber = (int)WhichAttachment.IBANBankAccountTwo;
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                      IBANBankListViewDataTwo.ToList(),
                     WhichAttachment.IBANBankAccountTwo, IBANAccountDataFormGuid.d.FormGuid
                     ));
@@ -821,7 +821,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
 
                     setIDTypePickerModel();
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
                 }
                 else if (pickerID == 2)
                 {
@@ -832,7 +832,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                         else
                         {
                             setIDNumberPickerModel();
-                            await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                            await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
                         }
 
                     }
@@ -846,7 +846,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
 
                     setBankNamePickerModel();
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
                 }
 
 
@@ -914,7 +914,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             {
                                 _navigationService.GoBack();
                             };
-                            await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                            await MopupService.Instance.PushAsync(somewarningpopup);
                         }
                         else if (IBANPostResponse.d.Action.Equals("U"))
                         {
@@ -926,7 +926,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             {
                                 _navigationService.GoBack();
                             };
-                            await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                            await MopupService.Instance.PushAsync(somewarningpopup);
                         }
 
                     }
@@ -940,7 +940,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                         {
                             _navigationService.GoBack();
                         };
-                        await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                        await MopupService.Instance.PushAsync(somewarningpopup);
                     }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
@@ -977,8 +977,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
+                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselecttermsandconditions));
             }
 
 
@@ -1018,53 +1018,53 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             {
                 if (AccountOwnerName.Equals(""))
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertName));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertName));
 
                     return;
                 }
                 if (AccountOwnerName.Contains("."))
                 {
                     IsBorderColorRed = Colors.Red;
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
 
                     return;
                 }
                 if (!IBANAccountData.d.AutoPopFg && !Regex.IsMatch(AccountOwnerName, @"^[a-zA-Z]+$"))
                 {
                     IsBorderColorRed = Colors.Red;
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields));
 
                     return;
                 }
                 if (SelectedIDType.Equals(""))
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDType));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDType));
 
                     return;
                 }
                 if (SelectedIDNumber.Equals(""))
                 {
-                    //PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDNumber));
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    //MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDNumber));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                     return;
                 }
                 if (IBANValue.Equals(""))
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANRequired));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANRequired));
 
                     return;
                 }
 
                 if (!isIBanValid)
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
 
                     return;
                 }
                 if (SelectedBankName.Equals(""))
                 {
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanSelectBank));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanSelectBank));
 
                     return;
                 }
@@ -1072,7 +1072,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
                     if (selectedOtherBankName.Equals(""))
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                         return;
                     }
                 }
@@ -1080,7 +1080,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (string.IsNullOrEmpty(SelectedBankName) || string.IsNullOrEmpty(SelectedIDNumber) || string.IsNullOrEmpty(SelectedIDType) || string.IsNullOrEmpty(AccountOwnerName) || string.IsNullOrEmpty(IBANValue))
                 {
 
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                     return;
                 }
                 /*else
@@ -1089,7 +1089,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (IBANValue.Length < 24)
                 {
 
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDIBANValidationforLenght));
 
                     return;
 
@@ -1098,12 +1098,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
                     if (IBANBankListViewDataOne.Count != 1)
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBANAttachmentErrorMsg));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBANAttachmentErrorMsg));
                         return;
                     }
                     if (IBANBankListViewDataTwo.Count != 1)
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBANAttachmentErrorMsg));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBANAttachmentErrorMsg));
                         return;
                     }
                 }

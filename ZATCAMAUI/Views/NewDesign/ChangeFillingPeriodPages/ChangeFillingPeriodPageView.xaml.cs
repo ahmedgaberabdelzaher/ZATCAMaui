@@ -1,5 +1,5 @@
 ﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Models;
@@ -65,7 +65,7 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             getNoCommand();
             MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 if (arg != null)
                 {
                     string message = arg;
@@ -194,12 +194,12 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                     {
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                             viewModel.VATSetReturnVoidAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                     }
                 });
@@ -219,11 +219,11 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
                     {
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                     }
                 });

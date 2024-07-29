@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Text;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
@@ -157,7 +157,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                     frmMobile.HasError = true;
                     viewModel.MobileNumber = string.Empty;
                 }
@@ -170,7 +170,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             {
                 Message.Append(AppResources.EnterMobileNumber);
                 popUp.Message = Message.ToString();
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
         }
     }

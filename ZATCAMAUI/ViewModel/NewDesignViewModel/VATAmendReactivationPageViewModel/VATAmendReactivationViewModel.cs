@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -2840,13 +2840,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                             {
                                 string number = response.d.Fbnumz;
                                 string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                                 _navigationService.GoBack();
                             }
                             if (response.d.Operationz.Equals("05"))
                             {
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                                 if (IsAddAdditionalInfoChecked)
                                 {
                                     IsAddAdditionalInfoChecked = true;
@@ -2875,7 +2875,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
                 return response;
             }
@@ -3385,7 +3385,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                                 _navigationService.GoBack();
                             });
                         }
@@ -3399,7 +3399,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
@@ -3416,7 +3416,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
             }
@@ -3430,7 +3430,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                 });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -3540,7 +3540,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
 
         public async Task getVatEligibleDate(string vatEligibleStartDate)
         {
-            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("we can proceed now"));
+            //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("we can proceed now"));
 
             // throw new NotImplementedException();
 
@@ -3556,7 +3556,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (vATcommencementData.d.ErrorFg == "X")
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
                     IsLoading = false;
                 }
                 else

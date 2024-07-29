@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
@@ -56,7 +56,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             viewModel?.OnAppearing();
             MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             });
         }
         protected override void OnDisappearing()
@@ -130,7 +130,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
                 if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 0 && viewModel.ListOutlets.Exists(x => x.Actcat == "M"))
                 {
-                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.SelectOutletTypeError, string.Empty));
+                    await MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, AppResources.SelectOutletTypeError, string.Empty));
                     return;
                 }
 

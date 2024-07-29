@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.AccountStatements;
@@ -99,7 +99,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             genericDatePickerModel.PickerId = "StartDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
             }
             catch (GAZTUnlockAccountException)
             {
@@ -109,7 +109,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     viewModel._navigationService.GoBack();
                 });
             }
@@ -124,7 +124,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             genericDatePickerModel.PickerId = "EndDateTypePicker";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
             }
             catch (GAZTUnlockAccountException)
             {
@@ -134,7 +134,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     viewModel._navigationService.GoBack();
                 });
             }

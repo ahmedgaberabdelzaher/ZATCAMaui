@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Services;
+﻿using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;
@@ -308,7 +308,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                             else if (data == "navigateToUnlockAccountPage")
                             {
                                 hybridWebView.Opacity = 0;
-                                await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
+                                await MopupService.Instance.PushAsync(new UnlockAccountTINPageView());
                             }
 
                             else if (data == "navigateToVATIndividualSignupPage")
