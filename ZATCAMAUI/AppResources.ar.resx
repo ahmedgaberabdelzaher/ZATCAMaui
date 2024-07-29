@@ -10928,7 +10928,7 @@ info@zatca.gov.sa</value>
   </data>
   <data name="EnterCaptchaMsg" xml:space="preserve">
     <value>الرجاء إدخال رمز التحقق</value>
-  </data>
+  </data> 
   <!-- END of Captcha Resources-->
 
 </root>

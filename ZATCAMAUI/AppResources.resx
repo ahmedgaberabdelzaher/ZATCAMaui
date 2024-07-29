@@ -11021,5 +11021,4 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <value>Please enter captcha code.</value>
   </data>
   <!-- END of Captcha Resources-->
-
 </root>
