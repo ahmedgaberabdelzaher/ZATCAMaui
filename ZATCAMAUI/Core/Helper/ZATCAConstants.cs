@@ -77,12 +77,6 @@ namespace ZATCAMAUI.Core.Helper
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
         //public static string CaptchaBaseUrl = UatBaseUrlForAuthentication;
 
-        //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = ProdDomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-        //public static string CaptchaBaseUrl = ProdBaseUrlForAuthentication;
-
         //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = PreprodDomainForCookies;
