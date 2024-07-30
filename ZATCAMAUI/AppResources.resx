@@ -11016,7 +11016,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
       <!--Captcha Resources-->
   <data name="CaptchaCode" xml:space="preserve">
     <value>Captcha Code</value>
-  </data>
+  </data> 
   <data name="EnterCaptchaMsg" xml:space="preserve">
     <value>Please enter captcha code.</value>
   </data>
