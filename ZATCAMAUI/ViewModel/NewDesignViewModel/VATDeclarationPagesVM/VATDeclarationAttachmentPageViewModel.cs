@@ -7,7 +7,7 @@ using System.Globalization;
 using System.IO;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Mangers;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
@@ -313,48 +313,48 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                                                     else
                                                     {
                                                         AttachmentName = string.Empty;
-                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                                                     }
                                                 }
                                                 else
                                                 {
                                                     AttachmentName = string.Empty;
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
 
                                                 }
                                             }
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
 
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
 
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                             }
                         }
@@ -362,7 +362,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                     else
                     {
                         AttachmentName = string.Empty;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
 
                     }
                 }
@@ -370,7 +370,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     });
                 }

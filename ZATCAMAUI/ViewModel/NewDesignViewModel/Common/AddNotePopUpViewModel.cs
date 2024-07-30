@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 {
@@ -69,13 +69,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             {
                 NoteText = string.Empty;
                 MessagingCenter.Send<object, string>(this, "ClearNoteForVATDeclaration", "ClearNoteForVATDeclaration");
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             });
             OnAddButtonClicked = new Command(() =>
             {
 
                 MessagingCenter.Send<object, string>(this, "AddNoteForVATDeclaration", "AddNoteForVATDeclaration");
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             });
         }
         #endregion

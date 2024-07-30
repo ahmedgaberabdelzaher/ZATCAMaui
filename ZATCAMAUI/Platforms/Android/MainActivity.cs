@@ -13,7 +13,7 @@ using Java.Lang;
 using MediaManager;
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Exception = System.Exception;
 using Instrumentation = AppDynamics.Agent.Instrumentation;
 
@@ -209,9 +209,9 @@ public class MainActivity : MauiAppCompatActivity
 
     public override async void OnBackPressed()
     {
-        if (RGPopup.Maui.Droid.Popup.SendBackPressed(base.OnBackPressed))
+        if (MopupService.Instance.PopupStack.Count > 0)
         {
-            await PopupNavigation.Instance.PopAsync(true);
+            await MopupService.Instance.PopAsync(true);
         }
         else
         {

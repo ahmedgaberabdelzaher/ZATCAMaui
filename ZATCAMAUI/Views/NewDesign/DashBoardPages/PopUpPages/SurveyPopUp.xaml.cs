@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Pages;
+﻿using Mopups.Pages;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages

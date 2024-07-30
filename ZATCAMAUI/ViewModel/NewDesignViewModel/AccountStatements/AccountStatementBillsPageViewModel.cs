@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
@@ -679,7 +679,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                         _navigationService.GoBack();
                     });
                     IsLoading = false;
@@ -690,7 +690,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
                 IsLoading = false;
@@ -1039,23 +1039,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     });
                     if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
 
                         return;
                     }
                     else if (string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount) || !string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
                         return;
                     }
                     else if (!string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) || string.IsNullOrEmpty(TxFromDate) && !string.IsNullOrEmpty(TxToDate))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTransactionDate));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTransactionDate));
                         return;
                     }
                     else if (!string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) || string.IsNullOrEmpty(TPFromDate) && !string.IsNullOrEmpty(TPToDate))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTaxPeriod));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsTaxPeriod));
                         return;
                     }
                     isFromFilter = false;
@@ -1274,7 +1274,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             try
             {
                 if (PickerModel != null)
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
             catch (GAZTUnlockAccountException)
             {
@@ -1371,7 +1371,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                 {
 
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AcFilterEmptyState));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AcFilterEmptyState));
 
                 }
                 else

@@ -45,6 +45,8 @@
         public static string XZATCAClientSecretProd = "50393c1c3eda9bb35a6ea052c6954c79";
         public const string XZATCAClientIdTest = "a867a41eeccbd956b7f279b50d8535a5";
         public const string XZATCAClientSecretTest = "c9487460cd7dd8bc0f16ede707f4dad3";
+        public const string XZATCAClientIdQA = "f5ced263efb90b1a770988b3edd3c28c";
+        public const string XZATCAClientSecretQA = "54c649e91c60cfb199365765fc82f537";
         public static string Target_Environment = "";
         public static string ExciseTaxUrl = "https://eservices.zatca.gov.sa/sites/sc/ar/app-view/Pages/Disclaimer.aspx";
         public static string CustomDEVBaseUrl = "http://10.112.34.26:8024/";
@@ -59,11 +61,11 @@
        public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
 
 
-        //public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/"; Deprecated
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";
         public static string DATAPowerProdCZATCABaseUrl = "https://api.zatca.gov.sa/integration/third-party/";
+        public static string DATAPowerQAZATCABaseUrl = "https://test-api.zatca.gov.sa/qa/third-party/";////https://test-api.zatca.gov.sa/qa/third-party/v1/customs/shipment-tracking
+
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
-        // public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/IamExt/_iam/Iaminit.aspx?APPID=New-Mobile";
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
 
         public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
@@ -156,6 +158,25 @@
                     FasahBaseUrl = FasahBaseUrlProd;
                     ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewProdBaseURL;
                     break;
+                case "QA":
+                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    App.VatBaseUrl = VatSTGBaseUrl;
+                    App.VatCustom = VatCustomSTGURL;
+                    ZATCABaseURL = DATAPowerQAZATCABaseUrl;
+                    IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    SurveyID = SurveyIDStg;
+                    CollectorId = CollectorIdStg;
+                    SurveyToken = SurveyTokenStg;
+                    Q1ID = Q1IDStg;
+                    Q2ID = Q2IDStg;
+                    Q3ID = Q3IDStg;
+                    Q1AnsID = Q1AnsIDStg;
+                    Q2AnsID = Q2AnsIDStg;
+                    Q3AnsID = Q3AnsIDStg;
+                    IAMRegistration = IAMRegistraionStG;
+                    FasahBaseUrl = FasahBaseUrlStG;
+                    ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewStgBaseURL;
+                    break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
@@ -189,6 +210,9 @@
                 case "Prod":
                     key = XZATCAClientIdProd;
                     break;
+                case "QA":
+                    key = XZATCAClientIdQA;
+                    break;
                 default:
                     key = XZATCAClientIdTest;
                     break;
@@ -205,6 +229,9 @@
                     break;
                 case "Prod":
                     key = XZATCAClientSecretProd;
+                    break;
+                case "QA":
+                    key = XZATCAClientSecretQA;
                     break;
                 default:
                     key = XZATCAClientSecretTest;

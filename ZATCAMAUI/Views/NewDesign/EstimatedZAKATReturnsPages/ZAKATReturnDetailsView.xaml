@@ -423,6 +423,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="TotalVATSalesNew"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}">
@@ -467,6 +468,7 @@
 
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}" />
@@ -508,6 +510,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslE}" />
 
@@ -681,6 +684,7 @@
                                                         x:Name="AverageNumberOfLabourNew"
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding LabnoI}"
@@ -724,6 +728,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
@@ -772,6 +777,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         HeightRequest="48"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource InputTableEntryLayoutStyle}"
                                                         Text="{Binding LabnoE}" />
 
@@ -857,6 +863,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
@@ -946,6 +953,7 @@
                                                         x:Name="ImportValueNew"
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ImpvalI}"
@@ -990,6 +998,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
@@ -1041,6 +1050,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ImpvalE}" />
 
@@ -1125,6 +1135,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
@@ -1205,6 +1216,7 @@
                                                         x:Name="SalesFromPointOfSalesNew"
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}"
@@ -1247,6 +1259,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
@@ -1299,6 +1312,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}" />
@@ -1379,6 +1393,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
@@ -1459,6 +1474,7 @@
                                                         x:Name="ContractFromETIMADSystemNew"
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding EtimadI}"
@@ -1501,6 +1517,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
@@ -1552,6 +1569,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding EtimadI}" />
 
@@ -1635,6 +1653,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
@@ -1705,6 +1724,7 @@
                                                         x:Name="ExportValueNew"
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}"
@@ -1748,6 +1768,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
@@ -1799,6 +1820,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}">
@@ -1883,6 +1905,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
@@ -1967,6 +1990,7 @@
                                                         x:Name="PurchaseValueNew"
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PramtI}"
@@ -2013,6 +2037,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
@@ -2066,6 +2091,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PramtE}" />
 
@@ -2142,6 +2168,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
@@ -2229,6 +2256,7 @@
                                                         x:Name="RealEstateValueNew"
                                                         Focused="RealEstateValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding RestI}"
@@ -2275,6 +2303,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         Focused="RealEstateValueInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
@@ -2328,6 +2357,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding RestE}" />
 
@@ -2450,6 +2480,7 @@
                                                         x:Name="CapitalAmounNew"
                                                         Focused="CapitalAmountInputFocused"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Keyboard="Numeric"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding Cpamt}"
@@ -2499,6 +2530,7 @@
                                                     Style="{StaticResource TextInputLayout}">
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding Cpamt}" />
 

@@ -143,13 +143,13 @@
                                         FontSize="Medium"
                                         HorizontalOptions="FillAndExpand"
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Keyboard="Telephone"
                                         PlaceholderColor="Gray"
                                         Text="{Binding TMobNumber}"
                                         TextColor="{StaticResource PrimaryColor}" />
                                 </inputLayout:SfTextInputLayout>
 
-                                <!--<Label Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource CaptionLabelGrey}"/>-->
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -166,6 +166,7 @@
                                     <Editor
                                         AutoSize="TextChanges"
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Text="{Binding RLocation}" />
 
                                     <inputLayout:SfTextInputLayout.TrailingView>
@@ -635,6 +636,7 @@
                                         <custom:GAZTBorderlessEntry
                                             x:Name="Attachment_Frm"
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Style="{StaticResource EntryHeight48}"
                                             Text="" />
                                     </inputLayout:SfTextInputLayout>
@@ -664,6 +666,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="Attachment_Frm"
                                                         IsReadOnly="True"
+                                                        InputTransparent="True"
                                                         Style="{StaticResource EntryHeight48}"
                                                         Text="{Binding FileNameWithExtension}" />
 
@@ -1031,6 +1034,7 @@
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="Attachment_Frm"
                                                                     IsReadOnly="True"
+                                                                    InputTransparent="True"
                                                                     Style="{StaticResource EntryHeight48}"
                                                                     Text="{Binding FileNameWithExtension}" />
                                                             </inputLayout:SfTextInputLayout>

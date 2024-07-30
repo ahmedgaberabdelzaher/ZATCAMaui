@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using Syncfusion.Maui.TabView;
 using System.Globalization;
@@ -1248,7 +1248,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     popUp.FlowDirections = "LeftToRight";
                 }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             }
             catch (Exception)
             {
@@ -1269,7 +1269,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnPrivateHealthcareAmountClicked(object sender, EventArgs e)
         {
@@ -1287,7 +1287,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnPrivateHealthcareAdjustmentClicked(object sender, EventArgs e)
         {
@@ -1305,7 +1305,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnZerorateddomesticsalesAmountClicked(object sender, EventArgs e)
         {
@@ -1330,7 +1330,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnZerorateddomesticsalesAdjustmentClicked(object sender, EventArgs e)
         {
@@ -1346,7 +1346,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnExportsAmountClicked(object sender, EventArgs e)
         {
@@ -1371,7 +1371,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnExportsAdjustmentClicked(object sender, EventArgs e)
         {
@@ -1387,7 +1387,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnExemptAdjustmentClicked(object sender, EventArgs e)
         {
@@ -1403,7 +1403,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnStandardrateddomesticpurchasesAmountClicked(object sender, EventArgs e)
         {
@@ -1427,7 +1427,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatImportsVatPaidatcustomsAmountClicked(object sender, EventArgs e)
         {
@@ -1452,7 +1452,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatImportsVatPaidatcustomsAdjustmentClicked(object sender, EventArgs e)
         {
@@ -1468,7 +1468,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatZeroRatedPurchasesAmountClicked(object sender, EventArgs e)
         {
@@ -1493,7 +1493,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatExemptPurchasesAmountClicked(object sender, EventArgs e)
         {
@@ -1518,7 +1518,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatExemptPurchasesAdjustmentClicked(object sender, EventArgs e)
         {
@@ -1534,7 +1534,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatcreditcarriedforwardClicked(object sender, EventArgs e)
         {
@@ -1550,7 +1550,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatNetdueClicked(object sender, EventArgs e)
         {
@@ -1566,7 +1566,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnExemptAmountClicked(object sender, EventArgs e)
         {
@@ -1591,7 +1591,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnStandardrateddomesticpurchasesAdjustmentClicked(object sender, EventArgs e)
         {
@@ -1607,7 +1607,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatImportsSubjectToVatAccountedAmountClickedNew(object sender, EventArgs e)
         {
@@ -1632,7 +1632,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatImportsSubjectToVatAccountedAdjustmentClickedNew(object sender, EventArgs e)
         {
@@ -1648,7 +1648,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatImportsSubjectToVatAccountedVatAmountClickedNew(object sender, EventArgs e)
         {
@@ -1663,7 +1663,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatZeroRatedPurchasesAdjustmentClickedNew(object sender, EventArgs e)
         {
@@ -1679,7 +1679,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnVatcreditcarriedforwardFromPreviousPeriodClicked(object sender, EventArgs e)
         {
@@ -1699,7 +1699,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         public bool CheckMandetoryFields()
         {
@@ -2601,7 +2601,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         {
                             Pop.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                     else
                     {
@@ -2621,7 +2621,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -2709,7 +2709,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                         else
                         {
@@ -2729,7 +2729,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 {
                                     Pop.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                     }
@@ -2867,7 +2867,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                     else
@@ -2888,7 +2888,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3016,7 +3016,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 {
                                     Pop.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                         else
@@ -3037,7 +3037,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 {
                                     Pop.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                     }
@@ -3178,7 +3178,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 {
                                     Pop.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                     }
@@ -3202,7 +3202,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 {
                                     Pop.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                                MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                             }
                         }
                     }
@@ -3235,7 +3235,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3323,7 +3323,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     {
                         Pop.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                    MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                 }
             }
         }
@@ -3351,7 +3351,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3442,7 +3442,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3533,7 +3533,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3624,7 +3624,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3715,7 +3715,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -3745,7 +3745,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         {
                             Pop.FlowDirections = "LeftToRight";
                         }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                        MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                     }
                 }
             }
@@ -3773,7 +3773,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 Pop.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
+                            MopupService.Instance.PushAsync(new AddPopPageView(Pop));
                         }
                     }
                 }
@@ -4857,7 +4857,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
                     };
                 }
-                PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                MopupService.Instance.PushAsync(VisitPortalPopup);
             }
             catch (Exception)
             {
@@ -5053,7 +5053,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     popUp.FlowDirections = "LeftToRight";
                 }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             }
             catch (Exception)
             {
@@ -5075,7 +5075,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnStandardRatedSalesAmount5Clicked(object sender, EventArgs e)
@@ -5107,7 +5107,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     popUp.FlowDirections = "LeftToRight";
                 }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             }
             catch (Exception)
             {
@@ -5134,7 +5134,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     popUp.FlowDirections = "LeftToRight";
                 }
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
             }
             catch (Exception)
             {
@@ -5165,7 +5165,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnStandardrateddomesticpurchasesAdjustment15Clicked(object sender, EventArgs e)
@@ -5182,7 +5182,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnStandardrateddomesticpurchasesAmount5Clicked(object sender, EventArgs e)
@@ -5208,7 +5208,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnStandardrateddomesticpurchasesAdjustment5Clicked(object sender, EventArgs e)
@@ -5225,7 +5225,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsVatPaidatcustomsAdjustment15Clicked(object sender, EventArgs e)
@@ -5241,7 +5241,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsVatPaidatcustomsAmount15Clicked(object sender, EventArgs e)
@@ -5267,7 +5267,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsSubjectToVatAccountedAmount15ClickedNew(object sender, EventArgs e)
@@ -5293,7 +5293,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsSubjectToVatAccountedAdjustment15ClickedNew(object sender, EventArgs e)
@@ -5310,7 +5310,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsSubjectToVatAccountedVatAmount15ClickedNew(object sender, EventArgs e)
@@ -5327,7 +5327,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsSubjectToVatAccountedAmount5ClickedNew(object sender, EventArgs e)
@@ -5353,7 +5353,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsSubjectToVatAccountedAdjustment5ClickedNew(object sender, EventArgs e)
@@ -5370,7 +5370,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsSubjectToVatAccountedVatAmount5ClickedNew(object sender, EventArgs e)
@@ -5387,7 +5387,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsVatPaidatcustomsAmount5Clicked(object sender, EventArgs e)
@@ -5413,7 +5413,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnVatImportsVatPaidatcustomsAdjustment5Clicked(object sender, EventArgs e)
@@ -5430,7 +5430,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void chkRefundDeclaration_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {

@@ -1,7 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using JWT;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
@@ -461,7 +461,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 return new Command<string>(async (selectedLabel) =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
 
                 });
             }

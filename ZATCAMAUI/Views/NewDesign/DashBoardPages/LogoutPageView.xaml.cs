@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 {
@@ -25,7 +25,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             MessagingCenter.Send<Object, string>(this, "YesPressedToLogout", "Yes");
             OnSelect?.Invoke("Yes");
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
 
         }
 
@@ -33,7 +33,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             MessagingCenter.Send<Object, string>(this, "NoPressedToLogout", "No");
             OnSelect?.Invoke("No");
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
 
         }
         

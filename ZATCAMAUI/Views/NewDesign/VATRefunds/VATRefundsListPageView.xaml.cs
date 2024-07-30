@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Models.VATRefunds;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds;
@@ -115,7 +115,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             try
             {
                 //await viewModel.ReloadData();
-                await PopupNavigation.Instance.PushAsync(new VATRefundsInstructionsPageView());
+                await MopupService.Instance.PushAsync(new VATRefundsInstructionsPageView());
 
             }
             catch (Exception)

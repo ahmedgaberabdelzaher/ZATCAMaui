@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models.VATRefunds;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds;
@@ -74,7 +74,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                 }
                 MessagingCenter.Subscribe<YesNoAlertPopupView, bool>(this, "YesNoAlertPopupResponse", (obj, res) =>
                 {
-                    PopupNavigation.Instance.PopAsync();
+                    MopupService.Instance.PopAsync();
                     if (res)
                     {
                         try
@@ -97,7 +97,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                     }
                     else
                         isTandCChecked = false;
-                    PopupNavigation.Instance.PopAsync();
+                    MopupService.Instance.PopAsync();
                 });
             }
             catch (GAZTErrorException ex)
@@ -179,7 +179,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
                 YesButtonText = AppResources.VATRefundRequestConfirmSubmitButtonText;
             else
                 YesButtonText = AppResources.AcceptButton;
-            PopupNavigation.Instance.PushAsync(new YesNoAlertPopupView(YesButtonText, AppResources.ZZCancel, AppResources.VATRefundReturnSubmitConfirmation));
+            MopupService.Instance.PushAsync(new YesNoAlertPopupView(YesButtonText, AppResources.ZZCancel, AppResources.VATRefundReturnSubmitConfirmation));
         }
 
         public async void VoidButton_Tapped(object sender, EventArgs e)
@@ -315,7 +315,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
             {
                 viewModel.CBTermsAndConditionsChecked = false;
                 isTandCChecked = false;
-                PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundSummaryTermsandConditions, AppResources.ZVatRefundTermsAndConditions));
+                MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.AcceptButton, AppResources.VATRefundSummaryTermsandConditions, AppResources.ZVatRefundTermsAndConditions));
             }
             else if (isTandCChecked && !viewModel.CBTermsAndConditionsChecked)
                 isTandCChecked = false;
@@ -323,7 +323,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATRefunds
 
         private void TermsAndConditions_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundSummaryTermsandConditions, AppResources.ZVatRefundTermsAndConditions));
+            MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZDone, AppResources.VATRefundSummaryTermsandConditions, AppResources.ZVatRefundTermsAndConditions));
         }
 
         void btnConfirmSummary_Clicked(object sender, EventArgs e)

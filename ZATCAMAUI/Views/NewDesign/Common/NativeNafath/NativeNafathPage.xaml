@@ -20,7 +20,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="10,15" ColumnDefinitions="*,2*,*">
+            <Grid Padding="10,15" ColumnDefinitions="*,4*,*">
 
                 <StackLayout>
 
@@ -77,14 +77,14 @@
                             <!--  NafathLoginSubHeader Label  -->
                             <Label
                                 FontFamily="{StaticResource SomarBold}"
-                                FontSize="24"
+                                FontSize="18"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.NafathLoginSubHeader}"
                                 TextColor="{StaticResource Primary}" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
-                                Margin="0,0,0,10"
+                                Margin="0,10"
                                 BackgroundColor="{StaticResource NeutralLightGrey}"
                                 HeightRequest="2" />
 

@@ -69,6 +69,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         bool isExpressShipment;
         public bool IsExpressShipment { get { return isExpressShipment; } set { isExpressShipment = value; RaisePropertyChanged(); } }
 
+        bool hasExciseTax;
+        public bool HasExciseTax { get { return hasExciseTax; } set { hasExciseTax = value; RaisePropertyChanged(); } }
+
+        string shipmentImporterYear;
+        public string ShipmentImporterYear { get { return shipmentImporterYear; } set { shipmentImporterYear = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<string> yearsList = new ObservableCollection<string>();
+        public ObservableCollection<string> YearsList { get { return yearsList; } set { yearsList = value; RaisePropertyChanged(); } }
 
         #endregion Properties
 
@@ -318,6 +326,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                             HeaderTitle = AppResources.TrainFreight;
                         }
 
+                        else if (HeaderTitle == AppResources.ImporterYear)
+                        {
+                            ShipmentImporterYear = e.Name;
+                            HeaderTitle = AppResources.ExpressShipping;
+                        }
+
                         IsShowBottomSheet = false;
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
@@ -379,6 +393,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 });
             }
         }
+
+        public ICommand OpenYearsCommand
+        {
+            get
+            {
+                return new Command( _ =>
+                {
+                    try
+                    {
+
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ImporterYear;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+
+                    }
+                    catch (Exception)
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+            }
+        }
         #endregion Commands
 
         #region Methods
@@ -416,6 +453,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
 
         }
 
+        private void GetYears()
+        {
+            UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
+
+            for (int i = hijriCalendar.GetYear(DateTime.Today); i >=  1349 ; i--)
+            {
+                BottomSheetList.Add(new BottomSheetModel()
+                {
+                    Name = i.ToString()
+                });
+
+            }
+        }
+
         private void FillDataFromAPI(Tuple<Models.BaseModels.DATAPowerBaseResponse<TrackShipmentModel>, bool, string> result)
         {
             if (result?.Item1?.header?.status.code == "I000000")
@@ -428,6 +479,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                     TrackShipmentResponse.others = Math.Round(TrackShipmentResponse.others, 2);
                     TrackShipmentResponse.CIF = Math.Round(TrackShipmentResponse.CIF, 2);
                     TrackShipmentResponse.totalFees = Math.Round(TrackShipmentResponse.totalFees, 2);
+                    HasExciseTax = TrackShipmentResponse.excisetax == 0 ? false : true;
 
                     foreach (var item in TrackShipmentResponse?.activities)
                     {
@@ -450,7 +502,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                             // Draw start circle for first item only
                             if (trackShipmentResponse.activities.Last() == item)
                             {
-                                status.StatusImage = "startCircle.png";
+                                status.StatusImage = "fillCircle.png";
                                 status.HasVerticalLine = false;
                                 ShipmentStatusList?.Add(status);
                                 continue;
@@ -497,14 +549,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 if (DrawShipmentTrack.IsDeclarationSelected)
                 {
                     DrawShipmentTrack.HasDeclarationNumber = true;
+                    DrawShipmentTrack.HasImportYear = true;
                     DrawShipmentTrack.HasBillNumber = false;
                     ShipmentBillNumber = string.Empty;
                 }
                 else
                 {
                     DrawShipmentTrack.HasBillNumber = true;
+                    DrawShipmentTrack.HasImportYear = false;
                     DrawShipmentTrack.HasDeclarationNumber = false;
                     ShipmentDeclarationNumber = string.Empty;
+                    ShipmentImporterYear = string.Empty;
                 }
             }
 
@@ -514,6 +569,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 if (DrawShipmentTrack.IsDeclarationSelected)
                 {
                     DrawShipmentTrack.HasDeclarationNumber = true;
+                    DrawShipmentTrack.HasImportYear = false;
                     DrawShipmentTrack.HasDeclarationDate = true;
                     DrawShipmentTrack.HasBillNumber = false;
                     ShipmentBillNumber = string.Empty;
@@ -559,7 +615,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
             {
                 if(DrawShipmentTrack.IsDeclarationSelected)
                 {
-                    if(string.IsNullOrWhiteSpace(ShipmentDeclarationNumber))
+                    if (string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
+                        || string.IsNullOrWhiteSpace(ShipmentImporterYear))
+
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.RequiredData;
@@ -674,6 +732,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
             isLandCardSelected = false;
             isTrainCardSelected = false;
             ShipmentDeclarationNumber = string.Empty;
+            ShipmentImporterYear = string.Empty;
             DeclarationDateString = string.Empty;
             ShipmentBillNumber = string.Empty;
             ShipmentContainerNumber = string.Empty;
@@ -706,6 +765,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                 else if (isTrainCardSelected)
                     HeaderTitle = AppResources.TrainFreight;
 
+                else if (HeaderTitle == AppResources.ImporterYear)
+                    HeaderTitle = AppResources.ExpressShipping;
+
                 return;
             }
            ResetDate();
@@ -722,6 +784,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         {
             _commonServices = commonServices;
             _trackShipment = trackShipment;
+            GetYears();
+
         }
     }
 

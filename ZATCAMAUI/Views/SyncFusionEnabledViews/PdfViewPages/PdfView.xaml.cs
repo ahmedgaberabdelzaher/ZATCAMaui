@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Application = Microsoft.Maui.Controls.Application;
@@ -129,7 +129,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                              {
-                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThefileisstillloading));
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThefileisstillloading));
                              });
                         }
                     }

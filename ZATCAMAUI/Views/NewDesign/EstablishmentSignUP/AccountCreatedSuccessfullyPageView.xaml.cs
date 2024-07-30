@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
@@ -41,7 +41,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                 newDesignPopUp.MainHeader = AppResources.Copied;
-                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
         }
         protected override bool OnBackButtonPressed()

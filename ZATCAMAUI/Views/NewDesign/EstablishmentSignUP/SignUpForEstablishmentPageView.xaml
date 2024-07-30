@@ -294,6 +294,7 @@
                                         <custom:GAZTBorderlessEntry
                                             BackgroundColor="Transparent"
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="{x:Static ResourceManager:AppResources.ZZIDType}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding TxtIDType}"
@@ -806,6 +807,7 @@
 
                                         <custom:GAZTBorderlessEntry
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             IsSpellCheckEnabled="False"
                                             Placeholder="{x:Static ResourceManager:AppResources.ZZLicenseNumberIssuedBy}"
                                             Style="{StaticResource DefaultEntry}"
@@ -909,6 +911,7 @@
 
                                         <custom:GAZTBorderlessEntry
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="{x:Static ResourceManager:AppResources.ZZIssuingCity}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding TxtLOrCIssuedByCity}"

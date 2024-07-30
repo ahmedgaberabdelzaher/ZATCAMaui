@@ -6,7 +6,7 @@ using GalaSoft.MvvmLight;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.EDeclerationsModel;
 using ZATCAMAUI.Models.EDeclerationsModel.FeesCalculators;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
@@ -88,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                         {
 
                             EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
-                            await PopupNavigation.Instance.PushAsync(poupWindow);
+                            await MopupService.Instance.PushAsync(poupWindow);
                             return;
                         }
 
@@ -173,7 +173,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
             {
                 return new Command(async () =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
                 });
             }
         }
@@ -778,7 +778,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
                 if ((FeesCalculatorBody.product == null || FeesCalculatorBody.product.Count <= 0) && (FeesCalculatorBody.tobacco == null || FeesCalculatorBody.tobacco.Count <= 0))
                 {
                     FeesCalculatorResponse = new FeesCalculatorResponse();
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
                     return false;
                 }
                 var calres = await DeclerationServices.FeesCalculator(FeesCalculatorBody);

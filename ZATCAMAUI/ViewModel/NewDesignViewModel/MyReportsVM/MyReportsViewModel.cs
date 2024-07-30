@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.BaseModels;
@@ -133,7 +133,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.MyReportsVM
                     genericPickerModel.PickerData = filterData;
                     genericPickerModel.PickerTitle = string.Empty;
                     genericPickerModel.PickerId = "filterMyReportsDataPicker";
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 });
 
             }

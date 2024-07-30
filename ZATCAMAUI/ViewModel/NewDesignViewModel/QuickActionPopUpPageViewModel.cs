@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
@@ -38,7 +38,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             OnMyReturnsClickedForZAKAT = new Command(async () =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView, 5);
 
             });
@@ -46,12 +46,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 BillInfo billInfo = new BillInfo();
                 billInfo.BillTypeName = AppResources.All;
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 _navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
             });
             OnCorrespondanceClicked = new Command(async () =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 _navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
 
             });

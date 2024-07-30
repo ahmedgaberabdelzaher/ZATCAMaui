@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage
+<Mopups:PopupPage
     x:Class="ZATCAMAUI.Views.NewDesign.TaxpayerProfile.UpdateMobilePopUp"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -12,7 +12,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <Border
@@ -78,6 +78,7 @@
                                     FlowDirection="LeftToRight"
                                     HorizontalOptions="FillAndExpand"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Keyboard="Telephone"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CurrentMobileNumberEntryText}"
@@ -378,4 +379,4 @@
             </Grid>
         </ScrollView>
     </Border>
-</pages:PopupPage>
+</Mopups:PopupPage>

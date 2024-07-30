@@ -1,6 +1,6 @@
 ﻿
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatDeregistration
 {
@@ -16,7 +16,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatDeregistration
 
         private async void OnSaveAsDraftClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
             OnItemSelect?.Invoke();
         }
 

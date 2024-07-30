@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -816,7 +816,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             try
             {
                 if (PickerModel != null)
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {

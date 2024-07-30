@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.NewDesign.Common
 {
@@ -18,7 +18,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             try
             {
                 OnItemSelect?.Invoke(e.CurrentSelection.FirstOrDefault());
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
             }
             catch (Exception)
             {

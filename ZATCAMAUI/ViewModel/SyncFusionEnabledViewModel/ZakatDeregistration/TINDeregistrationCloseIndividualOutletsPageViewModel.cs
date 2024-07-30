@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -591,7 +591,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             genericPickerModel.PickerTitle = AppResources.ZZIDType;
             genericPickerModel.PickerId = "idTypePicker";
 
-            await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+            await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
         }
 
         public TINDeregistrationCloseIndividualOutletsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
@@ -660,7 +660,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
+                    await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel, true));
                 }
                 catch (GAZTUnlockAccountException ex)
                 {

@@ -79,7 +79,7 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="20,5,20,0"
+                Padding="10,5,10,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
@@ -99,10 +99,10 @@
                                 BackgroundColor="White"
                                 Stroke="#E6E6E6"
                                 StrokeShape="RoundRectangle 10,10,10,10"
-                                HeightRequest="120"
+                                HeightRequest="110"
                                 HorizontalOptions="StartAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <StackLayout
                                     HorizontalOptions="CenterAndExpand"
@@ -139,10 +139,10 @@
                                 BackgroundColor="White"
                                 Stroke="#E6E6E6"
                                 StrokeShape="RoundRectangle 10,10,10,10"
-                                HeightRequest="120"
-                                HorizontalOptions="StartAndExpand"
+                                HeightRequest="110"
+                                HorizontalOptions="CenterAndExpand"
                                 VerticalOptions="StartAndExpand"
-                                WidthRequest="171">
+                                WidthRequest="160">
 
                                 <StackLayout
                                     HorizontalOptions="CenterAndExpand"

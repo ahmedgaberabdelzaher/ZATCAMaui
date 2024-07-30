@@ -18,9 +18,7 @@
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
 
-            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-
-            <ResourceDictionary.MergedDictionaries>
+            <!--<ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -33,7 +31,7 @@
                         <Setter Property="WidthRequest" Value="30" />
                     </Style>
                 </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -43,7 +41,7 @@
     <Grid RowDefinitions="Auto,*">
 
         <!--#region Header-->
-        <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+        <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
             <!--  Back Button  -->
             <StackLayout>
@@ -98,12 +96,12 @@
             <StackLayout Grid.Column="2">
 
                 <Image
-                    HeightRequest="22"
+                    HeightRequest="25"
                     HorizontalOptions="EndAndExpand"
                     IsVisible="false"
                     Source="ic_downloadWhite"
                     VerticalOptions="CenterAndExpand"
-                    WidthRequest="19">
+                    WidthRequest="25">
 
                     <Image.Triggers>
                         <DataTrigger
@@ -127,12 +125,12 @@
                 </Image>
 
                 <Image
-                    HeightRequest="43"
+                    HeightRequest="30"
                     HorizontalOptions="EndAndExpand"
                     IsVisible="false"
                     Source="infoWhiteIcon"
                     VerticalOptions="CenterAndExpand"
-                    WidthRequest="43">
+                    WidthRequest="30">
 
                     <Image.Triggers>
                         <DataTrigger
@@ -266,7 +264,8 @@
                     </CollectionView>
                 </Grid>
 
-                <Grid IsVisible="{Binding IsChapterSection}">
+                <Grid IsVisible="{Binding IsChapterSection}"
+                      RowDefinitions="*">
 
                     <CollectionView
                         ItemsSource="{Binding TraiffChapters}"
@@ -283,7 +282,8 @@
 
                 </Grid>
 
-                <Grid IsVisible="{Binding IsMainHarmonizedTariffs}">
+                <Grid IsVisible="{Binding IsMainHarmonizedTariffs}"
+                      RowDefinitions="*">
 
                     <CollectionView
                         ItemsSource="{Binding MainHarmonizedTariffs}"
@@ -298,7 +298,8 @@
                     </CollectionView>
                 </Grid>
 
-                <Grid IsVisible="{Binding IsSubHarmonizedTariffs}">
+                <Grid IsVisible="{Binding IsSubHarmonizedTariffs}"
+                      RowDefinitions="*">
 
                     <CollectionView
                         x:Name="SubHarmonizedTariffsLst"
@@ -355,12 +356,11 @@
 
                 </Grid>
 
-                <FlexLayout
+                <Grid
+                    RowDefinitions="auto,auto,auto,auto,*"
                     Margin="20"
                     BackgroundColor="White"
-                    Direction="Column"
-                    IsVisible="{Binding IsSearchVIewVisible}"
-                    JustifyContent="SpaceAround">
+                    IsVisible="{Binding IsSearchVIewVisible}">
 
                     <Grid
                         Margin="0,0,0,0"
@@ -422,14 +422,15 @@
 
                     <Label
                         FontSize="16"
+                        Grid.Row="1"
                         HorizontalOptions="Start"
-                        IsVisible="{Binding IsSearchFilterVisbible}"
                         Text="{x:Static ResourceManager:AppResources.SearchFor}"
                         TextColor="#002447" />
 
                     <Grid
                         ColumnDefinitions="*,*,*"
                         ColumnSpacing="10"
+                        Grid.Row="2"
                         IsVisible="{Binding IsSearchFilterVisbible}">
                         <Grid.Resources>
                             <ResourceDictionary>
@@ -525,6 +526,7 @@
 
                     <Label
                         Margin="0,0,0,10"
+                        Grid.Row="3"
                         IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
                         TextColor="{StaticResource Primary}">
                         <Label.FormattedText>
@@ -536,9 +538,9 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <FlexLayout FlexLayout.Grow="1">
+                    <Grid Grid.Row="4"
+                          RowDefinitions="*">
                         <CollectionView
-                            Margin="0,0,0,0"
                             HorizontalOptions="FillAndExpand"
                             IsVisible="{Binding IsSearchFilterVisbible, Converter={StaticResource InverseBoolConverter}}"
                             ItemsSource="{Binding SearchResultLst}"
@@ -621,11 +623,14 @@
                                 </DataTemplate>
                             </CollectionView.ItemTemplate>
                         </CollectionView>
-                    </FlexLayout>
 
-                </FlexLayout>
+                    </Grid>
+                  
 
-                <Grid IsVisible="{Binding IsTarrifSearch}">
+                </Grid>
+
+                <Grid IsVisible="{Binding IsTarrifSearch}"
+                      RowDefinitions="*">
                     <CollectionView
                         x:Name="HarmonizedTariffsInSearchLst"
                         ItemsSource="{Binding HarmonizedTariffslvl3}"
@@ -1124,7 +1129,8 @@
 
         </Border>
 
-        <Grid Grid.RowSpan="2" IsVisible="{Binding IsSectNote}">
+        <Grid Grid.RowSpan="2"
+              IsVisible="{Binding IsSectNote}">
 
             <Grid
                 BackgroundColor="Black"
@@ -1133,7 +1139,8 @@
                 VerticalOptions="Fill" />
 
             <Border
-                Margin="10,0,10,10"
+                Margin="10"
+                Padding="5"
                 BackgroundColor="White"
                 Stroke="#CECECE"
                 StrokeShape="RoundRectangle 14,14,14,14"
@@ -1160,7 +1167,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <ScrollView HeightRequest="650" VerticalScrollBarVisibility="Never">
+                    <ScrollView VerticalScrollBarVisibility="Never">
                         <StackLayout BindableLayout.ItemsSource="{Binding SectionNotesLst}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
@@ -1170,6 +1177,10 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseNoteCommand}" CommandParameter="1" />
+                </Border.GestureRecognizers>
             </Border>
         </Grid>
 
@@ -1180,7 +1191,8 @@
                 Opacity=".5"
                 VerticalOptions="Fill" />
             <Border
-                Margin="10,0,10,10"
+                Margin="10"
+                Padding="5"
                 BackgroundColor="White"
                 Stroke="#CECECE"
                 StrokeShape="RoundRectangle 14,14,14,14"
@@ -1207,7 +1219,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <ScrollView HeightRequest="650" VerticalScrollBarVisibility="Never">
+                    <ScrollView  VerticalScrollBarVisibility="Never">
                         <StackLayout BindableLayout.ItemsSource="{Binding ChapterNotesLst}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
@@ -1217,19 +1229,26 @@
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseNoteCommand}" CommandParameter="2" />
+                </Border.GestureRecognizers>
             </Border>
         </Grid>
 
-        <Grid Grid.RowSpan="2" IsVisible="{Binding IsitemDetilsVisible}">
+        <Grid Grid.RowSpan="2"
+              IsVisible="{Binding IsitemDetilsVisible}">
             <Grid
                 BackgroundColor="Black"
                 HorizontalOptions="Fill"
                 Opacity=".5"
                 VerticalOptions="Fill" />
+
             <Border
-                Margin="24,0,24,24"
+                Margin="10"
+                Padding="15"
                 BackgroundColor="#FFFFFF"
                 StrokeShape="RoundRectangle 20,20,20,20">
+
                 <Border.Resources>
                     <ResourceDictionary>
                         <Style TargetType="Label">
@@ -1237,114 +1256,129 @@
                         </Style>
                     </ResourceDictionary>
                 </Border.Resources>
-                <ScrollView VerticalScrollBarVisibility="Never">
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                FontSize="26"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="{Binding SelectedSubHarmonizedTariffs.Name}"
-                                TextColor="{StaticResource PrimaryColor}" />
-                            <Image
-                                HeightRequest="19"
-                                HorizontalOptions="End"
-                                Source="CloseIcon"
-                                WidthRequest="19">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CloseItemDetailsCommand}" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </StackLayout>
-                        <BoxView HeightRequest="28" />
-                        <Border Stroke="#CECECE"
-                                StrokeShape="RoundRectangle 14,14,14,14">
-                            <StackLayout>
-                                <Label
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    FontSize="16"
-                                    Text="{x:Static ResourceManager:AppResources.RequiredProcedures}"
-                                    TextColor="#042E66" />
-                                <StackLayout BindableLayout.ItemsSource="{Binding SelectedSubHarmonizedTariffs.tariffreleaseprocedures}">
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <Label>
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding prcdr_code}" />
-                                                        <Span Text=": " />
-                                                        <Span Text="{Binding rlse_prcdr_note}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </StackLayout>
-                            </StackLayout>
-                        </Border>
-                        <BoxView HeightRequest="20" />
 
-                        <Border Stroke="#CECECE"
-                                StrokeShape="RoundRectangle 14,14,14,14">
-                            <StackLayout>
-                                <Label
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    FontSize="16"
-                                    Text="{x:Static ResourceManager:AppResources.Duty}"
-                                    TextColor="#042E66" />
-                                <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].dutyName}" />
-                                <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.Effectivedate}" />
-                                            <Span Text=" " />
-                                            <Span Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date, StringFormat='{0:dd/MM/yyyy}'}" />
-                                            <Span Text=" " />
-                                            <Span Text="( " />
-                                            <Span Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date, StringFormat='{0:hh:mm tt}'}" />
-                                            <Span Text=" )" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </StackLayout>
-                        </Border>
-                        <BoxView HeightRequest="20" />
-                        <Border Stroke="#CECECE"
-                                StrokeShape="RoundRectangle 14,14,14,14">
-                            <StackLayout>
-                                <Label
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    FontSize="16"
-                                    Text="{x:Static ResourceManager:AppResources.HSHeading}"
-                                    TextColor="#042E66" />
-                                <Label Text="{Binding SelectedSubHarmonizedTariffs.HsCode}" />
-                            </StackLayout>
-                        </Border>
-                        <BoxView HeightRequest="20" />
+                <Grid RowDefinitions="*">
 
-                        <Border Stroke="#CECECE"
-                                StrokeShape="RoundRectangle 14,14,14,14">
+                    <ScrollView VerticalScrollBarVisibility="Never" >
+
+                        <StackLayout Spacing="10">
+
                             <StackLayout Orientation="Horizontal">
+                                <Label
+                                    FontSize="18"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding SelectedSubHarmonizedTariffs.Name}"
+                                    TextColor="{StaticResource PrimaryColor}" />
+                                <Image
+                                    HeightRequest="19"
+                                    HorizontalOptions="End"
+                                    Source="CloseIcon"
+                                    WidthRequest="19">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CloseItemDetailsCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+
+                            <Border Stroke="#CECECE"
+                                    Padding="10"
+                                    StrokeShape="RoundRectangle 14,14,14,14">
                                 <StackLayout>
                                     <Label
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="16"
-                                        Text="{x:Static ResourceManager:AppResources.HS}"
+                                        Text="{x:Static ResourceManager:AppResources.RequiredProcedures}"
                                         TextColor="#042E66" />
-                                    <Label Text="{Binding SelectedSubHarmonizedTariffs.hrmnzd_code}" />
+                                    <StackLayout BindableLayout.ItemsSource="{Binding SelectedSubHarmonizedTariffs.tariffreleaseprocedures}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label>
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding prcdr_code}" />
+                                                            <Span Text=": " />
+                                                            <Span Text="{Binding rlse_prcdr_note}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
                                 </StackLayout>
-                                <Image
-                                    HeightRequest="23"
-                                    HorizontalOptions="EndAndExpand"
-                                    Source="Copy"
-                                    WidthRequest="22">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding CopyHSCommand}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-                        </Border>
-                    </StackLayout>
-                </ScrollView>
+                            </Border>
+
+                            <Border Stroke="#CECECE"
+                                    Padding="10"
+                                    StrokeShape="RoundRectangle 14,14,14,14">
+                                <StackLayout>
+                                    <Label
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="16"
+                                        Text="{x:Static ResourceManager:AppResources.Duty}"
+                                        TextColor="#042E66" />
+                                    <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].dutyName}" />
+                                    <Label Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.Effectivedate}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date, StringFormat='{0:dd/MM/yyyy}'}" />
+                                                <Span Text=" " />
+                                                <Span Text="( " />
+                                                <Span Text="{Binding SelectedSubHarmonizedTariffs.tariffdetails[0].eff_date, StringFormat='{0:hh:mm tt}'}" />
+                                                <Span Text=" )" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </Border>
+
+                            <Border Stroke="#CECECE"
+                                    Padding="10"
+                                    StrokeShape="RoundRectangle 14,14,14,14">
+                                <StackLayout>
+                                    <Label
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="16"
+                                        Text="{x:Static ResourceManager:AppResources.HSHeading}"
+                                        TextColor="#042E66" />
+                                    <Label Text="{Binding SelectedSubHarmonizedTariffs.HsCode}" />
+                                </StackLayout>
+                            </Border>
+
+                            <Border Stroke="#CECECE"
+                                    Padding="10"
+                                    StrokeShape="RoundRectangle 14,14,14,14">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Label
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            FontSize="16"
+                                            Text="{x:Static ResourceManager:AppResources.HS}"
+                                            TextColor="#042E66" />
+                                        <Label Text="{Binding SelectedSubHarmonizedTariffs.hrmnzd_code}" />
+                                    </StackLayout>
+                                    <Image
+                                        HeightRequest="23"
+                                        HorizontalOptions="EndAndExpand"
+                                        Source="Copy"
+                                        WidthRequest="22">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding CopyHSCommand}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                            </Border>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CloseItemDetailsCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                    </ScrollView>
+
+                </Grid>
+
             </Border>
         </Grid>
 

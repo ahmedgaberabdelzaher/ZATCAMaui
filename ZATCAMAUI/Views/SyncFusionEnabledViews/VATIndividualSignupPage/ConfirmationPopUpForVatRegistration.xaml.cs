@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
@@ -31,13 +31,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     MessagingCenter.Send<object, string>(this, "YesPressedToDeleteAttachment", "Yes");
                     OnSelect?.Invoke("Yes");
-                    PopupNavigation.Instance.PopAsync();
+                    MopupService.Instance.PopAsync();
                 }
                 else if (_FromWhere == "FinancialDetailAttachmentPopupPageView")
                 {
                     MessagingCenter.Send<object, string>(this, "YesPressedToDeleteFinancialAttachment", "Yes");
                     OnSelect?.Invoke("Yes");
-                    PopupNavigation.Instance.PopAsync();
+                    MopupService.Instance.PopAsync();
                 }
             }
 
@@ -53,13 +53,13 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     MessagingCenter.Send<object, string>(this, "NoPressedToDeleteAttachment", "No");
                     OnSelect?.Invoke("No");
-                    PopupNavigation.Instance.PopAsync();
+                    MopupService.Instance.PopAsync();
                 }
                 else if (_FromWhere == "FinancialDetailAttachmentPopupPageView")
                 {
                     MessagingCenter.Send<object, string>(this, "NoPressedToDeleteFinancialAttachment", "No");
                     OnSelect?.Invoke("No");
-                    PopupNavigation.Instance.PopAsync();
+                    MopupService.Instance.PopAsync();
                 }
             }
 

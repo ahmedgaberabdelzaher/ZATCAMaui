@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -135,7 +135,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                             {
                                 IsrefreshEnabled = true;
                                 RefreshIconImageSource = "ic_refresh.png";
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatAcknowledgmentWaitingText));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatAcknowledgmentWaitingText));
 
                             }
                             else
@@ -153,7 +153,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     {
                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                             _navigationService.GoBack();
                         });
                         IsLoading = false;
@@ -163,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 {
                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     });
                 }
             });
@@ -210,7 +210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 //pop that certificate is not available
                MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
 
                     // await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 });

@@ -1,6 +1,6 @@
 ﻿
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 {
@@ -35,7 +35,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             try
             {
                 var selectedOption = e.Item as Option;
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 OnItemSelect?.Invoke(selectedOption.option);
             }
             catch (Exception)

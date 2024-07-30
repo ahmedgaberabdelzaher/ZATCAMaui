@@ -1,8 +1,8 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -254,7 +254,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
                         }
-                        await PopupNavigation.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FinancialDetailAttachmentPopupPageView"));
+                        await MopupService.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FinancialDetailAttachmentPopupPageView"));
                     }
 
 
@@ -269,7 +269,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
         }
@@ -537,7 +537,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void Close_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
 
         private void DDlIDType_OkButtonClicked(object sender, EventArgs e)

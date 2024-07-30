@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -470,7 +470,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                             });
                         }
                     }
@@ -504,7 +504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             });
 
                             //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             //viewModel._navigationService.GoBack();
                         });
                     }
@@ -520,7 +520,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         });
 
                         //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         //viewModel._navigationService.GoBack();
                     });
                     }
@@ -534,7 +534,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                 MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
                 // await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
                 _navigationService.GoBack();
             });
@@ -545,7 +545,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                 MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                 //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 _navigationService.GoBack();
             });
@@ -615,7 +615,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseenteraccessCode));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseenteraccessCode));
                     //  await _dialogService.ShowMessageBox(AppResources.ZZPleaseenteraccessCode, AppResources.Information);
                 });
             }
@@ -679,7 +679,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     {
                         ClearOTPForm();
                         // await _dialogService.ShowMessageBox(taxEvasionVerifySmsResponseModel.SmsResponse.Message, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(taxEvasionVerifySmsResponseModel.SmsResponse.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(taxEvasionVerifySmsResponseModel.SmsResponse.Message));
                     }
                 }
                 catch (GAZTException gex)
@@ -709,7 +709,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             IsLoading = false;
                         });
                         //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                         ClearOTPForm();
                     });
                 }
@@ -724,11 +724,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                         if (ex.Message.Contains("The entered code is incorrect") || ex.Message.Contains("الرمز المدخل غير صحيح"))
                         {
-                           await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InvalidOTP));
+                           await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InvalidOTP));
                         }
                         else
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         }
                         ClearOTPForm();
                     });

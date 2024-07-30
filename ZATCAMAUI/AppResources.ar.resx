@@ -10154,7 +10154,7 @@ info@zatca.gov.sa</value>
     <value>تتبع</value>
   </data>
 	<data name="ExpressShipping" xml:space="preserve">
-    <value>االنقل السريع</value>
+    <value>النقل السريع</value>
   </data>
 	<data name="AirFreight" xml:space="preserve">
     <value>الشحن الجوي</value>
@@ -10184,7 +10184,7 @@ info@zatca.gov.sa</value>
     <value>الرسوم الأخرى</value>
   </data>
 	<data name="CIFValue" xml:space="preserve">
-    <value>قيمة CIF</value>
+      <value>قيمة الشحنة</value>
   </data>
 	<data name="ShipmentTrackingSubTitle" xml:space="preserve">
     <value>للحصول على نتائج أكثر دقة ، يرجى إدخال تفاصيل البيان.</value>
@@ -10912,7 +10912,19 @@ info@zatca.gov.sa</value>
    <data name="ArrivingFrom" xml:space="preserve">
     <value>الوصول من</value>
   </data>
-      <!--start of VAT Refund Prod-->
+    <data name="CarrierCompany" xml:space="preserve">
+    <value>الشركة الناقلة</value>
+  </data>
+  <data name="CustomFeesDisclaimer" xml:space="preserve">
+    <value>قيمة الشحنة * 15%.</value>
+  </data>
+  <data name="TrackVATDisclaimer" xml:space="preserve">
+    <value>(قيمة الشحنة + الرسوم الجمركية + الرسوم الأخري) * 15%.</value>
+  </data>
+   <data name="TrackTotalDisclaimer" xml:space="preserve">
+    <value>الرسوم الجمركية + ضريبة القيمة المضافة + الرسوم الأخرى + الضريبة الانتقائية إن وجدت في البيان</value>
+  </data>
+    <!--start of VAT Refund Prod-->
   <data name="VATRefundReqMessageInfo" xml:space="preserve">
     <value>ملاحظة
 عزيزنا المكلف في حال وجود نسخة محفوظة كمسودة على الإقرارات المقدمة لن تتمكن من تقديمها في طلب الاسترداد, يرجى إلغاؤها أو تقديمها.
@@ -10930,5 +10942,9 @@ info@zatca.gov.sa</value>
     <value>الرجاء إدخال رمز التحقق</value>
   </data>
   <!-- END of Captcha Resources-->
+   <data name="ImporterYear" xml:space="preserve">
+    <value>سنة الاستيراد</value>
+  </data>
+  
 
 </root>

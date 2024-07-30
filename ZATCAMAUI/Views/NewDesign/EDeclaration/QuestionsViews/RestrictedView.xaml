@@ -368,26 +368,29 @@
         </Label.FormattedText>
     </Label>
 
-    <Grid ColumnDefinitions="*,15,*" HeightRequest="100">
+    <HorizontalStackLayout Spacing="10"
+                            HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand">
 
         <!--#region Yes Option-->
-        <Grid Grid.Column="0">
+        <Grid WidthRequest="160"
+              HeightRequest="110">
 
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding SelectIsPermitCommand}" CommandParameter="1" />
             </Grid.GestureRecognizers>
 
-            <Image
-                HeightRequest="136"
-                Source="QSelected"
-                WidthRequest="171">
+            <Image Aspect="Fill"
+                   Source="Unselected">
 
                 <Image.Triggers>
                     <DataTrigger
                         Binding="{Binding IsPermit}"
                         TargetType="Image"
                         Value="false">
-                        <Setter Property="Source" Value="QUnselected" />
+                        <Setter Property="Source" Value="UnselectedCard" />
+                        <Setter Property="WidthRequest" Value="160" />
+                        <Setter Property="HeightRequest" Value="110" />
                     </DataTrigger>
                 </Image.Triggers>
 
@@ -415,13 +418,15 @@
         <!--#endregion Yes Option-->
 
         <!--#region NO Option-->
-        <Grid Grid.Column="2">
+        <Grid WidthRequest="160"
+              HeightRequest="110">
 
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding SelectIsPermitCommand}" CommandParameter="0" />
             </Grid.GestureRecognizers>
 
-            <Image Source="QUnselected.png" VerticalOptions="FillAndExpand">
+            <Image Source="UnselectedCard.png"
+                   Aspect="Fill">
 
                 <Image.Triggers>
 
@@ -429,7 +434,9 @@
                         Binding="{Binding IsPermit}"
                         TargetType="Image"
                         Value="false">
-                        <Setter Property="Source" Value="QSelected" />
+                        <Setter Property="Source" Value="Unselected" />
+                        <Setter Property="WidthRequest" Value="160" />
+                        <Setter Property="HeightRequest" Value="110" />
                     </DataTrigger>
 
                 </Image.Triggers>
@@ -454,7 +461,7 @@
         </Grid>
         <!--#endregion NO Option-->
 
-    </Grid>
+    </HorizontalStackLayout>
     <!--#endregion Permit Label-->
 
     <!--#region Upload File-->

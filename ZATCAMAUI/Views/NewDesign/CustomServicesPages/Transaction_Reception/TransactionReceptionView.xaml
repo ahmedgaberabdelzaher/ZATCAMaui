@@ -191,8 +191,8 @@
                         <inputLayout:SfTextInputLayout
                             ContainerBackground="White"
                             ContainerType="Outlined"
-                            Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                             InputViewPadding="16,0,16,0"
+                            IsHintAlwaysFloated="True"
                             LeadingViewPosition="Inside"
                             OutlineCornerRadius="15"
                             Stroke="{StaticResource NeutralGreay}">
@@ -239,6 +239,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="reportRegionEntry"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.UnifiedNumber}"
                                     Style="{StaticResource DefaultEntry}"
@@ -251,6 +252,9 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+                                  <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -308,6 +312,7 @@
                                 <custom:GAZTBorderlessEntry
                                     x:Name="TinEntry"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                     Style="{StaticResource DefaultEntry}"
@@ -634,6 +639,7 @@
 
                             <custom:GAZTBorderlessEntry
                                 IsReadOnly="True"
+                                InputTransparent="True"
                                 Keyboard="Text"
                                 Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
                                 Style="{StaticResource DefaultEntry}"
@@ -679,6 +685,7 @@
                                             </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                             <custom:GAZTBorderlessEntry
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Keyboard="Text"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding fileFullName}"

@@ -1,5 +1,5 @@
 ﻿
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
@@ -107,7 +107,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnInformationMessageClickedTwo(object sender, EventArgs e)
         {
@@ -122,7 +122,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnInformationMessageClickedThree(object sender, EventArgs e)
         {
@@ -137,7 +137,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnInformationMessageClickedFour(object sender, EventArgs e)
         {
@@ -152,7 +152,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatReturnDetailsPages
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         #endregion
     }

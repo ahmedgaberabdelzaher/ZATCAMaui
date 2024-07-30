@@ -4,7 +4,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -582,7 +582,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                             OTPAttemptsCount = OTPAttemptsCount+1;
                             if(OTPAttemptsCount >= 3)
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OTPMaxAttempts));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OTPMaxAttempts));
                                 TxtMobileNumber = string.Empty;
                                 OTPFirstDigit = string.Empty;
                                 OTPSecondDigit = string.Empty;
@@ -735,17 +735,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     }
                     else
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinNumberValidation));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinNumberValidation));
                     }
                 }
                 else
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTINnumberhastostartwithnumber3));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTINnumberhastostartwithnumber3));
                 }
             }
             else
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
             }
             return false;
         }
@@ -830,7 +830,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
                             IsLoading = false;
                         });
                     }
@@ -1048,32 +1048,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                                 }
                                 else
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinNumberValidation)); 
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinNumberValidation)); 
                                 }
                             }
                             else
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTINnumberhastostartwithnumber3)); 
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTINnumberhastostartwithnumber3)); 
                             }
                         }
                         else
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
                         }
                     }
                     else
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZPleaseentertheIDNumbervalue)); 
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZPleaseentertheIDNumbervalue)); 
                     }
                 }
                 else
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDType)); 
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.IBanInsertIDType)); 
                 }
             }
             else
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ManagerNameError));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ManagerNameError));
             }
             return false;
         }
@@ -1373,7 +1373,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             try
             {
                 setIdTypePickerModel();
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModelIDType));
+                await MopupService.Instance.PushAsync(new PickerPageView(PickerModelIDType));
 
             }
             catch (GAZTUnlockAccountException ex)
@@ -1486,7 +1486,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     }
                 }
                 String WithReplacedString = line1.Replace("An exception was raised", string.Empty);
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
             }
         }
 
@@ -1535,7 +1535,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
             catch (InternetException ex)
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                 //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 await Task.Run(() =>
@@ -1557,7 +1557,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 {
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                 });
             }
         }
@@ -1645,7 +1645,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                     });
                 }
             }
@@ -1679,7 +1679,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         }
         private void ShowValidationPopup(string _message)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(_message));
         }
         private string DeleteAttachment(string filename, string retGuid, string dotyp, string doguid)
         {

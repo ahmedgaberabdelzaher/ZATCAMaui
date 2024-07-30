@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
 using Page = Microsoft.Maui.Controls.Page;
@@ -167,7 +167,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.CRReferenceNumber + " " + text));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.CRReferenceNumber + " " + text));
 
                 // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
             }
@@ -190,7 +190,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatTaxablePeriod + " " + text));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatTaxablePeriod + " " + text));
 
                 // await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
             }

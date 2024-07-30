@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -111,9 +111,9 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             else
                 popUp.FlowDirections = "LeftToRight";
 
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(sourceString));
 
-            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            //MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         // * Current Password - New Password - Confirm New Password : Show / Hide
@@ -149,12 +149,12 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
         private async void CloseAllPopup()
         {
-            await PopupNavigation.Instance.PopAllAsync();
+            await MopupService.Instance.PopAllAsync();
         }
 
         async void OnBackArrowTapped(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAllAsync();
+            await MopupService.Instance.PopAllAsync();
         }
 
         protected override void OnAppearing()

@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
@@ -138,7 +138,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
             MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 if (arg != null)
                 {
                     string message = arg;
@@ -239,12 +239,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                     {
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                             await viewModel.VATSetReturnVoid();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                     }
 
@@ -267,15 +267,15 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
                     {
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                     }
 
-                    //await PopupNavigation.Instance.PopAsync();
+                    //await MopupService.Instance.PopAsync();
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
@@ -496,7 +496,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatReviewLateFilingInfo));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatReviewLateFilingInfo));
             }
             catch (Exception)
             {

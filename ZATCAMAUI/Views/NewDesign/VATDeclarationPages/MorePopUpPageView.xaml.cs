@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
@@ -38,13 +38,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         }
         private void OnClose(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
 
         private void OnAttachmentTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
-            PopupNavigation.Instance.PushAsync(new FileAttachmentPopupPageView());
+            MopupService.Instance.PopAsync();
+            MopupService.Instance.PushAsync(new FileAttachmentPopupPageView());
 
         }
 

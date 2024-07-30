@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATServicesPageViewModel;
 using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
@@ -83,7 +83,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATServices
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("VATServicesPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration Request eService");
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
+                MopupService.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }

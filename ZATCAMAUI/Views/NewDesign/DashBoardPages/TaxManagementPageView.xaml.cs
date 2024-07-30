@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
@@ -112,7 +112,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
+                MopupService.Instance.PushAsync(new VATDeregistrationInstructionsPage(false));
             });
         }
 

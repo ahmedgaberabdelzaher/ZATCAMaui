@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;
@@ -60,7 +60,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         viewModel.IsIBANValid = true;
                         NewAccountPopPageViewModel.ValidTypeIban = viewModel.IbanNumberText;
                         MessagingCenter.Send<Object, string>(this, "IbanReceivedVATDeclaration", viewModel.IbanNumberText);
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                     }
                     else
                     {
@@ -69,7 +69,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         if (viewModel.IbanNumberText == "SA")
                         {
                             MessagingCenter.Send<Object, string>(this, "IbanReceivedVATDeclaration", viewModel.IbanNumberText);
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                         else
                         {
@@ -132,13 +132,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         private void Close_Tapped(object sender, EventArgs e)
         {
 
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
 
         }
 
         private void Closed_Tapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
 
         private void IbanOne_TextChanged(object sender, TextChangedEventArgs e)

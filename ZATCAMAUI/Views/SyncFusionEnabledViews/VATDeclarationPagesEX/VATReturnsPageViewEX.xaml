@@ -329,6 +329,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 IsSpellCheckEnabled="False"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Incotext}"
@@ -354,6 +355,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 IsSpellCheckEnabled="False"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Vrtaxret}"
@@ -379,6 +381,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Fbnum}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -403,6 +406,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Perslt}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -430,6 +434,7 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -457,6 +462,7 @@
                                                 HorizontalOptions="StartAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -495,6 +501,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Gpart}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -519,6 +526,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Fin}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -544,6 +552,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Idnumber}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -568,6 +577,7 @@
                                                 Grid.Column="0"
                                                 Grid.ColumnSpan="2"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Tpnm}"
                                                 TextColor="{StaticResource ForgotPasswordGrayTextColor}" />
@@ -595,6 +605,7 @@
                                             HeightRequest="100"
                                             IsEnabled="False"
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                             Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}"
                                             TextColor="{StaticResource ForgotPasswordGrayTextColor}"
@@ -1007,6 +1018,7 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdsalesVat"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Keyboard="Numeric"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat, StringFormat='{0:D2}'}"
@@ -1202,6 +1214,7 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdsalesVat15"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Keyboard="Numeric"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat15, StringFormat='{0:D2}'}"
@@ -1397,6 +1410,7 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryStdsalesVat5"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Keyboard="Numeric"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat5, StringFormat='{0:D2}'}"
@@ -2298,6 +2312,7 @@
                                                 x:Name="EntryStdpurchasesVat"
                                                 Grid.Column="0"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2484,6 +2499,7 @@
                                                 x:Name="EntryStdpurchasesVat15"
                                                 Grid.Column="0"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat15, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2669,6 +2685,7 @@
                                                 x:Name="EntryStdpurchasesVat5"
                                                 Grid.Column="0"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat5, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -2857,6 +2874,7 @@
                                                 x:Name="EntryImportspaidVat"
                                                 Grid.Column="0"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3044,6 +3062,7 @@
                                                 x:Name="EntryImportspaidVat15"
                                                 Grid.Column="0"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat15, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3233,6 +3252,7 @@
                                                 x:Name="EntryImportspaidVat5"
                                                 Grid.Column="0"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat5, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3423,6 +3443,7 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportsaccVat"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3622,6 +3643,7 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportsaccVat15"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat15, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -3822,6 +3844,7 @@
                                             <custom:GAZTBorderlessEntry
                                                 x:Name="EntryImportsaccVat5"
                                                 IsReadOnly="True"
+                                                InputTransparent="True"
                                                 Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                 Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat5, StringFormat='{0:D2}'}"
                                                 TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount"
@@ -4415,6 +4438,7 @@
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryCreditVat"
                                                     IsReadOnly="True"
+                                                    InputTransparent="True"
                                                     Keyboard="Numeric"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}"
@@ -4486,6 +4510,7 @@
                                                 <custom:GAZTBorderlessEntry
                                                     x:Name="EntryNetdueVat"
                                                     IsReadOnly="True"
+                                                    InputTransparent="True"
                                                     Keyboard="Numeric"
                                                     Style="{StaticResource GAZTTextBoxStyleForEntry}"
                                                     Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"

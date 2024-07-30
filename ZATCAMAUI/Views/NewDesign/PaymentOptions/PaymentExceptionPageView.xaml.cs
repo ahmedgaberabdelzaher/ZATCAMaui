@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 
@@ -65,7 +65,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
         async void TryAgainClicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
         }
     }
 }

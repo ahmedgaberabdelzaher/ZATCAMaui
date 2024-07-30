@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Globalization;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -72,7 +72,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPage
                 //pop that certificate is not available
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
 
                     // await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                 });

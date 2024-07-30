@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using System.Globalization;
 using System.Text;
 using ZATCAMAUI.Core.Mangers;
@@ -54,7 +54,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 MessagingCenter.Send("UnlockAccountBackButtonClicked", "UnlockAccountBackButtonClicked");
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             });
         }
 
@@ -192,7 +192,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                     EntryTIN.Text = string.Empty;
                 }
                 else
@@ -227,7 +227,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-               await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+               await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
         }

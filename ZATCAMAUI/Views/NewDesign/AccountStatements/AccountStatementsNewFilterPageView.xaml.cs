@@ -1,5 +1,5 @@
 ﻿
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
@@ -142,7 +142,7 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             {
                 /*await viewModel._dialogService.ShowMessage(message,
                                     AppResources.Information);*/
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
 
             });
 

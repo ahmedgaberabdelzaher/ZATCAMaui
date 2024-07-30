@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.MyBillsPages;
@@ -43,7 +43,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         private async void Dissapear()
         {
             await picker.TranslateTo(0, 500, 250);
-            await PopupNavigation.Instance.PopAsync(false);
+            await MopupService.Instance.PopAsync(false);
             MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", TaxTypePickerSelectedItem);
         }
 
@@ -51,7 +51,7 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
         {
 
             await picker.TranslateTo(0, 500, 250);
-            await PopupNavigation.Instance.PopAsync(false);
+            await MopupService.Instance.PopAsync(false);
             MessagingCenter.Send(new GAZTNewDesignMyBillsPageView(), "pickerNew", TaxTypePickerSelectedItem);
         }
 

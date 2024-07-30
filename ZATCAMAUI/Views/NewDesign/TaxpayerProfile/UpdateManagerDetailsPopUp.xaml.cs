@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
@@ -32,7 +32,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         {
             try
             {
-                await PopupNavigation.Instance.PopAllAsync();
+                await MopupService.Instance.PopAllAsync();
             }
             catch (Exception)
             {

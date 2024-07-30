@@ -6,7 +6,7 @@ using Acr.UserDialogs;
 using GalaSoft.MvvmLight.Views;
 using Maui.GoogleMaps;
 using Microsoft.Maui.Handlers;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Controls;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.CustomControls;
@@ -109,8 +109,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                         {
                             IsLoading = true;
 
-                            PageSettings.CheckTarget_Environment("STG");
-                            PageSettings.GetBaseURL("STG");
                             System.Globalization.DateTimeFormatInfo DTFormat;
                             DTFormat = new System.Globalization.CultureInfo("en-US", false).DateTimeFormat;
                             DTFormat.Calendar = new System.Globalization.GregorianCalendar();
@@ -217,7 +215,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(async () =>
                 {
                     UploadingPopup poupUploadingWindow = new UploadingPopup();
-                    await PopupNavigation.Instance.PushAsync(poupUploadingWindow);
+                    await MopupService.Instance.PushAsync(poupUploadingWindow);
 
                 });
             }
@@ -229,7 +227,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command<string>(async (selectedLabel) =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
                     await PickAndShow(selectedLabel, new PickOptions() { PickerTitle = "Pick Files" });
 
                 });
@@ -432,7 +430,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    await PopupNavigation.Instance.PopAsync(true);
+                    await MopupService.Instance.PopAsync(true);
                 });
 
             }
@@ -1015,39 +1013,54 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 
         private async Task<bool> GetCurrentLocation()
         {
-            var statusLocationWhenInUse = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
-            var statusLocationAlways = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
-            if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
+            try
             {
-                var location = await Geolocation.GetLocationAsync();
-                if (location == null)
+                var statusLocationWhenInUse = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+                if (statusLocationWhenInUse == PermissionStatus.Granted)
                 {
-                    location = await Geolocation.GetLastKnownLocationAsync();
+                    var location = await Geolocation.GetLocationAsync();
+                    if (location == null)
+                    {
+                        location = await Geolocation.GetLastKnownLocationAsync();
+                    }
+
+                    await SetLocation(location);
+
+                    return true;
                 }
+                else
+                {
+                    IsLoading = false;
+                    var LastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                    await SetLocation(LastKnownLocation);
+                    return false;
 
-                SubmitReport.Latitude = location.Latitude;
-                SubmitReport.Longitude = location.Longitude;
-
-                Geocoder geoCoder = new Geocoder();
-
-                Position position = new Position(location.Latitude, location.Longitude);
-
-                IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
-
-                SubmitReport.CompanyAddress = possibleAddresses.FirstOrDefault();
-
-                SubmitReport.Location = $"{SubmitReport.Latitude},{SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
-
-                return true;
+                }
             }
-            else
+            catch (Exception)
             {
                 IsLoading = false;
-                await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
                 return false;
-
             }
+            
         }
+
+        private async Task SetLocation(Location location)
+        {
+            SubmitReport.Latitude = location.Latitude;
+            SubmitReport.Longitude = location.Longitude;
+
+            Geocoder geoCoder = new Geocoder();
+
+            Position position = new Position(location.Latitude, location.Longitude);
+
+            IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
+
+            SubmitReport.CompanyAddress = possibleAddresses.FirstOrDefault();
+
+            SubmitReport.Location = $"{SubmitReport.Latitude},{SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
+        }
+
 
         private async Task MoveMapToLocation()
         {
@@ -1055,7 +1068,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
             if (await GetCurrentLocation())
             {
                 MapPage poupMapWindow = new MapPage();
-                await PopupNavigation.Instance.PushAsync(poupMapWindow);
+                await MopupService.Instance.PushAsync(poupMapWindow);
                 await Task.Delay(1000);
                 var zoomLevel = 10.71; // pick a value between 1 and 18
                 var latlongdeg = 360 / Math.Pow(2, zoomLevel);

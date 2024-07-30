@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Environment = System.Environment;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.AppConfigurations;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Enums;
@@ -20,6 +20,7 @@ using ZATCAMAUI.Views.NewDesign.DashBoardPages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using AppDynamics.Agent;
 using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
+using ZATCAMAUI.Views.NewDesign.HomePages;
 
 namespace ZATCAMAUI
 {
@@ -406,7 +407,8 @@ namespace ZATCAMAUI
                 Preferences.Default.Set("timeOut", DateTime.Now);
                 PageSettings.CheckTarget_Environment("STG");
                 PageSettings.GetBaseURL("STG");
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzI1MTUyNkAzMjM1MmUzMDJlMzBXVEhKSTV0K3lEVjM2TUpST3pLbTFhUEVuQjVlczY3TCtWblZGRUoyUHNrPQ=="); //MAUI
+
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhccnRTRGJfVkd3X0M="); //MAUI 26.*
 
                 AppResources.Culture = CultureInfo.CurrentUICulture;
                 bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
@@ -478,7 +480,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzI1MTUyNkAzMjM1
                 {
                     //navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Colors.White };
 
-                    navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
+                   navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
                 }
                 else
                 {
@@ -831,7 +833,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzI1MTUyNkAzMjM1
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                {
-                   PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
+                   MopupService.Instance.PushAsync(ActivityIndicatorView, true);
                });
             }
             catch (Exception)
@@ -1024,8 +1026,8 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzI1MTUyNkAzMjM1
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    PopupNavigation.Instance.PopAsync(true);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    MopupService.Instance.PopAsync(true);
             });
         }
 

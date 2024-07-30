@@ -854,8 +854,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatForm5PageViewModel>();
-                    SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatForm5PageViewModel>();
                 }
                 catch (Exception)
@@ -888,8 +886,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    //SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
-                    //SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
                 }
                 catch (Exception)
@@ -906,8 +902,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<GAZTNewDesignMyReturnsNewPageViewModel>();
-                    SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyReturnsNewPageViewModel>();
                 }
                 catch (Exception)
@@ -924,9 +918,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-
-                    SimpleIoc.Default.Unregister<VATLookUpNewPageViewModel>();
-                    SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATLookUpNewPageViewModel>();
                 }
                 catch (Exception)
@@ -943,8 +934,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATDeRegistrationDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATDeRegistrationDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -961,8 +950,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATDeRegistrationInstructionsPageViewModel>();
-                    SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATDeRegistrationInstructionsPageViewModel>();
                 }
                 catch (Exception)
@@ -996,8 +983,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<NewZakatObjectionPageViewModel>();
-                    SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
                     return ServiceLocator.Current.GetInstance<NewZakatObjectionPageViewModel>();
                 }
                 catch (Exception)
@@ -1014,9 +999,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<EstablishmentRegistrationPageViewModel>();
-                    SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
-
                     return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
                 }
                 catch (Exception)
@@ -1033,9 +1015,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<EstablishmentAmendUpdatePageViewModel>();
-                    SimpleIoc.Default.Register<EstablishmentAmendUpdatePageViewModel>();
-
                     return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
@@ -1052,8 +1031,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<OutletDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<OutletDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -1070,9 +1047,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<OutletDetailsAmendUpdatePageViewModel>();
-                    SimpleIoc.Default.Register<OutletDetailsAmendUpdatePageViewModel>();
-
                     return ServiceLocator.Current.GetInstance<OutletDetailsAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
@@ -1089,8 +1063,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ActivityItemPageViewModel>();
-                    SimpleIoc.Default.Register<ActivityItemPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ActivityItemPageViewModel>();
                 }
                 catch (Exception)
@@ -1107,8 +1079,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ActivityItemAmendUpdatePageViewModel>();
-                    SimpleIoc.Default.Register<ActivityItemAmendUpdatePageViewModel>();
                     return ServiceLocator.Current.GetInstance<ActivityItemAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
@@ -1447,8 +1417,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<MyBillsViewModel>();
-                    SimpleIoc.Default.Register<MyBillsViewModel>();
                     return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
                 }
                 catch (Exception)
@@ -1466,8 +1434,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATLookupPageViewModel>();
-                    SimpleIoc.Default.Register<VATLookupPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATLookupPageViewModel>();
                 }
                 catch (Exception)
@@ -1484,8 +1450,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatReturnListPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatReturnListPageViewModel>();
                 }
                 catch (Exception)
@@ -1502,8 +1466,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatReturnDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatReturnDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -1521,8 +1483,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<SalesDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<SalesDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -1539,8 +1499,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<AmendSalesDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AmendSalesDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -1575,8 +1533,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATReturnsPageViewModelEX>();
-                    SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
                     return ServiceLocator.Current.GetInstance<VATReturnsPageViewModelEX>();
                 }
                 catch (Exception)
@@ -1593,8 +1549,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<AcknowledgementDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AcknowledgementDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -1708,8 +1662,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxEvasionReportMobilePageViewModel>();
-                    SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportMobilePageViewModel>();
                 }
                 catch (Exception)
@@ -1726,8 +1678,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxEvasionReportTypePageViewModel>();
-                    SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
                 }
                 catch (Exception)
@@ -1744,8 +1694,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxEvasionReportFormPageViewModel>();
-                    SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
                 }
                 catch (Exception)
@@ -1762,8 +1710,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxEvasionFormPageViewModel>();
-                    SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
                 }
                 catch (Exception)
@@ -1780,8 +1726,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxEvasionRegistrationViewModel>();
-                    SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
                 }
                 catch (Exception)
@@ -2042,8 +1986,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATIndividualSignupPageViewModel>();
-                    SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATIndividualSignupPageViewModel>();
                 }
                 catch (Exception)
@@ -2060,8 +2002,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<IndividualRegistrationPageViewModel>();
-                    SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<IndividualRegistrationPageViewModel>();
                 }
                 catch (Exception)
@@ -2094,8 +2034,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATRegistrationPageViewModel>();
-                    SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRegistrationPageViewModel>();
                 }
                 catch (Exception)
@@ -2112,9 +2050,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATAmendReactivationPageViewModel>();
-                    SimpleIoc.Default.Register<VATAmendReactivationPageViewModel>();
-
                     return ServiceLocator.Current.GetInstance<VATAmendReactivationPageViewModel>();
                 }
                 catch (Exception)
@@ -2131,8 +2066,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATRegistrationDisplayDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRegistrationDisplayDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -2350,8 +2283,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATRefundDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRefundDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -2369,8 +2300,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATRefundsNewRequestViewModel>();
-                    SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRefundsNewRequestViewModel>();
                 }
                 catch (Exception)
@@ -2405,8 +2334,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATRefundsInstructionsPageViewModel>();
-                    SimpleIoc.Default.Register<VATRefundsInstructionsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRefundsInstructionsPageViewModel>();
                 }
                 catch (Exception)
@@ -2426,8 +2353,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatReturnDetailsSuccessfullPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatReturnDetailsSuccessfullPageViewModel>();
                 }
                 catch (Exception)
@@ -2550,8 +2475,6 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
 
-                    SimpleIoc.Default.Unregister<AccountStatementsPageViewModel>();
-                    SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
                 }
                 catch (Exception)
@@ -2569,9 +2492,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-
-                    SimpleIoc.Default.Unregister<AccountStatementBillsPageViewModel>();
-                    SimpleIoc.Default.Register<AccountStatementBillsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementBillsPageViewModel>();
                 }
                 catch (Exception)
@@ -2590,8 +2510,6 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
 
-                    //SimpleIoc.Default.Unregister<AccountStatementsPageViewModel>();
-                    //SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementBillsPageViewModel>();
                 }
                 catch (Exception)
@@ -2609,9 +2527,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-
-                    SimpleIoc.Default.Unregister<AccountStatementsDownloadPageViewModel>();
-                    SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementsDownloadPageViewModel>();
                 }
                 catch (Exception)
@@ -3272,8 +3187,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<FilesUploadPopUpViewModel>();
-                    SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<FilesUploadPopUpViewModel>();
                 }
                 catch (Exception)
@@ -3295,8 +3208,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<NewYesorNoPageViewModel>();
-                    SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
                     return ServiceLocator.Current.GetInstance<NewYesorNoPageViewModel>();
                 }
                 catch (Exception)
@@ -3318,8 +3229,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<InstalmentPlanViewModel>();
-                    SimpleIoc.Default.Register<InstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<InstalmentPlanViewModel>();
                 }
                 catch (Exception)
@@ -3341,8 +3250,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATInstalmentPlanViewModel>();
-                    SimpleIoc.Default.Register<VATInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<VATInstalmentPlanViewModel>();
                 }
                 catch (Exception)
@@ -3378,8 +3285,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VATInstalmentPlanListViewModel>();
-                    SimpleIoc.Default.Register<VATInstalmentPlanListViewModel>();
                     return ServiceLocator.Current.GetInstance<VATInstalmentPlanListViewModel>();
                 }
                 catch (Exception)
@@ -3399,8 +3304,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<InstructionsBottomPopUpViewModel>();
-                    SimpleIoc.Default.Register<InstructionsBottomPopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<InstructionsBottomPopUpViewModel>();
                 }
                 catch (Exception)
@@ -3451,8 +3354,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<AddNotePopUpViewModel>();
-                    SimpleIoc.Default.Register<AddNotePopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<AddNotePopUpViewModel>();
                 }
                 catch (Exception)
@@ -3469,8 +3370,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ViewNotePopUpViewModel>();
-                    SimpleIoc.Default.Register<ViewNotePopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<ViewNotePopUpViewModel>();
                 }
                 catch (Exception)
@@ -3490,8 +3389,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatInstalmentPlanViewModel>();
-                    SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception)
@@ -3527,8 +3424,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatInstalmentPlanListViewModel>();
-                    SimpleIoc.Default.Register<ZakatInstalmentPlanListViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanListViewModel>();
                 }
                 catch (Exception)
@@ -3546,8 +3441,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<OldZakatInstalmentPlanViewModel>();
-                    SimpleIoc.Default.Register<OldZakatInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception)
@@ -3581,8 +3474,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<OldZakatInstalmentPlanListViewModel>();
-                    SimpleIoc.Default.Register<OldZakatInstalmentPlanListViewModel>();
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanListViewModel>();
                 }
                 catch (Exception)
@@ -3605,9 +3496,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ContractReleaseViewModel>();
-                    SimpleIoc.Default.Register<ContractReleaseViewModel>();
-
                     return ServiceLocator.Current.GetInstance<ContractReleaseViewModel>();
                 }
                 catch (Exception)
@@ -3625,8 +3513,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ContractReleaseListViewModel>();
-                    SimpleIoc.Default.Register<ContractReleaseListViewModel>();
                     return ServiceLocator.Current.GetInstance<ContractReleaseListViewModel>();
                 }
                 catch (Exception)
@@ -3648,8 +3534,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ChangeFillingPeriodViewModel>();
-                    SimpleIoc.Default.Register<ChangeFillingPeriodViewModel>();
                     return ServiceLocator.Current.GetInstance<ChangeFillingPeriodViewModel>();
                 }
                 catch (Exception)
@@ -3683,8 +3567,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ChangeFillingPeriodListViewModel>();
-                    SimpleIoc.Default.Register<ChangeFillingPeriodListViewModel>();
                     return ServiceLocator.Current.GetInstance<ChangeFillingPeriodListViewModel>();
                 }
                 catch (Exception)
@@ -3703,8 +3585,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VatReviewViewModel>();
-                    SimpleIoc.Default.Register<VatReviewViewModel>();
                     return ServiceLocator.Current.GetInstance<VatReviewViewModel>();
                 }
                 catch (Exception)
@@ -3738,8 +3618,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<VatReviewListViewModel>();
-                    SimpleIoc.Default.Register<VatReviewListViewModel>();
                     return ServiceLocator.Current.GetInstance<VatReviewListViewModel>();
                 }
                 catch (Exception)
@@ -3758,8 +3636,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ObjectionViewModel>();
-                    SimpleIoc.Default.Register<ObjectionViewModel>();
                     return ServiceLocator.Current.GetInstance<ObjectionViewModel>();
                 }
                 catch (Exception)
@@ -3791,8 +3667,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatObjectionsListViewModel>();
-                    SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatObjectionsListViewModel>();
                 }
                 catch (Exception)
@@ -3810,8 +3684,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatObjectionViewModel>();
-                    SimpleIoc.Default.Register<ZakatObjectionViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
                 }
                 catch (Exception)
@@ -3847,8 +3719,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatDeregistrationPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatDeregistrationPageViewModel>();
                 }
                 catch (Exception)
@@ -3865,8 +3735,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<TaxEvasionReportDetailPageViewModel>();
-                    SimpleIoc.Default.Register<TaxEvasionReportDetailPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportDetailPageViewModel>();
                 }
                 catch (Exception)
@@ -3884,10 +3752,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-
-                    SimpleIoc.Default.Unregister<TINDeregistrationPageViewModel>();
-                    SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
-
                     return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
                 }
                 catch (Exception)
@@ -3905,8 +3769,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<CalendarPickerPageViewModel>();
-                    SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
                     return ServiceLocator.Current.GetInstance<CalendarPickerPageViewModel>();
                 }
                 catch (Exception)
@@ -3923,8 +3785,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<PickerPageViewModel>();
-                    SimpleIoc.Default.Register<PickerPageViewModel>();
                     return ServiceLocator.Current.GetInstance<PickerPageViewModel>();
                 }
                 catch (Exception)
@@ -3941,8 +3801,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatRegistrationDetailsListPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
                 }
                 catch (Exception)
@@ -3976,8 +3834,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatRegistrationTaxPayerDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationTaxPayerDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -3995,8 +3851,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatRegistrationOutletsDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationOutletsDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -4014,8 +3868,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatRegistrationFinancialDetailsPageViewModel>();
-                    SimpleIoc.Default.Register<ZakatRegistrationFinancialDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationFinancialDetailsPageViewModel>();
                 }
                 catch (Exception)
@@ -4084,8 +3936,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ShowVatInformationConfirmationPageViewModel>();
-                    SimpleIoc.Default.Register<ShowVatInformationConfirmationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ShowVatInformationConfirmationPageViewModel>();
                 }
                 catch (Exception)
@@ -4104,8 +3954,6 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<RefundAccountPopupPageViewModel>();
-                    SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
                     return ServiceLocator.Current.GetInstance<RefundAccountPopupPageViewModel>();
                 }
                 catch (Exception)
@@ -4349,14 +4197,10 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ChangeMobileRequestViewModel>();
-                    SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
                     return ServiceLocator.Current.GetInstance<ChangeMobileRequestViewModel>();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -4369,10 +4213,8 @@ namespace ZATCAMAUI.Core.Helper
                 {
                     return ServiceLocator.Current.GetInstance<ChangeMobNafathPageViewMode>();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -4385,10 +4227,8 @@ namespace ZATCAMAUI.Core.Helper
                 {
                     return ServiceLocator.Current.GetInstance<UpdateManagerViewModel>();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }

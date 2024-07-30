@@ -1,8 +1,8 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using ZATCAMAUI.Core.Enums;
@@ -167,7 +167,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             var = AppResources.ZZDeleteAttachmentConfirmationText + " " + viewModel.VATAttachmentObj.Filename + " ? ";
                         }
-                        await PopupNavigation.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FileAttachmentPopUpPageView"));
+                        await MopupService.Instance.PushAsync(new ConfirmationPopUpForVatRegistration(var, "FileAttachmentPopUpPageView"));
                     }
 
                 }
@@ -189,7 +189,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.IsLoading = false;
                     //await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
             await Task.Run(() =>

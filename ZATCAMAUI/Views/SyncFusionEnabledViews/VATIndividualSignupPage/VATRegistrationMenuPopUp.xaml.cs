@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
@@ -15,16 +15,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void OnAttachmentTapped(object sender, EventArgs e)
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             await attach.TranslateTo(0, 0, 0, Easing.BounceOut);
             VATRegistrationDetails vatReg = null;
 
-            await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
+            await MopupService.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
 
         private void CloseTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
     }
 }

@@ -7,8 +7,7 @@
     xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
-    Padding="0,45,0,0"
-    ios:Page.UseSafeArea="False"
+    ios:Page.UseSafeArea="True"
     FlowDirection="{Binding AppDirection}"
     HasBackButton="False"
     TitleText="{x:Static ResourceManager:AppResources.Home}">

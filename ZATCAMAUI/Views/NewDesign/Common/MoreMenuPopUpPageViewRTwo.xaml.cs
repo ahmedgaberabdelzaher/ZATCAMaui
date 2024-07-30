@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.Common
@@ -35,7 +35,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
         private void OnClose(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
 
 

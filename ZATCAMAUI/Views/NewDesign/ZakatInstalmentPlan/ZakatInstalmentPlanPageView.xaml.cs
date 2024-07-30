@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ZakatInstalationModels;
@@ -339,7 +339,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
         void attachmentsListView_SelectionChanged(object sender, Syncfusion.Maui.ListView.ItemSelectionChangedEventArgs e)
         {
-            //PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
+            //MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(VatInstalments.d.AttachmentSet.results,WhichAttachment.VATInstalment,viewModel.VatInstalments.d.ReturnIdz));
         }
 
         protected override void OnDisappearing()
@@ -426,7 +426,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
                 MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
                 {
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                     if (arg != null)
                     {
                         string message = arg;
@@ -695,7 +695,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
 
                 MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
                 {
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                     if (arg != null)
                     {
                         string message = arg;
@@ -799,12 +799,12 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                     {
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                             viewModel.VATSetReturnVoidAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                     }
 
@@ -826,11 +826,11 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatInstalmentPlan
                     {
                         if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                         else if (arg == AppResources.ZZZRefundEnableMessage)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                         }
                     }
                 });

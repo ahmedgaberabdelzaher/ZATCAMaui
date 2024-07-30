@@ -1,27 +1,27 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<pages:PopupPage
+<Mopups:PopupPage
     x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages.EDeclarationCartPopUpPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
-    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     FlowDirection="{Binding AppDirection}">
 
-    <pages:PopupPage.Resources>
+    <Mopups:PopupPage.Resources>
         <converter:RemoveLastLineConverter x:Key="RemoveLastLineConverter" />
-    </pages:PopupPage.Resources>
+    </Mopups:PopupPage.Resources>
 
-    <pages:PopupPage.Animation>
-        <animations:ScaleAnimation
+    <Mopups:PopupPage.Animation>
+        <Animations:ScaleAnimation
             DurationIn="400"
             DurationOut="300"
             HasBackgroundAnimation="True"
             PositionIn="Bottom"
             PositionOut="Bottom" />
-    </pages:PopupPage.Animation>
+    </Mopups:PopupPage.Animation>
 
     <Grid VerticalOptions="EndAndExpand">
 
@@ -449,5 +449,5 @@
 
     </Grid>
 
-</pages:PopupPage>
+</Mopups:PopupPage>
 

@@ -2,7 +2,7 @@
 
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Models.PaymentModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using Application = Microsoft.Maui.Controls.Application;
@@ -110,7 +110,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDReferenceNumber + " " + text));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDReferenceNumber + " " + text));
 
                
             }

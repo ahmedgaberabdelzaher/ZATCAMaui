@@ -1,7 +1,7 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;
@@ -126,7 +126,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         viewModel.IsIBANValid = true;
                         NewAccountPopUpPageViewModel.ValidTypeIban = viewModel.IbanNumberText;
                         MessagingCenter.Send<Object, string>(this, "IbanReceived", viewModel.IbanNumberText);
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                     }
                     else
                     {
@@ -204,7 +204,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             if (viewModel.IsIBANValid)
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
 
             }
             else
@@ -315,7 +315,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IbanPartThree = string.Empty;
             viewModel.IbanPartFour = string.Empty;
             viewModel.IbanPartFive = string.Empty;
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
     }
 }

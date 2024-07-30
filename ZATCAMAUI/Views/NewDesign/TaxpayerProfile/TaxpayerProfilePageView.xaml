@@ -173,6 +173,7 @@
                                         FlowDirection="LeftToRight"
                                         HorizontalOptions="FillAndExpand"
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding MobileNumber}"
                                         TextColor="{StaticResource PrimaryColor}"
@@ -209,6 +210,7 @@
 
                                     <custom:GAZTBorderlessEntry
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding EmailEntry}" />
 
@@ -247,6 +249,7 @@
                                     <custom:GAZTBorderlessEntry
                                         x:Name="Password"
                                         IsPassword="True"
+                                        InputTransparent="True"
                                         IsReadOnly="True"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding PasswordEntry}" />

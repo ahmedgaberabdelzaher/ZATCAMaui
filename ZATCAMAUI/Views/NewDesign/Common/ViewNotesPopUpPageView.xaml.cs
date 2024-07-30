@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Models.VATInstalmentModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Common;
 
@@ -51,7 +51,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         {
             try
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
             }
             catch (Exception)
             {

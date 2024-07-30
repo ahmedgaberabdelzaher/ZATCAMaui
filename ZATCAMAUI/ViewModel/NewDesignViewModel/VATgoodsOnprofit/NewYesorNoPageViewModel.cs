@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -168,7 +168,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                 ProfitGoods response = await WebServiceManager.SaveVAtProfitGoodsAsync(modelDetails);
                 if (response != null)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsSuccessmessage));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsSuccessmessage));
                     MessagingCenter.Send<object>(this, "HideProfitGoods");
 
                     App.IsVAtProfitForGoods = false;
@@ -180,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
                 else
                 {
                     IsLoading = false;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsfailuremessage));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsfailuremessage));
                 }
             }
             catch (Exception)

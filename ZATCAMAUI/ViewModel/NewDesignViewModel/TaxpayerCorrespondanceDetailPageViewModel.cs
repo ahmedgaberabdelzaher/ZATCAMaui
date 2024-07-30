@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -191,7 +191,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     IsLoading = false;
                     //await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                 });
             }
             await Task.Run(() =>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage
+<Mopups:PopupPage
     x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount.UnlockAccountTINPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -12,11 +12,11 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     CloseWhenBackgroundIsClicked="False"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <pages:PopupPage.Resources>
+    <Mopups:PopupPage.Resources>
         <ResourceDictionary>
             <Style TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="10" />
@@ -29,7 +29,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
             </Style>
         </ResourceDictionary>
-    </pages:PopupPage.Resources>
+    </Mopups:PopupPage.Resources>
     <Border
         x:Name="mainContentView"
         BackgroundColor="Transparent"
@@ -821,4 +821,4 @@
             </StackLayout>
         </StackLayout>
     </Border>
-</pages:PopupPage>
+</Mopups:PopupPage>

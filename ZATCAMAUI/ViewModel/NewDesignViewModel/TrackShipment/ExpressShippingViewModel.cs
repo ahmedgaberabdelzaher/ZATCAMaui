@@ -32,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
 
                     if (IsAPIForDeclaration)
 
-                        result = await _trackShipment.GetExpressShippingDeclaration(ShipmentDeclarationNumber);
+                        result = await _trackShipment.GetExpressShippingDeclaration(ShipmentDeclarationNumber, ShipmentImporterYear);
                     else
                         result = await _trackShipment.GetExpressShippingBill(ShipmentBillNumber);
 

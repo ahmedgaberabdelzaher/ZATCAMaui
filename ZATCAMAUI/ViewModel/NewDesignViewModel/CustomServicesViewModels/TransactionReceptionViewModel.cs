@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.CustomServices.Tawreed;
@@ -115,17 +115,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command<string>(async (e) =>
                 {
-                    IsAddNewCR = e == "1" ? true : false;
-                    if (!IsAddNewCR)
+                    // Don't remove try & catch as there is an Known issue in Syncfusion text-input
+                    // Can't dispose empty object 
+                    try
                     {
-                        await PopupNavigation.Instance.PopAsync(true);
-                        CRNo = "";
+                        IsAddNewCR = e == "1" ? true : false;
+                        if (!IsAddNewCR)
+                        {
+                            await MopupService.Instance.PopAsync(true);
+                            CRNo = "";
+                        }
+                        else
+                        {
+                            NewCrPopupView poupWindow = new NewCrPopupView();
+                            await MopupService.Instance.PushAsync(poupWindow);
+                        }
                     }
-                    else
+                    catch (Exception)
                     {
-                        NewCrPopupView poupWindow = new NewCrPopupView();
-                        await PopupNavigation.Instance.PushAsync(poupWindow);
+
                     }
+                    
                 });
             }
         }
@@ -259,7 +269,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                         if (!string.IsNullOrWhiteSpace(CRNo) && CRNo.Length == 10)
                         {
-                            await PopupNavigation.Instance.PopAsync(true);
+                            await MopupService.Instance.PopAsync(true);
                             var model = new AddNewCrBody()
                             {
                                 crNumber = CRNo,
@@ -273,7 +283,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 var result = JsonConvert.DeserializeObject<SubmitFormResponse>(content);
                                 if (result.header.status.code == "I000000")
                                 {
-                                    // await PopupNavigation.Instance.PopAsync(true);
+                                    // await MopupService.Instance.PopAsync(true);
                                     isCRDataFetched = false;
                                     IsOpenAddNewCr = false;
                                     CRNo = "";
@@ -304,6 +314,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
                         else
                         {
+                            await MopupService.Instance.PopAsync(true);
                             MessageTxt = AppResources.RequiredData;
                             IsShowMsgView = true;
                             IsLoading = false;

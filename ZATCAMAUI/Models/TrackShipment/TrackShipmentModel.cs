@@ -5,8 +5,17 @@ namespace ZATCAMAUI.Models.TrackShipment
 {
     public class TrackShipmentModel : BindableBase
     {
-        //long _ISN;
-        //public long ISN { get { return _ISN; } set { _ISN = value; RaisePropertyChanged(); } }
+        int _declarationNumber;
+        public int declarationNumber { get { return _declarationNumber; } set { _declarationNumber = value; RaisePropertyChanged(); } }
+
+        string _carrierName;
+        public string carrierName { get { return _carrierName; } set { _carrierName = value; RaisePropertyChanged(); } }
+
+        string _declarationDate;
+        public string declarationDate { get { return _declarationDate; } set { _declarationDate = value; RaisePropertyChanged(); } }
+
+        double _excisetax;
+        public double excisetax { get { return _excisetax; } set { _excisetax = value; RaisePropertyChanged(); } }
 
         double _totalFees;
         public double totalFees { get { return _totalFees; } set { _totalFees = value; RaisePropertyChanged(); } }

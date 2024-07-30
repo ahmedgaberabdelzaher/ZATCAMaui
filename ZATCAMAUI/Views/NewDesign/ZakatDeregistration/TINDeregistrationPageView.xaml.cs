@@ -5,7 +5,7 @@ using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
@@ -385,7 +385,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     {
                         popUp.FlowDirections = "LeftToRight";
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
                 }
                 else
@@ -411,7 +411,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
                         }
                     }
@@ -444,7 +444,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -474,7 +474,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                                 viewModel.FrameIDError = true;
                                 viewModel.SelectedIdNumber = string.Empty;
                             }
@@ -504,7 +504,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
                         }
@@ -532,7 +532,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameIDError = true;
                                 viewModel.SelectedIdNumber = string.Empty;
@@ -565,7 +565,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -583,7 +583,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -612,7 +612,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -631,7 +631,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                             //FrmIDNumber.HasError = true;
                             viewModel.FrameIDError = true;
                             viewModel.SelectedIdNumber = string.Empty;
@@ -896,7 +896,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
                             //  viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
                             viewModel.PickerDOBDateDisplay = "";
                             viewModel.SelectedDob = "";
                         }
@@ -920,7 +920,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (!string.IsNullOrEmpty(date) && viewModel.SelectedOutletOption.OutletOptionIndex != "1" && !string.IsNullOrEmpty(viewModel.SelectedDob) && DateTime.Parse(date) < DateTime.Parse(viewModel.SelectedDob))
                         {
                             // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             viewModel.PickerDOBDateDisplay = "";
                             viewModel.SelectedDob = "";
@@ -970,7 +970,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     viewModel.IsDeRegistrationValid = false;
                     FrmDBO.HasError = true;
                     // viewModel._dialogService.ShowMessage(AppResources.TinDeregistrationDateValidationMessage, AppResources.Information);
-                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
+                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregistrationDateValidationMessage));
 
                 }
 
@@ -997,7 +997,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
                         {
                             // viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             return;
                         }
@@ -1021,7 +1021,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         if (!string.IsNullOrEmpty(date) && viewModel.DeregistrationDate != null && DateTime.Parse(date) > viewModel.DeregistrationDate)
                         {
                             //viewModel._dialogService.ShowMessage(AppResources.TINDeregDateDOBValidation, AppResources.Information);
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TINDeregDateDOBValidation));
 
                             return;
                         }
@@ -1083,7 +1083,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         popUp.FlowDirections = "LeftToRight";
                     }
 
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                     EntryTIN.Text = string.Empty;
                 }
                 else
@@ -1111,7 +1111,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     popUp.FlowDirections = "LeftToRight";
                 }
 
-                //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //  MopupService.Instance.PushAsync(new AddPopPageView(popUp));
                 EntryTIN.Text = string.Empty;
             }
 

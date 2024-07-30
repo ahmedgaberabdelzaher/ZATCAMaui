@@ -18,7 +18,8 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10"
+                  ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 
@@ -73,7 +74,7 @@
                         <!--  Contact Information Label  -->
                         <Label
                             FontFamily="{StaticResource SomarBold}"
-                            FontSize="24"
+                            FontSize="20"
                             HorizontalOptions="StartAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ContactInformation}"
                             TextColor="{StaticResource Primary}" />
@@ -123,16 +124,24 @@
                                 <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <inputLayout:LabelStyle TextColor="#B00020" />
                                 </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Telephone"
-                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding UnRegisteredUser.mobileNumber}"
-                                    TextColor="#58595B" />
 
-                                <inputLayout:SfTextInputLayout.LeadingView>
-                                    <Label Text="+966" />
-                                </inputLayout:SfTextInputLayout.LeadingView>
+                                <StackLayout Orientation="Horizontal"
+                                             Padding="10"
+                                             Spacing="10">
+
+                                    <Label Text="+966"
+                                           HorizontalOptions="Start"
+                                           LineBreakMode="NoWrap"/>
+
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Telephone"
+                                        Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding UnRegisteredUser.mobileNumber}"
+                                        TextColor="#58595B" />
+
+                                </StackLayout>
+
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 

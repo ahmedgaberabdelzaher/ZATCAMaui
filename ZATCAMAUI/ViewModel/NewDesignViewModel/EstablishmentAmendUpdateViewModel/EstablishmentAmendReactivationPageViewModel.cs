@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -1704,7 +1704,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     genericPickerModel.PickerData = reportingBranchData;
                     genericPickerModel.PickerId = "reportingBranchPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException )
                 {
@@ -1751,7 +1751,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     genericPickerModel.PickerData = nationalityData;
                     genericPickerModel.PickerId = "nationalityPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException )
                 {
@@ -1791,7 +1791,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     genericPickerModel.PickerData = citizenData;
                     genericPickerModel.PickerId = "citizenPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException)
                 {
@@ -1831,7 +1831,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     genericPickerModel.PickerData = residenceData;
                     genericPickerModel.PickerId = "residencyPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException)
                 {
@@ -1873,7 +1873,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     genericPickerModel.PickerData = passportIssueCountryData;
                     genericPickerModel.PickerId = "passportIssueCountryPicker";
 
-                    PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
+                    MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
                 catch (GAZTUnlockAccountException )
                 {
@@ -1959,7 +1959,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                             MainThread.BeginInvokeOnMainThread(() => deleteOutlet(item as OuteltInfo_NestedListView));
                         }
                     };
-                    await PopupNavigation.Instance.PushAsync(confirmPopup);
+                    await MopupService.Instance.PushAsync(confirmPopup);
                 }
 
 
@@ -1984,7 +1984,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     FiscalMonth = item as string;
                 };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                MopupService.Instance.PushAsync(poupWindow);
             });
             OnDaySelectButtonClick = new Command(() =>
             {
@@ -1994,7 +1994,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     FiscalDay = item as string;
                     udpdateDates(FiscalDay);
                 };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                MopupService.Instance.PushAsync(poupWindow);
             });
             #endregion
 
@@ -2031,7 +2031,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                 if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
                                 {
 
-                                    await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, String.Format(AppResources.ZZZApplicationSaved, "" + _taxPayerDetails.Fbnumx), string.Empty), true);
+                                    await MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, String.Format(AppResources.ZZZApplicationSaved, "" + _taxPayerDetails.Fbnumx), string.Empty), true);
 
                                 }
                             }
@@ -2040,7 +2040,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         {
                             if (e is HTTPBadRequestException)
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                             }
                         }
                         finally
@@ -2097,7 +2097,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                     {
                                         if (e is HTTPBadRequestException)
                                         {
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                                         }
                                     }
                                     finally
@@ -2106,7 +2106,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                     }
                                 }
                             };
-                            await PopupNavigation.Instance.PushAsync(voidNotePop);
+                            await MopupService.Instance.PushAsync(voidNotePop);
                         });
                     }
                     if (actionName == AppResources.FORM5CalendarType)
@@ -2126,11 +2126,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                 }
                                 updateDatePickers(currentTab);
                             };
-                            await PopupNavigation.Instance.PushAsync(cal);
+                            await MopupService.Instance.PushAsync(cal);
                         });
                     }
                 };
-                PopupNavigation.Instance.PushAsync(poupWindow);
+                MopupService.Instance.PushAsync(poupWindow);
             });
             #endregion
         }
@@ -2316,7 +2316,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
 
                             };
-                            await PopupNavigation.Instance.PushAsync(somewarningpopup);
+                            await MopupService.Instance.PushAsync(somewarningpopup);
                         }
                         else
                         {
@@ -2379,7 +2379,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
         private void ShowValidationPopup(string _message)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(_message));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(_message));
         }
 
         private void OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum selectedOption)
@@ -2775,18 +2775,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                     else
                                     {
                                         attachmentName = string.Empty;
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
                                     }
 
                                 }
                                 else
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTAttachmentSizeNotfication));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTAttachmentSizeNotfication));
                                 }
                             }
                             else
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                             }
                         }
                     }
@@ -2794,7 +2794,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
                             IsLoading = false;
                         });
                     }
@@ -2862,7 +2862,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         string message = string.Empty;
                         message = AppResources.ZDearTaxpayerZakatSubmitMessage1 + " " + taxPayerDetails.Fbnumx + " " + AppResources.ZDearTaxpayerZakatSubmitMessage2;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                         _navigationService.GoBack();
                     }
 
@@ -2905,7 +2905,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                 }
 
 
-                                await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                                await MopupService.Instance.PushAsync(VisitPortalPopup);
                             }
                             catch (Exception)
                             {
@@ -2940,7 +2940,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                 currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                                 _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                             };
-                            await PopupNavigation.Instance.PushAsync(someThingWhentWrong);
+                            await MopupService.Instance.PushAsync(someThingWhentWrong);
                             return;
                         }
                     }
@@ -3060,7 +3060,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             catch (GAZTErrorException e)
             {
                 IsExceptionPopupVisible = true;
-                await PopupNavigation.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZZDone, e.Message, AppResources.Information));
+                await MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZZDone, e.Message, AppResources.Information));
             }
             catch (Exception)
             {
@@ -3330,7 +3330,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             catch (Exception)
             {
                 IsLoading = false;
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
         }
         private async void bindingOutletList()
@@ -3460,7 +3460,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             catch (GAZTErrorException ex)
             {
                 IsLoading = false;
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
             catch (Exception)
             {
@@ -3842,11 +3842,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                 if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                 }
                 else
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
                 }
                 MainThread.BeginInvokeOnMainThread(() => IsLoading = false);
                 return false;
@@ -3865,34 +3865,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     if (RegTaxPayerTypeAvailability.ReportingBranch && (SelectedReportingBranch == null || string.IsNullOrWhiteSpace(SelectedReportingBranch.Bez50)))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateBranch));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateBranch));
                         return false;
                     }
                     if (!IsSaudi)
                     {
                         if (RegTaxPayerTypeAvailability.ResidencyStatus && string.IsNullOrWhiteSpace(SelectedTpresidence))
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidenceType));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidenceType));
                             return false;
                         }
                         else if (RegTaxPayerTypeAvailability.ResidencyStatus && SelectedTpresidence == "2" && (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count <= 0))
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAttachRent));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAttachRent));
                             return false;
                         }
                         else if (RegTaxPayerTypeAvailability.ResidencyStatus && SelectedTpresidence == "3" && string.IsNullOrWhiteSpace(SelectedOrgNonResident))
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateLegalEntity));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateLegalEntity));
                             return false;
                         }
                         else if (RegTaxPayerTypeAvailability.ResidencyStatus && SelectedTpresidence == "3" && SelectedOrgNonResident == "1" && string.IsNullOrWhiteSpace(SelectedOrgNonResidentOptions))
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateParmanentEst));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateParmanentEst));
                             return false;
                         }
                         else if (RegTaxPayerTypeAvailability.ResidencyStatus && SelectedTpresidence == "3" && SelectedOrgNonResident == "2" && string.IsNullOrWhiteSpace(SelectedOrgNonResidentActivity))
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOtherTax));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateOtherTax));
                             return false;
                         }
                     }
@@ -3902,32 +3902,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     if (TaxPayerDetailsAvailability.DOB && string.IsNullOrWhiteSpace(SelectedDOB))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateDOB));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateDOB));
                         return false;
                     }
                     else if (TaxPayerDetailsAvailability.FirstName && string.IsNullOrWhiteSpace(FirstName))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateFirstName));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateFirstName));
                         return false;
                     }
                     else if ((TaxPayerDetailsAvailability.IsGenderVisible || TaxPayerDetailsAvailability.Gender) && string.IsNullOrWhiteSpace(SelectedGender))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateGender));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateGender));
                         return false;
                     }
                     else if ((TaxPayerDetailsAvailability.IsNationalityVisible || TaxPayerDetailsAvailability.Nationality) && null == SelectedTaxpayerPDNationality)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateNationality));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateNationality));
                         return false;
                     }
                     else if ((TaxPayerDetailsAvailability.IsCitizenVisible || TaxPayerDetailsAvailability.Citizen) && null == SelectedCitizen)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCitizen));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCitizen));
                         return false;
                     }
                     else if ((TaxPayerDetailsAvailability.IsResidenceVisible || TaxPayerDetailsAvailability.Residence) && null == SelectedResidence)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidence));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateResidence));
                         return false;
                     }
                     if (TaxPayerDetailsAvailability.DOB && !string.IsNullOrWhiteSpace(SelectedDOB))
@@ -3944,27 +3944,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     if (PassportDetails.PassportNo && string.IsNullOrWhiteSpace(PassportNumber))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePassportNumber));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePassportNumber));
                         return false;
                     }
                     else if (PassportDetails.IssueCountry && null == SelectedPassportIssueCountry)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueCountry));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueCountry));
                         return false;
                     }
                     else if (PassportDetails.IssueDate && string.IsNullOrWhiteSpace(PassportIssueDate))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueDate));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePIssueDate));
                         return false;
                     }
                     else if (PassportDetails.ExpiryDate && string.IsNullOrWhiteSpace(PassportExpireDate))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePExpiryDate));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePExpiryDate));
                         return false;
                     }
                     else if (PassportDetails.Attachment && (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count <= 0))
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAttachCopy));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePAttachCopy));
                         return false;
                     }
                     else if (PassportDetails.PassportNo)
@@ -3974,17 +3974,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expiry);
                         if (DateTime.Compare(issue, dob) < 0)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("passport issue date not before dob"));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("passport issue date not before dob"));
                             return false;
                         }
                         else if (DateTime.Compare(expiry, dob) < 0)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before dob"));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before dob"));
                             return false;
                         }
                         else if (DateTime.Compare(expiry, issue) < 0)
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before passport issue"));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before passport issue"));
                             return false;
                         }
                     }
@@ -3993,7 +3993,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     if (OutletData.Count == 0)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAtleastOutlet));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAtleastOutlet));
                         return false;
                     }
                 }
@@ -4004,7 +4004,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     if (!ESTLedge)
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePledge));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidatePledge));
                         return false;
                     }
                 }
@@ -4205,7 +4205,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                 if (ex is HTTPBadRequestException)
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 }
                 return false;
             }

@@ -5,7 +5,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -895,43 +895,43 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
                 InfoTitle = AppResources.CRContractprofitEstimatedRate;
                 InfoDesc = AppResources.CRContractprofitEstimatedRateDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             ProfitEstimatedContractCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRProfitEstimatedForContract;
                 InfoDesc = AppResources.CRProfitEstimatedForContractDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             EstimatedProfitZakatCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CREstimatedProfitforZakat;
                 InfoDesc = AppResources.CREstimatedProfitforZakatDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             EstimatedProfitTaxCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CREstimatedProfitforTax;
                 InfoDesc = AppResources.CREstimatedProfitforTaxDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             ValueofZakatDuesCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRTheValueofZakatdues;
                 InfoDesc = AppResources.CRTheValueofZakatduesDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             ValueofTaxDuesCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRTheValueTaxDues;
                 InfoDesc = AppResources.CRTheValueTaxDuesDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
             TotalDuesCommand = new Command(async () =>
             {
                 InfoTitle = AppResources.CRTotalDues;
                 InfoDesc = AppResources.CRTotalDuesDesc;
-                await PopupNavigation.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
+                await MopupService.Instance.PushAsync(new ContractReleaseInfoPopup(Desc: InfoDesc, Title: InfoTitle));
             });
 
             ShowStartDatePicker = new Command(async () =>
@@ -1013,7 +1013,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
         public async void showInstructionDialog()
         {
-            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+            await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
                 instructionString: AppResources.CRInstructions, checkBoxString: AppResources.CRInstrCheckDesc,
                 continueString: AppResources.CRContinue,
                 _dialogType: InstructionsBottomPopUpViewModel.DialogType
@@ -1126,7 +1126,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel, false));
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericPickerModel, false));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1145,7 +1145,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1166,7 +1166,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1296,7 +1296,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     IsDeclarationEnabled = true;
                     if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
                     {
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
                         return;
                     }
                 }
@@ -1333,15 +1333,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
                 if (!isSubmitted)
                 {
-                    //await PopupNavigation.Instance.PushAsync(App.ActivityIndicatorView, false);
+                    //await MopupService.Instance.PushAsync(App.ActivityIndicatorView, false);
                     await SubmitClicked();
                 }
 
             }
             catch (GAZTErrorException ex)
             {
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(false);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(false);
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.ToString(), AppResources.Information);
@@ -1352,8 +1352,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    if (PopupNavigation.Instance.PopupStack.Count > 0)
-                        await PopupNavigation.Instance.PopAsync(false);
+                    if (MopupService.Instance.PopupStack.Count > 0)
+                        await MopupService.Instance.PopAsync(false);
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
                 return;
@@ -1369,14 +1369,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception ex)
             {
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(false);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(false);
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
             finally
             {
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(false);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(false);
             }
         }
 
@@ -2066,7 +2066,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
         public async void NewContractCopyAttachmentClicked()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             _isInvoiceAttachments = false;
             if (ContractCopyAttachmentsListViewData == null)
             {
@@ -2075,7 +2075,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             try
             {
 
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     ContractCopyAttachmentsListViewData.ToList(),
                     WhichAttachment.ContractReleaseCopy, ContractReleaseData.d.CaseGuid));
 
@@ -2100,7 +2100,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
         public async void NewInvoiceAttachmentClicked()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             _isInvoiceAttachments = true;
             if (InvoiceAttachmentsListViewData == null)
             {
@@ -2109,7 +2109,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             try
             {
 
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     InvoiceAttachmentsListViewData.ToList(),
                    WhichAttachment.ContractReleaseInvoice,
                     ContractReleaseData.d.CaseGuid));

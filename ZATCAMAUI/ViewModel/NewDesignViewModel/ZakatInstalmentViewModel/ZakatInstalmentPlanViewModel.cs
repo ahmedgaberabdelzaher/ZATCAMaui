@@ -4,7 +4,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -2256,7 +2256,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             });
             onMoreOptionClicked = new Command(async () =>
             {
-                await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                await MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
 
             CloseClick = new Command(() =>
@@ -2957,7 +2957,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 if (IsVatTermsChecked)
                 {
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                 }
                 else
                 {
@@ -3499,7 +3499,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                                     //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
@@ -3586,7 +3586,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             newDesignPopUp.HeaderWithInfos = headerWithInfos;
             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+            await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
 
         }
 
@@ -3690,7 +3690,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                 newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                 _navigationService.GoBack();
 
@@ -3719,7 +3719,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -3742,7 +3742,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                                     WebServiceManager.ErrorMessageForVAT = string.Empty;
                                 });
@@ -3941,7 +3941,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 ZakatreasonData.Add(AppResources.TinDeregistrationReasonLiquidation);
                 ZakatreasonData.Add(AppResources.TinDeregistrationReasonEstablishmentToCompany);
 
-                //await PopupNavigation.Instance.PushAsync(new PickerPageView(ZakatreasonData));
+                //await MopupService.Instance.PushAsync(new PickerPageView(ZakatreasonData));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -4037,7 +4037,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         public async void BankStatementsAttachmentClicked()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             _bankStatementsAttachment = true;
             if (BankStatementsAttachmentsListViewData == null)
             {
@@ -4046,7 +4046,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             try
             {
 
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     BankStatementsAttachmentsListViewData.ToList(),
                     WhichAttachment.ZakatInstalmentBankStatements, ZakatInstalments.d.ReturnId));
 
@@ -4075,7 +4075,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         public async void FinanceAttachmentClicked()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             _bankStatementsAttachment = false;
             if (FinanceAttachmentsListViewData == null)
             {
@@ -4084,7 +4084,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             try
             {
 
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                 FinanceAttachmentsListViewData.ToList(),
                 WhichAttachment.ZakatInstalmentFinance, ZakatInstalments.d.ReturnId));
 
@@ -4433,13 +4433,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                             if (IsZakat)
                             {
-                                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
+                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetPlanTitle,
                    _dialogType: InstructionsBottomPopUpViewModel.DialogType
                        .Instructions));
                             }
                             else
                             {
-                                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZakatInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatInstalmetSelectTypeIncomeTax,
                    _dialogType: InstructionsBottomPopUpViewModel.DialogType
                        .Instructions));
 

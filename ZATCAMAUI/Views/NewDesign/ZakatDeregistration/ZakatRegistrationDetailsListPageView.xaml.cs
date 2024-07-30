@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
@@ -160,7 +160,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                         //});
                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                         });
                         return;
                     }
@@ -168,7 +168,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        PopupNavigation.Instance.PushAsync(new VATDeregistrationInstructionsPage(IsInstructionChecked));
+                        MopupService.Instance.PushAsync(new VATDeregistrationInstructionsPage(IsInstructionChecked));
                     });
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }

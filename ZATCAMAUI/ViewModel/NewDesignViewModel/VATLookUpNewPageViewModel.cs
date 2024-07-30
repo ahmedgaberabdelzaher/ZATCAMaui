@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -333,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
                                     IsLoading = false;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheVATAccountNocomposedof15digits));
+                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheVATAccountNocomposedof15digits));
                                 });
                                 return;
                             }
@@ -346,7 +346,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
                                     IsLoading = false;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheCRcomposedof10digits));
+                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseentertheCRcomposedof10digits));
                                 });
                                 return;
                             }
@@ -359,7 +359,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
                                     IsLoading = false;
-                                    PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATCertificateNumberValidation));
+                                    MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATCertificateNumberValidation));
                                 });
                                 return;
                             }
@@ -372,7 +372,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             IsLoading = false;
                             isMandatoryDataEntered = false;
-                            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp($"{AppResources.PleaseEnter} {SelectedParameterType.ParameterType}"));
+                            MopupService.Instance.PushAsync(new AttachmentInformationPopUp($"{AppResources.PleaseEnter} {SelectedParameterType.ParameterType}"));
                         });
                         return;
                     }
@@ -383,7 +383,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
                         IsLoading = false;
-                        PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseselectparametertype));
+                        MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZPleaseselectparametertype));
                     });
                     return;
                 }
@@ -415,7 +415,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     if (LookUpNo.Length != 15)
                     {
                         IsLoading = false;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InValidCode));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InValidCode));
                         return;
                     }
                     LookupNumber = LookUpNo;
@@ -500,7 +500,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     IsLoading = false;
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
             catch (HttpRequestException)
@@ -510,7 +510,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     IsLoading = false;
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
             catch (Exception)
@@ -522,7 +522,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     IsLoading = false;
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
             finally

@@ -27,9 +27,9 @@ namespace ZATCAMAUI.Core.Services.Classes
             return response;
         }
 
-        public async Task<Tuple<DATAPowerBaseResponse<TrackShipmentModel>, bool, string>> GetExpressShippingDeclaration(string declarationNumber)
+        public async Task<Tuple<DATAPowerBaseResponse<TrackShipmentModel>, bool, string>> GetExpressShippingDeclaration(string declarationNumber, string importYear)
         {
-            var response = await Helper.HttpManager.GetAsync<DATAPowerBaseResponse<TrackShipmentModel>>($"{PageSettings.ZATCABaseURL}v1/customs/shipment-tracking/express-shipping-declaration?declarationNumber={declarationNumber}").ConfigureAwait(false);
+            var response = await Helper.HttpManager.GetAsync<DATAPowerBaseResponse<TrackShipmentModel>>($"{PageSettings.ZATCABaseURL}v1/customs/shipment-tracking/express-shipping-declaration?declarationNumber={declarationNumber}&importYear={importYear}").ConfigureAwait(false);
             return response;
         }
 

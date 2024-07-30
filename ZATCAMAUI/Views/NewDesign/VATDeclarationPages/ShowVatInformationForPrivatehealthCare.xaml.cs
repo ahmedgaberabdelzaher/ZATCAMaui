@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using System.Globalization;
 using System.Resources;
@@ -42,7 +42,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         }
         private void DoneButtonClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
     }
 }

@@ -59,20 +59,6 @@ namespace ZATCAMAUI.Core.Helper
 
         #endregion
 
-        /*
-        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = DevDomainForCookies;
-        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
-
-
-        /*   public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-           public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-           public static string DomainUrlForCookies = QADomainForCookies;
-           public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-       */
-
-
         //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = DevDomainForCookies;
@@ -89,20 +75,6 @@ namespace ZATCAMAUI.Core.Helper
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-        /*
-                public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;/////3100047063
-                public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-                public static string DomainUrlForCookies = PreprodDomainForCookies;
-                public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-           */
-        public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = ProdDomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-        public static string CaptchaBaseUrl = ProdBaseUrlForAuthentication;
-
-
-
         //public static string CaptchaBaseUrl = UatBaseUrlForAuthentication;
 
         //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
@@ -111,11 +83,11 @@ namespace ZATCAMAUI.Core.Helper
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
         //public static string CaptchaBaseUrl = PreProdBaseUrlForAuthentication;
 
-        //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = ProdDomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-        //public static string CaptchaBaseUrl = ProdBaseUrlForAuthentication;
+        public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = ProdDomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        public static string CaptchaBaseUrl = ProdBaseUrlForAuthentication;
 
 
 

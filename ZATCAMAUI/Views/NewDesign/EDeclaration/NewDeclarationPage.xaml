@@ -70,7 +70,7 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="0,10,0,0"
+                Padding="0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
@@ -113,8 +113,7 @@
                             <BoxView
                                 Margin="0,0,0,25"
                                 BackgroundColor="{StaticResource NeutralLightGrey}"
-                                HeightRequest="1"
-                                WidthRequest="350" />
+                                HeightRequest="1"/>
 
                             <!--  Question Field Label  -->
                             <Label Style="{StaticResource CaptionLabelGrey}">
@@ -127,22 +126,19 @@
                             </Label>
 
                             <!--#region Cards-->
-                            <StackLayout
-                                HorizontalOptions="FillAndExpand"
-                                Orientation="Horizontal"
-                                Spacing="10"
-                                VerticalOptions="Start">
+                            <HorizontalStackLayout Spacing="10"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   VerticalOptions="FillAndExpand">
 
                                 <!--  Arriving Card  -->
                                 <Grid
-                                    Padding="0"
-                                    HeightRequest="136"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="FillAndExpand"
                                     VerticalOptions="StartAndExpand"
-                                    WidthRequest="171">
+                                    HeightRequest="110"
+                                    WidthRequest="160">
 
                                     <!--  Background image selected  -->
-                                    <Image Aspect="AspectFill" Source="Unselected.png">
+                                    <Image Aspect="Fill" Source="Unselected.png">
 
                                         <Image.Triggers>
                                             <DataTrigger
@@ -150,6 +146,8 @@
                                                 TargetType="Image"
                                                 Value="True">
                                                 <Setter Property="Source" Value="Unselected.png" />
+                                                <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                             <DataTrigger
@@ -157,6 +155,8 @@
                                                 TargetType="Image"
                                                 Value="False">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
+                                                <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -164,7 +164,7 @@
                                     </Image>
 
                                     <StackLayout
-                                        Margin="15,10"
+                                        Padding="10"
                                         HorizontalOptions="StartAndExpand"
                                         Spacing="5"
                                         VerticalOptions="EndAndExpand">
@@ -235,15 +235,13 @@
 
 
                                 <!--  Departing card  -->
-                                <Grid
-                                    Padding="0"
-                                    HeightRequest="136"
-                                    HorizontalOptions="StartAndExpand"
+                                <Grid  HorizontalOptions="FillAndExpand"
                                     VerticalOptions="StartAndExpand"
-                                    WidthRequest="171">
+                                    HeightRequest="110"
+                                    WidthRequest="160">
 
                                     <!--  Background image selected  -->
-                                    <Image Aspect="AspectFill" Source="UnselectedCard.png">
+                                    <Image Aspect="Fill" Source="UnselectedCard.png">
 
                                         <Image.Triggers>
                                             <DataTrigger
@@ -251,6 +249,8 @@
                                                 TargetType="Image"
                                                 Value="False">
                                                 <Setter Property="Source" Value="Unselected.png" />
+                                                <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                             <DataTrigger
@@ -258,6 +258,8 @@
                                                 TargetType="Image"
                                                 Value="True">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
+                                                <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -265,7 +267,7 @@
                                     </Image>
 
                                     <StackLayout
-                                        Margin="15,10"
+                                        Padding="10"
                                         HorizontalOptions="StartAndExpand"
                                         Spacing="5"
                                         VerticalOptions="EndAndExpand">
@@ -332,7 +334,7 @@
 
                                 </Grid>
 
-                            </StackLayout>
+                            </HorizontalStackLayout>
                             <!--#endregion Cards-->
 
                             <!--#region Review previous LoggedIn Option-->

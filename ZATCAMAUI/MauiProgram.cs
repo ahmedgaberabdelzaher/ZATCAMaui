@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Maui.PancakeView;
-using RGPopup.Maui.Extensions;
+using Mopups.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Interfaces;
@@ -20,7 +20,6 @@ using ZXing.Net.Maui.Controls;
 using IDeviceInfo = ZATCAMAUI.Core.Interfaces.IDeviceInfo;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;
-using CommunityToolkit.Maui.Maps;
 
 namespace ZATCAMAUI;
 
@@ -34,7 +33,7 @@ public static class MauiProgram
             builder
                 .UseMauiApp<App>()
                 .UseBarcodeReader()
-                .UseMauiRGPopup()
+                .ConfigureMopups()
                 .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionCore()
                 .UsePancakeViewCompat()
@@ -75,7 +74,6 @@ public static class MauiProgram
               {
 #if ANDROID
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
-                  //handlers.AddCompatibilityRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer));
@@ -85,12 +83,8 @@ public static class MauiProgram
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
-                  //handlers.AddCompatibilityRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
                   handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
-                  //handlers.AddCompatibilityRenderer(typeof(Page), typeof(KeyboardRender));
-                 // handlers.AddCompatibilityRenderer(typeof(RoundCornersEffect), typeof(RoundCornersEffectIOS));
-                  //handlers.AddCompatibilityRenderer(typeof(ViewCell), typeof(TransparentViewCellRenderer));
 #endif 
               });
 

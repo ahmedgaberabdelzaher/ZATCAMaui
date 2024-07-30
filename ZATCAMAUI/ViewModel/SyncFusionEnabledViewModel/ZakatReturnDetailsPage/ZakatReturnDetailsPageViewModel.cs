@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -218,7 +218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
 
                         };
                     }
-                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                    await MopupService.Instance.PushAsync(VisitPortalPopup);
                 }
                 catch (Exception)
                 {

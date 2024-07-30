@@ -1,5 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Models;
 
@@ -103,7 +103,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                     NoteText = PreviousNoteText;
                 }
                 ClearNoteClicked = true;
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
                 MessagingCenter.Send<object, string>(this, "ClearNoteForVATDeclaration", "ClearNoteForVATDeclaration");
 
             });
@@ -121,7 +121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                     }
                 }
                 MessagingCenter.Send<object, string>(this, "AddNoteForVATDeclaration", "AddNoteForVATDeclaration");
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             });
         }
         #endregion

@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration;
@@ -40,11 +40,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException)
             {
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(true);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(true);
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
 
                 }
@@ -55,10 +55,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             catch (GAZTErrorException ex)
             {
 
-                if (PopupNavigation.Instance.PopupStack.Count > 0)
-                    await PopupNavigation.Instance.PopAsync(true);
+                if (MopupService.Instance.PopupStack.Count > 0)
+                    await MopupService.Instance.PopAsync(true);
 
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
 
             }

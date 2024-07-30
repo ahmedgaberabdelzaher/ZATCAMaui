@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -217,7 +217,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             {// Call the Post API to release and if response is true then set the Button Name as bills and after tapping on that user needs to be navigated to Bills page 
-                await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDoyouwanttoreleasethedeclaration));
+                await MopupService.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDoyouwanttoreleasethedeclaration));
 
             }
             else
@@ -267,7 +267,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "NoReceived", (sender, arg) =>
                 {
-                    //await PopupNavigation.Instance.PopAsync();
+                    //await MopupService.Instance.PopAsync();
                     //await viewModel.VATSetReturnVoidAsync();
 
                 });
@@ -318,7 +318,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             if (viewModel.isThresholdValueLessThanTotalVATSales)
             {
                 salesType = "TotalVATSales";
-                PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+                MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
 
             }
         }
@@ -326,48 +326,48 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         private void OnAverageNumberLabourEditImageClicked(object sender, EventArgs e)
         {
             salesType = "AverageNumberLabour";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private void OnImportValueEditImageClicked(object sender, EventArgs e)
         {
             salesType = "ImportValue";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private void OnImportFromPointOfSalesEditImageClicked(object sender, EventArgs e)
         {
             salesType = "ImportFromPointOfSales";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private void OnContactFromETIMADSystemEditImageClicked(object sender, EventArgs e)
         {
             salesType = "ContactFromETIMADSystem";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private void OnExportValueEditImageClicked(object sender, EventArgs e)
         {
             salesType = "ExportValue";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private void OnPurchaseValueEditImageClicked(object sender, EventArgs e)
         {
             salesType = "PurchaseValue";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
         private void OnRealEstateValueEditImageClicked(object sender, EventArgs e)
         {
             salesType = "RealEstateValue";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private void OnCapitalAmountEditImageClicked(object sender, EventArgs e)
         {
             salesType = "CapitalAmount";
-            PopupNavigation.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
+            MopupService.Instance.PushAsync(new AttachmentPopUp(viewModel.ZakatReturnDetail));
         }
 
         private async void OnConfirmClicked(object sender, EventArgs e)
@@ -378,7 +378,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
                 if (viewModel.IsCurrentZAKATTaxLess)
                 {
-                    await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeartaxpayerbasedonthesubmittedamendments));
+                    await MopupService.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeartaxpayerbasedonthesubmittedamendments));
 
                 }
                 else
@@ -391,7 +391,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
 
                    
                 });
@@ -406,63 +406,63 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             if (viewModel.IsRealEstateViewVisible == false)
             {
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationText));
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationText));
             }
             else
             {
-                PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationTextWithRealEstate));
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZEstimatedSalesInformationTextWithRealEstate));
             }
         }
 
         private void OnZAKATAmountInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZakatBaseandwithalowerboundof500SAR));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZakatBaseandwithalowerboundof500SAR));
         }
 
         private void OnZAKATBaseAmountInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGreatervalueofEstimatedSales));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGreatervalueofEstimatedSales));
         }
 
         private void OnCapitalAmountInformationClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
         }
 
 
         private void OnTotalVATSalesInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTotalsalesinVATreturns));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZTotalsalesinVATreturns));
         }
 
         private void OnAverageNumberOfLabourInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZAveragenumberoflaborsx6000SAR));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZAveragenumberoflaborsx6000SAR));
         }
 
         private void OnImportValueInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZImportsvaluex115));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZImportsvaluex115));
         }
 
 
         private void OnContactFromETIMADSystemInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports));
         }
 
         private void OnPurchaseInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPurchasesvaluex115));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPurchasesvaluex115));
         }
         private void OnRealEstateInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZRealEstateWithinPeriod));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZRealEstateWithinPeriod));
         }
 
         private void OnCapitalAmountInfoClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
+            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCapitalamountasperMCIrecordsMOMRArecordsoranyothersourcethatassisttoidentifythecapitalamount));
         }
 
         // Events to handle the Sales Type inputs entry

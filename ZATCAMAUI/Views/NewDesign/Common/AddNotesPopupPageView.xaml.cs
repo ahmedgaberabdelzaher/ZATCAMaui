@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Common;
 
 namespace ZATCAMAUI.Views.NewDesign.Common
@@ -51,7 +51,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
             try
             {
                 MessagingCenter.Send<object, string>(this, "Notes", viewModel.NoteText);
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             }
             catch (Exception)
             {

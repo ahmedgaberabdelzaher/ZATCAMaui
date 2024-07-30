@@ -3,8 +3,8 @@ using System.Globalization;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Models;
@@ -308,7 +308,7 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     {
                         if (attachment.DocUrl != null)
                         {
-                            await PopupNavigation.Instance.PopAsync();
+                            await MopupService.Instance.PopAsync();
                             viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
                         }
                     }

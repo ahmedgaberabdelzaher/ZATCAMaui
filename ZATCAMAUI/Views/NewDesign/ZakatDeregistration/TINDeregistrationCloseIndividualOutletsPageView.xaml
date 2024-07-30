@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<pages:PopupPage
+<Mopups:PopupPage
     x:Class="ZATCAMAUI.Views.NewDesign.ZakatDeregistration.TINDeregistrationCloseIndividualOutletsPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -13,7 +13,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:local1="clr-namespace:ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration"
-    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="TinDeregIndOutlets"
     FlowDirection="{Binding AppDirection}">
@@ -195,13 +195,14 @@
                             <inputLayout:SfTextInputLayout
                                 x:Name="FrmDBO"
                                 Margin="0,-10,0,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="yyyy/MM/dd"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     x:Name="DateEntry"
                                     BackgroundColor="Gray"
                                     Focused="OnDateEntryFocussed"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Placeholder="yyyy/MM/dd"
                                     Style="{StaticResource InputTableEntryLayoutStyle}"
                                     Text="{Binding PickerCloseAllDeregDateDisplay}"
@@ -357,12 +358,13 @@
                                     <inputLayout:SfTextInputLayout
                                         x:Name="FrmDBO2"
                                         Margin="0,-10,0,0"
-                                        IsHintAlwaysFloated="True"
+                                        Hint="yyyy/MM/dd"
                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                         <custom:GAZTBorderlessEntry
                                             x:Name="DateEntry21"
                                             Focused="OnDateEntryFocussed"
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="yyyy/MM/dd"
                                             Style="{StaticResource InputTableEntryLayoutStyle}"
                                             Text="{Binding PickerCloseAllDeregDateDisplay}"
@@ -625,12 +627,13 @@
                                 <inputLayout:SfTextInputLayout
                                     x:Name="FrmDBO1"
                                     Margin="0,-10,0,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="yyyy/MM/dd"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         x:Name="DateEntry23"
                                         Focused="OnTransferDOBDateEntryFocussed"
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Placeholder="yyyy/MM/dd"
                                         Style="{StaticResource InputTableEntryLayoutStyle}"
                                         Text="{Binding TransferPickerDOBDateDisplay, StringFormat='{0:yyyy/MM/dd}'}"
@@ -1197,11 +1200,12 @@
                                                     <inputLayout:SfTextInputLayout
                                                         x:Name="FrmDBO1"
                                                         Margin="0,-10,0,0"
-                                                        IsHintAlwaysFloated="True"
+                                                        Hint="yyyy/MM/dd"
                                                         Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                         <custom:GAZTBorderlessEntry
                                                             x:Name="DateEntry23"
                                                             IsReadOnly="True"
+                                                            InputTransparent="True"
                                                             Placeholder="yyyy/MM/dd"
                                                             Style="{StaticResource InputTableEntryLayoutStyle}"
                                                             Text="{Binding APermitDeregDisplayDate}"
@@ -1462,11 +1466,12 @@
                                                             <inputLayout:SfTextInputLayout
                                                                 x:Name="FrmDBO4"
                                                                 Margin="0,-10,0,0"
-                                                                IsHintAlwaysFloated="True"
+                                                                Hint="yyyy/MM/dd"
                                                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                                                 <custom:GAZTBorderlessEntry
                                                                     x:Name="DateEntry35"
                                                                     IsReadOnly="True"
+                                                                    InputTransparent="True"
                                                                     Placeholder="yyyy/MM/dd"
                                                                     Style="{StaticResource InputTableEntryLayoutStyle}"
                                                                     Text="{Binding APermitDeregDisplayDobDate}"
@@ -1946,4 +1951,4 @@
             </ScrollView>
         </Grid>
     </Border>
-</pages:PopupPage>
+</Mopups:PopupPage>

@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -18,18 +18,18 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private void OnCloseTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
 
         private void OnOkClicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
 
         private void DoneButtonClicked(object sender, EventArgs e)
         {
             OnDone?.Invoke();
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
         }
     }
 }

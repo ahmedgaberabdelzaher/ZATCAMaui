@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -87,7 +87,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                     mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
 
                 viewModel.IsLoading = false;
-                PopupNavigation.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
+                MopupService.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
             }
             catch (Exception)
             {
@@ -100,16 +100,16 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
         private void OnEmailEditTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new UpdateEmailPopUp());
+            MopupService.Instance.PushAsync(new UpdateEmailPopUp());
         }
 
         private void OnPasswordEditTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new UpdatePasswordPopUp());
+            MopupService.Instance.PushAsync(new UpdatePasswordPopUp());
         }
         private void OnManagerDetailsTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new UpdateManagerDetailsPopUp());
+            MopupService.Instance.PushAsync(new UpdateManagerDetailsPopUp());
         }
         private void OnBackArrowBtnTapped(object sender, EventArgs e)
         {

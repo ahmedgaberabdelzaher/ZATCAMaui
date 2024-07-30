@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -743,7 +743,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                         }
 
                     }
@@ -751,7 +751,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseselectthedisclaimercheckboxbeforesubmit));
 
                          });
                     }
@@ -761,7 +761,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                      {
-                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNochangesmadeFormcannotbesubmitted));
+                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNochangesmadeFormcannotbesubmitted));
 
                      });
                 }
@@ -811,7 +811,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         };
                     }
-                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                    await MopupService.Instance.PushAsync(VisitPortalPopup);
                 }
                 catch (Exception)
                 {
@@ -905,7 +905,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                             //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
@@ -922,7 +922,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             {
                                 if (App.IsArabic)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended));
 
                                     // await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
                                     _navigationService.GoBack();
@@ -930,7 +930,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                                 else
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
 
                                     //   await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                                     _navigationService.GoBack();
@@ -948,7 +948,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                  {
-                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                  });
             }
@@ -991,7 +991,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                     }
 
 
@@ -1014,12 +1014,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                  if (ZakatReturnDetails.d.MadabutFg == "X")
                                  {
 
-                                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                                     MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
                                  }
                                  else
                                  {
 
-                                     PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+                                     MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
                                  }
 
@@ -1035,7 +1035,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                          }
                          else
                          {
-                             PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                             MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                          }
                      });
                 }
@@ -1053,19 +1053,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                              if (ZakatReturnDetails.d.MadabutFg == "X")
                              {
 
-                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                                 await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
                              }
                              else
                              {
 
-                                 await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+                                 await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
                              }
 
                          }
                          else
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                          }
                      });
                 }
@@ -1082,7 +1082,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                          }
                          else
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                          }
                      });
                 }
@@ -1099,12 +1099,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                  if (ZakatReturnDetails.d.MadabutFg == "X")
                                  {
 
-                                     await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                                     await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
                                  }
                                  else
                                  {
 
-                                     await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+                                     await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
                                  }
 
@@ -1118,7 +1118,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                          }
                          else
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                          }
                      });
                 }
@@ -1136,7 +1136,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                              }
                              else
                              {
-                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                              }
                          });
                      });
@@ -1153,7 +1153,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                          }
                          else
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseEnterCorrectData));
                          }
                      });
                 }
@@ -1202,7 +1202,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                     {
-                        await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                        await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
                         return;
                     }
 
@@ -1245,7 +1245,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     if (ex.Message == "There is no open liability to be paid against this declaration" || ex.Message == "لا يوجد التزامات حالية متاحة للدفع لهذا الاقرار")
                     {
 
-                        await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, AppResources.NoOpenLiabilityToBePaid));
+                        await MopupService.Instance.PushAsync(new PaymentOptionsPageView(false, true, false, AppResources.NoOpenLiabilityToBePaid));
 
                     }
                     else
@@ -1263,7 +1263,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                 });
             }
@@ -1274,7 +1274,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
 
                     IsLoading = false;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -1336,7 +1336,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
+                            await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
                         });
 
                     }
@@ -1359,7 +1359,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
             }
@@ -1376,7 +1376,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             else
             {
 
-                await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
+                await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, ZakatReturnDetails.d.OpenliMsg));
 
             }
 
@@ -1428,7 +1428,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             IsEditTextVisible = false;
                             MainThread.BeginInvokeOnMainThread(async () =>
                              {
-                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
                              });
 
                         }
@@ -1444,7 +1444,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                              {
-                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
                                  _navigationService.GoBack();
                                  WebServiceManager.ErrorMessage = string.Empty;
                                  IsLoading = false;
@@ -1480,7 +1480,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                      {
-                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                      });
                 }
@@ -1522,7 +1522,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                              {
-                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason));
+                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason));
 
                                  //  await _dialogService.ShowMessageBox(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason, AppResources.Information);
                              });
@@ -1545,7 +1545,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                      {
                          if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                              //   await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                              _navigationService.GoBack();
@@ -1553,7 +1553,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                          }
                          else
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
 
                              //await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                              _navigationService.GoBack();
@@ -1605,7 +1605,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                      {
                          if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                              // await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                              _navigationService.GoBack();
@@ -1613,7 +1613,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                          }
                          else
                          {
-                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
 
                              // await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                              _navigationService.GoBack();

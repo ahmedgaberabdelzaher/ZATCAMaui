@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -948,7 +948,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (IsWithDrawEnable)
                 {
 
-                    await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(isWithCancelOption: true, instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
+                    await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(isWithCancelOption: true, instructionString: AppResources.ZOWIthdrawInstructions, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.CRContinue,
                _dialogType: InstructionsBottomPopUpViewModel.DialogType
                    .Instructions));
 
@@ -1320,7 +1320,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
         private bool _isFirstAttachment = false;
         public async void WithdrawAttachmentTappedAsync()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             _isFirstAttachment = true;
             if (WithdrawAttachmentsListViewData == null)
             {
@@ -1330,7 +1330,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             {
 
 
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     WithdrawAttachmentsListViewData.ToList(),
                     WhichAttachment.ZakatObjectionsWithdrawAttachment, SummaryData.d.CaseGuid));
                 //TODO: ReturnID
@@ -1361,7 +1361,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         public async void WithdrawAttachmentTappedAsyncTwo()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             _isFirstAttachment = false;
             if (WithdrawAttachmentsListViewDataTwo == null)
             {
@@ -1369,7 +1369,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             try
             {
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     WithdrawAttachmentsListViewDataTwo.ToList(),
                     WhichAttachment.ZakatObjectionsWithdrawAttachmentTwo, SummaryData.d.CaseGuid));
                 //TODO: ReturnID
@@ -1444,7 +1444,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
         public async void showInstructionsDialog()
         {
-            await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOTerms, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatObjection,
+            await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.ZOTerms, checkBoxString: AppResources.ZakatInstructionsCheckBoxDesc, continueString: AppResources.ZakatObjection,
                    _dialogType: InstructionsBottomPopUpViewModel.DialogType
                        .Instructions));
         }

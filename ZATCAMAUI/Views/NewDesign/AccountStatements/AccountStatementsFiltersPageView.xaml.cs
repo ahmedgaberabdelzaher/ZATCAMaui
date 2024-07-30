@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Pages;
+using Mopups.Pages;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
 using Application = Microsoft.Maui.Controls.Application;
 

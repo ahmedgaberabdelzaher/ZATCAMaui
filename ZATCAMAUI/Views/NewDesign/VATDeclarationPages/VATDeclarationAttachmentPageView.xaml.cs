@@ -4,8 +4,8 @@ using System.Net;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
-using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -123,7 +123,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             }
             catch (Exception)
             {
@@ -162,7 +162,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 {
                                     //  var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                                     AttachmentName = attachment.Filename;
-                                    await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
+                                    await MopupService.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
                                     // DeleteAttachment(result, attachment);
                                 }
                             }
@@ -188,7 +188,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                         {
                             if (attachment != null)
                             {
-                                await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
+                                await MopupService.Instance.PushAsync(new ZAKATOkCancelPopUpView("DeleteVATAttachment"));
                             }
                         }
                     }
@@ -204,7 +204,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
         }
@@ -317,7 +317,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             viewModel.IsLoading = false;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZDownloadAttachmentMessg));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZDownloadAttachmentMessg));
                             });
                         }
                     }
@@ -376,13 +376,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     if (attachment.DocUrl != null)
                     {
                         viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                        await PopupNavigation.Instance.PopAsync();
+                        await MopupService.Instance.PopAsync();
                     }
                 }
                 else
                 {
                     await email(attachment.Doguid, attachment);
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                 }
                 if (sender is ListView lv) lv.SelectedItem = null;
             }

@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -3212,7 +3212,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             GoBackToLateFilingDetails = new Command(() => { EnableLateFilingDetailsView(); });
             onMoreOptionClicked = new Command(() =>
             {
-                PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+                MopupService.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
             });
 
             //AddSecurityPaymentOptions();
@@ -3268,7 +3268,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                     _navigationService.GoBack();
 
@@ -3299,7 +3299,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
 
@@ -3322,7 +3322,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                         newDesignPopUp.HeaderWithInfos = headerWithInfos;
                         newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                        await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                        await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
                         WebServiceManager.ErrorMessageForVAT = string.Empty;
                     });
@@ -3362,7 +3362,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-                    await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
 
                     //await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
@@ -3423,14 +3423,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             newDesignPopUp.HeaderWithInfos = headerWithInfos;
             newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
 
-            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+            await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
 
         }
 
 
         public async void NewAttachmentClicked()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             if (AttachmentsListViewData == null)
             {
                 AttachmentsListViewData = new ObservableCollection<Attachment>();
@@ -3446,7 +3446,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
                 if (string.IsNullOrEmpty(SADADNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                    await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                         AttachmentsListViewData.ToList(),
                         WhichAttachment.VatReviewAttachments,
                         modelVATReview.d.ReturnIdx));
@@ -3472,7 +3472,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public async void NewBankGuranteeAttachmentClicked()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             if (BankGuranteeAttachmentsListViewData == null)
             {
                 BankGuranteeAttachmentsListViewData = new ObservableCollection<Attachment>();
@@ -3484,7 +3484,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 _isReportDetailsAttachments = false;
                 _isLateFilingAttachments = false;
 
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     BankGuranteeAttachmentsListViewData.ToList(),
                     WhichAttachment.VatReviewBankGuranteeAttach,
                     modelVATReview.d.ReturnIdx));
@@ -3510,7 +3510,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
         public async void LateFilingAttachmentClicked()
         {
-            if (PopupNavigation.Instance.PopupStack.Count > 0) return;
+            if (MopupService.Instance.PopupStack.Count > 0) return;
             if (LateFilingAttachmentsListViewData == null)
             {
                 LateFilingAttachmentsListViewData = new ObservableCollection<Attachment>();
@@ -3522,7 +3522,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 _isLateFilingAttachments = true;
                 _isReportDetailsAttachments = false;
 
-                await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
+                await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
                     LateFilingAttachmentsListViewData.ToList(),
                     WhichAttachment.VatReviewLateFiling,
                     modelVATReview.d.ReturnIdx));
@@ -3685,7 +3685,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
 
             try
             {
-                await PopupNavigation.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
+                await MopupService.Instance.PushAsync(new CalendarPickerPageView(genericDatePickerModel));
             }
             catch (GAZTUnlockAccountException)
             {
@@ -3706,7 +3706,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             PickedDateFullMonth = "";
             try
             {
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
+                await MopupService.Instance.PushAsync(new PickerPageView(IDTypePickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -3730,7 +3730,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 if (ReviewReasonPickerModel != null && string.IsNullOrEmpty(SADADNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(ReviewReasonPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(ReviewReasonPickerModel));
                 }
 
             }
@@ -3755,7 +3755,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 if (ReviewSubReasonPickerModel != null && string.IsNullOrEmpty(SADADNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(ReviewSubReasonPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(ReviewSubReasonPickerModel));
 
                 }
 
@@ -3781,7 +3781,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             {
                 if (ApplicationRefPickerModel != null && string.IsNullOrEmpty(SADADNumber))
                 {
-                    await PopupNavigation.Instance.PushAsync(new PickerPageView(ApplicationRefPickerModel));
+                    await MopupService.Instance.PushAsync(new PickerPageView(ApplicationRefPickerModel));
 
                 }
 
@@ -5054,8 +5054,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                             IDNumber = string.Empty;
                             //ZZPleaseenteravalidNationalID
@@ -5086,8 +5086,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                                 IDNumber = string.Empty;
                             }
@@ -5122,9 +5122,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                             IDNumber = string.Empty;
                         }
@@ -5155,9 +5155,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                     popUp.FlowDirections = "LeftToRight";
                                 }
 
-                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
 
                                 IDNumber = string.Empty;
                             }
@@ -5191,9 +5191,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
 
                             IDNumber = string.Empty;
                         }
@@ -5211,9 +5211,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 popUp.FlowDirections = "LeftToRight";
                             }
 
-                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await MopupService.Instance.PushAsync(new AddPopPageView(popUp));
 
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
 
                             IDNumber = string.Empty;
                             // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
@@ -5507,7 +5507,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             if (App.selectedVATItem != "")
             {
 
-                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
+                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc, continueString: AppResources.CRContinue, isEditable: true,
            _dialogType: InstructionsBottomPopUpViewModel.DialogType
                .Instructions));
 
@@ -5515,7 +5515,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
             }
             else
             {
-                await PopupNavigation.Instance.PushAsync(new InstructionsBottomPopUpView(
+                await MopupService.Instance.PushAsync(new InstructionsBottomPopUpView(
                  instructionString: AppResources.VRInstructions, checkBoxString: AppResources.VRCheckBoxDesc,
                  continueString: AppResources.CRContinue,
                  _dialogType: InstructionsBottomPopUpViewModel.DialogType
@@ -5771,7 +5771,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 IsLoading = false;
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(resultData.errorMessage));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(resultData.errorMessage));
 
                             });
                         }
@@ -6069,7 +6069,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 {
                     IsLoading = false;
                 });
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
             }
             catch (InternetException ex)
@@ -6094,7 +6094,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                 });
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                 });
             }
@@ -6485,7 +6485,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
                                 //------>end ------>
                             }
                             BillFormModelfrPopup = billFormModel;
-                            await PopupNavigation.Instance.PushAsync(new VatReviewBillViewBottomPopUpPageView(BillFormModelfrPopup));
+                            await MopupService.Instance.PushAsync(new VatReviewBillViewBottomPopUpPageView(BillFormModelfrPopup));
 
                         }
 

@@ -107,6 +107,7 @@
 
                                 <custom:GAZTBorderlessEntry
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding TxtFBtype}"
@@ -210,6 +211,7 @@
 
                                 <custom:GAZTBorderlessEntry
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding TxtFBnum}"

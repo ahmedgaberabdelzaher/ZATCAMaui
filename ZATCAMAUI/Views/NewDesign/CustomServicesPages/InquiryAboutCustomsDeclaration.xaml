@@ -56,7 +56,7 @@
             <!--  Header 1  -->
             <Grid
                 Padding="20,10"
-                ColumnDefinitions="*,2*,*"
+                ColumnDefinitions="*,auto,*"
                 IsVisible="{Binding IsMainPage}">
 
                 <!--  Back Button  -->
@@ -102,7 +102,7 @@
             <!--  Header 2  -->
             <Grid
                 Padding="20,10"
-                ColumnDefinitions="*,2*,*"
+                ColumnDefinitions="*,auto,*"
                 IsVisible="{Binding IsDetailsVisible}">
 
                 <!--  Back Button  -->
@@ -147,7 +147,7 @@
             <!--  Header 3  -->
             <Grid
                 Padding="20,10"
-                ColumnDefinitions="*,2*,*"
+                ColumnDefinitions="*,auto,*"
                 IsVisible="{Binding IsStatmentDetailsVisible}">
 
                 <!--  Back Button  -->
@@ -192,7 +192,7 @@
             <!--  Header 4  -->
             <Grid
                 Padding="20,10"
-                ColumnDefinitions="*,2*,*"
+                ColumnDefinitions="*,auto,*"
                 IsVisible="{Binding IsOTPView}">
 
                 <!--  Back Button  -->
@@ -291,9 +291,9 @@
                                         </Grid.GestureRecognizers>
 
                                         <Image
-                                            HeightRequest="136"
+                                            HeightRequest="130"
                                             Source="Unselected.png"
-                                            WidthRequest="171">
+                                            WidthRequest="161">
                                             <Image.Triggers>
                                                 <DataTrigger
                                                     Binding="{Binding IsFilterByDeclarationInformation}"
@@ -327,7 +327,9 @@
                                             <TapGestureRecognizer Command="{Binding FilterByBusInfoCommand}" />
 
                                         </Grid.GestureRecognizers>
-                                        <Image Source="UnselectedCard.png">
+                                        <Image Source="UnselectedCard.png"
+                                               HeightRequest="130"
+                                               WidthRequest="161">
                                             <Image.Triggers>
                                                 <DataTrigger
                                                     Binding="{Binding IsFilterByDeclarationInformation}"
@@ -393,6 +395,7 @@
 
                                     <custom:GAZTBorderlessEntry
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Placeholder="{x:Static ResourceManager:AppResources.Port}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SelectedPort.Name}"
@@ -432,6 +435,7 @@
 
                                         <custom:GAZTBorderlessEntry
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="{x:Static ResourceManager:AppResources.Declarationtype}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SelectedDeclarationType.Value}"
@@ -504,6 +508,7 @@
 
                                         <custom:GAZTBorderlessEntry
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="dd/MM/yyyy"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding HijriDateToBeDisplayed}"
@@ -511,7 +516,10 @@
                                             VerticalTextAlignment="Center" />
 
                                         <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image HorizontalOptions="EndAndExpand" Source="calendar.png" />
+                                            <Image HorizontalOptions="EndAndExpand"
+                                                   WidthRequest="20"
+                                                   HeightRequest="20"
+                                                   Source="calendar.png" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
                                         <inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -634,6 +642,7 @@
                                         <custom:GAZTBorderlessEntry
                                             HorizontalOptions="FillAndExpand"
                                             IsReadOnly="True"
+                                            InputTransparent="True"
                                             Placeholder="{x:Static ResourceManager:AppResources.Shippingcompany}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SelectedCarrier.carr_name}"
@@ -644,6 +653,9 @@
                                             <Image Source="arrowDropdown.png" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
 
+                                         <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenCarrierLstCommand}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
                                     </inputLayout:SfTextInputLayout>
 
                                     <StackLayout.GestureRecognizers>
@@ -655,15 +667,14 @@
 
 
                             <buttons:SfButton
-                                Margin="0,20,0,10"
+                                Margin="0,20"
                                 Background="#0996D4"
                                 Command="{Binding SubmitInquiryCommand}"
                                 CornerRadius="14"
                                 HorizontalOptions="FillAndExpand"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.Submit}"
-                                TextColor="White"
-                                WidthRequest="350" />
+                                TextColor="White"/>
 
                         </StackLayout>
 
@@ -1090,7 +1101,6 @@
 
                         </StackLayout>
 
-
                         <!--  OTP View  -->
                         <StackLayout
                             Margin="30"
@@ -1251,8 +1261,7 @@
                                 x:Name="btn"
                                 Command="{Binding VerifyOTPCommand}"
                                 Style="{StaticResource PrimaryButtonStyle}"
-                                Text="{x:Static ResourceManager:AppResources.Verify}"
-                                WidthRequest="350" />
+                                Text="{x:Static ResourceManager:AppResources.Verify}" />
                         </StackLayout>
 
                     </StackLayout>
@@ -1400,6 +1409,7 @@
                     BackgroundColor="Black"
                     Opacity="0.4"
                     VerticalOptions="FillAndExpand" />
+
                 <ScrollView VerticalScrollBarVisibility="Never">
                     <Border
                         Margin="0"
@@ -1461,6 +1471,7 @@
 
                     </Border>
                 </ScrollView>
+
             </Grid>
 
             <!--  Loader  -->

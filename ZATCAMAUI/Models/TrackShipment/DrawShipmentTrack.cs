@@ -4,6 +4,9 @@ namespace ZATCAMAUI.Models.TrackShipment
 {
     public class DrawShipmentTrack : BindableBase
     {
+        bool hasImportYear;
+        public bool HasImportYear { get { return hasImportYear; } set { hasImportYear = value; RaisePropertyChanged(); } }
+
         bool hasSubTitle;
         public bool HasSubTitle { get { return hasSubTitle; } set { hasSubTitle = value; RaisePropertyChanged(); } }
 

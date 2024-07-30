@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
@@ -41,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
                 // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             }
             catch (GAZTUnlockAccountException)

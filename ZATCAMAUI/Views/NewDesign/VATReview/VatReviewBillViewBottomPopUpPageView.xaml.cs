@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 using ZATCAMAUI.Models.VATReviewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel;
 
@@ -22,7 +22,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATReview
 
         private void CloseTapped(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAsync();
+            MopupService.Instance.PopAsync();
 
         }
 

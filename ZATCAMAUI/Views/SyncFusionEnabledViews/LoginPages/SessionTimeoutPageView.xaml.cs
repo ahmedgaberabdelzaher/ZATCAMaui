@@ -1,5 +1,5 @@
-﻿using RGPopup.Maui.Pages;
-using RGPopup.Maui.Services;
+﻿using Mopups.Pages;
+using Mopups.Services;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 {
@@ -12,7 +12,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
         async void btnLoginClicked(System.Object sender, System.EventArgs e)
         {
-            await PopupNavigation.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
         }
     }
 }

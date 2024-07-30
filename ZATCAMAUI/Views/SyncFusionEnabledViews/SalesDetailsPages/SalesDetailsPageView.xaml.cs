@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage;
@@ -261,7 +261,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnEstmatedSalesInfoMessageClicked(object sender, EventArgs e)
         {
@@ -277,7 +277,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            MopupService.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private bool IsOldValueChanged(int index)
         {

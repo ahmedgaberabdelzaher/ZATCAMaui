@@ -205,7 +205,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 if (FeesCalculatorBody.product == null)
                 {
-                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>() { new Product() { value = 0, harmonizedCode = "", count = 0 } };
+                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>();
+
                 }
                 if (tobacco != null)
                 {

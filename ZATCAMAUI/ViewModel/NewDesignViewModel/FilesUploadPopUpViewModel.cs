@@ -4,7 +4,7 @@ using System.Net;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -354,7 +354,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             GoButtonClick = new Command(() =>
             {
-                PopupNavigation.Instance.PopAsync();
+                MopupService.Instance.PopAsync();
             });
         }
 
@@ -435,9 +435,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                                 if (count >= 5)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
 
-                                    //await PopupNavigation.Instance.PopAsync();
+                                    //await MopupService.Instance.PopAsync();
                                     return;
                                 }
 
@@ -450,9 +450,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 5)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
 
-                                    //await PopupNavigation.Instance.PopAsync();
+                                    //await MopupService.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -466,7 +466,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 int ListCount = VatAttachmentsList.Count();
                                 if (ListCount >= 9)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof9attachmentscanbeuploaded1));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof9attachmentscanbeuploaded1));
 
                                     return;
                                 }
@@ -481,9 +481,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 if (count >= 1)
                                 {
 
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
 
-                                    //await PopupNavigation.Instance.PopAsync();
+                                    //await MopupService.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -496,7 +496,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 5)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
 
                                     return;
                                 }
@@ -510,9 +510,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 3)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OldZakatInstalmentAttachmentLimitReached));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OldZakatInstalmentAttachmentLimitReached));
 
-                                    //await PopupNavigation.Instance.PopAsync();
+                                    //await MopupService.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -524,9 +524,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 10)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatInstalmentAttachmentLimitReached));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatInstalmentAttachmentLimitReached));
 
-                                    //await PopupNavigation.Instance.PopAsync();
+                                    //await MopupService.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -538,9 +538,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 int count = VatAttachmentsList.Count();
                                 if (count >= 1)
                                 {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
 
-                                    //await PopupNavigation.Instance.PopAsync();
+                                    //await MopupService.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -662,7 +662,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                             {
                                                                 IsLoading = false;
                                                             });
-                                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                                                         }
                                                     }
@@ -673,7 +673,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                         {
                                                             IsLoading = false;
                                                         });
-                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
 
                                                     }
                                                 }
@@ -684,7 +684,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                     {
                                                         IsLoading = false;
                                                     });
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                                 }
                                             }
@@ -695,7 +695,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                                 {
                                                     IsLoading = false;
                                                 });
-                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan1MB));
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan1MB));
 
                                             }
                                         }
@@ -796,7 +796,7 @@ After:
                                                             {
                                                                 IsLoading = false;
                                                             });
-                                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                                                         }
                                                     }
@@ -807,7 +807,7 @@ After:
                                                         {
                                                             IsLoading = false;
                                                         });
-                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
 
                                                     }
                                                 }
@@ -819,7 +819,7 @@ After:
                                                         IsLoading = false;
                                                     });
 
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                                 }
                                             }
@@ -832,7 +832,7 @@ After:
                                                 });
 
 
-                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan10MB));
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan10MB));
 
                                             }
                                         }
@@ -940,7 +940,7 @@ After:
                                                                 IsLoading = false;
                                                             });
 
-                                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                                                         }
                                                     }
@@ -952,7 +952,7 @@ After:
                                                             IsLoading = false;
                                                         });
 
-                                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
+                                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists));
 
                                                     }
                                                 }
@@ -964,7 +964,7 @@ After:
                                                         IsLoading = false;
                                                     });
 
-                                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
                                                 }
                                             }
@@ -975,7 +975,7 @@ After:
                                                 {
                                                     IsLoading = false;
                                                 });
-                                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan5MB));
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan5MB));
 
                                             }
                                         }
@@ -988,7 +988,7 @@ After:
                                             IsLoading = false;
                                         });
 
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
 
                                     }
                                 }
@@ -999,7 +999,7 @@ After:
                                     {
                                         IsLoading = false;
                                     });
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                                 }
                             }
@@ -1010,7 +1010,7 @@ After:
                                 {
                                     IsLoading = false;
                                 });
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
                             }
                         }
@@ -1022,7 +1022,7 @@ After:
                         {
                             IsLoading = false;
                         });
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
 
                     }
                 }
@@ -1034,7 +1034,7 @@ After:
                     });
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
                     });
                 }

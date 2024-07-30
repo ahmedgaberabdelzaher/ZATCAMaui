@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using System.Net;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Helper;
@@ -204,7 +204,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                         IsShareButtonEnable = false;
                         string OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
                         //await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(OnSuccessfulAuthentication));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(OnSuccessfulAuthentication));
                     }
                     IsLoading = false;
                 });
@@ -327,7 +327,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                             IsShareButtonEnable = false;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                             });
                         }
 
@@ -337,7 +337,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                         IsShareButtonEnable = false;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                         });
                     }
                 }
@@ -346,7 +346,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                     IsShareButtonEnable = false;
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                     });
                 }
 

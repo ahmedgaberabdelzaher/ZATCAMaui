@@ -67,7 +67,7 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="10,0"
+                Padding="{x:OnPlatform Android= '5,5,5,0',iOS= '10,0'}"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid RowDefinitions="*">
@@ -177,6 +177,7 @@
                                 <Grid
                                     Padding="5"
                                     HeightRequest="110"
+                                    HorizontalOptions="StartAndExpand"
                                     WidthRequest="160">
 
                                     <!--  Background image selected  -->
@@ -188,6 +189,8 @@
                                                 TargetType="Image"
                                                 Value="True">
                                                 <Setter Property="Source" Value="Unselected.png" />
+                                                 <Setter Property="WidthRequest" Value="160" />
+                                                <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                             <DataTrigger
@@ -195,6 +198,8 @@
                                                 TargetType="Image"
                                                 Value="False">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
+                                                 <Setter Property="WidthRequest" Value="160" />
+                                                 <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -272,7 +277,7 @@
                                 <!--  Bill Number Card  -->
                                 <Grid
                                     HeightRequest="110"
-                                    HorizontalOptions="StartAndExpand"
+                                    HorizontalOptions="CenterAndExpand"
                                     VerticalOptions="StartAndExpand"
                                     WidthRequest="160">
 
@@ -285,6 +290,8 @@
                                                 TargetType="Image"
                                                 Value="False">
                                                 <Setter Property="Source" Value="Unselected.png" />
+                                                 <Setter Property="WidthRequest" Value="160" />
+                                                    <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                             <DataTrigger
@@ -292,6 +299,8 @@
                                                 TargetType="Image"
                                                 Value="True">
                                                 <Setter Property="Source" Value="UnselectedCard.png" />
+                                                 <Setter Property="WidthRequest" Value="160" />
+                                                    <Setter Property="HeightRequest" Value="110" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -525,6 +534,61 @@
 
                             </StackLayout>
 
+                            <!--  Importer Year for Express E-Declaration Field  -->
+                            <StackLayout Spacing="0"
+                                         IsVisible="{Binding DrawShipmentTrack.HasImportYear}">
+
+                                <!--  Importer Year for Express E-Declaration Label  -->
+                                <Label Style="{StaticResource CaptionLabelGrey}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ImporterYear}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <!--  Importer Year for Express E-Declaration Entry  -->
+                                <inputLayout:SfTextInputLayout
+                                    ContainerBackground="White"
+                                    ContainerType="Outlined"
+                                    Stroke="{StaticResource NeutralGreay}"
+                                    Hint="{x:Static ResourceManager:AppResources.ImporterYear}"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="15">
+
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding ShipmentImporterYear}"
+                                        TextColor="#58595B">
+
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                    </custom:GAZTBorderlessEntry>
+
+                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                </inputLayout:SfTextInputLayout>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
+                                </StackLayout.GestureRecognizers>
+
+                            </StackLayout>
+
                             <!--  Bill Number Field  -->
                             <StackLayout IsVisible="{Binding DrawShipmentTrack.HasBillNumber}" Spacing="0">
 
@@ -562,6 +626,17 @@
                                     LeadingViewPosition="Inside"
                                     OutlineCornerRadius="15"
                                     Stroke="{StaticResource NeutralGreay}">
+
+                                    <inputLayout:SfTextInputLayout.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsExpressShipment}"
+                                                TargetType="inputLayout:SfTextInputLayout"
+                                                Value="true">
+
+                                                <Setter Property="Hint" Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
+                                            </DataTrigger>
+
+                                    </inputLayout:SfTextInputLayout.Triggers>
 
                                     <inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                         <inputLayout:LabelStyle TextColor="#B00020" />

@@ -366,7 +366,7 @@
                             <inputLayout:SfTextInputLayout
                                 x:Name="FrmDBO"
                                 Margin="0,-10,0,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="yyyy/MM/dd"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     x:Name="DateEntry"
@@ -374,6 +374,7 @@
                                     Focused="OnDateEntryFocussed"
                                     FontFamily="{StaticResource SomarLight}"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Placeholder="yyyy/MM/dd"
                                     Style="{StaticResource InputTableEntryLayoutStyle}"
                                     Text="{Binding PickerDobToDisplay}"
@@ -547,7 +548,7 @@
                                 <inputLayout:SfTextInputLayout
                                     x:Name="FrmDBO2"
                                     Margin="0,-10,0,0"
-                                    IsHintAlwaysFloated="True"
+                                    Hint="yyyy/MM/dd"
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         x:Name="DateEntry21"
@@ -556,6 +557,7 @@
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="Small"
                                         IsReadOnly="True"
+                                        InputTransparent="True"
                                         Placeholder="yyyy/MM/dd"
                                         Style="{StaticResource InputTableEntryLayoutStyle}"
                                         Text="{Binding PickerDobToDisplay}"
@@ -841,7 +843,7 @@
                             <inputLayout:SfTextInputLayout
                                 x:Name="FrmDBO1"
                                 Margin="0,-10,0,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="yyyy/MM/dd"
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     x:Name="DateEntry23"
@@ -850,6 +852,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="Small"
                                     IsReadOnly="True"
+                                    InputTransparent="True"
                                     Placeholder="yyyy/MM/dd"
                                     Style="{StaticResource InputTableEntryLayoutStyle}"
                                     Text="{Binding PickerDOBDateDisplay}"

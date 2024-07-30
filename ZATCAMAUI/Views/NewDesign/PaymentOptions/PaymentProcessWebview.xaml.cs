@@ -1,4 +1,4 @@
-﻿using RGPopup.Maui.Services;
+﻿using Mopups.Services;
 using System.Net;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
@@ -260,7 +260,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
 
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(parts[1]));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(parts[1]));
                         viewModel._navigationService.GoBack();
                     });
 

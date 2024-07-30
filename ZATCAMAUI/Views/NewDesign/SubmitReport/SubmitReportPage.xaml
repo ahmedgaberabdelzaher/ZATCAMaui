@@ -402,7 +402,7 @@
                                 ContainerBackground="White"
                                 ContainerType="Outlined"
                                 InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
+                                Hint="{x:Static ResourceManager:AppResources.ReportText}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 Stroke="{StaticResource NeutralGreay}">
@@ -852,6 +852,9 @@
                                         <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
                                     </custom:GAZTBorderlessEntry.GestureRecognizers>
                                 </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
+                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>

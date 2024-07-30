@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.TPProfile;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -176,7 +176,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
                 String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                 WebServiceManager.ErrorMessageForVAT = WithReplacedString;
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
             }
         }
         private async Task PleaseFillAllMandatory()

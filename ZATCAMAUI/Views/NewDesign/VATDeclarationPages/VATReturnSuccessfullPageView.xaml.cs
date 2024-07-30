@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -201,7 +201,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
         private void SfButton_Clicked(object sender, EventArgs e)
         {
-            //PopupNavigation.Instance.PushAsync(new RefundAccountPopupPageView());
+            //MopupService.Instance.PushAsync(new RefundAccountPopupPageView());
         }
 
         private async void OnVATRefreshButtonClicked(object sender, EventArgs e)
@@ -241,7 +241,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                 newDesignPopUp.MainHeader = AppResources.Copied;
 
-                PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
         }
 
@@ -261,12 +261,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
             if (_vATDeclaration.d.MadabutFg == "X")
             {
-               await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+               await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
             }
             else
             {
 
-               await PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.d.OpenliMsg));
+               await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.d.OpenliMsg));
 
             }
 

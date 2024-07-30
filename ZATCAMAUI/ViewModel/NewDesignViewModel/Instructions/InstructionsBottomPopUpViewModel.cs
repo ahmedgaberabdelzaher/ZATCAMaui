@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
-using RGPopup.Maui.Services;
+using Mopups.Services;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
@@ -211,11 +211,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
                 if (_isTermsChecked)
                 {
                     InstructionsContinue();
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                 }
                 else
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.BPTermsAndConditionsAlert));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.BPTermsAndConditionsAlert));
 
                 }
             });
@@ -227,19 +227,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
                 if (_isInstuctionsChecked)
                 {
                     InstructionsContinue();
-                    await PopupNavigation.Instance.PopAsync();
+                    await MopupService.Instance.PopAsync();
                 }
                 else
                 {
 
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.BPInstructionsAndConditionsAlert));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.BPInstructionsAndConditionsAlert));
 
                 }
             });
 
             Close_Tapped = new Command(async () =>
             {
-                await PopupNavigation.Instance.PopAsync();
+                await MopupService.Instance.PopAsync();
             });
 
 
