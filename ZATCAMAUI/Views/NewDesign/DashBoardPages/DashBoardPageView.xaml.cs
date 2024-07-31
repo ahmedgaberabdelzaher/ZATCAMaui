@@ -13,7 +13,6 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
-using ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages;
 using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
 using Application = Microsoft.Maui.Controls.Application;
 using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
@@ -494,18 +493,11 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     }
                     else if (App.LoginDataRetrieved.VtReg == "R")
                     {
-                        //viewModel.IsVatRegistrationTileVisible = false;
-                        //viewModel.IfSignUpnNotRegInVATShowVATServie = true;
-                        //viewModel.IfSignUpnNotRegInVAT = false;
-                        //viewModel.IsRegistrationDetailsTileVisible = true;
                         viewModel.IsVatRegistrationTileVisible = false;
                         viewModel.IfRegInZakat = false;
                         viewModel.IfnotRegInVATAndZakat = true;
                         viewModel.IfSignUpnNotRegInVATShowVATServie = true;
                         viewModel.IsSubsidyTileVisible = false;
-                        //viewModel.IsRegistrationDetailsTileVisible = true;
-                        //refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
-                        //fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
 
                     }
                     else if (App.LoginDataRetrieved.VtReg == "")
@@ -1226,7 +1218,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                //viewModel._navigationService.NavigateTo(App.RefundRequestMenuListPageView);
                 viewModel._navigationService.NavigateTo(App.VATRefundsListPageView);
             });
 
@@ -1242,7 +1233,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 string langName = "ar-AE";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
-                // this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.TranslateText = "English";
 
                 viewModel.NextCommitmentsString = AppResources.ZZMyCommitments;

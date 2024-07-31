@@ -74,8 +74,6 @@ public static class MauiProgram
               {
 #if ANDROID
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(RoundCornersEffect), typeof(RoundCornersEffectDroid));
@@ -83,8 +81,6 @@ public static class MauiProgram
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
 #endif 
               });
 

@@ -1995,7 +1995,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         platform = "C3";
                     }
-                    //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
                     PaymentData = null;
                     PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
 
@@ -2027,19 +2026,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         if (paymentType == "M")
                         {
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(() =>
                             {
 
                                 _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
 
                             });
                         }
-                        else
-                        {
-
-                            //ApplePayStatus = await ProcessApplePay();
-                        }
-
 
                     }
                     IsLoading = false;
@@ -2087,22 +2080,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        //private async Task<bool> ProcessApplePay()
-        //{
-        //    try
-        //    {
-        //        var Amount = Convert.ToDouble(PaymentData.d.Amount);
-        //        var BillAmount = Math.Round(Amount, 2);
-        //        DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
-        //        return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
-        //    }
-        //    catch (Exception)
-        //    {
-
-
-        //        return false;
-        //    }
-        //}
 
         public async Task UpdateApplePayPaymentGuid()
         {
