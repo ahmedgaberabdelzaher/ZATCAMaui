@@ -11,7 +11,6 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
@@ -179,30 +178,28 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <inputLayout:SfTextInputLayout
-                            ContainerType="Outlined"
-                            HorizontalOptions="FillAndExpand"
-                            InputViewPadding="16,0,16,0"
-                            IsEnabled="{Binding EnableCRInputField}"
-                            IsHintAlwaysFloated="True"
-                            LeadingViewPosition="Inside"
-                            Style="{StaticResource TextInputLayout}">
-                            <custom:GAZTBorderlessEntry
-                                Margin="10"
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="15"
-                                HeightRequest="48"
-                                HorizontalOptions="FillAndExpand"
-                                HorizontalTextAlignment="Start"
-                                Keyboard="Text"
-                                PlaceholderColor="{StaticResource NeutralGreay}"
-                                Style="{StaticResource DefaultEntry}"
-                                Text="{Binding CrName}"
-                                TextColor="{StaticResource NeutralBlack}"
-                                VerticalOptions="Center"
-                                VerticalTextAlignment="Center" />
-                        </inputLayout:SfTextInputLayout>
 
+                        <custom:CustomSfTextInputView IsEnabled="{Binding EnableCRInputField}"
+                                                      Style="{StaticResource TextInputLayout}">
+
+                            <custom:CustomSfTextInputView.TextInputView>
+                               <custom:GAZTBorderlessEntry
+                                    Margin="10"
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="15"
+                                    HeightRequest="48"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Keyboard="Text"
+                                    PlaceholderColor="{StaticResource NeutralGreay}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding CrName}"
+                                    TextColor="{StaticResource NeutralBlack}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </custom:CustomSfTextInputView.TextInputView>
+
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Margin="0,10,0,0"
@@ -217,34 +214,35 @@
                             </Label.FormattedText>
                         </Label>
                         <StackLayout Padding="0" IsEnabled="{Binding ActivityDetails.CRNo}">
-                            <inputLayout:SfTextInputLayout
-                                Margin="0"
-                                InputViewPadding="10,0,10,0"
-                                IsEnabled="{Binding EnableCRInputField}"
-                                IsHintAlwaysFloated="True"
-                                OutlineCornerRadius="14"
-                                Style="{StaticResource InputTableTextInputLayoutStyle}">
-                                <custom:GAZTBorderlessEntry
-                                    Margin="10"
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="15"
-                                    HeightRequest="48"
-                                    HorizontalOptions="FillAndExpand"
-                                    HorizontalTextAlignment="Start"
-                                    Keyboard="Numeric"
-                                    MaxLength="10"
-                                    PlaceholderColor="{StaticResource NeutralGreay}"
-                                    Text="{Binding CRNumber}"
-                                    TextColor="{StaticResource NeutralBlack}"
-                                    Unfocused="CREntry_Unfocused"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center">
 
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <behaviors:NumericValidationBehavior />
-                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView IsEnabled="{Binding EnableCRInputField}"
+                                                      Style="{StaticResource InputTableTextInputLayoutStyle}">
+
+                                <custom:CustomSfTextInputView.TextInputView>
+                                   <custom:GAZTBorderlessEntry
+                                        Margin="10"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="15"
+                                        HeightRequest="48"
+                                        HorizontalOptions="FillAndExpand"
+                                        HorizontalTextAlignment="Start"
+                                        Keyboard="Numeric"
+                                        MaxLength="10"
+                                        PlaceholderColor="{StaticResource NeutralGreay}"
+                                        Text="{Binding CRNumber}"
+                                        TextColor="{StaticResource NeutralBlack}"
+                                        Unfocused="CREntry_Unfocused"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center">
+
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviors:NumericValidationBehavior />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    </custom:GAZTBorderlessEntry>
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
+
                         </StackLayout>
                         <Label
                             Margin="0,10,0,0"
@@ -867,34 +865,32 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <inputLayout:SfTextInputLayout
-                            Margin="0"
-                            InputViewPadding="10,0,10,0"
-                            IsHintAlwaysFloated="True"
-                            Style="{StaticResource InputTableTextInputLayoutStyle}">
+                        <custom:CustomSfTextInputView Style="{StaticResource InputTableTextInputLayoutStyle}">
 
-                            <custom:GAZTBorderlessEntry
-                                Margin="10"
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="15"
-                                HeightRequest="48"
-                                HorizontalOptions="FillAndExpand"
-                                HorizontalTextAlignment="Start"
-                                IsEnabled="{Binding LicenseDetails.LicenseNo}"
-                                Keyboard="Numeric"
-                                MaxLength="30"
-                                PlaceholderColor="{StaticResource NeutralGreay}"
-                                Text="{Binding LicenseNumber}"
-                                TextColor="{StaticResource NeutralBlack}"
-                                VerticalOptions="Center"
-                                VerticalTextAlignment="Center">
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    Margin="10"
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="15"
+                                    HeightRequest="48"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    IsEnabled="{Binding LicenseDetails.LicenseNo}"
+                                    Keyboard="Numeric"
+                                    MaxLength="30"
+                                    PlaceholderColor="{StaticResource NeutralGreay}"
+                                    Text="{Binding LicenseNumber}"
+                                    TextColor="{StaticResource NeutralBlack}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center">
 
-                                <custom:GAZTBorderlessEntry.Behaviors>
-                                    <behaviors:AlphaNumericValidatorBehaviour />
-                                </custom:GAZTBorderlessEntry.Behaviors>
-                            </custom:GAZTBorderlessEntry>
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviors:AlphaNumericValidatorBehaviour />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+                            </custom:CustomSfTextInputView.TextInputView>
 
-                        </inputLayout:SfTextInputLayout>
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Margin="0,10,0,0"
@@ -908,30 +904,27 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <inputLayout:SfTextInputLayout
-                            Margin="0,-6,0,-6"
-                            ContainerType="Outlined"
-                            HorizontalOptions="FillAndExpand"
-                            InputViewPadding="16,0,16,0"
-                            LeadingViewPosition="Inside"
-                            Style="{StaticResource TextInputLayout}">
+                         <custom:CustomSfTextInputView Style="{StaticResource TextInputLayout}">
 
-                            <custom:GAZTBorderlessEntry
-                                Margin="10"
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="15"
-                                HeightRequest="48"
-                                HorizontalOptions="FillAndExpand"
-                                HorizontalTextAlignment="Start"
-                                IsEnabled="{Binding LicenseDetails.LicenseName}"
-                                Keyboard="Plain"
-                                PlaceholderColor="{StaticResource NeutralGreay}"
-                                Style="{StaticResource DefaultEntry}"
-                                Text="{Binding LicenseName}"
-                                TextColor="{StaticResource NeutralBlack}"
-                                VerticalOptions="Center"
-                                VerticalTextAlignment="Center" />
-                        </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    Margin="10"
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="15"
+                                    HeightRequest="48"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    IsEnabled="{Binding LicenseDetails.LicenseName}"
+                                    Keyboard="Plain"
+                                    PlaceholderColor="{StaticResource NeutralGreay}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding LicenseName}"
+                                    TextColor="{StaticResource NeutralBlack}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </custom:CustomSfTextInputView.TextInputView>
+
+                        </custom:CustomSfTextInputView>
 
                         <Label
                             Margin="0,10,0,0"

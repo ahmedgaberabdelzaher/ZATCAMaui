@@ -6,12 +6,14 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
-    <Border Style="{StaticResource CommonTopCurves}" VerticalOptions="End">
+    <Border Style="{StaticResource CommonTopCurves}"
+            Stroke="{StaticResource NeutralLightGrey}"
+            VerticalOptions="End">
         <StackLayout>
             <Image HorizontalOptions="EndAndExpand" Source="close.png">
                 <Image.GestureRecognizers>
@@ -21,41 +23,33 @@
 
             <Label Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" />
 
+             <custom:CustomSfTextInputView HasError="{Binding IsReportDetailHasError}">
 
-            <inputLayout:SfTextInputLayout
-                Margin="0,-6,0,-6"
-                ContainerType="Outlined"
-                HasError="{Binding IsReportDetailHasError}"
-                IsHintAlwaysFloated="True"
-                OutlineCornerRadius="8"
-                Stroke="{StaticResource Primary}">
-                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <inputLayout:LabelStyle TextColor="#B00020" />
-                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                <StackLayout Margin="0,16,0,0" Orientation="Vertical">
-                    <Editor
-                        x:Name="NoteDetail"
-                        AutoSize="TextChanges"
-                        FontSize="Small"
-                        HeightRequest="200"
-                        HorizontalOptions="FillAndExpand"
-                        IsEnabled="{Binding IsEdit}"
-                        IsSpellCheckEnabled="False"
-                        MaxLength="999"
-                        Text="{Binding NoteText}"
-                        Unfocused="NoteDetail_Unfocused" />
+                <custom:CustomSfTextInputView.TextInputView>
+                    <StackLayout Margin="0,16,0,0" Orientation="Vertical">
+                        <Editor
+                            x:Name="NoteDetail"
+                            AutoSize="TextChanges"
+                            FontSize="Small"
+                            HeightRequest="200"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsEdit}"
+                            IsSpellCheckEnabled="False"
+                            MaxLength="999"
+                            Text="{Binding NoteText}"
+                            Unfocused="NoteDetail_Unfocused" />
 
-                    <Label
-                        FontSize="Micro"
-                        HorizontalOptions="EndAndExpand"
-                        Style="{StaticResource CaptionLabelGrey}"
-                        Text="{Binding Source={x:Reference NoteDetail}, Path=Text.Length, StringFormat='{0}/999'}"
-                        VerticalOptions="Start"
-                        VerticalTextAlignment="Start" />
-                </StackLayout>
+                        <Label
+                            FontSize="Micro"
+                            HorizontalOptions="EndAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{Binding Source={x:Reference NoteDetail}, Path=Text.Length, StringFormat='{0}/999'}"
+                            VerticalOptions="Start"
+                            VerticalTextAlignment="Start" />
+                    </StackLayout>
+                </custom:CustomSfTextInputView.TextInputView>
 
-
-            </inputLayout:SfTextInputLayout>
+            </custom:CustomSfTextInputView>
 
 
             <buttons:SfButton

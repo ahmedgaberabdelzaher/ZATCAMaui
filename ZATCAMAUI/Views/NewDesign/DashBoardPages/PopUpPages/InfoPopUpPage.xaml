@@ -13,6 +13,7 @@
 
     <Border
         BackgroundColor="{StaticResource NewDullOrangeColor}"
+        Stroke="{StaticResource NeutralLightGrey}"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
         <StackLayout>

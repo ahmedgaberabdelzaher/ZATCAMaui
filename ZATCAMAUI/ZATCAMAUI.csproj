@@ -143,6 +143,8 @@
 	  <Compile Remove="Platforms\iOS\CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
 	  <Compile Remove="Platforms\Android\CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
 	  <Compile Remove="Platforms\Android\CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
+	  <Compile Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml.cs" />
+	  <MauiXaml Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml" />
 	</ItemGroup>
 
 
@@ -371,9 +373,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ContractReleasePages\ContractReleaseSuccessPageView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\CustomDashBoard\CustomDashBoardVi.xaml">
@@ -881,9 +880,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationTaxPayerDetails.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ZakatForm5\ZakatAcknowledgmentPageView.xaml">

@@ -385,31 +385,27 @@
                                     </Label.FormattedText>
                                 </Label>
 
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="{x:Static ResourceManager:AppResources.Port}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SelectedPort.Name}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalTextAlignment="Center" />
 
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.Port}"
-                                    InputViewPadding="16,0,16,0"
-                                    OutlineCornerRadius="14">
-
-                                    <custom:GAZTBorderlessEntry
-                                        IsReadOnly="True"
-                                        InputTransparent="True"
-                                        Placeholder="{x:Static ResourceManager:AppResources.Port}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding SelectedPort.Name}"
-                                        TextColor="{StaticResource NeutralBlack}"
-                                        VerticalTextAlignment="Center" />
-
-                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenInquiryFilterCommand}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Source="arrowDropdown.png" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
-                                </inputLayout:SfTextInputLayout>
+
+                                </custom:CustomSfTextInputView>
 
                             </StackLayout>
 
@@ -426,30 +422,28 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.Declarationtype}"
-                                        InputViewPadding="16,0,16,0"
-                                        OutlineCornerRadius="14">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                             <custom:GAZTBorderlessEntry
+                                                IsReadOnly="True"
+                                                InputTransparent="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.Declarationtype}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding SelectedDeclarationType.Value}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
 
-                                        <custom:GAZTBorderlessEntry
-                                            IsReadOnly="True"
-                                            InputTransparent="True"
-                                            Placeholder="{x:Static ResourceManager:AppResources.Declarationtype}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding SelectedDeclarationType.Value}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Source="arrowDropdown.png" />
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image Source="arrowDropdown.png" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
 
-                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OpenDeclarationTypesLstCommand}" />
-                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                    </inputLayout:SfTextInputLayout>
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenDeclarationTypesLstCommand}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                                    </custom:CustomSfTextInputView>
 
                                 </StackLayout>
 
@@ -464,28 +458,25 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.DeclarationNumber}"
-                                        InputViewPadding="16,0,16,0"
-                                        OutlineCornerRadius="14">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                              <custom:GAZTBorderlessEntry
+                                                Keyboard="Numeric"
+                                                MaxLength="10"
+                                                Placeholder="{x:Static ResourceManager:AppResources.DeclarationNumber}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding DeclarationNumber}"
+                                                VerticalTextAlignment="Center">
 
-                                        <custom:GAZTBorderlessEntry
-                                            Keyboard="Numeric"
-                                            MaxLength="10"
-                                            Placeholder="{x:Static ResourceManager:AppResources.DeclarationNumber}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding DeclarationNumber}"
-                                            VerticalTextAlignment="Center">
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
 
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:OnlyNumericValuesBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
 
-                                        </custom:GAZTBorderlessEntry>
+                                        </custom:CustomSfTextInputView.TextInputView>
 
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
 
                                 </StackLayout>
 
@@ -499,34 +490,31 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="dd/MM/yyyy"
-                                        InputViewPadding="16,0,16,0"
-                                        OutlineCornerRadius="14">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                             <custom:GAZTBorderlessEntry
+                                                IsReadOnly="True"
+                                                InputTransparent="True"
+                                                Placeholder="dd/MM/yyyy"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding HijriDateToBeDisplayed}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
 
-                                        <custom:GAZTBorderlessEntry
-                                            IsReadOnly="True"
-                                            InputTransparent="True"
-                                            Placeholder="dd/MM/yyyy"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding HijriDateToBeDisplayed}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image HorizontalOptions="EndAndExpand"
-                                                   WidthRequest="20"
-                                                   HeightRequest="20"
-                                                   Source="calendar.png" />
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image HorizontalOptions="EndAndExpand"
+                                                       WidthRequest="20"
+                                                       HeightRequest="20"
+                                                       Source="calendar.png" />
+                                            </inputLayout:SfTextInputLayout.TrailingView>
 
-                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}" CommandParameter="{x:Reference declarationdate}" />
-                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}" CommandParameter="{x:Reference declarationdate}" />
+                                            </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                    </inputLayout:SfTextInputLayout>
+                                    </custom:CustomSfTextInputView>
 
                                     <!--  HijriDatePicker  -->
                                     <custom:CustomHijriDatePicker
@@ -598,27 +586,26 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.Billofladingnumber}"
-                                        InputViewPadding="16,0,16,0"
-                                        LeadingViewPosition="Inside"
-                                        OutlineCornerRadius="14">
-                                        <custom:GAZTBorderlessEntry
-                                            Keyboard="Numeric"
-                                            MaxLength="10"
-                                            Placeholder="{x:Static ResourceManager:AppResources.Billofladingnumber}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding BillInfoNumber}"
-                                            VerticalTextAlignment="Center">
 
-                                            <custom:GAZTBorderlessEntry.Behaviors>
-                                                <behaviors:OnlyNumericValuesBehaviour />
-                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                              <custom:GAZTBorderlessEntry
+                                                Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                MaxLength="10"
+                                                Placeholder="{x:Static ResourceManager:AppResources.Billofladingnumber}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding BillInfoNumber}"
+                                                VerticalTextAlignment="Center">
 
-                                        </custom:GAZTBorderlessEntry>
-                                    </inputLayout:SfTextInputLayout>
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviors:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+
+                                    </custom:CustomSfTextInputView>
                                 </StackLayout>
 
                                 <StackLayout>
@@ -632,22 +619,19 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <inputLayout:SfTextInputLayout
-                                        ContainerBackground="White"
-                                        ContainerType="Outlined"
-                                        Hint="{x:Static ResourceManager:AppResources.Shippingcompany}"
-                                        InputViewPadding="16,0,16,0"
-                                        OutlineCornerRadius="14">
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                             <custom:GAZTBorderlessEntry
+                                                HorizontalOptions="FillAndExpand"
+                                                IsReadOnly="True"
+                                                InputTransparent="True"
+                                                Placeholder="{x:Static ResourceManager:AppResources.Shippingcompany}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding SelectedCarrier.carr_name}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                VerticalTextAlignment="Center" />
 
-                                        <custom:GAZTBorderlessEntry
-                                            HorizontalOptions="FillAndExpand"
-                                            IsReadOnly="True"
-                                            InputTransparent="True"
-                                            Placeholder="{x:Static ResourceManager:AppResources.Shippingcompany}"
-                                            Style="{StaticResource DefaultEntry}"
-                                            Text="{Binding SelectedCarrier.carr_name}"
-                                            TextColor="{StaticResource NeutralBlack}"
-                                            VerticalTextAlignment="Center" />
+                                        </custom:CustomSfTextInputView.TextInputView>
 
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Source="arrowDropdown.png" />
@@ -656,7 +640,8 @@
                                          <inputLayout:SfTextInputLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OpenCarrierLstCommand}" />
                                         </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                    </inputLayout:SfTextInputLayout>
+
+                                    </custom:CustomSfTextInputView>
 
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenCarrierLstCommand}" />
@@ -1163,72 +1148,111 @@
                                             </Grid.Resources>
 
                                             <!--  First OTP Digit Start  -->
-                                            <inputLayout:SfTextInputLayout>
-                                                <custom:GAZTBorderlessEntry x:Name="OTPFirstEntry" Text="{Binding OTPFirstDigit}">
-                                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                                        <behaviors:OnlyNumericValuesBehaviour />
+                                            <Border StrokeShape="RoundRectangle 10"
+                                                    Stroke="Gray"
+                                                    HeightRequest="50"
+                                                    WidthRequest="50"
+                                                    VerticalOptions="Start">
 
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
-                                                        <xct:EventToCommandBehavior
-                                                            Command="{Binding GoToNextEntryCommand}"
-                                                            CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}"
-                                                            EventName="TextChanged" />
-                                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                               <custom:GAZTBorderlessEntry x:Name="OTPFirstEntry"
+                                                                            MaxLength="1"
+                                                                            Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                                            WidthRequest="100"
+                                                                            Text="{Binding OTPFirstDigit}">
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behaviors:OnlyNumericValuesBehaviour />
+
+                                                            <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                            <xct:EventToCommandBehavior
+                                                                Command="{Binding GoToNextEntryCommand}"
+                                                                CommandParameter="{Binding Source={x:Reference OTPSecondEntry}}"
+                                                                EventName="TextChanged" />
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
 
                                                 </custom:GAZTBorderlessEntry>
-                                            </inputLayout:SfTextInputLayout>
+    
+                                            </Border>
                                             <!--  First OTP Digit End  -->
 
                                             <!--  Second OTP Digit Start  -->
-                                            <inputLayout:SfTextInputLayout Grid.Column="1">
-                                                <custom:GAZTBorderlessEntry
-                                                    x:Name="OTPSecondEntry"
-                                                    ClassId="2"
-                                                    Text="{Binding OTPSecondDigit}">
-                                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                                        <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
-                                                        <xct:EventToCommandBehavior
-                                                            Command="{Binding GoToNextEntryCommand}"
-                                                            CommandParameter="{Binding Source={x:Reference OTPThirdEntry}}"
-                                                            EventName="TextChanged" />
+                                            <Border StrokeShape="RoundRectangle 10"
+                                                    Stroke="Gray"
+                                                    HeightRequest="50"
+                                                    WidthRequest="50"
+                                                    Grid.Column="1"
+                                                    VerticalOptions="Start">
 
-                                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                                </custom:GAZTBorderlessEntry>
-                                            </inputLayout:SfTextInputLayout>
+                                               <custom:GAZTBorderlessEntry
+                                                        x:Name="OTPSecondEntry"
+                                                        ClassId="2"
+                                                        WidthRequest="100"
+                                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                        MaxLength="1"
+                                                        Text="{Binding OTPSecondDigit}">
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behaviors:OnlyNumericValuesBehaviour />
+                                                            <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                                            <xct:EventToCommandBehavior
+                                                                Command="{Binding GoToNextEntryCommand}"
+                                                                CommandParameter="{Binding Source={x:Reference OTPThirdEntry}}"
+                                                                EventName="TextChanged" />
+
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                               </custom:GAZTBorderlessEntry>
+    
+                                            </Border>
                                             <!--  Second OTP Digit End  -->
 
                                             <!--  Third OTP Digit Start  -->
-                                            <inputLayout:SfTextInputLayout Grid.Column="2">
-                                                <custom:GAZTBorderlessEntry
-                                                    x:Name="OTPThirdEntry"
-                                                    ClassId="3"
-                                                    Text="{Binding OTPThirdDigit}">
-                                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                                        <behaviors:OnlyNumericValuesBehaviour />
-                                                        <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
-                                                        <xct:EventToCommandBehavior
-                                                            Command="{Binding GoToNextEntryCommand}"
-                                                            CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}"
-                                                            EventName="TextChanged" />
-                                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                                </custom:GAZTBorderlessEntry>
-                                            </inputLayout:SfTextInputLayout>
+                                            <Border StrokeShape="RoundRectangle 10"
+                                                    Stroke="Gray"
+                                                    HeightRequest="50"
+                                                    WidthRequest="50"
+                                                    Grid.Column="2"
+                                                    VerticalOptions="Start">
+
+                                               <custom:GAZTBorderlessEntry
+                                                        x:Name="OTPThirdEntry"
+                                                        ClassId="3"
+                                                        WidthRequest="100"
+                                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                        MaxLength="1"
+                                                        Text="{Binding OTPThirdDigit}">
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behaviors:OnlyNumericValuesBehaviour />
+                                                            <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                                            <xct:EventToCommandBehavior
+                                                                Command="{Binding GoToNextEntryCommand}"
+                                                                CommandParameter="{Binding Source={x:Reference OTPFourthEntry}}"
+                                                                EventName="TextChanged" />
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                                    </custom:GAZTBorderlessEntry>
+    
+                                            </Border>
                                             <!--  Third OTP Digit End  -->
 
                                             <!--  Fourth OTP Digit Start  -->
-                                            <inputLayout:SfTextInputLayout Grid.Column="3">
-                                                <custom:GAZTBorderlessEntry
-                                                    x:Name="OTPFourthEntry"
-                                                    Margin="0"
-                                                    ClassId="4"
-                                                    Text="{Binding OTPFourthDigit}">
-                                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                                        <behaviors:OnlyNumericValuesBehaviour />
-                                                        <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
-                                                    </custom:GAZTBorderlessEntry.Behaviors>
-                                                </custom:GAZTBorderlessEntry>
-                                            </inputLayout:SfTextInputLayout>
+                                            <Border StrokeShape="RoundRectangle 10"
+                                                    Stroke="Gray"
+                                                    HeightRequest="50"
+                                                    WidthRequest="50"
+                                                    Grid.Column="3"
+                                                    VerticalOptions="Start">
+
+                                               <custom:GAZTBorderlessEntry
+                                                        x:Name="OTPFourthEntry"
+                                                        MaxLength="1"
+                                                        WidthRequest="100"
+                                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                        ClassId="4"
+                                                        Text="{Binding OTPFourthDigit}">
+                                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                                            <behaviors:OnlyNumericValuesBehaviour />
+                                                            <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />
+                                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                                    </custom:GAZTBorderlessEntry>
+    
+                                            </Border>
                                             <!--  Fourth OTP Digit End  -->
 
                                         </Grid>
@@ -1236,7 +1260,9 @@
                                     </Grid>
 
 
-                                    <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                    <StackLayout HorizontalOptions="Center"
+                                                 Spacing="10"
+                                                 Orientation="Horizontal">
                                         <Image Source="clock" />
                                         <Label
                                             Style="{StaticResource CaptionLabelGrey}"
@@ -1299,22 +1325,31 @@
                         RowDefinitions="auto,*,auto"
                         VerticalOptions="FillAndExpand">
 
-                        <SearchBar
-                            x:Name="PortsSearchBar"
-                            Grid.Row="0"
-                            Margin="0,0,3,0"
-                            FontFamily="{StaticResource SomarBold}"
-                            Placeholder="{x:Static ResourceManager:AppResources.ZSearch}"
-                            Text="{Binding SearchTxt}">
+                     <custom:CustomSfTextInputView>
+                        <custom:CustomSfTextInputView.TextInputView>
+                            <custom:GAZTBorderlessEntry
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
+                                PlaceholderColor="#888888"
+                                Text="{Binding SearchTxt}"
+                                Style="{StaticResource DefaultEntry}"
+                                VerticalTextAlignment="Center">
 
-                            <SearchBar.Behaviors>
-                                <xct:EventToCommandBehavior
-                                    Command="{Binding SearchInPortsCommand}"
-                                    CommandParameter="{Binding Text, Source={x:Reference PortsSearchBar}}"
-                                    EventName="TextChanged" />
-                            </SearchBar.Behaviors>
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding SearchInPortsCommand}"
+                                        CommandParameter="{Binding Text, Source={x:Reference PortsSearchBar}}"
+                                        EventName="TextChanged" />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
 
-                        </SearchBar>
+                        </custom:CustomSfTextInputView.TextInputView>
+
+                        <inputLayout:SfTextInputLayout.LeadingView>
+                            <Image Aspect="AspectFit" Source="reportSearchBar.png" />
+                        </inputLayout:SfTextInputLayout.LeadingView>
+
+                     </custom:CustomSfTextInputView>
 
                         <Grid Grid.Row="1">
 

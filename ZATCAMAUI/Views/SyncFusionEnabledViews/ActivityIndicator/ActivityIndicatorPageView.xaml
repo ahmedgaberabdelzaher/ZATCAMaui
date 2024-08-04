@@ -3,9 +3,10 @@
     x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.ActivityIndicator.ActivityIndicatorPageView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups">
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls">
     <Grid IsVisible="true">
+
         <StackLayout
             Grid.Row="0"
             Grid.RowSpan="2"
@@ -14,29 +15,8 @@
             Opacity="0.2"
             Orientation="Vertical"
             VerticalOptions="FillAndExpand" />
-        <StackLayout
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            Grid.Column="0"
-            Padding="15,15"
-            BackgroundColor="Transparent"
-            HorizontalOptions="Center"
-            Opacity="0.8"
-            Orientation="Vertical"
-            VerticalOptions="Center">
-            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                <busyindicator:SfBusyIndicator
-                    x:Name="busyindicatorForLanding"
-                    AnimationType="Cupertino"
-                    HeightRequest="70"
-                    HorizontalOptions="CenterAndExpand"
-                    IndicatorColor="{StaticResource Secondary}"
-                    IsRunning="True"
-                    SizeFactor="0.6"
-                    TitlePlacement="Bottom"
-                    VerticalOptions="CenterAndExpand"
-                    WidthRequest="70" />
-            </StackLayout>
-        </StackLayout>
+
+        <custom:Loader Grid.RowSpan="2"/>
+
     </Grid>
 </Mopups:PopupPage>

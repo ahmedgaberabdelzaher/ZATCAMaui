@@ -12,6 +12,7 @@
 
     <Border
         BackgroundColor="White"
+        Stroke="{StaticResource NeutralLightGrey}"
         StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="End">
         <Grid>

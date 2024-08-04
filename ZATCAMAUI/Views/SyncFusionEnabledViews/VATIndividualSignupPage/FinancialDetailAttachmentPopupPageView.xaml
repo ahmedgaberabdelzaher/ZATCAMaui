@@ -5,7 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
@@ -20,6 +19,7 @@
     <Grid>
         <Border
             BackgroundColor="White"
+            Stroke="{StaticResource NeutralLightGrey}"
             StrokeShape="RoundRectangle 22,22,0,0"
             VerticalOptions="End">
             <Grid>

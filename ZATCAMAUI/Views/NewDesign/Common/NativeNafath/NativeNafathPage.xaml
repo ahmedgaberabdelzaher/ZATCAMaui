@@ -7,7 +7,6 @@
     xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -104,32 +103,28 @@
                                 </Label>
 
                                 <!--  NationalIqamaID Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-                                    Hint="{x:Static ResourceManager:AppResources.NationalIqamaID}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="entry"
-                                        Keyboard="Numeric"
-                                        Placeholder="{x:Static ResourceManager:AppResources.NationalIqamaID}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding NationalIqamaId}"
-                                        TextColor="#58595B">
+                                <custom:CustomSfTextInputView >
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                                x:Name="entry"
+                                                Keyboard="Numeric"
+                                                Placeholder="{x:Static ResourceManager:AppResources.NationalIqamaID}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding NationalIqamaId}"
+                                                TextColor="#58595B">
 
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviour:OnlyNumericValuesBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behaviour:OnlyNumericValuesBehaviour />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                </custom:CustomSfTextInputView>
+
+                                 <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
+                                   Margin="0,-15,0,10"
+                                   Style="{StaticResource CaptionLabelGrey}"/>
                             </StackLayout>
 
                             <!--  GoTo Login Button  -->

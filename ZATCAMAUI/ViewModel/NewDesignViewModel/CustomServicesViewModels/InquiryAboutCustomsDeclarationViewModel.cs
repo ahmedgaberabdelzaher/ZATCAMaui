@@ -1193,7 +1193,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         switch (entry.ClassId)
                         {
                             case "2":
-                                if (!string.IsNullOrEmpty(OTPFirstDigit))
+                                if (!string.IsNullOrEmpty(OTPFirstDigit) && string.IsNullOrEmpty(OTPSecondDigit))
                                 {
                                     entry.Focus();
                                 }

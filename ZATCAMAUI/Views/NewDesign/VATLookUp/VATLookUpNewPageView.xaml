@@ -42,26 +42,20 @@
 
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSearchParameter}" />
 
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    InputViewPadding="16,0,16,0"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource Primary}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        IsReadOnly="True"
-                                        InputTransparent="True"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding TxtSearchParameter}"
-                                        TextColor="{StaticResource Primary}" />
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding TxtSearchParameter}"
+                                            TextColor="{StaticResource Primary}" />
 
-                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="PPicker_btn_Clicked" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                                 <custom:CustomSfPicker
                                     x:Name="PPicker"
@@ -132,34 +126,25 @@
 
                                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding SelectedParameterType.ParameterType}" />
 
-                                <inputLayout:SfTextInputLayout
-                                    x:Name="frmLookupNumner"
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{Binding SelectedParameterType.ParameterType}"
-                                    InputViewPadding="16,0,16,0"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource Primary}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            Keyboard="Numeric"
+                                            MaxLength="{Binding MaxDigids}"
+                                            Placeholder="{Binding SelectedParameterType.ParameterType}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding LookupNumber}"
+                                            TextColor="{StaticResource Primary}">
 
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:OnlyNumericValuesBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
 
-                                    <custom:GAZTBorderlessEntry
-                                        Keyboard="Numeric"
-                                        MaxLength="{Binding MaxDigids}"
-                                        Placeholder="{Binding SelectedParameterType.ParameterType}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding LookupNumber}"
-                                        TextColor="{StaticResource Primary}">
+                                        </custom:GAZTBorderlessEntry>
 
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviors:OnlyNumericValuesBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                    </custom:GAZTBorderlessEntry>
-
-                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Label
                                             Margin="0,0,0,4"
                                             FontSize="Title"
@@ -176,7 +161,7 @@
                                         </Label>
                                     </inputLayout:SfTextInputLayout.TrailingView>
 
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                             </StackLayout>
 
