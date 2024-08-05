@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
@@ -25,7 +26,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _headerWithInfoList = value;
-                RaisePropertyChanged("HeaderWithInfoList");
+                OnPropertyChanged("HeaderWithInfoList");
             }
         }
 
@@ -39,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _mainString = value;
-                RaisePropertyChanged("MainString");
+                OnPropertyChanged("MainString");
             }
         }
 
@@ -53,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _newDesignPopUp = value;
-                RaisePropertyChanged("NewDesignPopUp");
+                OnPropertyChanged("NewDesignPopUp");
             }
         }
 
@@ -67,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _firstLink = value;
-                RaisePropertyChanged("FirstLink");
+                OnPropertyChanged("FirstLink");
             }
         }
 
@@ -81,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _firstLinkText = value;
-                RaisePropertyChanged("FirstLinkText");
+                OnPropertyChanged("FirstLinkText");
             }
         }
 
@@ -95,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _SecondLink = value;
-                RaisePropertyChanged("SecondLink");
+                OnPropertyChanged("SecondLink");
             }
         }
 
@@ -109,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _SecondLinkText = value;
-                RaisePropertyChanged("SecondLinkText");
+                OnPropertyChanged("SecondLinkText");
             }
         }
 

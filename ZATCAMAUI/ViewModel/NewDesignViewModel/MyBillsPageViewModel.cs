@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -45,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_TaxTypeForFilter == value) return;
 
                 _TaxTypeForFilter = value;
-                RaisePropertyChanged("TaxTypeForFilter");
+                OnPropertyChanged("TaxTypeForFilter");
             }
         }
 
@@ -61,7 +61,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_sadadBindNumber == value) return;
 
                 _sadadBindNumber = value;
-                RaisePropertyChanged("SadadBindNumber");
+                OnPropertyChanged("SadadBindNumber");
             }
         }
 
@@ -77,7 +77,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_referenceNumber == value) return;
 
                 _referenceNumber = value;
-                RaisePropertyChanged("ReferenceNumber");
+                OnPropertyChanged("ReferenceNumber");
             }
         }
 
@@ -93,7 +93,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_taxablePeriod == value) return;
 
                 _taxablePeriod = value;
-                RaisePropertyChanged("TaxablePeriod");
+                OnPropertyChanged("TaxablePeriod");
             }
         }
 
@@ -109,7 +109,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_totalAmount == value) return;
 
                 _totalAmount = value;
-                RaisePropertyChanged("TotalAmount");
+                OnPropertyChanged("TotalAmount");
             }
         }
 
@@ -130,7 +130,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterIfTypeAndStausFilterSelected(false);
                 }
 
-                RaisePropertyChanged("SelectedChipFilterItem");
+                OnPropertyChanged("SelectedChipFilterItem");
             }
         }
 
@@ -147,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _SelectionColor = value;
 
-                RaisePropertyChanged("SelectionColor");
+                OnPropertyChanged("SelectionColor");
             }
         }
 
@@ -164,7 +164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_chipDataFilterlist == value) return;
 
                 _chipDataFilterlist = value;
-                RaisePropertyChanged("ChipDataFilterlist");
+                OnPropertyChanged("ChipDataFilterlist");
             }
         }
         public MyBillsFilterDropdown _SelectedTaxTypeForFilter = null;
@@ -184,7 +184,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterLabelText = _SelectedTaxTypeForFilter.Txt30;
                     FilterIfTypeAndStausFilterSelected(true);
                 }
-                RaisePropertyChanged("SelectedTaxTypeForFilter");
+                OnPropertyChanged("SelectedTaxTypeForFilter");
             }
         }
         public string _filterLabelText;
@@ -200,7 +200,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _filterLabelText = value;
 
-                RaisePropertyChanged("FilterLabelText");
+                OnPropertyChanged("FilterLabelText");
             }
         }
 
@@ -233,7 +233,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 multiplePayableBills = value;
 
-                RaisePropertyChanged("MultiplePayableBills");
+                OnPropertyChanged("MultiplePayableBills");
             }
         }
 
@@ -300,7 +300,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
 
                 }
-                RaisePropertyChanged("MyBills");
+                OnPropertyChanged("MyBills");
             }
         }
 
@@ -319,7 +319,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _AmountTitle = value;
 
 
-                RaisePropertyChanged("AmountTitle");
+                OnPropertyChanged("AmountTitle");
             }
         }
 
@@ -337,7 +337,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _amountLabel = value;
 
 
-                RaisePropertyChanged("AmountLabel");
+                OnPropertyChanged("AmountLabel");
             }
         }
 
@@ -355,7 +355,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isListVisible == value) return;
 
                 _isListVisible = value;
-                RaisePropertyChanged("IsListVisible");
+                OnPropertyChanged("IsListVisible");
             }
         }
         private bool _isNoDataLableVisible = false;
@@ -370,7 +370,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isNoDataLableVisible == value) return;
 
                 _isNoDataLableVisible = value;
-                RaisePropertyChanged("isNoDataLableVisible");
+                OnPropertyChanged("isNoDataLableVisible");
             }
         }
 
@@ -386,7 +386,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_myBillsOriginal == value) return;
 
                 _myBillsOriginal = value;
-                RaisePropertyChanged("MyBillsOriginal");
+                OnPropertyChanged("MyBillsOriginal");
             }
         }
         private int _selcectedBillsIndex = 0;
@@ -401,7 +401,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selcectedBillsIndex == value) return;
 
                 _selcectedBillsIndex = value;
-                RaisePropertyChanged("SelcectedBillsIndex");
+                OnPropertyChanged("SelcectedBillsIndex");
             }
         }
 
@@ -417,7 +417,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_paymentData == value) return;
 
                 _paymentData = value;
-                RaisePropertyChanged("PaymentData");
+                OnPropertyChanged("PaymentData");
             }
         }
 
@@ -433,7 +433,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_applePayStatus == value) return;
 
                 _applePayStatus = value;
-                RaisePropertyChanged("ApplePayStatus");
+                OnPropertyChanged("ApplePayStatus");
             }
         }
         private GenericPickerModel _pickerModel { get; set; }
@@ -445,7 +445,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_pickerModel == value) return;
 
                 _pickerModel = value;
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
         public string ApplePayTokenData = "";

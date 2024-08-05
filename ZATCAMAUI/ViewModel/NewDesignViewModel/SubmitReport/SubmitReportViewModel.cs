@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Acr.UserDialogs;
-using GalaSoft.MvvmLight.Views;
+
 using Maui.GoogleMaps;
 using Microsoft.Maui.Handlers;
 using Mopups.Services;
@@ -11,17 +11,12 @@ using ZATCAMAUI.Controls;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SubmitReportModel;
 using ZATCAMAUI.Views.NewDesign.SubmitReport;
 using Map = Maui.GoogleMaps.Map;
-//using Distance = Xamarin.Forms.GoogleMaps.Distance;
-//using Geocoder = Xamarin.Forms.GoogleMaps.Geocoder;
-//using Map = Xamarin.Forms.GoogleMaps.Map;
-//using MapSpan = Xamarin.Forms.GoogleMaps.MapSpan;
-//using Pin = Xamarin.Forms.GoogleMaps.Pin;
-//using Position = Xamarin.Forms.GoogleMaps.Position;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 {
@@ -30,59 +25,59 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
         #region Properties
 
         bool _IsReadTermsandCondition = false;
-        public bool IsReadTermsandCondition { get { return _IsReadTermsandCondition; } set { _IsReadTermsandCondition = value; RaisePropertyChanged(); } }
+        public bool IsReadTermsandCondition { get { return _IsReadTermsandCondition; } set { _IsReadTermsandCondition = value; OnPropertyChanged(); } }
 
         bool _IsreporterDataMandatory = false;
-        public bool IsreporterDataMandatory { get { return _IsreporterDataMandatory; } set { _IsreporterDataMandatory = value; RaisePropertyChanged(); } }
+        public bool IsreporterDataMandatory { get { return _IsreporterDataMandatory; } set { _IsreporterDataMandatory = value; OnPropertyChanged(); } }
 
 
         private readonly ISubmitReportServices _submitReportServices;
 
         SubmitReportModel submitReport = new SubmitReportModel();
-        public SubmitReportModel SubmitReport { get { return submitReport; } set { submitReport = value; RaisePropertyChanged(); } }
+        public SubmitReportModel SubmitReport { get { return submitReport; } set { submitReport = value; OnPropertyChanged(); } }
 
         public DateTime SelectedDate { get; set; } = DateTime.Now;
 
         bool isTherePDFUploaded;
-        public bool IsTherePDFUploaded { get { return isTherePDFUploaded; } set { isTherePDFUploaded = value; RaisePropertyChanged(); } }
+        public bool IsTherePDFUploaded { get { return isTherePDFUploaded; } set { isTherePDFUploaded = value; OnPropertyChanged(); } }
 
         string violationDateDateString;
-        public string ViolationDateDateString { get { return violationDateDateString; } set { violationDateDateString = value; RaisePropertyChanged(); } }
+        public string ViolationDateDateString { get { return violationDateDateString; } set { violationDateDateString = value; OnPropertyChanged(); } }
 
         bool isReportCategoryShowen;
-        public bool IsReportCategoryShowen { get { return isReportCategoryShowen; } set { isReportCategoryShowen = value; RaisePropertyChanged(); } }
+        public bool IsReportCategoryShowen { get { return isReportCategoryShowen; } set { isReportCategoryShowen = value; OnPropertyChanged(); } }
 
         bool isMissingFieldShowen;
-        public bool IsMissingFieldShowen { get { return isMissingFieldShowen; } set { isMissingFieldShowen = value; RaisePropertyChanged(); } }
+        public bool IsMissingFieldShowen { get { return isMissingFieldShowen; } set { isMissingFieldShowen = value; OnPropertyChanged(); } }
 
         bool isSubCategeoryShow;
-        public bool IsSubCategeoryShow { get { return isSubCategeoryShow; } set { isSubCategeoryShow = value; RaisePropertyChanged(); } }
+        public bool IsSubCategeoryShow { get { return isSubCategeoryShow; } set { isSubCategeoryShow = value; OnPropertyChanged(); } }
 
 
         bool isCityShowen;
-        public bool IsCityShowen { get { return isCityShowen; } set { isCityShowen = value; RaisePropertyChanged(); } }
+        public bool IsCityShowen { get { return isCityShowen; } set { isCityShowen = value; OnPropertyChanged(); } }
 
         string reportNumberResult;
-        public string ReportNumberResult { get { return reportNumberResult; } set { reportNumberResult = value; RaisePropertyChanged(); } }
+        public string ReportNumberResult { get { return reportNumberResult; } set { reportNumberResult = value; OnPropertyChanged(); } }
 
         string headerTitle = AppResources.Submitareport;
-        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
+        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; OnPropertyChanged(); } }
 
         string searchText;
-        public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
+        public string SearchText { get { return searchText; } set { searchText = value; OnPropertyChanged(); } }
 
         public Map GoogleMap { get; set; }
 
         ObservableCollection<ReportFileModel> reportUloadedFiles = new ObservableCollection<ReportFileModel>();
-        public ObservableCollection<ReportFileModel> ReportUloadedFiles { get { return reportUloadedFiles; } set { reportUloadedFiles = value; RaisePropertyChanged(); } }
+        public ObservableCollection<ReportFileModel> ReportUloadedFiles { get { return reportUloadedFiles; } set { reportUloadedFiles = value; OnPropertyChanged(); } }
 
         ObservableCollection<BottomSheetModel> bottomSheetList = new ObservableCollection<BottomSheetModel>();
-        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; OnPropertyChanged(); } }
 
         public ObservableCollection<BottomSheetModel> TempBottomSheetList { get; set; } = new ObservableCollection<BottomSheetModel>();
 
         DateTime _MaximumDate = DateTime.Now.Date.AddHours(-24);
-        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
+        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; OnPropertyChanged(); } }
 
         private bool isReportTypeSelected = false;
         private bool isReportCategorySelected = false;

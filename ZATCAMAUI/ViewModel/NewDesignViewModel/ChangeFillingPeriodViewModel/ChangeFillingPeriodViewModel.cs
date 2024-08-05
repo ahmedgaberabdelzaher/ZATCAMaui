@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
@@ -67,7 +67,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isFrequencyDetailsChecked == value) return;
 
                 _isFrequencyDetailsChecked = value;
-                RaisePropertyChanged("IsFrequencyDetailsChecked");
+                OnPropertyChanged("IsFrequencyDetailsChecked");
             }
         }
 
@@ -80,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isDecCheckBoxVisible == value) return;
 
                 _isDecCheckBoxVisible = value;
-                RaisePropertyChanged("IsDecCheckBoxVisible");
+                OnPropertyChanged("IsDecCheckBoxVisible");
             }
         }
 
@@ -113,16 +113,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
                 else
                 {
                     MarkComplete = false;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_pickedDate == value) return;
 
                 _pickedDate = value;
-                RaisePropertyChanged("PickedDate");
+                OnPropertyChanged("PickedDate");
             }
         }
 
@@ -156,7 +156,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_contactPersonName == value) return;
 
                 _contactPersonName = value;
-                RaisePropertyChanged("ContactPersonName");
+                OnPropertyChanged("ContactPersonName");
             }
         }
 
@@ -170,7 +170,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_idNumber == value) return;
 
                 _idNumber = value;
-                RaisePropertyChanged("IDNumber");
+                OnPropertyChanged("IDNumber");
             }
         }
 
@@ -183,7 +183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isIDVerified == value) return;
 
                 _isIDVerified = value;
-                RaisePropertyChanged("IsIDVerified");
+                OnPropertyChanged("IsIDVerified");
             }
         }
         private bool _contractPersonEditable = false;
@@ -195,7 +195,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_contractPersonEditable == value) return;
 
                 _contractPersonEditable = value;
-                RaisePropertyChanged("ContractPersonEditable");
+                OnPropertyChanged("ContractPersonEditable");
             }
         }
 
@@ -209,7 +209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_idType == value) return;
 
                 _idType = value;
-                RaisePropertyChanged("IDType");
+                OnPropertyChanged("IDType");
             }
         }
 
@@ -223,7 +223,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isDOBVisible == value) return;
 
                 _isDOBVisible = value;
-                RaisePropertyChanged("IsDOBVisible");
+                OnPropertyChanged("IsDOBVisible");
             }
         }
 
@@ -237,7 +237,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isAtachmentsVisible == value) return;
 
                 _isAtachmentsVisible = value;
-                RaisePropertyChanged("IsAtachmentsVisible");
+                OnPropertyChanged("IsAtachmentsVisible");
             }
         }
 
@@ -251,7 +251,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_effectiveDatePicked == value) return;
 
                 _effectiveDatePicked = value;
-                RaisePropertyChanged("EffectiveDatePicked");
+                OnPropertyChanged("EffectiveDatePicked");
             }
         }
 
@@ -265,7 +265,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_idTypePickerModel == value) return;
 
                 _idTypePickerModel = value;
-                RaisePropertyChanged("IDTypePickerModel");
+                OnPropertyChanged("IDTypePickerModel");
             }
         }
 
@@ -279,7 +279,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_effectiveDatePickerModel == value) return;
 
                 _effectiveDatePickerModel = value;
-                RaisePropertyChanged("EffectiveDatePickerModel");
+                OnPropertyChanged("EffectiveDatePickerModel");
             }
         }
 
@@ -294,7 +294,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 _isFrequencyDetailsEnabled = value;
                 FrequencyDetailsButtonBackGroundColor = _isFrequencyDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsFrequencyDetailsEnabled");
+                OnPropertyChanged("IsFrequencyDetailsEnabled");
             }
         }
         private Color _frequencyDetailsButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -311,7 +311,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     return;
                 }
                 _frequencyDetailsButtonBackGroundColor = value;
-                RaisePropertyChanged("FrequencyDetailsButtonBackGroundColor");
+                OnPropertyChanged("FrequencyDetailsButtonBackGroundColor");
             }
         }
         private bool _isAttachmentsEnabled = false;
@@ -324,7 +324,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 _isAttachmentsEnabled = value;
                 AttachButtonBackGroundColor = _isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsAttachmentsEnabled");
+                OnPropertyChanged("IsAttachmentsEnabled");
             }
         }
         private Color _attachButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -341,7 +341,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     return;
                 }
                 _attachButtonBackGroundColor = value;
-                RaisePropertyChanged("AttachButtonBackGroundColor");
+                OnPropertyChanged("AttachButtonBackGroundColor");
             }
         }
         private bool _isDeclarationEnabled = false;
@@ -354,7 +354,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 _isDeclarationEnabled = value;
                 DeclarationButtonBackGroundColor = _isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsDeclarationEnabled");
+                OnPropertyChanged("IsDeclarationEnabled");
             }
         }
         private bool _isDeclarationViewEnabledNew = false;
@@ -369,7 +369,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isDeclarationViewEnabledNew == value) return;
 
                 _isDeclarationViewEnabledNew = value;
-                RaisePropertyChanged("IsDeclarationViewEnabledNew");
+                OnPropertyChanged("IsDeclarationViewEnabledNew");
             }
         }
 
@@ -385,7 +385,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isDeclarationViewEnabledOld == value) return;
 
                 _isDeclarationViewEnabledOld = value;
-                RaisePropertyChanged("IsDeclarationViewEnabledOld");
+                OnPropertyChanged("IsDeclarationViewEnabledOld");
             }
         }
 
@@ -401,7 +401,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_vatDeregDeclaration == value) return;
 
                 _vatDeregDeclaration = value;
-                RaisePropertyChanged("VatDeregDeclaration");
+                OnPropertyChanged("VatDeregDeclaration");
             }
         }
 
@@ -417,7 +417,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_zterms == value) return;
 
                 _zterms = value;
-                RaisePropertyChanged("Zterms");
+                OnPropertyChanged("Zterms");
             }
         }
 
@@ -435,7 +435,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     return;
                 }
                 _declarationButtonBackGroundColor = value;
-                RaisePropertyChanged("DeclarationButtonBackGroundColor");
+                OnPropertyChanged("DeclarationButtonBackGroundColor");
             }
         }
 
@@ -453,7 +453,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 yearsattachmentsListViewData = value;
-                RaisePropertyChanged("YearsattachmentsListViewData");
+                OnPropertyChanged("YearsattachmentsListViewData");
             }
         }
 
@@ -471,7 +471,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 monthsattachmentsListViewData = value;
-                RaisePropertyChanged("MonthsattachmentsListViewData");
+                OnPropertyChanged("MonthsattachmentsListViewData");
             }
         }
 
@@ -489,7 +489,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 otherAttachmentsListViewData = value;
-                RaisePropertyChanged("OtherAttachmentsListViewData");
+                OnPropertyChanged("OtherAttachmentsListViewData");
             }
         }
 
@@ -507,7 +507,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 attachmentsListViewData = value;
-                RaisePropertyChanged("AttachmentsListViewData");
+                OnPropertyChanged("AttachmentsListViewData");
             }
         }
 
@@ -552,7 +552,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_changeFillingResponse == value) return;
 
                 _changeFillingResponse = value;
-                RaisePropertyChanged("ChangeFillingResponse");
+                OnPropertyChanged("ChangeFillingResponse");
             }
         }
 
@@ -566,7 +566,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_effectiveDateResponse == value) return;
 
                 _effectiveDateResponse = value;
-                RaisePropertyChanged("EffectiveDateResponse");
+                OnPropertyChanged("EffectiveDateResponse");
             }
         }
         private TextAlignment _termsAlignment;
@@ -577,7 +577,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 if (_termsAlignment == value) return;
                 _termsAlignment = value;
-                RaisePropertyChanged("TermsAlignment");
+                OnPropertyChanged("TermsAlignment");
             }
         }
 
@@ -677,7 +677,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             set
             {
                 _ListOfActionButtonsApplicable = value;
-                RaisePropertyChanged("ListOfActionButtonsApplicable");
+                OnPropertyChanged("ListOfActionButtonsApplicable");
             }
         }
 
@@ -1463,7 +1463,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 if (_isBackVisible == value) return;
                 _isBackVisible = value;
-                RaisePropertyChanged("IsBackVisible");
+                OnPropertyChanged("IsBackVisible");
             }
         }
 
@@ -1479,7 +1479,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isFrequencyViewEnabled == value) return;
 
                 _isFrequencyViewEnabled = value;
-                RaisePropertyChanged("IsFrequencyViewEnabled");
+                OnPropertyChanged("IsFrequencyViewEnabled");
             }
         }
 
@@ -1496,7 +1496,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isAttachmentsViewEnabled == value) return;
 
                 _isAttachmentsViewEnabled = value;
-                RaisePropertyChanged("IsAttachmentsViewEnabled");
+                OnPropertyChanged("IsAttachmentsViewEnabled");
             }
         }
 
@@ -1512,7 +1512,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isDeclarationViewEnabled == value) return;
 
                 _isDeclarationViewEnabled = value;
-                RaisePropertyChanged("IsDeclarationViewEnabled");
+                OnPropertyChanged("IsDeclarationViewEnabled");
             }
         }
 
@@ -1528,7 +1528,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isSummaryViewEnabled == value) return;
 
                 _isSummaryViewEnabled = value;
-                RaisePropertyChanged("IsSummaryViewEnabled");
+                OnPropertyChanged("IsSummaryViewEnabled");
             }
         }
 
@@ -1544,7 +1544,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_showAttachments == value) return;
 
                 _showAttachments = value;
-                RaisePropertyChanged("ShowAttachments");
+                OnPropertyChanged("ShowAttachments");
             }
         }
 
@@ -1563,7 +1563,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 _selectedOutletOptionIndex = value;
                 EnableAttachments();
 
-                RaisePropertyChanged("SelectedOutletOptionIndex");
+                OnPropertyChanged("SelectedOutletOptionIndex");
             }
         }
 
@@ -1579,7 +1579,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_selectedAttachmentText == value) return;
 
                 _selectedAttachmentText = value;
-                RaisePropertyChanged("SelectedAttachmentText");
+                OnPropertyChanged("SelectedAttachmentText");
             }
         }
 
@@ -1596,7 +1596,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_referenceNumber == value) return;
 
                 _referenceNumber = value;
-                RaisePropertyChanged("ReferenceNumber");
+                OnPropertyChanged("ReferenceNumber");
             }
         }
 
@@ -1612,7 +1612,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_currentFrequency == value) return;
 
                 _currentFrequency = value;
-                RaisePropertyChanged("CurrentFrequency");
+                OnPropertyChanged("CurrentFrequency");
             }
         }
 
@@ -1628,7 +1628,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_newFrequency == value) return;
 
                 _newFrequency = value;
-                RaisePropertyChanged("NewFrequency");
+                OnPropertyChanged("NewFrequency");
             }
         }
 
@@ -1641,7 +1641,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isTwoYearsAtachmentsVisible == value) return;
 
                 _isTwoYearsAtachmentsVisible = value;
-                RaisePropertyChanged("IsTwoYearsAtachmentsVisible");
+                OnPropertyChanged("IsTwoYearsAtachmentsVisible");
             }
         }
         private bool _isMonthsAtachmentsVisible = false;
@@ -1653,7 +1653,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isMonthsAtachmentsVisible == value) return;
 
                 _isMonthsAtachmentsVisible = value;
-                RaisePropertyChanged("IsMonthsAtachmentsVisible");
+                OnPropertyChanged("IsMonthsAtachmentsVisible");
             }
         }
         private bool _isOthersAtachmentsVisible = false;
@@ -1665,7 +1665,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isOthersAtachmentsVisible == value) return;
 
                 _isOthersAtachmentsVisible = value;
-                RaisePropertyChanged("IsOthersAtachmentsVisible");
+                OnPropertyChanged("IsOthersAtachmentsVisible");
             }
         }
 
@@ -1685,7 +1685,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 outletDecisionOptions = value;
-                RaisePropertyChanged("OutletDecisionOptions");
+                OnPropertyChanged("OutletDecisionOptions");
             }
         }
 
@@ -1716,7 +1716,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_selectedOutletOption == value) return;
 
                 _selectedOutletOption = value;
-                RaisePropertyChanged("SelectedOutletOption");
+                OnPropertyChanged("SelectedOutletOption");
             }
         }
 
@@ -1782,7 +1782,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             set
             {
                 _IsCheckboxChecked = value;
-                RaisePropertyChanged("IsCheckboxChecked");
+                OnPropertyChanged("IsCheckboxChecked");
             }
         }
 

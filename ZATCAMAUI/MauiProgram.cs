@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui;
-using Maui.PancakeView;
 using Mopups.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 using ZATCAMAUI.Core.CustomControls;
@@ -36,7 +35,6 @@ public static class MauiProgram
                 .ConfigureMopups()
                 .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionCore()
-                .UsePancakeViewCompat()
                 .UseMauiCompatibility()
                 .UseMauiMaps()
                 //.UseMauiCommunityToolkitMaps("key")

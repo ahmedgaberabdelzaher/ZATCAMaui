@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Mopups.Services;
@@ -8,13 +8,13 @@ using System.Globalization;
 using System.Text;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
-using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.Nafat.LoginSSOModel;
 using Metadata = ZATCAMAUI.Models.Metadata;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -22,8 +22,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     public class IndividualRegistrationPageViewModel : BaseViewModel
     {
         public int DefaultMonth;
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnContinueButtonClick { get; set; }
         public ICommand OnBackButtonClick { get; set; }
         public ICommand OnResendButtonClick { get; set; }
@@ -51,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     return;
                 }
                 _isGulfER = value;
-                RaisePropertyChanged("IsGulfER");
+                OnPropertyChanged("IsGulfER");
             }
         }
 
@@ -71,7 +69,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     return;
                 }
                 _passwordMainView = value;
-                RaisePropertyChanged("passwordMainView");
+                OnPropertyChanged("passwordMainView");
             }
         }
 
@@ -85,11 +83,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 if (_currenrIndex == value) return;
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -110,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_chipDataFilterlist == value) return;
 
                 _chipDataFilterlist = value;
-                RaisePropertyChanged("ChipDataFilterlist");
+                OnPropertyChanged("ChipDataFilterlist");
             }
         }
         public string _MinEight = "error";
@@ -125,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_MinEight == value) return;
 
                 _MinEight = value;
-                RaisePropertyChanged("MinEight");
+                OnPropertyChanged("MinEight");
             }
         }
 
@@ -141,7 +139,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_CapsSmall == value) return;
 
                 _CapsSmall = value;
-                RaisePropertyChanged("CapsSmall");
+                OnPropertyChanged("CapsSmall");
             }
         }
 
@@ -157,7 +155,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_MaxSixteen == value) return;
 
                 _MaxSixteen = value;
-                RaisePropertyChanged("MaxSixteen");
+                OnPropertyChanged("MaxSixteen");
             }
         }
 
@@ -173,7 +171,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_NumSymbol == value) return;
 
                 _NumSymbol = value;
-                RaisePropertyChanged("NumSymbol");
+                OnPropertyChanged("NumSymbol");
             }
         }
 
@@ -190,7 +188,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_dateselected == value) return;
 
                 _dateselected = value;
-                RaisePropertyChanged("dateselected");
+                OnPropertyChanged("dateselected");
             }
         }
         private ObservableCollection<object> _todayDate;
@@ -205,7 +203,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_todayDate == value) return;
 
                 _todayDate = value;
-                RaisePropertyChanged("TodayDate");
+                OnPropertyChanged("TodayDate");
             }
         }
         //IsCitizen
@@ -221,7 +219,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isCitizen == value) return;
 
                 _isCitizen = value;
-                RaisePropertyChanged("IsCitizen");
+                OnPropertyChanged("IsCitizen");
             }
         }
         private bool _isLoading = false;
@@ -236,7 +234,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isLoading == value) return;
 
                 _isLoading = value;
-                RaisePropertyChanged("IsLoading");
+                OnPropertyChanged("IsLoading");
             }
         }
         private bool _isOTPEncripted = true;
@@ -251,7 +249,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isOTPEncripted == value) return;
 
                 _isOTPEncripted = value;
-                RaisePropertyChanged("IsOTPEncripted");
+                OnPropertyChanged("IsOTPEncripted");
             }
         }
         private bool _isPasswordEncripted = true;
@@ -266,7 +264,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isPasswordEncripted == value) return;
 
                 _isPasswordEncripted = value;
-                RaisePropertyChanged("IsPasswordEncripted");
+                OnPropertyChanged("IsPasswordEncripted");
             }
         }
         private string _maxDigids = "9";
@@ -281,7 +279,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_maxDigids == value) return;
 
                 _maxDigids = value;
-                RaisePropertyChanged("MaxDigids");
+                OnPropertyChanged("MaxDigids");
             }
         }
         private bool _isConfirmPasswordEncripted = true;
@@ -296,7 +294,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isConfirmPasswordEncripted == value) return;
 
                 _isConfirmPasswordEncripted = value;
-                RaisePropertyChanged("IsConfirmPasswordEncripted");
+                OnPropertyChanged("IsConfirmPasswordEncripted");
             }
         }
 
@@ -312,7 +310,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_framePasswordError == value) return;
 
                 _framePasswordError = value;
-                RaisePropertyChanged("FramePasswordError");
+                OnPropertyChanged("FramePasswordError");
             }
         }
         private bool _frameConfirmPasswordError = false;
@@ -327,7 +325,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameConfirmPasswordError == value) return;
 
                 _frameConfirmPasswordError = value;
-                RaisePropertyChanged("FrameConfirmPasswordError");
+                OnPropertyChanged("FrameConfirmPasswordError");
             }
         }
         private ObservableCollection<object> _todayDateinHijri;
@@ -342,7 +340,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_todayDateinHijri == value) return;
 
                 _todayDateinHijri = value;
-                RaisePropertyChanged("TodayDateinHijri");
+                OnPropertyChanged("TodayDateinHijri");
             }
         }
         private bool _frameOTPError = false;
@@ -357,7 +355,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameOTPError == value) return;
 
                 _frameOTPError = value;
-                RaisePropertyChanged("FrameOTPError");
+                OnPropertyChanged("FrameOTPError");
             }
         }
 
@@ -385,7 +383,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     MaxDigids = "15";
                 }
 
-                RaisePropertyChanged("TxtCountryCode");
+                OnPropertyChanged("TxtCountryCode");
             }
         }
 
@@ -402,7 +400,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameIDError == value) return;
 
                 _frameIDError = value;
-                RaisePropertyChanged("FrameIDError");
+                OnPropertyChanged("FrameIDError");
             }
         }
         private bool _frameDOBError = false;
@@ -417,7 +415,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameDOBError == value) return;
 
                 _frameDOBError = value;
-                RaisePropertyChanged("FrameDOBError");
+                OnPropertyChanged("FrameDOBError");
             }
         }
         private bool _frameEmailError = false;
@@ -432,7 +430,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameEmailError == value) return;
 
                 _frameEmailError = value;
-                RaisePropertyChanged("FrameEmailError");
+                OnPropertyChanged("FrameEmailError");
             }
         }
         private bool _frameConfirmEmailError = false;
@@ -447,7 +445,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameConfirmEmailError == value) return;
 
                 _frameConfirmEmailError = value;
-                RaisePropertyChanged("FrameConfirmEmailError");
+                OnPropertyChanged("FrameConfirmEmailError");
             }
         }
         private bool _frameMobileNumberError = false;
@@ -462,7 +460,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameMobileNumberError == value) return;
 
                 _frameMobileNumberError = value;
-                RaisePropertyChanged("FrameMobileNumberError");
+                OnPropertyChanged("FrameMobileNumberError");
             }
         }
         private bool _frameCaptchaError = false;
@@ -477,7 +475,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameCaptchaError == value) return;
 
                 _frameCaptchaError = value;
-                RaisePropertyChanged("FrameCaptchaError");
+                OnPropertyChanged("FrameCaptchaError");
             }
         }
         private bool _frameNameError = false;
@@ -492,7 +490,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameNameError == value) return;
 
                 _frameNameError = value;
-                RaisePropertyChanged("FrameNameError");
+                OnPropertyChanged("FrameNameError");
             }
         }
 
@@ -513,7 +511,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     currentStep = 1;
                     SetcolorForDots("IndividualRegistrationView");
                 }
-                RaisePropertyChanged("IndividualRegistrationView");
+                OnPropertyChanged("IndividualRegistrationView");
             }
         }
 
@@ -535,7 +533,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     SetcolorForDots("NationalAddressView");
                 }
 
-                RaisePropertyChanged("NationalAddressView");
+                OnPropertyChanged("NationalAddressView");
             }
         }
 
@@ -556,7 +554,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     currentStep = 3;
                     SetcolorForDots("ContactInformationView");
                 }
-                RaisePropertyChanged("ContactInformationView");
+                OnPropertyChanged("ContactInformationView");
             }
         }
 
@@ -578,7 +576,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     currentStep = 4;
                     SetcolorForDots("SummeryView");
                 }
-                RaisePropertyChanged("SummeryView");
+                OnPropertyChanged("SummeryView");
             }
         }
 
@@ -594,7 +592,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameGccCountyError == value) return;
 
                 _frameGccCountyError = value;
-                RaisePropertyChanged("FrameGccCountyError");
+                OnPropertyChanged("FrameGccCountyError");
             }
         }
         private bool _frameCityError = false;
@@ -609,7 +607,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameCityError == value) return;
 
                 _frameCityError = value;
-                RaisePropertyChanged("FrameCityError");
+                OnPropertyChanged("FrameCityError");
             }
         }
         private bool _frameRegionError = false;
@@ -624,7 +622,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_frameRegionError == value) return;
 
                 _frameRegionError = value;
-                RaisePropertyChanged("FrameRegionError");
+                OnPropertyChanged("FrameRegionError");
             }
         }
 
@@ -650,7 +648,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     BackArrowVisible = true;
                 }
-                RaisePropertyChanged("PasswordView");
+                OnPropertyChanged("PasswordView");
             }
         }
 
@@ -665,7 +663,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_BoxColorTwo == value) return;
 
                 _BoxColorOne = value;
-                RaisePropertyChanged("BoxColorOne");
+                OnPropertyChanged("BoxColorOne");
             }
         }
         public Color _BoxColorTwo = (Color)Application.Current.Resources["Gray"];
@@ -677,7 +675,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_BoxColorTwo == value) return;
 
                 _BoxColorTwo = value;
-                RaisePropertyChanged("BoxColorTwo");
+                OnPropertyChanged("BoxColorTwo");
             }
         }
         public Color _BoxColorThree = (Color)Application.Current.Resources["Gray"];
@@ -689,7 +687,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_BoxColorThree == value) return;
 
                 _BoxColorThree = value;
-                RaisePropertyChanged("BoxColorThree");
+                OnPropertyChanged("BoxColorThree");
             }
         }
 
@@ -702,7 +700,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_BoxColorFour == value) return;
 
                 _BoxColorFour = value;
-                RaisePropertyChanged("BoxColorFour");
+                OnPropertyChanged("BoxColorFour");
             }
         }
 
@@ -715,7 +713,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_BoxColorFive == value) return;
 
                 _BoxColorFive = value;
-                RaisePropertyChanged("BoxColorFive");
+                OnPropertyChanged("BoxColorFive");
             }
         }
 
@@ -731,7 +729,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_idTypeList == value) return;
 
                 _idTypeList = value;
-                RaisePropertyChanged("IdTypeList");
+                OnPropertyChanged("IdTypeList");
             }
         }
 
@@ -747,7 +745,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_iDTypeIndex == value) return;
 
                 _iDTypeIndex = value;
-                RaisePropertyChanged("IDTypeIndex");
+                OnPropertyChanged("IDTypeIndex");
             }
         }
 
@@ -763,7 +761,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_idNumber == value) return;
 
                 _idNumber = value;
-                RaisePropertyChanged("IdNumber");
+                OnPropertyChanged("IdNumber");
             }
         }
         private string _DOB = string.Empty;
@@ -778,7 +776,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_DOB == value) return;
 
                 _DOB = value;
-                RaisePropertyChanged("DOB");
+                OnPropertyChanged("DOB");
             }
         }
         private string _DOBddyymm = string.Empty;
@@ -793,7 +791,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_DOBddyymm == value) return;
 
                 _DOBddyymm = value;
-                RaisePropertyChanged("DOBddyymm");
+                OnPropertyChanged("DOBddyymm");
             }
         }
 
@@ -810,7 +808,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_continueButtonText == value) return;
 
                 _continueButtonText = value;
-                RaisePropertyChanged("ContinueButtonText");
+                OnPropertyChanged("ContinueButtonText");
             }
         }
 
@@ -826,7 +824,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_DOBPrev == value) return;
 
                 _DOBPrev = value;
-                RaisePropertyChanged("DOBPrev");
+                OnPropertyChanged("DOBPrev");
             }
         }
 
@@ -842,7 +840,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_maxLengthID == value) return;
 
                 _maxLengthID = value;
-                RaisePropertyChanged("MaxLengthID");
+                OnPropertyChanged("MaxLengthID");
             }
         }
 
@@ -858,7 +856,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_txtIDType == value) return;
 
                 _txtIDType = value;
-                RaisePropertyChanged("TxtIDType");
+                OnPropertyChanged("TxtIDType");
             }
         }
         private bool _IsHijriCal = false;
@@ -873,7 +871,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_IsHijriCal == value) return;
 
                 _IsHijriCal = value;
-                RaisePropertyChanged("IsHijriCal");
+                OnPropertyChanged("IsHijriCal");
             }
         }
         private SignUpIdType _selectedIdType = null;
@@ -926,7 +924,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     }
                 }
-                RaisePropertyChanged("SelectedIdType");
+                OnPropertyChanged("SelectedIdType");
             }
         }
 
@@ -942,7 +940,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_name == value) return;
 
                 _name = value;
-                RaisePropertyChanged("Name");
+                OnPropertyChanged("Name");
             }
         }
 
@@ -958,7 +956,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_email == value) return;
 
                 _email = value;
-                RaisePropertyChanged("Email");
+                OnPropertyChanged("Email");
             }
         }
         private string _confirmEmail = string.Empty;
@@ -973,7 +971,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_confirmEmail == value) return;
 
                 _confirmEmail = value;
-                RaisePropertyChanged("ConfirmEmail");
+                OnPropertyChanged("ConfirmEmail");
             }
         }
 
@@ -998,7 +996,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     }
                 }
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
         private string _mobileCountryCode = string.Empty;
@@ -1013,7 +1011,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_mobileCountryCode == value) return;
 
                 _mobileCountryCode = value;
-                RaisePropertyChanged("MobileCountryCode");
+                OnPropertyChanged("MobileCountryCode");
             }
         }
         private string _encriptedMobileNumber = string.Empty;
@@ -1028,7 +1026,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_encriptedMobileNumber == value) return;
 
                 _encriptedMobileNumber = value;
-                RaisePropertyChanged("EncriptedMobileNumber");
+                OnPropertyChanged("EncriptedMobileNumber");
             }
         }
 
@@ -1044,7 +1042,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_password == value) return;
 
                 _password = value;
-                RaisePropertyChanged("Password");
+                OnPropertyChanged("Password");
             }
         }
 
@@ -1060,7 +1058,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_oTP == value) return;
 
                 _oTP = value;
-                RaisePropertyChanged("OTP");
+                OnPropertyChanged("OTP");
             }
         }
 
@@ -1076,7 +1074,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_confirmPassword == value) return;
 
                 _confirmPassword = value;
-                RaisePropertyChanged("ConfirmPassword");
+                OnPropertyChanged("ConfirmPassword");
             }
         }
 
@@ -1095,7 +1093,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_countryName == value) return;
 
                 _countryName = value;
-                RaisePropertyChanged("CountryName");
+                OnPropertyChanged("CountryName");
             }
         }
 
@@ -1112,7 +1110,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_countryList == value) return;
 
                 _countryList = value;
-                RaisePropertyChanged("CountryList");
+                OnPropertyChanged("CountryList");
             }
         }
 
@@ -1129,7 +1127,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _selectedCountry = value;
 
-                RaisePropertyChanged("SelectedCountry");
+                OnPropertyChanged("SelectedCountry");
             }
         }
 
@@ -1146,7 +1144,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_selectedCountryIndex == value) return;
 
                 _selectedCountryIndex = value;
-                RaisePropertyChanged("SelectedCountryIndex");
+                OnPropertyChanged("SelectedCountryIndex");
             }
         }
 
@@ -1162,7 +1160,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_gCCCountryList == value) return;
 
                 _gCCCountryList = value;
-                RaisePropertyChanged("GCCCountryList");
+                OnPropertyChanged("GCCCountryList");
             }
         }
 
@@ -1179,7 +1177,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _selectedGCCCountry = value;
 
-                RaisePropertyChanged("SelectedGCCCountry");
+                OnPropertyChanged("SelectedGCCCountry");
             }
         }
 
@@ -1195,7 +1193,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_selectedGCCCountryIndex == value) return;
 
                 _selectedGCCCountryIndex = value;
-                RaisePropertyChanged("SelectedGCCCountryIndex");
+                OnPropertyChanged("SelectedGCCCountryIndex");
             }
         }
 
@@ -1211,7 +1209,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_regionList == value) return;
 
                 _regionList = value;
-                RaisePropertyChanged("RegionList");
+                OnPropertyChanged("RegionList");
             }
         }
 
@@ -1232,7 +1230,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     SetCityList();
                 }
 
-                RaisePropertyChanged("SelectedRegion");
+                OnPropertyChanged("SelectedRegion");
             }
         }
 
@@ -1248,7 +1246,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_selectedRegionIndex == value) return;
 
                 _selectedRegionIndex = value;
-                RaisePropertyChanged("SelectedRegionIndex");
+                OnPropertyChanged("SelectedRegionIndex");
             }
         }
 
@@ -1264,7 +1262,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_region == value) return;
 
                 _region = value;
-                RaisePropertyChanged("Region");
+                OnPropertyChanged("Region");
             }
         }
 
@@ -1280,7 +1278,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_cityName == value) return;
 
                 _cityName = value;
-                RaisePropertyChanged("CityName");
+                OnPropertyChanged("CityName");
             }
         }
 
@@ -1297,7 +1295,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_cityList == value) return;
 
                 _cityList = value;
-                RaisePropertyChanged("CityList");
+                OnPropertyChanged("CityList");
             }
         }
 
@@ -1314,7 +1312,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _selectedCity = value;
 
-                RaisePropertyChanged("SelectedCity");
+                OnPropertyChanged("SelectedCity");
             }
         }
 
@@ -1330,7 +1328,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_selectedCityIndex == value) return;
 
                 _selectedCityIndex = value;
-                RaisePropertyChanged("SelectedCityIndex");
+                OnPropertyChanged("SelectedCityIndex");
             }
         }
 
@@ -1347,7 +1345,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_setCityListVisibility == value) return;
 
                 _setCityListVisibility = value;
-                RaisePropertyChanged("SetCityListVisibility");
+                OnPropertyChanged("SetCityListVisibility");
             }
         }
 
@@ -1365,7 +1363,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_setEnabilityToCountryList == value) return;
 
                 _setEnabilityToCountryList = value;
-                RaisePropertyChanged("SetEnabilityToCountryList");
+                OnPropertyChanged("SetEnabilityToCountryList");
             }
         }
 
@@ -1381,7 +1379,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_setStateListVisibility == value) return;
 
                 _setStateListVisibility = value;
-                RaisePropertyChanged("SetStateListVisibility");
+                OnPropertyChanged("SetStateListVisibility");
             }
         }
 
@@ -1397,7 +1395,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_neighborhood == value) return;
 
                 _neighborhood = value;
-                RaisePropertyChanged("Neighborhood");
+                OnPropertyChanged("Neighborhood");
             }
         }
 
@@ -1413,7 +1411,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_postalCode == value) return;
 
                 _postalCode = value;
-                RaisePropertyChanged("PostalCode");
+                OnPropertyChanged("PostalCode");
             }
         }
 
@@ -1429,7 +1427,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_buildingNumber == value) return;
 
                 _buildingNumber = value;
-                RaisePropertyChanged("BuildingNumber");
+                OnPropertyChanged("BuildingNumber");
             }
         }
 
@@ -1446,7 +1444,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_unitNumber == value) return;
 
                 _unitNumber = value;
-                RaisePropertyChanged("UnitNumber");
+                OnPropertyChanged("UnitNumber");
             }
         }
 
@@ -1462,7 +1460,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_setGCCCountryVisibility == value) return;
 
                 _setGCCCountryVisibility = value;
-                RaisePropertyChanged("SetGCCCountryVisibility");
+                OnPropertyChanged("SetGCCCountryVisibility");
             }
         }
 
@@ -1478,7 +1476,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_setCountryVisibility == value) return;
 
                 _setCountryVisibility = value;
-                RaisePropertyChanged("SetCountryVisibility");
+                OnPropertyChanged("SetCountryVisibility");
             }
         }
         private string _oTPValidDuration = "";
@@ -1503,7 +1501,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
-                RaisePropertyChanged("OTPValidDuration");
+                OnPropertyChanged("OTPValidDuration");
             }
         }
         private bool _isVerifyOTPEnabled = true;
@@ -1518,7 +1516,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isVerifyOTPEnabled == value) return;
 
                 _isVerifyOTPEnabled = value;
-                RaisePropertyChanged("IsVerifyOTPEnabled");
+                OnPropertyChanged("IsVerifyOTPEnabled");
             }
         }
         private Color _buttonDisableTextColor = Colors.Gray;
@@ -1533,7 +1531,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_buttonDisableTextColor == value) return;
 
                 _buttonDisableTextColor = value;
-                RaisePropertyChanged("ButtonDisableTextColor");
+                OnPropertyChanged("ButtonDisableTextColor");
             }
         }
         private Color _verifybuttonDisableTextColor = Colors.White;
@@ -1548,7 +1546,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_verifybuttonDisableTextColor == value) return;
 
                 _verifybuttonDisableTextColor = value;
-                RaisePropertyChanged("VerifyButtonDisableTextColor");
+                OnPropertyChanged("VerifyButtonDisableTextColor");
             }
         }
         private bool _isResendOTPEnabled = false;
@@ -1563,7 +1561,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isResendOTPEnabled == value) return;
 
                 _isResendOTPEnabled = value;
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
         private bool _backArrowVisible = true;
@@ -1578,7 +1576,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_backArrowVisible == value) return;
 
                 _backArrowVisible = value;
-                RaisePropertyChanged("BackArrowVisible");
+                OnPropertyChanged("BackArrowVisible");
             }
         }
         private bool _isOTPEntryEnable = true;
@@ -1593,7 +1591,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isOTPEntryEnable == value) return;
 
                 _isOTPEntryEnable = value;
-                RaisePropertyChanged(() => IsOTPEntryEnable);
+                OnPropertyChanged(nameof(IsOTPEntryEnable));
             }
         }
 
@@ -1611,7 +1609,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_ModelSSOID == value) return;
 
                 _ModelSSOID = value;
-                RaisePropertyChanged(() => modelSSOID);
+                OnPropertyChanged(nameof(modelSSOID));
             }
         }
 
@@ -1627,7 +1625,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_verifybuttonDisableColor == value) return;
 
                 _verifybuttonDisableColor = value;
-                RaisePropertyChanged("VerifyButtonDisableColor");
+                OnPropertyChanged("VerifyButtonDisableColor");
             }
         }
         private Color _buttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -1642,7 +1640,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_buttonDisableColor == value) return;
 
                 _buttonDisableColor = value;
-                RaisePropertyChanged("ButtonDisableColor");
+                OnPropertyChanged("ButtonDisableColor");
             }
         }
 
@@ -1659,7 +1657,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (captcha == value) return;
 
                 captcha = value;
-                RaisePropertyChanged("Captcha");
+                OnPropertyChanged("Captcha");
             }
         }
         private string mobileCountry = string.Empty;
@@ -1674,7 +1672,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (mobileCountry == value) return;
 
                 mobileCountry = value;
-                RaisePropertyChanged("MobileCountry");
+                OnPropertyChanged("MobileCountry");
             }
         }
         private string guid = string.Empty;
@@ -1689,7 +1687,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (guid == value) return;
 
                 guid = value;
-                RaisePropertyChanged("Guid");
+                OnPropertyChanged("Guid");
             }
         }
 
@@ -1700,7 +1698,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 imageBase64 = value;
-                RaisePropertyChanged("ImageBase64");
+                OnPropertyChanged("ImageBase64");
 
                 Image = ImageSource.FromStream(
                     () => new MemoryStream(Convert.FromBase64String(imageBase64)));
@@ -1714,7 +1712,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 image = value;
-                RaisePropertyChanged("Image");
+                OnPropertyChanged("Image");
             }
         }
 
@@ -1728,7 +1726,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _lgid = value;
-                RaisePropertyChanged("LgId");
+                OnPropertyChanged("LgId");
             }
         }
         public bool IsAPICalledSuccessfully = true;
@@ -1740,18 +1738,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #region Constructor
         public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
-            //IsGulf = isGulf;
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
 
             OnContinueButtonClick = new Command(async () =>
             {

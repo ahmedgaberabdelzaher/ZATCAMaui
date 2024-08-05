@@ -1,27 +1,28 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 using System.Linq;
 using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 {
     public class ReviewRequestViewModel : BaseViewModel
     {
         ObservableCollection<BottomSheetModel> _InquireList = new ObservableCollection<BottomSheetModel>();
-        public ObservableCollection<BottomSheetModel> InquireList { get { return _InquireList; } set { _InquireList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> InquireList { get { return _InquireList; } set { _InquireList = value; OnPropertyChanged(); } }
 
         ObservableCollection<BottomSheetModel> _DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
-        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; OnPropertyChanged(); } }
 
         bool isNotEmptyDetailsTotalFeesList;
-        public bool IsNotEmptyDetailsTotalFeesList { get { return isNotEmptyDetailsTotalFeesList; } set { isNotEmptyDetailsTotalFeesList = value; RaisePropertyChanged(); } }
+        public bool IsNotEmptyDetailsTotalFeesList { get { return isNotEmptyDetailsTotalFeesList; } set { isNotEmptyDetailsTotalFeesList = value; OnPropertyChanged(); } }
 
         TravelerDeclarationResponse _Inquire = new TravelerDeclarationResponse();
-        public TravelerDeclarationResponse Inquire { get { return _Inquire; } set { _Inquire = value; RaisePropertyChanged(); } }
+        public TravelerDeclarationResponse Inquire { get { return _Inquire; } set { _Inquire = value; OnPropertyChanged(); } }
 
         public ICommand GoToPaymentCommand
         {

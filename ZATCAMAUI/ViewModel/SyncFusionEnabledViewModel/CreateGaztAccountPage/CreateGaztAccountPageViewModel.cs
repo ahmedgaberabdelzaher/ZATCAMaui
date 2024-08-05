@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Newtonsoft.Json;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
     public class CreateGaztAccountPageViewModel : BaseViewModel
     {
         #region Veriables
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         public Command OnResendOTPClicked { get; set; }
         public int numberOfSeconds = 120;
@@ -35,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _isOTPEntryEnable = value;
-                RaisePropertyChanged(() => IsOTPEntryEnable);
+                OnPropertyChanged(nameof( IsOTPEntryEnable));
             }
         }
         private string _oTPValidDuration;
@@ -58,7 +57,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
-                RaisePropertyChanged("OTPValidDuration");
+                OnPropertyChanged("OTPValidDuration");
             }
         }
         private bool _isResendOTPEnabled = false;
@@ -71,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _isResendOTPEnabled = value;
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
         private bool _isVerifyOTPEnabled = true;
@@ -84,7 +83,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _isVerifyOTPEnabled = value;
-                RaisePropertyChanged("IsVerifyOTPEnabled");
+                OnPropertyChanged("IsVerifyOTPEnabled");
             }
         }
         private Color _buttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -97,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _buttonDisableColor = value;
-                RaisePropertyChanged("ButtonDisableColor");
+                OnPropertyChanged("ButtonDisableColor");
             }
         }
         private Color _buttonDisableTextColor = Colors.Gray;
@@ -110,7 +109,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _buttonDisableTextColor = value;
-                RaisePropertyChanged("ButtonDisableTextColor");
+                OnPropertyChanged("ButtonDisableTextColor");
             }
         }
         private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["Primary"];
@@ -123,7 +122,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _verifybuttonDisableColor = value;
-                RaisePropertyChanged("VerifyButtonDisableColor");
+                OnPropertyChanged("VerifyButtonDisableColor");
             }
         }
         private Color _verifybuttonDisableTextColor = Colors.White;
@@ -136,7 +135,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _verifybuttonDisableTextColor = value;
-                RaisePropertyChanged("VerifyButtonDisableTextColor");
+                OnPropertyChanged("VerifyButtonDisableTextColor");
             }
         }
         private string _txtEmailAddress = string.Empty;
@@ -149,7 +148,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _txtEmailAddress = value;
-                RaisePropertyChanged("TxtEmailAddress");
+                OnPropertyChanged("TxtEmailAddress");
             }
         }
         private string _txtEmailCode = string.Empty;
@@ -162,7 +161,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _txtEmailCode = value;
-                RaisePropertyChanged("TxtEmailCode");
+                OnPropertyChanged("TxtEmailCode");
             }
         }
         private string _txtMobileNumber = string.Empty;
@@ -175,7 +174,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _txtMobileNumber = value;
-                RaisePropertyChanged("TxtMobileNumber");
+                OnPropertyChanged("TxtMobileNumber");
             }
         }
         private string _txtMobileNumberCode = string.Empty;
@@ -188,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _txtMobileNumberCode = value;
-                RaisePropertyChanged("TxtMobileNumberCode");
+                OnPropertyChanged("TxtMobileNumberCode");
             }
         }
         private string _txtPassword = string.Empty;
@@ -201,7 +200,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _txtPassword = value;
-                RaisePropertyChanged("TxtPassword");
+                OnPropertyChanged("TxtPassword");
             }
         }
         private string _txtConfirmPassword = string.Empty;
@@ -214,7 +213,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _txtConfirmPassword = value;
-                RaisePropertyChanged("TxtConfirmPassword");
+                OnPropertyChanged("TxtConfirmPassword");
             }
         }
         private SignUpModelRootObject _signUpModelRootObjectM = null;
@@ -227,15 +226,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
             set
             {
                 _signUpModelRootObjectM = value;
-                RaisePropertyChanged("SignUpModelRootObjectM");
+                OnPropertyChanged("SignUpModelRootObjectM");
             }
         }
         #endregion
         #region Constructor
         public CreateGaztAccountPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            _navigationService = navigationService;
-            _dialogService = dialogService;
             try
             {
                 OnResendOTPClicked = new Command(async () =>
@@ -251,7 +248,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                     }
 
                 });
-                GoBackClick = new Command(async () =>
+                GoBackClick = new Command( () =>
                 {
                     _navigationService.GoBack();
                 });

@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
     public class FAQPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         #endregion
         #region Properties
@@ -34,7 +33,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
             set
             {
                 _tERFFAQRoot = value;
-                RaisePropertyChanged("TERFFAQRoot");
+                OnPropertyChanged("TERFFAQRoot");
             }
         }
         private bool _isNoDataLabelVisible;
@@ -47,7 +46,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
             set
             {
                 _isNoDataLabelVisible = value;
-                RaisePropertyChanged("IsNoDataLabelVisible");
+                OnPropertyChanged("IsNoDataLabelVisible");
             }
         }
        
@@ -64,24 +63,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
             set
             {
                 _webUrl = value;
-                RaisePropertyChanged("WebUrl");
+                OnPropertyChanged("WebUrl");
             }
         }
 
         #endregion
         public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService) :base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });

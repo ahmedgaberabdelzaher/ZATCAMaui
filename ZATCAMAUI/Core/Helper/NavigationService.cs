@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Reflection;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.Core.Helper
 {
@@ -147,6 +148,7 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
+
         public string CurrentPageKey
         {
             get
@@ -165,6 +167,7 @@ namespace ZATCAMAUI.Core.Helper
             }
         }
         #endregion
+
         public void Configure(string pageKey, Type pageType)
         {
             lock (_pagesByKey)
@@ -179,10 +182,12 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
+
         public void Initialize(NavigationPage navigation)
         {
             _navigation = navigation;
         }
+
         public NavigationService()
         {
         }

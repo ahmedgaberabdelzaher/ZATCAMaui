@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.CustomServices.FasahModels;
 
@@ -34,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 return new Command(async () =>
                 {
-                    VerifyFASAhOtp();
+                  await  VerifyFASAhOtp();
 
                 });
             }

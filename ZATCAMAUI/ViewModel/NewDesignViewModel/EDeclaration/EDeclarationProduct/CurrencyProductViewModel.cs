@@ -12,13 +12,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         bool isCurrencySelected = false;
         static ObservableCollection<CurrencyModel> Currencies;
         CurrencyModel selectedCurrencie;
-        public CurrencyModel SelectedCurrencie { get { return selectedCurrencie; } set { selectedCurrencie = value; RaisePropertyChanged(); } }
+        public CurrencyModel SelectedCurrencie { get { return selectedCurrencie; } set { selectedCurrencie = value; OnPropertyChanged(); } }
 
         bool isCurrencyPermit;
-        public bool IsCurrencyPermit { get { return isCurrencyPermit; } set { isCurrencyPermit = value; RaisePropertyChanged(); } }
+        public bool IsCurrencyPermit { get { return isCurrencyPermit; } set { isCurrencyPermit = value; OnPropertyChanged(); } }
 
         ObservableCollection<ReportFileModel> currencyUploadedFiles = new ObservableCollection<ReportFileModel>();
-        public ObservableCollection<ReportFileModel> CurrencyUploadedFiles { get { return currencyUploadedFiles; } set { currencyUploadedFiles = value; RaisePropertyChanged(); } }
+        public ObservableCollection<ReportFileModel> CurrencyUploadedFiles { get { return currencyUploadedFiles; } set { currencyUploadedFiles = value; OnPropertyChanged(); } }
 
         public double totalPDFSizes = 0.0d;
         #endregion

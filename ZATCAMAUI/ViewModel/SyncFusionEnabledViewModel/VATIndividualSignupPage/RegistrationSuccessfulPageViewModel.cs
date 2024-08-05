@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
@@ -8,8 +9,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
     public class RegistrationSuccessfulPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand btn_LoginScreen { get; set; }
 
         private bool isGulf;
@@ -25,7 +24,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-                RaisePropertyChanged("IsGulf");
+                OnPropertyChanged("IsGulf");
             }
         }
         private bool isCitizen;
@@ -41,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-                RaisePropertyChanged("IsCitizen");
+                OnPropertyChanged("IsCitizen");
             }
         }
 
@@ -56,21 +55,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _tINnumber = value;
 
-                RaisePropertyChanged("TINnumber");
+                OnPropertyChanged("TINnumber");
             }
         }
         public RegistrationSuccessfulPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
             btn_LoginScreen = new Command(() =>
             {

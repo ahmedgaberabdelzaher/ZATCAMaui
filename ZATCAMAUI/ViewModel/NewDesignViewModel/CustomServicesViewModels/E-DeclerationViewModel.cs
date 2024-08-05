@@ -1,16 +1,17 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Windows.Input;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
     public class E_DeclerationViewModel : BaseViewModel
     {
         string eFormWebViewUrl;
-        public string EFormWebViewUrl { get { return eFormWebViewUrl; } set { eFormWebViewUrl = value; RaisePropertyChanged(); } }
+        public string EFormWebViewUrl { get { return eFormWebViewUrl; } set { eFormWebViewUrl = value; OnPropertyChanged(); } }
         string eCheckWebViewUrl;
-        public string ECheckWebViewUrl { get { return eCheckWebViewUrl; } set { eCheckWebViewUrl = value; RaisePropertyChanged(); } }
+        public string ECheckWebViewUrl { get { return eCheckWebViewUrl; } set { eCheckWebViewUrl = value; OnPropertyChanged(); } }
         public E_DeclerationViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
         {
             EFormWebViewUrl = PageSettings.GetNewEDeclarationLinks();

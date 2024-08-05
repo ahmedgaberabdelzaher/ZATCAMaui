@@ -18,19 +18,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
     {
 
         TravelerDeclarationResponse travelerDeclarationResponse;
-        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return travelerDeclarationResponse; } set { travelerDeclarationResponse = value; RaisePropertyChanged(); } }
+        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return travelerDeclarationResponse; } set { travelerDeclarationResponse = value; OnPropertyChanged(); } }
 
         ObservableCollection<BottomSheetModel> _TotalFeesList = new ObservableCollection<BottomSheetModel>();
-        public ObservableCollection<BottomSheetModel> TotalFeesList { get { return _TotalFeesList; } set { _TotalFeesList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> TotalFeesList { get { return _TotalFeesList; } set { _TotalFeesList = value; OnPropertyChanged(); } }
 
         ObservableCollection<BottomSheetModel> _DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
-        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; OnPropertyChanged(); } }
 
         bool isPaymentRequired;
-        public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
+        public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; OnPropertyChanged(); } }
 
         string mobileNumber;
-        public string MobileNumber { get { return mobileNumber; } set { mobileNumber = value; RaisePropertyChanged(); } }
+        public string MobileNumber { get { return mobileNumber; } set { mobileNumber = value; OnPropertyChanged(); } }
 
         private ObservableCollection<BottomSheetModel> countryWithFlags { get; set; } = new ObservableCollection<BottomSheetModel>();
 

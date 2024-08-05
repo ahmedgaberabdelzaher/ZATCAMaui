@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -11,8 +12,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
 {
     public class TaxEvasionReportAttachmentPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
         public ICommand SubmitReportClicked { get; set; }
 
@@ -29,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public decimal _totalAttachmentSize = 0;
@@ -42,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
        
@@ -56,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _signUpModelRootObjectM = value;
-                RaisePropertyChanged("SignUpModelRootObjectM");
+                OnPropertyChanged("SignUpModelRootObjectM");
             }
         }
         private bool _isSubmitButtonEnable = false;
@@ -69,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _isSubmitButtonEnable = value;
-                RaisePropertyChanged("IsSubmitButtonEnable");
+                OnPropertyChanged("IsSubmitButtonEnable");
             }
         }
 
@@ -83,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _selectedtaxEList = value;
-                RaisePropertyChanged("selectedtaxEList");
+                OnPropertyChanged("selectedtaxEList");
             }
         }
         private TaxEvasionReportDetails _TaxEvasionReportTobeUsedToSubmit;
@@ -99,7 +98,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 if (_TaxEvasionReportTobeUsedToSubmit != null)
                 {
                 }
-                RaisePropertyChanged("TaxEvasionReportTobeUsedToSubmit");
+                OnPropertyChanged("TaxEvasionReportTobeUsedToSubmit");
             }
         }
         private UploadedDocumentsList _uploadedDocumentsList = null;
@@ -112,7 +111,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _uploadedDocumentsList = value;
-                RaisePropertyChanged("UploadedDocumentsList");
+                OnPropertyChanged("UploadedDocumentsList");
             }
         }
         public int _attachmentCount = 0;
@@ -125,7 +124,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _attachmentCount = value;
-                RaisePropertyChanged("AttachmentCount");
+                OnPropertyChanged("AttachmentCount");
             }
         }
         private ObservableCollection<UploadedDocumentsList> _uploadedDocumentsListObj = new ObservableCollection<UploadedDocumentsList>();
@@ -138,7 +137,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _uploadedDocumentsListObj = value;
-                RaisePropertyChanged("UploadedDocumentsListObj");
+                OnPropertyChanged("UploadedDocumentsListObj");
             }
         }
         private double _latitude = 00.00;
@@ -151,7 +150,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _latitude = value;
-                RaisePropertyChanged("Latitude");
+                OnPropertyChanged("Latitude");
             }
         }
         private double _longitude = 00.00;
@@ -164,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _longitude = value;
-                RaisePropertyChanged("Longitude");
+                OnPropertyChanged("Longitude");
             }
         }
         private string _attachmentName = string.Empty;
@@ -177,22 +176,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         public TaxEvasionReportAttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
-            _dialogService = dialogService;
             BackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();

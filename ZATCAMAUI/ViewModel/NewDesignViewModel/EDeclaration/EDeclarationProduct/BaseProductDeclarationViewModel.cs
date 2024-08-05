@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
-using GalaSoft.MvvmLight;
+
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.EDeclerationsModel;
 using ZATCAMAUI.Models.EDeclerationsModel.FeesCalculators;
@@ -12,6 +12,8 @@ using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 using ZATCAMAUI.Models.BaseModels;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
+using CommunityToolkit.Mvvm.ComponentModel;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 {
@@ -22,45 +24,45 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         bool isMaterialTypeSelected = false;
         static ObservableCollection<CoinTypesModel> MaterialTypes;
         CoinTypesModel selectedMaterialTypes;
-        public CoinTypesModel SelectedMaterialTypes { get { return selectedMaterialTypes; } set { selectedMaterialTypes = value; RaisePropertyChanged(); } }
+        public CoinTypesModel SelectedMaterialTypes { get { return selectedMaterialTypes; } set { selectedMaterialTypes = value; OnPropertyChanged(); } }
 
         bool isPurposeSelected = false;
         static ObservableCollection<PurposeModel> Purposes;
         PurposeModel selectedPurposes;
-        public PurposeModel SelectedPurposes { get { return selectedPurposes; } set { selectedPurposes = value; RaisePropertyChanged(); } }
+        public PurposeModel SelectedPurposes { get { return selectedPurposes; } set { selectedPurposes = value; OnPropertyChanged(); } }
 
         bool isUnitsSelected = false;
         static ObservableCollection<UnitsModel> Units;
         UnitsModel selectedUnit;
-        public UnitsModel SelectedUnit { get { return selectedUnit; } set { selectedUnit = value; RaisePropertyChanged(); } }
+        public UnitsModel SelectedUnit { get { return selectedUnit; } set { selectedUnit = value; OnPropertyChanged(); } }
 
         string quantity;
-        public string Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
+        public string Quantity { get { return quantity; } set { quantity = value; OnPropertyChanged(); } }
 
         string totalValue;
-        public string TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
+        public string TotalValue { get { return totalValue; } set { totalValue = value; OnPropertyChanged(); } }
 
 
         string question;
-        public string Question { get { return question; } set { question = value; RaisePropertyChanged(); } }
+        public string Question { get { return question; } set { question = value; OnPropertyChanged(); } }
 
         string otherPurpose;
-        public string OtherPurpose { get { return otherPurpose; } set { otherPurpose = value; RaisePropertyChanged(); } }
+        public string OtherPurpose { get { return otherPurpose; } set { otherPurpose = value; OnPropertyChanged(); } }
 
         int qFlow;
-        public int QFlow { get { return qFlow; } set { qFlow = value; RaisePropertyChanged(); } }
+        public int QFlow { get { return qFlow; } set { qFlow = value; OnPropertyChanged(); } }
 
       
         FeesCalculatorResponse feesCalculatorResponse;
-        public FeesCalculatorResponse FeesCalculatorResponse { get { return feesCalculatorResponse; } set { feesCalculatorResponse = value; RaisePropertyChanged(); } }
+        public FeesCalculatorResponse FeesCalculatorResponse { get { return feesCalculatorResponse; } set { feesCalculatorResponse = value; OnPropertyChanged(); } }
 
         public FeesCalculatorBody FeesCalculatorBody = new FeesCalculatorBody();
 
         ObservableCollection<EDeclerationCardModel> cardData = new ObservableCollection<EDeclerationCardModel>();
-        public ObservableCollection<EDeclerationCardModel> CardData { get { return cardData; } set { cardData = value; RaisePropertyChanged(); } }
+        public ObservableCollection<EDeclerationCardModel> CardData { get { return cardData; } set { cardData = value; OnPropertyChanged(); } }
 
         ObservableCollection<QuestionModel> questionList = new ObservableCollection<QuestionModel>();
-        public ObservableCollection<QuestionModel> QuestionList { get { return questionList; } set { questionList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<QuestionModel> QuestionList { get { return questionList; } set { questionList = value; OnPropertyChanged(); } }
 
 
         public List<int> selectedQuestionList = new List<int>();
@@ -68,10 +70,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
 
 
         string selectedCalcTypeName;
-        public string SelectedCalcTypeName { get { return selectedCalcTypeName; } set { selectedCalcTypeName = value; RaisePropertyChanged(); } }
+        public string SelectedCalcTypeName { get { return selectedCalcTypeName; } set { selectedCalcTypeName = value; OnPropertyChanged(); } }
 
         int selectedCalcType = 0;
-        public int SelectedCalcType { get { return selectedCalcType; } set { selectedCalcType = value; RaisePropertyChanged(); } }
+        public int SelectedCalcType { get { return selectedCalcType; } set { selectedCalcType = value; OnPropertyChanged(); } }
 
         #endregion
 
@@ -912,19 +914,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         }
     }
 
-    public class QuestionModel: ViewModelBase
+    public class QuestionModel: ObservableRecipient
     {
         string questionName;
-        public string QuestionName { get { return questionName; } set { questionName = value; RaisePropertyChanged(); } }
+        public string QuestionName { get { return questionName; } set { questionName = value; OnPropertyChanged(); } }
 
         int questionId;
-        public int QuestionId { get { return questionId; } set { questionId = value; RaisePropertyChanged(); } }
+        public int QuestionId { get { return questionId; } set { questionId = value; OnPropertyChanged(); } }
 
         bool isChecked;
-        public bool IsChecked { get { return isChecked; } set { isChecked = value; RaisePropertyChanged(); } }
+        public bool IsChecked { get { return isChecked; } set { isChecked = value; OnPropertyChanged(); } }
 
         string questionBackgroundColor= "#FFFFFF";
-        public string QuestionBackgroundColor { get { return questionBackgroundColor; } set { questionBackgroundColor = value; RaisePropertyChanged(); } }
+        public string QuestionBackgroundColor { get { return questionBackgroundColor; } set { questionBackgroundColor = value; OnPropertyChanged(); } }
 
 
     }

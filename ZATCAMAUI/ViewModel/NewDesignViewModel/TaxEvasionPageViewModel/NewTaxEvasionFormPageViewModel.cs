@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Mopups.Services;
@@ -9,6 +9,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 {
@@ -29,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
             {
                 if (_IsTnameHasError == value) return;
                 _IsTnameHasError = value;
-                RaisePropertyChanged("IsTnameHasError");
+                OnPropertyChanged("IsTnameHasError");
             }
         }
         private bool _IsTmobileHasError = false;
@@ -44,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_IsTmobileHasError == value) return;
 
                 _IsTmobileHasError = value;
-                RaisePropertyChanged("IsTmobileHasError");
+                OnPropertyChanged("IsTmobileHasError");
             }
         }
         private bool _IsFacilityNameHasError = false;
@@ -59,7 +60,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_IsFacilityNameHasError == value) return;
 
                 _IsFacilityNameHasError = value;
-                RaisePropertyChanged("IsFacilityNameHasError");
+                OnPropertyChanged("IsFacilityNameHasError");
             }
         }
         private bool _IsRegionHasError = false;
@@ -74,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_IsRegionHasError == value) return;
 
                 _IsRegionHasError = value;
-                RaisePropertyChanged("IsRegionHasError");
+                OnPropertyChanged("IsRegionHasError");
             }
         }
         private bool _IsCityHasError = false;
@@ -89,7 +90,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_IsCityHasError == value) return;
 
                 _IsCityHasError = value;
-                RaisePropertyChanged("IsCityHasError");
+                OnPropertyChanged("IsCityHasError");
             }
         }
         private bool _IsFDHasError = false;
@@ -104,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_IsFDHasError == value) return;
 
                 _IsFDHasError = value;
-                RaisePropertyChanged("IsFDHasError");
+                OnPropertyChanged("IsFDHasError");
             }
         }
         private bool _IsFSHasError = false;
@@ -119,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_IsFSHasError == value) return;
 
                 _IsFSHasError = value;
-                RaisePropertyChanged("IsFSHasError");
+                OnPropertyChanged("IsFSHasError");
             }
         }
         private bool _IsReportDetailHasError = false;
@@ -134,7 +135,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_IsReportDetailHasError == value) return;
 
                 _IsReportDetailHasError = value;
-                RaisePropertyChanged("IsReportDetailHasError");
+                OnPropertyChanged("IsReportDetailHasError");
             }
         }
         #region Variable
@@ -147,9 +148,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_currentTab == value) return;
 
                 _currentTab = value;
-                RaisePropertyChanged(nameof(currentTab));
+                OnPropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
             }
         }
         private int _currenrIndex = 1;
@@ -161,11 +162,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -188,7 +189,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_PageTitle == value) return;
 
                 _PageTitle = value;
-                RaisePropertyChanged("PageTitle");
+                OnPropertyChanged("PageTitle");
             }
         }
 
@@ -204,7 +205,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_BodyTitle == value) return;
 
                 _BodyTitle = value;
-                RaisePropertyChanged("BodyTitle");
+                OnPropertyChanged("BodyTitle");
             }
         }
         //Form
@@ -222,7 +223,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     if (_tName == value) return;
 
                     _tName = value;
-                    RaisePropertyChanged("TName");
+                    OnPropertyChanged("TName");
                 }
                 catch (Exception)
                 {
@@ -243,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_datePick == value) return;
 
                 _datePick = value;
-                RaisePropertyChanged("DatePick");
+                OnPropertyChanged("DatePick");
             }
         }
         private string _selectedCategory = string.Empty;
@@ -258,7 +259,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_selectedCategory == value) return;
 
                 _selectedCategory = value;
-                RaisePropertyChanged("SelectedCategory");
+                OnPropertyChanged("SelectedCategory");
             }
         }
         private string _txtTIN = string.Empty;
@@ -273,7 +274,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_txtTIN == value) return;
 
                 _txtTIN = value;
-                RaisePropertyChanged("TxtTIN");
+                OnPropertyChanged("TxtTIN");
             }
         }
         private string _rLocation = string.Empty;
@@ -288,7 +289,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_rLocation == value) return;
 
                 _rLocation = value;
-                RaisePropertyChanged("RLocation");
+                OnPropertyChanged("RLocation");
             }
         }
         private string _tFaciName = string.Empty;
@@ -303,7 +304,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_tFaciName == value) return;
 
                 _tFaciName = value;
-                RaisePropertyChanged("TFaciName");
+                OnPropertyChanged("TFaciName");
             }
         }
         private string _tMobNumber = string.Empty;
@@ -318,7 +319,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_tMobNumber == value) return;
 
                 _tMobNumber = value;
-                RaisePropertyChanged("TMobNumber");
+                OnPropertyChanged("TMobNumber");
             }
         }
         private string _tID = string.Empty;
@@ -333,7 +334,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_tID == value) return;
 
                 _tID = value;
-                RaisePropertyChanged("TID");
+                OnPropertyChanged("TID");
             }
         }
         private string _tVatNumber = string.Empty;
@@ -348,7 +349,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_tVatNumber == value) return;
 
                 _tVatNumber = value;
-                RaisePropertyChanged("TVatNumber");
+                OnPropertyChanged("TVatNumber");
             }
         }
         private string _tFDAdress = string.Empty;
@@ -367,7 +368,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 //{
                 //    _TaxEvasionReportTobeUsedToSubmit.District = _tFDAdress;
                 //}
-                RaisePropertyChanged("TFDAdress");
+                OnPropertyChanged("TFDAdress");
             }
         }
         private string _tFSAddress = string.Empty;
@@ -386,7 +387,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 //{
                 //    _TaxEvasionReportTobeUsedToSubmit.CompanyAddress = _tFSAddress;
                 //}
-                RaisePropertyChanged("TFSAddress");
+                OnPropertyChanged("TFSAddress");
             }
         }
         private string _tFWType = string.Empty;
@@ -403,7 +404,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 _tFWType = value;
                 //if (!string.IsNullOrEmpty(_tFWType))
                 //{ _TaxEvasionReportTobeUsedToSubmit.WorkType = _tFWType; }
-                RaisePropertyChanged("TFWType");
+                OnPropertyChanged("TFWType");
             }
         }
         private string _tReportDetail = string.Empty;
@@ -418,7 +419,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_tReportDetail == value) return;
 
                 _tReportDetail = value;
-                RaisePropertyChanged("TReportDetail");
+                OnPropertyChanged("TReportDetail");
             }
         }
         private string _txtReportDetailRegion = string.Empty;
@@ -433,7 +434,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_txtReportDetailRegion == value) return;
 
                 _txtReportDetailRegion = value;
-                RaisePropertyChanged("TxtReportDetailRegion");
+                OnPropertyChanged("TxtReportDetailRegion");
             }
         }
         private string _txtReportDetailCity = string.Empty;
@@ -448,7 +449,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_txtReportDetailCity == value) return;
 
                 _txtReportDetailCity = value;
-                RaisePropertyChanged("TxtReportDetailCity");
+                OnPropertyChanged("TxtReportDetailCity");
             }
         }
         private List<TaxEvasionRegionCityDatum> _cityList;
@@ -463,7 +464,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_cityList == value) return;
 
                 _cityList = value;
-                RaisePropertyChanged("CList");
+                OnPropertyChanged("CList");
             }
         }
         private List<TaxEvasionRegionCityDatum> _rList;
@@ -478,7 +479,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_rList == value) return;
 
                 _rList = value;
-                RaisePropertyChanged("RList");
+                OnPropertyChanged("RList");
             }
         }
         private TaxEvasionRegionCityDatum _selectedTaxEvasionRegionPrev = null;
@@ -494,7 +495,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                 _selectedTaxEvasionRegionPrev = value;
                 //ListFormBudles = null;
-                RaisePropertyChanged("SelectedTaxEvasionRegionPrev");
+                OnPropertyChanged("SelectedTaxEvasionRegionPrev");
             }
         }
         private TaxEvasionRegionCityDatum _selectLCType = null;
@@ -520,7 +521,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         TxtReportDetailCity = _selectLCType.Name;
                     }
                 }
-                RaisePropertyChanged("SelectLCType");
+                OnPropertyChanged("SelectLCType");
             }
         }
         private TaxEvasionRegionCityDatum _selectedTaxEvasionRegion = null;
@@ -547,7 +548,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         TxtReportDetailRegion = _selectedTaxEvasionRegion.Name;
                     }
                 }
-                RaisePropertyChanged("SelectedTaxEvasionRegion");
+                OnPropertyChanged("SelectedTaxEvasionRegion");
             }
         }
         //attachment
@@ -563,7 +564,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_attachmentSize == value) return;
 
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public decimal _totalAttachmentSize = 0;
@@ -578,7 +579,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_totalAttachmentSize == value) return;
 
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
         private TaxEvasionReportDetails _selectedtaxEList = null;
@@ -593,7 +594,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_selectedtaxEList == value) return;
 
                 _selectedtaxEList = value;
-                RaisePropertyChanged("selectedtaxEList");
+                OnPropertyChanged("selectedtaxEList");
             }
         }
         private TaxEvasionReportDetails _TaxEvasionReportTobeUsedToSubmit;
@@ -611,7 +612,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_TaxEvasionReportTobeUsedToSubmit != null)
                 {
                 }
-                RaisePropertyChanged("TaxEvasionReportTobeUsedToSubmit");
+                OnPropertyChanged("TaxEvasionReportTobeUsedToSubmit");
             }
         }
         private UploadedDocumentsList _uploadedDocumentsList = null;
@@ -626,7 +627,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_uploadedDocumentsList == value) return;
 
                 _uploadedDocumentsList = value;
-                RaisePropertyChanged("UploadedDocumentsList");
+                OnPropertyChanged("UploadedDocumentsList");
             }
         }
         public int _attachmentCount = 0;
@@ -641,7 +642,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_attachmentCount == value) return;
 
                 _attachmentCount = value;
-                RaisePropertyChanged("AttachmentCount");
+                OnPropertyChanged("AttachmentCount");
             }
         }
         private ObservableCollection<UploadedDocumentsList> _uploadedDocumentsListObj = new ObservableCollection<UploadedDocumentsList>();
@@ -656,7 +657,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_uploadedDocumentsListObj == value) return;
 
                 _uploadedDocumentsListObj = value;
-                RaisePropertyChanged("UploadedDocumentsListObj");
+                OnPropertyChanged("UploadedDocumentsListObj");
             }
         }
         private double _latitude = 24.7136;
@@ -671,7 +672,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_latitude == value) return;
 
                 _latitude = value;
-                RaisePropertyChanged("Latitude");
+                OnPropertyChanged("Latitude");
             }
         }
         private double _longitude = 46.6753;
@@ -686,7 +687,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_longitude == value) return;
 
                 _longitude = value;
-                RaisePropertyChanged("Longitude");
+                OnPropertyChanged("Longitude");
             }
         }
         private string _attachmentName = string.Empty;
@@ -701,7 +702,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_attachmentName == value) return;
 
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         private List<FacilityCompanyType> _dlistfacilityCompanyType = null;
@@ -716,7 +717,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_dlistfacilityCompanyType == value) return;
 
                 _dlistfacilityCompanyType = value;
-                RaisePropertyChanged("DListFacilityCompanyType");
+                OnPropertyChanged("DListFacilityCompanyType");
             }
         }
         private List<FacilityCompanyType> _listfacilityCompanyType = null;
@@ -731,7 +732,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_listfacilityCompanyType == value) return;
 
                 _listfacilityCompanyType = value;
-                RaisePropertyChanged("ListFacilityCompanyType");
+                OnPropertyChanged("ListFacilityCompanyType");
             }
         }
         //reprt types
@@ -750,7 +751,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                 //if (_selectedTaxEvasionListItem != null)
                 //{ passSelectedTaxEvasionItem(); }
-                RaisePropertyChanged("ReportTypes");
+                OnPropertyChanged("ReportTypes");
             }
         }
 
@@ -791,7 +792,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                         //passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
                     }
 
-                    RaisePropertyChanged("SelectedReportTypeListItem");
+                    OnPropertyChanged("SelectedReportTypeListItem");
                 }
                 catch (Exception)
                 {
@@ -814,7 +815,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_txtReporttype == value) return;
 
                 _txtReporttype = value;
-                RaisePropertyChanged("TxtReporttype");
+                OnPropertyChanged("TxtReporttype");
             }
         }
 
@@ -830,7 +831,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_categorySelected_Index == value) return;
 
                 _categorySelected_Index = value;
-                RaisePropertyChanged("CategorySelected_Index");
+                OnPropertyChanged("CategorySelected_Index");
             }
         }
         private string _successResponse = AppResources.NDYourTaxEvasionReportissubmittedsuccessfully;
@@ -845,7 +846,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 if (_successResponse == value) return;
 
                 _successResponse = value;
-                RaisePropertyChanged("SuccessResponse");
+                OnPropertyChanged("SuccessResponse");
             }
         }
         #endregion
@@ -861,15 +862,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         #region Constructor
         public NewTaxEvasionFormPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
             OnContinueClicked = new Command(async () => await navigateToNextAsync());
             OnBackStepClicked = new Command(() => navigateToBack());
             OnAttachmentClick = new Command(() =>

@@ -1,5 +1,5 @@
 ﻿
-using Prism.Mvvm;
+using CommunityToolkit.Mvvm.ComponentModel;
 using ZATCAMAUI.Core.Helper;
 
 namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
@@ -103,7 +103,7 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
         public int measurementUnit { get; set; }
     }
 
-    public class TravelerDeclarationResponse : BindableBase
+    public class TravelerDeclarationResponse : ObservableRecipient
     {
         public string feedback_Arabic { get; set; }
         public string feedback_Enlgish { get; set; }
@@ -166,7 +166,7 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
         public string flightNumber { get; set; }
         public DateTime travelDate { get; set; }
         string _TravelDateString;
-        public string TravelDateString { get { return _TravelDateString; } set { _TravelDateString = value; RaisePropertyChanged(); } }
+        public string TravelDateString { get { return _TravelDateString; } set { _TravelDateString = value; OnPropertyChanged(); } }
         public int travelingType { get; set; }
         public string screenName { get; set; }
         public List<SubmitResponseTobacco> tobacco { get; set; }

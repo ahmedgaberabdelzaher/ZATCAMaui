@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -11,8 +12,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
 
     public class FormBundleStatusPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         private List<FormBundleResult> _formBundleList;
         private bool _isCPickerEnable = false;
         private FormBundleApplicationNumberModelResult _selectedFormBindleFbnum = null;
@@ -33,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _txtFBtype = value;
-                RaisePropertyChanged("TxtFBtype");
+                OnPropertyChanged("TxtFBtype");
             }
         }
         private string _txtFBnum = string.Empty;
@@ -46,21 +45,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _txtFBnum = value;
-                RaisePropertyChanged("TxtFBnum");
+                OnPropertyChanged("TxtFBnum");
             }
         }
         public FormBundleStatusPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             BackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();
@@ -75,7 +64,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _formBundleList = value;
-                RaisePropertyChanged("FormBundleList");
+                OnPropertyChanged("FormBundleList");
             }
         }
         public bool IsCPickerEnable
@@ -87,7 +76,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _isCPickerEnable = value;
-                RaisePropertyChanged("IsCPickerEnable");
+                OnPropertyChanged("IsCPickerEnable");
             }
         }
         public FormBundleApplicationNumberModelResult SelectedFormBindleFbnum
@@ -104,7 +93,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                     populate();
                     TxtFBnum = _selectedFormBindleFbnum.Fbnum;
                 }
-                RaisePropertyChanged("SelectedFormBindleFbnum");
+                OnPropertyChanged("SelectedFormBindleFbnum");
             }
         }
         public FormBundleApplicationNumberModelResult SelectedFormBindleFbnumPrev
@@ -116,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _selectedFormBindleFbnumPrev = value;
-                RaisePropertyChanged("SelectedFormBindleFbnumPrev");
+                OnPropertyChanged("SelectedFormBindleFbnumPrev");
             }
         }
         public string Fbnumdetail
@@ -128,7 +117,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _fbnumdetail = value;
-                RaisePropertyChanged("Fbnumdetail");
+                OnPropertyChanged("Fbnumdetail");
             }
         }
         public List<FormBundleApplicationNumberModelResult> FormBundleApplicatioNumberList
@@ -140,7 +129,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _formBundleApplicationNumberList = value;
-                RaisePropertyChanged("FormBundleApplicatioNumberList");
+                OnPropertyChanged("FormBundleApplicatioNumberList");
             }
         }
         public FormBundleResult SelectedFormBindleFbtyp
@@ -169,7 +158,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                     }
                 }
                 ListFormBudles = null;
-                RaisePropertyChanged("SelectedFormBindleFbtyp");
+                OnPropertyChanged("SelectedFormBindleFbtyp");
             }
         }
         public FormBundleResult SelectedFormBindleFbtypCancel
@@ -181,7 +170,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _selectedFormBindleFbtypCancel = value;
-                RaisePropertyChanged("SelectedFormBindleFbtypCancel");
+                OnPropertyChanged("SelectedFormBindleFbtypCancel");
             }
         }
         public List<FbnumDetailList> FbnumDetailList
@@ -193,7 +182,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _fbnumDetailList = value;
-                RaisePropertyChanged("FbnumDetailList");
+                OnPropertyChanged("FbnumDetailList");
             }
         }
         private List<FbnumDetailList> _listFormBudles = null;
@@ -206,7 +195,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
             set
             {
                 _listFormBudles = value;
-                RaisePropertyChanged("ListFormBudles");
+                OnPropertyChanged("ListFormBudles");
             }
         }
        

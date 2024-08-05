@@ -2,9 +2,10 @@
 using System.Text;
 using System.Timers;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.CustomServices;
 
@@ -21,7 +22,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 selectedInquireThrougTypes = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
         bool isPickerOpened { get; set; }
@@ -33,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isPickerOpened = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -47,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 isPortsPickerSearch = value;
 
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -60,7 +61,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isMainPage = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -73,7 +74,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 totalFees = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -87,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 declarationNumber = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -100,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 billInfoNumber = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -113,7 +114,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isDeclarationTypeOpened = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -126,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isCarrierOpened = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -139,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isStatmentDetailsVisible = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -152,7 +153,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isDetailsVisible = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -165,7 +166,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isOTPView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -179,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isFilterByDeclarationInformation = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -193,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isFilterByBusInformation = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -212,7 +213,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (_PickerDeclarationDateToDisplay == value) return;
 
                 _PickerDeclarationDateToDisplay = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -227,7 +228,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isOpenHijriPicker = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -240,7 +241,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isShowMsgView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -253,7 +254,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 messageTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -273,7 +274,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
 
                 inquireThrougTypes = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -288,7 +289,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 declarionByInformationInquireLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -303,7 +304,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 declarionFeesLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -317,7 +318,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedStatmentItems = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -332,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 statmentItemsLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -346,7 +347,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 decByBillingInfoLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -365,7 +366,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
 
                 ports = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -384,7 +385,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 carriers = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -398,7 +399,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedCarrier = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -412,7 +413,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 feesDescription = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -427,7 +428,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 selectedPort = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -440,7 +441,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 declarationTypes = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -453,7 +454,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 selectedDeclarationType = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -498,7 +499,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isFeesDescriptionVisible = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -1299,7 +1300,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (_OTPSentOnThisMobileNumber == value) return;
 
                 _OTPSentOnThisMobileNumber = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -1315,7 +1316,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (_SearchTxt == value) return;
 
                 _SearchTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -1331,22 +1332,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (isResendCodeEnabled == value) return;
 
                 isResendCodeEnabled = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
 
         string oTPFirstDigit;
-        public string OTPFirstDigit { get { return oTPFirstDigit; } set { oTPFirstDigit = value; RaisePropertyChanged(); } }
+        public string OTPFirstDigit { get { return oTPFirstDigit; } set { oTPFirstDigit = value; OnPropertyChanged(); } }
 
         string oTPSecondDigit;
-        public string OTPSecondDigit { get { return oTPSecondDigit; } set { oTPSecondDigit = value; RaisePropertyChanged(); } }
+        public string OTPSecondDigit { get { return oTPSecondDigit; } set { oTPSecondDigit = value; OnPropertyChanged(); } }
 
         string oTPThirdDigit;
-        public string OTPThirdDigit { get { return oTPThirdDigit; } set { oTPThirdDigit = value; RaisePropertyChanged(); } }
+        public string OTPThirdDigit { get { return oTPThirdDigit; } set { oTPThirdDigit = value; OnPropertyChanged(); } }
 
         string oTPFourthDigit;
-        public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; RaisePropertyChanged(); } }
+        public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; OnPropertyChanged(); } }
 
         private string _LblCountDownTimer;
         public string LblCountDownTimer
@@ -1360,7 +1361,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (_LblCountDownTimer == value) return;
 
                 _LblCountDownTimer = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -1376,7 +1377,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (_resendOTPTextColor == value) return;
 
                 _resendOTPTextColor = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 

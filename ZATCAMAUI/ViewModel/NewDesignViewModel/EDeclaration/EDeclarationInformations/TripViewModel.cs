@@ -14,13 +14,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
         public TripCardModel TripCard { get { return tripCard; } set { tripCard = value; } }
 
         string _ArrivalDepartureDateString;
-        public string ArrivalDepartureDateString { get { return _ArrivalDepartureDateString; } set { _ArrivalDepartureDateString = value; RaisePropertyChanged(); } }
+        public string ArrivalDepartureDateString { get { return _ArrivalDepartureDateString; } set { _ArrivalDepartureDateString = value; OnPropertyChanged(); } }
 
         bool hasPlatesCity;
-        public bool HasPlatesCity { get { return hasPlatesCity; } set { hasPlatesCity = value; RaisePropertyChanged(); } }
+        public bool HasPlatesCity { get { return hasPlatesCity; } set { hasPlatesCity = value; OnPropertyChanged(); } }
 
         bool isCityVisible;
-        public bool IsCityVisible { get { return isCityVisible; } set { isCityVisible = value; RaisePropertyChanged(); } }
+        public bool IsCityVisible { get { return isCityVisible; } set { isCityVisible = value; OnPropertyChanged(); } }
 
         public ICommand TripCardCommand
         {

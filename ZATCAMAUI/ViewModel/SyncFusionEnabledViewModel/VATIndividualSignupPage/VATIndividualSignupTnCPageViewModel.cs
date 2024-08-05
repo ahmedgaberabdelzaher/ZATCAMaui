@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     public class VATIndividualSignupTnCPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand BackButtonClicked { get; set; }
@@ -31,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 if (_webUrl == value) return;
                 _webUrl = value;
-                RaisePropertyChanged("WebUrl");
+                OnPropertyChanged("WebUrl");
             }
         }
        
@@ -57,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IsButtonEnabled = false;
                     VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IschkTAndC");
+                OnPropertyChanged("IschkTAndC");
             }
         }
         private bool _isButtonEnabled = false;
@@ -72,7 +71,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_isButtonEnabled == value) return;
 
                 _isButtonEnabled = value;
-                RaisePropertyChanged("IsButtonEnabled");
+                OnPropertyChanged("IsButtonEnabled");
             }
         }
         private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -87,7 +86,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_verifybuttonDisableColor == value) return;
 
                 _verifybuttonDisableColor = value;
-                RaisePropertyChanged("VerifyButtonDisableColor");
+                OnPropertyChanged("VerifyButtonDisableColor");
             }
         }
 
@@ -95,16 +94,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #region Constructor
         public VATIndividualSignupTnCPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();

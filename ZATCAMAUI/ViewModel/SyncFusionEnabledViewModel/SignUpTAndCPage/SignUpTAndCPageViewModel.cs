@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage
     public class SignUpTAndCPageViewModel : BaseViewModel
     {
         #region Veriables
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         #endregion
@@ -38,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage
                     IsButtonEnabled = false;
                     VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IschkTAndC");
+                OnPropertyChanged("IschkTAndC");
             }
         }
         private bool _isButtonEnabled = false;
@@ -51,7 +50,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage
             set
             {
                 _isButtonEnabled = value;
-                RaisePropertyChanged("IsButtonEnabled");
+                OnPropertyChanged("IsButtonEnabled");
             }
         }
         private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -64,23 +63,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage
             set
             {
                 _verifybuttonDisableColor = value;
-                RaisePropertyChanged("VerifyButtonDisableColor");
+                OnPropertyChanged("VerifyButtonDisableColor");
             }
         }
         #endregion
         #region Constructor
         public SignUpTAndCPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             OnSubmitClicked = new Command(async () =>
             {
                 try

@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.VATRefunds;
@@ -16,8 +17,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         #endregion
 
@@ -33,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
                 if (_vatRefundsHeaderSet == value) return;
                 _vatRefundsHeaderSet = value;
-                RaisePropertyChanged("VATRefundsHeaderSet");
+                OnPropertyChanged("VATRefundsHeaderSet");
             }
         }
         public bool _CBTermsAndConditionsChecked = false;
@@ -55,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 {
                     IsConfirmSummaryEnabled = false;
                 }
-                RaisePropertyChanged("CBTermsAndConditionsChecked");
+                OnPropertyChanged("CBTermsAndConditionsChecked");
             }
         }
         public bool _AcknowledgementChecked = false;
@@ -77,7 +76,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 {
                     IsConfirmSummaryEnabled = false;
                 }
-                RaisePropertyChanged("AcknowledgementChecked");
+                OnPropertyChanged("AcknowledgementChecked");
             }
         }
         private bool _IsConfirmSummaryEnabled = false;
@@ -100,7 +99,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 {
                     ContinueButtonnBackroundColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IsConfirmSummaryEnabled");
+                OnPropertyChanged("IsConfirmSummaryEnabled");
             }
         }
         private Color _continueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -115,7 +114,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_continueButtonnBackroundColor == value) return;
 
                 _continueButtonnBackroundColor = value;
-                RaisePropertyChanged("ContinueButtonnBackroundColor");
+                OnPropertyChanged("ContinueButtonnBackroundColor");
             }
         }
         private ObservableCollection<VatRefSubItemsSetResult> _vatRefundsSubItemReturnsSet { get; set; }
@@ -131,7 +130,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsSubItemReturnsSet == value) return;
 
                 _vatRefundsSubItemReturnsSet = value;
-                RaisePropertyChanged("VATRefundsSubItemReturnsSet");
+                OnPropertyChanged("VATRefundsSubItemReturnsSet");
             }
         }
 
@@ -148,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsListResultModel == value) return;
 
                 _vatRefundsListResultModel = value;
-                RaisePropertyChanged("VatRefundsListResultModel");
+                OnPropertyChanged("VatRefundsListResultModel");
             }
         }
         private string _TPAddress;
@@ -160,7 +159,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_TPAddress == value) return;
 
                 _TPAddress = value;
-                RaisePropertyChanged(nameof(TPAddress));
+                OnPropertyChanged(nameof(TPAddress));
             }
         }
         public void SetTaxpayerAddress()
@@ -193,7 +192,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatNewReqSummaryData == value) return;
 
                 _vatNewReqSummaryData = value;
-                RaisePropertyChanged("VatNewReqSummaryData");
+                OnPropertyChanged("VatNewReqSummaryData");
             }
         }
 
@@ -210,7 +209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
-                RaisePropertyChanged("VatRefundsDisplayDataModel");
+                OnPropertyChanged("VatRefundsDisplayDataModel");
             }
         }
 
@@ -227,7 +226,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isNewReqSummary == value) return;
 
                 _isNewReqSummary = value;
-                RaisePropertyChanged("IsNewReqSummary");
+                OnPropertyChanged("IsNewReqSummary");
             }
         }
 
@@ -244,7 +243,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_selectedIbanIdType == value) return;
 
                 _selectedIbanIdType = value;
-                RaisePropertyChanged("SelectedIbanIdType");
+                OnPropertyChanged("SelectedIbanIdType");
             }
         }
 
@@ -260,7 +259,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_iBANTypesList == value) return;
 
                 _iBANTypesList = value;
-                RaisePropertyChanged("IBANTypesList");
+                OnPropertyChanged("IBANTypesList");
             }
         }
 
@@ -268,16 +267,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         public VATRefundDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
             GoBackBtnTapped = new Command(() =>
             {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.VATRefunds;
 
@@ -30,7 +31,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
                 if (_vatRefundsModel == value) return;
                 _vatRefundsModel = value;
-                RaisePropertyChanged("VATRefundsModel");
+                OnPropertyChanged("VATRefundsModel");
             }
         }
 
@@ -49,7 +50,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsSubItemReturnsSet == value) return;
 
                 _vatRefundsSubItemReturnsSet = value;
-                RaisePropertyChanged("VATRefundsSubItemReturnsSet");
+                OnPropertyChanged("VATRefundsSubItemReturnsSet");
             }
         }
 
@@ -65,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsSet == value) return;
 
                 _vatRefundsSet = value;
-                RaisePropertyChanged("VATRefundsSet");
+                OnPropertyChanged("VATRefundsSet");
             }
         }
 
@@ -81,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsSetCopy == value) return;
 
                 _vatRefundsSetCopy = value;
-                RaisePropertyChanged("VATRefundsSetCopy");
+                OnPropertyChanged("VATRefundsSetCopy");
             }
         }
 
@@ -97,7 +98,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsSetCopy == value) return;
 
                 _vatRefundsSearchSet = value;
-                RaisePropertyChanged("VATRefundsSearchSet");
+                OnPropertyChanged("VATRefundsSearchSet");
             }
         }
 
@@ -114,7 +115,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsListResultModel == value) return;
 
                 _vatRefundsListResultModel = value;
-                RaisePropertyChanged("VatRefundsListResultModel");
+                OnPropertyChanged("VatRefundsListResultModel");
             }
         }
 
@@ -135,7 +136,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
-                RaisePropertyChanged("VatRefundsDisplayDataModel");
+                OnPropertyChanged("VatRefundsDisplayDataModel");
             }
         }
 
@@ -152,7 +153,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_ibanData == value) return;
 
                 _ibanData = value;
-                RaisePropertyChanged("IbanData");
+                OnPropertyChanged("IbanData");
             }
         }
 
@@ -169,7 +170,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsIbanDataModel == value) return;
 
                 _vatRefundsIbanDataModel = value;
-                RaisePropertyChanged("VatRefundsIbanDataModel");
+                OnPropertyChanged("VatRefundsIbanDataModel");
             }
         }
 
@@ -186,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_totalReassessmentAmount == value) return;
 
                 _totalReassessmentAmount = value;
-                RaisePropertyChanged("TotalReassessmentAmount");
+                OnPropertyChanged("TotalReassessmentAmount");
             }
         }
 
@@ -203,7 +204,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isSearchButtonVisible == value) return;
 
                 _isSearchButtonVisible = value;
-                RaisePropertyChanged("IsSearchButtonVisible");
+                OnPropertyChanged("IsSearchButtonVisible");
             }
         }
 
@@ -220,20 +221,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isCloseButtonVisible == value) return;
 
                 _isCloseButtonVisible = value;
-                RaisePropertyChanged("IsCloseButtonVisible");
+                OnPropertyChanged("IsCloseButtonVisible");
             }
         }
 
         public VATRefundListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
             GoBackBtnTapped = new Command(() =>
             {

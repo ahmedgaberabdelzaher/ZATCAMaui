@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.PaymentModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -15,8 +16,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
         public ICommand GoBackClick { get; set; }
         public int PaymentType;
 
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
 
         public MadaPaymentResponse _paymentData = null;
@@ -31,23 +30,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
                 if (_paymentData == value) return;
 
                 _paymentData = value;
-                RaisePropertyChanged("PaymentData");
+                OnPropertyChanged("PaymentData");
             }
         }
         #region Constructor
 
         public PaymnetProcessWebviewViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
             GoBackClick = new Command(async () =>
             {

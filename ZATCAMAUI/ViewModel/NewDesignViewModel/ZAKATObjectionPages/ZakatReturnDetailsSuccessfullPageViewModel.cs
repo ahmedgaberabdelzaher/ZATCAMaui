@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -40,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_zakatReturnDetails == value) return;
 
                 _zakatReturnDetails = value;
-                RaisePropertyChanged("ZakatReturnDetails");
+                OnPropertyChanged("ZakatReturnDetails");
             }
         }
 
@@ -56,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_estimatedZAKATSADADNumber == value) return;
 
                 _estimatedZAKATSADADNumber = value;
-                RaisePropertyChanged("EstimatedZAKATSADADNumber");
+                OnPropertyChanged("EstimatedZAKATSADADNumber");
             }
         }
 
@@ -72,7 +72,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_totalAmount == value) return;
 
                 _totalAmount = value;
-                RaisePropertyChanged("TotalAmount");
+                OnPropertyChanged("TotalAmount");
             }
         }
 
@@ -89,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
                 _zAKATAmount = value;
                 TotalAmount = _zAKATAmount;
-                RaisePropertyChanged("ZAKATAmount");
+                OnPropertyChanged("ZAKATAmount");
             }
         }
 
@@ -105,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_sadadBindNumber == value) return;
 
                 _sadadBindNumber = value;
-                RaisePropertyChanged("SadadBindNumber");
+                OnPropertyChanged("SadadBindNumber");
             }
         }
 
@@ -120,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
 
                 _sADADNumber = value;
-                RaisePropertyChanged("SADADNumber");
+                OnPropertyChanged("SADADNumber");
             }
         }
 
@@ -137,7 +137,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 _referenceNumber = value;
                 SadadBindNumber = value;
 
-                RaisePropertyChanged("ReferenceNumber");
+                OnPropertyChanged("ReferenceNumber");
             }
         }
 
@@ -153,7 +153,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
                 _taxablePeriod = value;
 
-                RaisePropertyChanged("TaxablePeriod");
+                OnPropertyChanged("TaxablePeriod");
             }
         }
 
@@ -169,7 +169,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_refreshIconImageSource == value) return;
 
                 _refreshIconImageSource = value;
-                RaisePropertyChanged("RefreshIconImageSource");
+                OnPropertyChanged("RefreshIconImageSource");
             }
         }
 
@@ -185,7 +185,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_setSuccessMessageVisibility == value) return;
 
                 _setSuccessMessageVisibility = value;
-                RaisePropertyChanged("SetSuccessMessageVisibility");
+                OnPropertyChanged("SetSuccessMessageVisibility");
             }
         }
 
@@ -201,7 +201,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_zakatReturnDetail == value) return;
 
                 _zakatReturnDetail = value;
-                RaisePropertyChanged("ZakatReturnDetail");
+                OnPropertyChanged("ZakatReturnDetail");
             }
         }
 
@@ -219,7 +219,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_paymentData == value) return;
 
                 _paymentData = value;
-                RaisePropertyChanged("PaymentData");
+                OnPropertyChanged("PaymentData");
             }
         }
 
@@ -235,7 +235,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_isPayNowVisible == value) return;
 
                 _isPayNowVisible = value;
-                RaisePropertyChanged("IsPayNowVisible");
+                OnPropertyChanged("IsPayNowVisible");
             }
         }
 

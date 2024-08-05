@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Views;
+
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
@@ -9,10 +10,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
     {
 
         ObservableCollection<MenuModel> customeMenuLst;
-        public ObservableCollection<MenuModel> CustomeMenuLst { get { return customeMenuLst; } set { customeMenuLst = value; RaisePropertyChanged(); } }
+        public ObservableCollection<MenuModel> CustomeMenuLst { get { return customeMenuLst; } set { customeMenuLst = value; OnPropertyChanged(); } }
 
         int itemCountPerRow = 2;
-        public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; RaisePropertyChanged(); } }
+        public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; OnPropertyChanged(); } }
 
 
         public CustomServiceMenuViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)

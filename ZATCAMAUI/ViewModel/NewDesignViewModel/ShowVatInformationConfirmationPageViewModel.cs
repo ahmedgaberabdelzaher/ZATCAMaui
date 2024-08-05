@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
@@ -9,14 +10,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public ShowVatInformationConfirmationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
 
         #region Properties
@@ -31,7 +24,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_headerWithInfoList == value) return;
                 _headerWithInfoList = value;
-                RaisePropertyChanged("HeaderWithInfoList");
+                OnPropertyChanged("HeaderWithInfoList");
             }
         }
 
@@ -46,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_mainString == value) return;
                 _mainString = value;
-                RaisePropertyChanged("MainString");
+                OnPropertyChanged("MainString");
             }
         }
 
@@ -62,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_newDesignPopUp == value) return;
 
                 _newDesignPopUp = value;
-                RaisePropertyChanged("NewDesignPopUp");
+                OnPropertyChanged("NewDesignPopUp");
             }
         }
 
@@ -77,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_firstLink == value) return;
                 _firstLink = value;
-                RaisePropertyChanged("FirstLink");
+                OnPropertyChanged("FirstLink");
             }
         }
 
@@ -92,7 +85,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_firstLinkText == value) return;
                 _firstLinkText = value;
-                RaisePropertyChanged("FirstLinkText");
+                OnPropertyChanged("FirstLinkText");
             }
         }
 
@@ -108,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_SecondLink == value) return;
 
                 _SecondLink = value;
-                RaisePropertyChanged("SecondLink");
+                OnPropertyChanged("SecondLink");
             }
         }
 
@@ -123,7 +116,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_SecondLinkText == value) return;
                 _SecondLinkText = value;
-                RaisePropertyChanged("SecondLinkText");
+                OnPropertyChanged("SecondLinkText");
             }
         }
         #endregion

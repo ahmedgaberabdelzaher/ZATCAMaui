@@ -1,10 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
-using ZATCAMAUI.Models.BaseModels;
 using ZATCAMAUI.Models.MyReportsModel;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
@@ -16,25 +15,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.MyReportsVM
         private readonly IMyReportsServices _myReportsServices;
 
         private string reportsCount = $"0 {AppResources.Reports}";
-        public string ReportsCount { get { return reportsCount; } set { reportsCount = value; RaisePropertyChanged(); } }
+        public string ReportsCount { get { return reportsCount; } set { reportsCount = value; OnPropertyChanged(); } }
 
         private string searchValue;
-        public string SearchValue { get { return searchValue; } set { searchValue = value; RaisePropertyChanged(); } }
+        public string SearchValue { get { return searchValue; } set { searchValue = value; OnPropertyChanged(); } }
 
         private string reportsResultTitle = AppResources.AllReports;
-        public string ReportsResultTitle { get { return reportsResultTitle; } set { reportsResultTitle = value; RaisePropertyChanged(); } }
+        public string ReportsResultTitle { get { return reportsResultTitle; } set { reportsResultTitle = value; OnPropertyChanged(); } }
 
         private MyReportsModel myReports = new MyReportsModel();
-        public MyReportsModel MyReports { get { return myReports; } set { myReports = value; RaisePropertyChanged(); } }
+        public MyReportsModel MyReports { get { return myReports; } set { myReports = value; OnPropertyChanged(); } }
 
         private bool isFilterReportView;
-        public bool IsFilterReportView { get { return isFilterReportView; } set { isFilterReportView = value; RaisePropertyChanged(); } }
+        public bool IsFilterReportView { get { return isFilterReportView; } set { isFilterReportView = value; OnPropertyChanged(); } }
 
         private bool isSearching;
-        public bool IsSearching { get { return isSearching; } set { isSearching = value; RaisePropertyChanged(); } }
+        public bool IsSearching { get { return isSearching; } set { isSearching = value; OnPropertyChanged(); } }
 
         ObservableCollection<MyReportsModel> myReportsList = new ObservableCollection<MyReportsModel>();
-        public ObservableCollection<MyReportsModel> MyReportsList { get { return myReportsList; } set { myReportsList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<MyReportsModel> MyReportsList { get { return myReportsList; } set { myReportsList = value; OnPropertyChanged(); } }
 
         public string PhoneNumber;
         private int? status = null;

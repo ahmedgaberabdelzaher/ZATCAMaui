@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -16,7 +18,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_vatReturnUIButtons == value) return;
                 _vatReturnUIButtons = value;
-                RaisePropertyChanged("VatReturnUIButtons");
+                OnPropertyChanged("VatReturnUIButtons");
             }
         }
 

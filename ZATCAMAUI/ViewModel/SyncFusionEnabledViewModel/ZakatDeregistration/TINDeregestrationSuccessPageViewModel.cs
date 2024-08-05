@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
@@ -11,8 +12,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
     public class TINDeregestrationSuccessPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
 
         #endregion
@@ -27,24 +26,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _fBNumber = value;
-                RaisePropertyChanged("FBNumber");
+                OnPropertyChanged("FBNumber");
             }
         }
         public TINDeregestrationSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+           
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });

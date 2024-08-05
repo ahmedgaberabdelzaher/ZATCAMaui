@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.VATRefunds;
@@ -40,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
                 if (_vatRefundsModel == value) return;
                 _vatRefundsModel = value;
-                RaisePropertyChanged("VATRefundsModel");
+                OnPropertyChanged("VATRefundsModel");
             }
         }
 
@@ -57,7 +58,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
-                RaisePropertyChanged("VatRefundsDisplayDataModel");
+                OnPropertyChanged("VatRefundsDisplayDataModel");
             }
         }
 
@@ -74,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatNewReqSummaryData == value) return;
 
                 _vatNewReqSummaryData = value;
-                RaisePropertyChanged("VatNewReqSummaryData");
+                OnPropertyChanged("VatNewReqSummaryData");
             }
         }
 
@@ -92,7 +93,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsIbanDataModel == value) return;
 
                 _vatRefundsIbanDataModel = value;
-                RaisePropertyChanged("VatRefundsIbanDataModel");
+                OnPropertyChanged("VatRefundsIbanDataModel");
             }
         }
 
@@ -111,7 +112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_selectedIdtype == value) return;
 
                 _selectedIdtype = value;
-                RaisePropertyChanged("SelectedIdtype");
+                OnPropertyChanged("SelectedIdtype");
             }
         }
 
@@ -128,7 +129,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_selectedIdNumber == value) return;
 
                 _selectedIdNumber = value;
-                RaisePropertyChanged("SelectedIdNumber");
+                OnPropertyChanged("SelectedIdNumber");
             }
         }
 
@@ -145,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_selectedIDTypeCode == value) return;
 
                 _selectedIDTypeCode = value;
-                RaisePropertyChanged("SelectedIDTypeCode");
+                OnPropertyChanged("SelectedIDTypeCode");
             }
         }
 
@@ -186,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 }
 
 
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
 
@@ -203,7 +204,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_ibanData == value) return;
 
                 _ibanData = value;
-                RaisePropertyChanged("IbanData");
+                OnPropertyChanged("IbanData");
             }
         }
 
@@ -220,7 +221,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_selectedIbanData == value) return;
 
                 _selectedIbanData = value;
-                RaisePropertyChanged("SelectedIbanData");
+                OnPropertyChanged("SelectedIbanData");
             }
         }
 
@@ -237,7 +238,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isAddAccountVisisble == value) return;
 
                 _isAddAccountVisisble = value;
-                RaisePropertyChanged("IsAddAccountVisisble");
+                OnPropertyChanged("IsAddAccountVisisble");
             }
         }
 
@@ -254,7 +255,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isVoidBtnVisible == value) return;
 
                 _isVoidBtnVisible = value;
-                RaisePropertyChanged("IsVoidBtnVisible");
+                OnPropertyChanged("IsVoidBtnVisible");
             }
         }
 
@@ -270,7 +271,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_iBANTypesList == value) return;
 
                 _iBANTypesList = value;
-                RaisePropertyChanged("IBANTypesList");
+                OnPropertyChanged("IBANTypesList");
             }
         }
 
@@ -286,7 +287,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_iBANIDNumberList == value) return;
 
                 _iBANIDNumberList = value;
-                RaisePropertyChanged("IBANIDNumberList");
+                OnPropertyChanged("IBANIDNumberList");
             }
         }
         private int _currenrIndex = 1;
@@ -298,16 +299,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
                 else
                 {
                     MarkComplete = false;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -324,7 +325,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_maxIndex == value) return;
 
                 _maxIndex = value;
-                RaisePropertyChanged("MaxIndex");
+                OnPropertyChanged("MaxIndex");
             }
         }
         public bool _isNavigatedToSubmitted;
@@ -339,7 +340,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isNavigatedToSubmitted == value) return;
 
                 _isNavigatedToSubmitted = value;
-                RaisePropertyChanged("IsNavigatedToSubmitted");
+                OnPropertyChanged("IsNavigatedToSubmitted");
             }
         }
 
@@ -356,22 +357,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
                 _ListOfActionButtonsApplicable = value;
 
-                RaisePropertyChanged("ListOfActionButtonsApplicable");
+                OnPropertyChanged("ListOfActionButtonsApplicable");
             }
         }
 
 
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
             GoBackBtnTapped = new Command(() =>
             {

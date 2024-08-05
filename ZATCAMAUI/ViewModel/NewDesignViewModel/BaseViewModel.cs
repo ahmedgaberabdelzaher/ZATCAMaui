@@ -1,15 +1,14 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
-using JWT;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
-    public class BaseViewModel : ViewModelBase
+    public class BaseViewModel : ObservableRecipient
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -25,9 +24,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_isLoading == value) return;
                 _isLoading = value;
-                RaisePropertyChanged("IsLoading");
+                OnPropertyChanged("IsLoading");
             }
         }
+
 
         private string _HijriDateToBeDisplayed;
         public string HijriDateToBeDisplayed
@@ -41,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _HijriDateToBeDisplayed = value;
 
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -54,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 isArabicLang = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
         bool isValidationError;
@@ -66,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 isValidationError = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
         FlowDirection appDirection { get; set; }
@@ -89,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 appDirection = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -125,7 +125,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
         int currentTab = 1;
-        public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); } }
+        public int CurrentTab { get { return currentTab; } set { currentTab = value; OnPropertyChanged(); } }
 
         public ICommand ChangeCurrentTabCommand
         {
@@ -169,7 +169,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
         string title;
-        public string Title { get { return title; } set { title = value; RaisePropertyChanged(); } }
+        public string Title { get { return title; } set { title = value; OnPropertyChanged(); } }
 
         public void PopToRootPage()
         {
@@ -226,7 +226,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _todayDateinHijri = value;
 
-                RaisePropertyChanged("TodayDateinHijri");
+                OnPropertyChanged("TodayDateinHijri");
             }
         }
         public void SetDefaultDate()
@@ -269,7 +269,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 isShowMsgView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -282,7 +282,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 isShowBottomSheet = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -308,13 +308,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 messageTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
 
         ObservableCollection<MenuModel> afterLoginMenuLst;
-        public ObservableCollection<MenuModel> AfterLoginMenuLst { get { return afterLoginMenuLst; } set { afterLoginMenuLst = value; RaisePropertyChanged(); } }
+        public ObservableCollection<MenuModel> AfterLoginMenuLst { get { return afterLoginMenuLst; } set { afterLoginMenuLst = value; OnPropertyChanged(); } }
 
 
         public void GetDashBoardMenuLst(int CurrentTab = 0)
@@ -473,8 +473,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
 
                 string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
-                var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);
-                return payload;
+                //var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);
+                return null;
             }
             catch (Exception)
             {

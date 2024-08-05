@@ -1,14 +1,11 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 {
 
     public class NewZakatObjectionPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         int currentStep = 0;
 
         public ICommand OnContinueClicked { get; set; }
@@ -27,7 +24,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             {
                 if (_IsSummaryVisible == value) return;
                 _IsSummaryVisible = value;
-                RaisePropertyChanged("IsSummaryVisible");
+                OnPropertyChanged("IsSummaryVisible");
             }
         }
 
@@ -43,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_IsDeclarationVisible == value) return;
 
                 _IsDeclarationVisible = value;
-                RaisePropertyChanged("IsDeclarationVisible");
+                OnPropertyChanged("IsDeclarationVisible");
             }
         }
 
@@ -59,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_IsAttachmentsVisible == value) return;
 
                 _IsAttachmentsVisible = value;
-                RaisePropertyChanged("IsAttachmentsVisible");
+                OnPropertyChanged("IsAttachmentsVisible");
             }
         }
 
@@ -75,7 +72,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_IsObjectionReasonVisible == value) return;
 
                 _IsObjectionReasonVisible = value;
-                RaisePropertyChanged("IsObjectionReasonVisible");
+                OnPropertyChanged("IsObjectionReasonVisible");
             }
         }
 
@@ -91,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_IsObjectionDetailVisible == value) return;
 
                 _IsObjectionDetailVisible = value;
-                RaisePropertyChanged("IsObjectionDetailVisible");
+                OnPropertyChanged("IsObjectionDetailVisible");
             }
         }
 
@@ -107,7 +104,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_HeaderTitle == value) return;
 
                 _HeaderTitle = value;
-                RaisePropertyChanged("HeaderTitle");
+                OnPropertyChanged("HeaderTitle");
             }
         }
 
@@ -123,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_subHeaderTitle == value) return;
 
                 _subHeaderTitle = value;
-                RaisePropertyChanged("subHeaderTitle");
+                OnPropertyChanged("subHeaderTitle");
             }
         }
         #endregion
@@ -131,16 +128,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #region Constructor
         public NewZakatObjectionPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
 
             HeaderTitle = "Objection Details";

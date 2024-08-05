@@ -1,7 +1,9 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.Core.Helper
 {
+
     public class DialogService : IDialogService
     {
         private Page _dialogPage;
@@ -10,10 +12,7 @@ namespace ZATCAMAUI.Core.Helper
             _dialogPage = dialogPage;
         }
         #region IDialogService implementation
-        public async Task ShowError(string message,
-            string title,
-            string buttonText,
-            Action afterHideCallback)
+        public async Task ShowError(string message, string title, string buttonText, Action afterHideCallback)
         {
             await _dialogPage.DisplayAlert(
                 title,
@@ -24,11 +23,8 @@ namespace ZATCAMAUI.Core.Helper
                 afterHideCallback();
             }
         }
-        public async Task ShowError(
-            Exception error,
-            string title,
-            string buttonText,
-            Action afterHideCallback)
+
+        public async Task ShowError(Exception error, string title, string buttonText, Action afterHideCallback)
         {
             await _dialogPage.DisplayAlert(
                 title,
@@ -39,20 +35,16 @@ namespace ZATCAMAUI.Core.Helper
                 afterHideCallback();
             }
         }
-        public async Task ShowMessage(
-            string message,
-            string title)
+
+        public async Task ShowMessage(string message, string title)
         {
             await _dialogPage.DisplayAlert(
                 title,
                 message,
                 AppResources.ZZZOkayText);
         }
-        public async Task ShowMessage(
-            string message,
-            string title,
-            string buttonText,
-            Action afterHideCallback)
+
+        public async Task ShowMessage(string message, string title, string buttonText, Action afterHideCallback)
         {
             await _dialogPage.DisplayAlert(
                 title,
@@ -63,12 +55,8 @@ namespace ZATCAMAUI.Core.Helper
                 afterHideCallback();
             }
         }
-        public async Task<bool> ShowMessage(
-            string message,
-            string title,
-            string buttonConfirmText,
-            string buttonCancelText,
-            Action<bool> afterHideCallback)
+
+        public async Task<bool> ShowMessage(string message, string title, string buttonConfirmText, string buttonCancelText, Action<bool> afterHideCallback)
         {
             var result = await _dialogPage.DisplayAlert(
                 title,
@@ -81,9 +69,8 @@ namespace ZATCAMAUI.Core.Helper
             }
             return result;
         }
-        public async Task ShowMessageBox(
-            string message,
-            string title)
+
+        public async Task ShowMessageBox(string message, string title)
         {
             await _dialogPage.DisplayAlert(
                 title,
@@ -92,4 +79,5 @@ namespace ZATCAMAUI.Core.Helper
         }
         #endregion
     }
+    
 }

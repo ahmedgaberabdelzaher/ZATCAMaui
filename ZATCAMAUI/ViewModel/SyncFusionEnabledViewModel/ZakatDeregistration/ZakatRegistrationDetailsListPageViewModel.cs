@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -41,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (_zakatDeregResponseData == value) return;
                 _zakatDeregResponseData = value;
-                RaisePropertyChanged("ZakatDeregResponseData");
+                OnPropertyChanged("ZakatDeregResponseData");
             }
         }
 
@@ -58,7 +59,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_zakatRegListData == value) return;
 
                 _zakatRegListData = value;
-                RaisePropertyChanged("ZakatRegListData");
+                OnPropertyChanged("ZakatRegListData");
             }
         }
 
@@ -74,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isArabic == value) return;
 
                 _isArabic = value;
-                RaisePropertyChanged("IsArabic");
+                OnPropertyChanged("IsArabic");
             }
         }
 

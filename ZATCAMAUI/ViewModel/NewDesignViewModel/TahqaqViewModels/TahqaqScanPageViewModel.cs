@@ -3,10 +3,11 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Greensoft.TlvLib;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
@@ -19,18 +20,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
     public class TahqaqScanPageViewModel : BaseViewModel
     {
         string _scanCode;
-        public string scanCode { get { return _scanCode; } set { _scanCode = value; RaisePropertyChanged(); } }
+        public string scanCode { get { return _scanCode; } set { _scanCode = value; OnPropertyChanged(); } }
 
         string sellerName;
-        public string SellerName { get { return sellerName; } set { sellerName = value; RaisePropertyChanged(); } }
+        public string SellerName { get { return sellerName; } set { sellerName = value; OnPropertyChanged(); } }
         string vatNumber;
-        public string VatNumber { get { return vatNumber; } set { vatNumber = value; RaisePropertyChanged(); } }
+        public string VatNumber { get { return vatNumber; } set { vatNumber = value; OnPropertyChanged(); } }
         string timeStamp;
-        public string TimeStamp { get { return timeStamp; } set { timeStamp = value; RaisePropertyChanged(); } }
+        public string TimeStamp { get { return timeStamp; } set { timeStamp = value; OnPropertyChanged(); } }
         double invoiceAmount;
-        public double InvoiceAmount { get { return invoiceAmount; } set { invoiceAmount = value; RaisePropertyChanged(); } }
+        public double InvoiceAmount { get { return invoiceAmount; } set { invoiceAmount = value; OnPropertyChanged(); } }
         string vatAmount;
-        public string VatAmount { get { return vatAmount; } set { vatAmount = value; RaisePropertyChanged(); } }
+        public string VatAmount { get { return vatAmount; } set { vatAmount = value; OnPropertyChanged(); } }
 
 
         ITahqaqServices _tahqaqServices;
@@ -44,32 +45,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
         }
 
         string _RegisterStatus;
-        public string RegisterStatus { get { return _RegisterStatus; } set { _RegisterStatus = value; RaisePropertyChanged(); } }
+        public string RegisterStatus { get { return _RegisterStatus; } set { _RegisterStatus = value; OnPropertyChanged(); } }
 
         bool _IsShowRsltView;
-        public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value; RaisePropertyChanged(); } }
+        public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value; OnPropertyChanged(); } }
 
         bool _IsShowSubmitReport;
-        public bool IsShowSubmitReport { get { return _IsShowSubmitReport; } set { _IsShowSubmitReport = value; RaisePropertyChanged(); } }
+        public bool IsShowSubmitReport { get { return _IsShowSubmitReport; } set { _IsShowSubmitReport = value; OnPropertyChanged(); } }
 
 
         bool _IsShowFailRsltView;
-        public bool IsShowFailRsltView { get { return _IsShowFailRsltView; } set { _IsShowFailRsltView = value; RaisePropertyChanged(); } }
+        public bool IsShowFailRsltView { get { return _IsShowFailRsltView; } set { _IsShowFailRsltView = value; OnPropertyChanged(); } }
 
         bool _IsShowScanView = true;
-        public bool IsShowScanView { get { return _IsShowScanView; } set { _IsShowScanView = value; RaisePropertyChanged(); } }
+        public bool IsShowScanView { get { return _IsShowScanView; } set { _IsShowScanView = value; OnPropertyChanged(); } }
 
         bool _IsCheckWithCode;
-        public bool IsCheckWithCode { get { return _IsCheckWithCode; } set { _IsCheckWithCode = value; RaisePropertyChanged(); } }
+        public bool IsCheckWithCode { get { return _IsCheckWithCode; } set { _IsCheckWithCode = value; OnPropertyChanged(); } }
 
         Pack _QrRslt;
-        public Pack QrRslt { get { return _QrRslt; } set { _QrRslt = value; RaisePropertyChanged(); } }
+        public Pack QrRslt { get { return _QrRslt; } set { _QrRslt = value; OnPropertyChanged(); } }
 
         EInvoiceQRModel _eInvoiceQRModel;
-        public EInvoiceQRModel eInvoiceQRModel { get { return _eInvoiceQRModel; } set { _eInvoiceQRModel = value; RaisePropertyChanged(); } }
+        public EInvoiceQRModel eInvoiceQRModel { get { return _eInvoiceQRModel; } set { _eInvoiceQRModel = value; OnPropertyChanged(); } }
 
         bool _IsClearedStatusVisible;
-        public bool IsClearedStatusVisible { get { return _IsClearedStatusVisible; } set { _IsClearedStatusVisible = value; RaisePropertyChanged(); } }
+        public bool IsClearedStatusVisible { get { return _IsClearedStatusVisible; } set { _IsClearedStatusVisible = value; OnPropertyChanged(); } }
 
 
 
@@ -81,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
 
                 _IsAnalyzing = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -93,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
 
                 _IsScanning = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 

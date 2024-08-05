@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Globalization;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
@@ -11,9 +12,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPage
    
     public class VATAmendReactivationSuccesssulPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         private string _fBNumber = string.Empty;
         public string FBNumber
         {
@@ -25,22 +23,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPage
             {
                 if (_fBNumber == value) return;
                 _fBNumber = value;
-                RaisePropertyChanged("FBNumber");
+                OnPropertyChanged("FBNumber");
             }
         }
         public VATAmendReactivationSuccesssulPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
         }
         #region Download Confirmation

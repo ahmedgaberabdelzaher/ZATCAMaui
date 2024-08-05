@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Acr.UserDialogs;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.EDeclerationsModel;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 
@@ -12,7 +13,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
         public PaymentCardModel PaymentCard { get { return paymentCard; } set { paymentCard = value; } }
 
         TravelerDeclarationResponse _TravelerDeclarationResponse = new TravelerDeclarationResponse();
-        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return _TravelerDeclarationResponse; } set { _TravelerDeclarationResponse = value; RaisePropertyChanged(); } }
+        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return _TravelerDeclarationResponse; } set { _TravelerDeclarationResponse = value; OnPropertyChanged(); } }
 
         string sADADNewTXT { get; set; }
 
@@ -23,13 +24,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
             set
             {
                 sADADNewTXT = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
         public PaymentTypes SelctedPaymentType { get; set; }
 
         string priceText;
-        public string PriceText { get { return priceText; } set { priceText = value; RaisePropertyChanged(); } }
+        public string PriceText { get { return priceText; } set { priceText = value; OnPropertyChanged(); } }
 
         public ICommand PaymentCardCommand
         {

@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
     public class ICRListPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public static string EUser = string.Empty;
         public static int numberOfAttachmentComingFromServer = 0;
         public ICommand OnHomeButtonClicked { get; set; }
@@ -31,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _txtSelectedStatus = value;
-                RaisePropertyChanged("TxtSelectedStatus");
+                OnPropertyChanged("TxtSelectedStatus");
             }
         }
       
@@ -45,7 +44,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _isNoDataLabelVisible = value;
-                RaisePropertyChanged("IsNoDataLabelVisible");
+                OnPropertyChanged("IsNoDataLabelVisible");
             }
         }
         private bool _isICRListVisible = false;
@@ -58,7 +57,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _isICRListVisible = value;
-                RaisePropertyChanged("IsICRListVisible");
+                OnPropertyChanged("IsICRListVisible");
             }
         }
         private ICRStatus _previousSelectedICRStatus;
@@ -71,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _previousSelectedICRStatus = value;
-                RaisePropertyChanged("PreviousSelectedICRStatus");
+                OnPropertyChanged("PreviousSelectedICRStatus");
             }
         }
         private ICRStatus _selectedICRStatus;
@@ -84,7 +83,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _selectedICRStatus = value;
-                RaisePropertyChanged("SelectedICRStatus");
+                OnPropertyChanged("SelectedICRStatus");
             }
         }
         private ICRStatus _selectedICRStatusPrev;
@@ -97,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _selectedICRStatusPrev = value;
-                RaisePropertyChanged("SelectedICRStatusPrev");
+                OnPropertyChanged("SelectedICRStatusPrev");
             }
         }
         private int _sCRSelectedIndex;
@@ -110,7 +109,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _sCRSelectedIndex = value;
-                RaisePropertyChanged("ICRSelectedIndex");
+                OnPropertyChanged("ICRSelectedIndex");
             }
         }
         private List<ICRStatus> _iCRStatusList;
@@ -123,7 +122,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             set
             {
                 _iCRStatusList = value;
-                RaisePropertyChanged("ICRStatusList");
+                OnPropertyChanged("ICRStatusList");
             }
         }
         private ICRListSet _selectedICR;
@@ -143,7 +142,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                         SelectedPickerIndex = ICRSelectedIndex;
                         GetVATAllReturnsAsync();
                     }
-                    RaisePropertyChanged("SelectedICR");
+                    OnPropertyChanged("SelectedICR");
                 }
                 catch (Exception)
                 {
@@ -186,23 +185,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                     IsNoDataLabelVisible = true;
                     //  SelectedICRStatus = null;
                 }
-                RaisePropertyChanged("ICRList");
+                OnPropertyChanged("ICRList");
             }
         }
         #endregion
         #region Constructor
         public ICRListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
             OnHomeButtonClicked = new Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);

@@ -1,9 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Timers;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
@@ -29,28 +30,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 if (isResendCodeEnabled == value) return;
 
                 isResendCodeEnabled = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
 
         string oTPFirstDigit;
-        public string OTPFirstDigit { get { return oTPFirstDigit; } set { oTPFirstDigit = value; RaisePropertyChanged(); } }
+        public string OTPFirstDigit { get { return oTPFirstDigit; } set { oTPFirstDigit = value; OnPropertyChanged(); } }
 
         string oTPSecondDigit;
-        public string OTPSecondDigit { get { return oTPSecondDigit; } set { oTPSecondDigit = value; RaisePropertyChanged(); } }
+        public string OTPSecondDigit { get { return oTPSecondDigit; } set { oTPSecondDigit = value; OnPropertyChanged(); } }
 
         string oTPThirdDigit;
-        public string OTPThirdDigit { get { return oTPThirdDigit; } set { oTPThirdDigit = value; RaisePropertyChanged(); } }
+        public string OTPThirdDigit { get { return oTPThirdDigit; } set { oTPThirdDigit = value; OnPropertyChanged(); } }
 
         string oTPFourthDigit;
-        public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; RaisePropertyChanged(); } }
+        public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; OnPropertyChanged(); } }
 
         string oTPFithDigit;
-        public string OTPFithDigit { get { return oTPFithDigit; } set { oTPFithDigit = value; RaisePropertyChanged(); } }
+        public string OTPFithDigit { get { return oTPFithDigit; } set { oTPFithDigit = value; OnPropertyChanged(); } }
 
         string oTPSixDigit;
-        public string OTPSixDigit { get { return oTPSixDigit; } set { oTPSixDigit = value; RaisePropertyChanged(); } }
+        public string OTPSixDigit { get { return oTPSixDigit; } set { oTPSixDigit = value; OnPropertyChanged(); } }
 
 
         private string _LblCountDownTimer;
@@ -65,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 if (_LblCountDownTimer == value) return;
 
                 _LblCountDownTimer = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -81,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 if (_resendOTPTextColor == value) return;
 
                 _resendOTPTextColor = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -248,7 +249,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             set
             {
                 isOTPView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -333,7 +334,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 if (_OTPSentOnThisMobileNumber == value) return;
 
                 _OTPSentOnThisMobileNumber = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 

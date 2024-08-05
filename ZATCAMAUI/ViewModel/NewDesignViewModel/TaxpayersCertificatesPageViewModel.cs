@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -36,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
                     FilterCertificateOnBasisOfType();
                 }
-                RaisePropertyChanged("SelectedTaxTypeForFilter");
+                OnPropertyChanged("SelectedTaxTypeForFilter");
             }
         }
         private Result _selectedCertificate;
@@ -51,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedCertificate == value) return;
 
                 _selectedCertificate = value;
-                RaisePropertyChanged("SelectedCertificate");
+                OnPropertyChanged("SelectedCertificate");
                 if (SelectedCertificate != null && SelectedCertificate.Pdfurl != null)
                 {
                     ShowPdf(SelectedCertificate.Pdfurl);
@@ -71,7 +72,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _filterLabelText = value;
 
-                RaisePropertyChanged("FilterLabelText");
+                OnPropertyChanged("FilterLabelText");
             }
         }
         public List<ReturnTypes> TaxTypeForFilter
@@ -85,7 +86,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_TaxTypeForFilter == value) return;
 
                 _TaxTypeForFilter = value;
-                RaisePropertyChanged("TaxTypeForFilter");
+                OnPropertyChanged("TaxTypeForFilter");
             }
         }
         private ObservableCollection<Result> _certificateListToDisplay = null;
@@ -119,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsCertificateListVisible = false;
                     IsNoDataLabelVisible = true;
                 }
-                RaisePropertyChanged("CertificateListToDisplay");
+                OnPropertyChanged("CertificateListToDisplay");
             }
         }
         private bool _isNoDataLabelVisible = true;
@@ -134,7 +135,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isNoDataLabelVisible == value) return;
 
                 _isNoDataLabelVisible = value;
-                RaisePropertyChanged("IsNoDataLabelVisible");
+                OnPropertyChanged("IsNoDataLabelVisible");
             }
         }
         private bool _isCertificateListVisible = false;
@@ -149,7 +150,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isCertificateListVisible == value) return;
 
                 _isCertificateListVisible = value;
-                RaisePropertyChanged("IsCertificateListVisible");
+                OnPropertyChanged("IsCertificateListVisible");
             }
         }
         private List<Result> _certificateListToAll;
@@ -164,7 +165,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_certificateListToAll == value) return;
 
                 _certificateListToAll = value;
-                RaisePropertyChanged("CertificateListToAll");
+                OnPropertyChanged("CertificateListToAll");
             }
         }
         private List<Result> _certificateListToZAKAT;
@@ -179,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_certificateListToZAKAT == value) return;
 
                 _certificateListToZAKAT = value;
-                RaisePropertyChanged("CertificateListToZAKAT");
+                OnPropertyChanged("CertificateListToZAKAT");
             }
         }
         private List<Result> _certificateListToVAT;
@@ -194,7 +195,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_certificateListToVAT == value) return;
 
                 _certificateListToVAT = value;
-                RaisePropertyChanged("_certificateListToVAT");
+                OnPropertyChanged("_certificateListToVAT");
             }
         }
         private List<Result> _certificateListToET;
@@ -209,7 +210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_certificateListToET == value) return;
 
                 _certificateListToET = value;
-                RaisePropertyChanged("_certificateListToET");
+                OnPropertyChanged("_certificateListToET");
             }
         }
         public TaxPayerProfile TaxPayerProfile
@@ -223,7 +224,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_TaxPayerProfile == value) return;
 
                 _TaxPayerProfile = value;
-                RaisePropertyChanged("TaxPayerProfile");
+                OnPropertyChanged("TaxPayerProfile");
             }
 
 
@@ -232,14 +233,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
         public TaxpayersCertificatesPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             OnBackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();

@@ -11,22 +11,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
     {
 
         bool isMaleSelected = true;
-        public bool IsMaleSelected { get { return isMaleSelected; } set { isMaleSelected = value; RaisePropertyChanged(); } }
+        public bool IsMaleSelected { get { return isMaleSelected; } set { isMaleSelected = value; OnPropertyChanged(); } }
 
         string iDName = AppResources.Passport;
-        public string IDName { get { return iDName; } set { iDName = value; RaisePropertyChanged(); } }
+        public string IDName { get { return iDName; } set { iDName = value; OnPropertyChanged(); } }
 
         string _ReleaseDateString;
-        public string ReleaseDateString { get { return _ReleaseDateString; } set { _ReleaseDateString = value; RaisePropertyChanged(); } }
+        public string ReleaseDateString { get { return _ReleaseDateString; } set { _ReleaseDateString = value; OnPropertyChanged(); } }
 
         string _BirthDateString;
-        public string BirthDateString { get { return _BirthDateString; } set { _BirthDateString = value; RaisePropertyChanged(); } }
+        public string BirthDateString { get { return _BirthDateString; } set { _BirthDateString = value; OnPropertyChanged(); } }
 
         string iDNumberPlaceHolder = "XX000000";
-        public string IDNumberPlaceHolder { get { return iDNumberPlaceHolder; } set { iDNumberPlaceHolder = value; RaisePropertyChanged(); } }
+        public string IDNumberPlaceHolder { get { return iDNumberPlaceHolder; } set { iDNumberPlaceHolder = value; OnPropertyChanged(); } }
 
         Keyboard iDNumberKeyboard = Keyboard.Text;
-        public Keyboard IDNumberKeyboard { get { return iDNumberKeyboard; } set { iDNumberKeyboard = value; RaisePropertyChanged(); } }
+        public Keyboard IDNumberKeyboard { get { return iDNumberKeyboard; } set { iDNumberKeyboard = value; OnPropertyChanged(); } }
 
 
 

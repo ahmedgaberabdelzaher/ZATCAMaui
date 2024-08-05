@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
     public class TaxEvasionReportTypePageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
         // public ICommand OnNextClicked { get; set; }
         public ICommand OnNextClicked { get; set; }
@@ -30,7 +29,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
                 _taxEvasionListobj = value;
                 //if (_selectedTaxEvasionListItem != null)
                 //{ passSelectedTaxEvasionItem(); }
-                RaisePropertyChanged("TaxEvasionListobj");
+                OnPropertyChanged("TaxEvasionListobj");
             }
         }
 
@@ -47,7 +46,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
 
                 //if (_selectedTaxEvasionListItem != null)
                 //{ passSelectedTaxEvasionItem(); }
-                RaisePropertyChanged("ReportTypes");
+                OnPropertyChanged("ReportTypes");
             }
         }
 
@@ -69,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
                        
                     }
 
-                    RaisePropertyChanged("SelectedReportTypeListItem");
+                    OnPropertyChanged("SelectedReportTypeListItem");
                 }
                 catch (Exception)
                 {
@@ -88,7 +87,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
             set
             {
                 _nextbuttonDisableColor = value;
-                RaisePropertyChanged("NextbuttonDisableColor");
+                OnPropertyChanged("NextbuttonDisableColor");
             }
         }
         private bool _isnextbuttonEnable = false;
@@ -101,7 +100,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
             set
             {
                 _isnextbuttonEnable = value;
-                RaisePropertyChanged("IsnextbuttonEnable");
+                OnPropertyChanged("IsnextbuttonEnable");
             }
         }
         //MobileNumber
@@ -115,7 +114,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
             set
             {
                 _mobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
         private string _categorySelected_Index = "0";
@@ -128,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
             set
             {
                 _categorySelected_Index = value;
-                RaisePropertyChanged("CategorySelected_Index");
+                OnPropertyChanged("CategorySelected_Index");
             }
         }
         
@@ -222,16 +221,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
         {
             try
             {
-                if (navigationService == null)
-                {
-                    throw new ArgumentNullException("navigationService");
-                }
-                _navigationService = navigationService;
-                if (dialogService == null)
-                {
-                    throw new ArgumentNullException("dialogService");
-                }
-                _dialogService = dialogService;
                 BackButtonClicked = new Command(() =>
                 {
                     if (!IsLoading)

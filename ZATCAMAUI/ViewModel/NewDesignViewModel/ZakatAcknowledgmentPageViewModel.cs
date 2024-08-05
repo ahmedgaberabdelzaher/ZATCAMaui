@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.Form5Models;
 
@@ -22,7 +23,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_AknowledgementDataList == value) return;
                 _AknowledgementDataList = value;
-                RaisePropertyChanged("AknowledgementDataList");
+                OnPropertyChanged("AknowledgementDataList");
             }
         }
 
@@ -36,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_sadadBillNumber == value) return;
 
                 _sadadBillNumber = value;
-                RaisePropertyChanged(() => SadadBillNumber);
+                OnPropertyChanged(nameof( SadadBillNumber));
             }
         }
 
@@ -51,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_totalZakatPayble == value) return;
 
                 _totalZakatPayble = value;
-                RaisePropertyChanged(() => TotalZakatPayble);
+                OnPropertyChanged(nameof( TotalZakatPayble));
             }
         }
 

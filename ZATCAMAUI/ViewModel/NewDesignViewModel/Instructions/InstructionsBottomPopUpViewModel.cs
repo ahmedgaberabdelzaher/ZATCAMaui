@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
@@ -24,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _description = value;
-                RaisePropertyChanged("Description");
+                OnPropertyChanged("Description");
             }
         }
 
@@ -38,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _isInstuctionsChecked = value;
-                RaisePropertyChanged("IsInstuctionsChecked");
+                OnPropertyChanged("IsInstuctionsChecked");
             }
         }
 
@@ -52,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _isTermsChecked = value;
-                RaisePropertyChanged("IsTermsChecked");
+                OnPropertyChanged("IsTermsChecked");
             }
         }
 
@@ -66,7 +67,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _isCheckboxEditable = value;
-                RaisePropertyChanged("IsCheckboxEditable");
+                OnPropertyChanged("IsCheckboxEditable");
             }
         }
 
@@ -81,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _isInstructions = value;
-                RaisePropertyChanged("IsInstructions");
+                OnPropertyChanged("IsInstructions");
             }
         }
 
@@ -95,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _isTerms = value;
-                RaisePropertyChanged("IsTerms");
+                OnPropertyChanged("IsTerms");
             }
         }
 
@@ -109,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _isCancelButtonVisible = value;
-                RaisePropertyChanged("IsCancelButtonVisible");
+                OnPropertyChanged("IsCancelButtonVisible");
             }
         }
 
@@ -123,7 +124,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _checkBoxDescription = value;
-                RaisePropertyChanged("CheckBoxDescription");
+                OnPropertyChanged("CheckBoxDescription");
             }
         }
 
@@ -137,7 +138,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
             set
             {
                 _buttonTitle = value;
-                RaisePropertyChanged("ButtonTitle");
+                OnPropertyChanged("ButtonTitle");
             }
         }
 
@@ -163,7 +164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
                 _isContinueEnabled = value;
                 ContinueBackGroundColor = _isContinueEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
 
-                RaisePropertyChanged("IsBillContinueEnabled");
+                OnPropertyChanged("IsBillContinueEnabled");
             }
         }
         private Color _continueBackGroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -180,7 +181,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
                     return;
                 }
                 _continueBackGroundColor = value;
-                RaisePropertyChanged("ContinueBackGroundColor");
+                OnPropertyChanged("ContinueBackGroundColor");
             }
         }
 
@@ -194,20 +195,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions
 
         public InstructionsBottomPopUpViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
             TermsContinueClick = new Command(async () =>
             {
-
-
                 if (_isTermsChecked)
                 {
                     InstructionsContinue();

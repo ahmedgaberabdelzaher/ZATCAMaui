@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
@@ -26,28 +26,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
 
 
         int itemCountPerRow = 2;
-        public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; RaisePropertyChanged(); } }
+        public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; OnPropertyChanged(); } }
 
         bool isHorizontalLstVisible = true;
-        public bool IsHorizontalLstVisible { get { return isHorizontalLstVisible; } set { isHorizontalLstVisible = value; RaisePropertyChanged(); } }
+        public bool IsHorizontalLstVisible { get { return isHorizontalLstVisible; } set { isHorizontalLstVisible = value; OnPropertyChanged(); } }
 
         bool isVerticalLstVisible;
-        public bool IsVerticalLstVisible { get { return isVerticalLstVisible; } set { isVerticalLstVisible = value; RaisePropertyChanged(); } }
+        public bool IsVerticalLstVisible { get { return isVerticalLstVisible; } set { isVerticalLstVisible = value; OnPropertyChanged(); } }
 
 
         public Services CurrentService { get; set; } = Services.CustomServices;
 
         ObservableCollection<MenuModel> menuLst;
-        public ObservableCollection<MenuModel> MenuLst { get { return menuLst; } set { menuLst = value; RaisePropertyChanged(); } }
+        public ObservableCollection<MenuModel> MenuLst { get { return menuLst; } set { menuLst = value; OnPropertyChanged(); } }
 
         ObservableCollection<MenuModel> customeMenuLst;
-        public ObservableCollection<MenuModel> CustomeMenuLst { get { return customeMenuLst; } set { customeMenuLst = value; RaisePropertyChanged(); } }
+        public ObservableCollection<MenuModel> CustomeMenuLst { get { return customeMenuLst; } set { customeMenuLst = value; OnPropertyChanged(); } }
 
         ObservableCollection<MenuModel> sideMenuServiceLst;
-        public ObservableCollection<MenuModel> SideMenuServiceLst { get { return sideMenuServiceLst; } set { sideMenuServiceLst = value; RaisePropertyChanged(); } }
+        public ObservableCollection<MenuModel> SideMenuServiceLst { get { return sideMenuServiceLst; } set { sideMenuServiceLst = value; OnPropertyChanged(); } }
 
         ObservableCollection<MenuModel> customeMenuVerticalLst;
-        public ObservableCollection<MenuModel> CustomeMenuVerticalLst { get { return customeMenuVerticalLst; } set { customeMenuVerticalLst = value; RaisePropertyChanged(); } }
+        public ObservableCollection<MenuModel> CustomeMenuVerticalLst { get { return customeMenuVerticalLst; } set { customeMenuVerticalLst = value; OnPropertyChanged(); } }
 
         public HomeViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.AccountStatements;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
@@ -24,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_fromDate == value) return;
 
                 _fromDate = value;
-                RaisePropertyChanged("FromDate");
+                OnPropertyChanged("FromDate");
             }
         }
 
@@ -40,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_toDate == value) return;
 
                 _toDate = value;
-                RaisePropertyChanged("ToDate");
+                OnPropertyChanged("ToDate");
             }
         }
 
@@ -56,21 +57,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_asTaxpayerSelectedValues == value) return;
 
                 _asTaxpayerSelectedValues = value;
-                RaisePropertyChanged("ASTaxpayerSelectedValues");
+                OnPropertyChanged("ASTaxpayerSelectedValues");
             }
         }
 
         //ASTaxpayerSelectedValues aSTaxpayerSelectedValues
         public AccountStatementsDownloadPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
             GoBackBtnTapped = new Command(() =>
             {

@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
     public class SignUpFormPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnNextClicked { get; set; }
         public int DefaultMonth;
@@ -39,7 +38,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 {
                     IsCRVisible = false;
                 }
-                RaisePropertyChanged("IsCRChecked");
+                OnPropertyChanged("IsCRChecked");
             }
         }
         private bool _isLNChecked = false;
@@ -60,7 +59,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 {
                     IsLicenseVisible = false;
                 }
-                RaisePropertyChanged("IsLNChecked");
+                OnPropertyChanged("IsLNChecked");
             }
         }
         private int _iDTypeIndex = 0;
@@ -73,7 +72,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _iDTypeIndex = value;
-                RaisePropertyChanged("IDTypeIndex");
+                OnPropertyChanged("IDTypeIndex");
             }
         }
         private ObservableCollection<object> _todayDate;
@@ -86,7 +85,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _todayDate = value;
-                RaisePropertyChanged("TodayDate");
+                OnPropertyChanged("TodayDate");
             }
         }
         private int _selectedLOrC = 1;
@@ -99,7 +98,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _selectedLOrC = value;
-                RaisePropertyChanged("SelectedLOrC");
+                OnPropertyChanged("SelectedLOrC");
             }
         }
       
@@ -113,7 +112,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _selectedSignUpUsingSetForCancle = value;
-                RaisePropertyChanged("SelectedSignUpUsingSetForCancle");
+                OnPropertyChanged("SelectedSignUpUsingSetForCancle");
             }
         }
         private SignUpUsing _selectedSignUpUsing = null;
@@ -148,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                     {
                     }
                 }
-                RaisePropertyChanged("SelectedSignUpUsing");
+                OnPropertyChanged("SelectedSignUpUsing");
             }
         }
         private List<SignUpUsing> _signUpUsingList = null;
@@ -161,7 +160,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _signUpUsingList = value;
-                RaisePropertyChanged("SignUpUsingList");
+                OnPropertyChanged("SignUpUsingList");
             }
         }
         private LicenseOrCRModel _SelectedLCType = null;
@@ -188,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                     }
                     TxtLOrC = _SelectedLCType.LCType;
                 }
-                RaisePropertyChanged("SelectLCType");
+                OnPropertyChanged("SelectLCType");
             }
         }
         private List<LicenseOrCRModel> _lcTypeList = null;
@@ -201,7 +200,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _lcTypeList = value;
-                RaisePropertyChanged("LcTypeList");
+                OnPropertyChanged("LcTypeList");
             }
         }
         private SignupCityResult _selectCityList = null;
@@ -218,7 +217,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 {
                     TxtLOrCIssuedByCity = _selectCityList.CityName;
                 }
-                RaisePropertyChanged("SelectCityList");
+                OnPropertyChanged("SelectCityList");
             }
         }
         private string _maxDigids = "9";
@@ -231,7 +230,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _maxDigids = value;
-                RaisePropertyChanged("MaxDigids");
+                OnPropertyChanged("MaxDigids");
             }
         }
 
@@ -246,7 +245,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             {
                 _mobileCountryCode = value;
 
-                RaisePropertyChanged("MobileCountryCode");
+                OnPropertyChanged("MobileCountryCode");
             }
         }
 
@@ -260,7 +259,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _selectCityListPrev = value;
-                RaisePropertyChanged("SelectCityListPrev");
+                OnPropertyChanged("SelectCityListPrev");
             }
         }
         private List<SignupCityResult> _cityList = null;
@@ -273,7 +272,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _cityList = value;
-                RaisePropertyChanged("CityList");
+                OnPropertyChanged("CityList");
             }
         }
         private bool _isCRVisible = false;
@@ -286,7 +285,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _isCRVisible = value;
-                RaisePropertyChanged("IsCRVisible");
+                OnPropertyChanged("IsCRVisible");
             }
         }
         private bool _isLicenseVisible = false;
@@ -299,7 +298,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _isLicenseVisible = value;
-                RaisePropertyChanged("IsLicenseVisible");
+                OnPropertyChanged("IsLicenseVisible");
             }
         }
         private bool _isTIN = false;
@@ -322,7 +321,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                     IsTINVisible = false;
                     TxtTIN = string.Empty;
                 }
-                RaisePropertyChanged("IsTIN");
+                OnPropertyChanged("IsTIN");
             }
         }
         private bool _isTINVisible = false;
@@ -335,7 +334,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _isTINVisible = value;
-                RaisePropertyChanged("IsTINVisible");
+                OnPropertyChanged("IsTINVisible");
             }
         }
         private IssuedByResponse _selectedIssuedBy = null;
@@ -352,7 +351,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 {
                     TxtLOrCIssuedBy = _selectedIssuedBy.txt50;
                 }
-                RaisePropertyChanged("SelectedIssuedBy");
+                OnPropertyChanged("SelectedIssuedBy");
             }
         }
         private IssuedByResponse _selectedIssuedByPrev = null;
@@ -365,7 +364,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _selectedIssuedByPrev = value;
-                RaisePropertyChanged("SelectedIssuedByPrev");
+                OnPropertyChanged("SelectedIssuedByPrev");
             }
         }
         private List<IssuedByResponse> _issuedByList = null;
@@ -378,7 +377,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _issuedByList = value;
-                RaisePropertyChanged("IssuedByList");
+                OnPropertyChanged("IssuedByList");
             }
         }
         private string _txtTIN = string.Empty;
@@ -391,7 +390,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtTIN = value;
-                RaisePropertyChanged("TxtTIN");
+                OnPropertyChanged("TxtTIN");
             }
         }
         private string _txtIDNumber = string.Empty;
@@ -404,7 +403,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtIDNumber = value;
-                RaisePropertyChanged("TxtIDNumber");
+                OnPropertyChanged("TxtIDNumber");
             }
         }
         private string _txtName = string.Empty;
@@ -417,7 +416,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtName = value;
-                RaisePropertyChanged("TxtName");
+                OnPropertyChanged("TxtName");
             }
         }
         private string _txtCRNumber = string.Empty;
@@ -430,7 +429,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtCRNumber = value;
-                RaisePropertyChanged("TxtCRNumber");
+                OnPropertyChanged("TxtCRNumber");
             }
         }
         private string _txtLicenseNumber = string.Empty;
@@ -443,7 +442,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtLicenseNumber = value;
-                RaisePropertyChanged("TxtLicenseNumber");
+                OnPropertyChanged("TxtLicenseNumber");
             }
         }
         private string _txtEmailAddress = string.Empty;
@@ -456,7 +455,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtEmailAddress = value;
-                RaisePropertyChanged("TxtEmailAddress");
+                OnPropertyChanged("TxtEmailAddress");
             }
         }
         private string _txtCountryCode = string.Empty;
@@ -480,7 +479,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                     MaxDigids = "15";
                 }
 
-                RaisePropertyChanged("TxtCountryCode");
+                OnPropertyChanged("TxtCountryCode");
             }
         }
         private bool _BtnEnableFlag;
@@ -490,7 +489,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _BtnEnableFlag = value;
-                RaisePropertyChanged("BtnEnableFlag");
+                OnPropertyChanged("BtnEnableFlag");
             }
         }
         private string _txtMobileNumber = string.Empty;
@@ -507,7 +506,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 BtnEnableFlag = false;
                 if (value.Length > 0)
                     BtnEnableFlag = true;
-                RaisePropertyChanged("TxtMobileNumber");
+                OnPropertyChanged("TxtMobileNumber");
             }
         }
         private string _txtPhoneNumber = string.Empty;
@@ -520,7 +519,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtPhoneNumber = value;
-                RaisePropertyChanged("TxtPhoneNumber");
+                OnPropertyChanged("TxtPhoneNumber");
             }
         }
         //private string _enteredCaptchaValue = string.Empty;
@@ -533,7 +532,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
         //    set
         //    {
         //        _enteredCaptchaValue = value;
-        //        RaisePropertyChanged("EnteredCaptchaValue");
+        //        OnPropertyChanged("EnteredCaptchaValue");
         //    }
         //}
         //private string _captcha = string.Empty;
@@ -546,7 +545,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
         //    set
         //    {
         //        _captcha = value;
-        //        RaisePropertyChanged("Captcha");
+        //        OnPropertyChanged("Captcha");
         //    }
         //}
         private string _pkrDBO = string.Empty;
@@ -559,7 +558,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _pkrDBO = value;
-                RaisePropertyChanged("PkrDBO");
+                OnPropertyChanged("PkrDBO");
             }
         }
         private string _pkrDBOPrev = string.Empty;
@@ -572,7 +571,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _pkrDBOPrev = value;
-                RaisePropertyChanged("PkrDBOPrev");
+                OnPropertyChanged("PkrDBOPrev");
             }
         }
         private int _maxLengthID = 10;
@@ -585,7 +584,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _maxLengthID = value;
-                RaisePropertyChanged("MaxLengthID");
+                OnPropertyChanged("MaxLengthID");
             }
         }
         private IDTypeModelRootObject _iDTypeModelRootObject = null;
@@ -598,7 +597,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _iDTypeModelRootObject = value;
-                RaisePropertyChanged("IDTypeModelRootObject");
+                OnPropertyChanged("IDTypeModelRootObject");
             }
         }
         private SignUpModelRootObject _signUpFirstSubmitModel = null;
@@ -611,7 +610,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _signUpFirstSubmitModel = value;
-                RaisePropertyChanged("SignUpFirstSubmitModel");
+                OnPropertyChanged("SignUpFirstSubmitModel");
             }
         }
         private DateTime _maximumxD = DateTime.Now;
@@ -624,7 +623,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _maximumxD = value;
-                RaisePropertyChanged("MaximumxD");
+                OnPropertyChanged("MaximumxD");
             }
         }
         private string _txtIDType = string.Empty;
@@ -637,7 +636,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtIDType = value;
-                RaisePropertyChanged("TxtIDType");
+                OnPropertyChanged("TxtIDType");
             }
         }
         private string _txtLOrC = string.Empty;
@@ -650,7 +649,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtLOrC = value;
-                RaisePropertyChanged("TxtLOrC");
+                OnPropertyChanged("TxtLOrC");
             }
         }
         private string _txtLOrCIssuedBy = string.Empty;
@@ -663,7 +662,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtLOrCIssuedBy = value;
-                RaisePropertyChanged("TxtLOrCIssuedBy");
+                OnPropertyChanged("TxtLOrCIssuedBy");
             }
         }
         private string _txtLOrCIssuedByCity = string.Empty;
@@ -676,7 +675,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
             set
             {
                 _txtLOrCIssuedByCity = value;
-                RaisePropertyChanged("TxtLOrCIssuedByCity");
+                OnPropertyChanged("TxtLOrCIssuedByCity");
             }
         }
         #endregion
@@ -685,17 +684,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
         {
             try
             {
-                if (navigationService == null)
-                {
-                    throw new ArgumentNullException("navigationService");
-                }
-                _navigationService = navigationService;
-                _dialogService = dialogService;
-                if (dialogService == null)
-                {
-                    throw new ArgumentNullException("dialogService");
-                }
-                GoBackClick = new Command(async () =>
+                GoBackClick = new Command( () =>
                 {
                     _navigationService.GoBack();
                 });

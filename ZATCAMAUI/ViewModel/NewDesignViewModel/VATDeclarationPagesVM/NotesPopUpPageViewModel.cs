@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
@@ -31,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                OnPropertyChanged("VATDeclarationData");
             }
         }
         private string _noteText;
@@ -52,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 {
                     NoteString = string.Empty;
                 }
-                RaisePropertyChanged("NoteText");
+                OnPropertyChanged("NoteText");
             }
         }
         private string _previousNoteText;
@@ -65,25 +66,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _previousNoteText = value;
-                RaisePropertyChanged("PreviousNoteText");
+                OnPropertyChanged("PreviousNoteText");
             }
         }
         #endregion
         #region Constructor
         public NotesPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
+           
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
+           
             OnClearButtonClicked = new Command(() =>
             {
                 NoteString = string.Empty;

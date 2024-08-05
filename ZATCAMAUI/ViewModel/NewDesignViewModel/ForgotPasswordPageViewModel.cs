@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Text;
 using System.Windows.Input;
 using System.Timers;
@@ -11,6 +11,7 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
 using Newtonsoft.Json.Linq;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -19,8 +20,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         private string captcha = string.Empty;
         private string GUID = string.Empty;
         //public ICommand OnSubmitClicked { get; set; }
@@ -87,7 +86,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsContinueButtonVisibe = true;
                     ForgotPwHeadingVisibility = true;
                 }
-                RaisePropertyChanged("StartPage");
+                OnPropertyChanged("StartPage");
             }
         }
         // New Property starts
@@ -132,7 +131,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
                 }
-                RaisePropertyChanged("IDNumber");
+                OnPropertyChanged("IDNumber");
             }
         }
         private bool _isContinueButtonVisibe = true;
@@ -147,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
                 _isContinueButtonVisibe = value;
-                RaisePropertyChanged("IsContinueButtonVisibe");
+                OnPropertyChanged("IsContinueButtonVisibe");
             }
         }
         private bool _isValiedEmailAddress = false;
@@ -162,7 +161,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isValiedEmailAddress == value) return;
 
                 _isValiedEmailAddress = value;
-                RaisePropertyChanged("IsValiedEmailAddress");
+                OnPropertyChanged("IsValiedEmailAddress");
             }
         }
         private bool _isTinDopDownVisible;
@@ -177,7 +176,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isTinDopDownVisible == value) return;
 
                 _isTinDopDownVisible = value;
-                RaisePropertyChanged("IsTinDopDownVisible");
+                OnPropertyChanged("IsTinDopDownVisible");
             }
         }
 
@@ -194,7 +193,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_email == value) return;
 
                 _email = value;
-                RaisePropertyChanged("Email");
+                OnPropertyChanged("Email");
             }
         }
 
@@ -210,7 +209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userNameLabelText == value) return;
 
                 _userNameLabelText = value;
-                RaisePropertyChanged("UserNameLabelText");
+                OnPropertyChanged("UserNameLabelText");
             }
         }
 
@@ -223,7 +222,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_Enabled == value) return;
 
                 _Enabled = value;
-                RaisePropertyChanged("Enabled");
+                OnPropertyChanged("Enabled");
             }
         }
 
@@ -239,7 +238,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_resendOTPTextColor == value) return;
 
                 _resendOTPTextColor = value;
-                RaisePropertyChanged("ResendOTPTextColor");
+                OnPropertyChanged("ResendOTPTextColor");
             }
         }
 
@@ -257,7 +256,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_passwordLayoutVisibility == value) return;
 
                 _passwordLayoutVisibility = value;
-                RaisePropertyChanged("PasswordLayoutVisibility");
+                OnPropertyChanged("PasswordLayoutVisibility");
             }
         }
 
@@ -274,7 +273,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_recoverUserNameLayout == value) return;
 
                 _recoverUserNameLayout = value;
-                RaisePropertyChanged("RecoverUserNameLayout");
+                OnPropertyChanged("RecoverUserNameLayout");
             }
         }
 
@@ -290,7 +289,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_recoverPasswordLayout == value) return;
 
                 _recoverPasswordLayout = value;
-                RaisePropertyChanged("RecoverPasswordLayout");
+                OnPropertyChanged("RecoverPasswordLayout");
             }
         }
 
@@ -308,7 +307,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_LblCountDownTimer == value) return;
 
                 _LblCountDownTimer = value;
-                RaisePropertyChanged("LblCountDownTimer");
+                OnPropertyChanged("LblCountDownTimer");
             }
         }
 
@@ -324,7 +323,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_ForgotPwHeadingVisibility == value) return;
 
                 _ForgotPwHeadingVisibility = value;
-                RaisePropertyChanged("ForgotPwHeadingVisibility");
+                OnPropertyChanged("ForgotPwHeadingVisibility");
             }
         }
 
@@ -348,7 +347,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     ForgotPwHeadingVisibility = false;
                 }
-                RaisePropertyChanged("VerificationCodeVisibility");
+                OnPropertyChanged("VerificationCodeVisibility");
             }
         }
 
@@ -364,7 +363,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userIDLayoutVisibility == value) return;
 
                 _userIDLayoutVisibility = value;
-                RaisePropertyChanged("UserIDLayoutVisibility");
+                OnPropertyChanged("UserIDLayoutVisibility");
             }
         }
 
@@ -381,25 +380,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_defaultCardLayoutVisibility == value) return;
 
                 _defaultCardLayoutVisibility = value;
-                RaisePropertyChanged("DefaultCardLayoutVisibility");
-            }
-        }
-
-
-
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                if (_isLoading == value) return;
-
-                _isLoading = value;
-                RaisePropertyChanged(() => IsLoading);
+                OnPropertyChanged("DefaultCardLayoutVisibility");
             }
         }
 
@@ -426,7 +407,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
 
-                RaisePropertyChanged("OTPFirstDigit");
+                OnPropertyChanged("OTPFirstDigit");
             }
         }
 
@@ -450,7 +431,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         OTPSecondDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPSecondDigit");
+                OnPropertyChanged("OTPSecondDigit");
             }
         }
 
@@ -474,7 +455,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         OTPThirdDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPThirdDigit");
+                OnPropertyChanged("OTPThirdDigit");
             }
         }
 
@@ -498,7 +479,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         OTPFourthDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPFourthDigit");
+                OnPropertyChanged("OTPFourthDigit");
             }
         }
         // * End
@@ -515,7 +496,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_MinEight == value) return;
 
                 _MinEight = value;
-                RaisePropertyChanged("MinEight");
+                OnPropertyChanged("MinEight");
             }
         }
 
@@ -528,7 +509,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_CapsSmall == value) return;
 
                 _CapsSmall = value;
-                RaisePropertyChanged("CapsSmall");
+                OnPropertyChanged("CapsSmall");
             }
         }
 
@@ -541,7 +522,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_MaxSixteen == value) return;
 
                 _MaxSixteen = value;
-                RaisePropertyChanged("MaxSixteen");
+                OnPropertyChanged("MaxSixteen");
             }
         }
 
@@ -554,7 +535,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_NumSymbol == value) return;
 
                 _NumSymbol = value;
-                RaisePropertyChanged("NumSymbol");
+                OnPropertyChanged("NumSymbol");
             }
         }
         // * End
@@ -572,15 +553,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userNameLayoutVisibility == value) return;
 
                 _userNameLayoutVisibility = value;
-                //if (_userNameLayoutVisibility)
-                //{
-                //    UserIDLayoutVisibility = false;
-                //}
-                //else
-                //{
-                //    UserIDLayoutVisibility = true;
-                //}
-                RaisePropertyChanged(() => UserNameLayoutVisibility);
+                OnPropertyChanged(nameof(UserNameLayoutVisibility));
             }
         }
 
@@ -597,7 +570,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _continueButtonEnability = value;
 
-                RaisePropertyChanged(() => ContinueButtonEnability);
+                OnPropertyChanged(nameof(ContinueButtonEnability));
             }
         }
 
@@ -618,7 +591,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_newPassword == value) return;
 
                 _newPassword = value;
-                RaisePropertyChanged("NewPassword");
+                OnPropertyChanged("NewPassword");
             }
         }
         private string _confirmPassword = "";
@@ -633,7 +606,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_confirmPassword == value) return;
 
                 _confirmPassword = value;
-                RaisePropertyChanged("ConfirmPassword");
+                OnPropertyChanged("ConfirmPassword");
             }
         }
 
@@ -649,7 +622,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_setIDNumberEnability == value) return;
 
                 _setIDNumberEnability = value;
-                RaisePropertyChanged("SetIDNumberEnability");
+                OnPropertyChanged("SetIDNumberEnability");
             }
         }
 
@@ -669,7 +642,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_forgotUserNameCardLayoutVisibility == value) return;
 
                 _forgotUserNameCardLayoutVisibility = value;
-                RaisePropertyChanged("ForgotUserNameCardLayoutVisibility");
+                OnPropertyChanged("ForgotUserNameCardLayoutVisibility");
             }
         }
 
@@ -686,7 +659,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_enteredOTP == value) return;
 
                 _enteredOTP = value;
-                RaisePropertyChanged("EnteredOTP");
+                OnPropertyChanged("EnteredOTP");
             }
         }
 
@@ -703,7 +676,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_continueORConfirmButtonText == value) return;
 
                 _continueORConfirmButtonText = value;
-                RaisePropertyChanged("ContinueORConfirmButtonText");
+                OnPropertyChanged("ContinueORConfirmButtonText");
             }
         }
 
@@ -720,7 +693,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _isResendOTPEnabled = value;
                 // OnResendOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
 
@@ -736,7 +709,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userNameCardBackgroundImg == value) return;
 
                 _userNameCardBackgroundImg = value;
-                RaisePropertyChanged("UserNameCardBackgroundImg");
+                OnPropertyChanged("UserNameCardBackgroundImg");
             }
         }
 
@@ -752,7 +725,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userIcon == value) return;
 
                 _userIcon = value;
-                RaisePropertyChanged("UserIcon");
+                OnPropertyChanged("UserIcon");
             }
         }
 
@@ -768,7 +741,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_passwordCardBackgroundImg == value) return;
 
                 _passwordCardBackgroundImg = value;
-                RaisePropertyChanged("PasswordCardBackgroundImg");
+                OnPropertyChanged("PasswordCardBackgroundImg");
             }
         }
 
@@ -784,7 +757,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_passwordIcon == value) return;
 
                 _passwordIcon = value;
-                RaisePropertyChanged("PasswordIcon");
+                OnPropertyChanged("PasswordIcon");
             }
         }
 
@@ -800,7 +773,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userNameTextColor == value) return;
 
                 _userNameTextColor = value;
-                RaisePropertyChanged("UserNameTextColor");
+                OnPropertyChanged("UserNameTextColor");
             }
         }
 
@@ -816,7 +789,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_passwordTextColor == value) return;
 
                 _passwordTextColor = value;
-                RaisePropertyChanged("PasswordTextColor");
+                OnPropertyChanged("PasswordTextColor");
             }
         }
 
@@ -833,7 +806,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_oTPSentOnThisMobileNumber == value) return;
 
                 _oTPSentOnThisMobileNumber = value;
-                RaisePropertyChanged("OTPSentOnThisMobileNumber");
+                OnPropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
 
@@ -855,7 +828,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isOTPEntryEnable == value) return;
 
                 _isOTPEntryEnable = value;
-                RaisePropertyChanged(() => IsOTPEntryEnable);
+                OnPropertyChanged(nameof(IsOTPEntryEnable));
             }
         }
         private ForgotUserNamePassword _selectedTaxPayerType;
@@ -874,7 +847,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     TxtSelectTaxpayerType = _selectedTaxPayerType.TaxPayerType;
                 }
-                RaisePropertyChanged("SelectedTaxPayerType");
+                OnPropertyChanged("SelectedTaxPayerType");
                 if (SelectedTaxPayerType != null)
                 {
                     SetLayoutVisibilityForSelectedTaxpayerType();
@@ -893,7 +866,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedTaxPayerTypePrev == value) return;
 
                 _selectedTaxPayerTypePrev = value;
-                RaisePropertyChanged("SelectedTaxPayerTypePrev");
+                OnPropertyChanged("SelectedTaxPayerTypePrev");
             }
         }
         private List<ForgotCredentialType> _forgotTypeList;
@@ -908,7 +881,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_forgotTypeList == value) return;
 
                 _forgotTypeList = value;
-                RaisePropertyChanged("ForgotTypeList");
+                OnPropertyChanged("ForgotTypeList");
             }
         }
         private bool _isDropImageVisible;
@@ -918,7 +891,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isDropImageVisible = value;
-                RaisePropertyChanged("IsDropImageVisible");
+                OnPropertyChanged("IsDropImageVisible");
             }
         }
         private List<TIN> _tINs;
@@ -954,7 +927,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsTinDopDownVisible = false;
                 }
 
-                RaisePropertyChanged("TINs");
+                OnPropertyChanged("TINs");
             }
         }
         private String _txtSelectedUsernameAndPassword;
@@ -969,7 +942,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_txtSelectedUsernameAndPassword == value) return;
 
                 _txtSelectedUsernameAndPassword = value;
-                RaisePropertyChanged("TxtSelectedUsernameAndPassword");
+                OnPropertyChanged("TxtSelectedUsernameAndPassword");
             }
         }
         private String _txtSelectTaxpayerType;
@@ -984,7 +957,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_txtSelectTaxpayerType == value) return;
 
                 _txtSelectTaxpayerType = value;
-                RaisePropertyChanged("TxtSelectTaxpayerType");
+                OnPropertyChanged("TxtSelectTaxpayerType");
             }
         }
         private String _txtTIN;
@@ -999,7 +972,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_txtTIN == value) return;
 
                 _txtTIN = value;
-                RaisePropertyChanged("TxtTIN");
+                OnPropertyChanged("TxtTIN");
             }
         }
         private TIN _selectedTinId;
@@ -1020,7 +993,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     //App.CurrentDropdownTIN = SelectedTinId;
                     // Password = string.Empty;
                 }
-                RaisePropertyChanged("SelectedTinId");
+                OnPropertyChanged("SelectedTinId");
             }
         }
         private TIN _selectedTinIdPrev;
@@ -1035,7 +1008,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedTinIdPrev == value) return;
 
                 _selectedTinIdPrev = value;
-                RaisePropertyChanged("SelectedTinIdPrev");
+                OnPropertyChanged("SelectedTinIdPrev");
             }
         }
         private bool _isVisibleTinIds = false;
@@ -1050,7 +1023,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isVisibleTinIds == value) return;
 
                 _isVisibleTinIds = value;
-                RaisePropertyChanged("IsVisibleTinIds");
+                OnPropertyChanged("IsVisibleTinIds");
             }
         }
         private ForgotCredentialType _selectedForgotType;
@@ -1065,7 +1038,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedForgotType == value) return;
 
                 _selectedForgotType = value;
-                RaisePropertyChanged("_selectedForgotType");
+                OnPropertyChanged("_selectedForgotType");
                 if (SelectedForgotType != null)
                 {
                     TxtSelectedUsernameAndPassword = _selectedForgotType.CredentialType;
@@ -1091,7 +1064,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedForgotTypePrev == value) return;
 
                 _selectedForgotTypePrev = value;
-                RaisePropertyChanged("_selectedForgotTypePrev");
+                OnPropertyChanged("_selectedForgotTypePrev");
             }
         }
         private ForgotUserNamePassword _forgotCredentialType;
@@ -1106,7 +1079,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_forgotCredentialType == value) return;
 
                 _forgotCredentialType = value;
-                RaisePropertyChanged("ForgotCredentialType");
+                OnPropertyChanged("ForgotCredentialType");
             }
         }
         private List<ForgotUserNamePassword> _taxpayerTypeList;
@@ -1121,7 +1094,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_taxpayerTypeList == value) return;
 
                 _taxpayerTypeList = value;
-                RaisePropertyChanged("TaxpayerTypeList");
+                OnPropertyChanged("TaxpayerTypeList");
             }
         }
 
@@ -1139,7 +1112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_enteredCaptchaValue == value) return;
 
                 _enteredCaptchaValue = value;
-                RaisePropertyChanged("EnteredCaptchaValue");
+                OnPropertyChanged("EnteredCaptchaValue");
             }
         }
         private string _corporateID;
@@ -1154,7 +1127,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_corporateID == value) return;
 
                 _corporateID = value;
-                RaisePropertyChanged("CorporateID");
+                OnPropertyChanged("CorporateID");
             }
         }
         private string _mobileNumber;
@@ -1169,7 +1142,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_mobileNumber == value) return;
 
                 _mobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
         private string _oTPValidDuration;
@@ -1192,7 +1165,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
-                RaisePropertyChanged("OTPValidDuration");
+                OnPropertyChanged("OTPValidDuration");
             }
         }
         private string _userName;
@@ -1207,7 +1180,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_userName == value) return;
 
                 _userName = value;
-                RaisePropertyChanged("UserName");
+                OnPropertyChanged("UserName");
             }
         }
         private bool _isForgotUserNameWithIndividual = true;
@@ -1222,7 +1195,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isForgotUserNameWithIndividual == value) return;
 
                 _isForgotUserNameWithIndividual = value;
-                RaisePropertyChanged("IsForgotUserName");
+                OnPropertyChanged("IsForgotUserName");
             }
         }
         private bool _isForgotUserNameWithCorporate = false;
@@ -1237,7 +1210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isForgotUserNameWithCorporate == value) return;
 
                 _isForgotUserNameWithCorporate = value;
-                RaisePropertyChanged("IsForgotUserNameWithCorporate");
+                OnPropertyChanged("IsForgotUserNameWithCorporate");
             }
         }
         private bool _isForgotPassword = false;
@@ -1252,7 +1225,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isForgotPassword == value) return;
 
                 _isForgotPassword = value;
-                RaisePropertyChanged("IsForgotPassword");
+                OnPropertyChanged("IsForgotPassword");
             }
         }
         private bool _isTaxPayerTypeEnable = false;
@@ -1267,7 +1240,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isTaxPayerTypeEnable == value) return;
 
                 _isTaxPayerTypeEnable = value;
-                RaisePropertyChanged("IsTaxPayerTypeEnable");
+                OnPropertyChanged("IsTaxPayerTypeEnable");
             }
         }
         private bool _newPasswordLayoutVisibility = false;
@@ -1282,7 +1255,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_newPasswordLayoutVisibility == value) return;
 
                 _newPasswordLayoutVisibility = value;
-                RaisePropertyChanged("NewPasswordLayoutVisibility");
+                OnPropertyChanged("NewPasswordLayoutVisibility");
             }
         }
         private bool _mainPageLayoutVisibility = true;
@@ -1297,7 +1270,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_mainPageLayoutVisibility == value) return;
 
                 _mainPageLayoutVisibility = value;
-                RaisePropertyChanged("MainPageLayoutVisibility");
+                OnPropertyChanged("MainPageLayoutVisibility");
             }
         }
         private bool _oTPLayoutVisibility = false;
@@ -1312,7 +1285,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_oTPLayoutVisibility == value) return;
 
                 _oTPLayoutVisibility = value;
-                RaisePropertyChanged("OTPLayoutVisibility");
+                OnPropertyChanged("OTPLayoutVisibility");
             }
         }
         private bool _navigateToLoginLinkVisibility = false;
@@ -1327,7 +1300,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_navigateToLoginLinkVisibility == value) return;
 
                 _navigateToLoginLinkVisibility = value;
-                RaisePropertyChanged("NavigateToLoginLinkVisibility");
+                OnPropertyChanged("NavigateToLoginLinkVisibility");
             }
         }
 
@@ -1343,7 +1316,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_iDNumberOrCorporateIDOrUserName == value) return;
 
                 _iDNumberOrCorporateIDOrUserName = value;
-                RaisePropertyChanged("IDNumberOrCorporateIDOrUserName");
+                OnPropertyChanged("IDNumberOrCorporateIDOrUserName");
             }
         }
         private string _captcha;
@@ -1358,7 +1331,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_captcha == value) return;
 
                 _captcha = value;
-                RaisePropertyChanged("Captcha");
+                OnPropertyChanged("Captcha");
             }
         }
         private string _forgotPasswordUserNameChangedMessage;
@@ -1373,7 +1346,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_forgotPasswordUserNameChangedMessage == value) return;
 
                 _forgotPasswordUserNameChangedMessage = value;
-                RaisePropertyChanged("ForgotPasswordUserNameChangedMessage");
+                OnPropertyChanged("ForgotPasswordUserNameChangedMessage");
             }
         }
 
@@ -1389,7 +1362,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isIDTypeVisible == value) return;
 
                 _isIDTypeVisible = value;
-                RaisePropertyChanged("IsIDTypeVisible");
+                OnPropertyChanged("IsIDTypeVisible");
             }
         }
         private bool _newPasswordVisibility = false;
@@ -1404,7 +1377,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_newPasswordVisibility == value) return;
 
                 _newPasswordVisibility = value;
-                RaisePropertyChanged("NewPasswordVisibility");
+                OnPropertyChanged("NewPasswordVisibility");
             }
         }
         private Color _buttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -1419,7 +1392,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_buttonDisableColor == value) return;
 
                 _buttonDisableColor = value;
-                RaisePropertyChanged("ButtonDisableColor");
+                OnPropertyChanged("ButtonDisableColor");
             }
         }
 
@@ -1435,7 +1408,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_confirmPasswordVisibility == value) return;
 
                 _confirmPasswordVisibility = value;
-                RaisePropertyChanged("ConfirmPasswordVisibility");
+                OnPropertyChanged("ConfirmPasswordVisibility");
             }
         }
         private bool _isSubmitEnabled = false;
@@ -1450,7 +1423,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isSubmitEnabled == value) return;
 
                 _isSubmitEnabled = value;
-                RaisePropertyChanged("IsSubmitEnabled");
+                OnPropertyChanged("IsSubmitEnabled");
             }
         }
         private Color _submitDisableButtonColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -1465,7 +1438,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_submitDisableButtonColor == value) return;
 
                 _submitDisableButtonColor = value;
-                RaisePropertyChanged("SubmitDisableButtonColor");
+                OnPropertyChanged("SubmitDisableButtonColor");
             }
         }
         private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["Primary"];
@@ -1480,7 +1453,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_verifybuttonDisableColor == value) return;
 
                 _verifybuttonDisableColor = value;
-                RaisePropertyChanged("VerifyButtonDisableColor");
+                OnPropertyChanged("VerifyButtonDisableColor");
             }
         }
         private bool _isVerifyOTPEnabled = true;
@@ -1496,7 +1469,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _isVerifyOTPEnabled = value;
                 OnValidateOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsVerifyOTPEnabled");
+                OnPropertyChanged("IsVerifyOTPEnabled");
             }
         }
         private int _maxChar = 10;
@@ -1511,7 +1484,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_maxChar == value) return;
 
                 _maxChar = value;
-                RaisePropertyChanged("MaxChar");
+                OnPropertyChanged("MaxChar");
             }
         }
         private int _forgotTypeIndex;
@@ -1535,7 +1508,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
 
-                RaisePropertyChanged("ForgotTypeIndex");
+                OnPropertyChanged("ForgotTypeIndex");
             }
         }
 
@@ -1551,7 +1524,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedTaxPayerTypeIndex == value) return;
 
                 _selectedTaxPayerTypeIndex = value;
-                RaisePropertyChanged("SelectedTaxPayerTypeIndex");
+                OnPropertyChanged("SelectedTaxPayerTypeIndex");
             }
         }
 
@@ -1567,7 +1540,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_corporateCardBackgroundImg == value) return;
 
                 _corporateCardBackgroundImg = value;
-                RaisePropertyChanged(nameof(CorporateCardBackgroundImg));
+                OnPropertyChanged(nameof(CorporateCardBackgroundImg));
             }
         }
 
@@ -1583,7 +1556,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_individualOrPersonalBusinessCardBackgroundImg == value) return;
 
                 _individualOrPersonalBusinessCardBackgroundImg = value;
-                RaisePropertyChanged(nameof(IndividualOrPersonalBusinessCardBackgroundImg));
+                OnPropertyChanged(nameof(IndividualOrPersonalBusinessCardBackgroundImg));
             }
         }
 
@@ -1599,7 +1572,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_corporateTextColor == value) return;
 
                 _corporateTextColor = value;
-                RaisePropertyChanged(nameof(CorporateTextColor));
+                OnPropertyChanged(nameof(CorporateTextColor));
             }
         }
 
@@ -1615,7 +1588,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_individualOrPersonalBusinessTextColor == value) return;
 
                 _individualOrPersonalBusinessTextColor = value;
-                RaisePropertyChanged(nameof(IndividualOrPersonalBusinessTextColor));
+                OnPropertyChanged(nameof(IndividualOrPersonalBusinessTextColor));
             }
         }
         private string imageBase64;
@@ -1625,7 +1598,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 imageBase64 = value;
-                RaisePropertyChanged("ImageBase64");
+                OnPropertyChanged("ImageBase64");
 
                 Image = ImageSource.FromStream(
                     () => new MemoryStream(Convert.FromBase64String(imageBase64)));
@@ -1639,27 +1612,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 image = value;
-                RaisePropertyChanged("Image");
+                OnPropertyChanged("Image");
             }
         }
         #endregion
         #region Constructor
         public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-
-
-
-
             OnContinueClick = new Command(async () =>
             {
                 if (StartPage == 2)

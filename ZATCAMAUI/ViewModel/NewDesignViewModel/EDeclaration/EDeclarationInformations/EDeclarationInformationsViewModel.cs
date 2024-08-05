@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models.EDeclerationsModel;
 using ZATCAMAUI.Core.Services.Interface;
@@ -9,6 +9,7 @@ using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Models;
 using Mopups.Services;
 using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -31,13 +32,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
         List<CountryModel> countries = new List<CountryModel>();
 
         string refNo;
-        public string RefNo { get { return refNo; } set { refNo = value; RaisePropertyChanged(); } }
+        public string RefNo { get { return refNo; } set { refNo = value; OnPropertyChanged(); } }
 
         DateTime _MinimumDate = DateTime.Now.Date;
-        public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; RaisePropertyChanged(); } }
+        public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; OnPropertyChanged(); } }
 
         DateTime _MaximumDate = DateTime.Now.Date.AddHours(-24);
-        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
+        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; OnPropertyChanged(); } }
         #endregion
 
 

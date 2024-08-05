@@ -1,5 +1,5 @@
 ﻿using AppDynamics.Agent;
-using GalaSoft.MvvmLight.Views;
+
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -147,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_appVersion == value) return;
 
                 _appVersion = value;
-                RaisePropertyChanged("AppVersion");
+                OnPropertyChanged("AppVersion");
             }
         }
         public string DeviceId { get; set; }
@@ -168,7 +168,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 }
 
                 password = value;
-                this.RaisePropertyChanged("Password");
+                this.OnPropertyChanged("Password");
             }
         }
         public string Email
@@ -199,7 +199,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 {
                     IsLoginEnabled = true;
                 }
-                RaisePropertyChanged("Email");
+                OnPropertyChanged("Email");
             }
         }
         private bool _IsSAMLLoginEnabled;
@@ -212,7 +212,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             set
             {
                 if (_IsSAMLLoginEnabled == value) return;
-                RaisePropertyChanged("IsSAMLLoginEnabled");
+                OnPropertyChanged("IsSAMLLoginEnabled");
             }
         }
         private bool _IsOldLoginHidden;
@@ -226,7 +226,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             {
                 if (_IsOldLoginHidden == value) return;
 
-                RaisePropertyChanged("IsOldLoginHidden");
+                OnPropertyChanged("IsOldLoginHidden");
             }
         }
         private bool _IsFocused = false;
@@ -259,7 +259,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                         }
                     }
                 }
-                RaisePropertyChanged("IsFocused");
+                OnPropertyChanged("IsFocused");
             }
         }
         private string _PreviousUserName = string.Empty;
@@ -289,7 +289,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_tINID == value) return;
 
                 _tINID = value;
-                RaisePropertyChanged("TINID");
+                OnPropertyChanged("TINID");
             }
         }
         private bool _isLoginEnabled = false;
@@ -304,7 +304,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_isLoginEnabled == value) return;
 
                 _isLoginEnabled = value;
-                RaisePropertyChanged("IsLoginEnabled");
+                OnPropertyChanged("IsLoginEnabled");
             }
         }
         private int _tINIndex = 0;
@@ -319,7 +319,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_tINIndex == value) return;
 
                 _tINIndex = value;
-                RaisePropertyChanged("TINIndex");
+                OnPropertyChanged("TINIndex");
             }
         }
         private List<TIN> _tINs;
@@ -334,7 +334,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_tINs == value) return;
 
                 _tINs = value;
-                RaisePropertyChanged("TINs");
+                OnPropertyChanged("TINs");
             }
         }
         private TIN _selectedTinId;
@@ -355,7 +355,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     TINID = _selectedTinId.Tin;
                     Password = string.Empty;
                 }
-                RaisePropertyChanged("SelectedTinId");
+                OnPropertyChanged("SelectedTinId");
             }
         }
         private TIN _selectedTinIdPrev;
@@ -370,7 +370,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_selectedTinIdPrev == value) return;
 
                 _selectedTinIdPrev = value;
-                RaisePropertyChanged("SelectedTinIdPrev");
+                OnPropertyChanged("SelectedTinIdPrev");
             }
         }
         private bool _passwordVisibility = true;
@@ -385,7 +385,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 if (_passwordVisibility == value) return;
 
                 _passwordVisibility = value;
-                RaisePropertyChanged("PasswordVisibility");
+                OnPropertyChanged("PasswordVisibility");
             }
         }
         private bool _isVisibleTinIds = false;
@@ -472,7 +472,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                         }
                     });
                 }
-                RaisePropertyChanged("IsVisibleTinIds");
+                OnPropertyChanged("IsVisibleTinIds");
             }
         }
         private string _NavigaateToThisService = string.Empty;
