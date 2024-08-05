@@ -73,6 +73,10 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsLoading = true;
                             }
+                            if(obj == "navigateBackToLoginPage")
+                            {
+                                viewModel.Goback();
+                            }
                             
                         });
                     });

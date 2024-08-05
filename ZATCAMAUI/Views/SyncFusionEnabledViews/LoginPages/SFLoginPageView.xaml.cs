@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Resources;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount;
@@ -326,6 +327,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                             {
                                 App.IsLoginCalled = false;
                                 OnAppearing();
+                            }
+                            if (data == ZATCAConstants.AppChangeMobCompanay)
+                            {
+                                viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, "");
+                            }
+
+                            if (data == ZATCAConstants.AppChangeMobCompanayNafath)
+                            {
+                                if (App.GUIDFrChangeMob.Contains(ZATCAConstants.WebKeyChangeMobCompanayNafath))
+                                {
+                                    var guid = App.GUIDFrChangeMob.Split("guid=")[1];
+                                    viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, guid);
+                                }
                             }
 
                             else if (data == "error")

@@ -7,9 +7,7 @@
     <ContentPage.Content>
         <Grid>
             <Grid
-                x:Name="RegnagaftGrid"
-                HeightRequest="1000"
-                WidthRequest="1000">
+                x:Name="RegnagaftGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*" />
                 </Grid.RowDefinitions>

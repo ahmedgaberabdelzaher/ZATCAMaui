@@ -24,7 +24,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
 
-        <ScrollView>
+        <ScrollView BackgroundColor="White">
             <StackLayout>
 
                 <Grid>
@@ -45,12 +45,24 @@
                                 Grid.Row="0"
                                 Orientation="Vertical"
                                 VerticalOptions="StartAndExpand">
-
-                                <Label
-                                    Margin="8"
-                                    Style="{StaticResource PageTitleBlack}"
-                                    Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}" />
-                                <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Image
+                                    Margin="0"
+                                    HorizontalOptions="Start"
+                                    Source="arrowLeft.png"
+                                    Style="{DynamicResource BackButtonArrow}"
+                                    VerticalOptions="CenterAndExpand">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BackButtonClicked}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label
+                                        Margin="8"
+                                        Style="{StaticResource PageTitleBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}" />
+                                </StackLayout>
+                                
+                                <BoxView Margin="5" BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
                                 <Border
                                     Margin="0,0,0,10"
                                     Stroke="#B1B1B1"
@@ -222,7 +234,7 @@
                                                     TextColor="{StaticResource NeutralBlack}" />
                                             </Border>
                                         </StackLayout>
-                                        <StackLayout Margin="8,0,8,0" Orientation="Vertical">
+                                        <StackLayout Margin="8,0,8,8" Orientation="Vertical">
                                             <Label
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="14"

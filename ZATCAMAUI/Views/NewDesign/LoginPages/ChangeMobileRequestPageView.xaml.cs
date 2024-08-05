@@ -21,6 +21,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
 			this.BindingContext = viewModel = App.Locator.ChangeMobileRequestPageView;
             On<iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
+            SetLTR();
             InitializePopups();
 
             setDefaults();
@@ -47,6 +48,17 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
                 viewModel.GetCaptchAndGUID("CHMB");
             }
 
+        }
+        private void SetLTR()
+        {
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
         }
 
         private void setDefaults()

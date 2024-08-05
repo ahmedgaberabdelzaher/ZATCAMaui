@@ -22,6 +22,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
+        public ICommand BackButtonClicked { get; set; }
         public ICommand ShowIdTypePicker { get; set; }
         public ICommand ContinueBtnTapped { get; set; }
         public ICommand ContinueBtnTapped2 { get; set; }
@@ -433,6 +434,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 throw new ArgumentNullException("dialogService");
             }
+            BackButtonClicked = new Command(() =>
+            {
+                _navigationService.GoBack();
+            }); 
+
             ShowIdTypePicker = new Command(async () =>
             {
                 await ShowIDTypeDialogAsync();
