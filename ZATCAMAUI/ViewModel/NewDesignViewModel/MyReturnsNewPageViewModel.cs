@@ -1,10 +1,11 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -14,8 +15,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
     public class GAZTNewDesignMyReturnsNewPageViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnVerifyButtonClicked { get; set; }
         public MyReturnsRootObject MyReturns { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
@@ -35,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_returnTypeForFilter == value) return;
                 _returnTypeForFilter = value;
-                RaisePropertyChanged("ReturnTypeForFilter");
+                OnPropertyChanged("ReturnTypeForFilter");
             }
         }
 
@@ -51,7 +50,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_TaxTypeForFilter == value) return;
 
                 _TaxTypeForFilter = value;
-                RaisePropertyChanged("TaxTypeForFilter");
+                OnPropertyChanged("TaxTypeForFilter");
             }
         }
 
@@ -72,7 +71,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterOnBasisOfTaxType();
 
                 }
-                RaisePropertyChanged("SelectedTaxTypeForFilter");
+                OnPropertyChanged("SelectedTaxTypeForFilter");
             }
 
         }
@@ -88,7 +87,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isListVisible == value) return;
 
                 _isListVisible = value;
-                RaisePropertyChanged("IsListVisible");
+                OnPropertyChanged("IsListVisible");
             }
         }
 
@@ -104,7 +103,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_index == value) return;
 
                 _index = value;
-                RaisePropertyChanged("Index");
+                OnPropertyChanged("Index");
             }
         }
         public bool _setNoDataLabelVisibilityALL = true;
@@ -119,7 +118,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_setNoDataLabelVisibilityALL == value) return;
 
                 _setNoDataLabelVisibilityALL = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityALL");
+                OnPropertyChanged("SetNoDataLabelVisibilityALL");
             }
         }
         private MyReturnsResult _selectedListItem = null;
@@ -135,7 +134,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _selectedListItem = value;
 
                 
-                RaisePropertyChanged("SelectedListItem");
+                OnPropertyChanged("SelectedListItem");
 
             }
         }
@@ -169,7 +168,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterOnBasisOfTaxType();
 
                 }
-                RaisePropertyChanged("SelectedChipFilterItem");
+                OnPropertyChanged("SelectedChipFilterItem");
             }
         }
         public ObservableCollection<ChipModel> _chipDataFilterlist = new ObservableCollection<ChipModel>();
@@ -184,7 +183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_chipDataFilterlist == value) return;
 
                 _chipDataFilterlist = value;
-                RaisePropertyChanged("ChipDataFilterlist");
+                OnPropertyChanged("ChipDataFilterlist");
             }
         }
 
@@ -204,7 +203,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_filterLabelText == value) return;
 
                 _filterLabelText = value;
-                RaisePropertyChanged("FilterLabelText");
+                OnPropertyChanged("FilterLabelText");
             }
         }
         
@@ -221,7 +220,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isArabic == value) return;
 
                 _isArabic = value;
-                RaisePropertyChanged("IsArabic");
+                OnPropertyChanged("IsArabic");
             }
         }
 
@@ -258,7 +257,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 }
                 //Sum(emp => emp.Salary);
-                RaisePropertyChanged("ListToDisplay");
+                OnPropertyChanged("ListToDisplay");
             }
         }
 
@@ -271,7 +270,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_pickerModel == value) return;
 
                 _pickerModel = value;
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
 
@@ -287,7 +286,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isLoading == value) return;
 
                 _isLoading = value;
-                RaisePropertyChanged("IsLoading");
+                OnPropertyChanged("IsLoading");
             }
         }
         #endregion
@@ -295,16 +294,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #region Constructor
         public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             OnBackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();

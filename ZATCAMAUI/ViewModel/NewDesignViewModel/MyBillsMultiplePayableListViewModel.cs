@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Collections.ObjectModel;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
@@ -29,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 multiplePayableBills = value;
 
-                RaisePropertyChanged("MultiplePayableBills");
+                OnPropertyChanged("MultiplePayableBills");
             }
         }
     }

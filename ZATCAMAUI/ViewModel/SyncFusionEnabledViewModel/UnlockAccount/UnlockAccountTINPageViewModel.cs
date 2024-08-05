@@ -1,10 +1,11 @@
 ﻿using System.Text;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -37,9 +38,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
         public int numberOfSeconds = 120;
 
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         private int _currentAttempts = 0;
         public int currentAttempts
         {
@@ -63,7 +61,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     numberOfSeconds = 0;
                     TotalSec = 0;
                 }
-                RaisePropertyChanged("currentAttempts");
+                OnPropertyChanged("currentAttempts");
             }
         }
 
@@ -79,7 +77,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isTinContentViewVisible = value;
-                RaisePropertyChanged("IsTinContentViewVisible");
+                OnPropertyChanged("IsTinContentViewVisible");
             }
         }
 
@@ -93,7 +91,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isOTPContentViewVisible = value;
-                RaisePropertyChanged("IsOTPContentViewVisible");
+                OnPropertyChanged("IsOTPContentViewVisible");
             }
         }
 
@@ -107,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isChangePasswordViewVisible = value;
-                RaisePropertyChanged("IsChangePasswordViewVisible");
+                OnPropertyChanged("IsChangePasswordViewVisible");
             }
         }
 
@@ -121,7 +119,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isAccountUnlockedSuccessViewVisible = value;
-                RaisePropertyChanged("IsAccountUnlockedSuccessViewVisible");
+                OnPropertyChanged("IsAccountUnlockedSuccessViewVisible");
             }
         }
 
@@ -135,7 +133,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _verifyButtonText = value;
-                RaisePropertyChanged("VerifyButtonText");
+                OnPropertyChanged("VerifyButtonText");
             }
         }
 
@@ -149,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _verifybuttonDisableColor = value;
-                RaisePropertyChanged("VerifyButtonDisableColor");
+                OnPropertyChanged("VerifyButtonDisableColor");
             }
         }
 
@@ -163,7 +161,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _txtTIN = value;
-                RaisePropertyChanged("TxtTIN");
+                OnPropertyChanged("TxtTIN");
             }
         }
 
@@ -177,7 +175,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _otpFirstDigit = value;
-                RaisePropertyChanged("OtpFirstDigit");
+                OnPropertyChanged("OtpFirstDigit");
             }
         }
 
@@ -191,7 +189,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _otpSecondDigit = value;
-                RaisePropertyChanged("OtpSecondDigit");
+                OnPropertyChanged("OtpSecondDigit");
             }
         }
 
@@ -205,7 +203,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _otpThirdDigit = value;
-                RaisePropertyChanged("OtpThirdDigit");
+                OnPropertyChanged("OtpThirdDigit");
             }
         }
 
@@ -220,7 +218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 _otpFourthDigit = value;
 
-                RaisePropertyChanged("OtpFourthDigit");
+                OnPropertyChanged("OtpFourthDigit");
 
                 if (_otpFourthDigit.Length > 0)
                 {
@@ -245,7 +243,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _MinEight = value;
-                RaisePropertyChanged("MinEight");
+                OnPropertyChanged("MinEight");
             }
         }
 
@@ -256,7 +254,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _CapsSmall = value;
-                RaisePropertyChanged("CapsSmall");
+                OnPropertyChanged("CapsSmall");
             }
         }
 
@@ -267,7 +265,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _MaxSixteen = value;
-                RaisePropertyChanged("MaxSixteen");
+                OnPropertyChanged("MaxSixteen");
             }
         }
 
@@ -278,7 +276,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _NumSymbol = value;
-                RaisePropertyChanged("NumSymbol");
+                OnPropertyChanged("NumSymbol");
             }
         }
         // * End
@@ -293,7 +291,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isOtpAPICalled = value;
-                RaisePropertyChanged("IsOtpAPICalled");
+                OnPropertyChanged("IsOtpAPICalled");
             }
         }
 
@@ -307,7 +305,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _prevOtp = value;
-                RaisePropertyChanged("PrevOtp");
+                OnPropertyChanged("PrevOtp");
             }
         }
 
@@ -321,7 +319,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _newOtp = value;
-                RaisePropertyChanged("PrevOtp");
+                OnPropertyChanged("PrevOtp");
             }
         }
 
@@ -335,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isPasswordEncripted = value;
-                RaisePropertyChanged("IsPasswordEncripted");
+                OnPropertyChanged("IsPasswordEncripted");
             }
         }
         private bool _isConfirmPasswordEncripted = true;
@@ -348,7 +346,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isConfirmPasswordEncripted = value;
-                RaisePropertyChanged("IsConfirmPasswordEncripted");
+                OnPropertyChanged("IsConfirmPasswordEncripted");
             }
         }
 
@@ -362,7 +360,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _framePasswordError = value;
-                RaisePropertyChanged("FramePasswordError");
+                OnPropertyChanged("FramePasswordError");
             }
         }
         private bool _frameConfirmPasswordError = false;
@@ -375,7 +373,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _frameConfirmPasswordError = value;
-                RaisePropertyChanged("FrameConfirmPasswordError");
+                OnPropertyChanged("FrameConfirmPasswordError");
             }
         }
 
@@ -389,7 +387,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _password = value;
-                RaisePropertyChanged("Password");
+                OnPropertyChanged("Password");
             }
         }
 
@@ -403,7 +401,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _confirmPassword = value;
-                RaisePropertyChanged("ConfirmPassword");
+                OnPropertyChanged("ConfirmPassword");
             }
         }
 
@@ -417,7 +415,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _mobileNumberMasked = value;
-                RaisePropertyChanged("MobileNumberMasked");
+                OnPropertyChanged("MobileNumberMasked");
             }
         }
 
@@ -431,7 +429,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _passwordChangedSuccessfully = value;
-                RaisePropertyChanged("PasswordChangedSuccessfully");
+                OnPropertyChanged("PasswordChangedSuccessfully");
             }
         }
 
@@ -445,7 +443,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _unlockAccountModel = value;
-                RaisePropertyChanged("UnlockAccountModel");
+                OnPropertyChanged("UnlockAccountModel");
             }
         }
 
@@ -459,7 +457,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _unlockAccountModelOtp = value;
-                RaisePropertyChanged("UnlockAccountModelOtp");
+                OnPropertyChanged("UnlockAccountModelOtp");
             }
         }
 
@@ -473,7 +471,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _unlockAccountModelChangePassword = value;
-                RaisePropertyChanged("UnlockAccountModelChangePassword");
+                OnPropertyChanged("UnlockAccountModelChangePassword");
             }
         }
 
@@ -487,7 +485,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _unlockAccountModelResponse = value;
-                RaisePropertyChanged("UnlockAccountModelResponse");
+                OnPropertyChanged("UnlockAccountModelResponse");
             }
         }
 
@@ -501,7 +499,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _continueButtonnBackroundColor = value;
-                RaisePropertyChanged("ContinueButtonnBackroundColor");
+                OnPropertyChanged("ContinueButtonnBackroundColor");
             }
         }
 
@@ -523,7 +521,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 {
                     ContinueButtonnBackroundColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IsContinueButtonEnable");
+                OnPropertyChanged("IsContinueButtonEnable");
             }
         }
 
@@ -538,7 +536,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 _isResendOTPEnabled = value;
                 OnResendOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
 
@@ -563,7 +561,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 _isVerifyOTPEnabled = value;
                 ConfirmOtpBtnClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsVerifyOTPEnabled");
+                OnPropertyChanged("IsVerifyOTPEnabled");
             }
         }
 
@@ -577,7 +575,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isOTPEntryEnable = value;
-                RaisePropertyChanged(() => IsOTPEntryEnable);
+                OnPropertyChanged(nameof( IsOTPEntryEnable));
             }
         }
         private Color _buttonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
@@ -590,7 +588,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _buttonDisableColor = value;
-                RaisePropertyChanged("ButtonDisableColor");
+                OnPropertyChanged("ButtonDisableColor");
             }
         }
 
@@ -613,7 +611,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     IsOTPEntryEnable = false;
 
                 }
-                RaisePropertyChanged("OTPValidDuration");
+                OnPropertyChanged("OTPValidDuration");
             }
         }
 
@@ -623,17 +621,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         /// </summary>
         public UnlockAccountTINPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
             OtpFirstDigit = string.Empty;
             OtpSecondDigit = string.Empty;
             OtpThirdDigit = string.Empty;

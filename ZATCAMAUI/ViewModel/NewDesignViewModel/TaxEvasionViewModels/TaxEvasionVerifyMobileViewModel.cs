@@ -1,8 +1,9 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -30,7 +31,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 if (_ResendOtpButtonColor == value) return;
                 _ResendOtpButtonColor = value;
-                RaisePropertyChanged("ResendOtpButtonColor");
+                OnPropertyChanged("ResendOtpButtonColor");
             }
         }
         private bool _isShowMobileInput = false;
@@ -45,7 +46,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_isShowMobileInput == value) return;
 
                 _isShowMobileInput = value;
-                RaisePropertyChanged("IsShowMobileInput");
+                OnPropertyChanged("IsShowMobileInput");
             }
         }
         private bool _isShowOTPInput = false;
@@ -60,7 +61,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_isShowOTPInput == value) return;
 
                 _isShowOTPInput = value;
-                RaisePropertyChanged("IsShowOTPInput");
+                OnPropertyChanged("IsShowOTPInput");
             }
         }
         private string _pageTitle = "";
@@ -75,7 +76,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_pageTitle == value) return;
 
                 _pageTitle = value;
-                RaisePropertyChanged("PageTitle");
+                OnPropertyChanged("PageTitle");
             }
         }
         private string _pageTitleTag = "";
@@ -90,7 +91,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_pageTitleTag == value) return;
 
                 _pageTitleTag = value;
-                RaisePropertyChanged("PageTitleTag");
+                OnPropertyChanged("PageTitleTag");
             }
         }
         private string _mobileNumber = "";
@@ -105,7 +106,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_mobileNumber == value) return;
 
                 _mobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
         private string _mobileNumberPrefix = "";
@@ -120,7 +121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_mobileNumberPrefix == value) return;
 
                 _mobileNumberPrefix = value;
-                RaisePropertyChanged("MobileNumberPrefix");
+                OnPropertyChanged("MobileNumberPrefix");
             }
         }
         // * OTP Verification Properties
@@ -145,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     }
                 }
 
-                RaisePropertyChanged("OTPFirstDigit");
+                OnPropertyChanged("OTPFirstDigit");
             }
         }
 
@@ -169,7 +170,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         OTPSecondDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPSecondDigit");
+                OnPropertyChanged("OTPSecondDigit");
             }
         }
 
@@ -193,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         OTPThirdDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPThirdDigit");
+                OnPropertyChanged("OTPThirdDigit");
             }
         }
 
@@ -217,7 +218,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         OTPFourthDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPFourthDigit");
+                OnPropertyChanged("OTPFourthDigit");
             }
         }
         // * End
@@ -233,7 +234,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_enteredOTP == value) return;
 
                 _enteredOTP = value;
-                RaisePropertyChanged("EnteredOTP");
+                OnPropertyChanged("EnteredOTP");
             }
         }
         private string _oTPSentOnThisMobileNumber = string.Empty;
@@ -248,7 +249,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_oTPSentOnThisMobileNumber == value) return;
 
                 _oTPSentOnThisMobileNumber = value;
-                RaisePropertyChanged("OTPSentOnThisMobileNumber");
+                OnPropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
         private string _EncriptedMobileNumber = string.Empty;
@@ -263,7 +264,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_EncriptedMobileNumber == value) return;
 
                 _EncriptedMobileNumber = value;
-                RaisePropertyChanged("EncriptedMobileNumber");
+                OnPropertyChanged("EncriptedMobileNumber");
             }
         }
         //timer
@@ -280,7 +281,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_lblCountDownTimer == value) return;
 
                 _lblCountDownTimer = value;
-                RaisePropertyChanged("LblCountDownTimer");
+                OnPropertyChanged("LblCountDownTimer");
             }
         }
         private bool _isResendOTPEnabled = false;
@@ -303,7 +304,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 {
                     ResendOtpButtonColor = (Color)Application.Current.Resources["NeutralGreay"];
                 }
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
         private bool _isTimerCancel = false;
@@ -318,21 +319,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_isTimerCancel == value) return;
 
                 _isTimerCancel = value;
-                RaisePropertyChanged("IsTimerCancel");
+                OnPropertyChanged("IsTimerCancel");
             }
         }
         //end timer
         #endregion
         public TaxEvasionVerifyMobileViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
             IsShowMobileInput = true;
             IsShowOTPInput = false;

@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
@@ -14,14 +15,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public RefundAccountPopupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
+            
         }
 
         #region Properties
@@ -36,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_vATDeclarationDetails == value) return;
                 _vATDeclarationDetails = value;
-                RaisePropertyChanged("VATDeclarationDetails");
+                OnPropertyChanged("VATDeclarationDetails");
             }
         }
         private VATDeclarationD _responseVATDeclarationD;
@@ -51,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_responseVATDeclarationD == value) return;
 
                 _responseVATDeclarationD = value;
-                RaisePropertyChanged("ResponseVATDeclarationD");
+                OnPropertyChanged("ResponseVATDeclarationD");
             }
         }
         private Result6 _vATNewModelFor15Percent;
@@ -66,7 +60,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vATNewModelFor15Percent == value) return;
 
                 _vATNewModelFor15Percent = value;
-                RaisePropertyChanged("VATNewModelFor15Percent");
+                OnPropertyChanged("VATNewModelFor15Percent");
             }
         }
         private Result6 _vATNewModelFor5Percent;
@@ -81,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vATNewModelFor5Percent == value) return;
 
                 _vATNewModelFor5Percent = value;
-                RaisePropertyChanged("VATNewModelFor5Percent");
+                OnPropertyChanged("VATNewModelFor5Percent");
             }
         }
         private List<Attachment> _dummyaTTACHSetsList;
@@ -96,7 +90,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_dummyaTTACHSetsList == value) return;
 
                 _dummyaTTACHSetsList = value;
-                RaisePropertyChanged("DummyATTACHSetsList");
+                OnPropertyChanged("DummyATTACHSetsList");
             }
         }
         private List<Attachment> _aTTACHSetsList;
@@ -111,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_aTTACHSetsList == value) return;
 
                 _aTTACHSetsList = value;
-                RaisePropertyChanged("ATTACHSetsList");
+                OnPropertyChanged("ATTACHSetsList");
             }
         }
         private IBANType _selectedIBANType;
@@ -134,7 +128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 else
                 {
                 }
-                RaisePropertyChanged("SelectedIBANType");
+                OnPropertyChanged("SelectedIBANType");
             }
         }
         private IBANType _selectedIBANTypePrev;
@@ -149,7 +143,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedIBANTypePrev == value) return;
 
                 _selectedIBANTypePrev = value;
-                RaisePropertyChanged("SelectedIBANTypePrev");
+                OnPropertyChanged("SelectedIBANTypePrev");
             }
         }
         private List<IBANIDNumber> _iBANIDNumberList;
@@ -164,7 +158,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_iBANIDNumberList == value) return;
 
                 _iBANIDNumberList = value;
-                RaisePropertyChanged("IBANIDNumberList");
+                OnPropertyChanged("IBANIDNumberList");
             }
         }
         private IBANIDNumber _selectedIBANIDNumber;
@@ -187,7 +181,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     TxtSelectedIBANIDNumber = string.Empty;
                 }
-                RaisePropertyChanged("SelectedIBANIDNumber");
+                OnPropertyChanged("SelectedIBANIDNumber");
             }
         }
         private IBANIDNumber _selectedIBANIDNumberPrev;
@@ -202,7 +196,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_selectedIBANIDNumberPrev == value) return;
 
                 _selectedIBANIDNumberPrev = value;
-                RaisePropertyChanged("SelectedIBANIDNumberPrev");
+                OnPropertyChanged("SelectedIBANIDNumberPrev");
             }
         }
         private string _TxtSelectedIBANIDNumber;
@@ -217,7 +211,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_TxtSelectedIBANIDNumber == value) return;
 
                 _TxtSelectedIBANIDNumber = value;
-                RaisePropertyChanged("TxtSelectedIBANIDNumber");
+                OnPropertyChanged("TxtSelectedIBANIDNumber");
             }
         }
         private string _txtSelectedIBANType;
@@ -232,7 +226,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_txtSelectedIBANType == value) return;
 
                 _txtSelectedIBANType = value;
-                RaisePropertyChanged("TxtSelectedIBANType");
+                OnPropertyChanged("TxtSelectedIBANType");
             }
         }
         private bool _isRefundVisible = false;
@@ -247,7 +241,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isRefundVisible == value) return;
 
                 _isRefundVisible = value;
-                RaisePropertyChanged("IsRefundVisible");
+                OnPropertyChanged("IsRefundVisible");
             }
         }
         private bool _isVisibleDropdownForRefund;
@@ -262,7 +256,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isVisibleDropdownForRefund == value) return;
 
                 _isVisibleDropdownForRefund = value;
-                RaisePropertyChanged("IsVisibleDropdownForRefund");
+                OnPropertyChanged("IsVisibleDropdownForRefund");
             }
         }
         private bool _IsVisiblechkRefundDeclaration = false;
@@ -277,7 +271,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_IsVisiblechkRefundDeclaration == value) return;
 
                 _IsVisiblechkRefundDeclaration = value;
-                RaisePropertyChanged("IsVisiblechkRefundDeclaration");
+                OnPropertyChanged("IsVisiblechkRefundDeclaration");
             }
         }
         private bool _isTextBoxVisibleForIban;
@@ -292,7 +286,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isTextBoxVisibleForIban == value) return;
 
                 _isTextBoxVisibleForIban = value;
-                RaisePropertyChanged("IsTextBoxVisibleForIban");
+                OnPropertyChanged("IsTextBoxVisibleForIban");
             }
         }
         private bool _isDropdownVisibleForIban;
@@ -307,7 +301,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isDropdownVisibleForIban == value) return;
 
                 _isDropdownVisibleForIban = value;
-                RaisePropertyChanged("IsDropdownVisibleForIban");
+                OnPropertyChanged("IsDropdownVisibleForIban");
             }
         }
         private bool _isMainButtonEnabled;
@@ -322,7 +316,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isDropdownVisibleForIban == value) return;
 
                 _isMainButtonEnabled = value;
-                RaisePropertyChanged("IsMainButtonEnabled");
+                OnPropertyChanged("IsMainButtonEnabled");
             }
         }
 
@@ -339,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isCheckedRefund = value;
-                RaisePropertyChanged("IsCheckedRefund");
+                OnPropertyChanged("IsCheckedRefund");
             }
         }
         private string _ibanNumberText;
@@ -352,7 +346,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _ibanNumberText = value;
-                RaisePropertyChanged("IbanNumberText");
+                OnPropertyChanged("IbanNumberText");
             }
         }
         private bool _isIBANValid;
@@ -365,7 +359,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isIBANValid = value;
-                RaisePropertyChanged("IsIBANValid");
+                OnPropertyChanged("IsIBANValid");
             }
         }
 
@@ -387,7 +381,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         IbanNumberText = _selectedIBAN.Iban;
                     }
                 }
-                RaisePropertyChanged("SelectedIBAN");
+                OnPropertyChanged("SelectedIBAN");
             }
         }
         private string _txtSelectedIBAN;
@@ -400,7 +394,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _txtSelectedIBAN = value;
-                RaisePropertyChanged("TxtSelectedIBAN");
+                OnPropertyChanged("TxtSelectedIBAN");
             }
         }
         private ObservableCollection<Result2> _iBANList;
@@ -413,7 +407,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _iBANList = value;
-                RaisePropertyChanged("IBANList");
+                OnPropertyChanged("IBANList");
             }
         }
         private bool _isNewLoading = false;
@@ -426,7 +420,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isNewLoading = value;
-                RaisePropertyChanged("IsNewLoading");
+                OnPropertyChanged("IsNewLoading");
             }
         }
 
@@ -440,7 +434,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _IsCarriedForwandReviewMessageForRefund = value;
-                RaisePropertyChanged("IsCarriedForwandReviewMessageForRefund");
+                OnPropertyChanged("IsCarriedForwandReviewMessageForRefund");
             }
         }
 
@@ -454,7 +448,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isRefundYesMsgDisplayed = value;
-                RaisePropertyChanged("IsRefundYesMsgDisplayed");
+                OnPropertyChanged("IsRefundYesMsgDisplayed");
             }
         }
 
@@ -468,7 +462,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isDeclarationCheckedForRefund = value;
-                RaisePropertyChanged("IsDeclarationCheckedForRefund");
+                OnPropertyChanged("IsDeclarationCheckedForRefund");
             }
         }
 
@@ -484,7 +478,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isNewAccountText = value;
-                RaisePropertyChanged("NewAccountText");
+                OnPropertyChanged("NewAccountText");
             }
         }
         private bool _isEnableIBAN;
@@ -497,7 +491,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isEnableIBAN = value;
-                RaisePropertyChanged("IsEnableIBAN");
+                OnPropertyChanged("IsEnableIBAN");
             }
         }
         private bool _isVATRefunCheckedVisible;
@@ -510,7 +504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isVATRefunCheckedVisible = value;
-                RaisePropertyChanged("IsVATRefunCheckedVisible");
+                OnPropertyChanged("IsVATRefunCheckedVisible");
             }
         }
         private bool _isEnableCheckedRefund = true;
@@ -523,7 +517,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isEnableCheckedRefund = value;
-                RaisePropertyChanged("IsEnableCheckedRefund");
+                OnPropertyChanged("IsEnableCheckedRefund");
             }
         }
         private bool _isNewAccountButtonVisible = false;
@@ -536,7 +530,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isNewAccountButtonVisible = value;
-                RaisePropertyChanged("IsNewAccountButtonVisible");
+                OnPropertyChanged("IsNewAccountButtonVisible");
             }
         }
         private VATDeclaration _vATDeclarationDataDummy;
@@ -549,7 +543,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _vATDeclarationDataDummy = value;
-                RaisePropertyChanged("VATDeclarationDataDummy");
+                OnPropertyChanged("VATDeclarationDataDummy");
             }
         }
         private bool _iSSwichButtonEnable = false;
@@ -562,7 +556,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _iSSwichButtonEnable = value;
-                RaisePropertyChanged("IsSwichButtonEnable");
+                OnPropertyChanged("IsSwichButtonEnable");
             }
         }
         private List<IBANType> _iBANTypesList;
@@ -575,7 +569,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _iBANTypesList = value;
-                RaisePropertyChanged("IBANTypesList");
+                OnPropertyChanged("IBANTypesList");
             }
         }
 
@@ -589,7 +583,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isIdTypeEnabled = value;
-                RaisePropertyChanged("IsIdTypeEnabled");
+                OnPropertyChanged("IsIdTypeEnabled");
             }
         }
         private bool _isIdNumberEnabled;
@@ -602,7 +596,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isIdNumberEnabled = value;
-                RaisePropertyChanged("IsIdNumberEnabled");
+                OnPropertyChanged("IsIdNumberEnabled");
             }
         }
         private bool _isNewAccountEnabled;
@@ -615,7 +609,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isNewAccountEnabled = value;
-                RaisePropertyChanged("IsNewAccountEnabled");
+                OnPropertyChanged("IsNewAccountEnabled");
             }
         }
         private bool _isIbansEnabled;
@@ -628,7 +622,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isIbansEnabled = value;
-                RaisePropertyChanged("IsIbansEnabled");
+                OnPropertyChanged("IsIbansEnabled");
             }
         }
         private bool _isRefundCheckboxEnabled;
@@ -641,7 +635,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isRefundCheckboxEnabled = value;
-                RaisePropertyChanged("IsRefundCheckboxEnabled");
+                OnPropertyChanged("IsRefundCheckboxEnabled");
             }
         }
         private bool _isConfirmRefundButtonEnabled;
@@ -654,7 +648,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isConfirmRefundButtonEnabled = value;
-                RaisePropertyChanged("IsConfirmRefundButtonEnabled");
+                OnPropertyChanged("IsConfirmRefundButtonEnabled");
             }
         }
         #endregion

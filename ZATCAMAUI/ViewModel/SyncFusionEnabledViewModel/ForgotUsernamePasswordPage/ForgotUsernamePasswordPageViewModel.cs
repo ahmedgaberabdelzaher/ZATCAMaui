@@ -1,10 +1,11 @@
 ﻿
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using System.Text;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -14,8 +15,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
     public class ForgotUsernamePasswordPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnChangePasswordSubmitClicked { get; set; }
@@ -42,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isOTPEntryEnable = value;
-                RaisePropertyChanged(() => IsOTPEntryEnable);
+                OnPropertyChanged(nameof( IsOTPEntryEnable));
             }
         }
         private ForgotUserNamePassword _selectedTaxPayerType;
@@ -59,7 +58,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 {
                     TxtSelectTaxpayerType = _selectedTaxPayerType.TaxPayerType;
                 }
-                RaisePropertyChanged("SelectedTaxPayerType");
+                OnPropertyChanged("SelectedTaxPayerType");
                 if (SelectedTaxPayerType != null)
                 {
                     SetLayoutVisibilityForSelectedTaxpayerType();
@@ -76,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _selectedTaxPayerTypePrev = value;
-                RaisePropertyChanged("SelectedTaxPayerTypePrev");
+                OnPropertyChanged("SelectedTaxPayerTypePrev");
             }
         }
         private List<ForgotCredentialType> _forgotTypeList;
@@ -89,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _forgotTypeList = value;
-                RaisePropertyChanged("ForgotTypeList");
+                OnPropertyChanged("ForgotTypeList");
             }
         }
         private List<TIN> _tINs;
@@ -102,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _tINs = value;
-                RaisePropertyChanged("TINs");
+                OnPropertyChanged("TINs");
             }
         }
         private string _txtSelectedUsernameAndPassword;
@@ -115,7 +114,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _txtSelectedUsernameAndPassword = value;
-                RaisePropertyChanged("TxtSelectedUsernameAndPassword");
+                OnPropertyChanged("TxtSelectedUsernameAndPassword");
             }
         }
         private string _txtSelectTaxpayerType;
@@ -128,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _txtSelectTaxpayerType = value;
-                RaisePropertyChanged("TxtSelectTaxpayerType");
+                OnPropertyChanged("TxtSelectTaxpayerType");
             }
         }
         private string _txtTIN;
@@ -141,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _txtTIN = value;
-                RaisePropertyChanged("TxtTIN");
+                OnPropertyChanged("TxtTIN");
             }
         }
         private TIN _selectedTinId;
@@ -160,7 +159,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                     App.CurrentDropdownTIN = SelectedTinId;
                     // Password = string.Empty;
                 }
-                RaisePropertyChanged("SelectedTinId");
+                OnPropertyChanged("SelectedTinId");
             }
         }
         private TIN _selectedTinIdPrev;
@@ -173,7 +172,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _selectedTinIdPrev = value;
-                RaisePropertyChanged("SelectedTinIdPrev");
+                OnPropertyChanged("SelectedTinIdPrev");
             }
         }
         private bool _isVisibleTinIds = false;
@@ -186,7 +185,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isVisibleTinIds = value;
-                RaisePropertyChanged("IsVisibleTinIds");
+                OnPropertyChanged("IsVisibleTinIds");
             }
         }
         private ForgotCredentialType _selectedForgotType;
@@ -199,7 +198,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _selectedForgotType = value;
-                RaisePropertyChanged("_selectedForgotType");
+                OnPropertyChanged("_selectedForgotType");
                 if (SelectedForgotType != null)
                 {
                     TxtSelectedUsernameAndPassword = _selectedForgotType.CredentialType;
@@ -223,7 +222,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _selectedForgotTypePrev = value;
-                RaisePropertyChanged("_selectedForgotTypePrev");
+                OnPropertyChanged("_selectedForgotTypePrev");
             }
         }
         private ForgotUserNamePassword _forgotCredentialType;
@@ -236,7 +235,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _forgotCredentialType = value;
-                RaisePropertyChanged("ForgotCredentialType");
+                OnPropertyChanged("ForgotCredentialType");
             }
         }
         private List<ForgotUserNamePassword> _taxpayerTypeList;
@@ -249,7 +248,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _taxpayerTypeList = value;
-                RaisePropertyChanged("TaxpayerTypeList");
+                OnPropertyChanged("TaxpayerTypeList");
             }
         }
         private string _iDNumber;
@@ -262,7 +261,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _iDNumber = value;
-                RaisePropertyChanged("IDNumber");
+                OnPropertyChanged("IDNumber");
             }
         }
         private string _enteredCaptchaValue;
@@ -275,7 +274,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _enteredCaptchaValue = value;
-                RaisePropertyChanged("EnteredCaptchaValue");
+                OnPropertyChanged("EnteredCaptchaValue");
             }
         }
         private string _corporateID;
@@ -288,7 +287,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _corporateID = value;
-                RaisePropertyChanged("CorporateID");
+                OnPropertyChanged("CorporateID");
             }
         }
         private string _mobileNumber;
@@ -301,7 +300,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _mobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
         private string _oTPValidDuration;
@@ -322,7 +321,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
-                RaisePropertyChanged("OTPValidDuration");
+                OnPropertyChanged("OTPValidDuration");
             }
         }
         private string _userName;
@@ -335,7 +334,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _userName = value;
-                RaisePropertyChanged("UserName");
+                OnPropertyChanged("UserName");
             }
         }
         private bool _isForgotUserNameWithIndividual = true;
@@ -348,7 +347,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isForgotUserNameWithIndividual = value;
-                RaisePropertyChanged("IsForgotUserName");
+                OnPropertyChanged("IsForgotUserName");
             }
         }
         private bool _isForgotUserNameWithCorporate = false;
@@ -361,7 +360,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isForgotUserNameWithCorporate = value;
-                RaisePropertyChanged("IsForgotUserNameWithCorporate");
+                OnPropertyChanged("IsForgotUserNameWithCorporate");
             }
         }
         private bool _isForgotPassword = false;
@@ -374,7 +373,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isForgotPassword = value;
-                RaisePropertyChanged("IsForgotPassword");
+                OnPropertyChanged("IsForgotPassword");
             }
         }
         private bool _isTaxPayerTypeEnable = false;
@@ -387,7 +386,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isTaxPayerTypeEnable = value;
-                RaisePropertyChanged("IsTaxPayerTypeEnable");
+                OnPropertyChanged("IsTaxPayerTypeEnable");
             }
         }
         private bool _newPasswordLayoutVisibility = false;
@@ -400,7 +399,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _newPasswordLayoutVisibility = value;
-                RaisePropertyChanged("NewPasswordLayoutVisibility");
+                OnPropertyChanged("NewPasswordLayoutVisibility");
             }
         }
         private bool _mainPageLayoutVisibility = true;
@@ -413,7 +412,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _mainPageLayoutVisibility = value;
-                RaisePropertyChanged("MainPageLayoutVisibility");
+                OnPropertyChanged("MainPageLayoutVisibility");
             }
         }
         private bool _oTPLayoutVisibility = false;
@@ -426,7 +425,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _oTPLayoutVisibility = value;
-                RaisePropertyChanged("OTPLayoutVisibility");
+                OnPropertyChanged("OTPLayoutVisibility");
             }
         }
         private bool _navigateToLoginLinkVisibility = false;
@@ -439,7 +438,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _navigateToLoginLinkVisibility = value;
-                RaisePropertyChanged("NavigateToLoginLinkVisibility");
+                OnPropertyChanged("NavigateToLoginLinkVisibility");
             }
         }
         private string _newPassword = "";
@@ -452,7 +451,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _newPassword = value;
-                RaisePropertyChanged("NewPassword");
+                OnPropertyChanged("NewPassword");
             }
         }
         private string _confirmPassword = "";
@@ -465,7 +464,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _confirmPassword = value;
-                RaisePropertyChanged("ConfirmPassword");
+                OnPropertyChanged("ConfirmPassword");
             }
         }
         private string _iDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
@@ -478,7 +477,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _iDNumberOrCorporateIDOrUserName = value;
-                RaisePropertyChanged("IDNumberOrCorporateIDOrUserName");
+                OnPropertyChanged("IDNumberOrCorporateIDOrUserName");
             }
         }
         private string _captcha;
@@ -491,7 +490,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _captcha = value;
-                RaisePropertyChanged("Captcha");
+                OnPropertyChanged("Captcha");
             }
         }
         private string _forgotPasswordUserNameChangedMessage;
@@ -504,7 +503,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _forgotPasswordUserNameChangedMessage = value;
-                RaisePropertyChanged("ForgotPasswordUserNameChangedMessage");
+                OnPropertyChanged("ForgotPasswordUserNameChangedMessage");
             }
         }
         private string _enteredOTP = "";
@@ -517,7 +516,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _enteredOTP = value;
-                RaisePropertyChanged("EnteredOTP");
+                OnPropertyChanged("EnteredOTP");
             }
         }
         private bool _isIDTypeVisible = false;
@@ -530,7 +529,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isIDTypeVisible = value;
-                RaisePropertyChanged("IsIDTypeVisible");
+                OnPropertyChanged("IsIDTypeVisible");
             }
         }
         private bool _newPasswordVisibility = false;
@@ -543,7 +542,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _newPasswordVisibility = value;
-                RaisePropertyChanged("NewPasswordVisibility");
+                OnPropertyChanged("NewPasswordVisibility");
             }
         }
         private Color _buttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -556,7 +555,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _buttonDisableColor = value;
-                RaisePropertyChanged("ButtonDisableColor");
+                OnPropertyChanged("ButtonDisableColor");
             }
         }
         private bool _isResendOTPEnabled = false;
@@ -570,7 +569,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             {
                 _isResendOTPEnabled = value;
                 OnResendOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
         private bool _confirmPasswordVisibility = false;
@@ -583,7 +582,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _confirmPasswordVisibility = value;
-                RaisePropertyChanged("ConfirmPasswordVisibility");
+                OnPropertyChanged("ConfirmPasswordVisibility");
             }
         }
         private bool _isSubmitEnabled = false;
@@ -596,7 +595,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _isSubmitEnabled = value;
-                RaisePropertyChanged("IsSubmitEnabled");
+                OnPropertyChanged("IsSubmitEnabled");
             }
         }
         private Color _submitDisableButtonColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -609,7 +608,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _submitDisableButtonColor = value;
-                RaisePropertyChanged("SubmitDisableButtonColor");
+                OnPropertyChanged("SubmitDisableButtonColor");
             }
         }
         private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["Primary"];
@@ -622,7 +621,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _verifybuttonDisableColor = value;
-                RaisePropertyChanged("VerifyButtonDisableColor");
+                OnPropertyChanged("VerifyButtonDisableColor");
             }
         }
         private bool _isVerifyOTPEnabled = true;
@@ -636,7 +635,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             {
                 _isVerifyOTPEnabled = value;
                 OnValidateOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsVerifyOTPEnabled");
+                OnPropertyChanged("IsVerifyOTPEnabled");
             }
         }
         private int _maxChar = 60;
@@ -649,7 +648,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _maxChar = value;
-                RaisePropertyChanged("MaxChar");
+                OnPropertyChanged("MaxChar");
             }
         }
         private int _forgotTypeIndex;
@@ -671,7 +670,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                     }
                 }
 
-                RaisePropertyChanged("ForgotTypeIndex");
+                OnPropertyChanged("ForgotTypeIndex");
             }
         }
 
@@ -685,7 +684,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             set
             {
                 _selectedTaxPayerTypeIndex = value;
-                RaisePropertyChanged("SelectedTaxPayerTypeIndex");
+                OnPropertyChanged("SelectedTaxPayerTypeIndex");
             }
         }
 
@@ -693,16 +692,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         #region Constructor
         public ForgotUsernamePasswordPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             BackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();

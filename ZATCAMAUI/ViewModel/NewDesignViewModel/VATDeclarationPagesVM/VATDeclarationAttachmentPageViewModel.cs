@@ -1,16 +1,16 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.IO;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Mangers;
 using Mopups.Services;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
 {
@@ -18,8 +18,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
     public class VATDeclarationAttachmentPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public static decimal AttachmentUploadedSize = 0;
@@ -43,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _attachmentSizeVisibility = value;
-                RaisePropertyChanged("AttachmentSizeVisibility");
+                OnPropertyChanged("AttachmentSizeVisibility");
             }
         }
         private VATDeclaration _vATDeclarationDataForAttch;
@@ -56,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _vATDeclarationDataForAttch = value;
-                RaisePropertyChanged("VATDeclarationDataForAttch");
+                OnPropertyChanged("VATDeclarationDataForAttch");
             }
         }
         private string _dateSubmitted;
@@ -69,7 +67,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _dateSubmitted = value;
-                RaisePropertyChanged("DateSubmitted");
+                OnPropertyChanged("DateSubmitted");
             }
         }
         private string _attachmentName = "";
@@ -82,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         public decimal _attachmentSize = 0;
@@ -95,7 +93,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public decimal _totalAttachmentSize = 0;
@@ -108,7 +106,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
         public int _attachmentCount = 0;
@@ -121,7 +119,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _attachmentCount = value;
-                RaisePropertyChanged("AttachmentCount");
+                OnPropertyChanged("AttachmentCount");
             }
         }
         private ObservableCollection<Attachment> _vatAttachmentsList;
@@ -134,7 +132,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _vatAttachmentsList = value;
-                RaisePropertyChanged("VatAttachmentsList");
+                OnPropertyChanged("VatAttachmentsList");
             }
         }
 
@@ -148,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _attachmentList = value;
-                RaisePropertyChanged("AttachmentList");
+                OnPropertyChanged("AttachmentList");
             }
         }
 
@@ -162,7 +160,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _isShowAttachmentButton = value;
-                RaisePropertyChanged("IsShowAttachmentButton");
+                OnPropertyChanged("IsShowAttachmentButton");
             }
         }
 
@@ -176,7 +174,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             set
             {
                 _isAmendClickedOnVAT = value;
-                RaisePropertyChanged("IsAmendClickedOnVAT");
+                OnPropertyChanged("IsAmendClickedOnVAT");
             }
         }
 
@@ -185,25 +183,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         #region Constructor
         public VATDeclarationAttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-            GoBackClick = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+
             OnAttachmentClick = new Command(async () =>
             {
                 await AddAttachment();

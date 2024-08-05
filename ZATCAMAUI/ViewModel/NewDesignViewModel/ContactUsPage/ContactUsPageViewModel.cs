@@ -1,14 +1,13 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Windows.Input;
 using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContactUsPage
 {
 
     public class ContactUsPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
 
 
@@ -22,7 +21,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContactUsPage
             set
             {
                 _webUrl = value;
-                RaisePropertyChanged("WebUrl");
+                OnPropertyChanged("WebUrl");
             }
         }
 
@@ -36,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContactUsPage
             set
             {
                 _Url = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -45,16 +44,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContactUsPage
         public ContactUsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();

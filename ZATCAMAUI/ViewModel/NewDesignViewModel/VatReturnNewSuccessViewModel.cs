@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 
@@ -10,8 +11,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
     public class VatReturnNewSuccessViewModel : BaseViewModel
     {
-        private readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnDownloadFormClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
@@ -30,7 +29,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_returnReferenceNumber == value) return;
                 _returnReferenceNumber = value;
-                RaisePropertyChanged("ReturnReferenceNumber");
+                OnPropertyChanged("ReturnReferenceNumber");
             }
         }
 
@@ -46,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_taxablePeriod == value) return;
 
                 _taxablePeriod = value;
-                RaisePropertyChanged("TaxablePeriod");
+                OnPropertyChanged("TaxablePeriod");
             }
         }
 
@@ -62,7 +61,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_sadadNumber == value) return;
 
                 _sadadNumber = value;
-                RaisePropertyChanged("SadadNumber");
+                OnPropertyChanged("SadadNumber");
             }
         }
         public string _amountPayable;
@@ -77,7 +76,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_amountPayable == value) return;
 
                 _amountPayable = value;
-                RaisePropertyChanged("AmountPayable");
+                OnPropertyChanged("AmountPayable");
             }
         }
 
@@ -93,7 +92,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isSadadNumberVisible == value) return;
 
                 _isSadadNumberVisible = value;
-                RaisePropertyChanged("IsSadadNumberVisible");
+                OnPropertyChanged("IsSadadNumberVisible");
             }
         }
 
@@ -111,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vATDeclarationData == value) return;
 
                 _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                OnPropertyChanged("VATDeclarationData");
             }
         }
         private bool _isButtonVisible = false;
@@ -126,7 +125,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isButtonVisible == value) return;
 
                 _isButtonVisible = value;
-                RaisePropertyChanged("IsButtonVisible");
+                OnPropertyChanged("IsButtonVisible");
             }
         }
         private bool _isCreditCarriedTextVisible = false;
@@ -141,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isCreditCarriedTextVisible == value) return;
 
                 _isCreditCarriedTextVisible = value;
-                RaisePropertyChanged("IsCreditCarriedTextVisible");
+                OnPropertyChanged("IsCreditCarriedTextVisible");
             }
         }
 
@@ -158,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isAcknowledgementButtonVisible == value) return;
 
                 _isAcknowledgementButtonVisible = value;
-                RaisePropertyChanged("IsAcknowledgementButtonVisible");
+                OnPropertyChanged("IsAcknowledgementButtonVisible");
             }
         }
 
@@ -174,7 +173,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isRefreshButtonVisible == value) return;
 
                 _isRefreshButtonVisible = value;
-                RaisePropertyChanged("IsRefreshButtonVisible");
+                OnPropertyChanged("IsRefreshButtonVisible");
             }
         }
 
@@ -183,21 +182,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public VatReturnNewSuccessViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-
-
-
-
-            OnDownloadFormClicked = new Command(async () =>
+            OnDownloadFormClicked = new Command( () =>
             {
                 string Url = string.Empty;
                 // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
@@ -205,7 +190,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
-            OnAcknowlwdgementClicked = new Command(async () =>
+            OnAcknowlwdgementClicked = new Command( () =>
             {
                 string Url = string.Empty;
                 // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";

@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Services.Interface;
@@ -9,78 +9,79 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.CustomServices.Tawreed;
 using ZATCAMAUI.Models.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
     public class TransactionReceptionViewModel : BaseViewModel
     {
         string userType = "1";
-        public string UserType { get { return userType; } set { userType = value; RaisePropertyChanged(); } }
+        public string UserType { get { return userType; } set { userType = value; OnPropertyChanged(); } }
 
         bool isSuccessView = false;
-        public bool IsSuccessView { get { return isSuccessView; } set { isSuccessView = value; RaisePropertyChanged(); } }
+        public bool IsSuccessView { get { return isSuccessView; } set { isSuccessView = value; OnPropertyChanged(); } }
 
         bool isEntity = false;
-        public bool IsEntity { get { return isEntity; } set { isEntity = value; RaisePropertyChanged(); } }
+        public bool IsEntity { get { return isEntity; } set { isEntity = value; OnPropertyChanged(); } }
 
         bool isAddNewCR;
-        public bool IsAddNewCR { get { return isAddNewCR; } set { isAddNewCR = value; RaisePropertyChanged(); } }
+        public bool IsAddNewCR { get { return isAddNewCR; } set { isAddNewCR = value; OnPropertyChanged(); } }
 
 
         string email;
-        public string Email { get { return email; } set { email = value; RaisePropertyChanged(); } }
+        public string Email { get { return email; } set { email = value; OnPropertyChanged(); } }
 
         string subject;
-        public string Subject { get { return subject; } set { subject = value; RaisePropertyChanged(); } }
+        public string Subject { get { return subject; } set { subject = value; OnPropertyChanged(); } }
 
         string description;
-        public string Description { get { return description; } set { description = value; RaisePropertyChanged(); } }
+        public string Description { get { return description; } set { description = value; OnPropertyChanged(); } }
 
         string crNo = "";
-        public string CRNo { get { return crNo; } set { crNo = value; RaisePropertyChanged(); } }
+        public string CRNo { get { return crNo; } set { crNo = value; OnPropertyChanged(); } }
 
         string selectedCRNo = "";
-        public string SelectedCRNo { get { return selectedCRNo; } set { selectedCRNo = value; RaisePropertyChanged(); } }
+        public string SelectedCRNo { get { return selectedCRNo; } set { selectedCRNo = value; OnPropertyChanged(); } }
 
         bool isOpenAddNewCr;
-        public bool IsOpenAddNewCr { get { return isOpenAddNewCr; } set { isOpenAddNewCr = value; RaisePropertyChanged(); } }
+        public bool IsOpenAddNewCr { get { return isOpenAddNewCr; } set { isOpenAddNewCr = value; OnPropertyChanged(); } }
 
         int buildingNo;
-        public int BuildingNo { get { return buildingNo; } set { buildingNo = value; RaisePropertyChanged(); } }
+        public int BuildingNo { get { return buildingNo; } set { buildingNo = value; OnPropertyChanged(); } }
 
         string streetName;
-        public string StreetName { get { return streetName; } set { streetName = value; RaisePropertyChanged(); } }
+        public string StreetName { get { return streetName; } set { streetName = value; OnPropertyChanged(); } }
 
         string districtName;
-        public string DistrictName { get { return districtName; } set { districtName = value; RaisePropertyChanged(); } }
+        public string DistrictName { get { return districtName; } set { districtName = value; OnPropertyChanged(); } }
 
         string cityName;
-        public string CityName { get { return cityName; } set { cityName = value; RaisePropertyChanged(); } }
+        public string CityName { get { return cityName; } set { cityName = value; OnPropertyChanged(); } }
 
         string postalCode;
-        public string PostalCode { get { return postalCode; } set { postalCode = value; RaisePropertyChanged(); } }
+        public string PostalCode { get { return postalCode; } set { postalCode = value; OnPropertyChanged(); } }
 
 
         string seconderyNo;
-        public string SeconderyNo { get { return seconderyNo; } set { seconderyNo = value; RaisePropertyChanged(); } }
+        public string SeconderyNo { get { return seconderyNo; } set { seconderyNo = value; OnPropertyChanged(); } }
 
         string registrationNo;
-        public string RegistrationNo { get { return registrationNo; } set { registrationNo = value; RaisePropertyChanged(); } }
+        public string RegistrationNo { get { return registrationNo; } set { registrationNo = value; OnPropertyChanged(); } }
 
         long tIN;
-        public long TIN { get { return tIN; } set { tIN = value; RaisePropertyChanged(); } }
+        public long TIN { get { return tIN; } set { tIN = value; OnPropertyChanged(); } }
 
         bool isTinNoVisible;
-        public bool IsTinNoVisible { get { return isTinNoVisible; } set { isTinNoVisible = value; RaisePropertyChanged(); } }
+        public bool IsTinNoVisible { get { return isTinNoVisible; } set { isTinNoVisible = value; OnPropertyChanged(); } }
 
 
 
         ObservableCollection<UserCRResponseModel> cRLst;
-        public ObservableCollection<UserCRResponseModel> CRLst { get { return cRLst; } set { cRLst = value; RaisePropertyChanged(); } }
+        public ObservableCollection<UserCRResponseModel> CRLst { get { return cRLst; } set { cRLst = value; OnPropertyChanged(); } }
 
 
         ObservableCollection<ReportFileModel> transactionUploadedFiles = new ObservableCollection<ReportFileModel>();
-        public ObservableCollection<ReportFileModel> TransactionUploadedFiles { get { return transactionUploadedFiles; } set { transactionUploadedFiles = value; RaisePropertyChanged(); } }
+        public ObservableCollection<ReportFileModel> TransactionUploadedFiles { get { return transactionUploadedFiles; } set { transactionUploadedFiles = value; OnPropertyChanged(); } }
 
         public static ObservableCollection<UserCRResponseModel> CRCashedList;
         public static bool isCRDataFetched = false;
@@ -577,30 +578,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         }
 
         ObservableCollection<BottomSheetModel> bottomSheetList;
-        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; OnPropertyChanged(); } }
 
         ObservableCollection<BottomSheetModel> tempBottomSheetList;
-        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; RaisePropertyChanged(); } }
-
-        bool isShowBottomSheet;
-        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; OnPropertyChanged(); } }
 
         string headerTitle;
-        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
+        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; OnPropertyChanged(); } }
 
         string searchText;
-        public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
+        public string SearchText { get { return searchText; } set { searchText = value; OnPropertyChanged(); } }
 
         public void SetUserData(object payload)
         {
 
             if (payload != null)
             {
-                // IDictionary<string, object> iamLoginPayloadData = payload as IDictionary<string, object>;
-                /* NationalId = iamLoginPayloadData["NationlId"].ToString();
-                 MobileNo = "+966" + iamLoginPayloadData["Mobile"].ToString();
-                 IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());*/
-                ///
                 var data = payload as CustomsIamUser;
                 NationalId = data.nationalId.ToString();
                 MobileNo = "+966" + data.mobileNumber.ToString();

@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
@@ -11,20 +11,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
         /// 2 for Prevous Requests
         /// </summary>
         bool showReviewEntries;
-        public bool ShowReviewEntries { get { return showReviewEntries; } set { showReviewEntries = value; RaisePropertyChanged(); } }
+        public bool ShowReviewEntries { get { return showReviewEntries; } set { showReviewEntries = value; OnPropertyChanged(); } }
 
         /// <summary>
         /// 1 for Visitor
         /// 2 for Citizen
         /// </summary>
         int identityType;
-        public int IdentityType { get { return identityType; } set { identityType = value; RaisePropertyChanged(); } }
+        public int IdentityType { get { return identityType; } set { identityType = value; OnPropertyChanged(); } }
 
         string _ReferenceNumber;
-        public string ReferenceNumber { get { return _ReferenceNumber; } set { _ReferenceNumber = value; RaisePropertyChanged(); } }
+        public string ReferenceNumber { get { return _ReferenceNumber; } set { _ReferenceNumber = value; OnPropertyChanged(); } }
 
         string _IDResidencePassportNumber;
-        public string IDResidencePassportNumber { get { return _IDResidencePassportNumber; } set { _IDResidencePassportNumber = value; RaisePropertyChanged(); } }
+        public string IDResidencePassportNumber { get { return _IDResidencePassportNumber; } set { _IDResidencePassportNumber = value; OnPropertyChanged(); } }
 
 
         public ICommand ReviewPreviousCommand

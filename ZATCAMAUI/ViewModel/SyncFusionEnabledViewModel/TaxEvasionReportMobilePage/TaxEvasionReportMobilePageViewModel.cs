@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
     public class TaxEvasionReportMobilePageViewModel : BaseViewModel
     {
         public ICommand BackButtonClicked { get; set; }
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand VerifyCommand { get; set; }
         public ICommand RegisterCommand { get; set; }
 
@@ -28,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
             set
             {
                 _isVerifyEnable = value;
-                RaisePropertyChanged("IsVerifyEnable");
+                OnPropertyChanged("IsVerifyEnable");
             }
         }
         
@@ -42,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
             set
             {
                 _mobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
 
@@ -50,16 +49,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobileP
 
         public TaxEvasionReportMobilePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             BackButtonClicked = new Command(BackButtonClick);
             VerifyCommand = new Command(VerifyCommandClick);
             RegisterCommand = new Command(RegisterCommandClick);

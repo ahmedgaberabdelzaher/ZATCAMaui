@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
@@ -9,8 +10,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage
 
     public class CreditCarriedPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         private List<Result3> _creditCarriedsList;
         public List<Result3> CreditCarriedsList
@@ -22,7 +21,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage
             set
             {
                 _creditCarriedsList = value;
-                RaisePropertyChanged("CreditCarriedsList");
+                OnPropertyChanged("CreditCarriedsList");
             }
         }
         private VATDeclaration _vATDeclarationData;
@@ -35,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage
             set
             {
                 _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                OnPropertyChanged("VATDeclarationData");
             }
         }
         private bool _isNoDataLabelVisible;
@@ -48,7 +47,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage
             set
             {
                 _isNoDataLabelVisible = value;
-                RaisePropertyChanged("IsNoDataLabelVisible");
+                OnPropertyChanged("IsNoDataLabelVisible");
             }
         }
         private bool _isListViewVisible;
@@ -61,14 +60,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreditCarriedPage
             set
             {
                 _isListViewVisible = value;
-                RaisePropertyChanged("IsListViewVisible");
+                OnPropertyChanged("IsListViewVisible");
             }
         }
         public CreditCarriedPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            _dialogService = dialogService;
-            _navigationService = navigationService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });

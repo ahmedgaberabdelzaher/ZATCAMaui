@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -12,6 +12,7 @@ using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
@@ -37,7 +38,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             set
             {
                 _currentTab = value;
-                RaisePropertyChanged(nameof(CurrentTab));
+                OnPropertyChanged(nameof(CurrentTab));
                 switch (value)
                 {
                     case EstablishmentOutletActivitiesTabsEnum.LicenseDetails:
@@ -61,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             private set
             {
                 _activityTitle = value;
-                RaisePropertyChanged(nameof(ActivityTitle));
+                OnPropertyChanged(nameof(ActivityTitle));
             }
         }
 
@@ -77,7 +78,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 if (_cRIssueCountry == value) return;
                 _cRIssueCountry = value;
-                RaisePropertyChanged(nameof(CRIssueCountry));
+                OnPropertyChanged(nameof(CRIssueCountry));
             }
         }
         private string _cRIssueBy = null;
@@ -89,7 +90,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_cRIssueBy == value) return;
 
                 _cRIssueBy = value;
-                RaisePropertyChanged(nameof(CRIssueBy));
+                OnPropertyChanged(nameof(CRIssueBy));
             }
         }
         private CityDropdownItem _cRIssueCity = null;
@@ -101,7 +102,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_cRIssueCity == value) return;
 
                 _cRIssueCity = value;
-                RaisePropertyChanged(nameof(CRIssueCity));
+                OnPropertyChanged(nameof(CRIssueCity));
             }
         }
         private string _cRNumber = string.Empty;
@@ -113,7 +114,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_cRNumber == value) return;
 
                 _cRNumber = value;
-                RaisePropertyChanged(nameof(CRNumber));
+                OnPropertyChanged(nameof(CRNumber));
             }
         }
         private bool _enableInputFields = true;
@@ -127,7 +128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 _enableInputFields = value;
                 OnIssueCountrySelectButtonClick.ChangeCanExecute();
                 OnIssueCitySelectButtonClick.ChangeCanExecute();
-                RaisePropertyChanged(nameof(EnableInputFields));
+                OnPropertyChanged(nameof(EnableInputFields));
             }
         }
         private bool _enableIssueByDropDown = true;
@@ -140,7 +141,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 _enableIssueByDropDown = value;
                 OnIssueBySelectButtonClick.ChangeCanExecute();
-                RaisePropertyChanged(nameof(EnableIssueByDropDown));
+                OnPropertyChanged(nameof(EnableIssueByDropDown));
             }
         }
         private bool _enableCRInputField = true;
@@ -152,7 +153,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_enableCRInputField == value) return;
 
                 _enableCRInputField = value;
-                RaisePropertyChanged(nameof(EnableCRInputField));
+                OnPropertyChanged(nameof(EnableCRInputField));
             }
         }
         private OutletDropDowns _outletDropDowns = null;
@@ -164,7 +165,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_outletDropDowns == value) return;
 
                 _outletDropDowns = value;
-                RaisePropertyChanged(nameof(OutletDropDowns));
+                OnPropertyChanged(nameof(OutletDropDowns));
             }
         }
         private ObservableCollection<object> _selectedCRValidFromDate;
@@ -179,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_selectedCRValidFromDate == value) return;
 
                 _selectedCRValidFromDate = value;
-                RaisePropertyChanged(nameof(SelectedCRValidFromDate));
+                OnPropertyChanged(nameof(SelectedCRValidFromDate));
             }
         }
         private ObservableCollection<object> _selectedCRValidFromHijiriDate;
@@ -194,7 +195,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_selectedCRValidFromHijiriDate == value) return;
 
                 _selectedCRValidFromHijiriDate = value;
-                RaisePropertyChanged(nameof(SelectedCRValidFromHijiriDate));
+                OnPropertyChanged(nameof(SelectedCRValidFromHijiriDate));
             }
         }
         private string _cRValidFrom = string.Empty;
@@ -206,7 +207,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_cRValidFrom == value) return;
 
                 _cRValidFrom = value;
-                RaisePropertyChanged(nameof(CRValidFrom));
+                OnPropertyChanged(nameof(CRValidFrom));
             }
         }
         private string _displayCRValidFrom = string.Empty;
@@ -218,7 +219,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_displayCRValidFrom == value) return;
 
                 _displayCRValidFrom = value;
-                RaisePropertyChanged(nameof(DisplayCRValidFrom));
+                OnPropertyChanged(nameof(DisplayCRValidFrom));
             }
         }
         public int _attachmentCount = 0;
@@ -233,7 +234,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_attachmentCount == value) return;
 
                 _attachmentCount = value;
-                RaisePropertyChanged(nameof(AttachmentCount));
+                OnPropertyChanged(nameof(AttachmentCount));
             }
         }
         private bool _mainActivity = false;
@@ -245,7 +246,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_mainActivity == value) return;
 
                 _mainActivity = value;
-                RaisePropertyChanged(nameof(MainActivity));
+                OnPropertyChanged(nameof(MainActivity));
             }
         }
         private ActivityGroupSubGroup _cRMainGroup = null;
@@ -259,7 +260,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _cRMainGroup = value;
-                    RaisePropertyChanged(nameof(CRMainGroup));
+                    OnPropertyChanged(nameof(CRMainGroup));
                 }
             }
         }
@@ -272,7 +273,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_cRSubGroup == value) return;
 
                 _cRSubGroup = value;
-                RaisePropertyChanged(nameof(CRSubGroup));
+                OnPropertyChanged(nameof(CRSubGroup));
             }
         }
         private ActivityGroupSubGroup _cRAcitivity;
@@ -284,7 +285,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_cRAcitivity == value) return;
 
                 _cRAcitivity = value;
-                RaisePropertyChanged(nameof(CRAcitivity));
+                OnPropertyChanged(nameof(CRAcitivity));
             }
         }
         private ObservableCollection<Attachment> _cRsCopies = new ObservableCollection<Attachment>();
@@ -298,7 +299,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _cRsCopies = value;
-                    RaisePropertyChanged(nameof(CRsCopies));
+                    OnPropertyChanged(nameof(CRsCopies));
                 }
             }
         }
@@ -313,7 +314,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _transferCRsCopies = value;
-                    RaisePropertyChanged(nameof(TransferCRsCopies));
+                    OnPropertyChanged(nameof(TransferCRsCopies));
                 }
             }
         }
@@ -329,7 +330,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_selectedValidFromDate == value) return;
 
                 _selectedValidFromDate = value;
-                RaisePropertyChanged(nameof(SelectedValidFromDate));
+                OnPropertyChanged(nameof(SelectedValidFromDate));
             }
         }
         private ObservableCollection<object> _selectedValidFromHijiriDate;
@@ -344,7 +345,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_selectedValidFromHijiriDate == value) return;
 
                 _selectedValidFromHijiriDate = value;
-                RaisePropertyChanged(nameof(SelectedValidFromHijiriDate));
+                OnPropertyChanged(nameof(SelectedValidFromHijiriDate));
             }
         }
         private string _validFrom = string.Empty;
@@ -356,7 +357,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_validFrom == value) return;
 
                 _validFrom = value;
-                RaisePropertyChanged(nameof(ValidFrom));
+                OnPropertyChanged(nameof(ValidFrom));
             }
         }
         private string _displayValidFrom = string.Empty;
@@ -368,7 +369,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_displayValidFrom == value) return;
 
                 _displayValidFrom = value;
-                RaisePropertyChanged(nameof(DisplayValidFrom));
+                OnPropertyChanged(nameof(DisplayValidFrom));
             }
         }
         private CountryDropdownItem _licenseIssueCountry = null;
@@ -380,7 +381,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseIssueCountry == value) return;
 
                 _licenseIssueCountry = value;
-                RaisePropertyChanged(nameof(LicenseIssueCountry));
+                OnPropertyChanged(nameof(LicenseIssueCountry));
             }
         }
         private string _licenseIssueBy = null;
@@ -392,7 +393,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseIssueBy == value) return;
 
                 _licenseIssueBy = value;
-                RaisePropertyChanged(nameof(LicenseIssueBy));
+                OnPropertyChanged(nameof(LicenseIssueBy));
             }
         }
         private CityDropdownItem _licenseIssueCity = null;
@@ -404,7 +405,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseIssueCity == value) return;
 
                 _licenseIssueCity = value;
-                RaisePropertyChanged(nameof(LicenseIssueCity));
+                OnPropertyChanged(nameof(LicenseIssueCity));
             }
         }
         private string _licenseNumber = string.Empty;
@@ -416,7 +417,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseNumber == value) return;
 
                 _licenseNumber = value;
-                RaisePropertyChanged(nameof(LicenseNumber));
+                OnPropertyChanged(nameof(LicenseNumber));
             }
         }
 
@@ -429,7 +430,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseName == value) return;
 
                 _licenseName = value;
-                RaisePropertyChanged(nameof(LicenseName));
+                OnPropertyChanged(nameof(LicenseName));
             }
         }
         private string _crName = string.Empty;
@@ -441,7 +442,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_crName == value) return;
 
                 _crName = value;
-                RaisePropertyChanged(nameof(CrName));
+                OnPropertyChanged(nameof(CrName));
             }
         }
         private ActivityGroupSubGroup _licenseMainGroup = null;
@@ -453,7 +454,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseMainGroup == value) return;
 
                 _licenseMainGroup = value;
-                RaisePropertyChanged(nameof(LicenseMainGroup));
+                OnPropertyChanged(nameof(LicenseMainGroup));
             }
         }
         private ActivityGroupSubGroup _licenseSubGroup = null;
@@ -465,7 +466,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseSubGroup == value) return;
 
                 _licenseSubGroup = value;
-                RaisePropertyChanged(nameof(LicenseSubGroup));
+                OnPropertyChanged(nameof(LicenseSubGroup));
             }
         }
         private ActivityGroupSubGroup _licenseAcitivity;
@@ -477,7 +478,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseAcitivity == value) return;
 
                 _licenseAcitivity = value;
-                RaisePropertyChanged(nameof(LicenseAcitivity));
+                OnPropertyChanged(nameof(LicenseAcitivity));
             }
         }
         private ObservableCollection<Attachment> _licensesCopies = new ObservableCollection<Attachment>();
@@ -489,7 +490,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licensesCopies == value) return;
 
                 _licensesCopies = value;
-                RaisePropertyChanged(nameof(LicensesCopies));
+                OnPropertyChanged(nameof(LicensesCopies));
             }
         }
         private List<Nreg_ActivityItem> _licenseData = new List<Nreg_ActivityItem>();
@@ -501,7 +502,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_licenseData == value) return;
 
                 _licenseData = value;
-                RaisePropertyChanged(nameof(LicenseData));
+                OnPropertyChanged(nameof(LicenseData));
             }
         }
         private bool _canExecute = true;
@@ -513,7 +514,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (_canExecute == value) return;
 
                 _canExecute = value;
-                RaisePropertyChanged(nameof(CanExecute));
+                OnPropertyChanged(nameof(CanExecute));
             }
         }
 
@@ -526,7 +527,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (isIssueCountryEnable == value) return;
 
                 isIssueCountryEnable = value;
-                RaisePropertyChanged(nameof(IsIssueCountryEnable));
+                OnPropertyChanged(nameof(IsIssueCountryEnable));
             }
         }
 
@@ -540,7 +541,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (isIssueByEnable == value) return;
 
                 isIssueByEnable = value;
-                RaisePropertyChanged(nameof(IsIssueByEnable));
+                OnPropertyChanged(nameof(IsIssueByEnable));
             }
         }
 
@@ -553,7 +554,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (isIssueCityEnable == value) return;
 
                 isIssueCityEnable = value;
-                RaisePropertyChanged(nameof(IsIssueCityEnable));
+                OnPropertyChanged(nameof(IsIssueCityEnable));
             }
         }
 
@@ -566,7 +567,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (isValidFromEnable == value) return;
 
                 isValidFromEnable = value;
-                RaisePropertyChanged(nameof(IsValidFromEnable));
+                OnPropertyChanged(nameof(IsValidFromEnable));
             }
         }
 
@@ -579,7 +580,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (isMainGrpmEnable == value) return;
 
                 isMainGrpmEnable = value;
-                RaisePropertyChanged(nameof(IsMainGrpmEnable));
+                OnPropertyChanged(nameof(IsMainGrpmEnable));
             }
         }
 
@@ -592,7 +593,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (isSubGrpmEnable == value) return;
 
                 isSubGrpmEnable = value;
-                RaisePropertyChanged(nameof(IsSubGrpmEnable));
+                OnPropertyChanged(nameof(IsSubGrpmEnable));
             }
         }
 
@@ -605,7 +606,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (isActivityEnable == value) return;
 
                 isActivityEnable = value;
-                RaisePropertyChanged(nameof(IsActivityEnable));
+                OnPropertyChanged(nameof(IsActivityEnable));
             }
         }
 

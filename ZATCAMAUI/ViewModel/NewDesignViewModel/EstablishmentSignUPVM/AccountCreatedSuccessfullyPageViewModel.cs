@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
@@ -8,8 +9,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
     public class AccountCreatedSuccessfullyPageViewModel : BaseViewModel
     {
         #region Veriables
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnLoginPageLinkClicked;
         #endregion
         #region Properties 
@@ -25,15 +24,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (_tINnumber == value) return;
                 _tINnumber = value;
 
-                RaisePropertyChanged("TINnumber");
+                OnPropertyChanged("TINnumber");
             }
         }
         #endregion
         #region Constructor
         public AccountCreatedSuccessfullyPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            _navigationService = navigationService;
-            _dialogService = dialogService;
 
         }
         #endregion

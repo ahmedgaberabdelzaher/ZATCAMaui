@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ZATCAMAUI.Models
 {
@@ -590,7 +590,7 @@ namespace ZATCAMAUI.Models
     [Serializable]
  
     [DataContract]
-    public class TaxPayer_DetailsAvailability : ViewModelBase
+    public class TaxPayer_DetailsAvailability : ObservableRecipient
     {
         [DataMember]
         private bool _parent;
@@ -601,7 +601,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _parent = value;
-                RaisePropertyChanged("Parent");
+                OnPropertyChanged("Parent");
             }
 
         }
@@ -615,7 +615,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _taxPayerDetailsParent = value;
-                RaisePropertyChanged("TaxPayerDetailsParent");
+                OnPropertyChanged("TaxPayerDetailsParent");
             }
         }
         [DataMember]
@@ -627,7 +627,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AdditionalInfoParent = value;
-                RaisePropertyChanged("AdditionalInfoParent");
+                OnPropertyChanged("AdditionalInfoParent");
             }
         }
         [DataMember]
@@ -639,7 +639,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _TinEntry1 = value;
-                RaisePropertyChanged("TinEntry1");
+                OnPropertyChanged("TinEntry1");
             }
         }
         [DataMember]
@@ -651,7 +651,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _TinEntry2 = value;
-                RaisePropertyChanged("TinEntry2");
+                OnPropertyChanged("TinEntry2");
             }
         }
         [DataMember]
@@ -664,7 +664,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _MainOutletEntry1 = value;
-                RaisePropertyChanged("MainOutletEntry1");
+                OnPropertyChanged("MainOutletEntry1");
             }
         }
         [DataMember]
@@ -677,7 +677,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _MainOutletEntry2 = value;
-                RaisePropertyChanged("MainOutletEntry2");
+                OnPropertyChanged("MainOutletEntry2");
             }
         }
         [DataMember]
@@ -690,7 +690,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _StartDateEntry = value;
-                RaisePropertyChanged("StartDateEntry");
+                OnPropertyChanged("StartDateEntry");
             }
         }
         [DataMember]
@@ -703,7 +703,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AddressEntry1 = value;
-                RaisePropertyChanged("AddressEntry1");
+                OnPropertyChanged("AddressEntry1");
             }
         }
         [DataMember]
@@ -716,7 +716,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AddressEntry2 = value;
-                RaisePropertyChanged("AddressEntry2");
+                OnPropertyChanged("AddressEntry2");
             }
         }
         [DataMember]
@@ -729,7 +729,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _SourceEntry = value;
-                RaisePropertyChanged("SourceEntry");
+                OnPropertyChanged("SourceEntry");
             }
         }
         [DataMember]
@@ -742,7 +742,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AddInformationCB = value;
-                RaisePropertyChanged("AddInformationCB");
+                OnPropertyChanged("AddInformationCB");
             }
         }
         [DataMember]
@@ -755,7 +755,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AddInformationCBVisible = value;
-                RaisePropertyChanged("AddInformationCBVisible");
+                OnPropertyChanged("AddInformationCBVisible");
             }
         }
         [DataMember]
@@ -768,7 +768,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AddInformationParent = value;
-                RaisePropertyChanged("AddInformationParent");
+                OnPropertyChanged("AddInformationParent");
             }
         }
         [DataMember]
@@ -781,7 +781,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _ImporterYesRB = value;
-                RaisePropertyChanged("ImporterYesRB");
+                OnPropertyChanged("ImporterYesRB");
             }
         }
         [DataMember]
@@ -797,7 +797,7 @@ namespace ZATCAMAUI.Models
             {
                 _ImporterNoRB = value;
 
-                RaisePropertyChanged("ImporterNoRB");
+                OnPropertyChanged("ImporterNoRB");
             }
 
         }
@@ -814,7 +814,7 @@ namespace ZATCAMAUI.Models
             {
                 _ImporterAttachmentsBtn = value;
 
-                RaisePropertyChanged("ImporterAttachmentsBtn");
+                OnPropertyChanged("ImporterAttachmentsBtn");
             }
 
         }
@@ -831,7 +831,7 @@ namespace ZATCAMAUI.Models
             {
                 _ExporterYesRB = value;
 
-                RaisePropertyChanged("ExporterYesRB");
+                OnPropertyChanged("ExporterYesRB");
             }
 
         }
@@ -848,7 +848,7 @@ namespace ZATCAMAUI.Models
             {
                 _ExporterNoRB = value;
 
-                RaisePropertyChanged("ExporterNoRB");
+                OnPropertyChanged("ExporterNoRB");
             }
 
         }
@@ -865,7 +865,7 @@ namespace ZATCAMAUI.Models
             {
                 _ExporterrAttachmentsBtn = value;
 
-                RaisePropertyChanged("ExporterrAttachmentsBtn");
+                OnPropertyChanged("ExporterrAttachmentsBtn");
             }
 
         }
@@ -882,7 +882,7 @@ namespace ZATCAMAUI.Models
             {
                 _ExistingIBANPicker = value;
 
-                RaisePropertyChanged("ExistingIBANPicker");
+                OnPropertyChanged("ExistingIBANPicker");
             }
 
         }
@@ -899,7 +899,7 @@ namespace ZATCAMAUI.Models
             {
                 _NewIBANPicker = value;
 
-                RaisePropertyChanged("NewIBANPicker");
+                OnPropertyChanged("NewIBANPicker");
             }
 
         }
@@ -916,7 +916,7 @@ namespace ZATCAMAUI.Models
             {
                 _CommencementDate = value;
 
-                RaisePropertyChanged("CommencementDate");
+                OnPropertyChanged("CommencementDate");
             }
 
         }
@@ -949,7 +949,7 @@ namespace ZATCAMAUI.Models
     [Serializable]
  
     [DataContract]
-    public class FinancialRepresentativeAvailability : ViewModelBase
+    public class FinancialRepresentativeAvailability : ObservableRecipient
     {
         [DataMember]
         private bool _parent;
@@ -960,7 +960,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _parent = value;
-                RaisePropertyChanged("Parent");
+                OnPropertyChanged("Parent");
             }
 
         }
@@ -973,7 +973,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _ChangeMobileEmailCB = value;
-                RaisePropertyChanged("ChangeMobileEmailCB");
+                OnPropertyChanged("ChangeMobileEmailCB");
             }
 
         }
@@ -986,7 +986,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AddNewFinRepresentativeCB = value;
-                RaisePropertyChanged("AddNewFinRepresentativeCB");
+                OnPropertyChanged("AddNewFinRepresentativeCB");
             }
 
         }
@@ -999,7 +999,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AddNewFinRepCBVisible = value;
-                RaisePropertyChanged("AddNewFinRepCBVisible");
+                OnPropertyChanged("AddNewFinRepCBVisible");
             }
 
         }
@@ -1012,7 +1012,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _SkipBtn = value;
-                RaisePropertyChanged("SkipBtn");
+                OnPropertyChanged("SkipBtn");
             }
 
         }
@@ -1025,7 +1025,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _TinEntry = value;
-                RaisePropertyChanged("TinEntry");
+                OnPropertyChanged("TinEntry");
             }
 
         }
@@ -1038,7 +1038,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _IDTypeEntry = value;
-                RaisePropertyChanged("IDTypeEntry");
+                OnPropertyChanged("IDTypeEntry");
             }
 
         }
@@ -1051,7 +1051,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _IDNoEntry = value;
-                RaisePropertyChanged("IDNoEntry");
+                OnPropertyChanged("IDNoEntry");
             }
 
         }
@@ -1064,7 +1064,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _FNameEntry = value;
-                RaisePropertyChanged("FNameEntry");
+                OnPropertyChanged("FNameEntry");
             }
 
         }
@@ -1077,7 +1077,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _SurnameEntry = value;
-                RaisePropertyChanged("SurnameEntry");
+                OnPropertyChanged("SurnameEntry");
             }
 
         }
@@ -1090,7 +1090,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _MobileNoEntry = value;
-                RaisePropertyChanged("MobileNoEntry");
+                OnPropertyChanged("MobileNoEntry");
             }
 
         }
@@ -1103,7 +1103,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _EmailIDEntry = value;
-                RaisePropertyChanged("EmailIDEntry");
+                OnPropertyChanged("EmailIDEntry");
             }
 
         }
@@ -1125,7 +1125,7 @@ namespace ZATCAMAUI.Models
     [Serializable]
  
     [DataContract]
-    public class DeclarationAvailability : ViewModelBase
+    public class DeclarationAvailability : ObservableRecipient
     {
         [DataMember]
         private bool _parent;
@@ -1136,7 +1136,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _parent = value;
-                RaisePropertyChanged("Parent");
+                OnPropertyChanged("Parent");
             }
 
         }
@@ -1149,7 +1149,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AcknowledgementCB = value;
-                RaisePropertyChanged("AcknowledgementCB");
+                OnPropertyChanged("AcknowledgementCB");
             }
 
         }
@@ -1162,7 +1162,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _IDTypeOrNoPicker = value;
-                RaisePropertyChanged("IDTypeOrNoPicker");
+                OnPropertyChanged("IDTypeOrNoPicker");
             }
 
         }
@@ -1175,7 +1175,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _IDTypeOrNoEntry = value;
-                RaisePropertyChanged("IDTypeOrNoEntry");
+                OnPropertyChanged("IDTypeOrNoEntry");
             }
 
         }
@@ -1188,7 +1188,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _DOBEntry = value;
-                RaisePropertyChanged("DOBEntry");
+                OnPropertyChanged("DOBEntry");
             }
 
         }
@@ -1201,7 +1201,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _ContactNameEntry = value;
-                RaisePropertyChanged("ContactNameEntry");
+                OnPropertyChanged("ContactNameEntry");
             }
 
         }
@@ -1210,7 +1210,7 @@ namespace ZATCAMAUI.Models
     [Serializable]
  
     [DataContract]
-    public class FinancialRepresentativesModel : ViewModelBase
+    public class FinancialRepresentativesModel : ObservableRecipient
     {
         [DataMember]
         public string GpartFR { get; set; }
@@ -1225,10 +1225,10 @@ namespace ZATCAMAUI.Models
         [DataMember]
         private string _SmtpAddrFR;
         [DataMember]
-        public string SmtpAddrFR { get { return _SmtpAddrFR; } set { _SmtpAddrFR = value; RaisePropertyChanged("SmtpAddrFR"); } }
+        public string SmtpAddrFR { get { return _SmtpAddrFR; } set { _SmtpAddrFR = value; OnPropertyChanged("SmtpAddrFR"); } }
         [DataMember]
         private string _MobNumberFR;
         [DataMember]
-        public string MobNumberFR { get { return _MobNumberFR; } set { _MobNumberFR = value; RaisePropertyChanged("MobNumberFR"); } }
+        public string MobNumberFR { get { return _MobNumberFR; } set { _MobNumberFR = value; OnPropertyChanged("MobNumberFR"); } }
     }
 }

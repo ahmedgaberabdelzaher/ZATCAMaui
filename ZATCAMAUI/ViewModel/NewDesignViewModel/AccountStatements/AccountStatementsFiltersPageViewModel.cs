@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.AccountStatements;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
@@ -22,7 +22,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_filterList == value) return;
                 _filterList = value;
-                RaisePropertyChanged("FilterList");
+                OnPropertyChanged("FilterList");
             }
         }
 

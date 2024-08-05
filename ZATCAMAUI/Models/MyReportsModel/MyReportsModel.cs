@@ -1,9 +1,9 @@
 using System.Globalization;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ZATCAMAUI.Models.MyReportsModel
 {
-    public class MyReportsModel : ViewModelBase
+    public class MyReportsModel : ObservableRecipient
     {
         public string id { get; set; }
         public string reportType { get; set; }
@@ -29,7 +29,7 @@ namespace ZATCAMAUI.Models.MyReportsModel
         public string ReportDate { get { return DateTime.Parse(addedDate).Date.ToString("dd-MM-yyyy", new CultureInfo("en-US")); } }
 
         private string reportLocation;
-        public string ReportLocation { get { return reportLocation; } set { reportLocation = value; RaisePropertyChanged(); } }
+        public string ReportLocation { get { return reportLocation; } set { reportLocation = value; OnPropertyChanged(); } }
     }
 
     public class ReportsResult

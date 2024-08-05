@@ -15,17 +15,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         static ObservableCollection<TobacoTypesModel> TobacoTypes;
 
         TobaccoItemsModel selectedTobacoItem;
-        public TobaccoItemsModel SelectedTobacoItem { get { return selectedTobacoItem; } set { selectedTobacoItem = value; RaisePropertyChanged(); } }
+        public TobaccoItemsModel SelectedTobacoItem { get { return selectedTobacoItem; } set { selectedTobacoItem = value; OnPropertyChanged(); } }
 
 
         TobacoTypesModel selectedTobacoType;
-        public TobacoTypesModel SelectedTobacoType { get { return selectedTobacoType; } set { selectedTobacoType = value; RaisePropertyChanged(); } }
+        public TobacoTypesModel SelectedTobacoType { get { return selectedTobacoType; } set { selectedTobacoType = value; OnPropertyChanged(); } }
 
         string weight;
-        public string Weight { get { return weight; } set { weight = value; RaisePropertyChanged(); } }
+        public string Weight { get { return weight; } set { weight = value; OnPropertyChanged(); } }
 
         bool isWeighVisible = false;
-        public bool IsWeighVisible { get { return isWeighVisible; } set { isWeighVisible = value; RaisePropertyChanged(); } }
+        public bool IsWeighVisible { get { return isWeighVisible; } set { isWeighVisible = value; OnPropertyChanged(); } }
 
 
         #endregion

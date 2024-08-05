@@ -1,16 +1,17 @@
-﻿using Prism.Mvvm;
+﻿
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ZATCAMAUI.Models.EDeclerationsModel.FeesCalculators
 {
 
-    public class FeesCalculatorResponse : BindableBase
+    public class FeesCalculatorResponse : ObservableRecipient
     {
         public string tobaccoExciseTaxEquation { get; set; }
         public string tobaccoCustomsTaxEquation { get; set; }
         public double? customsPercentage { get; set; }
         public double? productFinalPrice { get; set; }
         double? _totalPayment;
-        public double? totalPayment { get { return _totalPayment; } set { _totalPayment = value; RaisePropertyChanged(); } }
+        public double? totalPayment { get { return _totalPayment; } set { _totalPayment = value; OnPropertyChanged(); } }
         public double? vat { get; set; }
         public double? extraFees { get; set; }
         public double? excise { get; set; }

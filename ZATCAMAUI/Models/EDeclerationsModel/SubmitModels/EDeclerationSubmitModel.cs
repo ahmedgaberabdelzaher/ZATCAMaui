@@ -1,4 +1,4 @@
-﻿using Prism.Mvvm;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
 {
@@ -42,10 +42,10 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 
-    public class EDeclerationSubmitModel : BindableBase
+    public class EDeclerationSubmitModel : ObservableRecipient
     {
         TravelerDeclaration _travelerDeclaration = new TravelerDeclaration();
-        public TravelerDeclaration travelerDeclaration { get { return _travelerDeclaration; } set { _travelerDeclaration = value; RaisePropertyChanged(); } }
+        public TravelerDeclaration travelerDeclaration { get { return _travelerDeclaration; } set { _travelerDeclaration = value; OnPropertyChanged(); } }
     }
 
     public class Tobacco
@@ -61,60 +61,60 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 
-    public class TravelerDeclaration : BindableBase
+    public class TravelerDeclaration : ObservableRecipient
     {
 
         #region Passenger Model
         bool _isvisitor = true;
-        public bool Isvisitor { get { return _isvisitor; } set { _isvisitor = value; RaisePropertyChanged(); } }
+        public bool Isvisitor { get { return _isvisitor; } set { _isvisitor = value; OnPropertyChanged(); } }
 
         bool _isDisclosure;
-        public bool IsDisclosure { get { return _isDisclosure; } set { _isDisclosure = value; RaisePropertyChanged(); } }
+        public bool IsDisclosure { get { return _isDisclosure; } set { _isDisclosure = value; OnPropertyChanged(); } }
 
         int _travelDocumentType;
-        public int travelDocumentType { get { return _travelDocumentType; } set { _travelDocumentType = value; RaisePropertyChanged(); } }
+        public int travelDocumentType { get { return _travelDocumentType; } set { _travelDocumentType = value; OnPropertyChanged(); } }
 
         int _travelingType = 1;
-        public int travelingType { get { return _travelingType; } set { _travelingType = value; RaisePropertyChanged(); } }
+        public int travelingType { get { return _travelingType; } set { _travelingType = value; OnPropertyChanged(); } }
 
         string _firstName;
-        public string firstName { get { return _firstName; } set { _firstName = value; RaisePropertyChanged(); } }
+        public string firstName { get { return _firstName; } set { _firstName = value; OnPropertyChanged(); } }
 
         string _middleName;
-        public string middleName { get { return _middleName; } set { _middleName = value; RaisePropertyChanged(); } }
+        public string middleName { get { return _middleName; } set { _middleName = value; OnPropertyChanged(); } }
 
         string _lastName;
-        public string lastName { get { return _lastName; } set { _lastName = value; RaisePropertyChanged(); } }
+        public string lastName { get { return _lastName; } set { _lastName = value; OnPropertyChanged(); } }
 
         string _fullName;
-        public string FullName { get { return _fullName; } set { _fullName = value; RaisePropertyChanged(); } }
+        public string FullName { get { return _fullName; } set { _fullName = value; OnPropertyChanged(); } }
 
         string _nationalityName;
-        public string NationalityName { get { return _nationalityName; } set { _nationalityName = value; RaisePropertyChanged(); } }
+        public string NationalityName { get { return _nationalityName; } set { _nationalityName = value; OnPropertyChanged(); } }
 
         int _nationality;
         public int nationality { get { return _nationality; } set { _nationality = value; } }
 
         int _gender;
-        public int gender { get { return _gender; } set { _gender = value; RaisePropertyChanged(); } }
+        public int gender { get { return _gender; } set { _gender = value; OnPropertyChanged(); } }
 
         string _travelID;
-        public string travelID { get { return _travelID; } set { _travelID = value; RaisePropertyChanged(); } }
+        public string travelID { get { return _travelID; } set { _travelID = value; OnPropertyChanged(); } }
 
         int _travelIssuerID;
         public int travelIssuerID { get { return _travelIssuerID; } set { _travelIssuerID = value; } }
 
 
         bool _isPremiumResidency;
-        public bool isPremiumResidency { get { return _isPremiumResidency; } set { _isPremiumResidency = value; RaisePropertyChanged(); } }
+        public bool isPremiumResidency { get { return _isPremiumResidency; } set { _isPremiumResidency = value; OnPropertyChanged(); } }
 
 
         string _premiumResidencyExpiryDate;
-        public string premiumResidencyExpiryDate { get { return _premiumResidencyExpiryDate; } set { _premiumResidencyExpiryDate = value; RaisePropertyChanged(); } }
+        public string premiumResidencyExpiryDate { get { return _premiumResidencyExpiryDate; } set { _premiumResidencyExpiryDate = value; OnPropertyChanged(); } }
 
 
         string iqamaTypeDescription;
-        public string IqamaTypeDescription { get { return iqamaTypeDescription; } set { iqamaTypeDescription = value; RaisePropertyChanged(); } }
+        public string IqamaTypeDescription { get { return iqamaTypeDescription; } set { iqamaTypeDescription = value; OnPropertyChanged(); } }
 
         /// <summary>
         // the same value as travelIssuerID
@@ -123,7 +123,7 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
         public int passIssuingCountry { get { return _passIssuingCountry; } set { _passIssuingCountry = value; } }
 
         string _travelIssuerName;
-        public string travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; RaisePropertyChanged(); } }
+        public string travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; OnPropertyChanged(); } }
 
         public DateTime passIssuingDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
@@ -132,14 +132,14 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
             set {
 
                 _passExpiryDate = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             } }
 
 
         public DateTime birthDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
         string _travelersCount;
-        public string travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
+        public string travelersCount { get { return _travelersCount; } set { _travelersCount = value; OnPropertyChanged(); } }
         #endregion
 
         #region Trip Model
@@ -147,42 +147,42 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
         public int arrivingFromDepartingTo { get { return _arrivingFromDepartingTo; } set { _arrivingFromDepartingTo = value; } }
 
         string _arrivingFromDepartingToName;
-        public string arrivingFromDepartingToName { get { return _arrivingFromDepartingToName; } set { _arrivingFromDepartingToName = value; RaisePropertyChanged(); } }
+        public string arrivingFromDepartingToName { get { return _arrivingFromDepartingToName; } set { _arrivingFromDepartingToName = value; OnPropertyChanged(); } }
 
         int _port;
         public int port { get { return _port; } set { _port = value; } }
 
         string _portName;
-        public string portName { get { return _portName; } set { _portName = value; RaisePropertyChanged(); } }
+        public string portName { get { return _portName; } set { _portName = value; OnPropertyChanged(); } }
 
         int _tripeType = 1;
-        public int tripeType { get { return _tripeType; } set { _tripeType = value; RaisePropertyChanged(); } }
+        public int tripeType { get { return _tripeType; } set { _tripeType = value; OnPropertyChanged(); } }
 
         string _flightNumber;
-        public string flightNumber { get { return _flightNumber; } set { _flightNumber = value; RaisePropertyChanged(); } }
+        public string flightNumber { get { return _flightNumber; } set { _flightNumber = value; OnPropertyChanged(); } }
 
         string _travelPurpose;
         public string travelPurpose { get { return _travelPurpose; } set { _travelPurpose = value; } }
 
         string _travelPurposeName;
-        public string travelPurposeName { get { return _travelPurposeName; } set { _travelPurposeName = value; RaisePropertyChanged(); } }
+        public string travelPurposeName { get { return _travelPurposeName; } set { _travelPurposeName = value; OnPropertyChanged(); } }
 
         public DateTime travelDate { get; set; } = DateTime.Now;
 
         string _plateLetters;
-        public string plateLetters { get { return _plateLetters; } set { _plateLetters = value; RaisePropertyChanged(); } }
+        public string plateLetters { get { return _plateLetters; } set { _plateLetters = value; OnPropertyChanged(); } }
 
         string _plateNumber;
-        public string plateNumber { get { return _plateNumber; } set { _plateNumber = value; RaisePropertyChanged(); } }
+        public string plateNumber { get { return _plateNumber; } set { _plateNumber = value; OnPropertyChanged(); } }
 
         string _platesCountryName;
-        public string PlatesCountryName { get { return _platesCountryName; } set { _platesCountryName = value; RaisePropertyChanged(); } }
+        public string PlatesCountryName { get { return _platesCountryName; } set { _platesCountryName = value; OnPropertyChanged(); } }
 
         int _plateCountryCode;
         public int plateCountryCode { get { return _plateCountryCode; } set { _plateCountryCode = value; } }
 
         string _PlatesCityName;
-        public string PlatesCityName { get { return _PlatesCityName; } set { _PlatesCityName = value; RaisePropertyChanged(); } }
+        public string PlatesCityName { get { return _PlatesCityName; } set { _PlatesCityName = value; OnPropertyChanged(); } }
 
         int _plateCityCode;
         public int plateCityCode { get { return _plateCityCode; } set { _plateCityCode = value; } }
@@ -191,22 +191,22 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
 
         #region Contact Model
         string _CountryCode = "+966";
-        public string CountryCode { get { return _CountryCode; } set { _CountryCode = value; RaisePropertyChanged(); } }
+        public string CountryCode { get { return _CountryCode; } set { _CountryCode = value; OnPropertyChanged(); } }
 
         string _phoneNumber;
-        public string phoneNumber { get { return _phoneNumber; } set { _phoneNumber = value; RaisePropertyChanged(); } }
+        public string phoneNumber { get { return _phoneNumber; } set { _phoneNumber = value; OnPropertyChanged(); } }
 
         string _address;
-        public string address { get { return _address; } set { _address = value; RaisePropertyChanged(); } }
+        public string address { get { return _address; } set { _address = value; OnPropertyChanged(); } }
 
         string _email;
-        public string email { get { return _email; } set { _email = value; RaisePropertyChanged(); } }
+        public string email { get { return _email; } set { _email = value; OnPropertyChanged(); } }
 
         bool _IsTermsChecked;
-        public bool IsTermsChecked { get { return _IsTermsChecked; } set { _IsTermsChecked = value; RaisePropertyChanged(); } }
+        public bool IsTermsChecked { get { return _IsTermsChecked; } set { _IsTermsChecked = value; OnPropertyChanged(); } }
 
         bool _isUserExists;
-        public bool IsUserExists { get { return _isUserExists; } set { _isUserExists = value; RaisePropertyChanged(); } }
+        public bool IsUserExists { get { return _isUserExists; } set { _isUserExists = value; OnPropertyChanged(); } }
         #endregion
 
 

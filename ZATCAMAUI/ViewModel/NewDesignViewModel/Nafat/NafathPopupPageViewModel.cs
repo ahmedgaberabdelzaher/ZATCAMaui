@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
 {
@@ -6,14 +8,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
     {
         public NafathPopupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
+            
         }
     }
 }

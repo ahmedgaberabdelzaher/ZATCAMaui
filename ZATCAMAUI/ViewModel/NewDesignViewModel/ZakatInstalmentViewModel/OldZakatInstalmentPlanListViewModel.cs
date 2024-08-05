@@ -2,11 +2,12 @@
 using System.Globalization;
 using System.Timers;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.InstalmentPlanModel;
@@ -18,8 +19,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
     public class OldZakatInstalmentPlanListViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         private bool _isZakatLandingPageVisible = false;
         private bool _createZakatInstalmentBtnVisible = true;
         private bool _isRevokZakatInstalmentVisible = true;
@@ -50,20 +49,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         public OldZakatInstalmentPlanListViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-            //IsZakat = Preferences.Get("isZakat", false);
-
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
             CloseClick = new Command(async () =>
             {
@@ -298,7 +283,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
                 _DueInvoicesListSet12 = value;
-                RaisePropertyChanged("DueInvoicesListSet12");
+                OnPropertyChanged("DueInvoicesListSet12");
             }
         }
 
@@ -477,7 +462,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isZakat = value;
-                RaisePropertyChanged("IsZakat");
+                OnPropertyChanged("IsZakat");
             }
         }
 
@@ -491,7 +476,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _zakatTitle = value;
-                RaisePropertyChanged("ZakatTitle");
+                OnPropertyChanged("ZakatTitle");
             }
         }
 
@@ -505,7 +490,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _zakatInstalments = value;
-                RaisePropertyChanged("ZakatInstalments");
+                OnPropertyChanged("ZakatInstalments");
             }
         }
 
@@ -519,7 +504,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _noteEditor = value;
-                RaisePropertyChanged("NoteEditor");
+                OnPropertyChanged("NoteEditor");
             }
         }
         private bool _IsDueBillsVisible = false;
@@ -532,7 +517,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _IsDueBillsVisible = value;
-                RaisePropertyChanged("IsDueBillsVisible");
+                OnPropertyChanged("IsDueBillsVisible");
             }
         }
 
@@ -638,7 +623,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _LblCountDownTimer = value;
-                RaisePropertyChanged("LblCountDownTimer");
+                OnPropertyChanged("LblCountDownTimer");
             }
         }
 
@@ -661,7 +646,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     }
                 }
 
-                RaisePropertyChanged("OTPFirstDigit");
+                OnPropertyChanged("OTPFirstDigit");
             }
         }
 
@@ -683,7 +668,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         OTPSecondDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPSecondDigit");
+                OnPropertyChanged("OTPSecondDigit");
             }
         }
 
@@ -705,7 +690,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         OTPThirdDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPThirdDigit");
+                OnPropertyChanged("OTPThirdDigit");
             }
         }
 
@@ -727,7 +712,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         OTPFourthDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPFourthDigit");
+                OnPropertyChanged("OTPFourthDigit");
             }
         }
 
@@ -754,7 +739,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 _continueButtonEnability = value;
 
-                RaisePropertyChanged(() => ContinueButtonEnability);
+                OnPropertyChanged(nameof(ContinueButtonEnability));
             }
         }
         private string _selectedFrequencyName = "";
@@ -767,7 +752,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _selectedFrequencyName = value;
-                RaisePropertyChanged("SelectedFrequencyName");
+                OnPropertyChanged("SelectedFrequencyName");
             }
         }
 
@@ -782,7 +767,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 _isResendOTPEnabled = value;
                 // OnResendOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsResendOTPEnabled");
+                OnPropertyChanged("IsResendOTPEnabled");
             }
         }
 
@@ -847,7 +832,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isSummaryAttachmentsVisible = value;
-                RaisePropertyChanged("IsSummaryAttachmentsVisible");
+                OnPropertyChanged("IsSummaryAttachmentsVisible");
             }
         }
 
@@ -860,7 +845,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isZakatLandingPageVisible = value;
-                RaisePropertyChanged("IsZakatLandingPageVisible");
+                OnPropertyChanged("IsZakatLandingPageVisible");
             }
         }
 
@@ -874,7 +859,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _createZakatInstalmentBtnVisible = value;
-                RaisePropertyChanged("CreateZakatInstalmentBtnVisible");
+                OnPropertyChanged("CreateZakatInstalmentBtnVisible");
             }
         }
 
@@ -888,7 +873,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isOTPPageVisible = value;
-                RaisePropertyChanged("IsOTPPageVisible");
+                OnPropertyChanged("IsOTPPageVisible");
             }
         }
         public bool IsZakatSummaryVisible
@@ -900,7 +885,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _IsZakatSummaryVisible = value;
-                RaisePropertyChanged("IsZakatSummaryVisible");
+                OnPropertyChanged("IsZakatSummaryVisible");
             }
         }
 
@@ -914,7 +899,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isZakatSummaryRevokeVisible = value;
-                RaisePropertyChanged("IsZakatSummaryRevokeVisible");
+                OnPropertyChanged("IsZakatSummaryRevokeVisible");
             }
         }
 
@@ -927,7 +912,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isRevokZakatInstalmentVisible = value;
-                RaisePropertyChanged("IsRevokZakatInstalmentVisible");
+                OnPropertyChanged("IsRevokZakatInstalmentVisible");
             }
         }
 
@@ -941,7 +926,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isNoteViewVisible = value;
-                RaisePropertyChanged("IsNoteViewVisible");
+                OnPropertyChanged("IsNoteViewVisible");
             }
         }
 
@@ -962,7 +947,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
                 _DueInvoicesList = value;
-                RaisePropertyChanged("DueInvoicesList");
+                OnPropertyChanged("DueInvoicesList");
             }
         }
 
@@ -982,7 +967,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 }
 
                 outletDecisionOptions = value;
-                RaisePropertyChanged("OutletDecisionOptions");
+                OnPropertyChanged("OutletDecisionOptions");
             }
         }
 
@@ -997,7 +982,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _zakatInstalmentPlanRequestListModel = value;
-                RaisePropertyChanged("ZakatInstalmentPlanRequestListModel");
+                OnPropertyChanged("ZakatInstalmentPlanRequestListModel");
             }
         }
         private string _paymentFrequency = "";
@@ -1010,7 +995,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _paymentFrequency = value;
-                RaisePropertyChanged("PaymentFrequency");
+                OnPropertyChanged("PaymentFrequency");
             }
         }
 
@@ -1025,7 +1010,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _noOfInstalments = value;
-                RaisePropertyChanged("NoOfInstalments");
+                OnPropertyChanged("NoOfInstalments");
             }
         }
         private string _instalmentAmount = "0.00 SAR";
@@ -1038,7 +1023,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _instalmentAmount = value;
-                RaisePropertyChanged("InstalmentAmount");
+                OnPropertyChanged("InstalmentAmount");
             }
         }
         private string _penaltyAmount = "0.00 SAR";
@@ -1051,7 +1036,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _penaltyAmount = value;
-                RaisePropertyChanged("PenaltyAmount");
+                OnPropertyChanged("PenaltyAmount");
             }
         }
 
@@ -1065,7 +1050,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _instalmentsCount = value;
-                RaisePropertyChanged("InstalmentsCount");
+                OnPropertyChanged("InstalmentsCount");
             }
         }
 
@@ -1079,7 +1064,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _totalAmount = value;
-                RaisePropertyChanged("TotalAmount");
+                OnPropertyChanged("TotalAmount");
             }
         }
 
@@ -1093,7 +1078,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _selectedFbNum = value;
-                RaisePropertyChanged("SelectedFbNum");
+                OnPropertyChanged("SelectedFbNum");
             }
         }
 
@@ -1129,7 +1114,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _numberOfInstalmentPlans = value;
-                RaisePropertyChanged("NumberOfInstalmentPlans");
+                OnPropertyChanged("NumberOfInstalmentPlans");
             }
         }
 
@@ -1144,7 +1129,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _reqVatInstalmentPlanResponseList = value;
-                RaisePropertyChanged("ReqVatInstalmentPlanResponseList");
+                OnPropertyChanged("ReqVatInstalmentPlanResponseList");
             }
         }
         private List<Models.ZakatInstalationModels.OldZakatInstalmentPlanRequestListModel.OldResult2> _requestForInstalmentPlanList;
@@ -1157,7 +1142,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _requestForInstalmentPlanList = value;
-                RaisePropertyChanged("RequestForInstalmentPlanList");
+                OnPropertyChanged("RequestForInstalmentPlanList");
             }
         }
         private List<Models.ZakatInstalationModels.OldZakatInstalmentPlanRequestListModel.OldResult> _RevokeListItem;
@@ -1170,7 +1155,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _RevokeListItem = value;
-                RaisePropertyChanged("RevokeListItem");
+                OnPropertyChanged("RevokeListItem");
             }
         }
 
@@ -1184,7 +1169,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _requestForRevokeList = value;
-                RaisePropertyChanged("RequestForRevokeList");
+                OnPropertyChanged("RequestForRevokeList");
             }
         }
 
@@ -1321,7 +1306,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 //    return;
                 //}
                 summarySelectedBillsList = value;
-                RaisePropertyChanged("SummarySelectedBillsList");
+                OnPropertyChanged("SummarySelectedBillsList");
             }
         }
 
@@ -1339,7 +1324,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     return;
                 }
                 zakatListData = value;
-                RaisePropertyChanged("ZakatListData");
+                OnPropertyChanged("ZakatListData");
             }
         }
 
@@ -1354,7 +1339,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _seletedZakatForm = value;
-                RaisePropertyChanged("SeletedZakatForm");
+                OnPropertyChanged("SeletedZakatForm");
             }
         }
         private string _SummaryNoOfInstalments = "";
@@ -1367,7 +1352,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _SummaryNoOfInstalments = value;
-                RaisePropertyChanged("SummaryNoOfInstalments");
+                OnPropertyChanged("SummaryNoOfInstalments");
             }
         }
         public bool IsAttachmentsViewEnabled
@@ -1379,7 +1364,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isAttachmentsViewEnabled = value;
-                RaisePropertyChanged("IsAttachmentsViewEnabled");
+                OnPropertyChanged("IsAttachmentsViewEnabled");
             }
         }
 
@@ -1397,7 +1382,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     return;
                 }
                 attachments = value;
-                RaisePropertyChanged("Attachments");
+                OnPropertyChanged("Attachments");
             }
         }
         private string _enteredOTP = "";
@@ -1410,7 +1395,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _enteredOTP = value;
-                RaisePropertyChanged("EnteredOTP");
+                OnPropertyChanged("EnteredOTP");
             }
         }
         public void SetOTP()
@@ -1839,7 +1824,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _Enabled = value;
-                RaisePropertyChanged("Enabled");
+                OnPropertyChanged("Enabled");
             }
         }
 

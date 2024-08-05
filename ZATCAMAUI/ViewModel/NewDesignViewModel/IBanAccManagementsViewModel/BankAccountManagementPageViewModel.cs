@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -7,6 +7,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Manager;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
@@ -38,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_SupName == value) return;
 
                 _SupName = value;
-                RaisePropertyChanged("getSupName");
+                OnPropertyChanged("getSupName");
             }
         }
 
@@ -55,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_mainListData == value) return;
 
                 _mainListData = value;
-                RaisePropertyChanged("MainListData");
+                OnPropertyChanged("MainListData");
             }
         }
 
@@ -69,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_iBANAccountData == value) return;
 
                 _iBANAccountData = value;
-                RaisePropertyChanged("IBANAccountData");
+                OnPropertyChanged("IBANAccountData");
             }
         }
 

@@ -1,10 +1,11 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
@@ -15,8 +16,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
 
     public class MyBillsViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand onAllLabelClicked { get; set; }
         public ICommand onPaidLabelClicked { get; set; }
         public ICommand onUnpaidLabelClicked { get; set; }
@@ -35,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             {
                 if (_colors == value) return;
                 _colors = value;
-                RaisePropertyChanged("Colors");
+                OnPropertyChanged("Colors");
             }
         }
         private bool _setNoDataLabelVisibilityALLList = true;
@@ -50,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
 
                 if (_setNoDataLabelVisibilityALLList == value) return;
                 _setNoDataLabelVisibilityALLList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityALLList");
+                OnPropertyChanged("SetNoDataLabelVisibilityALLList");
             }
         }
         private bool _setNoDataLabelVisibilityALL = true;
@@ -65,7 +64,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 if (_setNoDataLabelVisibilityALL == value) return;
 
                 _setNoDataLabelVisibilityALL = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityALL");
+                OnPropertyChanged("SetNoDataLabelVisibilityALL");
             }
         }
         private bool _setNoDataLabelVisibilityPAID = true;
@@ -80,7 +79,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 if (_setNoDataLabelVisibilityPAID == value) return;
 
                 _setNoDataLabelVisibilityPAID = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityPAID");
+                OnPropertyChanged("SetNoDataLabelVisibilityPAID");
             }
         }
         private bool _setNoDataLabelVisibilityPAIDList = true;
@@ -95,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 if (_setNoDataLabelVisibilityPAIDList == value) return;
 
                 _setNoDataLabelVisibilityPAIDList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityPAIDList");
+                OnPropertyChanged("SetNoDataLabelVisibilityPAIDList");
             }
         }
         private bool _setNoDataLabelVisibilityUNPAIDList = true;
@@ -108,7 +107,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _setNoDataLabelVisibilityUNPAIDList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityUNPAIDList");
+                OnPropertyChanged("SetNoDataLabelVisibilityUNPAIDList");
             }
         }
         private bool _setNoDataLabelVisibilityUNPAID = true;
@@ -121,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _setNoDataLabelVisibilityUNPAID = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityUNPAID");
+                OnPropertyChanged("SetNoDataLabelVisibilityUNPAID");
             }
         }
         private bool _setNoDataLabelVisibilityPPAID = true;
@@ -134,7 +133,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _setNoDataLabelVisibilityPPAID = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityPPAID");
+                OnPropertyChanged("SetNoDataLabelVisibilityPPAID");
             }
         }
         private bool _setNoDataLabelVisibilityPPAIDList = true;
@@ -147,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _setNoDataLabelVisibilityPPAIDList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityPPAIDList");
+                OnPropertyChanged("SetNoDataLabelVisibilityPPAIDList");
             }
         }
         private int _groupValue = 0;
@@ -160,7 +159,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _groupValue = value;
-                RaisePropertyChanged("GroupValue");
+                OnPropertyChanged("GroupValue");
             }
         }
         private ObservableCollection<MyBillsChartModel> _listMyBillsChaetModel = null;
@@ -173,7 +172,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _listMyBillsChaetModel = value;
-                RaisePropertyChanged("ListMyBillsChartModel");
+                OnPropertyChanged("ListMyBillsChartModel");
             }
         }
         private MyBills _myBillsObj;
@@ -186,7 +185,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _myBillsObj = value;
-                RaisePropertyChanged("MyBillsObj");
+                OnPropertyChanged("MyBillsObj");
             }
         }
         private ObservableCollection<MyBills> _myBills;
@@ -199,7 +198,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _myBills = value;
-                RaisePropertyChanged("MyBills");
+                OnPropertyChanged("MyBills");
             }
         }
         private List<MyBills> _myBillsPaid;
@@ -212,7 +211,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _myBillsPaid = value;
-                RaisePropertyChanged("MyBillsPaid");
+                OnPropertyChanged("MyBillsPaid");
             }
         }
         private List<MyBills> _myBillsUnPaid;
@@ -225,7 +224,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _myBillsUnPaid = value;
-                RaisePropertyChanged("MyBillsUnPaid");
+                OnPropertyChanged("MyBillsUnPaid");
             }
         }
         private List<MyBills> _myBillsPartiallyPaid;
@@ -238,7 +237,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _myBillsPartiallyPaid = value;
-                RaisePropertyChanged("MyBillsPartiallyPaid");
+                OnPropertyChanged("MyBillsPartiallyPaid");
             }
         }
        
@@ -252,7 +251,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _setNoDataLabelVisibility = value;
-                RaisePropertyChanged("SetNoDataLabelVisibility");
+                OnPropertyChanged("SetNoDataLabelVisibility");
             }
         }
         private ObservableCollection<MyBills> _myBillsOriginal;
@@ -265,7 +264,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _myBillsOriginal = value;
-                RaisePropertyChanged("MyBillsOriginal");
+                OnPropertyChanged("MyBillsOriginal");
             }
         }
         private string _isUnderlineForAll = "Underline";
@@ -278,7 +277,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _isUnderlineForAll = value;
-                RaisePropertyChanged("IsUnderlineForAll");
+                OnPropertyChanged("IsUnderlineForAll");
             }
         }
         private string _isUnderlineForPartiallyPaid = "None";
@@ -291,7 +290,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _isUnderlineForPartiallyPaid = value;
-                RaisePropertyChanged("IsUnderlineForPartiallyPaid");
+                OnPropertyChanged("IsUnderlineForPartiallyPaid");
             }
         }
         private string _isUnderlineForPaid = "None";
@@ -304,7 +303,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _isUnderlineForPaid = value;
-                RaisePropertyChanged("IsUnderlineForPaid");
+                OnPropertyChanged("IsUnderlineForPaid");
             }
         }
         private int _selcectedBillsIndex = 0;
@@ -317,7 +316,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _selcectedBillsIndex = value;
-                RaisePropertyChanged("SelcectedBillsIndex");
+                OnPropertyChanged("SelcectedBillsIndex");
             }
         }
         private string _isUnderlineForUnPaid = "None";
@@ -330,7 +329,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _isUnderlineForUnPaid = value;
-                RaisePropertyChanged("IsUnderlineForUnPaid");
+                OnPropertyChanged("IsUnderlineForUnPaid");
             }
         }
         private string _statusImage;
@@ -343,17 +342,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             set
             {
                 _statusImage = value;
-                RaisePropertyChanged("StatusImage");
+                OnPropertyChanged("StatusImage");
             }
         }
         public MyBillsViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
             OnHomeIconClicked = new Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
@@ -366,10 +359,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             {
                 _navigationService.GoBack();
             });
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
         public void onPageLoad(BillInfo billInfo)
         {

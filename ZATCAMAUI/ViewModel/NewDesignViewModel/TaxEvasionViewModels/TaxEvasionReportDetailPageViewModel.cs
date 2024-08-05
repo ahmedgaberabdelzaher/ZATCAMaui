@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
@@ -20,7 +21,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 if (_SelectedTaxEvasionListItem == value) return;
                 _SelectedTaxEvasionListItem = value;
-                RaisePropertyChanged("SelectedTaxEvasionListItem");
+                OnPropertyChanged("SelectedTaxEvasionListItem");
             }
         }
         #endregion

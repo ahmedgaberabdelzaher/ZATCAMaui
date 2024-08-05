@@ -1,8 +1,6 @@
 ﻿using System.Globalization;
 using System.Text;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PanCardView.Extensions;
@@ -19,6 +17,7 @@ using ZATCAMAUI.Views.NewDesign.ZakatDeregistration;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.ZakatDeregistration;
 using static ZATCAMAUI.Models.ErrorMessage;
 using Application = Microsoft.Maui.Controls.Application;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
@@ -26,8 +25,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
     public class TINDeregistrationPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackBtnTapped { get; set; }
         public ICommand CloseBtnTapped { get; set; }
         public ICommand IdTypeTapped { get; set; }
@@ -78,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _isTransferPermitViewVisible = value;
-                RaisePropertyChanged("IsTransferPermitViewVisible");
+                OnPropertyChanged("IsTransferPermitViewVisible");
             }
         }
 
@@ -90,7 +87,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _firstName = value;
                 IDTypeDataModel.Name1 = value;
-                RaisePropertyChanged("FirstName");
+                OnPropertyChanged("FirstName");
             }
         }
         private string _surName;
@@ -101,7 +98,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _surName = value;
                 IDTypeDataModel.Name2 = value;
-                RaisePropertyChanged("SurName");
+                OnPropertyChanged("SurName");
             }
         }
         private string _familyName;
@@ -112,7 +109,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _familyName = value;
                 IDTypeDataModel.FamilyName = value;
-                RaisePropertyChanged("FamilyName");
+                OnPropertyChanged("FamilyName");
             }
         }
         private string _fatherName;
@@ -123,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _fatherName = value;
                 IDTypeDataModel.FatherName = value;
-                RaisePropertyChanged("FatherName");
+                OnPropertyChanged("FatherName");
             }
         }
         private string _gFatherName;
@@ -134,7 +131,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 _gFatherName = value;
                 IDTypeDataModel.GrandfatherName = value;
-                RaisePropertyChanged("GrandfatherName");
+                OnPropertyChanged("GrandfatherName");
             }
         }
         public string attachmentsListViewDataString { get; set; }
@@ -146,7 +143,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (_labelText == value) return;
                 _labelText = value;
-                RaisePropertyChanged(nameof(LabelText));
+                OnPropertyChanged(nameof(LabelText));
             }
         }
         public enum ProcessStep
@@ -167,7 +164,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_currentStep == value) return;
 
                 _currentStep = value;
-                RaisePropertyChanged("CurrentStep");
+                OnPropertyChanged("CurrentStep");
             }
         }
 
@@ -183,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isBackButtonVisible == value) return;
 
                 _isBackButtonVisible = value;
-                RaisePropertyChanged("IsBackButtonVisible");
+                OnPropertyChanged("IsBackButtonVisible");
             }
         }
 
@@ -199,7 +196,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isOutletTranferOutletGridVisible == value) return;
 
                 _isOutletTranferOutletGridVisible = value;
-                RaisePropertyChanged("IsOutletTranferOutletGridVisible");
+                OnPropertyChanged("IsOutletTranferOutletGridVisible");
             }
         }
 
@@ -216,7 +213,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isMultiplePermitsVisible == value) return;
 
                 _isMultiplePermitsVisible = value;
-                RaisePropertyChanged("IsMultiplePermitsVisible");
+                OnPropertyChanged("IsMultiplePermitsVisible");
             }
         }
 
@@ -232,7 +229,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isNodataAvailableVisible == value) return;
 
                 _isNodataAvailableVisible = value;
-                RaisePropertyChanged("IsNodataAvailableVisible");
+                OnPropertyChanged("IsNodataAvailableVisible");
             }
         }
         private List<object> _todayDate;
@@ -247,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_todayDate == value) return;
 
                 _todayDate = value;
-                RaisePropertyChanged("TodayDate");
+                OnPropertyChanged("TodayDate");
             }
         }
         private List<object> _todayDateinHijri;
@@ -262,7 +259,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_todayDateinHijri == value) return;
 
                 _todayDateinHijri = value;
-                RaisePropertyChanged("TodayDateinHijri");
+                OnPropertyChanged("TodayDateinHijri");
             }
         }
         private string _pkrDBO = string.Empty;
@@ -277,7 +274,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_pkrDBO == value) return;
 
                 _pkrDBO = value;
-                RaisePropertyChanged("PkrDBO");
+                OnPropertyChanged("PkrDBO");
             }
         }
 
@@ -293,7 +290,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_dateOfBirth == value) return;
 
                 _dateOfBirth = value;
-                RaisePropertyChanged("DateOfBirth");
+                OnPropertyChanged("DateOfBirth");
             }
         }
         private string _tINNumber = string.Empty;
@@ -312,7 +309,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     IsEnteredTINValid = false;
                 }
-                RaisePropertyChanged("TINNumber");
+                OnPropertyChanged("TINNumber");
             }
         }
         private string _pkrDBOPrev = string.Empty;
@@ -327,7 +324,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_pkrDBOPrev == value) return;
 
                 _pkrDBOPrev = value;
-                RaisePropertyChanged("PkrDBOPrev");
+                OnPropertyChanged("PkrDBOPrev");
             }
         }
         private string _PickerDobToDisplay = string.Empty;
@@ -342,7 +339,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_PickerDobToDisplay == value) return;
 
                 _PickerDobToDisplay = value;
-                RaisePropertyChanged("PickerDobToDisplay");
+                OnPropertyChanged("PickerDobToDisplay");
             }
         }
         private string _PickerCloseAllDeregDateDisplay = string.Empty;
@@ -357,7 +354,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //  if (_PickerCloseAllDeregDateDisplay == value) return;
 
                 _PickerCloseAllDeregDateDisplay = value;
-                RaisePropertyChanged("PickerCloseAllDeregDateDisplay");
+                OnPropertyChanged("PickerCloseAllDeregDateDisplay");
             }
         }
         private string _PickerCloseAllDeregDateDisplay1 = string.Empty;
@@ -373,7 +370,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 _PickerCloseAllDeregDateDisplay = value;
                 _PickerCloseAllDeregDateDisplay1 = value;
-                RaisePropertyChanged("PickerCloseAllDeregDateDisplay1");
+                OnPropertyChanged("PickerCloseAllDeregDateDisplay1");
             }
         }
 
@@ -390,7 +387,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_TransferPickerDOBDateDisplay == value) return;
 
                 _TransferPickerDOBDateDisplay = value;
-                RaisePropertyChanged("TransferPickerDOBDateDisplay");
+                OnPropertyChanged("TransferPickerDOBDateDisplay");
             }
         }
         private string _PickerTransferDeregDateDisplay = string.Empty;
@@ -405,7 +402,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_PickerTransferDeregDateDisplay == value) return;
 
                 _PickerTransferDeregDateDisplay = value;
-                RaisePropertyChanged("PickerTransferDeregDateDisplay");
+                OnPropertyChanged("PickerTransferDeregDateDisplay");
             }
         }
         private string _PickerDOBDateDisplay = string.Empty;
@@ -420,7 +417,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_PickerDOBDateDisplay == value) return;
 
                 _PickerDOBDateDisplay = value;
-                RaisePropertyChanged("PickerDOBDateDisplay");
+                OnPropertyChanged("PickerDOBDateDisplay");
             }
         }
 
@@ -436,7 +433,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_OutletCheckboxTitle == value) return;
 
                 _OutletCheckboxTitle = value;
-                RaisePropertyChanged("OutletCheckboxTitle");
+                OnPropertyChanged("OutletCheckboxTitle");
             }
         }
         //
@@ -452,7 +449,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isReasonViewEnabled == value) return;
 
                 _isReasonViewEnabled = value;
-                RaisePropertyChanged("IsReasonViewEnabled");
+                OnPropertyChanged("IsReasonViewEnabled");
             }
         }
         private bool _IsHijriCal = false;
@@ -467,7 +464,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_IsHijriCal == value) return;
 
                 _IsHijriCal = value;
-                RaisePropertyChanged("IsHijriCal");
+                OnPropertyChanged("IsHijriCal");
             }
         }
         private bool _IsPermitHijriCal = false;
@@ -482,7 +479,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_IsPermitHijriCal == value) return;
 
                 _IsPermitHijriCal = value;
-                RaisePropertyChanged("IsPermitHijriCal");
+                OnPropertyChanged("IsPermitHijriCal");
             }
         }
 
@@ -498,7 +495,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_IsDOBHijriCal == value) return;
 
                 _IsDOBHijriCal = value;
-                RaisePropertyChanged("IsDOBHijriCal");
+                OnPropertyChanged("IsDOBHijriCal");
             }
         }
         private bool _isOutletViewEnabled = false;
@@ -513,7 +510,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isOutletViewEnabled == value) return;
 
                 _isOutletViewEnabled = value;
-                RaisePropertyChanged("IsOutletViewEnabled");
+                OnPropertyChanged("IsOutletViewEnabled");
             }
         }
 
@@ -529,7 +526,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isAttachmentsViewEnabled == value) return;
 
                 _isAttachmentsViewEnabled = value;
-                RaisePropertyChanged("IsAttachmentsViewEnabled");
+                OnPropertyChanged("IsAttachmentsViewEnabled");
             }
         }
 
@@ -545,7 +542,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isDeclarationViewEnabled == value) return;
 
                 _isDeclarationViewEnabled = value;
-                RaisePropertyChanged("IsDeclarationViewEnabled");
+                OnPropertyChanged("IsDeclarationViewEnabled");
             }
         }
         private bool _isDeclarationChecked;
@@ -575,7 +572,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
 
-                RaisePropertyChanged("IsDeclarationChecked");
+                OnPropertyChanged("IsDeclarationChecked");
             }
         }
         private bool _isOutletChecked;
@@ -606,7 +603,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
 
-                RaisePropertyChanged("IsOutletChecked");
+                OnPropertyChanged("IsOutletChecked");
             }
         }
         private Color _declarationContinueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -621,7 +618,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_declarationContinueButtonnBackroundColor == value) return;
 
                 _declarationContinueButtonnBackroundColor = value;
-                RaisePropertyChanged("DeclarationContinueButtonnBackroundColor");
+                OnPropertyChanged("DeclarationContinueButtonnBackroundColor");
             }
         }
         private Color _outletContinueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -634,7 +631,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _outletContinueButtonnBackroundColor = value;
-                RaisePropertyChanged("OutletContinueButtonnBackroundColor");
+                OnPropertyChanged("OutletContinueButtonnBackroundColor");
             }
         }
         private bool _iSDeclarationContinueButtonEnabled = false;
@@ -657,7 +654,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     DeclarationContinueButtonnBackroundColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
+                OnPropertyChanged("IsDeclarationContinueButtonEnabled");
             }
         }
         private bool _iSOutletContinueButtonEnabled = false;
@@ -678,7 +675,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     OutletContinueButtonnBackroundColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IsOutletContinueButtonEnabled");
+                OnPropertyChanged("IsOutletContinueButtonEnabled");
             }
         }
         private bool _isSummaryViewEnabled = false;
@@ -693,7 +690,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isSummaryViewEnabled == value) return;
 
                 _isSummaryViewEnabled = value;
-                RaisePropertyChanged("IsSummaryViewEnabled");
+                OnPropertyChanged("IsSummaryViewEnabled");
             }
         }
 
@@ -710,7 +707,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (tinDeregistrationModel == value) return;
 
                 tinDeregistrationModel = value;
-                RaisePropertyChanged("TinDeregistrationModel");
+                OnPropertyChanged("TinDeregistrationModel");
             }
         }
 
@@ -733,7 +730,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //    IsOutletDecisionOptionsLVVisible = true;
                 //else
                 //    IsOutletDecisionOptionsLVVisible = false;
-                RaisePropertyChanged("OutletDecisionOptions");
+                OnPropertyChanged("OutletDecisionOptions");
             }
         }
         private bool _isOutletDecisionOptionsLVVisible = true;
@@ -742,7 +739,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             get => _isOutletDecisionOptionsLVVisible; set
             {
                 _isOutletDecisionOptionsLVVisible = value;
-                RaisePropertyChanged(nameof(IsOutletDecisionOptionsLVVisible));
+                OnPropertyChanged(nameof(IsOutletDecisionOptionsLVVisible));
             }
         }
 
@@ -760,7 +757,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 if (value != null)
                     permitOutletDecisionOptions = value;
-                RaisePropertyChanged("PermitOutletDecisionOptions");
+                OnPropertyChanged("PermitOutletDecisionOptions");
             }
         }
 
@@ -794,7 +791,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         PopulateAttachmentsListViewTemplate();
                     }
                 }
-                RaisePropertyChanged("SelectedPermitTypeOutletOption");
+                OnPropertyChanged("SelectedPermitTypeOutletOption");
             }
         }
 
@@ -810,7 +807,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_selectedPermitOutletOptionIndex == value) return;
 
                 _selectedPermitOutletOptionIndex = value;
-                RaisePropertyChanged("SelectedPermitOutletOptionIndex");
+                OnPropertyChanged("SelectedPermitOutletOptionIndex");
             }
         }
 
@@ -827,7 +824,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (attachmentsListViewData == value) return;
 
                 attachmentsListViewData = value;
-                RaisePropertyChanged("AttachmentsListViewData");
+                OnPropertyChanged("AttachmentsListViewData");
             }
         }
 
@@ -844,7 +841,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_tinDeregistrationSummaryReasonData == value) return;
 
                 _tinDeregistrationSummaryReasonData = value;
-                RaisePropertyChanged("TinDeregistrationSummaryReasonData");
+                OnPropertyChanged("TinDeregistrationSummaryReasonData");
             }
         }
 
@@ -861,7 +858,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_tinDeregistrationSummaryOutletData == value) return;
 
                 _tinDeregistrationSummaryOutletData = value;
-                RaisePropertyChanged("TinDeregistrationSummaryOutletData");
+                OnPropertyChanged("TinDeregistrationSummaryOutletData");
             }
         }
 
@@ -879,7 +876,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 _tinDeregistrationSummaryDeclarationData = value;
-                RaisePropertyChanged("TinDeregistrationSummaryDeclarationData");
+                OnPropertyChanged("TinDeregistrationSummaryDeclarationData");
             }
         }
 
@@ -895,7 +892,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_selectedOutletOptionIndex == value) return;
 
                 _selectedOutletOptionIndex = value;
-                RaisePropertyChanged("SelectedOutletOptionIndex");
+                OnPropertyChanged("SelectedOutletOptionIndex");
             }
         }
         private bool _isOption1Visible;
@@ -910,7 +907,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isOption1Visible == value) return;
 
                 _isOption1Visible = value;
-                RaisePropertyChanged("IsOption1Visible");
+                OnPropertyChanged("IsOption1Visible");
             }
         }
         private bool _isOption2Visible;
@@ -925,7 +922,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isOption2Visible == value) return;
 
                 _isOption2Visible = value;
-                RaisePropertyChanged("IsOption2Visible");
+                OnPropertyChanged("IsOption2Visible");
             }
         }
         private bool _IsPermitOption1Visible = false;
@@ -940,7 +937,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_IsPermitOption1Visible == value) return;
 
                 _IsPermitOption1Visible = value;
-                RaisePropertyChanged("IsPermitOption1Visible");
+                OnPropertyChanged("IsPermitOption1Visible");
             }
         }
 
@@ -956,7 +953,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_IsPermitOption2Visible == value) return;
 
                 _IsPermitOption2Visible = value;
-                RaisePropertyChanged("IsPermitOption2Visible");
+                OnPropertyChanged("IsPermitOption2Visible");
             }
         }
 
@@ -972,7 +969,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_IsPermitTypesVisible == value) return;
 
                 _IsPermitTypesVisible = value;
-                RaisePropertyChanged("IsPermitTypesVisible");
+                OnPropertyChanged("IsPermitTypesVisible");
             }
         }
 
@@ -1007,7 +1004,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                         PopulateAttachmentsListViewTemplate();
                     }
-                    RaisePropertyChanged("SelectedOutletOption");
+                    OnPropertyChanged("SelectedOutletOption");
                 }
                 //else
                 //{
@@ -1028,7 +1025,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_attachmentSize == value) return;
 
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public decimal _totalAttachmentSize = 0;
@@ -1043,7 +1040,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_totalAttachmentSize == value) return;
 
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
 
@@ -1059,7 +1056,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isName1Visible == value) return;
 
                 _isName1Visible = value;
-                RaisePropertyChanged("IsName1Visible");
+                OnPropertyChanged("IsName1Visible");
             }
         }
 
@@ -1076,7 +1073,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_firstNameLbl == value) return;
 
                 _firstNameLbl = value;
-                RaisePropertyChanged("FirstNameLbl");
+                OnPropertyChanged("FirstNameLbl");
             }
         }
 
@@ -1092,7 +1089,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_surnameNameLbl == value) return;
 
                 _surnameNameLbl = value;
-                RaisePropertyChanged("SurnameNameLbl");
+                OnPropertyChanged("SurnameNameLbl");
             }
         }
 
@@ -1108,7 +1105,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_attachmentName == value) return;
 
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
 
@@ -1125,7 +1122,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_selectedAttachment == value) return;
 
                 _selectedAttachment = value;
-                RaisePropertyChanged("SelectedAttachment");
+                OnPropertyChanged("SelectedAttachment");
             }
         }
         public List<VATDeregistrationSummaryModel> _vatDeregistrationSummaryDeclarationData { get; set; }
@@ -1142,7 +1139,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     return;
                 }
                 _vatDeregistrationSummaryDeclarationData = value;
-                RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
+                OnPropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
 
@@ -1180,7 +1177,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
-                RaisePropertyChanged("TinDeregistrationData");
+                OnPropertyChanged("TinDeregistrationData");
 
             }
         }
@@ -1198,7 +1195,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 _tinDeregistrationReasonSetData = value;
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
-                RaisePropertyChanged("TinDeregistrationReasonSetData");
+                OnPropertyChanged("TinDeregistrationReasonSetData");
             }
         }
 
@@ -1218,7 +1215,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //    IsOutletDecisionOptionsLVVisible = true;
                 //else
                 //    IsOutletDecisionOptionsLVVisible = false;
-                RaisePropertyChanged("SelectedReason");
+                OnPropertyChanged("SelectedReason");
             }
         }
 
@@ -1237,7 +1234,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 _tinDeregAttachmentList = value;
-                RaisePropertyChanged("TinDeregAttachmentList");
+                OnPropertyChanged("TinDeregAttachmentList");
             }
         }
 
@@ -1254,7 +1251,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     return;
 
                 _isIdtypePlaceHolderVisible = value;
-                RaisePropertyChanged("IsIdtypePlaceHolderVisible");
+                OnPropertyChanged("IsIdtypePlaceHolderVisible");
             }
         }
 
@@ -1280,7 +1277,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     return;
 
                 _selectedIdtype = value;
-                RaisePropertyChanged("SelectedIdtype");
+                OnPropertyChanged("SelectedIdtype");
             }
         }
 
@@ -1297,7 +1294,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 _firstNameFromIdType = value;
-                RaisePropertyChanged("FirstNameFromIdType");
+                OnPropertyChanged("FirstNameFromIdType");
             }
         }
 
@@ -1314,7 +1311,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_selectedIdNumber == value) return;
 
                 _selectedIdNumber = value;
-                RaisePropertyChanged("SelectedIdNumber");
+                OnPropertyChanged("SelectedIdNumber");
             }
         }
         private string _IndselectedIdNumber { get; set; }
@@ -1330,7 +1327,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_IndselectedIdNumber == value) return;
 
                 _IndselectedIdNumber = value;
-                RaisePropertyChanged("IndSelectedIdNumber");
+                OnPropertyChanged("IndSelectedIdNumber");
             }
         }
         private bool _isDobVisible = true;
@@ -1346,7 +1343,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isDobVisible == value) return;
 
                 _isDobVisible = value;
-                RaisePropertyChanged("IsDobVisible");
+                OnPropertyChanged("IsDobVisible");
             }
         }
 
@@ -1400,7 +1397,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         IsDobVisible = true;
                     }
                 }
-                RaisePropertyChanged("SelectedIDTypeCode");
+                OnPropertyChanged("SelectedIDTypeCode");
             }
         }
 
@@ -1418,7 +1415,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_tinDeregReasons == value) return;
 
                 _tinDeregReasons = value;
-                RaisePropertyChanged("VATDeregistrationSummaryDeclarationData");
+                OnPropertyChanged("VATDeregistrationSummaryDeclarationData");
             }
         }
         private bool _isDetailsFieldEnabled;
@@ -1430,7 +1427,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isDetailsFieldEnabled == value) return;
 
                 _isDetailsFieldEnabled = value;
-                RaisePropertyChanged(nameof(IsDetailsFieldEnabled));
+                OnPropertyChanged(nameof(IsDetailsFieldEnabled));
             }
         }
         private GenericPickerModel _pickerModel { get; set; }
@@ -1720,7 +1717,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
 
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
 
@@ -1769,7 +1766,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     ).ToList());
 
-                RaisePropertyChanged("SingleOutletDeregistrationDate");
+                OnPropertyChanged("SingleOutletDeregistrationDate");
             }
         }
 
@@ -1812,7 +1809,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     ).ToList());
 
-                RaisePropertyChanged("PermitDob");
+                OnPropertyChanged("PermitDob");
             }
         }
 
@@ -1868,7 +1865,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                     }
                 }
-                RaisePropertyChanged("SingleDeregistrationDate");
+                OnPropertyChanged("SingleDeregistrationDate");
             }
         }
 
@@ -1884,7 +1881,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_deregistrationDate == value) return;
 
                 _deregistrationDate = value;
-                RaisePropertyChanged("DeregistrationDate");
+                OnPropertyChanged("DeregistrationDate");
             }
         }
 
@@ -1900,7 +1897,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_submissionDate == value) return;
 
                 _submissionDate = value;
-                RaisePropertyChanged("SubmissionDate");
+                OnPropertyChanged("SubmissionDate");
             }
         }
 
@@ -1916,7 +1913,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_selectedDob == value) return;
 
                 _selectedDob = value;
-                RaisePropertyChanged("SelectedDob");
+                OnPropertyChanged("SelectedDob");
             }
         }
         private bool _frameIDError = false;
@@ -1931,7 +1928,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_frameIDError == value) return;
 
                 _frameIDError = value;
-                RaisePropertyChanged("FrameIDError");
+                OnPropertyChanged("FrameIDError");
             }
         }
 
@@ -1947,7 +1944,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_frameTinError == value) return;
 
                 _frameTinError = value;
-                RaisePropertyChanged("FrameTinError");
+                OnPropertyChanged("FrameTinError");
             }
         }
 
@@ -1963,7 +1960,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_outletEditIsVisible == value) return;
 
                 _outletEditIsVisible = value;
-                RaisePropertyChanged("outletEditIsVisible");
+                OnPropertyChanged("outletEditIsVisible");
             }
         }
 
@@ -1982,7 +1979,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 _iDTypeDataModel = value;
-                RaisePropertyChanged("IDTypeDataModel");
+                OnPropertyChanged("IDTypeDataModel");
             }
         }
         private FieldValidations _tinText { get; set; }
@@ -1997,7 +1994,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_tinText == value) return;
 
                 _tinText = value;
-                RaisePropertyChanged("TinText");
+                OnPropertyChanged("TinText");
             }
         }
         private List<Attachment> _attachmentTypeList { get; set; }
@@ -2012,7 +2009,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_attachmentTypeList == value) return;
 
                 _attachmentTypeList = value;
-                RaisePropertyChanged("AttachmentTypeList");
+                OnPropertyChanged("AttachmentTypeList");
             }
         }
         private FieldValidations _DateField { get; set; }
@@ -2027,7 +2024,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_DateField == value) return;
 
                 _DateField = value;
-                RaisePropertyChanged("DateField");
+                OnPropertyChanged("DateField");
             }
         }
 
@@ -2043,7 +2040,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_idTypeText == value) return;
 
                 _idTypeText = value;
-                RaisePropertyChanged("IdTypeText");
+                OnPropertyChanged("IdTypeText");
             }
         }
 
@@ -2059,7 +2056,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_idNumberText == value) return;
 
                 _idNumberText = value;
-                RaisePropertyChanged("IdNumberText");
+                OnPropertyChanged("IdNumberText");
             }
         }
 
@@ -2075,7 +2072,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_dobText == value) return;
 
                 _dobText = value;
-                RaisePropertyChanged("DobText");
+                OnPropertyChanged("DobText");
             }
         }
 
@@ -2091,7 +2088,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_firstNameText == value) return;
 
                 _firstNameText = value;
-                RaisePropertyChanged("FirstNameText");
+                OnPropertyChanged("FirstNameText");
             }
         }
 
@@ -2107,7 +2104,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_surnameText == value) return;
 
                 _surnameText = value;
-                RaisePropertyChanged("SurnameText");
+                OnPropertyChanged("SurnameText");
             }
         }
 
@@ -2123,7 +2120,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_fathersNameText == value) return;
 
                 _fathersNameText = value;
-                RaisePropertyChanged("FathersNameText");
+                OnPropertyChanged("FathersNameText");
             }
         }
 
@@ -2139,7 +2136,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_grandFathersNameText == value) return;
 
                 _grandFathersNameText = value;
-                RaisePropertyChanged("GrandFathersNameText");
+                OnPropertyChanged("GrandFathersNameText");
             }
         }
 
@@ -2157,7 +2154,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
                 tinDeregAttachmentsListViewData = value;
-                RaisePropertyChanged("TinDeregAttachmentsListViewData");
+                OnPropertyChanged("TinDeregAttachmentsListViewData");
             }
         }
         private bool _isAttachmentsEnabled = false;
@@ -2171,7 +2168,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 _isAttachmentsEnabled = value;
                 AttachButtonBackGroundColor = _isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsAttachmentsEnabled");
+                OnPropertyChanged("IsAttachmentsEnabled");
             }
         }
 
@@ -2189,7 +2186,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     return;
                 }
                 _attachButtonBackGroundColor = value;
-                RaisePropertyChanged("AttachButtonBackGroundColor");
+                OnPropertyChanged("AttachButtonBackGroundColor");
             }
         }
 
@@ -2205,7 +2202,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_familyNameText == value) return;
 
                 _familyNameText = value;
-                RaisePropertyChanged("FamilyNameText");
+                OnPropertyChanged("FamilyNameText");
             }
         }
 
@@ -2221,7 +2218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_name1Text == value) return;
 
                 _name1Text = value;
-                RaisePropertyChanged("Name1Text");
+                OnPropertyChanged("Name1Text");
             }
         }
 
@@ -2237,7 +2234,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_name2Text == value) return;
 
                 _name2Text = value;
-                RaisePropertyChanged("Name2Text");
+                OnPropertyChanged("Name2Text");
             }
         }
 
@@ -2269,7 +2266,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     //IsEnableIBANType = false;
                 }
-                RaisePropertyChanged("IBANTypesList");
+                OnPropertyChanged("IBANTypesList");
             }
         }
 
@@ -2286,7 +2283,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_selectedOutletForCloseTranser == value) return;
 
                 _selectedOutletForCloseTranser = value;
-                RaisePropertyChanged("SelectedOutletForCloseTranser");
+                OnPropertyChanged("SelectedOutletForCloseTranser");
             }
         }
 
@@ -2302,7 +2299,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_allOutlets == value) return;
 
                 _allOutlets = value;
-                RaisePropertyChanged("AllOutlets");
+                OnPropertyChanged("AllOutlets");
             }
         }
 
@@ -2318,7 +2315,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_VoidIsVisible == value) return;
 
                 _VoidIsVisible = value;
-                RaisePropertyChanged("VoidIsVisible");
+                OnPropertyChanged("VoidIsVisible");
             }
         }
 
@@ -2334,7 +2331,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_uploadedAttachmentFileType == value) return;
 
                 _uploadedAttachmentFileType = value;
-                RaisePropertyChanged("UploadedAttachmentFileType");
+                OnPropertyChanged("UploadedAttachmentFileType");
             }
         }
 
@@ -2353,7 +2350,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 _ListOfActionButtonsApplicable = value;
 
-                RaisePropertyChanged("ListOfActionButtonsApplicable");
+                OnPropertyChanged("ListOfActionButtonsApplicable");
             }
         }
         public void GetSelectedDataTemplate()
@@ -2742,16 +2739,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public TINDeregistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
             GoBackBtnTapped = new Command(GoBackBtnClicked);
             ReasonContinueBtnTapped = new Command(ReasonContinueBtnClicked);

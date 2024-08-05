@@ -346,37 +346,32 @@
                             </Label>
 
                             <!--  Coming From/Going To Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.Select}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.arrivingFromDepartingToName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.arrivingFromDepartingToName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
+
+                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
@@ -407,37 +402,32 @@
                             </Label>
 
                             <!--  Entrance/Exit Port Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.Select}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.portName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.portName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
+
+                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
@@ -468,37 +458,29 @@
                             </Label>
 
 
-                            <!--  Arrival/Departure Date Label  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="dd/MM/yyyy"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <!--  Arrival/Departure Date Entry  -->
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="ArivalDateEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding ArrivalDepartureDateString}"
+                                        TextColor="#58595B" />
+                               </custom:CustomSfTextInputView.TextInputView>
 
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="ArivalDateEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="dd/MM/yyyy"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding ArrivalDepartureDateString}"
-                                    TextColor="#58595B" />
-
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="greyCalender" />
+                                 <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ArrivalDateClickedCommand}" CommandParameter="{x:Reference ArivalDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
 
                             <DatePicker
                                 x:Name="ArivalDate"
@@ -532,24 +514,17 @@
                             </Label>
 
                             <!--  Trip Number Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="SV0000"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="SV0000"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.flightNumber}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                     <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        Placeholder="SV0000"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.flightNumber}"
+                                        TextColor="#58595B" />
+                               </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -567,37 +542,30 @@
                             </Label>
 
                             <!--  Travel Purpose Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.TravelPurpose}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.TravelPurpose}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.travelPurposeName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                      <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.TravelPurpose}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SubmitModel.travelerDeclaration.travelPurposeName}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
+                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
@@ -619,30 +587,26 @@
                             </Label>
 
                             <!--  Traveler Count Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-                                Hint="{x:Static ResourceManager:AppResources.TravelerCount}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Numeric"
-                                    Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <behaviour:OnlyNumericValuesBehaviour />
-                                    </custom:GAZTBorderlessEntry.Behaviors>
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Numeric"
+                                        Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviour:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                                    </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
+
+                            <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
+                                Margin="0,-15,0,10"
+                                Style="{StaticResource CaptionLabelGrey}"/>
 
                         </StackLayout>
 
@@ -661,29 +625,22 @@
                             </Label>
 
                             <!--  Plates Country Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.CountryText}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.CountryText}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.PlatesCountryName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                   <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.CountryText}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.PlatesCountryName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                   </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
+
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
@@ -691,7 +648,8 @@
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                             </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
@@ -713,30 +671,23 @@
                             </Label>
 
                             <!--  Plates City Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ZZZZCity}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.PlatesCityName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                   <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.PlatesCityName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
 
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                   </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
+
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
@@ -744,7 +695,8 @@
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                             </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
@@ -765,31 +717,24 @@
                             </Label>
 
                             <!--  Plates Number Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.PlatesNumber}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    MaxLength="30"
-                                    Placeholder="{x:Static ResourceManager:AppResources.PlatesNumber}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.plateNumber}"
-                                    TextColor="#58595B">
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                   <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        MaxLength="30"
+                                        Placeholder="{x:Static ResourceManager:AppResources.PlatesNumber}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.plateNumber}"
+                                        TextColor="#58595B">
 
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <behaviour:OnlyNumericValuesBehaviour />
-                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <behaviour:OnlyNumericValuesBehaviour />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                                    </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
+
+                             </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -806,32 +751,24 @@
                             </Label>
 
                             <!--  Plates Letter Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.PlatesLetter}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    MaxLength="4"
-                                    Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.plateLetters}"
-                                    TextColor="#58595B">
+                            <custom:CustomSfTextInputView >
+                               <custom:CustomSfTextInputView.TextInputView>
+                                   <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        MaxLength="4"
+                                        Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.plateLetters}"
+                                        TextColor="#58595B">
 
-                                    <custom:GAZTBorderlessEntry.Behaviors>
-                                        <xct:EventToCommandBehavior Command="{Binding PlateLLetterTextChangedCommand}" EventName="TextChanged" />
-                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                        <custom:GAZTBorderlessEntry.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding PlateLLetterTextChangedCommand}" EventName="TextChanged" />
+                                        </custom:GAZTBorderlessEntry.Behaviors>
 
-                                </custom:GAZTBorderlessEntry>
+                                   </custom:GAZTBorderlessEntry>
+                               </custom:CustomSfTextInputView.TextInputView>
 
-                            </inputLayout:SfTextInputLayout>
+                             </custom:CustomSfTextInputView>
 
                         </StackLayout>
 

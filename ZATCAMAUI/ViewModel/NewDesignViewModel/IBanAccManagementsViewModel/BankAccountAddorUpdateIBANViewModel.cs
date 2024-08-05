@@ -1,5 +1,5 @@
 ﻿using System;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
@@ -13,6 +13,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Views.NewDesign.Common;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
@@ -57,16 +58,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
                 else
                 {
                     MarkComplete = false;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -84,7 +85,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_selectedIDType == value) return;
 
                 _selectedIDType = value;
-                RaisePropertyChanged("SelectedIDType");
+                OnPropertyChanged("SelectedIDType");
             }
         }
 
@@ -98,7 +99,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_selectedIDNumber == value) return;
 
                 _selectedIDNumber = value;
-                RaisePropertyChanged("SelectedIDNumber");
+                OnPropertyChanged("SelectedIDNumber");
             }
         }
 
@@ -116,7 +117,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_selectedBankName == value) return;
 
                 _selectedBankName = value;
-                RaisePropertyChanged("SelectedBankName");
+                OnPropertyChanged("SelectedBankName");
             }
         }
 
@@ -129,7 +130,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_selectedBankNameField == value) return;
 
                 _selectedBankNameField = value;
-                RaisePropertyChanged("SelectedBankNameField");
+                OnPropertyChanged("SelectedBankNameField");
             }
         }
 
@@ -143,7 +144,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_selectedIDTypeValue == value) return;
 
                 _selectedIDTypeValue = value;
-                RaisePropertyChanged("SelectedIDTypeValue");
+                OnPropertyChanged("SelectedIDTypeValue");
             }
         }
 
@@ -157,7 +158,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_selectedIDNumberValue == value) return;
 
                 _selectedIDNumberValue = value;
-                RaisePropertyChanged("SelectedIDNumberValue");
+                OnPropertyChanged("SelectedIDNumberValue");
             }
         }
 
@@ -171,7 +172,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_selectedBankNameValue == value) return;
 
                 _selectedBankNameValue = value;
-                RaisePropertyChanged("SelectedBankNameValue");
+                OnPropertyChanged("SelectedBankNameValue");
             }
         }
 
@@ -185,7 +186,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_accountOwnerName == value) return;
 
                 _accountOwnerName = value;
-                RaisePropertyChanged("AccountOwnerName");
+                OnPropertyChanged("AccountOwnerName");
             }
         }
 
@@ -199,7 +200,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_isNameEnabled == value) return;
 
                 _isNameEnabled = value;
-                RaisePropertyChanged("isNameEnabled");
+                OnPropertyChanged("isNameEnabled");
             }
         }
 
@@ -213,7 +214,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_IBANValue == value) return;
 
                 _IBANValue = value;
-                RaisePropertyChanged("IBANValue");
+                OnPropertyChanged("IBANValue");
             }
         }
 
@@ -227,7 +228,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_idNumber == value) return;
 
                 _idNumber = value;
-                RaisePropertyChanged("IdNumber");
+                OnPropertyChanged("IdNumber");
             }
         }
         private string _idNumberInfo = "";
@@ -240,7 +241,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_idNumberInfo == value) return;
 
                 _idNumberInfo = value;
-                RaisePropertyChanged("IdNumberInfo");
+                OnPropertyChanged("IdNumberInfo");
             }
         }
         private IBanAccountManagementResponseModel _iBANAccountData;
@@ -253,7 +254,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_iBANAccountData == value) return;
 
                 _iBANAccountData = value;
-                RaisePropertyChanged("IBANAccountData");
+                OnPropertyChanged("IBANAccountData");
             }
         }
 
@@ -266,7 +267,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_pickerModel == value) return;
 
                 _pickerModel = value;
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
 
@@ -281,7 +282,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_newFormVisible == value) return;
 
                 _newFormVisible = value;
-                RaisePropertyChanged("NewFormVisible");
+                OnPropertyChanged("NewFormVisible");
             }
         }
         private bool _attachmentVisible = false;
@@ -294,7 +295,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_attachmentVisible == value) return;
 
                 _attachmentVisible = value;
-                RaisePropertyChanged("AttachmentVisible");
+                OnPropertyChanged("AttachmentVisible");
             }
         }
         private bool isIBanDropDownEnabled = true;
@@ -307,7 +308,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (isIBanDropDownEnabled == value) return;
 
                 isIBanDropDownEnabled = value;
-                RaisePropertyChanged("IsIBanDropDownEnabled");
+                OnPropertyChanged("IsIBanDropDownEnabled");
             }
         }
 
@@ -321,7 +322,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_isIBanUpdatePage == value) return;
 
                 _isIBanUpdatePage = value;
-                RaisePropertyChanged("IsIBanUpdatePage");
+                OnPropertyChanged("IsIBanUpdatePage");
             }
         }
         private bool _isIdInfoVisibility = false;
@@ -334,7 +335,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_isIdInfoVisibility == value) return;
 
                 _isIdInfoVisibility = value;
-                RaisePropertyChanged("IsIdInfoVisibility");
+                OnPropertyChanged("IsIdInfoVisibility");
             }
         }
 
@@ -349,7 +350,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_summaryVisible == value) return;
 
                 _summaryVisible = value;
-                RaisePropertyChanged("SummaryVisible");
+                OnPropertyChanged("SummaryVisible");
             }
         }
 
@@ -378,7 +379,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
 
 
-                RaisePropertyChanged("IsInstrunctionChecked");
+                OnPropertyChanged("IsInstrunctionChecked");
             }
         }
 
@@ -402,7 +403,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
                     ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
                 }*/
-                RaisePropertyChanged("IsContinueButtonEnable");
+                OnPropertyChanged("IsContinueButtonEnable");
             }
         }
 
@@ -418,7 +419,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_continueButtonnBackroundColor == value) return;
 
                 _continueButtonnBackroundColor = value;
-                RaisePropertyChanged("ContinueButtonnBackroundColor");
+                OnPropertyChanged("ContinueButtonnBackroundColor");
             }
         }
 
@@ -432,7 +433,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_otherBanksVisible == value) return;
 
                 _otherBanksVisible = value;
-                RaisePropertyChanged("OtherBanksVisible");
+                OnPropertyChanged("OtherBanksVisible");
             }
         }
         public ObservableCollection<Attachment> _iBANBankListViewDataOne = new ObservableCollection<Attachment>();
@@ -449,7 +450,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
 
                 _iBANBankListViewDataOne = value;
-                RaisePropertyChanged("IBANBankListViewDataOne");
+                OnPropertyChanged("IBANBankListViewDataOne");
             }
         }
         public ObservableCollection<Attachment> _iBANBankListViewDataTwo = new ObservableCollection<Attachment>();
@@ -466,7 +467,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 }
 
                 _iBANBankListViewDataTwo = value;
-                RaisePropertyChanged("IBANBankListViewDataTwo");
+                OnPropertyChanged("IBANBankListViewDataTwo");
             }
         }
         private IbanAccountFormGuidResponse _iBANAccountDataFormGuid;
@@ -479,7 +480,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_iBANAccountDataFormGuid == value) return;
 
                 _iBANAccountDataFormGuid = value;
-                RaisePropertyChanged("IBANAccountDataFormGuid");
+                OnPropertyChanged("IBANAccountDataFormGuid");
             }
         }
         private bool _isDropdownVisibile = false;
@@ -492,7 +493,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_isDropdownVisibile == value) return;
 
                 _isDropdownVisibile = value;
-                RaisePropertyChanged("IsDropdownVisibile");
+                OnPropertyChanged("IsDropdownVisibile");
             }
         }
         private string _idNumberTitle = AppResources.IBANIdNumber;
@@ -505,7 +506,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_idNumberTitle == value) return;
 
                 _idNumberTitle = value;
-                RaisePropertyChanged("IdNumberTitle");
+                OnPropertyChanged("IdNumberTitle");
             }
         }
 
@@ -519,7 +520,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (_isBorderColorRed == value) return;
 
                 _isBorderColorRed = value;
-                RaisePropertyChanged("IsBorderColorRed");
+                OnPropertyChanged("IsBorderColorRed");
             }
         }
         public BankAccountAddorUpdateIBANViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
@@ -653,7 +654,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (attachmentsListViewData[0].Dotyp.Equals("ZIB1"))
                 {
                     IBANBankListViewDataOne = attachmentsListViewData;
-                    RaisePropertyChanged("IBANBankListViewDataOne");
+                    OnPropertyChanged("IBANBankListViewDataOne");
                 }
                 else if (attachmentsListViewData[0].Dotyp.Equals("ZIB2"))
                 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.CustomServices;
 
@@ -27,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
 
                 ports = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -40,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isShowMsgView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -53,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 messageTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -80,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 selectedPort = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -141,7 +141,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isPickerOpened = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -155,7 +155,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 isPortsPickerSearch = value;
 
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -171,7 +171,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (_SearchTxt == value) return;
 
                 _SearchTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 

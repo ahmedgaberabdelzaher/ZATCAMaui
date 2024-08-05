@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
@@ -8,20 +9,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
     /// </summary>
     public class SFLoginViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public SFLoginViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
         #region Fields
         private bool isInvalidEmail;
@@ -46,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     return;
                 }
                 isInvalidEmail = value;
-                this.RaisePropertyChanged("IsInvalidEmail");
+                this.OnPropertyChanged("IsInvalidEmail");
             }
         }
         #endregion

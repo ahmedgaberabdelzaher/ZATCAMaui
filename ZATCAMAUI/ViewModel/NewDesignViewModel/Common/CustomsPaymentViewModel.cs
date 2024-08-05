@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
@@ -8,10 +9,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
     public class CustomsPaymentViewModel : BaseViewModel
     {
         string pageURL;
-        public string PageURL { get { return pageURL; } set { pageURL = value; RaisePropertyChanged(); } }
+        public string PageURL { get { return pageURL; } set { pageURL = value; OnPropertyChanged(); } }
 
         string paymentCode;
-        public string PaymentCode { get { return paymentCode; } set { paymentCode = value; RaisePropertyChanged(); } }
+        public string PaymentCode { get { return paymentCode; } set { paymentCode = value; OnPropertyChanged(); } }
 
         IE_DeclerationServices _iE_DeclerationServices;
 

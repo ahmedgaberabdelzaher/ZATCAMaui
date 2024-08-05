@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
@@ -19,7 +19,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _fbnumx = value;
-                    RaisePropertyChanged(nameof(Fbnumx));
+                    OnPropertyChanged(nameof(Fbnumx));
                 }
             }
         }
@@ -34,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _dateText = value;
-                    RaisePropertyChanged(nameof(DateText));
+                    OnPropertyChanged(nameof(DateText));
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 if (value != null)
                 {
                     _name = value;
-                    RaisePropertyChanged(nameof(Name));
+                    OnPropertyChanged(nameof(Name));
                 }
             }
         }

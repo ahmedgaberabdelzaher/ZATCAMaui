@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
@@ -16,9 +17,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 if (_currentTab == value) return;
                 _currentTab = value;
-                RaisePropertyChanged(nameof(currentTab));
+                OnPropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
             }
         }
         private int _currenrIndex = 1;
@@ -30,11 +31,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -57,7 +58,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (_IndividualBackImg == value) return;
 
                 _IndividualBackImg = value;
-                RaisePropertyChanged("IndividualBackImg");
+                OnPropertyChanged("IndividualBackImg");
             }
         }
 
@@ -73,7 +74,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (_EstablishmentBackImg == value) return;
 
                 _EstablishmentBackImg = value;
-                RaisePropertyChanged("EstablishmentBackImg");
+                OnPropertyChanged("EstablishmentBackImg");
             }
         }
         public string _PageTitle = AppResources.ZTERNewAccount;
@@ -88,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (_PageTitle == value) return;
 
                 _PageTitle = value;
-                RaisePropertyChanged("PageTitle");
+                OnPropertyChanged("PageTitle");
             }
         }
 
@@ -104,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (_BodyText == value) return;
 
                 _BodyText = value;
-                RaisePropertyChanged("BodyText");
+                OnPropertyChanged("BodyText");
             }
         }
         #endregion
@@ -112,14 +113,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         #region Constructor
         public EstablishmentSignUPPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
         #endregion
     }

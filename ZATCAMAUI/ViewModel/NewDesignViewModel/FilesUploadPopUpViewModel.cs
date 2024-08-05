@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Net;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -10,6 +10,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -37,7 +38,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isImpoterAndExporter = value;
-                RaisePropertyChanged("IsImpoterAndExporter");
+                OnPropertyChanged("IsImpoterAndExporter");
             }
         }
 
@@ -51,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isEnableSwitchToggled = value;
-                RaisePropertyChanged("IsEnableSwitchToggled");
+                OnPropertyChanged("IsEnableSwitchToggled");
             }
         }
 
@@ -65,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isEnableSwitchToggledForButton = value;
-                RaisePropertyChanged("IsEnableSwitchToggledForButton");
+                OnPropertyChanged("IsEnableSwitchToggledForButton");
             }
         }
 
@@ -79,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _TitleOne = value;
-                RaisePropertyChanged("TitleOne");
+                OnPropertyChanged("TitleOne");
             }
         }
 
@@ -95,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _TitleTwo = value;
-                RaisePropertyChanged("TitleTwo");
+                OnPropertyChanged("TitleTwo");
             }
         }
 
@@ -110,7 +111,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _attachmentSizeVisibility = value;
-                RaisePropertyChanged("AttachmentSizeVisibility");
+                OnPropertyChanged("AttachmentSizeVisibility");
             }
         }
         private VATDeclaration _vATDeclarationDataForAttch;
@@ -123,7 +124,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _vATDeclarationDataForAttch = value;
-                RaisePropertyChanged("VATDeclarationDataForAttch");
+                OnPropertyChanged("VATDeclarationDataForAttch");
             }
         }
         private string _dateSubmitted;
@@ -136,7 +137,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _dateSubmitted = value;
-                RaisePropertyChanged("DateSubmitted");
+                OnPropertyChanged("DateSubmitted");
             }
         }
         private string _dmsType = string.Empty;
@@ -149,7 +150,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _dmsType = value;
-                RaisePropertyChanged("DmsType");
+                OnPropertyChanged("DmsType");
             }
         }
         private string _attachmentName = "";
@@ -162,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         public decimal _attachmentSize = 0;
@@ -175,7 +176,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public decimal _totalAttachmentSize = 0;
@@ -188,7 +189,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
 
@@ -202,7 +203,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _attachmentCount = value;
-                RaisePropertyChanged("AttachmentCount");
+                OnPropertyChanged("AttachmentCount");
             }
         }
 
@@ -216,7 +217,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _vatAttachmentCount = value;
-                RaisePropertyChanged("VatAttachmentCount");
+                OnPropertyChanged("VatAttachmentCount");
             }
         }
         private ObservableCollection<Attachment> _vatAttachmentsList;
@@ -229,7 +230,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _vatAttachmentsList = value;
-                RaisePropertyChanged("VatAttachmentsList");
+                OnPropertyChanged("VatAttachmentsList");
             }
         }
         private ObservableCollection<Attachment> _vatAttachmentsListtofilter;
@@ -242,7 +243,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _vatAttachmentsListtofilter = value;
-                RaisePropertyChanged("VatAttachmentsListtofilter");
+                OnPropertyChanged("VatAttachmentsListtofilter");
             }
         }
 
@@ -257,7 +258,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _attachmentList = value;
-                RaisePropertyChanged("AttachmentList");
+                OnPropertyChanged("AttachmentList");
             }
         }
 
@@ -272,7 +273,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isShowAttachmentButton = value;
-                RaisePropertyChanged("IsShowAttachmentButton");
+                OnPropertyChanged("IsShowAttachmentButton");
             }
         }
 
@@ -286,7 +287,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _fileAttachments = value;
-                RaisePropertyChanged("FileAttachments");
+                OnPropertyChanged("FileAttachments");
             }
         }
 
@@ -300,7 +301,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _attachments = value;
-                RaisePropertyChanged("AttachmentsList");
+                OnPropertyChanged("AttachmentsList");
             }
         }
 
@@ -314,7 +315,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isComeForWhichAttachment = value;
-                RaisePropertyChanged("IsComeForWhichAttachment");
+                OnPropertyChanged("IsComeForWhichAttachment");
             }
         }
 
@@ -330,20 +331,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _docTypeString = value;
-                RaisePropertyChanged("DocTypeString");
+                OnPropertyChanged("DocTypeString");
             }
         }
 
         public FilesUploadPopUpViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             FileAttachments = new ObservableCollection<string>();
             OnAttachmentClick = new Command(async () =>
             {

@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.BaseModels;
@@ -16,7 +17,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
         private readonly ICommonServices CommonServices;
 
         ZATCAUserRegisterModel unRegisteredUser;
-        public ZATCAUserRegisterModel UnRegisteredUser { get { return unRegisteredUser; } set { unRegisteredUser = value; RaisePropertyChanged(); } }
+        public ZATCAUserRegisterModel UnRegisteredUser { get { return unRegisteredUser; } set { unRegisteredUser = value; OnPropertyChanged(); } }
 
         public RegisterZATCAUserViewModel(INavigationService navigationService, IDialogService dialogService, ICommonServices commonServices) : base(navigationService, dialogService)
         {

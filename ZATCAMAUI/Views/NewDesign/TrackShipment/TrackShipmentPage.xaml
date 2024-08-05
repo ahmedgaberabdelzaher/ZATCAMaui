@@ -119,29 +119,23 @@
                                 </Label>
 
                                 <!--  Port Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.PortName}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Keyboard="Text"
-                                        Placeholder="{x:Static ResourceManager:AppResources.PortName}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding SelectedPortName}"
-                                        TextColor="#58595B">
-                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
-                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                    </custom:GAZTBorderlessEntry>
+                                <custom:CustomSfTextInputView>
+
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.PortName}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SelectedPortName}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
+
                                     <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Aspect="AspectFit" Source="greyDropDown" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
@@ -149,7 +143,8 @@
                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                </inputLayout:SfTextInputLayout>
+
+                                </custom:CustomSfTextInputView>
 
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
@@ -398,28 +393,21 @@
                                 </Label>
 
                                 <!--  Declaration Number Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        Keyboard="Numeric"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding ShipmentDeclarationNumber}"
-                                        TextColor="#58595B">
-                                        <custom:GAZTBorderlessEntry.Behaviors>
-                                            <behaviour:OnlyNumericValuesBehaviour />
-                                        </custom:GAZTBorderlessEntry.Behaviors>
-                                    </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            Keyboard="Numeric"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding ShipmentDeclarationNumber}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviour:OnlyNumericValuesBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+                                </custom:CustomSfTextInputView>
 
                             </StackLayout>
 
@@ -437,38 +425,29 @@
                                 </Label>
 
 
-                                <!--  Declaration Date Label  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="dd-MM-yyyy"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <!--  Declaration Date Entry  -->
+                               <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="dd-MM-yyyy"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding DeclarationDateString}"
+                                                TextColor="#58595B" />
 
-                                    <custom:GAZTBorderlessEntry
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Keyboard="Text"
-                                        Placeholder="dd-MM-yyyy"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding DeclarationDateString}"
-                                        TextColor="#58595B" />
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-
-                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                   <inputLayout:SfTextInputLayout.TrailingView>
                                         <Image Aspect="AspectFit" Source="greyCalender" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
 
+                                    
                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference declarationDate}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
-
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                                 <!--  HijriDatePicker  -->
                                 <custom:CustomHijriDatePicker
@@ -549,39 +528,35 @@
                                 </Label>
 
                                 <!--  Importer Year for Express E-Declaration Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Stroke="{StaticResource NeutralGreay}"
-                                    Hint="{x:Static ResourceManager:AppResources.ImporterYear}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
 
-                                    <custom:GAZTBorderlessEntry
-                                        InputTransparent="True"
-                                        IsReadOnly="True"
-                                        Keyboard="Text"
-                                        Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding ShipmentImporterYear}"
-                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ImporterYear}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding ShipmentImporterYear}"
+                                            TextColor="#58595B">
 
-                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
-                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
 
-                                    </custom:GAZTBorderlessEntry>
+                                        </custom:GAZTBorderlessEntry>
 
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                   <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Aspect="AspectFit" Source="greyCalender" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                                    
                                     <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
-
-                                    <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Image Aspect="AspectFit" Source="greyDropDown" />
-                                    </inputLayout:SfTextInputLayout.TrailingView>
-
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenYearsCommand}" />
@@ -618,51 +593,31 @@
                                 </Label>
 
                                 <!--  Bill Number Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.BillNumber}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.BillNumber}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding ShipmentBillNumber}"
+                                            TextColor="#58595B">
+                                            <custom:GAZTBorderlessEntry.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding IsExpressShipment}"
+                                                    TargetType="custom:GAZTBorderlessEntry"
+                                                    Value="true">
 
-                                    <inputLayout:SfTextInputLayout.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsExpressShipment}"
-                                                TargetType="inputLayout:SfTextInputLayout"
-                                                Value="true">
+                                                    <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
+                                                </DataTrigger>
 
-                                                <Setter Property="Hint" Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
-                                            </DataTrigger>
+                                            </custom:GAZTBorderlessEntry.Triggers>
 
-                                    </inputLayout:SfTextInputLayout.Triggers>
+                                        </custom:GAZTBorderlessEntry>
 
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                    <custom:GAZTBorderlessEntry
-                                        Keyboard="Text"
-                                        Placeholder="{x:Static ResourceManager:AppResources.BillNumber}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding ShipmentBillNumber}"
-                                        TextColor="#58595B">
-                                        <custom:GAZTBorderlessEntry.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsExpressShipment}"
-                                                TargetType="custom:GAZTBorderlessEntry"
-                                                Value="true">
+                                </custom:CustomSfTextInputView>
 
-                                                <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
-                                            </DataTrigger>
-
-                                        </custom:GAZTBorderlessEntry.Triggers>
-
-                                    </custom:GAZTBorderlessEntry>
-
-
-                                </inputLayout:SfTextInputLayout>
 
                             </StackLayout>
 
@@ -680,26 +635,18 @@
                                 </Label>
 
                                 <!--  Container Number Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ContainerNumber}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        Keyboard="Text"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ContainerNumber}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding ShipmentContainerNumber}"
-                                        TextColor="#58595B" />
+                                <custom:CustomSfTextInputView>
 
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                         <custom:GAZTBorderlessEntry
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ContainerNumber}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding ShipmentContainerNumber}"
+                                            TextColor="#58595B" />
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView>
 
                             </StackLayout>
 

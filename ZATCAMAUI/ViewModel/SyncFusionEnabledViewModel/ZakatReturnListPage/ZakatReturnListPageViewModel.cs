@@ -1,9 +1,10 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -15,8 +16,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
     public class ZakatReturnListPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
@@ -35,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _txtSelectedStatus = value;
-                RaisePropertyChanged("TxtSelectedStatus");
+                OnPropertyChanged("TxtSelectedStatus");
             }
         }
         private List<ZAKATStatus> _iCRStatusList;
@@ -48,7 +47,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _iCRStatusList = value;
-                RaisePropertyChanged("ICRStatusList");
+                OnPropertyChanged("ICRStatusList");
             }
         }
         private ZAKATStatus _selectedICRStatus;
@@ -61,7 +60,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _selectedICRStatus = value;
-                RaisePropertyChanged("SelectedICR");
+                OnPropertyChanged("SelectedICR");
             }
         }
         private ZAKATStatus _selectedICRStatusPrev;
@@ -74,7 +73,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _selectedICRStatusPrev = value;
-                RaisePropertyChanged("SelectedICRPrev");
+                OnPropertyChanged("SelectedICRPrev");
             }
         }
         private ZAKATStatus _previousSelectedICRStatus;
@@ -87,7 +86,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _previousSelectedICRStatus = value;
-                RaisePropertyChanged("PreviousSelectedICRStatus");
+                OnPropertyChanged("PreviousSelectedICRStatus");
             }
         }
         private EstimatedZakatReturnsResult _selectedZakatReturn;
@@ -100,7 +99,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _selectedZakatReturn = value;
-                RaisePropertyChanged("SelectedZakatReturn");
+                OnPropertyChanged("SelectedZakatReturn");
                 if (SelectedZakatReturn != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     if (SelectedZakatReturn.Fbtyp.Equals("FZ12"))
@@ -140,7 +139,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
                 {
                     HideNoDataMessage();
                 }
-                RaisePropertyChanged("MyZakatReturns");
+                OnPropertyChanged("MyZakatReturns");
             }
         }
         private List<ZakatReturnStatus> _zakatReturnStatus;
@@ -153,7 +152,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _zakatReturnStatus = value;
-                RaisePropertyChanged("ZakatReturnStatus");
+                OnPropertyChanged("ZakatReturnStatus");
             }
         }
         private ZakatReturnStatus _selectedZakatStatus;
@@ -166,7 +165,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _selectedZakatStatus = value;
-                RaisePropertyChanged("SelectedZakatStatus");
+                OnPropertyChanged("SelectedZakatStatus");
             }
         }
        
@@ -180,7 +179,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _selectedIndex = value;
-                RaisePropertyChanged("SelectedIndex");
+                OnPropertyChanged("SelectedIndex");
             }
         }
         private bool _setNoDataLabelVisibility = false;
@@ -193,23 +192,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage
             set
             {
                 _setNoDataLabelVisibility = value;
-                RaisePropertyChanged("SetNoDataLabelVisibility");
+                OnPropertyChanged("SetNoDataLabelVisibility");
             }
         }
         #endregion
         #region Constructor
         public ZakatReturnListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             OnHomeButtonClicked = new Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);

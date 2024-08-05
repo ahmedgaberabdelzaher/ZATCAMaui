@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -33,8 +34,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
     }
     public class ReturnsPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public static string EUser = string.Empty;
         public static string ReturnPeriod = "";
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
@@ -50,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _headerCount = value;
-                RaisePropertyChanged("HeaderCount");
+                OnPropertyChanged("HeaderCount");
             }
         }
         private bool _setNoDataLabelVisibilityVATSubmitted = false;
@@ -63,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATSubmitted = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityVATSubmitted");
+                OnPropertyChanged("SetNoDataLabelVisibilityVATSubmitted");
             }
         }
         private bool _setNoDataLabelVisibilityZakatSubmitted = false;
@@ -76,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatSubmitted = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityZakatSubmitted");
+                OnPropertyChanged("SetNoDataLabelVisibilityZakatSubmitted");
             }
         }
         private bool _setNoDataLabelVisibilityVATNonSubmitted = false;
@@ -89,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATNonSubmitted = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityVATNonSubmitted");
+                OnPropertyChanged("SetNoDataLabelVisibilityVATNonSubmitted");
             }
         }
         private bool _setNoDataLabelVisibilityZakatNonSubmitted = false;
@@ -102,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatNonSubmitted = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityZakatNonSubmitted");
+                OnPropertyChanged("SetNoDataLabelVisibilityZakatNonSubmitted");
             }
         }
         private bool _setNoDataLabelVisibilityVATOverDue = false;
@@ -115,7 +114,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATOverDue = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityVATOverDue");
+                OnPropertyChanged("SetNoDataLabelVisibilityVATOverDue");
             }
         }
         private bool _setNoDataLabelVisibilityZakatOverDue = false;
@@ -128,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatOverDue = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityZakatOverDue");
+                OnPropertyChanged("SetNoDataLabelVisibilityZakatOverDue");
             }
         }
         private bool _setNoDataLabelVisibilityVATSubmittedList = false;
@@ -141,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATSubmittedList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityVATSubmittedList");
+                OnPropertyChanged("SetNoDataLabelVisibilityVATSubmittedList");
             }
         }
         private bool _setNoDataLabelVisibilityZakatSubmittedList = false;
@@ -154,7 +153,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatSubmittedList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityZakatSubmittedList");
+                OnPropertyChanged("SetNoDataLabelVisibilityZakatSubmittedList");
             }
         }
         private bool _setNoDataLabelVisibilityVATNonSubmittedList = false;
@@ -167,7 +166,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATNonSubmittedList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityVATNonSubmittedList");
+                OnPropertyChanged("SetNoDataLabelVisibilityVATNonSubmittedList");
             }
         }
         private bool _setNoDataLabelVisibilityZakatNonSubmittedList = false;
@@ -180,7 +179,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatNonSubmittedList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityZakatNonSubmittedList");
+                OnPropertyChanged("SetNoDataLabelVisibilityZakatNonSubmittedList");
             }
         }
         private bool _setNoDataLabelVisibilityVATOverDueList = false;
@@ -193,7 +192,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATOverDueList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityVATOverDueList");
+                OnPropertyChanged("SetNoDataLabelVisibilityVATOverDueList");
             }
         }
         private bool _setNoDataLabelVisibilityZakatOverDueList = false;
@@ -206,7 +205,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatOverDueList = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityZakatOverDueList");
+                OnPropertyChanged("SetNoDataLabelVisibilityZakatOverDueList");
             }
         }
         private bool _isVATVisible = false;
@@ -219,7 +218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _isVATVisible = value;
-                RaisePropertyChanged("IsVATVisible");
+                OnPropertyChanged("IsVATVisible");
             }
         }
         private bool _isZakatVisible = false;
@@ -232,7 +231,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _isZakatVisible = value;
-                RaisePropertyChanged("IsZakatVisible");
+                OnPropertyChanged("IsZakatVisible");
             }
         }
         private ReturnsListCountsByStatus _returnsListCountsByStatus;
@@ -245,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _returnsListCountsByStatus = value;
-                RaisePropertyChanged("ReturnsListCountsByStatus");
+                OnPropertyChanged("ReturnsListCountsByStatus");
             }
         }
        
@@ -258,7 +257,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _iCRListVATSubmitted = value;
-                RaisePropertyChanged("ICRListVATSubmitted");
+                OnPropertyChanged("ICRListVATSubmitted");
             }
         }
         private List<ICRListSet> _iCRListVATNonSubmitted;
@@ -271,7 +270,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _iCRListVATNonSubmitted = value;
-                RaisePropertyChanged("ICRListVATNonSubmitted");
+                OnPropertyChanged("ICRListVATNonSubmitted");
             }
         }
         private List<ICRListSet> _iCRListVATOverDue;
@@ -284,7 +283,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _iCRListVATOverDue = value;
-                RaisePropertyChanged("ICRListVATOverDue");
+                OnPropertyChanged("ICRListVATOverDue");
             }
         }
         private ICRListSet _selectedICRVATSubmitted;
@@ -303,7 +302,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                     {
                         GetVATAllReturnsAsync();
                     }
-                    RaisePropertyChanged("SelectedICRVATSubmitted");
+                    OnPropertyChanged("SelectedICRVATSubmitted");
                 }
                 catch (Exception)
                 {
@@ -322,7 +321,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _selectedZakatReturn = value;
-                RaisePropertyChanged("SelectedZakatReturn");
+                OnPropertyChanged("SelectedZakatReturn");
                 if (SelectedZakatReturn != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     EstimatedZakatReturnsResult ChidlSelectedICR = new EstimatedZakatReturnsResult();
@@ -359,7 +358,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _myZakatReturnsSubmitted = value;
-                RaisePropertyChanged("MyZakatReturnsSubmitted");
+                OnPropertyChanged("MyZakatReturnsSubmitted");
             }
         }
         private List<EstimatedZakatReturnsResult> _myZakatReturnsNonSubmitted = null;
@@ -372,7 +371,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _myZakatReturnsNonSubmitted = value;
-                RaisePropertyChanged("MyZakatReturnsNonSubmitted");
+                OnPropertyChanged("MyZakatReturnsNonSubmitted");
             }
         }
         private List<EstimatedZakatReturnsResult> _myZakatReturnsOverDue = null;
@@ -385,7 +384,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _myZakatReturnsOverDue = value;
-                RaisePropertyChanged("MyZakatReturnsOverDue");
+                OnPropertyChanged("MyZakatReturnsOverDue");
             }
         }
         private int _tabIndexStatus = 0;
@@ -398,7 +397,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _tabIndexStatus = value;
-                RaisePropertyChanged("TabIndexStatus");
+                OnPropertyChanged("TabIndexStatus");
             }
         }
         private FlowDirection _fDirection = FlowDirection.RightToLeft;
@@ -411,22 +410,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _fDirection = value;
-                RaisePropertyChanged("FDirection");
+                OnPropertyChanged("FDirection");
             }
         }
         public ReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });

@@ -1,16 +1,15 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
     public class VATDeRegistrationInstructionsPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         #endregion
         private Color _continueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -24,7 +23,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_continueButtonnBackroundColor == value) return;
                 _continueButtonnBackroundColor = value;
-                RaisePropertyChanged("ContinueButtonnBackroundColor");
+                OnPropertyChanged("ContinueButtonnBackroundColor");
             }
         }
         private bool _isInstructionChecked = false;
@@ -48,7 +47,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 }
 
-                RaisePropertyChanged("IsInstructionChecked");
+                OnPropertyChanged("IsInstructionChecked");
             }
         }
         private bool _isContinueButtonEnable = false;
@@ -69,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     ContinueButtonnBackroundColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IsContinueButtonEnabled");
+                OnPropertyChanged("IsContinueButtonEnabled");
             }
         }
         private bool _isInstructionCheckedEnable = true;
@@ -79,23 +78,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isInstructionCheckedEnable = value;
-                RaisePropertyChanged(nameof(isInstructionCheckedEnable));
+                OnPropertyChanged(nameof(isInstructionCheckedEnable));
             }
         }
         public ICommand VATDeregistrationClicked { get; set; }
 
         public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();

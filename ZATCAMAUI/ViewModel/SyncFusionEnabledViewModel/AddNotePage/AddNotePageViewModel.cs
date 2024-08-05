@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
@@ -11,8 +12,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage
     public class AddNotePageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public static string NoteString = string.Empty;
         public static bool ClearNoteClicked = false;
         public static int NoteCount = 0;
@@ -33,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage
             set
             {
                 _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                OnPropertyChanged("VATDeclarationData");
             }
         }
         private string _noteText;
@@ -54,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage
                 {
                     NoteString = string.Empty;
                 }
-                RaisePropertyChanged("NoteText");
+                OnPropertyChanged("NoteText");
             }
         }
         private string _previousNoteText;
@@ -67,20 +66,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddNotePage
             set
             {
                 _previousNoteText = value;
-                RaisePropertyChanged("PreviousNoteText");
+                OnPropertyChanged("PreviousNoteText");
             }
         }
         #endregion
         #region Constructor
         public AddNotePageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });

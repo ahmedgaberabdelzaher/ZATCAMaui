@@ -365,25 +365,17 @@
                             </Label>
 
                             <!--  First Name Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.firstName}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                             <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.firstName}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -402,24 +394,17 @@
                             <!--  IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"  -->
 
                             <!--  Middle Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.MiddleName}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.MiddleName}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.middleName}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.MiddleName}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.middleName}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -438,25 +423,18 @@
                             <!--  IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"  -->
 
                             <!--  Last Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.lastName}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+                                     <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.lastName}"
+                                        TextColor="#58595B" />
 
+                                </custom:CustomSfTextInputView.TextInputView>
+                            </custom:CustomSfTextInputView>
+                           
                         </StackLayout>
 
                         <!--  Nationality Field  -->
@@ -473,31 +451,22 @@
                             </Label>
 
                             <!--  Nationality Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.PassengerNationality}"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.PassengerNationality}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                     <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.PassengerNationality}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
+                                </custom:CustomSfTextInputView.TextInputView>
                                  <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -505,7 +474,7 @@
 
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
@@ -527,25 +496,19 @@
                             </Label>
 
                             <!--  ID Number Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{Binding IDNumberPlaceHolder}"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="{Binding IDNumberKeyboard}"
-                                    Placeholder="{Binding IDNumberPlaceHolder}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.travelID}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                     <custom:GAZTBorderlessEntry
+                                        Keyboard="{Binding IDNumberKeyboard}"
+                                        Placeholder="{Binding IDNumberPlaceHolder}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.travelID}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -557,25 +520,19 @@
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IqamaType}" />
 
                             <!--  ID Type Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.IqamaType}"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="False"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="{Binding IDNumberKeyboard}"
-                                    Placeholder="{x:Static ResourceManager:AppResources.IqamaType}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView IsEnabled="False">
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="{Binding IDNumberKeyboard}"
+                                        Placeholder="{x:Static ResourceManager:AppResources.IqamaType}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitModel.travelerDeclaration.IqamaTypeDescription}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -593,27 +550,19 @@
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
 
                             <!--  ID Expiry Date Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
 
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="{Binding IDNumberKeyboard}"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding EndDateString}"
-                                    TextColor="#58595B" />
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="{Binding IDNumberKeyboard}"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding EndDateString}"
+                                        TextColor="#58595B" />
 
-                            </inputLayout:SfTextInputLayout>
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -777,43 +726,37 @@
                         <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}" Spacing="0">
 
                             <!--  Gender Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.Triggers>
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
 
-                                        <DataTrigger
-                                            Binding="{Binding SubmitModel.travelerDeclaration.gender}"
-                                            TargetType="custom:GAZTBorderlessEntry"
-                                            Value="1">
-                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTMaleLabel}" />
-                                        </DataTrigger>
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.Triggers>
 
-                                        <DataTrigger
-                                            Binding="{Binding SubmitModel.travelerDeclaration.gender}"
-                                            TargetType="custom:GAZTBorderlessEntry"
-                                            Value="2">
-                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTFemaleLabel}" />
-                                        </DataTrigger>
+                                            <DataTrigger
+                                                Binding="{Binding SubmitModel.travelerDeclaration.gender}"
+                                                TargetType="custom:GAZTBorderlessEntry"
+                                                Value="1">
+                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTMaleLabel}" />
+                                            </DataTrigger>
 
-                                    </custom:GAZTBorderlessEntry.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding SubmitModel.travelerDeclaration.gender}"
+                                                TargetType="custom:GAZTBorderlessEntry"
+                                                Value="2">
+                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTFemaleLabel}" />
+                                            </DataTrigger>
 
-                                </custom:GAZTBorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
+                                        </custom:GAZTBorderlessEntry.Triggers>
+
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
                         <!--#endregion Gender Cards-->
@@ -832,19 +775,10 @@
                             </Label>
 
                             <!--  Its Source Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ItsSource}"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                    <custom:GAZTBorderlessEntry
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
@@ -857,6 +791,7 @@
                                     </custom:GAZTBorderlessEntry.GestureRecognizers>
                                 </custom:GAZTBorderlessEntry>
 
+                                </custom:CustomSfTextInputView.TextInputView>
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}"/>
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
@@ -864,7 +799,8 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
@@ -886,21 +822,11 @@
                             </Label>
 
 
-                            <!--  Release Date Label  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="dd/MM/yyyy"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <!--  Release Date Entry  -->
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
 
-                                <custom:GAZTBorderlessEntry
+                                     <custom:GAZTBorderlessEntry
                                     x:Name="releaseDateEntry"
                                     ClassId="releasedateentry"
                                     InputTransparent="True"
@@ -917,15 +843,17 @@
 
                                 </custom:GAZTBorderlessEntry>
 
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="greyCalender" />
-                                </inputLayout:SfTextInputLayout.TrailingView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                              <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference ReleaseDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </custom:CustomSfTextInputView>
 
                             <DatePicker
                                 x:Name="ReleaseDate"
@@ -967,21 +895,11 @@
                             </Label>
 
 
-                            <!--  End Date Label  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="dd/MM/yyyy"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <!--  End Date Entry  -->
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
 
-                                <custom:GAZTBorderlessEntry
+                                      <custom:GAZTBorderlessEntry
                                     x:Name="endDateEntry"
                                     ClassId="enddateentry"
                                     InputTransparent="True"
@@ -998,16 +916,17 @@
 
                                 </custom:GAZTBorderlessEntry>
 
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="greyCalender" />
-                                </inputLayout:SfTextInputLayout.TrailingView>
-
-                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                               <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </custom:CustomSfTextInputView>
 
                             <Label Text="{Binding premiumResidencytype.iqamaType}" />
 
@@ -1044,45 +963,37 @@
                             </Label>
 
 
-                            <!--  Date of Birth Label  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="dd/MM/yyyy"
-                                InputViewPadding="16,0,16,0"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <!--  Date of Birth Entry  -->
+                            <custom:CustomSfTextInputView IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}">
+                                <custom:CustomSfTextInputView.TextInputView>
 
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="birthDateEntry"
-                                    ClassId="birthdateentry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="dd/MM/yyyy"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding BirthDateString}"
-                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="birthDateEntry"
+                                        ClassId="birthdateentry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding BirthDateString}"
+                                        TextColor="#58595B">
 
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference DateBirth}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference DateBirth}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Aspect="AspectFit" Source="greyCalender" />
-                                </inputLayout:SfTextInputLayout.TrailingView>
+                                </custom:CustomSfTextInputView.TextInputView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference DateBirth}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </custom:CustomSfTextInputView>
 
                             <DatePicker
                                 x:Name="DateBirth"

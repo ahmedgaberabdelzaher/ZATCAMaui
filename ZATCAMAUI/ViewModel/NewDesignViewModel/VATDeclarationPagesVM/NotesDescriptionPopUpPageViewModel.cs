@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
@@ -24,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             {
                 if (_noteList == value) return;
                 _noteList = value;
-                RaisePropertyChanged("NoteList");
+                OnPropertyChanged("NoteList");
             }
         }
         private bool _isNoDataLabelVisible;
@@ -39,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 if (_isNoDataLabelVisible == value) return;
 
                 _isNoDataLabelVisible = value;
-                RaisePropertyChanged("IsNoDataLabelVisible");
+                OnPropertyChanged("IsNoDataLabelVisible");
             }
         }
         private bool _isDisplayNoteVisible;
@@ -54,21 +55,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 if (_isDisplayNoteVisible == value) return;
 
                 _isDisplayNoteVisible = value;
-                RaisePropertyChanged("IsDisplayNoteVisible");
+                OnPropertyChanged("IsDisplayNoteVisible");
             }
         }
         #endregion
         #region Constructor
         public NotesDescriptionPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();

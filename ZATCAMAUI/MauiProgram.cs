@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui;
-using Maui.PancakeView;
 using Mopups.Hosting;
 using Syncfusion.Maui.Core.Hosting;
 using ZATCAMAUI.Core.CustomControls;
@@ -36,7 +35,6 @@ public static class MauiProgram
                 .ConfigureMopups()
                 .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionCore()
-                .UsePancakeViewCompat()
                 .UseMauiCompatibility()
                 .UseMauiMaps()
                 //.UseMauiCommunityToolkitMaps("key")
@@ -74,8 +72,6 @@ public static class MauiProgram
               {
 #if ANDROID
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(RoundCornersEffect), typeof(RoundCornersEffectDroid));
@@ -83,8 +79,6 @@ public static class MauiProgram
                   handlers.AddCompatibilityRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(MyWebView), typeof(CustomWebViewRenderer));
                   handlers.AddCompatibilityRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer));
-                  handlers.AddCompatibilityRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer));
 #endif 
               });
 

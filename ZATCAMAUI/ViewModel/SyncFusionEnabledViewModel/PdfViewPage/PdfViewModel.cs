@@ -1,9 +1,10 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Net;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -14,8 +15,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
     public class PdfViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         public string pdfUrl;
         #endregion
@@ -31,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             set
             {
                 _pdfBytes = value;
-                RaisePropertyChanged("PdfBytes");
+                OnPropertyChanged("PdfBytes");
             }
         }
 
@@ -53,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                 {
                     IsVisiblePdfView = false;
                 }
-                RaisePropertyChanged("IsLoading");
+                OnPropertyChanged("IsLoading");
             }
         }
 
@@ -67,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             set
             {
                 _loading = value;
-                RaisePropertyChanged("Loading");
+                OnPropertyChanged("Loading");
             }
         }
 
@@ -81,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             set
             {
                 _isVisiblePdfView = value;
-                RaisePropertyChanged("IsVisiblePdfView");
+                OnPropertyChanged("IsVisiblePdfView");
             }
         }
 
@@ -95,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             set
             {
                 _TaxPayerProfile = value;
-                RaisePropertyChanged("TaxPayerProfile");
+                OnPropertyChanged("TaxPayerProfile");
             }
         }
 
@@ -109,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             set
             {
                 _pdfUrl = value;
-                RaisePropertyChanged("PdfUrl");
+                OnPropertyChanged("PdfUrl");
             }
         }
 
@@ -123,7 +122,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             set
             {
                 _isShareButtonEnable = value;
-                RaisePropertyChanged("IsShareButtonEnable");
+                OnPropertyChanged("IsShareButtonEnable");
             }
         }
 
@@ -137,7 +136,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             set
             {
                 _DownloadUrl = value;
-                RaisePropertyChanged("DownloadUrl");
+                OnPropertyChanged("DownloadUrl");
             }
         }
 
@@ -153,7 +152,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
 
                 _StreamForDownloadURL = value;
 
-                RaisePropertyChanged("StreamForDownloadURL");
+                OnPropertyChanged("StreamForDownloadURL");
             }
         }
         #endregion
@@ -162,20 +161,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
 
         public PdfViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
 
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
-            _dialogService = dialogService;
-
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
 

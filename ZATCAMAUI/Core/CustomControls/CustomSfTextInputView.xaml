@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<inputLayout:SfTextInputLayout
+            xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+            x:Class="ZATCAMAUI.Core.CustomControls.CustomSfTextInputView"
+            ContainerBackground="White"
+            ContainerType="Outlined"
+            InputViewPadding="16,0,16,0"
+            LeadingViewPosition="Inside"
+            OutlineCornerRadius="15"
+            Stroke="{StaticResource NeutralGreay}">
+
+        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+            <inputLayout:LabelStyle TextColor="#B00020" />
+        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+        <Grid x:Name="MainContainer" x:FieldModifier="public"/>
+    
+</inputLayout:SfTextInputLayout>
+

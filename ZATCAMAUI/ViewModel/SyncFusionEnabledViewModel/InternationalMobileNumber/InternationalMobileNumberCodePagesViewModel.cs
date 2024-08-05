@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -10,8 +9,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
 {
     public class InternationalMobileNumberCodePagesViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
         ObservableCollection<InternationalMobileData> mobileData = null;
 
@@ -25,7 +22,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
             set
             {
                 _mobileCodes = value;
-                RaisePropertyChanged("MobileCodes");
+                OnPropertyChanged("MobileCodes");
             }
         }
         public ObservableCollection<InternationalMobileData> _filteredItems;
@@ -38,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
             set
             {
                 _filteredItems = value;
-                RaisePropertyChanged("FilteredItems");
+                OnPropertyChanged("FilteredItems");
             }
         }
         private string _ibanNumberText;
@@ -51,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
             set
             {
                 _ibanNumberText = value;
-                RaisePropertyChanged("InternationalMobileCodeText");
+                OnPropertyChanged("InternationalMobileCodeText");
             }
         }
         private string _txtCountryCode = string.Empty;
@@ -65,26 +62,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
             {
 
                 _txtCountryCode = value;
-                RaisePropertyChanged("TxtCountryCode");
+                OnPropertyChanged("TxtCountryCode");
             }
         }
         #region Constructor
         public InternationalMobileNumberCodePagesViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             BackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-            _navigationService = navigationService;
-            _dialogService = dialogService;
 
         }
         #endregion

@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using ZATCAMAUI.Views.NewDesign.Nafat;
 
@@ -16,7 +14,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             InitializeComponent();
             viewModel = App.Locator.EstablishmentSignUPPageView;
             BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
 
 
         }
@@ -35,10 +32,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 backArrow.Rotation = 0;
                 FlowDirection = FlowDirection.LeftToRight;
             }
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             await Task.Run(() =>
             {

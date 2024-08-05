@@ -17,21 +17,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
-
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Style x:Key="ArrowImage" TargetType="Image">
-                        <Setter Property="HeightRequest" Value="30" />
-                        <Setter Property="WidthRequest" Value="30" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -176,36 +161,30 @@
                     IsVisible="{Binding IsSectionView}"
                     RowDefinitions="auto,*">
 
-                    <inputLayout:SfTextInputLayout
-                        ContainerBackground="White"
-                        ContainerType="Outlined"
-                        Hint="{x:Static ResourceManager:AppResources.SearchField}"
-                        InputViewPadding="16,0,16,0"
-                        LeadingViewPosition="Inside"
-                        OutlineCornerRadius="15"
-                        Stroke="#B1B1B1"
-                        VerticalOptions="CenterAndExpand">
+                    <custom:CustomSfTextInputView>
+                        <custom:CustomSfTextInputView.TextInputView>
+                            <custom:GAZTBorderlessEntry
+                                HorizontalOptions="FillAndExpand"
+                                Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
+                                PlaceholderColor="#888888"
+                                Style="{StaticResource DefaultEntry}"
+                                VerticalTextAlignment="Center">
+
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding ViewSearchViewCommand}"
+                                        CommandParameter="{Binding SearchKey}"
+                                        EventName="Focused" />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                        </custom:CustomSfTextInputView.TextInputView>
 
                         <inputLayout:SfTextInputLayout.LeadingView>
-                            <Image Source="topsearchicon" />
+                            <Image Aspect="AspectFit" Source="reportSearchBar.png" />
                         </inputLayout:SfTextInputLayout.LeadingView>
 
-                        <custom:GAZTBorderlessEntry
-                            HorizontalOptions="FillAndExpand"
-                            Placeholder="{x:Static ResourceManager:AppResources.SearchField}"
-                            PlaceholderColor="#888888"
-                            Style="{StaticResource DefaultEntry}"
-                            VerticalTextAlignment="Center">
-
-                            <custom:GAZTBorderlessEntry.Behaviors>
-                                <xct:EventToCommandBehavior
-                                    Command="{Binding ViewSearchViewCommand}"
-                                    CommandParameter="{Binding SearchKey}"
-                                    EventName="Focused" />
-                            </custom:GAZTBorderlessEntry.Behaviors>
-                        </custom:GAZTBorderlessEntry>
-
-                    </inputLayout:SfTextInputLayout>
+                     </custom:CustomSfTextInputView>
 
                     <CollectionView
                         Grid.Row="1"

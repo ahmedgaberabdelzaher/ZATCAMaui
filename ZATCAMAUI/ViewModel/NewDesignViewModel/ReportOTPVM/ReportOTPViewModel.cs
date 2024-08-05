@@ -1,8 +1,9 @@
 ﻿using System.Text.RegularExpressions;
 using System.Timers;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.CustomControls;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Views.NewDesign.MyReports;
 using ZATCAMAUI.Views.NewDesign.ReportOTP;
@@ -13,34 +14,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ReportOTPVM
     {
         #region Properties
         string oTPFirstDigit;
-        public string OTPFirstDigit { get { return oTPFirstDigit; } set { oTPFirstDigit = value; RaisePropertyChanged(); } }
+        public string OTPFirstDigit { get { return oTPFirstDigit; } set { oTPFirstDigit = value; OnPropertyChanged(); } }
 
         string oTPSecondDigit;
-        public string OTPSecondDigit { get { return oTPSecondDigit; } set { oTPSecondDigit = value; RaisePropertyChanged(); } }
+        public string OTPSecondDigit { get { return oTPSecondDigit; } set { oTPSecondDigit = value; OnPropertyChanged(); } }
 
         string oTPThirdDigit;
-        public string OTPThirdDigit { get { return oTPThirdDigit; } set { oTPThirdDigit = value; RaisePropertyChanged(); } }
+        public string OTPThirdDigit { get { return oTPThirdDigit; } set { oTPThirdDigit = value; OnPropertyChanged(); } }
 
         string oTPFourthDigit;
-        public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; RaisePropertyChanged(); } }
+        public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; OnPropertyChanged(); } }
 
         string phoneORRportNumber;
-        public string PhoneORRportNumber { get { return phoneORRportNumber; } set { phoneORRportNumber = value; RaisePropertyChanged(); } }
+        public string PhoneORRportNumber { get { return phoneORRportNumber; } set { phoneORRportNumber = value; OnPropertyChanged(); } }
 
         string oTPSentOnThisMobileNumber;
-        public string OTPSentOnThisMobileNumber { get { return oTPSentOnThisMobileNumber; } set { oTPSentOnThisMobileNumber = value; RaisePropertyChanged(); } }
+        public string OTPSentOnThisMobileNumber { get { return oTPSentOnThisMobileNumber; } set { oTPSentOnThisMobileNumber = value; OnPropertyChanged(); } }
 
         string lblCountDownTimer;
-        public string LblCountDownTimer { get { return lblCountDownTimer; } set { lblCountDownTimer = value; RaisePropertyChanged(); } }
+        public string LblCountDownTimer { get { return lblCountDownTimer; } set { lblCountDownTimer = value; OnPropertyChanged(); } }
 
         bool isResendCodeEnabled;
-        public bool IsResendCodeEnabled { get { return isResendCodeEnabled; } set { isResendCodeEnabled = value; RaisePropertyChanged(); } }
+        public bool IsResendCodeEnabled { get { return isResendCodeEnabled; } set { isResendCodeEnabled = value; OnPropertyChanged(); } }
 
         bool isPhoneSelected = true;
-        public bool IsPhoneSelected { get { return isPhoneSelected; } set { isPhoneSelected = value; RaisePropertyChanged(); } }
+        public bool IsPhoneSelected { get { return isPhoneSelected; } set { isPhoneSelected = value; OnPropertyChanged(); } }
 
         double opacity = 1.0;
-        public double Opacity { get { return opacity; } set { opacity = value; RaisePropertyChanged(); } }
+        public double Opacity { get { return opacity; } set { opacity = value; OnPropertyChanged(); } }
 
         private System.Timers.Timer otpTimer;
         private int countDownSeconds;

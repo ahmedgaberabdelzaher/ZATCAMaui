@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Template
 { 
@@ -14,7 +16,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Template
             set
             {
                 _appVersion = value;
-                RaisePropertyChanged("AppVersion");
+                OnPropertyChanged("AppVersion");
             }
         }
 

@@ -1,9 +1,10 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -16,8 +17,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
     public class ZakatReturnDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnBillsButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
@@ -41,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _zakatReturnDetail = value;
-                RaisePropertyChanged("ZakatReturnDetail");
+                OnPropertyChanged("ZakatReturnDetail");
             }
         }
         private ZakatReturnDetails _zakatReturnDetails;
@@ -54,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _zakatReturnDetails = value;
-                RaisePropertyChanged("ZakatReturnDetails");
+                OnPropertyChanged("ZakatReturnDetails");
             }
         }
         private bool _salesDetailsAndReleaseButtonVisibility = true;
@@ -67,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _salesDetailsAndReleaseButtonVisibility = value;
-                RaisePropertyChanged("SalesDetailsAndReleaseButtonVisibility");
+                OnPropertyChanged("SalesDetailsAndReleaseButtonVisibility");
             }
         }
         private string _releaseOrBillDetailsButtonText;
@@ -80,7 +79,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _releaseOrBillDetailsButtonText = value;
-                RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
+                OnPropertyChanged("ReleaseOrBillDetailsButtonText");
             }
         }
         private string _abrzu;
@@ -93,7 +92,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _abrzu = value;
-                RaisePropertyChanged("Abrzu");
+                OnPropertyChanged("Abrzu");
             }
         }
         private string _abrzo;
@@ -106,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _abrzo = value;
-                RaisePropertyChanged("Abrzo");
+                OnPropertyChanged("Abrzo");
             }
         }
         private bool _amedmentButtonVisibility = false;
@@ -119,7 +118,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _amedmentButtonVisibility = value;
-                RaisePropertyChanged("AmedmentButtonVisibility");
+                OnPropertyChanged("AmedmentButtonVisibility");
             }
         }
 
@@ -133,7 +132,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             set
             {
                 _changeFromEstimateTAccountringBasisButtonVisibility = value;
-                RaisePropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
+                OnPropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
             }
         }
 
@@ -142,16 +141,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
         #region Constructor
         public ZakatReturnDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             OnBillsButtonClicked = new Command(() =>
             {
             });
@@ -168,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
 
                 }
             });
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 if (!IsLoading)
                 {

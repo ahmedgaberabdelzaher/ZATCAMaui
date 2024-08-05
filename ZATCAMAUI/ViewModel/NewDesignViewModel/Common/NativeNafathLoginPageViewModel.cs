@@ -1,7 +1,8 @@
 ﻿using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.NativeNafath;
@@ -15,10 +16,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
     public class NativeNafathLoginPageViewModel : BaseViewModel
     {
         string nationalIqamaId = string.Empty;
-        public string NationalIqamaId { get { return nationalIqamaId; } set { nationalIqamaId = value; RaisePropertyChanged(); } }
+        public string NationalIqamaId { get { return nationalIqamaId; } set { nationalIqamaId = value; OnPropertyChanged(); } }
 
         string randomNumber;
-        public string RandomNumber { get { return randomNumber; } set { randomNumber = value; RaisePropertyChanged(); } }
+        public string RandomNumber { get { return randomNumber; } set { randomNumber = value; OnPropertyChanged(); } }
 
         public string TransactionId { get; set; }
 

@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
     public class MyReturnsPageViewModel : BaseViewModel
     {
         #region Veriables
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         public MyReturnsRootObject MyReturns { get; set; }
         #endregion
@@ -29,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isArabic = value;
-                RaisePropertyChanged("IsArabic");
+                OnPropertyChanged("IsArabic");
             }
         }
         private MyReturnsResult _selectedReturnsVATSubmited = null;
@@ -46,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 {
                     GetVATAllReturnsAsync(_selectedReturnsVATSubmited);
                 }
-                RaisePropertyChanged("SelectedReturnsVATSubmited");
+                OnPropertyChanged("SelectedReturnsVATSubmited");
             }
         }
         private MyReturnsResult _selectedReturnsVATNonSubmited = null;
@@ -63,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 {
                     GetVATAllReturnsAsync(_selectedReturnsVATNonSubmited);
                 }
-                RaisePropertyChanged("SelectedReturnsVATNonSubmited");
+                OnPropertyChanged("SelectedReturnsVATNonSubmited");
             }
         }
         private MyReturnsResult _selectedReturnsVATOverDue = null;
@@ -80,7 +79,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 {
                     GetVATAllReturnsAsync(_selectedReturnsVATOverDue);
                 }
-                RaisePropertyChanged("SelectedReturnsVATOverDue");
+                OnPropertyChanged("SelectedReturnsVATOverDue");
             }
         }
         private MyReturnsResult _selectedZakatReturnSubmitted;
@@ -93,7 +92,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedZakatReturnSubmitted = value;
-                RaisePropertyChanged("SelectedZakatReturnSubmitted");
+                OnPropertyChanged("SelectedZakatReturnSubmitted");
                 if (SelectedZakatReturnSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     if (SelectedZakatReturnSubmitted.Fbtyp.Equals("FZ12"))
@@ -121,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedZakatReturnNonSubmitted = value;
-                RaisePropertyChanged("SelectedZakatReturnNonSubmitted");
+                OnPropertyChanged("SelectedZakatReturnNonSubmitted");
                 if (SelectedZakatReturnNonSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     if (SelectedZakatReturnNonSubmitted.Fbtyp.Equals("FZ12"))
@@ -149,7 +148,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedZakatReturnOverDue = value;
-                RaisePropertyChanged("SelectedZakatReturnOverDue");
+                OnPropertyChanged("SelectedZakatReturnOverDue");
                 if (SelectedZakatReturnOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     if (SelectedZakatReturnOverDue.Fbtyp.Equals("FZ12"))
@@ -177,7 +176,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedReturnsETSubmitted = value;
-                RaisePropertyChanged("SelectedReturnsETSubmitted");
+                OnPropertyChanged("SelectedReturnsETSubmitted");
                 if (_selectedReturnsETSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -197,7 +196,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedReturnsETNonSubmitted = value;
-                RaisePropertyChanged("SelectedReturnsETNonSubmitted");
+                OnPropertyChanged("SelectedReturnsETNonSubmitted");
                 if (_selectedReturnsETNonSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -217,7 +216,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedReturnsETOverDue = value;
-                RaisePropertyChanged("SelectedReturnsETOverDue");
+                OnPropertyChanged("SelectedReturnsETOverDue");
                 if (_selectedReturnsETOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -237,7 +236,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedReturnsWHSubmitted = value;
-                RaisePropertyChanged("SelectedReturnsWHSubmitted");
+                OnPropertyChanged("SelectedReturnsWHSubmitted");
                 if (_selectedReturnsWHSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -257,7 +256,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedReturnsWHNonSubmitted = value;
-                RaisePropertyChanged("SelectedReturnsWHNonSubmitted");
+                OnPropertyChanged("SelectedReturnsWHNonSubmitted");
                 if (_selectedReturnsWHNonSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -277,7 +276,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _selectedReturnsWHOverDue = value;
-                RaisePropertyChanged("SelectedReturnsWHOverDue");
+                OnPropertyChanged("SelectedReturnsWHOverDue");
                 if (_selectedReturnsWHOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -297,7 +296,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsZakatSubmited = value;
-                RaisePropertyChanged("ReturnsZakatSubmited");
+                OnPropertyChanged("ReturnsZakatSubmited");
             }
         }
         private List<MyReturnsResult> _returnsZakatNonSubmited = null;
@@ -310,7 +309,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsZakatNonSubmited = value;
-                RaisePropertyChanged("ReturnsZakatNonSubmited");
+                OnPropertyChanged("ReturnsZakatNonSubmited");
             }
         }
         private List<MyReturnsResult> _returnsZakatOverDue = null;
@@ -323,7 +322,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsZakatOverDue = value;
-                RaisePropertyChanged("ReturnsZakatOverDue");
+                OnPropertyChanged("ReturnsZakatOverDue");
             }
         }
         private List<MyReturnsResult> _returnsVATSubmited = null;
@@ -336,7 +335,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsVATSubmited = value;
-                RaisePropertyChanged("ReturnsVATSubmited");
+                OnPropertyChanged("ReturnsVATSubmited");
             }
         }
         private List<MyReturnsResult> _returnsVATNonSubmited = null;
@@ -349,7 +348,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsVATNonSubmited = value;
-                RaisePropertyChanged("ReturnsVATNonSubmited");
+                OnPropertyChanged("ReturnsVATNonSubmited");
             }
         }
         private List<MyReturnsResult> _returnsVATOverDue = null;
@@ -362,7 +361,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsVATOverDue = value;
-                RaisePropertyChanged("ReturnsVATOverDue");
+                OnPropertyChanged("ReturnsVATOverDue");
             }
         }
         private List<MyReturnsResult> _returnsETSubmited = null;
@@ -375,7 +374,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsETSubmited = value;
-                RaisePropertyChanged("ReturnsETSubmited");
+                OnPropertyChanged("ReturnsETSubmited");
             }
         }
         private List<MyReturnsResult> _returnsETNonSubmited = null;
@@ -388,7 +387,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsETNonSubmited = value;
-                RaisePropertyChanged("ReturnsETNonSubmited");
+                OnPropertyChanged("ReturnsETNonSubmited");
             }
         }
         private List<MyReturnsResult> _returnsETOverDue = null;
@@ -401,7 +400,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsETOverDue = value;
-                RaisePropertyChanged("ReturnsETOverDue");
+                OnPropertyChanged("ReturnsETOverDue");
             }
         }
         private List<MyReturnsResult> _returnsWHSubmited = null;
@@ -414,7 +413,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsWHSubmited = value;
-                RaisePropertyChanged("ReturnsWHSubmited");
+                OnPropertyChanged("ReturnsWHSubmited");
             }
         }
         private List<MyReturnsResult> _returnsWHNonSubmited = null;
@@ -427,7 +426,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsWHNonSubmited = value;
-                RaisePropertyChanged("ReturnsWHNonSubmited");
+                OnPropertyChanged("ReturnsWHNonSubmited");
             }
         }
         private List<MyReturnsResult> _returnsWHOverDue = null;
@@ -440,7 +439,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _returnsWHOverDue = value;
-                RaisePropertyChanged("ReturnsWHOverDue");
+                OnPropertyChanged("ReturnsWHOverDue");
             }
         }
         private bool _isVisibleVATSumbitted = false;
@@ -453,7 +452,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleVATSumbitted = value;
-                RaisePropertyChanged("IsVisibleVATSumbitted");
+                OnPropertyChanged("IsVisibleVATSumbitted");
             }
         }
         private bool _isVisibleVATSumbittedLabel = false;
@@ -466,7 +465,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleVATSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleVATSumbittedLabel");
+                OnPropertyChanged("IsVisibleVATSumbittedLabel");
             }
         }
         private bool _isVisibleVATNonSumbitted = false;
@@ -479,7 +478,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleVATNonSumbitted = value;
-                RaisePropertyChanged("IsVisibleVATNonSumbitted");
+                OnPropertyChanged("IsVisibleVATNonSumbitted");
             }
         }
         private bool _isVisibleVATNonSumbittedLabel = false;
@@ -492,7 +491,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleVATNonSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleVATNonSumbittedLabel");
+                OnPropertyChanged("IsVisibleVATNonSumbittedLabel");
             }
         }
         private bool _isVisibleVATOverDue = false;
@@ -505,7 +504,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleVATOverDue = value;
-                RaisePropertyChanged("IsVisibleVATOverDue");
+                OnPropertyChanged("IsVisibleVATOverDue");
             }
         }
         private bool _isVisibleVATOverDueLabel = false;
@@ -518,7 +517,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleVATOverDueLabel = value;
-                RaisePropertyChanged("IsVisibleVATOverDueLabel");
+                OnPropertyChanged("IsVisibleVATOverDueLabel");
             }
         }
         private bool _isVisibleZakatSumbitted = false;
@@ -531,7 +530,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleZakatSumbitted = value;
-                RaisePropertyChanged("IsVisibleZakatSumbitted");
+                OnPropertyChanged("IsVisibleZakatSumbitted");
             }
         }
         private bool _isVisibleZakatSumbittedLabel = false;
@@ -544,7 +543,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleZakatSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleZakatSumbittedLabel");
+                OnPropertyChanged("IsVisibleZakatSumbittedLabel");
             }
         }
         private bool _isVisibleZakatNonSumbitted = false;
@@ -557,7 +556,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleZakatNonSumbitted = value;
-                RaisePropertyChanged("IsVisibleZakatNonSumbitted");
+                OnPropertyChanged("IsVisibleZakatNonSumbitted");
             }
         }
         private bool _isVisibleZakatNonSumbittedLabel = false;
@@ -570,7 +569,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleZakatNonSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleZakatNonSumbittedLabel");
+                OnPropertyChanged("IsVisibleZakatNonSumbittedLabel");
             }
         }
         private bool _isVisibleZakatOverDue = false;
@@ -583,7 +582,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleZakatOverDue = value;
-                RaisePropertyChanged("IsVisibleZakatOverDue");
+                OnPropertyChanged("IsVisibleZakatOverDue");
             }
         }
         private bool _isVisibleZakatOverDueLabel = false;
@@ -596,7 +595,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleZakatOverDueLabel = value;
-                RaisePropertyChanged("IsVisibleZakatOverDueLabel");
+                OnPropertyChanged("IsVisibleZakatOverDueLabel");
             }
         }
         private bool _isVisibleETSumbitted = false;
@@ -609,7 +608,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleETSumbitted = value;
-                RaisePropertyChanged("IsVisibleETSumbitted");
+                OnPropertyChanged("IsVisibleETSumbitted");
             }
         }
         private bool _isVisibleETSumbittedLabel = false;
@@ -622,7 +621,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleETSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleETSumbittedLabel");
+                OnPropertyChanged("IsVisibleETSumbittedLabel");
             }
         }
         private bool _isVisibleETNonSumbitted = false;
@@ -635,7 +634,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleETNonSumbitted = value;
-                RaisePropertyChanged("IsVisibleETNonSumbitted");
+                OnPropertyChanged("IsVisibleETNonSumbitted");
             }
         }
         private bool _isVisibleETNonSumbittedLabel = false;
@@ -648,7 +647,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleETNonSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleETNonSumbittedLabel");
+                OnPropertyChanged("IsVisibleETNonSumbittedLabel");
             }
         }
         private bool _isVisibleETOverDue = false;
@@ -661,7 +660,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleETOverDue = value;
-                RaisePropertyChanged("IsVisibleETOverDue");
+                OnPropertyChanged("IsVisibleETOverDue");
             }
         }
         private bool _isVisibleETOverDueLabel = false;
@@ -674,7 +673,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleETOverDueLabel = value;
-                RaisePropertyChanged("IsVisibleETOverDueLabel");
+                OnPropertyChanged("IsVisibleETOverDueLabel");
             }
         }
         private bool _isVisibleWHSumbitted = false;
@@ -687,7 +686,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleWHSumbitted = value;
-                RaisePropertyChanged("IsVisibleWHSumbitted");
+                OnPropertyChanged("IsVisibleWHSumbitted");
             }
         }
         private bool _isVisibleWHSumbittedLabel = false;
@@ -700,7 +699,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleWHSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleWHSumbittedLabel");
+                OnPropertyChanged("IsVisibleWHSumbittedLabel");
             }
         }
         private bool _isVisibleWHNonSumbitted = false;
@@ -713,7 +712,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleWHNonSumbitted = value;
-                RaisePropertyChanged("IsVisibleWHNonSumbitted");
+                OnPropertyChanged("IsVisibleWHNonSumbitted");
             }
         }
         private bool _isVisibleWHNonSumbittedLabel = false;
@@ -726,7 +725,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleWHNonSumbittedLabel = value;
-                RaisePropertyChanged("IsVisibleWHNonSumbittedLabel");
+                OnPropertyChanged("IsVisibleWHNonSumbittedLabel");
             }
         }
         private bool _isVisibleWHOverDue = false;
@@ -739,7 +738,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleWHOverDue = value;
-                RaisePropertyChanged("IsVisibleWHOverDue");
+                OnPropertyChanged("IsVisibleWHOverDue");
             }
         }
         private bool _isVisibleWHOverDueLabel = false;
@@ -752,7 +751,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVisibleWHOverDueLabel = value;
-                RaisePropertyChanged("IsVisibleWHOverDueLabel");
+                OnPropertyChanged("IsVisibleWHOverDueLabel");
             }
         }
         private bool _isVATVisible = false;
@@ -765,7 +764,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isVATVisible = value;
-                RaisePropertyChanged("IsVATVisible");
+                OnPropertyChanged("IsVATVisible");
             }
         }
         private bool _isZakatVisible = false;
@@ -778,7 +777,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isZakatVisible = value;
-                RaisePropertyChanged("IsZakatVisible");
+                OnPropertyChanged("IsZakatVisible");
             }
         }
         private bool _isETVisible = false;
@@ -791,7 +790,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isETVisible = value;
-                RaisePropertyChanged("IsETVisible");
+                OnPropertyChanged("IsETVisible");
             }
         }
         private bool _isWHVisible = false;
@@ -804,24 +803,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _isWHVisible = value;
-                RaisePropertyChanged("IsWHVisible");
+                OnPropertyChanged("IsWHVisible");
             }
         }
         #endregion
         #region Custructor
         public MyReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });
@@ -836,7 +825,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _fDirection = value;
-                RaisePropertyChanged("FDirection");
+                OnPropertyChanged("FDirection");
             }
         }
         private int _tabIndexStatus = 0;
@@ -849,7 +838,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _tabIndexStatus = value;
-                RaisePropertyChanged("TabIndexStatus");
+                OnPropertyChanged("TabIndexStatus");
             }
         }
         private string _submittedVATReturnsCount = string.Empty;
@@ -862,7 +851,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _submittedVATReturnsCount = value;
-                RaisePropertyChanged("SubmittedVATReturnsCount");
+                OnPropertyChanged("SubmittedVATReturnsCount");
             }
         }
         private string _nonSubmittedVATReturnsCount = string.Empty;
@@ -875,7 +864,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _nonSubmittedVATReturnsCount = value;
-                RaisePropertyChanged("NonSubmittedVATReturnsCount");
+                OnPropertyChanged("NonSubmittedVATReturnsCount");
             }
         }
         private string _overDueVATReturnsCount = string.Empty;
@@ -888,7 +877,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _overDueVATReturnsCount = value;
-                RaisePropertyChanged("OverDueVATReturnsCount");
+                OnPropertyChanged("OverDueVATReturnsCount");
             }
         }
         private string _submittedZakatReturnsCount = string.Empty;
@@ -901,7 +890,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _submittedZakatReturnsCount = value;
-                RaisePropertyChanged("SubmittedZakatReturnsCount");
+                OnPropertyChanged("SubmittedZakatReturnsCount");
             }
         }
         private string _nonSubmittedZakatReturnsCount = string.Empty;
@@ -914,7 +903,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _nonSubmittedZakatReturnsCount = value;
-                RaisePropertyChanged("NonSubmittedZakatReturnsCount");
+                OnPropertyChanged("NonSubmittedZakatReturnsCount");
             }
         }
         private string _overDueZakatReturnsCount = string.Empty;
@@ -927,7 +916,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _overDueZakatReturnsCount = value;
-                RaisePropertyChanged("OverDueZakatReturnsCount");
+                OnPropertyChanged("OverDueZakatReturnsCount");
             }
         }
         private string _submittedETReturnsCount = string.Empty;
@@ -940,7 +929,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _submittedETReturnsCount = value;
-                RaisePropertyChanged("SubmittedETReturnsCount");
+                OnPropertyChanged("SubmittedETReturnsCount");
             }
         }
         private string _nonSubmittedETReturnsCount = string.Empty;
@@ -953,7 +942,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _nonSubmittedETReturnsCount = value;
-                RaisePropertyChanged("NonSubmittedETReturnsCount");
+                OnPropertyChanged("NonSubmittedETReturnsCount");
             }
         }
         private string _overDueETReturnsCount = string.Empty;
@@ -966,7 +955,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _overDueETReturnsCount = value;
-                RaisePropertyChanged("OverDueETReturnsCount");
+                OnPropertyChanged("OverDueETReturnsCount");
             }
         }
         private string _submittedWHReturnsCount = string.Empty;
@@ -979,7 +968,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _submittedWHReturnsCount = value;
-                RaisePropertyChanged("SubmittedWHReturnsCount");
+                OnPropertyChanged("SubmittedWHReturnsCount");
             }
         }
         private string _nonSubmittedWHReturnsCount = string.Empty;
@@ -992,7 +981,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _nonSubmittedWHReturnsCount = value;
-                RaisePropertyChanged("NonSubmittedWHReturnsCount");
+                OnPropertyChanged("NonSubmittedWHReturnsCount");
             }
         }
         private string _overDueWHReturnsCount = string.Empty;
@@ -1005,7 +994,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             set
             {
                 _overDueWHReturnsCount = value;
-                RaisePropertyChanged("OverDueWHReturnsCount");
+                OnPropertyChanged("OverDueWHReturnsCount");
             }
         }
         #endregion

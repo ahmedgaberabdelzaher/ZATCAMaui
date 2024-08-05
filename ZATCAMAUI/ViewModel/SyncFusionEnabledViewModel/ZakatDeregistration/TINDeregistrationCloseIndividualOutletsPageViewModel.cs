@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
     public class TINDeregistrationCloseIndividualOutletsPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public string SelectedReason = string.Empty;
         public ICommand OnTinRegisrtationReasonDateTapped { get; set; }
 
@@ -28,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _isReasonViewEnabled = value;
-                RaisePropertyChanged("IsReasonViewEnabled");
+                OnPropertyChanged("IsReasonViewEnabled");
             }
         }
         private FieldValidations _tinText { get; set; }
@@ -41,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _tinText = value;
-                RaisePropertyChanged("TinText");
+                OnPropertyChanged("TinText");
             }
         }
 
@@ -55,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _idTypeText = value;
-                RaisePropertyChanged("IdTypeText");
+                OnPropertyChanged("IdTypeText");
             }
         }
 
@@ -69,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _idNumberText = value;
-                RaisePropertyChanged("IdNumberText");
+                OnPropertyChanged("IdNumberText");
             }
         }
 
@@ -83,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _dobText = value;
-                RaisePropertyChanged("DobText");
+                OnPropertyChanged("DobText");
             }
         }
 
@@ -97,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _firstNameText = value;
-                RaisePropertyChanged("FirstNameText");
+                OnPropertyChanged("FirstNameText");
             }
         }
 
@@ -111,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _surnameText = value;
-                RaisePropertyChanged("SurnameText");
+                OnPropertyChanged("SurnameText");
             }
         }
 
@@ -125,7 +124,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _fathersNameText = value;
-                RaisePropertyChanged("FathersNameText");
+                OnPropertyChanged("FathersNameText");
             }
         }
 
@@ -139,7 +138,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _grandFathersNameText = value;
-                RaisePropertyChanged("GrandFathersNameText");
+                OnPropertyChanged("GrandFathersNameText");
             }
         }
 
@@ -153,7 +152,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _familyNameText = value;
-                RaisePropertyChanged("FamilyNameText");
+                OnPropertyChanged("FamilyNameText");
             }
         }
 
@@ -167,7 +166,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _name1Text = value;
-                RaisePropertyChanged("Name1Text");
+                OnPropertyChanged("Name1Text");
             }
         }
 
@@ -181,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _name2Text = value;
-                RaisePropertyChanged("Name2Text");
+                OnPropertyChanged("Name2Text");
             }
         }
 
@@ -195,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _selectedOutletOptionIndex = value;
-                RaisePropertyChanged("SelectedOutletOptionIndex");
+                OnPropertyChanged("SelectedOutletOptionIndex");
             }
         }
 
@@ -209,7 +208,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _deregistrationDate = value;
-                RaisePropertyChanged("DeregistrationDate");
+                OnPropertyChanged("DeregistrationDate");
             }
         }
 
@@ -223,7 +222,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _selectedDob = value;
-                RaisePropertyChanged("SelectedDob");
+                OnPropertyChanged("SelectedDob");
             }
         }
 
@@ -239,7 +238,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
 
                 _selectedIdtype = value;
-                RaisePropertyChanged("SelectedIdtype");
+                OnPropertyChanged("SelectedIdtype");
             }
         }
 
@@ -255,7 +254,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
 
                 _selectedIdNumber = value;
-                RaisePropertyChanged("SelectedIdNumber");
+                OnPropertyChanged("SelectedIdNumber");
             }
         }
 
@@ -269,7 +268,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 _iBANTypesList = value;
-                RaisePropertyChanged("IBANTypesList");
+                OnPropertyChanged("IBANTypesList");
             }
         }
 
@@ -285,7 +284,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
 
                 _selectedIDTypeCode = value;
-                RaisePropertyChanged("SelectedIDTypeCode");
+                OnPropertyChanged("SelectedIDTypeCode");
             }
         }
 
@@ -342,7 +341,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
 
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
 
@@ -358,7 +357,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             set
             {
                 outletDecisionOptions = value;
-                RaisePropertyChanged("OutletDecisionOptions");
+                OnPropertyChanged("OutletDecisionOptions");
             }
         }
 
@@ -596,19 +595,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public TINDeregistrationCloseIndividualOutletsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
-            _dialogService = dialogService;
 
             TinText = new FieldValidations();
             IdTypeText = new FieldValidations();

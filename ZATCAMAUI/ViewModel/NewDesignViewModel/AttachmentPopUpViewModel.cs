@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
     public class AttachmentPopUpViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClicked { get; set; }
         public ICommand OnSaveButtonClick { get; set; }
         public ZakatReturnDetailsD ZakatReturnDetail;
@@ -38,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 //{
                 //    SetSaveButtonVisibility();
                 //}
-                RaisePropertyChanged("ZakatReturnAttachmentsList");
+                OnPropertyChanged("ZakatReturnAttachmentsList");
             }
         }
 
@@ -58,7 +57,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
 
                 }
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
 
@@ -79,7 +78,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 //}
 
 
-                RaisePropertyChanged("ObjectionReason");
+                OnPropertyChanged("ObjectionReason");
             }
         }
 
@@ -90,28 +89,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #region Constructor
         public AttachmentPopUpViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
-            OnAttachmentClicked = new Command(() =>
-            {
-
-            });
 
             OnSaveButtonClick = new Command(() =>
             {
                 if (!string.IsNullOrEmpty(ObjectionReason))
                 {
                     SalesDetailList[SelectedSalesTypeIndex].ChangeReason = ObjectionReason;
-                    // _navigationService.GoBack();
 
                 }
                 else

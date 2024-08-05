@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -13,29 +14,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
     {
 
         bool _IsVatLookUp = true;
-        public bool IsVatLookUp { get { return _IsVatLookUp; } set { _IsVatLookUp = value; RaisePropertyChanged(); } }
+        public bool IsVatLookUp { get { return _IsVatLookUp; } set { _IsVatLookUp = value; OnPropertyChanged(); } }
 
         bool _IsShowRsltView;
-        public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value; RaisePropertyChanged(); } }
+        public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value; OnPropertyChanged(); } }
 
         bool _IsShowScanView;
-        public bool IsShowScanView { get { return _IsShowScanView; } set { _IsShowScanView = value; RaisePropertyChanged(); } }
+        public bool IsShowScanView { get { return _IsShowScanView; } set { _IsShowScanView = value; OnPropertyChanged(); } }
 
         bool _IsMainView = true;
-        public bool IsMainView { get { return _IsMainView; } set { _IsMainView = value; RaisePropertyChanged(); } }
+        public bool IsMainView { get { return _IsMainView; } set { _IsMainView = value; OnPropertyChanged(); } }
 
 
         string vatNumber;
-        public string VatNumber { get { return vatNumber; } set { vatNumber = value; RaisePropertyChanged(); } }
+        public string VatNumber { get { return vatNumber; } set { vatNumber = value; OnPropertyChanged(); } }
 
         string tIN;
-        public string TIN { get { return tIN; } set { tIN = value; RaisePropertyChanged(); } }
+        public string TIN { get { return tIN; } set { tIN = value; OnPropertyChanged(); } }
 
         string vATCertificateNumber;
-        public string VATCertificateNumber { get { return vATCertificateNumber; } set { vATCertificateNumber = value; RaisePropertyChanged(); } }
+        public string VATCertificateNumber { get { return vATCertificateNumber; } set { vATCertificateNumber = value; OnPropertyChanged(); } }
 
         string region;
-        public string Region { get { return region; } set { region = value; RaisePropertyChanged(); } }
+        public string Region { get { return region; } set { region = value; OnPropertyChanged(); } }
 
 
         bool isMandatoryDataEntered = true;
@@ -54,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _parameterTypeList = value;
-                RaisePropertyChanged("ParameterTypeList");
+                OnPropertyChanged("ParameterTypeList");
             }
         }
         private VATParameterType _selectedParameterType = null;
@@ -74,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     TxtSearchParameter = _selectedParameterType.ParameterType;
                     SetPlaceholderText();
                 }
-                RaisePropertyChanged("SelectedParameterType");
+                OnPropertyChanged("SelectedParameterType");
             }
         }
         private bool _isTooltipEnableVisible = false;
@@ -87,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isTooltipEnableVisible = value;
-                RaisePropertyChanged("IsTooltipEnableVisible");
+                OnPropertyChanged("IsTooltipEnableVisible");
             }
         }
 
@@ -101,7 +102,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _parameter = value;
-                RaisePropertyChanged("Parameter");
+                OnPropertyChanged("Parameter");
             }
         }
         private string _name = "";
@@ -114,7 +115,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _name = value;
-                RaisePropertyChanged("Name");
+                OnPropertyChanged("Name");
             }
         }
         private string _nameOrNoResultLabel = "";
@@ -127,7 +128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _nameOrNoResultLabel = value;
-                RaisePropertyChanged("NameOrNoResultLabel");
+                OnPropertyChanged("NameOrNoResultLabel");
             }
         }
 
@@ -141,7 +142,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _VATACCOrCRNOOrVATCER = value;
-                RaisePropertyChanged("VATACCOrCRNOOrVATCER");
+                OnPropertyChanged("VATACCOrCRNOOrVATCER");
             }
         }
         private string _lookupNumber = "";
@@ -154,7 +155,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _lookupNumber = value;
-                RaisePropertyChanged("LookupNumber");
+                OnPropertyChanged("LookupNumber");
             }
         }
         private string _maxDigids = "15";
@@ -167,7 +168,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _maxDigids = value;
-                RaisePropertyChanged("MaxDigids");
+                OnPropertyChanged("MaxDigids");
             }
         }
         private string _txtSearchParameter = string.Empty;
@@ -180,7 +181,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _txtSearchParameter = value;
-                RaisePropertyChanged("TxtSearchParameter");
+                OnPropertyChanged("TxtSearchParameter");
             }
         }
         private bool _isNameVisible = false;
@@ -193,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isNameVisible = value;
-                RaisePropertyChanged("IsNameVisible");
+                OnPropertyChanged("IsNameVisible");
             }
         }
         private string _lookUpButtonText = "";
@@ -206,7 +207,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _lookUpButtonText = value;
-                RaisePropertyChanged("LookUpButtonText");
+                OnPropertyChanged("LookUpButtonText");
             }
         }
         #endregion

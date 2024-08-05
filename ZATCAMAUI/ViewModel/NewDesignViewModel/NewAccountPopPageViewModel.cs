@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -9,14 +11,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public NewAccountPopPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
 
         #region Properties
@@ -31,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_ibanNumberText == value) return;
                 _ibanNumberText = value;
-                RaisePropertyChanged("IbanNumberText");
+                OnPropertyChanged("IbanNumberText");
             }
         }
 
@@ -47,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isIBANValid == value) return;
 
                 _isIBANValid = value;
-                RaisePropertyChanged("IsIBANValid");
+                OnPropertyChanged("IsIBANValid");
             }
         }
 
@@ -63,7 +57,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_ibanPartOne == value) return;
 
                 _ibanPartOne = value;
-                RaisePropertyChanged("IbanPartOne");
+                OnPropertyChanged("IbanPartOne");
             }
         }
 
@@ -79,7 +73,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_ibanPartTwo == value) return;
 
                 _ibanPartTwo = value;
-                RaisePropertyChanged("IbanPartTwo");
+                OnPropertyChanged("IbanPartTwo");
             }
         }
 
@@ -95,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_ibanPartThree == value) return;
 
                 _ibanPartThree = value;
-                RaisePropertyChanged("IbanPartThree");
+                OnPropertyChanged("IbanPartThree");
             }
         }
 
@@ -111,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_ibanPartFour == value) return;
 
                 _ibanPartFour = value;
-                RaisePropertyChanged("IbanPartFour");
+                OnPropertyChanged("IbanPartFour");
             }
         }
 
@@ -127,7 +121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_ibanPartFive == value) return;
 
                 _ibanPartFive = value;
-                RaisePropertyChanged("IbanPartFive");
+                OnPropertyChanged("IbanPartFive");
             }
         }
 
@@ -143,7 +137,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_accountText == value) return;
 
                 _accountText = value;
-                RaisePropertyChanged("AccountText");
+                OnPropertyChanged("AccountText");
             }
         }
         #endregion

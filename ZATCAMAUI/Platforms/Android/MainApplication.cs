@@ -1,6 +1,9 @@
 ﻿using Android.App;
+using Android.Content.Res;
 using Android.Runtime;
-
+using Microsoft.Maui.Handlers;
+using ZATCAMAUI.Core.CustomControls;
+using Color = Android.Graphics;
 namespace ZATCAMAUI.Platforms.Android;
 
 [Application]
@@ -13,5 +16,29 @@ public class MainApplication : MauiApplication
     {
     }
 
-    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    protected override MauiApp CreateMauiApp()
+    {
+        EntryHandler.Mapper.AppendToMapping("Borderless", (handler, view) =>
+        {
+            if (view is GAZTBorderlessEntry)
+            {
+                handler.PlatformView.Background = null;
+                handler.PlatformView.SetBackgroundColor(Color.Color.Transparent);
+                // Remove underline
+                handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Color.Color.Transparent);
+
+            }
+        });
+
+        EditorHandler.Mapper.AppendToMapping("EditorBorderless", (handler, view) =>
+        {
+            if (view is GAZTBorderlessEditor)
+            {
+                handler.PlatformView.Background = null;
+                handler.PlatformView.SetBackgroundColor(Color.Color.Transparent);
+                handler.PlatformView.BackgroundTintList = ColorStateList.ValueOf(Color.Color.Transparent);
+            }
+        });
+        return MauiProgram.CreateMauiApp();
+    }
 }

@@ -15,7 +15,7 @@
             Padding="0"
             Background="White"
             HorizontalOptions="Fill"
-            Stroke="White"
+            Stroke="{StaticResource NeutralLightGrey}"
             StrokeShape="RoundRectangle 15,15,0,0"
             VerticalOptions="EndAndExpand">
 

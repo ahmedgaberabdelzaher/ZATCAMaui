@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 {
@@ -28,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             set
             {
                 _generalServicesList = value;
-                RaisePropertyChanged("GeneralServicesList");
+                OnPropertyChanged("GeneralServicesList");
             }
         }
         public ObservableCollection<GeneralServicesListModel> _refundRequestMenuList { get; set; }
@@ -42,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             set
             {
                 _refundRequestMenuList = value;
-                RaisePropertyChanged("RefundRequestMenuList");
+                OnPropertyChanged("RefundRequestMenuList");
             }
         }
         public ObservableCollection<GeneralServicesListModel> _fillingFrquencyMenuList { get; set; }
@@ -56,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             set
             {
                 _fillingFrquencyMenuList = value;
-                RaisePropertyChanged("FillingFrquencyMenuList");
+                OnPropertyChanged("FillingFrquencyMenuList");
             }
         }
 

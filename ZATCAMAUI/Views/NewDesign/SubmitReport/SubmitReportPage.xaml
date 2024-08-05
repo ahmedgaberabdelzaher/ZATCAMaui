@@ -189,39 +189,33 @@
                             </Label>
 
                             <!--  Report Type Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ReportType}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}"
-                                VerticalOptions="StartAndExpand">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportTypeEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportType}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReportTypeName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView VerticalOptions="StartAndExpand">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="reportTypeEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportType}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReportTypeName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                
+                               <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
@@ -243,38 +237,34 @@
                             </Label>
 
                             <!--  Report Category Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ReportCategory}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}"
-                                VerticalOptions="StartAndExpand">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportCategoryEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportCategory}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReportCategoryName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenReportCategoryCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView VerticalOptions="StartAndExpand">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="reportCategoryEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportCategory}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReportCategoryName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenReportCategoryCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                
+                               <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                               <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenReportCategoryCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
+
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportCategoryeCommand}" />
                             </StackLayout.GestureRecognizers>
@@ -295,38 +285,34 @@
                             </Label>
 
                             <!--  Report SubCategory Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ReportCategory}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}"
-                                VerticalOptions="StartAndExpand">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportSubCategoryEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportCategory}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReportSubCategoryName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenReportSubCategoryCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView VerticalOptions="StartAndExpand">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="reportSubCategoryEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportCategory}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReportSubCategoryName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenReportSubCategoryCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                
+                               <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                              <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenReportSubCategoryCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
+
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportSubCategoryCommand}" />
                             </StackLayout.GestureRecognizers>
@@ -347,41 +333,38 @@
                             </Label>
 
                             <!--  Missing Field Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ReportMissingField}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}"
-                                VerticalOptions="StartAndExpand">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="missingFieldEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportMissingField}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.MissedFieldName}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenMissingFieldCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView VerticalOptions="StartAndExpand">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                     <custom:GAZTBorderlessEntry
+                                        x:Name="missingFieldEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportMissingField}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.MissedFieldName}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenMissingFieldCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+                                
+                               <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenMissingFieldCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
+
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenMissingFieldCommand}" />
                             </StackLayout.GestureRecognizers>
+
                         </StackLayout>
 
                         <!--  ReportDetails Field  -->
@@ -398,29 +381,24 @@
                             </Label>
 
                             <!--  ReportDetails Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
-                                Hint="{x:Static ResourceManager:AppResources.ReportText}"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEditor
-                                    x:Name="reportReportDetailsEntry"
-                                    AutoSize="TextChanges"
-                                    HeightRequest="100"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsSpellCheckEnabled="True"
-                                    IsTextPredictionEnabled="False"
-                                    MaxLength="1000"
-                                    MinimumHeightRequest="100"
-                                    Style="{StaticResource BodyLabelBlack}"
-                                    Text="{Binding SubmitReport.ReportDetails}" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+                                     <custom:GAZTBorderlessEditor
+                                        x:Name="reportReportDetailsEntry"
+                                        AutoSize="TextChanges"
+                                        HeightRequest="100"
+                                        HorizontalOptions="FillAndExpand"
+                                        IsSpellCheckEnabled="True"
+                                        IsTextPredictionEnabled="False"
+                                        MaxLength="1000"
+                                        MinimumHeightRequest="100"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding SubmitReport.ReportDetails}" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
+                           
                         </StackLayout>
 
                         <!--  Location Field  -->
@@ -437,25 +415,19 @@
                             </Label>
 
                             <!--  Location Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ReportLocationPlaceholder}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportLocationPlaceholder}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.Location}"
-                                    TextColor="#58595B" />
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+                                      <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportLocationPlaceholder}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.Location}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="reportlocation.png" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
@@ -464,7 +436,7 @@
                                     <TapGestureRecognizer Command="{Binding ShowMapCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            </inputLayout:SfTextInputLayout>
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ShowMapCommand}" />
@@ -486,37 +458,27 @@
                             </Label>
 
 
-                            <!--  ViolationDate Label  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                HasError="{Binding SubmitReport.HasViolationDate}"
-                                Hint="dd/MM/yyyy"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
+                            <!--  ViolationDate Entry  -->
+                            <custom:CustomSfTextInputView HasError="{Binding SubmitReport.HasViolationDate}">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="violationDateEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding ViolationDateDateString}"
+                                        TextColor="#58595B">
 
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference violationDate}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
 
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="violationDateEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="dd/MM/yyyy"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding ViolationDateDateString}"
-                                    TextColor="#58595B">
+                                </custom:CustomSfTextInputView.TextInputView>
 
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference violationDate}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-
-                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                               <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference violationDate}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
@@ -524,7 +486,8 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="menu_calendar" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
 
                             <DatePicker
                                 x:Name="violationDate"
@@ -557,26 +520,20 @@
                             </Label>
 
                             <!--  Uploaded files Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                HelperText="{x:Static ResourceManager:AppResources.ReportAttachmentHelperText}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}"
-                                VerticalOptions="StartAndExpand">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportAttachements}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                     <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportAttachements}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                              <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="newui_ic_pdf" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
@@ -584,7 +541,11 @@
                                     <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                            </inputLayout:SfTextInputLayout>
+                            </custom:CustomSfTextInputView>
+
+                            <Label Text="{x:Static ResourceManager:AppResources.ReportAttachmentHelperText}"
+                                    Margin="0,-15,0,10"
+                                    Style="{StaticResource CaptionLabelGrey}"/>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
@@ -611,24 +572,19 @@
                                         <StackLayout x:Name="Item">
 
                                             <!--  PDfUploaded Entry  -->
-                                            <inputLayout:SfTextInputLayout
-                                                ContainerBackground="White"
-                                                ContainerType="Outlined"
-                                                InputViewPadding="16,0,16,0"
-                                                IsHintAlwaysFloated="True"
-                                                LeadingViewPosition="Inside"
-                                                OutlineCornerRadius="15"
-                                                Stroke="{StaticResource NeutralGreay}">
-                                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <custom:GAZTBorderlessEntry
-                                                    InputTransparent="True"
-                                                    IsReadOnly="True"
-                                                    Keyboard="Text"
-                                                    Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding fileFullName}"
-                                                    TextColor="#58595B" />
+                                            <custom:CustomSfTextInputView >
+                                                <custom:CustomSfTextInputView.TextInputView>
+
+                                                     <custom:GAZTBorderlessEntry
+                                                        InputTransparent="True"
+                                                        IsReadOnly="True"
+                                                        Keyboard="Text"
+                                                        Style="{StaticResource DefaultEntry}"
+                                                        Text="{Binding fileFullName}"
+                                                        TextColor="#58595B" />
+
+                                                </custom:CustomSfTextInputView.TextInputView>
+
                                                 <inputLayout:SfTextInputLayout.LeadingView>
                                                     <Image Aspect="AspectFit" Source="Generic_attachment_icon" />
                                                 </inputLayout:SfTextInputLayout.LeadingView>
@@ -644,7 +600,7 @@
                                                     </Image>
                                                 </inputLayout:SfTextInputLayout.TrailingView>
 
-                                            </inputLayout:SfTextInputLayout>
+                                            </custom:CustomSfTextInputView>
                                         </StackLayout>
 
                                     </DataTemplate>
@@ -659,24 +615,19 @@
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TIN}" />
 
                             <!--  TIN Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.TIN}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.TIN}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.TIN}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.TIN}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.TIN}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -694,25 +645,20 @@
                             </Label>
 
                             <!--  Company Name Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportCompanyNameEntry"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.CompanyName}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                   <custom:GAZTBorderlessEntry
+                                        x:Name="reportCompanyNameEntry"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.CompanyName}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -723,24 +669,19 @@
                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}" />
 
                             <!--  Commercial Registration Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.CR}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                   <custom:GAZTBorderlessEntry
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.CR}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
 
                         <!--  WorkType Field  -->
@@ -757,25 +698,20 @@
                             </Label>
 
                             <!--  WorkType Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.WorkType}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportWorkTypeEntry"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.WorkType}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.WorkType}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="reportWorkTypeEntry"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.WorkType}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.WorkType}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
 
                         <!--  Company Address Field  -->
@@ -792,25 +728,20 @@
                             </Label>
 
                             <!--  Company Address Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.NDFacilityAddress}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportCompanyAddressEntry"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.NDFacilityAddress}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.CompanyAddress}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="reportCompanyAddressEntry"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.NDFacilityAddress}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.CompanyAddress}"
+                                        TextColor="#58595B" />
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
 
                         <!--  Region Field  -->
@@ -827,38 +758,36 @@
                             </Label>
 
 
-                            <!--  Region Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportRegionEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.Region}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                             <!--  Region Entry  -->
+                             <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="reportRegionEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.Region}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
                                     </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
+
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
                             </StackLayout.GestureRecognizers>
@@ -877,39 +806,35 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <!--  City Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ReportCity}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="reportCityEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportCity}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.City}"
-                                    TextColor="#58595B">
-                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
-                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                             <!--  City Entry  -->
+                             <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="reportCityEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportCity}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.City}"
+                                        TextColor="#58595B">
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                                  <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                            </inputLayout:SfTextInputLayout>
+
+                            </custom:CustomSfTextInputView>
 
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
@@ -931,26 +856,21 @@
                             </Label>
 
                             <!--  District Entry  -->
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
 
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
+                                  <custom:GAZTBorderlessEntry
                                     x:Name="reportDistrictEntry"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.District}"
                                     TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
+
                         </StackLayout>
 
                         <!--  Street Field  -->
@@ -967,25 +887,20 @@
                             </Label>
 
                             <!--  Street Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ReportStreetName}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView >
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                  <custom:GAZTBorderlessEntry
                                     x:Name="reportStreetEntry"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportStreetName}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.Street}"
                                     TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 
@@ -1123,25 +1038,20 @@
                                 </Label>
 
                                 <!--  Name Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ReportFullName}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
-                                        x:Name="nameEntry"
-                                        Keyboard="Text"
-                                        Placeholder="{x:Static ResourceManager:AppResources.ReportFullName}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding SubmitReport.ReporterNameAr}"
-                                        TextColor="#58595B" />
-                                </inputLayout:SfTextInputLayout>
+                                <custom:CustomSfTextInputView >
+                                    <custom:CustomSfTextInputView.TextInputView>
+
+                                     <custom:GAZTBorderlessEntry
+                                            x:Name="nameEntry"
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ReportFullName}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SubmitReport.ReporterNameAr}"
+                                            TextColor="#58595B" />
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
 
                             <!--  Nationl Id Field  -->
@@ -1201,18 +1111,10 @@
                                 </Label>
 
                                 <!--  NationaID Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.NationaID}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
+                                <custom:CustomSfTextInputView >
+                                    <custom:CustomSfTextInputView.TextInputView>
+
+                                     <custom:GAZTBorderlessEntry
                                         x:Name="NationalIdEntry"
                                         Keyboard="Numeric"
                                         MaxLength="10"
@@ -1225,7 +1127,10 @@
                                         </custom:GAZTBorderlessEntry.Behaviors>
 
                                     </custom:GAZTBorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
 
                             <!--  Email Field  -->
@@ -1286,24 +1191,19 @@
 
 
                                 <!--  Email Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
+                                <custom:CustomSfTextInputView >
+                                    <custom:CustomSfTextInputView.TextInputView>
+
+                                      <custom:GAZTBorderlessEntry
                                         Keyboard="Email"
                                         Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitReport.ReporterEmail}"
                                         TextColor="#58595B" />
-                                </inputLayout:SfTextInputLayout>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
 
                             <!--  Phone Field  -->
@@ -1363,28 +1263,26 @@
                                 </Label>
 
                                 <!--  Phone Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                    InputViewPadding="0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <custom:GAZTBorderlessEntry
+                                <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView.TextInputView>
+
+                                      <custom:GAZTBorderlessEntry
                                         x:Name="phoneEntry"
                                         Keyboard="Telephone"
                                         Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitReport.ReporterMobileNumber}"
                                         TextColor="#58595B" />
-                                    <inputLayout:SfTextInputLayout.LeadingView>
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <Image Aspect="AspectFit" Source="ic_Version" />
                                     </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
+
+                                </custom:CustomSfTextInputView>
+
+                                
                             </StackLayout>
 
                             <!--  Check Box  -->
@@ -1464,9 +1362,6 @@
                                 Text="{x:Static ResourceManager:AppResources.SendReportButton}" />
 
                         </StackLayout>
-
-
-
                         <!--#endregion Body-->
                     </StackLayout>
 

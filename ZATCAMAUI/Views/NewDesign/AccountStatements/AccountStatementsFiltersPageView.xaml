@@ -12,6 +12,7 @@
     <Border
         Padding="10,10,10,10"
         BackgroundColor="White"
+        Stroke="{StaticResource NeutralLightGrey}"
         StrokeShape="RoundRectangle 15,15,0,0"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">

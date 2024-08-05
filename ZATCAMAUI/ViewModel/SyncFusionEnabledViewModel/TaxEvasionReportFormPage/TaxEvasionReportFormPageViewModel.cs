@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
     public class TaxEvasionReportFormPageViewModel : BaseViewModel
     {
         #region variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
         public ICommand NextButtonClicked { get; set; }
         public ICommand SubmitReportClicked { get; set; }
@@ -31,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 if (_TaxEvasionReportTobeUsedToSubmit != null)
                 {
                 }
-                RaisePropertyChanged("TaxEvasionReportTobeUsedToSubmit");
+                OnPropertyChanged("TaxEvasionReportTobeUsedToSubmit");
             }
         }
         public ICommand OnAttachmentClick { get; set; }
@@ -47,7 +46,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public bool _isVisibleForReportDisplay = false;
@@ -60,7 +59,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _isVisibleForReportDisplay = value;
-                RaisePropertyChanged("IsVisibleForReportDisplay");
+                OnPropertyChanged("IsVisibleForReportDisplay");
             }
         }
 
@@ -75,7 +74,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
         private UploadedDocumentsList _uploadedDocumentsList = null;
@@ -88,7 +87,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _uploadedDocumentsList = value;
-                RaisePropertyChanged("UploadedDocumentsList");
+                OnPropertyChanged("UploadedDocumentsList");
             }
         }
         public int _attachmentCount = 0;
@@ -101,7 +100,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _attachmentCount = value;
-                RaisePropertyChanged("AttachmentCount");
+                OnPropertyChanged("AttachmentCount");
             }
         }
         private ObservableCollection<UploadedDocumentsList> _uploadedDocumentsListObj = new ObservableCollection<UploadedDocumentsList>();
@@ -114,7 +113,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _uploadedDocumentsListObj = value;
-                RaisePropertyChanged("UploadedDocumentsListObj");
+                OnPropertyChanged("UploadedDocumentsListObj");
             }
         }
         private string _txtFType = string.Empty;
@@ -127,7 +126,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _txtFType = value;
-                RaisePropertyChanged("TxtFType");
+                OnPropertyChanged("TxtFType");
             }
         }
         private string _txtReportDetailCity = string.Empty;
@@ -140,7 +139,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _txtReportDetailCity = value;
-                RaisePropertyChanged("TxtReportDetailCity");
+                OnPropertyChanged("TxtReportDetailCity");
             }
         }
         private string _txtReportDetailRegion = string.Empty;
@@ -153,7 +152,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _txtReportDetailRegion = value;
-                RaisePropertyChanged("TxtReportDetailRegion");
+                OnPropertyChanged("TxtReportDetailRegion");
             }
         }
         private TaxEvasionReportDetails _selectedtaxEList = null;
@@ -166,7 +165,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _selectedtaxEList = value;
-                RaisePropertyChanged("selectedtaxEList");
+                OnPropertyChanged("selectedtaxEList");
             }
         }
         private double _latitude = 00.00;
@@ -179,7 +178,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _latitude = value;
-                RaisePropertyChanged("Latitude");
+                OnPropertyChanged("Latitude");
             }
         }
         private double _longitude = 00.00;
@@ -192,7 +191,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _longitude = value;
-                RaisePropertyChanged("Longitude");
+                OnPropertyChanged("Longitude");
             }
         }
         private List<FacilityCompanyType> _listfacilityCompanyType = null;
@@ -205,7 +204,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _listfacilityCompanyType = value;
-                RaisePropertyChanged("ListFacilityCompanyType");
+                OnPropertyChanged("ListFacilityCompanyType");
             }
         }
        
@@ -219,7 +218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _dlistfacilityCompanyType = value;
-                RaisePropertyChanged("DListFacilityCompanyType");
+                OnPropertyChanged("DListFacilityCompanyType");
             }
         }
         private bool _isSubmitButtonEnable = false;
@@ -232,7 +231,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _isSubmitButtonEnable = value;
-                RaisePropertyChanged("IsSubmitButtonEnable");
+                OnPropertyChanged("IsSubmitButtonEnable");
             }
         }
         private bool _isTIN = false;
@@ -255,7 +254,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                     IsTINVisible = false;
                     TxtTIN = string.Empty;
                 }
-                RaisePropertyChanged("IsTIN");
+                OnPropertyChanged("IsTIN");
             }
         }
         private string _txtTIN = string.Empty;
@@ -275,7 +274,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 //        _TaxEvasionReportTobeUsedToSubmit.TIN = _txtTIN;
                 //    }
                 //}
-                RaisePropertyChanged("TxtTIN");
+                OnPropertyChanged("TxtTIN");
             }
         }
         private bool _showIdHelperText = false;
@@ -288,7 +287,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _showIdHelperText = value;
-                RaisePropertyChanged("ShowIdHelperText");
+                OnPropertyChanged("ShowIdHelperText");
             }
         }
         private bool _isTINVisible = false;
@@ -305,7 +304,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 {
                     ShowIdHelperText = true;
                 }
-                RaisePropertyChanged("IsTINVisible");
+                OnPropertyChanged("IsTINVisible");
             }
         }//SelectedTaxEvasionCompanyType
         private FacilityCompanyType _selectedTaxEvasionCompanyType = null;
@@ -322,7 +321,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 {
                     TxtFType = _selectedTaxEvasionCompanyType.Name;
                 }
-                RaisePropertyChanged("SelectedTaxEvasionCompanyType");
+                OnPropertyChanged("SelectedTaxEvasionCompanyType");
             }
         }
         private FacilityCompanyType _selectedTaxEvasionCompanyTypePrev = null;
@@ -335,7 +334,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _selectedTaxEvasionCompanyTypePrev = value;
-                RaisePropertyChanged("SelectedTaxEvasionCompanyTypePrev");
+                OnPropertyChanged("SelectedTaxEvasionCompanyTypePrev");
             }
         }
         private string _selectedCategory = string.Empty;
@@ -348,7 +347,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _selectedCategory = value;
-                RaisePropertyChanged("SelectedCategory");
+                OnPropertyChanged("SelectedCategory");
             }
         }
         private string _tReportDetail = string.Empty;
@@ -368,7 +367,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 //        _TaxEvasionReportTobeUsedToSubmit.ReportDetails = _tReportDetail;
                 //    }
                 //}
-                RaisePropertyChanged("TReportDetail");
+                OnPropertyChanged("TReportDetail");
             }
         }
         private bool _isVisiblePickerAr = false;
@@ -381,7 +380,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _isVisiblePickerAr = value;
-                RaisePropertyChanged("IsVisiblePickerAr");
+                OnPropertyChanged("IsVisiblePickerAr");
             }
         }
         private bool _isVisiblePickerEn = false;
@@ -394,7 +393,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _isVisiblePickerEn = value;
-                RaisePropertyChanged("IsVisiblePickerEn");
+                OnPropertyChanged("IsVisiblePickerEn");
             }
         }
         private string _tEmail = string.Empty;
@@ -407,7 +406,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _tEmail = value;
-                RaisePropertyChanged("TEmail");
+                OnPropertyChanged("TEmail");
             }
         }
         private string _tName = string.Empty;
@@ -422,7 +421,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 try
                 {
                     _tName = value;
-                    RaisePropertyChanged("TName");
+                    OnPropertyChanged("TName");
                 }
                 catch (Exception)
                 {
@@ -443,7 +442,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 try
                 {
                     _tCategory = value;
-                    RaisePropertyChanged("TCategory");
+                    OnPropertyChanged("TCategory");
                 }
                 catch (Exception)
                 {
@@ -462,7 +461,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _tMobNumber = value;
-                RaisePropertyChanged("TMobNumber");
+                OnPropertyChanged("TMobNumber");
             }
         }
         private string _tFaciName = string.Empty;
@@ -475,7 +474,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _tFaciName = value;
-                RaisePropertyChanged("TFaciName");
+                OnPropertyChanged("TFaciName");
             }
         }//TFaciOwnerName
         private string _tFaciOwnerName = string.Empty;
@@ -488,7 +487,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _tFaciOwnerName = value;
-                RaisePropertyChanged("TFaciOwnerName");
+                OnPropertyChanged("TFaciOwnerName");
             }
         }
         private string _attachmentName = string.Empty;
@@ -501,7 +500,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         //TFaciMobNo
@@ -515,7 +514,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _tFaciMobNo = value;
-                RaisePropertyChanged("TFaciMobNo");
+                OnPropertyChanged("TFaciMobNo");
             }
         }//TFaciEmail
         private string _tFaciEmail = string.Empty;
@@ -532,7 +531,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 //{
                 //    _TaxEvasionReportTobeUsedToSubmit.CompanyEmail = _tFaciEmail;
                 //}
-                RaisePropertyChanged("TFaciEmail");
+                OnPropertyChanged("TFaciEmail");
             }
         }
         private string _tID = string.Empty;
@@ -545,7 +544,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _tID = value;
-                RaisePropertyChanged("TID");
+                OnPropertyChanged("TID");
             }
         }
         //TID
@@ -559,7 +558,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _tVatNumber = value;
-                RaisePropertyChanged("TVatNumber");
+                OnPropertyChanged("TVatNumber");
             }
         }
         //TFDAdress
@@ -577,7 +576,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 //{
                 //    _TaxEvasionReportTobeUsedToSubmit.District = _tFDAdress;
                 //}
-                RaisePropertyChanged("TFDAdress");
+                OnPropertyChanged("TFDAdress");
             }
         }
         private string _tFSAddress = string.Empty;
@@ -594,7 +593,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 //{
                 //    _TaxEvasionReportTobeUsedToSubmit.CompanyAddress = _tFSAddress;
                 //}
-                RaisePropertyChanged("TFSAddress");
+                OnPropertyChanged("TFSAddress");
             }
         }
         private string _tFWType = string.Empty;
@@ -609,7 +608,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                 _tFWType = value;
                 //if (!string.IsNullOrEmpty(_tFWType))
                 //{ _TaxEvasionReportTobeUsedToSubmit.WorkType = _tFWType; }
-                RaisePropertyChanged("TFWType");
+                OnPropertyChanged("TFWType");
             }
         }
         private TaxEvasionRegionCityDatum _selectedTaxEvasionRegion = null;
@@ -636,7 +635,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                     //TEReportobj.RegionCode = v;
                 }
                 //ListFormBudles = null;
-                RaisePropertyChanged("SelectedTaxEvasionRegion");
+                OnPropertyChanged("SelectedTaxEvasionRegion");
             }
         }
         private TaxEvasionRegionCityDatum _selectedTaxEvasionRegionPrev = null;
@@ -650,7 +649,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             {
                 _selectedTaxEvasionRegionPrev = value;
                 //ListFormBudles = null;
-                RaisePropertyChanged("SelectedTaxEvasionRegionPrev");
+                OnPropertyChanged("SelectedTaxEvasionRegionPrev");
             }
         }
         private string _datePick = DateTime.UtcNow.ToString("dd/MM/yyyy");
@@ -663,7 +662,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _datePick = value;
-                RaisePropertyChanged("DatePick");
+                OnPropertyChanged("DatePick");
             }
         }
         private string _datePickPrev = string.Empty;
@@ -676,7 +675,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _datePickPrev = value;
-                RaisePropertyChanged("DatePickPrev");
+                OnPropertyChanged("DatePickPrev");
             }
         }
         private TaxEvasionRegionCityDatum _selectLCType = null;
@@ -700,7 +699,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                         TxtReportDetailCity = _selectLCType.Name;
                     }
                 }
-                RaisePropertyChanged("SelectLCType");
+                OnPropertyChanged("SelectLCType");
             }
             //if (_selectLCType != null)
             //{
@@ -728,7 +727,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _selectLCTypePrev = value;
-                RaisePropertyChanged("SelectLCTypePrev");
+                OnPropertyChanged("SelectLCTypePrev");
             }
         }
         private List<TaxEvasionRegionCityDatum> _rList;
@@ -741,7 +740,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _rList = value;
-                RaisePropertyChanged("RList");
+                OnPropertyChanged("RList");
             }
         }
         private List<TaxEvasionRegionCityDatum> _cityList;
@@ -754,21 +753,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             set
             {
                 _cityList = value;
-                RaisePropertyChanged("CList");
+                OnPropertyChanged("CList");
             }
         }
         public TaxEvasionReportFormPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             BackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();
@@ -777,7 +766,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
             SubmitReportClicked = new Command(() =>
             {
                 IsLoading = false;
-                //  _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, selectedtaxEList);
 
             });
             OnAttachmentClick = new Command(async () =>

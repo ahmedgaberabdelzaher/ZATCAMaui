@@ -1,9 +1,10 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
     public class ZakatObjectionSuccessfullPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnInvoiceClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
 
@@ -39,7 +38,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_estimatedZAKATSADADNumber == value) return;
 
                 _estimatedZAKATSADADNumber = value;
-                RaisePropertyChanged("EstimatedZAKATSADADNumber");
+                OnPropertyChanged("EstimatedZAKATSADADNumber");
             }
         }
 
@@ -55,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_setSuccessMessageVisibility == value) return;
 
                 _setSuccessMessageVisibility = value;
-                RaisePropertyChanged("SetSuccessMessageVisibility");
+                OnPropertyChanged("SetSuccessMessageVisibility");
             }
         }
 
@@ -71,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 if (_refreshIconImageSource == value) return;
 
                 _refreshIconImageSource = value;
-                RaisePropertyChanged("RefreshIconImageSource");
+                OnPropertyChanged("RefreshIconImageSource");
             }
         }
 
@@ -80,17 +79,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         #region Constructor
         public ZakatObjectionSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            //=======================start==================================================
             OnInvoiceClicked = new Command(() =>
             {
                 OnDownLoadInvoiceClicked();

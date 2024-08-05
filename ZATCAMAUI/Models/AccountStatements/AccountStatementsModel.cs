@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Mangers;
 using static ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements.AccountStatementsPageViewModel;
@@ -369,7 +369,7 @@ namespace ZATCAMAUI.Models.AccountStatements
         public ASResult[] Results { get; set; }
     }
     
-    public partial class ASResult : ViewModelBase
+    public partial class ASResult : ObservableRecipient
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
@@ -492,7 +492,7 @@ namespace ZATCAMAUI.Models.AccountStatements
 
                 _StatusBG = value;
 
-                RaisePropertyChanged("StatusBG");
+                OnPropertyChanged("StatusBG");
             }
         }
 
@@ -516,7 +516,7 @@ namespace ZATCAMAUI.Models.AccountStatements
 
                 _AmountTextColor = value;
 
-                RaisePropertyChanged("AmountTextColor");
+                OnPropertyChanged("AmountTextColor");
             }
         }
 

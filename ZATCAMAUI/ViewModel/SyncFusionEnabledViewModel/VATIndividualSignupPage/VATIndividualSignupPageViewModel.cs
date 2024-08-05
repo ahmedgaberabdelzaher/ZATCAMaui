@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
@@ -7,8 +8,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
     public class VATIndividualSignupPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         public Command IndividualRegistrationCommand { get; set; }
         public Command EstablishmentSignupCommand { get; set; }
@@ -28,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_ImageIndividualTile == value) return;
 
                 _ImageIndividualTile = value;
-                RaisePropertyChanged("ImageIndividualTile");
+                OnPropertyChanged("ImageIndividualTile");
             }
         }
 
@@ -56,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     IndividualTileColor = Colors.White;
                 }
-                RaisePropertyChanged("ImageIndividualIcon");
+                OnPropertyChanged("ImageIndividualIcon");
             }
         }
         private string _ImageEstimatedTile = "vat_tile_listofsignup_W.png";
@@ -71,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_ImageEstimatedTile == value) return;
 
                 _ImageEstimatedTile = value;
-                RaisePropertyChanged("ImageEstimatedTile");
+                OnPropertyChanged("ImageEstimatedTile");
             }
         }
         private string _ImageEstimatedIcon = "vat_new_Establishment_G.png";
@@ -99,7 +98,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     EstimatedTileColor = (Color)Application.Current.Resources["Primary"];
 
                 }
-                RaisePropertyChanged("ImageEstimatedIcon");
+                OnPropertyChanged("ImageEstimatedIcon");
             }
         }
         private Color _IndividualTileColor = (Color)Application.Current.Resources["Primary"];
@@ -115,7 +114,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 _IndividualTileColor = value;
 
-                RaisePropertyChanged("IndividualTileColor");
+                OnPropertyChanged("IndividualTileColor");
             }
         }
         private Color _EstimatedTileColor = (Color)Application.Current.Resources["Primary"];
@@ -130,7 +129,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_EstimatedTileColor == value) return;
 
                 _EstimatedTileColor = value;
-                RaisePropertyChanged("EstimatedTileColor");
+                OnPropertyChanged("EstimatedTileColor");
             }
         }
 
@@ -138,16 +137,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public VATIndividualSignupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
             IndividualRegistrationCommand = new Command(OnIndividualRegistrationClicked);
             EstablishmentSignupCommand = new Command(OnEstablishmentSignupClicked);

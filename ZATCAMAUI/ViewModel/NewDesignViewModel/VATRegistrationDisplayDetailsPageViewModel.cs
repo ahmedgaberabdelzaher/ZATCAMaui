@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 
@@ -17,25 +18,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         string idnumber { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
 
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public VATRegistrationDisplayDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             OnBackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
 
         }
@@ -52,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_DOB == value) return;
 
                 _DOB = value;
-                RaisePropertyChanged("DOB");
+                OnPropertyChanged("DOB");
             }
         }
         private string _IDType = string.Empty;
@@ -67,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_IDType == value) return;
 
                 _IDType = value;
-                RaisePropertyChanged("IDType");
+                OnPropertyChanged("IDType");
             }
         }
         private string _IDNumber = string.Empty;
@@ -82,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_IDNumber == value) return;
 
                 _IDNumber = value;
-                RaisePropertyChanged("IDNumber");
+                OnPropertyChanged("IDNumber");
             }
         }
         private string _ContactPersonName = string.Empty;
@@ -97,7 +85,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_ContactPersonName == value) return;
 
                 _ContactPersonName = value;
-                RaisePropertyChanged("ContactPersonName");
+                OnPropertyChanged("ContactPersonName");
             }
         }
 
@@ -113,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_contactDOB == value) return;
 
                 _contactDOB = value;
-                RaisePropertyChanged("ContactDOB");
+                OnPropertyChanged("ContactDOB");
             }
         }
         private string _idNumberSR = string.Empty;
@@ -128,7 +116,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_idNumberSR == value) return;
 
                 _idNumberSR = value;
-                RaisePropertyChanged("IdNumberSR");
+                OnPropertyChanged("IdNumberSR");
             }
         }
 
@@ -144,7 +132,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_firstNameSR == value) return;
 
                 _firstNameSR = value;
-                RaisePropertyChanged("FirstNameSR");
+                OnPropertyChanged("FirstNameSR");
             }
         }
         private string _lastnmFR = string.Empty;
@@ -159,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_lastnmFR == value) return;
 
                 _lastnmFR = value;
-                RaisePropertyChanged("LastnmFR");
+                OnPropertyChanged("LastnmFR");
             }
         }
 
@@ -175,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_mobNumberFR == value) return;
 
                 _mobNumberFR = value;
-                RaisePropertyChanged("MobNumberFR");
+                OnPropertyChanged("MobNumberFR");
             }
         }
         private string _vatEligibleStartDate = string.Empty;
@@ -190,7 +178,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vatEligibleStartDate == value) return;
 
                 _vatEligibleStartDate = value;
-                RaisePropertyChanged("VatEligibleStartDate");
+                OnPropertyChanged("VatEligibleStartDate");
             }
         }
         private string _quesTion3answerSelected = string.Empty;
@@ -206,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _quesTion3answerSelected = value;
 
-                RaisePropertyChanged("quesTion3answerSelected");
+                OnPropertyChanged("quesTion3answerSelected");
             }
         }
         private string _quesTion4answerSelected = string.Empty;
@@ -222,7 +210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _quesTion4answerSelected = value;
 
-                RaisePropertyChanged("quesTion4answerSelected");
+                OnPropertyChanged("quesTion4answerSelected");
             }
         }
         private string _quesTion1answerSelected = string.Empty;
@@ -238,7 +226,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _quesTion1answerSelected = value;
 
-                RaisePropertyChanged("quesTion1answerSelected");
+                OnPropertyChanged("quesTion1answerSelected");
             }
         }
         private string _quesTion2answerSelected = string.Empty;
@@ -254,7 +242,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _quesTion2answerSelected = value;
 
-                RaisePropertyChanged("quesTion2answerSelected");
+                OnPropertyChanged("quesTion2answerSelected");
             }
         }
         private string _idnumberFR = string.Empty;
@@ -269,7 +257,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_idnumberFR == value) return;
 
                 _idnumberFR = value;
-                RaisePropertyChanged("IdnumberFR");
+                OnPropertyChanged("IdnumberFR");
             }
         }
         private string _typeFR = string.Empty;
@@ -284,7 +272,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_typeFR == value) return;
 
                 _typeFR = value;
-                RaisePropertyChanged("TypeFR");
+                OnPropertyChanged("TypeFR");
             }
         }
 
@@ -300,7 +288,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_firstnmFR == value) return;
 
                 _firstnmFR = value;
-                RaisePropertyChanged("FirstnmFR");
+                OnPropertyChanged("FirstnmFR");
             }
         }
         private string _gpartFR = string.Empty;
@@ -315,7 +303,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_gpartFR == value) return;
 
                 _gpartFR = value;
-                RaisePropertyChanged("GpartFR");
+                OnPropertyChanged("GpartFR");
             }
         }
         private string _Iban = string.Empty;
@@ -330,7 +318,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_Iban == value) return;
 
                 _Iban = value;
-                RaisePropertyChanged("Iban");
+                OnPropertyChanged("Iban");
             }
         }
 
@@ -346,7 +334,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_IbanText == value) return;
 
                 _IbanText = value;
-                RaisePropertyChanged("IbanText");
+                OnPropertyChanged("IbanText");
             }
         }
         private string _smtpAddrFR = string.Empty;
@@ -361,7 +349,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_smtpAddrFR == value) return;
 
                 _smtpAddrFR = value;
-                RaisePropertyChanged("SmtpAddrFR");
+                OnPropertyChanged("SmtpAddrFR");
             }
         }
 
@@ -378,7 +366,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_TxtIDTypeFR == value) return;
 
                 _TxtIDTypeFR = value;
-                RaisePropertyChanged("TxtIDTypeFR");
+                OnPropertyChanged("TxtIDTypeFR");
             }
         }
         private string _importExportText = string.Empty;
@@ -393,7 +381,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_importExportText == value) return;
 
                 _importExportText = value;
-                RaisePropertyChanged("ImportExportText");
+                OnPropertyChanged("ImportExportText");
             }
         }
         private string _AttachmentName = string.Empty;
@@ -408,7 +396,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_AttachmentName == value) return;
 
                 _AttachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         private VATRegistrationDetails _vATRegistrationDetailsData;
@@ -423,7 +411,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vATRegistrationDetailsData == value) return;
 
                 _vATRegistrationDetailsData = value;
-                RaisePropertyChanged("VATRegistrationDetailsData");
+                OnPropertyChanged("VATRegistrationDetailsData");
             }
         }
         private List<QuestionNumberWithMinMaxRange> _minMaxRanges;
@@ -438,7 +426,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_minMaxRanges == value) return;
 
                 _minMaxRanges = value;
-                RaisePropertyChanged("MinMaxRanges");
+                OnPropertyChanged("MinMaxRanges");
             }
         }
 
@@ -450,7 +438,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 ibanVisibility = value;
-                RaisePropertyChanged("IbanVisibility");
+                OnPropertyChanged("IbanVisibility");
             }
         }
 
@@ -467,7 +455,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 _ibanList = value;
                 IbanVisibility = _ibanList.Count > 0;
-                RaisePropertyChanged("IbanList");
+                OnPropertyChanged("IbanList");
             }
         }
         public async Task onPageLoad()

@@ -1,7 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 
@@ -10,16 +11,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
     public class ListUserRequestsViewModel : BaseEDeclarationViewModel
     {
         ObservableCollection<TravelerDeclarationResponse> _InquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>();
-        public ObservableCollection<TravelerDeclarationResponse> InquireListOfUser { get { return _InquireListOfUser; } set { _InquireListOfUser = value; RaisePropertyChanged(); } }
+        public ObservableCollection<TravelerDeclarationResponse> InquireListOfUser { get { return _InquireListOfUser; } set { _InquireListOfUser = value; OnPropertyChanged(); } }
 
         ObservableCollection<TravelerDeclarationResponse> _TempInquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>();
-        public ObservableCollection<TravelerDeclarationResponse> TempInquireListOfUser { get { return _TempInquireListOfUser; } set { _TempInquireListOfUser = value; RaisePropertyChanged(); } }
+        public ObservableCollection<TravelerDeclarationResponse> TempInquireListOfUser { get { return _TempInquireListOfUser; } set { _TempInquireListOfUser = value; OnPropertyChanged(); } }
 
         string _PreviousRequests;
-        public string PreviousRequests { get { return _PreviousRequests; } set { _PreviousRequests = value; RaisePropertyChanged(); } }
+        public string PreviousRequests { get { return _PreviousRequests; } set { _PreviousRequests = value; OnPropertyChanged(); } }
 
         string searchInput;
-        public string SearchInput { get { return searchInput; } set { searchInput = value; RaisePropertyChanged(); } }
+        public string SearchInput { get { return searchInput; } set { searchInput = value; OnPropertyChanged(); } }
 
 
         public ICommand OnAppearingCommand

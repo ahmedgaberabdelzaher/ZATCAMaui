@@ -603,7 +603,9 @@
                         </inputLayout:SfTextInputLayout>
                     </StackLayout>
                     <!--#endregion-->
+
                     <!--#region Upload File-->
+
                     <!--  Uploaded file Field  -->
                     <StackLayout Spacing="0">
 
@@ -616,43 +618,34 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+                        <custom:CustomSfTextInputView>
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    TextColor="#58595B" >
 
-                        <!--  Uploaded files Entry  -->
-                        <inputLayout:SfTextInputLayout
-                            ContainerBackground="White"
-                            ContainerType="Outlined"
-                            HelperText="{x:Static ResourceManager:AppResources.PDFFileHint}"
-                            Hint="{x:Static ResourceManager:AppResources.Addattachments}"
-                            InputViewPadding="16,0,16,0"
-                            LeadingViewPosition="Inside"
-                            OutlineCornerRadius="15"
-                            Stroke="{StaticResource NeutralGreay}"
-                            VerticalOptions="StartAndExpand">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
 
-                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                </custom:GAZTBorderlessEntry>
 
-                            <inputLayout:SfTextInputLayout.HelperLabelStyle>
-                                <inputLayout:LabelStyle TextColor="{StaticResource NeutralGreay}" />
-                            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+                            </custom:CustomSfTextInputView.TextInputView>
 
-                            <custom:GAZTBorderlessEntry
-                                IsReadOnly="True"
-                                InputTransparent="True"
-                                Keyboard="Text"
-                                Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
-                                Style="{StaticResource DefaultEntry}"
-                                TextColor="#58595B" />
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Image Aspect="AspectFit" Source="newui_ic_pdf" />
                             </inputLayout:SfTextInputLayout.TrailingView>
 
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                        </custom:CustomSfTextInputView>
+                        <!--  Uploaded files Entry  -->
 
-                        </inputLayout:SfTextInputLayout>
+                        <Label Text="{x:Static ResourceManager:AppResources.PDFFileHint}"
+                                Margin="0,-15,0,10"
+                                Style="{StaticResource CaptionLabelGrey}"/>
 
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding UploadFileCommand}" />

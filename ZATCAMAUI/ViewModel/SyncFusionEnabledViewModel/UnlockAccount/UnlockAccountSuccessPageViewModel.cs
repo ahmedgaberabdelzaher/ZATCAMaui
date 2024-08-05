@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
@@ -7,8 +8,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
     public class UnlockAccountSuccessPageViewModel : BaseViewModel
     {
 
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         private string _passwordChangedSuccessfully;
         public string PasswordChangedSuccessfully
@@ -21,7 +20,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 if (string.IsNullOrEmpty(value) || value == _passwordChangedSuccessfully) return;
                 _passwordChangedSuccessfully = value;
-                RaisePropertyChanged("PasswordChangedSuccessfully");
+                OnPropertyChanged("PasswordChangedSuccessfully");
             }
         }
 
@@ -31,22 +30,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         /// </summary>
         public UnlockAccountSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
 
         public void PopToRootPage()
         {
-           MainThread.BeginInvokeOnMainThread(async () =>
+           MainThread.BeginInvokeOnMainThread( () =>
             {
                 _navigationService.GoBack();
             });

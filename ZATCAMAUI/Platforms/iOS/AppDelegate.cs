@@ -3,13 +3,38 @@ using MediaManager;
 using System.Net;
 using UIKit;
 using AppDynamics.Agent;
+using Microsoft.Maui.Handlers;
+using ZATCAMAUI.Core.CustomControls;
+
 namespace ZATCAMAUI.Platforms.iOS;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
 {
     static nint timerTaskID;
-    protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+    protected override MauiApp CreateMauiApp()
+    {
+        EntryHandler.Mapper.AppendToMapping("EntryBorderless", (handler, view) =>
+        {
+            if (view is GAZTBorderlessEntry)
+            {
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.Layer.BorderWidth = 0;
+                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+            }
+        });
+
+        EditorHandler.Mapper.AppendToMapping("EditorBorderless", (handler, view) =>
+        {
+            if (view is GAZTBorderlessEditor)
+            {
+                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
+                handler.PlatformView.Layer.BorderWidth = 0;
+            }
+        });
+        
+        return MauiProgram.CreateMauiApp();
+    }
 
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {

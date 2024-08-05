@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 
@@ -9,9 +10,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
     public class NewTaxpayerProfileViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-
         public string UpdatedMobileNumber = string.Empty;
         public string UpdatedEmail = string.Empty;
         #endregion
@@ -27,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_listTINStatus == value) return;
 
                 _listTINStatus = value;
-                RaisePropertyChanged("ListTINStatus");
+                OnPropertyChanged("ListTINStatus");
             }
         }
         private string _TinStatusLabelText;
@@ -42,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_TinStatusLabelText == value) return;
 
                 _TinStatusLabelText = value;
-                RaisePropertyChanged("TinStatusLabelText");
+                OnPropertyChanged("TinStatusLabelText");
             }
         }
         private string _ResidenceText;
@@ -57,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_ResidenceText == value) return;
 
                 _ResidenceText = value;
-                RaisePropertyChanged("ResidenceText");
+                OnPropertyChanged("ResidenceText");
             }
         }
         private string _TPProfileNameLbl;
@@ -70,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_TPProfileNameLbl == value) return;
 
                 _TPProfileNameLbl = value;
-                RaisePropertyChanged("TPProfileNameLbl");
+                OnPropertyChanged("TPProfileNameLbl");
             }
         }
 
@@ -83,7 +81,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_TINLabel == value) return;
 
                 _TINLabel = value;
-                RaisePropertyChanged("TINLabel");
+                OnPropertyChanged("TINLabel");
             }
         }
 
@@ -96,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_MobileNumber == value) return;
 
                 _MobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
 
@@ -109,7 +107,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_EmailEntry == value) return;
 
                 _EmailEntry = value;
-                RaisePropertyChanged("EmailEntry");
+                OnPropertyChanged("EmailEntry");
             }
         }
 
@@ -122,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_PasswordEntry == value) return;
 
                 _PasswordEntry = value;
-                RaisePropertyChanged("PasswordEntry");
+                OnPropertyChanged("PasswordEntry");
             }
         }
 
@@ -135,20 +133,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_ShowHidePasswordImage == value) return;
 
                 _ShowHidePasswordImage = value;
-                RaisePropertyChanged("ShowHidePasswordImage");
+                OnPropertyChanged("ShowHidePasswordImage");
             }
         }
         #endregion
 
         public NewTaxpayerProfileViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
-            _navigationService = navigationService;
-
-            if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
-            _dialogService = dialogService;
-
-            // * TIN STATUS API CALLS
 
         }
 

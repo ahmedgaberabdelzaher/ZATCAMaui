@@ -20,6 +20,7 @@
     <Grid>
         <Border
             Padding="15,0"
+            Stroke="{StaticResource NeutralLightGrey}"
             BackgroundColor="White"
             IsVisible="{Binding IsCancelButtonVisible}"
             StrokeShape="RoundRectangle 15,15,0,0"

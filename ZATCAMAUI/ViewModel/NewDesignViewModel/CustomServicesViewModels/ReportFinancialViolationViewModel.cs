@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.CustomServices.BalaghModels;
 
@@ -22,7 +23,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 balaghTypes = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -36,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedBalaghType = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -50,7 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 name = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -76,7 +77,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 else { PhoneHasError = false; }
                 phone = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -90,7 +91,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 mailHasError = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -104,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 phoneHasError = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -130,7 +131,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     MailHasError = false;
                 }
                 mail = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -144,7 +145,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 balaghTxtHasError = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -158,7 +159,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 balaghOtherTypeTxtHasError = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -182,7 +183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                 }
                 balaghTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -196,7 +197,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isShowMsgView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -210,7 +211,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isShowSuccessView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -223,7 +224,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 messageTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -252,7 +253,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     BalaghOtherTypeTxtHasError = false;
                 }
                 balaghTypeOtherTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -265,7 +266,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 portOtherTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -278,7 +279,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isBalaghTypeOOther = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -291,7 +292,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isPortOther = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -305,7 +306,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 balaghNoTxt = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -318,7 +319,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 balaghDate = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -332,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 ticketFiles = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -514,13 +515,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         }
 
         bool isMainView = true;
-        public bool IsMainView { get { return isMainView; } set { isMainView = value; RaisePropertyChanged(); } }
+        public bool IsMainView { get { return isMainView; } set { isMainView = value; OnPropertyChanged(); } }
 
         bool isValidMail;
-        public bool IsValidMail { get { return isValidMail; } set { isValidMail = value; RaisePropertyChanged(); } }
+        public bool IsValidMail { get { return isValidMail; } set { isValidMail = value; OnPropertyChanged(); } }
 
         bool isPolicyChecked = false;
-        public bool IsPolicyChecked { get { return isPolicyChecked; } set { isPolicyChecked = value; RaisePropertyChanged(); } }
+        public bool IsPolicyChecked { get { return isPolicyChecked; } set { isPolicyChecked = value; OnPropertyChanged(); } }
 
         public async Task SendBalaghTicket()
         {

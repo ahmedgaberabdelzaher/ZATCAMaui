@@ -1,7 +1,8 @@
 ﻿using System.Timers;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.TPProfile;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
     public class VerificationEmailPasswordViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public UpdateEmailDataModel _updateEmailData;
 
         public System.Timers.Timer otpTimer;
@@ -45,7 +44,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     }
                 }
 
-                RaisePropertyChanged("OTPFirstDigit");
+                OnPropertyChanged("OTPFirstDigit");
             }
         }
 
@@ -69,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         OTPSecondDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPSecondDigit");
+                OnPropertyChanged("OTPSecondDigit");
             }
         }
 
@@ -93,7 +92,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         OTPThirdDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPThirdDigit");
+                OnPropertyChanged("OTPThirdDigit");
             }
         }
 
@@ -117,7 +116,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         OTPFourthDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPFourthDigit");
+                OnPropertyChanged("OTPFourthDigit");
             }
         }
 
@@ -132,7 +131,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_BtnEnableFlag == value) return;
 
                 _BtnEnableFlag = value;
-                RaisePropertyChanged("BtnEnableFlag");
+                OnPropertyChanged("BtnEnableFlag");
             }
         }
         // * End
@@ -149,7 +148,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_LblCountDownTimer == value) return;
 
                 _LblCountDownTimer = value;
-                RaisePropertyChanged("LblCountDownTimer");
+                OnPropertyChanged("LblCountDownTimer");
             }
         }
 
@@ -165,7 +164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_OTPSentOnThisMobileNumber == value) return;
 
                 _OTPSentOnThisMobileNumber = value;
-                RaisePropertyChanged("OTPSentOnThisMobileNumber");
+                OnPropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
 
@@ -181,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_CurrentPasswordEntry == value) return;
 
                 _CurrentPasswordEntry = value;
-                RaisePropertyChanged("CurrentPasswordEntry");
+                OnPropertyChanged("CurrentPasswordEntry");
             }
         }
 
@@ -202,7 +201,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (value.Length > 0)
                     BtnEnableFlag = true;
 
-                RaisePropertyChanged("NewPasswordEntry");
+                OnPropertyChanged("NewPasswordEntry");
             }
         }
 
@@ -223,7 +222,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (value.Length > 0)
                     BtnEnableFlag = true;
 
-                RaisePropertyChanged("ConfirmPasswordEntry");
+                OnPropertyChanged("ConfirmPasswordEntry");
             }
         }
 
@@ -240,7 +239,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_resendOTPTextColor == value) return;
 
                 _resendOTPTextColor = value;
-                RaisePropertyChanged("ResendOTPTextColor");
+                OnPropertyChanged("ResendOTPTextColor");
             }
 
 /* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
@@ -259,11 +258,6 @@ After:
 
         public VerificationEmailPasswordViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
-            _navigationService = navigationService;
-
-            if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
-            _dialogService = dialogService;
         }
 
         // * Private methods

@@ -1,4 +1,3 @@
-using CommonServiceLocator;
 using System.Globalization;
 using System.Diagnostics;
 using Newtonsoft.Json;
@@ -10,17 +9,16 @@ using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.ActivityIndicator;
-using ZATCAMAUI.Views.NewDesign.OnboardingPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages;
 using ZATCAMAUI.Core.Helper;
-using GalaSoft.MvvmLight.Views;
+
 using DialogService = ZATCAMAUI.Core.Helper.DialogService;
 using NavigationService = ZATCAMAUI.Core.Helper.NavigationService;
 using ZATCAMAUI.Views.NewDesign.DashBoardPages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using AppDynamics.Agent;
-using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
-using ZATCAMAUI.Views.NewDesign.HomePages;
+using ZATCAMAUI.Core.Interfaces;
+using CommunityToolkit.Mvvm.DependencyInjection;
 
 namespace ZATCAMAUI
 {
@@ -488,10 +486,10 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
 
 
                 }
-                var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
+                var navigationService = (NavigationService)Ioc.Default.GetService<INavigationService>();
                 navigationService.Initialize(navigationPage);
                 _navigationService = navigationService;
-                var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
+                var dialogService = (DialogService)Ioc.Default.GetService<IDialogService>();
                 dialogService.Initialize(navigationPage);
                 _dialogService = dialogService;
                 MainPage = navigationPage;
@@ -507,10 +505,10 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
                                 Preferences.Default.Set("IsSessionExpired", true);
                                 App.DoesLoginNeedToBeRefreshed = false;
                                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
-                                var navigationService1 = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
+                                var navigationService1 = (NavigationService)Ioc.Default.GetService<INavigationService>();
                                 navigationService1.Initialize(navigationPage);
                                 _navigationService = navigationService1;
-                                var dialogService1 = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
+                                var dialogService1 = (DialogService)Ioc.Default.GetService<IDialogService>();
                                 dialogService1.Initialize(navigationPage);
                                 _dialogService = dialogService1;
 

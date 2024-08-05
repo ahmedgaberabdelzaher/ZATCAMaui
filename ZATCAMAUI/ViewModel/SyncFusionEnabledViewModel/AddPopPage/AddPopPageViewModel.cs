@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
@@ -9,8 +10,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
     public class AddPopPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand onLinkClicked { get; set; }
         #endregion
         #region Property
@@ -24,7 +23,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _popMessage = value;
-                RaisePropertyChanged("PopMessage");
+                OnPropertyChanged("PopMessage");
             }
         }
         private string _headerText;
@@ -37,7 +36,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _headerText = value;
-                RaisePropertyChanged("HeaderText");
+                OnPropertyChanged("HeaderText");
             }
         }
         private bool _isVisibleLink;
@@ -50,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _isVisibleLink = value;
-                RaisePropertyChanged("IsVisibleLink");
+                OnPropertyChanged("IsVisibleLink");
             }
         }
         private string _link;
@@ -63,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _link = value;
-                RaisePropertyChanged("Link");
+                OnPropertyChanged("Link");
             }
         }
         private string _linkMessage;
@@ -76,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _linkMessage = value;
-                RaisePropertyChanged("LinkMessage");
+                OnPropertyChanged("LinkMessage");
             }
         }
         private string _iSBold = "Bold";
@@ -89,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _iSBold = value;
-                RaisePropertyChanged("IsBold");
+                OnPropertyChanged("IsBold");
             }
         }
         private string _iSRed = "{StaticResource ForgotPasswordGrayTextColor}";
@@ -102,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _iSRed = value;
-                RaisePropertyChanged("IsRed");
+                OnPropertyChanged("IsRed");
             }
         }
         private string _flowDirections = "RightToLeft";
@@ -115,23 +114,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AddPopPage
             set
             {
                 _flowDirections = value;
-                RaisePropertyChanged("FlowDirections");
+                OnPropertyChanged("FlowDirections");
             }
         }
         #endregion
         #region Constructor
         public AddPopPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             onLinkClicked = new Command( async() =>
             {
                 await Browser.Default.OpenAsync(new Uri(Link));

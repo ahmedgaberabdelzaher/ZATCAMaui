@@ -1,37 +1,18 @@
 ﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.TPProfile;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
-    public class UpdateManagerViewModel : ViewModelBase
+    public class UpdateManagerViewModel : BaseViewModel
     {
-        #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-        #endregion
 
         #region Properties
-        private bool _IsLoading = true;
-        public bool IsLoading
-        {
-            get
-            {
-                return _IsLoading;
-            }
-            set
-            {
-                if (_IsLoading == value) return;
-                _IsLoading = value;
-                RaisePropertyChanged(() => IsLoading);
-            }
-        }
 
         private bool showListview = false;
         public bool ShowListview
@@ -44,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 if (showListview == value) return;
                 showListview = value;
-                RaisePropertyChanged(() => ShowListview);
+                OnPropertyChanged(nameof(ShowListview));
             }
         }
 
@@ -59,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 if (showNoData == value) return;
                 showNoData = value;
-                RaisePropertyChanged(() => ShowNoData);
+                OnPropertyChanged(nameof(ShowNoData));
             }
         }
 
@@ -75,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 if (_changeManagerModel == value) return;
                 _changeManagerModel = value;
-                RaisePropertyChanged(() => ChangeManagerModel);
+                OnPropertyChanged(nameof( ChangeManagerModel));
             }
         }
 
@@ -92,18 +73,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 }
 
                 _mgrList = value;
-                RaisePropertyChanged("MgrList");
+                OnPropertyChanged("MgrList");
             }
         }
         #endregion
 
-        public UpdateManagerViewModel(INavigationService navigationService, IDialogService dialogService)
+        public UpdateManagerViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
-            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
-            _navigationService = navigationService;
-
-            if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
-            _dialogService = dialogService;
         }
 
         public async Task LoadManagerDetails()

@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using ZATCAMAUI.Core.Interfaces;
 namespace ZATCAMAUI.Core.Helper
 {

@@ -2,8 +2,8 @@
 using System.Globalization;
 using System.Text;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -81,7 +81,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
                 if (_isBackButtonVisible == value) return;
                 _isBackButtonVisible = value;
-                RaisePropertyChanged("IsBackButtonVisible");
+                OnPropertyChanged("IsBackButtonVisible");
             }
         }
 
@@ -95,7 +95,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_isReleaseDetailsVisible == value) return;
 
                 _isReleaseDetailsVisible = value;
-                RaisePropertyChanged("IsReleaseDetailsVisible");
+                OnPropertyChanged("IsReleaseDetailsVisible");
             }
         }
 
@@ -110,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_isLoading1 == value) return;
 
                 _isLoading1 = value;
-                RaisePropertyChanged("IsLoading1");
+                OnPropertyChanged("IsLoading1");
             }
         }
 
@@ -124,7 +124,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_attachmentsVisible == value) return;
 
                 _attachmentsVisible = value;
-                RaisePropertyChanged("AttachmentsVisible");
+                OnPropertyChanged("AttachmentsVisible");
             }
         }
 
@@ -138,7 +138,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_remarksAndDescVisible == value) return;
 
                 _remarksAndDescVisible = value;
-                RaisePropertyChanged("RemarksAndDescVisible");
+                OnPropertyChanged("RemarksAndDescVisible");
             }
         }
 
@@ -152,7 +152,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_declarationVisible == value) return;
 
                 _declarationVisible = value;
-                RaisePropertyChanged("DeclarationVisible");
+                OnPropertyChanged("DeclarationVisible");
             }
         }
 
@@ -167,7 +167,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
                 _isReleaseDetailsEnabled = value;
                 ReleaseDetailsButtonBackGroundColor = _isReleaseDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsReleaseDetailsEnabled");
+                OnPropertyChanged("IsReleaseDetailsEnabled");
             }
         }
 
@@ -185,7 +185,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     return;
                 }
                 _releaseDetailsButtonBackGroundColor = value;
-                RaisePropertyChanged("ReleaseDetailsButtonBackGroundColor");
+                OnPropertyChanged("ReleaseDetailsButtonBackGroundColor");
             }
         }
 
@@ -200,7 +200,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
                 _isAttachmentsEnabled = value;
                 AttachButtonBackGroundColor = _isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsAttachmentsEnabled");
+                OnPropertyChanged("IsAttachmentsEnabled");
             }
         }
 
@@ -218,7 +218,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     return;
                 }
                 _attachButtonBackGroundColor = value;
-                RaisePropertyChanged("AttachButtonBackGroundColor");
+                OnPropertyChanged("AttachButtonBackGroundColor");
             }
         }
 
@@ -234,7 +234,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 _isDeclarationEnabled = value;
                 DeclarationButtonBackGroundColor = _isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
 
-                RaisePropertyChanged("IsDeclarationEnabled");
+                OnPropertyChanged("IsDeclarationEnabled");
             }
         }
 
@@ -250,7 +250,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_charCountDetailDescription == value) return;
 
                 _charCountDetailDescription = value;
-                RaisePropertyChanged("charCountDetailDescription");
+                OnPropertyChanged("charCountDetailDescription");
             }
         }
 
@@ -266,7 +266,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_charCountRemarksText == value) return;
 
                 _charCountRemarksText = value;
-                RaisePropertyChanged("charCountRemarksText");
+                OnPropertyChanged("charCountRemarksText");
             }
         }
         private Color _declarationButtonBackGroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -283,7 +283,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     return;
                 }
                 _declarationButtonBackGroundColor = value;
-                RaisePropertyChanged("DeclarationButtonBackGroundColor");
+                OnPropertyChanged("DeclarationButtonBackGroundColor");
             }
         }
 
@@ -299,7 +299,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_summaryVisible == value) return;
 
                 _summaryVisible = value;
-                RaisePropertyChanged("SummaryVisible");
+                OnPropertyChanged("SummaryVisible");
             }
         }
 
@@ -314,7 +314,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             set
             {
                 _infoTitle = value;
-                RaisePropertyChanged("InfoTitle");
+                OnPropertyChanged("InfoTitle");
             }
         }
 
@@ -328,7 +328,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             set
             {
                 _infoDesc = value;
-                RaisePropertyChanged("InfoDesc");
+                OnPropertyChanged("InfoDesc");
             }
         }
 
@@ -342,7 +342,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_pickedContract == value) return;
 
                 _pickedContract = value;
-                RaisePropertyChanged("PickedContract");
+                OnPropertyChanged("PickedContract");
             }
         }
 
@@ -355,7 +355,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_pickedContractId == value) return;
 
                 _pickedContractId = value;
-                RaisePropertyChanged("PickedContractId");
+                OnPropertyChanged("PickedContractId");
             }
         }
 
@@ -369,7 +369,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_contractTotalAmount == value) return;
 
                 _contractTotalAmount = value;
-                RaisePropertyChanged("ContractTotalAmount");
+                OnPropertyChanged("ContractTotalAmount");
             }
         }
 
@@ -383,7 +383,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_amountToRelease == value) return;
 
                 _amountToRelease = value;
-                RaisePropertyChanged("AmountToRelease");
+                OnPropertyChanged("AmountToRelease");
             }
         }
 
@@ -397,7 +397,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_contractTotalAmountText == value) return;
 
                 _contractTotalAmountText = value;
-                RaisePropertyChanged("ContractTotalAmountText");
+                OnPropertyChanged("ContractTotalAmountText");
             }
         }
 
@@ -411,7 +411,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_amountoReleaseTxt == value) return;
 
                 _amountoReleaseTxt = value;
-                RaisePropertyChanged("AmountoReleaseTxt");
+                OnPropertyChanged("AmountoReleaseTxt");
             }
         }
 
@@ -425,7 +425,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_pickedContractPercent == value) return;
 
                 _pickedContractPercent = value;
-                RaisePropertyChanged("PickedContractPercent");
+                OnPropertyChanged("PickedContractPercent");
             }
         }
 
@@ -439,7 +439,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_profitEstimatedContract == value) return;
 
                 _profitEstimatedContract = value;
-                RaisePropertyChanged("ProfitEstimatedContract");
+                OnPropertyChanged("ProfitEstimatedContract");
             }
         }
 
@@ -453,7 +453,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_estimatedProfitForZakatPercent == value) return;
 
                 _estimatedProfitForZakatPercent = value;
-                RaisePropertyChanged("EstimatedProfitForZakatPercent");
+                OnPropertyChanged("EstimatedProfitForZakatPercent");
             }
         }
 
@@ -467,7 +467,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_estimatedProfitForZakatAmount == value) return;
 
                 _estimatedProfitForZakatAmount = value;
-                RaisePropertyChanged("EstimatedProfitForZakatAmount");
+                OnPropertyChanged("EstimatedProfitForZakatAmount");
             }
         }
 
@@ -481,7 +481,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_estimatedProfitForTaxAmount == value) return;
 
                 _estimatedProfitForTaxAmount = value;
-                RaisePropertyChanged("EstimatedProfitForTaxAmount");
+                OnPropertyChanged("EstimatedProfitForTaxAmount");
             }
         }
 
@@ -495,7 +495,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_estimatedProfitForTaxPercent == value) return;
 
                 _estimatedProfitForTaxPercent = value;
-                RaisePropertyChanged("EstimatedProfitForTaxPercent");
+                OnPropertyChanged("EstimatedProfitForTaxPercent");
             }
         }
 
@@ -509,7 +509,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_zakatDues == value) return;
 
                 _zakatDues = value;
-                RaisePropertyChanged("ZakatDues");
+                OnPropertyChanged("ZakatDues");
             }
         }
 
@@ -523,7 +523,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_taxDues == value) return;
 
                 _taxDues = value;
-                RaisePropertyChanged("TaxDues");
+                OnPropertyChanged("TaxDues");
             }
         }
 
@@ -537,7 +537,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_totalDues == value) return;
 
                 _totalDues = value;
-                RaisePropertyChanged("TotalDues");
+                OnPropertyChanged("TotalDues");
             }
         }
 
@@ -551,7 +551,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_remarks == value) return;
 
                 _remarks = value;
-                RaisePropertyChanged("Remarks");
+                OnPropertyChanged("Remarks");
             }
         }
 
@@ -565,7 +565,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_detailDescription == value) return;
 
                 _detailDescription = value;
-                RaisePropertyChanged("DetailDescription");
+                OnPropertyChanged("DetailDescription");
             }
         }
 
@@ -579,7 +579,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_contactPersonName == value) return;
 
                 _contactPersonName = value;
-                RaisePropertyChanged("ContactPersonName");
+                OnPropertyChanged("ContactPersonName");
             }
         }
 
@@ -593,7 +593,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_designation == value) return;
 
                 _designation = value;
-                RaisePropertyChanged("Designation");
+                OnPropertyChanged("Designation");
             }
         }
 
@@ -607,7 +607,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_contractName == value) return;
 
                 _contractName = value;
-                RaisePropertyChanged("ContractName");
+                OnPropertyChanged("ContractName");
             }
         }
 
@@ -621,7 +621,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_contractNumber == value) return;
 
                 _contractNumber = value;
-                RaisePropertyChanged("ContractNumber");
+                OnPropertyChanged("ContractNumber");
             }
         }
         private bool _IsHijriCal = false;
@@ -636,7 +636,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_IsHijriCal == value) return;
 
                 _IsHijriCal = value;
-                RaisePropertyChanged("IsHijriCal");
+                OnPropertyChanged("IsHijriCal");
             }
         }
         private string _fromDate = "";
@@ -649,7 +649,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_fromDate == value) return;
 
                 _fromDate = value;
-                RaisePropertyChanged("FromDate");
+                OnPropertyChanged("FromDate");
             }
         }
 
@@ -663,7 +663,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_toDate == value) return;
 
                 _toDate = value;
-                RaisePropertyChanged("ToDate");
+                OnPropertyChanged("ToDate");
             }
         }
 
@@ -677,7 +677,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_pickerModel == value) return;
 
                 _pickerModel = value;
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
 
@@ -691,16 +691,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
                 else
                 {
                     MarkComplete = false;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -722,7 +722,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 }
 
                 contractCopyAttachmentsListViewData = value;
-                RaisePropertyChanged("ContractCopyAttachmentsListViewData");
+                OnPropertyChanged("ContractCopyAttachmentsListViewData");
             }
         }
 
@@ -740,7 +740,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 }
 
                 invoicesAttachmentsListViewData = value;
-                RaisePropertyChanged("InvoiceAttachmentsListViewData");
+                OnPropertyChanged("InvoiceAttachmentsListViewData");
             }
         }
 
@@ -759,7 +759,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_contractReleaseData == value) return;
 
                 _contractReleaseData = value;
-                RaisePropertyChanged("ContractReleaseData");
+                OnPropertyChanged("ContractReleaseData");
             }
         }
         private bool _isDeclarationViewEnabled;
@@ -774,7 +774,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_isDeclarationViewEnabled == value) return;
 
                 _isDeclarationViewEnabled = value;
-                RaisePropertyChanged("IsDeclarationViewEnabled");
+                OnPropertyChanged("IsDeclarationViewEnabled");
             }
         }
 
@@ -791,7 +791,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_isDeclarationViewEnabledNew == value) return;
 
                 _isDeclarationViewEnabledNew = value;
-                RaisePropertyChanged("IsDeclarationViewEnabledNew");
+                OnPropertyChanged("IsDeclarationViewEnabledNew");
             }
         }
 
@@ -807,7 +807,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_vatDeregDeclaration == value) return;
 
                 _vatDeregDeclaration = value;
-                RaisePropertyChanged("VatDeregDeclaration");
+                OnPropertyChanged("VatDeregDeclaration");
             }
         }
 
@@ -823,7 +823,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_zterms == value) return;
 
                 _zterms = value;
-                RaisePropertyChanged("Zterms");
+                OnPropertyChanged("Zterms");
             }
         }
         private bool isDECCheckBox = false;
@@ -835,7 +835,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (isDECCheckBox == value) return;
 
                 isDECCheckBox = value;
-                RaisePropertyChanged("IsDECCheckBox");
+                OnPropertyChanged("IsDECCheckBox");
             }
         }
 
@@ -848,7 +848,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (shouldShowAR == value) return;
 
                 shouldShowAR = value;
-                RaisePropertyChanged("ShouldShowAR");
+                OnPropertyChanged("ShouldShowAR");
             }
         }
         private bool shouldShowEN = false;
@@ -860,7 +860,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (shouldShowEN == value) return;
 
                 shouldShowEN = value;
-                RaisePropertyChanged("ShouldShowEN");
+                OnPropertyChanged("ShouldShowEN");
             }
         }
 
@@ -1393,7 +1393,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
                 if (_todayDateStart == value) return;
                 _todayDateStart = value;
-                RaisePropertyChanged("TodayDateStart");
+                OnPropertyChanged("TodayDateStart");
             }
         }
         private ObservableCollection<object> _todayDateinHijriStart;
@@ -1408,7 +1408,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_todayDateinHijriStart == value) return;
 
                 _todayDateinHijriStart = value;
-                RaisePropertyChanged("TodayDateinHijriStart");
+                OnPropertyChanged("TodayDateinHijriStart");
             }
         }
         private ObservableCollection<object> _todayDateEnd;
@@ -1423,7 +1423,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_todayDateEnd == value) return;
 
                 _todayDateEnd = value;
-                RaisePropertyChanged("TodayDateEnd");
+                OnPropertyChanged("TodayDateEnd");
             }
         }
         private ObservableCollection<object> _todayDateinHijriEnd;
@@ -1438,7 +1438,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_todayDateinHijriEnd == value) return;
 
                 _todayDateinHijriEnd = value;
-                RaisePropertyChanged("TodayDateinHijriEnd");
+                OnPropertyChanged("TodayDateinHijriEnd");
             }
         }
 
@@ -1454,7 +1454,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 if (_chipDataFilterlist == value) return;
 
                 _chipDataFilterlist = value;
-                RaisePropertyChanged("ChipDataFilterlist");
+                OnPropertyChanged("ChipDataFilterlist");
             }
         }
 

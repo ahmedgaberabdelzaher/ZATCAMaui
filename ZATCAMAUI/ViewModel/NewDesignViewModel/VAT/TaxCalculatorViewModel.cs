@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
 {
@@ -14,7 +14,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 calcBy = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -27,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 totaltaxablepurchases = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -40,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 taxValue = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
         string totaltaxablesales;
@@ -52,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 totaltaxablesales = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -67,7 +67,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 totalnontaxablesales = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -80,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 totalnontaxablepurchases = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -94,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 isConsumerCalc = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -107,7 +107,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VAT
             set
             {
                 isMerchantCalc = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
