@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
@@ -9,8 +10,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
     public class NewAccountPopUpPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public static string ValidTypeIban;
 
         public ICommand GoButtonClick { get; set; }
@@ -26,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _ibanNumberText = value;
-                RaisePropertyChanged("IbanNumberText");
+                OnPropertyChanged("IbanNumberText");
             }
         }
 
@@ -40,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _CloseButtonVisible = value;
-                RaisePropertyChanged("CloseButtonVisible");
+                OnPropertyChanged("CloseButtonVisible");
             }
         }
         private bool _isIBANValid;
@@ -53,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isIBANValid = value;
-                RaisePropertyChanged("IsIBANValid");
+                OnPropertyChanged("IsIBANValid");
             }
         }
 
@@ -67,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _ibanPartOne = value;
-                RaisePropertyChanged("IbanPartOne");
+                OnPropertyChanged("IbanPartOne");
             }
         }
 
@@ -81,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _ibanPartTwo = value;
-                RaisePropertyChanged("IbanPartTwo");
+                OnPropertyChanged("IbanPartTwo");
             }
         }
 
@@ -95,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _ibanPartThree = value;
-                RaisePropertyChanged("IbanPartThree");
+                OnPropertyChanged("IbanPartThree");
             }
         }
 
@@ -109,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _ibanPartFour = value;
-                RaisePropertyChanged("IbanPartFour");
+                OnPropertyChanged("IbanPartFour");
             }
         }
 
@@ -123,7 +122,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _ibanPartFive = value;
-                RaisePropertyChanged("IbanPartFive");
+                OnPropertyChanged("IbanPartFive");
             }
         }
 
@@ -137,7 +136,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _accountText = value;
-                RaisePropertyChanged("AccountText");
+                OnPropertyChanged("AccountText");
             }
         }
 
@@ -148,17 +147,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public NewAccountPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
             GoButtonClick = new Command(() =>
             {
                 MopupService.Instance.PopAsync();

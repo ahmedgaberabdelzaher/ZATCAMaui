@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Behaviors;
@@ -47,7 +47,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             set
             {
                 _isRealEstateViewVisible = value;
-                RaisePropertyChanged("IsRealEstateViewVisible");
+                OnPropertyChanged("IsRealEstateViewVisible");
             }
         }
 
@@ -62,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_isEditTextVisible == value) return;
                 _isEditVisible = value;
-                RaisePropertyChanged("isEditVisible");
+                OnPropertyChanged("isEditVisible");
             }
         }
         public string ApplePayTokenData;
@@ -78,7 +78,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isLabelVisible == value) return;
 
                 _isLabelVisible = value;
-                RaisePropertyChanged("isLabelVisible");
+                OnPropertyChanged("isLabelVisible");
             }
         }
 
@@ -95,7 +95,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isEditTextVisible == value) return;
 
                 _isEditTextVisible = value;
-                RaisePropertyChanged("IsEditTextVisible");
+                OnPropertyChanged("IsEditTextVisible");
             }
         }
 
@@ -112,7 +112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_setAmendButtonVisibility == value) return;
 
                 _setAmendButtonVisibility = value;
-                RaisePropertyChanged("SetAmendButtonVisibility");
+                OnPropertyChanged("SetAmendButtonVisibility");
             }
         }
 
@@ -129,7 +129,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_zakatReturnDetail == value) return;
 
                 _zakatReturnDetail = value;
-                RaisePropertyChanged("ZakatReturnDetail");
+                OnPropertyChanged("ZakatReturnDetail");
             }
         }
 
@@ -146,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_zakatReturnDetails == value) return;
 
                 _zakatReturnDetails = value;
-                RaisePropertyChanged("ZakatReturnDetails");
+                OnPropertyChanged("ZakatReturnDetails");
             }
         }
 
@@ -163,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_abrzu == value) return;
 
                 _abrzu = value;
-                RaisePropertyChanged("Abrzu");
+                OnPropertyChanged("Abrzu");
             }
         }
 
@@ -183,7 +183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_releaseOrBillDetailsVisible == value) return;
 
                 _releaseOrBillDetailsVisible = value;
-                RaisePropertyChanged("ReleaseOrBillDetailsVisible");
+                OnPropertyChanged("ReleaseOrBillDetailsVisible");
             }
         }
 
@@ -199,7 +199,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_fromDate == value) return;
 
                 _fromDate = value;
-                RaisePropertyChanged("FromDate");
+                OnPropertyChanged("FromDate");
             }
         }
 
@@ -215,7 +215,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_toDate == value) return;
 
                 _toDate = value;
-                RaisePropertyChanged("ToDate");
+                OnPropertyChanged("ToDate");
             }
         }
 
@@ -232,7 +232,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_releaseOrBillDetailsButtonText == value) return;
 
                 _releaseOrBillDetailsButtonText = value;
-                RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
+                OnPropertyChanged("ReleaseOrBillDetailsButtonText");
             }
         }
 
@@ -248,7 +248,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_totalVATSalesEditImageSource == value) return;
 
                 _totalVATSalesEditImageSource = value;
-                RaisePropertyChanged("TotalVATSalesEditImageSource");
+                OnPropertyChanged("TotalVATSalesEditImageSource");
             }
         }
 
@@ -264,7 +264,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_averageNumberOfLabourEditImageSource == value) return;
 
                 _averageNumberOfLabourEditImageSource = value;
-                RaisePropertyChanged("AverageNumberOfLabourEditImageSource");
+                OnPropertyChanged("AverageNumberOfLabourEditImageSource");
             }
         }
 
@@ -280,7 +280,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_importValueEditImageSource == value) return;
 
                 _importValueEditImageSource = value;
-                RaisePropertyChanged("ImportValueEditImageSource");
+                OnPropertyChanged("ImportValueEditImageSource");
             }
         }
 
@@ -297,7 +297,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_importFromPointOfSalesEditImageSource == value) return;
 
                 _importFromPointOfSalesEditImageSource = value;
-                RaisePropertyChanged("ImportFromPointOfSalesEditImageSource");
+                OnPropertyChanged("ImportFromPointOfSalesEditImageSource");
             }
         }
 
@@ -313,7 +313,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_contactFromETIMADSystemEditImageSource == value) return;
 
                 _contactFromETIMADSystemEditImageSource = value;
-                RaisePropertyChanged("ContactFromETIMADSystemEditImageSource");
+                OnPropertyChanged("ContactFromETIMADSystemEditImageSource");
             }
         }
 
@@ -329,7 +329,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_exportValueEditImageSource == value) return;
 
                 _exportValueEditImageSource = value;
-                RaisePropertyChanged("ExportValueEditImageSource");
+                OnPropertyChanged("ExportValueEditImageSource");
             }
         }
 
@@ -345,7 +345,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_purchaseValueEditImageSource == value) return;
 
                 _purchaseValueEditImageSource = value;
-                RaisePropertyChanged("PurchaseValueEditImageSource");
+                OnPropertyChanged("PurchaseValueEditImageSource");
             }
         }
         private string _realEstateValueEditImageSource;
@@ -360,7 +360,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_realEstateValueEditImageSource == value) return;
 
                 _realEstateValueEditImageSource = value;
-                RaisePropertyChanged("RealEstateValueEditImageSource");
+                OnPropertyChanged("RealEstateValueEditImageSource");
             }
         }
 
@@ -377,7 +377,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_capitalAmountEditImageSource == value) return;
 
                 _capitalAmountEditImageSource = value;
-                RaisePropertyChanged("CapitalAmountEditImageSource");
+                OnPropertyChanged("CapitalAmountEditImageSource");
             }
         }
 
@@ -393,7 +393,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_setSubmitButtonVisibility == value) return;
                 _setSubmitButtonVisibility = value;
-                RaisePropertyChanged("SetSubmitButtonVisibility");
+                OnPropertyChanged("SetSubmitButtonVisibility");
             }
         }
 
@@ -409,7 +409,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_setConfirmButtonVisibility == value) return;
 
                 _setConfirmButtonVisibility = value;
-                RaisePropertyChanged("SetConfirmButtonVisibility");
+                OnPropertyChanged("SetConfirmButtonVisibility");
             }
         }
 
@@ -425,7 +425,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_iCRStatus == value) return;
 
                 _iCRStatus = value;
-                RaisePropertyChanged("ICRStatus");
+                OnPropertyChanged("ICRStatus");
             }
         }
 
@@ -442,7 +442,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_iCRStatusImage == value) return;
 
                 _iCRStatusImage = value;
-                RaisePropertyChanged("ICRStatusImage");
+                OnPropertyChanged("ICRStatusImage");
             }
         }
 
@@ -458,7 +458,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_iCRStatusBg == value) return;
 
                 _iCRStatusBg = value;
-                RaisePropertyChanged("ICRStatusBG");
+                OnPropertyChanged("ICRStatusBG");
             }
         }
 
@@ -474,7 +474,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_iCRStatusTextColor == value) return;
 
                 _iCRStatusTextColor = value;
-                RaisePropertyChanged("ICRStatusTextColor");
+                OnPropertyChanged("ICRStatusTextColor");
             }
         }
 
@@ -491,7 +491,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_changeFromEstimateTAccountringBasisButtonVisibility == value) return;
 
                 _changeFromEstimateTAccountringBasisButtonVisibility = value;
-                RaisePropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
+                OnPropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
             }
         }
 
@@ -508,7 +508,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_checkBoxStatus == value) return;
 
                 _checkBoxStatus = value;
-                RaisePropertyChanged("CheckBoxStatus");
+                OnPropertyChanged("CheckBoxStatus");
             }
         }
 
@@ -524,7 +524,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_desClaimerVisibility == value) return;
 
                 _desClaimerVisibility = value;
-                RaisePropertyChanged("DesClaimerVisibility");
+                OnPropertyChanged("DesClaimerVisibility");
             }
         }
 
@@ -540,7 +540,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_setReadOnlyToTotalVATSales == value) return;
 
                 _setReadOnlyToTotalVATSales = value;
-                RaisePropertyChanged("SetReadOnlyToTotalVATSales");
+                OnPropertyChanged("SetReadOnlyToTotalVATSales");
             }
         }
 
@@ -556,7 +556,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_setReadOnlyToOtherThanTotalVATSales == value) return;
 
                 _setReadOnlyToOtherThanTotalVATSales = value;
-                RaisePropertyChanged("SetReadOnlyToOtherThanTotalVATSales");
+                OnPropertyChanged("SetReadOnlyToOtherThanTotalVATSales");
             }
         }
 
@@ -572,7 +572,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_zAKATReturnsPagName == value) return;
 
                 _zAKATReturnsPagName = value;
-                RaisePropertyChanged("ZAKATReturnsPagName");
+                OnPropertyChanged("ZAKATReturnsPagName");
             }
         }
 
@@ -588,7 +588,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_labnoE == value) return;
 
                 _labnoE = value;
-                RaisePropertyChanged("LabnoE");
+                OnPropertyChanged("LabnoE");
             }
         }
 
@@ -604,7 +604,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_tvtslE == value) return;
 
                 _tvtslE = value;
-                RaisePropertyChanged("TvtslE");
+                OnPropertyChanged("TvtslE");
             }
         }
 
@@ -620,7 +620,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_impvalE == value) return;
 
                 _impvalE = value;
-                RaisePropertyChanged("ImpvalE");
+                OnPropertyChanged("ImpvalE");
             }
         }
 
@@ -636,7 +636,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_sumcnt == value) return;
 
                 _sumcnt = value;
-                RaisePropertyChanged("Sumcnt");
+                OnPropertyChanged("Sumcnt");
             }
         }
 
@@ -653,7 +653,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_pramtE == value) return;
 
                 _pramtE = value;
-                RaisePropertyChanged("PramtE");
+                OnPropertyChanged("PramtE");
             }
         }
 
@@ -669,7 +669,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_paymentData == value) return;
 
                 _paymentData = value;
-                RaisePropertyChanged("PaymentData");
+                OnPropertyChanged("PaymentData");
             }
         }
 
@@ -685,7 +685,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_referenceNumber == value) return;
 
                 _referenceNumber = value;
-                RaisePropertyChanged("ReferenceNumber");
+                OnPropertyChanged("ReferenceNumber");
             }
         }
 
@@ -701,7 +701,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_taxablePeriod == value) return;
 
                 _taxablePeriod = value;
-                RaisePropertyChanged("TaxablePeriod");
+                OnPropertyChanged("TaxablePeriod");
             }
         }
         #endregion

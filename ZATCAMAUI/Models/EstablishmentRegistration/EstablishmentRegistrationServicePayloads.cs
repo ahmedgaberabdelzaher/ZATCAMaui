@@ -137,8 +137,8 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Actno { get; set; } = string.Empty;
         public string ValidDateFromC { get; set; } = string.Empty;
         public string ValidDateToC { get; set; } = string.Empty;
-        //public string IqamaDesc { get; set; } = string.Empty;
-        //public string IqamaFg { get; set; } = string.Empty;
+        public string IqamaDesc { get; set; } = string.Empty;
+        public string IqamaFg { get; set; } = string.Empty;
     }
     
     public class NregIdSet

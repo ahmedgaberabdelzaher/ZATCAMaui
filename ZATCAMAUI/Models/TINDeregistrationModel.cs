@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ZATCAMAUI.Core.Mangers;
@@ -24,7 +24,7 @@ namespace ZATCAMAUI.Models
 
     }
 
-    public class TinDeregestrationAttachmentsModel : ViewModelBase
+    public class TinDeregestrationAttachmentsModel : ObservableRecipient
     {
         public TinDeregestrationAttachmentsModel()
         {
@@ -40,7 +40,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _attachmentTypeList = value;
-                RaisePropertyChanged("AttachmentTypeList");
+                OnPropertyChanged("AttachmentTypeList");
             }
         }
 

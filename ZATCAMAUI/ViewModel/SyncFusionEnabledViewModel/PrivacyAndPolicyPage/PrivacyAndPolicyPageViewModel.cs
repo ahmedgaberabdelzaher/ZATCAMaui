@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
@@ -8,8 +9,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
     public class PrivacyAndPolicyPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         #endregion
         #region Property
 
@@ -23,7 +22,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
             set
             {
                 _webUrl = value;
-                RaisePropertyChanged("WebUrl");
+                OnPropertyChanged("WebUrl");
             }
         }
        
@@ -35,16 +34,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
         #region Constructor
         public PrivacyAndPolicyPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
 
             BackButtonClicked = new Command(() => navigateBack());
 

@@ -1,5 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -7,8 +9,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
     public class UpdatePasswordViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         #endregion
 
         #region Properties
@@ -26,7 +26,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_CurrentPasswordEntry == value) return;
 
                 _CurrentPasswordEntry = value;
-                RaisePropertyChanged("CurrentPasswordEntry");
+                OnPropertyChanged("CurrentPasswordEntry");
             }
         }
 
@@ -42,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_NewPasswordEntry == value) return;
 
                 _NewPasswordEntry = value;
-                RaisePropertyChanged("NewPasswordEntry");
+                OnPropertyChanged("NewPasswordEntry");
             }
         }
 
@@ -58,18 +58,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_ConfirmPasswordEntry == value) return;
 
                 _ConfirmPasswordEntry = value;
-                RaisePropertyChanged("ConfirmPasswordEntry");
+                OnPropertyChanged("ConfirmPasswordEntry");
             }
         }
         #endregion
 
         public UpdatePasswordViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
-            _navigationService = navigationService;
-
-            if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
-            _dialogService = dialogService;
+           
         }
     }
 }

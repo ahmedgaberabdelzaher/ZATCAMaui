@@ -1,8 +1,9 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
@@ -32,7 +33,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             {
                 if (_isLoading == value) return;
                 _isLoading = value;
-                RaisePropertyChanged("isLoading");
+                OnPropertyChanged("isLoading");
             }
         }
 

@@ -343,63 +343,38 @@
 
 
                             <!--  Phone & Report no. Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                HasError="{Binding IsNeedRewardError}"
-                                Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                InputViewPadding="15,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
+                            <custom:CustomSfTextInputView HasError="{Binding IsNeedRewardError}">
+                                <custom:CustomSfTextInputView.TextInputView>
+                                   <custom:GAZTBorderlessEntry
+                                        Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding PhoneORRportNumber}"
+                                        TextColor="#58595B">
 
-                                <inputLayout:SfTextInputLayout.Triggers>
+                                        <custom:GAZTBorderlessEntry.Triggers>
 
-                                    <DataTrigger
-                                        Binding="{Binding IsPhoneSelected}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="True">
-                                        <Setter Property="Hint" Value="{x:Static ResourceManager:AppResources.MobileNumber}" />
-                                    </DataTrigger>
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="custom:GAZTBorderlessEntry"
+                                                Value="True">
+                                                <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                                <Setter Property="Keyboard" Value="{OnPlatform Android=Numeric, iOS=Default}" />
+                                                <Setter Property="MaxLength" Value="10" />
+                                            </DataTrigger>
 
-                                    <DataTrigger
-                                        Binding="{Binding IsPhoneSelected}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="False">
-                                        <Setter Property="Hint" Value="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}" />
-                                    </DataTrigger>
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="custom:GAZTBorderlessEntry"
+                                                Value="False">
+                                                <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}" />
+                                                <Setter Property="Keyboard" Value="Default" />
+                                            </DataTrigger>
 
-                                </inputLayout:SfTextInputLayout.Triggers>
+                                        </custom:GAZTBorderlessEntry.Triggers>
 
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
-                                    x:Name="phoneEntry"
-                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding PhoneORRportNumber}"
-                                    TextColor="#58595B">
+                                    </custom:GAZTBorderlessEntry>
 
-                                    <custom:GAZTBorderlessEntry.Triggers>
-
-                                        <DataTrigger
-                                            Binding="{Binding IsPhoneSelected}"
-                                            TargetType="custom:GAZTBorderlessEntry"
-                                            Value="True">
-                                            <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.MobileNumber}" />
-                                        </DataTrigger>
-
-                                        <DataTrigger
-                                            Binding="{Binding IsPhoneSelected}"
-                                            TargetType="custom:GAZTBorderlessEntry"
-                                            Value="False">
-                                            <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}" />
-                                        </DataTrigger>
-
-                                    </custom:GAZTBorderlessEntry.Triggers>
-
-                                </custom:GAZTBorderlessEntry>
+                                </custom:CustomSfTextInputView.TextInputView>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image
@@ -408,7 +383,7 @@
                                         Source="phoneIcon" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
-                            </inputLayout:SfTextInputLayout>
+                            </custom:CustomSfTextInputView>
 
                         </StackLayout>
 

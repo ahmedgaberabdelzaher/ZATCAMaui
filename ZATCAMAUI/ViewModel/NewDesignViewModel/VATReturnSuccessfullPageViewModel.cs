@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
@@ -33,7 +33,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_returnReferenceNumber == value) return;
                 _returnReferenceNumber = value;
-                RaisePropertyChanged("ReturnReferenceNumber");
+                OnPropertyChanged("ReturnReferenceNumber");
             }
         }
 
@@ -51,7 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_taxablePeriod == value) return;
 
                 _taxablePeriod = value;
-                RaisePropertyChanged("TaxablePeriod");
+                OnPropertyChanged("TaxablePeriod");
             }
         }
 
@@ -67,7 +67,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_sadadNumber == value) return;
                 SadadBindNumber = value;
                 _sadadNumber = value;
-                RaisePropertyChanged("SadadNumber");
+                OnPropertyChanged("SadadNumber");
             }
         }
 
@@ -83,7 +83,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_sadadBindNumber == value) return;
 
                 _sadadBindNumber = value;
-                RaisePropertyChanged("SadadBindNumber");
+                OnPropertyChanged("SadadBindNumber");
             }
         }
 
@@ -99,7 +99,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_totalAmount == value) return;
 
                 _totalAmount = value;
-                RaisePropertyChanged("TotalAmount");
+                OnPropertyChanged("TotalAmount");
             }
         }
 
@@ -115,7 +115,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_amountPayable == value) return;
                 TotalAmount = value;
                 _amountPayable = value;
-                RaisePropertyChanged("AmountPayable");
+                OnPropertyChanged("AmountPayable");
             }
         }
 
@@ -131,7 +131,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_paymentData == value) return;
 
                 _paymentData = value;
-                RaisePropertyChanged("PaymentData");
+                OnPropertyChanged("PaymentData");
             }
         }
 
@@ -147,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_applePayStatus == value) return;
 
                 _applePayStatus = value;
-                RaisePropertyChanged("ApplePayStatus");
+                OnPropertyChanged("ApplePayStatus");
             }
         }
 
@@ -163,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isSadadNumberVisible == value) return;
 
                 _isSadadNumberVisible = value;
-                RaisePropertyChanged("IsSadadNumberVisible");
+                OnPropertyChanged("IsSadadNumberVisible");
             }
         }
 
@@ -181,7 +181,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vATDeclarationData == value) return;
 
                 _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                OnPropertyChanged("VATDeclarationData");
             }
         }
         private bool _isButtonVisible = false;
@@ -196,7 +196,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isButtonVisible == value) return;
 
                 _isButtonVisible = value;
-                RaisePropertyChanged("IsButtonVisible");
+                OnPropertyChanged("IsButtonVisible");
             }
         }
         private bool _isCreditCarriedTextVisible = false;
@@ -211,7 +211,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isCreditCarriedTextVisible == value) return;
 
                 _isCreditCarriedTextVisible = value;
-                RaisePropertyChanged("IsCreditCarriedTextVisible");
+                OnPropertyChanged("IsCreditCarriedTextVisible");
             }
         }
 
@@ -228,7 +228,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isAcknowledgementButtonVisible == value) return;
 
                 _isAcknowledgementButtonVisible = value;
-                RaisePropertyChanged("IsAcknowledgementButtonVisible");
+                OnPropertyChanged("IsAcknowledgementButtonVisible");
             }
         }
 
@@ -244,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isRefreshButtonVisible == value) return;
 
                 _isRefreshButtonVisible = value;
-                RaisePropertyChanged("IsRefreshButtonVisible");
+                OnPropertyChanged("IsRefreshButtonVisible");
             }
         }
 

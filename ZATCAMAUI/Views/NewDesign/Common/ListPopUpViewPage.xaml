@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:animations="clr-namespace:Mopups.Animations;assembly=Mopups"
-    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     FlowDirection="{Binding AppDirection}">
     <Mopups:PopupPage.Animation>
@@ -19,6 +18,7 @@
         <Border
             BackgroundColor="White"
             HeightRequest="300"
+            Stroke="{StaticResource NeutralLightGrey}"
             VerticalOptions="EndAndExpand">
             <CollectionView
                 x:Name="PopupList"

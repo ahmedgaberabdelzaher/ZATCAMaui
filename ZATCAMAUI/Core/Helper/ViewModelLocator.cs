@@ -1,7 +1,6 @@
-﻿using CommonServiceLocator;
-using GalaSoft.MvvmLight.Ioc;
-using GalaSoft.MvvmLight.Views;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using ZATCAMAUI.Controls;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Classes;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
@@ -15,6 +14,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.EscalatedCasesGSTCPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
@@ -74,7 +74,6 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage;
-using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.StylesTestUi;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage;
@@ -103,6 +102,7 @@ using ZATCAMAUI.Views.NewDesign.EDeclaration;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.InfoPages;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.InquireRequestPages;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews;
+using ZATCAMAUI.Views.NewDesign.EscalatedCasesGSTC;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentSignUP;
@@ -165,7 +165,6 @@ using ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.PdfViewPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.PrivacyAndPolicyPages;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.SalesDetailsPages;
-using ZATCAMAUI.Views.SyncFusionEnabledViews.StylesTestUi;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -179,296 +178,313 @@ namespace ZATCAMAUI.Core.Helper
 
         public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            var navigationService = this.CreateNavigationService();
-            SimpleIoc.Default.Register<INavigationService>(() => navigationService);
-            SimpleIoc.Default.Register<IDialogService, DialogService>();
-            SimpleIoc.Default.Register<ICustomInquiryService, CustomInquiryService>();
-            SimpleIoc.Default.Register<ITraiffSectionsServices, TraiffSectionsServices>();
-            SimpleIoc.Default.Register<IBalaghServices, BalaghServices>();
-            SimpleIoc.Default.Register<IlaboratoryInsuranseFeesServices, laboratoryInsuranseFeesServices>();
-            SimpleIoc.Default.Register<ICommonServices, CommonServices>();
-            SimpleIoc.Default.Register<ITahqaqServices, TahqaqServices>();
-            SimpleIoc.Default.Register<ITaxCalculatorServices, TaxCalculatorServices>();
-            SimpleIoc.Default.Register<ISubmitReportServices, SubmitReportServices>();
-            SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
-            SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
-            SimpleIoc.Default.Register<IUserServices, UserServices>();
-            SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
-            SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
-            SimpleIoc.Default.Register<ITrackShipment, TrackShipmentServices>();
-            SimpleIoc.Default.Register<INativeNafath, NativeNafathServices>();
-            SimpleIoc.Default.Register<EDeclerationSubmitModel>();
-            SimpleIoc.Default.Register<BankAccountManagementPageViewModel>();
-            SimpleIoc.Default.Register<BankAccountAddorUpdateIBANViewModel>();
-            #region NewDesignIOC
-            SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
-            SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
-            //SimpleIoc.Default.Register<GAZTNewDesignStyleTestUIPageViewModel>();
+           
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddSingleton<INavigationService, NavigationService>()
+                .AddSingleton<IDialogService>(new DialogService())
+                .AddSingleton<ICustomInquiryService, CustomInquiryService>()
+                .AddSingleton<ITraiffSectionsServices, TraiffSectionsServices>()
+                .AddSingleton<IBalaghServices, BalaghServices>()
+                .AddSingleton<IlaboratoryInsuranseFeesServices, laboratoryInsuranseFeesServices>()
+                .AddSingleton<ICommonServices, CommonServices>()
+                .AddSingleton<ITahqaqServices, TahqaqServices>()
+                .AddSingleton<ITaxCalculatorServices, TaxCalculatorServices>()
+                .AddSingleton<ISubmitReportServices, SubmitReportServices>()
+                .AddSingleton<IMyReportsServices, MyReportsServices>()
+                .AddSingleton<ISurveyServices, SurveyServices>()
+                .AddSingleton<IUserServices, UserServices>()
+                .AddSingleton<ITwareedServices, TwareedServices>()
+                .AddSingleton<IE_DeclerationServices, E_DeclerationServices>()
+                .AddSingleton<ITrackShipment, TrackShipmentServices>()
+                .AddSingleton<INativeNafath, NativeNafathServices>()
+                .AddSingleton<EDeclerationSubmitModel>()
+                .AddSingleton<BankAccountManagementPageViewModel>()
+                .AddSingleton<BankAccountAddorUpdateIBANViewModel>()
+                #region NewDesignIOC
+                .AddSingleton<GAZTNewDesignRecoverUsernameViewModel>()
+                .AddSingleton<GAZTNewDesignRecoverPasswordPageViewModel>()
 
-            SimpleIoc.Default.Register<GAZTNewDesignOnBoardingAnimationPageViewModel>();
-            SimpleIoc.Default.Register<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
-            SimpleIoc.Default.Register<GAZTNewDesignForgotPasswordPageViewModel>();
-            SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
-            SimpleIoc.Default.Register<GAZTNewDesignDashBoardPageViewModel>();
-            SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
-            SimpleIoc.Default.Register<TaxpayerCorrespondancePageViewModel>();
-            SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
-            SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionPageWebView>();
-            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
-            SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
-            SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
-            SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
-            SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
-            SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
-            SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
-            SimpleIoc.Default.Register<PickerPageViewModel>();
-            SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
-            SimpleIoc.Default.Register<GeneralServicesViewModel>();
-            SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
-            SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
-            SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
-            SimpleIoc.Default.Register<ZakatRegistrationFinancialDetailsPageViewModel>();
+                .AddSingleton<GAZTNewDesignOnBoardingAnimationPageViewModel>()
+                .AddSingleton<GAZTNewDesignVATReturnUpdatedUIPageViewModel>()
+                .AddSingleton<GAZTNewDesignForgotPasswordPageViewModel>()
+                .AddSingleton<GAZTNewDesignMyBillsPageViewModel>()
+                .AddSingleton<GAZTNewDesignDashBoardPageViewModel>()
+                .AddSingleton<GAZTNewDesignMyReturnsNewPageViewModel>()
+                .AddSingleton<TaxpayerCorrespondancePageViewModel>()
+                .AddSingleton<TaxpayerCorrespondanceDetailPageViewModel>()
+                .AddSingleton<VATAmendReactivationSuccesssulPageViewModel>()
+                .AddSingleton<TaxEvasionPageWebView>()
+                .AddSingleton<ZakatDeregistrationPageViewModel>()
+                .AddSingleton<TINDeregistrationPageViewModel>()
+                .AddSingleton<VATLookUpNewPageViewModel>()
+                .AddSingleton<VATDeRegistrationDetailsPageViewModel>()
+                .AddSingleton<VATDeRegistrationInstructionsPageViewModel>()
+                .AddSingleton<CalendarPickerPageViewModel>()
+                .AddSingleton<PickerPageViewModel>()
+                .AddSingleton<ZakatRegistrationDetailsListPageViewModel>()
+                .AddSingleton<GeneralServicesViewModel>()
+                .AddSingleton<TINDeregistrationCloseIndividualOutletsPageViewModel>()
+                .AddSingleton<ZakatRegistrationOutletsDetailsPageViewModel>()
+                .AddSingleton<ZakatRegistrationTaxPayerDetailsPageViewModel>()
+                .AddSingleton<ZakatRegistrationFinancialDetailsPageViewModel>()
 
-            //TINDeregistrationCloseIndividualOutletsPageView
-            SimpleIoc.Default.Register<VATDeregistrationSuccessPageViewModel>();
+                .AddSingleton<VATDeregistrationSuccessPageViewModel>()
 
-            SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
+                .AddSingleton<ZakatForm5PageViewModel>()
 
-            SimpleIoc.Default.Register<TaxEvasionVerifyMobileViewModel>();
+                .AddSingleton<TaxEvasionVerifyMobileViewModel>()
 
-            SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
-            SimpleIoc.Default.Register<VATReturnSuccessfullPageViewModel>();
-            SimpleIoc.Default.Register<VatReturnNewSuccessViewModel>();
-            SimpleIoc.Default.Register<EstablishmentRegistrationPageViewModel>();
-            SimpleIoc.Default.Register<EstablishmentAmendUpdatePageViewModel>();
-            SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
-            SimpleIoc.Default.Register<OutletDetailsAmendUpdatePageViewModel>();
-            SimpleIoc.Default.Register<ActivityItemPageViewModel>();
-            SimpleIoc.Default.Register<ActivityItemAmendUpdatePageViewModel>();
-            SimpleIoc.Default.Register<RegistrationSuccessfulViewModel>();
-            SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
-            SimpleIoc.Default.Register<ZakatReturnNewSuccessViewModel>();
-            SimpleIoc.Default.Register<NewTaxEvasionFormPageViewModel>();
-            SimpleIoc.Default.Register<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
-            SimpleIoc.Default.Register<ZakatObjectionSuccessfullPageViewModel>();
-            SimpleIoc.Default.Register<DashboardAnonymousMenuPageViewModel>();
-            SimpleIoc.Default.Register<VATCreditCarriedForwardPopUpPageViewModel>();
-            SimpleIoc.Default.Register<SupportPageViewModel>();
-            SimpleIoc.Default.Register<ZatcaInfoMenuPageViewModel>();
+                .AddSingleton<NewZakatObjectionPageViewModel>()
+                .AddSingleton<VATReturnSuccessfullPageViewModel>()
+                .AddSingleton<VatReturnNewSuccessViewModel>()
+                .AddSingleton<EstablishmentRegistrationPageViewModel>()
+                .AddSingleton<EstablishmentAmendUpdatePageViewModel>()
+                .AddSingleton<OutletDetailsPageViewModel>()
+                .AddSingleton<OutletDetailsAmendUpdatePageViewModel>()
+                .AddSingleton<ActivityItemPageViewModel>()
+                .AddSingleton<ActivityItemAmendUpdatePageViewModel>()
+                .AddSingleton<RegistrationSuccessfulViewModel>()
+                .AddSingleton<ZakatReturnDetailsSuccessfullPageViewModel>()
+                .AddSingleton<ZakatReturnNewSuccessViewModel>()
+                .AddSingleton<NewTaxEvasionFormPageViewModel>()
+                .AddSingleton<GAZTNewDesignShowVatInformationPopUpPageViewModel>()
+                .AddSingleton<ZakatObjectionSuccessfullPageViewModel>()
+                .AddSingleton<DashboardAnonymousMenuPageViewModel>()
+                .AddSingleton<VATCreditCarriedForwardPopUpPageViewModel>()
+                .AddSingleton<SupportPageViewModel>()
+                .AddSingleton<ZatcaInfoMenuPageViewModel>()
 
-            SimpleIoc.Default.Register<NotesDescriptionPopUpPageViewModel>();
-            SimpleIoc.Default.Register<NotesPopUpPageViewModel>();
-            SimpleIoc.Default.Register<TaxManagementPageViewModel>();
-            SimpleIoc.Default.Register<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionPageWebViewModel>();
-            SimpleIoc.Default.Register<TaxpayerSubsidyViewModel>();
-            #endregion
+                .AddSingleton<NotesDescriptionPopUpPageViewModel>()
+                .AddSingleton<NotesPopUpPageViewModel>()
+                .AddSingleton<TaxManagementPageViewModel>()
+                .AddSingleton<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>()
+                .AddSingleton<TaxEvasionPageWebViewModel>()
+                .AddSingleton<TaxpayerSubsidyViewModel>()
+                #endregion
 
-            #region NewDesignRelease2IOC
-            SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
-            SimpleIoc.Default.Register<ZakatInstalmentPlanListViewModel>();
-            SimpleIoc.Default.Register<OldZakatInstalmentPlanViewModel>();
-            SimpleIoc.Default.Register<OldZakatInstalmentPlanListViewModel>();
-            SimpleIoc.Default.Register<ViewNotePopUpViewModel>();
-            SimpleIoc.Default.Register<AddNotePopUpViewModel>();
-            SimpleIoc.Default.Register<MyBillsMultiplePayableListViewModel>();
+                #region NewDesignRelease2IOC
+                .AddSingleton<ZakatInstalmentPlanViewModel>()
+                .AddSingleton<ZakatInstalmentPlanListViewModel>()
+                .AddSingleton<OldZakatInstalmentPlanViewModel>()
+                .AddSingleton<OldZakatInstalmentPlanListViewModel>()
+                .AddSingleton<ViewNotePopUpViewModel>()
+                .AddSingleton<AddNotePopUpViewModel>()
+                .AddSingleton<MyBillsMultiplePayableListViewModel>()
 
-            SimpleIoc.Default.Register<MorePopUpViewModelRTwo>();
-            SimpleIoc.Default.Register<InstalmentPlanViewModel>();
-            SimpleIoc.Default.Register<VATInstalmentPlanViewModel>();
-            SimpleIoc.Default.Register<VATInstalmentPlanListViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionMyReportsListPageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionReportDetailPageViewModel>();
-            SimpleIoc.Default.Register<ZakatAcknowledgmentPageViewModel>();
-            SimpleIoc.Default.Register<ChangeFillingPeriodViewModel>();
-            SimpleIoc.Default.Register<ContractReleaseViewModel>();
-            SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
-            SimpleIoc.Default.Register<InstructionsBottomPopUpViewModel>();
-            SimpleIoc.Default.Register<EstablishmentSignUPPageViewModel>();
-            SimpleIoc.Default.Register<SignUpForEstablishmentPageViewModel>();
-            SimpleIoc.Default.Register<AccountCreatedSuccessfullyPageViewModel>();
-            SimpleIoc.Default.Register<ContractReleaseListViewModel>();
-            SimpleIoc.Default.Register<ChangeFillingPeriodListViewModel>();
-            SimpleIoc.Default.Register<ChangeFillingPeriodSuccessPage>();
-            SimpleIoc.Default.Register<VatReviewViewModel>();
-            SimpleIoc.Default.Register<VatReviewListViewModel>();
-            SimpleIoc.Default.Register<ObjectionViewModel>();
-            SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
-            SimpleIoc.Default.Register<ZakatObjectionViewModel>();
-            SimpleIoc.Default.Register<QuickActionPopUpPageViewModel>();
-            SimpleIoc.Default.Register<VATDeclarationAttachmentPageViewModel>();
-            SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
+                .AddSingleton<MorePopUpViewModelRTwo>()
+                .AddSingleton<InstalmentPlanViewModel>()
+                .AddSingleton<VATInstalmentPlanViewModel>()
+                .AddSingleton<VATInstalmentPlanListViewModel>()
+                .AddSingleton<TaxEvasionMyReportsListPageViewModel>()
+                .AddSingleton<TaxEvasionReportDetailPageViewModel>()
+                .AddSingleton<ZakatAcknowledgmentPageViewModel>()
+                .AddSingleton<ChangeFillingPeriodViewModel>()
+                .AddSingleton<ContractReleaseViewModel>()
+                .AddSingleton<FilesUploadPopUpViewModel>()
+                .AddSingleton<InstructionsBottomPopUpViewModel>()
+                .AddSingleton<EstablishmentSignUPPageViewModel>()
+                .AddSingleton<SignUpForEstablishmentPageViewModel>()
+                .AddSingleton<AccountCreatedSuccessfullyPageViewModel>()
+                .AddSingleton<ContractReleaseListViewModel>()
+                .AddSingleton<ChangeFillingPeriodListViewModel>()
+                .AddSingleton<ChangeFillingPeriodSuccessPage>()
+                .AddSingleton<VatReviewViewModel>()
+                .AddSingleton<VatReviewListViewModel>()
+                .AddSingleton<ObjectionViewModel>()
+                .AddSingleton<ZakatObjectionsListViewModel>()
+                .AddSingleton<ZakatObjectionViewModel>()
+                .AddSingleton<QuickActionPopUpPageViewModel>()
+                .AddSingleton<VATDeclarationAttachmentPageViewModel>()
+                .AddSingleton<VATRegistrationDisplayDetailsPageViewModel>()
 
-            //CR6094
-            SimpleIoc.Default.Register<NafathPopupPageViewModel>();
-            SimpleIoc.Default.Register<NafathLoginPageViewModel>();
+                //CR6094
+                .AddSingleton<NafathPopupPageViewModel>()
+                .AddSingleton<NafathLoginPageViewModel>()
+                .AddSingleton<EscalatedCasesGSTCPageViewModel>()
 
-            #endregion
+                #endregion
 
-            #region PaymentImplementation
-            SimpleIoc.Default.Register<PaymnetProcessWebviewViewModel>();
+                #region PaymentImplementation
+                .AddSingleton<PaymnetProcessWebviewViewModel>()
 
-            #endregion
+                #endregion
 
-            #region OldIOC
+                #region OldIOC
 
-            SimpleIoc.Default.Register<SFLoginPageViewModel>();
-            SimpleIoc.Default.Register<PdfViewModel>();
-            SimpleIoc.Default.Register<MyBillsViewModel>();
-            SimpleIoc.Default.Register<VATLookupPageViewModel>();
-            SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
-            SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
-            SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
-            SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
-            SimpleIoc.Default.Register<ICRListPageViewModel>();
-            SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
-            SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
-            SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
-            SimpleIoc.Default.Register<AttachmentPageViewModel>();
-            SimpleIoc.Default.Register<AddNotePageViewModel>();
-            SimpleIoc.Default.Register<AddPopPageViewModel>();
-            SimpleIoc.Default.Register<CreditCarriedPageViewModel>();
-            SimpleIoc.Default.Register<FormBundleStatusPageViewModel>();
-            SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
-            SimpleIoc.Default.Register<SignUpFormPageViewModel>();
-            SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionReportListPageViewModel>();
-            SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
-            SimpleIoc.Default.Register<ReturnsPageViewModel>();
-            SimpleIoc.Default.Register<FAQPageViewModel>();
-            SimpleIoc.Default.Register<AboutUsPageViewModel>();
-            SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
-            SimpleIoc.Default.Register<MyReturnsPageViewModel>();
-            SimpleIoc.Default.Register<ContactUsPageViewModel>();
-            SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
-            SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
-            SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
-            SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
-            SimpleIoc.Default.Register<EstablishmentAmendUpdateSuccessfulPageViewModel>();
-            SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
-            SimpleIoc.Default.Register<VATAmendReactivationPageViewModel>();
-            SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
-            SimpleIoc.Default.Register<InternationalMobileNumberCodePagesViewModel>();
+                .AddSingleton<SFLoginPageViewModel>()
+                .AddSingleton<PdfViewModel>()
+                .AddSingleton<MyBillsViewModel>()
+                .AddSingleton<VATLookupPageViewModel>()
+                .AddSingleton<ZakatReturnListPageViewModel>()
+                .AddSingleton<ZakatReturnDetailsPageViewModel>()
+                .AddSingleton<SalesDetailsPageViewModel>()
+                .AddSingleton<AmendSalesDetailsPageViewModel>()
+                .AddSingleton<ICRListPageViewModel>()
+                .AddSingleton<VATReturnsPageViewModelEX>()
+                .AddSingleton<AcknowledgementDetailsPageViewModel>()
+                .AddSingleton<DisplayNotesPageViewModel>()
+                .AddSingleton<AttachmentPageViewModel>()
+                .AddSingleton<AddNotePageViewModel>()
+                .AddSingleton<AddPopPageViewModel>()
+                .AddSingleton<CreditCarriedPageViewModel>()
+                .AddSingleton<FormBundleStatusPageViewModel>()
+                .AddSingleton<SignUpTAndCPageViewModel>()
+                .AddSingleton<SignUpFormPageViewModel>()
+                .AddSingleton<CreateGaztAccountPageViewModel>()
+                .AddSingleton<TaxEvasionRegistrationViewModel>()
+                .AddSingleton<TaxEvasionReportTypePageViewModel>()
+                .AddSingleton<TaxEvasionReportFormPageViewModel>()
+                .AddSingleton<TaxEvasionReportMobilePageViewModel>()
+                .AddSingleton<TaxEvasionReportListPageViewModel>()
+                .AddSingleton<AccountCreatedPageViewModel>()
+                .AddSingleton<ReturnsPageViewModel>()
+                .AddSingleton<FAQPageViewModel>()
+                .AddSingleton<AboutUsPageViewModel>()
+                .AddSingleton<PrivacyAndPolicyPageViewModel>()
+                .AddSingleton<MyReturnsPageViewModel>()
+                .AddSingleton<ContactUsPageViewModel>()
+                .AddSingleton<TaxEvasionFormPageViewModel>()
+                .AddSingleton<VATIndividualSignupPageViewModel>()
+                .AddSingleton<IndividualRegistrationPageViewModel>()
+                .AddSingleton<RegistrationSuccessfulPageViewModel>()
+                .AddSingleton<EstablishmentAmendUpdateSuccessfulPageViewModel>()
+                .AddSingleton<VATRegistrationPageViewModel>()
+                .AddSingleton<VATAmendReactivationPageViewModel>()
+                .AddSingleton<VATRegistrationSuccessfullPageViewModel>()
+                .AddSingleton<InternationalMobileNumberCodePagesViewModel>()
 
-            //AttachmentPopupPageView
-            SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
-            SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
-            SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
-            SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
-            SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
-            SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
-            SimpleIoc.Default.Register<TaxpayersCertificatesPageViewModel>();
-            SimpleIoc.Default.Register<ZAKATReturnDetailsViewModel>();
-            SimpleIoc.Default.Register<TINDeregistrationPageView>();
-            SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageView>();
+                //AttachmentPopupPageView
+                .AddSingleton<TaxEvasionReportAttachmentPageViewModel>()
+                .AddSingleton<FileAttachmentPopUpPageViewModel>()
+                .AddSingleton<VATIndividualSignupTnCPageViewModel>()
+                .AddSingleton<FinancialDetailAttachmentPopupPageViewModel>()
+                .AddSingleton<NewAccountPopUpPageViewModel>()
+                .AddSingleton<NewAccountPopUpPageViewModel>()
+                .AddSingleton<TaxpayersCertificatesPageViewModel>()
+                .AddSingleton<ZAKATReturnDetailsViewModel>()
+                .AddSingleton<TINDeregistrationPageView>()
+                .AddSingleton<ZakatRegistrationDetailsListPageView>()
 
-            SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
-            SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
-            SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
-            SimpleIoc.Default.Register<TINDeregestrationSuccessPageViewModel>();
-            SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
+                .AddSingleton<InternationalCodeSearchPageViewModel>()
+                .AddSingleton<UnlockAccountTINPageViewModel>()
+                .AddSingleton<UnlockAccountSuccessPageViewModel>()
+                .AddSingleton<TINDeregestrationSuccessPageViewModel>()
+                .AddSingleton<TINDeregistrationCloseIndividualOutletsPageViewModel>()
 
-            SimpleIoc.Default.Register<VATRefundListPageViewModel>();
-            SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
-            SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
-            SimpleIoc.Default.Register<VATRefundsSuccessPageViewModel>();
-            SimpleIoc.Default.Register<VATRefundsInstructionsPageViewModel>();
+                .AddSingleton<VATRefundListPageViewModel>()
+                .AddSingleton<VATRefundDetailsPageViewModel>()
+                .AddSingleton<VATRefundsNewRequestViewModel>()
+                .AddSingleton<VATRefundsSuccessPageViewModel>()
+                .AddSingleton<VATRefundsInstructionsPageViewModel>()
 
-            SimpleIoc.Default.Register<AttachmentPopUpViewModel>();
-            SimpleIoc.Default.Register<MorePopUpPageViewModel>();
+                .AddSingleton<AttachmentPopUpViewModel>()
+                .AddSingleton<MorePopUpPageViewModel>()
 
-            // * Taxpayer Profile
-            SimpleIoc.Default.Register<NewTaxpayerProfileViewModel>();
-            SimpleIoc.Default.Register<UpdateMobileViewModel>();
-            SimpleIoc.Default.Register<UpdateEmailViewModel>();
-            SimpleIoc.Default.Register<VerificationEmailPasswordViewModel>();
-            SimpleIoc.Default.Register<UpdatePasswordViewModel>();
-            SimpleIoc.Default.Register<TaxpayerProfileSuccessViewModel>();
-            SimpleIoc.Default.Register<ShowVatInformationConfirmationPageViewModel>();
-            SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
-            SimpleIoc.Default.Register<NewAccountPopPageViewModel>();
+                // * Taxpayer Profile
+                .AddSingleton<NewTaxpayerProfileViewModel>()
+                .AddSingleton<UpdateMobileViewModel>()
+                .AddSingleton<UpdateEmailViewModel>()
+                .AddSingleton<VerificationEmailPasswordViewModel>()
+                .AddSingleton<UpdatePasswordViewModel>()
+                .AddSingleton<TaxpayerProfileSuccessViewModel>()
+                .AddSingleton<ShowVatInformationConfirmationPageViewModel>()
+                .AddSingleton<RefundAccountPopupPageViewModel>()
+                .AddSingleton<NewAccountPopPageViewModel>()
 
-            //Account Statements
-            //AccountStatementsPageView
-            SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
+                //Account Statements
+                //AccountStatementsPageView
+                .AddSingleton<AccountStatementsPageViewModel>()
 
-            SimpleIoc.Default.Register<AccountStatementBillsPageViewModel>();
-            SimpleIoc.Default.Register<AccountStatementsFiltersPageViewModel>();
-            SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
-            //Cr6264
-            SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
-            //AccountStatementsDownloadPageView
-            //
-            #endregion
+                .AddSingleton<AccountStatementBillsPageViewModel>()
+                .AddSingleton<AccountStatementsFiltersPageViewModel>()
+                .AddSingleton<AccountStatementsDownloadPageViewModel>()
+                //Cr6264
+                .AddSingleton<NewYesorNoPageViewModel>()
+                //AccountStatementsDownloadPageView
+                //
+                #endregion
 
-            #region Customs Service IoC
-            SimpleIoc.Default.Register<InquiryAboutCustomsDeclarationViewModel>();
-            SimpleIoc.Default.Register<TraifSectionsViewModel>();
-            SimpleIoc.Default.Register<ReportFinancialViolationViewModel>();
-            SimpleIoc.Default.Register<ReportsMenuViewModel>();
-            SimpleIoc.Default.Register<LaboratoryPaymentOfInsuranceFeesViewModel>();
-            SimpleIoc.Default.Register<SearchIndiactivePriceForExciseGoodsViewModel>();
-            SimpleIoc.Default.Register<ExciseTaxViewModel>();
-            SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
-            SimpleIoc.Default.Register<TaxCalculatorViewModel>();
-            SimpleIoc.Default.Register<SubmitReportViewModel>();
-            SimpleIoc.Default.Register<LiveVideoViewModel>();
-            SimpleIoc.Default.Register<ReportOTPViewModel>();
+                #region Customs Service IoC
+                .AddSingleton<InquiryAboutCustomsDeclarationViewModel>()
+                .AddSingleton<TraifSectionsViewModel>()
+                .AddSingleton<ReportFinancialViolationViewModel>()
+                .AddSingleton<ReportsMenuViewModel>()
+                .AddSingleton<LaboratoryPaymentOfInsuranceFeesViewModel>()
+                .AddSingleton<SearchIndiactivePriceForExciseGoodsViewModel>()
+                .AddSingleton<ExciseTaxViewModel>()
+                .AddSingleton<TahqaqScanPageViewModel>()
+                .AddSingleton<TaxCalculatorViewModel>()
+                .AddSingleton<SubmitReportViewModel>()
+                .AddSingleton<LiveVideoViewModel>()
+                .AddSingleton<ReportOTPViewModel>()
 
-            SimpleIoc.Default.Register<MyReportsViewModel>();
-            SimpleIoc.Default.Register<UploadingPopupViewModel>();
+                .AddSingleton<MyReportsViewModel>()
+                .AddSingleton<UploadingPopupViewModel>()
 
-            SimpleIoc.Default.Register<E_DeclerationViewModel>();
-            SimpleIoc.Default.Register<TrackShipmentViewModel>();
-            SimpleIoc.Default.Register<ListUserRequestsViewModel>();
-            SimpleIoc.Default.Register<HomeViewModel>();
-            SimpleIoc.Default.Register<RateUsViewModel>();
-            SimpleIoc.Default.Register<CustomLoginViewModel>();
-            SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
-            SimpleIoc.Default.Register<BaseProductDeclarationViewModel>();
-            SimpleIoc.Default.Register<EDeclarationInformationsViewModel>();
-            SimpleIoc.Default.Register<RegisterZATCAUserViewModel>();
-            SimpleIoc.Default.Register<NativeNafathLoginPageViewModel>();
-            SimpleIoc.Default.Register<EDeclarationPaymentViewModel>();
-            SimpleIoc.Default.Register<TransactionReceptionViewModel>();
-            SimpleIoc.Default.Register<IAMLoginViewModel>();
-            SimpleIoc.Default.Register<ReviewRequestViewModel>();
-            SimpleIoc.Default.Register<EDeclerationViewModel>();
-            SimpleIoc.Default.Register<CustomsPaymentViewModel>();
-            SimpleIoc.Default.Register<StateManager>();
-            SimpleIoc.Default.Register<AboutZakatyViewModel>();
-            SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
-            SimpleIoc.Default.Register<ChatViewModel>();
-            SimpleIoc.Default.Register<CustomFeesFormViewModel>();
-            SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
-            SimpleIoc.Default.Register<ChatViewModel>();
-            SimpleIoc.Default.Register<FasahLoginViewModel>();
-            SimpleIoc.Default.Register<BaseLoginViewModel>();
-            SimpleIoc.Default.Register<InquiryaboutCustomsIssuesViewModel>();
+                .AddSingleton<E_DeclerationViewModel>()
+                .AddSingleton<TrackShipmentViewModel>()
+                .AddSingleton<ListUserRequestsViewModel>()
+                .AddSingleton<HomeViewModel>()
+                .AddSingleton<RateUsViewModel>()
+                .AddSingleton<CustomLoginViewModel>()
+                .AddSingleton<BaseEDeclarationViewModel>()
+                .AddSingleton<BaseProductDeclarationViewModel>()
+                .AddSingleton<EDeclarationInformationsViewModel>()
+                .AddSingleton<RegisterZATCAUserViewModel>()
+                .AddSingleton<NativeNafathLoginPageViewModel>()
+                .AddSingleton<EDeclarationPaymentViewModel>()
+                .AddSingleton<TransactionReceptionViewModel>()
+                .AddSingleton<IAMLoginViewModel>()
+                .AddSingleton<ReviewRequestViewModel>()
+                .AddSingleton<EDeclerationViewModel>()
+                .AddSingleton<CustomsPaymentViewModel>()
+                .AddSingleton<StateManager>()
+                .AddSingleton<AboutZakatyViewModel>()
+                .AddSingleton<CustomServiceMenuViewModel>()
+                .AddSingleton<ChatViewModel>()
+                .AddSingleton<CustomFeesFormViewModel>()
+                .AddSingleton<CustomServiceMenuViewModel>()
+                .AddSingleton<ChatViewModel>()
+                .AddSingleton<FasahLoginViewModel>()
+                .AddSingleton<BaseLoginViewModel>()
+                .AddSingleton<InquiryaboutCustomsIssuesViewModel>()
 
-            SimpleIoc.Default.Register<UpdateManagerViewModel>();
-            SimpleIoc.Default.Register<ChangeMobNafathPageViewMode>();
-            SimpleIoc.Default.Register<ChangeMobileRequestViewModel>();
+                .AddSingleton<UpdateManagerViewModel>()
+                .AddSingleton<ChangeMobNafathPageViewMode>()
+                .AddSingleton<ChangeMobileRequestViewModel>()
 
             
-            #endregion
+                #endregion
+
+                .BuildServiceProvider());
+            this.CreateNavigationService();
         }
 
         #region NewDesignViewModel
 
+        public EscalatedCasesGSTCPageViewModel EscalatedCasesGSTCPageView
+        {
+            get
+            {
+                try
+                {
+
+                    return Ioc.Default.GetService<EscalatedCasesGSTCPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
         public ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel VATServicesPageView
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
+                    return Ioc.Default.GetService<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -486,7 +502,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NafathPopupPageViewModel>();
+                    return Ioc.Default.GetService<NafathPopupPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -501,7 +517,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NafathLoginPageViewModel>();
+                    return Ioc.Default.GetService<NafathLoginPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -515,7 +531,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NativeNafathLoginPageViewModel>();
+                    return Ioc.Default.GetService<NativeNafathLoginPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -530,7 +546,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxManagementPageViewModel>();
+                    return Ioc.Default.GetService<TaxManagementPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -544,7 +560,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionPageWebViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionPageWebViewModel>();
                 }
                 catch (Exception)
                 {
@@ -558,7 +574,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxpayerSubsidyViewModel>();
+                    return Ioc.Default.GetService<TaxpayerSubsidyViewModel>();
                 }
                 catch (Exception)
                 {
@@ -574,7 +590,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NotesPopUpPageViewModel>();
+                    return Ioc.Default.GetService<NotesPopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -590,7 +606,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NotesDescriptionPopUpPageViewModel>();
+                    return Ioc.Default.GetService<NotesDescriptionPopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -606,7 +622,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SupportPageViewModel>();
+                    return Ioc.Default.GetService<SupportPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -623,7 +639,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZatcaInfoMenuPageViewModel>();
+                    return Ioc.Default.GetService<ZatcaInfoMenuPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -640,7 +656,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATCreditCarriedForwardPopUpPageViewModel>();
+                    return Ioc.Default.GetService<VATCreditCarriedForwardPopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -656,7 +672,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<DashboardAnonymousMenuPageViewModel>();
+                    return Ioc.Default.GetService<DashboardAnonymousMenuPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -672,7 +688,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TINDeregistrationCloseIndividualOutletsPageViewModel>();
+                    return Ioc.Default.GetService<TINDeregistrationCloseIndividualOutletsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -689,7 +705,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SignUpForEstablishmentPageViewModel>();
+                    return Ioc.Default.GetService<SignUpForEstablishmentPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -706,7 +722,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EstablishmentSignUPPageViewModel>();
+                    return Ioc.Default.GetService<EstablishmentSignUPPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -723,7 +739,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignOnBoardingAnimationPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignOnBoardingAnimationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -739,7 +755,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionMyReportsListPageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionMyReportsListPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -756,7 +772,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxpayerCorrespondancePageViewModel>();
+                    return Ioc.Default.GetService<TaxpayerCorrespondancePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -772,7 +788,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxpayerCorrespondanceDetailPageViewModel>();
+                    return Ioc.Default.GetService<TaxpayerCorrespondanceDetailPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -789,7 +805,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxpayersCertificatesPageViewModel>();
+                    return Ioc.Default.GetService<TaxpayersCertificatesPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -805,7 +821,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -821,7 +837,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignDashBoardPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -837,7 +853,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignDashBoardPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -854,7 +870,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatForm5PageViewModel>();
+                    return Ioc.Default.GetService<ZakatForm5PageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -870,7 +886,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignForgotPasswordPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignForgotPasswordPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -886,7 +902,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignMyBillsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -902,7 +918,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignMyReturnsNewPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignMyReturnsNewPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -918,7 +934,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATLookUpNewPageViewModel>();
+                    return Ioc.Default.GetService<VATLookUpNewPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -934,7 +950,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATDeRegistrationDetailsPageViewModel>();
+                    return Ioc.Default.GetService<VATDeRegistrationDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -950,7 +966,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATDeRegistrationInstructionsPageViewModel>();
+                    return Ioc.Default.GetService<VATDeRegistrationInstructionsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -967,7 +983,7 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
 
-                    return ServiceLocator.Current.GetInstance<VATDeregistrationSuccessPageViewModel>();
+                    return Ioc.Default.GetService<VATDeregistrationSuccessPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -983,7 +999,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NewZakatObjectionPageViewModel>();
+                    return Ioc.Default.GetService<NewZakatObjectionPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -999,7 +1015,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
+                    return Ioc.Default.GetService<EstablishmentRegistrationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1015,7 +1031,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdatePageViewModel>();
+                    return Ioc.Default.GetService<EstablishmentAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1031,7 +1047,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<OutletDetailsPageViewModel>();
+                    return Ioc.Default.GetService<OutletDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1047,7 +1063,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<OutletDetailsAmendUpdatePageViewModel>();
+                    return Ioc.Default.GetService<OutletDetailsAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1063,7 +1079,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ActivityItemPageViewModel>();
+                    return Ioc.Default.GetService<ActivityItemPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1079,7 +1095,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ActivityItemAmendUpdatePageViewModel>();
+                    return Ioc.Default.GetService<ActivityItemAmendUpdatePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1095,7 +1111,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulViewModel>();
+                    return Ioc.Default.GetService<RegistrationSuccessfulViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1111,7 +1127,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdateSuccessfulPageViewModel>();
+                    return Ioc.Default.GetService<EstablishmentAmendUpdateSuccessfulPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1127,7 +1143,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionVerifyMobileViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionVerifyMobileViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1144,7 +1160,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NewTaxEvasionFormPageViewModel>();
+                    return Ioc.Default.GetService<NewTaxEvasionFormPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1160,7 +1176,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NewTaxEvasionFormPageViewModel>();
+                    return Ioc.Default.GetService<NewTaxEvasionFormPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1178,7 +1194,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NewTaxpayerProfileViewModel>();
+                    return Ioc.Default.GetService<NewTaxpayerProfileViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1194,7 +1210,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<UpdateMobileViewModel>();
+                    return Ioc.Default.GetService<UpdateMobileViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1210,7 +1226,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<UpdateEmailViewModel>();
+                    return Ioc.Default.GetService<UpdateEmailViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1226,7 +1242,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VerificationEmailPasswordViewModel>();
+                    return Ioc.Default.GetService<VerificationEmailPasswordViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1242,7 +1258,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<UpdatePasswordViewModel>();
+                    return Ioc.Default.GetService<UpdatePasswordViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1258,7 +1274,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxpayerProfileSuccessViewModel>();
+                    return Ioc.Default.GetService<TaxpayerProfileSuccessViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1279,7 +1295,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<PaymnetProcessWebviewViewModel>();
+                    return Ioc.Default.GetService<PaymnetProcessWebviewViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1293,47 +1309,13 @@ namespace ZATCAMAUI.Core.Helper
 
 
         #region OldDesignViewModel
-        public StyleTestUIPageViewModel StyleTestUIPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
-                }
-                catch (Exception)
-                {
-
-
-                    return null;
-                }
-            }
-
-
-        }
         public PdfViewModel pdfView
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<PdfViewModel>();
-                }
-                catch (Exception)
-                {
-
-
-                    return null;
-                }
-            }
-        }
-        public StyleTestUIPageViewModel StyleTestUIPage
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
+                    return Ioc.Default.GetService<PdfViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1349,7 +1331,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<FinancialDetailAttachmentPopupPageViewModel>();
+                    return Ioc.Default.GetService<FinancialDetailAttachmentPopupPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1365,7 +1347,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATIndividualSignupTnCPageViewModel>();
+                    return Ioc.Default.GetService<VATIndividualSignupTnCPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1382,7 +1364,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<InternationalMobileNumberCodePagesViewModel>();
+                    return Ioc.Default.GetService<InternationalMobileNumberCodePagesViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1398,7 +1380,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<InternationalCodeSearchPageViewModel>();
+                    return Ioc.Default.GetService<InternationalCodeSearchPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1417,7 +1399,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
+                    return Ioc.Default.GetService<MyBillsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1434,7 +1416,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATLookupPageViewModel>();
+                    return Ioc.Default.GetService<VATLookupPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1450,7 +1432,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatReturnListPageViewModel>();
+                    return Ioc.Default.GetService<ZakatReturnListPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1466,7 +1448,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatReturnDetailsPageViewModel>();
+                    return Ioc.Default.GetService<ZakatReturnDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1483,7 +1465,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SalesDetailsPageViewModel>();
+                    return Ioc.Default.GetService<SalesDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1499,7 +1481,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AmendSalesDetailsPageViewModel>();
+                    return Ioc.Default.GetService<AmendSalesDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1516,7 +1498,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ICRListPageViewModel>();
+                    return Ioc.Default.GetService<ICRListPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1533,7 +1515,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATReturnsPageViewModelEX>();
+                    return Ioc.Default.GetService<VATReturnsPageViewModelEX>();
                 }
                 catch (Exception)
                 {
@@ -1549,7 +1531,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AcknowledgementDetailsPageViewModel>();
+                    return Ioc.Default.GetService<AcknowledgementDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1565,7 +1547,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<DisplayNotesPageViewModel>();
+                    return Ioc.Default.GetService<DisplayNotesPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1581,7 +1563,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AttachmentPageViewModel>();
+                    return Ioc.Default.GetService<AttachmentPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1597,7 +1579,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AddNotePageViewModel>();
+                    return Ioc.Default.GetService<AddNotePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1613,7 +1595,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<CreditCarriedPageViewModel>();
+                    return Ioc.Default.GetService<CreditCarriedPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1629,7 +1611,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AddPopPageViewModel>();
+                    return Ioc.Default.GetService<AddPopPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1646,7 +1628,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1662,7 +1644,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionReportMobilePageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionReportMobilePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1678,7 +1660,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionReportTypePageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1694,7 +1676,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionReportFormPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1710,7 +1692,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionFormPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1726,7 +1708,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionRegistrationViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1742,7 +1724,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionReportAttachmentPageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionReportAttachmentPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1758,7 +1740,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<FormBundleStatusPageViewModel>();
+                    return Ioc.Default.GetService<FormBundleStatusPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1774,7 +1756,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SignUpTAndCPageViewModel>();
+                    return Ioc.Default.GetService<SignUpTAndCPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1790,7 +1772,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SignUpFormPageViewModel>();
+                    return Ioc.Default.GetService<SignUpFormPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1806,7 +1788,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionReportListPageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionReportListPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1822,7 +1804,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<CreateGaztAccountPageViewModel>();
+                    return Ioc.Default.GetService<CreateGaztAccountPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1838,7 +1820,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
+                    return Ioc.Default.GetService<AccountCreatedPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1854,7 +1836,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AccountCreatedSuccessfullyPageViewModel>();
+                    return Ioc.Default.GetService<AccountCreatedSuccessfullyPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1874,7 +1856,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SFLoginPageViewModel>();
+                    return Ioc.Default.GetService<SFLoginPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1890,7 +1872,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ReturnsPageViewModel>();
+                    return Ioc.Default.GetService<ReturnsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1906,7 +1888,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<FAQPageViewModel>();
+                    return Ioc.Default.GetService<FAQPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1922,7 +1904,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AboutUsPageViewModel>();
+                    return Ioc.Default.GetService<AboutUsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1938,7 +1920,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<PrivacyAndPolicyPageViewModel>();
+                    return Ioc.Default.GetService<PrivacyAndPolicyPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1954,7 +1936,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<MyReturnsPageViewModel>();
+                    return Ioc.Default.GetService<MyReturnsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1970,7 +1952,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ContactUsPageViewModel>();
+                    return Ioc.Default.GetService<ContactUsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -1986,7 +1968,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATIndividualSignupPageViewModel>();
+                    return Ioc.Default.GetService<VATIndividualSignupPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2002,7 +1984,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<IndividualRegistrationPageViewModel>();
+                    return Ioc.Default.GetService<IndividualRegistrationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2018,7 +2000,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
+                    return Ioc.Default.GetService<RegistrationSuccessfulPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2034,7 +2016,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRegistrationPageViewModel>();
+                    return Ioc.Default.GetService<VATRegistrationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2050,7 +2032,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATAmendReactivationPageViewModel>();
+                    return Ioc.Default.GetService<VATAmendReactivationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2066,7 +2048,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRegistrationDisplayDetailsPageViewModel>();
+                    return Ioc.Default.GetService<VATRegistrationDisplayDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2082,7 +2064,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRegistrationSuccessfullPageViewModel>();
+                    return Ioc.Default.GetService<VATRegistrationSuccessfullPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2098,7 +2080,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATAmendReactivationSuccesssulPageViewModel>();
+                    return Ioc.Default.GetService<VATAmendReactivationSuccesssulPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2114,7 +2096,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<FileAttachmentPopUpPageViewModel>();
+                    return Ioc.Default.GetService<FileAttachmentPopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2130,7 +2112,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NewAccountPopUpPageViewModel>();
+                    return Ioc.Default.GetService<NewAccountPopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2147,7 +2129,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<UnlockAccountTINPageViewModel>();
+                    return Ioc.Default.GetService<UnlockAccountTINPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2164,7 +2146,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<UnlockAccountSuccessPageViewModel>();
+                    return Ioc.Default.GetService<UnlockAccountSuccessPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2181,7 +2163,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TINDeregestrationSuccessPageViewModel>();
+                    return Ioc.Default.GetService<TINDeregestrationSuccessPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2198,7 +2180,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignRecoverUsernameViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignRecoverUsernameViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2215,7 +2197,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GAZTNewDesignRecoverPasswordPageViewModel>();
+                    return Ioc.Default.GetService<GAZTNewDesignRecoverPasswordPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2232,7 +2214,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
+                    return Ioc.Default.GetService<ZAKATReturnDetailsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2249,7 +2231,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
+                    return Ioc.Default.GetService<ZAKATReturnDetailsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2266,7 +2248,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRefundListPageViewModel>();
+                    return Ioc.Default.GetService<VATRefundListPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2283,7 +2265,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRefundDetailsPageViewModel>();
+                    return Ioc.Default.GetService<VATRefundDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2300,7 +2282,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRefundsNewRequestViewModel>();
+                    return Ioc.Default.GetService<VATRefundsNewRequestViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2317,7 +2299,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRefundsSuccessPageViewModel>();
+                    return Ioc.Default.GetService<VATRefundsSuccessPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2334,7 +2316,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATRefundsInstructionsPageViewModel>();
+                    return Ioc.Default.GetService<VATRefundsInstructionsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2353,7 +2335,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatReturnDetailsSuccessfullPageViewModel>();
+                    return Ioc.Default.GetService<ZakatReturnDetailsSuccessfullPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2370,7 +2352,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatReturnNewSuccessViewModel>();
+                    return Ioc.Default.GetService<ZakatReturnNewSuccessViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2388,7 +2370,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AttachmentPopUpViewModel>();
+                    return Ioc.Default.GetService<AttachmentPopUpViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2406,7 +2388,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatObjectionSuccessfullPageViewModel>();
+                    return Ioc.Default.GetService<ZakatObjectionSuccessfullPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2422,7 +2404,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatAcknowledgmentPageViewModel>();
+                    return Ioc.Default.GetService<ZakatAcknowledgmentPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2439,7 +2421,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<QuickActionPopUpPageViewModel>();
+                    return Ioc.Default.GetService<QuickActionPopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2457,7 +2439,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATDeclarationAttachmentPageViewModel>();
+                    return Ioc.Default.GetService<VATDeclarationAttachmentPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2475,7 +2457,7 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
 
-                    return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
+                    return Ioc.Default.GetService<AccountStatementsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2492,7 +2474,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AccountStatementBillsPageViewModel>();
+                    return Ioc.Default.GetService<AccountStatementBillsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2510,7 +2492,7 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
 
-                    return ServiceLocator.Current.GetInstance<AccountStatementBillsPageViewModel>();
+                    return Ioc.Default.GetService<AccountStatementBillsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2527,7 +2509,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AccountStatementsDownloadPageViewModel>();
+                    return Ioc.Default.GetService<AccountStatementsDownloadPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2545,7 +2527,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AccountStatementsFiltersPageViewModel>();
+                    return Ioc.Default.GetService<AccountStatementsFiltersPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2561,13 +2543,12 @@ namespace ZATCAMAUI.Core.Helper
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
-            var navigationService = new NavigationService();
+            var navigationService = (NavigationService)Ioc.Default.GetService<INavigationService>();
 
             #region NewDesign
 
             navigationService.Configure(App.GAZTNewDesignOnBoardingAnimationPageView, typeof(GAZTNewDesignOnBoardingAnimationPageView));
             navigationService.Configure(App.GAZTNewDesignVATReturnUpdatedUIPageView, typeof(GAZTNewDesignVATReturnUpdatedUIPageView));
-            navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
             navigationService.Configure(App.GAZTNewDesignForgotPasswordPageView, typeof(GAZTNewDesignForgotPasswordPageView));
             navigationService.Configure(App.GAZTNewDesignMyBillsPageView, typeof(GAZTNewDesignMyBillsPageView));
             navigationService.Configure(App.MyBillsSuccessPageView, typeof(MyBillsSuccessPageView));
@@ -2831,6 +2812,7 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.ChangeMobileRequestPageView, typeof(ChangeMobileRequestPageView));
             navigationService.Configure(App.ChangeMobNafathLoginPage, typeof(ChangeMobNafathLoginPage));
             navigationService.Configure(App.UpdateManagerDetailsPopUp, typeof(UpdateManagerDetailsPopUp));
+            navigationService.Configure(App.EscalatedCasesGSTCPageView, typeof(EscalatedCasesGSTCPageView));//CR4820
 
             #endregion
 
@@ -2845,7 +2827,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<InquiryAboutCustomsDeclarationViewModel>();
+                    return Ioc.Default.GetService<InquiryAboutCustomsDeclarationViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2860,7 +2842,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TraifSectionsViewModel>();
+                    return Ioc.Default.GetService<TraifSectionsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2875,7 +2857,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ReportFinancialViolationViewModel>();
+                    return Ioc.Default.GetService<ReportFinancialViolationViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2890,7 +2872,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ReportsMenuViewModel>();
+                    return Ioc.Default.GetService<ReportsMenuViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2905,7 +2887,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<LaboratoryPaymentOfInsuranceFeesViewModel>();
+                    return Ioc.Default.GetService<LaboratoryPaymentOfInsuranceFeesViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2920,7 +2902,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ExciseTaxViewModel>();
+                    return Ioc.Default.GetService<ExciseTaxViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2935,7 +2917,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SearchIndiactivePriceForExciseGoodsViewModel>();
+                    return Ioc.Default.GetService<SearchIndiactivePriceForExciseGoodsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2950,7 +2932,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TahqaqScanPageViewModel>();
+                    return Ioc.Default.GetService<TahqaqScanPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2965,7 +2947,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxCalculatorViewModel>();
+                    return Ioc.Default.GetService<TaxCalculatorViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2980,7 +2962,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<E_DeclerationViewModel>();
+                    return Ioc.Default.GetService<E_DeclerationViewModel>();
                 }
                 catch (Exception)
                 {
@@ -2995,7 +2977,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<HomeViewModel>();
+                    return Ioc.Default.GetService<HomeViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3010,7 +2992,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<RateUsViewModel>();
+                    return Ioc.Default.GetService<RateUsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3025,7 +3007,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<CustomLoginViewModel>();
+                    return Ioc.Default.GetService<CustomLoginViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3040,7 +3022,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TransactionReceptionViewModel>();
+                    return Ioc.Default.GetService<TransactionReceptionViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3055,7 +3037,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<IAMLoginViewModel>();
+                    return Ioc.Default.GetService<IAMLoginViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3070,7 +3052,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EDeclerationViewModel>();
+                    return Ioc.Default.GetService<EDeclerationViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3084,7 +3066,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<CustomsPaymentViewModel>();
+                    return Ioc.Default.GetService<CustomsPaymentViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3098,7 +3080,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AboutZakatyViewModel>();
+                    return Ioc.Default.GetService<AboutZakatyViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3113,7 +3095,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<CustomServiceMenuViewModel>();
+                    return Ioc.Default.GetService<CustomServiceMenuViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3127,7 +3109,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ChatViewModel>();
+                    return Ioc.Default.GetService<ChatViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3141,7 +3123,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<CustomFeesFormViewModel>();
+                    return Ioc.Default.GetService<CustomFeesFormViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3155,7 +3137,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<FasahLoginViewModel>();
+                    return Ioc.Default.GetService<FasahLoginViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3170,7 +3152,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<InquiryaboutCustomsIssuesViewModel>();
+                    return Ioc.Default.GetService<InquiryaboutCustomsIssuesViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3187,7 +3169,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<FilesUploadPopUpViewModel>();
+                    return Ioc.Default.GetService<FilesUploadPopUpViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3208,7 +3190,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NewYesorNoPageViewModel>();
+                    return Ioc.Default.GetService<NewYesorNoPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3229,7 +3211,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<InstalmentPlanViewModel>();
+                    return Ioc.Default.GetService<InstalmentPlanViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3250,7 +3232,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATInstalmentPlanViewModel>();
+                    return Ioc.Default.GetService<VATInstalmentPlanViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3267,7 +3249,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATInstalmentPlanViewModel>();
+                    return Ioc.Default.GetService<VATInstalmentPlanViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3285,7 +3267,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATInstalmentPlanListViewModel>();
+                    return Ioc.Default.GetService<VATInstalmentPlanListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3304,7 +3286,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<InstructionsBottomPopUpViewModel>();
+                    return Ioc.Default.GetService<InstructionsBottomPopUpViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3321,7 +3303,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<MorePopUpViewModelRTwo>();
+                    return Ioc.Default.GetService<MorePopUpViewModelRTwo>();
                 }
                 catch (Exception)
                 {
@@ -3338,7 +3320,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<MyBillsMultiplePayableListViewModel>();
+                    return Ioc.Default.GetService<MyBillsMultiplePayableListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3354,7 +3336,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<AddNotePopUpViewModel>();
+                    return Ioc.Default.GetService<AddNotePopUpViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3370,7 +3352,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ViewNotePopUpViewModel>();
+                    return Ioc.Default.GetService<ViewNotePopUpViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3389,7 +3371,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
+                    return Ioc.Default.GetService<ZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3407,7 +3389,7 @@ namespace ZATCAMAUI.Core.Helper
                 try
                 {
 
-                    return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
+                    return Ioc.Default.GetService<ZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3424,7 +3406,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanListViewModel>();
+                    return Ioc.Default.GetService<ZakatInstalmentPlanListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3441,7 +3423,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
+                    return Ioc.Default.GetService<OldZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3458,7 +3440,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
+                    return Ioc.Default.GetService<OldZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3474,7 +3456,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanListViewModel>();
+                    return Ioc.Default.GetService<OldZakatInstalmentPlanListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3496,7 +3478,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ContractReleaseViewModel>();
+                    return Ioc.Default.GetService<ContractReleaseViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3513,7 +3495,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ContractReleaseListViewModel>();
+                    return Ioc.Default.GetService<ContractReleaseListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3534,7 +3516,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ChangeFillingPeriodViewModel>();
+                    return Ioc.Default.GetService<ChangeFillingPeriodViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3550,7 +3532,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ChangeFillingPeriodViewModel>();
+                    return Ioc.Default.GetService<ChangeFillingPeriodViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3567,7 +3549,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ChangeFillingPeriodListViewModel>();
+                    return Ioc.Default.GetService<ChangeFillingPeriodListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3585,7 +3567,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VatReviewViewModel>();
+                    return Ioc.Default.GetService<VatReviewViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3602,7 +3584,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VatReviewViewModel>();
+                    return Ioc.Default.GetService<VatReviewViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3618,7 +3600,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VatReviewListViewModel>();
+                    return Ioc.Default.GetService<VatReviewListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3636,7 +3618,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ObjectionViewModel>();
+                    return Ioc.Default.GetService<ObjectionViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3667,7 +3649,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatObjectionsListViewModel>();
+                    return Ioc.Default.GetService<ZakatObjectionsListViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3684,7 +3666,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
+                    return Ioc.Default.GetService<ZakatObjectionViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3700,7 +3682,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
+                    return Ioc.Default.GetService<ZakatObjectionViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3719,7 +3701,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatDeregistrationPageViewModel>();
+                    return Ioc.Default.GetService<ZakatDeregistrationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3735,7 +3717,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TaxEvasionReportDetailPageViewModel>();
+                    return Ioc.Default.GetService<TaxEvasionReportDetailPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3752,7 +3734,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
+                    return Ioc.Default.GetService<TINDeregistrationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3769,7 +3751,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<CalendarPickerPageViewModel>();
+                    return Ioc.Default.GetService<CalendarPickerPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3785,7 +3767,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<PickerPageViewModel>();
+                    return Ioc.Default.GetService<PickerPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3801,7 +3783,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
+                    return Ioc.Default.GetService<ZakatRegistrationDetailsListPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3817,7 +3799,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<GeneralServicesViewModel>();
+                    return Ioc.Default.GetService<GeneralServicesViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3834,7 +3816,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatRegistrationTaxPayerDetailsPageViewModel>();
+                    return Ioc.Default.GetService<ZakatRegistrationTaxPayerDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3851,7 +3833,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatRegistrationOutletsDetailsPageViewModel>();
+                    return Ioc.Default.GetService<ZakatRegistrationOutletsDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3868,7 +3850,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ZakatRegistrationFinancialDetailsPageViewModel>();
+                    return Ioc.Default.GetService<ZakatRegistrationFinancialDetailsPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3885,7 +3867,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VATReturnSuccessfullPageViewModel>();
+                    return Ioc.Default.GetService<VATReturnSuccessfullPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3902,7 +3884,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<VatReturnNewSuccessViewModel>();
+                    return Ioc.Default.GetService<VatReturnNewSuccessViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3919,7 +3901,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<MorePopUpPageViewModel>();
+                    return Ioc.Default.GetService<MorePopUpPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3936,7 +3918,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ShowVatInformationConfirmationPageViewModel>();
+                    return Ioc.Default.GetService<ShowVatInformationConfirmationPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3954,7 +3936,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<RefundAccountPopupPageViewModel>();
+                    return Ioc.Default.GetService<RefundAccountPopupPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3970,7 +3952,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<NewAccountPopPageViewModel>();
+                    return Ioc.Default.GetService<NewAccountPopPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -3987,7 +3969,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<SubmitReportViewModel>();
+                    return Ioc.Default.GetService<SubmitReportViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4001,7 +3983,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<MyReportsViewModel>();
+                    return Ioc.Default.GetService<MyReportsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4015,7 +3997,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<LiveVideoViewModel>();
+                    return Ioc.Default.GetService<LiveVideoViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4029,7 +4011,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ReportOTPViewModel>();
+                    return Ioc.Default.GetService<ReportOTPViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4043,7 +4025,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<BaseEDeclarationViewModel>();
+                    return Ioc.Default.GetService<BaseEDeclarationViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4057,7 +4039,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<BaseProductDeclarationViewModel>();
+                    return Ioc.Default.GetService<BaseProductDeclarationViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4071,7 +4053,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EDeclarationInformationsViewModel>();
+                    return Ioc.Default.GetService<EDeclarationInformationsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4085,7 +4067,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<RegisterZATCAUserViewModel>();
+                    return Ioc.Default.GetService<RegisterZATCAUserViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4099,7 +4081,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ReviewRequestViewModel>();
+                    return Ioc.Default.GetService<ReviewRequestViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4113,7 +4095,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EDeclarationPaymentViewModel>();
+                    return Ioc.Default.GetService<EDeclarationPaymentViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4127,7 +4109,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<EDeclerationSubmitModel>();
+                    return Ioc.Default.GetService<EDeclerationSubmitModel>();
                 }
                 catch (Exception)
                 {
@@ -4141,7 +4123,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<TrackShipmentViewModel>();
+                    return Ioc.Default.GetService<TrackShipmentViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4155,7 +4137,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<StateManager>();
+                    return Ioc.Default.GetService<StateManager>();
                 }
                 catch (Exception)
                 {
@@ -4169,7 +4151,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<UploadingPopupViewModel>();
+                    return Ioc.Default.GetService<UploadingPopupViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4183,7 +4165,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ListUserRequestsViewModel>();
+                    return Ioc.Default.GetService<ListUserRequestsViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4197,7 +4179,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ChangeMobileRequestViewModel>();
+                    return Ioc.Default.GetService<ChangeMobileRequestViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4211,7 +4193,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ChangeMobNafathPageViewMode>();
+                    return Ioc.Default.GetService<ChangeMobNafathPageViewMode>();
                 }
                 catch (Exception)
                 {
@@ -4225,7 +4207,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<UpdateManagerViewModel>();
+                    return Ioc.Default.GetService<UpdateManagerViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4239,7 +4221,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<BankAccountManagementPageViewModel>();
+                    return Ioc.Default.GetService<BankAccountManagementPageViewModel>();
                 }
                 catch (Exception)
                 {
@@ -4253,7 +4235,7 @@ namespace ZATCAMAUI.Core.Helper
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<BankAccountAddorUpdateIBANViewModel>();
+                    return Ioc.Default.GetService<BankAccountAddorUpdateIBANViewModel>();
                 }
                 catch (Exception)
                 {

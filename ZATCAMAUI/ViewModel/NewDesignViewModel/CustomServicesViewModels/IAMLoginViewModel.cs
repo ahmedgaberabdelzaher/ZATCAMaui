@@ -1,7 +1,8 @@
 ﻿using System.Web;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.AppConfigurations;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using ZATCAMAUI.Views.NewDesign.EDeclaration;
@@ -11,15 +12,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
     public class IAMLoginViewModel : BaseViewModel
     {
         string iAMWbViewSrc;
-        public string IAMWbViewSrc { get { return iAMWbViewSrc; } set { iAMWbViewSrc = value; RaisePropertyChanged(); } }
+        public string IAMWbViewSrc { get { return iAMWbViewSrc; } set { iAMWbViewSrc = value; OnPropertyChanged(); } }
 
         public int CommingFrom { get; set; }
 
         string priceText;
-        public string PriceText { get { return priceText; } set { priceText = value; RaisePropertyChanged(); } }
+        public string PriceText { get { return priceText; } set { priceText = value; OnPropertyChanged(); } }
 
         bool isNoUserShowMsg;
-        public bool IsNoUserShowMsg { get { return isNoUserShowMsg; } set { isNoUserShowMsg = value; RaisePropertyChanged(); } }
+        public bool IsNoUserShowMsg { get { return isNoUserShowMsg; } set { isNoUserShowMsg = value; OnPropertyChanged(); } }
 
         ZATCAUserRegisterModel User = new ZATCAUserRegisterModel();
 

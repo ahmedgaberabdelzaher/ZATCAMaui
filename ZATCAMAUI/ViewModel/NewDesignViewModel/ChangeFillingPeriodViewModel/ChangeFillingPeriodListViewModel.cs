@@ -1,7 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ChageFillingPeriodModel;
@@ -26,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 if (_isBackVisible == value) return;
                 _isBackVisible = value;
-                RaisePropertyChanged("IsBackVisible");
+                OnPropertyChanged("IsBackVisible");
             }
         }
 
@@ -42,7 +43,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isDobVisible == value) return;
 
                 _isDobVisible = value;
-                RaisePropertyChanged("IsDobVisible");
+                OnPropertyChanged("IsDobVisible");
             }
         }
 
@@ -58,7 +59,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isMyRequestsViewEnabled == value) return;
 
                 _isMyRequestsViewEnabled = value;
-                RaisePropertyChanged("IsMyRequestsViewEnabled");
+                OnPropertyChanged("IsMyRequestsViewEnabled");
             }
         }
 
@@ -74,7 +75,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isSummaryViewEnabled == value) return;
 
                 _isSummaryViewEnabled = value;
-                RaisePropertyChanged("IsSummaryViewEnabled");
+                OnPropertyChanged("IsSummaryViewEnabled");
             }
         }
 
@@ -88,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_contactPersonName == value) return;
 
                 _contactPersonName = value;
-                RaisePropertyChanged("ContactPersonName");
+                OnPropertyChanged("ContactPersonName");
             }
         }
 
@@ -104,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_currentFrequency == value) return;
 
                 _currentFrequency = value;
-                RaisePropertyChanged("CurrentFrequency");
+                OnPropertyChanged("CurrentFrequency");
             }
         }
 
@@ -120,7 +121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_newFrequency == value) return;
 
                 _newFrequency = value;
-                RaisePropertyChanged("NewFrequency");
+                OnPropertyChanged("NewFrequency");
             }
         }
 
@@ -134,7 +135,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_effectiveDatePicked == value) return;
 
                 _effectiveDatePicked = value;
-                RaisePropertyChanged("EffectiveDatePicked");
+                OnPropertyChanged("EffectiveDatePicked");
             }
         }
 
@@ -148,7 +149,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_idNumber == value) return;
 
                 _idNumber = value;
-                RaisePropertyChanged("IDNumber");
+                OnPropertyChanged("IDNumber");
             }
         }
 
@@ -162,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_pickedDate == value) return;
 
                 _pickedDate = value;
-                RaisePropertyChanged("PickedDate");
+                OnPropertyChanged("PickedDate");
             }
         }
 
@@ -176,7 +177,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_idType == value) return;
 
                 _idType = value;
-                RaisePropertyChanged("IDType");
+                OnPropertyChanged("IDType");
             }
         }
 
@@ -193,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     return;
                 }
                 _myRequestsListViewData = value;
-                RaisePropertyChanged("MyRequestsListViewData");
+                OnPropertyChanged("MyRequestsListViewData");
             }
         }
 
@@ -211,7 +212,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 yearsattachmentsListViewData = value;
-                RaisePropertyChanged("YearsattachmentsListViewData");
+                OnPropertyChanged("YearsattachmentsListViewData");
             }
         }
 
@@ -229,7 +230,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 monthsattachmentsListViewData = value;
-                RaisePropertyChanged("MonthsattachmentsListViewData");
+                OnPropertyChanged("MonthsattachmentsListViewData");
             }
         }
 
@@ -247,7 +248,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
 
                 otherAttachmentsListViewData = value;
-                RaisePropertyChanged("OtherAttachmentsListViewData");
+                OnPropertyChanged("OtherAttachmentsListViewData");
             }
         }
 
@@ -261,22 +262,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public ChangeFillingPeriodListViewModel(INavigationService navigationService, IDialogService dialogService) : base(
             navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
-            CloseClick = new Command(async () =>
+            CloseClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });
 
 
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 if (IsMyRequestsViewEnabled)
                 {
@@ -308,7 +301,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_vATChangeFillingSummaryData == value) return;
 
                 _vATChangeFillingSummaryData = value;
-                RaisePropertyChanged("vATChangingSummaryData");
+                OnPropertyChanged("vATChangingSummaryData");
             }
         }
 
@@ -325,7 +318,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isLoading == value) return;
 
                 _isLoading = value;
-                RaisePropertyChanged("IsLoading");
+                OnPropertyChanged("IsLoading");
             }
         }
 

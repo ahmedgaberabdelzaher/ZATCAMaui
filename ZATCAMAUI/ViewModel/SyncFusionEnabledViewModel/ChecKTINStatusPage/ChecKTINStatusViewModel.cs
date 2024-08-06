@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using System.Globalization;
 using Newtonsoft.Json;
@@ -8,14 +8,13 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
 {
 
     public class ChecKTINStatusViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
         public ICommand OnCloseClick { get; set; }
         public ICommand OnClickLessOrMore { get; set; }
@@ -30,7 +29,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _isios = value;
-                RaisePropertyChanged("Isios");
+                OnPropertyChanged("Isios");
             }
         }
         private bool _isAndroid = false;
@@ -43,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _isAndroid = value;
-                RaisePropertyChanged("IsAndroid");
+                OnPropertyChanged("IsAndroid");
             }
         }
         private string _TIN = string.Empty;
@@ -56,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _TIN = value;
-                RaisePropertyChanged("TIN");
+                OnPropertyChanged("TIN");
             }
         }
         private string _TINStatus = string.Empty;
@@ -69,7 +68,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _TINStatus = value;
-                RaisePropertyChanged("TINStatus");
+                OnPropertyChanged("TINStatus");
             }
         }
         private string _LastUpdate = string.Empty;
@@ -82,7 +81,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _LastUpdate = value;
-                RaisePropertyChanged("LastUpdate");
+                OnPropertyChanged("LastUpdate");
             }
         }
         private bool _isLabelVisible = false;
@@ -95,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _isLabelVisible = value;
-                RaisePropertyChanged("IsLabelVisible");
+                OnPropertyChanged("IsLabelVisible");
             }
         }
         private bool _isVisibleListItems = false;
@@ -108,7 +107,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _isVisibleListItems = value;
-                RaisePropertyChanged("IsVisibleListItems");
+                OnPropertyChanged("IsVisibleListItems");
             }
         }
         //@Divya Jannapureddy adding line number 105 to 118
@@ -122,7 +121,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _isShowLessMoreLblVisible = value;
-                RaisePropertyChanged("IsShowLessMoreLblVisible");
+                OnPropertyChanged("IsShowLessMoreLblVisible");
             }
         }
         private TINStatus _listTINStatus;
@@ -135,7 +134,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _listTINStatus = value;
-                RaisePropertyChanged("ListTINStatus");
+                OnPropertyChanged("ListTINStatus");
             }
         }
         private List<ConsumerRegisteration> _consumerRegisteration;
@@ -148,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _consumerRegisteration = value;
-                RaisePropertyChanged("ConsumerRegisteration");
+                OnPropertyChanged("ConsumerRegisteration");
             }
         }
         private string _showLessOrMore = AppResources.ZShowmoredetails;
@@ -161,20 +160,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
             set
             {
                 _showLessOrMore = value;
-                RaisePropertyChanged("ShowLessOrMore");
+                OnPropertyChanged("ShowLessOrMore");
             }
         }
         //@Divya Jannapureddy adding line number
         //Replace the below method
         public ChecKTINStatusViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            _dialogService = dialogService;
-            _navigationService = navigationService;
-            //OnCloseClick = new Command(async () =>
-            //{
-            //    _navigationService.NavigateTo(App.DashboardPageView);
-            //});
-            OnClickLessOrMore = new Command(async () =>
+            OnClickLessOrMore = new Command( () =>
             {
                 ShowLessOrMore = string.Empty;
                 if (IsVisibleListItems == false)

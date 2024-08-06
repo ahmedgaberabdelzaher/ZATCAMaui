@@ -1125,6 +1125,21 @@
                                         FontFamily="{StaticResource SomarBold}"
                                         Text="{Binding GCCIDTypeIdNumberValue}"
                                         TextColor="{StaticResource NeutralBlack}" />
+                                    <StackLayout HorizontalOptions="StartAndExpand"
+                                                 Orientation="Vertical"
+                                                 Grid.Row="2"
+                                                 Grid.Column="0"
+                                                 IsVisible="{Binding ShowIqamaType}">
+
+                                         <Label
+                                            Text="{x:Static ResourceManager:AppResources.IqamaType}"
+                                            Style="{StaticResource forLightLabel}"/>
+
+                                         <Label Text="{Binding IqamaDesc}"
+                                                             TextColor="{StaticResource NeutralBlack}"
+                                                             FontFamily="{StaticResource SomarBold}" />
+                                    </StackLayout>
+
                                 </Grid>
                                 <StackLayout Grid.Row="4" HorizontalOptions="FillAndExpand">
                                     <Label Style="{StaticResource forLightLabel}">

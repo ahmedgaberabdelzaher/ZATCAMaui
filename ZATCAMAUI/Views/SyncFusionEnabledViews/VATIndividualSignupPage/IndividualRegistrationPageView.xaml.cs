@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Newtonsoft.Json;
 using Mopups.Services;
 using Syncfusion.Maui.Picker;
@@ -34,7 +33,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 InitializeComponent();
 
                 viewModel = App.Locator.IndividualRegistrationPageView;
-                On<iOS>().SetUseSafeArea(true);
                 BindingContext = viewModel;
                 viewModel.IsHijriCal = false;
 
@@ -825,9 +823,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 base.OnAppearing();
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
                 idType.Text = "";
                 Number.Text = "";
                 Birthdt.Text = "";
@@ -848,9 +843,20 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 else
                                 {
                                     idType.Text = AppResources.VFCIqamaID;
+                                    if (viewModel.modelSSOID.results[0].AIqamaType.Length > 0)
+                                    {
+                                        viewModel.IqamaTypeDesc = viewModel.modelSSOID.results[0].AIqamaDesc;
+                                        viewModel.ShowIqamaTypeDesc = true;
+                                    }
+                                    else
+                                    {
+                                        viewModel.IqamaTypeDesc = "";
+                                        viewModel.ShowIqamaTypeDesc = false;
+                                    }
+
                                 }
 
-                                Number.Text = viewModel.modelSSOID.results[0].Idnumber;
+                        Number.Text = viewModel.modelSSOID.results[0].Idnumber;
                                 Birthdt.Text = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt);
                                 viewModel.DOBddyymm = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt); ;
                                 Firstname.Text = viewModel.modelSSOID.results[0].Firstname;

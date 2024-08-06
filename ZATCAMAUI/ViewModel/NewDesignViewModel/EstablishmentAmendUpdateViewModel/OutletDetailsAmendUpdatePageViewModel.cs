@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -13,6 +12,7 @@ using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using static ZATCAMAUI.Models.ErrorMessage;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 {
@@ -33,7 +33,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_listOutletTypes == value) return;
 
                 _listOutletTypes = value;
-                RaisePropertyChanged(nameof(ListOutletTypes));
+                OnPropertyChanged(nameof(ListOutletTypes));
             }
         }
         private string _selectedOutletType;
@@ -45,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_selectedOutletType == value) return;
 
                 _selectedOutletType = value;
-                RaisePropertyChanged(nameof(SelectedOutletType));
+                OnPropertyChanged(nameof(SelectedOutletType));
             }
         }
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
@@ -62,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             set
             {
                 _currentTab = value;
-                RaisePropertyChanged(nameof(currentTab));
+                OnPropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)value;
                 MarkComplete = (int)value == MaxIndex;
                 switch (value)
@@ -109,7 +109,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
             }
         }
 
@@ -123,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_selectedOutletTabText == value) return;
 
                 _selectedOutletTabText = value;
-                RaisePropertyChanged(nameof(SelectedOutletTabText));
+                OnPropertyChanged(nameof(SelectedOutletTabText));
             }
         }
 
@@ -136,7 +136,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_nxtButtonLabel == value) return;
 
                 _nxtButtonLabel = value;
-                RaisePropertyChanged(nameof(NxtButtonLabel));
+                OnPropertyChanged(nameof(NxtButtonLabel));
             }
         }
 
@@ -151,7 +151,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _outletName = value;
-                    RaisePropertyChanged(nameof(OutletName));
+                    OnPropertyChanged(nameof(OutletName));
                 }
             }
         }
@@ -166,7 +166,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _outletActNumber = value;
-                    RaisePropertyChanged(nameof(OutletActNumber));
+                    OnPropertyChanged(nameof(OutletActNumber));
                 }
             }
         }
@@ -184,8 +184,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _houseNumber = value;
                     _houseNumberSame = value;
-                    RaisePropertyChanged(nameof(HouseNumber));
-                    RaisePropertyChanged(nameof(HouseNumberSame));
+                    OnPropertyChanged(nameof(HouseNumber));
+                    OnPropertyChanged(nameof(HouseNumberSame));
                 }
             }
         }
@@ -201,8 +201,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _buildingNumber = value;
                     _buildingNumberSame = value;
-                    RaisePropertyChanged(nameof(BuildingNumber));
-                    RaisePropertyChanged(nameof(BuildingNumberSame));
+                    OnPropertyChanged(nameof(BuildingNumber));
+                    OnPropertyChanged(nameof(BuildingNumberSame));
                 }
             }
         }
@@ -218,8 +218,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _floorNumber = value;
                     _floorNumberSame = value;
-                    RaisePropertyChanged(nameof(FloorNumber));
-                    RaisePropertyChanged(nameof(FloorNumberSame));
+                    OnPropertyChanged(nameof(FloorNumber));
+                    OnPropertyChanged(nameof(FloorNumberSame));
                 }
             }
         }
@@ -235,8 +235,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _street = value;
                     _streetSame = value;
-                    RaisePropertyChanged(nameof(Street));
-                    RaisePropertyChanged(nameof(StreetSame));
+                    OnPropertyChanged(nameof(Street));
+                    OnPropertyChanged(nameof(StreetSame));
                 }
             }
         }
@@ -252,8 +252,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _quarter = value;
                     _quarterSame = value;
-                    RaisePropertyChanged(nameof(Quarter));
-                    RaisePropertyChanged(nameof(QuarterSame));
+                    OnPropertyChanged(nameof(Quarter));
+                    OnPropertyChanged(nameof(QuarterSame));
                 }
             }
         }
@@ -269,8 +269,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _postalCode = value;
                     _postalCodeSame = value;
-                    RaisePropertyChanged(nameof(PostalCode));
-                    RaisePropertyChanged(nameof(PostalCodeSame));
+                    OnPropertyChanged(nameof(PostalCode));
+                    OnPropertyChanged(nameof(PostalCodeSame));
                 }
             }
         }
@@ -286,8 +286,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _addNumber = value;
                     _addNumberSame = value;
-                    RaisePropertyChanged(nameof(AddNumber));
-                    RaisePropertyChanged(nameof(AddNumberSame));
+                    OnPropertyChanged(nameof(AddNumber));
+                    OnPropertyChanged(nameof(AddNumberSame));
                 }
             }
         }
@@ -303,8 +303,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _country = value;
                     _countrySame = value;
-                    RaisePropertyChanged(nameof(Country));
-                    RaisePropertyChanged(nameof(CountrySame));
+                    OnPropertyChanged(nameof(Country));
+                    OnPropertyChanged(nameof(CountrySame));
                 }
             }
         }
@@ -320,8 +320,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _provinance = value;
                     _provinanceSame = value;
-                    RaisePropertyChanged(nameof(Provinance));
-                    RaisePropertyChanged(nameof(ProvinanceSame));
+                    OnPropertyChanged(nameof(Provinance));
+                    OnPropertyChanged(nameof(ProvinanceSame));
                 }
             }
         }
@@ -337,8 +337,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 {
                     _city = value;
                     _citySame = value;
-                    RaisePropertyChanged(nameof(City));
-                    RaisePropertyChanged(nameof(CitySame));
+                    OnPropertyChanged(nameof(City));
+                    OnPropertyChanged(nameof(CitySame));
                 }
             }
         }
@@ -351,7 +351,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_postalAsPhysical == value) return;
 
                 _postalAsPhysical = value;
-                RaisePropertyChanged(nameof(PostalAsPhysical));
+                OnPropertyChanged(nameof(PostalAsPhysical));
                 if (value)
                 {
                     HouseNumberSame = HouseNumber;
@@ -391,7 +391,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _houseNumberSame = value;
-                    RaisePropertyChanged(nameof(HouseNumberSame));
+                    OnPropertyChanged(nameof(HouseNumberSame));
                 }
             }
         }
@@ -406,7 +406,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _buildingNumberSame = value;
-                    RaisePropertyChanged(nameof(BuildingNumberSame));
+                    OnPropertyChanged(nameof(BuildingNumberSame));
                 }
             }
         }
@@ -421,7 +421,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _floorNumberSame = value;
-                    RaisePropertyChanged(nameof(FloorNumberSame));
+                    OnPropertyChanged(nameof(FloorNumberSame));
                 }
             }
         }
@@ -436,7 +436,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _streetSame = value;
-                    RaisePropertyChanged(nameof(StreetSame));
+                    OnPropertyChanged(nameof(StreetSame));
                 }
             }
         }
@@ -451,7 +451,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _quarterSame = value;
-                    RaisePropertyChanged(nameof(QuarterSame));
+                    OnPropertyChanged(nameof(QuarterSame));
                 }
             }
         }
@@ -466,7 +466,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _postalCodeSame = value;
-                    RaisePropertyChanged(nameof(PostalCodeSame));
+                    OnPropertyChanged(nameof(PostalCodeSame));
                 }
             }
         }
@@ -481,7 +481,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _addNumberSame = value;
-                    RaisePropertyChanged(nameof(AddNumberSame));
+                    OnPropertyChanged(nameof(AddNumberSame));
                 }
             }
         }
@@ -496,7 +496,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _countrySame = value;
-                    RaisePropertyChanged(nameof(CountrySame));
+                    OnPropertyChanged(nameof(CountrySame));
                 }
             }
         }
@@ -511,7 +511,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _provinanceSame = value;
-                    RaisePropertyChanged(nameof(ProvinanceSame));
+                    OnPropertyChanged(nameof(ProvinanceSame));
                 }
             }
         }
@@ -526,7 +526,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (value != null)
                 {
                     _citySame = value;
-                    RaisePropertyChanged(nameof(CitySame));
+                    OnPropertyChanged(nameof(CitySame));
                 }
             }
         }
@@ -540,7 +540,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_outletDropDowns == value) return;
 
                 _outletDropDowns = value;
-                RaisePropertyChanged(nameof(OutletDropDowns));
+                OnPropertyChanged(nameof(OutletDropDowns));
             }
         }
         private bool _canExecute = true;
@@ -552,7 +552,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_canExecute == value) return;
 
                 _canExecute = value;
-                RaisePropertyChanged(nameof(CanExecute));
+                OnPropertyChanged(nameof(CanExecute));
             }
         }
         private GenericPickerModel _pickerModel { get; set; }
@@ -616,7 +616,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                 }
 
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
         public OutletDetails OutletDetails { get; set; }

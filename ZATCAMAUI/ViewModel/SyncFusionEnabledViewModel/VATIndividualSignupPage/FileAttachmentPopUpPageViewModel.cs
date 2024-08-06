@@ -1,5 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Newtonsoft.Json;
 using Mopups.Services;
 using System.Collections.ObjectModel;
@@ -12,13 +12,13 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
 
     public class FileAttachmentPopUpPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoButtonClick { get; set; }
 
@@ -43,7 +43,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _vATAttachmentObj = value;
-                RaisePropertyChanged("VATAttachmentObj");
+                OnPropertyChanged("VATAttachmentObj");
             }
 
         }
@@ -61,7 +61,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isImpoterAndExporter = value;
-                RaisePropertyChanged("IsImpoterAndExporter");
+                OnPropertyChanged("IsImpoterAndExporter");
             }
         }
 
@@ -94,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 }
 
-                RaisePropertyChanged("IsSwitchToggled");
+                OnPropertyChanged("IsSwitchToggled");
             }
         }
 
@@ -108,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isEnableSwitchToggled = value;
-                RaisePropertyChanged("IsEnableSwitchToggled");
+                OnPropertyChanged("IsEnableSwitchToggled");
             }
         }
 
@@ -122,7 +122,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isEnableSwitchToggledForButton = value;
-                RaisePropertyChanged("IsEnableSwitchToggledForButton");
+                OnPropertyChanged("IsEnableSwitchToggledForButton");
             }
         }
 
@@ -137,7 +137,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _attachmentSizeVisibility = value;
-                RaisePropertyChanged("AttachmentSizeVisibility");
+                OnPropertyChanged("AttachmentSizeVisibility");
             }
         }
         private VATDeclaration _vATDeclarationDataForAttch;
@@ -150,7 +150,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _vATDeclarationDataForAttch = value;
-                RaisePropertyChanged("VATDeclarationDataForAttch");
+                OnPropertyChanged("VATDeclarationDataForAttch");
             }
         }
         private string _dateSubmitted;
@@ -163,7 +163,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _dateSubmitted = value;
-                RaisePropertyChanged("DateSubmitted");
+                OnPropertyChanged("DateSubmitted");
             }
         }
         private string _attachmentName = "";
@@ -176,7 +176,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         public decimal _attachmentSize = 0;
@@ -189,7 +189,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public decimal _totalAttachmentSize = 0;
@@ -202,7 +202,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
 
@@ -216,7 +216,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _attachmentCount = value;
-                RaisePropertyChanged("AttachmentCount");
+                OnPropertyChanged("AttachmentCount");
             }
         }
         private ObservableCollection<Attachment> _vatAttachmentsList;
@@ -229,7 +229,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _vatAttachmentsList = value;
-                RaisePropertyChanged("VatAttachmentsList");
+                OnPropertyChanged("VatAttachmentsList");
             }
         }
         private ObservableCollection<Attachment> _vatAttachmentsListtofilter;
@@ -242,7 +242,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _vatAttachmentsListtofilter = value;
-                RaisePropertyChanged("VatAttachmentsListtofilter");
+                OnPropertyChanged("VatAttachmentsListtofilter");
             }
         }
 
@@ -258,7 +258,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _attachmentList = value;
 
-                RaisePropertyChanged("AttachmentList");
+                OnPropertyChanged("AttachmentList");
             }
         }
 
@@ -273,7 +273,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isShowAttachmentButton = value;
-                RaisePropertyChanged("IsShowAttachmentButton");
+                OnPropertyChanged("IsShowAttachmentButton");
             }
         }
 
@@ -287,7 +287,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _fileAttachments = value;
-                RaisePropertyChanged("FileAttachments");
+                OnPropertyChanged("FileAttachments");
             }
         }
 
@@ -301,7 +301,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _vATRegistrationDetailsForAttach = value;
-                RaisePropertyChanged("VATRegistrationDetailsForAttach");
+                OnPropertyChanged("VATRegistrationDetailsForAttach");
             }
         }
 
@@ -315,7 +315,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isComeFromForAttachment = value;
-                RaisePropertyChanged("IsComeFromForAttachment");
+                OnPropertyChanged("IsComeFromForAttachment");
             }
         }
 
@@ -329,7 +329,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _docTypeString = value;
-                RaisePropertyChanged("DocTypeString");
+                OnPropertyChanged("DocTypeString");
             }
         }
 
@@ -343,7 +343,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isComeForWhichAttachment = value;
-                RaisePropertyChanged("IsComeForWhichAttachment");
+                OnPropertyChanged("IsComeForWhichAttachment");
             }
         }
 
@@ -352,11 +352,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #endregion
         public FileAttachmentPopUpPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
             FileAttachments = new ObservableCollection<string>();
             OnAttachmentClick = new Command(async () =>
             {

@@ -201,23 +201,16 @@
                                 </Label>
 
                                 <!--  Phone Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                    InputViewPadding="0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <controls:GAZTBorderlessEntry
-                                        Keyboard="Telephone"
-                                        Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding MobileNumber}"
-                                        TextColor="#58595B" />
+                                <controls:CustomSfTextInputView >
+                                    <controls:CustomSfTextInputView.TextInputView>
+                                        <controls:GAZTBorderlessEntry
+                                            Keyboard="Telephone"
+                                            Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding MobileNumber}"
+                                            TextColor="#58595B" />
+                                    </controls:CustomSfTextInputView.TextInputView>
+
                                     <inputLayout:SfTextInputLayout.LeadingView>
                                         <StackLayout
                                             Padding="2"
@@ -243,7 +236,7 @@
 
                                         </StackLayout>
                                     </inputLayout:SfTextInputLayout.LeadingView>
-                                </inputLayout:SfTextInputLayout>
+                                </controls:CustomSfTextInputView>
 
                                 <Label
                                     Margin="3,-10,3,3"
@@ -268,24 +261,17 @@
                                 </Label>
 
                                 <!--  Email Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <controls:GAZTBorderlessEntry
+                                <controls:CustomSfTextInputView >
+                                    <controls:CustomSfTextInputView.TextInputView>
+                                        <controls:GAZTBorderlessEntry
                                         Keyboard="Email"
                                         Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitModel.travelerDeclaration.email}"
                                         TextColor="#58595B" />
-                                </inputLayout:SfTextInputLayout>
+                                    </controls:CustomSfTextInputView.TextInputView>
+
+                                </controls:CustomSfTextInputView>
                             </StackLayout>
 
                             <!--  Address Field  -->
@@ -304,24 +290,17 @@
                                 </Label>
 
                                 <!--  Address Entry  -->
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.AddressKSA}"
-                                    InputViewPadding="16,0,16,0"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="15"
-                                    Stroke="{StaticResource NeutralGreay}">
-                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <controls:GAZTBorderlessEntry
-                                        Keyboard="Text"
-                                        Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding SubmitModel.travelerDeclaration.address}"
-                                        TextColor="#58595B" />
-                                </inputLayout:SfTextInputLayout>
+                                <controls:CustomSfTextInputView >
+                                    <controls:CustomSfTextInputView.TextInputView>
+                                        <controls:GAZTBorderlessEntry
+                                            Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding SubmitModel.travelerDeclaration.address}"
+                                            TextColor="#58595B" />
+                                    </controls:CustomSfTextInputView.TextInputView>
+
+                                </controls:CustomSfTextInputView>
                             </StackLayout>
 
                             <!--  GoTo Success Button  -->

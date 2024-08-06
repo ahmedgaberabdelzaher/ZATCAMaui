@@ -6,15 +6,7 @@ namespace ZATCAMAUI.Core.CustomControls
     {
         public ListBottomSheet()
         {
-            try
-            {
-                InitializeComponent();
-            }
-            catch (Exception)
-            {
-
-
-            }
+            InitializeComponent();
         }
     }
 }

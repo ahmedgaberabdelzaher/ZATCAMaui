@@ -1,4 +1,4 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Newtonsoft.Json;
 using Mopups.Services;
 using System.Collections.ObjectModel;
@@ -8,6 +8,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -32,7 +33,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_zakatCorres == value) return;
                 _zakatCorres = value;
-                RaisePropertyChanged("ZakatCorres");
+                OnPropertyChanged("ZakatCorres");
             }
         }
 
@@ -48,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vATCorres == value) return;
 
                 _vATCorres = value;
-                RaisePropertyChanged("VATCorres");
+                OnPropertyChanged("VATCorres");
             }
         }
 
@@ -64,7 +65,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_eTCorres == value) return;
 
                 _eTCorres = value;
-                RaisePropertyChanged("ETCorres");
+                OnPropertyChanged("ETCorres");
             }
         }
 
@@ -86,7 +87,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     // FilterIfTypeAndStausFilterSelected();
                 }
-                RaisePropertyChanged("SelectedChipFilterItemList");
+                OnPropertyChanged("SelectedChipFilterItemList");
             }
         }
         public ObservableCollection<ChipModel> _chipDataFilterlist = null;
@@ -101,7 +102,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_chipDataFilterlist == value) return;
 
                 _chipDataFilterlist = value;
-                RaisePropertyChanged("ChipDataFilterlist");
+                OnPropertyChanged("ChipDataFilterlist");
             }
         }
 
@@ -117,7 +118,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_filterLabelText == value) return;
 
                 _filterLabelText = value;
-                RaisePropertyChanged("FilterLabelText");
+                OnPropertyChanged("FilterLabelText");
             }
         }
 
@@ -133,7 +134,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_listVATCorrespondance == value) return;
 
                 _listVATCorrespondance = value;
-                RaisePropertyChanged("ListVATCorrespondance");
+                OnPropertyChanged("ListVATCorrespondance");
             }
         }
         private string _CountLabel = AppResources.NDCount;
@@ -148,7 +149,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_CountLabel == value) return;
 
                 _CountLabel = value;
-                RaisePropertyChanged("CountLabel");
+                OnPropertyChanged("CountLabel");
             }
         }
         private int _Count = 0;
@@ -163,7 +164,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_Count == value) return;
 
                 _Count = value;
-                RaisePropertyChanged("Count");
+                OnPropertyChanged("Count");
             }
         }
         private List<CorrespondanceModel> _listAllCorrespondance = null;
@@ -178,7 +179,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_listAllCorrespondance == value) return;
 
                 _listAllCorrespondance = value;
-                RaisePropertyChanged("ListAllCorrespondance");
+                OnPropertyChanged("ListAllCorrespondance");
             }
         }
         private List<CorrespondanceModel> _listZAKATCorrespondance = null;
@@ -193,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_listZAKATCorrespondance == value) return;
 
                 _listZAKATCorrespondance = value;
-                RaisePropertyChanged("ListZAKATCorrespondance");
+                OnPropertyChanged("ListZAKATCorrespondance");
             }
         }
         private List<CorrespondanceModel> _listETCorrespondance = null;
@@ -208,7 +209,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_listETCorrespondance == value) return;
 
                 _listETCorrespondance = value;
-                RaisePropertyChanged("ListETCorrespondance");
+                OnPropertyChanged("ListETCorrespondance");
             }
         }
 
@@ -224,7 +225,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_filterTaxTypeLabelText == value) return;
 
                 _filterTaxTypeLabelText = value;
-                RaisePropertyChanged("FilterTaxTypeLabelText");
+                OnPropertyChanged("FilterTaxTypeLabelText");
             }
         }
 
@@ -254,7 +255,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 }
 
-                RaisePropertyChanged("SelectedDropdownItem");
+                OnPropertyChanged("SelectedDropdownItem");
             }
         }
 
@@ -276,7 +277,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     FilterOnbasisOfChipSelectedItem();
                 }
 
-                RaisePropertyChanged("SelectedDropdownItem");
+                OnPropertyChanged("SelectedDropdownItem");
             }
         }
 
@@ -293,7 +294,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isVisibleFavourite == value) return;
 
                 _isVisibleFavourite = value;
-                RaisePropertyChanged("IsVisibleFavourite");
+                OnPropertyChanged("IsVisibleFavourite");
             }
         }
 
@@ -310,7 +311,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isListVisible == value) return;
 
                 _isListVisible = value;
-                RaisePropertyChanged("IsListVisible");
+                OnPropertyChanged("IsListVisible");
             }
         }
         private bool _isNoDataLableVisible = true;
@@ -325,7 +326,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 //if (_isNoDataLableVisible == value) return;
 
                 _isNoDataLableVisible = value;
-                RaisePropertyChanged("IsNoDataLableVisible");
+                OnPropertyChanged("IsNoDataLableVisible");
             }
         }
         private List<ReturnTypes> _filterListForDropDown;
@@ -340,7 +341,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_filterListForDropDown == value) return;
 
                 _filterListForDropDown = value;
-                RaisePropertyChanged("FilterListForDropDown");
+                OnPropertyChanged("FilterListForDropDown");
             }
         }
 
@@ -357,7 +358,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_taxTypeListForDropDown == value) return;
 
                 _taxTypeListForDropDown = value;
-                RaisePropertyChanged("TaxTypeListForDropDown");
+                OnPropertyChanged("TaxTypeListForDropDown");
             }
         }
 
@@ -402,7 +403,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsNoDataLableVisible = true;
 
                 }
-                RaisePropertyChanged("ListToDisplay");
+                OnPropertyChanged("ListToDisplay");
             }
         }
         #endregion

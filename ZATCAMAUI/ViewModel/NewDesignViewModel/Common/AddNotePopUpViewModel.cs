@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 {
@@ -9,8 +10,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
     public class AddNotePopUpViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnAddButtonClicked { get; set; }
         public ICommand OnClearButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
@@ -28,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             {
                 _noteText = value;
 
-                RaisePropertyChanged("NoteText");
+                OnPropertyChanged("NoteText");
             }
         }
 
@@ -43,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             {
                 isEdit = value;
 
-                RaisePropertyChanged("IsEdit");
+                OnPropertyChanged("IsEdit");
             }
         }
 
@@ -51,12 +50,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
         #region Constructor
         public AddNotePopUpViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();

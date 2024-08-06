@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.CustomServices;
 
@@ -43,7 +44,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 if (_PickerDeclarationDateToDisplay == value) return;
 
                 _PickerDeclarationDateToDisplay = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -58,7 +59,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isOpenHijriPicker = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -75,7 +76,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 insuranceCheckList = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -88,7 +89,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 requestNumber = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -101,7 +102,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 titleText = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -114,7 +115,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 isDetailsView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -128,7 +129,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 isMainView = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 

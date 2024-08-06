@@ -4,7 +4,7 @@
     Microsoft ResX Schema 
     
     Version 2.0
-    
+     
     The primary goals of this format is to allow a simple XML format 
     that is mostly human readable. The generation and parsing of the 
     various data types are done through the TypeConverter classes 
@@ -11028,7 +11028,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
       <!--Captcha Resources-->
   <data name="CaptchaCode" xml:space="preserve">
     <value>Captcha Code</value>
-  </data>
+  </data> 
   <data name="EnterCaptchaMsg" xml:space="preserve">
     <value>Please enter captcha code.</value>
   </data>
@@ -11036,5 +11036,50 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     <data name="ImporterYear" xml:space="preserve">
     <value>Importer Year</value>
   </data>
-
+    <!--CR6407 start-->
+  	<data name="IqamaType" xml:space="preserve">
+  <value>Iqama Type</value>
+  </data>
+   <!--CR6407 End-->
+    <!--CR4820 Start-->
+ <data name="GSTCCaseClassification" xml:space="preserve">
+    <value>Case Classification</value>
+  </data>
+	<data name="GSTCCaseDate" xml:space="preserve">
+    <value>Case Date</value>
+  </data>
+	<data name="GSTCCaseLink" xml:space="preserve">
+    <value>Case Link</value>
+  </data>
+	<data name="GSTCCaseNumber" xml:space="preserve">
+    <value>Case Number</value>
+  </data>
+	<data name="GSTCCaseStage" xml:space="preserve">
+    <value>Case Stage</value>
+  </data>
+	<data name="GSTCCaseSubject" xml:space="preserve">
+    <value>Case Subject</value>
+  </data>
+	<data name="GSTCCaseType" xml:space="preserve">
+    <value>Case Type</value>
+  </data>
+	<data name="GSTCDegreeOfLitigation" xml:space="preserve">
+    <value>Degree of Litigation</value>
+  </data>
+	<data name="GSTCEscalatedCasesGSTC" xml:space="preserve">
+    <value>Escalated cases in GSTC</value>
+  </data>
+	<data name="GSTCName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+	<data name="GSTCObjectionNumber" xml:space="preserve">
+    <value>Objection Number</value>
+  </data>
+	<data name="GSTCType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+	<data name="GSTCNoteText" xml:space="preserve">
+    <value>For More Information about the case , Please Visit GSTC website.</value>
+  </data>
+  <!--CR4820 End-->
 </root>

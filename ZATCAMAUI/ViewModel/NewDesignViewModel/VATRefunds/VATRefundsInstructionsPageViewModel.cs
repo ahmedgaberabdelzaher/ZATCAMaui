@@ -1,9 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Text;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.VATRefunds;
@@ -30,7 +31,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
                 if (_vatRefundsModel == value) return;
                 _vatRefundsModel = value;
-                RaisePropertyChanged("VATRefundsModel");
+                OnPropertyChanged("VATRefundsModel");
             }
         }
 
@@ -47,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isInstructionsChecked == value) return;
 
                 _isInstructionsChecked = value;
-                RaisePropertyChanged("IsInstructionsChecked");
+                OnPropertyChanged("IsInstructionsChecked");
             }
         }
 
@@ -64,7 +65,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_isInstructionsVisible == value) return;
 
                 _isInstructionsVisible = value;
-                RaisePropertyChanged("IsInstructionsVisible");
+                OnPropertyChanged("IsInstructionsVisible");
             }
         }
 
@@ -81,21 +82,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 if (_vatRefundsDisplayDataModel == value) return;
 
                 _vatRefundsDisplayDataModel = value;
-                RaisePropertyChanged("VatRefundsDisplayDataModel");
+                OnPropertyChanged("VatRefundsDisplayDataModel");
             }
         }
 
         public VATRefundsInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();

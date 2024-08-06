@@ -2,13 +2,14 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 #if ANDROID
 using Microsoft.Maui.Handlers;
 #endif
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.TrackShipment;
@@ -22,61 +23,61 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         
         ObservableCollection<ShipmentStatus> shipmentStatusList = new ObservableCollection<ShipmentStatus>();
 
-        public ObservableCollection<ShipmentStatus> ShipmentStatusList { get { return shipmentStatusList; } set { shipmentStatusList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<ShipmentStatus> ShipmentStatusList { get { return shipmentStatusList; } set { shipmentStatusList = value; OnPropertyChanged(); } }
 
 
         ObservableCollection<BottomSheetModel> bottomSheetList = new ObservableCollection<BottomSheetModel>();
-        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; OnPropertyChanged(); } }
 
         public ObservableCollection<BottomSheetModel> TempBottomSheetList { get; set; } = new ObservableCollection<BottomSheetModel>();
 
         bool isShowBottomSheet;
-        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
+        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; OnPropertyChanged(); } }
 
         string headerTitle;
-        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
+        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; OnPropertyChanged(); } }
 
         string searchText;
-        public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
+        public string SearchText { get { return searchText; } set { searchText = value; OnPropertyChanged(); } }
 
         DrawShipmentTrack drawShipmentTrack = new DrawShipmentTrack();
-        public DrawShipmentTrack DrawShipmentTrack { get { return drawShipmentTrack; } set { drawShipmentTrack = value; RaisePropertyChanged(); } }
+        public DrawShipmentTrack DrawShipmentTrack { get { return drawShipmentTrack; } set { drawShipmentTrack = value; OnPropertyChanged(); } }
 
         string shipmentDeclarationNumber;
-        public string ShipmentDeclarationNumber { get { return shipmentDeclarationNumber; } set { shipmentDeclarationNumber = value; RaisePropertyChanged(); } }
+        public string ShipmentDeclarationNumber { get { return shipmentDeclarationNumber; } set { shipmentDeclarationNumber = value; OnPropertyChanged(); } }
 
         string declarationDateString= "dd-MM-yyyy";
-        public string DeclarationDateString { get { return declarationDateString; } set { declarationDateString = value; RaisePropertyChanged(); } }
+        public string DeclarationDateString { get { return declarationDateString; } set { declarationDateString = value; OnPropertyChanged(); } }
 
         string shipmentBillNumber;
-        public string ShipmentBillNumber { get { return shipmentBillNumber; } set { shipmentBillNumber = value; RaisePropertyChanged(); } }
+        public string ShipmentBillNumber { get { return shipmentBillNumber; } set { shipmentBillNumber = value; OnPropertyChanged(); } }
 
         string shipmentContainerNumber;
-        public string ShipmentContainerNumber { get { return shipmentContainerNumber; } set { shipmentContainerNumber = value; RaisePropertyChanged(); } }
+        public string ShipmentContainerNumber { get { return shipmentContainerNumber; } set { shipmentContainerNumber = value; OnPropertyChanged(); } }
 
         string selectedPortName;
-        public string SelectedPortName { get { return selectedPortName; } set { selectedPortName = value; RaisePropertyChanged(); } }
+        public string SelectedPortName { get { return selectedPortName; } set { selectedPortName = value; OnPropertyChanged(); } }
 
         int selectedPortId;
-        public int SelectedPortId { get { return selectedPortId; } set { selectedPortId = value; RaisePropertyChanged(); } }
+        public int SelectedPortId { get { return selectedPortId; } set { selectedPortId = value; OnPropertyChanged(); } }
 
         TrackShipmentModel trackShipmentResponse;
-        public TrackShipmentModel TrackShipmentResponse { get { return trackShipmentResponse; } set { trackShipmentResponse = value; RaisePropertyChanged(); } }
+        public TrackShipmentModel TrackShipmentResponse { get { return trackShipmentResponse; } set { trackShipmentResponse = value; OnPropertyChanged(); } }
 
         string statusTitle;
-        public string StatusTitle { get { return statusTitle; } set { statusTitle = value; RaisePropertyChanged(); } }
+        public string StatusTitle { get { return statusTitle; } set { statusTitle = value; OnPropertyChanged(); } }
 
         bool isExpressShipment;
-        public bool IsExpressShipment { get { return isExpressShipment; } set { isExpressShipment = value; RaisePropertyChanged(); } }
+        public bool IsExpressShipment { get { return isExpressShipment; } set { isExpressShipment = value; OnPropertyChanged(); } }
 
         bool hasExciseTax;
-        public bool HasExciseTax { get { return hasExciseTax; } set { hasExciseTax = value; RaisePropertyChanged(); } }
+        public bool HasExciseTax { get { return hasExciseTax; } set { hasExciseTax = value; OnPropertyChanged(); } }
 
         string shipmentImporterYear;
-        public string ShipmentImporterYear { get { return shipmentImporterYear; } set { shipmentImporterYear = value; RaisePropertyChanged(); } }
+        public string ShipmentImporterYear { get { return shipmentImporterYear; } set { shipmentImporterYear = value; OnPropertyChanged(); } }
 
         ObservableCollection<string> yearsList = new ObservableCollection<string>();
-        public ObservableCollection<string> YearsList { get { return yearsList; } set { yearsList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<string> YearsList { get { return yearsList; } set { yearsList = value; OnPropertyChanged(); } }
 
         #endregion Properties
 

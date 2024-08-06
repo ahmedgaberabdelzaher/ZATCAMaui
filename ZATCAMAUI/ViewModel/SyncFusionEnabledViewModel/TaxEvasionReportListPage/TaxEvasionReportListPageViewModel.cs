@@ -1,8 +1,8 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Views;
+﻿
+using CommunityToolkit.Mvvm.Input;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -11,8 +11,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
 {
     public class TaxEvasionReportListPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnCloseClicked_Tapped { get; set; }
         public ICommand BackButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
@@ -36,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
                     {
                         passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
                     }
-                    RaisePropertyChanged("SelectedTaxEvasionListItem");
+                    OnPropertyChanged("SelectedTaxEvasionListItem");
                 }
                 catch (Exception)
                 {
@@ -55,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             set
             {
                 _mobileNumber = value;
-                RaisePropertyChanged("MobileNumber");
+                OnPropertyChanged("MobileNumber");
             }
         }
         
@@ -69,7 +67,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             set
             {
                 _addIcon = value;
-                RaisePropertyChanged("AddIcon");
+                OnPropertyChanged("AddIcon");
             }
         }
         public bool SetNoDataLabelVisibilityforOpen
@@ -81,7 +79,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             set
             {
                 _setNoDataLabelVisibilityforOpen = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityforOpen");
+                OnPropertyChanged("SetNoDataLabelVisibilityforOpen");
             }
         }
         private bool _setNoDataLabelVisibilityforClose = false;
@@ -94,7 +92,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             set
             {
                 _setNoDataLabelVisibilityforClose = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityforClose");
+                OnPropertyChanged("SetNoDataLabelVisibilityforClose");
             }
         }
         private TaxEvasionReportDetails[] _taxEvasionReportList;
@@ -107,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             set
             {
                 _taxEvasionReportList = value;
-                RaisePropertyChanged("TERListReportbymobno");
+                OnPropertyChanged("TERListReportbymobno");
             }
         }
         private TaxEvasionReportDetails[] _taxEvasionReportListClosed;
@@ -120,7 +118,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             set
             {
                 _taxEvasionReportListClosed = value;
-                RaisePropertyChanged("TERListReportbymobnoClosed");
+                OnPropertyChanged("TERListReportbymobnoClosed");
             }
         }
         private List<TaxEvasionReport> _tERListReportbymobnoDummy;
@@ -133,21 +131,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPag
             set
             {
                 _tERListReportbymobnoDummy = value;
-                RaisePropertyChanged("TERListReportbymobnoDummy");
+                OnPropertyChanged("TERListReportbymobnoDummy");
             }
         }
         public TaxEvasionReportListPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             BackButtonClicked = new Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);

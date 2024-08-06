@@ -57,8 +57,11 @@
         public string Name2 { get; set; }
         public string BpkindDesc { get; set; }
         public string RegionDesc { get; set; }
+        public string IqamaType { get; set; }
+        public string IqamaDesc { get; set; }
+
     }
-    
+
     public class IDTypeModelRootObject
     {
         public IDTypeModelD d { get; set; }

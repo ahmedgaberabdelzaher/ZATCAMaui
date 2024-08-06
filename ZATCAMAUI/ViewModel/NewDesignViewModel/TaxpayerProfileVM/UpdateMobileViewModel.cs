@@ -1,7 +1,8 @@
 ﻿using System.Timers;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.TPProfile;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
     public class UpdateMobileViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
 
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
@@ -31,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _Arabictext = value;
-                RaisePropertyChanged("Arabictext");
+                OnPropertyChanged("Arabictext");
 
             }
         }
@@ -43,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _engText = value;
-                RaisePropertyChanged("engText");
+                OnPropertyChanged("engText");
 
             }
         }
@@ -55,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _isOTPEntryEnable = value;
-                RaisePropertyChanged("IsOTPEntryEnable");
+                OnPropertyChanged("IsOTPEntryEnable");
             }
         }
        
@@ -72,7 +71,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_maxDigids == value) return;
 
                 _maxDigids = value;
-                RaisePropertyChanged("MaxDigids");
+                OnPropertyChanged("MaxDigids");
             }
         }
 
@@ -97,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     MaxDigids = "15";
                 }
 
-                RaisePropertyChanged("CountryCode");
+                OnPropertyChanged("CountryCode");
             }
         }
 
@@ -113,7 +112,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_mobileCountryCode == value) return;
 
                 _mobileCountryCode = value;
-                RaisePropertyChanged("MobileCountryCode");
+                OnPropertyChanged("MobileCountryCode");
             }
         }
 
@@ -126,7 +125,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_CurrentMobileNumberEntryText == value) return;
 
                 _CurrentMobileNumberEntryText = value;
-                RaisePropertyChanged("CurrentMobileNumberEntryText");
+                OnPropertyChanged("CurrentMobileNumberEntryText");
             }
         }
 
@@ -179,7 +178,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
                     }
                 }
-                RaisePropertyChanged("NewMobileNumberEntryText");
+                OnPropertyChanged("NewMobileNumberEntryText");
             }
         }
 
@@ -206,7 +205,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                     }
                 }
 
-                RaisePropertyChanged("OTPFirstDigit");
+                OnPropertyChanged("OTPFirstDigit");
             }
         }
 
@@ -230,7 +229,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         OTPSecondDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPSecondDigit");
+                OnPropertyChanged("OTPSecondDigit");
             }
         }
 
@@ -254,7 +253,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         OTPThirdDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPThirdDigit");
+                OnPropertyChanged("OTPThirdDigit");
             }
         }
 
@@ -278,7 +277,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                         OTPFourthDigit = string.Empty;
                     }
                 }
-                RaisePropertyChanged("OTPFourthDigit");
+                OnPropertyChanged("OTPFourthDigit");
             }
         }
         // * End
@@ -295,7 +294,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_LblCountDownTimer == value) return;
 
                 _LblCountDownTimer = value;
-                RaisePropertyChanged("LblCountDownTimer");
+                OnPropertyChanged("LblCountDownTimer");
             }
         }
 
@@ -311,7 +310,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_OTPSentOnThisMobileNumber == value) return;
 
                 _OTPSentOnThisMobileNumber = value;
-                RaisePropertyChanged("OTPSentOnThisMobileNumber");
+                OnPropertyChanged("OTPSentOnThisMobileNumber");
             }
         }
 
@@ -327,7 +326,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_OTPSentOnThisMobileNumber2 == value) return;
 
                 _OTPSentOnThisMobileNumber2 = value;
-                RaisePropertyChanged("OTPSentOnThisMobileNumber2");
+                OnPropertyChanged("OTPSentOnThisMobileNumber2");
             }
         }
 
@@ -340,7 +339,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_BtnEnableFlag == value) return;
 
                 _BtnEnableFlag = value;
-                RaisePropertyChanged("BtnEnableFlag");
+                OnPropertyChanged("BtnEnableFlag");
             }
         }
 
@@ -356,7 +355,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_resendOTPTextColor == value) return;
 
                 _resendOTPTextColor = value;
-                RaisePropertyChanged("ResendOTPTextColor");
+                OnPropertyChanged("ResendOTPTextColor");
             }
         }
 
@@ -364,11 +363,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         public UpdateMobileViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
-            _navigationService = navigationService;
-
-            if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
-            _dialogService = dialogService;
         }
 
         // * Private methods

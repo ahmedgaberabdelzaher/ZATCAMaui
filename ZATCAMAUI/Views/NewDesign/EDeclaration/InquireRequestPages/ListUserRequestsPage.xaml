@@ -100,36 +100,27 @@
 
 
                         <!--  Search Entry  -->
-                        <inputLayout:SfTextInputLayout
-                            ContainerBackground="White"
-                            ContainerType="Outlined"
-                            Hint="{x:Static ResourceManager:AppResources.SearchRerfrenceID}"
-                            InputViewPadding="0"
-                            LeadingViewPosition="Inside"
-                            OutlineCornerRadius="10"
-                            Stroke="{StaticResource NeutralGreay}"
-                            VerticalOptions="Start">
-                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <inputLayout:LabelStyle TextColor="#B00020" />
-                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                            <custom:GAZTBorderlessEntry
-                                Keyboard="Text"
-                                Placeholder="{x:Static ResourceManager:AppResources.SearchRerfrenceID}"
-                                Style="{StaticResource DefaultEntry}"
-                                Text="{Binding SearchInput}"
-                                TextColor="#002447">
+                        <custom:CustomSfTextInputView >
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.SearchRerfrenceID}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SearchInput}"
+                                    TextColor="#002447">
 
-                                <custom:GAZTBorderlessEntry.Behaviors>
-                                    <xct:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="TextChanged" />
-                                </custom:GAZTBorderlessEntry.Behaviors>
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <xct:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
 
-                            </custom:GAZTBorderlessEntry>
+                                </custom:GAZTBorderlessEntry>
+                            </custom:CustomSfTextInputView.TextInputView>
 
                             <inputLayout:SfTextInputLayout.LeadingView>
                                 <Image Aspect="AspectFit" Source="reportSearchBar.png" />
                             </inputLayout:SfTextInputLayout.LeadingView>
 
-                        </inputLayout:SfTextInputLayout>
+                        </custom:CustomSfTextInputView>
 
                         <StackLayout
                             Margin="0,0,0,10"

@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Acr.UserDialogs;
 using ZATCAMAUI.Models.CustomServices.TraiffSection;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
@@ -19,7 +20,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             set
             {
                 searchRsltCount = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -34,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 traiffSections = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -48,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 traiffSectionsLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -63,7 +64,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 sectionNotesLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -77,7 +78,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 chapterNotesLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -92,7 +93,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedTraiffSections = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -107,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 traiffChapters = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -121,7 +122,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedTraiffChapters = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -135,7 +136,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 searchKey = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -150,7 +151,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 mainHarmonizedTariffs = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -164,7 +165,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedMainHarmonizedTariffs = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -179,7 +180,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 subHarmonizedTariffs = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -193,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedSubHarmonizedTariffs = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -215,7 +216,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     SearchRsltCount = 0;
                 }
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -229,7 +230,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedSearchResultLst = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -245,7 +246,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedSearchTariffs = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -262,7 +263,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 harmonizedTariffs = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -276,7 +277,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedHarmonizedTariffs = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -290,7 +291,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 harmonizedTariffslvl2 = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -304,7 +305,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedHarmonizedTariffslvl2 = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -318,7 +319,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 harmonizedTariffslvl3 = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -332,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedHarmonizedTariffslvl3 = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -346,7 +347,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 harmonizedTariffslvl4 = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
@@ -360,46 +361,46 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
 
                 selectedHarmonizedTariffslvl4 = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
 
         int? levelNo = null;
-        public int? LevelNo { get { return levelNo; } set { levelNo = value; RaisePropertyChanged(); } }
+        public int? LevelNo { get { return levelNo; } set { levelNo = value; OnPropertyChanged(); } }
 
         bool isChapterSection;
         public bool IsChapterSection
         {
             get { return isChapterSection; }
-            set { isChapterSection = value; RaisePropertyChanged(); }
+            set { isChapterSection = value; OnPropertyChanged(); }
         }
 
         bool isHarmonizedTarrifs;
         public bool IsHarmonizedTarrifs
         {
             get { return isHarmonizedTarrifs; }
-            set { isHarmonizedTarrifs = value; RaisePropertyChanged(); }
+            set { isHarmonizedTarrifs = value; OnPropertyChanged(); }
         }
 
         bool isSectNote;
         public bool IsSectNote
         {
             get { return isSectNote; }
-            set { isSectNote = value; RaisePropertyChanged(); }
+            set { isSectNote = value; OnPropertyChanged(); }
         }
 
         bool isChapterNote;
         public bool IsChapterNote
         {
             get { return isChapterNote; }
-            set { isChapterNote = value; RaisePropertyChanged(); }
+            set { isChapterNote = value; OnPropertyChanged(); }
         }
 
         bool isSearchVIewVisbible;
         public bool IsSearchVIewVisible
         {
             get { return isSearchVIewVisbible; }
-            set { isSearchVIewVisbible = value; RaisePropertyChanged(); }
+            set { isSearchVIewVisbible = value; OnPropertyChanged(); }
         }
 
 
@@ -407,21 +408,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         public bool IsSearchFocus
         {
             get { return isSearchFocus; }
-            set { isSearchFocus = value; RaisePropertyChanged(); }
+            set { isSearchFocus = value; OnPropertyChanged(); }
         }
 
         bool isSearchFilterVisbible;
         public bool IsSearchFilterVisbible
         {
             get { return isSearchFilterVisbible; }
-            set { isSearchFilterVisbible = value; RaisePropertyChanged(); }
+            set { isSearchFilterVisbible = value; OnPropertyChanged(); }
         }
 
         bool isSectionView;
         public bool IsSectionView
         {
             get { return isSectionView; }
-            set { isSectionView = value; RaisePropertyChanged(); }
+            set { isSectionView = value; OnPropertyChanged(); }
         }
 
 
@@ -429,21 +430,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         public int SearchBy
         {
             get { return searchBy; }
-            set { searchBy = value; RaisePropertyChanged(); }
+            set { searchBy = value; OnPropertyChanged(); }
         }
 
         bool isMainHarmonizedTariffs;
         public bool IsMainHarmonizedTariffs
         {
             get { return isMainHarmonizedTariffs; }
-            set { isMainHarmonizedTariffs = value; RaisePropertyChanged(); }
+            set { isMainHarmonizedTariffs = value; OnPropertyChanged(); }
         }
 
         bool isSubHarmonizedTariffs;
         public bool IsSubHarmonizedTariffs
         {
             get { return isSubHarmonizedTariffs; }
-            set { isSubHarmonizedTariffs = value; RaisePropertyChanged(); }
+            set { isSubHarmonizedTariffs = value; OnPropertyChanged(); }
         }
 
 
@@ -451,39 +452,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         public bool IsHarmonizedTariffs2lvl
         {
             get { return isHarmonizedTariffs2lvl; }
-            set { isHarmonizedTariffs2lvl = value; RaisePropertyChanged(); }
+            set { isHarmonizedTariffs2lvl = value; OnPropertyChanged(); }
         }
 
         bool isTarrifSearch;
         public bool IsTarrifSearch
         {
             get { return isTarrifSearch; }
-            set { isTarrifSearch = value; RaisePropertyChanged(); }
+            set { isTarrifSearch = value; OnPropertyChanged(); }
         }
 
         bool isHarmonizedTariffs3lvl;
         public bool IsHarmonizedTariffs3lvl
         {
             get { return isHarmonizedTariffs3lvl; }
-            set { isHarmonizedTariffs3lvl = value; RaisePropertyChanged(); }
+            set { isHarmonizedTariffs3lvl = value; OnPropertyChanged(); }
         }
 
         bool isHarmonizedTariffs4lvl;
         public bool IsHarmonizedTariffs4lvl
         {
             get { return isHarmonizedTariffs4lvl; }
-            set { isHarmonizedTariffs4lvl = value; RaisePropertyChanged(); }
+            set { isHarmonizedTariffs4lvl = value; OnPropertyChanged(); }
         }
 
         bool isitemDetilsVisible;
         public bool IsitemDetilsVisible
         {
             get { return isitemDetilsVisible; }
-            set { isitemDetilsVisible = value; RaisePropertyChanged(); }
+            set { isitemDetilsVisible = value; OnPropertyChanged(); }
         }
 
         string title;
-        public string Title { get { return title; } set { title = value; RaisePropertyChanged(); } }
+        public string Title { get { return title; } set { title = value; OnPropertyChanged(); } }
 
         public string ChapterTitle { get; set; }
         public string MainHarmonizedTitle { get; set; }
@@ -491,8 +492,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public TraifSectionsViewModel(INavigationService navigationServices, IDialogService dialogService, ITraiffSectionsServices traiffSectionsServices) : base(navigationServices, dialogService)
         {
-            // SetFlowDirection();
-
             IsSectionView = true;
             _traiffSectionServices = traiffSectionsServices;
             Title = AppResources.CustomsZATCAIntegrat;
@@ -651,7 +650,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         }
 
         int searchNavigationLvl;
-        public int SearchNavigationLvl { get { return searchNavigationLvl; } set { searchNavigationLvl = value; RaisePropertyChanged(); } }
+        public int SearchNavigationLvl { get { return searchNavigationLvl; } set { searchNavigationLvl = value; OnPropertyChanged(); } }
         public ICommand TraiffSearchSelectionChangedCommand
         {
             get
@@ -913,14 +912,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         }
         string level1Title;
-        public string Level1Title { get { return level1Title; } set { level1Title = value; RaisePropertyChanged(); } }
+        public string Level1Title { get { return level1Title; } set { level1Title = value; OnPropertyChanged(); } }
 
 
         string level2Title;
-        public string Level2Title { get { return level2Title; } set { level2Title = value; RaisePropertyChanged(); } }
+        public string Level2Title { get { return level2Title; } set { level2Title = value; OnPropertyChanged(); } }
 
         string level3Title;
-        public string Level3Title { get { return level3Title; } set { level3Title = value; RaisePropertyChanged(); } }
+        public string Level3Title { get { return level3Title; } set { level3Title = value; OnPropertyChanged(); } }
 
         public ICommand TraiffLevel1SelectionChangedCommand
         {

@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
@@ -19,7 +20,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_creditCarriedsList == value) return;
                 _creditCarriedsList = value;
-                RaisePropertyChanged("CreditCarriedsList");
+                OnPropertyChanged("CreditCarriedsList");
             }
         }
         private VATDeclaration _vATDeclarationData;
@@ -34,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_vATDeclarationData == value) return;
 
                 _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                OnPropertyChanged("VATDeclarationData");
             }
         }
         private bool _isNoDataLabelVisible;
@@ -49,7 +50,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isNoDataLabelVisible == value) return;
 
                 _isNoDataLabelVisible = value;
-                RaisePropertyChanged("IsNoDataLabelVisible");
+                OnPropertyChanged("IsNoDataLabelVisible");
             }
         }
         private bool _isListViewVisible;
@@ -64,7 +65,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isListViewVisible == value) return;
 
                 _isListViewVisible = value;
-                RaisePropertyChanged("IsListViewVisible");
+                OnPropertyChanged("IsListViewVisible");
             }
         }
         #endregion

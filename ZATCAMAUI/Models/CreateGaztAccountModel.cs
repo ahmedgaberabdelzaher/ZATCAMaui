@@ -29,6 +29,9 @@
         public string ACountry { get; set; }
         public string AAbsherGuid { get; set; }
         public string AAbsherOtp { get; set; }
+        public string AIqamaDesc { get; set; }
+        public string AIqamaFg { get; set; }
+
 
     }
 }

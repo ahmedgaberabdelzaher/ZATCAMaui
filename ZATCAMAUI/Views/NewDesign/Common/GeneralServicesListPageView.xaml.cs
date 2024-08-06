@@ -1,7 +1,7 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿using System.Collections.ObjectModel;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Common;
+using static ZATCAMAUI.ViewModel.NewDesignViewModel.Common.GeneralServicesViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.Common
 {
@@ -13,44 +13,16 @@ namespace ZATCAMAUI.Views.NewDesign.Common
         public GeneralServicesListPageView()
         {
             InitializeComponent();
-            ChangeAeroIcon();
-
             _viewModel = App.Locator.GeneralServicesListView;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = _viewModel;
+            _viewModel.GeneralServicesList = new ObservableCollection<GeneralServicesListModel>();
+            _viewModel.generalServicesListData = new List<GeneralServicesListModel>();
+            _viewModel.CaseDetailedListViewData = new ObservableCollection<Models.EscalatedGstcModel.CaseDetailsResultSet>();
             _viewModel.PopulateGeneralServicesListData();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-        }
-
-        public void ChangeAeroIcon()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                }
-                else
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                }
-
-            }
-            catch (Exception)
-            {
-
-
-            }
+            Task.Run(async () => await _viewModel.GetGstcCaseDetailSet()).Wait();
 
         }
+
 
         private void GeneralServices_SelectionChanged(object sender, ItemSelectionChangedEventArgs e)
         {
@@ -78,6 +50,13 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                     _viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
+                }
+                else if (selectedItem.ZDTitle == AppResources.GSTCEscalatedCasesGSTC)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "GSTCEscalatedCasesGSTC", "GSTCEscalatedCasesGSTC");
+
+                    _viewModel._navigationService.NavigateTo(App.EscalatedCasesGSTCPageView, _viewModel.CaseDetailedListViewData);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 var view = sender as SfListView;
                 view.SelectedItem = null;

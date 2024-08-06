@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
@@ -25,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _dataSource = value;
-                RaisePropertyChanged("DataSource");
+                OnPropertyChanged("DataSource");
             }
         }
         private ObservableCollection<string> _pickerItemSource { get; set; }
@@ -38,7 +38,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _pickerItemSource = value;
-                RaisePropertyChanged("PickerItemSource");
+                OnPropertyChanged("PickerItemSource");
             }
         }
 
@@ -52,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _datePickerTitle = value;
-                RaisePropertyChanged("DatePickerTitle");
+                OnPropertyChanged("DatePickerTitle");
             }
         }
 
@@ -66,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _isFutureDatePickerVisible = value;
-                RaisePropertyChanged("IsFutureDatePickerVisible");
+                OnPropertyChanged("IsFutureDatePickerVisible");
             }
         }
 
@@ -80,7 +80,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _isCurrentDatePickerVisible = value;
-                RaisePropertyChanged("IsCurrentDatePickerVisible");
+                OnPropertyChanged("IsCurrentDatePickerVisible");
             }
         }
 
@@ -94,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _selectedDate = value;
-                RaisePropertyChanged("SelectedDate");
+                OnPropertyChanged("SelectedDate");
             }
         }
 

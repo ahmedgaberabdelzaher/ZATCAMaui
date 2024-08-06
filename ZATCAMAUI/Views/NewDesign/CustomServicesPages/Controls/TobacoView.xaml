@@ -25,39 +25,39 @@
                 </Label>
 
                 <!--  TypeItem Entry  -->
-                <inputLayout:SfTextInputLayout
-                    ContainerBackground="White"
-                    ContainerType="Outlined"
-                    HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
-                    Hint="{x:Static ResourceManager:AppResources.Select}"
-                    InputViewPadding="16,0,16,0"
-                    LeadingViewPosition="Inside"
-                    OutlineCornerRadius="15"
-                    Stroke="{StaticResource NeutralGreay}">
-                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                        <inputLayout:LabelStyle TextColor="#B00020" />
-                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                    <custom:GAZTBorderlessEntry
-                        x:Name="typeItemEntry"
-                        InputTransparent="True"
-                        IsReadOnly="True"
-                        Keyboard="Text"
-                        Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                        Style="{StaticResource DefaultEntry}"
-                        Text="{Binding SelectedTobacoType.Name}"
-                        TextColor="#58595B">
+                <custom:CustomSfTextInputView>
+                    <custom:CustomSfTextInputView.TextInputView>
+                        <custom:GAZTBorderlessEntry
+                            x:Name="typeItemEntry"
+                            InputTransparent="True"
+                            IsReadOnly="True"
+                            Keyboard="Text"
+                            Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                            Style="{StaticResource DefaultEntry}"
+                            Text="{Binding SelectedTobacoType.Name}"
+                            TextColor="#58595B">
 
-                        <custom:GAZTBorderlessEntry.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
-                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
+                            </custom:GAZTBorderlessEntry.GestureRecognizers>
 
-                    </custom:GAZTBorderlessEntry>
+                        </custom:GAZTBorderlessEntry>
+
+                    </custom:CustomSfTextInputView.TextInputView>
 
                     <inputLayout:SfTextInputLayout.TrailingView>
-                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                            <Image Aspect="AspectFit" Source="greyDropDown" />
                     </inputLayout:SfTextInputLayout.TrailingView>
 
-                </inputLayout:SfTextInputLayout>
+                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
+                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                </custom:CustomSfTextInputView>
+
+                <Label Text="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
+                        Margin="0,-15,0,10"
+                        Style="{StaticResource CaptionLabelGrey}"/>
 
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />

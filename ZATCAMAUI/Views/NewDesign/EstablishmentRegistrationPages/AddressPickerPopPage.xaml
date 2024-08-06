@@ -23,7 +23,7 @@
         <Border
             Padding="10"
             BackgroundColor="White"
-            Stroke="Black"
+            Stroke="{StaticResource NeutralLightGrey}"
             StrokeThickness="1"
             VerticalOptions="EndAndExpand">
             <Grid RowSpacing="0">

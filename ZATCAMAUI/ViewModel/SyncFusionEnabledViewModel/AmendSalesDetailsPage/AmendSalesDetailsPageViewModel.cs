@@ -1,9 +1,10 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -15,8 +16,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
     public class AmendSalesDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public static SalesDetails SelectedSalesDetails = new SalesDetails();
         //  public ICommand OnBillsButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
@@ -50,7 +49,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 //{
                 //    SetSaveButtonVisibility();
                 //}
-                RaisePropertyChanged("ZakatReturnAttachmentsList");
+                OnPropertyChanged("ZakatReturnAttachmentsList");
             }
         }
         
@@ -65,7 +64,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
             {
                 _isSaveButtonEnable = value;
                 OnZakatReturnDataUpdateClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsSaveButtonEnable");
+                OnPropertyChanged("IsSaveButtonEnable");
             }
         }
         private string _newValue = string.Empty;
@@ -84,7 +83,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 {
                     SelectedSalesDetails.NewValue = NewValue;
                 }
-                RaisePropertyChanged("NewValue");
+                OnPropertyChanged("NewValue");
             }
         }
         private string _oldValue = string.Empty;
@@ -101,7 +100,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 {
                     SelectedSalesDetails.OldValue = _oldValue;
                 }
-                RaisePropertyChanged("OldValue");
+                OnPropertyChanged("OldValue");
             }
         }
         private string _changeReason = "";
@@ -124,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                         SelectedSalesDetails.IsReasonRequird = false;
                     }
                 }
-                RaisePropertyChanged("ChangeReason");
+                OnPropertyChanged("ChangeReason");
             }
         }
         private string _attachmentName = "";
@@ -145,7 +144,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                         SelectedSalesDetails.IsAttachmentRequired = false;
                     }
                 }
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         private string _attachmentNumber = "";
@@ -162,7 +161,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 {
                     SelectedSalesDetails.AttchamentNumber = AttachmentNumber;
                 }
-                RaisePropertyChanged("AttachmentNumber");
+                OnPropertyChanged("AttachmentNumber");
             }
         }
         private string _salesType = "";
@@ -176,7 +175,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
             {
                 _salesType = value;
                 if (_attachmentNumber != null)
-                    RaisePropertyChanged("SalesType");
+                    OnPropertyChanged("SalesType");
             }
         }
         private Color _buttonBackgroundColor = (Color)Application.Current.Resources["ButtonGray"];
@@ -189,24 +188,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
             set
             {
                 _buttonBackgroundColor = value;
-                RaisePropertyChanged("ButtonBackgroundColor");
+                OnPropertyChanged("ButtonBackgroundColor");
             }
         }
         #endregion
         #region Constructor
         public AmendSalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });

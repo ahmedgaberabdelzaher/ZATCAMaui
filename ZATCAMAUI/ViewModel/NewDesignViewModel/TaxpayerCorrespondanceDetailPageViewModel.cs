@@ -1,7 +1,8 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -25,7 +26,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 if (_correspondenceTitle == value) return;
                 _correspondenceTitle = value;
-                RaisePropertyChanged("CorrespondenceTitle");
+                OnPropertyChanged("CorrespondenceTitle");
             }
         }
         private string _correspondenceDateTime = string.Empty;
@@ -40,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_correspondenceDateTime == value) return;
 
                 _correspondenceDateTime = value;
-                RaisePropertyChanged("CorrespondenceDateTime");
+                OnPropertyChanged("CorrespondenceDateTime");
             }
         }
         private string _correspondenceTime = string.Empty;
@@ -55,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_correspondenceTime == value) return;
 
                 _correspondenceTime = value;
-                RaisePropertyChanged("CorrespondenceTime");
+                OnPropertyChanged("CorrespondenceTime");
             }
         }
 
@@ -71,7 +72,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isFavoriteVisible == value) return;
 
                 _isFavoriteVisible = value;
-                RaisePropertyChanged("IsFavoriteVisible");
+                OnPropertyChanged("IsFavoriteVisible");
             }
         }
         private CorrespondanceModel _correspondenceD = null;
@@ -86,7 +87,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_correspondenceD == value) return;
 
                 _correspondenceD = value;
-                RaisePropertyChanged("CorrespondenceD");
+                OnPropertyChanged("CorrespondenceD");
             }
         }
         private string _favIcon = string.Empty;
@@ -101,7 +102,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_favIcon == value) return;
 
                 _favIcon = value;
-                RaisePropertyChanged("FavIcon");
+                OnPropertyChanged("FavIcon");
             }
         }
         private bool _isAttachmentEnable = false;
@@ -116,7 +117,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_isAttachmentEnable == value) return;
 
                 _isAttachmentEnable = value;
-                RaisePropertyChanged("IsAttachmentEnabled");
+                OnPropertyChanged("IsAttachmentEnabled");
             }
         }
         public TaxpayerCorrespondanceDetailPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)

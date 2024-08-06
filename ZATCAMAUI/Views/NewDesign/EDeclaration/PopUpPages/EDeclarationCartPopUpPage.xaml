@@ -29,6 +29,7 @@
             Padding="0"
             BackgroundColor="White"
             HeightRequest="500"
+            Stroke="{StaticResource NeutralLightGrey}"
             StrokeShape="RoundRectangle 15,15,0,0"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">

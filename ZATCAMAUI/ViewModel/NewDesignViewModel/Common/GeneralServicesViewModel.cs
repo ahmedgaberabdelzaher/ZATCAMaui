@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Core.Mangers;
+using static ZATCAMAUI.Models.EscalatedGstcModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 {
@@ -16,6 +19,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             public string ArrowImageSource { get; set; }
 
         }
+        public ObservableCollection<CaseDetailsResultSet> _caseDetailedListViewData { get; set; }
+
+        public ObservableCollection<CaseDetailsResultSet> CaseDetailedListViewData
+        {
+            get { return _caseDetailedListViewData; }
+
+            set
+            {
+                if (_caseDetailedListViewData == value)
+                {
+                    return;
+                }
+
+                _caseDetailedListViewData = value;
+                OnPropertyChanged("CaseDetailedListViewData");
+            }
+        }
 
         public ObservableCollection<GeneralServicesListModel> _generalServicesList { get; set; }
         public ObservableCollection<GeneralServicesListModel> GeneralServicesList
@@ -28,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             set
             {
                 _generalServicesList = value;
-                RaisePropertyChanged("GeneralServicesList");
+                OnPropertyChanged("GeneralServicesList");
             }
         }
         public ObservableCollection<GeneralServicesListModel> _refundRequestMenuList { get; set; }
@@ -42,7 +62,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             set
             {
                 _refundRequestMenuList = value;
-                RaisePropertyChanged("RefundRequestMenuList");
+                OnPropertyChanged("RefundRequestMenuList");
             }
         }
         public ObservableCollection<GeneralServicesListModel> _fillingFrquencyMenuList { get; set; }
@@ -56,7 +76,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
             set
             {
                 _fillingFrquencyMenuList = value;
-                RaisePropertyChanged("FillingFrquencyMenuList");
+                OnPropertyChanged("FillingFrquencyMenuList");
             }
         }
 
@@ -64,16 +84,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
         public GeneralServicesViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+          
         }
 
         public void PopulateGeneralServicesListData()
         {
-            List<GeneralServicesListModel> generalServicesListData = new List<GeneralServicesListModel>();
-            string fileImage = string.Empty;
             if (App.IsArabic)
             {
                 fileImage = "arrowLeft.png";
@@ -154,5 +169,62 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Common
 
             FillingFrquencyMenuList = new ObservableCollection<GeneralServicesListModel>(fillingFrequencyListData);
         }
+
+        public async Task GetGstcCaseDetailSet()
+        {
+            
+            try
+            {
+                IsLoading = true;
+                var escalatedGstcModel = await EscalatedCasesWebserviceManager.GAZTGetCaseDetailSet();
+
+                if (escalatedGstcModel != null && escalatedGstcModel != null && escalatedGstcModel.d != null && escalatedGstcModel.d.Code != null)
+                {
+                    if (escalatedGstcModel.d.Code.Equals("001"))
+                    {
+                        generalServicesListData.Add(new GeneralServicesListModel
+                        {
+                            ZDTitle = AppResources.GSTCEscalatedCasesGSTC,
+                            ZDImageSource = "tax_evasion_green.png",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+                    else if (escalatedGstcModel.d.Code.Equals("002"))
+                    {
+                        var item = generalServicesListData.FirstOrDefault(i => i.ZDTitle == "Escalated cases in GSTC");
+
+                        if (item != null)
+                        {
+                            generalServicesListData.Remove(item);
+                        }
+                    }
+                }
+                GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
+
+
+                if (escalatedGstcModel != null && escalatedGstcModel?.d?.CaseDetailSet?.results?.Count > 0)
+                {
+                    CaseDetailedListViewData = new ObservableCollection<CaseDetailsResultSet>(escalatedGstcModel.d.CaseDetailSet.results);
+
+                }
+                else
+                {
+
+                }
+
+
+                IsLoading = false;
+            }
+            catch (GAZTVATRegistrationInProcessException )
+            {
+                IsLoading = false;
+            }
+            catch (InternetException ex)
+            {
+                IsLoading = false;
+            }
+
+        }
+
     }
 }

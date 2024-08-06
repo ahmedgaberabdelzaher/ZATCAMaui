@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.BaseModels;
@@ -12,26 +13,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
     public class CustomFeesFormViewModel : BaseProductDeclarationViewModel
     {
         bool isshowFeesView;
-        public bool IsshowFeesView { get { return isshowFeesView; } set { isshowFeesView = value; RaisePropertyChanged(); } }
+        public bool IsshowFeesView { get { return isshowFeesView; } set { isshowFeesView = value; OnPropertyChanged(); } }
 
         string vatPercenntage;
-        public string VatPercenntage { get { return vatPercenntage; } set { vatPercenntage = value; RaisePropertyChanged(); } }
+        public string VatPercenntage { get { return vatPercenntage; } set { vatPercenntage = value; OnPropertyChanged(); } }
 
         string customFeesPercentage;
-        public string CustomFeesPercentage { get { return customFeesPercentage; } set { customFeesPercentage = value; RaisePropertyChanged(); } }
+        public string CustomFeesPercentage { get { return customFeesPercentage; } set { customFeesPercentage = value; OnPropertyChanged(); } }
 
 
         string vatCalculte;
-        public string VatCalculte { get { return vatCalculte; } set { vatCalculte = value; RaisePropertyChanged(); } }
+        public string VatCalculte { get { return vatCalculte; } set { vatCalculte = value; OnPropertyChanged(); } }
 
         string customFeesCalculate;
-        public string CustomFeesCalculate { get { return customFeesCalculate; } set { customFeesCalculate = value; RaisePropertyChanged(); } }
+        public string CustomFeesCalculate { get { return customFeesCalculate; } set { customFeesCalculate = value; OnPropertyChanged(); } }
 
         string exiseTaxCaluclat;
-        public string ExiseTaxCaluclat { get { return exiseTaxCaluclat; } set { exiseTaxCaluclat = value; RaisePropertyChanged(); } }
+        public string ExiseTaxCaluclat { get { return exiseTaxCaluclat; } set { exiseTaxCaluclat = value; OnPropertyChanged(); } }
 
         double productValue;
-        public double ProductValue { get { return productValue; } set { productValue = value; RaisePropertyChanged(); } }
+        public double ProductValue { get { return productValue; } set { productValue = value; OnPropertyChanged(); } }
 
         public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices,INativeNafath nativeNafath) : base(navigationService, dialogService, declerationServices,nativeNafath)
         {

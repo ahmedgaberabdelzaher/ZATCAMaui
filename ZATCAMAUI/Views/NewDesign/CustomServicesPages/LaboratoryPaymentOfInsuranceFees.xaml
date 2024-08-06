@@ -97,23 +97,25 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <inputLayout:SfTextInputLayout
-                                            ContainerType="Outlined"
-                                            Hint="{x:Static ResourceManager:AppResources.Port}"
-                                            HorizontalOptions="FillAndExpand"
-                                            InputViewPadding="16,0,16,0"
-                                            OutlineCornerRadius="14"
-                                            Stroke="{StaticResource NeutralGreay}"
-                                            VerticalOptions="FillAndExpand">
+                                        <custom:CustomSfTextInputView HorizontalOptions="FillAndExpand"
+                                                                      VerticalOptions="FillAndExpand">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                            IsReadOnly="True"
+                                                            InputTransparent="True"
+                                                            Placeholder="{x:Static ResourceManager:AppResources.Port}"
+                                                            Style="{StaticResource DefaultEntryWithoutHeigh}"
+                                                            Text="{Binding SelectedPort.Name}"
+                                                            TextColor="{StaticResource NeutralBlack}"
+                                                            VerticalTextAlignment="Center" >
 
-                                            <custom:GAZTBorderlessEntry
-                                                IsReadOnly="True"
-                                                InputTransparent="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.Port}"
-                                                Style="{StaticResource DefaultEntryWithoutHeigh}"
-                                                Text="{Binding SelectedPort.Name}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                VerticalTextAlignment="Center" />
+                                                     <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
+                                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                                                </custom:GAZTBorderlessEntry>
+
+                                            </custom:CustomSfTextInputView.TextInputView>
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <Image HorizontalOptions="EndAndExpand" Source="arrowDropdown.png" />
@@ -123,7 +125,7 @@
                                                 <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                        </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView>
 
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OpenPortsCommand}" />
@@ -143,26 +145,25 @@
                                             </Label.FormattedText>
                                         </Label>
 
-                                        <inputLayout:SfTextInputLayout
-                                            ContainerType="Outlined"
-                                            Hint="{x:Static ResourceManager:AppResources.RequestNumber}"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="14"
-                                            Stroke="{StaticResource NeutralGreay}">
-                                            <custom:GAZTBorderlessEntry
-                                                Keyboard="Numeric"
-                                                MaxLength="10"
-                                                Placeholder="{x:Static ResourceManager:AppResources.RequestNumber}"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding RequestNumber}"
-                                                VerticalTextAlignment="Center">
-                                                <custom:GAZTBorderlessEntry.Behaviors>
-                                                    <behavior:OnlyNumericValuesBehaviour />
-                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                        <custom:CustomSfTextInputView >
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                    Keyboard="Numeric"
+                                                    MaxLength="10"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.RequestNumber}"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding RequestNumber}"
+                                                    VerticalTextAlignment="Center">
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                        <behavior:OnlyNumericValuesBehaviour />
+                                                    </custom:GAZTBorderlessEntry.Behaviors>
 
-                                            </custom:GAZTBorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                                </custom:GAZTBorderlessEntry>
+
+                                            </custom:CustomSfTextInputView.TextInputView>
+
+                                        </custom:CustomSfTextInputView>
+
                                     </StackLayout>
 
                                     <Label Style="{StaticResource CaptionLabelGrey}">
@@ -175,14 +176,10 @@
                                     </Label>
 
                                     <StackLayout>
-                                        <inputLayout:SfTextInputLayout
-                                            ContainerType="Outlined"
-                                            Hint="dd/MM/yyyy"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="16"
-                                            Stroke="{StaticResource NeutralGreay}">
-                                            <custom:GAZTBorderlessEntry
+
+                                        <custom:CustomSfTextInputView >
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
                                                 IsReadOnly="True"
                                                 InputTransparent="True"
                                                 Placeholder="dd/MM/yyyy"
@@ -190,6 +187,8 @@
                                                 Text="{Binding HijriDateToBeDisplayed}"
                                                 TextColor="{StaticResource NeutralBlack}"
                                                 VerticalTextAlignment="Center" />
+
+                                            </custom:CustomSfTextInputView.TextInputView>
 
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <Image HorizontalOptions="EndAndExpand"
@@ -199,10 +198,11 @@
                                             </inputLayout:SfTextInputLayout.TrailingView>
 
                                             <inputLayout:SfTextInputLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}" CommandParameter="{x:Reference dateHijri}" />
+                                                <TapGestureRecognizer Command="{Binding OpenHijriPickerCommand}"
+                                                                      CommandParameter="{x:Reference dateHijri}" />
                                             </inputLayout:SfTextInputLayout.GestureRecognizers>
 
-                                        </inputLayout:SfTextInputLayout>
+                                        </custom:CustomSfTextInputView>
 
                                         <!--  HijriDatePicker  -->
                                         <custom:CustomHijriDatePicker

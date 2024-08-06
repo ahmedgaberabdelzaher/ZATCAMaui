@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Helper;
@@ -10,6 +10,7 @@ using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
 using ZATCAMAUI.Models.NativeNafath;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -18,38 +19,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
 
         #region Properties
         bool isArrivingPlaneSelected = true;
-        public bool IsArrivingPlaneSelected { get { return isArrivingPlaneSelected; } set { isArrivingPlaneSelected = value; RaisePropertyChanged(); } }
+        public bool IsArrivingPlaneSelected { get { return isArrivingPlaneSelected; } set { isArrivingPlaneSelected = value; OnPropertyChanged(); } }
 
         bool isYesSelected = true;
-        public bool IsYesSelected { get { return isYesSelected; } set { isYesSelected = value; RaisePropertyChanged(); } }
+        public bool IsYesSelected { get { return isYesSelected; } set { isYesSelected = value; OnPropertyChanged(); } }
 
         public static Dictionary<string, object> QAnswereDictionary { get; set; }
 
 
         ObservableCollection<BottomSheetModel> bottomSheetList = new ObservableCollection<BottomSheetModel>();
-        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; OnPropertyChanged(); } }
 
         public ObservableCollection<BottomSheetModel> TempBottomSheetList { get; set; } = new ObservableCollection<BottomSheetModel>();
 
         bool isShowBottomSheet;
-        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
+        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; OnPropertyChanged(); } }
 
         string headerTitle;
-        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
+        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; OnPropertyChanged(); } }
 
         string searchText;
-        public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
+        public string SearchText { get { return searchText; } set { searchText = value; OnPropertyChanged(); } }
 
         EDeclerationSubmitModel _submitModel;
-        public EDeclerationSubmitModel SubmitModel { get { return _submitModel; } set { _submitModel = value; RaisePropertyChanged(); } }
+        public EDeclerationSubmitModel SubmitModel { get { return _submitModel; } set { _submitModel = value; OnPropertyChanged(); } }
 
         public IDictionary<string, object> IamLoginPayloadData;
 
         string iqamaTypeDescription;
-        public string IqamaTypeDescription { get { return iqamaTypeDescription; } set { iqamaTypeDescription = value; RaisePropertyChanged(); } }
+        public string IqamaTypeDescription { get { return iqamaTypeDescription; } set { iqamaTypeDescription = value; OnPropertyChanged(); } }
 
         bool isIqama;
-        public bool IsIqama { get { return isIqama; } set { isIqama = value; RaisePropertyChanged(); } }
+        public bool IsIqama { get { return isIqama; } set { isIqama = value; OnPropertyChanged(); } }
 
 
 
@@ -59,7 +60,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration
             set {
 
                 _EndDateString = value;
-                RaisePropertyChanged(); } }
+                OnPropertyChanged(); } }
 
         #endregion
 

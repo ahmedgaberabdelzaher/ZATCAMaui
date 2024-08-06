@@ -6,7 +6,6 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
-    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
@@ -205,21 +204,20 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
+                                <custom:CustomSfTextInputView>
 
-                                <inputLayout:SfTextInputLayout
-                                    ContainerBackground="White"
-                                    ContainerType="Outlined"
-                                    Hint="{x:Static ResourceManager:AppResources.EnterQrCodeHere}"
-                                    InputViewPadding="16,0,16,0"
-                                    IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    OutlineCornerRadius="14">
-                                    <custom:GAZTBorderlessEntry
-                                        Placeholder="{x:Static ResourceManager:AppResources.EnterQrCodeHere}"
-                                        Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding scanCode}"
-                                        VerticalTextAlignment="Center" />
-                                </inputLayout:SfTextInputLayout>
+                                    <custom:CustomSfTextInputView.TextInputView>
+
+                                        <custom:GAZTBorderlessEntry
+                                            Placeholder="{x:Static ResourceManager:AppResources.EnterQrCodeHere}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding scanCode}"
+                                            VerticalTextAlignment="Center" />
+
+                                    </custom:CustomSfTextInputView.TextInputView>
+
+
+                                </custom:CustomSfTextInputView>
                             </StackLayout>
 
                             <Border

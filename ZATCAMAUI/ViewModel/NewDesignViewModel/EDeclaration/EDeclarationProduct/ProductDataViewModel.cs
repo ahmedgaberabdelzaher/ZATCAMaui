@@ -13,17 +13,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         bool isProductTypeSelected = false;
         static ObservableCollection<ProductTypesModel> ProductTypes;
         ProductTypesModel selectedProductTypes;
-        public ProductTypesModel SelectedProductTypes { get { return selectedProductTypes; } set { selectedProductTypes = value; RaisePropertyChanged(); } }
+        public ProductTypesModel SelectedProductTypes { get { return selectedProductTypes; } set { selectedProductTypes = value; OnPropertyChanged(); } }
 
 
         bool isProductItemHaveSubType;
-        public bool IsProductItemHaveSubType { get { return isProductItemHaveSubType; } set { isProductItemHaveSubType = value; RaisePropertyChanged(); } }
+        public bool IsProductItemHaveSubType { get { return isProductItemHaveSubType; } set { isProductItemHaveSubType = value; OnPropertyChanged(); } }
 
 
         bool isProductSubTypeSelected = false;
         static ObservableCollection<ProductTypesModel> ProductSubTypes;
         ProductTypesModel selectedProductSubTypes;
-        public ProductTypesModel SelectedProductSubTypes { get { return selectedProductSubTypes; } set { selectedProductSubTypes = value; RaisePropertyChanged(); } }
+        public ProductTypesModel SelectedProductSubTypes { get { return selectedProductSubTypes; } set { selectedProductSubTypes = value; OnPropertyChanged(); } }
 
         private int countElectronicDevices = 0;
         #endregion

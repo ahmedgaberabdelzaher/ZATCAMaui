@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -15,8 +16,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
     public class SalesDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        private readonly IDialogService _dialogService;
         //  public ICommand OnBillsButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand OnAcceptReturnButtonClicked { get; set; }
@@ -95,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _zakatReturnDetail = value;
-                RaisePropertyChanged("ZakatReturnDetail");
+                OnPropertyChanged("ZakatReturnDetail");
             }
         }
         private ObservableCollection<SalesDetails> _SalesDetailsList;
@@ -108,7 +107,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _SalesDetailsList = value;
-                RaisePropertyChanged("SalesDetailsList");
+                OnPropertyChanged("SalesDetailsList");
             }
         }
         private string _persl;
@@ -121,7 +120,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _persl = value;
-                RaisePropertyChanged("Persl");
+                OnPropertyChanged("Persl");
             }
         }
         private string _abrzu;
@@ -134,7 +133,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _abrzu = value;
-                RaisePropertyChanged("Abrzu");
+                OnPropertyChanged("Abrzu");
             }
         }
         private string _abrzo;
@@ -147,7 +146,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _abrzo = value;
-                RaisePropertyChanged("Abrzo");
+                OnPropertyChanged("Abrzo");
             }
         }
         private string _fbnum;
@@ -160,7 +159,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _fbnum = value;
-                RaisePropertyChanged("Fbnum");
+                OnPropertyChanged("Fbnum");
             }
         }
         private string _estsl;
@@ -173,7 +172,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _estsl = value;
-                RaisePropertyChanged("Estsl");
+                OnPropertyChanged("Estsl");
             }
         }
         private bool _amedmentButtonVisibility = true;
@@ -186,7 +185,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _amedmentButtonVisibility = value;
-                RaisePropertyChanged("AmedmentButtonVisibility");
+                OnPropertyChanged("AmedmentButtonVisibility");
             }
         }
         private bool _submitButtonVisibility = false;
@@ -199,7 +198,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _submitButtonVisibility = value;
-                RaisePropertyChanged("SubmitButtonVisibility");
+                OnPropertyChanged("SubmitButtonVisibility");
             }
         }
         private bool _desClaimerVisibility = true;
@@ -212,7 +211,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _desClaimerVisibility = value;
-                RaisePropertyChanged("DesClaimerVisibility");
+                OnPropertyChanged("DesClaimerVisibility");
             }
         }
         // For Invoice Pop up
@@ -226,7 +225,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _estimatedZAKATSADADNumber = value;
-                RaisePropertyChanged("EstimatedZAKATSADADNumber");
+                OnPropertyChanged("EstimatedZAKATSADADNumber");
             }
         }
         private bool _invoicePopUpVisibility = false;
@@ -239,7 +238,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _invoicePopUpVisibility = value;
-                RaisePropertyChanged("InvoicePopUpVisibility");
+                OnPropertyChanged("InvoicePopUpVisibility");
             }
         }
         private bool _checkBoxStatus = false;
@@ -252,7 +251,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _checkBoxStatus = value;
-                RaisePropertyChanged("CheckBoxStatus");
+                OnPropertyChanged("CheckBoxStatus");
             }
         }
         private bool _confirmButtonVisibility = false;
@@ -265,7 +264,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _confirmButtonVisibility = value;
-                RaisePropertyChanged("ConfirmButtonVisibility");
+                OnPropertyChanged("ConfirmButtonVisibility");
             }
         }
         private Color _refreshButtonDisableColor = (Color)Application.Current.Resources["Primary"];
@@ -278,7 +277,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _refreshButtonDisableColor = value;
-                RaisePropertyChanged("RefreshButtonDisableColor");
+                OnPropertyChanged("RefreshButtonDisableColor");
             }
         }
         private bool _objectionInvoicePopUpVisibility = false;
@@ -291,7 +290,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _refreshiButtonDisability = value;
-                RaisePropertyChanged("_objectionInvoicePopUpVisibility");
+                OnPropertyChanged("_objectionInvoicePopUpVisibility");
             }
         }
         private bool _refreshiButtonDisability = true;
@@ -304,36 +303,26 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             set
             {
                 _refreshiButtonDisability = value;
-                RaisePropertyChanged("RefreshiButtonDisability");
+                OnPropertyChanged("RefreshiButtonDisability");
             }
         }
         #endregion
         #region Constructor
         public SalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            OnAcceptReturnButtonClicked = new Command(async () =>
+            OnAcceptReturnButtonClicked = new Command( () =>
             {
                 _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                 CheckBoxStatus = false;
             });
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 if (!IsLoading)
                 {
                     _navigationService.GoBack();
                 }
             });
-            OnAmendReturnButtonClicked = new Command(async () =>
+            OnAmendReturnButtonClicked = new Command( () =>
             {
                 try
                 {

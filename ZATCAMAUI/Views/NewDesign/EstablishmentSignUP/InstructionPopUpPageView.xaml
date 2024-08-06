@@ -10,6 +10,7 @@
     mc:Ignorable="d">
     <Border
         Margin="0,150,0,0"
+        Stroke="{StaticResource NeutralLightGrey}"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="End">
         <Grid>

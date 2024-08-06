@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
@@ -24,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _dataSource = value;
-                RaisePropertyChanged("DataSource");
+                OnPropertyChanged("DataSource");
             }
         }
 
@@ -38,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _pickerItemSource = value;
-                RaisePropertyChanged("PickerItemSource");
+                OnPropertyChanged("PickerItemSource");
             }
         }
 
@@ -52,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _pickerTitle = value;
-                RaisePropertyChanged("PickerItemSource");
+                OnPropertyChanged("PickerItemSource");
             }
         }
 
@@ -66,7 +67,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _selectedItem = value;
-                RaisePropertyChanged("SelectedItem");
+                OnPropertyChanged("SelectedItem");
             }
         }
 
@@ -80,7 +81,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.GenericPickers
             set
             {
                 _selectedItemIndex = value;
-                RaisePropertyChanged("SelectedItemIndex");
+                OnPropertyChanged("SelectedItemIndex");
             }
         }
     }

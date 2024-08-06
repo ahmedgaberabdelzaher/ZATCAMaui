@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Text;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -11,8 +12,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
 {
     public class VATLookupPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         bool isMendatoryDataEntered = true;
         public ICommand OnSubmitClicked { get; set; }
@@ -29,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _isTooltipEnableVisible = value;
-                RaisePropertyChanged("IsTooltipEnableVisible");
+                OnPropertyChanged("IsTooltipEnableVisible");
             }
         }
         
@@ -43,7 +42,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _parameter = value;
-                RaisePropertyChanged("Parameter");
+                OnPropertyChanged("Parameter");
             }
         }
 
@@ -57,7 +56,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _navigationCornerRadius = value;
-                RaisePropertyChanged("NavigationCornerRadius");
+                OnPropertyChanged("NavigationCornerRadius");
             }
         }
 
@@ -72,7 +71,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _captcha = value;
-                RaisePropertyChanged("Captcha");
+                OnPropertyChanged("Captcha");
             }
         }
         private string _enteredCaptchaValue;
@@ -85,7 +84,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _enteredCaptchaValue = value;
-                RaisePropertyChanged("EnteredCaptchaValue");
+                OnPropertyChanged("EnteredCaptchaValue");
             }
         }
         private string _name = "";
@@ -98,7 +97,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _name = value;
-                RaisePropertyChanged("Name");
+                OnPropertyChanged("Name");
             }
         }
         private string _nameOrNoResultLabel = "";
@@ -111,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _nameOrNoResultLabel = value;
-                RaisePropertyChanged("NameOrNoResultLabel");
+                OnPropertyChanged("NameOrNoResultLabel");
             }
         }
         private List<VATParameterType> _parameterTypeList;
@@ -124,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _parameterTypeList = value;
-                RaisePropertyChanged("ParameterTypeList");
+                OnPropertyChanged("ParameterTypeList");
             }
         }
         private VATParameterType _selectedParameterType = null;
@@ -143,7 +142,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
                     TxtSearchParameter = _selectedParameterType.ParameterType;
                     SetPlaceholderText();
                 }
-                RaisePropertyChanged("SelectedParameterType");
+                OnPropertyChanged("SelectedParameterType");
             }
         }
         private VATParameterType _selectedParameterTypePrev = null;
@@ -156,7 +155,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _selectedParameterTypePrev = value;
-                RaisePropertyChanged("SelectedParameterTypePrev");
+                OnPropertyChanged("SelectedParameterTypePrev");
             }
         }
         private string _VATACCOrCRNOOrVATCER = "";// AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
@@ -169,7 +168,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _VATACCOrCRNOOrVATCER = value;
-                RaisePropertyChanged("VATACCOrCRNOOrVATCER");
+                OnPropertyChanged("VATACCOrCRNOOrVATCER");
             }
         }
         private string _lookupNumber = "";
@@ -182,7 +181,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _lookupNumber = value;
-                RaisePropertyChanged("LookupNumber");
+                OnPropertyChanged("LookupNumber");
             }
         }
         private string _maxDigids = "15";
@@ -195,7 +194,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _maxDigids = value;
-                RaisePropertyChanged("MaxDigids");
+                OnPropertyChanged("MaxDigids");
             }
         }
         private string _txtSearchParameter = string.Empty;
@@ -208,7 +207,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             set
             {
                 _txtSearchParameter = value;
-                RaisePropertyChanged("TxtSearchParameter");
+                OnPropertyChanged("TxtSearchParameter");
             }
         }
         private void SetPlaceholderText()
@@ -232,17 +231,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
         }
         public VATLookupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            OnCaptchaRegenerateClicked = new Command(async () =>
+            OnCaptchaRegenerateClicked = new Command( () =>
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();

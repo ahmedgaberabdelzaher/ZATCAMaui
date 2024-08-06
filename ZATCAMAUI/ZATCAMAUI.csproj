@@ -7,7 +7,8 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
-
+		<MtouchUseLlvm>True</MtouchUseLlvm>
+	<AotAssemblies>False</AotAssemblies>
 		<!-- Display name -->
 		<ApplicationTitle>ZATCAMAUI</ApplicationTitle>
 
@@ -27,7 +28,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	  <CodesignKey>iPhone Developer</CodesignKey>
-	  <CodesignProvision>Automatic</CodesignProvision>
+	  <CodesignProvision>ZATCA Enterprise - PROD</CodesignProvision>
 	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
 
@@ -39,6 +40,7 @@
 	  <CreatePackage>false</CreatePackage>
 	  <CodesignProvision>ZATCA Enterprise - PROD</CodesignProvision>
 	  <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+	  <MtouchLink>None</MtouchLink>
 	  <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 	</PropertyGroup>
 
@@ -139,6 +141,14 @@
 	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\58-1.png" />
 	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\87.png" />
 	  <None Remove="Platforms\iOS\Assets.xcassets\AppIcon.appiconset\152.png" />
+	  <Compile Remove="Platforms\iOS\CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
+	  <Compile Remove="Platforms\iOS\CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
+	  <Compile Remove="Platforms\Android\CustomRenderer\GAZTBorderlessEditorRenderer.cs" />
+	  <Compile Remove="Platforms\Android\CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
+	  <Compile Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml.cs" />
+	  <MauiXaml Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml" />
+	  <None Remove="ViewModel\NewDesignViewModel\EscalatedCasesGSTCPageViewModel\" />
+	  <None Remove="Views\NewDesign\EscalatedCasesGSTC\" />
 	</ItemGroup>
 
 
@@ -152,42 +162,37 @@
 	<ItemGroup>
 		<PackageReference Include="Acr.UserDialogs" Version="9.0.0" />
 		<PackageReference Include="CardsView.Maui" Version="0.0.9" />
-		<PackageReference Include="CommonServiceLocator" Version="2.0.7" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="2.0.2" />
-		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
-		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-		<PackageReference Include="PancakeViewCompat" Version="7.0.0" />
 		<PackageReference Include="Plugin.MediaManager.Forms" Version="1.2.2" />
-		<PackageReference Include="Portable.JWT" Version="1.0.5" />
-		<PackageReference Include="Prism.Core" Version="8.1.97" />
-		<PackageReference Include="Syncfusion.Licensing" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Buttons" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Calendar" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Charts" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Core" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Expander" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Inputs" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.ListView" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Picker" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="26.2.4" />
-		<PackageReference Include="Syncfusion.Maui.TabView" Version="26.2.4" />
+		<PackageReference Include="Syncfusion.Licensing" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Buttons" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Calendar" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Picker" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="26.2.7" />
+		<PackageReference Include="Syncfusion.Maui.TabView" Version="26.2.7" />
 		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
 		<PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 		<PackageReference Include="AppDynamics.Agent" Version="2024.4.0" />
 		<PackageReference Include="AppDynamics.Agent.Maui" Version="2024.4.0" />
 		<PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
-		<PackageReference Include="Syncfusion.Maui.Cards" Version="26.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Cards" Version="26.2.7" />
 		<PackageReference Include="Onion.Maui.GoogleMaps" Version="5.0.3" />
 		<PackageReference Include="TlvLib" Version="1.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.40" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.40" />
-		<PackageReference Include="Syncfusion.Maui.Rotator" Version="26.2.4" />
+		<PackageReference Include="Syncfusion.Maui.Rotator" Version="26.2.7" />
 		<PackageReference Include="Mopups" Version="1.3.1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -200,6 +205,8 @@
 	  <Folder Include="Platforms\iOS\Assets.xcassets\" />
 	  <Folder Include="ViewModel\NewDesignViewModel\IBanAccManagementsViewModel\" />
 	  <Folder Include="Views\NewDesign\IBanAccountsManagementPages\" />
+	  <Folder Include="ViewModel\NewDesignViewModel\EscalatedCasesGSTCPageViewModel\" />
+	  <Folder Include="Views\NewDesign\EscalatedCasesGSTC\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -367,9 +374,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ContractReleasePages\ContractReleaseSuccessPageView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\CustomDashBoard\CustomDashBoardVi.xaml">
@@ -879,9 +883,6 @@
 	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationTaxPayerDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ZakatForm5\ZakatAcknowledgmentPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -985,9 +986,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\StandardTemplate\StandardTemplateOfCardView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\SyncFusionEnabledViews\StylesTestUi\StyleTestUIPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountSuccessPageView.xaml">

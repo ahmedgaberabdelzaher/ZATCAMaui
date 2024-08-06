@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -13,8 +14,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
     public class AcknowledgementDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnVATRefreshButtonClicked { get; set; }
         public ICommand OnDownloadFormClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
@@ -33,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _tPName = value;
-                RaisePropertyChanged("TPName");
+                OnPropertyChanged("TPName");
             }
         }
         private string _returnReferenceNumber = "";
@@ -46,7 +45,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _returnReferenceNumber = value;
-                RaisePropertyChanged("ReturnReferenceNumber");
+                OnPropertyChanged("ReturnReferenceNumber");
             }
         }
         private bool _breakdownAmountVisibility = false;
@@ -59,7 +58,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _breakdownAmountVisibility = value;
-                RaisePropertyChanged("BreakdownAmountVisibility");
+                OnPropertyChanged("BreakdownAmountVisibility");
             }
         }
         private string _taxablePeriod = "";
@@ -72,7 +71,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _taxablePeriod = value;
-                RaisePropertyChanged("TaxablePeriod");
+                OnPropertyChanged("TaxablePeriod");
             }
         }
         private string _receiptDate = "";
@@ -85,7 +84,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _receiptDate = value;
-                RaisePropertyChanged("ReceiptDate");
+                OnPropertyChanged("ReceiptDate");
             }
         }
         private string _sadadNumber = "";
@@ -98,7 +97,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _sadadNumber = value;
-                RaisePropertyChanged("SadadNumber");
+                OnPropertyChanged("SadadNumber");
             }
         }
         private string _amountPayable = "";
@@ -111,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _amountPayable = value;
-                RaisePropertyChanged("AmountPayable");
+                OnPropertyChanged("AmountPayable");
             }
         }
         private bool _isSadadNoteVisible = true;
@@ -124,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _isSadadNoteVisible = value;
-                RaisePropertyChanged("IsSadadNoteVisible");
+                OnPropertyChanged("IsSadadNoteVisible");
             }
         }
         private bool _isSadadNumberVisible = false;
@@ -146,7 +145,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
                 {
                     BreakdownAmountVisibility = false;
                 }
-                RaisePropertyChanged("IsSadadNumberVisible");
+                OnPropertyChanged("IsSadadNumberVisible");
             }
         }
         private bool _isButtonVisible = false;
@@ -159,7 +158,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _isButtonVisible = value;
-                RaisePropertyChanged("IsButtonVisible");
+                OnPropertyChanged("IsButtonVisible");
             }
         }
 
@@ -174,7 +173,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _isAcknowledgementButtonVisible = value;
-                RaisePropertyChanged("IsAcknowledgementButtonVisible");
+                OnPropertyChanged("IsAcknowledgementButtonVisible");
             }
         }
 
@@ -188,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _isRefreshButtonVisible = value;
-                RaisePropertyChanged("IsRefreshButtonVisible");
+                OnPropertyChanged("IsRefreshButtonVisible");
             }
         }
         private VATDeclaration _vATDeclarationData;
@@ -201,23 +200,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             set
             {
                 _vATDeclarationData = value;
-                RaisePropertyChanged("VATDeclarationData");
+                OnPropertyChanged("VATDeclarationData");
             }
         }
         #endregion
         #region Constructor
         public AcknowledgementDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             OnVATRefreshButtonClicked = new Command(() =>
             {
                 // Call Sadad number API

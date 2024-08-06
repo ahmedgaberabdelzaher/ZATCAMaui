@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
 {
@@ -13,9 +14,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
             set
             {
                 _currentTab = value;
-                RaisePropertyChanged(nameof(currentTab));
+                OnPropertyChanged(nameof(currentTab));
                 CurrentIndex = (int)_currentTab;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
             }
         }
 
@@ -26,16 +27,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
             set
             {
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
                 else if (MarkComplete == true && _currenrIndex < MaxIndex)
                 {
                     MarkComplete = false;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
             }
         }
@@ -51,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
             set
             {
                 _IsLoading = value;
-                RaisePropertyChanged("IsLoading");
+                OnPropertyChanged("IsLoading");
             }
         }
         public bool MarkComplete { get; private set; } = false;
@@ -69,7 +70,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
             set
             {
                 _PageTitle = value;
-                RaisePropertyChanged("PageTitle");
+                OnPropertyChanged("PageTitle");
             }
         }
         #endregion
@@ -77,14 +78,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
         #region Constructor
         public SupportPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
         #endregion
 

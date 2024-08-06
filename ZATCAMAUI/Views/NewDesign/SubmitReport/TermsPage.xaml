@@ -390,25 +390,20 @@
                             </Label>
 
                             <!--  Name Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                     <custom:GAZTBorderlessEntry
                                     x:Name="nameEntry"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportFullName}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.ReporterNameAr}"
                                     TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
 
                         <!--  Email Field  -->
@@ -469,24 +464,19 @@
 
 
                             <!--  Email Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                InputViewPadding="16,0,16,0"
-                                IsHintAlwaysFloated="True"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                      <custom:GAZTBorderlessEntry
                                     Keyboard="Email"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.ReporterEmail}"
                                     TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
 
                         <!--  Phone Field  -->
@@ -546,28 +536,25 @@
                             </Label>
 
                             <!--  Phone Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackground="White"
-                                ContainerType="Outlined"
-                                InputViewPadding="0"
-                                IsHintAlwaysFloated="True"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                Stroke="{StaticResource NeutralGreay}">
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView>
+                                <custom:CustomSfTextInputView.TextInputView>
+
+                                     <custom:GAZTBorderlessEntry
                                     x:Name="phoneEntry"
                                     Keyboard="Telephone"
                                     Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.ReporterMobileNumber}"
                                     TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.LeadingView>
+
+                                </custom:CustomSfTextInputView.TextInputView>
+
+                                  <inputLayout:SfTextInputLayout.LeadingView>
                                     <Image Aspect="AspectFit" Source="ic_Version" />
                                 </inputLayout:SfTextInputLayout.LeadingView>
-                            </inputLayout:SfTextInputLayout>
+
+
+                            </custom:CustomSfTextInputView>
                         </StackLayout>
 
                         <Label

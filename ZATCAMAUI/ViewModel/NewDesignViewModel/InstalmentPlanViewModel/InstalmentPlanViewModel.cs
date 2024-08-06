@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.InstalmentPlanModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
@@ -10,24 +11,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
 
     public class InstalmentPlanViewModel : BaseViewModel
     {
-        #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-        #endregion
 
         public InstalmentPlanViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
             GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
@@ -141,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
                 }
 
                 instalmentPlanModel = value;
-                RaisePropertyChanged("InstalmentPlanModel");
+                OnPropertyChanged("InstalmentPlanModel");
             }
         }
         private int _selectedOutletOptionIndex;
@@ -154,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             set
             {
                 _selectedOutletOptionIndex = value;
-                RaisePropertyChanged("SelectedOutletOptionIndex");
+                OnPropertyChanged("SelectedOutletOptionIndex");
             }
         }
 
@@ -170,7 +156,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             set
             {
                 _isZakatSelected = value;
-                RaisePropertyChanged("IsZakatSelected");
+                OnPropertyChanged("IsZakatSelected");
             }
         }
         //Custom Spinner Items starts here
@@ -185,7 +171,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             set
             {
                 _isIncomeTaxViewEnabled = value;
-                RaisePropertyChanged("IsIncomeTaxViewEnabled");
+                OnPropertyChanged("IsIncomeTaxViewEnabled");
             }
         }
         private InstalmentPlanModel _selectedOutletOption;
@@ -199,7 +185,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             {
                 _selectedOutletOption = value;
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
-                RaisePropertyChanged("SelectedOutletOption");
+                OnPropertyChanged("SelectedOutletOption");
             }
         }
 
@@ -220,7 +206,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
                 }
 
                 outletDecisionOptions = value;
-                RaisePropertyChanged("OutletDecisionOptions");
+                OnPropertyChanged("OutletDecisionOptions");
             }
         }
 

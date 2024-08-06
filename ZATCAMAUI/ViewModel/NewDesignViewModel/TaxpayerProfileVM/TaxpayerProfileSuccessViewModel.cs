@@ -1,5 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -7,8 +9,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
     public class TaxpayerProfileSuccessViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public int TPProfileSuccessId;
         #endregion
 
@@ -19,7 +19,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _SuccessTitleLbl = value;
-                RaisePropertyChanged("SuccessTitleLbl");
+                OnPropertyChanged("SuccessTitleLbl");
             }
         }
 
@@ -30,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _ButtonLabelText = value;
-                RaisePropertyChanged("ButtonLabelText");
+                OnPropertyChanged("ButtonLabelText");
             }
         }
 
@@ -41,14 +41,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             set
             {
                 _successCaptionLbl = value;
-                RaisePropertyChanged("successCaptionLbl");
+                OnPropertyChanged("successCaptionLbl");
             }
         }
 
         public TaxpayerProfileSuccessViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
-            _navigationService = navigationService;
         }
     }
 }

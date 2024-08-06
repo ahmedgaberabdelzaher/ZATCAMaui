@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.Views.NewDesign.OnboardingPages;
 
@@ -89,7 +90,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
                 boardings = value;
-                RaisePropertyChanged("Boardings");
+                OnPropertyChanged("Boardings");
             }
         }
 
@@ -108,7 +109,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
                 nextButtonText = value;
-                RaisePropertyChanged("NextButtonText");
+                OnPropertyChanged("NextButtonText");
             }
         }
 
@@ -127,7 +128,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
                 _LanguageText = value;
-                RaisePropertyChanged("LanguageText");
+                OnPropertyChanged("LanguageText");
             }
         }
 
@@ -146,7 +147,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
                 isSkipButtonVisible = value;
-                RaisePropertyChanged("IsSkipButtonVisible");
+                OnPropertyChanged("IsSkipButtonVisible");
             }
         }
 
@@ -166,10 +167,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (selectedIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
                 selectedIndex = value;
-                RaisePropertyChanged("SelectedIndex");
+                OnPropertyChanged("SelectedIndex");
             }
         }
 

@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
@@ -38,7 +36,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsDeclarationCheckedForInstruction = false;
                 IsTermsAndConditionPage = true;
 
-                SetLTR();
                 ClearFields();
                 SetPickerFont();
                 viewModel.TxtLOrCIssuedBy = string.Empty;
@@ -267,36 +264,14 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.MOTPThirdDigit = string.Empty;
             viewModel.MOTPFourthDigit = string.Empty;
             viewModel.IsHijriCal = false;
+            viewModel.IqamaTypeDesc = string.Empty;
+            viewModel.ShowIqamaTypeDesc = false;
         }
-
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-
-                //FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                //FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
-        }
-
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             await loadPageData();
-            //var safeInsets = On<iOS>().SafeAreaInsets();
-            //safeInsets.Bottom = -10;
-            //Padding = safeInsets;
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -759,12 +734,14 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.SelectedSignUpUsing = signUpUsing;
             viewModel.TxtIDType = signUpUsing.SUType;
             viewModel.TxtIDNumber = string.Empty;
+            viewModel.ShowIqamaTypeDesc = false;
+            viewModel.IqamaTypeDesc = "";
             if (IsTermsAndConditionPage == false)
             {
-                //EntryIDNumber.Focus();
+                EntryIDNumber.Focus();
             }
             IsTermsAndConditionPage = false;
-            //IDTypePicker.IsOpen = false;
+            IDTypePicker.IsOpen = false;
 
         }
 
@@ -1182,6 +1159,16 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
                             // EntryName.IsEnabled = false;
                             FrmIDNumber.HasError = false;
+                            if (SignupIsIDTypeValid.d.IqamaType.Length > 0)
+                            {
+                                viewModel.IqamaTypeDesc = SignupIsIDTypeValid.d.IqamaDesc;
+                                viewModel.ShowIqamaTypeDesc = true;
+                            }
+                            else
+                            {
+                                viewModel.IqamaTypeDesc = "";
+                                viewModel.ShowIqamaTypeDesc = false;
+                            }
                             if (viewModel.IsTIN)
                             {
                                 if (string.IsNullOrEmpty(SignupIsIDTypeValid.d.Tin))
@@ -1707,6 +1694,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             {
                 FrmIDNumber.HasError = false;
             }
+            viewModel.ShowIqamaTypeDesc = false;
+            viewModel.IqamaTypeDesc = string.Empty;
         }
 
         private void OnInCTapped(object sender, EventArgs e)
@@ -1903,6 +1892,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
         {
             viewModel.TxtIDNumber = string.Empty;
             EntryName.IsEnabled = true;
+            viewModel.ShowIqamaTypeDesc = false;
+            viewModel.IqamaTypeDesc = string.Empty;
             // SfPicker signUpUsing = (SfPicker)sender;
             viewModel.SelectedSignUpUsing = viewModel.SignUpUsingList[IDTypePicker.Columns[0].SelectedIndex];
             viewModel.TxtIDType = viewModel.SelectedSignUpUsing.SUType;
@@ -2128,6 +2119,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 flag = false;
                 FrmIDNumber.HasError = true;
                 viewModel.TxtIDNumber = string.Empty;
+                viewModel.IqamaTypeDesc = string.Empty;
+                viewModel.ShowIqamaTypeDesc = false;
 
             }
             if (string.IsNullOrEmpty(viewModel.PkrDBO))

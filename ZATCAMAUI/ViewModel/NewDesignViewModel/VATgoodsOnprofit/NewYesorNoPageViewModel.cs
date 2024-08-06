@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.VATgoodsOnprofit.NewYesorNoPageModel;
@@ -23,7 +24,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (_RQ1 == value) return;
                 _RQ1 = value;
-                RaisePropertyChanged("rq1");
+                OnPropertyChanged("rq1");
             }
         }
 
@@ -38,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (_RQ2 == value) return;
                 _RQ2 = value;
-                RaisePropertyChanged("rq2");
+                OnPropertyChanged("rq2");
             }
         }
 
@@ -53,7 +54,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (_qa1 == value) return;
                 _qa1 = value;
-                RaisePropertyChanged("QA1");
+                OnPropertyChanged("QA1");
             }
         }
 
@@ -68,7 +69,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (_qa2 == value) return;
                 _qa2 = value;
-                RaisePropertyChanged("QA2");
+                OnPropertyChanged("QA2");
             }
         }
 
@@ -82,7 +83,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (isYesQ1Checked == value) return;
                 isYesQ1Checked = value;
-                RaisePropertyChanged("IsYesQ1Checked");
+                OnPropertyChanged("IsYesQ1Checked");
             }
         }
         private bool isYesQ2Checked = false;
@@ -93,7 +94,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (isYesQ2Checked == value) return;
                 isYesQ2Checked = value;
-                RaisePropertyChanged("IsYesQ2Checked");
+                OnPropertyChanged("IsYesQ2Checked");
             }
         }
         private bool isNoQ1Checked = false;
@@ -104,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (isNoQ1Checked == value) return;
                 isNoQ1Checked = value;
-                RaisePropertyChanged("IsNoQ1Checked");
+                OnPropertyChanged("IsNoQ1Checked");
             }
         }
         private bool _BasedonQ1 = false;
@@ -115,7 +116,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (_BasedonQ1 == value) return;
                 _BasedonQ1 = value;
-                RaisePropertyChanged("basedonQ1");
+                OnPropertyChanged("basedonQ1");
             }
         }
         private bool isNoQ2Checked = false;
@@ -126,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATgoodsOnprofit
             {
                 if (isNoQ2Checked == value) return;
                 isNoQ2Checked = value;
-                RaisePropertyChanged("IsNoQ2Checked");
+                OnPropertyChanged("IsNoQ2Checked");
             }
         }
 

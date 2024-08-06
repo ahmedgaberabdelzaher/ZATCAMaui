@@ -19,7 +19,7 @@ using Instrumentation = AppDynamics.Agent.Instrumentation;
 
 namespace ZATCAMAUI.Platforms.Android;
 
-[Activity(Label = "GAZT E-Services", Theme = "@style/Theme.Splash", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+[Activity(Label = "GAZT E-Services", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
 
 public class MainActivity : MauiAppCompatActivity
 {
@@ -36,17 +36,8 @@ public class MainActivity : MauiAppCompatActivity
             PreventLinkerFromStrippingCommonLocalizationReferences();
             CrossMediaManager.Current.Init(this);
             UserDialogs.Init(this);
-            //TabLayoutResource = Resource.Layout.Tabbar;
-            //ToolbarResource = Resource.Layout.Toolbar;
             Firebase.FirebaseApp.InitializeApp(this);
-            //Xamarin.FormsMaps.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
-            //ZXing.Net.Mobile.Forms.Android.Platform.Init();
-            //await CrossMedia.Current.Initialize();
-            //Init(this, savedInstanceState);
-            //Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            //Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
-            //Rg.Plugins.Popup.Popup.Init(this);
             if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = LayoutInDisplayCutoutMode.ShortEdges;
@@ -95,13 +86,10 @@ public class MainActivity : MauiAppCompatActivity
 
             PackageInfo info = PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;
-            //App app = new App();
-            //App.appObj = app;
             //Distribute.SetEnabledForDebuggableBuild(true);
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
-            //LoadApplication(app);
             App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
         catch (Exception)

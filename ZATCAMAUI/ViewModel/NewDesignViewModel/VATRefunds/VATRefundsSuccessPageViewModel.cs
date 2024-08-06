@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models.VATRefunds;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
@@ -9,8 +8,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
     public class VATRefundsSuccessPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         public ICommand GoToDashboard_Tapped { get; set; }
 
@@ -26,7 +23,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             {
                 if (_vatNewReqSummaryData == value) return;
                 _vatNewReqSummaryData = value;
-                RaisePropertyChanged("VatNewReqSummaryData");
+                OnPropertyChanged("VatNewReqSummaryData");
             }
         }
 
@@ -34,19 +31,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
         public VATRefundsSuccessPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-
-            _navigationService = navigationService;
-
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-
-            _dialogService = dialogService;
 
             GoBackClick = new Command(() =>
             {

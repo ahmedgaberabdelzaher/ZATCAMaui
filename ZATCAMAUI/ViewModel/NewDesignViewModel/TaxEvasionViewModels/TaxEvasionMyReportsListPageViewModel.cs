@@ -1,8 +1,9 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -30,7 +31,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 {
                     // FilterIfTypeAndStausFilterSelected();
                 }
-                RaisePropertyChanged("SelectedChipFilterItemList");
+                OnPropertyChanged("SelectedChipFilterItemList");
             }
         }
         private List<TaxEvasionReportDetails> _tERListReportbymobno;
@@ -45,7 +46,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_tERListReportbymobno == value) return;
 
                 _tERListReportbymobno = value;
-                RaisePropertyChanged("TERListReportbymobno");
+                OnPropertyChanged("TERListReportbymobno");
             }
         }
         private List<TaxEvasionReportDetails> _tERListReportbymobnoAll;
@@ -60,7 +61,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_tERListReportbymobnoAll == value) return;
 
                 _tERListReportbymobnoAll = value;
-                RaisePropertyChanged("TERListReportbymobnoAll");
+                OnPropertyChanged("TERListReportbymobnoAll");
             }
         }
         private ObservableCollection<TaxEvasionReportDetails> _listToDisplay;
@@ -87,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                 }
 
-                RaisePropertyChanged("ListToDisplay");
+                OnPropertyChanged("ListToDisplay");
             }
         }
         private List<TaxEvasionReportDetails> _taxEvasionReportListClosed;
@@ -102,7 +103,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_taxEvasionReportListClosed == value) return;
 
                 _taxEvasionReportListClosed = value;
-                RaisePropertyChanged("TERListReportbymobnoClosed");
+                OnPropertyChanged("TERListReportbymobnoClosed");
             }
         }
         public ObservableCollection<ChipModel> _chipDataFilterlist = null;
@@ -117,7 +118,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_chipDataFilterlist == value) return;
 
                 _chipDataFilterlist = value;
-                RaisePropertyChanged("ChipDataFilterlist");
+                OnPropertyChanged("ChipDataFilterlist");
             }
         }
         public bool _isReportListVisible = false;
@@ -132,7 +133,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_isReportListVisible == value) return;
 
                 _isReportListVisible = value;
-                RaisePropertyChanged("IsReportListVisible");
+                OnPropertyChanged("IsReportListVisible");
             }
         }
         public bool _IsNoReportLabelVisible = true;
@@ -147,7 +148,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 if (_IsNoReportLabelVisible == value) return;
 
                 _IsNoReportLabelVisible = value;
-                RaisePropertyChanged("IsNoReportLabelVisible");
+                OnPropertyChanged("IsNoReportLabelVisible");
             }
         }
         private TaxEvasionReportDetails _selectedTaxEvasionListItem;
@@ -177,7 +178,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
 
                     }
 
-                    RaisePropertyChanged("SelectedTaxEvasionListItem");
+                    OnPropertyChanged("SelectedTaxEvasionListItem");
                 }
                 catch (Exception)
                 {

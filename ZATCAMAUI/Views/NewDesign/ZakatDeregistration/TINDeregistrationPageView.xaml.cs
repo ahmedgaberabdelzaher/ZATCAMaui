@@ -274,10 +274,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            //outletDecisionOptionsListView.SelectedItem = null;
-            //SimpleIoc.Default.Unregister<TINDeregistrationPageViewModel>();
-            //SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
-
             MessagingCenter.Unsubscribe<object, Attachments>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             MessagingCenter.Unsubscribe<TINDeregistrationPageViewModel, bool>(this, "EnableOutletContinueButton");

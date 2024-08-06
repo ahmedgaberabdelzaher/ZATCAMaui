@@ -25,23 +25,6 @@
             public object Begda { get; set; }
             public DateTime? Birthdt { get; set; }
 
-            //private DateTime? _birthDt = new DateTime();
-            //public DateTime? Birthdt {
-            //    get { return _birthDt; }
-            //    set
-            //    {
-            //        if (_birthDt == value) return;
-            //        _birthDt = value;
-
-            //        if(value == null)
-            //        {
-            //            _birthDt = new DateTime();
-            //        }
-            //    }
-            //}
-
-
-
             public string Building { get; set; }
             public string CaseGuid { get; set; }
             public string City1 { get; set; }
@@ -75,6 +58,10 @@
             public string Submit { get; set; }
             public string Tin { get; set; }
             public string Type { get; set; }
+            public string AIqamaType { get; set; }
+            public string AIqamaDesc { get; set; }
+            public string AIqamaFg { get; set; }
+
         }
 
         public class LoginSSOModelClass

@@ -246,6 +246,19 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                                     GoBackToOnaboardingScreen();
                                 }
                             }
+                            else if (data == ZATCAConstants.AppChangeMobCompanay)
+                            {
+                                viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, "");
+                            }
+
+                            else if (data == ZATCAConstants.AppChangeMobCompanayNafath)
+                            {
+                                if (App.GUIDFrChangeMob.Contains(ZATCAConstants.WebKeyChangeMobCompanayNafath))
+                                {
+                                    var guid = App.GUIDFrChangeMob.Split("guid=")[1];
+                                    viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, guid);
+                                }
+                            }
 
                             else if (data == "success")
                             {
@@ -442,11 +455,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 });
 
                 loginGrid.Add(hybridWebView, 0, 0);
-
-                //TODO
-                //// send the child to back because LowerChild() is not available in MAUI
-                //loginGrid.Children.RemoveAt(loginGrid.Children.IndexOf(hybridWebView));
-                //loginGrid.Insert(loginGrid.Children.Count, hybridWebView);
             }
             catch (Exception)
             {

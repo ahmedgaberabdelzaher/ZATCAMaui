@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Newtonsoft.Json;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Services.Interface;
 using ZATCAMAUI.Models.LoginModels;
 
@@ -9,14 +10,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
     public class CustomLoginViewModel : BaseViewModelWithOTP
     {
         string passwordTxt;
-        public string PasswordTxt { get { return passwordTxt; } set { passwordTxt = value; RaisePropertyChanged(); } }
+        public string PasswordTxt { get { return passwordTxt; } set { passwordTxt = value; OnPropertyChanged(); } }
 
         string userNameTxt;
-        public string UserNameTxt { get { return userNameTxt; } set { userNameTxt = value; RaisePropertyChanged(); } }
+        public string UserNameTxt { get { return userNameTxt; } set { userNameTxt = value; OnPropertyChanged(); } }
 
 
         string email;
-        public string Email { get { return email; } set { email = value; RaisePropertyChanged(); } }
+        public string Email { get { return email; } set { email = value; OnPropertyChanged(); } }
 
 
         IUserServices _userServices;

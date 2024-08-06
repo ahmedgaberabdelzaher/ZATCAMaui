@@ -1,32 +1,21 @@
-﻿using GalaSoft.MvvmLight.Views;
-using GalaSoft.MvvmLight;
+﻿
+
 using AppDynamics.Agent;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
 {
     public class NafathLoginPageViewModel : BaseViewModel
     {
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnBackButtonClicked { get; set; }
         public int CurrentAttempt = 0;
         public NafathLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
 
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
             OnBackButtonClicked = new  Command(() =>
             {
                 _navigationService.GoBack();

@@ -31,31 +31,25 @@
         </Label>
 
         <!--  TypeItem Entry  -->
-        <inputLayout:SfTextInputLayout
-            ContainerBackground="White"
-            ContainerType="Outlined"
-            Hint="{x:Static ResourceManager:AppResources.Select}"
-            InputViewPadding="16,0,16,0"
-            LeadingViewPosition="Inside"
-            OutlineCornerRadius="15"
-            Stroke="{StaticResource NeutralGreay}">
-            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                <inputLayout:LabelStyle TextColor="#B00020" />
-            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-            <custom:GAZTBorderlessEntry
-                InputTransparent="True"
-                IsReadOnly="True"
-                Keyboard="Text"
-                Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                Style="{StaticResource DefaultEntry}"
-                Text="{Binding SelectedProductTypes.Name}"
-                TextColor="#58595B">
+        <custom:CustomSfTextInputView >
+            <custom:CustomSfTextInputView.TextInputView>
 
-                <custom:GAZTBorderlessEntry.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
-                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                <custom:GAZTBorderlessEntry
+                    InputTransparent="True"
+                    IsReadOnly="True"
+                    Keyboard="Text"
+                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                    Style="{StaticResource DefaultEntry}"
+                    Text="{Binding SelectedProductTypes.Name}"
+                    TextColor="#58595B">
 
-            </custom:GAZTBorderlessEntry>
+                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
+                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                </custom:GAZTBorderlessEntry>
+
+            </custom:CustomSfTextInputView.TextInputView>
 
             <inputLayout:SfTextInputLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
@@ -65,7 +59,7 @@
                 <Image Aspect="AspectFit" Source="greyDropDown" />
             </inputLayout:SfTextInputLayout.TrailingView>
 
-        </inputLayout:SfTextInputLayout>
+        </custom:CustomSfTextInputView>
 
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
@@ -87,31 +81,25 @@
         </Label>
 
         <!--  ProductName Entry  -->
-        <inputLayout:SfTextInputLayout
-            ContainerBackground="White"
-            ContainerType="Outlined"
-            Hint="{x:Static ResourceManager:AppResources.Select}"
-            InputViewPadding="16,0,16,0"
-            LeadingViewPosition="Inside"
-            OutlineCornerRadius="15"
-            Stroke="{StaticResource NeutralGreay}">
-            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                <inputLayout:LabelStyle TextColor="#B00020" />
-            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-            <custom:GAZTBorderlessEntry
-                InputTransparent="True"
-                IsReadOnly="True"
-                Keyboard="Text"
-                Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                Style="{StaticResource DefaultEntry}"
-                Text="{Binding SelectedProductSubTypes.Name}"
-                TextColor="#58595B">
+        <custom:CustomSfTextInputView >
+            <custom:CustomSfTextInputView.TextInputView>
 
-                <custom:GAZTBorderlessEntry.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
-                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                <custom:GAZTBorderlessEntry
+                    InputTransparent="True"
+                    IsReadOnly="True"
+                    Keyboard="Text"
+                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                    Style="{StaticResource DefaultEntry}"
+                    Text="{Binding SelectedProductSubTypes.Name}"
+                    TextColor="#58595B">
 
-            </custom:GAZTBorderlessEntry>
+                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
+                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                </custom:GAZTBorderlessEntry>
+
+            </custom:CustomSfTextInputView.TextInputView>
 
             <inputLayout:SfTextInputLayout.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
@@ -121,7 +109,7 @@
                 <Image Aspect="AspectFit" Source="greyDropDown" />
             </inputLayout:SfTextInputLayout.TrailingView>
 
-        </inputLayout:SfTextInputLayout>
+        </custom:CustomSfTextInputView>
 
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
@@ -143,32 +131,39 @@
         </Label>
 
         <!--  Quantity Entry  -->
-        <inputLayout:SfTextInputLayout
-            ContainerBackground="White"
-            ContainerType="Outlined"
-            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-            Hint="{x:Static ResourceManager:AppResources.Quantity}"
-            InputViewPadding="16,0,16,0"
-            LeadingViewPosition="Inside"
-            OutlineCornerRadius="15"
-            Stroke="{StaticResource NeutralGreay}">
-            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                <inputLayout:LabelStyle TextColor="#B00020" />
-            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+        <custom:CustomSfTextInputView>
+            <custom:CustomSfTextInputView.TextInputView>
 
-            <numericinput:SfNumericEntry
-                CustomFormat="N2"
-                FontFamily="{StaticResource SomarRegular}"
-                FontSize="15"
-                HeightRequest="48"
-                HorizontalOptions="FillAndExpand"
-                Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
-                PlaceholderColor="{StaticResource NeutralGreay}"
-                TextColor="#58595B"
-                ValueChangeMode="OnKeyFocus"
-                Value="{Binding Quantity}" />
-        </inputLayout:SfTextInputLayout>
+                 <numericinput:SfNumericEntry
+                    CustomFormat="N2"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
+                    PlaceholderColor="{StaticResource NeutralGreay}"
+                    TextColor="#58595B"
+                    ValueChangeMode="OnKeyFocus"
+                    BackgroundColor="Transparent"
+                    ShowBorder="False"
+                    Value="{Binding Quantity}" />
 
+            </custom:CustomSfTextInputView.TextInputView>
+
+            <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:LabelStyle TextColor="#58595B" />
+            </inputLayout:SfTextInputLayout.HelperLabelStyle>
+
+            <inputLayout:SfTextInputLayout.TrailingView>
+                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+            </inputLayout:SfTextInputLayout.TrailingView>
+
+        </custom:CustomSfTextInputView>
+
+        <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
+                Margin="0,-15,0,10"
+                Style="{StaticResource CaptionLabelGrey}"/>
 
     </StackLayout>
 
@@ -186,35 +181,39 @@
         </Label>
 
         <!--  Total Value Entry  -->
-        <inputLayout:SfTextInputLayout
-            ContainerBackground="White"
-            ContainerType="Outlined"
-            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-            Hint="{x:Static ResourceManager:AppResources.TotalPriceValue}"
-            InputViewPadding="16,0,16,0"
-            LeadingViewPosition="Inside"
-            OutlineCornerRadius="15"
-            Stroke="{StaticResource NeutralGreay}">
-            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                <inputLayout:LabelStyle TextColor="#B00020" />
-            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+         <custom:CustomSfTextInputView >
+            <custom:CustomSfTextInputView.TextInputView>
 
-            <numericinput:SfNumericEntry
-                CustomFormat="N2"
-                FontFamily="{StaticResource SomarRegular}"
-                FontSize="15"
-                HeightRequest="48"
-                HorizontalOptions="FillAndExpand"
-                Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
-                PlaceholderColor="{StaticResource NeutralGreay}"
-                TextColor="#58595B"
-                ValueChangeMode="OnKeyFocus"
-                Value="{Binding TotalValue}" />
+                 <numericinput:SfNumericEntry
+                    CustomFormat="N2"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="Transparent"
+                    ShowBorder="False"
+                    Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+                    PlaceholderColor="{StaticResource NeutralGreay}"
+                    TextColor="#58595B"
+                    ValueChangeMode="OnKeyFocus"
+                    Value="{Binding TotalValue}" />
+
+            </custom:CustomSfTextInputView.TextInputView>
+
+            <inputLayout:SfTextInputLayout.HelperLabelStyle>
+                <inputLayout:LabelStyle TextColor="#58595B" />
+            </inputLayout:SfTextInputLayout.HelperLabelStyle>
 
             <inputLayout:SfTextInputLayout.TrailingView>
                 <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZSAR}" />
             </inputLayout:SfTextInputLayout.TrailingView>
-        </inputLayout:SfTextInputLayout>
+
+        </custom:CustomSfTextInputView>
+
+        <Label Text="{x:Static ResourceManager:AppResources.NumberHint}"
+                Margin="0,-15,0,10"
+                Style="{StaticResource CaptionLabelGrey}"/>
 
 
     </StackLayout>

@@ -1,5 +1,7 @@
 
-﻿using GalaSoft.MvvmLight.Views;
+
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {

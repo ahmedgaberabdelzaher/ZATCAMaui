@@ -297,28 +297,24 @@
                                         </StackLayout>
                                     </Border>
                                     <StackLayout Spacing="2">
-                                        <inputLayout:SfTextInputLayout
-                                            Margin="10,0,10,0"
-                                            ContainerType="Outlined"
-                                            HelperText="{Binding TextCount}"
-                                            IsHintAlwaysFloated="True"
-                                            IsVisible="{Binding IsOthersEditorVisible}"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="15"
-                                            Stroke="{StaticResource Primary}"
-                                            TrailingViewPosition="Inside">
-                                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                <inputLayout:LabelStyle TextColor="#B00020" />
-                                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                            <custom:GAZTBorderlessEntry
-                                                HeightRequest="100"
-                                                MaxLength="1000"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding OtherField}"
-                                                TextChanged="Others_Entry_TextChanged" />
 
-                                        </inputLayout:SfTextInputLayout>
-                                        <!--<Label Text="no of characters remaining"/>-->
+                                        <custom:CustomSfTextInputView  IsVisible="{Binding IsOthersEditorVisible}">
+                                            <custom:CustomSfTextInputView.TextInputView>
+                                                <custom:GAZTBorderlessEntry
+                                                    HeightRequest="100"
+                                                    MaxLength="1000"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding OtherField}"
+                                                    TextChanged="Others_Entry_TextChanged" />
+
+                                            </custom:CustomSfTextInputView.TextInputView>
+
+                                        </custom:CustomSfTextInputView>
+
+                                        <Label Text="{Binding TextCount}"
+                                                Margin="0,-15,0,10"
+                                                Style="{StaticResource CaptionLabelGrey}"/>
+
                                     </StackLayout>
                                 </StackLayout>
 
@@ -371,29 +367,23 @@
                                                 </StackLayout>
                                             </Border>
                                             <StackLayout Spacing="2">
-                                                <inputLayout:SfTextInputLayout
-                                                    x:Name="OthersTxt"
-                                                    Margin="10,0,10,0"
-                                                    ContainerType="Outlined"
-                                                    HelperText="{Binding TextCount}"
-                                                    IsHintAlwaysFloated="True"
-                                                    IsVisible="{Binding IsOthersEditorVisible}"
-                                                    LeadingViewPosition="Inside"
-                                                    OutlineCornerRadius="15"
-                                                    Stroke="{StaticResource Primary}"
-                                                    TrailingViewPosition="Inside">
-                                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                        <inputLayout:LabelStyle TextColor="#B00020" />
-                                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                                    <custom:GAZTBorderlessEntry
-                                                        HeightRequest="100"
-                                                        MaxLength="1000"
-                                                        Style="{StaticResource DefaultEntry}"
-                                                        Text="{Binding OtherField}"
-                                                        TextChanged="Others_Entry_TextChanged" />
+                                                <custom:CustomSfTextInputView IsVisible="{Binding IsOthersEditorVisible}"
+                                                                              x:Name="OthersTxt">
+                                                   <custom:CustomSfTextInputView.TextInputView>
+                                                        <custom:GAZTBorderlessEntry
+                                                            HeightRequest="100"
+                                                            MaxLength="1000"
+                                                            Style="{StaticResource DefaultEntry}"
+                                                            Text="{Binding OtherField}"
+                                                            TextChanged="Others_Entry_TextChanged" />
+                                                   </custom:CustomSfTextInputView.TextInputView>
 
-                                                </inputLayout:SfTextInputLayout>
-                                                <!--<Label Text="no of characters remaining"/>-->
+                                                </custom:CustomSfTextInputView>
+
+                                                <Label Text="{Binding TextCount}"
+                                                        Margin="0,-15,0,10"
+                                                        Style="{StaticResource CaptionLabelGrey}"/>
+
                                             </StackLayout>
                                         </StackLayout>
                                         <Grid>

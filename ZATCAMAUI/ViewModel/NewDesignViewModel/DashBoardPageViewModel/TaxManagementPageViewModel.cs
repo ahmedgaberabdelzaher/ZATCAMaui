@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
 using System.Globalization;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
@@ -22,7 +23,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             set
             {
                 _appVersion = value;
-                RaisePropertyChanged("AppVersion");
+                OnPropertyChanged("AppVersion");
             }
         }
 

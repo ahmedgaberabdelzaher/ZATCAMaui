@@ -1,10 +1,11 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -16,8 +17,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
     public class AttachmentPageViewModel : BaseViewModel
     {
         #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public static decimal AttachmentUploadedSize = 0;
@@ -39,7 +38,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _attachmentSizeVisibility = value;
-                RaisePropertyChanged("AttachmentSizeVisibility");
+                OnPropertyChanged("AttachmentSizeVisibility");
             }
         }
         private VATDeclaration _vATDeclarationDataForAttch;
@@ -52,7 +51,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _vATDeclarationDataForAttch = value;
-                RaisePropertyChanged("VATDeclarationDataForAttch");
+                OnPropertyChanged("VATDeclarationDataForAttch");
             }
         }
         private string _dateSubmitted;
@@ -65,7 +64,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _dateSubmitted = value;
-                RaisePropertyChanged("DateSubmitted");
+                OnPropertyChanged("DateSubmitted");
             }
         }
         private string _attachmentName = "";
@@ -78,7 +77,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _attachmentName = value;
-                RaisePropertyChanged("AttachmentName");
+                OnPropertyChanged("AttachmentName");
             }
         }
         public decimal _attachmentSize = 0;
@@ -91,7 +90,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _attachmentSize = value;
-                RaisePropertyChanged("AttachmentSize");
+                OnPropertyChanged("AttachmentSize");
             }
         }
         public decimal _totalAttachmentSize = 0;
@@ -104,7 +103,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _totalAttachmentSize = value;
-                RaisePropertyChanged("TotalAttachmentSize");
+                OnPropertyChanged("TotalAttachmentSize");
             }
         }
         public int _attachmentCount = 0;
@@ -117,7 +116,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _attachmentCount = value;
-                RaisePropertyChanged("AttachmentCount");
+                OnPropertyChanged("AttachmentCount");
             }
         }
         private ObservableCollection<Attachment> _vatAttachmentsList;
@@ -130,7 +129,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _vatAttachmentsList = value;
-                RaisePropertyChanged("VatAttachmentsList");
+                OnPropertyChanged("VatAttachmentsList");
             }
         }
 
@@ -144,7 +143,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _attachmentList = value;
-                RaisePropertyChanged("AttachmentList");
+                OnPropertyChanged("AttachmentList");
             }
         }
 
@@ -158,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _isShowAttachmentButton = value;
-                RaisePropertyChanged("IsShowAttachmentButton");
+                OnPropertyChanged("IsShowAttachmentButton");
             }
         }
 
@@ -172,7 +171,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
             set
             {
                 _isAmendClickedOnVAT = value;
-                RaisePropertyChanged("IsAmendClickedOnVAT");
+                OnPropertyChanged("IsAmendClickedOnVAT");
             }
         }
 
@@ -182,21 +181,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AttachmentPage
         #region Constructor
         public AttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            _dialogService = dialogService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            GoBackClick = new Command(async () =>
-            {
-                _navigationService.GoBack();
-            });
-            GoBackClick = new Command(async () =>
+            GoBackClick = new Command( () =>
             {
                 _navigationService.GoBack();
             });

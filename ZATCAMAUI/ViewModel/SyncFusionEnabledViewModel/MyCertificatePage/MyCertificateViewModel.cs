@@ -1,6 +1,5 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
-using GalaSoft.MvvmLight.Command;
+﻿
+using CommunityToolkit.Mvvm.Input;
 using System.Windows.Input;
 using System.Net;
 using ZATCAMAUI.Models;
@@ -40,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _selectedTab = value;
-                RaisePropertyChanged("SelectedTab");
+                OnPropertyChanged("SelectedTab");
             }
         }
         
@@ -54,7 +53,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _isCertificateAvailableZakat = value;
-                RaisePropertyChanged("IsCertificateAvailableZakat");
+                OnPropertyChanged("IsCertificateAvailableZakat");
             }
         }
         private bool _isCertificateAvailableVAT = false;
@@ -67,7 +66,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _isCertificateAvailableVAT = value;
-                RaisePropertyChanged("IsCertificateAvailableVAT");
+                OnPropertyChanged("IsCertificateAvailableVAT");
             }
         }
         private bool _isCertificateAvailableET = false;
@@ -80,7 +79,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _isCertificateAvailableET = value;
-                RaisePropertyChanged("IsCertificateAvailableET");
+                OnPropertyChanged("IsCertificateAvailableET");
             }
         }
         private bool _isCertificateAvailableZakatTab = false;
@@ -93,7 +92,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _isCertificateAvailableZakatTab = value;
-                RaisePropertyChanged("IsCertificateAvailableZakatTab");
+                OnPropertyChanged("IsCertificateAvailableZakatTab");
             }
         }
         private bool _isCertificateAvailableVATTab = false;
@@ -106,7 +105,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _isCertificateAvailableVATTab = value;
-                RaisePropertyChanged("IsCertificateAvailableVATTab");
+                OnPropertyChanged("IsCertificateAvailableVATTab");
             }
         }
         private bool _isCertificateAvailableETTab = false;
@@ -119,7 +118,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _isCertificateAvailableETTab = value;
-                RaisePropertyChanged("IsCertificateAvailableETTab");
+                OnPropertyChanged("IsCertificateAvailableETTab");
             }
         }
         private bool _setNoDataLabelVisibilityZakat = false;
@@ -132,7 +131,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _setNoDataLabelVisibilityZakat = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityZakat");
+                OnPropertyChanged("SetNoDataLabelVisibilityZakat");
             }
         }
         private bool _setNoDataLabelVisibilityVAT = false;
@@ -145,7 +144,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _setNoDataLabelVisibilityVAT = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityVAT");
+                OnPropertyChanged("SetNoDataLabelVisibilityVAT");
             }
         }
         private bool _setNoDataLabelVisibilityET = false;
@@ -158,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _setNoDataLabelVisibilityET = value;
-                RaisePropertyChanged("SetNoDataLabelVisibilityET");
+                OnPropertyChanged("SetNoDataLabelVisibilityET");
             }
         }
         private bool _isVATCertificateAvailable = false;
@@ -171,7 +170,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _isVATCertificateAvailable = value;
-                RaisePropertyChanged("IsVATCertificateAvailable");
+                OnPropertyChanged("IsVATCertificateAvailable");
             }
         }
         private List<Result> _certificateListZakat;
@@ -184,7 +183,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _certificateListZakat = value;
-                RaisePropertyChanged("CertificateListZakat");
+                OnPropertyChanged("CertificateListZakat");
             }
         }
         private List<Result> _certificateListVAT;
@@ -197,7 +196,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _certificateListVAT = value;
-                RaisePropertyChanged("CertificateListVAT");
+                OnPropertyChanged("CertificateListVAT");
             }
         }
         private List<Result> _certificateListET;
@@ -210,7 +209,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _certificateListET = value;
-                RaisePropertyChanged("CertificateListET");
+                OnPropertyChanged("CertificateListET");
             }
         }
         private Result _selectedCertificate;
@@ -223,7 +222,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _selectedCertificate = value;
-                RaisePropertyChanged("SelectedCertificate");
+                OnPropertyChanged("SelectedCertificate");
                 if (SelectedCertificate != null && SelectedCertificate.Pdfurl != null)
                 {
                     ShowPdf(SelectedCertificate.Pdfurl);
@@ -241,7 +240,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _PdfSelected = value;
-                RaisePropertyChanged("_PdfSelected");
+                OnPropertyChanged("_PdfSelected");
                 // _dialogService.ShowMessageBox("Please Wait Pdf Is Loading", AppResources.Information);
                 if (_PdfSelected != null)
                 {
@@ -266,7 +265,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _CertificateVisible = value;
-                RaisePropertyChanged("CertificateVisible");
+                OnPropertyChanged("CertificateVisible");
             }
         }
         private TaxPayerProfile _TaxPayerProfile = App.TP;
@@ -279,7 +278,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _TaxPayerProfile = value;
-                RaisePropertyChanged("TaxPayerProfile");
+                OnPropertyChanged("TaxPayerProfile");
             }
         }
         private string _PathOfPdf;
@@ -292,7 +291,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _PathOfPdf = value;
-                RaisePropertyChanged("PathOfPdf");
+                OnPropertyChanged("PathOfPdf");
             }
         }
         private string _certificateType;
@@ -305,7 +304,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _certificateType = value;
-                RaisePropertyChanged("CertificateType");
+                OnPropertyChanged("CertificateType");
             }
         }
         private string _DownloadUrl = string.Empty;
@@ -318,7 +317,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _DownloadUrl = value;
-                RaisePropertyChanged("DownloadUrl");
+                OnPropertyChanged("DownloadUrl");
             }
         }
         private Stream _StreamForDownloadURL = null;
@@ -331,7 +330,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
             set
             {
                 _StreamForDownloadURL = value;
-                RaisePropertyChanged("StreamForDownloadURL");
+                OnPropertyChanged("StreamForDownloadURL");
             }
         }
         #endregion

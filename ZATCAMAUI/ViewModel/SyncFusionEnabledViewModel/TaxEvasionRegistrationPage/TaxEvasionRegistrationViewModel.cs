@@ -1,7 +1,8 @@
 ﻿using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -12,8 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
     public class TaxEvasionRegistrationViewModel : BaseViewModel
     {
         #region variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
         public ICommand RegisterUserClicked { get; set; }
 
@@ -29,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _isVisiblePickerAr = value;
-                RaisePropertyChanged("IsVisiblePickerAr");
+                OnPropertyChanged("IsVisiblePickerAr");
             }
         }
         private bool _isVisiblePickerEn = false;
@@ -42,7 +41,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _isVisiblePickerEn = value;
-                RaisePropertyChanged("IsVisiblePickerEn");
+                OnPropertyChanged("IsVisiblePickerEn");
             }
         }
        
@@ -56,7 +55,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _txtEmailAddress = value;
-                RaisePropertyChanged("TxtEmailAddress");
+                OnPropertyChanged("TxtEmailAddress");
             }
         }
 
@@ -70,7 +69,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _txtName = value;
-                RaisePropertyChanged("TxtName");
+                OnPropertyChanged("TxtName");
             }
         }
 
@@ -84,7 +83,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _txtReportDetailCity = value;
-                RaisePropertyChanged("TxtReportDetailCity");
+                OnPropertyChanged("TxtReportDetailCity");
             }
         }
 
@@ -109,7 +108,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
                         TxtReportDetailCity = _selectLCType.Name;
                     }
                 }
-                RaisePropertyChanged("SelectLCType");
+                OnPropertyChanged("SelectLCType");
             }
 
         }
@@ -124,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _selectLCTypePrev = value;
-                RaisePropertyChanged("SelectLCTypePrev");
+                OnPropertyChanged("SelectLCTypePrev");
             }
         }
         private List<TaxEvasionRegionCityDatum> _rList = null;
@@ -137,7 +136,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _rList = value;
-                RaisePropertyChanged("RList");
+                OnPropertyChanged("RList");
             }
         }
 
@@ -151,76 +150,50 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationP
             set
             {
                 _cityList = value;
-                RaisePropertyChanged("CList");
+                OnPropertyChanged("CList");
             }
         }
 
         public TaxEvasionRegistrationViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
-            _dialogService = dialogService;
-            BackButtonClicked = new Command(async () =>
+            BackButtonClicked = new Command( () =>
             {
                 var _navigation = Application.Current.MainPage.Navigation;
                 _navigationService.GoBack();
             });
-
-            //this.RegisterUserClicked = new Command(this.RegisterCommandClick);
         }
         public async Task OnPageLoad()
         {
+
             try
             {
 
-                try
+                TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
+                regionlist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllRegions();
+
+                if (regionlist != null && regionlist.Data.Count() != 0)
                 {
-
-                    TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
-                    regionlist = await TaxEvasionWebServiceManager.GAZTTaxEvasionGetAllRegions();
-
-                    if (regionlist != null && regionlist.Data.Count() != 0)
+                    if (CList != null && CList.Count > 0)
                     {
-                        if (CList != null && CList.Count > 0)
-                        {
-                            CList.Clear();
-                            TxtReportDetailCity = string.Empty;
-                        }
-
-                        CList = regionlist.Data;
-                    }
-                    else
-                    {
-                        NoInternetGoBack();
+                        CList.Clear();
+                        TxtReportDetailCity = string.Empty;
                     }
 
+                    CList = regionlist.Data;
                 }
-                catch (InternetException ex)
+                else
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                     {
-                         _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                         _navigationService.GoBack();
-                     });
+                    NoInternetGoBack();
                 }
+
             }
-            catch (Exception)
+            catch (InternetException ex)
             {
-
-
-
                 MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                     _navigationService.GoBack();
-                 });
+                    {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
             }
         }
         public async void NoInternetGoBack()

@@ -11,13 +11,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduc
         #region Properties
 
         string restrictedItem;
-        public string RestrictedItem { get { return restrictedItem; } set { restrictedItem = value; RaisePropertyChanged(); } }
+        public string RestrictedItem { get { return restrictedItem; } set { restrictedItem = value; OnPropertyChanged(); } }
 
         bool isPermit;
-        public bool IsPermit { get { return isPermit; } set { isPermit = value; RaisePropertyChanged(); } }
+        public bool IsPermit { get { return isPermit; } set { isPermit = value; OnPropertyChanged(); } }
 
         ObservableCollection<ReportFileModel> restrictedUploadedFiles = new ObservableCollection<ReportFileModel>();
-        public ObservableCollection<ReportFileModel> RestrictedUploadedFiles { get { return restrictedUploadedFiles; } set { restrictedUploadedFiles = value; RaisePropertyChanged(); } }
+        public ObservableCollection<ReportFileModel> RestrictedUploadedFiles { get { return restrictedUploadedFiles; } set { restrictedUploadedFiles = value; OnPropertyChanged(); } }
         #endregion
 
         #region Commands

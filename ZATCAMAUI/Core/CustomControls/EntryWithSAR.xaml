@@ -11,30 +11,25 @@
 
     <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
         <Label x:Name="Title" Style="{StaticResource CaptionLabelGrey}" />
-        <inputLayout:SfTextInputLayout
-            ContainerBackground="White"
-            ContainerType="Outlined"
-            Hint="{Binding Source={x:Reference CustomEntryWithSAR}, Path=Placeholder}"
-            InputViewPadding="16,0,16,0"
-            LeadingViewPosition="Inside"
-            OutlineCornerRadius="15"
-            Stroke="#999999">
+        <custom:CustomSfTextInputView >
+            <custom:CustomSfTextInputView.TextInputView>
+                <custom:GAZTBorderlessEntry
+                    x:Name="TextValue"
+                    BackgroundColor="Red"
+                    HorizontalOptions="Fill"
+                    Keyboard="Numeric"
+                    MaxLength="21"
+                    Placeholder="{Binding Source={x:Reference CustomEntryWithSAR}, Path=Placeholder}"
+                    Style="{StaticResource DefaultEntry}"
+                    Text="{Binding Source={x:Reference CustomEntryWithSAR}, Path=ValueText}"
+                    VerticalTextAlignment="Center">
+                    <custom:GAZTBorderlessEntry.Behaviors>
+                        <behaviors:NumericValidationBehavior />
+                    </custom:GAZTBorderlessEntry.Behaviors>
 
-            <custom:GAZTBorderlessEntry
-                x:Name="TextValue"
-                BackgroundColor="Red"
-                HorizontalOptions="Fill"
-                Keyboard="Numeric"
-                MaxLength="21"
-                Placeholder="{Binding Source={x:Reference CustomEntryWithSAR}, Path=Placeholder}"
-                Style="{StaticResource DefaultEntry}"
-                Text="{Binding Source={x:Reference CustomEntryWithSAR}, Path=ValueText}"
-                VerticalTextAlignment="Center">
-                <custom:GAZTBorderlessEntry.Behaviors>
-                    <behaviors:NumericValidationBehavior />
-                </custom:GAZTBorderlessEntry.Behaviors>
+                </custom:GAZTBorderlessEntry>
 
-            </custom:GAZTBorderlessEntry>
+            </custom:CustomSfTextInputView.TextInputView>
 
             <inputLayout:SfTextInputLayout.TrailingView>
                 <Label
@@ -43,7 +38,8 @@
                     Style="{StaticResource CaptionLabelGrey}"
                     Text="{x:Static ResourceManager:AppResources.ZSAR}" />
             </inputLayout:SfTextInputLayout.TrailingView>
-        </inputLayout:SfTextInputLayout>
+
+        </custom:CustomSfTextInputView>
     </StackLayout>
 
 </ContentView>

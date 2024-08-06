@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Input;
-using GalaSoft.MvvmLight.Views;
+
 using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -10,6 +10,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 {
@@ -33,7 +34,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_fromDate == value) return;
                 _fromDate = value;
-                RaisePropertyChanged("FromDate");
+                OnPropertyChanged("FromDate");
             }
         }
 
@@ -49,7 +50,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_FromDateDownloadPage == value) return;
 
                 _FromDateDownloadPage = value;
-                RaisePropertyChanged("FromDateDownloadPage");
+                OnPropertyChanged("FromDateDownloadPage");
             }
         }
         private DateTime _ToDateDownloadPage;
@@ -64,7 +65,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_ToDateDownloadPage == value) return;
 
                 _ToDateDownloadPage = value;
-                RaisePropertyChanged("ToDateDownloadPage");
+                OnPropertyChanged("ToDateDownloadPage");
             }
         }
 
@@ -81,7 +82,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_asTaxpayerSelectedValues == value) return;
 
                 _asTaxpayerSelectedValues = value;
-                RaisePropertyChanged("ASTaxpayerSelectedValues");
+                OnPropertyChanged("ASTaxpayerSelectedValues");
             }
         }
         private string _toDate = AppResources.ASAccountStatementTo;
@@ -96,7 +97,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_toDate == value) return;
 
                 _toDate = value;
-                RaisePropertyChanged("ToDate");
+                OnPropertyChanged("ToDate");
             }
         }
 
@@ -109,7 +110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_groupedStatements == value) return;
 
                 _groupedStatements = value;
-                RaisePropertyChanged(nameof(GroupedStatements));
+                OnPropertyChanged(nameof(GroupedStatements));
             }
         }
 
@@ -125,7 +126,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
         //        if (_FlowDirect == value) return;
 
         //        _FlowDirect = value;
-        //        RaisePropertyChanged("FlowDirect");
+        //        OnPropertyChanged("FlowDirect");
         //    }
         //}
 
@@ -142,7 +143,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_tabIdentification == value) return;
 
                 _tabIdentification = value;
-                RaisePropertyChanged("TabIdentification");
+                OnPropertyChanged("TabIdentification");
             }
         }
 
@@ -158,7 +159,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_transactionTypeDropDownParent == value) return;
 
                 _transactionTypeDropDownParent = value;
-                RaisePropertyChanged("TransactionTypeDropDownParent");
+                OnPropertyChanged("TransactionTypeDropDownParent");
             }
         }
 
@@ -174,7 +175,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TransactionDateFilterItem == value) return;
 
                 _TransactionDateFilterItem = value;
-                RaisePropertyChanged("TransactionDateFilterItem");
+                OnPropertyChanged("TransactionDateFilterItem");
             }
         }
         public string _TaxTypeFilterItem = string.Empty;
@@ -189,7 +190,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TaxTypeFilterItem == value) return;
 
                 _TaxTypeFilterItem = value;
-                RaisePropertyChanged("TaxTypeFilterItem");
+                OnPropertyChanged("TaxTypeFilterItem");
             }
         }
         public string _FBNumFilterItem = string.Empty;
@@ -204,7 +205,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_FBNumFilterItem == value) return;
 
                 _FBNumFilterItem = value;
-                RaisePropertyChanged("FBNumFilterItem");
+                OnPropertyChanged("FBNumFilterItem");
             }
         }
 
@@ -221,7 +222,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_SadadBillNumberFilterItem == value) return;
 
                 _SadadBillNumberFilterItem = value;
-                RaisePropertyChanged("SadadBillNumberFilterItem");
+                OnPropertyChanged("SadadBillNumberFilterItem");
             }
         }
 
@@ -237,7 +238,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TaxperiodFilterItem == value) return;
 
                 _TaxperiodFilterItem = value;
-                RaisePropertyChanged("TaxperiodFilterItem");
+                OnPropertyChanged("TaxperiodFilterItem");
             }
         }
 
@@ -253,7 +254,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_SearchBarListItemSource == value) return;
 
                 _SearchBarListItemSource = value;
-                RaisePropertyChanged("SearchBarListItemSource");
+                OnPropertyChanged("SearchBarListItemSource");
             }
         }
 
@@ -269,7 +270,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_IsVisible_SearchList == value) return;
 
                 _IsVisible_SearchList = value;
-                RaisePropertyChanged("IsVisible_SearchList");
+                OnPropertyChanged("IsVisible_SearchList");
             }
         }
 
@@ -285,7 +286,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_DueDateFilterItem == value) return;
 
                 _DueDateFilterItem = value;
-                RaisePropertyChanged("DueDateFilterItem");
+                OnPropertyChanged("DueDateFilterItem");
             }
         }
         public string _BillDescriptionFilterItem = string.Empty;
@@ -300,7 +301,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_toDate == value) return;
 
                 _BillDescriptionFilterItem = value;
-                RaisePropertyChanged("BillDescriptionFilterItem");
+                OnPropertyChanged("BillDescriptionFilterItem");
             }
         }
 
@@ -316,7 +317,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_BillAmountFilterItem == value) return;
 
                 _BillAmountFilterItem = value;
-                RaisePropertyChanged("BillAmountFilterItem");
+                OnPropertyChanged("BillAmountFilterItem");
             }
         }
         public string _StatusFilterItem = string.Empty;
@@ -331,7 +332,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_StatusFilterItem == value) return;
 
                 _StatusFilterItem = value;
-                RaisePropertyChanged("StatusFilterItem");
+                OnPropertyChanged("StatusFilterItem");
             }
         }
 
@@ -347,7 +348,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_accStmtnCreditAmount == value) return;
 
                 _accStmtnCreditAmount = value;
-                RaisePropertyChanged("AccStmtnCreditAmount");
+                OnPropertyChanged("AccStmtnCreditAmount");
             }
         }
 
@@ -363,7 +364,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TotalBalanceBackground == value) return;
 
                 _TotalBalanceBackground = value;
-                RaisePropertyChanged("TotalBalanceBackground");
+                OnPropertyChanged("TotalBalanceBackground");
             }
         }
 
@@ -391,7 +392,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                 }
 
-                RaisePropertyChanged("HeaderSet");
+                OnPropertyChanged("HeaderSet");
             }
         }
         public string _TotalDebit = string.Empty;
@@ -406,7 +407,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TotalDebit == value) return;
 
                 _TotalDebit = value;
-                RaisePropertyChanged("TotalDebit");
+                OnPropertyChanged("TotalDebit");
             }
         }
         public string _TotalCredit = string.Empty;
@@ -421,7 +422,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TotalCredit == value) return;
 
                 _TotalCredit = value;
-                RaisePropertyChanged("TotalCredit");
+                OnPropertyChanged("TotalCredit");
             }
         }
         public string _TotalBalance = string.Empty;
@@ -436,7 +437,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TotalBalance == value) return;
 
                 _TotalBalance = value;
-                RaisePropertyChanged("TotalBalance");
+                OnPropertyChanged("TotalBalance");
             }
         }
 
@@ -454,7 +455,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (isNotHaveStatements != value)
                 {
                     isNotHaveStatements = value;
-                    RaisePropertyChanged("IsNotHaveStatements");
+                    OnPropertyChanged("IsNotHaveStatements");
                 }
             }
         }
@@ -498,7 +499,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     groupedData = value;
                 }
-                RaisePropertyChanged("GroupedData");
+                OnPropertyChanged("GroupedData");
             }
         }
 
@@ -515,7 +516,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_GroupedDataForDownload == value) return;
 
                 _GroupedDataForDownload = value;
-                RaisePropertyChanged("GroupedDataForDownload");
+                OnPropertyChanged("GroupedDataForDownload");
             }
         }
 
@@ -535,7 +536,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     isMonthWiseStatementsViewVisible = value;
                     //IsNormalStatementsViewVisible = !value;
-                    RaisePropertyChanged("IsMonthWiseStatementsViewVisible");
+                    OnPropertyChanged("IsMonthWiseStatementsViewVisible");
                 }
             }
         }
@@ -556,7 +557,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (isTotalAmountVisible != value)
                 {
                     isTotalAmountVisible = value;
-                    RaisePropertyChanged("IsTotalAmountVisible");
+                    OnPropertyChanged("IsTotalAmountVisible");
                 }
             }
         }
@@ -575,7 +576,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (isNormalStatementsViewVisible != value)
                 {
                     isNormalStatementsViewVisible = value;
-                    RaisePropertyChanged("IsNormalStatementsViewVisible");
+                    OnPropertyChanged("IsNormalStatementsViewVisible");
                 }
             }
         }
@@ -592,7 +593,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_statementsLineItemsDownloadPage == value) return;
 
                 _statementsLineItemsDownloadPage = value;
-                RaisePropertyChanged("StatementsLineItemsDownloadPage");
+                OnPropertyChanged("StatementsLineItemsDownloadPage");
             }
         }
         public ObservableCollection<ASResult> _statementsLineItems = null;
@@ -837,7 +838,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         }
                     }
                     _statementsLineItems = value;
-                    RaisePropertyChanged("StatementsLineItems");
+                    OnPropertyChanged("StatementsLineItems");
                 }
             }
         }
@@ -854,7 +855,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_monthlyStatementsLineItems == value) return;
 
                 _monthlyStatementsLineItems = value;
-                RaisePropertyChanged("MonthlyStatementsLineItems");
+                OnPropertyChanged("MonthlyStatementsLineItems");
             }
         }
 
@@ -877,7 +878,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_yearValuesHeader == value) return;
 
                 _yearValuesHeader = value;
-                RaisePropertyChanged("YearValuesHeader");
+                OnPropertyChanged("YearValuesHeader");
             }
         }
 
@@ -893,7 +894,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_TaxTypeForFilter == value) return;
 
                 _TaxTypeForFilter = value;
-                RaisePropertyChanged("TaxTypeForFilter");
+                OnPropertyChanged("TaxTypeForFilter");
             }
         }
 
@@ -910,7 +911,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_allTransactionFilters == value) return;
 
                 _allTransactionFilters = value;
-                RaisePropertyChanged("AllTransactionFilters");
+                OnPropertyChanged("AllTransactionFilters");
             }
         }
 
@@ -928,7 +929,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (value == null || value.Count == 0) return;
                 value = new ObservableCollection<TaxRelationSetResult>(value.OrderBy(temp => temp.DisplayId).ToList());
                 _transactionTypeFilter = value;
-                RaisePropertyChanged("TransactionTypeFilter");
+                OnPropertyChanged("TransactionTypeFilter");
             }
         }
 
@@ -942,7 +943,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_pickerModel == value) return;
 
                 _pickerModel = value;
-                RaisePropertyChanged("PickerModel");
+                OnPropertyChanged("PickerModel");
             }
         }
 
@@ -958,7 +959,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_chipDataFilterlist == value) return;
 
                 _chipDataFilterlist = value;
-                RaisePropertyChanged("ChipDataFilterlist");
+                OnPropertyChanged("ChipDataFilterlist");
             }
         }
 
@@ -974,7 +975,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_chipDataFilterlistForStatus == value) return;
 
                 _chipDataFilterlistForStatus = value;
-                RaisePropertyChanged("ChipDataFilterlistForStatus");
+                OnPropertyChanged("ChipDataFilterlistForStatus");
             }
         }
 
@@ -990,7 +991,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_chipDataFilterlistForYears == value) return;
 
                 _chipDataFilterlistForYears = value;
-                RaisePropertyChanged("ChipDataFilterlistForYears");
+                OnPropertyChanged("ChipDataFilterlistForYears");
             }
         }
 
@@ -1011,7 +1012,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     FilterLabelText = _SelectedTaxTypeForFilter.TaxType;
                     FilterOnTaxType(SelectedTaxTypeForFilter.Id);
                 }
-                RaisePropertyChanged("SelectedTaxTypeForFilter");
+                OnPropertyChanged("SelectedTaxTypeForFilter");
             }
         }
 
@@ -1041,7 +1042,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     IsYearsChipVisible = false;
                     IsStatusChipsVisible = false;
                 }
-                RaisePropertyChanged("SelectedTransactionTypeFilter");
+                OnPropertyChanged("SelectedTransactionTypeFilter");
                 if (_selectedTransactionTypeFilter.StatementFilter != null)
                 {
 
@@ -1091,7 +1092,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_selectedTransactionType == value) return;
 
                 _selectedTransactionType = value;
-                RaisePropertyChanged("SelectedTransactionType");
+                OnPropertyChanged("SelectedTransactionType");
             }
         }
         public bool _IsNormalListDownloadPage = false;
@@ -1106,7 +1107,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_IsNormalListDownloadPage == value) return;
 
                 _IsNormalListDownloadPage = value;
-                RaisePropertyChanged("IsNormalListDownloadPage");
+                OnPropertyChanged("IsNormalListDownloadPage");
             }
         }
 
@@ -1122,7 +1123,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isYearsChipVisible == value) return;
 
                 _isYearsChipVisible = value;
-                RaisePropertyChanged("IsYearsChipVisible");
+                OnPropertyChanged("IsYearsChipVisible");
             }
         }
         public bool _isStatusChipsVisible;
@@ -1137,7 +1138,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isStatusChipsVisible == value) return;
 
                 _isStatusChipsVisible = value;
-                RaisePropertyChanged("IsStatusChipsVisible");
+                OnPropertyChanged("IsStatusChipsVisible");
             }
         }
 
@@ -1153,7 +1154,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isDownloadBtnVisile == value) return;
 
                 _isDownloadBtnVisile = value;
-                RaisePropertyChanged("IsDownloadBtnVisile");
+                OnPropertyChanged("IsDownloadBtnVisile");
             }
         }
 
@@ -1170,7 +1171,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isNoStatementsAvaiableVisible == value) return;
 
                 _isNoStatementsAvaiableVisible = value;
-                RaisePropertyChanged("IsNoStatementsAvaiableVisible");
+                OnPropertyChanged("IsNoStatementsAvaiableVisible");
             }
         }
 
@@ -1187,7 +1188,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_selectedYear == value) return;
 
                 _selectedYear = value;
-                RaisePropertyChanged("SelectedYear");
+                OnPropertyChanged("SelectedYear");
             }
         }
 
@@ -1203,7 +1204,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_filterLabelText == value) return;
 
                 _filterLabelText = value;
-                RaisePropertyChanged("FilterLabelText");
+                OnPropertyChanged("FilterLabelText");
             }
         }
 
@@ -1220,7 +1221,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isOpeningBalanceVisible == value) return;
 
                 _isOpeningBalanceVisible = value;
-                RaisePropertyChanged("IsOpeningBalanceVisible");
+                OnPropertyChanged("IsOpeningBalanceVisible");
             }
         }
 
@@ -1237,7 +1238,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isSearchButtonVisible == value) return;
 
                 _isSearchButtonVisible = value;
-                RaisePropertyChanged("IsSearchButtonVisible");
+                OnPropertyChanged("IsSearchButtonVisible");
             }
         }
 
@@ -1254,7 +1255,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isCloseButtonVisible == value) return;
 
                 _isCloseButtonVisible = value;
-                RaisePropertyChanged("IsCloseButtonVisible");
+                OnPropertyChanged("IsCloseButtonVisible");
             }
         }
 
@@ -1271,7 +1272,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_isSortByVisible == value) return;
 
                 _isSortByVisible = value;
-                RaisePropertyChanged("IsSortByVisible");
+                OnPropertyChanged("IsSortByVisible");
             }
         }
 
@@ -1287,7 +1288,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_filterList == value) return;
 
                 _filterList = value;
-                RaisePropertyChanged("FilterList");
+                OnPropertyChanged("FilterList");
             }
         }
 
@@ -1303,7 +1304,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_IsHijriCal == value) return;
 
                 _IsHijriCal = value;
-                RaisePropertyChanged("IsHijriCal");
+                OnPropertyChanged("IsHijriCal");
             }
         }
 
@@ -1321,7 +1322,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             {
                 if (_todayDateNormal == value) return;
                 _todayDateNormal = value;
-                RaisePropertyChanged("TodayDateNormal");
+                OnPropertyChanged("TodayDateNormal");
             }
         }
         private ObservableCollection<object> _todayDateinHijri;
@@ -1336,7 +1337,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_todayDateinHijri == value) return;
 
                 _todayDateinHijri = value;
-                RaisePropertyChanged("TodayDateinHijri");
+                OnPropertyChanged("TodayDateinHijri");
             }
         }
 
@@ -1352,7 +1353,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_txFromDate == value) return;
 
                 _txFromDate = value;
-                RaisePropertyChanged("TxFromDate");
+                OnPropertyChanged("TxFromDate");
             }
         }
         private string _txToDate = "";
@@ -1367,7 +1368,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_txToDate == value) return;
 
                 _txToDate = value;
-                RaisePropertyChanged("TxToDate");
+                OnPropertyChanged("TxToDate");
             }
         }
 
@@ -1384,7 +1385,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_tPFromDate == value) return;
 
                 _tPFromDate = value;
-                RaisePropertyChanged("TPFromDate");
+                OnPropertyChanged("TPFromDate");
             }
         }
         private string _tPToDate = "";
@@ -1399,7 +1400,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (_tPToDate == value) return;
 
                 _tPToDate = value;
-                RaisePropertyChanged("TPToDate");
+                OnPropertyChanged("TPToDate");
             }
         }
 
@@ -1410,14 +1411,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
         public string ToTxAmount = "";
         public AccountStatementsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
 
             GoBackBtnTapped = new Command(() =>
             {

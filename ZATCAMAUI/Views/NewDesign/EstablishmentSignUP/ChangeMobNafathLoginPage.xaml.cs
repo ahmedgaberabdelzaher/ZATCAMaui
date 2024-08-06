@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
@@ -18,7 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 			InitializeComponent ();
             viewModel = App.Locator.ChangeMobNafathLoginPage;
             BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
         }
         protected override void OnAppearing()
         {
@@ -73,11 +69,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             {
                                 viewModel.IsLoading = true;
                             }
-                            if(obj == "navigateBackToLoginPage")
+                            if (obj == "navigateBackToLoginPage")
                             {
                                 viewModel.Goback();
                             }
-                            
+
                         });
                     });
                 }

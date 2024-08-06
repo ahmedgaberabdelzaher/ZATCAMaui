@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿
+
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
@@ -8,15 +10,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public Command OnLoginButtonClicked { get; set; }
         public GAZTNewDesignRecoverPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            // OnLoginButtonClicked = new Command(() => { navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView); });
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
         }
     }
 }

@@ -3,8 +3,8 @@ using System.Globalization;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+
+
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -43,7 +43,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vATDueAmount == value) return;
 
                 _vATDueAmount = value;
-                RaisePropertyChanged("VATDueAmount");
+                OnPropertyChanged("VATDueAmount");
             }
         }
         private bool _secondTerms = false;
@@ -58,7 +58,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_secondTerms == value) return;
 
                 _secondTerms = value;
-                RaisePropertyChanged("SecondTerms");
+                OnPropertyChanged("SecondTerms");
             }
         }
         private string _vATPenalityAmount = "0.00";
@@ -73,7 +73,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vATPenalityAmount == value) return;
 
                 _vATPenalityAmount = value;
-                RaisePropertyChanged("VATPenalityAmount");
+                OnPropertyChanged("VATPenalityAmount");
             }
         }
         private string _vATLiabilityAmount = "0.00 SAR";
@@ -88,7 +88,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vATLiabilityAmount == value) return;
 
                 _vATLiabilityAmount = value;
-                RaisePropertyChanged("VATLiabilityAmount");
+                OnPropertyChanged("VATLiabilityAmount");
             }
         }
         private string _vATBillDueAmount = "0.00 SAR";
@@ -103,7 +103,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vATBillDueAmount == value) return;
 
                 _vATBillDueAmount = value;
-                RaisePropertyChanged("VATBillDueAmount");
+                OnPropertyChanged("VATBillDueAmount");
             }
         }
         private int _currenrIndex = 1;
@@ -115,16 +115,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_currenrIndex == value) return;
 
                 _currenrIndex = value;
-                RaisePropertyChanged(nameof(CurrentIndex));
+                OnPropertyChanged(nameof(CurrentIndex));
                 if (_currenrIndex == MaxIndex)
                 {
                     MarkComplete = true;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
                 else
                 {
                     MarkComplete = false;
-                    RaisePropertyChanged(nameof(MarkComplete));
+                    OnPropertyChanged(nameof(MarkComplete));
                 }
 
             }
@@ -141,7 +141,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_IsViewEnable == value) return;
 
                 _IsViewEnable = value;
-                RaisePropertyChanged("IsViewEnable");
+                OnPropertyChanged("IsViewEnable");
             }
         }
 
@@ -157,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_IsDraftRecord == value) return;
 
                 _IsDraftRecord = value;
-                RaisePropertyChanged("IsDraftRecord");
+                OnPropertyChanged("IsDraftRecord");
             }
         }
         public bool MarkComplete { get; private set; } = false;
@@ -173,7 +173,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_billsListVATData == value) return;
                 _billsListVATData = value;
-                RaisePropertyChanged("BillsListVAT");
+                OnPropertyChanged("BillsListVAT");
             }
         }
         private VATResults4[] _billsListVAT;
@@ -187,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_billsListVAT == value) return;
                 _billsListVAT = value;
-                RaisePropertyChanged("BillsListVAT");
+                OnPropertyChanged("BillsListVAT");
             }
         }
 
@@ -203,7 +203,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_statementList == value) return;
 
                 _statementList = value;
-                RaisePropertyChanged("StatementList");
+                OnPropertyChanged("StatementList");
             }
         }
 
@@ -219,7 +219,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isNoDataLableVisible == value) return;
                 _isNoDataLableVisible = value;
-                RaisePropertyChanged("isNoDataLableVisible");
+                OnPropertyChanged("isNoDataLableVisible");
             }
         }
         public ICommand GoBackClick { get; set; }
@@ -295,7 +295,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isBackButtonVisible == value) return;
 
                 _isBackButtonVisible = value;
-                RaisePropertyChanged("IsBackButtonVisible");
+                OnPropertyChanged("IsBackButtonVisible");
             }
         }
 
@@ -311,7 +311,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isSelectionViewEnabled == value) return;
 
                 _isSelectionViewEnabled = value;
-                RaisePropertyChanged("IsSelectionViewEnabled");
+                OnPropertyChanged("IsSelectionViewEnabled");
             }
         }
 
@@ -328,7 +328,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_selectedOutletOptionIndex == value) return;
 
                 _selectedOutletOptionIndex = value;
-                RaisePropertyChanged("SelectedOutletOptionIndex");
+                OnPropertyChanged("SelectedOutletOptionIndex");
             }
         }
         private bool _isAgreementViewEnabled = false;
@@ -343,7 +343,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isAgreementViewEnabled == value) return;
 
                 _isAgreementViewEnabled = value;
-                RaisePropertyChanged("IsAgreementViewEnabled");
+                OnPropertyChanged("IsAgreementViewEnabled");
             }
         }
 
@@ -358,7 +358,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isOutletViewEnabled == value) return;
                 _isOutletViewEnabled = value;
-                RaisePropertyChanged("IsOutletViewEnabled");
+                OnPropertyChanged("IsOutletViewEnabled");
             }
         }
         private bool _isBillsViewEnabled = false;
@@ -372,7 +372,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isBillsViewEnabled == value) return;
                 _isBillsViewEnabled = value;
-                RaisePropertyChanged("IsBillsViewEnabled");
+                OnPropertyChanged("IsBillsViewEnabled");
             }
         }
         private bool _isVATBillsViewEnabled = false;
@@ -386,7 +386,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isVATBillsViewEnabled == value) return;
                 _isVATBillsViewEnabled = value;
-                RaisePropertyChanged("IsVATBillsViewEnabled");
+                OnPropertyChanged("IsVATBillsViewEnabled");
             }
         }
 
@@ -401,7 +401,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isAttachmentsViewEnabled == value) return;
                 _isAttachmentsViewEnabled = value;
-                RaisePropertyChanged("IsAttachmentsViewEnabled");
+                OnPropertyChanged("IsAttachmentsViewEnabled");
             }
         }
         private bool _isStatementViewEnabled = false;
@@ -415,7 +415,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isStatementViewEnabled == value) return;
                 _isStatementViewEnabled = value;
-                RaisePropertyChanged("IsStatementViewEnabled");
+                OnPropertyChanged("IsStatementViewEnabled");
             }
         }
 
@@ -430,7 +430,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isSummaryViewEnabled == value) return;
                 _isSummaryViewEnabled = value;
-                RaisePropertyChanged("IsSummaryViewEnabled");
+                OnPropertyChanged("IsSummaryViewEnabled");
             }
         }
 
@@ -457,7 +457,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isBillContinueEnabled == value) return;
                 _isBillContinueEnabled = value;
                 IsBillContinueBackGroundColor = _isBillContinueEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsBillContinueEnabled");
+                OnPropertyChanged("IsBillContinueEnabled");
             }
         }
         private Color _isBillContinueBackGroundColor = (Color)Application.Current.Resources["Secondary"];
@@ -471,7 +471,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isBillContinueBackGroundColor == value) return;
                 _isBillContinueBackGroundColor = value;
-                RaisePropertyChanged("IsBillContinueBackGroundColor");
+                OnPropertyChanged("IsBillContinueBackGroundColor");
             }
         }
 
@@ -490,7 +490,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 _IsFirstCheckboxChecked = value;
                 IsSelectionContinueBackGroundColor = _IsFirstCheckboxChecked ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"];
-                RaisePropertyChanged("IsFirstCheckboxChecked");
+                OnPropertyChanged("IsFirstCheckboxChecked");
             }
         }
         public Color IsSelectionContinueBackGroundColor
@@ -507,7 +507,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     return;
                 }
                 _isSelectionContinueBackGroundColor = value;
-                RaisePropertyChanged("IsSelectionContinueBackGroundColor");
+                OnPropertyChanged("IsSelectionContinueBackGroundColor");
             }
         }
 
@@ -523,7 +523,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isSucessViewEnabled == value) return;
 
                 _isSucessViewEnabled = value;
-                RaisePropertyChanged("IsSucessViewEnabled");
+                OnPropertyChanged("IsSucessViewEnabled");
             }
         }
 
@@ -536,7 +536,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (noOfInstalments != value)
                 {
                     noOfInstalments = value;
-                    RaisePropertyChanged("NoOfInstalments");
+                    OnPropertyChanged("NoOfInstalments");
                 }
             }
             get
@@ -554,7 +554,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (minInstalments != value)
                 {
                     minInstalments = value;
-                    RaisePropertyChanged("MinInstalments");
+                    OnPropertyChanged("MinInstalments");
                 }
             }
             get
@@ -572,7 +572,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (maxInstalments != value)
                 {
                     maxInstalments = value;
-                    RaisePropertyChanged("MaxInstalments");
+                    OnPropertyChanged("MaxInstalments");
                 }
             }
             get
@@ -590,7 +590,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (downPaymentAmount != value)
                 {
                     downPaymentAmount = value;
-                    RaisePropertyChanged("DownPaymentAmount");
+                    OnPropertyChanged("DownPaymentAmount");
                 }
             }
             get
@@ -608,7 +608,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (minAmount != value)
                 {
                     minAmount = value;
-                    RaisePropertyChanged("MinAmount");
+                    OnPropertyChanged("MinAmount");
                 }
             }
             get
@@ -626,7 +626,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (maxAmount != value)
                 {
                     maxAmount = value;
-                    RaisePropertyChanged("MaxAmount");
+                    OnPropertyChanged("MaxAmount");
                 }
             }
             get
@@ -644,7 +644,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (totalAmountSAR != value)
                 {
                     totalAmountSAR = value;
-                    RaisePropertyChanged("TotalAmountSAR");
+                    OnPropertyChanged("TotalAmountSAR");
                 }
             }
             get
@@ -663,7 +663,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (inputData != value)
                 {
                     inputData = value;
-                    RaisePropertyChanged("InputData");
+                    OnPropertyChanged("InputData");
                 }
             }
             get
@@ -684,7 +684,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isVATAmountVisible == value) return;
 
                 _isVATAmountVisible = value;
-                RaisePropertyChanged("IsVATAmountVisible");
+                OnPropertyChanged("IsVATAmountVisible");
             }
         }
 
@@ -702,7 +702,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isZakatSelected == value) return;
 
                 _isZakatSelected = value;
-                RaisePropertyChanged("IsZakatSelected");
+                OnPropertyChanged("IsZakatSelected");
             }
         }
         //Custom Spinner Items starts here
@@ -719,7 +719,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isIncomeTaxViewEnabled == value) return;
 
                 _isIncomeTaxViewEnabled = value;
-                RaisePropertyChanged("IsIncomeTaxViewEnabled");
+                OnPropertyChanged("IsIncomeTaxViewEnabled");
             }
         }
 
@@ -735,7 +735,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isSubIncomeTaxViewEnabled == value) return;
 
                 _isSubIncomeTaxViewEnabled = value;
-                RaisePropertyChanged("IsSubIncomeTaxViewEnabled");
+                OnPropertyChanged("IsSubIncomeTaxViewEnabled");
             }
         }
 
@@ -783,7 +783,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     TxtSelectedStatusZakat = _selectedFilterZakat.Filter;
                 }
-                RaisePropertyChanged("SelectedFilterZakat");
+                OnPropertyChanged("SelectedFilterZakat");
             }
         }
 
@@ -799,7 +799,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_listZAKATCorrespondance == value) return;
 
                 _listZAKATCorrespondance = value;
-                RaisePropertyChanged("ListZAKATCorrespondance");
+                OnPropertyChanged("ListZAKATCorrespondance");
             }
         }
 
@@ -815,7 +815,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_txtSelectedStatusZakat == value) return;
 
                 _txtSelectedStatusZakat = value;
-                RaisePropertyChanged("TxtSelectedStatusZakat");
+                OnPropertyChanged("TxtSelectedStatusZakat");
             }
         }
 
@@ -831,7 +831,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vATReferanceNumber == value) return;
 
                 _vATReferanceNumber = value;
-                RaisePropertyChanged("VATReferanceNumber");
+                OnPropertyChanged("VATReferanceNumber");
             }
         }
 
@@ -847,7 +847,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vATCustomerName == value) return;
 
                 _vATCustomerName = value;
-                RaisePropertyChanged("VATCustomerName");
+                OnPropertyChanged("VATCustomerName");
             }
         }
 
@@ -864,7 +864,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_selectedFilterZakatPrev == value) return;
 
                 _selectedFilterZakatPrev = value;
-                RaisePropertyChanged("SelectedFilterZakatPrev");
+                OnPropertyChanged("SelectedFilterZakatPrev");
             }
         }
 
@@ -895,7 +895,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_corresFilterZakat == value) return;
 
                 _corresFilterZakat = value;
-                RaisePropertyChanged("CorresFilterZakat");
+                OnPropertyChanged("CorresFilterZakat");
             }
         }
 
@@ -942,7 +942,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                     SubTxtSelectedStatusZakat = _subSelectedFilterZakat.Filter;
                 }
-                RaisePropertyChanged("SubSelectedFilterZakat");
+                OnPropertyChanged("SubSelectedFilterZakat");
             }
         }
 
@@ -958,7 +958,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_subListZAKATCorrespondance == value) return;
 
                 _subListZAKATCorrespondance = value;
-                RaisePropertyChanged("SubListZAKATCorrespondance");
+                OnPropertyChanged("SubListZAKATCorrespondance");
             }
         }
 
@@ -974,7 +974,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_subTxtSelectedStatusZakat == value) return;
 
                 _subTxtSelectedStatusZakat = value;
-                RaisePropertyChanged("SubTxtSelectedStatusZakat");
+                OnPropertyChanged("SubTxtSelectedStatusZakat");
             }
         }
 
@@ -991,7 +991,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_subSelectedFilterZakatPrev == value) return;
 
                 _subSelectedFilterZakatPrev = value;
-                RaisePropertyChanged("SubSelectedFilterZakatPrev");
+                OnPropertyChanged("SubSelectedFilterZakatPrev");
             }
         }
 
@@ -1023,7 +1023,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_subCorresFilterZakat == value) return;
 
                 _subCorresFilterZakat = value;
-                RaisePropertyChanged("SubCorresFilterZakat");
+                OnPropertyChanged("SubCorresFilterZakat");
             }
         }
 
@@ -1039,7 +1039,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_subSetSelectedIndexZakat == value) return;
 
                 _subSetSelectedIndexZakat = value;
-                RaisePropertyChanged("SubSetSelectedIndexZakat");
+                OnPropertyChanged("SubSetSelectedIndexZakat");
             }
         }
         private string _PathOfPdf;
@@ -1053,7 +1053,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_PathOfPdf == value) return;
                 _PathOfPdf = value;
-                RaisePropertyChanged("PathOfPdf");
+                OnPropertyChanged("PathOfPdf");
             }
         }
 
@@ -1069,7 +1069,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_NotesText == value) return;
 
                 _NotesText = value;
-                RaisePropertyChanged("NotesText");
+                OnPropertyChanged("NotesText");
             }
         }
         private void vatInstallmentBillsList()
@@ -1179,7 +1179,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     return;
                 }
                 _instalmentPlans = value;
-                RaisePropertyChanged("InstalmentPlans");
+                OnPropertyChanged("InstalmentPlans");
             }
         }
 
@@ -1250,7 +1250,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
                 vatInstalmentPlanModel = value;
-                RaisePropertyChanged("VATInstalmentPlanModel");
+                OnPropertyChanged("VATInstalmentPlanModel");
             }
         }
 
@@ -1271,7 +1271,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
                 outletDecisionOptions = value;
-                RaisePropertyChanged("OutletDecisionOptions");
+                OnPropertyChanged("OutletDecisionOptions");
             }
         }
         public ZakatSelectBillModel zakatSelectBillsPageViewModel { get; set; }
@@ -1290,7 +1290,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
                 zakatSelectBillsPageViewModel = value;
-                RaisePropertyChanged("ZakatSelectBillModel");
+                OnPropertyChanged("ZakatSelectBillModel");
             }
         }
         public ObservableCollection<VATResults4> selectedBillsList { get; set; }
@@ -1309,7 +1309,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
                 selectedBillsList = value;
-                RaisePropertyChanged("SelectedBillsList");
+                OnPropertyChanged("SelectedBillsList");
             }
         }
 
@@ -1329,7 +1329,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
                 zakatAgreementOptions = value;
-                RaisePropertyChanged("ZakatAgreementOptions");
+                OnPropertyChanged("ZakatAgreementOptions");
             }
         }
 
@@ -1349,7 +1349,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
                 attachmentsListViewData = value;
-                RaisePropertyChanged("AttachmentsListViewData");
+                OnPropertyChanged("AttachmentsListViewData");
             }
         }
 
@@ -1369,7 +1369,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
 
                 summarySelectedBillsList = value;
-                RaisePropertyChanged("SummarySelectedBillsList");
+                OnPropertyChanged("SummarySelectedBillsList");
             }
         }
 
@@ -1385,7 +1385,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_ListOfActionButtonsApplicable == value) return;
 
                 _ListOfActionButtonsApplicable = value;
-                RaisePropertyChanged("ListOfActionButtonsApplicable");
+                OnPropertyChanged("ListOfActionButtonsApplicable");
             }
         }
 
@@ -1404,7 +1404,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 _selectedOutletOption = value;
                 //SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(_selectedOutletOption as TINDeregistrationModel);
-                RaisePropertyChanged("SelectedOutletOption");
+                OnPropertyChanged("SelectedOutletOption");
             }
         }
 
@@ -1421,7 +1421,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_vatInstalments == value) return;
 
                 _vatInstalments = value;
-                RaisePropertyChanged("VatInstalments");
+                OnPropertyChanged("VatInstalments");
             }
         }
 
@@ -1436,7 +1436,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_vatInstalment == value) return;
                 _vatInstalment = value;
-                RaisePropertyChanged("VatInstalment");
+                OnPropertyChanged("VatInstalment");
             }
         }
 
@@ -1460,7 +1460,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     IsContinueButtonEnable = false;
                 }
-                RaisePropertyChanged("IsInstrunctionChecked");
+                OnPropertyChanged("IsInstrunctionChecked");
             }
         }
 
@@ -1476,7 +1476,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isVatTermsChecked == value) return;
 
                 _isVatTermsChecked = value;
-                RaisePropertyChanged("IsVatTermsChecked");
+                OnPropertyChanged("IsVatTermsChecked");
             }
         }
 
@@ -1497,7 +1497,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsContinueButtonEnable = true;
                 }
 
-                RaisePropertyChanged("IsDeclarationChecked");
+                OnPropertyChanged("IsDeclarationChecked");
             }
         }
 
@@ -1513,7 +1513,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_isAttachmentsListVisible == value) return;
 
                 _isAttachmentsListVisible = value;
-                RaisePropertyChanged("IsAttachmentsListVisible");
+                OnPropertyChanged("IsAttachmentsListVisible");
             }
         }
         private bool _isContinueButtonEnable = false;
@@ -1536,7 +1536,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     ContinueButtonnBackroundColor = (Color)Application.Current.Resources["ButtonGray"];
                 }
-                RaisePropertyChanged("IsContinueButtonEnable");
+                OnPropertyChanged("IsContinueButtonEnable");
             }
         }
         public string _monthlyInstalment = "0.00";
@@ -1550,7 +1550,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_monthlyInstalment != value)
                 {
                     _monthlyInstalment = value;
-                    RaisePropertyChanged("MonthlyInstalment");
+                    OnPropertyChanged("MonthlyInstalment");
                 }
             }
             get
@@ -1571,7 +1571,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (maxInstalmentsTitle != value)
                 {
                     maxInstalmentsTitle = value;
-                    RaisePropertyChanged("MaxInstalmentsTitle");
+                    OnPropertyChanged("MaxInstalmentsTitle");
                 }
             }
             get
@@ -1591,7 +1591,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (minInstalmentsTitle != value)
                 {
                     minInstalmentsTitle = value;
-                    RaisePropertyChanged("MinInstalmentsTitle");
+                    OnPropertyChanged("MinInstalmentsTitle");
                 }
             }
             get
@@ -1611,7 +1611,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_StreamForDownloadURL == value) return;
 
                 _StreamForDownloadURL = value;
-                RaisePropertyChanged("StreamForDownloadURL");
+                OnPropertyChanged("StreamForDownloadURL");
             }
         }
 
@@ -1627,7 +1627,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_continueButtonnBackroundColor == value) return;
 
                 _continueButtonnBackroundColor = value;
-                RaisePropertyChanged("ContinueButtonnBackroundColor");
+                OnPropertyChanged("ContinueButtonnBackroundColor");
             }
         }
 
@@ -2422,7 +2422,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             set
             {
                 _firstTerms = value;
-                RaisePropertyChanged("FirstTerms");
+                OnPropertyChanged("FirstTerms");
             }
         }
 

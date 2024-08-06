@@ -1,6 +1,7 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
+﻿
+
 using Mopups.Services;
+using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.TPProfile;
@@ -11,10 +12,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
     public class UpdateEmailViewModel : BaseViewModel
     {
-        #region Variable
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-        #endregion
 
         #region Properties
         private string _CurrentEmailText;
@@ -25,7 +22,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 if (_CurrentEmailText == value) return;
                 _CurrentEmailText = value;
-                RaisePropertyChanged("CurrentEmailText");
+                OnPropertyChanged("CurrentEmailText");
             }
         }
 
@@ -38,7 +35,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_NewEmailText == value) return;
 
                 _NewEmailText = value;
-                RaisePropertyChanged("NewEmailText");
+                OnPropertyChanged("NewEmailText");
             }
         }
 
@@ -51,7 +48,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 if (_ConfirmEmailText == value) return;
 
                 _ConfirmEmailText = value;
-                RaisePropertyChanged("ConfirmEmailText");
+                OnPropertyChanged("ConfirmEmailText");
             }
         }
 
@@ -60,11 +57,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         public UpdateEmailViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            if (navigationService == null) { throw new ArgumentNullException("navigationService"); }
-            _navigationService = navigationService;
-
-            if (dialogService == null) { throw new ArgumentNullException("dialogService"); }
-            _dialogService = dialogService;
         }
 
         #region Method

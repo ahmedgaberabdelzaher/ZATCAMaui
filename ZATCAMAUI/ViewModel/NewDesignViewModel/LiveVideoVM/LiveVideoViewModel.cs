@@ -1,8 +1,7 @@
 ﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight.Views;
-using IDialogService = GalaSoft.MvvmLight.Views.IDialogService;
 using System.Windows.Input;
-using GalaSoft.MvvmLight;
+using CommunityToolkit.Mvvm.ComponentModel;
+using ZATCAMAUI.Core.Interfaces;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM
 {
@@ -11,13 +10,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM
         #region Properties
 
         string selectedVideo;
-        public string SelectedVideo { get { return selectedVideo; } set { selectedVideo = value; RaisePropertyChanged(); } }
+        public string SelectedVideo { get { return selectedVideo; } set { selectedVideo = value; OnPropertyChanged(); } }
 
         string videoUrl;
-        public string VideoUrl { get { return videoUrl; } set { videoUrl = value; RaisePropertyChanged(); } }
+        public string VideoUrl { get { return videoUrl; } set { videoUrl = value; OnPropertyChanged(); } }
 
         ObservableCollection<VideoModel> liveVideosList = new ObservableCollection<VideoModel>();
-        public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; OnPropertyChanged(); } }
 
         public void GetLiveVideoLst()
         {
@@ -143,7 +142,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM
         #endregion
     }
 
-    public class VideoModel : ViewModelBase
+    public class VideoModel : ObservableRecipient
     {
         public int Row { get; set; }
         public int Column { get; set; }
@@ -155,7 +154,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM
             set
             {
                 isSelected = value;
-                RaisePropertyChanged();
+                OnPropertyChanged();
             }
         }
         public string VideoName { get; set; }

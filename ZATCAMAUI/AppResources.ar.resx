@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
-    Microsoft ResX Schema 
+    Microsoft ResX Schema  
     
     Version 2.0
     
@@ -10933,7 +10933,7 @@ info@zatca.gov.sa</value>
     <data name="ZMaximumnoof9attachmentscanbeuploaded1" xml:space="preserve">
     <value>لا يمكن تحميل أكثر من 9 مرفقات</value>
   </data>
-   <!--end of VAT Refund Prod-->
+   <!--end of VAT Refund Prod--> 
    <!--Captcha Resources-->
   <data name="CaptchaCode" xml:space="preserve">
     <value>كود الكابتشا</value>
@@ -10945,6 +10945,50 @@ info@zatca.gov.sa</value>
    <data name="ImporterYear" xml:space="preserve">
     <value>سنة الاستيراد</value>
   </data>
-  
-
+     <!--CR6407 start-->
+    <data name="IqamaType" xml:space="preserve">
+      <value>نوع الإقامة</value>
+  </data>
+    <!--CR6407 End-->
+  <!--CR4820 Start-->
+ <data name="GSTCCaseClassification" xml:space="preserve">
+    <value>تصنيف الدعوى</value>
+  </data>
+  <data name="GSTCCaseDate" xml:space="preserve">
+    <value>تاريخ الدعوى</value>
+  </data>
+  <data name="GSTCCaseLink" xml:space="preserve">
+    <value>رابط الدعوى</value>
+  </data>
+  <data name="GSTCCaseNumber" xml:space="preserve">
+    <value>رقم الدعوى</value>
+  </data>
+  <data name="GSTCCaseStage" xml:space="preserve">
+    <value>مرحلة الدعوى</value>
+  </data>
+  <data name="GSTCCaseSubject" xml:space="preserve">
+    <value>موضوع الدعوى</value>
+  </data>
+  <data name="GSTCCaseType" xml:space="preserve">
+    <value>نوع الدعوى</value>
+  </data>
+  <data name="GSTCDegreeOfLitigation" xml:space="preserve">
+    <value>درجة التقاضي</value>
+  </data>
+  <data name="GSTCEscalatedCasesGSTC" xml:space="preserve">
+    <value>الدعاوى المقيدة لدى الأمانة العامة للجان الزكوية والضريبية والجمركية</value>
+  </data>
+  <data name="GSTCName" xml:space="preserve">
+    <value>الاسم</value>
+  </data>
+  <data name="GSTCObjectionNumber" xml:space="preserve">
+    <value>رقم الاعتراض</value>
+  </data>
+  <data name="GSTCType" xml:space="preserve">
+    <value>الصفة</value>
+  </data>
+  <data name="GSTCNoteText" xml:space="preserve">
+    <value>لمزيد من التفاصيل حول الدعوى نأمل الدخول على البوابة الإلكترونية للأمانة العامة للجان الزكوية والضريبية والجمركية </value>
+  </data>
+  <!--CR4820 End-->
 </root>
