@@ -527,7 +527,7 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQx
 
                 //InitializeAppDynamics();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
