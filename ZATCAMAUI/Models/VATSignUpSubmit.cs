@@ -159,9 +159,16 @@ namespace ZATCAMAUI.Models
         public string Type { get; set; }
         [DataMember]
         public string Captcha { get; set; }
+        [DataMember]
+        public string Mguid { get; set; }
+        [DataMember]
+        public string AIqamaDesc { get; set; }
+        [DataMember]
+        public string AIqamaFg { get; set; }
+
     }
 
-    
+
     public class VATSignUpSubmitResponse
     {
         [DataMember]

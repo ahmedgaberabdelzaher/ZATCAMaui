@@ -1951,6 +1951,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("OtpMDl");
             }
         }
+        private string _iqamaTypeDesc = string.Empty;
+        public string IqamaTypeDesc
+        {
+            get
+            {
+                return _iqamaTypeDesc;
+            }
+            set
+            {
+                _iqamaTypeDesc = value;
+                OnPropertyChanged("IqamaTypeDesc");
+            }
+        }
+
+        private bool _showIqamaTypeDesc = false;
+        public bool ShowIqamaTypeDesc
+        {
+            get
+            {
+                return _showIqamaTypeDesc;
+            }
+            set
+            {
+                _showIqamaTypeDesc = value;
+                OnPropertyChanged("ShowIqamaTypeDesc");
+            }
+        }
+
         // * End
         #endregion
 

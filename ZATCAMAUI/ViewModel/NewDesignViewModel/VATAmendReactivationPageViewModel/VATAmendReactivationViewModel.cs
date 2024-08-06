@@ -3542,6 +3542,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewMod
                 VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate + "T00:00:00", "");
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (vATcommencementData == null)
+                {
+                    IsLoading = false;
+                    VatEligibleStartDate = "";
+                    IsContinueButtonEnable = false;
+                    return;
+                }
                 if (vATcommencementData.d.ErrorFg == "X")
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));

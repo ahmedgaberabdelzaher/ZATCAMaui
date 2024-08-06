@@ -14,6 +14,7 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.EscalatedCasesGSTCPageViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
@@ -101,6 +102,7 @@ using ZATCAMAUI.Views.NewDesign.EDeclaration;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.InfoPages;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.InquireRequestPages;
 using ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews;
+using ZATCAMAUI.Views.NewDesign.EscalatedCasesGSTC;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentSignUP;
@@ -299,6 +301,7 @@ namespace ZATCAMAUI.Core.Helper
                 //CR6094
                 .AddSingleton<NafathPopupPageViewModel>()
                 .AddSingleton<NafathLoginPageViewModel>()
+                .AddSingleton<EscalatedCasesGSTCPageViewModel>()
 
                 #endregion
 
@@ -460,6 +463,21 @@ namespace ZATCAMAUI.Core.Helper
 
         #region NewDesignViewModel
 
+        public EscalatedCasesGSTCPageViewModel EscalatedCasesGSTCPageView
+        {
+            get
+            {
+                try
+                {
+
+                    return Ioc.Default.GetService<EscalatedCasesGSTCPageViewModel>();
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+        }
         public ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel VATServicesPageView
         {
             get
@@ -2794,6 +2812,7 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.ChangeMobileRequestPageView, typeof(ChangeMobileRequestPageView));
             navigationService.Configure(App.ChangeMobNafathLoginPage, typeof(ChangeMobNafathLoginPage));
             navigationService.Configure(App.UpdateManagerDetailsPopUp, typeof(UpdateManagerDetailsPopUp));
+            navigationService.Configure(App.EscalatedCasesGSTCPageView, typeof(EscalatedCasesGSTCPageView));//CR4820
 
             #endregion
 

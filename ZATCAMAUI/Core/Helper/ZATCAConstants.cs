@@ -497,6 +497,8 @@ namespace ZATCAMAUI.Core.Helper
 
         #region Image captcha
         public static string GAZTGetCaptchaImage = CaptchaBaseUrl + "/captcha/api/code?aId="; //1 - C1. 1. Refresh - return previous LGID
+        public static string GetGstcCaseDetailsApi = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_GSTC_CASEDET_SRV/TINSet(";
+
         #endregion
         public static string GAZTChatPartialUrlen = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/en/index_PROD.html";
         public static string GAZTChatPartialUrlar = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/ar/index_PROD.html";

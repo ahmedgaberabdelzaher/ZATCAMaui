@@ -1732,6 +1732,33 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public bool IsAPICalledSuccessfully = true;
         private object date1DOB;
 
+        private string _iqamaTypeDesc = string.Empty;
+        public string IqamaTypeDesc
+        {
+            get
+            {
+                return _iqamaTypeDesc;
+            }
+            set
+            {
+                _iqamaTypeDesc = value;
+                OnPropertyChanged("IqamaTypeDesc");
+            }
+        }
+
+        private bool _showIqamaTypeDesc = false;
+        public bool ShowIqamaTypeDesc
+        {
+            get
+            {
+                return _showIqamaTypeDesc;
+            }
+            set
+            {
+                _showIqamaTypeDesc = value;
+                OnPropertyChanged("ShowIqamaTypeDesc");
+            }
+        }
 
         #endregion
 

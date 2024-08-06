@@ -147,6 +147,8 @@
 	  <Compile Remove="Platforms\Android\CustomRenderer\GAZTBorderlessEntryRenderer.cs" />
 	  <Compile Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml.cs" />
 	  <MauiXaml Remove="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml" />
+	  <None Remove="ViewModel\NewDesignViewModel\EscalatedCasesGSTCPageViewModel\" />
+	  <None Remove="Views\NewDesign\EscalatedCasesGSTC\" />
 	</ItemGroup>
 
 
@@ -203,6 +205,8 @@
 	  <Folder Include="Platforms\iOS\Assets.xcassets\" />
 	  <Folder Include="ViewModel\NewDesignViewModel\IBanAccManagementsViewModel\" />
 	  <Folder Include="Views\NewDesign\IBanAccountsManagementPages\" />
+	  <Folder Include="ViewModel\NewDesignViewModel\EscalatedCasesGSTCPageViewModel\" />
+	  <Folder Include="Views\NewDesign\EscalatedCasesGSTC\" />
 	</ItemGroup>
 
 	<ItemGroup>

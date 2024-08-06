@@ -2971,16 +2971,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         GCCIDType = idItem != null ? EnIDType[idItem?.Type] : "";
                     }
-                    //if ((bool)(idItem?.IqamaFg.Equals("X")))
-                    //{
-                    //    ShowIqamaType = true;
-                    //    IqamaDesc = idItem?.IqamaDesc;
-                    //}
-                    //else
-                    //{
-                    //    ShowIqamaType = false;
-                    //    IqamaDesc = "";
-                    //}
+                    if ((bool)(idItem?.IqamaFg.Equals("X")))
+                    {
+                        ShowIqamaType = true;
+                        IqamaDesc = idItem?.IqamaDesc;
+                    }
+                    else
+                    {
+                        ShowIqamaType = false;
+                        IqamaDesc = "";
+                    }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     Title = taxPayerDetails?.TpTitle;

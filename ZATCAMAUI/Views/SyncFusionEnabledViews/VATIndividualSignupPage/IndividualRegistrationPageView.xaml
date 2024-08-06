@@ -15,6 +15,8 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
@@ -169,6 +171,34 @@
                                             Style="{StaticResource CardLabelBlack}"
                                             Text="{Binding Idnumber}" />
                                     </Border>
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="2"
+                                             IsVisible="{Binding ShowIqamaTypeDesc}">
+
+                                    <Label Style="{StaticResource CardLabelBlack}"
+                                            HorizontalOptions="Start" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span  Text="{x:Static ResourceManager:AppResources.IqamaType}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <Border Stroke="{StaticResource Secondary}"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}"
+                                            Padding="8,4,0,0" >
+
+                                        <Label Style="{StaticResource CardLabelBlack}"
+                                               Text="{Binding IqamaTypeDesc}"
+                                               Padding="10"
+                                               HeightRequest="40"
+                                               VerticalOptions="Center"/>
+
+                                    </Border>
+
+
                                 </StackLayout>
 
                                 <StackLayout x:Name="DateOfBirth" Grid.Row="2">

@@ -2542,16 +2542,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Title = taxPayerDetails?.TpTitle;
                     }
 
-                    //if ((bool)(idItem?.IqamaFg.Equals("X")))
-                    //{
-                    //    ShowIqamaType = true;
-                    //    IqamaDesc = idItem?.IqamaDesc;
-                    //}
-                    //else
-                    //{
-                    //    ShowIqamaType = false;
-                    //    IqamaDesc = "";
-                    //}
+                    if ((bool)(idItem?.IqamaFg.Equals("X")))
+                    {
+                        ShowIqamaType = true;
+                        IqamaDesc = idItem?.IqamaDesc;
+                    }
+                    else
+                    {
+                        ShowIqamaType = false;
+                        IqamaDesc = "";
+                    }
 
                     SelectedDOB = taxPayerDetails?.Birthdt?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     FirstName = taxPayerDetails?.NameFirst;

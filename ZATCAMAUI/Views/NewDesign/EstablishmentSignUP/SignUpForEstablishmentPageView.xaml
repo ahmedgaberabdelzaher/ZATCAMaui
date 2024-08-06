@@ -25,19 +25,6 @@
 
             <converters:EstablishmentSignUPTabEnumToVisibilityConverters x:Key="enumToVisibilityConverter" />
 
-            <Style x:Key="circleFrame" TargetType="Border">
-                <Setter Property="BackgroundColor" Value="{StaticResource OpacityPrimary}" />
-                <Setter Property="StrokeShape" Value="RoundRectangle 25,25,25,25" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="HeightRequest" Value="25" />
-                <Setter Property="WidthRequest" Value="25" />
-            </Style>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -407,6 +394,37 @@
                                                 <behaviors:OnlyNumericValuesBehaviour />
                                             </custom:GAZTBorderlessEntry.Behaviors>
                                         </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+
+                                </StackLayout>
+
+                                 <StackLayout IsVisible="{Binding ShowIqamaTypeDesc}">
+                                    <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.IqamaType}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <inputLayout:SfTextInputLayout
+                                        ContainerBackground="White"
+                                        ContainerType="Outlined"
+                                        Hint="{x:Static ResourceManager:AppResources.NDIDNumber}"
+                                        InputViewPadding="16,0,16,0"
+                                        IsEnabled="False"
+                                        InputTransparent="True"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="10">
+
+                                        <custom:GAZTBorderlessEntry
+                                            Text="{Binding IqamaTypeDesc}"
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            VerticalTextAlignment="Center"/>
+
                                     </inputLayout:SfTextInputLayout>
 
                                 </StackLayout>
