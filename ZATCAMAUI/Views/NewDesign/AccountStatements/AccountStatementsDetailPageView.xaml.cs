@@ -1,5 +1,3 @@
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using Application = Microsoft.Maui.Controls.Application;
@@ -14,49 +12,19 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
         public AccountStatementsDetailPageView(MyBills myBills)
         {
             InitializeComponent();
-            ChangeAeroIcon();
             this.myBills = myBills;
-        }
-
-        private async void backButton_Tapped(object sender, EventArgs e)
-        {
-            await Application.Current.MainPage.Navigation.PopAsync();
-        }
-
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
             LableTaxPeriod.Text = "" + myBills.PeriodPart1 + " - " + myBills.PeriodPart2;
-            //LableFbNum.Text = "" + myBills.Fbnum;
             LableFbNum.Text = AppResources.ASFBNum + " : " + myBills.Fbnum;
             LableDueDate.Text = "" + myBills.FormatedFaedn;
             LableSadadNum.Text = "" + myBills.VTRE2;
-            //LableTransactionDate.Text = "" + myBills.FormatedFaedn;
-            // LableBillAmount.Text = "" + aSResult.BetrhAmount+" "+AppResources.ZSAR;
             LableCardStatus.Text = "" + myBills.StatusText;
             LableCardTitle.Text = "" + myBills.BillTitle;
-            //LableCardSubTitle.Text = "" + aSResult.Desc;
-
-
-
-            // LableTaxType.Text = myBills.Abtypt + " - " + str;
             LableTaxType.Text = myBills.Txt30;
 
 
