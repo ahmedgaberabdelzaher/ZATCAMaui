@@ -108,8 +108,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 catch (GAZTUnlockAccountException)
                 {
-
-
                 }
                 catch (InternetException ex)
                 {
@@ -121,7 +119,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 catch (Exception)
                 {
-
                 }
             }
         }

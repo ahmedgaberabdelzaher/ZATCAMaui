@@ -360,7 +360,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
                         if (resultData != null)
                         {
-                            var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.results.Where(x => x.Fbtyp.ToUpper() == "TPCV".ToUpper()).ToList();
+                            var changeFilingFrequencyDataList = resultData.d.ASSLISTSet.Where(x => x.Fbtyp.ToUpper() == "TPCV".ToUpper()).ToList();
 
                             var myRequestsListViewData = new ObservableCollection<VATChangeFillingListModel.ChangeFillingFrequency>();
 
@@ -384,8 +384,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException )
                     {
-
-
                     }
                     catch (InternetException ex)
                     {
@@ -417,8 +415,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             catch (Exception)
 
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -456,7 +452,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             vATChangingSummaryData.CureentF = resultData.d.CureentF;
                             vATChangingSummaryData.FilingF = resultData.d.FilingF;
                             //Persl i.e 21JA means January 2021
-                            vATChangingSummaryData.Persl = resultData.d.Persl;
+                            vATChangingSummaryData.Persl = resultData.d.CPersl;
                             vATChangingSummaryData.Decfg = resultData.d.Decfg;
                             vATChangingSummaryData.Decname = resultData.d.Decname;
                             vATChangingSummaryData.DecidNo = resultData.d.DecidNo;
@@ -532,8 +528,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -546,13 +540,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        private void PopulateAttachentsListData(VATChangeFillingSummaryModel.ATTACHSet dAttachSet)
+        private void PopulateAttachentsListData(List<Attachment> dAttachSet)
         {
             var yearsAttachmentsListViewData = new ObservableCollection<Attachment>();
             var monthsAttachmentsListViewData = new ObservableCollection<Attachment>();
             var othersAttachmentsListViewData = new ObservableCollection<Attachment>();
 
-            foreach (var attachment in dAttachSet.results)
+            foreach (var attachment in dAttachSet)
             {
                 if (attachment.Dotyp == "ZTPA")
                 {

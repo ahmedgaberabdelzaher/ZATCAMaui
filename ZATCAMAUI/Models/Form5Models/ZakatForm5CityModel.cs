@@ -1,4 +1,6 @@
 ﻿using System.Runtime.Serialization;
+using Foundation;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.Form5Models
 {
@@ -26,12 +28,16 @@ namespace ZATCAMAUI.Models.Form5Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("systemCode")]
         public string Mandt { get; set; }
         [DataMember]
+        [JsonProperty("code")]
         public string Code { get; set; }
         [DataMember]
+        [JsonProperty("description")]
         public string Description { get; set; }
         [DataMember]
+        [JsonProperty("oldDescription")]
         public string OldDescription { get; set; }
 
     }
@@ -39,6 +45,7 @@ namespace ZATCAMAUI.Models.Form5Models
     public class GOVCODESet
     {
         [DataMember]
+        [JsonProperty("governmentCodes")]
         public List<Results> results { get; set; }
 
     }
@@ -49,18 +56,25 @@ namespace ZATCAMAUI.Models.Form5Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("systemCode")]
         public string Mandt { get; set; }
         [DataMember]
+        [JsonProperty("formBundleType")]
         public string Fbtyp { get; set; }
         [DataMember]
+        [JsonProperty("group")]
         public string Zgroup { get; set; }
         [DataMember]
+        [JsonProperty("button")]
         public string Button { get; set; }
         [DataMember]
+        [JsonProperty("serialNumber")]
         public string Srno { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Lang { get; set; }
         [DataMember]
+        [JsonProperty("message")]
         public string Msg { get; set; }
 
     }
@@ -68,7 +82,8 @@ namespace ZATCAMAUI.Models.Form5Models
     public class MSGSet
     {
         [DataMember]
-        public List<_Results11> results { get; set; }
+        [JsonProperty("messages")]
+        public List<Results11> results { get; set; }
 
     }
    
@@ -78,12 +93,16 @@ namespace ZATCAMAUI.Models.Form5Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Spras { get; set; }
         [DataMember]
+        [JsonProperty("descriptionCode")]
         public string Desciption { get; set; }
         [DataMember]
+        [JsonProperty("subDescription")]
         public string SubDesc { get; set; }
         [DataMember]
+        [JsonProperty("description")]
         public string Text { get; set; }
 
     }
@@ -91,8 +110,8 @@ namespace ZATCAMAUI.Models.Form5Models
     public class Zsub_desc_ASet
     {
         [DataMember]
-        public List<_Results12> results { get; set; }
-
+        [JsonProperty("subDescriptionA60")]
+        public List<Results12> results { get; set; }
     }
    
 
@@ -101,16 +120,22 @@ namespace ZATCAMAUI.Models.Form5Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("systemCode")]
         public string Mandt { get; set; }
         [DataMember]
+        //[JsonProperty("")]
         public string SysFlg { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Lang { get; set; }
         [DataMember]
+        [JsonProperty("formBundleType")]
         public string Fbtyp { get; set; }
         [DataMember]
+        [JsonProperty("sourceId")]
         public string Sourceid { get; set; }
         [DataMember]
+        [JsonProperty("URL")]
         public string Url { get; set; }
 
     }
@@ -118,8 +143,8 @@ namespace ZATCAMAUI.Models.Form5Models
     public class URLSet
     {
         [DataMember]
-        public List<_Results13> results { get; set; }
-
+        [JsonProperty("URLs")]
+        public List<Results13> results { get; set; }
     }
    
 
@@ -172,16 +197,22 @@ namespace ZATCAMAUI.Models.Form5Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Spras { get; set; }
         [DataMember]
+        [JsonProperty("genralSchedule")]
         public string Gensch { get; set; }
         [DataMember]
+        [JsonProperty("descriptionCode")]
         public string Desciption { get; set; }
         [DataMember]
+        [JsonProperty("liveSchedule")]
         public string Livsch { get; set; }
         [DataMember]
+        [JsonProperty("description")]
         public string Text { get; set; }
         [DataMember]
+        [JsonProperty("lastSchedule")]
         public string Lstsch { get; set; }
 
     }
@@ -189,6 +220,7 @@ namespace ZATCAMAUI.Models.Form5Models
     public class Zmain_descSet
     {
         [DataMember]
+        [JsonProperty("mainDescriptionA60")]
         public List<Results16> results { get; set; }
 
     }
@@ -198,20 +230,28 @@ namespace ZATCAMAUI.Models.Form5Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Langu { get; set; }
         [DataMember]
+        [JsonProperty("country")]
         public string Country { get; set; }
         [DataMember]
+        [JsonProperty("cityCode")]
         public string CityCode { get; set; }
         [DataMember]
+        [JsonProperty("cityName")]
         public string CityName { get; set; }
         [DataMember]
+        [JsonProperty("city")]
         public string McCity { get; set; }
         [DataMember]
+        [JsonProperty("cityShort")]
         public string CityShort { get; set; }
         [DataMember]
+        [JsonProperty("cityShort10")]
         public string CitySh10 { get; set; }
         [DataMember]
+        [JsonProperty("cityExtension")]
         public string CityExt { get; set; }
 
     }
@@ -219,34 +259,48 @@ namespace ZATCAMAUI.Models.Form5Models
     public class ZcitySet
     {
         [DataMember]
+        [JsonProperty("cities")]
         public List<Results17> results { get; set; }
 
     }
-   
+    [Preserve(AllMembers = true)]
     public class ZakatForm5CityDataResult
     {
+
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Langu { get; set; }
         [DataMember]
+        [JsonProperty("country")]
         public string Country { get; set; }
         [DataMember]
-        public GOVCODESet GOVCODESet { get; set; }
+        //[JsonProperty("governmentCodes")]
+        //public List<Results> GOVCODESet { get; set;}
+        [JsonProperty("governmentCodes")]
+        public List<Results> GOVCODESET { get; set; }
         [DataMember]
-        public MSGSet MSGSet { get; set; }
+        [JsonProperty("messages")]
+        public List<Results11> MSGSet { get; set; }
         [DataMember]
-        public Zsub_desc_ASet zsub_desc_A60Set { get; set; }
+        [JsonProperty("subDescriptionA60")]
+        public List<Results12> zsub_desc_A60Set { get; set; }
         [DataMember]
-        public URLSet URLSet { get; set; }
+        [JsonProperty("URLs")]
+        public List<Results13> URLSet { get; set; }
         [DataMember]
-        public Zsub_desc_ASet zsub_desc_A62Set { get; set; }
+        [JsonProperty("subDescriptionA62")]
+        public List<Results12> zsub_desc_A62Set { get; set; }
         [DataMember]
-        public Zsub_desc_ASet zsub_desc_A61Set { get; set; }
+        [JsonProperty("subDescriptionA61")]
+        public List<Results12> zsub_desc_A61Set { get; set; }
         [DataMember]
-        public Zmain_descSet zmain_descSet { get; set; }
+        [JsonProperty("mainDescriptionA60")]
+        public List<Results16> zmain_descSet { get; set; }
         [DataMember]
-        public ZcitySet zcitySet { get; set; }
+        [JsonProperty("cities")]
+        public List<Results17> zcitySet { get; set; }
 
     }
     //public class Application

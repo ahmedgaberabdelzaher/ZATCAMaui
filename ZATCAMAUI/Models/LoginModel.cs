@@ -38,6 +38,9 @@ namespace ZATCAMAUI.Models
         [JsonProperty("DeviceId")]
         public string DeviceId { get; set; }
 
+        [JsonProperty("TpMpVip")]
+        public string TpMpVip { get; set; }
+
         [JsonProperty("Gpart")]
         public string TIN { get; set; }
 
@@ -79,10 +82,13 @@ namespace ZATCAMAUI.Models
         public string NameOrg1 { get; set; }
         [JsonProperty("TypeChk")]
         public string TypeChk { get; set; }
-        public string CozatcaTile { get; set; }
+
         public string ResponseStatusMessage { get; set; }
 
         public string ResponseStatusCode { get; set; }
+        [JsonProperty("cozatcaTileFlag")]
+        public string CozatcaTile { get; set; }
+
     }
 
     
@@ -106,5 +112,61 @@ namespace ZATCAMAUI.Models
         public string password { get; set; }
         public string deviceId { get; set; }
         public string count { get; set; }
+    }
+
+    [Preserve(AllMembers = true)]
+    public class LoginParametersModelSSO
+    {
+        public string Idnumber { get; set; }
+        public string Firstname { get; set; }
+        public string Birthdt { get; set; }
+       
+    }
+
+    [Preserve]
+    public class LoginRequestModel
+    {
+        [JsonProperty("userId")]
+        public string userId { get; set; }
+
+        [JsonProperty("password")]
+        public string password { get; set; }
+
+        [JsonProperty("language")]
+        public string language { get; set; }
+    }
+
+    public class LoginResponseModel
+    {
+        [JsonProperty("header")]
+        public HeaderModel Header { get; set; }
+
+        [JsonProperty("result")]
+        public LoginResultModel Result { get; set; }
+    }
+
+    public class HeaderModel
+    {
+        [JsonProperty("requestID")]
+        public string RequestId { get; set; }
+
+        [JsonProperty("status")]
+        public StatusModel Status { get; set; }
+    }
+
+    public class StatusModel
+    {
+        [JsonProperty("code")]
+        public string Code { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
+    }
+
+    public class LoginResultModel
+    {
+        [JsonProperty("token")]
+        public string Token { get; set; }
+        [JsonProperty("mobileNumber")]
+        public string MobileNumber { get; set; }
     }
 }

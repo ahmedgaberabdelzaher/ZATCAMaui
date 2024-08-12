@@ -165,6 +165,33 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return StartDate;
         }
+        public static string SingleDateConversionTime(string Date)
+        {
+            String StartDate = Date;
+            if (!string.IsNullOrEmpty(StartDate))
+            {
+                if (App.IsArabic)
+                {
+                    if (StartDate != null)
+                    {
+                        string trimStartDate = StartDate.Trim();
+                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        StartDate = dateStart.ToString("dd/MM/yyyy", new CultureInfo("ar-sa"));
+                    }
+                }
+                else
+                {
+                    if (StartDate != null)
+                    {
+                        string trimStartDate = StartDate.Trim();
+                        DateTime dateStart = DateTime.ParseExact(trimStartDate, "dd/MM/yyyy", new CultureInfo("en-US"));
+                        StartDate = dateStart.ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    }
+                }
+            }
+            return StartDate;
+        }
+
         public static string dateConversion(string Date)
         {
             string FullDate = string.Empty;
@@ -1050,20 +1077,48 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return amountWithComma;
         }
+        public static int CheckEmailOrTin(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return 0;
+            }
+            else
+            {
+                Match emailMatch = Regex.Match(value, emailIdValidation);
+                if (emailMatch.Success)
+                {
+                    return 2;
+                }
+
+                if (!string.IsNullOrEmpty(value))
+                {
+                    foreach (char letter in value.ToCharArray())
+                    {
+                        if (!(letter >= 48 && letter <= 57))
+                        {
+                            return 0;
+                        }
+                    }
+                    return 1;
+                }
+            }
+            return 0;
+        }
         #endregion
 
-        public static IEnumerable<IGrouping<string, QuestionsetWithMinMax>> GetQuestionsGroupedByQuestionNo(QUESCONFIG_MSet qUESCONFIG_MSet)
+        public static IEnumerable<IGrouping<string, QuestionsetWithMinMax>> GetQuestionsGroupedByQuestionNo(List<QuestionsetWithMinMax> qUESCONFIG_MSet)
         {
-            IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = qUESCONFIG_MSet.results.GroupBy(qn => qn.QueNo);
+            IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = qUESCONFIG_MSet.GroupBy(qn => qn.QueNo);
             return QuestionsGroupedByQuestionNo;
         }
 
         //Get n group of QuestionNumberWithMinMaxRangeWithCountOfAnswers
-        public static List<QuestionNumberWithMinMaxRange> GetLowAndHighRangeForEachQuestionSet(QUESCONFIG_MSet qUESCONFIG_MSet)
+        public static List<QuestionNumberWithMinMaxRange> GetLowAndHighRangeForEachQuestionSet(List<QuestionsetWithMinMax> qUESCONFIG_MSet)
         {
             List<QuestionNumberWithMinMaxRange> QuestionsGroupedyMinMaxRange = null;
 
-            if (qUESCONFIG_MSet != null && qUESCONFIG_MSet.results != null)
+            if (qUESCONFIG_MSet != null && qUESCONFIG_MSet.Count > 0)
             {
                 IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = GetQuestionsGroupedByQuestionNo(qUESCONFIG_MSet);
                 if (QuestionsGroupedByQuestionNo != null)
@@ -1078,7 +1133,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return QuestionsGroupedyMinMaxRange;
         }
-        public static QuestionsetWithMinMax FindTheAnswerApplicableBasedOntheValue(string QuestionNumber, double CurrentValue, QUESCONFIG_MSet qUESCONFIG_MSet)
+        public static QuestionsetWithMinMax FindTheAnswerApplicableBasedOntheValue(string QuestionNumber, double CurrentValue, List<QuestionsetWithMinMax> qUESCONFIG_MSet)
         {
             IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = GetQuestionsGroupedByQuestionNo(qUESCONFIG_MSet);
 
@@ -1091,7 +1146,7 @@ namespace ZATCAMAUI.Core.Mangers
 
         }
 
-        public static int FindTheAnswerIndexBasedOntheAnswerId(string QuestionNumber, string AnswerId, QUESCONFIG_MSet qUESCONFIG_MSet)
+        public static int FindTheAnswerIndexBasedOntheAnswerId(string QuestionNumber, string AnswerId, List<QuestionsetWithMinMax> qUESCONFIG_MSet)
         {
 
 
@@ -1155,6 +1210,45 @@ namespace ZATCAMAUI.Core.Mangers
             }
 
         }
+        public static string convertToUniversalDate(string From, string to, string dateTimeString)
+        {
+            try
+            {
+                IFormatProvider formatProvider = CultureInfo.InvariantCulture;
+                DateTime parsedDateTime = DateTime.ParseExact(dateTimeString, From, formatProvider);
+
+                string formattedDate = parsedDateTime.ToString(to);
+
+
+                return formattedDate;
+
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+        }
+        public static string ConevrtSplittedDate(string dateToSplit)
+        {
+            try
+            {
+                string[] dateComponents = dateToSplit.Split('/');
+                int year = int.Parse(dateComponents[2]);
+                int month = int.Parse(dateComponents[0]);
+                int day = int.Parse(dateComponents[1]);
+                DateTime originalDate = new DateTime(year, month, day);
+
+                return originalDate.ToString("yyyy-MM-ddTHH:mm:ss");
+
+            }
+            catch (Exception ex)
+            {
+                return "";
+            }
+
+        }
+
+
         public static string ConvertToGreg(string date)
         {
             try
@@ -1169,7 +1263,45 @@ namespace ZATCAMAUI.Core.Mangers
             }
 
         }
+        public static string stringToIFormat(string dateTimeString)
+        {
+            try
+            {
+                IFormatProvider formatProvider = CultureInfo.InvariantCulture;
+                DateTime parsedDateTime = DateTime.ParseExact(dateTimeString, "yyyy-MM-ddTHH:mm:ss", formatProvider);
+                string formattedDate = parsedDateTime.ToString("yyyy-MM-dd");
 
+                return formattedDate;
+
+            }
+            catch (Exception)
+            {
+                return "";
+            }
+
+        }
+        public static string ConvertToStringFromDate(string dateValue)
+        {
+            try
+            {
+                // Extract the milliseconds value from the string
+                long milliseconds = long.Parse(dateValue.Substring(6, dateValue.Length - 8));
+
+                // Convert milliseconds to DateTime
+                DateTime dateTime = DateTimeOffset.FromUnixTimeMilliseconds(milliseconds).DateTime;
+
+                // Format the DateTime object as a string in the desired format
+                string formattedDate = dateTime.ToString("yyyy-MM-ddTHH:mm:ss");
+                return formattedDate;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("=====" + ex.Message);
+                return "";
+            }
+
+        }
         public static string ConvertDateFormat(object newDate)
         {
             if (newDate == null)
@@ -1288,7 +1420,49 @@ namespace ZATCAMAUI.Core.Mangers
         }
 
         // * Global Method For Changing Flow Direction LANG Based
-        
+        public static FlowDirection SetLTRAndRTL()
+        {
+            if (App.IsArabic)
+            {
+                return FlowDirection.RightToLeft;
+            }
+            else
+            {
+                return FlowDirection.LeftToRight;
+            }
+        }
+        public static string ConvertToDateFormat(string inputDate, string toformat)
+        {
+            // Parse input date
+            DateTime parsedDate;
+            if (DateTime.TryParse(inputDate, out parsedDate))
+            {
+                // Format the date according to the desired format
+                string formattedDate = parsedDate.ToString(toformat);
+                return formattedDate;
+            }
+            else
+            {
+                // Handle parsing failure
+                return "";
+            }
+        }
+        internal static string MaskMobileNUmber(string mobile)
+        {
+            if (string.IsNullOrEmpty(mobile))
+            {
+                return mobile;
+            }
+            else
+            {
+                if (mobile.Length > 11)
+                {
+                    var maskedNumber = mobile.Substring(6, 6);
+                    mobile = mobile.Replace(maskedNumber, "XXXXXX");
+                }
+            }
+            return mobile;
+        }
         public static byte[] ReadFully(Stream input)
         {
             byte[] buffer = new byte[16 * 1024];
@@ -1354,6 +1528,61 @@ namespace ZATCAMAUI.Core.Mangers
                       .ParseExact(dateToConvert, "yyyy-MM-dd", CultureInfo.InvariantCulture)
                       .ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             return result;
+        }
+        public static DateTime ConvertFromStringTimeToDateTime(string date)
+        {
+            DateTime originalDateTime = DateTime.Parse(date);
+            string jsonDate = ConvertDateTimeToJsonDate(originalDateTime);
+            DateTime convertedDateTime = ConvertJsonDateToDateTime(jsonDate);
+            return convertedDateTime;
+        }
+        static string ConvertDateTimeToJsonDate(DateTime dateTime)
+        {
+            long ticks = (dateTime.Ticks - new DateTime(1970, 1, 1).Ticks) / TimeSpan.TicksPerMillisecond;
+            return $@"\/Date({ticks})\/";
+        }
+
+        static DateTime ConvertJsonDateToDateTime(string jsonDate)
+        {
+            long ticks = long.Parse(jsonDate.Substring(6, jsonDate.Length - 8));
+            DateTime dateTime = new DateTime(1970, 1, 1).AddMilliseconds(ticks);
+            return dateTime;
+        }
+        public static DateTime ConvertDateStringtoDateTime(string dateTime, string format, CultureInfo provider)
+        {
+            try
+            {
+                string dateString = dateTime;
+                //CultureInfo provider = CultureInfo.InvariantCulture;
+                // It throws Argument null exception
+                DateTime dateTime10 = DateTime.ParseExact(dateTime, format, provider);
+                return dateTime10;
+            }
+            catch (Exception ex)
+            {
+                DateTime dateTime10 = new DateTime();
+                return dateTime10;
+            }
+
+        }
+        public static string StringToDDMMYYYYFormat(string date)
+        {
+            if (!string.IsNullOrEmpty(date))
+            {
+                string[] dts = null;
+                DateTime originalDate = DateTime.Parse(date);
+
+                string formattedDate = originalDate.ToString("dd-MM-yyyy");
+                dts = formattedDate.Split('-');
+                string dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                return dt1;
+
+            }
+            else
+            {
+                return "";
+            }
+
         }
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
         {

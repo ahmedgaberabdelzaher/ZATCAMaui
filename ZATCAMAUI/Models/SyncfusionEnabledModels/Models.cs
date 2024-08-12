@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using Foundation;
+using Newtonsoft.Json;
 using ZATCAMAUI.Core.Mangers;
 
 namespace ZATCAMAUI.Models.SyncfusionEnabledModels
@@ -58,18 +60,8 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
     
     public class OverduePaymentAndUnSubmittedReturn
     {
-
-
-        public DateTime? Abrzu { get; set; }
-        public string Gpartz { get; set; }
-        public string Abtyp { get; set; }
-        public string MadabutFg { get; set; }
-        public string OpenliMsg { get; set; } //Mada Payment Message
-
-
-
         public string _CalendarTyp;
-        public string CalendarTyp
+        public string calendarType
         {
             get
             {
@@ -81,12 +73,12 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
                 if (_CalendarTyp != null)
                 {
 
-                    if (DueDtC != null)
+                    if (dueDate != null)
                     {
 
-                        string formatedDate = string.Format(DueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
+                        string formatedDate = string.Format(Convert.ToDateTime(dueDate).ToString("dd/MM/yyyy", new CultureInfo("en-US")));
 
-                        if (CalendarTyp.Equals("G"))
+                        if (calendarType.Equals("G"))
                         {
 
                             string[] dts1 = formatedDate.Split('/');
@@ -94,7 +86,7 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
                             FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
 
                         }
-                        else if (CalendarTyp.Equals("H"))
+                        else if (calendarType.Equals("H"))
                         {
 
                             string[] dts1 = formatedDate.Split('/');
@@ -111,15 +103,23 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             }
         }
 
-
-
-        public string Abtypt { get; set; }
-        public DateTime? Abrzo { get; set; }
-        public string Langz { get; set; }
-        public string Incotyp { get; set; }
-        public string Incotext { get; set; }
-        public string IcrStatus { get; set; }
-        public string Sopbel { get; set; }
+        //public string Abtypt { get; set; }
+        //public DateTime? Abrzo { get; set; }
+        [JsonProperty("message")]
+        public string OpenliMsg { get; set; }
+        public string revenueType { get; set; }
+        public string revenueTaxType { get; set; }
+        [JsonProperty("madaPayment")]
+        public string MadabutFg { get; set; }
+        public string periodStartDate { get; set; }
+        public string language { get; set; }
+        public string TIN { get; set; }
+        public string periodEndDate { get; set; }
+        public string inboundCorrespondenceType { get; set; }
+        public string inboundCorrespondenceTypeDescription { get; set; }
+        public string ICRStatus { get; set; }
+        public string sadadBillNumber { get; set; }
+        //public string Sopbel { get; set; }
         public bool IsFBNumberExist { get; set; }
         public string TaxPeriod { get; set; }
         private string _formatedSingleDueDate;
@@ -147,99 +147,18 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             }
         }
         public Color ColorCode { get; set; }
-        public string _dueDT;
-        public string DueDt
-        {
-            get
-            {
-                return _dueDT;
-            }
-            set
-            {
-                _dueDT = value;
-                if (_dueDT != null)
-                {
-                    if (_dueDT.Contains("T"))
-                    {
-                        string[] _dueDate = new string[2];
-                        _dueDate = _dueDT.Split('T');
-                        DueDate = _dueDate[0];
-                    }
-                }
-            }
-        }
-
+        public string _dueDate;
+        
 
         public string FormatedDuedate { get; set; }
 
 
 
 
-        public DateTime? _dueDtC;
-        public DateTime? DueDtC
-        {
-            get
-            {
-                return _dueDtC;
-            }
-            set
-            {
-                _dueDtC = value;
-                if (_dueDtC != null)
-                {
-                    if (CalendarTyp != null)
-                    {
-
-                        string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
-
-                        if (CalendarTyp.Equals("G"))
-                        {
-
-                            string[] dts1 = formatedDate.Split('/');
-
-                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
-
-                        }
-                        else if (CalendarTyp.Equals("H"))
-                        {
-
-                            string[] dts1 = formatedDate.Split('/');
-
-                            FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthNameHijri(dts1[1]) + " " + dts1[2];
-
-                        }
 
 
-                        // Month = Convert.ToDateTime(_dueDate).ToString("MMM", new CultureInfo("en-US"));
-                        FormatedSingleDueDate = Convert.ToDateTime(_dueDtC).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        DueDateDateTime = Convert.ToDateTime(_dueDtC);
-                    }
-                    //else {
-
-
-                    //    string formatedDate = string.Format(_dueDtC?.ToString("dd/MM/yyyy", new CultureInfo("en-US")));
-
-                    //    string[] dts1 = formatedDate.Split('/');
-
-                    //    FormatedDuedate = dts1[0] + " " + UtilityManager.GetMonthName(dts1[1]) + " " + dts1[2];
-
-                    //}
-
-
-                }
-
-
-
-
-                //    }
-
-
-            }
-        }
-
-        //DueDate
         private string _fbnum;
-        public string Fbnum
+        public string formBundleNumber
         {
             get
             {
@@ -250,13 +169,13 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
                 _fbnum = value;
             }
         }
-        public string Fbtyp { get; set; }
-        public string FbtText { get; set; }
-        public string Txt50 { get; set; }
-        public string Persl { get; set; }
-        public string Amount { get; set; }
-        public string Waers { get; set; }
-        private string _dueDate;
+        public string formBundleType { get; set; }
+        public string formBundleDescription { get; set; }
+        public string periodDescription { get; set; }
+        public string taxTypeDescription { get; set; }
+        public string periodkey { get; set; }
+        public string amount { get; set; }
+        public string currency { get; set; }
 
         private string _day;
         public string Day
@@ -283,7 +202,7 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             }
         }
 
-        public string DueDate
+        public string dueDate
         {
             get
             {
@@ -337,7 +256,7 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
                     if (_isUnSubmittedReturn == true)
                     {
                         StatusImage = "sf_ic_Overdue_Returns_Commitments.png";
-                        TaxPeriod = Txt50;
+                        TaxPeriod = periodDescription;
                         if (!string.IsNullOrEmpty(_fbnum))
                         {
                             IsFBNumberExist = true;
@@ -367,7 +286,7 @@ namespace ZATCAMAUI.Models.SyncfusionEnabledModels
             }
         }
     }
-    
+    [Preserve(AllMembers = true)]
     public enum ReturnType
     {
         RtnTot = 0,

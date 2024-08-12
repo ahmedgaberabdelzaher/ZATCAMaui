@@ -151,19 +151,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
             try
             {
-                ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.Tin);
+                ListTINStatus = await WebServiceManager.GAZTGetTinStatus(Lang, App.TP.TIN);
                 UpdateTinStatus();
                 IsLoading = false;
-
                 // Session Expired Or Not
                 PopToRootPage();
             }
-            catch (Exception)
+
+            catch(Exception ex)
             {
                 IsLoading = false;
                 TinStatusLabelText = " - ";
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -173,8 +173,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             {
                 if (ListTINStatus.d != null)
                 {
-                    if (!string.IsNullOrEmpty(ListTINStatus.d.StatusText))
-                        TinStatusLabelText = ListTINStatus.d.StatusText;
+                    if (!String.IsNullOrEmpty(ListTINStatus.d.statusDescription))
+                        TinStatusLabelText = ListTINStatus.d.statusDescription;
                     else
                         TinStatusLabelText = " - ";
                 }

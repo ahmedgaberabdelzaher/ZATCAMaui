@@ -4,8 +4,8 @@ using System.Text;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Models.ContractReleas;
 using ZATCAMAUI.Models.ContractRelease;
-using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
 using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Core.Mangers
@@ -28,13 +28,28 @@ namespace ZATCAMAUI.Core.Mangers
                     string euser4 = "null";
                     string euser5 = "null";
 
-
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.ContractReleaseApplicationFormUrl + "CallServ='DCON',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
-                       "Auditor='" + "'," +
-                     "Lang='" + lang + "',Euser1='" + "''" + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
-                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + "')?$expand=ListSet,AuthServSet&$format=json";
-                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    string deviceOs = DeviceInfo.Platform.ToString();
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DeviceInfo.Model;
+                    //Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    //String url = Constants.ContractReleaseApplicationFormUrl + "CallServ='DCON',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
+                    //"Auditor='" + "'," +
+                    //"Lang='" + lang + "',Euser1='" + "''" + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                    //"Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + "')?$expand=ListSet,AuthServSet&$format=json";
+                    String url = ZATCAConstants.ContractReleaseApplicationFormUrl + App.TP.TIN + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
+                    // HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (GAZTzakatInstalmentDataResponse != null)
                     {
                         if (GAZTzakatInstalmentDataResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -81,13 +96,11 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
-
+                catch (Exception ex)
                 {
 
-
-
-                    App.IsSessionExpired = true;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -108,11 +121,27 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.ContractReleaseRequestUrl + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
-                      "Savez='" + "',Fbnumz='" + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
-                      "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
-                    HttpResponseMessage _contractReleaseRequestResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    string deviceOs = DeviceInfo.Platform.ToString();
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DeviceInfo.Model;
+                    //Char lang = WebServiceManager.GetLangZParameter();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    //String url = Constants.ContractReleaseRequestUrl + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
+                    //  "Savez='" + "',Fbnumz='" + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
+                    //  "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
+                    String url = ZATCAConstants.ContractReleaseRequestUrl + App.TP.TIN + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage _contractReleaseRequestResponse = await client.GetAsync(uri);
+                    //HttpResponseMessage _contractReleaseRequestResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
 
 
@@ -162,11 +191,11 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-
-                    App.IsSessionExpired = true;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -184,13 +213,21 @@ namespace ZATCAMAUI.Core.Mangers
                 string LangZ = WebServiceManager.GetLangZParameterAREN();
                 string url = ZATCAConstants.ContractReleaseSubmitUrl;
                 var uri = new Uri(url);
-                HttpClient client = new HttpClient(App.httpClientHandler);
-                var serilized = JsonConvert.SerializeObject(contractReleaseFormData.d);
-                client.DefaultRequestHeaders.Add("Token", App.Token);
-                client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                //HttpClient client = new HttpClient(App.httpClientHandler);
 
+                string deviceOs = DeviceInfo.Platform.ToString();
+                string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                string deviceModel = DeviceInfo.Model;
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                client.DefaultRequestHeaders.Add("X-Session-Language", LangZ);
+                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                var serilized = JsonConvert.SerializeObject(contractReleaseFormData.d);
                 HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                 HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                 _contractReleasesubmitResponse = await res.Content.ReadAsStringAsync();
@@ -213,11 +250,10 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 throw new GAZTVATRegistrationInProcessException(ex.Message);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
-                App.IsSessionExpired = true;
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 return null;
             }
             return _contractReleasesubmitResponse;
@@ -231,11 +267,26 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.ContractReleaseSummaryData + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
-                      "Savez='" + "',Fbnumz='" + fbnumz + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
-                      "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
-                    HttpResponseMessage _contractReleasesummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    string deviceOs = DeviceInfo.Platform.ToString();
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DeviceInfo.Model;
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    //String url = Constants.ContractReleaseSummaryData + "Auditorz='" + "',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',RegIdz='" + "',Submitz='" + "'," +
+                    //  "Savez='" + "',Fbnumz='" + fbnumz + "',Langz='" + lang + "',PeriodKeyz='" + "'," +
+                    //  "UserTin='" + "')?$expand=znotesSet,AttDetSet&$format=json";
+                    String url = ZATCAConstants.ContractReleaseSummaryData + App.TP.TIN + "&language=" + lang + "&formBundleNumber=" + fbnumz;
+                    var uri = new Uri(url);
+                    HttpResponseMessage _contractReleasesummaryResponse = await client.GetAsync(uri);
+                    // HttpResponseMessage _contractReleasesummaryResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
                     if (_contractReleasesummaryResponse != null)
                     {
@@ -283,11 +334,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
-                    App.IsSessionExpired = true;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }

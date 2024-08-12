@@ -101,6 +101,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             foreach(ManagerList item in ChangeManagerModel.D.Results)
                             {
                                 ManagerList newItem = new ManagerList();
+                                item.Gpart = App.TP.TIN;
                                 newItem = item;
                                 if (item.BirthDt != null)
                                 {

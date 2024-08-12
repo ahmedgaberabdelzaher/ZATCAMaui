@@ -22,6 +22,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         public ICommand GoBackClick { get; set; }
         public static decimal AttachmentUploadedSize = 0;
         public static bool isToBeFilled = false;
+        public bool isUploadHappened = false;
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
         byte[] attachment;
@@ -57,6 +58,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 OnPropertyChanged("VATDeclarationDataForAttch");
             }
         }
+
+        private string _CR2215flag;
+        public string CR2215flag
+        {
+            get
+            {
+                return _CR2215flag;
+            }
+            set
+            {
+                _CR2215flag = value;
+                OnPropertyChanged("CR2215flag");
+            }
+        }
+
         private string _dateSubmitted;
         public string DateSubmitted
         {
@@ -96,6 +112,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 OnPropertyChanged("AttachmentSize");
             }
         }
+
+        private bool _isAttachEnabled = false;
+        public bool IsAttachEnabled
+        {
+            get
+            {
+                return _isAttachEnabled;
+            }
+            set
+            {
+                _isAttachEnabled = value;
+                OnPropertyChanged("IsAttachEnabled");
+            }
+        }
+
+        //public Color _colorOf;
+        //public Color ColorOf
+        //{
+        //    get
+        //    {
+        //        return _colorOf;
+        //    }
+        //    set
+        //    {
+        //        _colorOf = value;
+        //        RaisePropertyChanged("ColorOf");
+        //    }
+        //}
+
         public decimal _totalAttachmentSize = 0;
         public decimal TotalAttachmentSize
         {
@@ -197,14 +242,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         }
         #endregion
 
-        #region Method
+
         public async Task AddAttachment()
         {
             try
             {
                 try
                 {
-                    if (AttachmentCount <= 40)
+                    if (AttachmentCount < 10)
                     {
                         string[] filetypes;
 
@@ -231,12 +276,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                                         AttachmentSize = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 2);
                                         decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal(Convert.ToDouble(attachment.Length) / 1048576.0), 4);
 
-                                        if (Convert.ToDecimal(AttachmentSize) <= 20)
+                                        if (Convert.ToDecimal(AttachmentSize) < 10)
                                         {
                                             if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                             {
                                                 bool IsAttachmentPresent = false;
-                                                foreach (Attachment ItemA in VATDeclarationDataForAttch.d.ATTACHSet.results)
+                                                foreach (Attachment ItemA in VATDeclarationDataForAttch.data.ATTACHSet)
                                                 {
                                                     if (AttachmentName == ItemA.Filename)
                                                     {
@@ -246,7 +291,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                                                 if (IsAttachmentPresent == false)
                                                 {
                                                     string attachmentType = UtilityManager.GetContentType(Extention);
-                                                    AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                                                    AttachmentRootOject _attachment = await SaveAttachment(stream, attachmentType);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
                                                     PopToRootPage();
                                                     if (_attachment != null && _attachment.d != null)
                                                     {
@@ -259,8 +304,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                                                         uploadedDate = uploadedDate.Replace("‘", "");
                                                         uploadedDate = uploadedDate.Replace("UTC", "GMT");
                                                         _attachment.d.Erfdt = uploadedDate;
-                                                        VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
-                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
+                                                        _attachment.d.ColorOf = (Color)App.Current.Resources["SecondaryNew"];
+                                                        VATDeclarationDataForAttch.data.ATTACHSet.Add(_attachment.d);
+                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.data.ATTACHSet as List<Attachment>);
                                                         MainThread.BeginInvokeOnMainThread(() =>
                                                         {
                                                             VatAttachmentsList = myCollection;
@@ -319,14 +365,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                                         else
                                         {
                                             AttachmentName = string.Empty;
-                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan10MB));
 
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan300MB));
+
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZTotalFilesizeshouldnotbemorethan100MB));
 
                                     }
                                 }
@@ -347,7 +395,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                     else
                     {
                         AttachmentName = string.Empty;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare10));
 
                     }
                 }
@@ -362,11 +410,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception)
             {
-
             }
         }
-        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
+
+        #region Method
+
+        private async Task<AttachmentRootOject> SaveAttachment(Stream attachmentByteData, string contentType)
         {
+
             AttachmentRootOject _attachment = null;
             await Task.Run(() =>
             {
@@ -376,7 +427,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             {
                 try
                 {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0", contentType);
+                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.data.ReturnIdz, "VTA0", contentType);
                     if (attachment != null && attachment.d != null)
                     {
                         attachmentSizeVisibility = true;
@@ -391,7 +442,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                         _attachment = null;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //  return null;
                 }
@@ -450,7 +501,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -544,20 +595,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 vATAttachment.Enbdele = attachmentList[i].Enbdele;
                 vATAttachment.Visedit = attachmentList[i].Enbdele;
                 vATAttachment.Visdel = attachmentList[i].Enbdele;
+               // vATAttachment.ColorOf = attachmentList[i].
+
                 if (App.ICRStatus.Equals("E0045") || App.ICRStatus.Equals("E0006") || App.ICRStatus.Equals("E0056"))
                 {
                     if (NumberOfAttachmentComingFromServer > 0 && i < NumberOfAttachmentComingFromServer)
                     {
                         vATAttachment.DeleteImageSource = "ic_Delete_disabled.png";
+                        vATAttachment.ColorOf = (Color)App.Current.Resources["Gray"];
                     }
                     else
                     {
                         vATAttachment.DeleteImageSource = "ic_delete.png";
+                        vATAttachment.ColorOf = (Color)App.Current.Resources["SecondaryNew"];
                     }
                 }
                 else
                 {
                     vATAttachment.DeleteImageSource = "ic_delete.png";
+                    vATAttachment.ColorOf = (Color)App.Current.Resources["SecondaryNew"];
                 }
 
                 list.Add(vATAttachment);

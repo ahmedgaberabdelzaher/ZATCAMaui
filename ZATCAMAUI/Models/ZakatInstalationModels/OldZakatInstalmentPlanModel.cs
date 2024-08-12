@@ -1,4 +1,6 @@
-﻿using static ZATCAMAUI.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
+using Foundation;
+using Newtonsoft.Json;
+using static ZATCAMAUI.Models.ZakatInstalationModels.ZAKATRequestPlanModel;
 
 namespace ZATCAMAUI.Models.ZakatInstalationModels
 {
@@ -92,20 +94,35 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
     public partial class ZakatNotesSet
     {
         public Metadata __metadata { get; set; }
-        public string Notenoz { get; set; }
+        //[JsonProperty("noteNumber")]
+        //public string Notenoz { get; set; }
+        [JsonProperty("referenceName")]
         public string Refnamez { get; set; }
+        [JsonProperty("displayOnAssessment")]
         public string XInvoicez { get; set; }
+        [JsonProperty("completed")]
         public string XObsoletez { get; set; }
+        [JsonProperty("processingReason")]
         public string Rcodez { get; set; }
+        [JsonProperty("userName")]
         public string Erfusrz { get; set; }
+        [JsonProperty("entryDate")]
         public string Erfdtz { get; set; }
+        [JsonProperty("attachedByPerson")]
         public string AttByz { get; set; }
+        [JsonProperty("TIN")]
         public string ByGpartz { get; set; }
+        [JsonProperty("dataVersion")]
         public string DataVersionz { get; set; }
+        [JsonProperty("noteNumber")]
         public string Noteno { get; set; }
+        [JsonProperty("lineNumber")]
         public long Lineno { get; set; }
+        [JsonProperty("elementNumber")]
         public long ElemNo { get; set; }
+        [JsonProperty("tagColumn")]
         public string Tdformat { get; set; }
+        [JsonProperty("textLine")]
         public string Tdline { get; set; }
 
     }
@@ -273,171 +290,336 @@ namespace ZATCAMAUI.Models.ZakatInstalationModels
     public partial class OldZakatInstalmentPlanRequest
     {
         public Metadata __metadata { get; set; }
+        [JsonProperty("fractionalPercentage")]
         public string Percentage { get; set; }
+        //[JsonProperty("userTIN")]
         public string UserTin { get; set; }
+        [JsonProperty("authenticationUser")]
         public string Euser { get; set; }
+        [JsonProperty("formBundleGUID")]
         public string Fbguid { get; set; }
+        [JsonProperty("auditorTIN")]
         public string Auditorz { get; set; }
+        [JsonProperty("language")]
         public string Langz { get; set; }
+        [JsonProperty("userTIN")]
         public string Taxpayerz { get; set; }
+        [JsonProperty("save")]
         public string Savez { get; set; }
         public string Fbnumz { get; set; }
+        [JsonProperty("periodKey")]
         public string PeriodKeyz { get; set; }
+        [JsonProperty("submit")]
         public string Submitz { get; set; }
+        [JsonProperty("agree")]
         public string AAgree { get; set; }
+        [JsonProperty("downPaymentRequestLetter")]
         public string ADwPaymentReqLetter { get; set; }
+        [JsonProperty("effectiveCalendarType")]
         public string AEffectiveCalTp { get; set; }
+        [JsonProperty("authenticationUser1")]
         public string Euser1 { get; set; }
+        [JsonProperty("formBundleTypeDescription")]
         public string FbtypDescr { get; set; }
+        [JsonProperty("formGUID")]
         public string FormGuid { get; set; }
+        [JsonProperty("auditor")]
         public string ZauditorFlag { get; set; }
+        [JsonProperty("installmentTaxpayerNumber")]
         public string ANoOfInstTp { get; set; }
+        [JsonProperty("revenueYear1")]
         public string ARev1yrTbFg { get; set; }
+        [JsonProperty("saveNotes")]
         public string SavNot { get; set; }
+        [JsonProperty("approve")]
         public string Approvez { get; set; }
+        [JsonProperty("revenueYear2")]
         public string ARev2yrTbFg { get; set; }
+        [JsonProperty("legalEntity1")]
         public string ALegalEnty1 { get; set; }
+        [JsonProperty("revenueYear3")]
         public string ARev3yrTbFg { get; set; }
+        [JsonProperty("netIncomeYear1")]
         public string ANi1yrTbFg { get; set; }
+        [JsonProperty("rejectionAction")]
         public string Rejectz { get; set; }
+        [JsonProperty("netIncomeYear2")]
         public string ANi2yrTbFg { get; set; }
+        [JsonProperty("caseGUID")]
         public string CaseGuid { get; set; }
+        [JsonProperty("netIncomeYear3")]
         public string ANi3yrTbFg { get; set; }
+        [JsonProperty("step")]
         public int AStep { get; set; }
+        [JsonProperty("cashYear1")]
         public string ACb1yrTbFg { get; set; }
+        [JsonProperty("cashYear2")]
         public string ACb2yrTbFg { get; set; }
+        [JsonProperty("legalEntity2")]
         public string ALegalEnty2 { get; set; }
+        [JsonProperty("cashYear3")]
         public string ACb3yrTbFg { get; set; }
+        [JsonProperty("shortTermInvestmentYear1")]
         public string ASi1yrTbFg { get; set; }
+        [JsonProperty("shortTermInvestmentYear2")]
         public string ASi2yrTbFg { get; set; }
+        [JsonProperty("contractNumber")]
         public string RegIdz { get; set; }
+        [JsonProperty("shortTermInvestmentYear3")]
         public string ASi3yrTbFg { get; set; }
+        [JsonProperty("currentAssetsYear1")]
         public string ATa1yrTbFg { get; set; }
+        [JsonProperty("currentAssetsYear2")]
         public string ATa2yrTbFg { get; set; }
+        [JsonProperty("currentAssetsYear3")]
         public string ATa3yrTbFg { get; set; }
+        [JsonProperty("formBundleNumber")]
         public string Fbnum { get; set; }
+        [JsonProperty("currentLiabilitiesYear1")]
         public string ATl1yrTbFg { get; set; }
+        [JsonProperty("TIN")]
         public string ATin { get; set; }
+        [JsonProperty("currentLiabilitiesYear2")]
         public string ATl2yrTbFg { get; set; }
+        [JsonProperty("taxpayerName")]
         public string ATaxpayerNm { get; set; }
+        [JsonProperty("currentLiabilitiesYear3")]
         public string ATl3yrTbFg { get; set; }
+        [JsonProperty("debitedYear1")]
         public string ADeb1yrTbFg { get; set; }
+        [JsonProperty("telephoneNumber")]
         public string ATelNo { get; set; }
+        [JsonProperty("debitedYear2")]
         public string ADeb2yrTbFg { get; set; }
+        [JsonProperty("mobileNumber")]
         public string AMobNo { get; set; }
+        [JsonProperty("debitedYear3")]
         public string ADeb3yrTbFg { get; set; }
+        [JsonProperty("email")]
         public string AEmail { get; set; }
+        [JsonProperty("creditedYear1")]
         public string ACr1yrTbFg { get; set; }
+        [JsonProperty("installmentRequestedFor")]
         public string AInstReqFor { get; set; }
+        [JsonProperty("creditedYear2")]
         public string ACr2yrTbFg { get; set; }
+        [JsonProperty("installmentRequestedReason")]
         public string AInstReqReason { get; set; }
+        [JsonProperty("bankStatements")]
         public string ABnkStat3mhChk { get; set; }
+        [JsonProperty("creditedYear3")]
         public string ACr3yrTbFg { get; set; }
+        [JsonProperty("financialStatementsYear3")]
         public string AFinStat3yrChk { get; set; }
+        [JsonProperty("retainEarningYear1")]
         public string ARe1yrTbFg { get; set; }
+        [JsonProperty("anotherDocument")]
         public string AOtherDocChk { get; set; }
+        [JsonProperty("retainEarningYear2")]
         public string ARe2yrTbFg { get; set; }
+        [JsonProperty("holdingFinancialStatement")]
         public string AHoldFinStat { get; set; }
+        [JsonProperty("retainEarningYear3")]
         public string ARe3yrTbFg { get; set; }
+        [JsonProperty("downPayment")]
         public string ADpAmtFg { get; set; }
+        [JsonProperty("item")]
         public string AItTb { get; set; }
+        [JsonProperty("year1")]
         public string AOneYrTb { get; set; }
+        [JsonProperty("year2")]
         public string ATwoYrTb { get; set; }
+        [JsonProperty("year3")]
         public string AThreeYrTb { get; set; }
+        [JsonProperty("downPaymentAmount")]
         public string ADpAmt { get; set; }
+        [JsonProperty("planDurationNumber")]
         public string APlanDurNo { get; set; }
+        [JsonProperty("planDurationPeriod")]
         public string APlanDurPeri { get; set; }
+        [JsonProperty("paymentFrequency")]
         public string APaymentFreq { get; set; }
+        [JsonProperty("COPlanDurationPeriod")]
         public string ACoPlanDurPeri { get; set; }
+        [JsonProperty("COPaymentFrequency")]
         public string ACoPaymentFreq { get; set; }
+        [JsonProperty("requiredDownPayment")]
         public string ADpRequ { get; set; }
+        [JsonProperty("downPaymentDocumentNumber")]
         public string ADpDocNo { get; set; }
+        [JsonProperty("downPaymentPercentage")]
         public string ADpPer { get; set; }
+        [JsonProperty("CODownPaymentAmount")]
         public string ACoDpAmt { get; set; }
+        [JsonProperty("downPaymentRecordAmount")]
         public string ADpRecAmt { get; set; }
+        [JsonProperty("installmentAmount")]
         public string AAppInstAmt { get; set; }
+        [JsonProperty("installmentDownPaymentAmount")]
         public string AInstDpAmt { get; set; }
+        [JsonProperty("balanceAmount")]
         public string ABalAmt { get; set; }
+        [JsonProperty("COBackOfficerReview")]
         public string ACoBoRev { get; set; }
+        [JsonProperty("COBackOfficerName")]
         public string ACoBoNm { get; set; }
+        [JsonProperty("COBackOfficerApproval")]
         public string ACoBoRd { get; set; }
+        [JsonProperty("CMBackOfficerReview")]
         public string ACmBoRev { get; set; }
+        [JsonProperty("CMBackOfficerName")]
         public string ACmBoNm { get; set; }
+        [JsonProperty("CMBackOfficerApproval")]
         public string ACmBoRd { get; set; }
+        [JsonProperty("COHeadOfficerReview")]
         public string ACoHoRev { get; set; }
+        [JsonProperty("COHeadOfficerName")]
         public string ACoHoNm { get; set; }
+        [JsonProperty("COHeadOfficerApproval")]
         public string ACoHoRd { get; set; }
+        [JsonProperty("CMHeadOfficerReview")]
         public string ACmHoRev { get; set; }
+        [JsonProperty("CMHeadOfficerName")]
         public string ACmHoNm { get; set; }
+        [JsonProperty("CMHeadOfficerApproval")]
         public string ACmHoRd { get; set; }
+        [JsonProperty("MOFApprovalLetter")]
         public string AMofApprChk { get; set; }
+        [JsonProperty("anotherSupportingDocument")]
         public string AOtherSuppDocChk { get; set; }
+        [JsonProperty("rejectionReason")]
         public string ARejReason { get; set; }
+        [JsonProperty("COPlanDurationNumber")]
         public string ACoPlanDurNo { get; set; }
+        [JsonProperty("revenueAmountYear1")]
         public string ARev1yrTb { get; set; }
+        [JsonProperty("revenueAmountYear2")]
         public string ARev2yrTb { get; set; }
+        [JsonProperty("revenueAmountYear3")]
         public string ARev3yrTb { get; set; }
+        [JsonProperty("netIncomeAmountYear1")]
         public string ANi1yrTb { get; set; }
+        [JsonProperty("netIncomeAmountYear2")]
         public string ANi2yrTb { get; set; }
+        [JsonProperty("netIncomeAmountYear3")]
         public string ANi3yrTb { get; set; }
+        [JsonProperty("cashAmountYear1")]
         public string ACb1yrTb { get; set; }
+        [JsonProperty("cashAmountYear2")]
         public string ACb2yrTb { get; set; }
+        [JsonProperty("cashAmountYear3")]
         public string ACb3yrTb { get; set; }
+        [JsonProperty("shortTermInvestmentAmountYear1")]
         public string ASi1yrTb { get; set; }
+        [JsonProperty("shortTermInvestmentAmountYear2")]
         public string ASi2yrTb { get; set; }
+        [JsonProperty("shortTermInvestmentAmountYear3")]
         public string ASi3yrTb { get; set; }
+        [JsonProperty("currentAssetsAmountYear1")]
         public string ATa1yrTb { get; set; }
+        [JsonProperty("currentAssetsAmountYear2")]
         public string ATa2yrTb { get; set; }
+        [JsonProperty("currentAssetsAmountYear3")]
         public string ATa3yrTb { get; set; }
+        [JsonProperty("currentLiabilitiesAmountYear1")]
         public string ATl1yrTb { get; set; }
+        [JsonProperty("currentLiabilitiesAmountYear2")]
         public string ATl2yrTb { get; set; }
+        [JsonProperty("currentLiabilitiesAmountYear3")]
         public string ATl3yrTb { get; set; }
+        [JsonProperty("debitedAmountYear1")]
         public string ADeb1yrTb { get; set; }
+        [JsonProperty("debitedAmountYear2")]
         public string ADeb2yrTb { get; set; }
+        [JsonProperty("debitedAmountYear3")]
         public string ADeb3yrTb { get; set; }
+        [JsonProperty("creditedAmountYear1")]
         public string ACr1yrTb { get; set; }
+        [JsonProperty("creditedAmountYear2")]
         public string ACr2yrTb { get; set; }
+        [JsonProperty("creditedAmountYear3")]
         public string ACr3yrTb { get; set; }
+        [JsonProperty("retainEarningAmountYear1")]
         public string ARe1yrTb { get; set; }
+        [JsonProperty("retainEarningAmountYear2")]
         public string ARe2yrTb { get; set; }
+        [JsonProperty("retainEarningAmountYear3")]
         public string ARe3yrTb { get; set; }
+        [JsonProperty("profitabilityRatioYear1")]
         public string APr1yrTb { get; set; }
+        [JsonProperty("profitabilityRatioYear2")]
         public string APr2yrTb { get; set; }
+        [JsonProperty("profitabilityRatioYear3")]
         public string APr3yrTb { get; set; }
+        [JsonProperty("currentRatioYear1")]
         public string ACrt1yrTb { get; set; }
+        [JsonProperty("currentRatioYear2")]
         public string ACrt2yrTb { get; set; }
+        [JsonProperty("currentRatioYear3")]
         public string ACrt3yrTb { get; set; }
+        [JsonProperty("proportionOfCashYear1")]
         public string APc1yrTb { get; set; }
+        [JsonProperty("proportionOfCashYear2")]
         public string APc2yrTb { get; set; }
+        [JsonProperty("proportionOfCashYear3")]
         public string APc3yrTb { get; set; }
+        [JsonProperty("percentageAmountApproval")]
         public string APerAmtRd { get; set; }
+        [JsonProperty("requiredDownPaymentDrop")]
         public string ADpRequDrp { get; set; }
+        [JsonProperty("percentage")]
         public string APer { get; set; }
+        [JsonProperty("formStatus")]
         public string AFormStatus { get; set; }
+        [JsonProperty("downLetterCheck")]
         public string ADownLetterChk { get; set; }
+        [JsonProperty("downYear")]
         public string ADownYear { get; set; }
+        [JsonProperty("downMonth")]
         public string ADownMonth { get; set; }
+        [JsonProperty("downToYear")]
         public string ADownToYear { get; set; }
+        [JsonProperty("downToMonth")]
         public string ADownToMonth { get; set; }
+        [JsonProperty("branch")]
         public string ABranch { get; set; }
+        [JsonProperty("saudiShare")]
         public string ASaudiShare { get; set; }
+        [JsonProperty("nonSaudiShare")]
         public string ANonsaudiShare { get; set; }
+        [JsonProperty("mainAccount")]
         public string AMainAct { get; set; }
+        [JsonProperty("mainAccountDescription")]
         public string AMainActDesc { get; set; }
+        [JsonProperty("poBox")]
         public string APoBox { get; set; }
+        [JsonProperty("postalCode")]
         public string APostalCode { get; set; }
+        [JsonProperty("faxNumber")]
         public string AFaxNo { get; set; }
+        [JsonProperty("building")]
         public string ABuilding { get; set; }
+        [JsonProperty("street")]
         public string AStreet { get; set; }
+        [JsonProperty("district")]
         public string ADistrict { get; set; }
+        [JsonProperty("city")]
         public string ACity { get; set; }
+        [JsonProperty("errorMessage")]
         public string ALvError { get; set; }
+        [JsonProperty("totalAmount")]
         public string ATotalAmt { get; set; }
+        [JsonProperty("statusCode")]
         public string Status { get; set; }
+        [JsonProperty("attachments")]
         public OldAttDetSet[] AttDetSet { get; set; }
+        [JsonProperty("notes")]
         public ZakatNotesSet[] Off_notesSet { get; set; }
+        [JsonProperty("invoices")]
         public OldZInvoiceSet[] z_invoiceSet { get; set; }
+        [JsonProperty("proposedInstallments")]
         public OldZProposedinsSet[] z_proposedinsSet { get; set; }
+        [JsonProperty("invoicesUI5")]
         public OldResults3[] Z_INVOICE_UI5Set { get; set; }
 
 
@@ -446,7 +628,7 @@ Before:
     }
 
 
-    
+
     public class OldZAKATRequestPlanModel
 After:
     }
@@ -679,8 +861,8 @@ After:
 
     public class OldZakatInstalmentPlanRequestListModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
-        
+        [Preserve(AllMembers = true)]
+        [JsonProperty("data")]
         public D d { get; set; }
         
         public class Metadata
@@ -762,28 +944,51 @@ After:
         public class OldResult2
         {
             public Metadata __metadata { get; set; }
+            [JsonProperty("formBundleNumber")]
             public string Fbnum { get; set; }
+            [JsonProperty("objectionStatus")]
             public string Objstatus { get; set; }
+            [JsonProperty("formBundleStatus")]
             public string Fbsta { get; set; }
+            [JsonProperty("statusDescription")]
             public string StatText { get; set; }
+            [JsonProperty("formBundleType")]
             public string Fbtyp { get; set; }
+            [JsonProperty("formBundleTypeDescription")]
             public string FbtText { get; set; }
+            [JsonProperty("createdOn")]
             public string Erfdate { get; set; }
+            [JsonProperty("createdAt")]
             public string Erftime { get; set; }
+            [JsonProperty("periodkey")]
             public string Persl { get; set; }
+            [JsonProperty("taxPeriod")]
             public string TaxPeriod { get; set; }
+            [JsonProperty("dueDate")]
             public object DueDt { get; set; }
+
             public string Due { get; set; }
+            [JsonProperty("billPeriodStartDate")]
             public object Abrzu { get; set; }
+            [JsonProperty("billPeriodEndDate")]
             public object Abrzo { get; set; }
+            [JsonProperty("inboundCorrespondenceType")]
             public string Incotyp { get; set; }
+            [JsonProperty("inboundCorrespondenceDescription")]
             public string Incotext { get; set; }
+            [JsonProperty("flag")]
             public string Flag { get; set; }
+
             public string CalendrTyp { get; set; }
+            [JsonProperty("attachedByPerson")]
             public string PrcBy { get; set; }
+            [JsonProperty("group")]
             public string Grp { get; set; }
+            [JsonProperty("creditDate")]
             public string CrdtText { get; set; }
+            [JsonProperty("serialNumber")]
             public string Euser { get; set; }
+            [JsonProperty("formBundleGUID")]
             public string Fbguid { get; set; }
         }
         
@@ -795,73 +1000,140 @@ After:
         public class D
         {
             public Metadata __metadata { get; set; }
+            [JsonProperty("callService")]
             public string CallServ { get; set; }
+            [JsonProperty("accountNumber")]
             public long Accnum { get; set; }
+            [JsonProperty("activeCount")]
             public long Actcnt { get; set; }
+            [JsonProperty("auditor")]
             public string Auditor { get; set; }
+            [JsonProperty("isAuditorObjection")]
             public bool AudObjection { get; set; }
+            [JsonProperty("isAuditorRefund")]
             public bool AudRefund { get; set; }
+            [JsonProperty("isAuditorRefundTransaction")]
             public bool AudRefundTrn { get; set; }
+            [JsonProperty("isAuditorRequest")]
             public bool AudRequest { get; set; }
+            [JsonProperty("isAuditorReturn")]
             public bool AudReturn { get; set; }
+            [JsonProperty("TIN")]
             public string Bpnum { get; set; }
+            [JsonProperty("branch")]
             public string Branch { get; set; }
+            // [JsonProperty("data")]
             public string Caltype { get; set; }
+            [JsonProperty("client")]
             public long Client { get; set; }
+            [JsonProperty("cancellationCount")]
             public long Cnlcnt { get; set; }
+            [JsonProperty("correspondenceNumber")]
             public long Corrnum { get; set; }
+            [JsonProperty("department")]
             public string Dept { get; set; }
+            [JsonProperty("isDisplayShare")]
             public bool DisSharetile { get; set; }
+            [JsonProperty("isEnableInstallmentPlan")]
             public bool EnableInstPlan { get; set; }
+            [JsonProperty("isEnableTile")]
             public bool EnableTile { get; set; }
+            [JsonProperty("exciseTaxTransaction")]
             public string Ettr { get; set; }
+            [JsonProperty("serialNumber")]
             public string Euser { get; set; }
+            [JsonProperty("authenticationUser1")]
             public string Euser1 { get; set; }
+            [JsonProperty("authenticationUser2")]
             public string Euser2 { get; set; }
+            [JsonProperty("authenticationUser3")]
             public string Euser3 { get; set; }
+            [JsonProperty("authenticationUser4")]
             public string Euser4 { get; set; }
+            [JsonProperty("authenticationUser5")]
             public string Euser5 { get; set; }
+            [JsonProperty("exciseTaxAppeal")]
             public string ExeAppFlg { get; set; }
+            [JsonProperty("exciseTaxDetail")]
             public string ExeDtFlg { get; set; }
+            [JsonProperty("formBundleGUID")]
             public string Fbguid { get; set; }
+            [JsonProperty("hostName")]
             public string HostName { get; set; }
+            [JsonProperty("inboundCorrespondenceNumber")]
             public long Indcorrnum { get; set; }
+            [JsonProperty("interestAmount")]
             public string Interest { get; set; }
+            [JsonProperty("portalLink")]
             public string IntPortal { get; set; }
+            [JsonProperty("isBankruptcy")]
             public bool IsBankruptcy { get; set; }
+            [JsonProperty("language")]
             public string Lang { get; set; }
+            [JsonProperty("fullName")]
             public string Name { get; set; }
+            [JsonProperty("isNotificationLog")]
             public bool NotifLogFlag { get; set; }
+            [JsonProperty("newRegistrationDetail")]
             public string NregDtFlg { get; set; }
+            [JsonProperty("obligationNumber")]
             public long Oblnum { get; set; }
+            [JsonProperty("overdueAmount")]
             public string Overdue { get; set; }
+            [JsonProperty("penaltyAmount")]
             public string Penalty { get; set; }
+            [JsonProperty("portNumber")]
             public string PortNo { get; set; }
+            [JsonProperty("protocol")]
             public string Protocol { get; set; }
+            [JsonProperty("referenceNumber")]
             public long Refnum { get; set; }
+            [JsonProperty("registrationNumber")]
             public long Regnum { get; set; }
+            [JsonProperty("renewalCount")]
             public long Rencnt { get; set; }
+            [JsonProperty("requestNumber")]
             public long Reqnum { get; set; }
+            [JsonProperty("returnCount")]
             public long RetItCnt { get; set; }
+            [JsonProperty("return")]
             public string RetItFlg { get; set; }
+            [JsonProperty("systemName")]
             public string SystemName { get; set; }
+            [JsonProperty("taxType")]
             public string Taxtype { get; set; }
+            [JsonProperty("isTileOutlet")]
             public bool TileOutlet { get; set; }
+            [JsonProperty("isTilePermit")]
             public bool TilePermit { get; set; }
+            [JsonProperty("isTileTIN")]
             public bool TileTin { get; set; }
+            [JsonProperty("title")]
             public string Title { get; set; }
+            [JsonProperty("type")]
             public string Type { get; set; }
+            [JsonProperty("isUpgradeOutlet")]
             public bool UpdregOutflag { get; set; }
+            [JsonProperty("VATConfiguration")]
             public string VatConfFlg { get; set; }
+            [JsonProperty("VATDetail")]
             public string VatDtFlg { get; set; }
+            [JsonProperty("VATEligiblePerson")]
             public string VtepFg { get; set; }
+            [JsonProperty("VATSignup")]
             public string VtiaSignFg { get; set; }
+            [JsonProperty("warehouseDetail")]
             public string WarDtFlg { get; set; }
+            [JsonProperty("fillingObligation")]
             public long Zfillingoblig { get; set; }
+            [JsonProperty("registrationStatus")]
             public string Zregstatus { get; set; }
+            //[JsonProperty("data")]
             public string Zuser { get; set; }
-            public ListSet ListSet { get; set; }
-            public AuthServSet AuthServSet { get; set; }
+            [JsonProperty("lists")]
+            public List<OldResult2> ListSet { get; set; }
+            [JsonProperty("authorizationServer")]
+            public List<object> AuthServSet { get; set; }
 
         }
 
@@ -871,181 +1143,354 @@ After:
 
     public partial class OldZakatRequestDisplayModel
     {
+        [JsonProperty("data")]
         public OldD d { get; set; }
+
+        [JsonProperty("result")]
+        public OldD result { set { d = value; } }
     }
     
     public partial class OldD
     {
         public Metadata __metadata { get; set; }
+        [JsonProperty("fractionalPercentage")]
         public string Percentage { get; set; }
+        [JsonProperty("userTIN")]
         public string UserTin { get; set; }
+        [JsonProperty("authenticationUser")]
         public string Euser { get; set; }
+        [JsonProperty("formBundleGUID")]
         public string Fbguid { get; set; }
+        [JsonProperty("auditor")]
         public string Auditorz { get; set; }
+        [JsonProperty("language")]
         public string Langz { get; set; }
+        [JsonProperty("TIN")]
         public string Taxpayerz { get; set; }
+        [JsonProperty("save")]
         public string Savez { get; set; }
-        public string Fbnumz { get; set; }
+        //[JsonProperty("formBundleNumber")]
+        //public string Fbnumz { get; set; }
+        [JsonProperty("periodKey")]
         public string PeriodKeyz { get; set; }
+        [JsonProperty("submit")]
         public string Submitz { get; set; }
+        [JsonProperty("agree")]
         public string AAgree { get; set; }
+        [JsonProperty("downPaymentRequestLetter")]
         public string ADwPaymentReqLetter { get; set; }
+        [JsonProperty("effectiveCalendarType")]
         public string AEffectiveCalTp { get; set; }
+        [JsonProperty("authenticationUser1")]
         public string Euser1 { get; set; }
+        [JsonProperty("formBundleTypeDescription")]
         public string FbtypDescr { get; set; }
+        [JsonProperty("formGUID")]
         public string FormGuid { get; set; }
-        public string ZauditorFlag { get; set; }
+        //[JsonProperty("auditor")]
+        //public string ZauditorFlag { get; set; }
+        [JsonProperty("installmentTaxpayerNumber")]
         public string ANoOfInstTp { get; set; }
+        [JsonProperty("revenueYear1")]
         public string ARev1yrTbFg { get; set; }
+        [JsonProperty("saveNotes")]
         public string SavNot { get; set; }
+        [JsonProperty("approve")]
         public string Approvez { get; set; }
+        [JsonProperty("revenueYear2")]
         public string ARev2yrTbFg { get; set; }
+        [JsonProperty("legalEntity1")]
         public string ALegalEnty1 { get; set; }
+        [JsonProperty("revenueYear3")]
         public string ARev3yrTbFg { get; set; }
+        [JsonProperty("netIncomeYear1")]
         public string ANi1yrTbFg { get; set; }
+        [JsonProperty("rejectionAction")]
         public string Rejectz { get; set; }
+        [JsonProperty("netIncomeYear2")]
         public string ANi2yrTbFg { get; set; }
+        [JsonProperty("caseGUID")]
         public string CaseGuid { get; set; }
+        [JsonProperty("netIncomeYear3")]
         public string ANi3yrTbFg { get; set; }
+        [JsonProperty("step")]
         public int AStep { get; set; }
+        [JsonProperty("cashYear1")]
         public string ACb1yrTbFg { get; set; }
+        [JsonProperty("cashYear2")]
         public string ACb2yrTbFg { get; set; }
+        [JsonProperty("legalEntity2")]
         public string ALegalEnty2 { get; set; }
+        [JsonProperty("cashYear3")]
         public string ACb3yrTbFg { get; set; }
+        [JsonProperty("shortTermInvestmentYear1")]
         public string ASi1yrTbFg { get; set; }
+        [JsonProperty("shortTermInvestmentYear2")]
         public string ASi2yrTbFg { get; set; }
+        [JsonProperty("contractNumber")]
         public string RegIdz { get; set; }
+        [JsonProperty("shortTermInvestmentYear3")]
         public string ASi3yrTbFg { get; set; }
+        [JsonProperty("currentAssetsYear1")]
         public string ATa1yrTbFg { get; set; }
+        [JsonProperty("currentAssetsYear2")]
         public string ATa2yrTbFg { get; set; }
+        [JsonProperty("currentAssetsYear3")]
         public string ATa3yrTbFg { get; set; }
+        [JsonProperty("formBundleNumber")]
         public string Fbnum { get; set; }
+        [JsonProperty("currentLiabilitiesYear1")]
         public string ATl1yrTbFg { get; set; }
-        public string ATin { get; set; }
+        //[JsonProperty("")]
+        //public string ATin { get; set; }
+        [JsonProperty("currentLiabilitiesYear2")]
         public string ATl2yrTbFg { get; set; }
+        [JsonProperty("taxpayerName")]
         public string ATaxpayerNm { get; set; }
+        [JsonProperty("currentLiabilitiesYear3")]
         public string ATl3yrTbFg { get; set; }
+        [JsonProperty("debitedYear1")]
         public string ADeb1yrTbFg { get; set; }
+        [JsonProperty("telephoneNumber")]
         public string ATelNo { get; set; }
+        [JsonProperty("debitedYear2")]
         public string ADeb2yrTbFg { get; set; }
+        [JsonProperty("mobileNumber")]
         public string AMobNo { get; set; }
+        [JsonProperty("debitedYear3")]
         public string ADeb3yrTbFg { get; set; }
+        [JsonProperty("email")]
         public string AEmail { get; set; }
+        [JsonProperty("creditedYear1")]
         public string ACr1yrTbFg { get; set; }
+        [JsonProperty("installmentRequestedFor")]
         public string AInstReqFor { get; set; }
+        [JsonProperty("creditedYear2")]
         public string ACr2yrTbFg { get; set; }
+        [JsonProperty("installmentRequestedReason")]
         public string AInstReqReason { get; set; }
+        [JsonProperty("bankStatements")]
         public string ABnkStat3mhChk { get; set; }
+        [JsonProperty("creditedYear3")]
         public string ACr3yrTbFg { get; set; }
+        [JsonProperty("financialStatementsYear3")]
         public string AFinStat3yrChk { get; set; }
+        [JsonProperty("retainEarningYear1")]
         public string ARe1yrTbFg { get; set; }
+        [JsonProperty("anotherDocument")]
         public string AOtherDocChk { get; set; }
+        [JsonProperty("retainEarningYear2")]
         public string ARe2yrTbFg { get; set; }
+        [JsonProperty("holdingFinancialStatement")]
         public string AHoldFinStat { get; set; }
+        [JsonProperty("retainEarningYear3")]
         public string ARe3yrTbFg { get; set; }
+        [JsonProperty("downPayment")]
         public string ADpAmtFg { get; set; }
+        [JsonProperty("item")]
         public string AItTb { get; set; }
+        [JsonProperty("year1")]
         public string AOneYrTb { get; set; }
+        [JsonProperty("year2")]
         public string ATwoYrTb { get; set; }
+        [JsonProperty("year3")]
         public string AThreeYrTb { get; set; }
+        [JsonProperty("downPaymentAmount")]
         public string ADpAmt { get; set; }
+        [JsonProperty("planDurationNumber")]
         public string APlanDurNo { get; set; }
+        [JsonProperty("planDurationPeriod")]
         public string APlanDurPeri { get; set; }
+        [JsonProperty("paymentFrequency")]
         public string APaymentFreq { get; set; }
+        [JsonProperty("COPlanDurationPeriod")]
         public string ACoPlanDurPeri { get; set; }
+        [JsonProperty("COPaymentFrequency")]
         public string ACoPaymentFreq { get; set; }
+        [JsonProperty("requiredDownPayment")]
         public string ADpRequ { get; set; }
+        [JsonProperty("downPaymentDocumentNumber")]
         public string ADpDocNo { get; set; }
+        [JsonProperty("downPaymentPercentage")]
         public string ADpPer { get; set; }
+        [JsonProperty("CODownPaymentAmount")]
         public string ACoDpAmt { get; set; }
+        [JsonProperty("downPaymentRecordAmount")]
         public string ADpRecAmt { get; set; }
+        [JsonProperty("installmentAmount")]
         public string AAppInstAmt { get; set; }
+        [JsonProperty("installmentDownPaymentAmount")]
         public string AInstDpAmt { get; set; }
+        [JsonProperty("balanceAmount")]
         public string ABalAmt { get; set; }
+        [JsonProperty("COBackOfficerReview")]
         public string ACoBoRev { get; set; }
+        [JsonProperty("COBackOfficerName")]
         public string ACoBoNm { get; set; }
+        [JsonProperty("COBackOfficerApproval")]
         public string ACoBoRd { get; set; }
+        [JsonProperty("CMBackOfficerReview")]
         public string ACmBoRev { get; set; }
+        [JsonProperty("CMBackOfficerName")]
         public string ACmBoNm { get; set; }
+        [JsonProperty("CMBackOfficerApproval")]
         public string ACmBoRd { get; set; }
+        [JsonProperty("COHeadOfficerReview")]
         public string ACoHoRev { get; set; }
+        [JsonProperty("COHeadOfficerName")]
         public string ACoHoNm { get; set; }
+        [JsonProperty("COHeadOfficerApproval")]
         public string ACoHoRd { get; set; }
+        [JsonProperty("CMHeadOfficerReview")]
         public string ACmHoRev { get; set; }
+        [JsonProperty("CMHeadOfficerName")]
         public string ACmHoNm { get; set; }
+        [JsonProperty("CMHeadOfficerApproval")]
         public string ACmHoRd { get; set; }
+        [JsonProperty("MOFApprovalLetter")]
         public string AMofApprChk { get; set; }
+        [JsonProperty("anotherSupportingDocument")]
         public string AOtherSuppDocChk { get; set; }
+        [JsonProperty("rejectionReason")]
         public string ARejReason { get; set; }
+        [JsonProperty("COPlanDurationNumber")]
         public string ACoPlanDurNo { get; set; }
+        [JsonProperty("revenueAmountYear1")]
         public string ARev1yrTb { get; set; }
+        [JsonProperty("revenueAmountYear2")]
         public string ARev2yrTb { get; set; }
+        [JsonProperty("revenueAmountYear3")]
         public string ARev3yrTb { get; set; }
+        [JsonProperty("netIncomeAmountYear1")]
         public string ANi1yrTb { get; set; }
+        [JsonProperty("netIncomeAmountYear2")]
         public string ANi2yrTb { get; set; }
+        [JsonProperty("netIncomeAmountYear3")]
         public string ANi3yrTb { get; set; }
+        [JsonProperty("cashAmountYear1")]
         public string ACb1yrTb { get; set; }
+        [JsonProperty("cashAmountYear2")]
         public string ACb2yrTb { get; set; }
+        [JsonProperty("cashAmountYear3")]
         public string ACb3yrTb { get; set; }
+        [JsonProperty("shortTermInvestmentAmountYear1")]
         public string ASi1yrTb { get; set; }
+        [JsonProperty("shortTermInvestmentAmountYear2")]
         public string ASi2yrTb { get; set; }
+        [JsonProperty("shortTermInvestmentAmountYear3")]
         public string ASi3yrTb { get; set; }
+        [JsonProperty("currentAssetsAmountYear1")]
         public string ATa1yrTb { get; set; }
+        [JsonProperty("currentAssetsAmountYear2")]
         public string ATa2yrTb { get; set; }
+        [JsonProperty("currentAssetsAmountYear3")]
         public string ATa3yrTb { get; set; }
+        [JsonProperty("currentLiabilitiesAmountYear1")]
         public string ATl1yrTb { get; set; }
+        [JsonProperty("currentLiabilitiesAmountYear2")]
         public string ATl2yrTb { get; set; }
+        [JsonProperty("currentLiabilitiesAmountYear3")]
         public string ATl3yrTb { get; set; }
+        [JsonProperty("debitedAmountYear1")]
         public string ADeb1yrTb { get; set; }
+        [JsonProperty("debitedAmountYear2")]
         public string ADeb2yrTb { get; set; }
+        [JsonProperty("debitedAmountYear3")]
         public string ADeb3yrTb { get; set; }
+        [JsonProperty("creditedAmountYear1")]
         public string ACr1yrTb { get; set; }
+        [JsonProperty("creditedAmountYear2")]
         public string ACr2yrTb { get; set; }
+        [JsonProperty("creditedAmountYear3")]
         public string ACr3yrTb { get; set; }
+        [JsonProperty("retainEarningAmountYear1")]
         public string ARe1yrTb { get; set; }
+        [JsonProperty("retainEarningAmountYear2")]
         public string ARe2yrTb { get; set; }
+        [JsonProperty("retainEarningAmountYear3")]
         public string ARe3yrTb { get; set; }
+        [JsonProperty("profitabilityRatioYear1")]
         public string APr1yrTb { get; set; }
+        [JsonProperty("profitabilityRatioYear2")]
         public string APr2yrTb { get; set; }
+        [JsonProperty("profitabilityRatioYear3")]
         public string APr3yrTb { get; set; }
+        [JsonProperty("currentRatioYear1")]
         public string ACrt1yrTb { get; set; }
+        [JsonProperty("currentRatioYear2")]
         public string ACrt2yrTb { get; set; }
+        [JsonProperty("currentRatioYear3")]
         public string ACrt3yrTb { get; set; }
+        [JsonProperty("proportionOfCashYear1")]
         public string APc1yrTb { get; set; }
+        [JsonProperty("proportionOfCashYear2")]
         public string APc2yrTb { get; set; }
+        [JsonProperty("proportionOfCashYear3")]
         public string APc3yrTb { get; set; }
-        public string AP13yrTb { get; set; }
-        public string AP23yrTb { get; set; }
-        public string AP33yrTb { get; set; }
+        //[JsonProperty("")]
+        //public string AP13yrTb { get; set; }
+        //[JsonProperty("")]
+        //public string AP23yrTb { get; set; }
+        //[JsonProperty("")]
+        //public string AP33yrTb { get; set; }
+        [JsonProperty("percentageAmountApproval")]
         public string APerAmtRd { get; set; }
+        [JsonProperty("requiredDownPaymentDrop")]
         public string ADpRequDrp { get; set; }
+        [JsonProperty("percentage")]
         public string APer { get; set; }
+        [JsonProperty("formStatus")]
         public string AFormStatus { get; set; }
+        [JsonProperty("downLetterCheck")]
         public string ADownLetterChk { get; set; }
+        [JsonProperty("downYear")]
         public string ADownYear { get; set; }
+        [JsonProperty("downMonth")]
         public string ADownMonth { get; set; }
+        [JsonProperty("downToYear")]
         public string ADownToYear { get; set; }
+        [JsonProperty("downToMonth")]
         public string ADownToMonth { get; set; }
+        [JsonProperty("branch")]
         public string ABranch { get; set; }
+        [JsonProperty("saudiShare")]
         public string ASaudiShare { get; set; }
+        [JsonProperty("nonSaudiShare")]
         public string ANonsaudiShare { get; set; }
+        [JsonProperty("mainAccount")]
         public string AMainAct { get; set; }
+        [JsonProperty("mainAccountDescription")]
         public string AMainActDesc { get; set; }
+        [JsonProperty("poBox")]
         public string APoBox { get; set; }
+        [JsonProperty("postalCode")]
         public string APostalCode { get; set; }
+        [JsonProperty("faxNumber")]
         public string AFaxNo { get; set; }
+        [JsonProperty("building")]
         public string ABuilding { get; set; }
+        [JsonProperty("street")]
         public string AStreet { get; set; }
+        [JsonProperty("district")]
         public string ADistrict { get; set; }
+        [JsonProperty("city")]
         public string ACity { get; set; }
+        [JsonProperty("errorMessage")]
         public string ALvError { get; set; }
+        [JsonProperty("totalAmount")]
         public string ATotalAmt { get; set; }
+        [JsonProperty("statusCode")]
         public string Status { get; set; }
-        public OldAttDetSet AttDetSet { get; set; }
-        public OldOffNotesSet Off_notesSet { get; set; }
-        public OldZInvoiceSet z_invoiceSet { get; set; }
-        public OldZProposedinsSet z_proposedinsSet { get; set; }
-        public OldZInvoiceUi5Set Z_INVOICE_UI5Set { get; set; }
+        [JsonProperty("attachments")]
+        public List<Attachment> AttDetSet { get; set; }
+        [JsonProperty("notes")]
+        public List<ZakatNotesSet> Off_notesSet { get; set; }
+        [JsonProperty("invoices")]
+        public List<object> z_invoiceSet { get; set; }
+        [JsonProperty("proposedInstallments")]
+        public List<object> z_proposedinsSet { get; set; }
+        [JsonProperty("invoicesUI5")]
+        public List<OldResults3> Z_INVOICE_UI5Set { get; set; }
     }
     
     public partial class OldAttDetSet
@@ -1099,14 +1544,23 @@ After:
     public partial class OldResults3
     {
         public Metadata __metadata { get; set; }
+        [JsonProperty("amount")]
         public string AAmtTb { get; set; }
+        [JsonProperty("clearedAmount")]
         public string AClearedAmtTb { get; set; }
+        [JsonProperty("dueAmount")]
         public string ADueAmtTb { get; set; }
+        [JsonProperty("dueDate")]
         public string ADueDtTb { get; set; }
+        [JsonProperty("invoiceAmount")]
         public string AIvAmtTb { get; set; }
+        [JsonProperty("invoiceNumber")]
         public string AIvNoTb { get; set; }
+        [JsonProperty("invoiceSerialNumber")]
         public string AIvSrNoTb { get; set; }
+        [JsonProperty("invoice")]
         public string AIvTb { get; set; }
+        [JsonProperty("taxType")]
         public string AIvAbtyp { get; set; }
     }
     
@@ -1234,8 +1688,7 @@ After:
             public string Waers { get; set; }
         }
 
-
-        
+        [Preserve(AllMembers = true)]
         public class D
         {
             public List<Result> results { get; set; }

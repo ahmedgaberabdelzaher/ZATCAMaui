@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Runtime.Serialization;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Foundation;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Mangers;
 using static ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements.AccountStatementsPageViewModel;
@@ -61,8 +63,8 @@ namespace ZATCAMAUI.Models.AccountStatements
     
     public partial class ASTabIdentification
     {
-        [JsonProperty("d")]
-        public ASTabIdentificationData D { get; set; }
+        [JsonProperty("data")]
+        public ASTabIdentificationData d { get; set; }
     }
     
     public partial class ASTabIdentificationData
@@ -70,16 +72,16 @@ namespace ZATCAMAUI.Models.AccountStatements
         [JsonProperty("__metadata")]
         public MetadataAS Metadata { get; set; }
 
-        [JsonProperty("Euser")]
+        [JsonProperty("authenticationUser")]
         public string Euser { get; set; }
 
-        [JsonProperty("Fbguid")]
+        [JsonProperty("formBundleGUID")]
         public string Fbguid { get; set; }
 
-        [JsonProperty("Direct")]
+        [JsonProperty("direct")]
         public string Direct { get; set; }
 
-        [JsonProperty("Indirect")]
+        [JsonProperty("indirect")]
         public string Indirect { get; set; }
     }
     
@@ -97,8 +99,8 @@ namespace ZATCAMAUI.Models.AccountStatements
     
     public partial class ASRevenueDropDownSet
     {
-        [JsonProperty("d")]
-        public ASRevenueDropDownSetData D { get; set; }
+        [JsonProperty("data")]
+        public ASRevenueDropDownSetDataResults[] d { get; set; }
     }
     
     public partial class ASRevenueDropDownSetData
@@ -112,29 +114,29 @@ namespace ZATCAMAUI.Models.AccountStatements
         [JsonProperty("__metadata")]
         public MetadataAS Metadata { get; set; }
 
-        [JsonProperty("Euser")]
+        [JsonProperty("portalUser")]
         public string Euser { get; set; }
 
-        [JsonProperty("Langz")]
+        [JsonProperty("language")]
         public string Langz { get; set; }
 
-        [JsonProperty("StatementFilter")]
+        [JsonProperty("statementFilter")]
         public string StatementFilter { get; set; }
 
-        [JsonProperty("Fbguid")]
+        [JsonProperty("formBundleGUID")]
         public string Fbguid { get; set; }
 
-        [JsonProperty("TaxType")]
+        [JsonProperty("taxType")]
         public string TaxType { get; set; }
 
-        [JsonProperty("Txt30")]
+        [JsonProperty("taxTypeDescription")]
         public string Txt30 { get; set; }
     }
     
     public partial class ASStatementHeaderSet
     {
-        [JsonProperty("d")]
-        public ASStatementHeaderSetData D { get; set; }
+        [JsonProperty("data")]
+        public ASStatementHeaderSetData d { get; set; }
     }
     
     public partial class ASStatementHeaderSetData
@@ -171,6 +173,7 @@ namespace ZATCAMAUI.Models.AccountStatements
                 }
             }
         }
+        [JsonIgnore]
         private string openingBalance = string.Empty;
 
         [JsonIgnore]
@@ -208,7 +211,7 @@ namespace ZATCAMAUI.Models.AccountStatements
         [JsonIgnore]
         private string _openingAmount = string.Empty;
 
-        [JsonIgnore]
+        [JsonProperty("openAmount")]
         public string OpeningAmount
         {
             get
@@ -221,27 +224,28 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
-        [JsonProperty("Gpart")]
+        [JsonProperty("TIN")]
         public string Gpart { get; set; }
 
-        [JsonProperty("Lang")]
+        [JsonProperty("language")]
         public string Lang { get; set; }
 
-        [JsonProperty("Fbguid")]
+        [JsonProperty("formBundleGUID")]
         public string Fbguid { get; set; }
 
-        [JsonProperty("StatementFilter")]
+        [JsonProperty("statementFilter")]
         public string StatementFilter { get; set; }
 
-        [JsonProperty("TaxType")]
+        [JsonProperty("taxType")]
         public string TaxType { get; set; }
 
-        [JsonProperty("TotalAmount")]
+        [JsonProperty("totalAmount")]
         public string TotalAmount { get; set; }
 
-        [JsonProperty("FiscalYear")]
+        [JsonProperty("fiscalYear")]
         public string FiscalYear { get; set; }
 
+        [JsonIgnore]
         private string _debit = string.Empty;
         [JsonProperty("Debit")]
         public string Debit
@@ -263,8 +267,9 @@ namespace ZATCAMAUI.Models.AccountStatements
                 }
             }
         }
-
+        [JsonIgnore]
         public string _debitAmount = string.Empty;
+        [JsonProperty("debitAmount")]
         public string DebitAmount
         {
             get
@@ -277,7 +282,7 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
-
+        [JsonIgnore]
         private string _credit = string.Empty;
         [JsonProperty("Credit")]
         public string Credit
@@ -300,7 +305,10 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
+
+        [JsonIgnore]
         public string _creditAmount = string.Empty;
+        [JsonProperty("creditAmount")]
         public string CreditAmount
         {
             get
@@ -313,6 +321,7 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
+        [JsonIgnore]
         private string _close = string.Empty;
         [JsonProperty("Close")]
         public string Close
@@ -343,7 +352,9 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
+        [JsonIgnore]
         public string _CloseAmount = string.Empty;
+        [JsonProperty("closeAmount")]
         public string CloseAmount
         {
             get
@@ -356,11 +367,11 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
-        [JsonProperty("StatmenetLineItemsSet")]
-        public StatmenetLineItemsSet StatmenetLineItemsSet { get; set; }
+        [JsonProperty("statementLineItems")]
+        public ASResult[] StatmenetLineItemsSet { get; set; }
 
-        [JsonProperty("TaxRelationSet")]
-        public TaxRelationSet TaxRelationSet { get; set; }
+        [JsonProperty("taxRelations")]
+        public TaxRelationSetResult[] TaxRelationSet { get; set; }
     }
     
     public partial class StatmenetLineItemsSet
@@ -368,17 +379,19 @@ namespace ZATCAMAUI.Models.AccountStatements
         [JsonProperty("results")]
         public ASResult[] Results { get; set; }
     }
-    
+    [Preserve(AllMembers = true)]
     public partial class ASResult : ObservableRecipient
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("Gpart")]
+        [JsonProperty("TIN")]
         public string Gpart { get; set; }
 
 
+        [JsonIgnore]
         private string status;
+
         [JsonProperty("Status")]
         public string Status
         {
@@ -386,39 +399,40 @@ namespace ZATCAMAUI.Models.AccountStatements
             set
             {
                 status = value;
-
             }
         }
 
         [JsonIgnore]
         public Color StatusColor { get; set; }
 
-        [JsonProperty("TaxType")]
+        [JsonProperty("taxType")]
         public string TaxType { get; set; }
 
-        [JsonProperty("Desc")]
+        [JsonProperty("description")]
         public string Desc { get; set; }
 
         [JsonProperty("Opbel")]
         public string Opbel { get; set; }
 
-        [JsonProperty("Fbnum")]
+        [JsonProperty("formBundleNumber")]
         public string Fbnum { get; set; }
 
         [JsonProperty("Vtre2")]
         public string Vtre2 { get; set; }
 
-        [JsonProperty("Persl")]
+        [JsonProperty("periodkey")]
         public string Persl { get; set; }
 
-        [JsonProperty("PeriodTxt")]
+        [JsonProperty("periodDescription")]
         public string PeriodTxt { get; set; }
 
-        [JsonProperty("Waers")]
+        [JsonProperty("currency")]
         public string Waers { get; set; }
 
+        [JsonIgnore]
         private string _StatusDesc;
-        [JsonProperty("StatusDesc")]
+
+        [JsonProperty("statusDescription")]
         public string StatusDesc
         {
             get { return _StatusDesc; }
@@ -429,16 +443,16 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
-        [JsonProperty("TaxtypeDesc")]
+        [JsonProperty("taxTypeDescription")]
         public string TaxtypeDesc { get; set; }
 
-        [JsonProperty("BillDes")]
+        [JsonProperty("billDescription")]
         public string BillDes { get; set; }
 
         [JsonIgnore]
         private string _betrh;
 
-        [JsonProperty("Betrh")]
+        [JsonProperty("billAmount")]
         public string Betrh
         {
             get
@@ -459,7 +473,10 @@ namespace ZATCAMAUI.Models.AccountStatements
             }
         }
 
+        [JsonIgnore]
         private string _betrhAmount = string.Empty;
+
+        [JsonIgnore]
         public string BetrhAmount
         {
             get
@@ -515,7 +532,6 @@ namespace ZATCAMAUI.Models.AccountStatements
             {
 
                 _AmountTextColor = value;
-
                 OnPropertyChanged("AmountTextColor");
             }
         }
@@ -525,15 +541,12 @@ namespace ZATCAMAUI.Models.AccountStatements
         [JsonIgnore]
         public string FormattedBetrh { get; set; }
 
-
-        //FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-        //                    string[] dts = FormatedAbrzu.Split('-');
-        //string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-        //FormatedAbrzu = date;
-
         [JsonIgnore]
-        private DateTime? _Bldat;
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
+        public DateTime? _Bldat;
+
         [JsonProperty("Bldat")]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public DateTime? Bldat
         {
             get
@@ -545,9 +558,6 @@ namespace ZATCAMAUI.Models.AccountStatements
                 _Bldat = value;
                 if (_Bldat != null)
                 {
-
-
-
                     if (App.CalType.Equals("G"))
                     {
                         FormattedBldat = _Bldat?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -558,86 +568,29 @@ namespace ZATCAMAUI.Models.AccountStatements
                     }
 
 
-                    //if (App.CalType.Equals("G"))
-                    //{
-                    //    FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
-
-                    //    string[] dts = FormattedBldat.Split(' ');
-                    //    if (App.IsArabic) {
-
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2]; 
-
-                    //        FormattedBldat = date;
-                    //    }
-                    //    else {
-                    //        string date = dts[0] + " "  + UtilityManager.GetMonthName(dts[1]) + " " + dts[2] ;
-
-                    //        FormattedBldat = date;
-                    //    }
-
-
-
-                    //}
-                    //else if (App.CalType.Equals("H"))
-                    //{
-                    //    FormattedBldat = string.Format(_Bldat?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-
-                    //    string[] dts = FormattedBldat.Split('/');
-                    //    if (App.IsArabic)
-                    //    {
-
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat = date;
-                    //    }
-                    //    else
-                    //    {
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat = date;
-                    //    }
-
-
-
-                    //}
-                    //else
-                    //{
-                    //    FormattedBldat = string.Format(_Bldat?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
-
-                    //    string[] dts = FormattedBldat.Split(' ');
-                    //    if (App.IsArabic)
-                    //    {
-
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat = date;
-                    //    }
-                    //    else
-                    //    {
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat = date;
-                    //    }
-                    //}
                 }
             }
         }
         [JsonIgnore]
         public string FormattedBldat { get; set; }
 
-
         [JsonIgnore]
         public string FormattedBldat2 { get; set; }
 
-        [JsonIgnore]
+        [JsonProperty("periodEndDate")]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
         private DateTime? PeriodEndDt { get; set; }
 
-        [JsonProperty("PeriodStartDt")]
+        [JsonProperty("periodStartDate")]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public DateTime? PeriodStartDt { get; set; }
+
         [JsonIgnore]
-        private DateTime? _Bldat2 { get; set; }
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
+        private DateTime? _Bldat2;
 
         [JsonProperty("Bldat2")]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
         public DateTime? Bldat2
         {
             get
@@ -649,83 +602,41 @@ namespace ZATCAMAUI.Models.AccountStatements
                 _Bldat2 = value;
                 if (_Bldat2 != null)
                 {
-                    //if (App.CalType.Equals("G"))
-                    //{
-                    //    FormattedBldat2 = string.Format(_Bldat2?.ToString("dd MMMM yyyy", new CultureInfo("en-US")));
 
-                    //    string[] dts = FormattedBldat2.Split(' ');
-
-                    //    if (App.IsArabic)
-                    //    {
-
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat2 = date;
-                    //    }
-                    //    else
-                    //    {
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthName(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat2 = date;
-                    //    }
-                    //}
-                    //else
-                    //{
-
-                    //    FormattedBldat2 = string.Format(_Bldat2?.ToString("d/M/yyyy", new CultureInfo("ar-SA")));
-                    //    string[] dts = FormattedBldat2.Split('/');
-                    //    if (App.IsArabic)
-                    //    {
-
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat2 = date;
-                    //    }
-                    //    else
-                    //    {
-                    //        string date = dts[0] + " " + UtilityManager.GetMonthNameHijri(dts[1]) + " " + dts[2];
-
-                    //        FormattedBldat2 = date;
-                    //    }
-                    //}
-                    /*FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    string[] dts = FormattedBldat2.Split('-');
-                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    FormattedBldat2 = date;*/
+                    if (App.CalType.Equals("G"))
+                    {
+                        FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    }
+                    else
+                    {
+                        FormattedBldat2 = _Bldat2?.ToString("dd-MMMM-yyyy", new CultureInfo("ar-SA"));
+                    }
                 }
             }
         }
 
-        //[JsonIgnore]
-        //private DateTime _PeriodEndDt;
-        //[JsonProperty("PeriodEndDt")]
-        //public DateTime PeriodEndDt
-        //{
-        //    get
-        //    {
-        //        return _PeriodEndDt;
-        //    }
-        //    set
-        //    {    
-        //        if (_PeriodEndDt != null)
-        //        {
-        //            _PeriodEndDt = value;
-        //            FormattedPeriodEndDate = _PeriodEndDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-        //            string[] dts = FormattedPeriodEndDate.Split('-');
-        //            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-        //            FormattedPeriodEndDate = date;
-        //        }
-        //    }
-        //}
+
+        [JsonProperty("Faedn")]
+        public string Faedn { get; set; }
+
+        [JsonProperty("Subdt")]
+        [DataMember(IsRequired = false, EmitDefaultValue = false)]
+        public DateTime? Subdt { get; set; }
+
+        [JsonProperty("periodType")]
+        public string PeriodTyp { get; set; }
+
+        [JsonProperty("paymentStatus")]
+        public string PymtStatus { get; set; }
 
         [JsonIgnore]
         public string FormattedPeriodEndDate { get; set; }
 
-        public bool IsTotalBalanceVisile { get; set; }
+        [JsonIgnore] public bool IsTotalBalanceVisile { get; set; }
 
-        public string OpeningBalance { get; set; }
-        public string ClosingBalance { get; set; }
-        public string TotalBalance { get; set; }
+        [JsonIgnore] public string OpeningBalance { get; set; }
+        [JsonIgnore] public string ClosingBalance { get; set; }
+        [JsonIgnore] public string TotalBalance { get; set; }
     }
     
     public partial class TaxRelationSet
@@ -745,35 +656,38 @@ namespace ZATCAMAUI.Models.AccountStatements
         [JsonProperty("Spras")]
         public string Spras { get; set; }
 
-        [JsonProperty("TaxType")]
+        [JsonProperty("taxType")]
         public string TaxType { get; set; }
 
-        [JsonProperty("FromDate")]
+
+        //[DataMember(IsRequired = false, EmitDefaultValue = false)]
+        [JsonProperty("fromDate")]
         public string FromDate { get; set; }
 
-        [JsonProperty("StatementFilter")]
+        [JsonProperty("statementFilter")]
         public string StatementFilter { get; set; }
 
-        [JsonProperty("Counter")]
+        [JsonProperty("counterNumber")]
         public string Counter { get; set; }
 
-        [JsonProperty("Contractobject")]
+        [JsonProperty("contractObject")]
         public string Contractobject { get; set; }
 
-        [JsonProperty("AbtypPs")]
+        [JsonProperty("revenueType")]
         public string AbtypPs { get; set; }
 
-        [JsonProperty("Txt30")]
+        [JsonProperty("revenueTypeDescription")]
         public string Txt30 { get; set; }
 
-        [JsonProperty("ToDate")]
+        //[DataMember(IsRequired = false, EmitDefaultValue = false)]
+        [JsonProperty("toDate")]
         public string ToDate { get; set; }
     }
     
     public partial class ASYearValuesHeader
     {
         [JsonProperty("d")]
-        public ASYearValuesData D { get; set; }
+        public ASYearValuesData d { get; set; }
     }
     
     public partial class ASYearValuesData

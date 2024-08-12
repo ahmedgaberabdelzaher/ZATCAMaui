@@ -381,8 +381,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     _headerSet = value;
                 }
-
-                if (_headerSet != null && _headerSet.D != null && !string.IsNullOrEmpty(_headerSet.D.Close) && double.Parse(_headerSet.D.Close) < 0)
+                if (_headerSet != null && _headerSet.d != null && !String.IsNullOrEmpty(_headerSet.d.Close) && Double.Parse(_headerSet.d.Close) < 0)
                 {
                     TotalBalanceBackground = (Color)Application.Current.Resources["Primary"];
                 }
@@ -779,7 +778,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             try
                             {
-                                if (HeaderSet.D.CalType.Equals("G"))
+                                if (HeaderSet.d.CalType.Equals("G"))
                                 {
                                     agroupedData = Items.OrderBy(p => p.Bldat)
                                   .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", CultureInfo.GetCultureInfo("en"))))
@@ -794,8 +793,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             }
                             catch (Exception)
                             {
-
-
                                 agroupedData = Items.OrderBy(p => p.Bldat)
                               .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", CultureInfo.GetCultureInfo("en"))))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
@@ -806,7 +803,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         {
                             try
                             {
-                                if (HeaderSet.D.CalType.Equals("G"))
+                                if (HeaderSet.d.CalType.Equals("G"))
                                 {
                                     agroupedData = Items.OrderBy(p => p.Bldat)
                                         .GroupBy(p => p.Bldat?.ToString("MMMM"))
@@ -819,12 +816,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                                 }
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
                                 agroupedData = Items.OrderBy(p => p.Bldat)
                                     .GroupBy(p => p.Bldat?.ToString("MMMM"))
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
 
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         }
 
@@ -1434,7 +1434,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
             //FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-
         }
 
         public void ApplyFilter()
@@ -1447,29 +1446,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
 
             var statementsLineItems = new ObservableCollection<ASResult>();
-            if (HeaderSet.D.StatmenetLineItemsSet != null)
+            Console.WriteLine(statementsLineItems);
+            Console.WriteLine(statementsLineItems.Count);
+            if (HeaderSet.d.StatmenetLineItemsSet != null)
             {
-                if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                if (HeaderSet.d.StatmenetLineItemsSet.Count() > 0)
                 {
-                    statementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                    statementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                 }
-
-                /* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-                Before:
-                            }
-
-
-
-
-                            if (TxFromDate != "" && TxToDate != "")
-                After:
-                            }
-
-
-
-
-                            if (TxFromDate != "" && TxToDate != "")
-                */
             }
 
 
@@ -1503,6 +1487,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             if (TPFromDate != "" && TPToDate != "")
             {
                 var filterItems = statementsLineItems;
+                Console.WriteLine(statementsLineItems);
+                Console.WriteLine(statementsLineItems.Count);
 
                 if (IsHijriCal)
                 {
@@ -1512,7 +1498,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
 
-                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => Convert.ToInt32(string.Format("{0:yyyy}", p.PeriodStartDt)) >= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpFromDate)) && Convert.ToInt32(string.Format("{0:yyyy}", p.PeriodStartDt)) <= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpToDate))));
+                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
                 }
                 else
                 {
@@ -1521,10 +1508,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                         DateTimeStyles.AllowInnerWhite);
                     DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => Convert.ToInt32(string.Format("{0:yyyy}", p.PeriodStartDt)) >= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpFromDate)) && Convert.ToInt32(string.Format("{0:yyyy}", p.PeriodStartDt)) <= Convert.ToInt32(string.Format("{0:yyyy}", FormatedTpToDate))));
+                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
+                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(FormatedTpFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(FormatedTpToDate))));
+                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
 
+                    
                 }
-
+                
 
             }
 
@@ -1668,10 +1658,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception)
             {
-
-
-
-
                 return "";
             }
         }
@@ -1814,6 +1800,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception)
             {
+
             }
         }
 
@@ -1831,20 +1818,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
                 var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.ASAccountStatementInDirectTax };
 
-                if (TabIdentification.D.Direct == "X")
+                if (TabIdentification.d.Direct == "X")
                 {
                     TaxTypeForFilter.Add(tempDirectTax);
                 }
 
-                if (TabIdentification.D.Indirect == "X")
+                if (TabIdentification.d.Indirect == "X")
                 {
                     TaxTypeForFilter.Add(tempInDirectTax);
                 }
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -1865,19 +1850,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                 IsLoading = true;
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType, false);
-                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                if (HeaderSet.d.StatmenetLineItemsSet != null)
                 {
-                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    if (HeaderSet.d.StatmenetLineItemsSet.Count() > 0)
                     {
                         IsDownloadBtnVisile = true;
                         IsNoStatementsAvaiableVisible = false;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                     }
                     else
                     {
                         IsDownloadBtnVisile = false;
                         IsNoStatementsAvaiableVisible = true;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                         GroupedStatements = new List<GroupedAccountStatements>();
                     }
                 }
@@ -1886,7 +1871,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+                AccStmtnCreditAmount = HeaderSet.d.CreditAmount.Replace("-", string.Empty);
                 if (StatementsLineItems == null)
                 {
                     StatementsLineItems = new ObservableCollection<ASResult>();
@@ -1910,15 +1895,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     IsLoading = false;
                 });
 
-
-
-            }
+        }
         }
 
         public async Task PopulateDataForTransactionTypes(string taxType)
         {
             var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
-            foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.D.Results)
+            foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.d)
             {
                 aSRevenueDropDownSetDataResults.TaxType = taxType;
                 AllTransactionFilters.Add(aSRevenueDropDownSetDataResults);
@@ -1935,19 +1918,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 YearValuesHeader = await WebServiceManager.GAZTGetAccountStatementYearValuesHeaderSet(statementFilter, taxType);
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, string.Empty, taxType, false);
                 IsTotalAmountVisible = true;
-                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                if (HeaderSet.d.StatmenetLineItemsSet != null)
                 {
-                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    if (HeaderSet.d.StatmenetLineItemsSet.Count() > 0)
                     {
                         IsDownloadBtnVisile = true;
                         IsNoStatementsAvaiableVisible = false;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                     }
                     else
                     {
                         IsDownloadBtnVisile = false;
                         IsNoStatementsAvaiableVisible = true;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                         GroupedStatements = new List<GroupedAccountStatements>();
                     }
                 }
@@ -1956,12 +1939,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+                AccStmtnCreditAmount = HeaderSet.d.CreditAmount.Replace("-", string.Empty);
                 var chipDataFilterlistForYears = new List<ASChipModel>();
                 var orderedChipDataFilterlistForYears = new List<ASChipModel>();
-                if (YearValuesHeader != null && YearValuesHeader.D != null)
+                if (YearValuesHeader != null && YearValuesHeader.d != null)
                 {
-                    foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.D.Results)
+                    foreach (ASYearValuesResults aSYearValuesResults in YearValuesHeader.d.Results)
                     {
                         chipDataFilterlistForYears.Add(new ASChipModel() { Text = aSYearValuesResults.Persl, TemplateType = AppResources.Paid });
                     }
@@ -2009,30 +1992,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                   defautlValIndirectTax.TaxType = "I";
                   defautlValIndirectTax.TaxType = "I";
                   AllTransactionFilters.Insert(1, defautlValIndirectTax);*/
-                if (TabIdentification.D.Direct == "X")
+                if (TabIdentification.d.Direct == "X")
                 {
                     await PopulateDataForTransactionTypes("D");
                 }
-                if (TabIdentification.D.Indirect == "X")
+                if (TabIdentification.d.Indirect == "X")
                 {
                     await PopulateDataForTransactionTypes("I");
                 }
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType, false);
-                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                
+                if (HeaderSet.d.StatmenetLineItemsSet != null)
                 {
-                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    if (HeaderSet.d.StatmenetLineItemsSet.Count() > 0)
                     {
                         IsDownloadBtnVisile = true;
                         IsNoStatementsAvaiableVisible = false;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                     }
                     else
                     {
                         IsDownloadBtnVisile = false;
                         IsNoStatementsAvaiableVisible = true;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                         GroupedStatements = new List<GroupedAccountStatements>();
                     }
                 }
@@ -2041,12 +2025,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     IsDownloadBtnVisile = false;
                     IsNoStatementsAvaiableVisible = true;
                 }
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
+
+                AccStmtnCreditAmount = HeaderSet.d.CreditAmount.Replace("-", string.Empty);
                 IsOpeningBalanceVisible = false;
                 IsDownloadBtnVisile = false;
+
                 foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
                 {
-                    if (HeaderSet.D.TaxType == aSReturnTypes.Id)
+                    if (HeaderSet.d.TaxType == aSReturnTypes.Id)
                     {
                         SelectedTaxTypeForFilter = aSReturnTypes;
                     }
@@ -2058,9 +2044,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
 
 
-                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.D.TaxRelationSet.Results)
+                foreach (TaxRelationSetResult taxRelationSetResult in HeaderSet.d.TaxRelationSet)
                 {
-                    if (TabIdentification.D.Direct == "X")
+                    if (TabIdentification.d.Direct == "X")
                     {
                         if (taxRelationSetResult.StatementFilter == "10")
                         {
@@ -2080,7 +2066,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             taxRelationSetResult.DisplayId = 04;
                         }
                     }
-                    if (TabIdentification.D.Indirect == "X")
+                    if (TabIdentification.d.Indirect == "X")
                     {
                         if (taxRelationSetResult.StatementFilter == "06")
                         {
@@ -2104,7 +2090,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>();
                 }
-                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.D.TaxRelationSet.Results.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 04 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
+                TransactionTypeFilter = new ObservableCollection<TaxRelationSetResult>(HeaderSet.d.TaxRelationSet.Where(temp => temp.DisplayId == 01 || temp.DisplayId == 02 || temp.DisplayId == 03 || temp.DisplayId == 04 || temp.DisplayId == 06 || temp.DisplayId == 07 || temp.DisplayId == 09).ToList());
 
 
                 SelectedTransactionTypeFilter = TransactionTypeFilter.FirstOrDefault();
@@ -2117,9 +2103,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
 
                     list.Add(dropdown.Txt30.ToUpper());
-
-
-
 
                 }
 
@@ -2156,8 +2139,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2186,7 +2167,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             catch (GAZTUnlockAccountException )
             {
 
-
             }
             catch (InternetException ex)
             {
@@ -2205,20 +2185,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             {
                 IsLoading = true;
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet(statementFilter, year, taxType, false);
-                AccStmtnCreditAmount = HeaderSet.D.CreditAmount.Replace("-", string.Empty);
-                if (HeaderSet.D.StatmenetLineItemsSet != null)
+                AccStmtnCreditAmount = HeaderSet.d.CreditAmount.Replace("-", string.Empty);
+                if (HeaderSet.d.StatmenetLineItemsSet != null)
                 {
-                    if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
+                    if (HeaderSet.d.StatmenetLineItemsSet.Count() > 0)
                     {
                         IsDownloadBtnVisile = true;
                         IsNoStatementsAvaiableVisible = false;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                     }
                     else
                     {
                         IsDownloadBtnVisile = false;
                         IsNoStatementsAvaiableVisible = true;
-                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
+                        StatementsLineItems = new ObservableCollection<ASResult>(HeaderSet.d.StatmenetLineItemsSet);
                         GroupedStatements = new List<GroupedAccountStatements>();
                     }
                 }
@@ -2232,8 +2212,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;

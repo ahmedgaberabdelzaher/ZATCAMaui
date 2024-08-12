@@ -782,23 +782,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels
                 if (NetworkCheck.IsInternet())
                 {
                     IsClearedStatusVisible = false;
-                    var body = new EradQrBody() { idType = "3", idNumber = TinNo.Replace(" ", "") };
-                    var res = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
-                    var content = await res.Content.ReadAsStringAsync();
-                    var result = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<VATLokupsDP>>(content);
+                    var body = new EradQrBody() { idType = "3", idNumber = TinNo.Replace(" ","") };
+                    var res =await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    var content =await res.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject< DATAPowerBaseResponseResult<VATLookUpD> >(content);
                     var qrResponseData = result.result;
                     //// Old APi T2
                     // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
                     // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
-                    if (qrResponseData != null && qrResponseData.lookups != null & qrResponseData.lookups.Count > 0)
+                    if (qrResponseData != null&& qrResponseData.results != null & qrResponseData.results.Count>0)
                     {
 
-                        if (qrResponseData.lookups[0].einvEnfStatus == null)
+                        if (qrResponseData.results[0].EinvEnfStatus == null)
                         {
-                            qrResponseData.lookups[0].einvEnfStatus = "";
+                            qrResponseData.results[0].EinvEnfStatus = "";
                         }
-                        var EInvEnfStatus = qrResponseData.lookups[0].einvEnfStatus == "" ? 0 : int.Parse(qrResponseData.lookups[0].einvEnfStatus);
-                        if (string.IsNullOrEmpty(qrResponseData.lookups[0].errorDescription))
+                        var EInvEnfStatus = qrResponseData.results[0].EinvEnfStatus == "" ? 0 : int.Parse(qrResponseData.results[0].EinvEnfStatus);
+                        if (string.IsNullOrEmpty(qrResponseData.results[0].Description))
                         {
 
                             if (NoofTags == 5 && EInvEnfStatus == 0)

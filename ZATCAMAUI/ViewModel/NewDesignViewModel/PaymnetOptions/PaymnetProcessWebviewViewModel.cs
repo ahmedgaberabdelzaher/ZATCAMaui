@@ -40,7 +40,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
             GoBackClick = new Command(async () =>
             {
-               await CancelPaymentService();
+                CancelPaymentService();
             });
 
         }
@@ -63,11 +63,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    platform = "C4";
+                    platform = "Mobile IOS";
                 }
                 else if (Device.RuntimePlatform == Device.Android)
                 {
-                    platform = "C3";
+                    platform = "Mobile Android";
                 }
                 PaymentData = await WebServiceManager.GAZTUpdateMadaPaymentDetails(caseGuidNumber, platform);
 
@@ -110,13 +110,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
                     }
                     else if (PaymentData.d.FinalStat == "01")
                     {
-
-
-
                         _ = UpdateMadaPaymentDetails(caseGuidNumber);
-
                     }
-
 
 
                 }
@@ -132,8 +127,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
 
                     var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
 
-                    //removed based on CR6100 Hyper care
-                    //await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
                     _navigationService.GoBack();
                 });
             }
@@ -170,16 +163,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.PaymnetOptions
                 var CancelAPI = await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, platform);
 
                 IsLoading = false;
-
                 MainThread.BeginInvokeOnMainThread(() =>
-            {
+               {
                 _navigationService.GoBack();
-            });
-
-
-
-
-
+               });
             }
             catch (GAZTValidatePaymentInProcessException ex)
             {

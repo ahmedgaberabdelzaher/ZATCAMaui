@@ -22,36 +22,33 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    string strCallService = "OBJECTION";
-                    string strZuser = "";
-                    string strBpnum = App.LoginDataRetrieved.TIN;
-                    string strEuser2 = "";
-                    string strEuser3 = "";
-                    string strEuser4 = "";
-                    string strEuser5 = "";
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.GetZAKATObjectionListURL + "" +
-                        "CallServ='" + strCallService + "'," +
-                        "HostName='" + "'," +
-                        "Zuser='" + strZuser + "'," +
-                        "Bpnum='" + strBpnum + "'," +
-                        "Auditor='" + "'," +
-                        "Lang='" + lang + "'," +
-                        "Euser1='" + "'," +
-                        "Euser2='" + strEuser2 + "'," +
-                        "Euser3='" + strEuser3 + "'," +
-                        "Euser4='" + strEuser4 + "'," +
-                        "Euser5='" + strEuser5 + "'," +
-                     "Fbguid='" + "')?$expand=ListSet&$format=json";
-                    HttpResponseMessage _ZAKATObjectionListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-                    if (_ZAKATObjectionListResponse != null)
+
+                    var lang = UtilityManager.GetLanguageParameter();
+                    String url = ZATCAConstants.GetZAKATObjectionListURL + App.TP.TIN + "&language=" + lang;
+                    HttpClient client = new HttpClient();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage response = await client.GetAsync(uri);
+                    if (response != null)
                     {
-                        if (_ZAKATObjectionListResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        if (response.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             App.IsSessionExpired = true;
                             return null;
                         }
-                        HttpHeaders headers = _ZAKATObjectionListResponse.Headers;
+                        HttpHeaders headers = response.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
                         {
@@ -67,7 +64,8 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string __ZAKATObjectionListData = _ZAKATObjectionListResponse.Content.ReadAsStringAsync().Result;
+
+                        String __ZAKATObjectionListData = response.Content.ReadAsStringAsync().Result;
                         __ZAKATObjectionListData = JObject.Parse(__ZAKATObjectionListData).ToString();
                         _ZAKATObjectionList = JsonConvert.DeserializeObject<ZakatObjectionListModel>(__ZAKATObjectionListData);
                         if (!string.IsNullOrEmpty(__ZAKATObjectionListData))
@@ -90,10 +88,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -115,20 +113,23 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     string strEuser1 = "00000000000000000000";
                     string strFbtyp = "ZNOB";
-                    string strGpart = "3311647874";
-                    string strLang = "EN";
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.GetZAKATObjectionCreateNewURL + "" +
-                        "Euser1='" + strEuser1 + "'," +
-                        "Fbguid='" + "'," +
-                        "Fbnum='" + "'," +
-                        "Fbtyp='" + strFbtyp + "'," +
-                        "Gpart='" + strGpart + "'," +
-                        "Lang='" + strLang + "'," +
-                        "Persl='" + "'," +
-                        "Status='" + "'," +
-                     "Dispflag='" + "')?$format=json";
-                    HttpResponseMessage _ZAKATObjectionCreateNewResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    String url = ZATCAConstants.GetZAKATObjectionCreateNewURL + strEuser1 + "&formBundleGUID=" + "" + "&formBundleNumber=" + "" + "&formBundleType=" + strFbtyp + "&TIN=" + App.TP.TIN + "&language=" + lang + "&periodkey=" + "" + "status=" + "";
+                    HttpClient client = new HttpClient();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var uri = new Uri(url);
+                    HttpResponseMessage _ZAKATObjectionCreateNewResponse = await client.GetAsync(uri);
                     if (_ZAKATObjectionCreateNewResponse != null)
                     {
                         if (_ZAKATObjectionCreateNewResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -174,10 +175,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -255,10 +256,11 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                               
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -330,10 +332,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -407,21 +409,14 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
 
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
+                catch (Exception ex)
                 {
-                    
-                    
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
-After:
-                {
 
-
-                    App.IsSessionExpired = true;
-*/
-                {
+                
 
 
                     App.IsSessionExpired = true;
@@ -501,18 +496,7 @@ After:
                 }
                 catch (Exception)
 
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-                {
-                    
-                    
-                    App.IsSessionExpired = true;
-After:
-                {
 
-
-                    App.IsSessionExpired = true;
-*/
                 {
 
 
@@ -588,10 +572,11 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -662,10 +647,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -736,10 +721,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -758,7 +743,7 @@ After:
                 string NewToken = string.Empty;
                 try
                 {
-                    string url = ZATCAConstants.ZakatObjectionLoadBankListURL;
+                    String url = ZATCAConstants.ZakatObjectionLoadBankListURL + UtilityManager.GetLanguageParameter();
                     HttpResponseMessage _zakatBankListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatBankListResponse != null)
                     {
@@ -806,10 +791,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -876,10 +861,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -945,10 +930,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -967,7 +952,7 @@ After:
                 string NewToken = string.Empty;
                 try
                 {
-                    string url = ZATCAConstants.ZakatObjectionRemoveObjAckURL + "RetFbnum='" + retFbnum + "',ObjFbnum='" + objFbnum + "')?$format=json";
+                    String url = ZATCAConstants.ZakatObjectionRemoveObjAckURL + retFbnum + "&objectionFormBundleNumber=" + objFbnum;
                     HttpResponseMessage _zakatBankListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     if (_zakatBankListResponse != null)
                     {
@@ -1015,10 +1000,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }

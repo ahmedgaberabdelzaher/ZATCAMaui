@@ -1,44 +1,69 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
     public  class TPUpdateActivityModel
     {
-       public string Taxpayer { get; set; }
-       public bool Flag { get; set; }
+        [JsonProperty("TIN")]
+        public string Taxpayer { get; set; }
+        [JsonProperty("isMigration")]
+        public bool Flag { get; set; }
     }
 
     [DataContract]
     public class DashBoardUpdateViewResponseModel
     {
-        [DataMember(Name = "d")]
+        [JsonProperty("data")]
         public DashBoardUpdateViewResponse d { get; set; }
     }
 
     [DataContract]
     public class DashBoardUpdateViewResponse
     {
-
-        [DataMember(Name = "results")]
+        [JsonProperty("activityStatus")]
         public IList<DashBoardUpdateViewResponse> results { get; set; }
 
-        [DataMember(Name = "Taxpayer")]
+        [JsonProperty("TIN")]
         public string Taxpayer { get; set; }
 
-        [DataMember(Name = "Flag")]
+        [JsonProperty("isMigration")]
         public bool Flag { get; set; }
 
-        [DataMember(Name = "Msg")]
+        [JsonProperty("messageDescription")]
         public string Msg { get; set; }
+
+        public string systemCode { get; set; }
 
     }
 
+    public class DashBoardUpdateResponseModel
+    {
+        [JsonProperty("result")]
+        public DashBoardUpdateResponse d { get; set; }
+    }
+    public class DashBoardUpdateResponse
+    {
+        
+
+        [JsonProperty("TIN")]
+        public string Taxpayer { get; set; }
+
+        [JsonProperty("isMigration")]
+        public bool Flag { get; set; }
+
+        [JsonProperty("messageDescription")]
+        public string Msg { get; set; }
+
+        public string systemCode { get; set; }
+
+    }
     /*For change Activity CR and Licence Update*/
     [DataContract]
     public class ActivityUpdateViewResponseModel
     {
-        [DataMember(Name = "d")]
         public ActivityUpdateViewResponse d { get; set; }
     }
 
@@ -46,28 +71,20 @@ namespace ZATCAMAUI.Models
     public class ActivityUpdateViewResponse
     {
 
-        [DataMember(Name = "__metadata")]
         public Metadata __metadata { get; set; }
 
-        [DataMember(Name = "Taxpayer")]
         public string Taxpayer { get; set; }
 
-        [DataMember(Name = "Idtype")]
         public string Idtype { get; set; }
 
-        [DataMember(Name = "Idnumber")]
         public string Idnumber { get; set; }
 
-        [DataMember(Name = "Activity")]
         public string Activity { get; set; }
 
-        [DataMember(Name = "MainGrp")]
         public string MainGrp { get; set; }
 
-        [DataMember(Name = "SubGrp")]
         public string SubGrp { get; set; }
 
-        [DataMember(Name = "UpdFlg")]
         public bool UpdFlg { get; set; }
 
     }

@@ -183,11 +183,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                             AttachmentRootOject _attachment = null;
                                             if (ZAKATReturnDetailsView.salesType.Equals("RealEstateValue"))
                                             {
-                                                _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, ZakatReturnDetail.ReturnId, "Z12R", ContentType);
+                                                _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(stream, AttachmentName, ZakatReturnDetail.ReturnId, "Z12R", ContentType);
                                             }
                                             else
                                             {
-                                                _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, ZakatReturnDetail.ReturnId, "Z12L", ContentType);
+                                                _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(stream, AttachmentName, ZakatReturnDetail.ReturnId, "Z12L", ContentType);
                                             }
 
                                             // PopToRootPage();

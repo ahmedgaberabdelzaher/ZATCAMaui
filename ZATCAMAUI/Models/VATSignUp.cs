@@ -1,4 +1,6 @@
 ﻿using System.Runtime.Serialization;
+using Foundation;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
@@ -6,110 +8,164 @@ namespace ZATCAMAUI.Models
     public class VATSignUp
     {
         [DataMember]
+        [JsonProperty("result")]
         public VATSignUpD d { get; set; }
     }
-  
-    public class _metadata
+    [Preserve(AllMembers = true)]
+    public class ValidateVATSignupTaxpayerRequest
     {
         [DataMember]
-        public string id { get; set; }
+        public string country { get; set; }
         [DataMember]
-        public string uri { get; set; }
+        public string taxpayerBirthDate { get; set; }
         [DataMember]
-        public string type { get; set; }
-
+        public string passExpiryDate { get; set; }
+        [DataMember]
+        public string TIN { get; set; }
+        [DataMember]
+        public string idType { get; set; }
+        [DataMember]
+        public string idNumber { get; set; }
     }
+
+
+    //[Preserve(AllMembers = true)]
+    //public class __metadata
+    //{
+    //    [DataMember]
+    //    public string id { get; set; }
+    //    [DataMember]
+    //    public string uri { get; set; }
+    //    [DataMember]
+    //    public string type { get; set; }
+
+    //}
   
     public class VATSignUpD
     {
+        //[DataMember]
+        //public _metadata __metadata { get; set; }
         [DataMember]
-        public _metadata __metadata { get; set; }
-        [DataMember]
+        [JsonProperty("birthDate")]
         public string Birthdt { get; set; }
 
         [DataMember]
+        [JsonProperty("partnerKind")]
         public string Bpkind { get; set; }
         [DataMember]
-        public string Country { get; set; }
+        [JsonProperty("country")]
+        public string country { get; set; }
         [DataMember]
-        public string IdIssueingCountry { get; set; }
+        [JsonProperty("idIssueingCountry")]
+        public string idIssueingCountry { get; set; }
         [DataMember]
-        public string Source { get; set; }
+        [JsonProperty("source")]
+        public string source { get; set; }
         [DataMember]
+        [JsonProperty("taxpayerBirthDate")]
         public string TaxpDob { get; set; }
         [DataMember]
+        [JsonProperty("passExpiryDate")]
         public string PassExpDt { get; set; }
         [DataMember]
-        public string Title { get; set; }
+        [JsonProperty("title")]
+        public string title { get; set; }
         [DataMember]
-        public string FullName { get; set; }
+        [JsonProperty("fullName")]
+        public string fullName { get; set; }
         [DataMember]
-        public string Floor { get; set; }
+        [JsonProperty("floor")]
+        public string floor { get; set; }
         [DataMember]
-        public string Tin { get; set; }
+        [JsonProperty("TIN")]
+        public string TIN { get; set; }
         [DataMember]
-        public string AdditionalNo { get; set; }
+        [JsonProperty("additionalNumber")]
+        public string additionalNumber { get; set; }
         [DataMember]
-        public string HouseNo { get; set; }
+        [JsonProperty("houseNumber")]
+        public string houseNumber { get; set; }
         [DataMember]
+        [JsonProperty("idType")]
         public string Idtype { get; set; }
         [DataMember]
-        public string BirthdtC { get; set; }
+        [JsonProperty("birthDateCalendarType")]
+        public string birthDateCalendarType { get; set; }
         [DataMember]
-        public string BuildingNo { get; set; }
+        public string buildingNumber { get; set; }
         [DataMember]
-        public string Birthdt10 { get; set; }
+        public string birthDate10 { get; set; }
         [DataMember]
+        [JsonProperty("idNumber")]
         public string Idnum { get; set; }
         [DataMember]
-        public string FatherName { get; set; }
+        [JsonProperty("fatherName")]
+        public string fatherName { get; set; }
         [DataMember]
-        public string PoBox { get; set; }
+        public string poBox { get; set; }
         [DataMember]
-        public string GrandfatherName { get; set; }
+        [JsonProperty("grandfatherName")]
+        public string grandfatherName { get; set; }
         [DataMember]
-        public string Street1 { get; set; }
+        [JsonProperty("street1")]
+        public string street1 { get; set; }
         [DataMember]
-        public string FamilyName { get; set; }
+        [JsonProperty("familyName")]
+        public string familyName { get; set; }
         [DataMember]
-        public string Street2 { get; set; }
+        [JsonProperty("street2")]
+        public string street2 { get; set; }
         [DataMember]
-        public string Initials { get; set; }
+        [JsonProperty("initials")]
+        public string initials { get; set; }
         [DataMember]
-        public string Province { get; set; }
+        public string province { get; set; }
         [DataMember]
-        public string City { get; set; }
+        public string city { get; set; }
         [DataMember]
-        public string Quarter { get; set; }
+        public string quarter { get; set; }
         [DataMember]
-        public string PostalCode { get; set; }
+        public string postalCode { get; set; }
         [DataMember]
-        public string Telephone { get; set; }
+        public string telephone { get; set; }
         [DataMember]
-        public string FaxNumber { get; set; }
+        public string faxNumber { get; set; }
         [DataMember]
-        public string Mobile { get; set; }
+        public string mobile { get; set; }
         [DataMember]
-        public string Email { get; set; }
+        public string email { get; set; }
         [DataMember]
-        public string DefltComm { get; set; }
+        public string deafultCommunication { get; set; }
         [DataMember]
+        [JsonProperty("addressNumber")]
         public string Adrnr { get; set; }
         [DataMember]
-        public string Website { get; set; }
+        public string website { get; set; }
         [DataMember]
-        public string Augrp { get; set; }
+        public string authorizationGroup { get; set; }
         [DataMember]
-        public string BranchDesc { get; set; }
+        public string branchDescription { get; set; }
         [DataMember]
-        public string Name1 { get; set; }
+        [JsonProperty("name1")]
+        public string name1 { get; set; }
         [DataMember]
-        public string Name2 { get; set; }
+        [JsonProperty("name2")]
+        public string name2 { get; set; }
         [DataMember]
-        public string BpkindDesc { get; set; }
+        [JsonProperty("partnerKindDescription")]
+        public string partnerKindDescription { get; set; }
         [DataMember]
-        public string RegionDesc { get; set; }
+        public string regionDescription { get; set; }
+        [DataMember]
+        public string taxpayerFullName { get; set; }
+        [DataMember]
+        public string taxpayerTitle { get; set; }
 
     }
-
+    public class TaxpayerInfo
+    {
+        public string idNumber { get; set; }
+        public string idType { get; set; }
+        public string taxpayerBirthDate { get; set; }
+    }
 }

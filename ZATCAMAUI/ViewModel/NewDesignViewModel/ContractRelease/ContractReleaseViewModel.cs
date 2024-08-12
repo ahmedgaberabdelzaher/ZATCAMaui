@@ -2,8 +2,6 @@
 using System.Globalization;
 using System.Text;
 using System.Windows.Input;
-
-
 using Newtonsoft.Json;
 using Mopups.Services;
 using ZATCAMAUI.Core.Enums;
@@ -18,8 +16,6 @@ using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.ContractReleasePages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
-using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
-using Metadata = ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse.Metadata;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 {
@@ -762,6 +758,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 OnPropertyChanged("ContractReleaseData");
             }
         }
+        private ContractReleaseFormResponse1 _contractReleaseData1;
+
+        public ContractReleaseFormResponse1 ContractReleaseData1
+        {
+            get { return _contractReleaseData1; }
+            set
+            {
+                if (_contractReleaseData1 == value) return;
+                _contractReleaseData1 = value;
+                OnPropertyChanged("ContractReleaseData1");
+            }
+        }
         private bool _isDeclarationViewEnabled;
         public bool IsDeclarationViewEnabled
         {
@@ -861,6 +869,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
                 shouldShowEN = value;
                 OnPropertyChanged("ShouldShowEN");
+            }
+        }
+
+        private string _referenceNumberTxt = "";
+
+        public string ReferenceNumberTxt
+        {
+            get { return _referenceNumberTxt; }
+            set
+            {
+                if (_referenceNumberTxt == value) return;
+
+                _referenceNumberTxt = value;
+                OnPropertyChanged("ReferenceNumberTxt");
+            }
+        }
+        private string _contractNumberTxt = "";
+
+        public string ContractNumberTxt
+        {
+            get { return _contractNumberTxt; }
+            set
+            {
+                if (_contractNumberTxt == value) return;
+
+                _contractNumberTxt = value;
+                OnPropertyChanged("ContractNumberTxt");
             }
         }
 
@@ -1147,9 +1182,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
                 await MopupService.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException)
             {
-
 
             }
             catch (InternetException ex)
@@ -1170,8 +1204,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1228,8 +1260,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1253,8 +1283,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1274,8 +1302,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1291,7 +1317,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
         {
             try
             {
-                if (IsDeclarationViewEnabledNew)
+                if (!IsDeclarationEnabled)
                 {
                     IsDeclarationEnabled = true;
                     if (!string.IsNullOrEmpty(Zterms) && !IsDECCheckBox)
@@ -1300,14 +1326,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                         return;
                     }
                 }
-                else
-                {
-                    if (!IsDeclarationEnabled)
-                    {
-                        return;
-                    }
-                }
-
                 EnableSummaryView();
             }
             catch (GAZTUnlockAccountException ex)
@@ -1507,7 +1525,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
 
 
-                if (ContractReleaseData.d.ACalTp == "H")
+                if (ContractReleaseData.d.ACalTp == "Hijri")
                 {
 
                     FromDate = HDateNow();
@@ -1548,28 +1566,59 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 }
                 return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
             }
-            catch (Exception)
 
-            /* Unmerged change from project 'ZATCAMAUI (net7.0-ios)'
-            Before:
-                        {
-
-
-
-                            return "";
-            After:
-                        {
-
-
-
-                            return "";
-            */
+            catch (Exception ex)
             {
-
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
 
                 return "";
             }
+        }
+
+        public string ConvertToRequiredDatesFormat(string date, bool isTimeStamp,bool isRemoveTime=false)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(date))
+                {
+                    if (isTimeStamp)
+                    {
+                        long timestamp = long.Parse(date.Substring(6, date.Length - 8));
+                        DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(timestamp);
+                        string requiredTime = dateTimeOffset.ToString("yyyy-MM-ddTHH:mm:ss");
+                        if (isRemoveTime)
+                        {
+                            DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", null);
+                             requiredTime = dateTime.ToString("yyyy-MM-dd");
+                        }
+                        return requiredTime;
+                    }
+                    else
+                    {
+                        DateTime inputDate = DateTime.ParseExact(date, "yyyy/MM/dd", null);
+                        string requiredTime= inputDate.ToString("yyyy-MM-ddTHH:mm:ss");
+                        if (isRemoveTime)
+                        {
+                            DateTime dateTime = DateTime.ParseExact(requiredTime, "yyyy-MM-ddTHH:mm:ss", null);
+                            requiredTime = dateTime.ToString("yyyy-MM-dd");
+                        }
+                        return requiredTime;
+                    }
+                }
+                else
+                    return "";
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
+
+
+            return "";
+            
         }
 
         public ContractReleaseFormRequest BuildRequestObject()
@@ -1579,11 +1628,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             try
             {
                 request.d.__metadata = ContractReleaseData.d.__metadata;
-                DateTime dateTime = DateTime.Now;
-                var h = dateTime.Hour;
-                var m = dateTime.Minute;
-                var s = dateTime.Second;
-                request.d.AAgreeTm = "PT" + h + "H" + m + "M" + s + "S";// ContractReleaseData.d.AAgreeTm;
+               // request.d.AAgreeTm = ContractReleaseData.d.AAgreeTm;
+                request.d.AAgreeTm = DateTime.Now.ToString("HH:mm:ss");
                 request.d.ABranch = ContractReleaseData.d.ABranch;
                 request.d.ACalTp = ContractReleaseData.d.ACalTp;
                 request.d.AContChk = ContractReleaseData.d.AContChk;
@@ -1604,9 +1650,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.CurrDatumz = null;
                 request.d.Euser = ContractReleaseData.d.Euser;
                 request.d.Fbnum = ContractReleaseData.d.Fbnum;
-                request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
+                if (ContractReleaseData.d.Fbnumz.Equals("$"))
+                    request.d.Fbnumz = string.Empty;
+                else
+                    request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
+
+                //request.d.Fbnumz = ContractReleaseData.d.Fbnumz;
                 request.d.FormGuid = ContractReleaseData.d.FormGuid;
-                request.d.Langz = GetLangZParameter();
+                request.d.Langz = WebServiceManager.GetLangZParameterAREN();
                 request.d.LegacyDocNo = ContractReleaseData.d.LegacyDocNo;
                 request.d.Mandt = ContractReleaseData.d.Mandt;
                 request.d.Monthz = ContractReleaseData.d.Monthz;
@@ -1639,8 +1690,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.AZakatProfitPer = EstimatedProfitForZakatAmount.ToString();
                 request.d.AComments = Remarks.ToString();
                 request.d.ARemark = Remarks.ToString();
-
-                request.d.DecFg = IsDECCheckBox ? "X" : "";
+                request.d.declaration ="X";
                 request.d.ADoc1 = "0";
                 request.d.ADoc2 = "1";
                 request.d.ADoc3 = "1";
@@ -1659,12 +1709,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     notes.Tdline = "";
 
                 }
-                Metadata _metdata = new Metadata();
+                Models.Metadata _metdata = new Models.Metadata();
                 _metdata.uri = ZATCAConstants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
                 _metdata.type = "Z_TP_NOTES_TP11_SRV.znotes";
                 _metdata.id = ZATCAConstants.ContractReleaseRequestUrl + "/sap/opu/odata/SAP/Z_TP_NOTES_TP11_SRV/znotesSet(1)";
 
-                notes.__metadata = _metdata;
+                //notes.__metadata = _metdata;
                 notes.AttByz = "TP";
                 notes.ElemNo = 0;
 
@@ -1681,7 +1731,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 notes.XObsoletez = "";
                 request.d.znotesSet = new ZnotesSet[1];
                 request.d.znotesSet[0] = notes;
-                request.d.AttDetSet = ContractReleaseData.d.AttDetSet.results;
+                request.d.AttDetSet = ContractReleaseData.d.AttDetSet;
                 var todayDate = DateTime.Now.ToString();
 
                 DateTime dt2 = Convert.ToDateTime(todayDate);
@@ -1695,7 +1745,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 jsonDateTime2 = jsonDateTime2 + ")/";
                 var convretedTodayate = jsonDateTime2;
 
-                request.d.AReceiveDt = convretedTodayate;
+                request.d.AReceiveDt = ConvertToRequiredDatesFormat(convretedTodayate,true);
                 CultureInfo calCul;
 
                 if (IsHijriCal)
@@ -1728,17 +1778,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 jsonDateTime1 = dateList1[0].Replace("\"\\", "");
                 jsonDateTime1 = jsonDateTime1 + ")/";
                 var convretedToDate = jsonDateTime1;
-                request.d.AContDt = convretedFromDate;
-                request.d.AContEndDt = convretedToDate;
+                request.d.AContDt = ConvertToRequiredDatesFormat(convretedFromDate,true);
+                request.d.AContEndDt = ConvertToRequiredDatesFormat( convretedToDate,true);
                 request.d.AContEndDtCh = ToDate;
-                request.d.AContDt1 = FromDate;
+                request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate,false, true);
 
-                if (ContractReleaseData.d.ACalTp == "H")
+                if (ContractReleaseData.d.ACalTp == "Hijri")
                 {
                     if (IsHijriCal)
                     {
-                        request.d.AContEndDtCh = ToDate;
-                        request.d.AContDt1 = FromDate;
+                        request.d.AContEndDtCh = ConvertToRequiredDatesFormat(ToDate,false, true);
+                        request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate,false, true);
                     }
                     else
                     {
@@ -1751,8 +1801,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
                         string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
                         string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                        request.d.AContEndDtCh = convertedDae1;
-                        request.d.AContDt1 = convertedDae2;
+                        request.d.AContEndDtCh = ConvertToRequiredDatesFormat(convertedDae1, false, true);
+                        request.d.AContDt1 = ConvertToRequiredDatesFormat(convertedDae2, false, true);
                     }
                 }
                 else
@@ -1760,8 +1810,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                     if (!IsHijriCal)
                     {
 
-                        request.d.AContEndDtCh = ToDate;
-                        request.d.AContDt1 = FromDate;
+                        request.d.AContEndDtCh = ConvertToRequiredDatesFormat( ToDate,false, true);
+                        request.d.AContDt1 = ConvertToRequiredDatesFormat(FromDate,false, true);
                     }
                     else
                     {
@@ -1771,8 +1821,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                         DateTime tempDate1 = DateTime.ParseExact(FromDate, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                         string convertedDae1 = tempDate.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
                         string convertedDae2 = tempDate1.ToString("yyyy/MM/dd", arCI1.DateTimeFormat);
-                        request.d.AContEndDtCh = convertedDae1;
-                        request.d.AContDt1 = convertedDae2;
+                        request.d.AContEndDtCh = ConvertToRequiredDatesFormat( convertedDae1,false, true);
+                        request.d.AContDt1 = ConvertToRequiredDatesFormat(convertedDae2,false, true);
                     }
                 }
                 request.d.Savez = "X";
@@ -1780,8 +1830,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception)
             {
-
-
             }
             return request;
         }
@@ -1796,7 +1844,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
         public async Task<bool> SubmitClicked()
         {
-            ContractReleaseFormResponse response = new ContractReleaseFormResponse();
+            ContractReleaseFormResponse1 response = new ContractReleaseFormResponse1();
 
             ContractReleaseFormRequest request = new ContractReleaseFormRequest();
             try
@@ -1804,7 +1852,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 request = BuildRequestObject();
                 IsLoading1 = true;
                 string ContractReleaseResponse = await ContractReleaseWebServiceManager.GAZTSubmitContractReleaseRequestData(request);
-                ContractReleaseFormResponse releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse>(ContractReleaseResponse);
+                ContractReleaseFormResponse1 releaseFormResponse = JsonConvert.DeserializeObject<ContractReleaseFormResponse1>(ContractReleaseResponse);
 
                 if (releaseFormResponse.d == null)
                 {
@@ -1828,9 +1876,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                 }
                 else
                 {
-                    ContractReleaseData = releaseFormResponse;
+                    ContractReleaseData1 = releaseFormResponse;
 
-                    if (ContractReleaseData.d != null)
+                    if (ContractReleaseData1.d != null)
                     {
                         IsLoading1 = false;
                         await Application.Current.MainPage.Navigation.PushAsync(new ContractReleaseSuccessPageView(this));
@@ -1842,7 +1890,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             {
                 IsLoading1 = false;
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                throw new GAZTVATRegistrationInProcessException(ex.Message);
+                throw new GAZTVATRegistrationInProcessException(ex.ToString());
             }
 
             catch (Exception ex)
@@ -1981,10 +2029,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
                         ContractReleaseData = await ContractReleaseWebServiceManager.GAZTGetContractReleaseRequestData();
                         if (ContractReleaseData != null && ContractReleaseData.d != null)
                         {
-                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(ContractReleaseData.d.Fbnum);
                             bindDataToUI();
 
-                            if (ContractReleaseData.d.ACalTp == "H")
+                            if (ContractReleaseData.d.ACalTp == "Hijri")
                             {
 
                                 IsHijriCal = true;
@@ -2050,8 +2097,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception)
             {
-
-
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading1 = false;
@@ -2082,7 +2127,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-
             }
             catch (InternetException ex)
             {
@@ -2094,7 +2138,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -2117,7 +2160,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-
             }
             catch (InternetException ex)
             {
@@ -2129,7 +2171,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -2204,20 +2245,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
 
         public void EnableDeclarationContinue()
         {
-            if (IsDeclarationViewEnabledNew)
+            if (ContactPersonName == "" || Designation == "")
             {
-                IsDeclarationEnabled = true;
+                IsDeclarationEnabled = false;
             }
             else
             {
-                if (ContactPersonName == "" || Designation == "")
-                {
-                    IsDeclarationEnabled = false;
-                }
-                else
-                {
-                    IsDeclarationEnabled = true;
-                }
+                IsDeclarationEnabled = true;
             }
         }
 
@@ -2290,8 +2324,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (Exception)
             {
-
-
             }
         }
 

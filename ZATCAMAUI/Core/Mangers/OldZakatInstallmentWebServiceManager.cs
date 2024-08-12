@@ -6,7 +6,6 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models.ZakatInstalationModels;
 using static ZATCAMAUI.Models.ErrorMessage;
-
 namespace ZATCAMAUI.Core.Mangers
 {
 
@@ -25,26 +24,36 @@ namespace ZATCAMAUI.Core.Mangers
                 {
 
 
-                    euser1 = "null";
+                    euser1 = "00000000000000000000";
                     string auditor = "null";
-                    string euser2 = "null";
-                    string euser3 = "null";
-                    string euser4 = "null";
-                    string euser5 = "null";
-
-
+                    string euser2 = "00000000000000000000";
+                    string euser3 = "00000000000000000000";
+                    string euser4 = "00000000000000000000";
+                    string euser5 = "00000000000000000000";
                     fbguid = "";
 
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+                    //Char lang = WebServiceManager.GetLangZParameter();
+                    string lang = WebServiceManager.GetLangZParameterAREN();
 
-                    string url = ZATCAConstants.ZakatOldInstalmentsListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
-                       "Auditor='" + auditor + "'," +
-                     "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
-                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json&sap-language=" + LangZAREN;
-                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-
-
+                    //String url = Constants.ZakatOldInstalmentsListUrl + App.LoginDataRetrieved.TIN + "CallServ='" + callServ + "',HostName='" + "',Bpnum='"  + "',Zuser='" + "'," +
+                    //  "Auditor='" + auditor + "'," +
+                    //"Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                    //"Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "')?$expand=ListSet,AuthServSet&$format=json&sap-language=" + LangZAREN;
+                    String url = ZATCAConstants.ZakatOldInstalmentsListUrl + App.LoginDataRetrieved.TIN + "&authenticationUser1=" + euser1 + "&authenticationUser2=" + euser2 + "&authenticationUser3=" + euser3 + "&authenticationUser4=" + euser4 + "&authenticationUser5=" + euser5 + "&language=" + lang;
+                    var uri = new Uri(url);
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
 
                     if (GAZTzakatInstalmentDataResponse != null)
                     {
@@ -77,11 +86,7 @@ namespace ZATCAMAUI.Core.Mangers
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception)
-
-
                 {
-
-
                     return null;
                 }
             }
@@ -103,12 +108,28 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     var summaryInputs = await GAZTGetOldZakatSummaryInputData(fbnum, status);
-                    //string euser = "00000000000000000000";
-                    string fbguid = summaryInputs.d.Fbguid;
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.ZakatOldInstalmentsSummarytUrl + "Auditorz='',Taxpayerz='',PeriodKeyz='',Euser='00000000000000000000',Langz='" + lang + "',Fbguid='" + fbguid + "'," +
-                        "Fbnumz='',Submitz='',Savez='',UserTin='')?$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
-                    HttpResponseMessage GAZTzakatDisplayResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+
+                    string euser = "00000000000000000000";
+                    string fbguid = summaryInputs.d.formBundleGUID;
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+
+                    HttpClient client = new HttpClient();
+                    //String url = Constants.ZakatOldInstalmentsSummarytUrl + "Auditorz='',Taxpayerz='',PeriodKeyz='',Euser='00000000000000000000',Langz='" + lang + "',Fbguid='" + fbguid + "'," +
+                    //    "Fbnumz='',Submitz='',Savez='',UserTin='')?$expand=Off_notesSet,AttDetSet,Z_INVOICE_UI5Set,z_invoiceSet,z_proposedinsSet&$format=json";
+                    String url = ZATCAConstants.ZakatOldInstalmentsSummarytUrl + App.LoginDataRetrieved.TIN + "&authenticationUser=" + euser + "&formBundleGUID=" + fbguid + "&language=" + lang;
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatDisplayResponse = await client.GetAsync(uri);
                     if (GAZTzakatDisplayResponse != null)
                     {
                         if (GAZTzakatDisplayResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -159,9 +180,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    // App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -172,9 +190,9 @@ namespace ZATCAMAUI.Core.Mangers
         }
 
 
-        private async static Task<ZakatSummaryInputModel> GAZTGetOldZakatSummaryInputData(string fbnum, string status)
+        private async static Task<ZakatSummaryInputModel1> GAZTGetOldZakatSummaryInputData(string fbnum, string status)
         {
-            ZakatSummaryInputModel _zakatSummaryInputModel = new ZakatSummaryInputModel();
+            ZakatSummaryInputModel1 _zakatSummaryInputModel = new ZakatSummaryInputModel1();
 
 
 
@@ -183,8 +201,7 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
 
                 string Newfbnum = fbnum;
-
-
+                string euser = "00000000000000000000";
                 if (fbnum != "")
                 {
 
@@ -195,12 +212,24 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     string fbtyp = "IPRF";
 
-
-
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
                     string lang = WebServiceManager.GetLangZParameterAREN();
-                    string url = ZATCAConstants.GetOldZAKATSummaryInputURL + "Euser1='00000000000000000000',Fbguid='" + "',Fbnum='" + Newfbnum + "',Fbtyp='" + fbtyp + "'," +
-                     "Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?$format=json";
-                    HttpResponseMessage _zakatSumamryInputResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    //String url = Constants.GetOldZAKATSummaryInputURL + App.LoginDataRetrieved.TIN + "&authenticationUser1=='00000000000000000000',Fbguid='" + "',Fbnum='" + Newfbnum + "',Fbtyp='" + fbtyp + "'," +
+                    // "Gpart='" + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',Dispflag='" + "')?$format=json";
+                    String url = ZATCAConstants.GetOldZAKATSummaryInputURL + App.LoginDataRetrieved.TIN + "&authenticationUser1=" + euser + "&formBundleNumber=" + Newfbnum + "&formBundleType=" + fbtyp + "&language=" + lang + "&status=" + status;
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var uri = new Uri(url);
+                    HttpResponseMessage _zakatSumamryInputResponse = await client.GetAsync(uri);
                     if (_zakatSumamryInputResponse != null)
                     {
                         if (_zakatSumamryInputResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -224,13 +253,8 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string _ZakatSummaryInputData = _zakatSumamryInputResponse.Content.ReadAsStringAsync().Result;
-                        _zakatSummaryInputModel = JsonConvert.DeserializeObject<ZakatSummaryInputModel>(_ZakatSummaryInputData);
-
-
-
-
-
+                        String _ZakatSummaryInputData = _zakatSumamryInputResponse.Content.ReadAsStringAsync().Result;
+                        _zakatSummaryInputModel = JsonConvert.DeserializeObject<ZakatSummaryInputModel1>(_ZakatSummaryInputData);
                         if (!string.IsNullOrEmpty(_ZakatSummaryInputData))
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_ZakatSummaryInputData);
@@ -253,10 +277,7 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    //App.IsSessionExpired = true;
-                    return null;
+                   return null;
                 }
             }
             else
@@ -282,10 +303,23 @@ namespace ZATCAMAUI.Core.Mangers
                     client.Timeout = TimeSpan.FromMinutes(10);
 
                     var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails);
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
@@ -326,9 +360,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    // App.IsSessionExpired = true;
                     return null;
                 }
 

@@ -181,7 +181,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 _SelectedTaxTypeForFilter = value;
                 if (_SelectedTaxTypeForFilter != null)
                 {
-                    FilterLabelText = _SelectedTaxTypeForFilter.Txt30;
+                    FilterLabelText = _SelectedTaxTypeForFilter.revenueTypeDescription;
                     FilterIfTypeAndStausFilterSelected(true);
                 }
                 OnPropertyChanged("SelectedTaxTypeForFilter");
@@ -250,26 +250,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (_myBills == value) return;
 
                 _myBills = value;
-                if (_myBills != null && calculateMyBills)
+                if (MyBillsOriginal != null)
                 {
 
                     //if (_myBills.Count != 0)
                     //{
                     double Amount = 0.00;
-                    foreach (var item in MyBills)
+                    foreach (var item in MyBillsOriginal)
                     {
                         //P = 0 - Paid
                         //I = 1 - Partially Paid
                         //O = 2 - Unpaid
 
-                        if (item.Status == "O")
+                        if (item.Status == "Open")
                         {
                             if (item.TestDueAmount != null)
                             {
                                 Amount = Amount + Convert.ToDouble(item.TestDueAmount);
                             }
                         }
-                        else if (item.Status == "I")
+                        else if (item.Status == "Partially Paid")
                         {
                             if (item.TotalRemainingAmount != null && item.TotalRemainingAmount != string.Empty)
                             {
@@ -481,7 +481,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             MultiplePayableBills = new ObservableCollection<MyBills>();
             if (MyBillsOriginal != null && MyBillsOriginal.Count > 0)
             {
-                MultiplePayableBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => !string.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2) && (BModel.Status == Enum.GetName(typeof(BillStatus), 1) || BModel.Status == Enum.GetName(typeof(BillStatus), 2))).ToList());
+                MultiplePayableBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2) && ((BModel.Status == "Partially Paid") || (BModel.Status == "Open")))).ToList());
 
                 //MultiplePayableBills = new ObservableCollection<MyBills>(MyBills.Where(x => (!String.IsNullOrEmpty(BModel.VTRE2) && x.VTRE2.Equals(BModel.VTRE2)) || (!String.IsNullOrEmpty(BModel.Fbnum) && x.Fbnum.Equals(BModel.Fbnum))).ToList());
             }
@@ -517,7 +517,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 var total = "";
                 if (MultiplePayableBills != null && MultiplePayableBills.Count > 0)
                 {
-                    total = MultiplePayableBills.Sum(x => double.Parse(x.TestDueAmount)).ToString();
+                    total = MultiplePayableBills.Sum(x => Double.Parse(x.TestDueAmount)).ToString();
                 }
                 else
                 {
@@ -531,7 +531,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             }
         }
-        public void onPageLoad(BillInfo billInfo)
+        public async void onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
             MyBills = null;
@@ -541,8 +541,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang, "Bills");
+                    MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
+                    //  MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                    if (MyBills != null)
+                    {
+
+                        if (MyBills.Count != 0)
+                        {
+
+                            IsListVisible = true;
+                            isNoDataLableVisible = false;
+                        }
+                        else
+                        {
+                            IsListVisible = false;
+                            isNoDataLableVisible = true;
+                        }
+
+                    }
+
 
                     if (MyBills != null && MyBills.Count != 0)
                     {
@@ -580,7 +599,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 myBills.IsPeriodVisible = true;
                             }
 
-                            if (myBills.Status == "I")
+                            if (myBills.Status == "Partially Paid")
                             {
                                 if (string.IsNullOrEmpty(myBills.Paidamt))
                                 {
@@ -598,7 +617,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 }
                             }
                         }
-
+                        FilterIfTypeAndStausFilterSelected(false);
                     }
                     else
                     {
@@ -634,7 +653,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public void updatePicker()
         {
 
-            var selectedFilter = new ObservableCollection<MyBillsFilterDropdown>(TaxTypeForFilter.Where(temp => temp.Txt30.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
+            var selectedFilter = new ObservableCollection<MyBillsFilterDropdown>(TaxTypeForFilter.Where(temp => temp.revenueTypeDescription.Equals(PickerModel.SelectedValue.ToUpper()))).ToList();
 
             SelectedTaxTypeForFilter = selectedFilter.FirstOrDefault();
 
@@ -649,8 +668,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -668,7 +685,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 string lang = UtilityManager.GetLanguageParameter();
-                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.Tin, lang);
+                var FilterValues = WebServiceManager.GAZTGetMyBillsFilterDropdownValues(App.TP.TIN, lang);
                 if (FilterValues != null)
                 {
                     TaxTypeForFilter = FilterValues;
@@ -681,12 +698,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
                         try
                         {
-                            list.Add(dropdown.Txt30.ToUpper());
+                            list.Add(dropdown.revenueTypeDescription.ToUpper());
                         }
                         catch (Exception)
                         {
-
-
                         }
 
 
@@ -697,7 +712,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     genericPickerModel.PickerData = list;
                     genericPickerModel.PickerTitle = "";
                     genericPickerModel.PickerId = "MyBills";
-                    genericPickerModel.SelectedValue = SelectedTaxTypeForFilter.Txt30;
+                    genericPickerModel.SelectedValue = SelectedTaxTypeForFilter.revenueTypeDescription;
 
                     PickerModel = genericPickerModel;
                 }
@@ -705,8 +720,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -797,7 +810,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             });
 
 
-            switch (SelectedTaxTypeForFilter.StatementFilter)
+            switch (SelectedTaxTypeForFilter.statementFilter)
             {
                 case "10":
                     MyBills = new ObservableCollection<MyBills>(BillsToProcss);
@@ -893,7 +906,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 if (isTaxTypeFilter)
                 {
-                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Partially Paid" || x.Status == "Open").ToList());
 
                     FilterOnTaxType(MyBills);
                     return;
@@ -903,22 +916,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 {
                     if (SelectedChipFilterItem.TemplateType.Equals(AppResources.Paid))
                     {
-                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Paid").ToList());
                     }
 
                     if (SelectedChipFilterItem.TemplateType.Equals(AppResources.PartiallyPaid))
                     {
-                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Partially Paid").ToList());
                     }
 
                     if (SelectedChipFilterItem.TemplateType.Equals(AppResources.UnPaid))
                     {
-                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Open").ToList());
                     }
 
                     if (SelectedChipFilterItem.TemplateType.Equals(AppResources.All))
                     {
-                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+                        MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == "Paid" || x.Status == "Partially Paid" || x.Status == "Open").ToList());
                     }
 
                     FilterOnTaxType(MyBills);
@@ -971,6 +984,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
 
+                    IsLoading = false;
                     if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                     {
                         await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
@@ -987,21 +1001,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                         }
 
-                        if (paymentType == "M")
+                        if (paymentType == "Mada Payment")
                         {
 
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
 
-                                _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-                               
+                                IsLoading = true;
+                                //CR7420
+                                CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                                IsLoading = false;
+                                if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                                {
+                                    App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                                    _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                                }
+
+
+                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
 
                             });
                         }
 
                     }
 
-                    IsLoading = false;
 
                 }
                 catch (GAZTValidatePaymentInProcessException ex)
@@ -1044,6 +1067,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
                 });
+            }
+        }
+
+        public async Task<CreateMadaResponseRoot> GetWebviewContent(string srcid)
+        {
+            try
+            {
+                var paymentPayload = new CreateMadaPaymentPayload
+                {
+                    GUID = App.PaymentGuid,
+                    sourceId = srcid
+                };
+
+                CreateMadaResponseRoot respose = await WebServiceManager.GAZTCreateMadaPayment(paymentPayload);
+                return respose;
+            }
+            catch (GAZTValidateMadaPaymentException ex)
+            {
+                IsLoading = false;
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+
+                    var message = ex.Message.Substring(0, 1).ToUpper() + ex.Message.Substring(1).ToLower();
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
 
@@ -1157,7 +1212,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public void MadaPaymentSelected()
         {
-            DoValidatePayment(selectedFbNum, selectedSadadNo, "M");
+            DoValidatePayment(selectedFbNum, selectedSadadNo, "Mada Payment");
 
         }
 
@@ -1170,7 +1225,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         public async Task SadadPaymentSelected()
         {
             //_navigationService.NavigateTo(App.MyBillsSuccessPageView, selectedSadadNo);
-            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, 1);
+            _navigationService.NavigateTo(App.MyBillsSadadDetailsPageView, this);
 
             //_navigationService.GoBack();
 

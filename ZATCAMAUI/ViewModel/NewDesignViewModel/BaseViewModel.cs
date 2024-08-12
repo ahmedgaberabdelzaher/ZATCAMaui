@@ -374,10 +374,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 });
             }
         }
-
+        public void navigateLogin()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var _navigation = Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
+                {
+                    if (item.GetType().Name == App.SFLoginPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+                _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+                _navigation.NavigationStack.ToList().Clear();
+            });
+        }
         #region File Upload
-
-
         public async Task<ObservableCollection<ReportFileModel>> PickAndShow(PickOptions options, ObservableCollection<ReportFileModel> uploadedFiles, string maximumFileSizeMsg, string numberOfAttachmentMsg, int maxCount = 1, int maxFileSize = 2)
         {
             try

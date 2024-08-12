@@ -114,8 +114,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATAmendReactivationSuccessPage
             }
             catch (Exception)
             {
-
-
             }
             _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
         }

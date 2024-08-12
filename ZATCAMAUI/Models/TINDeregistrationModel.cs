@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Foundation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ZATCAMAUI.Core.Mangers;
@@ -135,595 +137,637 @@ namespace ZATCAMAUI.Models
    
     public partial class TinDeregistrationParentResponseModel
     {
-        [JsonProperty("d")]
+        [JsonProperty("result")]
         public TinDeregistrationResponseModel D { get; set; }
     }
    
     public partial class TinDeregistrationResponseModel
     {
-        [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("Assignme")]
+        [JsonProperty("CR2021Popup")]
+        public string Cr2021popup { get; set; }
+
+        [JsonProperty("assignToMe")]
         public string Assignme { get; set; }
 
-        [JsonProperty("Caseid")]
+        [JsonProperty("caseId")]
         public string Caseid { get; set; }
 
-        [JsonProperty("Xvoidz")]
+        [JsonProperty("void")]
         public string Xvoidz { get; set; }
 
-        [JsonProperty("TinInPrcFg")]
+        [JsonProperty("TINInProcessing")]
         public string TinInPrcFg { get; set; }
 
-        [JsonProperty("Taxpayerz")]
+        [JsonProperty("TIN")]
         public string Taxpayerz { get; set; }
 
-        [JsonProperty("Submitz")]
+        [JsonProperty("submit")]
         public string Submitz { get; set; }
 
-        [JsonProperty("Status")]
+        [JsonProperty("SEZTaxpayer")]
+        public string SezTpFlag { get; set; }
+
+        [JsonProperty("deregistartion")]
+        public string BgDregFlg { get; set; }
+
+        [JsonProperty("status")]
         public string Status { get; set; }
 
-        [JsonProperty("Savez")]
+        [JsonProperty("save")]
         public string Savez { get; set; }
 
-        [JsonProperty("Rejectz")]
+        [JsonProperty("reject")]
         public string Rejectz { get; set; }
 
-        [JsonProperty("RegIdz")]
+        [JsonProperty("contractNumber")]
         public string RegIdz { get; set; }
 
-        [JsonProperty("PortalUsrz")]
+        [JsonProperty("portalUser")]
         public string PortalUsrz { get; set; }
 
-        [JsonProperty("PeriodKeyz")]
+        [JsonProperty("periodKey")]
         public string PeriodKeyz { get; set; }
 
-        [JsonProperty("Operation")]
+        [JsonProperty("operation")]
         public string Operation { get; set; }
 
-        [JsonProperty("OfficerUidz")]
+        [JsonProperty("userName")]
         public string OfficerUidz { get; set; }
 
-        [JsonProperty("Monthz")]
+        [JsonProperty("month")]
         public string Monthz { get; set; }
 
-        [JsonProperty("LegacyDocNo")]
+        [JsonProperty("legacyDocumentNumber")]
         public string LegacyDocNo { get; set; }
 
-        [JsonProperty("Langz")]
+        [JsonProperty("language")]
         public string Langz { get; set; }
 
-        [JsonProperty("FormGuid")]
+        [JsonProperty("formGUID")]
         public string FormGuid { get; set; }
 
-        [JsonProperty("Fbnumz")]
+        [JsonProperty("formBundleNumber")]
         public string Fbnumz { get; set; }
 
         [JsonProperty("Fbnum")]
         public string Fbnum { get; set; }
-        [JsonProperty("Fbust")]
+        [JsonProperty("userStatus")]
         public string Fbust { get; set; }
 
-        [JsonProperty("Dflag")]
+        [JsonProperty("display")]
         public string Dflag { get; set; }
 
-        [JsonProperty("CreateTxAssesz")]
+        [JsonProperty("createTaxAssessment")]
         public string CreateTxAssesz { get; set; }
 
-        [JsonProperty("Cflag")]
+        [JsonProperty("change")]
         public string Cflag { get; set; }
 
-        [JsonProperty("CaseGuid")]
+        [JsonProperty("caseGUID")]
         public string CaseGuid { get; set; }
 
-        [JsonProperty("Auditorz")]
+        [JsonProperty("auditor")]
         public string Auditorz { get; set; }
 
-        [JsonProperty("ATransTin")]
+        [JsonProperty("transactionTIN")]
         public string ATransTin { get; set; }
 
-        [JsonProperty("ATitle")]
+        [JsonProperty("title")]
         public string ATitle { get; set; }
 
-        [JsonProperty("ATinType")]
+        [JsonProperty("TINType")]
         public string ATinType { get; set; }
 
         [JsonProperty("ATin")]
         public string ATin { get; set; }
 
-        [JsonProperty("ATaxpayerName")]
+        [JsonProperty("taxpayerName")]
         public string ATaxpayerName { get; set; }
 
-        [JsonProperty("ASubmissionDateH")]
+        [JsonProperty("submissionDateHijri")]
         public string ASubmissionDateH { get; set; }
 
-        [JsonProperty("ASubmissionDateC")]
+        [JsonProperty("submissionDateCalendar")]
         public string ASubmissionDateC { get; set; }
 
-        [JsonProperty("ASubmissionDate")]
+        [JsonProperty("submissionDate")]
         public string ASubmissionDate { get; set; }
 
-        [JsonProperty("AStep")]
+        [JsonProperty("step")]
         public long AStep { get; set; }
 
-        [JsonProperty("Approvez")]
+        [JsonProperty("approve")]
         public string Approvez { get; set; }
 
-        [JsonProperty("AOffOrigin")]
+        [JsonProperty("officialUseOrigin")]
         public string AOffOrigin { get; set; }
 
-        [JsonProperty("AOffAppNo")]
+        [JsonProperty("officialApplicationNumber")]
         public string AOffAppNo { get; set; }
 
-        [JsonProperty("ANm7")]
+        [JsonProperty("firstName7")]
         public string ANm7 { get; set; }
 
-        [JsonProperty("ANm6")]
+        [JsonProperty("firstName6")]
         public string ANm6 { get; set; }
 
-        [JsonProperty("ANm5")]
+        [JsonProperty("firstName5")]
         public string ANm5 { get; set; }
 
-        [JsonProperty("ANm4")]
+        [JsonProperty("firstName4")]
         public string ANm4 { get; set; }
 
-        [JsonProperty("ANm3")]
+        [JsonProperty("firstName3")]
         public string ANm3 { get; set; }
 
-        [JsonProperty("ANm2")]
+        [JsonProperty("firstName2")]
         public string ANm2 { get; set; }
 
-        [JsonProperty("ANm1")]
+        [JsonProperty("firstName1")]
         public string ANm1 { get; set; }
 
-        [JsonProperty("AmdRsnz")]
+        [JsonProperty("amendmentReason")]
         public string AmdRsnz { get; set; }
 
-        [JsonProperty("AIdType")]
+        [JsonProperty("idType")]
         public string AIdType { get; set; }
 
-        [JsonProperty("AIdNo")]
+        [JsonProperty("idNumber")]
         public string AIdNo { get; set; }
 
-        [JsonProperty("AFormStatus")]
+        [JsonProperty("formStatus")]
         public string AFormStatus { get; set; }
 
-        [JsonProperty("AExpdtH")]
+        [JsonProperty("expiryDateHijri")]
         public string AExpdtH { get; set; }
 
-        [JsonProperty("AExpdtC")]
+        [JsonProperty("expiryDateCalendar")]
         public string AExpdtC { get; set; }
 
-        [JsonProperty("AExpdt")]
+        [JsonProperty("expiryDate")]
         public string AExpdt { get; set; }
 
-        [JsonProperty("AEffectiveDtH")]
+        [JsonProperty("effectiveDateHijri")]
         public string AEffectiveDtH { get; set; }
 
-        [JsonProperty("AEffectiveDtC")]
+        [JsonProperty("effectiveDateCalendar")]
         public string AEffectiveDtC { get; set; }
 
-        [JsonProperty("AEffectiveDt")]
+        [JsonProperty("effectiveDate")]
         public string AEffectiveDt { get; set; }
 
-        [JsonProperty("ADregReason")]
+        [JsonProperty("deregistrationReason")]
         public string ADregReason { get; set; }
 
         [JsonIgnore]
         public string ADeregSelectedReasonValue { get; set; }
 
-        [JsonProperty("ADregOpt")]
+        [JsonProperty("deregistrationOption")]
         public string ADregOpt
         {
             get;
             set;
         }
 
-        [JsonProperty("ADocumnt9")]
+        [JsonProperty("document9")]
         public string ADocumnt9 { get; set; }
 
-        [JsonProperty("ADocumnt8")]
+        [JsonProperty("document8")]
         public string ADocumnt8 { get; set; }
 
-        [JsonProperty("ADocumnt7")]
+        [JsonProperty("document7")]
         public string ADocumnt7 { get; set; }
 
-        [JsonProperty("ADocumnt6")]
+        [JsonProperty("document6")]
         public string ADocumnt6 { get; set; }
 
-        [JsonProperty("ADocumnt5Txt")]
+        [JsonProperty("document5Description")]
         public string ADocumnt5Txt { get; set; }
 
-        [JsonProperty("ADocumnt5")]
+        [JsonProperty("document5")]
         public string ADocumnt5 { get; set; }
 
-        [JsonProperty("ADocumnt4Txt")]
+        [JsonProperty("document4Description")]
         public string ADocumnt4Txt { get; set; }
 
-        [JsonProperty("ADocumnt4")]
+        [JsonProperty("document4")]
         public string ADocumnt4 { get; set; }
 
-        [JsonProperty("ADocumnt3")]
+        [JsonProperty("document3")]
         public string ADocumnt3 { get; set; }
 
-        [JsonProperty("ADocumnt2")]
+        [JsonProperty("document2")]
         public string ADocumnt2 { get; set; }
 
-        [JsonProperty("ADocumnt14")]
+        [JsonProperty("document14")]
         public string ADocumnt14 { get; set; }
 
-        [JsonProperty("ADocumnt13")]
+        [JsonProperty("document13")]
         public string ADocumnt13 { get; set; }
 
-        [JsonProperty("ADocumnt12")]
+        [JsonProperty("document12")]
         public string ADocumnt12 { get; set; }
 
-        [JsonProperty("ADocumnt11")]
+        [JsonProperty("document11")]
         public string ADocumnt11 { get; set; }
 
-        [JsonProperty("ADocumnt10")]
+        [JsonProperty("document10")]
         public string ADocumnt10 { get; set; }
 
-        [JsonProperty("ADocumnt1")]
+        [JsonProperty("document1")]
         public string ADocumnt1 { get; set; }
 
-        [JsonProperty("ADobH")]
+        [JsonProperty("birthDateHijri")]
         public string ADobH { get; set; }
 
-        [JsonProperty("ADobC")]
+        [JsonProperty("birthDateCalendar")]
         public string ADobC { get; set; }
 
-        [JsonProperty("ADob")]
+        [JsonProperty("birthDate")]
         public string ADob { get; set; }
 
-        [JsonProperty("ADegister")]
+        [JsonProperty("deregister")]
         public string ADegister { get; set; }
 
-        [JsonProperty("ADecTitle")]
+        [JsonProperty("declarationTitle")]
         public string ADecTitle { get; set; }
 
-        [JsonProperty("ADecTelNo")]
+        [JsonProperty("declarationTelephoneNumber")]
         public string ADecTelNo { get; set; }
 
-        [JsonProperty("ADecName")]
+        [JsonProperty("declarationName")]
         public string ADecName { get; set; }
 
-        [JsonProperty("ADeclarationChkbox")]
+        [JsonProperty("declarationCheckbox")]
         public string ADeclarationChkbox { get; set; }
 
-        [JsonProperty("ADecDesig")]
+        [JsonProperty("declarationDesignation")]
         public string ADecDesig { get; set; }
 
-        [JsonProperty("ADecDateH")]
+        [JsonProperty("declarationDateHijri")]
         public string ADecDateH { get; set; }
 
-        [JsonProperty("ADecDateC")]
+        [JsonProperty("declarationDateCalendar")]
         public string ADecDateC { get; set; }
 
-        [JsonProperty("ADecDate")]
+        [JsonProperty("declarationDate")]
         public string ADecDate { get; set; }
 
-        [JsonProperty("ADateFormat")]
+        [JsonProperty("date")]
         public string ADateFormat { get; set; }
 
-        [JsonProperty("ABranchTxt")]
+        [JsonProperty("branchDescription")]
         public string ABranchTxt { get; set; }
 
-        [JsonProperty("ABpKind")]
+        [JsonProperty("partnerType")]
         public string ABpKind { get; set; }
 
-        [JsonProperty("Permit_TableSet")]
-        public Set PermitTableSet { get; set; }
+        [JsonProperty("permitsTable")]
+        public ArrayList PermitTableSet { get; set; }
 
-        [JsonProperty("Off_notesSet")]
-        public Set OffNotesSet { get; set; }
+        [JsonProperty("offNotes")]
+        public ArrayList OffNotesSet { get; set; }
 
-        [JsonProperty("PermitSet")]
-        public PermitSet PermitSet { get; set; }
+        [JsonProperty("permits")]
+        public PermitSetResult[] PermitSet { get; set; }
+       // public PermitSet PermitSet { get; set; }
 
-        [JsonProperty("OutletSet")]
-        public Set OutletSet { get; set; }
+        [JsonProperty("outlets")]
+        public OutletSetResult[] OutletSet;
+        //public Set OutletSet { get; set; }
 
-        [JsonProperty("AttDetSet")]
-        public AttachmentSet AttDetSet { get; set; }
+        [JsonProperty("attachments")]
+        public List<Attachment> AttDetSet { get; set; }
+       // public AttachmentSet AttDetSet { get; set; }
 
-        [JsonProperty("returnSet")]
-        public Set ReturnSet { get; set; }
+        [JsonProperty("returns")]
+        public ArrayList ReturnSet { get; set; }
 
+        [JsonProperty("deregistration_reasonSet")]
+        public DeregistrationSet Deregistration_ReasonSet {get; set;}
 
     }
-   
-    public partial class TinDeregistrationSendResponseModel
+
+    public class DeregistrationSet
+    {
+        [JsonProperty("results")]
+        public List<DeregistrationSetResult> Results { get; set; }
+    }
+
+    public class DeregistrationSetResult
     {
         [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("Assignme")]
+        [JsonProperty("FieldName")]
+        public string FieldName { get; set; }
+
+        [JsonProperty("LineNo")]
+        public int LineNo { get; set; }
+
+        [JsonProperty("Msgty")]
+        public string Msgty { get; set; }
+
+        [JsonProperty("Message")]
+        public string Message { get; set; }
+
+    }
+
+    [Preserve(AllMembers = true)]
+    public partial class TinDeregistrationSendResponseModel
+    {
+        public Metadata Metadata { get; set; }
+
+        [JsonProperty("assignToMe")]
         public string Assignme { get; set; }
 
-        [JsonProperty("Caseid")]
+        [JsonProperty("caseId")]
         public string Caseid { get; set; }
 
-        [JsonProperty("Operation")]
+        [JsonProperty("operation")]
         public string Operation { get; set; }
 
-        [JsonProperty("Xvoidz")]
+        [JsonProperty("void")]
         public string Xvoidz { get; set; }
 
-        [JsonProperty("TinInPrcFg")]
+        [JsonProperty("TINInProcessing")]
         public string TinInPrcFg { get; set; }
 
-        [JsonProperty("Taxpayerz")]
+        [JsonProperty("TIN")]
         public string Taxpayerz { get; set; }
 
-        [JsonProperty("Submitz")]
+        [JsonProperty("submit")]
         public string Submitz { get; set; }
 
-        [JsonProperty("Status")]
+        [JsonProperty("SEZTaxpayer")]
+        public string SezTpFlag { get; set; }
+
+        [JsonProperty("deregistartion")]
+        public string BgDregFlg { get; set; }
+
+        [JsonProperty("status")]
         public string Status { get; set; }
 
-        [JsonProperty("Savez")]
+        [JsonProperty("save")]
         public string Savez { get; set; }
 
-        [JsonProperty("Rejectz")]
+        [JsonProperty("reject")]
         public string Rejectz { get; set; }
 
-        [JsonProperty("RegIdz")]
+        [JsonProperty("contractNumber")]
         public string RegIdz { get; set; }
 
-        [JsonProperty("PortalUsrz")]
+        [JsonProperty("portalUser")]
         public string PortalUsrz { get; set; }
 
-        [JsonProperty("PeriodKeyz")]
+        [JsonProperty("periodKey")]
         public string PeriodKeyz { get; set; }
 
-
-
-        [JsonProperty("OfficerUidz")]
+        [JsonProperty("userName")]
         public string OfficerUidz { get; set; }
 
-        [JsonProperty("Monthz")]
+        [JsonProperty("month")]
         public string Monthz { get; set; }
 
-        [JsonProperty("LegacyDocNo")]
+        [JsonProperty("legacyDocumentNumber")]
         public string LegacyDocNo { get; set; }
 
-        [JsonProperty("Langz")]
+        [JsonProperty("language")]
         public string Langz { get; set; }
 
-        [JsonProperty("FormGuid")]
+        [JsonProperty("formGUID")]
         public string FormGuid { get; set; }
 
-        [JsonProperty("Fbnumz")]
+        [JsonProperty("formBundleNumber")]
         public string Fbnumz { get; set; }
 
-        [JsonProperty("Fbnum")]
+      //  [JsonProperty("Fbnum")]
         public string Fbnum { get; set; }
-        [JsonProperty("Fbust")]
+        [JsonProperty("userStatus")]
         public string Fbust { get; set; }
 
-        [JsonProperty("Dflag")]
+        [JsonProperty("display")]
         public string Dflag { get; set; }
 
-        [JsonProperty("CreateTxAssesz")]
+        [JsonProperty("createTaxAssessment")]
         public string CreateTxAssesz { get; set; }
 
-        [JsonProperty("Cflag")]
+        [JsonProperty("change")]
         public string Cflag { get; set; }
 
-        [JsonProperty("CaseGuid")]
+        [JsonProperty("caseGUID")]
         public string CaseGuid { get; set; }
 
-        [JsonProperty("Auditorz")]
+        [JsonProperty("auditor")]
         public string Auditorz { get; set; }
 
-        [JsonProperty("ATransTin")]
+        [JsonProperty("transactionTIN")]
         public string ATransTin { get; set; }
 
-        [JsonProperty("ATitle")]
+        [JsonProperty("title")]
         public string ATitle { get; set; }
 
-        [JsonProperty("ATinType")]
+        [JsonProperty("TINType")]
         public string ATinType { get; set; }
 
-        [JsonProperty("ATin")]
+        //[JsonProperty("TIN")]
         public string ATin { get; set; }
 
-        [JsonProperty("ATaxpayerName")]
+        [JsonProperty("taxpayerName")]
         public string ATaxpayerName { get; set; }
 
-        [JsonProperty("ASubmissionDateH")]
+        [JsonProperty("submissionDateHijri")]
         public string ASubmissionDateH { get; set; }
 
-        [JsonProperty("ASubmissionDateC")]
+        [JsonProperty("submissionDateCalendar")]
         public string ASubmissionDateC { get; set; }
 
-        [JsonProperty("ASubmissionDate")]
+        [JsonProperty("submissionDate")]
         public string ASubmissionDate { get; set; }
 
-        [JsonProperty("AStep")]
-        public long AStep { get; set; }
+        [JsonProperty("step")]
+        public string AStep { get; set; }
 
-        [JsonProperty("Approvez")]
+        [JsonProperty("approve")]
         public string Approvez { get; set; }
 
-        [JsonProperty("AOffOrigin")]
+        [JsonProperty("officialUseOrigin")]
         public string AOffOrigin { get; set; }
 
-        [JsonProperty("AOffAppNo")]
+        [JsonProperty("officialApplicationNumber")]
         public string AOffAppNo { get; set; }
 
-        [JsonProperty("ANm7")]
+        [JsonProperty("firstName7")]
         public string ANm7 { get; set; }
 
-        [JsonProperty("ANm6")]
+        [JsonProperty("firstName6")]
         public string ANm6 { get; set; }
 
-        [JsonProperty("ANm5")]
+        [JsonProperty("firstName5")]
         public string ANm5 { get; set; }
 
-        [JsonProperty("ANm4")]
+        [JsonProperty("firstName4")]
         public string ANm4 { get; set; }
 
-        [JsonProperty("ANm3")]
+        [JsonProperty("firstName3")]
         public string ANm3 { get; set; }
 
-        [JsonProperty("ANm2")]
+        [JsonProperty("firstName2")]
         public string ANm2 { get; set; }
 
-        [JsonProperty("ANm1")]
+        [JsonProperty("firstName1")]
         public string ANm1 { get; set; }
 
-        [JsonProperty("AmdRsnz")]
+        [JsonProperty("amendmentReason")]
         public string AmdRsnz { get; set; }
 
-        [JsonProperty("AIdType")]
+        [JsonProperty("idType")]
         public string AIdType { get; set; }
 
-        [JsonProperty("AIdNo")]
+        [JsonProperty("idNumber")]
         public string AIdNo { get; set; }
 
-        [JsonProperty("AFormStatus")]
+        [JsonProperty("formStatus")]
         public string AFormStatus { get; set; }
 
-        [JsonProperty("AExpdtH")]
+        [JsonProperty("expiryDateHijri")]
         public string AExpdtH { get; set; }
 
-        [JsonProperty("AExpdtC")]
+        [JsonProperty("expiryDateCalendar")]
         public string AExpdtC { get; set; }
 
-        [JsonProperty("AExpdt")]
+        [JsonProperty("expiryDate")]
         public string AExpdt { get; set; }
 
-        [JsonProperty("AEffectiveDtH")]
+        [JsonProperty("effectiveDateHijri")]
         public string AEffectiveDtH { get; set; }
 
-        [JsonProperty("AEffectiveDtC")]
+        [JsonProperty("effectiveDateCalendar")]
         public string AEffectiveDtC { get; set; }
 
-        [JsonProperty("AEffectiveDt")]
+        [JsonProperty("effectiveDate")]
         public string AEffectiveDt { get; set; }
 
-        [JsonProperty("ADregReason")]
+        [JsonProperty("deregistrationReason")]
         public string ADregReason { get; set; }
 
         [JsonIgnore]
         public string ADeregSelectedReasonValue { get; set; }
 
-        [JsonProperty("ADregOpt")]
+        [JsonProperty("deregistrationOption")]
         public string ADregOpt { get; set; }
 
-        [JsonProperty("ADocumnt9")]
+        [JsonProperty("document9")]
         public string ADocumnt9 { get; set; }
 
-        [JsonProperty("ADocumnt8")]
+        [JsonProperty("document8")]
         public string ADocumnt8 { get; set; }
 
-        [JsonProperty("ADocumnt7")]
+        [JsonProperty("document7")]
         public string ADocumnt7 { get; set; }
 
-        [JsonProperty("ADocumnt6")]
+        [JsonProperty("document6")]
         public string ADocumnt6 { get; set; }
 
-        [JsonProperty("ADocumnt5Txt")]
+        [JsonProperty("document5Description")]
         public string ADocumnt5Txt { get; set; }
 
-        [JsonProperty("ADocumnt5")]
+        [JsonProperty("document5")]
         public string ADocumnt5 { get; set; }
 
-        [JsonProperty("ADocumnt4Txt")]
+        [JsonProperty("document4Description")]
         public string ADocumnt4Txt { get; set; }
 
-        [JsonProperty("ADocumnt4")]
+        [JsonProperty("document4")]
         public string ADocumnt4 { get; set; }
 
-        [JsonProperty("ADocumnt3")]
+        [JsonProperty("document3")]
         public string ADocumnt3 { get; set; }
 
-        [JsonProperty("ADocumnt2")]
+        [JsonProperty("document2")]
         public string ADocumnt2 { get; set; }
 
-        [JsonProperty("ADocumnt14")]
+        [JsonProperty("document14")]
         public string ADocumnt14 { get; set; }
 
-        [JsonProperty("ADocumnt13")]
+        [JsonProperty("document13")]
         public string ADocumnt13 { get; set; }
 
-        [JsonProperty("ADocumnt12")]
+        [JsonProperty("document12")]
         public string ADocumnt12 { get; set; }
 
-        [JsonProperty("ADocumnt11")]
+        [JsonProperty("document11")]
         public string ADocumnt11 { get; set; }
 
-        [JsonProperty("ADocumnt10")]
+        [JsonProperty("document10")]
         public string ADocumnt10 { get; set; }
 
-        [JsonProperty("ADocumnt1")]
+        [JsonProperty("document1")]
         public string ADocumnt1 { get; set; }
 
-        [JsonProperty("ADobH")]
+        [JsonProperty("birthDateHijri")]
         public string ADobH { get; set; }
 
-        [JsonProperty("ADobC")]
+        [JsonProperty("birthDateCalendar")]
         public string ADobC { get; set; }
 
-        [JsonProperty("ADob")]
+        [JsonProperty("birthDate")]
         public string ADob { get; set; }
 
-        [JsonProperty("ADegister")]
+        [JsonProperty("deregister")]
         public string ADegister { get; set; }
 
-        [JsonProperty("ADecTitle")]
+        [JsonProperty("declarationTitle")]
         public string ADecTitle { get; set; }
 
-        [JsonProperty("ADecTelNo")]
+        [JsonProperty("declarationTelephoneNumber")]
         public string ADecTelNo { get; set; }
 
-        [JsonProperty("ADecName")]
+        [JsonProperty("declarationName")]
         public string ADecName { get; set; }
 
-        [JsonProperty("ADeclarationChkbox")]
+        [JsonProperty("declarationCheckbox")]
         public string ADeclarationChkbox { get; set; }
 
-        [JsonProperty("ADecDesig")]
+        [JsonProperty("declarationDesignation")]
         public string ADecDesig { get; set; }
 
-        [JsonProperty("ADecDateH")]
+        [JsonProperty("declarationDateHijri")]
         public string ADecDateH { get; set; }
 
-        [JsonProperty("ADecDateC")]
+        [JsonProperty("declarationDateCalendar")]
         public string ADecDateC { get; set; }
 
-        [JsonProperty("ADecDate")]
+        [JsonProperty("declarationDate")]
         public string ADecDate { get; set; }
 
-        [JsonProperty("ADateFormat")]
+        [JsonProperty("date")]
         public string ADateFormat { get; set; }
 
-        [JsonProperty("ABranchTxt")]
+        [JsonProperty("branchDescription")]
         public string ABranchTxt { get; set; }
 
-        [JsonProperty("ABpKind")]
+        [JsonProperty("partnerType")]
         public string ABpKind { get; set; }
 
-        [JsonProperty("Permit_TableSet")]
+        [JsonProperty("permitsTable")]
         public List<string> PermitTableSet { get; set; }
 
-        [JsonProperty("Off_notesSet")]
+        [JsonProperty("offNotes")]
         public List<string> OffNotesSet { get; set; }
 
-        [JsonProperty("PermitSet")]
+        [JsonProperty("permits")]
         public Array PermitSet { get; set; }
 
-        [JsonProperty("OutletSet")]
+        [JsonProperty("outlets")]
         public Array OutletSet { get; set; }
 
-        [JsonProperty("AttDetSet")]
+        [JsonProperty("attachments")]
         public List<string> AttDetSet { get; set; }
 
-        [JsonProperty("returnSet")]
+        [JsonProperty("returns")]
         public List<string> ReturnSet { get; set; }
 
 
@@ -772,7 +816,7 @@ namespace ZATCAMAUI.Models
 
                 _results = value;
 
-                OnPropertyRaised("Results");
+                OnPropertyRaised(nameof(Results));
 
             }
 
@@ -874,7 +918,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 _results = value;
-                OnPropertyRaised("Results");
+                OnPropertyRaised(nameof(Results));
             }
         }
     }
@@ -905,136 +949,135 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("AOutletCompAddr")]
+        [JsonProperty("address")]
         public string AOutletCompAddr { get; set; }
 
-        [JsonProperty("AOutletNewMainOutnumTb")]
+        [JsonProperty("newMainNumber")]
         public string AOutletNewMainOutnumTb { get; set; }
 
-        [JsonProperty("AOutletExpdtTb")]
+        [JsonProperty("expiryDate")]
         public string AOutletExpdtTb { get; set; }
 
-        [JsonProperty("AOutletFlag")]
+        [JsonProperty("outlet")]
         public string AOutletFlag { get; set; }
 
-        [JsonProperty("AOutletHouseNoTb")]
+        [JsonProperty("houseNumber")]
         public string AOutletHouseNoTb { get; set; }
 
-        [JsonProperty("AOutletExpdtHTb")]
+        [JsonProperty("expiryDateHijri")]
         public string AOutletExpdtHTb { get; set; }
 
-        [JsonProperty("AOutletMobileNoTb")]
+        [JsonProperty("mobileNumber")]
         public string AOutletMobileNoTb { get; set; }
 
-        [JsonProperty("AOutletExpdtCTb")]
+        [JsonProperty("expiryDateCalendar")]
         public string AOutletExpdtCTb { get; set; }
 
-        [JsonProperty("AOutletNm6Tb")]
+        [JsonProperty("name6")]
         public string AOutletNm6Tb { get; set; }
 
-        [JsonProperty("AOutletNoTb")]
+        [JsonProperty("number")]
         public string AOutletNoTb { get; set; }
 
-        [JsonProperty("AOutletTitleTb")]
+        [JsonProperty("title")]
         public string AOutletTitleTb { get; set; }
 
-        [JsonProperty("OutletInPrcFg")]
+        [JsonProperty("inProcessing")]
         public string OutletInPrcFg { get; set; }
 
-        [JsonProperty("AOutletBuildingNoTb")]
+        [JsonProperty("buildingNumber")]
         public string AOutletBuildingNoTb { get; set; }
 
-        [JsonProperty("AOutletComcdFlag")]
+        [JsonProperty("outletCommencement")]
         public string AOutletComcdFlag { get; set; }
 
-        [JsonProperty("AOutletEmailTb")]
+        [JsonProperty("email")]
         public string AOutletEmailTb { get; set; }
 
-        [JsonProperty("AOutletNameTb")]
+        [JsonProperty("name")]
         public string AOutletNameTb { get; set; }
 
-        [JsonProperty("AOutletNm5Tb")]
+        [JsonProperty("name5")]
         public string AOutletNm5Tb { get; set; }
 
-        [JsonProperty("AOutletNm7Tb")]
+        [JsonProperty("name7")]
         public string AOutletNm7Tb { get; set; }
 
-        [JsonProperty("AOutletMainFlagTb")]
+        [JsonProperty("mainOutlet")]
         public string AOutletMainFlagTb { get; set; }
 
-        [JsonProperty("AOutletPoBoxTb")]
+        [JsonProperty("POBox")]
         public string AOutletPoBoxTb { get; set; }
 
-        [JsonProperty("AOutletStreet1Tb")]
+        [JsonProperty("street1")]
         public string AOutletStreet1Tb { get; set; }
 
-        [JsonProperty("AOutletToDeregTb")]
+        [JsonProperty("toDeregister")]
         public string AOutletToDeregTb { get; set; }
 
-        [JsonProperty("AOutletDregOptTb")]
+        [JsonProperty("deregisterOption")]
         public string AOutletDregOptTb { get; set; }
 
-        [JsonProperty("AOutletStreet2Tb")]
+        [JsonProperty("street2")]
         public string AOutletStreet2Tb { get; set; }
 
-        [JsonProperty("AOutletEffDtTb")]
+        [JsonProperty("effectiveDate")]
         public string AOutletEffDtTb { get; set; }
 
-        [JsonProperty("AOutletProvinceTb")]
+        [JsonProperty("province")]
         public string AOutletProvinceTb { get; set; }
 
-        [JsonProperty("AOutletCityTb")]
+        [JsonProperty("city")]
         public string AOutletCityTb { get; set; }
 
-        [JsonProperty("AOutletEffDtHTb")]
+        [JsonProperty("effectiveDateHijri")]
         public string AOutletEffDtHTb { get; set; }
 
-        [JsonProperty("AOutletEffDtCTb")]
+        [JsonProperty("effectiveDateCalendar")]
         public string AOutletEffDtCTb { get; set; }
 
-        [JsonProperty("AOutletQuarterTb")]
+        [JsonProperty("quarter")]
         public string AOutletQuarterTb { get; set; }
 
-        [JsonProperty("AOutletCountryTb")]
+        [JsonProperty("country")]
         public string AOutletCountryTb { get; set; }
 
-        [JsonProperty("AOutletTransTinTb")]
+        [JsonProperty("transferTIN")]
         public string AOutletTransTinTb { get; set; }
 
-        [JsonProperty("AOutletIdTypeTb")]
+        [JsonProperty("idType")]
         public string AOutletIdTypeTb { get; set; }
 
-        [JsonProperty("AOutletPostalCodeTb")]
+        [JsonProperty("postalCode")]
         public string AOutletPostalCodeTb { get; set; }
 
-        [JsonProperty("AOutletIdentificationNoTb")]
+        [JsonProperty("identificationNumber")]
         public string AOutletIdentificationNoTb { get; set; }
 
-        [JsonProperty("AOutletIdNoTb")]
+        [JsonProperty("idNumber")]
         public string AOutletIdNoTb { get; set; }
 
-        [JsonProperty("AOutletNm1Tb")]
+        [JsonProperty("name1")]
         public string AOutletNm1Tb { get; set; }
 
-        [JsonProperty("AOutletNm2Tb")]
+        [JsonProperty("name12")]
         public string AOutletNm2Tb { get; set; }
 
-        [JsonProperty("AOutletNm3Tb")]
+        [JsonProperty("name13")]
         public string AOutletNm3Tb { get; set; }
 
-        [JsonProperty("AOutletNm4Tb")]
+        [JsonProperty("name14")]
         public string AOutletNm4Tb { get; set; }
 
-        [JsonProperty("AOutletDobTb")]
+        [JsonProperty("birthDate")]
         public string AOutletDobTb { get; set; }
 
-        [JsonProperty("AOutletDobHTb")]
+        [JsonProperty("birthDateHijri")]
         public string AOutletDobHTb { get; set; }
 
-        [JsonProperty("AOutletDobCTb")]
+        [JsonProperty("birthDateCalendar")]
         public string AOutletDobCTb { get; set; }
 
         [JsonIgnore]
@@ -1088,29 +1131,29 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        [JsonProperty("APermitNewMainNoIdTb")]
+        [JsonProperty("newMainIdNumber")]
         public string APermitNewMainNoIdTb { get; set; }
 
-        [JsonProperty("APermitAdrFlag")]
+        [JsonProperty("address")]
         public string APermitAdrFlag { get; set; }
 
-        [JsonProperty("APermitCbFlag")]
+        [JsonProperty("comboBox")]
         public string APermitCbFlag { get; set; }
 
-        [JsonProperty("APermitConFlag")]
+        [JsonProperty("permitCommencement")]
         public string APermitConFlag { get; set; }
 
-        [JsonProperty("APermitGovFlag")]
+        [JsonProperty("government")]
         public string APermitGovFlag { get; set; }
 
-        [JsonProperty("APermitMainActFlagTb")]
+        [JsonProperty("mainActivity")]
         public string APermitMainActFlagTb { get; set; }
 
-        [JsonProperty("APermitMainnoTb")]
+        [JsonProperty("mainNumber")]
         public string APermitMainnoTb { get; set; }
 
         private string _aPermitNm6Tb;
-        [JsonProperty("APermitNm6Tb")]
+        [JsonProperty("name6")]
         public string APermitNm6Tb
         {
             get => _aPermitNm6Tb;
@@ -1121,32 +1164,32 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        [JsonProperty("APermitNoTb")]
+        [JsonProperty("number")]
         public string APermitNoTb { get; set; }
 
-        [JsonProperty("APermitTypTxt")]
+        [JsonProperty("typeDescription")]
         public string APermitTypTxt { get; set; }
 
-        [JsonProperty("PermitInPrcFg")]
+        [JsonProperty("inProcessing")]
         public string PermitInPrcFg { get; set; }
 
-        [JsonProperty("APermitExpdtHTb")]
+        [JsonProperty("expiryDateHijri")]
         public string APermitExpdtHTb { get; set; }
 
-        [JsonProperty("APermitMainActNoTb")]
+        [JsonProperty("mainActivityNumber")]
         public string APermitMainActNoTb { get; set; }
 
-        [JsonProperty("APermitOutletnoTb")]
+        [JsonProperty("outletNumber")]
         public string APermitOutletnoTb { get; set; }
 
-        [JsonProperty("APermitExpdtCTb")]
+        [JsonProperty("expiryDateCalendar")]
         public string APermitExpdtCTb { get; set; }
 
-        [JsonProperty("APermitTitleTb")]
+        [JsonProperty("title")]
         public string APermitTitleTb { get; set; }
 
         private string _aPermitNm5Tb;
-        [JsonProperty("APermitNm5Tb")]
+        [JsonProperty("name5")]
         public string APermitNm5Tb
         {
             get => _aPermitNm5Tb;
@@ -1158,7 +1201,7 @@ namespace ZATCAMAUI.Models
         }
 
         private string _aPermitNm7Tb;
-        [JsonProperty("APermitNm7Tb")]
+        [JsonProperty("name7")]
         public string APermitNm7Tb
         {
             get => _aPermitNm7Tb;
@@ -1169,30 +1212,30 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        [JsonProperty("APermitTypeTb")]
+        [JsonProperty("type")]
         public string APermitTypeTb { get; set; }
 
-        [JsonProperty("APermitValfrDtTb")]
+        [JsonProperty("validFromDate")]
         public string APermitValfrDtTb { get; set; }
 
-        [JsonProperty("APermitValfrDtHTb")]
+        [JsonProperty("validFromDateHijri")]
         public string APermitValfrDtHTb { get; set; }
 
-        [JsonProperty("APermitValfrDtCTb")]
+        [JsonProperty("validFromDateCalendar")]
         public string APermitValfrDtCTb { get; set; }
 
         [JsonIgnore]
         public string aPermitEffDtTb;
 
-        [JsonProperty("APermitEffDtTb")]
+        [JsonProperty("effectiveDate")]
         public string APermitEffDtTb
         {
             get { return aPermitEffDtTb; }
             set
-            { if (!string.IsNullOrEmpty(value)) { aPermitEffDtTb = value; OnPropertyRaised("APermitEffDtTb"); } }
+            { if (!string.IsNullOrEmpty(value)) { aPermitEffDtTb = value; OnPropertyRaised(nameof(APermitEffDtTb)); } }
         }
 
-        [JsonProperty("APermitEffDtHTb")]
+        [JsonProperty("effectiveDateHijri")]
         public string APermitEffDtHTb { get; set; }
 
         [JsonIgnore]
@@ -1203,7 +1246,7 @@ namespace ZATCAMAUI.Models
         {
             get { return aPermitDeregDisplayDate; }
             set
-            { { aPermitDeregDisplayDate = value; OnPropertyRaised("APermitDeregDisplayDate"); } }
+            { { aPermitDeregDisplayDate = value; OnPropertyRaised(nameof(APermitDeregDisplayDate)); } }
         }
 
         [JsonIgnore]
@@ -1216,7 +1259,7 @@ namespace ZATCAMAUI.Models
             set
             {
                 aPermitIsReasonSelected = value;
-                OnPropertyRaised("APermitIsReasonSelected");
+                OnPropertyRaised(nameof(APermitIsReasonSelected));
             }
         }
 
@@ -1284,7 +1327,7 @@ namespace ZATCAMAUI.Models
         {
             get { return aPermitDeregDisplayDobDate; }
             set
-            { /*if (!string.IsNullOrEmpty(value)) {*/ aPermitDeregDisplayDobDate = value; OnPropertyRaised("APermitDeregDisplayDobDate"); /*}*/ }
+            { /*if (!string.IsNullOrEmpty(value)) {*/ aPermitDeregDisplayDobDate = value; OnPropertyRaised(nameof(APermitDeregDisplayDobDate)); /*}*/ }
         }
 
         [JsonIgnore]
@@ -1295,13 +1338,13 @@ namespace ZATCAMAUI.Models
         {
             get { return aPermitDisplayReason; }
             set
-            { if (!string.IsNullOrEmpty(value)) { aPermitDisplayReason = value; OnPropertyRaised("APermitDisplayReason"); } }
+            { if (!string.IsNullOrEmpty(value)) { aPermitDisplayReason = value; OnPropertyRaised(nameof(APermitDisplayReason)); } }
         }
 
         [JsonIgnore]
         public string aPermitDregRsnTb { get; set; }
 
-        [JsonProperty("APermitDregRsnTb")]
+        [JsonProperty("deregistration")]
         public string APermitDregRsnTb
         {
             get
@@ -1332,18 +1375,18 @@ namespace ZATCAMAUI.Models
                             ReasonDescription = AppResources.TinDeregistrationTransfer;
                         }
                     }
-                    OnPropertyRaised("APermitDregRsnTb");
+                    OnPropertyRaised(nameof(APermitDregRsnTb));
                 }
             }
         }
 
-        [JsonProperty("APermitEffDtCTb")]
+        [JsonProperty("effectiveDateCalendar")]
         public string APermitEffDtCTb { get; set; }
 
         [JsonIgnore]
         public string aPermitIdNoTb { get; set; }
 
-        [JsonProperty("APermitIdNoTb")]
+        [JsonProperty("idNumber")]
         public string APermitIdNoTb
         {
             get
@@ -1375,21 +1418,21 @@ namespace ZATCAMAUI.Models
                             {
                                 APermitDobHTb = IDTypeDataModel.TaxpDob;
                                 APermitIdTypeTb = idType.key;
-                                APermitTransTinTb = IDTypeDataModel.Tin;
+                                APermitTransTinTb = IDTypeDataModel.TIN;
                             }
 
                         }
 
                     });
                 }
-                OnPropertyRaised("APermitIdNoTb");
+                OnPropertyRaised(nameof(APermitIdNoTb));
             }
         }
 
         [JsonIgnore]
         private string aPermitTransTinTb = string.Empty;
 
-        [JsonProperty("APermitTransTinTb")]
+        [JsonProperty("transferTIN")]
         public string APermitTransTinTb
         {
             get
@@ -1429,7 +1472,7 @@ namespace ZATCAMAUI.Models
 
 
                 }
-                OnPropertyRaised("APermitTransTinTb");
+                OnPropertyRaised(nameof(APermitTransTinTb));
             }
         }
 
@@ -1479,7 +1522,7 @@ namespace ZATCAMAUI.Models
 
         [JsonIgnore]
         public string aPermitIdTypeTb;
-        [JsonProperty("APermitIdTypeTb")]
+        [JsonProperty("idType")]
         public string APermitIdTypeTb
         {
             get
@@ -1511,7 +1554,7 @@ namespace ZATCAMAUI.Models
                     APermitIsCompanyId = false;
                 }
 
-                OnPropertyRaised("APermitIdTypeTb");
+                OnPropertyRaised(nameof(APermitIdTypeTb));
             }
         }
 
@@ -1539,14 +1582,14 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        [JsonProperty("APermitNm1Tb")]
+        [JsonProperty("name1")]
         public string APermitNm1Tb { get; set; }
 
-        [JsonProperty("APermitNm2Tb")]
+        [JsonProperty("name2")]
         public string APermitNm2Tb { get; set; }
 
         private string _aPermitNm3Tb;
-        [JsonProperty("APermitNm3Tb")]
+        [JsonProperty("name3")]
         public string APermitNm3Tb
         {
             get => _aPermitNm3Tb;
@@ -1558,7 +1601,7 @@ namespace ZATCAMAUI.Models
         }
 
         private string _aPermitNm4Tb;
-        [JsonProperty("APermitNm4Tb")]
+        [JsonProperty("name4")]
         public string APermitNm4Tb
         {
             get => _aPermitNm4Tb;
@@ -1569,13 +1612,13 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        [JsonProperty("APermitDobTb")]
+        [JsonProperty("birthDate")]
         public string APermitDobTb { get; set; }
 
-        [JsonProperty("APermitDobHTb")]
+        [JsonProperty("birthDatHijri")]
         public string APermitDobHTb { get; set; }
 
-        [JsonProperty("APermitDobCTb")]
+        [JsonProperty("birthDateCalendar")]
         public string APermitDobCTb { get; set; }
 
         [JsonIgnore]
@@ -1618,20 +1661,22 @@ namespace ZATCAMAUI.Models
    
     public partial class TinDeregistrationReasonSetDataModel
     {
-        [JsonProperty("__metadata")]
+       // [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
-        [JsonProperty("Partner")]
+        [JsonProperty("TIN")]
         public string Partner { get; set; }
 
-        [JsonProperty("Spars")]
+        [JsonProperty("language")]
         public string Spars { get; set; }
 
-        [JsonProperty("OutletSet")]
+        //[JsonProperty("OutletSet")]
         public OutletSet OutletSet { get; set; }
 
-        [JsonProperty("REASONSet")]
-        public TinDeregReasonSet ReasonSet { get; set; }
+        [JsonProperty("reasons")]
+        public TinDeregReasonSetResult[] ReasonSet { get; set; }
+        [JsonProperty("deregistrationReasons")]
+        public TinDeregReasonSetResult[] Reasons { set { ReasonSet = value; } }
     }
    
     public partial class OutletSet
@@ -1648,19 +1693,19 @@ namespace ZATCAMAUI.Models
    
     public partial class TinDeregReasonSet
     {
-        [JsonProperty("results")]
+        [JsonProperty("deregistrationReasons")]
         public TinDeregReasonSetResult[] Results { get; set; }
     }
    
     public partial class TinDeregReasonSetResult
     {
-        [JsonProperty("__metadata")]
+       // [JsonProperty("__metadata")]
         public Metadata MetadataReasonSet { get; set; }
 
-        [JsonProperty("ReasonCd")]
+        [JsonProperty("reasonCode")]
         public string ReasonCd { get; set; }
 
-        [JsonProperty("ReasonDesc")]
+        [JsonProperty("reasonDescription")]
         public string ReasonDesc { get; set; }
     }
    

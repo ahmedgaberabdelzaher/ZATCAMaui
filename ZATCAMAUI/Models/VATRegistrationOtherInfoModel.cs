@@ -1,4 +1,6 @@
 ﻿using System.Runtime.Serialization;
+using Foundation;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
@@ -23,10 +25,13 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public __metadataForVATREgistrationOtherInfo __metadata { get; set; }
         [DataMember]
+        [JsonProperty("formBundleType")]
         public string Fbtyp { get; set; }
         [DataMember]
+        [JsonProperty("userStatus")]
         public string Fbust { get; set; }
         [DataMember]
+        [JsonProperty("button")]
         public string Button { get; set; }
     }
 
@@ -73,12 +78,10 @@ namespace ZATCAMAUI.Models
         public List<ResultsItemForElgblDocSet> results { get; set; }
     }
 
-    // [Serializable]
-  
-    //[DataContract]
+    [Preserve(AllMembers = true)]
     public class ELGBL_DOCSetforsubmit
     {
-        // [DataMember]
+       // [DataMember]
         public List<ResultsItemForDOCSetforsubmit> results { get; set; }
     }
 
@@ -87,44 +90,73 @@ namespace ZATCAMAUI.Models
     [DataContract]
     public class VATRegistrationWithOtherInformation
     {
+        //[DataMember]
+      //  public __metadataForVATREgistrationOtherInfo __metadata { get; set; }
         [DataMember]
-        public __metadataForVATREgistrationOtherInfo __metadata { get; set; }
-        [DataMember]
+        [JsonProperty("formBundleType")]
         public string Fbtypz { get; set; }
         [DataMember]
         public string Fbustz { get; set; }
         [DataMember]
+        [JsonProperty("edit")]
         public string EditFgz { get; set; }
         [DataMember]
         public string Mandt { get; set; }
         [DataMember]
+        [JsonProperty("formBundleNumber")]
         public string Fbnum { get; set; }
         [DataMember]
+        [JsonProperty("portalUser")]
         public string PortalUsr { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Lang { get; set; }
         [DataMember]
+        [JsonProperty("operation")]
         public string Operation { get; set; }
         [DataMember]
+        [JsonProperty("stepNumber")]
         public string StepNumber { get; set; }
         [DataMember]
+        [JsonProperty("returnId")]
         public string ReturnId { get; set; }
         [DataMember]
         public string Officer { get; set; }
         [DataMember]
+        [JsonProperty("TIN")]
         public string Gpart { get; set; }
         [DataMember]
+        [JsonProperty("statusCode")]
         public string Status { get; set; }
         [DataMember]
+        [JsonProperty("userType")]
         public string UserTyp { get; set; }
         [DataMember]
+        [JsonProperty("transactionType")]
         public string TxnTp { get; set; }
         [DataMember]
+        [JsonProperty("formProcess")]
         public string Formproc { get; set; }
         [DataMember]
-        public VR_UI_BTNSet VR_UI_BTNSet { get; set; }
+        [JsonProperty("UIButtons")]
+        public List<ResultsItemForButton> VR_UI_BTNSet { get; set; }
         [DataMember]
-        public ELGBL_DOCSet ELGBL_DOCSet { get; set; }
+        [JsonProperty("eligibleDocuments")]
+        public List<ResultsItemForElgblDocSet> ELGBL_DOCSet { get; set; }
+        [JsonProperty("banks")]
+        public List<BankItem> Banks { get; set; }
+    }
+
+    [Serializable]
+    [Preserve(AllMembers = true)]
+    [DataContract]
+    public class BankItem
+    {
+        public string systemCode { get; set; }
+        public string bankCountry { get; set; }
+        public string bankKey { get; set; }
+        public string bankName { get; set; }
+
     }
 
     [Serializable]
@@ -133,6 +165,7 @@ namespace ZATCAMAUI.Models
     public class VATRegistrationOtherDetails
     {
         [DataMember]
+        [JsonProperty("data")]
         public VATRegistrationWithOtherInformation d { get; set; }
     }
 
@@ -146,7 +179,7 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public VATRegistrationDetails VATRegistrationDetailsDatatoPopup { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class VatCommencementDateFormatModel
     {
         [DataMember]
@@ -156,24 +189,29 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public string type { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class CommencementModel
     {
         [DataMember]
         public VatCommencementDateFormatModel __metadata { get; set; }
         [DataMember]
-        public DateTime? VatTaxDt { get; set; }
+        [JsonProperty("VATTaxableDate")]
+        public string VatTaxDt { get; set; }
         [DataMember]
+        [JsonProperty("error")]
         public string ErrorFg { get; set; }
         [DataMember]
+        [JsonProperty("TIN")]
         public string Gpartz { get; set; }
         [DataMember]
+        [JsonProperty("transactionType")]
         public string TxnTpz { get; set; }
     }
-
+    [Preserve(AllMembers = true)]
     public class VatCommencementDateFormat
     {
         [DataMember]
+        [JsonProperty("data")]
         public CommencementModel d { get; set; }
     }
 }

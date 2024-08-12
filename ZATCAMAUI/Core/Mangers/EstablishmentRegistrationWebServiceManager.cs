@@ -10,6 +10,8 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
+using ZATCAMAUI.Models.Attachments;
+using ZATCAMAUI.Models.ESTOutletAddress;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -25,12 +27,26 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+
                     if (!NetworkCheck.IsInternet())
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?&$format=json&$filter=Spras eq '{1}'", ZATCAConstants.ESTBranchesDropDown, lang), false, "");
+                    var lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    var url = ZATCAConstants.ESTBranchesDropDown + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -54,8 +70,7 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             dropDownModels = JsonConvert.DeserializeObject<List<BranchesDropDownModel>>(ESTBranchesDropDownResponseJSON);
                         }
                     }
@@ -93,13 +108,26 @@ namespace ZATCAMAUI.Core.Mangers
                 Fbnum = string.IsNullOrEmpty(Fbnum) || string.IsNullOrWhiteSpace(Fbnum) ? string.Empty : Fbnum;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Euser='',Fbguid='',Gpartx='{1}',Langx='{2}',Operationx='',PortalUsrx='{3}',Srcidentifyx='{4}',StepNumberx='{5}',Fbnumx='{6}',Fbstax='',Fbustx='')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,Nreg_FormEdit,Nreg_BtnSet,off_notesSet,AttDetSet,Nreg_MSGSet&$format=json",
-                        ZATCAConstants.ESTTaxPayerDetails, TIN, lang, emailID, srcidentify, step, Fbnum), false, "");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var URL = ZATCAConstants.ESTTaxPayerDetails + TIN + "&language=" + lang + "&stepNumber=" + step + "&sourceIdentifier=" + srcidentify + "&formBundleNumber=" + Fbnum;
+                    var uri = new Uri(URL);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
@@ -149,7 +177,7 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             try
                             {
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             }
                             catch (Exception)
                             {
@@ -157,9 +185,9 @@ namespace ZATCAMAUI.Core.Mangers
 
                             }
                             taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
-                            if (step.Equals("02") && taxPayer.Nreg_IdSet.results.Count > 0)
+                            if (step.Equals("02") && taxPayer.Nreg_IdSet.Count > 0)
                             {
-                                ZATCAConstants.IdSet = taxPayer.Nreg_IdSet.results;
+                                ZATCAConstants.IdSet = taxPayer.Nreg_IdSet;
                             }
                         }
                     }
@@ -200,13 +228,27 @@ namespace ZATCAMAUI.Core.Mangers
                 Fbnum = string.IsNullOrEmpty(Fbnum) || string.IsNullOrWhiteSpace(Fbnum) ? string.Empty : Fbnum;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
                         throw new GAZTInternetException();
                     }
-                    var uri = ZATCAConstants.ESTTaxPayerDetails + "(" + "Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "',Operationx='" + "',PortalUsrx='" + emailID + "',Srcidentifyx='" + srcidentify + "',StepNumberx='" + step + "',Euser='" + "',Fbguid='" + "',Fbnumx='" + Fbnum + "',Fbstax='" + Fbstax + "',Fbustx='" + Fbustx + "')?&$expand=Nreg_ActivitySet,Nreg_AddressSet,Nreg_ContactSet,Nreg_CpersonSet,Nreg_IdSet,Nreg_OutletSet,Nreg_ShareholderSet,AttDetSet,Nreg_MSGSet&$format=json";
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(uri, false, "");
+                    var URL = ZATCAConstants.ESTTaxPayerDetails + App.LoginDataRetrieved.TIN + "&language=" + lang + "&portalUser=" + emailID + "&sourceIdentifier=" + srcidentify + "&stepNumber=" + step + "&formBundleNumber=" + Fbnum + "&formBundleStatus=" + Fbstax + "&formBundleStatusDescription=" + Fbustx;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
+                    var uri = new Uri(URL);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
@@ -252,19 +294,16 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        string jsonReplace = ESTBranchesDropDownResponseJSON.Replace("\"Begda\":\"\\/Date(-6", "\"Begda\":\"\\/Date(");
-                        string replaceDString = string.Empty;
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
                             try
                             {
-                                replaceDString = JObject.Parse(jsonReplace)["d"].ToString();
-                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(replaceDString);
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             }
                             catch (Exception)
                             {
                             }
-                            
+                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
@@ -299,18 +338,23 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.Timeout = TimeSpan.FromMinutes(10);
-
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     var serializeOptions = new JsonSerializerSettings
                     {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
@@ -321,7 +365,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, ZATCAConstants.ContentType);
 
-                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(new Uri(string.Format("{0}?sap-language={1}", ZATCAConstants.ESTTaxPayerDetails, lang)), contentPost);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(new Uri(ZATCAConstants.ESTTaxPayerDetailsPost), contentPost);
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -343,49 +387,75 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
+                        try
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
+                            if (ESTBranchesDropDownResponseJSON == null)
                             {
-                                string ErrorMessageFormServer = string.Empty;
-                                if (errorMesg.error.innererror.errordetails?.Count > 0)
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
                                 {
-
-                                    if (errorMesg.error.innererror.errordetails.Count > 2)
+                                    string ErrorMessageFormServer = string.Empty;
+                                    if (errorMesg.error.innererror.errordetails?.Count > 0)
                                     {
-                                        for (int i = 0; i < errorMesg.error.innererror.errordetails.Count - 1; i++)
+
+                                        if (errorMesg.error.innererror.errordetails.Count > 2)
                                         {
-                                            ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.error.innererror.errordetails[i].message;
+                                            for (int i = 0; i < errorMesg.error.innererror.errordetails.Count - 1; i++)
+                                            {
+                                                ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.error.innererror.errordetails[i].message;
+                                            }
                                         }
-                                    }
-                                    else
-                                    {
-                                        ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
+                                        else
+                                        {
+                                            ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
+                                        }
+
                                     }
 
+
+                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
                                 }
-
-
-                                throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
+                                {
+                                    string ErrorMessageFormServer = errorMesg.error.message.value;
+                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                }
                             }
-                            else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
+
+                            else
                             {
-                                string ErrorMessageFormServer = errorMesg.error.message.value;
-                                throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                                {
+                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                                }
                             }
                         }
-                        else
+                        catch (Exception ex)
                         {
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
+                            System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
                             if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                             {
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
+                                {
+                                    string ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
+                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                }
+                                else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
+                                {
+                                    string ErrorMessageFormServer = errorMesg.error.message.value;
+                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                }
                             }
                         }
+
+
                     }
                 }
-                catch (JsonReaderException)
+                catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -415,13 +485,27 @@ namespace ZATCAMAUI.Core.Mangers
                 nationality = string.IsNullOrEmpty(nationality) || string.IsNullOrWhiteSpace(nationality) ? "SAUDI" : nationality;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?&$format=json&$filter=ANationality eq '{1}' and Spras eq '{2}'",
-                       ZATCAConstants.ESTTaxPayerNationality, nationality, lang), false, "");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
+                    var url = ZATCAConstants.ESTTaxPayerNationality + nationality + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -445,14 +529,13 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["nationalities"].ToString();
                             nationalities = JsonConvert.DeserializeObject<List<TaxpayerNationality>>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
-                catch (JsonReaderException )
-
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -473,30 +556,42 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return nationalities;
         }
-        public static async Task<Attachment> ESTAttachment(byte[] AttachmentByte, string fileName, string RetGuid, string Doctype, string contentType, string outletref = null) //RG16 for Residency, RG19 for passport RG01 for CR copy RG02 licence copy
+        public static async Task<Attachment> ESTAttachment(Stream AttachmentByte, string fileName, string RetGuid, string Doctype, string contentType, string outletref = null) //RG16 for Residency, RG19 for passport RG01 for CR copy RG02 licence copy
         {
-            char lang = WebServiceManager.GetLangZParameter();
             if (NetworkCheck.IsInternet())
             {
                 try
                 {
                     outletref = string.IsNullOrEmpty(outletref) || string.IsNullOrWhiteSpace(outletref) ? string.Empty : outletref;
+                    var content = new MultipartFormDataContent();
+                    var fileContent = new StreamContent(AttachmentByte);
+                    fileContent.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                    {
+                        Name = "attachmentFile",
+                        FileName = fileName
+                    };
+                    content.Add(fileContent, "attachmentFile", fileName);
 
-                    var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='{2}',Flag='N',Dotyp='{3}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
-                        ZATCAConstants.ESTPostAttachment, RetGuid, outletref, Doctype));
+                    var lang = UtilityManager.GetLanguageParameter();
+                    string AttBy = "TP";
+                    String url = ZATCAConstants.GAZTESTSaveAttachment + "&attachmentFlag=New" + "&returnGUID=" + RetGuid + "&formGUID=" + "&documentCategory=" + Doctype + "&serialNumber=1" + "&documentId=" + "&attachedByPerson=TP" + "&fileName=" + fileName;
+                    var uri = new Uri(url);
+                    //var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='{2}',Flag='N',Dotyp='{3}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
+                    //    Constants.ESTPostAttachment, RetGuid, outletref, Doctype));
 
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
-                    ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    if (!string.IsNullOrEmpty(contentType))
-                        baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
-                    var response = await client.PostAsync(uri, baContent);
+                    //ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
+                    //if (!string.IsNullOrEmpty(contentType))
+                    //    baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
+                    var response = await client.PostAsync(url, content);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    responsestr = JObject.Parse(responsestr)["d"].ToString();
+                    responsestr = JObject.Parse(responsestr)["result"].ToString();
                     Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
                     return _attachment;
                 }
@@ -518,26 +613,57 @@ namespace ZATCAMAUI.Core.Mangers
                 string DeleteToken = string.Empty;
                 try
                 {
-                    var uri = new Uri(string.Format("{0}(RetGuid='{1}',Flag='N',OutletRef='',Dotyp='{2}',SchGuid='',Srno=1,Doguid='{3}',AttBy='X')/$value",
-                        ZATCAConstants.ESTDeleteAttachment, RetGuid, docType, docguid));
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
-
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
-
-                    HttpResponseMessage response = client.DeleteAsync(uri).Result;
-                    var responsestr = response.Content.ReadAsStringAsync().Result;
-                    if (response != null)
+                    Models.Attachments.DeleteAttachmentRequest _attachmentReq = new Models.Attachments.DeleteAttachmentRequest()
                     {
-                        HttpHeaders headers = response.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("delete", out values))
-                        {
-                            DeleteToken = values.First();
-                        }
+                        fileName = fileName,
+                        returnGUID = RetGuid,
+                        formGUID = "",
+                        documentCategory = docType,
+                        documentId = docguid,
+                        serialNumber = "1",
+                        attachedByPerson = "X"
+                    };
+                    String url = ZATCAConstants.ESTDeleteAttachment;
+                    var uri = new Uri(url);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var serialized = JsonConvert.SerializeObject(_attachmentReq);
+                    HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(url, contentPost).Result;
+
+                    //var uri = new Uri(string.Format("{0}(RetGuid='{1}',Flag='N',OutletRef='',Dotyp='{2}',SchGuid='',Srno=1,Doguid='{3}',AttBy='X')/$value",
+                    //    , RetGuid, docType, docguid));
+                    //HttpClient client = new HttpClient();
+
+                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    //client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
+
+                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
+
+                    //HttpResponseMessage response = client.DeleteAsync(uri).Result;
+                    var responsestr = res.Content.ReadAsStringAsync().Result;
+                    if (res != null)
+                    {
+                        //HttpHeaders headers = response.Headers;
+                        //IEnumerable<string> values;
+                        //if (headers.TryGetValues("delete", out values))
+                        //{
+                        //    DeleteToken = values.First();
+                        //}
+                        if (res.StatusCode == HttpStatusCode.NoContent || res.StatusCode == HttpStatusCode.OK)
+                            DeleteToken = "X";
                     }
                     return "delete";
                 }
@@ -566,8 +692,24 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Fbnum='{1}',Gpart='')?&$format=json",
-                        ZATCAConstants.ESTOutletNumber, Fbnum), false, "");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var URL = ZATCAConstants.ESTOutletNumber + Fbnum;
+
+                    var uri = new Uri(URL);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -591,12 +733,12 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             outletNumber = JsonConvert.DeserializeObject<OutletNumber>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -628,8 +770,23 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Fbnum='{1}',Gpart='{2}')?&$format=json",
-                        ZATCAConstants.ESTOutletNumber, Fbnum, tin), false, "");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var URL = ZATCAConstants.ESTOutletNumber + Fbnum + "&TIN=" + tin;
+
+                    var uri = new Uri(URL);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -653,7 +810,7 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             outletNumber = JsonConvert.DeserializeObject<OutletNumber>(ESTBranchesDropDownResponseJSON);
                         }
                     }
@@ -686,14 +843,28 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
                         throw new GAZTInternetException();
                     }
+                    var url = ZATCAConstants.ESTOutletCityStateCountryDropDown + lang;
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
 
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
-                        ZATCAConstants.ESTOutletCityStateCountryDropDown, lang), false, "");
+                    var uri = new Uri(url);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
+                    //HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
+                    //    Constants.ESTOutletCityStateCountryDropDown, lang), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -717,13 +888,12 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             dropDownModels = JsonConvert.DeserializeObject<OutletDropDowns>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
-                catch (JsonReaderException )
-                {
+                catch (JsonReaderException ){
                     throw new GAZTInvalidDataException();
                 }
                 catch (HttpRequestException)
@@ -750,14 +920,22 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
-                    indSector = string.IsNullOrEmpty(indSector) || string.IsNullOrWhiteSpace(indSector) ? string.Empty : indSector;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    indSector = (string.IsNullOrEmpty(indSector) || string.IsNullOrWhiteSpace(indSector)) ? string.Empty : indSector;
                     if (!NetworkCheck.IsInternet())
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',IndSector='{2}')?&$expand=act_groupSet,act_subgroupSet,activitySet&$format=json",
-                        ZATCAConstants.ESTActiivtyGroupSubGroupList, lang, indSector), false, "");
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", "EN");
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var url = ZATCAConstants.ESTActiivtyGroupSubGroupList + lang + "&industrySector=" + indSector;
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(url);
+                    //HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',IndSector='{2}')?&$expand=act_groupSet,act_subgroupSet,activitySet&$format=json",
+                    //    Constants.ESTActiivtyGroupSubGroupList, lang, indSector), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -781,12 +959,12 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             list = JsonConvert.DeserializeObject<ActivitySetsList>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -822,20 +1000,33 @@ namespace ZATCAMAUI.Core.Mangers
                         throw new GAZTInternetException();
                     }
 
-                    var CrNumber = new JProperty("Crnum", cr);
+                    var CrNumber = new JProperty("CRNumber", cr);
 
                     var idset = ZATCAConstants.IdSet.Where(i => (i.Srcidentify == "00000" || i.Srcidentify == "") && (i.Type != "FS0002")).FirstOrDefault();
 
-                    var IdNo = new JProperty("Idnumber", idset.Idnumber);
-                    var Type = new JProperty("IdType", idset.Type);
-                    var Gpart = new JProperty("Gpart", idset.Gpart);
+                    var IdNo = new JProperty("idNumber", idset.Idnumber);
+                    var Type = new JProperty("idType", idset.Type);
+                    var Gpart = new JProperty("TIN", idset.Gpart);
 
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
+                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
 
                     JObject obj = new JObject(CrNumber, IdNo, Type, Gpart);
 
+                    var serilized = JsonConvert.SerializeObject(obj);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(ZATCAConstants.ESTValidateCRNum, contentPost);
 
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.PostApiCall(ZATCAConstants.ESTValidateCRNum, false, obj.ToString());
 
                     if (ESTBranchesDropDownResponse != null)
                     {
@@ -860,7 +1051,7 @@ namespace ZATCAMAUI.Core.Mangers
                         ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
                             //validate = JsonConvert.DeserializeObject<ValidateCR>(ESTBranchesDropDownResponseJSON);
                         }
                     }
@@ -897,11 +1088,24 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    var uri = new Uri(string.Format("{0}/?&$format=json&$filter=PortalUsrx eq '{1}' and Gpartx eq '{2}' and Fbnumx eq '{3}' and Actno eq ''",
-                        ZATCAConstants.ESTOutletList, email, gpart, fbnum));
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}/?&$format=json&$filter=PortalUsrx eq '{1}' and Gpartx eq '{2}' and Fbnumx eq '{3}' and Actno eq ''",
-                        ZATCAConstants.ESTOutletList, email, gpart, fbnum), false, "");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var url = ZATCAConstants.ESTOutletList + fbnum + "&portalUser=" + email + "&TIN=" + App.LoginDataRetrieved.TIN;
+                    var uri = new Uri(url);
+
+
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -929,8 +1133,8 @@ namespace ZATCAMAUI.Core.Mangers
 
                             if (ESTBranchesDropDownResponseJSON != null && checkObj != null)
                             {
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["outlets"].ToString();
                                 outlets = JsonConvert.DeserializeObject<List<OutletItem>>(ESTBranchesDropDownResponseJSON);
                             }
                             else
@@ -952,7 +1156,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -987,8 +1191,31 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?$format=json&$filter=IdType eq '{1}' and IdNumber eq '{2}' and Tin eq '{3}' and TpType eq 'I'",
-                        ZATCAConstants.ESTOutletAddressFetch, idType, IdNumber, tin), false, "");
+                    string url = ZATCAConstants.ESTOutletAddressFetch;
+                    ESTOutletAddressRequest eSTOutletAddressRequest = new ESTOutletAddressRequest();
+                    eSTOutletAddressRequest.idNumber = IdNumber;
+                    eSTOutletAddressRequest.TIN = tin;
+                    eSTOutletAddressRequest.idType = idType;
+                    eSTOutletAddressRequest.taxpayerType = "Individual";
+                    string lang = UtilityManager.GetLanguageParameter();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    var serilized = JsonConvert.SerializeObject(eSTOutletAddressRequest);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(url, contentPost);
+                    var detailJson = ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
+                    /*HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?$format=json&$filter=IdType eq '{1}' and IdNumber eq '{2}' and Tin eq '{3}' and TpType eq 'I'",
+                   // Constants.ESTOutletAddressFetch, idType, IdNumber, tin), false, "");*/
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1012,13 +1239,13 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
                             address = JsonConvert.DeserializeObject<List<OutletAddress>>(ESTBranchesDropDownResponseJSON);
                         }
                     }
                 }
-                catch (JsonReaderException )
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -1038,22 +1265,40 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return address;
         }
-        public static string ESTDeleteOutletItem(string fbnumx, string actno, string email)
+        public static async Task<string> ESTDeleteOutletItem(string fbnumx, string actno, string email)
         {
             if (NetworkCheck.IsInternet())
             {
                 string DeleteToken = string.Empty;
                 try
                 {
-                    var uri = new Uri(string.Format("{0}(Fbnumx='{1}',Actno='{2}',PortalUsrx='{3}',Gpartx='')",
-                        ZATCAConstants.ESTOutletList, fbnumx, actno, email));
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    var uri = new Uri(ZATCAConstants.ESTDeleteOutlet);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
-
-                    HttpResponseMessage response = client.DeleteAsync(uri).Result;
+                    var deleteOutletRequest = new DeleteOutletRequest()
+                    {
+                        formBundleNumber = fbnumx,
+                        activityNumber = actno,
+                        portalUser = email,
+                        TIN = App.LoginDataRetrieved.TIN
+                    };
+                    //var uri = new Uri(string.Format(Constants.ESTOutletList));
+                    var deleteOutletData = JsonConvert.SerializeObject(deleteOutletRequest);
+                    HttpContent contentPost = new StringContent(deleteOutletData, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage response = await client.PostAsync(uri, contentPost);
+                    //HttpResponseMessage response = client.DeleteAsync(uri).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     if (response != null)
                     {
@@ -1088,13 +1333,21 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
-                    var uri = new Uri(string.Format(ZATCAConstants.ESTFinancialMaxDate));
+                    var uri = new Uri(ZATCAConstants.ESTFinancialMaxDate);
                     var financeData = JsonConvert.SerializeObject(financialDetailRequest, new JsonSerializerSettings
                     {
                         DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
@@ -1125,7 +1378,7 @@ namespace ZATCAMAUI.Core.Mangers
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
                             financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
                         }
                     }
@@ -1163,11 +1416,19 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
                     var uri = new Uri(string.Format(ZATCAConstants.ESTFinancialMaxDate));
                     var financeData = JsonConvert.SerializeObject(financialDetailRequest, new JsonSerializerSettings
@@ -1204,7 +1465,7 @@ namespace ZATCAMAUI.Core.Mangers
                             if (!ESTBranchesDropDownResponseJSON.Contains("An exception was raised") || !ESTBranchesDropDownResponseJSON.Contains("error"))
                             {
 
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["d"].ToString();
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
                                 financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
                             }
 
@@ -1332,9 +1593,6 @@ namespace ZATCAMAUI.Core.Mangers
             }
             return "";
         }
-
-
-
         #endregion
     }
 }

@@ -212,7 +212,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 IsLoading = false;
 
-                foreach (var item in IbanAccounts.d.IbanListSet.results)
+                foreach (var item in IbanAccounts.d.IbanListSet)
                 {
                     IbanListSetResult newItem = new IbanListSetResult();
 
@@ -275,7 +275,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
 
                 if (IbanAccounts != null && IbanAccounts.d != null && IbanAccounts.d.IbanListSet != null
-                && IbanAccounts.d.IbanListSet.results != null && IbanAccounts.d.IbanListSet.results.Count > 0)
+                && IbanAccounts.d.IbanListSet != null && IbanAccounts.d.IbanListSet.Count > 0)
                 {
                     try
                     {

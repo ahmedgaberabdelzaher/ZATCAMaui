@@ -25,11 +25,19 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
+                    var lang = UtilityManager.GetLanguageParameter();
+                    // String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet,deregistration_reasonSet&$format=json";
+                    // String url = Constants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
+                    String url = ZATCAConstants.OutletDeregistrationNewRequestUrl + App.LoginDataRetrieved.TIN + "&deregister=1" + "&language=" + lang + "&approve=" + tinDeregistrationResponseModel.Approvez + "&reject=" + tinDeregistrationResponseModel.Rejectz;
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.TinDeregistrationNewRequestUrl + "(Auditorz='',ADegister='1',Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='',OfficerUidz='',Approvez='" + tinDeregistrationResponseModel.Approvez + "',Rejectz='" + tinDeregistrationResponseModel.Rejectz + "',CreateTxAssesz='')?&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet&$format=json";
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
+                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     var uri = new Uri(url);
 
                     HttpResponseMessage _tinDeregNewRequestResponse = await client.GetAsync(uri);
@@ -76,19 +84,74 @@ namespace ZATCAMAUI.Core.Mangers
                                 {
                                     WebServiceManager.ErrorMessageForUnlockAccount = "112";
                                 }
+                                string line1 = "";
+                                /* if (errorMesg.error.innererror.errordetails.Count > 2)
+                                 {*/
+                                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        line1 = line1 + errorMesg.error.innererror.errordetails[i].message + "\n";
+                                    }
+                                    else
+                                    {
+                                        if (i == errorMesg.error.innererror.errordetails.Count - 2)
+                                        {
+                                            line1 = line1 + "\n" + "\n" + errorMesg.error.innererror.errordetails[i].message;
+
+                                        }
+                                        else
+                                        {
+                                            line1 = line1 + "\u2022" + errorMesg.error.innererror.errordetails[i].message + "\n";
+
+                                        }
+                                    }
+
+                                }
+                                WebServiceManager.ErrorMessageForUnlockAccount = line1;
+
+                                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("\u2022An exception was raised", string.Empty);
+                                throw new GAZTErrorException(WithReplacedString);
+                                /* }
+                                 else
+                                 {
+                                     String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                     WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
+                                     throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);
+                                 }*/
+
+
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(_responseData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+                                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
 
                                 string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
                                 WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
                                 throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);
                             }
-                        }
-                        else if (!string.IsNullOrEmpty(_responseData))
-                        {
-                            _responseData = JObject.Parse(_responseData)["d"].ToString();
-                            _tinDeregistrationResponseModel = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(_responseData);
-                            if (_tinDeregistrationResponseModel == null)
+                            else
                             {
-                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                _responseData = JObject.Parse(_responseData)["data"].ToString();
+                                _tinDeregistrationResponseModel = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(_responseData);
+                                //AttachmentSet attachments = new AttachmentSet();
+                                List<Attachment> attachments = _tinDeregistrationResponseModel.AttDetSet;
+                                _tinDeregistrationResponseModel.AttDetSet = attachments;
+                                // Set set = new Set();
+                                OutletSetResult[] set = _tinDeregistrationResponseModel.OutletSet;
+                                _tinDeregistrationResponseModel.OutletSet = set;
+                                PermitSetResult[] permits = _tinDeregistrationResponseModel.PermitSet;
+                                _tinDeregistrationResponseModel.PermitSet = permits;
+
+                                if (_tinDeregistrationResponseModel == null)
+                                {
+                                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                }
                             }
                         }
                         else
@@ -102,18 +165,15 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (GAZTErrorException ex)
 
                 {
-
-
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception)
-
+                catch (Exception ex)
                 {
-
-
-                    //App.IsSessionExpired = true;
-                    return null;
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    throw new GAZTErrorException(ex.Message);
                 }
+                
             }
             else
             {
@@ -143,41 +203,72 @@ namespace ZATCAMAUI.Core.Mangers
         {
             string TinDeregResponseJson = string.Empty;
             TinDeregistrationSendResponseModel tinDeregistrationSendResponseModel = new TinDeregistrationSendResponseModel();
+            ObservableCollection<OutletSetResult> AllOutlets = new ObservableCollection<OutletSetResult>(tinDeregistrationResponseModel.OutletSet);
+            List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(tinDeregistrationResponseModel.PermitSet);
             try
             {
-                ObservableCollection<OutletSetResult> AllOutlets = new ObservableCollection<OutletSetResult>(tinDeregistrationResponseModel.OutletSet.Results);
-                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(tinDeregistrationResponseModel.PermitSet.Results);
+
 
                 foreach (OutletSetResult outletInfo in AllOutlets)
                 {
-                    if (outletInfo.AOutletEffDtTb != null && !outletInfo.AOutletEffDtTb.Contains("/Date("))
-                        outletInfo.AOutletEffDtTb = ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb));
-                    outletInfo.AOutletEffDtCTb = "G";
+                    if (outletInfo.AOutletEffDtTb != null && outletInfo.AOutletEffDtTb.Contains("/Date("))
+                        outletInfo.AOutletEffDtTb = UtilityManager.ConvertToStringFromDate(outletInfo.AOutletEffDtTb);
+                    else if (outletInfo.AOutletEffDtTb != null && !outletInfo.AOutletEffDtTb.Contains("/Date("))
+                    {
+                        outletInfo.AOutletEffDtTb = UtilityManager.ConvertToStringFromDate(ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtTb)));
+                    }
+                    outletInfo.AOutletEffDtCTb = "Gregorian";
+                    if (outletInfo.AOutletDobTb != null && outletInfo.AOutletDobTb.Contains("/Date"))
+                        outletInfo.AOutletDobTb = UtilityManager.ConvertToStringFromDate(outletInfo.AOutletDobTb);
+                    else if (outletInfo.AOutletDobTb != null && !outletInfo.AOutletDobTb.Contains("/Date"))
+                    {
+                        outletInfo.AOutletDobTb = UtilityManager.ConvertToStringFromDate(ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletDobTb)));
+                    }
+                    if (outletInfo != null && outletInfo.AOutletEffDtHTb.Contains("/Date"))
+                        outletInfo.AOutletEffDtHTb = UtilityManager.ConvertDateFormat(outletInfo.AOutletEffDtHTb);
+                    else if (outletInfo != null && !outletInfo.AOutletEffDtHTb.Contains("/Date"))
+                    {
+                        outletInfo.AOutletEffDtHTb = UtilityManager.stringToIFormat(UtilityManager.ConvertToStringFromDate(ConvertDateFormat(Convert.ToDateTime(outletInfo.AOutletEffDtHTb))));
+                    }
+
+
                 }
                 foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
                     permitInfo.APermitDobTb = null;
                     if (!string.IsNullOrEmpty(permitInfo.APermitEffDtTb) && !permitInfo.APermitEffDtTb.Contains("/Date("))
                         permitInfo.APermitEffDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitEffDtTb));
-                    permitInfo.APermitEffDtCTb = "G";
+                    permitInfo.APermitEffDtCTb = "Gregorian";
                     if (!permitInfo.APermitValfrDtTb.Contains("/Date("))
-                        permitInfo.APermitValfrDtTb = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
-                    permitInfo.APermitValfrDtCTb = "G";
+                    {
+                        var dateValue = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
+                        permitInfo.APermitValfrDtTb = UtilityManager.ConvertToStringFromDate(dateValue);
+
+                    }
+                    else
+                    {
+                        //var dateValue = ConvertDateFormat(Convert.ToDateTime(permitInfo.APermitValfrDtTb));
+                        permitInfo.APermitValfrDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitValfrDtTb);
+
+                    }
+
+                    permitInfo.APermitValfrDtCTb = "Gregorian";
 
                 }
             }
             catch (Exception)
             {
-
-
-
             }
+
+            var lang = UtilityManager.GetLanguageParameter();
 
             tinDeregistrationSendResponseModel.Metadata = tinDeregistrationResponseModel.Metadata;
             tinDeregistrationSendResponseModel.Assignme = tinDeregistrationResponseModel.Assignme;
 
             tinDeregistrationSendResponseModel.Caseid = tinDeregistrationResponseModel.Caseid;
             tinDeregistrationSendResponseModel.Xvoidz = tinDeregistrationResponseModel.Xvoidz;
+            tinDeregistrationSendResponseModel.BgDregFlg = tinDeregistrationResponseModel.BgDregFlg;
+            tinDeregistrationSendResponseModel.SezTpFlag = tinDeregistrationResponseModel.SezTpFlag;
             tinDeregistrationSendResponseModel.TinInPrcFg = tinDeregistrationResponseModel.TinInPrcFg;
             tinDeregistrationSendResponseModel.Taxpayerz = tinDeregistrationResponseModel.Taxpayerz;
             tinDeregistrationSendResponseModel.Submitz = tinDeregistrationResponseModel.Submitz;
@@ -191,7 +282,7 @@ namespace ZATCAMAUI.Core.Mangers
             tinDeregistrationSendResponseModel.OfficerUidz = tinDeregistrationResponseModel.OfficerUidz;
             tinDeregistrationSendResponseModel.Monthz = tinDeregistrationResponseModel.Monthz;
             tinDeregistrationSendResponseModel.LegacyDocNo = tinDeregistrationResponseModel.LegacyDocNo;
-            tinDeregistrationSendResponseModel.Langz = tinDeregistrationResponseModel.Langz;
+            tinDeregistrationSendResponseModel.Langz = lang;
             tinDeregistrationSendResponseModel.FormGuid = tinDeregistrationResponseModel.FormGuid;
             tinDeregistrationSendResponseModel.Fbnumz = tinDeregistrationResponseModel.Fbnumz;
             tinDeregistrationSendResponseModel.Fbnum = tinDeregistrationResponseModel.Fbnum;
@@ -208,8 +299,8 @@ namespace ZATCAMAUI.Core.Mangers
             tinDeregistrationSendResponseModel.ATaxpayerName = tinDeregistrationResponseModel.ATaxpayerName;
             tinDeregistrationSendResponseModel.ASubmissionDateH = tinDeregistrationResponseModel.ASubmissionDateH;
             tinDeregistrationSendResponseModel.ASubmissionDateC = tinDeregistrationResponseModel.ASubmissionDateC;
-            tinDeregistrationSendResponseModel.ASubmissionDate = tinDeregistrationResponseModel.ASubmissionDate;
-            tinDeregistrationSendResponseModel.AStep = tinDeregistrationResponseModel.AStep;
+            tinDeregistrationSendResponseModel.ASubmissionDate = UtilityManager.ConvertToStringFromDate(tinDeregistrationResponseModel.ASubmissionDate);
+            tinDeregistrationSendResponseModel.AStep = tinDeregistrationResponseModel.AStep.ToString();
             tinDeregistrationSendResponseModel.Approvez = tinDeregistrationResponseModel.Approvez;
             tinDeregistrationSendResponseModel.AOffOrigin = tinDeregistrationResponseModel.AOffOrigin;
             tinDeregistrationSendResponseModel.AOffAppNo = tinDeregistrationResponseModel.AOffAppNo;
@@ -226,10 +317,10 @@ namespace ZATCAMAUI.Core.Mangers
             tinDeregistrationSendResponseModel.AFormStatus = tinDeregistrationResponseModel.AFormStatus;
             tinDeregistrationSendResponseModel.AExpdtH = tinDeregistrationResponseModel.AExpdtH;
             tinDeregistrationSendResponseModel.AExpdtC = tinDeregistrationResponseModel.AExpdtC;
-            tinDeregistrationSendResponseModel.AExpdt = tinDeregistrationResponseModel.AExpdt;
+            tinDeregistrationSendResponseModel.AExpdt = UtilityManager.ConvertToStringFromDate(tinDeregistrationResponseModel.AExpdt);
             tinDeregistrationSendResponseModel.AEffectiveDtH = tinDeregistrationResponseModel.AEffectiveDtH;
             tinDeregistrationSendResponseModel.AEffectiveDtC = tinDeregistrationResponseModel.AEffectiveDtC;
-            tinDeregistrationSendResponseModel.AEffectiveDt = tinDeregistrationResponseModel.AEffectiveDt;
+            tinDeregistrationSendResponseModel.AEffectiveDt = UtilityManager.ConvertToStringFromDate(tinDeregistrationResponseModel.AEffectiveDt);
             tinDeregistrationSendResponseModel.ADregReason = tinDeregistrationResponseModel.ADregReason;
             tinDeregistrationSendResponseModel.ADregOpt = tinDeregistrationResponseModel.ADregOpt;
             tinDeregistrationSendResponseModel.ADocumnt9 = tinDeregistrationResponseModel.ADocumnt9;
@@ -250,20 +341,22 @@ namespace ZATCAMAUI.Core.Mangers
             tinDeregistrationSendResponseModel.ADocumnt1 = tinDeregistrationResponseModel.ADocumnt1;
             tinDeregistrationSendResponseModel.ADobH = tinDeregistrationResponseModel.ADobH;
             tinDeregistrationSendResponseModel.ADobC = tinDeregistrationResponseModel.ADobC;
-            tinDeregistrationSendResponseModel.ADob = tinDeregistrationResponseModel.ADob;
+            tinDeregistrationSendResponseModel.ADob = UtilityManager.ConvertToStringFromDate(tinDeregistrationResponseModel.ADob);
             tinDeregistrationSendResponseModel.ADegister = "1";
             tinDeregistrationSendResponseModel.ADecTitle = tinDeregistrationResponseModel.ADecTitle;
             tinDeregistrationSendResponseModel.ADecTelNo = tinDeregistrationResponseModel.ADecTelNo;
-            tinDeregistrationSendResponseModel.ADeclarationChkbox = "1";
+            tinDeregistrationSendResponseModel.ADeclarationChkbox = "Checked";
             tinDeregistrationSendResponseModel.ADecDesig = tinDeregistrationResponseModel.ADecDesig;
             tinDeregistrationSendResponseModel.ADecDateH = tinDeregistrationResponseModel.ADecDateH;
             tinDeregistrationSendResponseModel.ADecDateC = tinDeregistrationResponseModel.ADecDateC;
-            tinDeregistrationSendResponseModel.ADecDate = tinDeregistrationResponseModel.ADecDate;
+            tinDeregistrationSendResponseModel.ADecDate = UtilityManager.ConvertToStringFromDate(tinDeregistrationResponseModel.ADecDate);
             tinDeregistrationSendResponseModel.ADateFormat = "";
             tinDeregistrationSendResponseModel.ABranchTxt = tinDeregistrationResponseModel.ABranchTxt;
             tinDeregistrationSendResponseModel.ABpKind = tinDeregistrationResponseModel.ABpKind;
-            tinDeregistrationSendResponseModel.PermitSet = tinDeregistrationResponseModel.PermitSet.Results;
-            tinDeregistrationSendResponseModel.OutletSet = tinDeregistrationResponseModel.OutletSet.Results;
+            //tinDeregistrationSendResponseModel.PermitSet = tinDeregistrationResponseModel.PermitSet;
+            tinDeregistrationSendResponseModel.PermitSet = allPermitTypes.ToArray();
+            //tinDeregistrationSendResponseModel.OutletSet = tinDeregistrationResponseModel.OutletSet;
+            tinDeregistrationSendResponseModel.OutletSet = AllOutlets.ToArray();
             tinDeregistrationSendResponseModel.OffNotesSet = new List<string>();
             tinDeregistrationSendResponseModel.AttDetSet = new List<string>();
             tinDeregistrationSendResponseModel.ReturnSet = new List<string>();
@@ -295,13 +388,25 @@ namespace ZATCAMAUI.Core.Mangers
 
                 try
                 {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    string lang = WebServiceManager.GetLangZParameterAREN();
+
+
                     string url = ZATCAConstants.TinDeregistrationNewRequestUrl;
 
-                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    /*client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);*/
+
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
+                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
 
                     var uri = new Uri(url);
                     var serilized = JsonConvert.SerializeObject(tinDeregistrationSendResponseModel);
@@ -323,12 +428,32 @@ namespace ZATCAMAUI.Core.Mangers
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 string errorCode = errorMesg.error.innererror.errordetails[0].code;
-                                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                // WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
 
-                                string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
-                                //ErrorMessageForVAT
-                                throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);
+                                /* String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                 WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
+                                 //ErrorMessageForVAT
+                                 throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);*/
+
+                                string line1 = "";
+                                /* if (errorMesg.error.innererror.errordetails.Count > 2)
+                                 {*/
+                                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        line1 = line1 + errorMesg.error.innererror.errordetails[i].message + "\n";
+                                    }
+                                    else
+                                    {
+                                        line1 = line1 + "\u2022" + errorMesg.error.innererror.errordetails[i].message + "\n";
+                                    }
+
+                                }
+                                WebServiceManager.ErrorMessageForUnlockAccount = line1;
+
+                                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("\u2022An exception was raised", string.Empty);
+                                throw new GAZTErrorException(WithReplacedString);
                             }
                         }
                         HttpHeaders headers = tinDeregResponse.Headers;
@@ -355,13 +480,12 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (GAZTErrorException ex)
                 {
+                    Console.WriteLine(ex);
                     throw new GAZTErrorException(ex.Message);
                 }
 
                 catch (Exception)
                 {
-
-
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
             }
@@ -382,10 +506,20 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    string url = ZATCAConstants.TinDeregistrationReasonSetUrl + "Partner='" + App.LoginDataRetrieved.TIN + "',Spars='" + lang + "')?&$expand=REASONSet&$format=json";
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.TinDeregistrationReasonSetUrl + App.LoginDataRetrieved.TIN + "&language=" + lang;
                     var uri = new Uri(url);
 
                     HttpResponseMessage _tinDeregReasonRequestResponse = await client.GetAsync(uri);
@@ -430,7 +564,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         else if (!string.IsNullOrEmpty(_responseData))
                         {
-                            _responseData = JObject.Parse(_responseData)["d"].ToString();
+                            _responseData = JObject.Parse(_responseData)["data"].ToString();
                             _tinDeregistrationReasonSetDataModel = JsonConvert.DeserializeObject<TinDeregistrationReasonSetDataModel>(_responseData);
                             if (_tinDeregistrationReasonSetDataModel == null)
                             {
@@ -451,9 +585,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
-                    //App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -462,6 +593,402 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        #endregion
+
+        #region TIN/Outlet Deregistration
+
+        public static async Task<TinOutletPrevousRequestsModel> GetTinOutletDeRegisterPreviousRequests()
+        {
+            TinOutletPrevousRequestsModel _tinOutletPrevousRequestsModel = new TinOutletPrevousRequestsModel();
+
+            if (NetworkCheck.IsInternet())
+            {
+                string NewToken = string.Empty;
+                try
+                {
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.TinOutletDeregistrationPreousRequestsUrl + "?TIN=" + App.LoginDataRetrieved.TIN + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage _tinDeregNewRequestPrevousResponse = await client.GetAsync(uri);
+
+                    if (_tinDeregNewRequestPrevousResponse != null)
+                    {
+                        if (_tinDeregNewRequestPrevousResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _tinDeregNewRequestPrevousResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        String _responseData = _tinDeregNewRequestPrevousResponse.Content.ReadAsStringAsync().Result;
+                        if (_tinDeregNewRequestPrevousResponse.StatusCode == HttpStatusCode.BadRequest)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
+
+                                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+
+                                if (errorCode.Contains("206"))
+                                {
+                                    WebServiceManager.ErrorMessageForUnlockAccount = "206";
+                                }
+                                else if (errorCode.Contains("112"))
+                                {
+                                    WebServiceManager.ErrorMessageForUnlockAccount = "112";
+                                }
+                                string line1 = "";
+                                /* if (errorMesg.error.innererror.errordetails.Count > 2)
+                                 {*/
+                                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        line1 = line1 + errorMesg.error.innererror.errordetails[i].message + "\n";
+                                    }
+                                    else
+                                    {
+                                        if (i == errorMesg.error.innererror.errordetails.Count - 2)
+                                        {
+                                            line1 = line1 + "\n" + "\n" + errorMesg.error.innererror.errordetails[i].message;
+
+                                        }
+                                        else
+                                        {
+                                            line1 = line1 + "\u2022" + errorMesg.error.innererror.errordetails[i].message + "\n";
+
+                                        }
+                                    }
+
+                                }
+                                WebServiceManager.ErrorMessageForUnlockAccount = line1;
+
+                                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("\u2022An exception was raised", string.Empty);
+                                throw new GAZTErrorException(WithReplacedString);
+
+
+
+                            }
+                        }
+                        else if (!string.IsNullOrEmpty(_responseData))
+                        {
+                            _tinOutletPrevousRequestsModel = JsonConvert.DeserializeObject<TinOutletPrevousRequestsModel>(_responseData);
+                            if (_tinOutletPrevousRequestsModel == null)
+                            {
+                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        }
+                    }
+
+                    return _tinOutletPrevousRequestsModel;
+                }
+                catch (GAZTErrorException ex)
+                {
+                    throw new GAZTErrorException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTErrorException(ex.Message);
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<string> GetOutletDeRegisterNewRequest(int DeregTypeCode, string fbGuid = "")
+        {
+
+            if (NetworkCheck.IsInternet())
+            {
+                string NewToken = string.Empty;
+                string _responseData = "";
+                try
+                {
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
+                    String url = string.Empty;
+                    /*if(DeregTypeCode == 1)
+                    {
+                        url = Constants.OutletDeregistrationNewRequestUrl + "(Auditorz='',ADegister=%27" + DeregTypeCode + "%27,Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='" + lang + "',OfficerUidz='',Approvez='',Rejectz='',CreateTxAssesz='')?saml2=enabled&$format=json&sap-language='" + lang + "'&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet";
+
+                    }
+                    else
+                    {
+                        url = Constants.OutletDeregistrationNewRequestUrl + "(Auditorz='',ADegister=%27" + DeregTypeCode + "%27,Taxpayerz='" + App.LoginDataRetrieved.TIN + "',FormGuid='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='" + lang + "',OfficerUidz='',Approvez='',Rejectz='',CreateTxAssesz='')?saml2=enabled&$format=json&sap-language='" + lang + "'&$expand=AttDetSet,Off_notesSet,OutletSet,PermitSet,returnSet,Permit_TableSet,ErrMsgSet";
+
+                    }*/
+
+                    url = ZATCAConstants.OutletDeregistrationNewRequestUrl + App.LoginDataRetrieved.TIN + "&deregister=" + DeregTypeCode + "&language=" + lang;
+
+
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage _tinDeregNewRequestPrevousResponse = await client.GetAsync(uri);
+
+                    if (_tinDeregNewRequestPrevousResponse != null)
+                    {
+                        if (_tinDeregNewRequestPrevousResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = _tinDeregNewRequestPrevousResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        _responseData = _tinDeregNewRequestPrevousResponse.Content.ReadAsStringAsync().Result;
+                    }
+
+                    return _responseData;
+                }
+                catch (GAZTErrorException ex)
+                {
+                    throw new GAZTErrorException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTErrorException(ex.Message);
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        private static double _timeoutMinutes = 3;
+        internal static async Task<TinOutletDeregisterListModel> PostSubmitOrSaveDraft(TinOutletDeregisterListModel.OutletDeregisterListResponse tinOutletPrevousRequestsModel)
+        {
+            TinOutletDeregisterListModel _outletRequestsModel = new TinOutletDeregisterListModel();
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    string LangZ = WebServiceManager.GetLangZParameterAREN();
+                    String url = ZATCAConstants.OutletDeregistrationNewRequestUrl;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    var serilized = JsonConvert.SerializeObject(tinOutletPrevousRequestsModel);
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    //client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
+
+
+                    client.Timeout = TimeSpan.FromMinutes(_timeoutMinutes);
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var _responseData = res.Content.ReadAsStringAsync().Result;
+
+                    if (res.StatusCode == HttpStatusCode.OK || res.StatusCode == HttpStatusCode.Created)
+                    {
+                        if (!string.IsNullOrEmpty(_responseData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                            else
+                            {
+                                _outletRequestsModel = JsonConvert.DeserializeObject<TinOutletDeregisterListModel>(_responseData);
+                                _outletRequestsModel.D = _outletRequestsModel.result;
+                                if (_outletRequestsModel == null)
+                                {
+                                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                    }
+                    return _outletRequestsModel;
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        internal static async Task<bool> PostCancelExistingRequest(string fbnum, string status1, string status2, int btncode)
+        {
+            if (NetworkCheck.IsInternet())
+            {
+                try
+                {
+                    var Jfbnum = new JProperty("formBundleNumber", fbnum);
+                    JProperty JOperation = null;
+
+                    if (btncode == 1)// Cancel
+                    {
+                        JOperation = new JProperty("operation", "04");//cancel
+
+                    }
+                    else // Delete Draft
+                    {
+                        JOperation = new JProperty("operation", "10");
+                    }
+
+                    JObject obj = new JObject(Jfbnum, JOperation);
+
+                    var reqiestData = obj.ToString();
+
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+
+                    // String url = Constants.TinOutletDeregistrationPreousRequestsUrl;
+                    String url = ZATCAConstants.TinOutletDeregistrationPreousRequestsPostUrl;
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+
+                    var uri = new Uri(url);
+
+                    client.Timeout = TimeSpan.FromMinutes(_timeoutMinutes);
+
+                    HttpContent contentPost = new StringContent(reqiestData, Encoding.UTF8, ZATCAConstants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var _responseData = res.Content.ReadAsStringAsync().Result;
+
+                    if (res.StatusCode == HttpStatusCode.OK || res.StatusCode == HttpStatusCode.Created)
+                    {
+                        if (!string.IsNullOrEmpty(_responseData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                            else
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                    }
+                    //return _outletRequestsModel;
+
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+
+
+
+            return false;
+        }
+
         #endregion
     }
 }

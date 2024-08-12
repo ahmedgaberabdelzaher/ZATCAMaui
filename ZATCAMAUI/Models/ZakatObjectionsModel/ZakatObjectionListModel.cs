@@ -1,11 +1,12 @@
 ﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models.ZakatObjectionsModel
 {
 
     public class ZakatObjectionListModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        [JsonProperty("data")]
         public D d { get; set; }
 
         public class Metadata
@@ -33,50 +34,73 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public Metadata2 __metadata { get; set; }
             [DataMember]
+            [JsonProperty("formBundleNumber")]
             public string Fbnum { get; set; }
             [DataMember]
+            [JsonProperty("objectionStatus")]
             public string Objstatus { get; set; }
             [DataMember]
+            [JsonProperty("formBundleStatus")]
             public string Fbsta { get; set; }
             [DataMember]
+            [JsonProperty("statusDescription")]
             public string StatText { get; set; }
             [DataMember]
+            [JsonProperty("formBundleType")]
             public string Fbtyp { get; set; }
             [DataMember]
+            [JsonProperty("formBundleTypeDescription")]
             public string FbtText { get; set; }
+            //[DataMember]
+            //[JsonProperty("formBundleNumber")]
+            //public string Erfdate { get; set; }
+            //[DataMember]
+            //[JsonProperty("formBundleNumber")]
+            //public string Erftime { get; set; }
             [DataMember]
-            public string Erfdate { get; set; }
-            [DataMember]
-            public string Erftime { get; set; }
-            [DataMember]
+            [JsonProperty("periodkey")]
             public string Persl { get; set; }
             [DataMember]
+            [JsonProperty("taxPeriod")]
             public string TaxPeriod { get; set; }
+            //[DataMember]
+            //[JsonProperty("formBundleNumber")]
+            //public object DueDt { get; set; }
+            //[DataMember]
+            //[JsonProperty("formBundleNumber")]
+            //public string Due { get; set; }
+            //[DataMember]
+            //[JsonProperty("formBundleNumber")]
+            //public object Abrzu { get; set; }
+            //[DataMember]
+            //[JsonProperty("formBundleNumber")]
+            //public object Abrzo { get; set; }
             [DataMember]
-            public object DueDt { get; set; }
-            [DataMember]
-            public string Due { get; set; }
-            [DataMember]
-            public object Abrzu { get; set; }
-            [DataMember]
-            public object Abrzo { get; set; }
-            [DataMember]
+            [JsonProperty("inboundCorrespondenceType")]
             public string Incotyp { get; set; }
             [DataMember]
+            [JsonProperty("inboundCorrespondenceDescription")]
             public string Incotext { get; set; }
             [DataMember]
+            [JsonProperty("flag")]
             public string Flag { get; set; }
+            //[DataMember]
+            //[JsonProperty("formBundleNumber")]
+            //public string CalendrTyp { get; set; }
             [DataMember]
-            public string CalendrTyp { get; set; }
-            [DataMember]
+            [JsonProperty("attachedByPerson")]
             public string PrcBy { get; set; }
             [DataMember]
+            [JsonProperty("group")]
             public string Grp { get; set; }
             [DataMember]
+            [JsonProperty("creditDate")]
             public string CrdtText { get; set; }
             [DataMember]
+            [JsonProperty("serialNumber")]
             public string Euser { get; set; }
             [DataMember]
+            [JsonProperty("formBundleGUID")]
             public string Fbguid { get; set; }
         }
 
@@ -235,7 +259,8 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public string Zuser { get; set; }
             [DataMember]
-            public ListSet ListSet { get; set; }
+            [JsonProperty("lists")]
+            public List<Result> ListSet { get; set; }
             [DataMember]
             public AuthServSet AuthServSet { get; set; }
         }
@@ -243,7 +268,7 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
 
     public class ZakatObjectionRequestSummaryModel
     {
-        // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
+        [JsonProperty("data")]
         public D d { get; set; }
 
         public class Metadata
@@ -271,39 +296,63 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public Metadata2 __metadata { get; set; }
             [DataMember]
+            [JsonProperty("formBundleType")]
             public string AFbtyp { get; set; }
             [DataMember]
+            [JsonProperty("CR121GoLive")]
             public string ACr121gldtfg { get; set; }
             [DataMember]
+            [JsonProperty("calendarType")]
             public string ACalTyp { get; set; }
             [DataMember]
+
             public string APenaltyTyp { get; set; }
             [DataMember]
+            [JsonProperty("referenceAssessment")]
             public string ARefNo { get; set; }
             [DataMember]
+            [JsonProperty("sadadNumber")]
             public string ASopbel { get; set; }
             [DataMember]
+            [JsonProperty("taxYear")]
             public string AAssnmtYr { get; set; }
             [DataMember]
+            [JsonProperty("currency")]
             public string Waers { get; set; }
             [DataMember]
+            [JsonProperty("periodFrom")]
             public DateTime? APeriodFrom { get; set; }
             [DataMember]
+            [JsonProperty("taxType")]
             public string ATaxTy { get; set; }
             [DataMember]
+            [JsonProperty("aCurrency")]
             public string ACurr { get; set; }
             [DataMember]
+            [JsonProperty("assessedAmount")]
             public string AAssnmtAmt { get; set; }
             [DataMember]
+            [JsonProperty("revisedAmount")]
             public string ARevAmt { get; set; }
             [DataMember]
+            [JsonProperty("disputeAmount")]
             public string ADisputeAmt { get; set; }
             [DataMember]
+            [JsonProperty("periodTo")]
             public DateTime? APeriodTo { get; set; }
             [DataMember]
+            [JsonProperty("selectedRow")]
             public string ASelect { get; set; }
             [DataMember]
+            [JsonProperty("provideReturnDetails")]
             public string ARetDet { get; set; }
+            //CR4912
+            [DataMember]
+            public string ADisputeAmtCit { get; set; }
+            [DataMember]
+            public string ADisAmtZkt10 { get; set; }
+            [DataMember]
+            public string ARevAmtCit { get; set; }
         }
 
         public class ZNOBObjSet
@@ -329,33 +378,23 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public Metadata __metadata { get; set; }
             [DataMember]
+            [JsonProperty("noteNumber")]
             public string Notenoz { get; set; }
             [DataMember]
+            [JsonProperty("referenceName")]
             public string Refnamez { get; set; }
+            
             [DataMember]
-            public string XInvoicez { get; set; }
-            [DataMember]
-            public string XObsoletez { get; set; }
-            [DataMember]
-            public string Rcodez { get; set; }
-            [DataMember]
-            public string Erfusrz { get; set; }
-            [DataMember]
-            public DateTime? Erfdtz { get; set; }
-            [DataMember]
-            public string Erftmz { get; set; }
-            [DataMember]
+            [JsonProperty("attachedByPerson")]
             public string AttByz { get; set; }
+            
             [DataMember]
-            public string Noteno { get; set; }
-            [DataMember]
+            [JsonProperty("lineNumber")]
             public int Lineno { get; set; }
             [DataMember]
+            [JsonProperty("elementNumber")]
             public int ElemNo { get; set; }
-            [DataMember]
-            public string Tdformat { get; set; }
-            [DataMember]
-            public string Tdline { get; set; }
+           
         }
 
         public class Deferred
@@ -451,6 +490,345 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public List<Attachment> results { get; set; }
         }
+
+        public class HeaderSet
+        {
+            [DataMember]
+            [JsonProperty("address")]
+            public string AAddress { get; set; }
+            [DataMember]
+            public string AChkbg1 { get; set; }
+            [DataMember]
+            [JsonProperty("totalZakatAmount")]
+            public string ATotZkt { get; set; }
+            [DataMember]
+            [JsonProperty("totalCIT")]
+            public string ATotCit { get; set; }
+            [DataMember]
+
+            public string AZsopbelCit { get; set; }
+            [DataMember]
+            public string AZundisam { get; set; }
+            [DataMember]
+            [JsonProperty("calendarType")]
+            public string ACaltyp { get; set; }
+            [DataMember]
+            [JsonProperty("CITDisputeAmount")]
+            public string ACitdisam { get; set; }
+            [DataMember]
+            [JsonProperty("taxpayerType")]
+            public string ATpTyp { get; set; }
+            [DataMember]
+            [JsonProperty("CITUndisputedAmount")]
+            public string ACitundisam { get; set; }
+            [DataMember]
+            [JsonProperty("zakatDisputeAmount")]
+            public string AZdisam { get; set; }
+            [DataMember]
+            [JsonProperty("processingOperationNumber")]
+            public string Operationz { get; set; }
+            [DataMember]
+            [JsonProperty("userType")]
+            public string UserTypz { get; set; }
+            [DataMember]
+            [JsonProperty("agreed")]
+            public string AAgree { get; set; }
+            
+            [DataMember]
+            [JsonProperty("assessedAmount")]
+            public string AAssnmtAmt { get; set; }
+            [DataMember]
+            [JsonProperty("taxYear")]
+            public string AAssnmtYr { get; set; }
+            [DataMember]
+            [JsonProperty("bankDetails")]
+            public string ABkext { get; set; }
+            [DataMember]
+            [JsonProperty("bankGuaranteeId")]
+            public string ABnkid { get; set; }
+           
+            [DataMember]
+            [JsonProperty("branch")]
+            public string ABranch { get; set; }
+            [DataMember]
+            [JsonProperty("building")]
+            public string ABulding { get; set; }
+            
+            [DataMember]
+            [JsonProperty("capacity")]
+            public string ACapacity { get; set; }
+            [DataMember]
+            [JsonProperty("code")]
+            public string ACdNm { get; set; }
+           
+            [DataMember]
+            [JsonProperty("city")]
+            public string ACity { get; set; }
+            [DataMember]
+            [JsonProperty("companyName")]
+            public string ACompNm { get; set; }
+            [DataMember]
+            [JsonProperty("CR121GoLive")]
+            public string Acr121gldtfg { get; set; }
+            [DataMember]
+            [JsonProperty("currency")]
+            public string ACurr { get; set; }
+            [DataMember]
+            [JsonProperty("disputeAmount")]
+            public string ADisputeAmt { get; set; }
+            [DataMember]
+            [JsonProperty("district")]
+            public string ADistrict { get; set; }
+            [DataMember]
+            [JsonProperty("email")]
+            public string AEmail { get; set; }
+            
+            [DataMember]
+            [JsonProperty("exactDay")]
+            public string AExtdy { get; set; }
+            
+            [DataMember]
+            [JsonProperty("faxNumber")]
+            public string AFaxNo { get; set; }
+            
+            [DataMember]
+            [JsonProperty("AGactn")]
+            public string AGactn { get; set; }
+            [DataMember]
+            [JsonProperty("goLiveCheck")]
+            public string AGoliveChk { get; set; }
+            [DataMember]
+            [JsonProperty("goLiveDate")]
+            public string Agolivedtfg { get; set; }
+            [DataMember]
+            [JsonProperty("instructions")]
+            public string AInstr { get; set; }
+            [DataMember]
+            [JsonProperty("legalStatus")]
+            public string ALegalSt { get; set; }
+            [DataMember]
+            [JsonProperty("mainActivityCode")]
+            public string AMainAct { get; set; }
+            [DataMember]
+            [JsonProperty("mainActivityDescription")]
+            public string AMainActDesc { get; set; }
+            [DataMember]
+            [JsonProperty("amendmentReason")]
+            public string AmdRsnz { get; set; }
+            [DataMember]
+            [JsonProperty("name")]
+            public string AName { get; set; }
+            [DataMember]
+            [JsonProperty("financialNumber")]
+            public string ANoFinance { get; set; }
+            
+            [DataMember]
+            [JsonProperty("objectionPenalty")]
+            public string AObjIntPenalty { get; set; }
+            [DataMember]
+            [JsonProperty("objectionReturn")]
+            public string AObjReturn { get; set; }
+            [DataMember]
+            [JsonProperty("objectionSummary")]
+            public string AObjSum { get; set; }
+            [DataMember]
+            [JsonProperty("otherAttachments")]
+            public string AOthAttch { get; set; }
+            
+            [DataMember]
+            [JsonProperty("PoBox")]
+            public string APoBox { get; set; }
+            [DataMember]
+            [JsonProperty("approvalAction")]
+            public string Approvez { get; set; }
+            [DataMember]
+            [JsonProperty("receivedBy")]
+            public string ARecByOff { get; set; }
+            
+            [DataMember]
+            [JsonProperty("referenceNumber")]
+            public string ARefNo { get; set; }
+            [DataMember]
+            [JsonProperty("representativeBuildName")]
+            public string ARepBldNm { get; set; }
+            [DataMember]
+            [JsonProperty("representativeCity")]
+            public string ARepCity { get; set; }
+            [DataMember]
+            [JsonProperty("representaiveDesignation")]
+            public string ARepDes { get; set; }
+            [DataMember]
+            [JsonProperty("representativeEmail")]
+            public string ARepEmail { get; set; }
+            [DataMember]
+            [JsonProperty("representativeFax")]
+            public string ARepFax { get; set; }
+            [DataMember]
+            [JsonProperty("representativeName")]
+            public string ARepName { get; set; }
+            [DataMember]
+            [JsonProperty("representativePhoneNumber")]
+            public string ARepPhone { get; set; }
+            [DataMember]
+            [JsonProperty("representativeStreetNumber")]
+            public string ARepSteetNo { get; set; }
+            [DataMember]
+            [JsonProperty("residency")]
+            public string AResidency { get; set; }
+            [DataMember]
+            [JsonProperty("returnDetails")]
+            public string ARetDet { get; set; }
+            [DataMember]
+            [JsonProperty("revisedAmount")]
+            public string ARevAmt { get; set; }
+            [DataMember]
+            [JsonProperty("securityAmount")]
+            public string ASecam { get; set; }
+            [DataMember]
+            public string ASectp { get; set; }
+            
+            [DataMember]
+            [JsonProperty("sadadNumber")]
+            public string ASopbel { get; set; }
+            [DataMember]
+            [JsonProperty("step")]
+            public int AStep { get; set; }
+            [DataMember]
+            [JsonProperty("street")]
+            public string AStreet { get; set; }
+           
+            [DataMember]
+            [JsonProperty("TaxpayerofficeOff")]
+            public string ATaxOfOff { get; set; }
+            [DataMember]
+            [JsonProperty("TaxpayerType")]
+            public string ATaxTy { get; set; }
+            [DataMember]
+            [JsonProperty("telephoneNumber")]
+            public string ATelephone { get; set; }
+            [DataMember]
+            [JsonProperty("TIN")]
+            public string ATin { get; set; }
+            [DataMember]
+            [JsonProperty("TINCountry")]
+            public string ATinCountry { get; set; }
+            [DataMember]
+            [JsonProperty("TINOff")]
+            public string ATinOff { get; set; }
+            
+            [DataMember]
+            [JsonProperty("taxpayerName")]
+            public string ATpNm { get; set; }
+            [DataMember]
+            [JsonProperty("transactionType")]
+            public string ATransactionType { get; set; }
+            [DataMember]
+            [JsonProperty("auditor")]
+            public string Auditorz { get; set; }
+            [DataMember]
+            [JsonProperty("zipCode")]
+            public string AZipCd { get; set; }
+            [DataMember]
+            [JsonProperty("sadadBill")]
+            public string AZsopbel { get; set; }
+            [DataMember]
+            [JsonProperty("calendarPeriod")]
+            public string Cal { get; set; }
+            [DataMember]
+            [JsonProperty("caseGUID")]
+            public string CaseGuid { get; set; }
+            [DataMember]
+            [JsonProperty("createTaxpayerAssesment")]
+            public string CreateTxAssesz { get; set; }
+            
+            [DataMember]
+            [JsonProperty("authenticationUser")]
+            public string Euser { get; set; }
+            [DataMember]
+            [JsonProperty("formBundleGUID")]
+            public string Fbguid { get; set; }
+            [DataMember]
+            [JsonProperty("formBundleNumber")]
+            public string Fbnum { get; set; }
+            
+            [DataMember]
+            [JsonProperty("formId")]
+            public string FormId { get; set; }
+            [DataMember]
+            [JsonProperty("formType")]
+            public string Formtype { get; set; }
+            
+            [DataMember]
+            [JsonProperty("language")]
+            public string Langz { get; set; }
+            [DataMember]
+            [JsonProperty("line0")]
+            public string Line0 { get; set; }
+            [DataMember]
+            [JsonProperty("line1")]
+            public string Line1 { get; set; }
+            [DataMember]
+            [JsonProperty("line2")]
+            public string Line2 { get; set; }
+            [DataMember]
+            [JsonProperty("line3")]
+            public string Line3 { get; set; }
+            [DataMember]
+            [JsonProperty("line4")]
+            public string Line4 { get; set; }
+            [DataMember]
+            [JsonProperty("line5")]
+            public string Line5 { get; set; }
+            [DataMember]
+            [JsonProperty("line6")]
+            public string Line6 { get; set; }
+            [DataMember]
+            [JsonProperty("line7")]
+            public string Line7 { get; set; }
+            [DataMember]
+            [JsonProperty("line8")]
+            public string Line8 { get; set; }
+            [DataMember]
+            [JsonProperty("line9")]
+            public string Line9 { get; set; }
+            
+            [DataMember]
+            [JsonProperty("month")]
+            public string Monthz { get; set; }
+            
+            [DataMember]
+            [JsonProperty("periodKey")]
+            public string PeriodKeyz { get; set; }
+            [DataMember]
+            [JsonProperty("portalUser")]
+            public string PortalUsrz { get; set; }
+            [DataMember]
+            [JsonProperty("rejectionId")]
+            public string RegIdz { get; set; }
+            [DataMember]
+            [JsonProperty("rejectionAction")]
+            public string Rejectz { get; set; }
+           
+            [DataMember]
+            [JsonProperty("save")]
+            public string Savez { get; set; }
+            [DataMember]
+            [JsonProperty("savedNote")]
+            public string SavNot { get; set; }
+            [DataMember]
+            [JsonProperty("status")]
+            public string Status { get; set; }
+            [DataMember]
+            [JsonProperty("submit")]
+            public string Submitz { get; set; }
+            [DataMember]
+            [JsonProperty("taxpayer")]
+            public string Taxpayerz { get; set; }
+            [DataMember]
+            [JsonProperty("void")]
+            public string Xvoidz { get; set; }
+        }
+
         [Serializable]
         [DataContract]
 
@@ -459,287 +837,18 @@ namespace ZATCAMAUI.Models.ZakatObjectionsModel
             [DataMember]
             public Metadata __metadata { get; set; }
             [DataMember]
-            public string AAddress { get; set; }
+            public HeaderSet headerSet { get; set; }
+
             [DataMember]
-            public string AChkbg1 { get; set; }
+            [JsonProperty("objectionSet")]
+            public List<Result> ZNOB_ObjSet { get; set; }
+            
             [DataMember]
-            public string ATotZkt { get; set; }
+            [JsonProperty("attachedDetailsSet")]
+            public List<Attachment> AttDetSet { get; set; }
             [DataMember]
-            public string ATotCit { get; set; }
-            [DataMember]
-            public string AZsopbelCit { get; set; }
-            [DataMember]
-            public string AZundisam { get; set; }
-            [DataMember]
-            public string ACaltyp { get; set; }
-            [DataMember]
-            public string ACitdisam { get; set; }
-            [DataMember]
-            public string ATpTyp { get; set; }
-            [DataMember]
-            public string ACitundisam { get; set; }
-            [DataMember]
-            public string AZdisam { get; set; }
-            [DataMember]
-            public string Operationz { get; set; }
-            [DataMember]
-            public string UserTypz { get; set; }
-            [DataMember]
-            public string AAgree { get; set; }
-            [DataMember]
-            public string AAppNoOff { get; set; }
-            [DataMember]
-            public string AAssnmtAmt { get; set; }
-            [DataMember]
-            public string AAssnmtYr { get; set; }
-            [DataMember]
-            public string ABkext { get; set; }
-            [DataMember]
-            public string ABnkid { get; set; }
-            [DataMember]
-            public DateTime? ABnvfr { get; set; }
-            [DataMember]
-            public DateTime? ABnvto { get; set; }
-            [DataMember]
-            public string ABranch { get; set; }
-            [DataMember]
-            public string ABulding { get; set; }
-            [DataMember]
-            public string ACalender { get; set; }
-            [DataMember]
-            public string ACapacity { get; set; }
-            [DataMember]
-            public string ACdNm { get; set; }
-            [DataMember]
-            public string AChkbg { get; set; }
-            [DataMember]
-            public string AChkcs { get; set; }
-            [DataMember]
-            public string ACity { get; set; }
-            [DataMember]
-            public string ACompNm { get; set; }
-            [DataMember]
-            public string Acr121gldtfg { get; set; }
-            [DataMember]
-            public string ACurr { get; set; }
-            [DataMember]
-            public string ADisputeAmt { get; set; }
-            [DataMember]
-            public string ADistrict { get; set; }
-            [DataMember]
-            public string AEmail { get; set; }
-            [DataMember]
-            public DateTime? AEndpr { get; set; }
-            [DataMember]
-            public string AExtdy { get; set; }
-            [DataMember]
-            public string AExtfg { get; set; }
-            [DataMember]
-            public string AFaxNo { get; set; }
-            [DataMember]
-            public DateTime? AFromDt { get; set; }
-            [DataMember]
-            public string AGactn { get; set; }
-            [DataMember]
-            public string AGoliveChk { get; set; }
-            [DataMember]
-            public string Agolivedtfg { get; set; }
-            [DataMember]
-            public string AInstr { get; set; }
-            [DataMember]
-            public string ALegalSt { get; set; }
-            [DataMember]
-            public string AMainAct { get; set; }
-            [DataMember]
-            public string AMainActDesc { get; set; }
-            [DataMember]
-            public string AmdRsnz { get; set; }
-            [DataMember]
-            public string AName { get; set; }
-            [DataMember]
-            public string ANoFinance { get; set; }
-            [DataMember]
-            public string AObjectOn { get; set; }
-            [DataMember]
-            public string AObjIntPenalty { get; set; }
-            [DataMember]
-            public string AObjReturn { get; set; }
-            [DataMember]
-            public string AObjSum { get; set; }
-            [DataMember]
-            public string AOthAttch { get; set; }
-            [DataMember]
-            public string APenaltyTyp { get; set; }
-            [DataMember]
-            public DateTime? APeriodFrom { get; set; }
-            [DataMember]
-            public string APeriodFromCh { get; set; }
-            [DataMember]
-            public DateTime? APeriodTo { get; set; }
-            [DataMember]
-            public string APeriodToCh { get; set; }
-            [DataMember]
-            public string APoBox { get; set; }
-            [DataMember]
-            public string Approvez { get; set; }
-            [DataMember]
-            public string ARecByOff { get; set; }
-            [DataMember]
-            public DateTime? ARecDtOff { get; set; }
-            [DataMember]
-            public string ARecDtOffCh { get; set; }
-            [DataMember]
-            public string ARefNo { get; set; }
-            [DataMember]
-            public string ARepBldNm { get; set; }
-            [DataMember]
-            public string ARepCity { get; set; }
-            [DataMember]
-            public string ARepDes { get; set; }
-            [DataMember]
-            public string ARepEmail { get; set; }
-            [DataMember]
-            public string ARepFax { get; set; }
-            [DataMember]
-            public string ARepName { get; set; }
-            [DataMember]
-            public string ARepPhone { get; set; }
-            [DataMember]
-            public string ARepSteetNo { get; set; }
-            [DataMember]
-            public string AResidency { get; set; }
-            [DataMember]
-            public string ARetDet { get; set; }
-            [DataMember]
-            public string ARevAmt { get; set; }
-            [DataMember]
-            public string ASecam { get; set; }
-            [DataMember]
-            public string ASectp { get; set; }
-            [DataMember]
-            public string ASelect { get; set; }
-            [DataMember]
-            public string ASitedocs { get; set; }
-            [DataMember]
-            public string ASopbel { get; set; }
-            [DataMember]
-            public int AStep { get; set; }
-            [DataMember]
-            public string AStreet { get; set; }
-            [DataMember]
-            public DateTime? ASubdt { get; set; }
-            [DataMember]
-            public string ASubmitDateCh { get; set; }
-            [DataMember]
-            public string ATaxOfOff { get; set; }
-            [DataMember]
-            public string ATaxTy { get; set; }
-            [DataMember]
-            public string ATelephone { get; set; }
-            [DataMember]
-            public string ATin { get; set; }
-            [DataMember]
-            public string ATinCountry { get; set; }
-            [DataMember]
-            public string ATinOff { get; set; }
-            [DataMember]
-            public DateTime? AToDt { get; set; }
-            [DataMember]
-            public string ATpNm { get; set; }
-            [DataMember]
-            public string ATransactionType { get; set; }
-            [DataMember]
-            public string Auditorz { get; set; }
-            [DataMember]
-            public string AZipCd { get; set; }
-            [DataMember]
-            public string AZsopbel { get; set; }
-            [DataMember]
-            public string Cal { get; set; }
-            [DataMember]
-            public string CaseGuid { get; set; }
-            [DataMember]
-            public string CreateTxAssesz { get; set; }
-            [DataMember]
-            public string Dmodez { get; set; }
-            [DataMember]
-            public string Euser { get; set; }
-            [DataMember]
-            public string Fbguid { get; set; }
-            [DataMember]
-            public string Fbnum { get; set; }
-            [DataMember]
-            public string Fbnumz { get; set; }
-            [DataMember]
-            public string FormId { get; set; }
-            [DataMember]
-            public string Formtype { get; set; }
-            [DataMember]
-            public string GliveFlg { get; set; }
-            [DataMember]
-            public string Langz { get; set; }
-            [DataMember]
-            public string Line0 { get; set; }
-            [DataMember]
-            public string Line1 { get; set; }
-            [DataMember]
-            public string Line2 { get; set; }
-            [DataMember]
-            public string Line3 { get; set; }
-            [DataMember]
-            public string Line4 { get; set; }
-            [DataMember]
-            public string Line5 { get; set; }
-            [DataMember]
-            public string Line6 { get; set; }
-            [DataMember]
-            public string Line7 { get; set; }
-            [DataMember]
-            public string Line8 { get; set; }
-            [DataMember]
-            public string Line9 { get; set; }
-            [DataMember]
-            public string Mode { get; set; }
-            [DataMember]
-            public string Monthz { get; set; }
-            [DataMember]
-            public string OfficerUidz { get; set; }
-            [DataMember]
-            public string PeriodKeyz { get; set; }
-            [DataMember]
-            public string PortalUsrz { get; set; }
-            [DataMember]
-            public string RegIdz { get; set; }
-            [DataMember]
-            public string Rejectz { get; set; }
-            [DataMember]
-            public string Retguid { get; set; }
-            [DataMember]
-            public string Savez { get; set; }
-            [DataMember]
-            public string SavNot { get; set; }
-            [DataMember]
-            public string Status { get; set; }
-            [DataMember]
-            public string Submitz { get; set; }
-            [DataMember]
-            public string Taxpayerz { get; set; }
-            [DataMember]
-            public string Xvoidz { get; set; }
-            [DataMember]
-            public ZNOBObjSet ZNOB_ObjSet { get; set; }
-            [DataMember]
-            public OffNotesSet Off_notesSet { get; set; }
-            [DataMember]
-            public ZNOBPenaltySet ZNOB_penaltySet { get; set; }
-            [DataMember]
-            public ZNOBYearAmtSet ZNOB_YearAmtSet { get; set; }
-            [DataMember]
-            public ZNOBINPAYSet ZNOB_INPAYSet { get; set; }
-            [DataMember]
-            public AttDetSet AttDetSet { get; set; }
-            [DataMember]
-            public ZnotesSet znotesSet { get; set; }
+            [JsonProperty("notesSet")]
+            public List<Result4> znotesSet { get; set; }
         }
     }
 

@@ -14,7 +14,6 @@ using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Core.Interfaces;
-
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 {
     public class BankAccountAddorUpdateIBANViewModel : BaseViewModel
@@ -723,7 +722,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
             var list = new List<string>();
 
-            foreach (IdTypeListSetResult dropdown in IBANAccountData.d.IdTypeListSet.results)
+            foreach (IdTypeListSetResult dropdown in IBANAccountData.d.IdTypeListSet)
             {
                 try
                 {
@@ -755,20 +754,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 PickerModel = null;
             }
             var list = new List<string>();
-            var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
+            var selectedType = IBANAccountData.d.IdTypeListSet.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
 
             if (selectedType != null)
             {
                 SelectedIDTypeValue = selectedType.IdType;
             }
 
-            for (int i = 0; i < IBANAccountData.d.IdNumberListSet.results.Count; i++)
+            for (int i = 0; i < IBANAccountData.d.IdNumberListSet.Count; i++)
             {
-                if (IBANAccountData.d.IdNumberListSet.results[i].IdType.Equals(SelectedIDTypeValue))
+                if (IBANAccountData.d.IdNumberListSet[i].IdType.Equals(SelectedIDTypeValue))
                 {
                     try
                     {
-                        list.Add(IBANAccountData.d.IdNumberListSet.results[i].IdNumber);
+                        list.Add(IBANAccountData.d.IdNumberListSet[i].IdNumber);
                     }
                     catch (Exception )
                     {
@@ -794,7 +793,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
 
             var list = new List<string>();
 
-            foreach (Result dropdown in IBANAccountData.d.BankListSet.results)
+            foreach (Result dropdown in IBANAccountData.d.BankListSet)
             {
                 try
                 {
@@ -902,7 +901,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     requestObj.Type = SelectedIDTypeValue;
 
                     var IBANPostResponse = await IBanManagmentWebserviceManager.GAZTSubmitBankAccountIBAN(requestObj);
-
+                    //TODO Rework 
                     if (IBANAccountData.d.AutoPopFg == true)
                     {
                         if (IBANPostResponse.d.Action.Equals("N"))
@@ -991,6 +990,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
             {
                 if (IBANAccountData != null & IBANAccountData.d != null)
                 {
+                    //TODO REWORK
                     if (IBANAccountData.d.AutoPopFg == true)
                     {
                         AccountOwnerName = IBANAccountData.d.Name;
@@ -1095,6 +1095,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     return;
 
                 }
+                //TODO REWORK
                 if (IBANAccountData.d.AutoPopFg == false)
                 {
                     if (IBANBankListViewDataOne.Count != 1)
@@ -1109,7 +1110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     }
                 }
 
-                var selectedType = IBANAccountData.d.IdTypeListSet.results.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
+                var selectedType = IBANAccountData.d.IdTypeListSet.Find(selectedValue => (selectedValue.IdDesc == SelectedIDType));
 
                 if (selectedType != null)
                 {
@@ -1121,11 +1122,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 if (IsIBanUpdatePage)
                 {
 
-                    BankIDResult = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bankid == UserBankid));
+                    BankIDResult = IBANAccountData.d.BankListSet.Find(selectedValue => (selectedValue.Bankid == UserBankid));
                 }
                 else
                 {
-                    BankIDResult = IBANAccountData.d.BankListSet.results.Find(selectedValue => (selectedValue.Bkext == SelectedBankName));
+                    BankIDResult = IBANAccountData.d.BankListSet.Find(selectedValue => (selectedValue.Bkext == SelectedBankName));
 
                 }
 

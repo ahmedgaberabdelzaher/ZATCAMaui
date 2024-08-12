@@ -12,7 +12,13 @@ namespace ZATCAMAUI.Models.CustomServices.Tawreed
     {
         public Header header { get; set; }
         public Result result { get; set; }
+    }
 
+    public class Header
+    {
+        public string requestID { get; set; }
+        public Status status { get; set; }
+        public MoreInformation moreInformation { get; set; }
     }
 
 }

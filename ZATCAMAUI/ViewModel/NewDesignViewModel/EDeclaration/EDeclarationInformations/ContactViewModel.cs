@@ -123,7 +123,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInform
                     }
                     else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
                     {
-                        MessageTxt = data.header.moreInformation?.backendErrors;
+                        MessageTxt = data.moreInformation?.backendErrors;
                         IsShowMsgView = true;
                         IsLoading = false;
                     }

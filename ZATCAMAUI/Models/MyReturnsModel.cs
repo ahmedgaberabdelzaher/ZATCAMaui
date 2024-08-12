@@ -1,37 +1,59 @@
-﻿using System.Globalization;
+using System.Globalization;
+using Foundation;
 using ZATCAMAUI.Core.Mangers;
-
 namespace ZATCAMAUI.Models
 {
 
+    [Preserve(AllMembers = true)]
     public class MyReturnsModel
     {
     }
-    
+    [Preserve(AllMembers = true)]
     public class MyReturnsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-    
+    [Preserve(AllMembers = true)]
     public class MyReturnsResult
     {
         public Metadata __metadata { get; set; }
-        public string Gpart { get; set; }
-        public string Lang { get; set; }
-        public string Vkont { get; set; }
-        public string Cokey { get; set; }
-        public string Augrd { get; set; }
-        public string Vtref { get; set; }
-        public string Persl { get; set; }
-        public string TaxPeriod { get; set; }
-        public string Fbtyp { get; set; }
-        public string FbtText { get; set; }
-        public string Fbsta { get; set; }
-        public string Fbust { get; set; }
+        public string formBundleGUID { get; set; }
+        public string language { get; set; }
+        public string TIN { get; set; }
+        public string goLive { get; set; }
+        public string periodStartDate { get; set; }
+        public string periodEndDate { get; set; }
+        public string paymentStatus { get; set; }
+        public string systemStatus { get; set; }
+        public string taxTypeDescription { get; set; }
+        public bool isOpen { get; set; }
+        public string correspondenceKey { get; set; }
+        public string message { get; set; }
+        public string sadadBillNumber1 { get; set; }
+        public string sadadBillNumber2 { get; set; }
+        public string formBundleNumber { get; set; }
+        public string sortperiod { get; set; }
+        public string taxType { get; set; }
+        public string dueStatus { get; set; }
+        public string returnStatusDescription { get; set; }
+        public string status { get; set; }
+        public string inboundCorrespondenceType { get; set; }
+        public string inboundCorrespondenceText { get; set; }
+        public string formBundleType { get; set; }
+        public string formBundleDescription { get; set; }
+        public string taxPeriod { get; set; }
+        public string periodKey { get; set; }
+        public string contractReference { get; set; }
+        public string clearingReason { get; set; }
+        public string userStatus { get; set; }
+        public string error2064 { get; set; }
+        public string CR2215GoLive { get; set; }
+
+
         private string _CalendarTyp;
-        public string CalendarTyp
+        public string calendarType
         {
             get
             {
@@ -42,72 +64,101 @@ namespace ZATCAMAUI.Models
                 _CalendarTyp = value;
                 if (_CalendarTyp != null)
                 {
-                    if (!_CalendarTyp.Equals("G"))
+                    if (periodStartDateCharacter != null)
                     {
-
-                        if (AbrzuC != null)
+                        try
                         {
-
-                            string[] dts = AbrzuC.Split('/');
+                            if (!calendarType.Equals("G"))
+                            {
+                                //string[] dts = null;
+                                //periodStartDateCharacter = UtilityManager.ConvertToGreg(periodStartDateCharacter);
+                            }
+                            string[] dts = periodStartDateCharacter.Split('-');
+                            // FormatedAbrzu = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
+                            //string[] dts = periodStartDateCharacter.Split('/');
                             string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzu =UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            FormatedAbrzu = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+
                         }
-                        if (AbrzoC != null)
+                        catch (Exception ex)
                         {
-                            string[] dts = AbrzoC.Split('/');
+                            Console.WriteLine(ex);
+                        }
 
-                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzo =UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                    }
+                    if (periodEndDateCharacter != null)
+                    {
+                        if (!calendarType.Equals("H"))
+                        {
+                            //string[] dts = null;
+                            //periodEndDateCharacter = UtilityManager.ConvertToGreg(periodEndDateCharacter);
+                        }
+                        string[] dts = periodEndDateCharacter.Split('-');
+                        //FormatedAbrzo = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
+                        //string[] dts = periodEndDateCharacter.Split('/');
+
+                        string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
+                        FormatedAbrzo = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                    }
+                    if (dueDate != null)
+                    {
+                        try
+                        {
+                            DateTime date = DateTime.Parse(dueDate);
+                            FormatedSingleDueDate = date.ToString("dd-MMMM-yyyy");
+                        }
+                        catch (Exception ex)
+                        {
+                            FormatedSingleDueDate = "";
                         }
                     }
                 }
 
             }
         }
-        public string Msg { get; set; }
-        public bool Open { get; set; }
-
-        public string Due { get; set; }
 
 
-        public string StatusTxt { get; set; }
 
+
+        public string statusDescription
+        {
+            get; set;
+        }
 
         public string StatusMessage
         {
             get; set;
         }
-        public string Incotyp { get; set; }
-        public string Incotext { get; set; }
-        private DateTime _abrzu;
-        public DateTime Abrzu
-        {
-            get
-            {
-                return _abrzu;
-            }
-            set
-            {
-                _abrzu = value;
-                if (_abrzu != null)
-                {
-                    if (CalendarTyp != null)
-                    {
-                        if (CalendarTyp.Equals("G"))
-                        {
 
-                            FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            string[] dts = FormatedAbrzu.Split('-');
-                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                            FormatedAbrzu = date;
-                        }
+        //private DateTime _abrzu;
+        //public DateTime Abrzu
+        //{
+        //    get
+        //    {
+        //        return _abrzu;
+        //    }
+        //    set
+        //    {
+        //        _abrzu = value;
+        //        if (_abrzu != null)
+        //        {
+        //            if (CalendarTyp != null)
+        //            {
+        //                if (CalendarTyp.Equals("G"))
+        //                {
 
-                    }
-                }
-            }
-        }
+        //                    FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+        //                    string[] dts = FormatedAbrzu.Split('-');
+        //                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //                    FormatedAbrzu = date;
+        //                }
+
+        //            }  
+        //        }
+        //    }
+        //}
         private string _AbrzuC;
-        public string AbrzuC
+        public string periodStartDateCharacter
         {
             get
             {
@@ -116,52 +167,51 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AbrzuC = value;
-                if (_AbrzuC != null)
+                if (_AbrzuC != null && _AbrzuC != "Invalid date")
                 {
-                    if (CalendarTyp != null)
+                    if (calendarType != null)
                     {
-                        if (!CalendarTyp.Equals("G"))
+                        if (!calendarType.Equals("G"))
                         {
                             //string[] dts = null;
-
-                            string[] dts = _AbrzuC.Split('/');
-                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzu = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            _AbrzuC = UtilityManager.ConvertToGreg(value);
                         }
+                        string[] dts = _AbrzuC.Split('-');
+                        FormatedAbrzu = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
                     }
                 }
             }
         }
-        private DateTime _abrzo;
-        public DateTime Abrzo
-        {
-            get
-            {
-                return _abrzo;
-            }
-            set
-            {
-                _abrzo = value;
-                if (_abrzo != null)
-                {
-                    if (CalendarTyp != null)
-                    {
-                        if (CalendarTyp.Equals("G"))
-                        {
+        //private DateTime _abrzo;
+        //public DateTime Abrzo
+        //{
+        //    get
+        //    {
+        //        return _abrzo;
+        //    }
+        //    set
+        //    {
+        //        _abrzo = value;
+        //        if (_abrzo != null)
+        //        {
+        //            if (CalendarTyp != null)
+        //            {
+        //                if (CalendarTyp.Equals("G"))
+        //                {
 
-                            FormatedAbrzo = _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            string[] dts = FormatedAbrzo.Split('-');
-                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                            FormatedAbrzo = date;
-                        }
+        //                    FormatedAbrzo = _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+        //                    string[] dts = FormatedAbrzo.Split('-');
+        //                    string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+        //                    FormatedAbrzo = date;
+        //                }
 
-                    }
+        //            }
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
         private string _AbrzoC;
-        public string AbrzoC
+        public string periodEndDateCharacter
         {
             get
             {
@@ -170,56 +220,24 @@ namespace ZATCAMAUI.Models
             set
             {
                 _AbrzoC = value;
-                if (_AbrzoC != null)
+                if (_AbrzoC != null && _AbrzoC != "Invalid date")
                 {
-                    if (CalendarTyp != null)
+                    if (calendarType != null)
                     {
-                        if (!CalendarTyp.Equals("G"))
+                        if (!calendarType.Equals("G"))
                         {
-                            //dts = null;
-
-                            string[] dts = _AbrzoC.Split('/');
-                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzo = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            //string[] dts = null;
+                            _AbrzoC = UtilityManager.ConvertToGreg(value);
                         }
+                        string[] dts = _AbrzuC.Split('-');
+                        FormatedAbrzo = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
                     }
                 }
             }
         }
 
-        public string SadadDoc1 { get; set; }
-        public string SadadDoc2 { get; set; }
-        private DateTime _dueDt;
-        public DateTime DueDt
-        {
-            get
-            {
-                return _dueDt;
-            }
-            set
-            {
-                _dueDt = value;
-                if (_dueDt != null)
-                {
-                    if (CalendarTyp != null)
-                    {
-                        if (CalendarTyp.Equals("G"))
-                        {
-                            FormatedSingleDueDate = _dueDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            string[] dts = FormatedSingleDueDate.Split('-');
-                            string date = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                            FormatedSingleDueDate = date;
-                        }
-                    }
-
-
-                }
-            }
-        }
-        public string Stat { get; set; }
-        public string RetStatTxt { get; set; }
         private string _dueDTC;
-        public string DueDtC
+        public string dueDate
         {
             get
             {
@@ -230,15 +248,16 @@ namespace ZATCAMAUI.Models
                 _dueDTC = value;
                 if (_dueDTC != null)
                 {
-                    if (CalendarTyp != null)
+                    if (calendarType != null)
                     {
-                        if (!CalendarTyp.Equals("G"))
+                        try
                         {
-                            string[] dts = null;
-
-                            dts = _dueDTC.Split('/');
-                            string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedSingleDueDate = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            DateTime date = DateTime.Parse(_dueDTC);
+                            FormatedSingleDueDate = date.ToString("dd-MMMM-yyyy");
+                        }
+                        catch (Exception ex)
+                        {
+                            FormatedSingleDueDate = "";
                         }
                     }
 
@@ -247,12 +266,7 @@ namespace ZATCAMAUI.Models
             }
         }
 
-        public string TaxtpText { get; set; }
 
-        public string Sortperiod { get; set; }
-        public string TaxType { get; set; }
-        public string Fbnum { get; set; }
-        public string Fbguid { get; set; }
         private string _formatedSingleDueDate;
         public string FormatedSingleDueDate
         {
@@ -290,29 +304,30 @@ namespace ZATCAMAUI.Models
             }
         }
     }
-    
+
+    [Preserve(AllMembers = true)]
     public class MyReturnsD
     {
         public List<MyReturnsResult> results { get; set; }
     }
-    
+    [Preserve(AllMembers = true)]
     public class MyReturnsRootObject
     {
-        public MyReturnsD d { get; set; }
+        public List<MyReturnsResult> ICRReturns { get; set; }
     }
-    
+    [Preserve(AllMembers = true)]
     public class ReturnTypes
     {
         public string TaxType { get; set; }
         public string Id { get; set; }
     }
-    
+    [Preserve(AllMembers = true)]
     public class ChipModel
     {
         public string TemplateType { get; set; }
         public string Text { get; set; }
         public Color TextColor { get; set; }
         public ImageSource ImageSource { get; set; }
-
+        public string ZTSTScts { get; set; }
     }
 }

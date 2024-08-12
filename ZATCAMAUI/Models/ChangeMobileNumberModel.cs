@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Foundation;
 using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
@@ -6,148 +7,154 @@ namespace ZATCAMAUI.Models
 
     public class ChangeMobileNumberModel
 	{
-        [JsonProperty("d")]
+        [JsonProperty("data")]
         public Data d;
+        
+        [JsonProperty("result")]
+        public Data result;
     }
     
     public class Data
     {
-        [JsonProperty("__metadata")]
-        public Metadata Metadata;
+        //[JsonProperty("__metadata")]
+        //public Metadata Metadata;
 
-        [JsonProperty("UserTypz")]
+        [JsonProperty("userType")]
         public string UserTypz;
 
-        [JsonProperty("Crname")]
+        [JsonProperty("CRName")]
         public string Crname;
 
-        [JsonProperty("TxnTpz")]
+        [JsonProperty("transactionType")]
         public string TxnTpz;
 
-        [JsonProperty("Tintyp")]
+        [JsonProperty("TINType")]
         public string Tintyp;
 
-        [JsonProperty("TimestampCr")]
-        public object TimestampCr;
+        [JsonProperty("timeStampCreation")]
+        public string TimestampCr;
 
-        [JsonProperty("TimestampCh")]
-        public object TimestampCh;
+        [JsonProperty("timeStampChange")]
+        public string TimestampCh;
 
-        [JsonProperty("StepNumberz")]
+        [JsonProperty("stepNumber")]
         public string StepNumberz;
 
-        [JsonProperty("Statusz")]
+        [JsonProperty("statusCode")]
         public string Statusz;
 
-        [JsonProperty("SrcAppz")]
+        [JsonProperty("sourceApplication")]
         public string SrcAppz;
 
-        [JsonProperty("ReturnIdz")]
-        public string ReturnIdz;
+        //[JsonProperty("returnId")]
+        //public string ReturnIdz;
 
-        [JsonProperty("ReturnId")]
+        [JsonProperty("returnId")]
         public string ReturnId;
 
-        [JsonProperty("PortalUsrz")]
+        [JsonProperty("portalUser")]
         public string PortalUsrz;
 
-        [JsonProperty("OtpGuid")]
+        [JsonProperty("OTPGUID")]
         public string OtpGuid;
 
-        [JsonProperty("Otp")]
+        [JsonProperty("OTP")]
         public string Otp;
 
-        [JsonProperty("Operationz")]
+        [JsonProperty("operation")]
         public string Operationz;
 
-        [JsonProperty("OldTlnmbr")]
+        [JsonProperty("oldTelephoneNumber")]
         public string OldTlnmbr;
 
-        [JsonProperty("Officerz")]
+        [JsonProperty("userName")]
         public string Officerz;
 
-        [JsonProperty("OfficerTz")]
-        public string OfficerTz;
+        //[JsonProperty("userName")]
+        //public string OfficerTz;
 
-        [JsonProperty("NewTlnmbr")]
+        [JsonProperty("newTelephoneNumber")]
         public string NewTlnmbr;
 
-        [JsonProperty("Nafathguid")]
+        [JsonProperty("nafathGUID")]
         public string Nafathguid;
 
-        [JsonProperty("Nafathfg")]
+        [JsonProperty("nafathAccount")]
         public string Nafathfg;
 
-        [JsonProperty("Mgrnm")]
+        [JsonProperty("mangerName")]
         public string Mgrnm;
 
-        [JsonProperty("Mgrid")]
+        [JsonProperty("mangerId")]
         public string Mgrid;
 
-        [JsonProperty("McErrorFg")]
+        [JsonProperty("messageError")]
         public string McErrorFg;
 
-        [JsonProperty("Link")]
+        [JsonProperty("URL")]
         public string Link;
 
-        [JsonProperty("Langz")]
+        [JsonProperty("language")]
         public string Langz;
 
-        [JsonProperty("Inpchz")]
+        [JsonProperty("channel")]
         public string Inpchz;
 
-        [JsonProperty("Idtyp")]
+        [JsonProperty("idType")]
         public string Idtyp;
 
-        [JsonProperty("Gpartz")]
+        //[JsonProperty("TIN")]
         public string Gpartz;
 
-        [JsonProperty("Gpart")]
+        [JsonProperty("TIN")]
         public string Gpart;
 
-        [JsonProperty("Formprocz")]
+        [JsonProperty("formProcess")]
         public string Formprocz;
 
-        [JsonProperty("Fbnumz")]
+        [JsonProperty("formBundleNumber")]
         public string Fbnumz;
 
-        [JsonProperty("Fbnum")]
+       // [JsonProperty("formBundleNumber")]
         public string Fbnum;
 
-        [JsonProperty("Cmpnm")]
+        [JsonProperty("companyName")]
         public string Cmpnm;
 
-        [JsonProperty("Captcha")]
+        [JsonProperty("captchaCode")]
         public string Captcha;
 
-        [JsonProperty("Agrchk")]
+        [JsonProperty("agreeCheckBox")]
         public string Agrchk;
 
-        [JsonProperty("ATTACHSet")]
-        public ATTACHSet1 ATTACHSet;
+        [JsonProperty("attachments")]
+        public List<object> ATTACHSet;
 
-        [JsonProperty("NOTESSet")]
-        public NOTESSet1 NOTESSet;
+        [JsonProperty("notes")]
+        public List<object> NOTESSet;
 
-        [JsonProperty("IDTYPSet")]
-        public IDTYPSet IDTYPSet;
+        [JsonProperty("idTypes")]
+        public List<IDTypes> IDTYPSet;
 
-        [JsonProperty("MC_ERRORSet")]
-        public MCERRORSet MCERRORSet;
+        [JsonProperty("errorMessages")]
+        public List<ErrorTypes> MCERRORSet;
     }
-    
+
     public class ATTACHSet1
     {
         [JsonProperty("results")]
         public List<object> Results;
     }
     
+    
+    [Preserve(AllMembers = true)]
     public class IDTYPSet
     {
         [JsonProperty("results")]
         public List<IDTypes> Results;
     }
-    
+
+    [Preserve(AllMembers = true)]
     public class MCERRORSet
     {
         [JsonProperty("results")]
@@ -159,32 +166,28 @@ namespace ZATCAMAUI.Models
         [JsonProperty("results")]
         public List<object> Results;
     }
-    
+    [Preserve(AllMembers = true)]
     public class IDTypes
     {
-        [JsonProperty("__metadata")]
-        public Metadata Metadata;
-
-        [JsonProperty("Idtyp")]
+        [JsonProperty("idType")]
         public string Idtyp;
 
-        [JsonProperty("Text")]
+        [JsonProperty("description")]
         public string Text;
     }
     
-    public class ErrorTypes
-    {
-        [JsonProperty("__metadata")]
-        public Metadata Metadata;
-
-        [JsonProperty("Id")]
+    
+    [Preserve(AllMembers = true)]
+    public class ErrorTypes {
+        [JsonProperty("messageId")]
         public string Id;
 
-        [JsonProperty("Number")]
+        [JsonProperty("messageNumber")]
         public string Number;
 
-        [JsonProperty("Message")]
+        [JsonProperty("messageDescription")]
         public string Message;
     }
 }
+
 

@@ -12,13 +12,13 @@ using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 using ZATCAMAUI.Core.Exceptions;
-using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages;
+using ZATCAMAUI.Core.Enums;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -28,8 +28,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         #region Variable
 
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
         public bool isSubmitted = false;
         int selectedPage = (int)PagesEnum.FrequencyDetailsView;
 
@@ -421,7 +419,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
         }
 
-        private Color _declarationButtonBackGroundColor = (Color)Application.Current.Resources["ButtonGray"];
+
+        private Color _declarationButtonBackGroundColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color DeclarationButtonBackGroundColor
         {
             get
@@ -592,15 +591,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         public ChangeFillingPeriodViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {
 
-            if (navigationService == null)
-            {
-                throw new ArgumentNullException("navigationService");
-            }
-            _navigationService = navigationService;
-            if (dialogService == null)
-            {
-                throw new ArgumentNullException("dialogService");
-            }
+            
 
             ShowDatePicker = new Command(() =>
             {
@@ -617,7 +608,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 showIdTypePickerDialog();
             });
 
-            _dialogService = dialogService;
             GoBackClick = new Command(() =>
             {
                 Backnavigations();
@@ -657,7 +647,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 if (ChangeFillingResponse != null && ChangeFillingResponse.d != null)
                 {
-                    if (ChangeFillingResponse.d.Statusz == "E0013")
+                    if (ChangeFillingResponse.d.Fbust == "E0013")
                     {
                         listOfActionButtonsApplicable.Add(AppResources.ZZVoid);
                     }
@@ -748,12 +738,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     {
                         isDraftClicked = true;
                         ChangeFillingResponse = await SubmitClicked();
-                        if (ChangeFillingResponse != null && ChangeFillingResponse.d != null)
+                        if (ChangeFillingResponse != null && ChangeFillingResponse.d1 != null)
                         {
 
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                App.selectedVatFillingItem = ChangeFillingResponse.d.Fbnumz;
+                                App.selectedVatFillingItem = ChangeFillingResponse.d1.Fbnumz;
                                 setMoreOptioButtons();
 
                                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
@@ -761,7 +751,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
                                 headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
                                 headerAmountInfo.IsLinkAvailable = false;
-                                headerAmountInfo.Message = string.Format(AppResources.VATFillingDraftSaved, "  " + ChangeFillingResponse.d.Fbnumz);
+                                headerAmountInfo.Message = string.Format(AppResources.VATFillingDraftSaved, "  " + ChangeFillingResponse.d1.Fbnumz);
 
                                 headerWithInfos.Add(headerAmountInfo);
 
@@ -808,8 +798,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -849,7 +837,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         isDraftClicked = true;
                         ChangeFillingResponse = await SubmitClicked();
                         isDraftClicked = false;
-                        if (ChangeFillingResponse != null && ChangeFillingResponse.d != null)
+                        if (ChangeFillingResponse != null && ChangeFillingResponse.d1 != null)
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
@@ -924,16 +912,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
         public void PopulateDraftData()
         {
-            foreach (var att in EffectiveDateResponse.d.EffDateSet.results)
-            {
-                if (att.Persl == ChangeFillingResponse.d.Persl)
+            //foreach (var att in EffectiveDateResponse.d.EffDateSet.results)
+                foreach (var att in EffectiveDateResponse.d.EffDateSet)
+                {
+                if (att.Persl == ChangeFillingResponse.d.CPersl)
                 {
                     EffectiveDatePicked = att.Txt50;
                 }
@@ -978,7 +965,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             var yearsAttachments = new ObservableCollection<Attachment>();
             var monthsAttachments = new ObservableCollection<Attachment>();
             var othersAttachments = new ObservableCollection<Attachment>();
-            foreach (var attach in ChangeFillingResponse.d.ATTACHSet.results)
+            foreach (var attach in ChangeFillingResponse.d.ATTACHSet)
             {
                 if (attach.Dotyp == "ZTPA")
                 {
@@ -1183,8 +1170,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
-
             }
         }
 
@@ -1247,8 +1232,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1275,8 +1258,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             catch (InternetException ex)
 
             {
-
-
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -1312,8 +1293,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         private void setEffectiveDatePickerModel()
         {
             var list = new List<string>();
-
-            foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
+           // foreach (var date in EffectiveDateResponse.d.EffDateSet.results)
+                foreach (var date in EffectiveDateResponse.d.EffDateSet)
             {
                 list.Add(date.Txt50);
             }
@@ -1354,8 +1335,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     {
                         YearsattachmentsListViewData = new ObservableCollection<Attachment>();
                     }
-                    await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
-                 YearsattachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriod2Years, ChangeFillingResponse.d.ReturnIdz));
+                 await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 YearsattachmentsListViewData.ToList(),
+                 WhichAttachment.ChangeFillingPeriod2Years, ChangeFillingResponse.d.ReturnId));
                 }
                 else if (SelectedOutletOptionIndex == 1)
                 {
@@ -1363,22 +1345,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     {
                         MonthsattachmentsListViewData = new ObservableCollection<Attachment>();
                     }
-                    await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
-                 MonthsattachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriod12Months, ChangeFillingResponse.d.ReturnIdz));
+
+                 await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
+                 MonthsattachmentsListViewData.ToList(),
+                 WhichAttachment.ChangeFillingPeriod12Months, ChangeFillingResponse.d.ReturnId));
                 }
                 else
                 {
                     if (OtherAttachmentsListViewData == null)
                     {
                         OtherAttachmentsListViewData = new ObservableCollection<Attachment>();
-                    }
                     await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
-                 OtherAttachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriodOtherDoc, ChangeFillingResponse.d.ReturnIdz));
+                 OtherAttachmentsListViewData.ToList(),
+                 WhichAttachment.ChangeFillingPeriodOtherDoc, ChangeFillingResponse.d.ReturnId));
                 }
             }
             catch (GAZTUnlockAccountException )
             {
-
             }
             catch (InternetException ex)
             {
@@ -1390,7 +1373,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -1401,7 +1383,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsAttachmentsViewEnabled = false;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
-            IsDeclarationViewEnabledNew = false;
             IsBackVisible = true;
             selectedPage = (int)PagesEnum.FrequencyDetailsView;
         }
@@ -1413,7 +1394,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             IsAttachmentsViewEnabled = true;
             IsDeclarationViewEnabled = false;
             IsSummaryViewEnabled = false;
-            IsDeclarationViewEnabledNew = false;
             IsBackVisible = true;
             selectedPage = (int)PagesEnum.AttachmentsView;
         }
@@ -1693,7 +1673,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             OutletDecisionOptions = new ObservableCollection<ChangeFillingPeriodModel>();
 
-            foreach (var attach in EffectiveDateResponse.d.ATT_TYPSet.results)
+            //foreach (var attach in EffectiveDateResponse.d.ATT_TYPSet.results)
+                foreach (var attach in EffectiveDateResponse.d.ATT_TYPSet)
             {
                 OutletDecisionOptions.Add(new ChangeFillingPeriodModel
                 {
@@ -1740,8 +1721,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1755,20 +1734,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
         public void EnableDeclaration()
         {
-            if (IsDeclarationViewEnabledNew && IsCheckboxChecked)
+            if (ContactPersonName == "" || !IsIDVerified || !IsCheckboxChecked)
             {
-                IsDeclarationEnabled = true;
+                IsDeclarationEnabled = false;
             }
             else
             {
-                if (ContactPersonName == "" || !IsIDVerified || !IsCheckboxChecked)
-                {
-                    IsDeclarationEnabled = false;
-                }
-                else
-                {
-                    IsDeclarationEnabled = true;
-                }
+                IsDeclarationEnabled = true;
             }
         }
 
@@ -1799,8 +1771,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1820,8 +1790,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1840,8 +1808,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1860,8 +1826,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1880,8 +1844,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1966,8 +1928,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -1992,10 +1952,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                     ChangeFillingResponse = await SubmitClicked();
 
-                    if (ChangeFillingResponse.d != null)
+                    if (ChangeFillingResponse.d1 != null)
                     {
 
-                        ReferenceNumber = ChangeFillingResponse.d.Fbnumz;
+                        ReferenceNumber = ChangeFillingResponse.d1.Fbnumz;
                         await Application.Current.MainPage.Navigation.PushAsync(new ChangeFillingPeriodSuccessPage());
 
                     }
@@ -2003,8 +1963,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (GAZTUnlockAccountException )
             {
-
-
             }
             catch (InternetException ex)
             {
@@ -2028,11 +1986,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     IsLoading = true;
                 });
 
-                int index1 = EffectiveDateResponse.d.EffDateSet.results.IndexOf(EffectiveDateResponse.d.EffDateSet.results.Where(p => p.Txt50 == EffectiveDatePicked).FirstOrDefault());
+                int index1 = EffectiveDateResponse.d.EffDateSet.IndexOf(EffectiveDateResponse.d.EffDateSet.Where(p => p.Txt50 == EffectiveDatePicked).FirstOrDefault());
 
                 if (index1 != -1)
                 {
-                    ChangeFillingResponse.d.Persl = EffectiveDateResponse.d.EffDateSet.results[index1].Persl;
+                    //ChangeFillingResponse.d.Persl = EffectiveDateResponse.d.EffDateSet.results[index1].Persl;
 
                 }
 
@@ -2040,7 +1998,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
                 response = await VATChangeFillingWebServiceManager.GAZTPostVATChangeFillingPeriodData(request);
                 PopToRootPage();
-                if (response != null && response.d != null)
+                if (response != null && response.d1 != null)
                 {
                     try
                     {
@@ -2049,8 +2007,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     catch (Exception)
                     {
-
-
                         isSubmitted = false;
                         IsLoading = false;
                         return null;
@@ -2072,8 +2028,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             catch (Exception)
             {
-
-
                 isSubmitted = false;
                 return response;
             }
@@ -2216,7 +2170,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             CurrentFrequency = resultData.d.CureentF;
                             NewFrequency = resultData.d.FilingF;
 
-                            if (resultData.d.Attchk == "Q")
+                        
+                        if ((resultData.d.CureentF == "Monthly" || resultData.d.CureentF == "شهرية") 
+                            && (resultData.d.FilingF== "ربع سنوية" || resultData.d.FilingF == "Quarterly"))
+                            {
+                                IsAtachmentsVisible = true;
+                                IsDecCheckBoxVisible = true;
+                            }
+                            else
+                            {
+                                IsAtachmentsVisible = false;
+                                IsDecCheckBoxVisible = false;
+
+                            }
+                         
+
+                    /*if (resultData.d.Attchk == "Q")
                             {
                                 IsAtachmentsVisible = true;
                                 IsDecCheckBoxVisible = true;
@@ -2237,9 +2206,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 IsAtachmentsVisible = true;
                                 IsDecCheckBoxVisible = true;
-                            }
+                            }*/
                             await GetEffectiveDateList();
-                            VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(resultData.d.Fbnumz);
                         }
                         else
                         {
@@ -2280,10 +2248,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2362,8 +2328,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2394,6 +2358,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         {
                             IsIDVerified = true;
                             ContactPersonName = resultData.d.Name1 + " " + resultData.d.Name2;
+                            //ContactPersonName = resultData.d.TpTitle + resultData.d.Name2 + " " + resultData.d.Name1;
                             EnableDeclaration();
                         }
                         else
@@ -2436,8 +2401,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2459,11 +2422,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             try
             {
                 VATchangeFillingPeriodPostModel.Metadata _metadata = new VATchangeFillingPeriodPostModel.Metadata();
-                _metadata.id = ChangeFillingResponse.d.__metadata.id;
-                _metadata.uri = ChangeFillingResponse.d.__metadata.uri;
-                _metadata.type = ChangeFillingResponse.d.__metadata.type;
+                //_metadata.id = ChangeFillingResponse.d.__metadata.id;
+                //_metadata.uri = ChangeFillingResponse.d.__metadata.uri;
+                //_metadata.type = ChangeFillingResponse.d.__metadata.type;
 
-                request.d.__metadata = _metadata;
+                //request.d.__metadata = _metadata;
                 request.d.Attchk = ChangeFillingResponse.d.Attchk;
                 request.d.CPersl = ChangeFillingResponse.d.CPersl;
                 request.d.Fbnumz = ChangeFillingResponse.d.Fbnumz;
@@ -2479,29 +2442,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (CurrentIndex == 1 || CurrentIndex == 2)
                 {
                     request.d.StepNumber = "01";
-                    request.d.StepNumberz = "01";
+                    //request.d.StepNumberz = "01";
                 }
                 else
                 {
                     request.d.StepNumber = "02";
-                    request.d.StepNumberz = "02";
+                    //request.d.StepNumberz = "02";
                 }
                 request.d.Fbust = ChangeFillingResponse.d.Fbust;
-                request.d.ReturnIdz = ChangeFillingResponse.d.ReturnIdz;
+                //request.d.ReturnIdz = ChangeFillingResponse.d.ReturnIdz;
                 request.d.Officerz = ChangeFillingResponse.d.Officerz;
                 request.d.UserTyp = ChangeFillingResponse.d.UserTyp;
-                request.d.Gpartz = ChangeFillingResponse.d.Gpartz;
-                request.d.TransactionType = ChangeFillingResponse.d.TransactionType;
+               // request.d.Gpartz = ChangeFillingResponse.d.Gpart;
+               // request.d.TransactionType = ChangeFillingResponse.d.TransactionType;
                 request.d.EditFg = ChangeFillingResponse.d.EditFg;
-                request.d.Statusz = ChangeFillingResponse.d.Statusz;
+                //request.d.Statusz = ChangeFillingResponse.d.Fbust;
                 request.d.Euser = ChangeFillingResponse.d.Euser;
 
                 request.d.Fbguid = ChangeFillingResponse.d.Fbguid;
-                request.d.TxnTpz = ChangeFillingResponse.d.TxnTpz;
-                request.d.DmodeFlg = ChangeFillingResponse.d.DmodeFlg;
+                request.d.TxnTpz = ChangeFillingResponse.d.TransactionType;
+                //request.d.DmodeFlg = ChangeFillingResponse.d.DmodeFlg;
                 request.d.Formprocz = ChangeFillingResponse.d.Formprocz;
-                request.d.EvStatus = ChangeFillingResponse.d.EvStatus;
-                request.d.OfficerTz = ChangeFillingResponse.d.OfficerTz;
+                //request.d.EvStatus = ChangeFillingResponse.d.Fbust;
+                //request.d.OfficerTz = ChangeFillingResponse.d.OfficerTz;
                 request.d.SrcAppz = ChangeFillingResponse.d.SrcAppz;
 
 
@@ -2513,10 +2476,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.FilingF = ChangeFillingResponse.d.FilingF;
                 request.d.Persl = ChangeFillingResponse.d.Persl;
 
-                request.d.EffDateSet = ChangeFillingResponse.d.EffDateSet.results;
+                request.d.EffDateSet = ChangeFillingResponse.d.EffDateSet;
                 request.d.UI_BTNSet = ChangeFillingResponse.d.UI_BTNSet;
-                request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet.results;
-                request.d.ATTACHSet = ChangeFillingResponse.d.ATTACHSet.results;
+                request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet;
+                request.d.ATTACHSet = ChangeFillingResponse.d.ATTACHSet;
                 request.d.ATTACHSet.Clear();
                 request.d.QuesListSet = ChangeFillingResponse.d.QuesListSet;
 
@@ -2544,14 +2507,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 request.d.TransType = "CRE_TPCV";
                 request.d.UserTypz = "TP";
 
-                if (ChangeFillingResponse.d.NOTESSet.results.Count != 0)
+                if (ChangeFillingResponse.d.NOTESSet.Count != 0)
                 {
 
-                    string apiDate = ChangeFillingResponse.d.NOTESSet.results[0].Erfdtz;
+                    string apiDate = ChangeFillingResponse.d.NOTESSet[0].Erfdtz;
                     if (!apiDate.Contains("Date"))
                     {
 
-                        foreach (var item in ChangeFillingResponse.d.NOTESSet.results)
+                        foreach (var item in ChangeFillingResponse.d.NOTESSet)
                         {
 
                             DateTime dt1 = Convert.ToDateTime(item.Erfdtz);
@@ -2570,7 +2533,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                 }
 
-                request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet.results.ToList();
+                request.d.NOTESSet = ChangeFillingResponse.d.NOTESSet.ToList();
 
                 if (IsAttachmentsEnabled)
                 {
@@ -2610,7 +2573,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 else
                 {
-                    request.d.ATT_TYPSet = ChangeFillingResponse.d.ATT_TYPSet.results;
+                    request.d.ATT_TYPSet = ChangeFillingResponse.d.ATT_TYPSet;
                 }
                 var todayDate = DateTime.Now.ToString();
 
@@ -2628,8 +2591,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             catch (Exception)
             {
-
-
             }
             return request;
         }

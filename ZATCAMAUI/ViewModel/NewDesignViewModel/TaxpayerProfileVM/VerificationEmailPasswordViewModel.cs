@@ -338,8 +338,6 @@ After:
             {
                 IsLoading = false;
                 ShowValidationPopup(ex.Message);
-
-
             }
 
             return TP;
@@ -370,7 +368,6 @@ After:
             {
                 IsLoading = false;
                 ShowValidationPopup(ex.Message);
-
 
             }
 

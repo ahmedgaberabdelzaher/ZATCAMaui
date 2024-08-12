@@ -333,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
             {
                 if (App.TP != null)
                 {
-                    if (!string.IsNullOrEmpty(App.TP.Tin))
+                    if (!string.IsNullOrEmpty(App.TP.TIN))
                     {
                         await Task.Run(() =>
                         {
@@ -408,13 +408,123 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         {
             if (letter >= 48 && letter <= 57)
             {
-                return true;
-            }
-            else
-            {
-                return false;
+                //tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
+                tesmobnoscreen.MobileNumber = "+966" + MobileNumber;
+
+                TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                taxEvasionSendSmsModel.mobile = tesmobnoscreen.MobileNumber;
+
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+                    TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await TaxEvasionWebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    if (taxEvasionSendSmsResponseModel.Status == true)
+                    {
+                        App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
+                        App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
+                        App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " "  ;
+                       EncriptedMobileNumber = "xxxxxxxxxx"+ MobileNumber.Substring(MobileNumber.Length - 4, 4);
+
+                        ShowOTPForm();
+                        //_navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        });
+                    }
+                }
+                catch (GAZTException gex)
+                {
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
+
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+
+                        //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        //viewModel._navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                        Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+
+                      //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                        //viewModel._navigationService.GoBack();
+                    });
+                }
+
+
             }
         }
+        catch (InternetException ex)
+        {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                Device.BeginInvokeOnMainThread(async () =>
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
+               // await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+        catch (Exception ex)
+        {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                Device.BeginInvokeOnMainThread(async () =>
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+              //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
+    }
 
         public async Task sendOTPAsync()
         {
@@ -645,9 +755,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 }
                                 catch (Exception)
                                 {
-
-
-
                                 }
                                 await navigateToListPage();
                                 MobileNumber = string.Empty;
@@ -655,8 +762,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         }
                         catch (Exception)
                         {
-
-
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await Task.Run(() =>
@@ -708,6 +813,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 }
                 catch (Exception ex)
                 {
+
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await Task.Run(() =>

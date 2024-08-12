@@ -127,8 +127,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     });
                 }
             }
+<<<<<<< HEAD:ZATCAMAUI/ViewModel/NewDesignViewModel/AccountStatements/AccountStatementsDownloadPageViewModel.cs
             catch (Exception)
             {
+=======
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+>>>>>>> c4bcf28b6 (CR6238 code merge to prod by chandu):GAZT/GAZT/ViewModel/NewDesignViewModel/AccountStatements/AccountStatementsDownloadPageViewModel.cs
             }
         }
 

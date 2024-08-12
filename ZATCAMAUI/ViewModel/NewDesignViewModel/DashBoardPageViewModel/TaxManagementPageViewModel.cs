@@ -89,8 +89,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
             catch (Exception)
             {
-
-
             }
             _navigationService.GoBack();
         }

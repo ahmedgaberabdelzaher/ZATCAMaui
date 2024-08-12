@@ -1,15 +1,12 @@
-﻿
 using System.Windows.Input;
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Interfaces;
-
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
 {
 
     public class ZatcaInfoMenuPageViewModel : BaseViewModel
     {
-
         #region Variable
         private CustomsEnum _currentTab = CustomsEnum.parentCstoms;
         public CustomsEnum currentTab
@@ -84,6 +81,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
         {
         }
         #endregion
+
         #region Methods
         public void setMenuTab()
         {
@@ -102,7 +100,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
                 currentTab = CustomsEnum.customsTarrifs;
             }
         }
-        public async void setMenu2Tab()
+        public void setMenu2Tab()
         {
             if (PageSettings.IsIncludeInquiryVisible)
             {

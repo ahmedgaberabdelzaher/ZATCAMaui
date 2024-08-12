@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace ZATCAMAUI.Models
 {
@@ -6,6 +7,7 @@ namespace ZATCAMAUI.Models
     public class VATSignUpData
     {
         [DataMember]
+        [JsonProperty("data")]
         public VATSignUpDataD d { get; set; }
     }
 
@@ -25,20 +27,28 @@ namespace ZATCAMAUI.Models
     public class VATSignUpDataResults
     {
         [DataMember]
+        [JsonProperty("")]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Spras { get; set; }
         [DataMember]
+        [JsonProperty("country")]
         public string Land1 { get; set; }
         [DataMember]
+        [JsonProperty("countryName")]
         public string Landx { get; set; }
         [DataMember]
+        [JsonProperty("nationality")]
         public string Natio { get; set; }
         [DataMember]
+        [JsonProperty("countryDescription")]
         public string Landx50 { get; set; }
         [DataMember]
+        [JsonProperty("nationalityDescription")]
         public string Natio50 { get; set; }
         [DataMember]
+        [JsonProperty("superRegion")]
         public string PrqSpregt { get; set; }
 
     }
@@ -62,12 +72,17 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Spras { get; set; }
         [DataMember]
+        [JsonProperty("country")]
         public string Land1 { get; set; }
+       
         [DataMember]
+        [JsonProperty("region")]
         public string Bland { get; set; }
         [DataMember]
+        [JsonProperty("description")]
         public string Bezei { get; set; }
 
     }
@@ -85,17 +100,16 @@ namespace ZATCAMAUI.Models
     {
         [DataMember]
         public __metadata __metadata { get; set; }
-        [DataMember]
+        [JsonProperty("language")]
         public string Langu { get; set; }
-        [DataMember]
+        [JsonProperty("country")]
         public string Country { get; set; }
-        [DataMember]
+        [JsonProperty("cityCode")]
         public string CityCode { get; set; }
-        [DataMember]
+        [JsonProperty("region")]
         public string Region { get; set; }
-        [DataMember]
+        [JsonProperty("cityName")]
         public string CityName { get; set; }
-
     }
 
     
@@ -112,19 +126,26 @@ namespace ZATCAMAUI.Models
         [DataMember]
         public __metadata __metadata { get; set; }
         [DataMember]
+        [JsonProperty("language")]
         public string Spras { get; set; }
         [DataMember]
+        [JsonProperty("country")]
         public string Land1 { get; set; }
         [DataMember]
+        [JsonProperty("region")]
         public string Bland { get; set; }
         [DataMember]
+        [JsonProperty("cityCode")]
         public string Cityc { get; set; }
         [DataMember]
-        public Country_dropdownSet country_dropdownSet { get; set; }
+        [JsonProperty("countries")]
+        public IList<VATSignUpDataResults> country_dropdownSet { get; set; }
         [DataMember]
-        public State_dropdownSet State_dropdownSet { get; set; }
+        [JsonProperty("states")]
+        public IList<VATSignUpStateResults> State_dropdownSet { get; set; }
         [DataMember]
-        public City_dropdownSet city_dropdownSet { get; set; }
+        [JsonProperty("cities")]
+        public IList<VATSignUPCityResults> city_dropdownSet { get; set; }
 
     }
 

@@ -609,7 +609,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnActivityItemButtonClick = new Command((_enum) => openNewActivity((EstablishmentOutletActivitiesTabsEnum)_enum));
             OnCountrySelectButtonClick = new Command((str) =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet?.results);
+                ListPopUpViewPage poupWindow = new ListPopUpViewPage(OutletDropDowns?.country_dropdownSet);
                 poupWindow.OnItemSelect = (item) =>
                 {
                     try
@@ -631,13 +631,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             });
             OnProvinanceSelectButtonClick = new Command((str) =>
             {
-                List<StateDropdownItem> states = OutletDropDowns?.State_dropdownSet?.results;
+                List<StateDropdownItem> states = OutletDropDowns?.State_dropdownSet;
                 if (str != null && str.ToString().Equals("same"))
                 {
                     states = new List<StateDropdownItem>();
                     if (CountrySame != null && !string.IsNullOrWhiteSpace(CountrySame?.Landx50))
                     {
-                        states.AddRange(OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Land1 == CountrySame.Land1));
+                        states.AddRange(OutletDropDowns?.State_dropdownSet?.Where(i => i.Land1 == CountrySame.Land1));
                     }
                 }
                 else
@@ -645,7 +645,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     states = new List<StateDropdownItem>();
                     if (Country != null && !string.IsNullOrWhiteSpace(Country?.Landx50))
                     {
-                        states.AddRange(OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Land1 == Country.Land1));
+                        states.AddRange(OutletDropDowns?.State_dropdownSet?.Where(i => i.Land1 == Country.Land1));
                     }
                 }
                 if (states?.Count > 0)
@@ -673,13 +673,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             });
             OnCitySelectButtonClick = new Command((str) =>
             {
-                List<CityDropdownItem> cities = OutletDropDowns?.city_dropdownSet?.results;
+                List<CityDropdownItem> cities = OutletDropDowns?.city_dropdownSet;
                 if (str != null && str.ToString().Equals("same"))
                 {
                     cities = new List<CityDropdownItem>();
                     if (CountrySame != null && !string.IsNullOrWhiteSpace(CountrySame?.Landx50) && ProvinanceSame != null && !string.IsNullOrWhiteSpace(ProvinanceSame?.Bezei))
                     {
-                        cities.AddRange(OutletDropDowns?.city_dropdownSet?.results.Where(i => i.Country == CountrySame.Land1 && i.Region == ProvinanceSame.Bland));
+                        cities.AddRange(OutletDropDowns?.city_dropdownSet?.Where(i => i.Country == CountrySame.Land1 && i.Region == ProvinanceSame.Bland));
                     }
                 }
                 else
@@ -687,7 +687,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     cities = new List<CityDropdownItem>();
                     if (Country != null && !string.IsNullOrWhiteSpace(Country?.Landx50) && Provinance != null && !string.IsNullOrWhiteSpace(Provinance?.Bezei))
                     {
-                        cities.AddRange(OutletDropDowns?.city_dropdownSet?.results.Where(i => i.Country == Country.Land1 && i.Region == Provinance.Bland));
+                        cities.AddRange(OutletDropDowns?.city_dropdownSet?.Where(i => i.Country == Country.Land1 && i.Region == Provinance.Bland));
                     }
                 }
                 if (cities?.Count > 0)
@@ -728,7 +728,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                     {
-                        var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
+                        var mainactivity = taxPayerDetails?.Nreg_ActivitySet?.Where(i => i.Type == "ZS0004").ToList();
                         if (mainactivity.Count > 0)
                         {
                             _enum = EstablishmentOutletActivitiesTabsEnum.ActivityList;
@@ -748,7 +748,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             }
                         }); ;
                     });
-                        
+
                 }
                 else
                 {
@@ -803,7 +803,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         IsLoading = true;
                         DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
 
-                        taxPayerDetails?.Nreg_AddressSet.results?.Clear();
+                        taxPayerDetails?.Nreg_AddressSet?.Clear();
                         Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
                         defaultAddress.HouseNum1 = HouseNumber;
                         defaultAddress.Building = BuildingNumber;
@@ -819,9 +819,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         defaultAddress.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
                         defaultAddress.AddrType = "XXDEFAULT";
                         defaultAddress.Srcidentify = string.Format("O{0}", OutletActNumber);
-                        defaultAddress.Begda = DateTime.UtcNow;
-                        defaultAddress.Endda = maxDate;
-                        taxPayerDetails?.Nreg_AddressSet.results?.Add(defaultAddress);
+                        defaultAddress.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
+                        defaultAddress.Endda = maxDate.ToString("yyyy-MM-ddTHH:mm:ss");
+                        taxPayerDetails?.Nreg_AddressSet?.Add(defaultAddress);
 
                         Nreg_AddressItem _address = new Nreg_AddressItem();
                         _address.HouseNum1 = HouseNumberSame;
@@ -838,19 +838,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         _address.Sameasphy = PostalAsPhysical ? "X" : string.Empty;
                         _address.AddrType = "0001";
                         _address.Srcidentify = string.Format("O{0}", OutletActNumber);
-                        _address.Begda = DateTime.UtcNow;
-                        _address.Endda = maxDate;
-                        taxPayerDetails?.Nreg_AddressSet.results?.Add(_address);
+                        _address.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss");
+                        _address.Endda = maxDate.ToString("yyyy-MM-ddTHH:mm:ss"); ;
+                        taxPayerDetails?.Nreg_AddressSet?.Add(_address);
 
-                        taxPayerDetails?.Nreg_OutletSet?.results?.Clear();
+                        taxPayerDetails?.Nreg_OutletSet?.Clear();
                         Nreg_OutletItem outletItem = new Nreg_OutletItem();
                         outletItem.Actnm = OutletName;
                         outletItem.Actno = OutletActNumber;
                         outletItem.Caltp = taxPayerDetails?.Caltp;
                         outletItem.Actcat = OutletActNumber == "00000" ? "M" : "S";
-                        taxPayerDetails?.Nreg_OutletSet?.results?.Add(outletItem);
+                        taxPayerDetails?.Nreg_OutletSet?.Add(outletItem);
                         taxPayerDetails.StepNumberx = "03";
-                        taxPayerDetails.Gpartx = App.LoginDataRetrieved.TIN;
+                        taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
                         await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
@@ -879,13 +879,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             IsLoading = true;
             try
             {
-                taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+                taxPayerDetails?.Nreg_ActivitySet?.Clear();
                 var newList = new List<Nreg_ActivityItem>();
                 newList.AddRange(list);
-                taxPayerDetails?.Nreg_ActivitySet.results?.AddRange(newList);
+                taxPayerDetails?.Nreg_ActivitySet?.AddRange(newList);
                 var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-                taxPayerDetails?.AttDetSet.results?.Clear();
-                taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
+                taxPayerDetails?.AttDetSet?.Clear();
+                taxPayerDetails?.AttDetSet?.AddRange(_taxPayerDetails?.AttDetSet);
             }
             catch (Exception)
             {
@@ -937,7 +937,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
                     if (OutletActNumber == "00000")
                     {
-                        var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.results.Where(i => new List<string> { "BUP002", "ZS0004" }.Contains(i.Type)).ToList();
+                        var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
                         if (preLoadedItems.Count == 1)
                         {
                             var preLoadedItem = preLoadedItems.FirstOrDefault();
@@ -991,7 +991,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         PreLoadedLicenseItem = null;
                     }
 
-                    if (!string.IsNullOrEmpty(OutletName)){
+                    if (!string.IsNullOrEmpty(OutletName))
+                    {
                         isEditable = false;
                     }
                     else
@@ -1004,7 +1005,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
                     if (selectedOutletItem != null)
                     {
-                        Nreg_AddressItem defaultAddress = taxPayerDetails?.Nreg_AddressSet?.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("XXDEFAULT")).FirstOrDefault();
+                        Nreg_AddressItem defaultAddress = taxPayerDetails?.Nreg_AddressSet?.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("XXDEFAULT")).FirstOrDefault();
                         HouseNumber = defaultAddress?.HouseNum1;
                         BuildingNumber = defaultAddress?.Building;
                         FloorNumber = defaultAddress?.Floor;
@@ -1012,13 +1013,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Quarter = defaultAddress?.City2;
                         PostalCode = defaultAddress?.PostCode1;
                         AddNumber = defaultAddress?.HouseNum2;
-                        Country = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == defaultAddress?.Country).FirstOrDefault();
-                        Provinance = OutletDropDowns?.State_dropdownSet?.results.Where( i => i.Bland == defaultAddress?.Region && i.Land1 == defaultAddress?.Country).FirstOrDefault();
-                        City = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == defaultAddress?.CityCode && i.CityName == defaultAddress?.City1 && i.Country == defaultAddress?.Country && i.Region == defaultAddress?.Region).FirstOrDefault();
+                        Country = OutletDropDowns?.country_dropdownSet?.Where(i => i.Land1 == defaultAddress?.Country).FirstOrDefault();
+                        Provinance = OutletDropDowns?.State_dropdownSet?.Where(i => i.Bland == defaultAddress?.Region && i.Land1 == defaultAddress?.Country).FirstOrDefault();
+                        City = OutletDropDowns?.city_dropdownSet?.Where(i => i.CityCode == defaultAddress?.CityCode && i.CityName == defaultAddress?.City1 && i.Country == defaultAddress?.Country && i.Region == defaultAddress?.Region).FirstOrDefault();
 
                         //PostalAsPhysical = defaultAddress?.Sameasphy == "X";
 
-                        Nreg_AddressItem _address = taxPayerDetails?.Nreg_AddressSet?.results.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("0001")).FirstOrDefault();
+                        Nreg_AddressItem _address = taxPayerDetails?.Nreg_AddressSet?.Where(i => i.Srcidentify.Equals(string.Format("O{0}", OutletActNumber)) && i.AddrType.Equals("0001")).FirstOrDefault();
                         HouseNumberSame = _address?.HouseNum1;
                         BuildingNumberSame = _address?.Building;
                         FloorNumberSame = _address?.Floor;
@@ -1026,9 +1027,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         QuarterSame = _address?.City2;
                         PostalCodeSame = _address?.PostCode1;
                         AddNumberSame = _address?.HouseNum2;
-                        CountrySame = OutletDropDowns?.country_dropdownSet?.results.Where(i => i.Land1 == _address?.Country).FirstOrDefault();
-                        ProvinanceSame = OutletDropDowns?.State_dropdownSet?.results.Where(i => i.Bland == _address?.Region).FirstOrDefault();
-                        CitySame = OutletDropDowns?.city_dropdownSet?.results.Where(i => i.CityCode == _address?.CityCode && i.CityName == _address?.City1).FirstOrDefault();
+                        CountrySame = OutletDropDowns?.country_dropdownSet?.Where(i => i.Land1 == _address?.Country).FirstOrDefault();
+                        ProvinanceSame = OutletDropDowns?.State_dropdownSet?.Where(i => i.Bland == _address?.Region).FirstOrDefault();
+                        CitySame = OutletDropDowns?.city_dropdownSet?.Where(i => i.CityCode == _address?.CityCode && i.CityName == _address?.City1).FirstOrDefault();
                     }
                     else
                     {
@@ -1036,7 +1037,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             string crNumber = "";
                             string crType = "";/// taxPayerDetails.Nreg_ActivitySet
-                            foreach (var obj in taxPayerDetails.Nreg_ActivitySet.results)
+                            foreach (var obj in taxPayerDetails.Nreg_ActivitySet)
                             {
                                 if (obj.Type.Equals("BUP002"))
                                 {
@@ -1093,14 +1094,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
             {
-                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count == 0)
+                if (taxPayerDetails?.Nreg_ActivitySet?.Count == 0)
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
                     return false;
                 }
-                var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Actcat == "M").ToList();
+                var mainactivity = taxPayerDetails?.Nreg_ActivitySet?.Where(i => i.Actcat == "M").ToList();
                 var count = mainactivity.Count();
-                if (taxPayerDetails?.Nreg_ActivitySet.results?.Count != 0 && count == 0)
+                if (taxPayerDetails?.Nreg_ActivitySet?.Count != 0 && count == 0)
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateAddActivity));
                     return false;
@@ -1272,7 +1273,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             CanExecute = true;
             OutletName = string.Empty;
-            taxPayerDetails?.Nreg_ActivitySet.results?.Clear();
+            taxPayerDetails?.Nreg_ActivitySet?.Clear();
             PostalAsPhysical = true;
 
             HouseNumber = string.Empty;

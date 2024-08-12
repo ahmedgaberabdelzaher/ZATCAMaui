@@ -33,14 +33,21 @@ namespace ZATCAMAUI.Core.Mangers
                     fbguid = "";
                     string userTyp = "TP";
 
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.ZakatListOfInstalmentplanRequestUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
-                       "Auditor='" + auditor + "'," +
-                     "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
-                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
-                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-
-
+                    var lang = UtilityManager.GetLanguageParameter();
+                    //String url = ZATCAConstants.ZakatListOfInstalmentplanRequestUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
+                    //   "Auditor='" + auditor + "'," +
+                    // "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                    // "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
+                    //HttpResponseMessage GAZTzakatInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    string url = ZATCAConstants.ZakatListOfInstalmentplanRequestUrl + App.TP.TIN + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatInstalmentDataResponse = await client.GetAsync(uri);
 
                     if (GAZTzakatInstalmentDataResponse != null)
                     {
@@ -89,19 +96,6 @@ namespace ZATCAMAUI.Core.Mangers
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception)
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-                {
-                    
-                    
-                    App.IsSessionExpired = true;
-After:
-                {
-
-
-                    App.IsSessionExpired = true;
-*/
                 {
 
 
@@ -138,12 +132,21 @@ After:
                     string userTyp = "TP";
 
 
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.ZakatRevokeRequestListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
-                       "Auditor='" + auditor + "'," +
-                     "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
-                     "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
-                    HttpResponseMessage GAZTzakatRevokeInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    var lang = UtilityManager.GetLanguageParameter();
+                    //String url = ZATCAConstants.ZakatRevokeRequestListUrl + "CallServ='" + callServ + "',HostName='" + "',Bpnum='" + App.LoginDataRetrieved.TIN + "',Zuser='" + "'," +
+                    //   "Auditor='" + auditor + "'," +
+                    // "Lang='" + lang + "',Euser1='" + euser1 + "',Euser2='" + euser2 + "',Euser3='" + euser3 + "'," +
+                    // "Euser4='" + euser4 + "',Euser5='" + euser5 + "',Fbguid='" + fbguid + "',UserTin='" + "',Fbnum='" + "',UserTyp='" + userTyp + "')?$expand=WorklistSet,AuthServSet,EvtNotif12Set,EvtNotif1Set,RevokeListSet&$format=json";
+                    //  HttpResponseMessage GAZTzakatRevokeInstalmentDataResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    string url = ZATCAConstants.ZakatRevokeRequestListUrl + App.TP.TIN + "&language=" + lang;
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatRevokeInstalmentDataResponse = await client.GetAsync(uri);
 
 
                     if (GAZTzakatRevokeInstalmentDataResponse != null)
@@ -194,19 +197,6 @@ After:
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception)
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-                {
-                    
-                    
-                    App.IsSessionExpired = true;
-After:
-                {
-
-
-                    App.IsSessionExpired = true;
-*/
                 {
 
 
@@ -233,13 +223,19 @@ After:
                     var summaryInputs = await GAZTGetZakatSummaryInputData(fbnum, status);
                     string euser = "00000000000000000000";
                     string fbguid = summaryInputs.d.Fbguid;
-                    char lang = WebServiceManager.GetLangZParameter();
-                    string url = ZATCAConstants.ZakatRequestDisplayUrl + "Tin='',Euser='00000000000000000000',Langz='EN',Fbguid='" + fbguid + "'," +
-                        "Fbnum='" + fbnum + "',FormMode='S')?$expand=AttachSet,NotesSet,FnDtlSet&$format=json";
-                    HttpResponseMessage GAZTzakatDisplayResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
-
-
-
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    //String url = ZATCAConstants.ZakatRequestDisplayUrl + "Tin='',Euser='00000000000000000000',SearchTin='" + "',Langz='EN',Fbguid='" + fbguid + "'," +
+                    //  "Fbnum='" + fbnum + "',FormMode='S')?$expand=AttachSet,NotesSet,FnDtlSet&$format=json";
+                    String url = ZATCAConstants.ZakatRequestDisplayUrl + App.TP.TIN + "&language=" + lang + "&formBundleNumber=" + fbnum + "&formMode=N";
+                    // HttpResponseMessage GAZTzakatDisplayResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTzakatDisplayResponse = await client.GetAsync(uri);
 
                     if (GAZTzakatDisplayResponse != null)
                     {
@@ -291,8 +287,6 @@ After:
                 }
                 catch (Exception)
                 {
-
-
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -311,16 +305,21 @@ After:
                 try
                 {
                     string fbtyp = "IPRF";
-                    char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.GetZAKATSummaryInputURL + "Euser1='00000000000000000000',Fbguid='" + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
-                     "Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',TaxOffUid='" + "')?$format=json";
+
+                    var lang = UtilityManager.GetLanguageParameter();
+                    //HttpClient client = new HttpClient(App.httpClientHandler);
+                    //String url = ZATCAConstants.GetZAKATSummaryInputURL + "Euser1='00000000000000000000',Fbguid='" + "',Fbnum='" + fbnum + "',Fbtyp='" + fbtyp + "'," +
+                    // "Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',Persl='" + "',Status='" + status + "',TaxOffUid='" + "')?$format=json";
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.GetZAKATSummaryInputURL + App.TP.TIN + "&language=" + lang + "&Status=" + status;
+
                     var uri = new Uri(url);
                     HttpResponseMessage _zakatSumamryInputResponse = await client.GetAsync(uri);
-
-
-
-
                     if (_zakatSumamryInputResponse != null)
                     {
                         if (_zakatSumamryInputResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -373,8 +372,6 @@ After:
                 }
                 catch (Exception)
                 {
-
-
                     App.IsSessionExpired = true;
                     return null;
                 }

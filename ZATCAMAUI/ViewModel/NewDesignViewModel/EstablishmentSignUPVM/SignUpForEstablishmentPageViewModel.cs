@@ -1,5 +1,4 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -12,6 +11,9 @@ using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Models.NewModelAPI.AbsherOTP;
+using static ZATCAMAUI.Models.ErrorMessage;
+using System.Text;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
@@ -45,6 +47,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged(nameof(CurrentIndex));
             }
         }
+
+        //private OTPModelvalidatedD _otpMDl;
+        //public OTPModelvalidatedD OtpMDl
+        //{
+        //    get
+        //    {
+        //        return _otpMDl;
+        //    }
+        //    set
+        //    {
+        //        if (_otpMDl == value) return;
+        //        _otpMDl = value;
+        //        OnPropertyChanged("OtpMDl");
+        //    }
+        //}
+
+
         private string _txtConfirmPassword = string.Empty;
         public string TxtConfirmPassword
         {
@@ -58,6 +77,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                 _txtConfirmPassword = value;
                 OnPropertyChanged("TxtConfirmPassword");
+            }
+        }
+
+        private string _iqamaTypeDesc = string.Empty;
+        public string IqamaTypeDesc
+        {
+            get
+            {
+                return _iqamaTypeDesc;
+            }
+            set
+            {
+                _iqamaTypeDesc = value;
+                OnPropertyChanged("IqamaTypeDesc");
+            }
+        }
+
+        private bool _showIqamaTypeDesc = false;
+        public bool ShowIqamaTypeDesc
+        {
+            get
+            {
+                return _showIqamaTypeDesc;
+            }
+            set
+            {
+                _showIqamaTypeDesc = value;
+                OnPropertyChanged("ShowIqamaTypeDesc");
             }
         }
 
@@ -132,6 +179,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("Guid");
             }
         }
+
+        private string captcha = string.Empty;
+        public string Captcha
+        {
+            get
+            {
+                return captcha;
+            }
+            set
+            {
+                if (captcha == value) return;
+
+                captcha = value;
+                OnPropertyChanged("Captcha");
+            }
+        }
+
         private string _maxDigids = "9";
         public string MaxDigids
         {
@@ -848,7 +912,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 if (_isResendOTPEnabled == value) return;
 
                 _isResendOTPEnabled = value;
-
                 OnPropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -947,8 +1010,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     catch (Exception)
                     {
-
-
                     }
                 }
                 OnPropertyChanged("SelectedSignUpUsing");
@@ -1015,10 +1076,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         }
                         TxtIDType = _selectedIdType.Name;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 OnPropertyChanged("SelectedIdType");
@@ -1145,8 +1206,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("SelectedGCCCountryIndex");
             }
         }
-        public IList<SignupCityResult> _cityList;
-        public IList<SignupCityResult> CityList
+        public ObservableCollection<SignupCityResult> _cityList = new ObservableCollection<SignupCityResult>();
+        public ObservableCollection<SignupCityResult> CityList
         {
             get
             {
@@ -1205,10 +1266,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                    ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                     ButtonDisableTextColor = Colors.White;
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     VerifyButtonDisableTextColor = Colors.Gray;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
@@ -1603,7 +1664,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("EncriptedMobileNumber");
             }
         }
-        private Color _buttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+        private Color _buttonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color ButtonDisableColor
         {
             get
@@ -1618,7 +1679,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("ButtonDisableColor");
             }
         }
-        private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["Secondary"];
+        private Color _verifybuttonDisableColor =  (Color)Application.Current.Resources["Secondary"];
         public Color VerifyButtonDisableColor
         {
             get
@@ -1951,33 +2012,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("OtpMDl");
             }
         }
-        private string _iqamaTypeDesc = string.Empty;
-        public string IqamaTypeDesc
-        {
-            get
-            {
-                return _iqamaTypeDesc;
-            }
-            set
-            {
-                _iqamaTypeDesc = value;
-                OnPropertyChanged("IqamaTypeDesc");
-            }
-        }
+        //private string _iqamaTypeDesc = string.Empty;
+        //public string IqamaTypeDesc
+        //{
+        //    get
+        //    {
+        //        return _iqamaTypeDesc;
+        //    }
+        //    set
+        //    {
+        //        _iqamaTypeDesc = value;
+        //        OnPropertyChanged("IqamaTypeDesc");
+        //    }
+        //}
 
-        private bool _showIqamaTypeDesc = false;
-        public bool ShowIqamaTypeDesc
-        {
-            get
-            {
-                return _showIqamaTypeDesc;
-            }
-            set
-            {
-                _showIqamaTypeDesc = value;
-                OnPropertyChanged("ShowIqamaTypeDesc");
-            }
-        }
+        //private bool _showIqamaTypeDesc = false;
+        //public bool ShowIqamaTypeDesc
+        //{
+        //    get
+        //    {
+        //        return _showIqamaTypeDesc;
+        //    }
+        //    set
+        //    {
+        //        _showIqamaTypeDesc = value;
+        //        OnPropertyChanged("ShowIqamaTypeDesc");
+        //    }
+        //}
 
         // * End
         #endregion
@@ -2073,7 +2134,41 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("IsAllValidCRNumberEntered");
             }
         }
+        private string _title = string.Empty;
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                if (_title == value) return;
 
+
+
+                _title = value;
+                OnPropertyChanged("Title");
+            }
+        }
+
+        private bool _titleVisibility = false;
+        public bool TitleVisibility
+        {
+            get
+            {
+                return _titleVisibility;
+            }
+            set
+            {
+                if (_titleVisibility == value) return;
+
+
+
+                _titleVisibility = value;
+                OnPropertyChanged("TitleVisibility");
+            }
+        }
 
 
         #endregion
@@ -2154,7 +2249,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     //License Number Validation
                     else
                     {
-
+                        
                         //AllValid Data Entered
                         if (!string.IsNullOrEmpty(TxtLicenseNumber)
                             && TxtLicenseNumber.Length == 20
@@ -2187,6 +2282,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         BodyText = AppResources.CRReviewthebelowinformation;
                         NextBTN = AppResources.ZZZZContinue;
                         CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                        //PageTitle = AppResources.VerificationCode;
+                        //BodyText = AppResources.ZZPleaseenteraccessCode;
+                        //NextBTN = AppResources.ZZZZContinue;
+                        //                        CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                        //StartTimer(0, 2, 0);
+                        //TimerStart(numberOfSeconds);
                     }
                     else
                     {
@@ -2201,8 +2302,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     BodyText = AppResources.ZZPleaseenteraccessCode;
                     NextBTN = AppResources.ZZZZContinue;
                     CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
+                    //StartTimer(0, 2, 0);
+                    //ResendOTPAsync();
                     TimerStart(numberOfSeconds);
                     break;
+
+                    //case EstablishmentSignUPTabEnum.MobileVerification:
+                    //    PageTitle = AppResources.Password;
+                    //    BodyText = AppResources.CreateASecurePassword;
+                    //    NextBTN = AppResources.Confirm;
+
+                    //    CurrentTab = EstablishmentSignUPTabEnum.Password;
+                    //    break;
             }
         }
 
@@ -2218,21 +2329,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     break;
 
                 case EstablishmentSignUPTabEnum.EmailVerification:
-                    PageTitle = AppResources.CRSummary;
-                    BodyText = AppResources.CRReviewthebelowinformation;
-                    NextBTN = AppResources.ZZZZContinue;
-                    IsNextButtonEnable = true; IsResendOTPEnabled = false;
                     try
                     {
-                        otpTimer.Stop();
+                        if (IsResendOTPEnabled)
+                        {
+                            PageTitle = AppResources.CRSummary;
+                            BodyText = AppResources.CRReviewthebelowinformation;
+                            NextBTN = AppResources.ZZZZContinue;
+                            IsNextButtonEnable = true; IsResendOTPEnabled = false;
+                            try
+                            {
+                                otpTimer.Stop();
 
+                            }
+                            catch (Exception)
+                            {
+
+                            }
+
+                            CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
+                        }
+                        else
+                        {
+
+                        }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
-
+                    
                     CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
                     break;
 
@@ -2267,7 +2394,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public void ClearData()
         {
             //SetDefaultDate();
-            VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
+            VerifyButtonDisableColor =  (Color)Application.Current.Resources["Secondary"];
             //IsVerifyOTPEnabled = true;
             IsResendOTPEnabled = false;
             ButtonDisableColor = Colors.Gray;
@@ -2357,6 +2484,55 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
+        //private void StartTimer(int h, int m, int sec)
+        //{
+        //    int hour = h;
+        //    int mins = m;
+        //    int counter = sec;
+        //    Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+        //    {
+        //        if (IsTimerCancel)
+        //        {
+        //            return false;
+        //        }
+        //        else
+        //        {
+        //            Device.BeginInvokeOnMainThread(() =>
+        //            {
+        //                counter = counter - 1;
+        //                if (counter < 0)
+        //                {
+        //                    counter = 59;
+        //                    mins = mins - 1;
+        //                    if (mins < 0)
+        //                    {
+        //                        mins = 59;
+        //                        hour = hour - 1;
+        //                        if (hour < 0)
+        //                        {
+        //                            hour = 0;
+        //                            mins = 0;
+        //                            counter = 0;
+        //                        }
+        //                    }
+        //                }
+        //                IsResendOTPEnabled = false;
+        //                LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
+        //            });
+        //            if (hour == 0 && mins == 0 && counter == 0)
+        //            {
+        //                IsResendOTPEnabled = true;
+        //                return false;
+        //            }
+        //            else
+        //            {
+        //                return true;
+        //            }
+        //        }
+        //    });
+
+        //}
+
         public async Task GetCaptchAndGUID()
         {
             try
@@ -2374,22 +2550,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 metadata.uri = st;
                 metadata.type = type;
 
-                GetCaptcha d = new GetCaptcha();
+                GetCaptcha d = new GetCaptcha()
+                {
+                    captchaCode = "",
+                    GUID = "",
+                    taxpayer = "",
+                    refresh = "",
+                    applicationName = "PUSR"
+                };
                 d.__metadata = metadata;
-                d.Captcha = "";
-                d.Guid = "";
-                d.Taxpayer = "";
-                d.Refresh = "";
-                d.Application = "PUSR";
 
-                forgotPasswordOTP.d = d;
-                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
+                forgotPasswordOTP.result = d;
+                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(d);
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                if (forgotPasswordOTP?.result != null && !string.IsNullOrEmpty(forgotPasswordOTP.result.captchaCode))
                 {
-                    Guid = forgotPasswordOTP.d.Guid;
-                    Captcha = forgotPasswordOTP.d.Captcha;
+                    Guid = forgotPasswordOTP.result.GUID;
+                    Captcha = forgotPasswordOTP.result.captchaCode;
                 }
                 else
                 {
@@ -2404,10 +2582,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
+                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 await Task.Run(() =>
                 {
                     IsLoading = false;
 
+                    //SetIDNumberEnability = true;
+                    //IDNumber = String.Empty;
+                    // UserIDLayoutVisibility = true;
                 });
             }
         }
@@ -2436,29 +2618,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         try
                         {
                             SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
-                            CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
-                            CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
-                            CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
-                            CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
-                            CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
-                            CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
-                            CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
-                            CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
-                            CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
-                            CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
-                            CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
-                            CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
-                            CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
-                            CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
+                            CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
+                            CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
+                            CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
+                            CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
+                            CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
+                            CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
+                            CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
+                            CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
+                            CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
+                            CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
+                            CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
+                            CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
+                            CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
+                            CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
 
-                            CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
-                            CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
-                            CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
-                            CreateModel.AType = SignUpModelRootObjectM.d.AType;
-                            CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
-                            CreateModel.ACaptcha = SignUpModelRootObjectM.d.ACaptcha;
-                            CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
-                            CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
+                            CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
+                            CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
+                            CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
+                            CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
+                            CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
+                            CreateModel.ACaptcha = SignUpModelRootObjectM.d.signupD.ACaptcha;
+                            if (OtpMDl != null && OtpMDl.d != null)
+                            {
+                                CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
+                                CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
+                            }
+                            else
+                            {
+                                CreateModel.AAbsherGuid = string.Empty;
+                                CreateModel.AAbsherOtp = string.Empty;
+                            }
                             string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
                             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                             if (ResultFirstSubmitModel.d == null)
@@ -2475,9 +2665,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                 {
                                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
                                 });
-                                ButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+
+                                ButtonDisableColor =  (Colors)Application.Current.Resources["ButtonGray"];
                                 ButtonDisableTextColor = Colors.Gray;
-                                VerifyButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                                VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                                 VerifyButtonDisableTextColor = Colors.White;
                                 IsResendOTPEnabled = false;
                                 IsVerifyOTPEnabled = true;
@@ -2485,6 +2676,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                                 StartOTPTimer();
                                 IsNextButtonEnable = true;
                                 IsResendOTPEnabled = false;
+
+                                SignUpModelRootObjectM.d = ResultFirstSubmitModel.d;
                             }
                         }
                         catch (InternetException ex)
@@ -2547,10 +2740,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     IDTypeIndex = 0;
                     SelectedIssuedBy = null;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
                 IsLoading = false;
             }
@@ -2593,7 +2786,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {"90721", "Municipality" },
             {"90724", "Ministry of Petroleum and Mineral Resources" },
             {"90740", "General Sports Authority" },
-            {"90742","General Commission For Audiovisual Media" },
+            {"90742", "General Commission For Audiovisual Media" },
             {"90718", "Other" }
         };
 
@@ -2627,10 +2820,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {"90729", "وزارة العدل" },
             {"90721", "الهيئة السعودية للمهندسين" },
             {"90724", "وزارة البترول والثروة المعدنية" },
-              {"90742", "هيئة الإعلام المرئي والمسموع"},
+            {"90742", "هيئة الإعلام المرئي والمسموع"},
             {"90718", "غير معرف" }
-
         };
+
+
+
         public void SetIssueIdList()
         {
             try
@@ -2741,13 +2936,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             IsLoading = true;
             try
             {
-                CityList = null;
+                //CityList = null;
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
-                List<SignupCityResult> CityR = new List<SignupCityResult>();
-                if (CityListSignup.d.city_dropdownSet.results.Count == 0)
-                    await Application.Current.MainPage.DisplayAlert("no records", "no rec", "OK");
-                CityR = CityListSignup.d.city_dropdownSet.results;
-                CityList = CityR;
+                //ObservableCollection<City> CityR = new ObservableCollection<City>();
+                if (CityListSignup.d.cities.Count == 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("no records", "no rec", "OK");
+                }
+                else
+                {
+                    CityList = new ObservableCollection<SignupCityResult>(CityListSignup.d.cities);
+                }
+                //foreach(var item in CityR)
+                //{
+                //    CityList.Add(item);
+                //}
+                //CityList = CityR;
+           
             }
             catch (GAZTException gex)
             {
@@ -2788,10 +2993,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -2851,10 +3056,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                        ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                         ButtonDisableTextColor = Colors.White;
                         IsResendOTPEnabled = true;
-                        VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                        VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                         VerifyButtonDisableTextColor = Colors.Gray;
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
@@ -2932,21 +3137,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("TxtEmailCode");
             }
         }
-        private string captcha = string.Empty;
-        public string Captcha
-        {
-            get
-            {
-                return captcha;
-            }
-            set
-            {
-                if (captcha == value) return;
+        //private string captcha = string.Empty;
+        //public string Captcha
+        //{
+        //    get
+        //    {
+        //        return captcha;
+        //    }
+        //    set
+        //    {
+        //        if (captcha == value) return;
 
-                captcha = value;
-                OnPropertyChanged("Captcha");
-            }
-        }
+        //        captcha = value;
+        //        OnPropertyChanged("Captcha");
+        //    }
+        //}
         public async void CreateGaZTAccount()
         {
             try
@@ -2956,33 +3161,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     IsLoading = true;
                 });
                 CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
-                CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
-                CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
-                CreateModel.ACityCode = SignUpModelRootObjectM.d.ACityCode;
-                CreateModel.ACommId = SignUpModelRootObjectM.d.ACommId;
-                CreateModel.AEmail = SignUpModelRootObjectM.d.AEmail;
-                CreateModel.AFirstname = SignUpModelRootObjectM.d.AFirstname;
-                CreateModel.AIdnumber = SignUpModelRootObjectM.d.AIdnumber;
-                CreateModel.AIdtype = SignUpModelRootObjectM.d.AIdtype;
-                CreateModel.AIssuedBy = SignUpModelRootObjectM.d.AIssuedBy;
-                CreateModel.ALang = SignUpModelRootObjectM.d.ALang;
-                CreateModel.ALastname = SignUpModelRootObjectM.d.ALastname;
-                CreateModel.ALicenceNo = SignUpModelRootObjectM.d.ALicenceNo;
-                CreateModel.AMobile = SignUpModelRootObjectM.d.AMobile;
-                CreateModel.APhone = SignUpModelRootObjectM.d.APhone;
-                CreateModel.ATin = SignUpModelRootObjectM.d.ATin;
-                CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
-                CreateModel.AType = SignUpModelRootObjectM.d.AType;
-                CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
+                CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
+                CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
+                CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
+                CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
+                CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
+                CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
+                CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
+                CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
+                CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
+                CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
+                CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
+                CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
+                CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
+                CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
+                CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
+                CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
+                CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
+                CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
                 CreateModel.APassword = TxtPassword;
                 string FinalSMSCode = MOTPFirstDigit + MOTPSecondDigit + MOTPThirdDigit + MOTPFourthDigit;
 
                 CreateModel.ASmsCode = FinalSMSCode;
                 string FinalEMailCode = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
                 CreateModel.AEmailCode = FinalEMailCode;
-                CreateModel.ACountry = SignUpModelRootObjectM.d.ACountry;
+                CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
                 CreateModel.ASubmit = "X";
-                CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
+                if (!string.IsNullOrEmpty(IqamaTypeDesc)) //CR6407
+                {
+                    CreateModel.AIqamaDesc = IqamaTypeDesc;
+                    CreateModel.AIqamaFg = "X";
+                }
+                else
+                {
+                    CreateModel.AIqamaDesc = "";
+                    CreateModel.AIqamaFg = "";
+                }
                 if (OtpMDl != null && OtpMDl.d != null)
                 {
                     CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
@@ -2993,7 +3207,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     CreateModel.AAbsherGuid = string.Empty;
                     CreateModel.AAbsherOtp = string.Empty;
                 }
-
+                CreateModel.Fbnum = SignUpModelRootObjectM.d.signupD.Fbnum;
+                CreateModel.ACaptcha = SignUpModelRootObjectM.d.signupD.ACaptcha;
                 string ResultFirstSubmit = await WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
                 if (ResultFirstSubmit != null)
                 {
@@ -3004,9 +3219,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         {
                             IsLoading = false;
                         });
-                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                        // _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                        ErrorObj SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<ErrorObj>(ResultFirstSubmit);
+
+                        StringBuilder message = new StringBuilder();
+                        foreach (Errordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                        {
+                            message.AppendLine(itemerror.message);  
+                        }
+                        message = message.Replace("An exception was raised", string.Empty);
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message.ToString()));
                         OTPFirstDigit = string.Empty;
                         OTPSecondDigit = string.Empty;
                         OTPThirdDigit = string.Empty;
@@ -3026,7 +3247,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         });
                         //est signup user created succesfully
                         string tin = string.Empty;
-                        tin = ResultFirstSubmitModel.d.ATin;
+                        tin = ResultFirstSubmitModel.d.signupD.ATin;
 
                         _navigationService.NavigateTo(App.AccountCreatedSuccessfullyPageView, tin);
                     }
@@ -3137,21 +3358,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             otpTimer.Enabled = true;
         }
 
-        public async Task StepfivedataValidation(OTPModelD otpRecvided)
+
+        public async Task StepfivedataValidation(AbsherOTPResponse otpRecvided)
         {
             OTPModelvalidateD otp = new OTPModelvalidateD();
             otpVlidate d = new otpVlidate();
             this.IsLoading = true;
             if (otpRecvided != null)
             {
-                d.Captcha = otpRecvided.d.Captcha;
-                d.Guid16 = otpRecvided.d.Guid16;
-                d.Idnum = otpRecvided.d.Idnum;
+                d.Captcha = otpRecvided.result.captcha;
+                d.Guid16 = otpRecvided.result.formBundleGUID;
+                d.Idnum = otpRecvided.result.idNumber;
                 d.OtpCode = "0106";//OTP;
                 otp.d = d;
                 await Task.Run(async () =>
                 {
-                    OTPModelvalidatedD otpRecvided2 = await WebServiceManager.ValidateAbsher(otp, false);
+                    ValidateAbhserOTPModel otpRecvided2 = await WebServiceManager.ValidateAbsher(otp, false);
                     if (otpRecvided2 != null)
                     {
                         MessagingCenter.Send<Object, object>(this, "Otpvalidated", otpRecvided2);
@@ -3169,7 +3391,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 return;
             }
         }
-
         #endregion
 
     }

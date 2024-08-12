@@ -7,6 +7,7 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.ZakatObjectionsModel;
 using static ZATCAMAUI.Models.ErrorMessage;
+using static ZATCAMAUI.Models.ZakatObjectionsModel.ZakatObjectionWithDrawListModel;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -73,8 +74,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
-
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -85,17 +84,30 @@ namespace ZATCAMAUI.Core.Mangers
             }
         }
 
-        public static async Task<ZakatObjectionWithDrawListModel> GAZTGetZakatWithDrawList()
+        public static async Task<ZakatObjectionWithDrawListModelClass> GAZTGetZakatWithDrawList()
         {
-            ZakatObjectionWithDrawListModel _zakatObjectionWithDrawListModel = new ZakatObjectionWithDrawListModel();
+
+            ZakatObjectionWithDrawListModelClass _zakatObjectionWithDrawListModel = new ZakatObjectionWithDrawListModelClass();
             if (NetworkCheck.IsInternet())
             {
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.ZakatObjectionWDListRL + "Taxpy eq '" + App.LoginDataRetrieved.TIN + "'&$format=json";
+                    string lang = WebServiceManager.GetLangZParameterAREN();
+                    HttpClient client = new HttpClient();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.ZakatObjectionWDListRL + App.LoginDataRetrieved.TIN;
                     var uri = new Uri(url);
 
 
@@ -123,8 +135,8 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-                        string ___zakatObjectionWithDrawListData = __zakatObjectionWithDrawListResponse.Content.ReadAsStringAsync().Result;
-                        _zakatObjectionWithDrawListModel = JsonConvert.DeserializeObject<ZakatObjectionWithDrawListModel>(___zakatObjectionWithDrawListData);
+                        String ___zakatObjectionWithDrawListData = __zakatObjectionWithDrawListResponse.Content.ReadAsStringAsync().Result;
+                        _zakatObjectionWithDrawListModel = JsonConvert.DeserializeObject<ZakatObjectionWithDrawListModelClass>(___zakatObjectionWithDrawListData);
                         if (!string.IsNullOrEmpty(___zakatObjectionWithDrawListData))
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(___zakatObjectionWithDrawListData);
@@ -146,7 +158,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -166,9 +178,17 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.ZakatObjectionWDSelectedDDURL + "ObjFbnum eq '" + objFbnum + "'&$format=json";
+                    var lang = UtilityManager.GetLanguageParameter();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", "android-20013fbc500");
+                    client.DefaultRequestHeaders.Add("X-Device-Name", "Samsung-s20+");
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", "android");
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.ZakatObjectionWDSelectedDDURL + "formBundleNumber=" + objFbnum;
                     var uri = new Uri(url);
 
 
@@ -218,12 +238,10 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
-
-
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -260,11 +278,10 @@ namespace ZATCAMAUI.Core.Mangers
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception)
-
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -280,35 +297,25 @@ namespace ZATCAMAUI.Core.Mangers
             {
                 try
                 {
-                    string Url = string.Empty;
-                    Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + fbnum + "')/$value";
+
+                    String Url = string.Empty;
+                    Url = ZATCAConstants.BaseUrlOfODataServices + "/v1/objections/forms/acknowledgments/attachments?formBundleNumber=" + fbnum;
 
                     return Url;
                 }
-                catch (Exception)
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
+                catch (Exception ex)
                 {
-                    
-                    
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
-After:
-                {
 
-
-                    return null;
-*/
-                {
-
-
-                    return null;
                 }
             }
             else
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
+            
         }
 
         public static string GAZTZakatObjectionWDDownloadForm(string fbnum)
@@ -317,15 +324,16 @@ After:
             {
                 try
                 {
-                    string Url = string.Empty;
-                    Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum='" + fbnum + "')/$value";
+
+                    String Url = string.Empty;
+                    Url = ZATCAConstants.BaseUrlOfODataServices + "/v1/objections/forms/acknowledgments/attachments?formBundleNumber=" + fbnum;
 
                     return Url;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -344,10 +352,20 @@ After:
                 string NewToken = string.Empty;
                 try
                 {
-                    char lang = WebServiceManager.GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.ZakatObjectionRequestSummaryURL + "Taxpayerz='" + "',Fbnumz='" + fbnum + "',Langz='" + "',Auditorz='" + "'," +
-                        "Euser='00000000000000000000',Fbguid='" + "')?=&$expand=ZNOB_ObjSet,Off_notesSet,AttDetSet&$format=json";
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    var lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
+                    String url = ZATCAConstants.ZakatObjectionRequestSummaryURL + fbnum + "&language=" + lang + "&TIN=" + App.TP.TIN;
                     var uri = new Uri(url);
 
 
@@ -399,8 +417,6 @@ After:
                 }
                 catch (Exception)
                 {
-
-
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -445,10 +461,10 @@ After:
                     }
                     return responseData;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -519,10 +535,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -594,10 +610,10 @@ After:
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }

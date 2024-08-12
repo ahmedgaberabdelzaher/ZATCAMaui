@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models.AccountStatements;
-
 namespace ZATCAMAUI.Core.Mangers
 {
 
@@ -22,12 +21,20 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     ASTabIdentification _asTabIdentification = new ASTabIdentification();
                     char LangZ = WebServiceManager.GetLangZParameter();
-                    string Lang = UtilityManager.GetLanguageParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.AccountStatementTabIdentification + "Euser=''," + "Fbguid=" + "'" + App.LoginDataRetrieved.FbGuid + "')?$format=json";
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", Lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    String url = ZATCAConstants.AccountStatementTabIdentification + "&formBundleGUID=" + App.LoginDataRetrieved.FbGuid;
 
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
@@ -58,10 +65,10 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     return _asTabIdentification;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -81,12 +88,20 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     ASRevenueDropDownSet _asTabIdentification = new ASRevenueDropDownSet();
                     char LangZ = WebServiceManager.GetLangZParameter();
-                    string Lang = UtilityManager.GetLanguageParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    string url = ZATCAConstants.AccountStatementRevenueDropDownSet + "Euser eq ''" + " and Fbguid eq '" + App.LoginDataRetrieved.FbGuid + "'" + " and TaxType eq '" + taxType + "'" + " and Langz eq '" + LangZ + "'&$format=json";
+                    String Lang = UtilityManager.GetLanguageParameter();
+                    HttpClient client = new HttpClient();
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfo>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfo>().Model;
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", Lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
+                    String url = ZATCAConstants.AccountStatementRevenueDropDownSet + "&language=" + Lang + "&formBundleGUID=" + App.LoginDataRetrieved.FbGuid + "&taxtype=" + App.TP.taxpayerType;
 
-                    client.DefaultRequestHeaders.Add("Token", "123");
-                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTASTabIdentificationStatus = await client.GetAsync(uri);
@@ -118,10 +133,10 @@ namespace ZATCAMAUI.Core.Mangers
 
                     return _asTabIdentification;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -181,11 +196,10 @@ namespace ZATCAMAUI.Core.Mangers
 
                     return _asTabIdentification;
                 }
-                catch (Exception)
-
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -240,10 +254,10 @@ namespace ZATCAMAUI.Core.Mangers
 
                     return _asTabIdentification;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
