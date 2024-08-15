@@ -17,7 +17,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
         public ICommand OnHomeButtonClicked { get; set; }
-        public ICommand OnBackButtonClicked { get; set; }
         private bool _isTooltipEnableVisible = false;
         public bool IsTooltipEnableVisible
         {
@@ -31,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
                 OnPropertyChanged("IsTooltipEnableVisible");
             }
         }
-        
+
         private string _parameter;
         public string Parameter
         {
@@ -231,7 +230,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
         }
         public VATLookupPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnCaptchaRegenerateClicked = new Command( () =>
+            OnCaptchaRegenerateClicked = new Command(() =>
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
@@ -251,10 +250,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-            OnBackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
+
             OnSubmitClicked = new Command(async () =>
             {
                 await OnSubmitClick();
@@ -340,7 +336,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
                     if (isMendatoryDataEntered)
                     {
                         isMendatoryDataEntered = true;
-                        string _language = "A"; //UtilityManager.GetLanguageParameter();
+                        string _language = UtilityManager.GetLanguageParameter();
                         VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
                         if (vatLookUp.d != null)
                         {

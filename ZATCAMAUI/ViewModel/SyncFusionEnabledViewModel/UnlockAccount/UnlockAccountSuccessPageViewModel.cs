@@ -34,12 +34,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
         public void PopToRootPage()
         {
-           MainThread.BeginInvokeOnMainThread( () =>
+            MainThread.BeginInvokeOnMainThread(() =>
+             {
+                 _navigationService.GoBack();
+             });
+        }
+        public void RootTOLOgin()
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
             {
-                _navigationService.GoBack();
+                var _navigation = Application.Current.MainPage.Navigation;
+
+                _navigation.NavigationStack.ToList().Clear();
+
+                _navigation.PopToRootAsync();
             });
         }
-
         #endregion
     }
 }

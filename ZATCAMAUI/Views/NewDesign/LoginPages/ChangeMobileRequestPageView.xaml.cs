@@ -1,7 +1,4 @@
 ﻿using System.Text;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels;
@@ -13,21 +10,18 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeMobileRequestPageView : ContentPage
-	{
+    {
         ChangeMobileRequestViewModel viewModel;
-        public ChangeMobileRequestPageView (string guid)
-		{
+        public ChangeMobileRequestPageView(string guid)
+        {
             InitializeComponent();
-			this.BindingContext = viewModel = App.Locator.ChangeMobileRequestPageView;
-            On<iOS>().SetUseSafeArea(true);
-            ChangeAeroIcon();
-            SetLTR();
+            this.BindingContext = viewModel = App.Locator.ChangeMobileRequestPageView;
             InitializePopups();
 
             setDefaults();
 
             viewModel.GetIdTypesAsync(guid);
-            
+
             viewModel.InitCountryCodesAPI();
             viewModel.NafathGUID = guid;
             var x = guid;
@@ -48,17 +42,6 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
                 viewModel.GetCaptchAndGUID("CHMB");
             }
 
-        }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
         }
 
         private void setDefaults()
@@ -107,7 +90,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
                 {
                     viewModel.SelectedIDType = arg.SelectedValue;
                 }
-                
+
             });
         }
 
@@ -117,43 +100,10 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected");
             MessagingCenter.Unsubscribe<InternationalCodeSearchPage, string>(this, "SelectedItem");
             MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected");
-            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem"); 
+            MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
             viewModel.StopTimer();
         }
-        public void ChangeAeroIcon()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                }
-                else
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                }
 
-            }
-            catch (Exception)
-            {
-
-            }
-
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            try
-            {
-                App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-        }
         private void CountryCodeTapped(object sender, EventArgs e)
         {
             MopupService.Instance.PushAsync(new InternationalCodeSearchPage(viewModel.CountryCodesList));
@@ -216,7 +166,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
                 popUp.Message = Message.ToString();
                 MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
             }
-            
+
         }
 
         void OtpFirstEntry_TextChanged(System.Object sender, TextChangedEventArgs e)
@@ -241,14 +191,6 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
             {
                 OTPFourthEntry.Focus();
             }
-        }
-        void OtpFourthEntry_TextChanged(System.Object sender, TextChangedEventArgs e)
-        {
-
-        }
-        void OtpFourthEntry_Unfocused(System.Object sender, FocusEventArgs e)
-        {
-
         }
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
@@ -276,7 +218,7 @@ namespace ZATCAMAUI.Views.NewDesign.LoginPages
 
         void PhoneNumberTextChanged(System.Object sender, TextChangedEventArgs e)
         {
-            if(viewModel.DissableSendOtp == false)
+            if (viewModel.DissableSendOtp == false)
             {
                 viewModel.DissableSendOtp = true;
                 viewModel.ShowOTPSection = false;

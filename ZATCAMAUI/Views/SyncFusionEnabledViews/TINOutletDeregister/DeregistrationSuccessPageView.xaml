@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.TINOutletDeregister.DeregistrationSuccessPageView"
+             Title="DeregistrationSuccessPageView"
+            xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False">
+            
+     <ContentPage.Content>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+
+            <ScrollView Grid.Row="0" Margin="0,8,0,0" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+
+                    <Image Source="Forget_ic_success"/>
+                    <Label Text="{x:Static ResourceManager:AppResources.TinOutletDeregistrationSubTitle}" Margin="0,20,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
+
+                    <Label Text="{x:Static ResourceManager:AppResources.TinDeregistrationSuccess}"  TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" Style="{StaticResource BodyLabelBlack}" Margin="10,-10,10,0" />
+
+                </StackLayout>
+            </ScrollView>
+
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" Padding="0,10,0,40">
+
+                <Grid HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand" Padding="20,0,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+
+                        <ScrollView  Orientation="Vertical">
+                            <StackLayout Spacing="0">
+
+                                <Border Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Orientation="Horizontal"  Padding="15,5,15,5">
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZZName}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Label x:Name="TaxpayerName" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Border >
+
+                                <Border Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Orientation="Horizontal"  Padding="15,5,15,5">
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Label x:Name="RequestReferenceNumber" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                        </StackLayout>
+
+                                        <Image Source="zakat_copy.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnCopyReferenceNumberButtonClicked"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+                                </Border >
+
+                                <Border   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Orientation="Horizontal"  Padding="15,5,15,5">
+
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZVatReceiptDate}" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                                            <Label x:Name="ReceiptDate" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Border >
+
+                               
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="4" BackgroundColor="White" Padding="0,2,0,0">
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.Back}" Clicked="Dashboard_Tapped" Margin="0,0,0,2" Style="{StaticResource PrimaryButtonStyle}"/>
+                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZDownloadForm}" Clicked="Download_AcknowledgementForm" Margin="0,0,0,2" Style="{StaticResource PrimaryButtonStyle}"/>
+                    </StackLayout>
+                </Grid>
+            </Border>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

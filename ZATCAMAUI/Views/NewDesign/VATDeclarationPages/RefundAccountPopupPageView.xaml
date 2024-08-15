@@ -59,7 +59,7 @@
                                 Style="{StaticResource InputTableTextInputLayoutStyle}">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10,0,10,0"
-                                    Keyboard="Numeric"
+                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                     Placeholder="Text"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding TxtSelectedIBANType}"

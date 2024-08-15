@@ -1,10 +1,8 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Pages;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
-using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -40,7 +38,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             else
                 Label_InternationalnoCode.Margin = new Thickness(10, -8, 10, -8);
 
-            
+
 
             // Setup International Mobile Data
             currentMobileData = mobileData;
@@ -85,15 +83,11 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             else if (viewModel.OTPThirdDigit.Length == 0) { OTPSecondEntry.Focus(); }
         }
 
-        void OtpFourthEntry_TextChanged(object sender,  TextChangedEventArgs e)
+        void OtpFourthEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (viewModel.OTPFourthDigit.Length == 0) { OTPThirdEntry.Focus(); }
         }
 
-        void OtpFourthEntry_Unfocused(object sender, FocusEventArgs e)
-        {
-            
-        }
 
         private void UpdatedClicked(object sender, EventArgs e)
         {
@@ -216,9 +210,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         {
             base.OnAppearing();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
 
             if (Device.RuntimePlatform == Device.Android)
                 Label_InternationalnoCode.Margin = new Thickness(0);
@@ -278,7 +269,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             viewModel.EnteredOTP = string.Empty;
         }
 
-        private void Mobile_entry_Unfocused(object sender, FocusEventArgs e) { }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {

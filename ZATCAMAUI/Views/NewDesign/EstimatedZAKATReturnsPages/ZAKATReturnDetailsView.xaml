@@ -424,7 +424,7 @@
                                                         x:Name="TotalVATSalesNew"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}">
 
@@ -469,7 +469,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}" />
 
@@ -556,7 +556,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="TotalVATSales"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding TvtslI}">
 
@@ -596,7 +596,7 @@
 
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00">
 
@@ -685,7 +685,7 @@
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding LabnoI}"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -729,7 +729,7 @@
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -821,7 +821,7 @@
                                                         x:Name="AverageNumberOfLabour"
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding LabnoI}"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -864,7 +864,7 @@
                                                         Focused="AverageNumberOfLabourInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="AverageNumberOfLabourInputUnFocused">
@@ -954,7 +954,7 @@
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ImpvalI}"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -999,7 +999,7 @@
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -1094,7 +1094,7 @@
                                                         x:Name="ImportValue"
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ImpvalI}"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -1136,7 +1136,7 @@
                                                         Focused="ImportValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="ImportValueInputUnFocused">
@@ -1217,7 +1217,7 @@
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1260,7 +1260,7 @@
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1313,7 +1313,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}" />
 
@@ -1353,7 +1353,7 @@
                                                         x:Name="SalesFromPointOfSales"
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PtoslI}"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1394,7 +1394,7 @@
                                                         Focused="SalesFromPointOfSalesInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="SalesFromPointOfSalesUnFocused">
@@ -1475,7 +1475,7 @@
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding EtimadI}"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1518,7 +1518,7 @@
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1614,7 +1614,7 @@
                                                         x:Name="ContractFromETIMADSystem"
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding EtimadI}"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1654,7 +1654,7 @@
                                                         Focused="ContractFromETIMADSystemInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
@@ -1725,7 +1725,7 @@
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}"
                                                         Unfocused="ExportValueUnFocused">
@@ -1769,7 +1769,7 @@
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="ExportValueUnFocused">
@@ -1821,7 +1821,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}">
 
@@ -1869,7 +1869,7 @@
                                                         x:Name="ExportValue"
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding ExamtI}"
                                                         Unfocused="ExportValueUnFocused">
@@ -1906,7 +1906,7 @@
                                                         Focused="ExportValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="ExportValueUnFocused">
@@ -1991,7 +1991,7 @@
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PramtI}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2038,7 +2038,7 @@
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2133,7 +2133,7 @@
                                                         x:Name="PurchaseValue"
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.SetReadOnlyToOtherThanTotalVATSales}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding PramtI}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2169,7 +2169,7 @@
                                                         Focused="PurchaseValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="0.00"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2257,7 +2257,7 @@
                                                         Focused="RealEstateValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding RestI}"
                                                         Unfocused="RealEstateValueUnFocused">
@@ -2304,7 +2304,7 @@
                                                         Focused="RealEstateValueInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{x:Static ResourceManager:AppResources.ZNA}"
                                                         Unfocused="RealEstateValueUnFocused">
@@ -2397,7 +2397,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="RealEstateValue"
                                                         Focused="PurchaseValueInputFocused"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding RestI}"
                                                         Unfocused="PurchaseValueUnFocused">
@@ -2481,7 +2481,7 @@
                                                         Focused="CapitalAmountInputFocused"
                                                         IsReadOnly="True"
                                                         InputTransparent="True"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding Cpamt}"
                                                         Unfocused="CapitalAmountUnFocused">
@@ -2568,7 +2568,7 @@
                                                     <custom:GAZTBorderlessEntry
                                                         x:Name="CapitalAmount"
                                                         Focused="CapitalAmountInputFocused"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         Style="{StaticResource DefaultEntry}"
                                                         Text="{Binding Cpamt}"
                                                         Unfocused="CapitalAmountUnFocused">

@@ -20,12 +20,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+           
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>

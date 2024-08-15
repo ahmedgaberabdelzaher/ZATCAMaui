@@ -18,20 +18,16 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     x:Name="ESTRegistrationPage"
     BackgroundImageSource="partials_background.png"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+           
             <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentFinanicalMethodsToVisibilityConverter x:Key="methodToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
-            <converters:ESTOutletDeleteActionVisibilityConverter x:Key="deleteActionVisibilityConverter" />
             <converters:ESTresidentialStatusConverter x:Key="residentialStatusConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -1136,8 +1132,8 @@
                                             Style="{StaticResource forLightLabel}"/>
 
                                          <Label Text="{Binding IqamaDesc}"
-                                                             TextColor="{StaticResource NeutralBlack}"
-                                                             FontFamily="{StaticResource SomarBold}" />
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                FontFamily="{StaticResource SomarBold}" />
                                     </StackLayout>
 
                                 </Grid>
@@ -4156,48 +4152,9 @@
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
-
-            <Grid
-                Grid.Row="0"
-                Grid.RowSpan="3"
-                Grid.Column="0"
-                Margin="0,-20,0,0"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-
-
+            
+            <custom:Loader Grid.RowSpan="3" IsVisible="{Binding IsLoading}"/>
+           
         </Grid>
     </ContentPage.Content>
 </ContentPage>

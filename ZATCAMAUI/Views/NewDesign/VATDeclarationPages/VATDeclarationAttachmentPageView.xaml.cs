@@ -1,8 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Net;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using Mopups.Pages;
 using Mopups.Services;
@@ -94,9 +92,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
 
             getYesCommandToDeleteTheAttachment();
 
@@ -135,19 +130,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                if (App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == false)
-                {
-                    //Show some message
-
-                    //Image arrowImage = sender as Image;
-                    //Attachment attachment = (Attachment)arrowImage.BindingContext;
-                    //if (attachment != null)
-                    //{
-                    //    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
-                    //    DeleteAttachment(result, attachment);
-                    //}
-                }
-                else if (App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == true)
+                if (App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == true)
                 {
                     try
                     {
@@ -445,17 +428,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.IsLoading = false;
             });
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
     }
 }

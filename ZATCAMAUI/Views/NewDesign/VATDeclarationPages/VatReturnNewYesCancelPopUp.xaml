@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Mopups:Pages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.VatReturnNewYesCancelPopUp"
+             Title="VatReturnNewYesCancelPopUp"
+              xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+             xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+            xmlns:Animations="clr-namespace:Mopups.Animations;assembly=Mopups"
+            xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+            FlowDirection="{Binding AppDirection}">
+
+        <Mopups:PopupPage.Animation>
+            <Animations:ScaleAnimation
+                DurationIn="400"
+                DurationOut="300"
+                HasBackgroundAnimation="True"
+                PositionIn="Bottom"
+                PositionOut="Bottom" />
+        </Mopups:PopupPage.Animation>
+
+
+            <Border Style="{StaticResource CommonTopCurves}"
+                       VerticalOptions="EndAndExpand"
+                       BackgroundColor="White">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Spacing="0"
+                         Grid.Row="0">
+                <Label Margin="10"
+                                    x:Name="confirmationText"
+                                    Style="{StaticResource BodyLabelBlack}" />
+            </StackLayout>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+                </Grid.ColumnDefinitions>
+                <buttons:SfButton Grid.Row="0"
+                                  Grid.Column="0"
+                                  Text="{x:Static ResourceManager:AppResources.VatOkay}"
+                                  HorizontalOptions="FillAndExpand"
+                                  Style="{StaticResource PrimaryButtonStyle}"
+                                  Clicked="OnOkayButtonClicked" />
+                <buttons:SfButton Grid.Row="0"
+                                  Grid.Column="1"
+                                  Text="{x:Static ResourceManager:AppResources.VatCancel}"
+                                  VerticalOptions="FillAndExpand"
+                                  Style="{StaticResource PrimaryButtonStyle}"
+                                  Clicked="OnCancelClicked" />
+            </Grid>
+        </Grid>
+    </Border>
+
+</Mopups:Pages>

@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:chips="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
@@ -19,18 +18,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <sfconverters:StringToColorConvertor x:Key="StringToColorConvertor" />
-            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-
-                </ResourceDictionary>
                 <ResourceDictionary>
 
                     <DataTemplate x:Key="otherDataTemplate">
@@ -367,148 +356,680 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <Grid>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*"
+                RowDefinitions="auto,*">
+
                 <StackLayout>
-                    <Grid Padding="15,5,15,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                        </Grid.RowDefinitions>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        IsVisible="{Binding IsBackStepButtonVisible}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}"
+                    VerticalOptions="Center" />
+
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="EndAndExpand"
+                    Orientation="Horizontal"
+                    Spacing="15"
+                    VerticalOptions="CenterAndExpand">
+                    <Image
+                        HeightRequest="20"
+                        IsVisible="{Binding IsSearchButtonVisible}"
+                        Source="search"
+                        WidthRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="searchButtonTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        HeightRequest="20"
+                        Source="filter"
+                        WidthRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="filterButtonTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="FillAndExpand">
+
+                    <Grid HorizontalOptions="FillAndExpand">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Label
-                            Grid.Row="0"
-                            Grid.Column="1"
-                            HorizontalOptions="Center"
-                            Style="{StaticResource SectionTitleWhiteBold}"
-                            Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" />
-                        <Image
-                            Grid.Row="0"
+                        <SearchBar
                             Grid.Column="0"
-                            HeightRequest="24"
-                            HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding IsBackStepButtonVisible}"
-                            Source="arrowLeftwhite"
-                            Style="{DynamicResource BackButtonArrow}"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="24">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <StackLayout
-                            Grid.Row="0"
-                            Grid.Column="2"
-                            HorizontalOptions="EndAndExpand"
-                            Orientation="Horizontal"
-                            Spacing="15"
-                            VerticalOptions="CenterAndExpand">
-                            <Image
-                                HeightRequest="20"
-                                IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}"
-                                Source="search"
-                                WidthRequest="20">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="searchButtonTapped" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                            <Image
-                                HeightRequest="20"
-                                Source="filter"
-                                WidthRequest="20">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="filterButtonTapped" />
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </StackLayout>
-                        <StackLayout
-                            Grid.Row="1"
-                            Grid.ColumnSpan="3"
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal"
-                            VerticalOptions="FillAndExpand">
-
-                            <Grid HorizontalOptions="FillAndExpand">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <SearchBar
-                                    Grid.Column="0"
-                                    Margin="0"
-                                    custom:RoundCornersEffect.CornerRadius="12"
-                                    BackgroundColor="White"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}"
-                                    TextChanged="SearchBar_TextChanged"
-                                    VerticalOptions="FillAndExpand" />
-                                <Image
-                                    Grid.Column="1"
-                                    HeightRequest="24"
-                                    IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}"
-                                    Source="close"
-                                    WidthRequest="24">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="CloseSearchButton_Tapped" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-
-                            </Grid>
-                        </StackLayout>
-                    </Grid>
-                    <Border
-                        Padding="0"
-                        StrokeShape="RoundRectangle 14,14,0,0"
-                        VerticalOptions="FillAndExpand">
-                        <Grid
-                            x:Name="VATRMainGrid"
                             Margin="0"
-                            Padding="0,15,0,0"
+                            custom:RoundCornersEffect.CornerRadius="12"
                             BackgroundColor="White"
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="100*" />
-                            </Grid.RowDefinitions>
-                            <ContentPresenter
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                BackgroundColor="White"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="FillAndExpand" />
-                        </Grid>
-                    </Border>
+                            IsVisible="{Binding IsCloseButtonVisible}"
+                            TextChanged="SearchBar_TextChanged"
+                            VerticalOptions="FillAndExpand" />
+                        <Image
+                            Grid.Column="1"
+                            HeightRequest="24"
+                            IsVisible="{Binding IsCloseButtonVisible}"
+                            Source="close"
+                            WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CloseSearchButton_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </Grid>
                 </StackLayout>
+
             </Grid>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
-    <ContentPage.Content>
-        <Grid>
+            <!--#endregion Header-->
 
-            <StackLayout Padding="15" Orientation="Vertical">
-                <ListView
-                    x:Name="LvwContacts"
-                    Margin="5"
-                    BackgroundColor="White"
-                    HasUnevenRows="True"
-                    IsGroupingEnabled="True"
-                    ItemTapped="LvwContacts_ItemTapped"
-                    ItemsSource="{Binding GroupedData}"
-                    SelectionMode="None"
-                    SeparatorVisibility="None"
-                    VerticalScrollBarVisibility="Never">
+            <!--#region Body-->
+            <Border Grid.Row="1"
+                    Padding="10,0"
+                    Style="{StaticResource CommonTopCurves}">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-                                    <StackLayout>
-                                        <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <Grid Padding="15" 
+                        RowDefinitions="*">
+
+                        <ListView
+                            x:Name="LvwContacts"
+                            Margin="5"
+                            BackgroundColor="White"
+                            HasUnevenRows="True"
+                            IsGroupingEnabled="True"
+                            ItemTapped="LvwContacts_ItemTapped"
+                            ItemsSource="{Binding GroupedData}"
+                            SelectionMode="None"
+                            SeparatorVisibility="None"
+                            VerticalScrollBarVisibility="Never">
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout>
+                                                <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                    <StackLayout Padding="0" Spacing="0">
+                                                        <Grid Padding="15" RowSpacing="0">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <StackLayout
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                Spacing="-10">
+                                                                <Label
+                                                                    Style="{StaticResource SectionTitleSmallMediumBlack}"
+                                                                    Text="{Binding Desc}"
+                                                                    VerticalOptions="CenterAndExpand" />
+                                                                <Label
+                                                                    Margin="0,5,0,0"
+                                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                                    Text="{Binding FormattedBldat}" />
+                                                            </StackLayout>
+
+
+                                                            <Border
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                Padding="10,10,10,10"
+                                                                BackgroundColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
+                                                                StrokeShape="RoundRectangle 14,14,14,14"
+                                                                HeightRequest="20"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Opacity=".2"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                            <StackLayout
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                Padding="10,0,10,0"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                VerticalOptions="FillAndExpand">
+
+
+
+                                                                <Label
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                                    TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
+                                                                    VerticalOptions="CenterAndExpand">
+                                                                    <Label.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span
+                                                                                Style="{StaticResource CaptionLabelBlack}"
+                                                                                Text="{Binding Betrh, Converter={StaticResource commaSeparatorConverter}}"
+                                                                                TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}" />
+                                                                            <Span Style="{StaticResource CaptionLabelBlack}" Text="&#160;" />
+                                                                            <Span
+                                                                                Style="{StaticResource CaptionLabelBlack}"
+                                                                                Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                                                                TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}" />
+                                                                        </FormattedString>
+                                                                    </Label.FormattedText>
+                                                                </Label>
+                                                            </StackLayout>
+                                                        </Grid>
+
+                                                    </StackLayout>
+                                                </Border>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.GroupHeaderTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+
+                                            <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Key}" />
+
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.GroupHeaderTemplate>
+                            <ListView.Footer>
+                                <Grid>
+                                    <StackLayout IsVisible="{Binding IsNotHaveStatements}">
+                                        <Label
+                                            Margin="0,50,0,0"
+                                            HorizontalOptions="Center"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                </Grid>
+                            </ListView.Footer>
+                            <ListView.Header>
+                                <StackLayout Grid.Row="0" Spacing="-5">
+
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                        <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+
+                                        <Image
+                                            Margin="0,5,0,0"
+                                            HorizontalOptions="Start"
+                                            Source="arrowDropdown"
+                                            VerticalOptions="Center">
+
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked" />
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
+                                        <!--  {Binding IsDownloadBtnVisile}  -->
+                                        <Image
+                                            Margin="5,5,5,0"
+                                            HorizontalOptions="EndAndExpand"
+                                            IsVisible="False"
+                                            Source="download"
+                                            VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DownloadBtnTapped}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+
+                                    <syncfusion:SfPicker
+                                        x:Name="TransactionTypePicker"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Margin="10,0,10,0"
+                                        Background="White"
+                                        ItemHeight="40"
+                                        Mode="Dialog"
+                                        SelectionChanged="TransactionTypePicker_SelectionChanged">
+
+                                        <syncfusion:SfPicker.SelectedTextStyle>
+                                            <syncfusion:PickerTextStyle
+                                                FontAttributes="Bold"
+                                                FontSize="15"
+                                                TextColor="{StaticResource NeutralBlack}" />
+                                        </syncfusion:SfPicker.SelectedTextStyle>
+
+                                        <syncfusion:SfPicker.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+                                        </syncfusion:SfPicker.TextStyle>
+
+                                        <syncfusion:SfPicker.Columns>
+                                            <syncfusion:PickerColumn
+                                                Width="300"
+                                                DisplayMemberPath="Txt30"
+                                                ItemsSource="{Binding TransactionTypeFilter}" />
+                                        </syncfusion:SfPicker.Columns>
+
+                                        <syncfusion:SfPicker.SelectionView>
+                                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                        </syncfusion:SfPicker.SelectionView>
+
+                                        <syncfusion:SfPicker.HeaderView>
+
+                                            <syncfusion:PickerHeaderView
+                                                Height="55"
+                                                Background="{StaticResource Primary}"
+                                                Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                                <syncfusion:PickerHeaderView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerHeaderView.TextStyle>
+                                            </syncfusion:PickerHeaderView>
+
+                                        </syncfusion:SfPicker.HeaderView>
+
+                                        <syncfusion:SfPicker.FooterView>
+
+                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+
+                                                <syncfusion:PickerFooterView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                                </syncfusion:PickerFooterView.TextStyle>
+
+                                            </syncfusion:PickerFooterView>
+
+                                        </syncfusion:SfPicker.FooterView>
+
+                                    </syncfusion:SfPicker>
+
+                                    <!--  {Binding IsYearsChipVisible}  -->
+                                    <ScrollView
+                                        HorizontalOptions="Start"
+                                        HorizontalScrollBarVisibility="Never"
+                                        IsVisible="{Binding IsYearsChipVisible}"
+                                        Orientation="Horizontal">
+                                        <chips:SfChipGroup
+                                            x:Name="ChipGroup_Years"
+                                            Margin="0,10,0,0"
+                                            ChipBackground="Transparent"
+                                            ChipStroke="{StaticResource NeutralLightGrey}"
+                                            ChipStrokeThickness="1"
+                                            ChipType="Choice"
+                                            HorizontalOptions="Start"
+                                            ItemsSource="{Binding ChipDataFilterlistForYears}"
+                                            SelectedChipBackground="{StaticResource PartialBg}"
+                                            SelectionChanged="yearChipGroup_SelectionChanged"
+                                            VerticalOptions="Center">
+                                            <chips:SfChipGroup.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackLayout
+                                                        Margin="0"
+                                                        Padding="5,-2,5,-2"
+                                                        Orientation="Horizontal"
+                                                        Spacing="2">
+                                                        <Image
+                                                            HeightRequest="25"
+                                                            HorizontalOptions="Center"
+                                                            Source="{Binding ImageSource}" />
+                                                        <Label
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            Style="{StaticResource CaptionLabelBlack}"
+                                                            Text="{Binding Text}" />
+                                                    </StackLayout>
+                                                </DataTemplate>
+                                            </chips:SfChipGroup.ItemTemplate>
+                                        </chips:SfChipGroup>
+                                    </ScrollView>
+
+                                    <!--  Status Chips  -->
+
+
+                                    <Grid Margin="0,15,0,0" VerticalOptions="Start">
+                                        <CollectionView
+                                            HeightRequest="50"
+                                            HorizontalOptions="StartAndExpand"
+                                            ItemsLayout="HorizontalList"
+                                            ItemsSource="{Binding ChipDataFilterlistForStatus}"
+                                            SelectionMode="None"
+                                            VerticalOptions="Start">
+
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <StackLayout Margin="5">
+                                                        <Grid Margin="5,0,5,0">
+                                                            <Border
+                                                                Grid.Row="0"
+                                                                Padding="10,10,10,10"
+                                                                BackgroundColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
+                                                                StrokeShape="RoundRectangle 14,14,14,14"
+                                                                HeightRequest="20"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Opacity=".2"
+                                                                VerticalOptions="CenterAndExpand" />
+                                                            <StackLayout Grid.Row="0" Padding="10,0,10,0">
+                                                                
+                                                                <Label
+                                                                    HorizontalOptions="CenterAndExpand"
+                                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                                    Text="{Binding StatusDesc}"
+                                                                    VerticalOptions="CenterAndExpand" />
+                                                            </StackLayout>
+
+                                                            <Grid.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="ChipsData_Tapped" />
+                                                            </Grid.GestureRecognizers>
+
+
+                                                        </Grid>
+                                                    </StackLayout>
+
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+                                        </CollectionView>
+                                    </Grid>
+
+                                    <!--  {Binding IsSortByVisible}  -->
+                                    <Grid
+                                        x:Name="SortByStackLayout"
+                                        Margin="0,15,0,0"
+                                        ColumnSpacing="25"
+                                        IsVisible="False"
+                                        RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <ScrollView
+                                            Grid.Column="1"
+                                            HorizontalOptions="StartAndExpand"
+                                            HorizontalScrollBarVisibility="Never"
+                                            Orientation="Horizontal">
+                                            <StackLayout Orientation="Horizontal">
+                                                <buttons:SfButton
+                                                    x:Name="Button_TransactionTypeFilter"
+                                                    Background="White"
+                                                    Clicked="Button_TransactionTypeFilter_Clicked"
+                                                    CornerRadius="20"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    ImageSource="ic_unpaid"
+                                                    ShowIcon="True"
+                                                    Stroke="LightGray"
+                                                    StrokeThickness="1"
+                                                    Style="{StaticResource CaptionButtonBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.ASTransactionDate}"
+                                                    VerticalTextAlignment="Center">
+                                                    <buttons:SfButton.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding TransactionDateFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="Background" Value="White" />
+                                                            <Setter Property="ShowIcon" Value="False" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding TransactionDateFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding TransactionDateFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                                                    </buttons:SfButton.Triggers>
+                                                </buttons:SfButton>
+                                                <buttons:SfButton
+                                                    x:Name="Button_TaxPeriodFilter"
+                                                    Background="White"
+                                                    Clicked="Button_TaxPeriodFilter_Clicked"
+                                                    CornerRadius="20"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    ImageSource="ic_unpaid"
+                                                    ShowIcon="True"
+                                                    Stroke="LightGray"
+                                                    StrokeThickness="1"
+                                                    Style="{StaticResource CaptionButtonBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.ASTaxperiod}"
+                                                    VerticalTextAlignment="Center">
+                                                    <buttons:SfButton.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding TaxperiodFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="Background" Value="White" />
+                                                            <Setter Property="ShowIcon" Value="False" />
+
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding TaxperiodFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding TaxperiodFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                                                    </buttons:SfButton.Triggers>
+                                                </buttons:SfButton>
+                                                <buttons:SfButton
+                                                    x:Name="Button_DueDateFilter"
+                                                    Background="White"
+                                                    Clicked="Button_DueDateFilter_Clicked"
+                                                    CornerRadius="20"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    ImageSource="ic_unpaid"
+                                                    ShowIcon="True"
+                                                    Stroke="LightGray"
+                                                    StrokeThickness="1"
+                                                    Style="{StaticResource CaptionButtonBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.ASDueDate}"
+                                                    VerticalTextAlignment="Center">
+                                                    <buttons:SfButton.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding DueDateFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="Background" Value="White" />
+                                                            <Setter Property="ShowIcon" Value="False" />
+
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding DueDateFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding DueDateFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                                                    </buttons:SfButton.Triggers>
+                                                </buttons:SfButton>
+                                                <buttons:SfButton
+                                                    x:Name="Button_BillDiscriptionFilter"
+                                                    Background="White"
+                                                    Clicked="Button_BillDiscriptionFilter_Clicked"
+                                                    CornerRadius="20"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    ImageSource="ic_unpaid"
+                                                    ShowIcon="True"
+                                                    Stroke="LightGray"
+                                                    StrokeThickness="1"
+                                                    Style="{StaticResource CaptionButtonBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.ASBillDescription}"
+                                                    VerticalTextAlignment="Center">
+                                                    <buttons:SfButton.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding BillDescriptionFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="Background" Value="White" />
+                                                            <Setter Property="ShowIcon" Value="False" />
+
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding BillDescriptionFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding BillDescriptionFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                                                    </buttons:SfButton.Triggers>
+                                                </buttons:SfButton>
+                                                <buttons:SfButton
+                                                    x:Name="Button_BillAmountFilter"
+                                                    Background="White"
+                                                    Clicked="Button_BillAmountFilter_Clicked"
+                                                    CornerRadius="20"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    ImageSource="ic_unpaid"
+                                                    ShowIcon="True"
+                                                    Stroke="LightGray"
+                                                    StrokeThickness="1"
+                                                    Style="{StaticResource CaptionButtonBlack}"
+                                                    Text="{x:Static ResourceManager:AppResources.ASBillAmount}"
+                                                    VerticalTextAlignment="Center">
+                                                    <buttons:SfButton.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding BillAmountFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="">
+                                                            <Setter Property="ImageSource" Value="" />
+                                                            <Setter Property="Background" Value="White" />
+                                                            <Setter Property="ShowIcon" Value="False" />
+
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding BillAmountFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="ascending">
+                                                            <Setter Property="ImageSource" Value="ArrowUp" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+
+                                                        <DataTrigger
+                                                            Binding="{Binding BillAmountFilterItem}"
+                                                            TargetType="buttons:SfButton"
+                                                            Value="descending">
+                                                            <Setter Property="ImageSource" Value="Entry_DropDown" />
+                                                            <Setter Property="Background" Value="{StaticResource PartialBg}" />
+                                                            <Setter Property="ShowIcon" Value="True" />
+                                                        </DataTrigger>
+                                                    </buttons:SfButton.Triggers>
+                                                </buttons:SfButton>
+                                            </StackLayout>
+                                        </ScrollView>
+                                        <StackLayout
+                                            Grid.Column="0"
+                                            BackgroundColor="White"
+                                            HorizontalOptions="Start">
+                                            <Label
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource CaptionLabelBlack}"
+                                                VerticalOptions="CenterAndExpand">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.SortBy}" />
+                                                        <Span Text=":" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
+
+                                    <StackLayout Margin="10">
+                                        <Border
+                                            Margin="0,10,0,10"
+                                            IsVisible="false"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                             <StackLayout Padding="0" Spacing="0">
                                                 <Grid Padding="15" RowSpacing="0">
                                                     <Grid.RowDefinitions>
@@ -524,758 +1045,174 @@
                                                         Grid.Column="0"
                                                         Spacing="-10">
                                                         <Label
-                                                            Style="{StaticResource SectionTitleSmallMediumBlack}"
-                                                            Text="{Binding Desc}"
-                                                            VerticalOptions="CenterAndExpand" />
-                                                        <Label
-                                                            Margin="0,5,0,0"
                                                             Style="{StaticResource CaptionLabelGrey}"
-                                                            Text="{Binding FormattedBldat}" />
+                                                            Text="{x:Static ResourceManager:AppResources.TotalOpeningBalance}"
+                                                            VerticalOptions="CenterAndExpand" />
                                                     </StackLayout>
-
 
                                                     <Border
                                                         Grid.Row="0"
                                                         Grid.Column="1"
                                                         Padding="10,10,10,10"
-                                                        BackgroundColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
-                                                        StrokeShape="RoundRectangle 14,14,14,14"
+                                                        BackgroundColor="{StaticResource Primary}"
                                                         HeightRequest="20"
-                                                        HorizontalOptions="FillAndExpand"
+                                                        HorizontalOptions="End"
                                                         Opacity=".2"
-                                                        VerticalOptions="CenterAndExpand" />
+                                                        StrokeShape="RoundRectangle 14,14,14,14"
+                                                        StrokeThickness="1"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        WidthRequest="110">
+                                                        <Border.Triggers>
+                                                            <DataTrigger
+                                                                Binding="{Binding IsOpeningBalancePositive}"
+                                                                TargetType="Border"
+                                                                Value="true">
+                                                                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding IsOpeningBalancePositive}"
+                                                                TargetType="Border"
+                                                                Value="false">
+                                                                <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
+                                                            </DataTrigger>
+                                                        </Border.Triggers>
+                                                    </Border>
                                                     <StackLayout
                                                         Grid.Row="0"
                                                         Grid.Column="1"
-                                                        Padding="10,0,10,0"
+                                                        Margin="0,0,0,0"
                                                         HorizontalOptions="FillAndExpand"
+                                                        Orientation="Horizontal"
+                                                        Spacing="2"
                                                         VerticalOptions="FillAndExpand">
-
-
-
                                                         <Label
-                                                            HorizontalOptions="CenterAndExpand"
+                                                            HorizontalOptions="EndAndExpand"
+                                                            LineBreakMode="WordWrap"
                                                             Style="{StaticResource CaptionLabelBlack}"
-                                                            TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
+                                                            TextColor="{StaticResource NewDarkGreenColor}"
                                                             VerticalOptions="CenterAndExpand">
                                                             <Label.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span
-                                                                        Style="{StaticResource CaptionLabelBlack}"
-                                                                        Text="{Binding Betrh, Converter={StaticResource commaSeparatorConverter}}"
-                                                                        TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}" />
-                                                                    <Span Style="{StaticResource CaptionLabelBlack}" Text="&#160;" />
-                                                                    <Span
-                                                                        Style="{StaticResource CaptionLabelBlack}"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZSAR}"
-                                                                        TextColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}" />
+                                                                    <Span Text="{Binding HeaderSet.D.OpeningAmount}" />
                                                                 </FormattedString>
                                                             </Label.FormattedText>
+                                                            <Label.Triggers>
+                                                                <DataTrigger
+                                                                    Binding="{Binding IsOpeningBalancePositive}"
+                                                                    TargetType="Label"
+                                                                    Value="true">
+                                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger
+                                                                    Binding="{Binding IsOpeningBalancePositive}"
+                                                                    TargetType="Label"
+                                                                    Value="false">
+                                                                    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                                </DataTrigger>
+                                                            </Label.Triggers>
                                                         </Label>
-                                                    </StackLayout>
-                                                </Grid>
 
-                                            </StackLayout>
-                                        </Border>
-                                    </StackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.GroupHeaderTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <ViewCell.View>
-
-                                    <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding Key}" />
-
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.GroupHeaderTemplate>
-                    <ListView.Footer>
-                        <Grid>
-                            <StackLayout IsVisible="{Binding IsNotHaveStatements}">
-                                <Label
-                                    Margin="0,50,0,0"
-                                    HorizontalOptions="Center"
-                                    Style="{StaticResource CaptionLabelGrey}"
-                                    Text="{x:Static ResourceManager:AppResources.ASNoFinancialTransactions}"
-                                    VerticalOptions="Center" />
-                            </StackLayout>
-                        </Grid>
-                    </ListView.Footer>
-                    <ListView.Header>
-                        <StackLayout Grid.Row="0" Spacing="-5">
-
-                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                <Label Style="{StaticResource SectionTitleBlack}" Text="{Binding SelectedTransactionTypeFilter.Txt30, Mode=OneWay}">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked" />
-                                    </Label.GestureRecognizers>
-                                </Label>
-
-                                <Image
-                                    Margin="0,5,0,0"
-                                    HorizontalOptions="Start"
-                                    Source="arrowDropdown"
-                                    VerticalOptions="Center">
-
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="btnTransactionTypePicker_Clicked" />
-                                    </Image.GestureRecognizers>
-
-                                </Image>
-                                <!--  {Binding IsDownloadBtnVisile}  -->
-                                <Image
-                                    Margin="5,5,5,0"
-                                    HorizontalOptions="EndAndExpand"
-                                    IsVisible="False"
-                                    Source="download"
-                                    VerticalOptions="Center">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding DownloadBtnTapped}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-
-                            <syncfusion:SfPicker
-                                x:Name="TransactionTypePicker"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                                Margin="10,0,10,0"
-                                Background="White"
-                                ItemHeight="40"
-                                Mode="Dialog"
-                                SelectionChanged="TransactionTypePicker_SelectionChanged">
-
-                                <syncfusion:SfPicker.SelectedTextStyle>
-                                    <syncfusion:PickerTextStyle
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        TextColor="{StaticResource NeutralBlack}" />
-                                </syncfusion:SfPicker.SelectedTextStyle>
-
-                                <syncfusion:SfPicker.TextStyle>
-                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
-                                </syncfusion:SfPicker.TextStyle>
-
-                                <syncfusion:SfPicker.Columns>
-                                    <syncfusion:PickerColumn
-                                        Width="300"
-                                        DisplayMemberPath="Txt30"
-                                        ItemsSource="{Binding TransactionTypeFilter}" />
-                                </syncfusion:SfPicker.Columns>
-
-                                <syncfusion:SfPicker.SelectionView>
-                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                </syncfusion:SfPicker.SelectionView>
-
-                                <syncfusion:SfPicker.HeaderView>
-
-                                    <syncfusion:PickerHeaderView
-                                        Height="55"
-                                        Background="{StaticResource Primary}"
-                                        Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
-                                        <syncfusion:PickerHeaderView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                        </syncfusion:PickerHeaderView.TextStyle>
-                                    </syncfusion:PickerHeaderView>
-
-                                </syncfusion:SfPicker.HeaderView>
-
-                                <syncfusion:SfPicker.FooterView>
-
-                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
-
-                                        <syncfusion:PickerFooterView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                        </syncfusion:PickerFooterView.TextStyle>
-
-                                    </syncfusion:PickerFooterView>
-
-                                </syncfusion:SfPicker.FooterView>
-
-                            </syncfusion:SfPicker>
-
-                            <!--  {Binding IsYearsChipVisible}  -->
-                            <ScrollView
-                                HorizontalOptions="Start"
-                                HorizontalScrollBarVisibility="Never"
-                                IsVisible="{Binding IsYearsChipVisible}"
-                                Orientation="Horizontal">
-                                <chips:SfChipGroup
-                                    x:Name="ChipGroup_Years"
-                                    Margin="0,10,0,0"
-                                    ChipBackground="Transparent"
-                                    ChipStroke="{StaticResource NeutralLightGrey}"
-                                    ChipStrokeThickness="1"
-                                    ChipType="Choice"
-                                    HorizontalOptions="Start"
-                                    ItemsSource="{Binding ChipDataFilterlistForYears}"
-                                    SelectedChipBackground="{StaticResource PartialBg}"
-                                    SelectionChanged="yearChipGroup_SelectionChanged"
-                                    VerticalOptions="Center">
-                                    <chips:SfChipGroup.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackLayout
-                                                Margin="0"
-                                                Padding="5,-2,5,-2"
-                                                Orientation="Horizontal"
-                                                Spacing="2">
-                                                <Image
-                                                    HeightRequest="25"
-                                                    HorizontalOptions="Center"
-                                                    Source="{Binding ImageSource}" />
-                                                <Label
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    Style="{StaticResource CaptionLabelBlack}"
-                                                    Text="{Binding Text}" />
-                                            </StackLayout>
-                                        </DataTemplate>
-                                    </chips:SfChipGroup.ItemTemplate>
-                                </chips:SfChipGroup>
-                            </ScrollView>
-
-                            <!--  Status Chips  -->
-
-
-                            <Grid Margin="0,15,0,0" VerticalOptions="Start">
-                                <CollectionView
-                                    HeightRequest="50"
-                                    HorizontalOptions="StartAndExpand"
-                                    ItemsLayout="HorizontalList"
-                                    ItemsSource="{Binding ChipDataFilterlistForStatus}"
-                                    SelectionMode="None"
-                                    VerticalOptions="Start">
-
-                                    <CollectionView.ItemTemplate>
-                                        <DataTemplate>
-
-                                            <StackLayout Margin="5">
-                                                <Grid Margin="5,0,5,0">
-                                                    <Border
-                                                        Grid.Row="0"
-                                                        Padding="10,10,10,10"
-                                                        BackgroundColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
-                                                        StrokeShape="RoundRectangle 14,14,14,14"
-                                                        HeightRequest="20"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        Opacity=".2"
-                                                        VerticalOptions="CenterAndExpand" />
-                                                    <StackLayout Grid.Row="0" Padding="10,0,10,0">
-                                                        <!--  TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}"  -->
                                                         <Label
                                                             HorizontalOptions="CenterAndExpand"
+                                                            LineBreakMode="WordWrap"
                                                             Style="{StaticResource CaptionLabelBlack}"
-                                                            Text="{Binding StatusDesc}"
-                                                            VerticalOptions="CenterAndExpand" />
+                                                            TextColor="{StaticResource NewDarkGreenColor}"
+                                                            VerticalOptions="CenterAndExpand">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                            <Label.Triggers>
+                                                                <DataTrigger
+                                                                    Binding="{Binding IsOpeningBalancePositive}"
+                                                                    TargetType="Label"
+                                                                    Value="true">
+                                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger
+                                                                    Binding="{Binding IsOpeningBalancePositive}"
+                                                                    TargetType="Label"
+                                                                    Value="false">
+                                                                    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                                </DataTrigger>
+                                                            </Label.Triggers>
+                                                        </Label>
+
                                                     </StackLayout>
-
-                                                    <Grid.GestureRecognizers>
-                                                        <TapGestureRecognizer Tapped="ChipsData_Tapped" />
-                                                    </Grid.GestureRecognizers>
-
 
                                                 </Grid>
                                             </StackLayout>
+                                        </Border>
 
-                                        </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>
-                            </Grid>
+                                        <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Grid Padding="0">
+                                                <Border
+                                                    BackgroundColor="{Binding TotalBalanceBackground}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Opacity="0.2"
+                                                    VerticalOptions="FillAndExpand" />
+                                                <Grid Padding="15" RowSpacing="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto" />
 
-                            <!--  {Binding IsSortByVisible}  -->
-                            <Grid
-                                x:Name="SortByStackLayout"
-                                Margin="0,15,0,0"
-                                ColumnSpacing="25"
-                                IsVisible="False"
-                                RowSpacing="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <ScrollView
-                                    Grid.Column="1"
-                                    HorizontalOptions="StartAndExpand"
-                                    HorizontalScrollBarVisibility="Never"
-                                    Orientation="Horizontal">
-                                    <StackLayout Orientation="Horizontal">
-                                        <buttons:SfButton
-                                            x:Name="Button_TransactionTypeFilter"
-                                            Background="White"
-                                            Clicked="Button_TransactionTypeFilter_Clicked"
-                                            CornerRadius="20"
-                                            HorizontalOptions="Start"
-                                            HorizontalTextAlignment="Start"
-                                            ImageSource="ic_unpaid"
-                                            ShowIcon="True"
-                                            Stroke="LightGray"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource CaptionButtonBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ASTransactionDate}"
-                                            VerticalTextAlignment="Center">
-                                            <buttons:SfButton.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding TransactionDateFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="">
-                                                    <!--<Setter Property="ImageSource" Value="" />-->
-                                                    <Setter Property="Background" Value="White" />
-                                                    <Setter Property="ShowIcon" Value="False" />
-                                                </DataTrigger>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="auto" />
+                                                    </Grid.ColumnDefinitions>
 
-                                                <DataTrigger
-                                                    Binding="{Binding TransactionDateFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="ascending">
-                                                    <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Spacing="-10">
+                                                        <Label
+                                                            Style="{StaticResource BodyLabelBlack}"
+                                                            Text="{x:Static ResourceManager:AppResources.AccountStatementTotalBalance}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                    </StackLayout>
+                                                    <StackLayout
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand">
+                                                        
+                                                        <Label
+                                                            HorizontalOptions="CenterAndExpand"
+                                                            Style="{StaticResource SectionTitleBlackBold}"
+                                                            Text="{Binding HeaderSet.D.CloseAmount}"
+                                                            TextColor="{Binding TotalBalanceBackground}"
+                                                            VerticalOptions="CenterAndExpand">
+                                                            <Label.Triggers>
+                                                                <DataTrigger
+                                                                    Binding="{Binding StatusDesc}"
+                                                                    TargetType="Label"
+                                                                    Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
+                                                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                </DataTrigger>
+                                                            </Label.Triggers>
+                                                        </Label>
+                                                    </StackLayout>
 
-                                                <DataTrigger
-                                                    Binding="{Binding TransactionDateFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="descending">
-                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-                                            </buttons:SfButton.Triggers>
-                                        </buttons:SfButton>
-                                        <buttons:SfButton
-                                            x:Name="Button_TaxPeriodFilter"
-                                            Background="White"
-                                            Clicked="Button_TaxPeriodFilter_Clicked"
-                                            CornerRadius="20"
-                                            HorizontalOptions="Start"
-                                            HorizontalTextAlignment="Start"
-                                            ImageSource="ic_unpaid"
-                                            ShowIcon="True"
-                                            Stroke="LightGray"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource CaptionButtonBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ASTaxperiod}"
-                                            VerticalTextAlignment="Center">
-                                            <buttons:SfButton.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding TaxperiodFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="">
-                                                    <!--<Setter Property="ImageSource" Value="" />-->
-                                                    <Setter Property="Background" Value="White" />
-                                                    <Setter Property="ShowIcon" Value="False" />
-
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding TaxperiodFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="ascending">
-                                                    <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding TaxperiodFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="descending">
-                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-                                            </buttons:SfButton.Triggers>
-                                        </buttons:SfButton>
-                                        <buttons:SfButton
-                                            x:Name="Button_DueDateFilter"
-                                            Background="White"
-                                            Clicked="Button_DueDateFilter_Clicked"
-                                            CornerRadius="20"
-                                            HorizontalOptions="Start"
-                                            HorizontalTextAlignment="Start"
-                                            ImageSource="ic_unpaid"
-                                            ShowIcon="True"
-                                            Stroke="LightGray"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource CaptionButtonBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ASDueDate}"
-                                            VerticalTextAlignment="Center">
-                                            <buttons:SfButton.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding DueDateFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="">
-                                                    <!--<Setter Property="ImageSource" Value="" />-->
-                                                    <Setter Property="Background" Value="White" />
-                                                    <Setter Property="ShowIcon" Value="False" />
-
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding DueDateFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="ascending">
-                                                    <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding DueDateFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="descending">
-                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-                                            </buttons:SfButton.Triggers>
-                                        </buttons:SfButton>
-                                        <buttons:SfButton
-                                            x:Name="Button_BillDiscriptionFilter"
-                                            Background="White"
-                                            Clicked="Button_BillDiscriptionFilter_Clicked"
-                                            CornerRadius="20"
-                                            HorizontalOptions="Start"
-                                            HorizontalTextAlignment="Start"
-                                            ImageSource="ic_unpaid"
-                                            ShowIcon="True"
-                                            Stroke="LightGray"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource CaptionButtonBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ASBillDescription}"
-                                            VerticalTextAlignment="Center">
-                                            <buttons:SfButton.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding BillDescriptionFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="">
-                                                    <!--<Setter Property="ImageSource" Value="" />-->
-                                                    <Setter Property="Background" Value="White" />
-                                                    <Setter Property="ShowIcon" Value="False" />
-
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding BillDescriptionFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="ascending">
-                                                    <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding BillDescriptionFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="descending">
-                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-                                            </buttons:SfButton.Triggers>
-                                        </buttons:SfButton>
-                                        <buttons:SfButton
-                                            x:Name="Button_BillAmountFilter"
-                                            Background="White"
-                                            Clicked="Button_BillAmountFilter_Clicked"
-                                            CornerRadius="20"
-                                            HorizontalOptions="Start"
-                                            HorizontalTextAlignment="Start"
-                                            ImageSource="ic_unpaid"
-                                            ShowIcon="True"
-                                            Stroke="LightGray"
-                                            StrokeThickness="1"
-                                            Style="{StaticResource CaptionButtonBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.ASBillAmount}"
-                                            VerticalTextAlignment="Center">
-                                            <buttons:SfButton.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding BillAmountFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="">
-                                                    <!--<Setter Property="ImageSource" Value="" />-->
-                                                    <Setter Property="Background" Value="White" />
-                                                    <Setter Property="ShowIcon" Value="False" />
-
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding BillAmountFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="ascending">
-                                                    <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding BillAmountFilterItem}"
-                                                    TargetType="buttons:SfButton"
-                                                    Value="descending">
-                                                    <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="Background" Value="{StaticResource PartialBg}" />
-                                                    <Setter Property="ShowIcon" Value="True" />
-                                                </DataTrigger>
-                                            </buttons:SfButton.Triggers>
-                                        </buttons:SfButton>
+                                                </Grid>
+                                            </Grid>
+                                        </Border>
                                     </StackLayout>
-                                </ScrollView>
-                                <StackLayout
-                                    Grid.Column="0"
-                                    BackgroundColor="White"
-                                    HorizontalOptions="Start">
-                                    <Label
-                                        HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource CaptionLabelBlack}"
-                                        VerticalOptions="CenterAndExpand">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{x:Static ResourceManager:AppResources.SortBy}" />
-                                                <Span Text=":" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+
+                                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" />
+                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
                                 </StackLayout>
-                            </Grid>
+                            </ListView.Header>
+                        </ListView>
 
-                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
+                    </Grid>
 
-                            <StackLayout Margin="10">
-                                <Border
-                                    Margin="0,10,0,10"
-                                    IsVisible="false"
-                                    Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <StackLayout Padding="0" Spacing="0">
-                                        <Grid Padding="15" RowSpacing="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="0"
-                                                Spacing="-10">
-                                                <Label
-                                                    Style="{StaticResource CaptionLabelGrey}"
-                                                    Text="{x:Static ResourceManager:AppResources.TotalOpeningBalance}"
-                                                    VerticalOptions="CenterAndExpand" />
-                                            </StackLayout>
-
-                                            <Border
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Padding="10,10,10,10"
-                                                BackgroundColor="{StaticResource Primary}"
-                                                HeightRequest="20"
-                                                HorizontalOptions="End"
-                                                Opacity=".2"
-                                                StrokeShape="RoundRectangle 14,14,14,14"
-                                                StrokeThickness="1"
-                                                VerticalOptions="CenterAndExpand"
-                                                WidthRequest="110">
-                                                <Border.Triggers>
-                                                    <DataTrigger
-                                                        Binding="{Binding IsOpeningBalancePositive}"
-                                                        TargetType="Border"
-                                                        Value="true">
-                                                        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
-                                                    </DataTrigger>
-                                                    <DataTrigger
-                                                        Binding="{Binding IsOpeningBalancePositive}"
-                                                        TargetType="Border"
-                                                        Value="false">
-                                                        <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
-                                                    </DataTrigger>
-                                                </Border.Triggers>
-                                            </Border>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Margin="0,0,0,0"
-                                                HorizontalOptions="FillAndExpand"
-                                                Orientation="Horizontal"
-                                                Spacing="2"
-                                                VerticalOptions="FillAndExpand">
-                                                <Label
-                                                    HorizontalOptions="EndAndExpand"
-                                                    LineBreakMode="WordWrap"
-                                                    Style="{StaticResource CaptionLabelBlack}"
-                                                    TextColor="{StaticResource NewDarkGreenColor}"
-                                                    VerticalOptions="CenterAndExpand">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{Binding HeaderSet.D.OpeningAmount}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                    <Label.Triggers>
-                                                        <DataTrigger
-                                                            Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="Label"
-                                                            Value="true">
-                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="Label"
-                                                            Value="false">
-                                                            <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
-
-                                                <Label
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    LineBreakMode="WordWrap"
-                                                    Style="{StaticResource CaptionLabelBlack}"
-                                                    TextColor="{StaticResource NewDarkGreenColor}"
-                                                    VerticalOptions="CenterAndExpand">
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                    <Label.Triggers>
-                                                        <DataTrigger
-                                                            Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="Label"
-                                                            Value="true">
-                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                        </DataTrigger>
-                                                        <DataTrigger
-                                                            Binding="{Binding IsOpeningBalancePositive}"
-                                                            TargetType="Label"
-                                                            Value="false">
-                                                            <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
-
-                                            </StackLayout>
-
-                                        </Grid>
-                                    </StackLayout>
-                                </Border>
-
-                                <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <Grid Padding="0">
-                                        <Border
-                                            BackgroundColor="{Binding TotalBalanceBackground}"
-                                            HorizontalOptions="FillAndExpand"
-                                            Opacity="0.2"
-                                            VerticalOptions="FillAndExpand" />
-                                        <Grid Padding="15" RowSpacing="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
-
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="0"
-                                                Spacing="-10">
-                                                <Label
-                                                    Style="{StaticResource BodyLabelBlack}"
-                                                    Text="{x:Static ResourceManager:AppResources.AccountStatementTotalBalance}"
-                                                    VerticalOptions="CenterAndExpand" />
-                                            </StackLayout>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="FillAndExpand">
-
-
-                                                <!--<Label Style="{StaticResource SectionTitleBlackBold}"
-                                                                            TextColor="{Binding TotalBalanceBackground}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{Binding HeaderSet.D.CloseAmount,Converter={StaticResource commaSeparatorConverter}}" TextColor="{Binding TotalBalanceBackground}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
-                                                                    <Span Text="&#160;" Style="{StaticResource CaptionLabelBlack}" ></Span>
-                                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR} " TextColor="{Binding TotalBalanceBackground}"  Style="{StaticResource SectionTitleBlackBold}" ></Span>
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                   </Label>-->
-
-
-                                                <Label
-                                                    HorizontalOptions="CenterAndExpand"
-                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                    Text="{Binding HeaderSet.D.CloseAmount}"
-                                                    TextColor="{Binding TotalBalanceBackground}"
-                                                    VerticalOptions="CenterAndExpand">
-                                                    <Label.Triggers>
-                                                        <DataTrigger
-                                                            Binding="{Binding StatusDesc}"
-                                                            TargetType="Label"
-                                                            Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
-                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}" />
-                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                                        </DataTrigger>
-                                                    </Label.Triggers>
-                                                </Label>
-                                            </StackLayout>
-
-                                        </Grid>
-                                    </Grid>
-                                </Border>
-                            </StackLayout>
-
-                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" />
-                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
-                        </StackLayout>
-                    </ListView.Header>
-                </ListView>
-            </StackLayout>
-
-            <Grid
-                Grid.Row="0"
-                Grid.Column="0"
-                Margin="0,-20,0,0"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+            </Border>
+            <!--#endregion Body-->
+            
+            <custom:Loader IsVisible="{Binding IsLoading}"
+                    Grid.RowSpan="2"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -20,7 +20,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     public class FileAttachmentPopUpPageViewModel : BaseViewModel
     {
         public ICommand OnAttachmentClick { get; set; }
-        public ICommand GoButtonClick { get; set; }
 
         public static decimal AttachmentUploadedSize = 0;
         public static bool IsToBeFilled = false;
@@ -31,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public int NumberOfAttachmentComingFromServer = 0;
 
         #region Property
-       
+
 
         private VATAttachment _vATAttachmentObj;
         public VATAttachment VATAttachmentObj
@@ -360,10 +359,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IsLoading = false;
             });
 
-            GoButtonClick = new Command(() =>
-            {
-                MopupService.Instance.PopAsync();
-            });
         }
 
 
@@ -466,9 +461,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                             {
                                                 bool IsAttachmentPresent = false;
-                                                foreach (Attachment ItemA in VATRegistrationDetailsForAttach.d.ATTDETSet.results)
+                                                foreach (Attachment ItemA in VATRegistrationDetailsForAttach.d.ATTDETSet)
                                                 {
-                                                    if (AttachmentName == ItemA.Filename && ItemA.Dotyp == DocTypeString)
+                                                    if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                     {
                                                         IsAttachmentPresent = true;
                                                     }
@@ -476,8 +471,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                 if (IsAttachmentPresent == false)
                                                 {
                                                     string attachmentType = UtilityManager.GetContentType(Extention);
-
-                                                    AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);
+                                                    AttachmentRootOject _attachment = await SaveAttachment(stream, attachmentType, DocTypeString);
 
                                                     PopToRootPage();
 
@@ -493,8 +487,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                         uploadedDate = uploadedDate.Replace("UTC", "GMT");
                                                         _attachment.d.Erfdt = uploadedDate;
                                                         _attachment.d.Dotyp = DocTypeString;
-                                                        VATRegistrationDetailsForAttach.d.ATTDETSet.results.Add(_attachment.d);
-                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
+                                                        VATRegistrationDetailsForAttach.d.ATTDETSet.Add(_attachment.d);
+                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet as List<Attachment>);
                                                         MainThread.BeginInvokeOnMainThread(() =>
                                                         {
                                                             VatAttachmentsList = myCollection;
@@ -581,8 +575,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             }
                                             else
                                             {
-                                                //await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
-                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATAmendAttachmentSizeError));
+
                                             }
                                         }
                                     }
@@ -665,7 +659,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             try
             {
-                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.Count != 0)
                 {
                     List<Attachment> attachmentsList = new List<Attachment>();
                     foreach (var item in VatAttachmentsList)
@@ -676,7 +670,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                     }
                     VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
-                    // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
             catch (Exception)
@@ -686,7 +679,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType, string Doctype)
+        private async Task<AttachmentRootOject> SaveAttachment(Stream attachmentByteData, string contentType, string Doctype)
         {
             AttachmentRootOject _attachment = null;
             await Task.Run(() =>
@@ -807,10 +800,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
 
                 AttachmentList = list;
-                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.results != null)
-                    if (VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null)
+                    if (VATRegistrationDetailsForAttach.d.ATTDETSet.Count != 0)
                     {
-                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet as List<Attachment>);
                         VatAttachmentsList = myCollection;
                     }
             }

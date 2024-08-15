@@ -38,7 +38,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public static string ReturnPeriod = "";
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         private List<ICRListSet> _iCRListVATSubmitted;
-        public ICommand GoBackClick { get; set; }
         private int _headerCount = 3;
         public int HeaderCount
         {
@@ -247,7 +246,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 OnPropertyChanged("ReturnsListCountsByStatus");
             }
         }
-       
+
         public List<ICRListSet> ICRListVATSubmitted
         {
             get
@@ -334,7 +333,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
                             MainThread.BeginInvokeOnMainThread(() =>
                             {
-                                _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, ChidlSelectedICR.Fbguid);
+                                _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, ChidlSelectedICR.Fbnum);
                             });
                         }
                         else
@@ -415,10 +414,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         }
         public ReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command( () =>
-            {
-                _navigationService.GoBack();
-            });
         }
         public void PopToRootPage()
         {

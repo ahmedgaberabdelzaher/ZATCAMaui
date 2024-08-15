@@ -1,8 +1,5 @@
 ﻿using Mopups.Pages;
 using Mopups.Services;
-using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
@@ -18,7 +15,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             InitializeComponent();
             viewModel = App.Locator.GAZTNewDesignShowVatInformationPopUpPageView;
             this.BindingContext = viewModel;
-            SetLTR();
             FlowDirection = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             ClearData();
             if (newDesignPopData != null)
@@ -81,31 +77,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 }
             }
         }
-        private void SetLTR()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    //this.FlowDirection = FlowDirection.RightToLeft;
-                    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-                }
-                else
-                {
-                    //this.FlowDirection = FlowDirection.LeftToRight;
-                    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-                }
-            }
-            catch (Exception)
-            {
 
-
-            }
-        }
 
         private void FirstLinkClicked(object sender, EventArgs e)
         {

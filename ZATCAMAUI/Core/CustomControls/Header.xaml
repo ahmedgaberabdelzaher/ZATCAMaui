@@ -11,7 +11,6 @@
                 HorizontalOptions="Start"
                 Rotation="180"
                 Source="arrowLeftwhite.png"
-                Style="{DynamicResource BackButtonArrow}"
                 VerticalOptions="CenterAndExpand">
                 <Image.Triggers>
                     <DataTrigger

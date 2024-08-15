@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using Application = Microsoft.Maui.Controls.Application;
@@ -9,10 +10,17 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
     public partial class AccountStatementsDetailPageView : ContentPage
     {
         MyBills myBills;
-        public AccountStatementsDetailPageView(MyBills myBills)
+        public AccountStatementsDetailPageView(MyBills myBills, AccoungtDetails details_bills)
         {
+
+            viewModel = App.Locator.AccPageDetailVM;
+            this.BindingContext = viewModel;
+
+            viewModel.accoungtDetails = details_bills;
+
             InitializeComponent();
             this.myBills = myBills;
+            this.reload();
         }
 
         protected override void OnAppearing()
@@ -21,9 +29,9 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
 
             LableTaxPeriod.Text = "" + myBills.PeriodPart1 + " - " + myBills.PeriodPart2;
             LableFbNum.Text = AppResources.ASFBNum + " : " + myBills.Fbnum;
-            LableDueDate.Text = "" + myBills.FormatedFaedn;
+            LableDueDate.Text = "" + myBills.ACSFormatedFaedn;
             LableSadadNum.Text = "" + myBills.VTRE2;
-            LableCardStatus.Text = "" + myBills.StatusText;
+            LableCardStatus.Text = "" + myBills.PymtStatus;
             LableCardTitle.Text = "" + myBills.BillTitle;
             LableTaxType.Text = myBills.Txt30;
 
@@ -34,11 +42,6 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             CardAmount.BackgroundColor = color;
             CardAmountRemaining.BackgroundColor = color;
             LableCardStatus.TextColor = color;
-
-
-
-
-
 
             if (myBills.IsPartiallyPaidVisibile)
             {
@@ -89,12 +92,22 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 }
 
             }
-
-
-
+            this.reload();
 
         }
+        public void reload()
+        {
+            viewModel.oBJDTLSets = new ObservableCollection<Result_Obj>(viewModel.accoungtDetails.d.OBJ_DTLSet);
+            viewModel.RETDTLSets = new ObservableCollection<Result_RET>(viewModel.accoungtDetails.d.RET_DTLSet);
+            viewModel.instDTLSET = new ObservableCollection<Result_InST>(viewModel.accoungtDetails.d.INSTL_DTLSet);
+            viewModel.billDetails = new ObservableCollection<Result_Bill>(viewModel.accoungtDetails.d.BILL_DTLSet);
 
+
+            ObjectionDetails.IsVisible = viewModel.isObjectionDetailsVisible;
+            ReturnDetails.IsVisible = viewModel.isRetunVisible;
+            ISTPlanDetails.IsVisible = viewModel.isInstalmentDetailsVisible;
+            InstPlanOBDetials.IsVisible = viewModel.isBIllDetialsVisble;
+        }
         private Color stringToColor(string value)
         {
             Color StatusColor;

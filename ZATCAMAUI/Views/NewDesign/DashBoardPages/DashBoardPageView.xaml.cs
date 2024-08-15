@@ -1,6 +1,4 @@
 ﻿using AppDynamics.Agent;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using Mopups.Services;
 using Syncfusion.Maui.Picker;
@@ -15,7 +13,6 @@ using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
 using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 using ScrollView = Microsoft.Maui.Controls.ScrollView;
 
 namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
@@ -37,7 +34,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             try
             {
                 InitializeComponent();
-                NavigationPage.SetBackButtonTitle(this, "");
 
 
                 var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Constructor", AppResources.Dashboard);
@@ -96,7 +92,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             try
             {
                 InitializeComponent();
-                NavigationPage.SetBackButtonTitle(this, "");
 
 
                 var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Constructor", AppResources.Dashboard);
@@ -169,33 +164,32 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 if (response != null && response.Length > 0)
                 {
                     SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
-                    if (subsidyResponseModel != null && subsidyResponseModel.D != null)
+                    if (subsidyResponseModel != null && subsidyResponseModel.Data != null)
                     {
 
-                        if (!string.IsNullOrEmpty(subsidyResponseModel.D.Fbguid))
+                        if (!string.IsNullOrEmpty(subsidyResponseModel.Data.FormBundleGUID))
                         {
 
-                            string url = subsidyResponseModel.D.ExternalPortal;
+                            string url = subsidyResponseModel.Data.ExternalPortal;
                             url += "?";
                             url += "culture=" + WebServiceManager.GetLangZParameterAREN();
                             url += "&tin=" + App.LoginDataRetrieved.TIN;
-                            url += "&token=" + subsidyResponseModel.D.Fbguid;
+                            url += "&token=" + subsidyResponseModel.Data.FormBundleGUID;
                             url += "&device=MA";
                             ZATCAConstants.TaxpayerSubsidyRequest = url;
 
 
-                            MainThread.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(() =>
                             {
                                 viewModel.IsLoading = false;
 
                                 viewModel._navigationService.NavigateTo(App.TaxpayerSubsidyRequest);
                             });
-
-                            Instrumentation.EndCall(callTracker);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         else
                         {
-                            MainThread.BeginInvokeOnMainThread( () =>
+                            MainThread.BeginInvokeOnMainThread(() =>
                             {
                                 viewModel.IsLoading = false;
 
@@ -215,18 +209,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             CommitmentsPicker.IsOpen = true;
         }
 
-        public void ChangeArrowDirection()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
         #region Method
         public class ColorModel
         {
@@ -256,9 +238,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             getNoCommandToLogout();
             SetPickerFont();
 
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             viewModel.isPayNowTapped = false;
 
@@ -267,12 +246,10 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             viewModel.UnPaidString = AppResources.UnPaid + " " + viewModel.UnPaidBillCount;
             viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
             viewModel.TotalString = AppResources.NDTotalNumberOfBills;
-
-            ChangeArrowDirection();
             MessagingCenter.Subscribe<object>(this, "UpdateProgressBar", (sender) =>
             {
                 SfLinearProgressBar rangeColors = new SfLinearProgressBar();
-                rangeColors.GradientStops.Add( new ProgressGradientStop
+                rangeColors.GradientStops.Add(new ProgressGradientStop
                 {
                     Color = (Color)Application.Current.Resources["Green"],
                     Value = 0
@@ -282,7 +259,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     Color = (Color)Application.Current.Resources["Error"],
                     Value = 100
                 });
-               
+
             });
             isTimerOff = false;
             StartTimer();
@@ -317,12 +294,12 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 try
                 {
 
-                    viewModel.DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                    viewModel.DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.userId);
 
                     viewModel.PopulateReturnsInformation();
                     viewModel.IsLoading = false;
                 }
-                catch (GAZTErrorException )
+                catch (GAZTErrorException)
                 {
                 }
 
@@ -368,7 +345,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             {
             }
 
-            
+
         }
 
         public void SetPickerFont()
@@ -533,7 +510,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
                     }
 
-                    if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty)
+                    if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
                     {
                         viewModel.IfnotRegInVATAndZakat = false;
                     }
@@ -568,7 +545,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 viewModel.IsVatRegistrationTileVisible = true;
             }
 
-            ChangeArrowDirection();
             App.HasToRefreshLoaderOnDashboard = false;
 
 
@@ -685,13 +661,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             finally { viewModel.IsLoading = false; }
         }
 
-        //private void SetLTR()
-        //{
-        //    if (!App.IsArabic)
-        //    {
-        //        FlowDirection = FlowDirection.LeftToRight;
-        //    }
-        //}
 
         #endregion
 
@@ -815,7 +784,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
                     }
 
-                    if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty)
+                    if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
                     {
                         viewModel.IfnotRegInVATAndZakat = false;
                     }
@@ -857,10 +826,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
                 Instrumentation.EndCall(callTracker);
                 // OnAppearing();
-            }
-            else
-            {
-                MopupService.Instance.PushAsync(new InfoPopUpPage());
             }
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -1009,7 +974,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             try
             {
-               
+
                 var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnSupportTapped", "Support");
                 App.isFromDashboard = true;
                 viewModel._navigationService.NavigateTo(App.SupportPageView);
@@ -1142,9 +1107,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             try
             {
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
 
                 if (App.IsArabic)
                 {
@@ -1155,7 +1117,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     App.changeFontFamily(App.appObj);
 
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
-                    vUpdatedPage.Padding = safeInsets;
 
                     viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
@@ -1182,8 +1143,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
-                    vUpdatedPage.Padding = safeInsets;
-
                     viewModel.SelectedCommitmentFilterValue = null;
                     Navigation.InsertPageBefore(vUpdatedPage, this);
                     Navigation.PopAsync();
@@ -1259,7 +1218,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 string langName = "en-US";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
-                // this.FlowDirection = FlowDirection.LeftToRight;
                 viewModel.TranslateText = "عربي";
 
                 viewModel.NextCommitmentsString = AppResources.ZZMyCommitments;
@@ -1580,7 +1538,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
 
             var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "AccountStatements_Tapped", "Account Statements eService");
-            
+
             viewModel._navigationService.NavigateTo(App.AccountStatementBillsPageView);
 
 
@@ -1601,22 +1559,10 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             Instrumentation.EndCall(callTracker);
         }
 
-        private void OnBackTapped(object sender, EventArgs e)
-        {
-            GoBackStep();
-        }
-        public void GoBackStep()
-        {
-        }
-
-        public void SetParentMenuVisible()
-        {
-        }
-
         void CommitmentsPicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
         {
-            viewModel.SelectedCommitmentFilterLabelValue = viewModel.CommitmentsListFilter [e.NewValue];
-            viewModel.SelectedCommitmentFilterValue = viewModel.CommitmentsListFilter [e.NewValue];
+            viewModel.SelectedCommitmentFilterLabelValue = viewModel.CommitmentsListFilter[e.NewValue];
+            viewModel.SelectedCommitmentFilterValue = viewModel.CommitmentsListFilter[e.NewValue];
 
         }
 
@@ -1715,10 +1661,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             Instrumentation.EndCall(callTracker);
 
         }
-        void OnChatTapped(System.Object sender, System.EventArgs e)
-        {
 
-        }
         private void ContactZatcaEmp_Tapped(object sender, EventArgs e)
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ContactZatcaEmp_Tapped", "Contact ZATCA Employee");
@@ -1733,20 +1676,20 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
                 if (response != null && response.Length > 0)
                 {
                     SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
-                    if (subsidyResponseModel != null && subsidyResponseModel.D != null)
+                    if (subsidyResponseModel != null && subsidyResponseModel.Data != null)
                     {
 
-                        if (!string.IsNullOrEmpty(subsidyResponseModel.D.Fbguid))
+                        if (!string.IsNullOrEmpty(subsidyResponseModel.Data.FormBundleGUID))
                         {
 
-                            string url = subsidyResponseModel.D.ExternalPortal;
+                            String url = subsidyResponseModel.Data.ExternalPortal;
                             url = url.Replace("TINVALUE", App.LoginDataRetrieved.TIN);
-                            url = url.Replace("TOKENVALUE", subsidyResponseModel.D.Fbguid);
+                            url = url.Replace("TOKENVALUE", subsidyResponseModel.Data.FormBundleGUID);
                             ZATCAConstants.TaxpayerSubsidyRequest = url;
 
-                            MainThread.BeginInvokeOnMainThread(async () => {
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                            {
                                 viewModel.IsLoading = false;
-                                //var url=new Uri($"https://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/MeetingWithAuditorPages/TaxPayer/Requests.aspx?tin={App.LoginDataRetrieved.TIN}&token={subsidyResponseModel.D.Fbguid}");
                                 await Browser.OpenAsync(url);
                             });
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);

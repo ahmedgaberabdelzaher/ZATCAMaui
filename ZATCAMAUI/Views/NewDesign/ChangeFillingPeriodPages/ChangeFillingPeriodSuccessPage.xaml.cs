@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using Application = Microsoft.Maui.Controls.Application;
@@ -18,18 +15,10 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
         {
             InitializeComponent();
 
-            On<iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ChangeFillingPeriodSuccessPageView;
             BindingContext = viewModel;
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-        }
 
 
         private void Dashboard_Tapped(object sender, EventArgs e)
@@ -68,9 +57,9 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
         {
             try
             {
-                if (viewModel.ChangeFillingResponse.d.Fbnumz != null)
+                if (viewModel.ChangeFillingResponse.d1.Fbnumz != null)
                 {
-                    await Clipboard.SetTextAsync(viewModel.ChangeFillingResponse.d.Fbnumz);
+                    await Clipboard.SetTextAsync(viewModel.ChangeFillingResponse.d1.Fbnumz);
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
@@ -88,9 +77,9 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
         }
         private void Download_Acknowledgement(object sender, EventArgs e)
         {
-            if (viewModel.ChangeFillingResponse.d.Fbnumz != null)
+            if (viewModel.ChangeFillingResponse.d1.Fbnumz != null)
             {
-                string downloadurl = ZATCAConstants.downloadFile + "'" + viewModel.ChangeFillingResponse.d.Fbnumz + "')/$value";
+                String downloadurl = ZATCAConstants.downloadFile + viewModel.ChangeFillingResponse.d1.Fbnumz;
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
             }

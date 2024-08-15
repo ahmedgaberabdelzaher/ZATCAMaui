@@ -3,16 +3,17 @@ using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 
+[XamlCompilation(XamlCompilationOptions.Compile)]
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeMobNafathLoginPage : ContentPage
-	{
+    {
         ChangeMobNafathPageViewMode viewModel;
         HybridWebView Hybridview;
-        public ChangeMobNafathLoginPage ()
-		{
-			InitializeComponent ();
+        public ChangeMobNafathLoginPage()
+        {
+            InitializeComponent();
             viewModel = App.Locator.ChangeMobNafathLoginPage;
             BindingContext = viewModel;
         }
@@ -30,7 +31,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                         Hybridview = new HybridWebView();
                         Hybridview.Url = url;
                         RegnagaftGrid.Add(Hybridview, 0, 0);
-                        Hybridview.RegisterAction(async (obj) => {
+                        Hybridview.RegisterAction(async (obj) =>
+                        {
                             if (obj == ZATCAConstants.AppChangeMobCompanayNafath)
                             {
                                 if (App.GUIDFrChangeMob.Contains(ZATCAConstants.WebKeyChangeMobCompanayNafath))
@@ -39,9 +41,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                     var guid = App.GUIDFrChangeMob.Split(new string[] { "guid=" }, StringSplitOptions.None)[1];
                                     viewModel._navigationService.GoBack();
                                     viewModel._navigationService.NavigateTo(App.ChangeMobileRequestPageView, guid);
-                                    
+
                                 }
-                                
+
                             }
                             if (obj == "displayLoginLoadingIndicator")
                             {

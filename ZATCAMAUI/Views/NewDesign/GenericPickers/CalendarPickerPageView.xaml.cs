@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Pages;
 using Mopups.Services;
 using Syncfusion.Maui.Picker;
@@ -41,7 +40,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
 
-            On<iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetPickerFont();
 
@@ -113,7 +111,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
             viewModel.PickerItemSource = viewModel.DataSource.PickerData;
             viewModel.DatePickerTitle = viewModel.DataSource.DatePickerTitle;
 
-            On<iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             SetPickerFont();
         }

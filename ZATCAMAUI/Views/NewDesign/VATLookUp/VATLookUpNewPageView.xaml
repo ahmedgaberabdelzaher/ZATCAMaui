@@ -129,7 +129,7 @@
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Keyboard="Numeric"
+                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                             MaxLength="{Binding MaxDigids}"
                                             Placeholder="{Binding SelectedParameterType.ParameterType}"
                                             Style="{StaticResource DefaultEntry}"

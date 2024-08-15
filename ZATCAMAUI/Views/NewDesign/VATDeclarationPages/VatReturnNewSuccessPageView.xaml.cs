@@ -1,7 +1,4 @@
 ﻿
-
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using ZATCAMAUI.Models.PaymentModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -34,28 +31,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
 
             BindingContext = viewModel;
-            ChangeAeroIcon();
 
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
 
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         public async void OnCopyReferenceNumberButtonClicked(object sender, EventArgs args)
         {

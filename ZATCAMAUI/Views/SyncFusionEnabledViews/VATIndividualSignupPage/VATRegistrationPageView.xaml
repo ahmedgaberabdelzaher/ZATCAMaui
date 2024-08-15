@@ -21,7 +21,6 @@
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
-    NavigationPage.BackButtonTitle=""
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <!--  ZZZZVatRegistrationTile  -->
@@ -1790,7 +1789,7 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="EntryIDNo"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="Numeric"
+                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthID}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"
@@ -2517,7 +2516,7 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="EntryContactIDNumber"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="Numeric"
+                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthIDSR}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"

@@ -50,9 +50,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 _currentAttempts = value;
                 if (_currentAttempts == 5)
                 {
-                    ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+
+                        VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                    });
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                     _currentAttempts = 0;
@@ -65,7 +69,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
         }
 
-      
+
 
         private bool _isTinContentViewVisible = false;
         public bool IsTinContentViewVisible
@@ -535,7 +539,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isResendOTPEnabled = value;
-                OnResendOTPClicked.ChangeCanExecute();
                 OnPropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -560,7 +563,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isVerifyOTPEnabled = value;
-                ConfirmOtpBtnClicked.ChangeCanExecute();
                 OnPropertyChanged("IsVerifyOTPEnabled");
             }
         }
@@ -575,7 +577,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             set
             {
                 _isOTPEntryEnable = value;
-                OnPropertyChanged(nameof( IsOTPEntryEnable));
+                OnPropertyChanged(nameof(IsOTPEntryEnable));
             }
         }
         private Color _buttonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
@@ -604,9 +606,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                        VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                    });
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
 
@@ -658,32 +663,39 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             IsAccountUnlockedSuccessViewVisible = false;
         }
 
-        public void EnableOtpView()
+        public void EnableOtpView(Result result)
         {
-            currentAttempts = 0;
-            MobileNumberMasked = UnlockAccountModelResponse.D.MobileNo;
-            StopTimer = true;
+            try
+            {
+                currentAttempts = 0;
+                MobileNumberMasked = result.mobileNumber;
+                StopTimer = true;
 
-            IsVerifyOTPEnabled = true;
-            IsResendOTPEnabled = false;
-            IsOTPEntryEnable = true;
+                IsVerifyOTPEnabled = true;
+                IsResendOTPEnabled = false;
+                IsOTPEntryEnable = true;
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
+                    ButtonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
+                });
+                OtpFirstDigit = string.Empty;
+                OtpSecondDigit = string.Empty;
+                OtpThirdDigit = string.Empty;
+                OtpFourthDigit = string.Empty;
 
-            VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
-            ButtonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
+                TimerStart(numberOfSeconds);
 
-            OtpFirstDigit = string.Empty;
-            OtpSecondDigit = string.Empty;
-            OtpThirdDigit = string.Empty;
-            OtpFourthDigit = string.Empty;
+                IsTinContentViewVisible = false;
+                IsOTPContentViewVisible = true;
+                IsChangePasswordViewVisible = false;
+                IsAccountUnlockedSuccessViewVisible = false;
+            }
+            catch (Exception)
+            {
 
-            TimerStart(numberOfSeconds);
-
-            IsTinContentViewVisible = false;
-            IsOTPContentViewVisible = true;
-            IsChangePasswordViewVisible = false;
-            IsAccountUnlockedSuccessViewVisible = false;
+            }
         }
-
         public void EnableChangePasswordView()
         {
             Password = string.Empty;
@@ -760,9 +772,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         if (TotalSec < 0)
                         {
                             OTPValidDuration = " 0:00";
-                            ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
                             IsResendOTPEnabled = true;
-                            VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                                VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                            });
                             IsVerifyOTPEnabled = false;
                             IsOTPEntryEnable = false;
                             return false;
@@ -800,21 +815,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     App.DisplayProgressView();
                 });
 
-                UnlockAccountModel.Tin = TxtTIN;
-                //Action for validating TIN and sending OTP
-                UnlockAccountModel.Action = "01";
-                UnlockAccountModel.TaxpayerGuid = GUID;
-                UnlockAccountModel.Zcaptcha = captcha;
-                UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccount(UnlockAccountModel);
-                totalAttempts = Convert.ToInt16(UnlockAccountModelResponse.D.Attempts);
-                numberOfSeconds = 120;
-
+                UnlockaccountOTP unlockaccountOTP = new UnlockaccountOTP();
+                unlockaccountOTP.TIN = TxtTIN;
+                unlockaccountOTP.taxpayerGuid = GUID;
+                unlockaccountOTP.captchaCode = captcha;
+                //unlockaccountOTP.language = UtilityManager.GetLanguageParameter();
+                var result = await VatRegistrationWebServiceManager.SendOTP(unlockaccountOTP);
+                //UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccount(UnlockAccountModel);
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
                 });
 
-                EnableOtpView();
+                if (result != null)
+                {
+                    totalAttempts = Convert.ToInt16(result.result.attempts);
+                    numberOfSeconds = 120;
+                    EnableOtpView(result.result);
+                }
 
             }
             catch (GAZTUnlockAccountException ex)
@@ -830,12 +848,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
             catch (InternetException ex)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    App.HideProgressView();
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                MainThread.BeginInvokeOnMainThread(async () =>
+                 {
+                     App.HideProgressView();
+                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                     _navigationService.GoBack();
+                 });
             }
         }
 
@@ -844,33 +862,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             try
             {
 
-                IsLoading = true;
 
-                string lang = UtilityManager.GetLanguageParameter();
-                string st = ZATCAConstants.CaptchaAndGUID;
-                string type = "ZDP_CREATE_CAPTCHA_SRV.Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                GenerateCaptchaGUID forgotPasswordOTP = new GenerateCaptchaGUID();
-                Metadata metadata = new Metadata();
-                metadata.id = st;
-                metadata.uri = st;
-                metadata.type = type;
+                CAptchRequest model = new CAptchRequest();
+                model.GUID = "";
+                model.captchaCode = "";
+                model.taxpayer = "";
+                model.refresh = "";
+                model.applicationName = "FPWD";
 
-                GetCaptcha d = new GetCaptcha();
-                d.__metadata = metadata;
-                d.Captcha = "";
-                d.Guid = "";
-                d.Taxpayer = "";
-                d.Refresh = "";
-                d.Application = "FPWD";
 
-                forgotPasswordOTP.d = d;
-                forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
+                var captchResponse = await WebServiceManager.CaptchaRequest(model);
+
+
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
+                if (captchResponse?.result != null && !string.IsNullOrEmpty(captchResponse.result.captchaCode))
                 {
-                    captcha = forgotPasswordOTP.d.Captcha;
-                    GUID = forgotPasswordOTP.d.Guid;
+                    captcha = captchResponse.result.captchaCode;
+                    GUID = captchResponse.result.GUID;
                     IsAPICalledSuccessfully = true;
                 }
                 else
@@ -881,6 +890,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
                 IsLoading = false;
             }
+
 
             catch (InternetException ex)
             {
@@ -899,13 +909,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         {
             if (App.IsSessionExpired)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
+                MainThread.BeginInvokeOnMainThread(async () =>
+                 {
 
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
-                    await MopupService.Instance.PopAsync();
-                });
+                     //var _navigation = Application.Current.MainPage.Navigation;
+                     //_navigation.PopToRootAsync();
+                     await MopupService.Instance.PopAsync();
+                 });
             }
         }
 
@@ -957,12 +967,15 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     try
                     {
                         App.DisplayProgressView();
-                        UnlockAccountModelOtp.Tin = UnlockAccountModel.Tin;
-                        UnlockAccountModelOtp.Action = "02";
-                        UnlockAccountModelOtp.Otp = otp;
-                        UnlockAccountModelOtp.TaxpayerGuid = GUID;
-                        UnlockAccountModelOtp.Zcaptcha = captcha;
-                        UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccountOtp(UnlockAccountModelOtp);
+                        UnlockAccountValidate unlockaccountOTP = new UnlockAccountValidate();
+                        unlockaccountOTP.TIN = TxtTIN;
+                        unlockaccountOTP.OTP = otp;
+                        otpValidate = otp;
+                        unlockaccountOTP.taxpayerGuid = GUID;
+                        unlockaccountOTP.captchaCode = captcha;
+                        unlockaccountOTP.language = WebServiceManager.GetLangZParameterAREN();
+
+                        var result = await VatRegistrationWebServiceManager.ValidateOTP(unlockaccountOTP);
                         App.HideProgressView();
 
                         OtpFirstDigit = string.Empty;
@@ -970,7 +983,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         OtpThirdDigit = string.Empty;
                         OtpFourthDigit = string.Empty;
 
-                        EnableChangePasswordView();
+                        if (result != null)
+                        {
+                            EnableChangePasswordView();
+                        }
                     }
                     catch (GAZTUnlockAccountException ex)
                     {
@@ -990,37 +1006,37 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
 
                     }
-                    catch (InternetException )
+                    catch (InternetException)
                     {
-                       MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            IsOtpAPICalled = false;
-                            if (MopupService.Instance.PopupStack.Count > 0)
-                                await MopupService.Instance.PopAsync(true);
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                         {
+                             IsOtpAPICalled = false;
+                             if (MopupService.Instance.PopupStack.Count > 0)
+                                 await MopupService.Instance.PopAsync(true);
 
 
 
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
 
-                        });
+                         });
                     }
                     catch (Exception)
                     {
-                       MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            IsOtpAPICalled = false;
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                         {
+                             IsOtpAPICalled = false;
 
-                            OtpFirstDigit = string.Empty;
-                            OtpSecondDigit = string.Empty;
-                            OtpThirdDigit = string.Empty;
-                            OtpFourthDigit = string.Empty;
+                             OtpFirstDigit = string.Empty;
+                             OtpSecondDigit = string.Empty;
+                             OtpThirdDigit = string.Empty;
+                             OtpFourthDigit = string.Empty;
 
-                            App.HideProgressView();
+                             App.HideProgressView();
 
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
 
 
-                        });
+                         });
                     }
                 }
             }
@@ -1034,8 +1050,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         public async void ExecuteResendOTPClickCommand(object obj)
         {
             IsResendOTPEnabled = false;
-            ButtonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
-            VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                ButtonDisableColor = (Color)Application.Current.Resources["NeutralGreay"];
+                VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
+            });
             IsVerifyOTPEnabled = true;
             IsOTPEntryEnable = true;
             //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
@@ -1123,11 +1142,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 }
             }
 
-            //if (IsAllValid == true)
-            //{
-            //    await SetRequestObjectFirst();
-            //    //viewModel.CreateGaZTAccount();
-            //}
 
             if (IsAllValid == false)
             {
@@ -1153,23 +1167,28 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 try
                 {
-                    //App.DisplayProgressView();
-                    UnlockAccountModelChangePassword.Tin = UnlockAccountModel.Tin;
-                    UnlockAccountModelChangePassword.Action = "03";
-                    UnlockAccountModelChangePassword.NewPassword = Password;
-                    UnlockAccountModelChangePassword.ConfirmPassword = ConfirmPassword;
-                    UnlockAccountModelChangePassword.TaxpayerGuid = GUID;
-                    UnlockAccountModelChangePassword.Zcaptcha = captcha;
-                    UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccountChangePassword(UnlockAccountModelChangePassword);
-                    PasswordChangedSuccessfully = AppResources.UnlockAccountPasswordChangedSuccessfully;
-                    PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
+                    App.DisplayProgressView();
+                    UnlockAccountChangePwd unlockAccountChangePwd = new UnlockAccountChangePwd();
+                    unlockAccountChangePwd.TIN = TxtTIN;
+                    unlockAccountChangePwd.OTP = otpValidate;
+                    unlockAccountChangePwd.newPassword = Password;
+                    unlockAccountChangePwd.confirmPassword = ConfirmPassword;
+                    unlockAccountChangePwd.taxpayerGuid = GUID;
+                    unlockAccountChangePwd.captchaCode = captcha;
+                    var result = await VatRegistrationWebServiceManager.ChangePwd(unlockAccountChangePwd);
+
+                    if (result != null)
+                    {
+                        //UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccountChangePassword(UnlockAccountModelChangePassword);
+                        PasswordChangedSuccessfully = AppResources.UnlockAccountPasswordChangedSuccessfully;
+                        PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
+
+                    }
 
                     App.HideProgressView();
-
-                   MainThread.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(() =>
                     {
-
-                        await MopupService.Instance.PopAsync();
+                        _navigationService.GoBack();
                         _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
                     });
 
@@ -1183,27 +1202,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
                 }
-                catch (InternetException )
+                catch (InternetException)
                 {
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
-                        await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    });
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                     {
+                         await Task.Run(() =>
+                         {
+                             App.HideProgressView();
+                         });
+                         await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                     });
                 }
                 catch (Exception)
                 {
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Task.Run(() =>
-                        {
-                            App.HideProgressView();
-                        });
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    });
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                     {
+                         await Task.Run(() =>
+                         {
+                             App.HideProgressView();
+                         });
+                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                     });
                 }
             }
 

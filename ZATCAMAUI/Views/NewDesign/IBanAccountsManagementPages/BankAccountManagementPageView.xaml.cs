@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
 using ZATCAMAUI.Views.NewDesign.Common;
@@ -16,29 +14,20 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
         public BankAccountManagementPageView()
         {
             InitializeComponent();
-            ChangeAeroIcon();
-
-            SetLTR();
-
             _viewModel = App.Locator.BankAccountManagementPageView;
-            On<iOS>().SetUseSafeArea(true);
             this.BindingContext = _viewModel;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
             //Check for Large Tax payer or not
             await _viewModel.LoadAllIBanAccounts();
 
             App.SelectedIBAN = string.Empty;
 
 
-           
+
 
             MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
             {
@@ -61,38 +50,6 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
             });
         }
 
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-        }
-
-        public void ChangeAeroIcon()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                }
-                else
-                {
-                    Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
-
-        }
 
 
         protected override void OnDisappearing()

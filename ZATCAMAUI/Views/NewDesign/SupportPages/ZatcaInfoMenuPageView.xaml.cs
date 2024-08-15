@@ -1,10 +1,7 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM;
-using Application = Microsoft.Maui.Controls.Application;
 namespace ZATCAMAUI.Views.NewDesign.SupportPages
 {
 
@@ -21,25 +18,6 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
             BindingContext = viewModel;
 
             viewModel.setMenuTab();
-            On<iOS>().SetUseSafeArea(true);
-            App.Current.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-
-
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
         }
 
         protected override bool OnBackButtonPressed()
@@ -96,7 +74,7 @@ namespace ZATCAMAUI.Views.NewDesign.SupportPages
                 }
 
             }
-         
+
 
         }
 

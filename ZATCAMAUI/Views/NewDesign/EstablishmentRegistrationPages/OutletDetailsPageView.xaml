@@ -19,12 +19,7 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+           
             <converters:EstablishmentRegistrationOutletTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         </ResourceDictionary>
@@ -106,13 +101,11 @@
                         </Label.FormattedText>
                     </Label>
                     <inputLayout:SfTextInputLayout
-                        Margin="0,-6,0,-6"
                         ContainerType="Outlined"
                         HorizontalOptions="FillAndExpand"
                         InputViewPadding="16,0,16,0"
                         IsHintAlwaysFloated="True"
-                        LeadingViewPosition="Inside"
-                        Style="{StaticResource TextInputLayout}">
+                        LeadingViewPosition="Inside">
                         <custom:GAZTBorderlessEntry
                             Margin="10"
                             FontFamily="{StaticResource SomarRegular}"
@@ -392,13 +385,11 @@
                             <inputLayout:SfTextInputLayout
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
                                 IsHintAlwaysFloated="True"
-                                LeadingViewPosition="Inside"
-                                Style="{StaticResource TextInputLayout}">
+                                LeadingViewPosition="Inside">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
@@ -429,13 +420,11 @@
                             </Label.FormattedText>
                         </Label>
                         <inputLayout:SfTextInputLayout
-                            Margin="0,-6,0,-6"
                             ContainerType="Outlined"
                             HorizontalOptions="FillAndExpand"
                             InputViewPadding="16,0,16,0"
                             IsHintAlwaysFloated="True"
-                            LeadingViewPosition="Inside"
-                            Style="{StaticResource TextInputLayout}">
+                            LeadingViewPosition="Inside">
                             <custom:GAZTBorderlessEntry
                                 Margin="10"
                                 FontFamily="{StaticResource SomarRegular}"
@@ -551,7 +540,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Start"
                                 IsSpellCheckEnabled="false"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="6"
                                 PlaceholderColor="{StaticResource NeutralGreay}"
                                 Style="{StaticResource DefaultEntry}"
@@ -750,8 +739,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
                                     IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    Style="{StaticResource TextInputLayout}">
+                                    LeadingViewPosition="Inside">
                                     <custom:GAZTBorderlessEntry
                                         Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
@@ -771,13 +759,11 @@
                                 <inputLayout:SfTextInputLayout
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    Margin="0,-6,0,-6"
                                     ContainerType="Outlined"
                                     HorizontalOptions="FillAndExpand"
                                     InputViewPadding="16,0,16,0"
                                     IsHintAlwaysFloated="True"
-                                    LeadingViewPosition="Inside"
-                                    Style="{StaticResource TextInputLayout}">
+                                    LeadingViewPosition="Inside">
                                     <custom:GAZTBorderlessEntry
                                         Margin="10"
                                         FontFamily="{StaticResource SomarRegular}"
@@ -808,13 +794,11 @@
                                 </Label.FormattedText>
                             </Label>
                             <inputLayout:SfTextInputLayout
-                                Margin="0,-6,0,-6"
                                 ContainerType="Outlined"
                                 HorizontalOptions="FillAndExpand"
                                 InputViewPadding="16,0,16,0"
                                 IsHintAlwaysFloated="True"
-                                LeadingViewPosition="Inside"
-                                Style="{StaticResource TextInputLayout}">
+                                LeadingViewPosition="Inside">
                                 <custom:GAZTBorderlessEntry
                                     Margin="10"
                                     FontFamily="{StaticResource SomarRegular}"
@@ -927,7 +911,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     IsSpellCheckEnabled="false"
-                                    Keyboard="Numeric"
+                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                     MaxLength="6"
                                     PlaceholderColor="{StaticResource NeutralGreay}"
                                     Style="{StaticResource DefaultEntry}"
@@ -1195,45 +1179,10 @@
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
 
-            <Grid
-                Grid.Row="0"
-                Grid.RowSpan="3"
-                Grid.Column="0"
-                Margin="0,-20,0,0"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+            
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="3" IsVisible="{Binding IsLoading}" />
+
 
         </Grid>
     </ContentPage.Content>

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using System.Text;
 using ZATCAMAUI.Models;
@@ -21,9 +20,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             viewModel = App.Locator.TaxEvasionVerifyMobileNumberPage;
             BindingContext = viewModel;
             viewModel.MobileNumber = string.Empty;
-            On<iOS>().SetUseSafeArea(true);
             viewModel.ShowMobileForm();
-            ChangeAeroIcon();
 
         }
         protected async override void OnAppearing()
@@ -50,17 +47,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             {
 
 
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
         async void btn_Continue_ClickedAsync(object sender, EventArgs e)
@@ -116,11 +102,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                 }
 
             }
-        }
-        protected override bool OnBackButtonPressed() => true;
-        void OtpFourthEntry_Unfocused(object sender,    FocusEventArgs e)
-        {
-
         }
 
         void Mobile_Entry_Unfocused(object sender, FocusEventArgs e)

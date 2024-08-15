@@ -1,7 +1,4 @@
-﻿using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 
@@ -22,7 +19,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             SetPickerFont();
-            SetLTR();
             //TinsPicker
 
         }
@@ -54,23 +50,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
             }
 
         }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                //this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-            }
-            else
-            {
-                //this.FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
-        }
+
         private void TINs_Clicked(object sender, EventArgs e)
         {
             TinsPicker.IsOpen = true;
@@ -142,7 +122,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.Common
         }
         private void TinsPicker_CancelButtonClicked(object sender, EventArgs e)
         {
-           // TinsPicker.SelectedItem = viewModel.SelectedTinIdPrev;//TINID
+            // TinsPicker.SelectedItem = viewModel.SelectedTinIdPrev;//TINID
             viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;//selectedregion
             if (viewModel.SelectedTinIdPrev == null)
             {

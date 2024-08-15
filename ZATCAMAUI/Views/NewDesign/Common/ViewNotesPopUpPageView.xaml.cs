@@ -33,8 +33,6 @@ namespace ZATCAMAUI.Views.NewDesign.Common
                         viewModel.IsNoDataLabelVisible = true;
                     }
                 }
-
-                NavigationPage.SetBackButtonTitle(this, "");
             }
             catch (Exception)
             {

@@ -9,14 +9,12 @@ using ZATCAMAUI.Core.Enums;
 using Mopups.Services;
 using ZATCAMAUI.Core.Behaviors;
 using ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM;
 using Entry = Microsoft.Maui.Controls.Entry;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 {
- 
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignVATReturnUpdatedUIPageView : ContentPage
     {
@@ -32,9 +30,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
                 BindingContext = viewModel;
                 InitializeComponent();
-
-                //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                ChangeAeroIcon();
                 viewModel.IsPayNowVisible = false;
                 viewModel.IsTaxYesChecked = false;
 
@@ -1113,10 +1108,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = 0;
-
-                Padding = safeInsets;
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     viewModel.IsSwitchVisible = true;
@@ -1204,7 +1195,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 SetNoteForDraftModes();
                         }
                     }
-                   
+
                     if (NotesPopUpPageViewModel.ClearNoteClicked == true)
                     {
                         Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
@@ -1235,7 +1226,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-              
+
                 viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
                 Note objNote = new Note();
                 int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
@@ -1429,28 +1420,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             });
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Microsoft.Maui.Controls.Application.Current.Resources["Back"];
-            }
-        }
+
         #endregion
 
-        private void btnprimary_Clicked(object sender, EventArgs e)
-        {
 
-        }
-
-        private void OnStandardRatedTapped(object sender, EventArgs e)
-        {
-            // MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView());
-        }
 
         private void OnNewStandardRatedSalesAmountClicked(object sender, EventArgs e)
         {
@@ -3276,7 +3249,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-              
+
 
                 EntryVatAmount.Text = "0.00";
                 EntryVatAdjustmentWithSAR.Text = "0.00";
@@ -3422,7 +3395,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         private void EntryVatAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             CheckSalesMandetoryFields();
-          
+
         }
 
         private void EntryVatAmountFocused(object sender, FocusEventArgs e)
@@ -3488,7 +3461,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                    
+
                     CheckSalesMandetoryFields();
                     // char LastChar = ' ';
                     if (!string.IsNullOrEmpty(senderObj.Text))
@@ -4297,7 +4270,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 {
                                     //PopUp popUp = new PopUp();
                                     Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
-                                    
+
                                 }
                             }
                         }
@@ -4474,7 +4447,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ExportsAmt) > 0)
                             {
                                 Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
-                                
+
                             }
                         }
                     }
@@ -4654,7 +4627,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 {
                                     //PopUp popUp = new PopUp();
                                     Message = AppResources.ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                                   
+
                                 }
                             }
                         }
@@ -4702,7 +4675,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             {
                                 //PopUp popUp = new PopUp();
                                 Message = AppResources.ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                              
+
                             }
                         }
                     }
@@ -5667,7 +5640,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     CheckSalesMandetoryFields();
                     // char LastChar = ' ';
                     if (!string.IsNullOrEmpty(senderObj.Text))
@@ -6913,7 +6886,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
 
                             }
-                           }
+                        }
                     }
                     else
                     {
@@ -6943,7 +6916,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7023,7 +6996,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7057,7 +7030,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
 
                             }
-                            
+
                         }
 
                     }
@@ -7091,7 +7064,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7160,7 +7133,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7186,7 +7159,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                                 viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
 
                             }
-                           
+
                         }
                     }
                     else
@@ -7264,7 +7237,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                    
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7321,7 +7294,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7424,7 +7397,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7479,7 +7452,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                  
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7523,7 +7496,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7579,7 +7552,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -7649,7 +7622,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 bool isArabicChecked = true;
                 var senderObj = (Entry)sender;
-              
+
                 if (!string.IsNullOrEmpty(senderObj.Text))
                 {
                     isArabicChecked = isCheckArabicWithMinus(senderObj.Text);
@@ -7658,7 +7631,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 if (isArabicChecked)
                 {
                     CheckPurchaseMandetoryFields();
-                   
+
                     if (viewModel.IsFifteenPercentChange)
                     {
                         if (viewModel.IsYesChecked || viewModel.IsTaxYesChecked)
@@ -7719,7 +7692,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-             
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabicWithMinus(senderObj.Text);

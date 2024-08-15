@@ -108,7 +108,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
 
         private async void OnUserNameCardClicked(object sender, EventArgs e)
         {
-            
+
             viewModel.IsPasswordCardTapped = false;
             viewModel.IsUserNameCardTapped = true;
             viewModel.UserIDLayoutVisibility = true;
@@ -330,12 +330,6 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             // * Worka aroung - Need to find a solution
             if (viewModel.countDownSeconds != 0)
                 viewModel.otpTimer.Stop();
-        }
-
-        private void OnBackTapped(object sender, TappedEventArgs e)
-        {
-            //Navigation.PopModalAsync(true);
-            viewModel._navigationService.GoBack();
         }
 
         void Btn_TinPicker_Clicked_1(object sender, TappedEventArgs e)

@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.UpdateVatEffectiveDate.FilterVatEffectiveDatePageView"
+             Title="FilterVatEffectiveDatePageView"
+            xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="auto,*">
+
+             <!--#region Header-->
+            <Grid Padding="20,10" 
+                Grid.Row="0"
+                ColumnDefinitions="*,3*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Source="close"
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        VerticalOptions="CenterAndExpand"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding FilterCloseClick}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                     Text="{x:Static ResourceManager:AppResources.AccountStatementsFilterTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+            
+            <!--#region Body-->
+            <Border Grid.Row="1"
+                    Padding="10,0"
+                    Style="{StaticResource CommonTopCurves}">
+
+                <Grid RowDefinitions="*">
+
+                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                        <Grid BackgroundColor="Transparent" Margin="20,10,20,0" HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="120" />
+                                <RowDefinition Height="120" />
+                                <RowDefinition Height="*" />
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Row="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource ValueLabelBlack}" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.EffectUpdatedBy}"  />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <Border Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedUpdatedSortText}"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource BodyLabelBlack}" />
+
+                                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                                Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowDateSortTypePicker}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource ValueLabelBlack}" >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.SortEffectiveDateAUpdate}"  />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+
+                                <Border  Grid.Row="1" Grid.ColumnSpan="2"  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedDateSortText}"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            Style="{StaticResource BodyLabelBlack}" />
+
+                                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="28"
+                                                                Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowUpdatedByTypePicker}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+
+                                    </Grid>
+                                </Border >
+
+                            </Grid>
+
+
+
+                            <buttons:SfButton Grid.Row="2" Grid.Column="0" VerticalOptions="End" Margin="0,60,0,60" x:Name="btnReasonContinue"
+                                            Command="{Binding FilterBtnCommand}"
+                                            Text="{x:Static ResourceManager:AppResources.ACFilterApply}"
+                                            Style="{StaticResource PrimaryButtonStyle}" />
+                        </Grid>
+
+                    </ScrollView>
+
+                </Grid>
+
+            </Border>
+            <!--#endregion Body-->
+
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}"/>
+            
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

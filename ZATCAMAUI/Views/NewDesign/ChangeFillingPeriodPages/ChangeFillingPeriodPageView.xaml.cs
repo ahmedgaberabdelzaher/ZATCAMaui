@@ -44,22 +44,11 @@ namespace ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
+
 
             getYesCommand();
             getNoCommand();

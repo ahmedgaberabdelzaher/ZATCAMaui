@@ -9,17 +9,12 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
-  
+
     public class ZakatRegistrationTaxPayerDetailsPageViewModel : EstablishmentRegistrationPageViewModel
     {
-        public ICommand GoBackBtnTapped { get; set; }
 
         public ZakatRegistrationTaxPayerDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackBtnTapped = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
         }
         public bool _isLoading { get; set; }
         public bool isLoading
@@ -84,18 +79,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             catch (GAZTErrorException ex)
             {
                 isLoading = false;
-
-                try
+                await Task.Run(() =>
                 {
-                    await Task.Run(() =>
-                    {
-                        App.HideProgressView();
-                    });
-                }
-                catch
-                {
-
-                }
+                    App.HideProgressView();
+                });
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(true);
 

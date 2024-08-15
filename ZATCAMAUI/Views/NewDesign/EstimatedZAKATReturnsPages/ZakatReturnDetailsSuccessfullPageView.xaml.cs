@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages;
@@ -20,10 +19,8 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
             // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
             _zakatReturnDetail = ZakatReturnDetail;
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
             viewModel.TaxablePeriod = ZakatReturnDetail.Persl;
-            ChangeAeroIcon();
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             _ = viewModel.OnPageLoad(ZakatReturnDetail);
 
@@ -31,11 +28,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             {
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
-                Command = new Command(() =>
-                {
-                    //  await OnRefreshButtonClicked();
-                    // viewModel._navigationService.NavigateTo(App.VATLookupPageView);
-                })
+
             };
             ToolbarItems.Add(Refresh);
             //  Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
@@ -43,17 +36,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
         private async void OnRefreshButtonClicked(object sender, EventArgs e)
         {
             try
@@ -61,10 +44,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (viewModel.IsrefreshEnabled)
                 {
                     await viewModel.OnPageLoad(_zakatReturnDetail);
-                }
-                else
-                {
-                    // put Mesage already latest SADADID available
                 }
             }
             catch (Exception)
@@ -155,7 +134,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             if (Navigation.NavigationStack.Count > 0)
             {
-               Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+                Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
                 Navigation.RemovePage(pg);
             }
             viewModel._navigationService.GoBack();

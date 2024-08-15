@@ -1116,7 +1116,7 @@
 
                                      <custom:GAZTBorderlessEntry
                                         x:Name="NationalIdEntry"
-                                        Keyboard="Numeric"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         MaxLength="10"
                                         Placeholder="{x:Static ResourceManager:AppResources.NationaID}"
                                         Style="{StaticResource DefaultEntry}"

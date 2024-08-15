@@ -2083,7 +2083,7 @@
                                                                         <custom:GAZTBorderlessEntry
                                                                             FontFamily="{StaticResource SomarSemiBold}"
                                                                             IsSpellCheckEnabled="False"
-                                                                            Keyboard="Numeric"
+                                                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                             MaxLength="{Binding MaxLengthID}"
                                                                             Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                             Style="{StaticResource DefaultEntry}"
@@ -2536,7 +2536,7 @@
                                                                 x:Name="EntryIDNo"
                                                                 FontFamily="{StaticResource SomarSemiBold}"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="Numeric"
+                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthID}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"
@@ -3432,7 +3432,7 @@
                                                             <custom:GAZTBorderlessEntry
                                                                 x:Name="EntryContactIDNumber"
                                                                 IsSpellCheckEnabled="False"
-                                                                Keyboard="Numeric"
+                                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                                 MaxLength="{Binding MaxLengthIDSR}"
                                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                                                 Style="{StaticResource DefaultEntry}"

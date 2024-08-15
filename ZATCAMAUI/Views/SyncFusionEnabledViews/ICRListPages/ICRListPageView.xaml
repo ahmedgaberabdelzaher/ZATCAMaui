@@ -53,7 +53,7 @@
                             TextColor="White"
                             VerticalOptions="CenterAndExpand">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackButtonClicked}" />
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
                     </Grid>

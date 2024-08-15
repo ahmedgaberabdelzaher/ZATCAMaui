@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.TINOutletDeregister.TinOutletDeRegRequestPageView"
+             Title="TinOutletDeRegRequestPageView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+            xmlns:view="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
+            xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False">
+
+             <ContentPage.Resources>
+                <ResourceDictionary>
+                    <converter:RotationConverter x:Key="rotationConverter"/>
+                    <converter:InverseBoolConverter x:Key="BoolConverter"/>
+                    
+                </ResourceDictionary>
+    </ContentPage.Resources>
+
+            
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.DeregistrationServiceTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <Border Grid.Row="1"
+                    Padding="10,0"
+                    Style="{StaticResource CommonTopCurves}">
+
+                <Grid Margin="10,0,10,0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <view:PageIndicatorView Margin="20,10,20,0" MaxNum="{Binding MaxIndex}"
+                                                MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}"
+                                                VerticalOptions="CenterAndExpand" DotSize="12" HorizontalOptions="End"/>
+            </Grid>
+
+            <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
+
+
+
+                <!--DrpDowns and List-->
+                <StackLayout IsVisible="{Binding ShouldShowList}">
+                    <listView:SfListView x:Name="outerListView" ItemsSource="{Binding OutlettUiList}" BackgroundColor="White" AutoFitMode="DynamicHeight">
+                        <listView:SfListView.HeaderTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <StackLayout  x:Name="rootArea" Orientation="Vertical">
+                                            <StackLayout Orientation="Vertical">
+                                                <custom:CustomLabel 
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" FontFamily="{StaticResource SomarLight}">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.DeregistrationType}"/>
+                                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+
+                                                <Border  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedDeRegType}"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Style="{StaticResource BodyLabelBlack}" />
+
+                                                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" IsEnabled="{Binding EnableDeregType}">
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource Secondary}" Size="28"
+                                                                        Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                                            </Image.Source>
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding ShowDeregTypePicker}"/>
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+
+
+                                                    </Grid>
+                                                </Border>
+
+                                            </StackLayout>
+                                            <StackLayout Orientation="Vertical" IsVisible="{Binding ShouldShowDeregReason}">
+                                                <custom:CustomLabel 
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource MicroGrayLabelStyle}" FontFamily="{StaticResource SomarLight}">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static ResourceManager:AppResources.TinDeregistrationSelectReason}"/>
+                                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+
+                                                <Border  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="auto" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectedDeRegReason}"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Style="{StaticResource BodyLabelBlack}" />
+
+                                                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" IsEnabled="{Binding EnableDeregReason}">
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource Secondary}" Size="28"
+                                                                        Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                                            </Image.Source>
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer Command="{Binding ShowDeregReasonPicker}"/>
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+
+
+                                                    </Grid>
+                                                </Border>
+
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </listView:SfListView.HeaderTemplate>
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+
+                                    </Grid.RowDefinitions>
+
+                                    <Border Grid.Row="0" Margin="0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <StackLayout Padding="0,10">
+                                            <Grid Padding="10" RowSpacing="15" ColumnSpacing="15" x:Name="grid">
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.ItemTappedCommand, Source={x:Reference outerListView}}" CommandParameter="{Binding .}"/>
+                                                </Grid.GestureRecognizers>
+
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                                    <Button Text="^" Style="{StaticResource ValueLabelBlack}" Rotation="{Binding IsInnerListVisible, Converter={StaticResource rotationConverter}}" Command="{Binding Path=BindingContext.OuterListTapCommand, Source={x:Reference outerListView}}" CommandParameter="{Binding .}"
+                                                BackgroundColor="Transparent" FontAttributes="Bold" FontSize="24" Padding="10,0,0,0"
+                                                HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                    <custom:CheckboxCustom Grid.Column="0" Grid.Row="0"
+                                            Style="{StaticResource CheckboxHeightWidth32}"
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="End"
+                                            IsChecked="{Binding IsOutletChecked}"
+                                            CheckChanged="Outlet_CheckChanged"
+                                            IsEnabled="{Binding IsOutletCheckEnable}">
+                                                    </custom:CheckboxCustom>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel Text="{Binding AOutletNoTb}"  Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center"/>
+
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5" Orientation="Horizontal">
+                                                    <StackLayout Orientation="Vertical">
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletType}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                        <StackLayout HorizontalOptions="StartAndExpand">
+                                                            <custom:CustomLabel Text="{Binding AOutletTypeTb}"  Style="{StaticResource ValueLabelBlack}" />
+                                                        </StackLayout>
+
+
+                                                    </StackLayout>
+
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletCommarcialName}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel Text="{Binding AOutletNameTb}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletCommarcialNo}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel Text="{Binding AOutletIdentificationNoTb}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel Text="{Binding AOutletIssueDtTb}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletCRStatus}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel Text="{Binding AOutletStatusTb}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletValidto}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel Text="{Binding AOutletValidToTb}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5">
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletCRCloseTrnsfrDt}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                        <custom:CustomLabel Text="{Binding AOutletCloseTransferDtTb}" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsDateEnable,Converter={StaticResource BoolConverter}}"/>
+                                                        <Border Stroke="#B1B1B1" StrokeThickness="1" IsVisible="{Binding IsDateEnable}"
+                                                                    Style="{StaticResource GreyBorderFrame}" Padding="5,8,5,8" Margin="0,8,0,0">
+                                                            <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+
+
+                                                                <custom:GAZTBorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.ddmmyyyyformat}" 
+                                                                                Style="{StaticResource BodyLabelBlack}" Text="{Binding AOutletCloseTransferDtTb}" IsEnabled="False" HorizontalOptions="FillAndExpand" MaxLength="10"></custom:GAZTBorderlessEntry>
+
+
+                                                                <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                                                                    <Image Margin="5,0">
+                                                                        <Image.Source>
+                                                                            <FontImageSource FontFamily="UserIconFont"
+                                                                                    Color="{StaticResource SecondaryNew}" Size="24"
+                                                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                                        </Image.Source>
+                                                                    </Image>
+
+                                                                </StackLayout>
+                                                                <StackLayout.GestureRecognizers>
+                                                                    <TapGestureRecognizer
+                                                                    NumberOfTapsRequired="1"
+                                                                    Command="{Binding BindingContext.OutletClosetransferDatePickerClicker, Source={x:Reference outerListView}}"
+                                                                    CommandParameter="{Binding .}" />
+                                                                </StackLayout.GestureRecognizers>
+
+
+                                                            </StackLayout>
+                                                        </Border>
+
+                                                    </StackLayout>
+
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Spacing="-5" >
+                                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CRDeregReqAction}" Style="{StaticResource CaptionLabelGrey}" Margin="0,0,0,10"/>
+
+                                                    <Border  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding AoutletReason}"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                Style="{StaticResource BodyLabelBlack}" />
+
+                                                            <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" IsEnabled="{Binding IsActionTypeEnabled}">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource Secondary}" Size="28"
+                                                                        Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                                                </Image.Source>
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.ShowOutletReasonPicker, Source={x:Reference outerListView}}" CommandParameter="{Binding .}" />
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+
+
+                                                        </Grid>
+                                                    </Border>
+                                                </StackLayout>
+
+                                            </Grid>
+                                        </StackLayout>
+                                    </Border >
+                                    <listView:SfListView x:Name="innerListView" Margin="5" Grid.Row="1" IsScrollingEnabled="False" IsVisible="{Binding IsInnerListVisible}" ItemsSource="{Binding ContactDetails}" AutoFitMode="DynamicHeight">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Padding="10" RowSpacing="15" ColumnSpacing="15" x:Name="grid" BackgroundColor="#bbbfca" Margin="0,5,0,0">
+                                                    <Grid.RowDefinitions >
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+
+
+                                                    <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+
+                                                        <custom:CheckboxCustom Grid.Column="0" Grid.Row="0"
+                                                   Style="{StaticResource CheckboxHeightWidth32}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                   IsChecked="{Binding IsPermitChecked}"
+                                                   IsEnabled="{Binding IsPermitCheckEnable}"
+                                                   CheckChanged="Permit_CheckChanged"
+                                                   />
+
+
+
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletPermitNumber}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                        <custom:CustomLabel Text="{Binding APermitNoTb}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5" Orientation="Horizontal">
+                                                        <StackLayout Orientation="Vertical">
+                                                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletValidFrom}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                            <custom:CustomLabel Text="{Binding APermitValfrDtTb}"  Style="{StaticResource ValueLabelBlack}" />
+                                                        </StackLayout>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletName}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                        <custom:CustomLabel Text="{Binding APermitIssueName}" Style="{StaticResource ValueLabelBlack}" />
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletLcnseCloseTrnsfrDt}" Style="{StaticResource CaptionLabelGrey}"/>
+
+                                                        <StackLayout HorizontalOptions="StartAndExpand">
+                                                            <custom:CustomLabel Text="{Binding ALicenceCloseTransfer}" Style="{StaticResource ValueLabelBlack}" IsVisible="{Binding IsPermitDateEnable,Converter={StaticResource BoolConverter}}"/>
+
+                                                            <Border Stroke="#B1B1B1" StrokeThickness="1" IsVisible="{Binding IsPermitDateEnable}" Margin="0,5,0,0"
+                                                                    Style="{StaticResource GreyBorderFrame}" Padding="5,8,5,8">
+                                                                <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+
+                                                                    <custom:GAZTBorderlessEntry Placeholder="{x:Static ResourceManager:AppResources.ddmmyyyyformat}" 
+                                                                                Style="{StaticResource BodyLabelBlack}" Text="{Binding ALicenceCloseTransfer}" IsEnabled="False" HorizontalOptions="FillAndExpand" ></custom:GAZTBorderlessEntry>
+
+
+                                                                    <StackLayout HorizontalOptions="End" Orientation="Horizontal" IsEnabled="{Binding IsPermitDateEnable}">
+                                                                        <Image Margin="5,0" >
+                                                                            <Image.Source>
+                                                                                <FontImageSource FontFamily="UserIconFont"
+                                                                                    Color="{StaticResource SecondaryNew}" Size="24"
+                                                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
+                                                                            </Image.Source>
+                                                                        </Image>
+
+                                                                    </StackLayout>
+                                                                    <StackLayout.GestureRecognizers>
+                                                                        <TapGestureRecognizer
+                                                                    NumberOfTapsRequired="1"
+                                                                    Command="{Binding BindingContext.LicenceCloseTransferDatePickerClicked, Source={x:Reference innerListItem}}"
+                                                                    CommandParameter="{Binding .}" />
+                                                                    </StackLayout.GestureRecognizers>
+
+
+                                                                </StackLayout>
+                                                            </Border>
+
+                                                        </StackLayout>
+                                                    </StackLayout>
+
+                                                    <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
+                                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletDeregReason}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                        <Border  Padding="10" Style="{StaticResource GreyBorderFrame}" Margin="0,8,0,0">
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="auto" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="auto" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding APermitReason}"
+                                                                        HorizontalOptions="FillAndExpand"
+                                                                        Style="{StaticResource BodyLabelBlack}" />
+
+                                                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" IsEnabled="{Binding IsPermitActionTypeEnable}">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource Secondary}" Size="28"
+                                                                                Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                                                    </Image.Source>
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer
+                                                                    NumberOfTapsRequired="1"
+                                                                    Command="{Binding BindingContext.ShowPermitReasonPicker, Source={x:Reference innerListItem}}"
+                                                                    CommandParameter="{Binding .}" />
+                                                                    </Image.GestureRecognizers>
+                                                                </Image>
+
+
+                                                            </Grid>
+                                                        </Border>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
+                                </Grid>
+                            </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                    </listView:SfListView>
+
+                    <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding ShowMainOutletDropDown}">
+                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MainOutletChangeTitle}" Style="{StaticResource CaptionLabelGrey}"/>
+                        <Border  Padding="10" Style="{StaticResource GreyBorderFrame}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding NewMainOutlet}"
+                                            HorizontalOptions="FillAndExpand"
+                                            Style="{StaticResource BodyLabelBlack}" />
+
+                                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center">
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource Secondary}" Size="28"
+                                                    Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                    </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                        NumberOfTapsRequired="1"
+                                        Command="{Binding MainOutletPicker}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+
+                            </Grid>
+                        </Border>
+                    </StackLayout>
+                    <buttons:SfButton Grid.Row="6" Margin="0,16,0,16"
+                                              BackgroundColor="{Binding ContinueBtnBackgroundColor}"
+                                              Text="{x:Static ResourceManager:AppResources.VRContinue}"
+                                              Style="{StaticResource PrimaryButtonStyle}"
+                                              Command="{Binding ContinueBtnTapped}" />
+
+                </StackLayout>
+
+
+
+                <!--Attachment Part-->
+                <StackLayout IsVisible="{Binding ShouldShowAttachments}">
+
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+
+
+
+                        <listView:SfListView HorizontalOptions="Center"
+                                            ScrollBarVisibility="Never" IsScrollingEnabled="True"
+                                            VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                            ItemsSource="{Binding DeregisterAttachmentsListViewData}"
+                                            TapCommand="{Binding DeregisterAttachmentTapped}"
+                                            SelectionMode="SingleDeselect" SelectionBackground="Transparent">
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Border Grid.Row="0" Margin="0,0,0,10" Padding="12"
+                                                Style="{StaticResource SfStyleGreyBorderFrame}">
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                            HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                                <Label Grid.Row="0" Grid.Column="1"
+                                                    Text="{Binding Filename}"
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    VerticalOptions="Center"/>
+
+                                                <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                            Rotation="90">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}"
+                                                                Size="24"
+                                                                Glyph="{x:Static FontImage:IconFonts.Close}" />
+                                                    </Image.Source>
+                                                </Image>
+                                            </Grid>
+                                        </Border>
+
+
+                                    </Grid>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" 
+                                    Text="{x:Static ResourceManager:AppResources.CRContractprofitEstimatedRate}"
+                                    HorizontalOptions="StartAndExpand"
+                                    Margin="10,0,0,0"
+                                    Style="{StaticResource BodyLabelBlackMedium}"  >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.SupportingDocuments}"  />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="StartAndExpand">
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont"
+                                                    Color="{StaticResource SecondaryNew}" Size="24"
+                                            Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
+                                </Image.Source>
+
+                                <Image.GestureRecognizers>
+
+                                    <TapGestureRecognizer Command="{Binding AttachmentInfoCommand}"/>
+                                </Image.GestureRecognizers>
+
+                            </Image>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+
+                            </Grid.RowDefinitions>
+                            <custom:CustomLabel Grid.Row="0"
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource MicroGrayLabelStyle}" >
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPleaseProvideWithSupportingDocuments}"  />
+
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                            <Border Grid.Row="1" Margin="0,0,0,10" Padding="10"
+                                Style="{StaticResource SfStyleGreyBorderFrame}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="0" FontFamily="{StaticResource SomarRegular}"
+                                        Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                        FontSize="Small" TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalOptions="FillAndExpand" />
+                                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
+                            Rotation="90">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="24"
+                                                Glyph="{x:Static FontImage:IconFonts.Attachment}" />
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Border>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding DeregisterAttachmentTapped}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                        <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5" Orientation="Horizontal">
+                            <CheckBox Grid.Column="0" Grid.Row="0" Color="{StaticResource NewDarkGreenColor}" VerticalOptions="CenterAndExpand" IsChecked="True" IsEnabled="False" >
+                                <CheckBox.Triggers>
+                                    <DataTrigger TargetType="CheckBox"  Value="true">
+                                        <Setter Property="Color" Value="{StaticResource NewDarkGreenColor}" />
+                                    </DataTrigger>
+                                </CheckBox.Triggers>
+                            </CheckBox>
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinOutletDeclaration}" Style="{StaticResource GAZTMicroMediumGrayLabel}" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+
+
+                        </StackLayout>
+
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" IsVisible="{Binding ShowSaveSubmit}">
+                        <buttons:SfButton Margin="0,5,0,5"
+                                Text="{x:Static ResourceManager:AppResources.VATRMPSaveasDraft}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Command="{Binding OnVoidOrSaveDraftClick}"
+                                      WidthRequest="150"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Start" />
+
+                        <buttons:SfButton Margin="0,5,0,5"
+                                Text="{x:Static ResourceManager:AppResources.Submit}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Command="{Binding SubmitBtnTapped}"
+                                      WidthRequest="150"
+                                VerticalOptions="Fill"
+                                HorizontalOptions="Start" />
+
+
+                    </StackLayout>
+
+
+                </StackLayout>
+
+                <custom:CustomDatePicker 
+                            IsOpen="{Binding ShouldShowDatePicker}"
+                            Margin="2" 
+                            x:Name="TxDateNormalCalendar"
+                            ItemHeight="36"
+                            Mode="Dialog"
+                            BackgroundColor="White"
+                            Closed="TxDateNormalCalendar_Closed"
+                            SelectedItem="{Binding TodayDateNormal}"
+                            HorizontalOptions="FillAndExpand">
+
+                        <custom:CustomDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" Background="white" />
+                        </custom:CustomDatePicker.ColumnHeaderView>
+
+                        <custom:CustomDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </custom:CustomDatePicker.SelectionView>
+
+
+                        <custom:CustomDatePicker.SelectedTextStyle>
+                            <syncfusion:PickerTextStyle
+                                FontSize="15"
+                                TextColor="{StaticResource NeutralBlack}" />
+                        </custom:CustomDatePicker.SelectedTextStyle>
+
+                        <custom:CustomDatePicker.HeaderView>
+
+                            <syncfusion:PickerHeaderView
+                                Height="46"
+                                Background="{StaticResource NeutralBlack}"
+                                Text="{x:Static ResourceManager:AppResources.VRStartDate}">
+
+                                <syncfusion:PickerHeaderView.TextStyle>
+                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                </syncfusion:PickerHeaderView.TextStyle>
+
+                            </syncfusion:PickerHeaderView>
+
+                        </custom:CustomDatePicker.HeaderView>
+
+                        <custom:CustomDatePicker.FooterView>
+
+                            <syncfusion:PickerFooterView
+                                Height="46"
+                                Background="{StaticResource NeutralBlack}"
+                                CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+
+                                <syncfusion:PickerFooterView.TextStyle>
+                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                </syncfusion:PickerFooterView.TextStyle>
+
+                            </syncfusion:PickerFooterView>
+
+                    </custom:CustomDatePicker.FooterView>
+
+                </custom:CustomDatePicker>
+
+                <custom:CustomHijriDatePicker 
+                    IsOpen="{Binding ShouldShowDatePickerHijiri}"
+                    Margin="2" 
+                    x:Name="TxDateHijriCalendar"
+                    ItemHeight="36"
+                    Mode="Dialog" 
+                    BackgroundColor="White"
+                    SelectedItem="{Binding TodayDateinHijri}"
+                    Closed="TxDateHijriCalendar_Closed"
+                    HorizontalOptions="FillAndExpand">
+
+                    <custom:CustomHijriDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" Background="white" />
+                    </custom:CustomHijriDatePicker.ColumnHeaderView>
+
+                    <custom:CustomHijriDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </custom:CustomHijriDatePicker.SelectionView>
+
+                    <custom:CustomHijriDatePicker.HeaderView>
+
+                            <syncfusion:PickerHeaderView
+                                Height="46"
+                                Background="{StaticResource NeutralBlack}"
+                                Text="{x:Static ResourceManager:AppResources.VREndDate}">
+
+                                <syncfusion:PickerHeaderView.TextStyle>
+                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                </syncfusion:PickerHeaderView.TextStyle>
+
+                            </syncfusion:PickerHeaderView>
+
+                        </custom:CustomHijriDatePicker.HeaderView>
+
+                    <custom:CustomHijriDatePicker.SelectedTextStyle>
+                            <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
+                        </custom:CustomHijriDatePicker.SelectedTextStyle>
+
+                    <custom:CustomHijriDatePicker.FooterView>
+
+                            <syncfusion:PickerFooterView
+                                Height="46"
+                                Background="{StaticResource NeutralBlack}"
+                                CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+
+                                <syncfusion:PickerFooterView.TextStyle>
+                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                </syncfusion:PickerFooterView.TextStyle>
+
+                            </syncfusion:PickerFooterView>
+
+                        </custom:CustomHijriDatePicker.FooterView>
+
+                </custom:CustomHijriDatePicker>
+
+                <custom:CustomDatePicker 
+                        IsOpen="{Binding ShouldShowDatePickerOutlet}"
+                        Margin="2" 
+                        x:Name="TxDateNormalCalendarOutlet"
+                        ItemHeight="36"
+                        Mode="Dialog"
+                        BackgroundColor="White"
+                        Closed="TxDateNormalCalendarOutlet_Closed"
+                        SelectedItem="{Binding TodayDateNormal}"
+                        HorizontalOptions="FillAndExpand">
+
+                            <custom:CustomDatePicker.ColumnHeaderView>
+                            <syncfusion:PickerColumnHeaderView Height="46" Background="white" />
+                        </custom:CustomDatePicker.ColumnHeaderView>
+
+                        <custom:CustomDatePicker.SelectionView>
+                            <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                        </custom:CustomDatePicker.SelectionView>
+
+
+                        <custom:CustomDatePicker.SelectedTextStyle>
+                            <syncfusion:PickerTextStyle
+                                FontSize="15"
+                                TextColor="{StaticResource NeutralBlack}" />
+                        </custom:CustomDatePicker.SelectedTextStyle>
+
+                        <custom:CustomDatePicker.HeaderView>
+
+                            <syncfusion:PickerHeaderView
+                                Height="46"
+                                Background="{StaticResource NeutralBlack}"
+                                Text="{x:Static ResourceManager:AppResources.VRStartDate}">
+
+                                <syncfusion:PickerHeaderView.TextStyle>
+                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                </syncfusion:PickerHeaderView.TextStyle>
+
+                            </syncfusion:PickerHeaderView>
+
+                        </custom:CustomDatePicker.HeaderView>
+
+                        <custom:CustomDatePicker.FooterView>
+
+                            <syncfusion:PickerFooterView
+                                Height="46"
+                                Background="{StaticResource NeutralBlack}"
+                                CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+
+                                <syncfusion:PickerFooterView.TextStyle>
+                                    <syncfusion:PickerTextStyle TextColor="White" />
+                                </syncfusion:PickerFooterView.TextStyle>
+
+                            </syncfusion:PickerFooterView>
+
+                    </custom:CustomDatePicker.FooterView>
+
+
+                        </custom:CustomDatePicker>
+
+
+                <custom:CustomHijriDatePicker 
+                        IsOpen="{Binding ShouldShowDatePickerHijiriOutlet}"
+                        Margin="2" 
+                        x:Name="TxDateHijriCalendarOutlet"
+                        ItemHeight="36"
+                        Mode="Dialog"
+                        BackgroundColor="White"
+                        SelectedItem="{Binding TodayDateinHijri}"
+                        Closed="TxDateHijriCalendarOutlet_Closed"
+                        HorizontalOptions="FillAndExpand">
+
+                        <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                <syncfusion:PickerColumnHeaderView Height="46" Background="white" />
+                            </custom:CustomHijriDatePicker.ColumnHeaderView>
+
+                        <custom:CustomHijriDatePicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                            </custom:CustomHijriDatePicker.SelectionView>
+
+                        <custom:CustomHijriDatePicker.HeaderView>
+
+                                <syncfusion:PickerHeaderView
+                                    Height="46"
+                                    Background="{StaticResource NeutralBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.VREndDate}">
+
+                                    <syncfusion:PickerHeaderView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                    </syncfusion:PickerHeaderView.TextStyle>
+
+                                </syncfusion:PickerHeaderView>
+
+                            </custom:CustomHijriDatePicker.HeaderView>
+
+                        <custom:CustomHijriDatePicker.SelectedTextStyle>
+                                <syncfusion:PickerTextStyle FontSize="15" TextColor="{StaticResource NeutralBlack}" />
+                            </custom:CustomHijriDatePicker.SelectedTextStyle>
+
+                        <custom:CustomHijriDatePicker.FooterView>
+
+                                <syncfusion:PickerFooterView
+                                    Height="46"
+                                    Background="{StaticResource NeutralBlack}"
+                                    CancelButtonText="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                    OkButtonText="{x:Static ResourceManager:AppResources.ZDone}">
+
+                                    <syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                </syncfusion:PickerFooterView>
+
+                            </custom:CustomHijriDatePicker.FooterView>
+
+                </custom:CustomHijriDatePicker>
+                
+            </Grid>
+
+        </Grid>
+
+            </Border>
+            <!--#endregion Body-->
+
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Mopups.Services;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -9,7 +8,7 @@ using Page = Microsoft.Maui.Controls.Page;
 
 namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATReturnSuccessfullPageView : ContentPage
     {
@@ -23,8 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 InitializeComponent();
                 viewModel = App.Locator.VATReturnSuccessfullPageView;
                 BindingContext = viewModel;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.SadadNumber = string.Empty;
@@ -114,8 +111,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
 
             try
             {
@@ -148,33 +143,23 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
             }
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
         public async void RefreshForSadad()
         {
             try
             {
-               await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                await Task.Run(() =>
+                 {
+                     viewModel.IsLoading = true;
+                 });
                 await Task.Run(async () =>
                 {
                     await viewModel.OnRefreshClick();
                 });
-               await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                await Task.Run(() =>
+                 {
+                     viewModel.IsLoading = false;
+                 });
             }
             catch (Exception)
             {
@@ -261,12 +246,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
             if (_vATDeclaration.d.MadabutFg == "X")
             {
-               await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
             }
             else
             {
 
-               await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.d.OpenliMsg));
+                await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.d.OpenliMsg));
 
             }
 

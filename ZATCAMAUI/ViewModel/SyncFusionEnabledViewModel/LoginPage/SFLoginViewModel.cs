@@ -14,6 +14,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         }
         #region Fields
         private bool isInvalidEmail;
+        private string tin;
+        private string password;
+        private bool isLoading;
+        private bool loginError = false;
         #endregion
         #region Property
         /// <summary>
@@ -38,6 +42,57 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 this.OnPropertyChanged("IsInvalidEmail");
             }
         }
+        public string TIN
+        {
+            get
+            {
+                return this.tin;
+            }
+            set
+            {
+                if (this.tin == value)
+                {
+                    return;
+                }
+                this.tin = value;
+                this.OnPropertyChanged("TIN");
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return this.password;
+            }
+            set
+            {
+                if (this.password == value)
+                {
+                    return;
+                }
+                this.password = value;
+                this.OnPropertyChanged("Password");
+            }
+        }
+
+        public bool LoginError
+        {
+            get
+            {
+                return this.loginError;
+            }
+            set
+            {
+                if (this.loginError == value)
+                {
+                    return;
+                }
+                this.loginError = value;
+                this.OnPropertyChanged("LoginError");
+            }
+        }
+
         #endregion
     }
 }

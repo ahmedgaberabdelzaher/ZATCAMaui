@@ -9,19 +9,11 @@
     xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
             <Style x:Key="EntryHeight48" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -38,7 +30,6 @@
                 <Setter Property="Padding" Value="10" />
                 <Setter Property="StrokeShape" Value="RoundRectangle 50,50,50,50" />
             </Style>
-            <converters:NewTaxEvasionTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>

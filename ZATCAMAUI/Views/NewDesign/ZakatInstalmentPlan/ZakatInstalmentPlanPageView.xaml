@@ -266,7 +266,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding Year1}"
@@ -298,7 +298,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding CashBankY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -332,7 +332,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding StiY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -365,7 +365,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding DebitorsY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -397,7 +397,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding InventoryY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -427,7 +427,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding TcAssetsY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -459,7 +459,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding ZakatY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -491,7 +491,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding TcLiabltyY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -523,7 +523,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding RevenueY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -556,7 +556,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding NetIncomeY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -588,7 +588,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding NcFlowY1}"
                                                 TextChanged="calculation_TextChanged"
@@ -709,7 +709,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding Year2}"
@@ -738,7 +738,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding CashBankY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -770,7 +770,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding StiY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -801,7 +801,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding DebitorsY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -831,7 +831,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding InventoryY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -859,7 +859,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding TcAssetsY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -889,7 +889,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding ZakatY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -919,7 +919,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding TcLiabltyY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -949,7 +949,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding RevenueY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -981,7 +981,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding NetIncomeY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -1011,7 +1011,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding NcFlowY2}"
                                                 TextChanged="calculation2_TextChanged"
@@ -1129,7 +1129,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZakatYear}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding Year3}"
@@ -1158,7 +1158,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding CashBankY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1190,7 +1190,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding StiY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1221,7 +1221,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding DebitorsY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1251,7 +1251,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding InventoryY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1279,7 +1279,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding TcAssetsY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1309,7 +1309,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding ZakatY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1339,7 +1339,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding TcLiabltyY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1369,7 +1369,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding RevenueY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1401,7 +1401,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding NetIncomeY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1431,7 +1431,7 @@
                                             <custom:GAZTBorderlessEditor
                                                 FontSize="Small"
                                                 HorizontalOptions="FillAndExpand"
-                                                Keyboard="Numeric"
+                                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                 PlaceholderColor="Gray"
                                                 Text="{Binding NcFlowY3}"
                                                 TextChanged="calculation3_TextChanged"
@@ -1894,7 +1894,7 @@
                                         <custom:GAZTBorderlessEntry
                                             x:Name="downPaymentEntry"
                                             HorizontalOptions="FillAndExpand"
-                                            Keyboard="Numeric"
+                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                             Style="{StaticResource SectionTitleBlackBold}"
                                             Text="{Binding DownPaymentAmount, StringFormat='{0:N} SAR', Converter={StaticResource commaSeparatorConverter}}"
                                             TextChanged="downPaymentEntry_TextChanged"

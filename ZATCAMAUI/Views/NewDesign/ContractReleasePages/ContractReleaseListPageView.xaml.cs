@@ -1,12 +1,8 @@
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ContractRelease;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 using static ZATCAMAUI.Models.ContractRelease.ContractReleaseFormResponse;
 using static ZATCAMAUI.Models.ContractRelease.ContractReleaseSummaryModel;
-using Application = Microsoft.Maui.Controls.Application;
-using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 {
@@ -24,17 +20,6 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
             try
             {
                 InitializeComponent();
-
-               NavigationPage.SetBackButtonTitle(this, "");
-
-                //App.IsArabic = true;
-                ChangeAeroIcon();
-                On<iOS>().SetUseSafeArea(true);
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
                 viewModel = App.Locator.ContractReleasePageListView;
 
                 BindingContext = viewModel;
@@ -52,33 +37,12 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            // On<iOS>().SetUseSafeArea(true);
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-
-            this.Padding = safeInsets;
-            MessagingCenter.Subscribe<PickerPageView, Models.GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+            MessagingCenter.Subscribe<PickerPageView, Models.GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
                 viewModel.updatePicker(arg);
             });
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
-
-        private void ListView_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
-        {
-
-        }
 
         private async void ContractsList_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
         {
@@ -93,23 +57,23 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
 
 
 
-               MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
+                MainThread.BeginInvokeOnMainThread(() =>
+                 {
+                     viewModel.IsLoading = true;
+                 });
 
 
 
-                string downloadurl = ZATCAConstants.CRDownloadAcknowledementFile + "'" + viewModel.ContractReLeaseSummaryData.RequestNumber + "')/$value";
+                String downloadurl = ZATCAConstants.CRDownloadAcknowledementFile + viewModel.ContractReLeaseSummaryData.RequestNumber;
                 //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
 
-               MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                MainThread.BeginInvokeOnMainThread(() =>
+                 {
+                     viewModel.IsLoading = false;
+                 });
             }
         }
 
@@ -119,18 +83,18 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
         {
             if (viewModel.ContractReLeaseSummaryData.RequestNumber != null)
             {
-               MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                string downloadurl = ZATCAConstants.CRDownloadCoverFormFile + "'" + viewModel.ContractReLeaseSummaryData.RequestNumber + "')/$value";
+                MainThread.BeginInvokeOnMainThread(() =>
+                 {
+                     viewModel.IsLoading = true;
+                 });
+                String downloadurl = ZATCAConstants.CRDownloadCoverFormFile + viewModel.ContractReLeaseSummaryData.RequestNumber;
                 //await WebServiceManager.FileDownload(downloadurl, "pdf");
                 viewModel._navigationService.NavigateTo(App.PdfView, downloadurl);
 
-               MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                MainThread.BeginInvokeOnMainThread(() =>
+                 {
+                     viewModel.IsLoading = false;
+                 });
             }
         }
         private async void SummaryAttachments_ItemTapped(object sender, Syncfusion.Maui.ListView.ItemTappedEventArgs e)
@@ -206,14 +170,14 @@ namespace ZATCAMAUI.Views.NewDesign.ContractReleasePages
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
                     File.WriteAllBytes(file, pdfStream.ToArray());
 
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Share.RequestAsync(new ShareFileRequest
-                        {
-                            Title = "",
-                            File = new ShareFile(file)
-                        });
-                    });
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                     {
+                         await Share.RequestAsync(new ShareFileRequest
+                         {
+                             Title = "",
+                             File = new ShareFile(file)
+                         });
+                     });
 
 
 

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.ZakatExemptionRequest.AttachmentView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False"
+             xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             Title="AttachmentView">
+   <ContentView.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical">
+            <!--Attachment 1-->
+            <Label x:Name="label_title"
+        HorizontalOptions="StartAndExpand"
+        Style="{StaticResource BodyLabelGrey}" />
+
+            <listView:SfListView HorizontalOptions="Center"
+                         IsScrollBarVisible="False" IsScrollingEnabled="False"
+                         VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                         ItemsSource="{Binding AttachmentsListViewData}"
+                         ItemTapped="SfListView_ItemTapped"
+                         SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent">
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Border Grid.Row="0" Margin="0,0,0,10" Padding="12"
+                                Style="{StaticResource SfStyleGreyBorderFrame}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                            HorizontalOptions="Start" VerticalOptions="Center"/>
+
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                    Text="{Binding Filename}"
+                                    Style="{StaticResource CaptionLabelBlack}"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center"/>
+
+                                    <Image Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Rotation="90">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}"
+                                                Size="24"
+                                                Glyph="{x:Static FontImage:IconFonts.Close}" />
+                                        </Image.Source>
+                                    </Image>
+                                </Grid>
+                            </Border>
+
+
+                        </Grid>
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+            </listView:SfListView>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+
+                </Grid.RowDefinitions>
+                <custom:CustomLabel Grid.Row="0"
+                            FontFamily="{StaticResource SomarRegular}"
+                            HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MicroGrayLabelStyle}" >
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static ResourceManager:AppResources.FDANewAttachment}"  />
+                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
+                <Border Grid.Row="1" Margin="0,0,0,10" Padding="10"
+                Style="{StaticResource SfStyleGreyBorderFrame}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" FontFamily="{StaticResource SomarRegular}"
+                        Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                        FontSize="Small" TextColor="{StaticResource PrimaryColor}"
+                        HorizontalOptions="FillAndExpand" />
+                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
+            Rotation="90">
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="24"
+                                Glyph="{x:Static FontImage:IconFonts.Attachment}" />
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                </Border>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Grid.GestureRecognizers>
+            </Grid>
+
+
+        </StackLayout>
+
+    </ContentView.Content>
+</ContentPage>

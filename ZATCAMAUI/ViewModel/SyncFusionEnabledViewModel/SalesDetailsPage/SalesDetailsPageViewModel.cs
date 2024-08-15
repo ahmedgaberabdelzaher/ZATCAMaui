@@ -12,12 +12,10 @@ using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
 {
-   
+
     public class SalesDetailsPageViewModel : BaseViewModel
     {
         #region Variable
-        //  public ICommand OnBillsButtonClicked { get; set; }
-        public ICommand GoBackClick { get; set; }
         public ICommand OnAcceptReturnButtonClicked { get; set; }
         public ICommand OnAmendReturnButtonClicked { get; set; }
         public ICommand OnSubmitButtonClicked { get; set; }
@@ -35,7 +33,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
         public double existingZakatBase = 0.00;
         #endregion
         #region Property
-       
+
         private SalesDetails _selectedSalesDetails;
         public SalesDetails SelectedSalesDetails
         {
@@ -51,9 +49,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                     if (!ConfirmButtonVisibility)
                     {
                         double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
-                        double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                        double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet[0].Value);
                         bool IsThresholdGreaterLessVATAmount = d1 < d;
-                        if (Convert.ToDouble(zakatReturnDetailsD.d.TvtslE) > Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value))
+                        if (Convert.ToDouble(zakatReturnDetailsD.d.TvtslE) > Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet[0].Value))
                         {
                             if (_selectedSalesDetails != null && SubmitButtonVisibility)
                             {
@@ -310,19 +308,19 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
         #region Constructor
         public SalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnAcceptReturnButtonClicked = new Command( () =>
+            OnAcceptReturnButtonClicked = new Command(() =>
             {
                 _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                 CheckBoxStatus = false;
             });
-            GoBackClick = new Command( () =>
+            GoBackClick = new Command(() =>
             {
                 if (!IsLoading)
                 {
                     _navigationService.GoBack();
                 }
             });
-            OnAmendReturnButtonClicked = new Command( () =>
+            OnAmendReturnButtonClicked = new Command(() =>
             {
                 try
                 {
@@ -349,8 +347,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                     {
                         if (CheckBoxStatus)
                         {
-                            // SetUpdatedDataToZAKATEstimated();
-                            // AssignAttachmentToPostDataObject();
                             string PostOperationID = "05";
                             await SubmitZakatReturn(PostOperationID, "");
                             CheckBoxStatus = false;
@@ -378,14 +374,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             });
             OnConfirmButtonClicked = new Command(async () =>
             {
-                
+
             });
         }
         #endregion
         #region Method
         public async Task OnConfirmClicked(string InvFlag)
         {
-            
+
             string PostOperationID = GetConfirmOperationId();
             await SubmitZakatReturn(PostOperationID, InvFlag);
         }
@@ -401,12 +397,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                 ZakatReturnDetail = zakatReturnDetailsD;
                 Persl = ZakatReturnDetail.d.Persl;
                 Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
-             
+
                 Fbnum = ZakatReturnDetail.d.Fbnum;
                 Estsl = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.d.Estsl);
                 RetGuid = zakatReturnDetailsD.d.ReturnId;
                 SetSalesDetailsData(zakatReturnDetailsD);
-               
+
                 if (ZakatReturnDetailsPageViewModel.IsAmendButtonPressed)
                 {
                     ShowSubmitButton();
@@ -456,12 +452,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                 {
                     HideAllButton();
                     HideDisclaimer();
-                    // ShowAcceptAndAmendButton();
                 }
                 else
                 {
                     ShowAcceptAndAmendButton();
-                    // HideEditIcon();Fwebser
                 }
                 if (ZakatReturnDetailsPageViewModel.IsAmendButtonClicked)
                 {
@@ -623,62 +617,62 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
         {
             try
             {
-               
+
                 if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("1"))
                 {
                     zakatReturnDetailsD.d.TvtslI = string.IsNullOrEmpty(SalesDetailsList[0].NewValue) ? "0.00" : SalesDetailsList[0].NewValue;
                     zakatReturnDetailsD.d.TvtslResn = SalesDetailsList[0].ChangeReason;
                     AddAttachmetToPostData(0, SalesDetailsList[0].estimateZakatAttachment);
-                   
+
                 }
                 else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("2"))
                 {
                     zakatReturnDetailsD.d.LabnoI = string.IsNullOrEmpty(SalesDetailsList[1].NewValue) ? "0.00" : SalesDetailsList[1].NewValue;
                     zakatReturnDetailsD.d.LabnoResn = SalesDetailsList[1].ChangeReason;
                     AddAttachmetToPostData(1, SalesDetailsList[1].estimateZakatAttachment);
-                   
+
                 }
                 else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("3"))
                 {
                     zakatReturnDetailsD.d.ImpvalI = string.IsNullOrEmpty(SalesDetailsList[2].NewValue) ? "0.00" : SalesDetailsList[2].NewValue;
                     zakatReturnDetailsD.d.ImpvalResn = SalesDetailsList[2].ChangeReason;
                     AddAttachmetToPostData(2, SalesDetailsList[2].estimateZakatAttachment);
-                   
+
                 }
                 else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("4"))
                 {
                     zakatReturnDetailsD.d.PtoslI = string.IsNullOrEmpty(SalesDetailsList[3].NewValue) ? "0.00" : SalesDetailsList[3].NewValue;
                     zakatReturnDetailsD.d.PtoslResn = SalesDetailsList[3].ChangeReason;
                     AddAttachmetToPostData(3, SalesDetailsList[3].estimateZakatAttachment);
-                    
+
                 }
                 else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("5"))
                 {
                     zakatReturnDetailsD.d.EtimadI = string.IsNullOrEmpty(SalesDetailsList[4].NewValue) ? "0.00" : SalesDetailsList[4].NewValue;
                     zakatReturnDetailsD.d.EtimadResn = SalesDetailsList[4].ChangeReason;
                     AddAttachmetToPostData(4, SalesDetailsList[4].estimateZakatAttachment);
-                    
+
                 }
                 else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("6"))
                 {
                     zakatReturnDetailsD.d.ExamtI = string.IsNullOrEmpty(SalesDetailsList[5].NewValue) ? "0.00" : SalesDetailsList[5].NewValue;
                     zakatReturnDetailsD.d.ExamtResn = SalesDetailsList[5].ChangeReason;
                     AddAttachmetToPostData(5, SalesDetailsList[5].estimateZakatAttachment);
-                   
+
                 }
                 else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("7"))
                 {
                     zakatReturnDetailsD.d.PramtI = string.IsNullOrEmpty(SalesDetailsList[6].NewValue) ? "0.00" : SalesDetailsList[6].NewValue;
                     zakatReturnDetailsD.d.PramtResn = SalesDetailsList[6].ChangeReason;
                     AddAttachmetToPostData(6, SalesDetailsList[6].estimateZakatAttachment);
-                   
+
                 }
                 else if (SalesDetailsList[selectedIndex].SelectedEditFieldId.Equals("8"))
                 {
                     zakatReturnDetailsD.d.Cpamt = string.IsNullOrEmpty(SalesDetailsList[7].NewValue) ? "0.00" : SalesDetailsList[7].NewValue;
                     zakatReturnDetailsD.d.CpamtResn = SalesDetailsList[7].ChangeReason;
                     AddAttachmetToPostData(7, SalesDetailsList[7].estimateZakatAttachment);
-                   
+
                 }
             }
             catch (Exception)
@@ -686,9 +680,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
 
 
             }
-            AttachSet attachSet = new AttachSet();
-            attachSet.results = EstimateZakatAttachmentList;
-            zakatReturnDetailsD.d.AttachSet = attachSet;
+            zakatReturnDetailsD.d.AttachSet = EstimateZakatAttachmentList;
         }
         private void ShowAcceptAndAmendButton()
         {
@@ -822,7 +814,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                         bool IsNewValueLessThanExisting = Convert.ToDouble(SalesDetailsList[i].InformationFromPartie) > Convert.ToDouble(SalesDetailsDataList[i].InformationFromPartieToCompare);
                         if (IsNewValueLessThanExisting)//
                         {
-                            
+
                             if (SalesDetailsList[i].estimateZakatAttachment.Count == 0 || string.IsNullOrEmpty(SalesDetailsList[i].ChangeReason))
                             {
                                 SalesDetailsList[i].EditImageSource = "ic_Edit_red.png";
@@ -877,7 +869,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             }
             return isAllDocumentUploaded;
         }
-       
+
         private void UncheckDisclaimer()
         {
             CheckBoxStatus = false;
@@ -940,7 +932,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                     }
                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                     _navigation.NavigationStack.ToList().Clear();
-                   
+
                 });
             }
         }
@@ -957,7 +949,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                 Color VATBackgroundColor;
                 Color CapitalBackgroundColor;
                 double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
-                double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet[0].Value);
                 bool IsThresholdGreaterLessVATAmount = d < d1;
                 SalesDetailsList = new ObservableCollection<SalesDetails>();
                 ObservableCollection<SalesDetails> SalesDetailsDummyList = new ObservableCollection<SalesDetails>();
@@ -1102,7 +1094,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             {
             }
         }
-      
+
         public void ClearData()
         {
         }
@@ -1112,7 +1104,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
             try
             {
                 double d = Convert.ToDouble(zakatReturnDetailsD.d.TvtslI);
-                double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
+                double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet[0].Value);
                 IsThresholdGreaterLessVATAmount = d1 < d;
             }
             catch (Exception)

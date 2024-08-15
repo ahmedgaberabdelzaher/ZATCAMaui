@@ -110,7 +110,7 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
             }
 
             string cookieValue = lang;
-            string cookieDomain = ZATCAConstants.PartialDomainUrlForCookies;
+            string cookieDomain = ZATCAConstants.DevPartialDomainForCookies;
             string cookieName = ZATCAConstants.LanguageCookieNameForLogin;
 
             cookieManager.SetCookie(cookieDomain, cookieName + "=" + cookieValue);
@@ -244,7 +244,7 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
                 _hybridWebView.InvokeAction(ZATCAConstants.AppChangeMobCompanayNafath);
             }
 
-            if (url.ToString().Contains(ZATCAConstants.DomainUrlForCookies))
+            if (url.ToString().Contains(ZATCAConstants.DevDomainForCookies))
             {
                 App.IsLoginCalled = true;
             }
@@ -253,7 +253,7 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
             {
                 try
                 {
-                    if (url.ToString().Contains(ZATCAConstants.DomainUrlForCookies))
+                    if (url.ToString().Contains(ZATCAConstants.DevDomainForCookies))
                     {
                         _hybridWebView.InvokeAction("displayLoginLoadingIndicator");
                     }
@@ -314,7 +314,7 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
             }
 
 
-            if (url.ToString().Contains(ZATCAConstants.DomainUrlForCookies))
+            if (url.ToString().Contains(ZATCAConstants.DevDomainForCookies))
             {
                 _hybridWebView.InvokeAction("hideLoadingIndicator");
             }

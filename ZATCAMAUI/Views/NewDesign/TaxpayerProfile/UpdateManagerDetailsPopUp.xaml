@@ -194,7 +194,7 @@
                                                         FontFamily="{StaticResource SomarRegular}"
                                                         HorizontalOptions="FillAndExpand"
                                                         IsEnabled="{Binding EnableMobNumber}"
-                                                        Keyboard="Numeric"
+                                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                         MaxLength="15"
                                                         Text="{Binding MobNo}"
                                                         TextColor="{StaticResource NeutralBlack}" />

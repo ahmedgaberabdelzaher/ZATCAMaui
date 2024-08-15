@@ -18,8 +18,10 @@
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     BackgroundImageSource="partials_background.png"
-    FlowDirection="{Binding AppDirection}"
+        xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
+    FlowDirection="{Binding AppDirection}"
     mc:Ignorable="d">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness">
@@ -30,12 +32,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
 
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+           
 
             <Style x:Key="EntryHeight48" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
@@ -244,7 +241,7 @@
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TxtTIN"
                                         IsSpellCheckEnabled="False"
-                                        Keyboard="Numeric"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         MaxLength="10"
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TxtTIN}"
@@ -263,7 +260,7 @@
                                     Style="{StaticResource InputTableTextInputLayoutStyle}">
                                     <custom:GAZTBorderlessEntry
                                         x:Name="TVatNumber"
-                                        Keyboard="Numeric"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         MaxLength="15"
                                         Style="{StaticResource EntryHeight48}"
                                         Text="{Binding TVatNumber}"

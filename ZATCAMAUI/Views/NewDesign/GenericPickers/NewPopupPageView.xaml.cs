@@ -104,10 +104,6 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
         }
 
-        void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            //Dissapear();
-        }
 
         void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
         {

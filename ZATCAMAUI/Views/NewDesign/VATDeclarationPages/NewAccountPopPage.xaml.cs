@@ -1,8 +1,5 @@
 ﻿using Mopups.Pages;
 using Mopups.Services;
-using Syncfusion.Maui.Picker;
-using System.Globalization;
-using System.Resources;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -27,10 +24,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     viewModel.AccountText = AppResources.ZTERNewAccount;
                     viewModel.IbanPartOne = string.Empty;
-                    viewModel.IbanPartTwo= string.Empty;
-                    viewModel.IbanPartThree= string.Empty;
-                    viewModel.IbanPartFour= string.Empty;
-                    viewModel.IbanPartFive= string.Empty;
+                    viewModel.IbanPartTwo = string.Empty;
+                    viewModel.IbanPartThree = string.Empty;
+                    viewModel.IbanPartFour = string.Empty;
+                    viewModel.IbanPartFive = string.Empty;
                 }
                 else
                 {
@@ -42,9 +39,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     viewModel.IbanPartFive = SAremovedIban.Substring(18, 4);
                     //Bind Iban and remove name
                 }
-                SetLTR();
             }
-            catch(Exception)
+            catch (Exception)
             {
             }
         }
@@ -88,7 +84,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     });
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 viewModel.IsIBANValid = false;
                 MainThread.BeginInvokeOnMainThread(async () =>
@@ -98,29 +94,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
         }
 
-        private void SetLTR()
-        {
-            try
-            {
-                if (App.IsArabic)
-                {
-                    //this.FlowDirection = FlowDirection.RightToLeft;
-                    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-                }
-                else
-                {
-                    //this.FlowDirection = FlowDirection.LeftToRight;
-                    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-                }
-            }
-            catch (Exception )
-            {
-            }
-        }
 
         private void IbanAddButtonClicked(object sender, EventArgs e)
         {
@@ -150,10 +123,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     IbanTwo.Focus();
                 }
             }
-            catch(Exception )
+            catch (Exception)
             {
             }
-            
+
         }
 
         private void IbanTwo_TextChanged(object sender, TextChangedEventArgs e)
@@ -165,9 +138,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     IbanThree.Focus();
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
-                
+
             }
         }
 
@@ -179,9 +152,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     IbanFour.Focus();
                 }
-                
+
             }
-            catch(Exception )
+            catch (Exception)
             {
             }
         }
@@ -194,9 +167,9 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 {
                     IbanFive.Focus();
                 }
-               
+
             }
-            catch(Exception )
+            catch (Exception)
             {
             }
         }
@@ -207,70 +180,14 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.IbanPartFive != null && viewModel.IbanPartFive.Length >= 4)
                 {
-                   
+
                 }
-               
-            }
-            catch(Exception )
-            {
-            }
-        }
 
-        private void IbanOneFocused(object sender, FocusEventArgs e)
-        {
-            try
-            {
-            }
-            catch(Exception )
-            {
-            }
-        }
-
-        private void IbanTwoFocused(object sender, FocusEventArgs e)
-        {
-            try
-            {
-            }
-            catch(Exception )
-            {
-            }
-        }
-
-        private void IbanThreeFocused(object sender, FocusEventArgs e)
-        {
-            try
-            {
-            }
-            catch(Exception )
-            {
-
-            }
-        }
-
-        private void IbanFourFocused(object sender, FocusEventArgs e)
-        {
-            try
-            {
-            }
-            catch(Exception )
-            {
-            }
-        }
-
-        private void IbanFiveFocused(object sender, FocusEventArgs e)
-        {
-            try
-            {
-               
             }
             catch (Exception)
             {
-                
-                
             }
         }
-
-
         public void SetFocus()
         {
             try
@@ -294,8 +211,8 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception)
             {
-                
-                
+
+
             }
         }
 

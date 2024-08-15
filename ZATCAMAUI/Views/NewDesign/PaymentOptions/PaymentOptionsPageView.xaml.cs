@@ -31,7 +31,7 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
             List<PaymentOptionsModel> paymentOptions = new List<PaymentOptionsModel>();
             if (isModaPaymentAvailable && !isAmountLess)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "Payment.png", UnSelectedCardIcon = "ic_iconpay_white.png", CardLabel = AppResources.PaymentMethodCardPayment});
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "Payment.png", UnSelectedCardIcon = "ic_iconpay_white.png", CardLabel = AppResources.PaymentMethodCardPayment });
             }
             paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad.png", UnSelectedCardIcon = "ic_sadad_white.png", CardLabel = AppResources.Sadad });
             paymentItemsListView.ItemsSource = paymentOptions;

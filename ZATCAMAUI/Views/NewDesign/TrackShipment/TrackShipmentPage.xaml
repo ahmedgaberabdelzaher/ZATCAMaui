@@ -396,7 +396,7 @@
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
-                                            Keyboard="Numeric"
+                                            Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                             Placeholder="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding ShipmentDeclarationNumber}"

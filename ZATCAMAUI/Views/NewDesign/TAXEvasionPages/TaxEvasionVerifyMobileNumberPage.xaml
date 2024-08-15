@@ -12,27 +12,10 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.Padding>
-        <OnPlatform x:TypeArguments="Thickness">
-            <On Platform="Android, UWP">0</On>
-            <On Platform="iOS">0,20,0,0</On>
-        </OnPlatform>
-    </ContentPage.Padding>
+   
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <ScrollView>
@@ -255,7 +238,7 @@
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
                                 MaxLength="1"
-                                Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 WidthRequest="100"
                                 ReturnType="Next"
                                 Text="{Binding OTPFirstDigit}"
@@ -285,7 +268,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPSecondDigit}"
@@ -316,7 +299,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPThirdDigit}"
@@ -347,7 +330,7 @@
                                 HorizontalOptions="CenterAndExpand"
                                 HorizontalTextAlignment="Center"
                                 IsEnabled="{Binding IsOTPEntryEnable}"
-                                Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="1"
                                 ReturnType="Next"
                                 Text="{Binding OTPFourthDigit}"

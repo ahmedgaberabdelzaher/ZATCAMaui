@@ -1,8 +1,5 @@
-﻿
-
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
-using System.Windows.Input;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -13,9 +10,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
 {
     public class FAQPageViewModel : BaseViewModel
     {
-        #region Variable
-        public ICommand GoBackClick { get; set; }
-        #endregion
         #region Properties
         /// <summary>
         /// Gets or sets a collection of values to be displayed in the FAQ page.
@@ -49,7 +43,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
                 OnPropertyChanged("IsNoDataLabelVisible");
             }
         }
-       
+
 
 
 
@@ -68,12 +62,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FAQPage
         }
 
         #endregion
-        public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService) :base(navigationService, dialogService)
+        public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command( () =>
-            {
-                _navigationService.GoBack();
-            });
         }
         #region Method
         public async Task OnPageLoad()

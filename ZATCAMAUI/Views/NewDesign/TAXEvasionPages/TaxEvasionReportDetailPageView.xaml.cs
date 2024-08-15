@@ -1,6 +1,4 @@
 ﻿using Maui.GoogleMaps;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels;
 
@@ -20,8 +18,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             viewModel = App.Locator.TaxEvasionReportDetailPageView;
             BindingContext = viewModel;
             viewModel.SelectedTaxEvasionListItem = SelectedTaxEvasionListItem;
-            On<iOS>().SetUseSafeArea(true);
-            ChangeAeroIcon();
         }
         protected override void OnAppearing()
         {
@@ -69,18 +65,7 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
                     pin.Position = position;
                     mapView.Pins.Add(pin);//new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                 }
-                catch (FeatureNotSupportedException)
-                {
-                    // Handle not supported on device exception
-                }
-                catch (FeatureNotEnabledException)
-                {
-                    // Handle not enabled on device exception
-                }
-                catch (PermissionException)
-                {
-                    // Handle permission exception
-                }
+
                 catch (Exception)
                 {
                     // Unable to get location
@@ -93,17 +78,6 @@ namespace ZATCAMAUI.Views.NewDesign.TAXEvasionPages
             {
 
 
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
 

@@ -19,7 +19,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     public class FinancialDetailAttachmentPopupPageViewModel : BaseViewModel
     {
         public ICommand OnAttachmentClick { get; set; }
-        public ICommand GoButtonClick { get; set; }
 
         public static decimal AttachmentUploadedSize = 0;
         public static bool IsToBeFilled = false;
@@ -238,8 +237,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("SelectedResultsItemForDOCSet");
             }
         }
-        private ELGBL_DOCSet _eLGBL_DOCSet = null;
-        public ELGBL_DOCSet ELGBL_DOCSet
+        private List<ResultsItemForElgblDocSet> _eLGBL_DOCSet = null;
+        public List<ResultsItemForElgblDocSet> ELGBL_DOCSet
         {
             get
             {
@@ -272,7 +271,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-       
+
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
@@ -499,10 +498,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 await AddAttachmentTest();
             });
 
-            GoButtonClick = new Command(() =>
-            {
-                MopupService.Instance.PopAsync();
-            });
 
 
         }
@@ -585,7 +580,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                             {
                                                 bool IsAttachmentPresent = false;
-                                                foreach (Attachment ItemA in VATRegistrationDetailsForAttach.d.ATTDETSet.results)
+                                                foreach (Attachment ItemA in VATRegistrationDetailsForAttach.d.ATTDETSet)
                                                 {
                                                     if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                                                     {
@@ -606,7 +601,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                 {
                                                     string attachmentType = UtilityManager.GetContentType(Extention);
                                                     //doctypestring - drop down id
-                                                    AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
+                                                    AttachmentRootOject _attachment = await SaveAttachment(stream, attachmentType, DocTypeString);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
                                                     PopToRootPage();
                                                     if (_attachment != null && _attachment.d != null)
                                                     {
@@ -635,7 +630,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                                             bool isAdded = false;
 
-                                                            foreach (ResultsItemForDOCSetforsubmit results in VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results)
+                                                            foreach (ResultsItemForDOCSetforsubmit results in VATRegistrationDetailsForAttach.d.ELGBL_DOCSet)
                                                             {
                                                                 if (_eligibledocset.DmsTp == results.DmsTp)
                                                                 {
@@ -645,17 +640,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                                             if (isAdded == false)
                                                             {
-                                                                VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Add(_eligibledocset);
+                                                                VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.Add(_eligibledocset);
                                                             }
                                                         }
                                                         catch (Exception)
-                                                        {
-
-
-                                                        }
-                                                        VATRegistrationDetailsForAttach.d.ATTDETSet.results.Add(_attachment.d);
-                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
-                                                       MainThread.BeginInvokeOnMainThread(async () =>
+                                                        { }
+                                                        VATRegistrationDetailsForAttach.d.ATTDETSet.Add(_attachment.d);
+                                                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet as List<Attachment>);
+                                                        MainThread.BeginInvokeOnMainThread(async () =>
                                                         {
                                                             VatAttachmentsList = myCollection;
 
@@ -727,7 +719,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             }
                                             else
                                             {
-                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan20MB));
+                                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZFilesizeshouldnotbemorethan5MB));
                                             }
                                         }
                                     }
@@ -762,11 +754,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
                 catch (InternetException ex)
                 {
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        //_dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    });
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                     {
+                         //_dialogService.ShowMessage(ex.Message, AppResources.Information);
+                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                     });
                 }
             }
             catch (Exception)
@@ -780,10 +772,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 // VATRegistrationDetailsForAttach.d.ATTDETSet.results
-                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.Count != 0)
                 {
                     List<Attachment> attachmentsList = new List<Attachment>();
-                    foreach (var item in VATRegistrationDetailsForAttach.d.ATTDETSet.results)
+                    foreach (var item in VATRegistrationDetailsForAttach.d.ATTDETSet)
                     {
                         if (item.Dotyp == DocTypeString)
                         {
@@ -800,7 +792,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             }
         }
-        private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType, string Doctype)
+        private async Task<AttachmentRootOject> SaveAttachment(Stream attachmentByteData, string contentType, string Doctype)
         {
             AttachmentRootOject _attachment = null;
             await Task.Run(() =>
@@ -908,11 +900,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             if (App.IsSessionExpired)
             {
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
-                });
+                MainThread.BeginInvokeOnMainThread(async () =>
+                 {
+                     var _navigation = Application.Current.MainPage.Navigation;
+                     await _navigation.PopToRootAsync();
+                 });
             }
         }
     }

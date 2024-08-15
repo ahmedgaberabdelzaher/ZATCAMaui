@@ -17,7 +17,7 @@
                     x:Name="TextValue"
                     BackgroundColor="Red"
                     HorizontalOptions="Fill"
-                    Keyboard="Numeric"
+                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                     MaxLength="21"
                     Placeholder="{Binding Source={x:Reference CustomEntryWithSAR}, Path=Placeholder}"
                     Style="{StaticResource DefaultEntry}"

@@ -210,7 +210,7 @@
                                         <inputLayout:LabelStyle TextColor="Red" />
                                     </inputLayout:SfTextInputLayout.ErrorLabelStyle>
                                     <custom:GAZTBorderlessEntry
-                                        Keyboard="Numeric"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         MaxLength="10"
                                         Placeholder="0xxxxxxxxx"
                                         Style="{StaticResource DefaultEntry}"

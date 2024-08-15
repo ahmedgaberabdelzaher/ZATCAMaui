@@ -162,7 +162,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
         public PdfViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
-            GoBackClick = new Command( () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
 
@@ -183,14 +183,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
                     if (!string.IsNullOrEmpty(pdfUrl))
                     {
                         DownloadUrl = pdfUrl;
-                        getPdfStream();
+                        await getPdfStreamAsync();
 
                     }
                     else
                     {
                         IsShareButtonEnable = false;
                         string OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
-                        //await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(OnSuccessfulAuthentication));
                     }
                     IsLoading = false;
@@ -203,149 +202,137 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.PdfViewPage
             }
         }
 
-        public void getPdfStream()
+        public Task getPdfStreamAsync()
         {
             Stream stream = null;
             try
             {
-                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
-                myReq.Headers["ichannel"] = App.IncomingChannel;
+                //HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
+                String lang = "EN";
+                HttpWebRequest myReq = GetPdfDocument(DownloadUrl, lang);
 
-                CookieContainer cookieContainer = new CookieContainer();
 
                 try
                 {
-                    foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
-                    {
-                        Cookie cookie = new Cookie();
 
-                        if (Device.RuntimePlatform == Device.iOS)
+                    WebResponse myResp = myReq.GetResponse();
+
+                    if (myResp != null)
+                    {
+                        using (Stream streams = myResp.GetResponseStream())
                         {
-                            if (cookieModel.Domain.StartsWith(".") == false)
+                            using (MemoryStream ms = new MemoryStream())
                             {
-                                cookie.Domain = "." + cookieModel.Domain;
+                                int count = 0;
+                                do
+                                {
+                                    byte[] buf = new byte[1024];
+                                    count = streams.Read(buf, 0, 1024);
+                                    ms.Write(buf, 0, count);
+                                } while (streams.CanRead && count > 0);
+
+                                if (ms != null)
+                                    PdfBytes = ms.ToArray();
+                            }
+                        }
+                        string strBase64 = string.Empty;
+                        if (PdfBytes != null && PdfBytes.Length > 0)
+                        {
+                            strBase64 = Convert.ToBase64String(PdfBytes);
+
+                            if (!string.IsNullOrEmpty(strBase64))
+                            {
+                                try
+                                {
+                                    byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
+                                    if (sPDFDecoded != null)
+                                    {
+                                        stream = new MemoryStream(sPDFDecoded, true);
+                                        if (StreamForDownloadURL != null)
+                                        {
+                                            StreamForDownloadURL.Flush();
+                                            StreamForDownloadURL.Close();
+                                            // StreamForDownloadURL = null;
+                                        }
+                                        IsShareButtonEnable = true;
+                                        StreamForDownloadURL = stream;
+                                    }
+                                    else
+                                    {
+                                        IsShareButtonEnable = false;
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    IsShareButtonEnable = false;
+                                    Console.WriteLine(ex.Message);
+                                    Console.Write(ex.StackTrace.ToString());
+                                }
                             }
                             else
                             {
-                                cookie.Domain = cookieModel.Domain;
-                            }
-                        }
-                        else if (Device.RuntimePlatform == Device.Android)
-                        {
-                            cookie.Domain = ZATCAConstants.PartialDomainUrlForCookies;
-                        }
-
-                        cookie.Comment = cookieModel.Comment;
-                        cookie.Version = cookieModel.Version;
-                        cookie.HttpOnly = cookieModel.IsHttpOnly;
-                        cookie.Path = cookieModel.Path;
-                        cookie.Name = cookieModel.CName;
-                        cookie.Value = cookieModel.CValue;
-                        cookie.Secure = cookieModel.Secure;
-                        cookieContainer.Add(cookie);
-                    }
-
-                    myReq.CookieContainer = cookieContainer;
-                }
-
-                catch (Exception)
-                {
-
-
-
-                }
-
-                WebResponse myResp = myReq.GetResponse();
-
-                if (myResp != null)
-                {
-                    using (Stream streams = myResp.GetResponseStream())
-                    {
-                        using (MemoryStream ms = new MemoryStream())
-                        {
-                            int count = 0;
-                            do
-                            {
-                                byte[] buf = new byte[1024];
-                                count = streams.Read(buf, 0, 1024);
-                                ms.Write(buf, 0, count);
-                            } while (streams.CanRead && count > 0);
-
-                            if (ms != null)
-                                PdfBytes = ms.ToArray();
-                        }
-                    }
-                    string strBase64 = string.Empty;
-                    if (PdfBytes != null && PdfBytes.Length > 0)
-                    {
-                        strBase64 = Convert.ToBase64String(PdfBytes);
-
-                        if (!string.IsNullOrEmpty(strBase64))
-                        {
-                            try
-                            {
-                                byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
-                                if (sPDFDecoded != null)
-                                {
-                                    stream = new MemoryStream(sPDFDecoded, true);
-                                    if (StreamForDownloadURL != null)
-                                    {
-                                        StreamForDownloadURL.Flush();
-                                        StreamForDownloadURL.Close();
-                                        // StreamForDownloadURL = null;
-                                    }
-                                    IsShareButtonEnable = true;
-                                    StreamForDownloadURL = stream;
-                                }
-                                else
-                                {
-                                    IsShareButtonEnable = false;
-                                }
-                            }
-                            catch (Exception)
-                            {
                                 IsShareButtonEnable = false;
-
-
+                                MainThread.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
+                                });
                             }
+
                         }
                         else
                         {
                             IsShareButtonEnable = false;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
+                                //   await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                             });
                         }
-
                     }
                     else
                     {
                         IsShareButtonEnable = false;
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
+                            //await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
                         });
                     }
+
                 }
-                else
+                catch (Exception)
                 {
                     IsShareButtonEnable = false;
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNotAvailableFor));
-                    });
                 }
-
             }
             catch (Exception)
             {
-                IsShareButtonEnable = false;
-
-
             }
+
+            return Task.CompletedTask;
         }
 
+        private static HttpWebRequest GetPdfDocument(string downloadUrl, string lang)
+        {
+            //Making Web Request  
+            HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(downloadUrl);
+            //SOAPAction  
+            string deviceOs = DeviceInfo.Platform.ToString();
+            string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfo>().GetDeviceUdid();
+            string deviceModel = DeviceInfo.Model;
+            Req.Accept = "application/json";
+            Req.Headers.Add("X-Session-Language", lang);
+            Req.Headers.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+            Req.Headers.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+            Req.Headers.Add("X-Device-Id", deviceUdid);
+            Req.Headers.Add("X-Device-Name", deviceModel);
+            Req.Headers.Add("X-Device-Platform", deviceOs);
+            Req.Headers.Add("Authorization", App.Token);
+            //HTTP method 
+            //return HttpWebRequest  
+            return Req;
+        }
         #endregion
     }
 }

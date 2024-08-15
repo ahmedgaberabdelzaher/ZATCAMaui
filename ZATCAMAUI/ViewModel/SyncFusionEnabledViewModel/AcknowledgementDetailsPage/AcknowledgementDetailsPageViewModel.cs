@@ -21,7 +21,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
         public ICommand GoHomeClick { get; set; }
         #endregion
         #region Property
-        
+
         private string _tPName = "";
         public string TPName
         {
@@ -211,19 +211,19 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
             {
                 // Call Sadad number API
             });
-            OnDownloadFormClicked = new Command(() =>
+            OnDownloadFormClicked = new Command(async () =>
             {
-                string Url = string.Empty;
+                String Url = string.Empty;
                 // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
                 // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=enabled";
+                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "',Utype='')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
-            OnAcknowlwdgementClicked = new Command(() =>
+            OnAcknowlwdgementClicked = new Command(async () =>
             {
-                string Url = string.Empty;
+                String Url = string.Empty;
                 // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.Tin + "',Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=enabled";
+                Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='" + App.TP.TIN + "',Fbnum='" + VATDeclarationData.data.Fbnum + "')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
             GoBackClick = new Command(() =>
@@ -264,7 +264,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
                 });
                 await Task.Run(async () =>
                 {
-                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
+                    var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.data.Fbnum);
                     PopToRootPage();
                     if (response != null && response.d != null && response.d.results.Count != 0)
                     {
@@ -273,7 +273,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
                         if (!string.IsNullOrEmpty(SadadNumber))
                         {
                             IsSadadNoteVisible = false;
-                            if (VATDeclarationData.d.RefundFg == "1")
+                            if (VATDeclarationData.data.RefundFg == "1")
                             {
                                 IsSadadNumberVisible = false;
                             }
@@ -282,7 +282,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsP
                                 IsSadadNumberVisible = true;
                             }
                             IsButtonVisible = true;
-                            if (VATDeclarationData.d.EstimatedFg == "X")
+                            if (VATDeclarationData.data.EstimatedFg == "X")
                             {
                                 IsAcknowledgementButtonVisible = false;
                             }

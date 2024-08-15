@@ -6,7 +6,6 @@ using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Resources;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
@@ -30,8 +29,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 InitializeComponent();
                 viewModel = App.Locator.FinancialDetailAttachmentPopupPageView;
                 this.BindingContext = viewModel;
-
-                SetLTR();
 
                 viewModel.VATRegistrationDetailsData = new VATRegistrationDetails();
                 viewModel.VATRegistrationDetailsData = sendtoPopup.VATRegistrationDetailsDatatoPopup;
@@ -89,9 +86,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel = App.Locator.FinancialDetailAttachmentPopupPageView;
                 this.BindingContext = viewModel;
 
-                On<iOS>().SetUseSafeArea(true);
-
-                SetLTR();
 
                 viewModel.VATRegistrationDetailsData = new VATRegistrationDetails();
                 viewModel.VATRegistrationDetailsData = sendtoPopup.VATRegistrationDetailsDatatoPopup;
@@ -214,23 +208,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
             }
         }
-        private void SetLTR()
-        {
-            if (App.IsArabic)
-            {
-                //this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-            }
-            else
-            {
-                //this.FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-            }
-        }
+
 
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
         {
@@ -471,29 +449,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-
-
-
-
-
-        private void DDlIDType_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void DDlIDType_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)
-        {
-            try
-            {
-
-            }
-            catch (Exception)
-            {
-
-
-            }
-        }
-
         private void btn1_Clicked(object sender, EventArgs e)
         {
             try
@@ -507,15 +462,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void btnAddAccount_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-
-        }
 
         private void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -540,9 +486,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             MopupService.Instance.PopAsync();
         }
 
-        private void DDlIDType_OkButtonClicked(object sender, EventArgs e)
-        {
 
-        }
     }
 }

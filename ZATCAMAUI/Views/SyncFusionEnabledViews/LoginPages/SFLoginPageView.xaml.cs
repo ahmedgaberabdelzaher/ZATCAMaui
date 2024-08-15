@@ -1,7 +1,5 @@
 ﻿using Mopups.Services;
-using Syncfusion.Maui.Picker;
 using System.Globalization;
-using System.Resources;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Helper;
@@ -37,28 +35,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
                 this.BindingContext = viewModel;
                 viewModel.CurrentTab = 1;
-                ChangeAeroIcon();
                 CheckFirstTimeorNot();
                 GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
                 hybridWebView.BackgroundColor = (Color)Application.Current.Resources["Primary"];
 
-                if (App.IsArabic)
-                {
-                    this.FlowDirection = FlowDirection.RightToLeft;
-                    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
-                }
-                else
-                {
 
-
-                    this.FlowDirection = FlowDirection.LeftToRight;
-                    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
-                }
 
 
                 MessagingCenter.Subscribe<string>(this, "UnlockAccountBackButtonClicked", message =>
@@ -102,7 +84,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 {
                     viewModel.IsVisibleTinIds = true;
                 });
-                ChangeAeroIcon();
                 viewModel.Password = string.Empty;
                 viewModel.Email = string.Empty;
 
@@ -115,15 +96,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
                 string lang = "AR";
 
-                if (App.IsArabic)
-                {
-                    this.FlowDirection = FlowDirection.RightToLeft;
-                }
-                else
+                if (!App.IsArabic)
                 {
                     lang = "EN";
-
-                    this.FlowDirection = FlowDirection.LeftToRight;
                 }
 
                 var platform = DeviceInfo.Platform;
@@ -151,7 +126,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 }
 
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
         }
@@ -208,12 +183,12 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                                 hybridWebView.Opacity = 1;
                                 viewModel.IsLoading = false;
                             }
-                            
+
                             else if (data == "IsloginControl")
                             {
                                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
                             }
-                            
+
                             else if (data == "requestTimedout")
                             {
                                 hybridWebView.Opacity = 0;
@@ -550,17 +525,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
         }
 
-        private void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
-            }
-            else
-            {
-                Resources["StyleReverseBack"] = Application.Current.Resources["Back"];
-            }
-        }
+
 
         private void CheckFirstTimeorNot()
         {

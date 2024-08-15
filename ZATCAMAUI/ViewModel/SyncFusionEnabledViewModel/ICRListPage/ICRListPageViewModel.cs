@@ -16,7 +16,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
         public static string EUser = string.Empty;
         public static int numberOfAttachmentComingFromServer = 0;
         public ICommand OnHomeButtonClicked { get; set; }
-        public ICommand BackButtonClicked { get; set; }
         public int SelectedPickerIndex { get; set; }
         #endregion
         #region Property
@@ -33,7 +32,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                 OnPropertyChanged("TxtSelectedStatus");
             }
         }
-      
+
         private bool _isNoDataLabelVisible = false;
         public bool IsNoDataLabelVisible
         {
@@ -196,13 +195,20 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-            BackButtonClicked = new Command(() =>
-            {
-                _navigationService.NavigateTo(App.SFLandingPageView);
-            });
         }
         #endregion
         #region Method
+
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    _navigationService.NavigateTo(App.SFLandingPageView);
+                });
+            }
+        }
         public async Task onPageLoad()
         {
             try
@@ -211,36 +217,20 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                 {
                     IsLoading = true;
                 });
-                await Task.Run(async () =>
+                await Task.Run(() =>
                 {
                     ICRList = null;
                     ICR icrList = null;
                     try
                     {
                         string lang = UtilityManager.GetLanguageParameter();
-                        icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
+                        icrList = WebServiceManager.GAZTGetICRs(App.TP.TIN, lang);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
-                            if (App.IsArabic)
-                            {
-                                //foreach (var item in ICRStatusList)
-                                //{
-                                //    if(item.Txt30== "All")
-                                //    {
-                                //        item.Txt30 = "الجميع";
-                                //    }
-                                //    if(item.Txt30== "To be filled & In draft")
-                                //    {
-                                //        item.Txt30 = "جاهز للتعبئة والحفظ كمسودة";
-                                //    }
-                                //}
-                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("All"))].Txt30 = "الجميع";
-                                //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("To be filled & In draft"))].Txt30 = "جاهز للتعبئة والحفظ كمسودة";
-                                //  ICRStatusList.Where(p => p.Txt30 == "All").();
-                            }
+
                             if (string.IsNullOrEmpty(App.ICRStatus))
                             {
                                 SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
@@ -276,13 +266,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                 {
                     IsLoading = false;
                 });
-                
+
             }
             catch (InternetException ex)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
                     _navigationService.GoBack();
                 });
@@ -319,21 +309,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
 
                             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
                             PopToRootPage();
-                            if (_vATDeclaration != null && _vATDeclaration.d != null)
+                            if (_vATDeclaration != null && _vATDeclaration.data != null)
                             {
                                 PreviousSelectedICRStatus = _selectedICRStatus;
-                                _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                                _vATDeclaration.data.Fbguid = SelectedICRGUID;
                                 VATDeclaration vATDeclaration = new VATDeclaration();
                                 VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                                if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
-                                    numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
-                                Result5 result5 = new Result5();
-                                List<Result5> lst = new List<Result5>();
-                                ADRSet _aDRSet = new ADRSet();
-                                lst.Add(result5);
-                                vATDeclaration.d = vATDeclarationD;
-                                vATDeclaration.d.ADRSet = _aDRSet;
-                                vATDeclaration.d.ADRSet.results = lst;
+                                if (_vATDeclaration.data.ATTACHSet != null && _vATDeclaration.data.ATTACHSet != null && _vATDeclaration.data.ATTACHSet.Count > 0)
+                                    numberOfAttachmentComingFromServer = _vATDeclaration.data.ATTACHSet.Count;
+
+                                vATDeclaration.data = vATDeclarationD;
+                                vATDeclaration.data.ADRSet = new List<Result5>();
                                 MainThread.BeginInvokeOnMainThread(() =>
                                 {
                                     _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
@@ -358,7 +344,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                         }
                     }
                 }
-                catch (InternetException )
+                catch (InternetException)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -368,7 +354,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                     });
                 }
             }
-            catch (InternetException )
+            catch (InternetException)
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {

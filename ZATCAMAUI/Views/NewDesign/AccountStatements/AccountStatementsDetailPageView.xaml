@@ -36,7 +36,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -94,20 +93,18 @@
                                 Style="{StaticResource SectionTitleSmallMediumBlack}"
                                 VerticalOptions="CenterAndExpand" />
 
-                            <StackLayout Orientation="Horizontal">
-                                <Label
-                                    x:Name="LableFbNum"
-                                    HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource CaptionLabelGrey}"
-                                    VerticalOptions="CenterAndExpand" />
-                            </StackLayout>
+                            <Label
+                                x:Name="LableFbNum"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                VerticalOptions="CenterAndExpand" />
                         </StackLayout>
                         <Border
                             x:Name="FrameCardStatus"
                             Grid.Row="0"
                             Grid.Column="1"
                             Padding="10,10,10,10"
-                            BackgroundColor="{Binding Status, Converter={StaticResource StringToColorConvertor}}"
+                            BackgroundColor="{Binding StatusBackGcolor}"
                             StrokeShape="RoundRectangle 14,14,14,14"
                             HeightRequest="20"
                             HorizontalOptions="FillAndExpand"
@@ -149,10 +146,6 @@
                                 VerticalOptions="CenterAndExpand" />
                         </StackLayout>
 
-                        <!--<StackLayout Grid.Row="2" Grid.Column="1" Margin="0,5">
-                            <Label Text="{x:Static ResourceManager:AppResources.ASTransactionDate}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                            <Label x:Name="LableTransactionDate"  Margin="0,-10" Style="{StaticResource SectionTitleSmallMediumBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"></Label>
-                        </StackLayout>-->
                         <StackLayout
                             Grid.Row="2"
                             Grid.Column="1"
@@ -229,7 +222,7 @@
 
                             </StackLayout>
                         </Grid>
-                    </Border>
+                </Border>
 
                 <Grid
                     Margin="0"
@@ -261,7 +254,6 @@
                             x:Name="LableAmount"
                             HorizontalOptions="EndAndExpand"
                             Style="{StaticResource SectionTitleBlackBold}"
-                            Text=""
                             VerticalOptions="CenterAndExpand" />
 
                     </StackLayout>
@@ -300,13 +292,111 @@
                             x:Name="RemainingAmount"
                             HorizontalOptions="EndAndExpand"
                             Style="{StaticResource SectionTitleBlackBold}"
-                            Text=""
                             VerticalOptions="CenterAndExpand" />
 
                     </StackLayout>
 
                 </Grid>
+                
+                <Border Margin="0,10,0,10"
+                        x:Name="ReturnDetails" 
+                        IsVisible="{Binding isReturnsVisible}"
+                        Stroke="{StaticResource Secondary}" 
+                        Style="{StaticResource GreyBorderFrameWithShadow}">
 
+                    <Grid ColumnDefinitions="80*,20*">
+
+                        <Label Grid.Column="0" 
+                            Text ="{x:Static ResourceManager:AppResources.retDetails}" 
+                            Style="{StaticResource GAZTSmallBlackLabel}"
+                             FontSize="15" HorizontalOptions="FillAndExpand" 
+                             VerticalOptions="CenterAndExpand"/>
+
+                        <Image Grid.Column="1" 
+                                Source="arrowRight">
+
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="ReturnDetails">
+                                </TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </Grid>
+                                 
+                </Border>
+
+                <Border Margin="0,10,0,10"
+                        x:Name="ObjectionDetails" 
+                        IsVisible="{Binding isObjectionDetailsVisible}"
+                        Stroke="{StaticResource Secondary}" 
+                        Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                        <Grid ColumnDefinitions="80*,20*">
+
+                             <Label Grid.Column="0"
+                                    Text ="{x:Static ResourceManager:AppResources.ObjDetails}" 
+                                    Style="{StaticResource GAZTSmallBlackLabel}" 
+                                    FontSize="15" HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="CenterAndExpand"/>
+
+                            <Image Grid.Column="1" Source="arrowRight">
+
+                                <Image.GestureRecognizers>
+                                        <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="ObjDetails"/>
+                                    </Image.GestureRecognizers>
+                            </Image>
+
+                        </Grid>
+                </Border>
+
+                <Border Margin="0,10,0,10"
+                        x:Name="ISTPlanDetails" 
+                        IsVisible="{Binding isBIllDetialsVisble}"
+                        Stroke="{StaticResource Secondary}" 
+                        Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                        <Grid ColumnDefinitions="80*,20*">
+
+                             <Label Grid.Column="0"
+                                    Text ="{x:Static ResourceManager:AppResources.InstalmentDetails}" 
+                                    Style="{StaticResource GAZTSmallBlackLabel}" 
+                                    FontSize="15" HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="CenterAndExpand"/>
+
+                            <Image Grid.Column="1" Source="arrowRight">
+
+                                <Image.GestureRecognizers>
+                                        <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="InstDetails"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                        </Grid>
+                </Border>
+
+                <Border Margin="0,10,0,10"
+                        x:Name="InstPlanOBDetials" 
+                        IsVisible="{Binding isInstalmentDetailsVisible}"
+                        Stroke="{StaticResource Secondary}" 
+                        Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                        <Grid ColumnDefinitions="80*,20*">
+
+                             <Label Grid.Column="0"
+                                    Text ="{x:Static ResourceManager:AppResources.InstalmentObjDetails}" 
+                                    Style="{StaticResource GAZTSmallBlackLabel}" 
+                                    FontSize="15" HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="CenterAndExpand"/>
+
+                            <Image Grid.Column="1" Source="arrowRight">
+
+                                <Image.GestureRecognizers>
+                                        <TapGestureRecognizer  Command="{Binding TapCommand}" CommandParameter="InstObjeORdetails"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+
+                        </Grid>
+                </Border>
+                
             </StackLayout>
 
             <!--  Loader  -->

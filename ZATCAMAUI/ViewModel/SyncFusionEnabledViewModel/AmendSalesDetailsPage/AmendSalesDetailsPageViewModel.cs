@@ -52,7 +52,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 OnPropertyChanged("ZakatReturnAttachmentsList");
             }
         }
-        
+
         private bool _isSaveButtonEnable = false;
         public bool IsSaveButtonEnable
         {
@@ -195,7 +195,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
         #region Constructor
         public AmendSalesDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            GoBackClick = new Command( () =>
+            GoBackClick = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -244,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                                             {
                                                 if (ZakatReturnAttachmentsList.Count < 5)
                                                 {
-                                                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L", ContentType);
+                                                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(stream, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L", ContentType);
                                                     PopToRootPage();
                                                     if (_attachment != null && _attachment.d != null)
                                                     {
@@ -354,7 +354,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                             IsLoading = false;
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             });
                         }
                     });
@@ -482,7 +482,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             });

@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using Syncfusion.Maui.Core.Chips;
 using Syncfusion.Maui.ListView;
 using System.Collections.ObjectModel;
@@ -24,7 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         public EstablishmentAmendUpdatePageView()
         {
             InitializeComponent();
-            ChangeAeroIcon();
             viewModel = App.Locator.EstablishmentAmendUpdatePage;
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
@@ -63,9 +60,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             SetPickerFont();
             viewModel?.OnAppearing();
             MessagingCenter.Subscribe<EstablishmentAmendUpdatePageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
@@ -179,21 +173,11 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
         void dOBDateClicked(object sender, EventArgs e)
         {
-            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "Gregorian")
             {
                 dobPicker.IsOpen = true;
             }
@@ -205,7 +189,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
         void PassportIssueDateClicked(object sender, EventArgs e)
         {
-            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "Gregorian")
             {
                 passportIssuePicker.IsOpen = true;
             }
@@ -217,7 +201,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
         void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "Gregorian")
             {
                 passportExpiryPicker.IsOpen = true;
             }
@@ -388,7 +372,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
             try
             {
-                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -416,7 +400,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             ObservableCollection<object> selectedItem = null;
             try
             {
-                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -442,7 +426,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             ObservableCollection<object> selectedItem = null;
             try
             {
-                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";

@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages.ChangeMobileRequestPageView"
+             Title="ChangeMobileRequestPageView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+            xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+
+         <ScrollView>
+                <StackLayout>
+
+                    <Grid>
+
+                        <Grid Grid.Row="0" VerticalOptions="StartAndExpand" Margin="0,8,0,0" IsVisible="{Binding ShowMainForm}">
+                    <Grid Margin="8,0,8,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" /> 
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="0" VerticalOptions="StartAndExpand">
+
+                        <Label Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}" Margin="8"   Style="{StaticResource PageTitleBlack}" />
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}"  HeightRequest="1"/>
+                        <Border Stroke="#B1B1B1" StrokeThickness="1" Margin="0,0,0,10"
+                             Style="{StaticResource GreyBorderFrame}">
+                            <Grid Margin="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                    
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeMobHeader}" 
+                                                        Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
+                                                        Style="{StaticResource ValueLabelBlack}" />
+                                                                                                                                                                                                                                                                                                                                                                               
+
+                            </Grid>
+                        </Border>                                                    
+                        <Label Text="{x:Static ResourceManager:AppResources.DoYouHaveAccountInNafath}" Margin="8,0,0,0"   Style="{StaticResource CardLabelBlack}" />
+                        <cards:SfCardView TranslationX="5" Padding="10" Margin="8,0,18,8" >
+                                 <Label FontSize="14" TextColor="Blue" Text="{x:Static ResourceManager:AppResources.NafathLinkText}" 
+                                                            Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
+                                                             >
+                                     <Label.GestureRecognizers>
+                                         <TapGestureRecognizer Command="{Binding NafathClicked}" NumberOfTapsRequired="1" />
+                                     </Label.GestureRecognizers>
+
+                                 </Label>
+                            </cards:SfCardView>
+
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Margin="10,0,10,0" Grid.Row="1" VerticalOptions="StartAndExpand">
+                        <Border Stroke="#B1B1B1" StrokeThickness="1" Margin="0,0,0,10"
+                            Style="{StaticResource GreyBorderFrame}">
+                            <StackLayout Orientation="Vertical">
+
+                                <Label Text="{x:Static ResourceManager:AppResources.ManualRequestTitle}" Margin="8,15,0,0"   Style="{StaticResource CardLabelBlack}" />
+                  
+                                <StackLayout  Orientation="Vertical" Margin="8,0,8,0">
+                                    <Label 
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                        FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ManagerName}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <custom:GAZTBorderlessEntry
+                                        HorizontalOptions="FillAndExpand"
+                                        MaxLength="40"
+                                        Text="{Binding ManagerName}" TextColor="{StaticResource NeutralBlack}"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        />
+                                </Border>
+
+                                </StackLayout>
+                                <StackLayout Margin="8,0,8,0">
+                                <Label 
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource CaptionLabelGrey}" FontFamily="{StaticResource SomarLight}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZZIDType}"/>
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding SelectedIDType}"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        Style="{StaticResource BodyLabelBlack}"  />
+
+                                        <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" >
+                                            <Image.Source>
+                                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource Secondary}" Size="32"
+                                                                Glyph="{x:Static FontImage:IconFonts.ChevronDown}" />
+                                            </Image.Source>
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowIdTypePicker}" NumberOfTapsRequired="1"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+
+                                
+                                </Border>
+                                </StackLayout>
+                                <StackLayout Margin="8,0,8,0">
+
+                                    <Label 
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                        FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ManagerID}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <custom:GAZTBorderlessEntry
+                                        MaxLength="15"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding ManagerId}" TextColor="{StaticResource NeutralBlack}"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        />
+                                </Border>
+                                </StackLayout>
+                                <StackLayout Margin="8,0,8,0" Orientation="Vertical">
+                                    <Label 
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                        FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.TIN}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                <Border Padding="10" Style="{StaticResource GreyBorderFrame}">
+                                    <custom:GAZTBorderlessEntry
+                                        Keyboard="Numeric"
+                                        MaxLength="10"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding TinNumber}" TextColor="{StaticResource NeutralBlack}"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        />
+                                </Border>
+
+                                </StackLayout>
+                                <buttons:SfButton  Margin="8,0,8,8" 
+                                              
+                                              Text="{x:Static ResourceManager:AppResources.VRContinue}"
+                                              Style="{StaticResource PrimaryButtonStyle}"
+                                              Command="{Binding ContinueBtnTapped}" />
+
+
+                            </StackLayout>
+                       
+                        </Border>
+                    </StackLayout>
+
+                    </Grid>
+                    </Grid >
+
+                    <Grid Grid.Row="0" VerticalOptions ="FillAndExpand" Margin="0,8,0,0" IsVisible="{Binding ShowOtpForm}" >
+                    <Grid Margin="8,0,8,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" /> 
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                    <StackLayout Orientation="Vertical" Grid.Row="0" VerticalOptions="StartAndExpand">
+
+                        <Label Text="{x:Static ResourceManager:AppResources.ChangeMobileNumber}" Margin="8"   Style="{StaticResource PageTitleBlack}" />
+
+                        <Border Stroke="#B1B1B1" StrokeThickness="1" Margin="0,0,0,10"
+                             Style="{StaticResource GreyBorderFrame}">
+                            <Grid Margin="8">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                    
+                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start"
+                                           VerticalOptions="Center" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ChangeMobHeader}" 
+                                                        Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
+                                                        Style="{StaticResource ValueLabelBlack}" />
+                                                                                                                                                                                                                                                                                                                                                                               
+
+                            </Grid>
+                        </Border> 
+
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}"  HeightRequest="1"/>
+                        <Border Stroke="#B1B1B1" StrokeThickness="1" Margin="0,0,0,10"
+                             Style="{StaticResource GreyBorderFrame}">
+                            <Grid Margin="8" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <Label Grid.Row="0" Grid.Column="0"
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                        FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ManagerID}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding ManagerId}" Margin="8,0,0,0"   Style="{StaticResource CardLabelBlack}" />
+                                <Label Grid.Row="1" Grid.Column="0" 
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                        FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ManagerName}"  />
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding ManagerName}" Margin="8,0,0,0"   Style="{StaticResource CardLabelBlack}" />
+
+                                <Label Grid.Row="2" Grid.Column="0"
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    VerticalOptions="Center"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                    FontSize="14">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.TIN}"  />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding TinNumber}" Margin="8,0,0,0"   Style="{StaticResource CardLabelBlack}" IsVisible="{Binding IsTINManual,Converter={StaticResource BoolConverter}}" />
+
+                                <Border Grid.Row="2" Grid.Column="1" Padding="8" Style="{StaticResource GreyBorderFrame}" IsVisible="{Binding IsTINManual}">
+                                    <custom:GAZTBorderlessEntry
+                                        Placeholder="{x:Static ResourceManager:AppResources.EnterTin}"
+                                        HorizontalOptions="StartAndExpand"
+                                        WidthRequest="200"
+                                        MaxLength="10"
+                                        Text="{Binding TinNumber}" TextColor="{StaticResource NeutralBlack}"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        />
+                                </Border>
+                                
+                              
+                                <Label Grid.Row="4" Grid.Column="0"
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                        FontSize="14">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FieldText}"  />
+                                                <Span  Text="" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding FieldValue}" Margin="8,0,0,0"   Style="{StaticResource CardLabelBlack}" />
+                            </Grid>
+
+                            
+                        </Border>
+                        <buttons:SfButton Margin="8"
+                                              IsVisible="{Binding ShowContinue2}"
+                                              Text="{x:Static ResourceManager:AppResources.VRContinue}"
+                                              Style="{StaticResource PrimaryButtonStyle}"
+                                              Command="{Binding ContinueBtnTapped2}"
+                                          />
+                                                    
+                        
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Margin="10,0,10,0" Grid.Row="1" VerticalOptions="StartAndExpand" IsVisible="{Binding OtpSection1}" >
+
+                        <StackLayout Orientation="Vertical" >
+                            <Label Text="{x:Static ResourceManager:AppResources.ToThisMobNumber}" Margin="8,0,0,0"   Style="{StaticResource CardLabelBlack}" />
+
+                            <StackLayout Orientation="Vertical" >
+
+                                <Label   Style="{StaticResource CaptionLabelGrey}"  >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewMobileNumber}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Border Padding="4" Style="{StaticResource GreyBorderFrame}">
+                                         <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Spacing="0">
+                                        <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
+                                            <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CountryCodeTapped"/>
+                                        </Image.GestureRecognizers>   
+                                                                       
+                                        </Image>
+                                        <custom:CustomButton HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource PrimaryColor}" 
+                                            Text="{Binding TxtCountryCode}" x:Name="IntnlCodes"
+                                            Clicked="CountryCodeTapped"
+                                            BackgroundColor="Transparent"/>
+                                            <custom:GAZTBorderlessEntry x:Name="EntryMobileNumber" Margin="5,0,0,0"
+                                            MaxLength="{Binding MaxDigids}"
+                                            Text="{Binding TxtMobileNumber}"
+                                            HorizontalOptions="FillAndExpand"
+                                            TextChanged="PhoneNumberTextChanged"
+                                            Keyboard="Telephone" TextColor="{StaticResource PrimaryColor}"
+                                            Style="{StaticResource DefaultEntry}"/>
+                                    
+
+
+
+                                        </StackLayout>
+                             
+
+                                     </Border>
+                                  
+                                 <buttons:SfButton  Margin="0" IsEnabled="{Binding DissableSendOtp}"
+                                                    HorizontalOptions="CenterAndExpand"
+                                              
+                                              Text="{x:Static ResourceManager:AppResources.SendOTP}"
+                                              Style="{StaticResource PrimaryButtonStyle}"
+                                              Command="{Binding SendOTPBtnCliked}"
+                                                    />
+
+                            <StackLayout x:Name="OTP" Orientation="Vertical" Grid.Row="2">
+
+<!-- otp-->
+                        <StackLayout Padding="0,15,0,0" IsVisible="{Binding ShowOTPSection}">
+
+                            <StackLayout Padding="0,0,0,0" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Row="0"
+                                            ColumnSpacing="20"
+                                            Padding="30,20,30,20"
+                                            FlowDirection="LeftToRight">
+
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <!--First OTP Digit Start-->
+                                        <Border StrokeShape="RoundRectangle 10"
+                                                Stroke="Gray"
+                                                HeightRequest="50"
+                                                WidthRequest="50"
+                                                Grid.Column="0"
+                                                VerticalOptions="Start">
+
+                                            <custom:GAZTBorderlessEntry
+                                                    x:Name="OTPFirstEntry"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Small"
+                                                    WidthRequest="100"
+                                                    HorizontalTextAlignment="Center"
+                                                    Text="{Binding OTPFirstDigit}"
+                                                    TextChanged="OtpFirstEntry_TextChanged"
+                                                    ReturnType="Next"
+                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    IsPassword="True"
+                                                    MaxLength="1"
+                                                    TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behavior:OnlyNumericValuesBehaviour/>
+                                                    <behavior:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
+                
+                                        </Border>
+                                        <!--First OTP Digit End-->
+
+                                        <!--Second OTP Digit Start-->
+                                        <Border StrokeShape="RoundRectangle 10"
+                                                Stroke="Gray"
+                                                HeightRequest="50"
+                                                WidthRequest="50"
+                                                Grid.Column="1"
+                                                VerticalOptions="Start">
+
+                                            <custom:GAZTBorderlessEntry
+                                                    x:Name="OTPSecondEntry"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Small"
+                                                    WidthRequest="100"
+                                                    HorizontalTextAlignment="Center"
+                                                    IsEnabled="{Binding IsOTPEntryEnable}"
+                                                    Text="{Binding OTPSecondDigit}"
+                                                    TextChanged="OtpSecondEntry_TextChanged"
+                                                    ReturnType="Next"
+                                                    IsPassword="True"
+                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    MaxLength="1"
+                                                    TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behavior:OnlyNumericValuesBehaviour/>
+                                                    <behavior:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
+                
+                                        </Border>
+                                        <!--Second OTP Digit End-->
+
+                                        <!--Third OTP Digit Start-->
+                                        <Border StrokeShape="RoundRectangle 10"
+                                                Stroke="Gray"
+                                                HeightRequest="50"
+                                                WidthRequest="50"
+                                                Grid.Column="2"
+                                                VerticalOptions="Start">
+
+                                              <custom:GAZTBorderlessEntry
+                                                    x:Name="OTPThirdEntry"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Small"
+                                                    WidthRequest="100"
+                                                    HorizontalTextAlignment="Center"
+                                                    IsEnabled="{Binding IsOTPEntryEnable}"
+                                                    Text="{Binding OTPThirdDigit}"
+                                                    TextChanged="OtpThirdEntry_TextChanged"
+                                                    ReturnType="Next"
+                                                    IsPassword="True"
+                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    MaxLength="1"
+                                                    TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
+                                                <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behavior:OnlyNumericValuesBehaviour/>
+                                                    <behavior:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
+                
+                                        </Border>
+                                        <!--Third OTP Digit End-->
+
+                                        <!--Fourth OTP Digit Start-->
+                                        <Border StrokeShape="RoundRectangle 10"
+                                                Stroke="Gray"
+                                                HeightRequest="50"
+                                                WidthRequest="50"
+                                                Grid.Column="3"
+                                                VerticalOptions="Start">
+
+                                               <custom:GAZTBorderlessEntry
+                                                    x:Name="OTPFourthEntry"
+                                                    FontAttributes="Bold"
+                                                    FontSize="Small"
+                                                    WidthRequest="100"
+                                                    HorizontalTextAlignment="Center"
+                                                    IsEnabled="{Binding IsOTPEntryEnable}"
+                                                    Text="{Binding OTPFourthDigit}"
+                                                    TextChanged="OtpFourthEntry_TextChanged"
+                                                    ReturnType="Next"
+                                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
+                                                    MaxLength="1"
+                                                    IsPassword="True"
+                                                    TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
+                                                    Unfocused="OtpFourthEntry_Unfocused">
+
+                                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                                    <behavior:OnlyNumericValuesBehaviour/>
+                                                </custom:GAZTBorderlessEntry.Behaviors>
+                                            </custom:GAZTBorderlessEntry>
+                
+                                        </Border>
+                                        <!--Fourth OTP Digit End-->
+                                    </Grid>
+
+
+                                </Grid>
+                            </StackLayout>
+
+                            <StackLayout Orientation="Horizontal"
+                                            HorizontalOptions="Center">
+                                <Image Source="clock">
+                                </Image>
+                                <Label  Text="{Binding LblCountDownTimer}"
+                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                        VerticalOptions="Center" />
+                            </StackLayout>
+                            <buttons:SfButton  Command="{Binding OnResendOTPClicked}"
+                                            IsEnabled="{Binding IsResendOTPEnabled}"
+                                            Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                            VerticalOptions="EndAndExpand"
+                                            Margin="0,8,0,0"
+                                            Background="Transparent"
+                                            TextColor="{Binding ResendOTPTextColor}"/>
+                            <buttons:SfButton  Margin="0"
+                                HorizontalOptions="CenterAndExpand"
+                                
+                                Text="{x:Static ResourceManager:AppResources.VerifyOtp}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Command="{Binding VerifyOTPBtnCliked}"
+                            />
+                        </StackLayout>
+<!-- End otp-->
+
+                            <StackLayout IsVisible="{Binding ShowAttachmentSection}">
+                                 <Label Text="{x:Static ResourceManager:AppResources.OTPVerifiedSuccessFully}" 
+                                                     Style="{StaticResource CaptionLabelGrey}"
+                                                     TextColor="green"
+                                                     FontSize="Medium"
+                                                     IsVisible="{Binding ShowOTPSuccessMessage}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                                     VerticalOptions="Center"/>
+                            
+                                <buttons:SfButton  Margin="0"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="{Binding ShowPrintFormButton}"
+                                Text="{x:Static ResourceManager:AppResources.PrintForm}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Command="{Binding PrintFormClicked}"
+                            />
+                                <Label Text="{x:Static ResourceManager:AppResources.YouMustPrintForm}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" IsVisible="{Binding ShowPrintFormButton}"/>
+                                
+
+                                <StackLayout x:Name="Attachments">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Padding="0,0" Margin="0,10,0,0">
+                                        <Label Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span   Text="{Binding AttachmentLable}"/>
+                                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Image Source="ic_vat_info.png" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding TappedOnAttachmentInformationIcon}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+
+                                    <Label Text="{x:Static ResourceManager:AppResources.AttachmentInstruction1}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                                    <Label Text="{x:Static ResourceManager:AppResources.AttachmentInstruction2}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" IsVisible="{Binding ShowPrintFormButton,Converter={StaticResource BoolConverter}}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.AttachmentInstructionPrintForm}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" IsVisible="{Binding ShowPrintFormButton}"/>
+                                
+
+                                    <StackLayout Padding="0">
+                                        <buttons:SfButton ShowIcon="True" ImageSource="ic_attachment" ImageAlignment="End"
+                                            Command="{Binding OnTransferCopyOfCRChoiceButtonClick}"
+                                            Style="{StaticResource ButtonBlackBold16}" FontSize="13"
+                                            Text="{x:Static ResourceManager:AppResources.TinDeregistrationAttachmentUploadYourDocument}"
+                                            Stroke="{StaticResource NeutralGreay}" StrokeThickness="1" CornerRadius="14"
+                                            TextColor="{StaticResource NeutralGreay}" HorizontalTextAlignment="Start" Padding="5"
+                                            Margin="0,5,0,0" IsEnabled="{Binding ActivityDetails.CRCopy}"/>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="Start" Orientation="Vertical" Spacing="5" Margin="0,5,0,0" BindableLayout.ItemsSource="{Binding AttachedForms}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Stroke="{StaticResource NeutralGreay}" StrokeThickness="1" Padding="10" StrokeShape="RoundRectangle 14">
+                                                    <Grid HorizontalOptions="Fill" VerticalOptions="Center" ColumnSpacing="0" RowSpacing="0">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image Grid.Column="0" Source="Generic_attachment_icon.png" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                        <Label Grid.Column="1" Text="{Binding Filename}" Margin="10,0,0,0" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Start" />
+                                                        <Image Grid.Column="2" Source="close.png"  HorizontalOptions="Center" VerticalOptions="Center">
+                                                            <Image.GestureRecognizers>
+                                                                <TapGestureRecognizer CommandParameter="Rentcommand" Tapped="TapRentDeleteGestureRecognizer_Tapped"/>
+                                                            </Image.GestureRecognizers>
+                                                        </Image>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                    <Grid ColumnDefinitions="1*,4*,4*,1*" >
+                                        <custom:CheckboxCustom x:Name="CBAcknowledment" Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand"  IsChecked="{Binding ESTLedge}" Style="{StaticResource CheckboxHeightWidth32}"/>
+                                        <Label Margin="5,0,0,0" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" 
+                                                            VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" 
+                                                            Style="{DynamicResource IsInstrunctionCheckedStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span     Text="{x:Static ResourceManager:AppResources.Ideclare}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                </StackLayout>
+
+                                <buttons:SfButton
+                                    IsEnabled="{Binding ESTLedge}"
+                                    Margin="0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.Submit}"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Command="{Binding SubmitBtnClicked}"
+                            />
+                            </StackLayout>
+                            <StackLayout IsVisible="{Binding ShowSubmitForAutomatic}" >
+                                <Label Text="{x:Static ResourceManager:AppResources.OTPVerifiedSuccessFully}"
+                                                     Style="{StaticResource CaptionLabelGrey}"
+                                                     TextColor="green"
+                                                     FontSize="Medium"
+                                                     IsVisible="{Binding ShowOTPSuccessMessage}"
+                                                     HorizontalOptions="CenterAndExpand"
+                                                     VerticalOptions="Center"/>
+                                <Grid ColumnDefinitions="1*,4*,4*,1*" IsVisible="{Binding ShowPrintFormButton}">
+                                        <custom:CheckboxCustom Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand"  IsChecked="{Binding ESTLedge}" Style="{StaticResource CheckboxHeightWidth32}"/>
+                                        <Label Margin="5,0,0,0" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3" VerticalOptions="CenterAndExpand" 
+                                                            VerticalTextAlignment="Start" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" 
+                                                            Style="{DynamicResource IsInstrunctionCheckedStyle}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span     Text="{x:Static ResourceManager:AppResources.Ideclare}"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </Grid>
+                                <!--Text="{x:Static ResourceManager:AppResources.Submit}"-->
+                                <buttons:SfButton
+                                    IsEnabled="{Binding ESTLedge}"
+                                    Margin="0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding ChangeButtonLabel}"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Command="{Binding SubmitBtnClicked}"
+                            />
+                            </StackLayout>
+                </StackLayout>   
+
+                                
+
+                            
+
+                            
+
+                                    
+
+                            </StackLayout>
+                        </StackLayout>
+
+                    </StackLayout>
+
+                        
+                </Grid>
+
+                
+               
+
+                    </Grid>
+                    <custom:Loader IsVisible="{Binding IsLoading}"/>
+                    
+
+                    </Grid>
+
+                    
+                    
+                    <buttons:SfButton VerticalOptions="End"
+                                              IsVisible="{Binding ShowOtpForm}"
+                                              Margin="30,0,30,0"
+                                              Text="{x:Static ResourceManager:AppResources.ZZZCancelText}"
+                                              Style="{StaticResource PrimaryButtonStyle}"
+                                              Command="{Binding CancelBtnTapped}"
+                        />
+                </StackLayout>
+
+
+
+         </ScrollView>
+       
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ZATCAMAUI.Views.NewDesign.SupportPages.RelationShipManagerInfoPageView"
+             Title="RelationShipManagerInfoPageView"
+             xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+            xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+            xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+            xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+            x:Name="page"
+            ios:Page.UseSafeArea="true"
+            BackgroundImageSource="partials_background.png"
+            FlowDirection="{Binding AppDirection}"
+            NavigationPage.HasNavigationBar="False">
+   
+    <ContentPage.Content>
+               <Grid RowDefinitions="auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <Label
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                     Text="{x:Static ResourceManager:AppResources.RMTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+            
+            <Border Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,30" >
+                <ScrollView>
+                    <StackLayout >
+
+                        <Label  Text="{x:Static ResourceManager:AppResources.RMNameInfo}" FontSize="18"  TextColor="{StaticResource Secondary}"  Grid.ColumnSpan="2"
+                                    Margin="0,0,0,20"/>
+
+                        <!--Rm Details-->
+                <Grid RowSpacing="16"
+                RowDefinitions="auto,auto,auto,auto">
+
+                    <!-- View Starts-->
+                            <Label  Text="{x:Static ResourceManager:AppResources.RMName}" FontSize="16" TextColor="{StaticResource Primary}"  Grid.ColumnSpan="2"
+                                    Margin="0,0,0,20"/>
+
+                            <Label Text="{x:Static ResourceManager:AppResources.RM_Name}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="0"/>
+                            <Label Text="{Binding getRMName}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{x:Static ResourceManager:AppResources.RM_phone}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="0"/>
+                            <Label Text="{Binding getRMMobile}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="1"/>
+                            <Label Text="{x:Static ResourceManager:AppResources.RM_Email}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="0"/>
+                            <Label Text="{Binding getRMEmail}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="1"/>
+                    
+
+                </Grid>
+
+                        <buttons:SfButton x:Name="MainButtonName"  Text="{x:Static ResourceManager:AppResources.RM_SubmitComplaint}" 
+                         Clicked="submitComplaintToRelationShipManager" IsEnabled="{Binding IsContinueButtonEnable}"
+                                          CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource PrimaryButtonStyle}"
+                                          Background="{StaticResource Secondary}" >
+                            <buttons:SfButton.Margin>
+                                <OnPlatform x:TypeArguments="Thickness" >
+                                    <On Platform="iOS" Value="0,12,0,0"/>
+                                    <On Platform="Android" Value="0,12,0,0"/>
+                                </OnPlatform>
+                            </buttons:SfButton.Margin>
+                        </buttons:SfButton>
+
+                        <!--supervisor Details-->
+                        <Grid RowSpacing="16" Margin="0,30,0,0"
+                        RowDefinitions="auto,auto,auto,auto">
+
+                        <!-- View Starts-->
+                            <Label Text="{x:Static ResourceManager:AppResources.RMSupName}"
+                                   Margin="0,0,0,20"
+                                   FontSize="16" 
+                                   TextColor="{StaticResource Primary}" 
+                                   Grid.ColumnSpan="2"/>
+                            <Label Text="{x:Static ResourceManager:AppResources.RM_Name}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="0"/>
+                            <Label Text="{Binding getSupName}" TextColor="{StaticResource Primary}" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{x:Static ResourceManager:AppResources.RM_phone}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="0"/>
+                            <Label Text="{Binding getSupMobile}" TextColor="{StaticResource Primary}" Grid.Row="2" Grid.Column="1"/>
+                            <Label Text="{x:Static ResourceManager:AppResources.RM_Email}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="0"/>
+                            <Label Text="{Binding getSupEmail}" TextColor="{StaticResource Primary}" Grid.Row="3" Grid.Column="1"/>
+
+
+                    </Grid>
+
+
+                        <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.RM_ShareOpenion}"  IsEnabled="{Binding IsContinueButtonEnable}"
+                                          CornerRadius="14"  Grid.ColumnSpan="2" Style="{StaticResource RMDetailsPrimaryButtonStyle}"
+                                          Command="{Binding ShareOpenionClicked}" 
+                                          Background="{StaticResource Secondary}" >
+                            <buttons:SfButton.Margin>
+                                <OnPlatform x:TypeArguments="Thickness" >
+                                    <On Platform="iOS" Value="0,12,0,0"/>
+                                    <On Platform="Android" Value="0,12,0,0"/>
+                                </OnPlatform>
+                            </buttons:SfButton.Margin>
+                        </buttons:SfButton>
+                    </StackLayout>
+                </ScrollView>
+                
+
+            </Border>
+            <custom:Loader Grid.RowSpan="2"
+                            IsVisible="{Binding IsLoading}"/>
+            
+
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

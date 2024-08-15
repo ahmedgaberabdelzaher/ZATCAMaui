@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using Syncfusion.Maui.ListView;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -21,7 +19,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         {
             EstablishmentRegistrationPageViewModel.taxPayerDetails = null;
             InitializeComponent();
-            ChangeAeroIcon();
             viewModel = App.Locator.EstablishmentRegistrationPage;
             BindingContext = viewModel;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
@@ -38,9 +35,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             if (viewModel.currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
             {
                 viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
@@ -53,21 +47,10 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         {
             base.OnDisappearing();
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
 
         void dOBDateClicked(object sender, EventArgs e)
         {
-            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "Gregorian")
             {
                 dobPicker.IsOpen = true;
             }
@@ -79,7 +62,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
 
         void PassportIssueDateClicked(object sender, EventArgs e)
         {
-            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "Gregorian")
             {
                 passportIssuePicker.IsOpen = true;
             }
@@ -91,7 +74,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
 
         void PassportExpiryDateClicked(object sender, EventArgs e)
         {
-            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
+            if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "Gregorian")
             {
                 passportExpiryPicker.IsOpen = true;
             }
@@ -101,22 +84,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             }
         }
 
-        void SfChipGroup_SelectionChanged(object sender, Syncfusion.Maui.Core.Chips.SelectionChangedEventArgs e)
-        {
-            //try
-            //{
-            //    var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
-            //    //TODO
-            //    var view = (Element)TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index);
-            //    TabScrollView.ScrollToAsync(view, ScrollToPosition.MakeVisible, true);
-            //}
-            //catch (Exception)
-            //{
 
-
-
-            //}
-        }
 
         void FinacialPeriodSelectionChanged(System.Object sender, ItemSelectionChangedEventArgs e)
         {
@@ -251,7 +219,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             ObservableCollection<object> selectedItem = null;
             try
             {
-                if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
+                if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -277,7 +245,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             ObservableCollection<object> selectedItem = null;
             try
             {
-                if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
+                if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -303,7 +271,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             ObservableCollection<object> selectedItem = null;
             try
             {
-                if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
+                if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";

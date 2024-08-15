@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage;
@@ -27,9 +25,6 @@ namespace ZATCAMAUI.Views.NewDesign.FormBundleStatusPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
 
             if (Device.RuntimePlatform == Device.Android)
             {

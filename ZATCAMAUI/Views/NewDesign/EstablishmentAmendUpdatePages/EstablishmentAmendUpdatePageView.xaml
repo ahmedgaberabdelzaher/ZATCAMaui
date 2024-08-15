@@ -25,16 +25,9 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+            
             <converters:EstablishmentTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
-            <converters:EstablishmentFinanicalMethodsToVisibilityConverter x:Key="methodToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
-            <converters:ESTOutletDeleteActionVisibilityConverter x:Key="deleteActionVisibilityConverter" />
             <converters:ESTresidentialStatusConverter x:Key="residentialStatusConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -1215,19 +1208,48 @@
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
                                             <FormattedString>
+                                                <Span FontFamily="{StaticResource SomarRegular}" Text="{x:Static ResourceManager:AppResources.ZZZZTitle}" />
+                                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <inputLayout:SfTextInputLayout
+                                        ContainerType="Outlined"
+                                        HorizontalOptions="FillAndExpand"
+                                        InputViewPadding="16,0,16,0"
+                                        LeadingViewPosition="Inside">
+                                        <custom:GAZTBorderlessEntry
+                                            Margin="10"
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            FontSize="15"
+                                            HeightRequest="48"
+                                            HorizontalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Start"
+                                            IsReadOnly="{Binding TaxPayerDetailsAvailability.Title}"
+                                            IsSpellCheckEnabled="false"
+                                            PlaceholderColor="{StaticResource NeutralGreay}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding Title}"
+                                            TextColor="{StaticResource NeutralBlack}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                                    <Label Style="{StaticResource forLightLabel}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
                                                 <Span FontFamily="{StaticResource SomarRegular}" Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
                                                 <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
                                     <inputLayout:SfTextInputLayout
-                                        Margin="0,-6,0,-6"
                                         ContainerType="Outlined"
                                         HorizontalOptions="FillAndExpand"
                                         InputViewPadding="16,0,16,0"
-                                        IsHintAlwaysFloated="True"
-                                        LeadingViewPosition="Inside"
-                                        Style="{StaticResource TextInputLayout}">
+                                        LeadingViewPosition="Inside">
                                         <custom:GAZTBorderlessEntry
                                             Margin="10"
                                             FontFamily="{StaticResource SomarRegular}"
@@ -1245,6 +1267,7 @@
                                             VerticalTextAlignment="Center" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
+
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
@@ -1276,6 +1299,7 @@
                                             VerticalTextAlignment="Center" />
                                     </inputLayout:SfTextInputLayout>
                                 </StackLayout>
+
                                 <StackLayout HorizontalOptions="FillAndExpand" Orientation="Vertical">
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
@@ -2717,7 +2741,6 @@
                             Margin="0"
                             AutoFitMode="Height"
                             HorizontalOptions="Fill"
-                            IsEnabled="{Binding FinancialDetails.CalendarType}"
                             IsScrollingEnabled="False"
                             ItemSpacing="5"
                             ItemsSource="{Binding CalendarTypeList}"
@@ -2781,6 +2804,12 @@
                                 </DataTemplate>
                             </listView:SfListView.SelectedItemTemplate>
                         </listView:SfListView>
+                          <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="11"
+                            IsVisible="{Binding IsFinancePeriodVisible}"
+                            Text="{Binding ZYear}"
+                            TextColor="{StaticResource GoldLabelTextColor}" />
                         <Label
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="18"

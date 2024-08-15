@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Mopups.Services;
+﻿using Mopups.Services;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
@@ -36,7 +34,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
                 if (viewModel.MyBillsOriginal != null)
                 {
-                    viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "P"));
+                    viewModel.MyBills = new ObservableCollection<MyBills>(viewModel.MyBillsOriginal.Where(x => x.Status != "Paid"));
 
                 }
                 if (billInfo != null && billInfo.BillTypeName != null)
@@ -76,7 +74,6 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
 
             }
-            ChangeAeroIcon();
 
 
             NavigationPage.SetBackButtonTitle(this, "");
@@ -97,15 +94,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
 
             try
             {
-
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Bottom = -10;
-                Padding = safeInsets;
-
                 viewModel.isPayNowTapped = false;
-
-
-
 
                 MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
@@ -179,17 +168,7 @@ namespace ZATCAMAUI.Views.NewDesign.MyBillsPages
             }
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
+
 
         private void btn_Clicked(object sender, EventArgs e)
         {

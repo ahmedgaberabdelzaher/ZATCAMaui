@@ -1,7 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Mopups.Services;
+using Syncfusion.Maui.Picker;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Resources;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Models;
@@ -116,10 +118,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             if (!App.IsArabic)
             {
                 AppDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
             }
             else
             {
                 AppDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
             }
 
         }

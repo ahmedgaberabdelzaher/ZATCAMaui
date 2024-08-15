@@ -88,7 +88,7 @@
 
                     <SearchBar x:Name="searchBar"
                                 Grid.Column="0"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 BackgroundColor="White"
                                 custom:RoundCornersEffect.CornerRadius="12"
                                 HorizontalOptions="FillAndExpand"

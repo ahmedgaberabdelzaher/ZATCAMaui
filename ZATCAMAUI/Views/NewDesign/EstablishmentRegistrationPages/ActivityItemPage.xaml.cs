@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
 using Syncfusion.Maui.Buttons;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -15,6 +14,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         private ActivityItemPageViewModel viewModel;
         public ActivityItemPage(ActivityNavigationModels activityNavigation)
         {
+
             InitializeComponent();
             _activityNavigation = activityNavigation;
             viewModel = App.Locator.ActivityItemPage;
@@ -23,29 +23,9 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             viewModel.validateCR = _activityNavigation.validateCR;
             viewModel.validateLicense = _activityNavigation.validateLicense;
             viewModel.goBackAction = _activityNavigation.goBackAction;
-            viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.results.Where(i => i.Actno == $"{short.Parse(_activityNavigation.nextNumber?.Actno):00000}").ToList();
+            viewModel.NregActivityList = _activityNavigation.taxPayerDetails?.Nreg_ActivitySet?.Where(i => i.Actno == $"{Int16.Parse(_activityNavigation.nextNumber?.Actno):00000}").ToList();
             viewModel.CurrentTab = _activityNavigation.openedTab;
             BindingContext = viewModel;
-            ChangeAeroIcon();
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
-
         }
         protected override void OnDisappearing()
         {
@@ -79,7 +59,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (viewModel?.EnableInputFields == true)
             {
-                if (viewModel?.taxPayerDetails?.Caltp == "G")
+                if (viewModel?.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     validFromPicker.IsOpen = true;
                 }
@@ -94,7 +74,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
         {
             if (viewModel?.EnableInputFields == true)
             {
-                if (viewModel?.taxPayerDetails?.Caltp == "G")
+                if (viewModel?.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     crValidFromPicker.IsOpen = true;
                 }
@@ -110,7 +90,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             ObservableCollection<object> selectedItem = null;
             try
             {
-                if (viewModel?.taxPayerDetails?.Caltp == "G")
+                if (viewModel?.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = crValidFromPicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplayCRValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
@@ -133,7 +113,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             ObservableCollection<object> selectedItem = null;
             try
             {
-                if (viewModel?.taxPayerDetails?.Caltp == "G")
+                if (viewModel?.taxPayerDetails?.Caltp == "Gregorian")
                 {
                     selectedItem = validFromPicker.SelectedItem as ObservableCollection<object>;
                     viewModel.DisplayValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";

@@ -25,7 +25,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #region Variable
 
-        
+
         private int _currenrIndex = 1;
         public int CurrentIndex
         {
@@ -51,8 +51,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
         #region Properties
-        private DateTime? _vatRegDate;
-        public DateTime? VatRegDate
+        private string _iqamaTypeDesc = string.Empty;
+        public string IqamaTypeDesc
+        {
+            get
+            {
+                return _iqamaTypeDesc;
+            }
+            set
+            {
+                _iqamaTypeDesc = value;
+                OnPropertyChanged("IqamaTypeDesc");
+            }
+        }
+
+        private DateTime _vatRegDate;
+        public DateTime VatRegDate
         {
             get
             {
@@ -61,11 +75,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 if (_vatRegDate == value) return;
+
                 _vatRegDate = value;
                 OnPropertyChanged("VatRegDate");
             }
         }
-
+        private bool _showIqamaTypeDesc = false;
+        public bool ShowIqamaTypeDesc
+        {
+            get
+            {
+                return _showIqamaTypeDesc;
+            }
+            set
+            {
+                _showIqamaTypeDesc = value;
+                OnPropertyChanged("ShowIqamaTypeDesc");
+            }
+        }
 
         private Color _continueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
@@ -97,8 +124,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("answer1selectedcount");
             }
         }
-        private ATTDETSet _ATTDETSetObject;
-        public ATTDETSet ATTDETSetObject
+        private List<Attachment> _ATTDETSetObject;
+        public List<Attachment> ATTDETSetObject
         {
             get
             {
@@ -199,9 +226,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             set
             {
-                if (_iDNumberNonMandatoryVisibility == value) return;
+                if (_iDNumberMandatoryVisibility == value) return;
 
-                _iDNumberNonMandatoryVisibility = value;
+                _iDNumberMandatoryVisibility = value;
+                if (_iDNumberMandatoryVisibility)
+                {
+                    IDNumberVisibility = false;
+                }
+                else
+                {
+                    IDNumberVisibility = true;
+                }
 
                 OnPropertyChanged("IDNumberNonMandatoryVisibility");
             }
@@ -727,7 +762,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private bool _titleVisibility = false;
+        public bool TitleVisibility
+        {
+            get
+            {
+                return _titleVisibility;
+            }
+            set
+            {
+                if (_titleVisibility == value) return;
 
+                _titleVisibility = value;
+                OnPropertyChanged("TitleVisibility");
+
+            }
+        }
         private Double _minimumDisplayValueOfSlider1 = 0.0;
         public Double MinimumDisplayValueOfSlider1
         {
@@ -1850,10 +1900,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 OnPropertyChanged("TermsAlignment");
             }
         }
+        private bool _shouldLoad = true;
+        public bool ShouldLoad
+        {
+            get
+            {
+                return _shouldLoad;
+            }
+            set
+            {
+                if (_shouldLoad == value) return;
+
+                _shouldLoad = value;
+                OnPropertyChanged("ShouldLoad");
+            }
+        }
         public bool isLoadedAlready { get; private set; }
         #endregion
 
-        public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
+        public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 
             onMoreOptionClicked = new Command(async () =>
@@ -1864,7 +1929,62 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
 
         #region Method
+        public async Task getVatEligibleDate(string vatEligibleStartDate)
+        {
+            await Task.Run(async () =>
+            {
+                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate + "T00:00:00", "");
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (vATcommencementData != null && vATcommencementData.d != null && vATcommencementData.d.VatTaxDt != null)
+                {
+                    try
+                    {
+                        String DateTimeToBeParsed = DateTime.Parse(vATcommencementData.d.VatTaxDt).ToString("yyyy-MM-ddTHH:mm:ss");
+                        String dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture));
+                        DateTime ChangedDate = new DateTime(2018, 1, 1, 0, 0, 0);
 
+                        int Result = DateTime.Compare((DateTime)UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture), (DateTime)VatRegDate);
+                        Result = 1;
+                        if (Result < 0)
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                            VatEligibleStartDate = "";
+                        }
+                        else
+                        {
+                            DateTime convertedDate = UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+
+                            int CompareDate = DateTime.Compare((DateTime)convertedDate, ChangedDate);
+
+                            if (CompareDate < 0)
+                            {
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                                VatEligibleStartDate = dateSource;
+                            }
+                            else
+                            {
+                                if (vATcommencementData.d.ErrorFg == "X")
+                                {
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                                }
+                                VatEligibleStartDate = dateSource;
+                            }
+                        }
+                        IsLoading = false;
+                    }
+                    catch (Exception)
+                    {
+                        IsLoading = false;
+                    }
+                }
+                else
+                {
+
+                }
+                IsLoading = false;
+
+            });
+        }
         public void setDATA()
         {
             try
@@ -1880,11 +2000,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 var Bdt = DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString() + "T00:00:00";
                 if (!string.IsNullOrEmpty(VatEligibleStartDate))
                 {
-                    //var dateTime = new DateTime(year, month, day, 10, 2, 0, DateTimeKind.Local);
-                    //var dateTimeOffset = new DateTimeOffset(dateTime);
-                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
-                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
-                    // Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
                     string[] date1 = VatEligibleStartDate.Split('/');
                     Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
 
@@ -1896,22 +2011,15 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
                 if (SelectedIdTypeFR != null)
-                    VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Idnumber = IdnumberFR;
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Firstnm = FirstnmFR;
-                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
-                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
-                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
-
-                //Step 5
-                /* if (IsDeclarationChecked)
-                 {*/
+                    VATRegistrationDetailsData.d.CONTACT_PERSONSet[0].Type = SelectedIdTypeFR.ID;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet[0].Idnumber = IdnumberFR;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet[0].Firstnm = FirstnmFR;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet[0].Lastnm = LastnmFR;
+                VATRegistrationDetailsData.d.CONTACTDTSet[0].MobNumber = MobNumberFR;
+                VATRegistrationDetailsData.d.CONTACTDTSet[0].SmtpAddr = SmtpAddrFR;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet[0].Title = Title;
                 VATRegistrationDetailsData.d.Decfg = "1";
-                /*}
-                else
-                {
-                    VATRegistrationDetailsData.d.Decfg = "0";
-                }*/
+
                 if (SelectedIdTypeSR != null)
                 {
                     VATRegistrationDetailsData.d.DecidTy = SelectedIdTypeSR.ID;
@@ -1952,46 +2060,55 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-        public async Task<VATRegistrationDetails> SubmitClicked()
+        public async Task<vATRegistration> SubmitClicked()
         {
-            VATRegistrationDetails response = new VATRegistrationDetails();
+            vATRegistration response = new vATRegistration();
             try
             {
                 await Task.Run(() =>
                 {
                     IsLoading = true;
                 });
+
                 setDATA();
-                ATTDETSet ATTDETSetnew = new ATTDETSet();
+                List<Attachment> ATTDETSetnew = new List<Attachment>();
                 ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
+                VATRegistrationDetailsData.d.NresFg = string.Empty;
                 //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
-                response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
+                response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData.d);
                 PopToRootPage();
-                if (response != null && response.d != null)
+                if (response != null)
                 {
                     try
                     {
-                        if (response != null && response.d != null)
+                        if (response != null)
                         {
-                            if (response.d.Operationz.Equals("04"))
+                            if (response.Operationz.Equals("04"))
                             {
-                                string number = response.d.Fbnumz;
+                                string number = response.Fbnumz;
                                 string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                                 _navigationService.GoBack();
                             }
-                            if (response.d.Operationz.Equals("05"))
+                            if (response.Operationz.Equals("05"))
                             {
                                 //  string number = response.d.Fbnumz;
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
                             }
+                            if (response.Operationz.Equals("25"))
+                            {
+                                //  string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRegistrationSuccessMessage + " " + response.Fbnumz + " " + AppResources.VatApproved;
+                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                                //_navigationService.GoBack();
+                            }
 
-
-
-                            VATRegistrationDetailsData = response;
+                            VATRegistrationDetailsData = new VATRegistrationDetails();
+                            VATRegistrationDetailsData.d = response;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetnew;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetObject;
                             //Set data after api call 
@@ -2004,8 +2121,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     catch (Exception)
                     {
-
-
                         IsLoading = false;
                         return null;
 
@@ -2019,9 +2134,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    //_navigationService.GoBack();
+
 
                 });
                 return response;
@@ -2029,13 +2143,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             catch (Exception)
             {
-
-
                 return response;
             }
         }
 
-        public async Task setDataAfterSubmitAPIAsync(VATRegistrationDetails vATRegistration)
+        public async Task setDataAfterSubmitAPIAsync(vATRegistration vatRegistration)
         {
             //Set applicable buttons
             await Task.Run(() =>
@@ -2045,7 +2157,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             await Task.Run(async () =>
             {
-                VATRegistrationOtherDetails vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
+                VATRegistrationOtherDetails vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vatRegistration.Fbnumz, vatRegistration.Officerz, vatRegistration.Statusz, vatRegistration.TxnTpz, "ZTAX_VT_REG");
 
                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2062,14 +2174,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public void setQuestionImage()
         {
-            if (VATRegistrationDetailsData.d.QUESTIONSSet.results != null)
+            if (VATRegistrationDetailsData.d.QUESTIONSSet != null && VATRegistrationDetailsData.d.QUESTIONSSet.Count > 0)
             {
 
-                string value1forimage3first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptAns).FirstOrDefault();
-                string value2forimage3second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptAns).FirstOrDefault();
+                string value1forimage3first = VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptAns).FirstOrDefault();
+                string value2forimage3second = VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptAns).FirstOrDefault();
 
-                string value1forimage4first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptAns).FirstOrDefault();
-                string value2forimage4second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptAns).FirstOrDefault();
+                string value1forimage4first = VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptAns).FirstOrDefault();
+                string value2forimage4second = VATRegistrationDetailsData.d.QUESTIONSSet.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptAns).FirstOrDefault();
 
                 if (value1forimage3first == "1")
                 {
@@ -2146,10 +2258,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             String LocalisedButtonString = String.Empty;
 
-            //if (0 == String.Compare(ButtonName, "Submit"))
-            //{
-            //    LocalisedButtonString = AppResources.Submit;
-            //}
+
 
             if (0 == String.Compare(ButtonName, "SaveasDraft"))
             {
@@ -2163,23 +2272,18 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 LocalisedButtonString = AppResources.ZZVoid;
             }
-            //else if (0 == String.Compare(ButtonName, "Validate"))
-            //{
-            //    LocalisedButtonString = AppResources.ZZValidate;
-            //}            
 
             return LocalisedButtonString;
         }
 
         public async Task onPageLoad()
         {
-            isLoadedAlready = true;
             try
             {
                 IsLoading = true;
                 GetSignUpIdType();
-                //      IsLoading = true;
-                VATRegistrationDetailsData = null;
+                IsLoading = true;
+                // VATRegistrationDetailsData = null;
                 VATRegistrationOtherDetails = null;
                 ADDRESSSetData = null;
                 VATRegistrationDetails vATRegistration = null;
@@ -2187,7 +2291,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 try
                 {
                     vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData();
-                    VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATRegistration.d.Fbnumz);
 
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -2197,32 +2300,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         //step 4 and 5 data set
                         if (vATRegistration.d.CONTACT_PERSONSet != null)
                         {
-                            GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
+                            GpartFR = vATRegistration.d.CONTACT_PERSONSet[0].Gpart;
                             //  VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = SelectedIdTypeFR.ID;
                             idnumber = string.Empty;
-                            idnumber = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
-                            FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
-                            LastnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm;
-                            MobNumberFR = vATRegistration.d.CONTACTDTSet.results[0].MobNumber;
-                            SmtpAddrFR = vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr;
+                            idnumber = vATRegistration.d.CONTACT_PERSONSet[0].Idnumber;
+                            FirstnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Firstnm;
+                            LastnmFR = vATRegistration.d.CONTACT_PERSONSet[0].Lastnm;
+                            MobNumberFR = vATRegistration.d.CONTACTDTSet[0].MobNumber;
+                            SmtpAddrFR = vATRegistration.d.CONTACTDTSet[0].SmtpAddr;
+                            Title = vATRegistration.d.CONTACT_PERSONSet[0].Title;
 
-                            SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
-                            ATTDETSetObject = new ATTDETSet();
+                            SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet[0].Type).FirstOrDefault();
+                            ATTDETSetObject = new List<Attachment>();
                             ATTDETSetObject = vATRegistration.d.ATTDETSet;
 
                         }
 
                         //Step 5
 
-                        /* if (vATRegistration.d.Decfg == "1")
-                         {*/
                         IsDeclarationChecked = true;
-                        //VATRegistrationDetailsData.d.Decfg = "1";
-                        /*}
-                        else if (vATRegistration.d.Decfg == "0")
-                        {
-                            IsDeclarationChecked = false;
-                        }*/
                         if (vATRegistration.d.AgrFg != null)
                         {
                             if (vATRegistration.d.AgrFg == "1")
@@ -2250,18 +2346,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
                         if (vATRegistration.d.CrStdt != null)
                         {
+
+                            //StartdateToshow = UtilityManager.CovertDateTimeToDDMMYYYY(vATRegistration.d.CrStdt);
                             VatRegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""");
                             StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                         }
+                        if (VATRegistrationDetailsData != null && VATRegistrationDetailsData.d != null)
+                        {
+                            vATRegistration.d.ImFg = VATRegistrationDetailsData.d.ImFg;
+                        }
                         VATRegistrationDetailsData = vATRegistration;
-                        setIban();
+                        // setIban();
                         if (VATRegistrationDetailsData.d.AgrFg != null)
                         { }
 
 
-                        if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count != 0)
+                        if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.Count != 0)
                         {
-                            ADDRESSSetData = VATRegistrationDetailsData.d.ADDRESSSet.results[0];
+                            ADDRESSSetData = VATRegistrationDetailsData.d.ADDRESSSet[0];
                             AddressLineOne = ADDRESSSetData.BuildingNo + " " + ADDRESSSetData.Street + " " + ADDRESSSetData.Quarter;
                             if (ADDRESSSetData.PostalCd.Equals("00000"))
                             {
@@ -2278,7 +2380,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (VATRegistrationDetailsData.d.ImFg == "1")
                         {
                             ImporterImageSource = "vat_tile_IbanCard_background.png";
-                            ImporterTextColor = Colors.White;
+                            ImporterTextColor = Color.White;
                         }
                         else
                         {
@@ -2288,7 +2390,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (VATRegistrationDetailsData.d.ExFg == "1")
                         {
                             ExporterImageSource = "vat_tile_IbanCard_background.png";
-                            ExporterTextColor = Colors.White;
+                            ExporterTextColor = Color.White;
                         }
                         else
                         {
@@ -2297,7 +2399,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
 
 
-                        if (VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count != 0)
+                        if (VATRegistrationDetailsData.d.QUESCONFIG_MSet != null && VATRegistrationDetailsData.d.QUESCONFIG_MSet.Count != 0)
                         {
                             MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                             MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
@@ -2311,21 +2413,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
                             MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
 
-                            TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptTxt).FirstOrDefault();
-                            TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();
+                            TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptTxt).FirstOrDefault();
+                            TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();
 
-                            TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptTxt).FirstOrDefault();
-                            TextQuestion4Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptTxt).FirstOrDefault();
+                            TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptTxt).FirstOrDefault();
+                            TextQuestion4Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptTxt).FirstOrDefault();
 
                             setQuestionImage();
 
                         }
                         if (VATRegistrationDetailsData.d.QUESTIONSSet != null)
                         {
-                            answer1selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "001" && s.QoptAns == "1").Count();
-                            answer2selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "002" && s.QoptAns == "1").Count();
-                            answer3selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "003" && s.QoptAns == "1").Count();
-                            answer4selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(s => s.QueNo == "004" && s.QoptAns == "1").Count();
+                            answer1selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "001" && s.QoptAns == "1").Count();
+                            answer2selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "002" && s.QoptAns == "1").Count();
+                            answer3selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "003" && s.QoptAns == "1").Count();
+                            answer4selectedcount = VATRegistrationDetailsData.d.QUESTIONSSet.Where(s => s.QueNo == "004" && s.QoptAns == "1").Count();
                         }
 
                         vATRegistrationOther = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
@@ -2353,10 +2455,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     IsLoading = false;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
-                {
-                    throw ex;
-                }
                 catch (InternetException ex)
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
@@ -2383,8 +2481,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception)
             {
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2401,7 +2497,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         private void SetApplicableButtons()
         {
             //Parag
-            if ((VATRegistrationOtherDetails.d.VR_UI_BTNSet != null) && (VATRegistrationOtherDetails.d.VR_UI_BTNSet.results != null))
+            if ((VATRegistrationOtherDetails.d.VR_UI_BTNSet != null) && (VATRegistrationOtherDetails.d.VR_UI_BTNSet != null))
             {
                 if (ListOfActionButtonsApplicableForRegistration != null && ListOfActionButtonsApplicableForRegistration.Count > 0)
                     ListOfActionButtonsApplicableForRegistration.Clear();
@@ -2409,7 +2505,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     ListOfActionButtonsApplicableForRegistration = new List<string>();
 
                 //beforoe returning buttons we need to set the value based on Buttons emumeration
-                foreach (ResultsItemForButton button in VATRegistrationOtherDetails.d.VR_UI_BTNSet.results)
+                foreach (ResultsItemForButton button in VATRegistrationOtherDetails.d.VR_UI_BTNSet)
                 {
                     Buttons buttonEnumId = Buttons.None;
 
@@ -2425,16 +2521,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             //Parag
         }
 
-        public void setIban()
-        {
-            IbanList = new ObservableCollection<Result2>();
 
-            if (VATRegistrationDetailsData.d.IBANSet != null)
-            {
-                IbanList = new ObservableCollection<Result2>(VATRegistrationDetailsData.d.IBANSet.results);
-            }
-
-        }
         public void GetSignUpIdType()
         {
             try

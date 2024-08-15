@@ -1,11 +1,8 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat;
 using static ZATCAMAUI.Models.Nafat.LoginSSOModel;
-using Application = Microsoft.Maui.Controls.Application;
 
 namespace ZATCAMAUI.Views.NewDesign.Nafat
 {
@@ -18,22 +15,8 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
             InitializeComponent();
             viewModel = App.Locator.NafathLoginPageView;
             this.BindingContext = viewModel;
-            On<iOS>().SetUseSafeArea(true);
-            ChangeAeroIcon();
 
         }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -167,10 +150,6 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
 
         }
 
-        void webviewNavigated(object sender, WebNavigatedEventArgs e)
-        {
-
-        }
 
     }
 

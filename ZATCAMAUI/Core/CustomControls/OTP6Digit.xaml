@@ -104,7 +104,7 @@
 
                                 <custom:GAZTBorderlessEntry x:Name="OTPFirstEntry"
                                                           MaxLength="1"
-                                                          Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                                          Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                                           WidthRequest="100"
                                                           Text="{Binding OTPFirstDigit}">
                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -133,7 +133,7 @@
                                         x:Name="OTPSecondEntry"
                                         ClassId="2"
                                         MaxLength="1"
-                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         WidthRequest="100"
                                         Text="{Binding OTPSecondDigit}">
                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -162,7 +162,7 @@
                                         x:Name="OTPThirdEntry"
                                         ClassId="3"
                                         MaxLength="1"
-                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         WidthRequest="100"
                                         Text="{Binding OTPThirdDigit}">
                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -191,7 +191,7 @@
                                         x:Name="OTPFourthEntry"
                                         ClassId="4"
                                         MaxLength="1"
-                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         WidthRequest="100"
                                         Text="{Binding OTPFourthDigit}">
                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -220,7 +220,7 @@
                                         x:Name="OTPFifthEntry"
                                         ClassId="5"
                                         MaxLength="1"
-                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         WidthRequest="100"
                                         Text="{Binding OTPFithDigit}">
                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -247,7 +247,7 @@
                                 <custom:GAZTBorderlessEntry
                                         x:Name="OTPSixEntry"
                                         MaxLength="1"
-                                        Keyboard="{OnPlatform Numeric, iOS=Default}"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         WidthRequest="100"
                                         ClassId="6"
                                         Text="{Binding OTPSixDigit}">
@@ -308,8 +308,7 @@
                 BackgroundColor="White">
                 <Image
                     HorizontalOptions="Start"
-                    Source="arrowLeft.png"
-                    Style="{DynamicResource BackButtonArrow}">
+                    Source="arrowLeft.png">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackFromOtpCommand}" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>

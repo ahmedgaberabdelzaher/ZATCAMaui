@@ -22,12 +22,7 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+           
             <converters:EstablishmentRegistrationActivityTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:EstablishmentMainActivityToVisibilityConverter x:Key="isMainActivityConverter" />
         </ResourceDictionary>
@@ -226,7 +221,7 @@
                                         HeightRequest="48"
                                         HorizontalOptions="FillAndExpand"
                                         HorizontalTextAlignment="Start"
-                                        Keyboard="Numeric"
+                                        Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                         MaxLength="10"
                                         PlaceholderColor="{StaticResource NeutralGreay}"
                                         Text="{Binding CRNumber}"
@@ -876,7 +871,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     IsEnabled="{Binding LicenseDetails.LicenseNo}"
-                                    Keyboard="Numeric"
+                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                     MaxLength="30"
                                     PlaceholderColor="{StaticResource NeutralGreay}"
                                     Text="{Binding LicenseNumber}"

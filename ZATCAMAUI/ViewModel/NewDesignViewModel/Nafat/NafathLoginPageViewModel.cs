@@ -16,7 +16,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
         public NafathLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
 
         {
-            OnBackButtonClicked = new  Command(() =>
+            OnBackButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -55,10 +55,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.Nafat
                     {
                         if (App.TP != null)
                         {
-                            App.TP.NameFirst = App.LoginDataRetrieved.NameFirst;
-                            App.TP.NameLast = App.LoginDataRetrieved.NameLast;
-                            App.TP.NameOrg1 = App.LoginDataRetrieved.NameOrg1;
-                            App.TP.TypeChk = App.LoginDataRetrieved.TypeChk;
+                            App.TP.firstName = App.LoginDataRetrieved.NameFirst;
+                            App.TP.lastName = App.LoginDataRetrieved.NameLast;
+                            App.TP.organizationName = App.LoginDataRetrieved.NameOrg1;
+                            App.TP.typeCheck = App.LoginDataRetrieved.TypeChk;
                         }
 
                     }

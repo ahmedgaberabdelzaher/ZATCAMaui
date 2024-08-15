@@ -13,7 +13,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
     {
 
         #region Variable
-        public ICommand GoBackBtnTapped { get; set; }
         public ICommand DeregisterTinTapped { get; set; }
 
         #endregion
@@ -22,10 +21,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         {
             IsArabic = App.IsArabic;
 
-            GoBackBtnTapped = new Command(async () =>
-            {
-                _navigationService.GoBack();
-            });
 
             DeregisterTinTapped = new Command(GetNewTinDeregistrationDataCliked);
         }
@@ -162,12 +157,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         });
                     }
 
-                    /*tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                    {
-                        ZDTitle = AppResources.Registrations,
-                        ZDImageSource = "registration.png",
-                        ArrowImageSource = fileImage
-                    });*/
 
                     if (App.LoginDataRetrieved.VtReg == "X")
                     {
@@ -186,6 +175,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                         {
                             ZDTitle = AppResources.DBSMTINDeregistration,
+                            ZDImageSource = "ic_vatDe",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DeregistrationServiceTitle,//AppResources.DBSMTIN_OUTLET_Deregistration
                             ZDImageSource = "ic_vatDe",
                             ArrowImageSource = fileImage
                         });
@@ -215,10 +214,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception)
             {
-
             }
         }
-
         public void HandleExceptipon()
         {
 
@@ -247,16 +244,31 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 ZakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregResponseData);
 
-                //VatRefundsIbanDataModel = await WebServiceManager.GAZTGetVATRefundGetIbanData("");
-                //IbanData = new List<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
-                //VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
-
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
                 });
 
-                _navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
+                if (ZakatDeregResponseData != null && ZakatDeregResponseData.Deregistration_ReasonSet != null)
+                {
+                    string message = string.Empty;
+                    if (ZakatDeregResponseData.Deregistration_ReasonSet.Results.Count > 0)
+                    {
+                        foreach (var item in ZakatDeregResponseData.Deregistration_ReasonSet.Results)
+                        {
+                            message += item.Message;
+                        }
+                    }
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(message, AppResources.Information);
+                        return;
+                    });
+                }
+                else
+                {
+                    _navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
+                }
             }
             catch (InternetException ex)
             {

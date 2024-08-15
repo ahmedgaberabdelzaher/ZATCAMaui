@@ -1,7 +1,5 @@
 ﻿
 
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using ZATCAMAUI.Models.PaymentModel;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -20,11 +18,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
             InitializeComponent();
             viewModel = App.Locator.ZAKATReturnDetailsSuccessView;
 
-            // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
-
-            On<iOS>().SetUseSafeArea(true);
             BindingContext = viewModel;
-            ChangeAeroIcon();
 
             viewModel.ReferenceNumber = paymentInfo.Paymentref;
             if (paymentInfo.Period != null)
@@ -42,26 +36,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
-        }
-        private async void OnRefreshButtonClicked(object sender, EventArgs e)
-        {
-
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
         private void GoToDashboardClicked(object sender, EventArgs e)
         {
             var _navigation = Application.Current.MainPage.Navigation;
@@ -112,7 +86,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
                 var text = await Clipboard.GetTextAsync();
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDReferenceNumber + " " + text));
 
-               
+
             }
         }
 

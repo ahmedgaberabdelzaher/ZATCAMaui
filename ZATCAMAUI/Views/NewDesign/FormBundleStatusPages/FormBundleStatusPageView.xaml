@@ -15,16 +15,6 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
 
@@ -38,7 +28,6 @@
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
-                        Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
@@ -53,7 +42,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackButtonClicked}" />
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>
@@ -75,250 +64,253 @@
                 Grid.Row="1"
                 Padding="0"
                 Style="{StaticResource CommonTopCurves}">
-
-                <ScrollView Padding="20" VerticalScrollBarVisibility="Never">
-
-                    <StackLayout>
-
-                        <!--  Start Of Type  -->
-                        <Label Style="{StaticResource CaptionLabelGrey}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" />
-                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                <Grid RowDefinitions="*">
+                    
+                    <ScrollView Padding="20" VerticalScrollBarVisibility="Never">
 
                         <StackLayout>
-                            <inputLayout:SfTextInputLayout
-                                x:Name="txtBundleType"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+
+                            <!--  Start Of Type  -->
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" />
+                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <StackLayout>
+                                <inputLayout:SfTextInputLayout
+                                    x:Name="txtBundleType"
+                                    ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                                    HorizontalOptions="FillAndExpand"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="8"
+                                    Stroke="{StaticResource Primary}">
+
+                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <inputLayout:LabelStyle TextColor="#B00020" />
+                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                    <custom:GAZTBorderlessEntry
+                                        IsReadOnly="True"
+                                        InputTransparent="True"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding TxtFBtype}"
+                                        TextColor="{StaticResource NeutralBlack}"
+                                        VerticalTextAlignment="Center" />
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Source="arrowDropdown.png" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+
+                                <custom:CustomSfPicker
+                                    x:Name="BundleType"
+                                    Background="White"
+                                    IsOpen="False"
+                                    ItemHeight="40"
+                                    Mode="Dialog"
+                                    SelectionChanged="BundleType_SelectionChanged">
+
+                                    <custom:CustomSfPicker.HeaderView>
+
+                                        <syncfusion:PickerHeaderView
+                                            Height="55"
+                                            Background="{StaticResource Primary}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                            <syncfusion:PickerHeaderView.TextStyle>
+                                                <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
+                                            </syncfusion:PickerHeaderView.TextStyle>
+                                        </syncfusion:PickerHeaderView>
+
+                                    </custom:CustomSfPicker.HeaderView>
+
+
+                                    <custom:CustomSfPicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomSfPicker.SelectionView>
+
+                                    <custom:CustomSfPicker.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                    </custom:CustomSfPicker.TextStyle>
+
+                                    <custom:CustomSfPicker.Columns>
+                                        <syncfusion:PickerColumn
+                                            Width="300"
+                                            DisplayMemberPath="Txt50"
+                                            ItemsSource="{Binding FormBundleList}"
+                                            SelectedIndex="{Binding IDTypeIndex}" />
+                                    </custom:CustomSfPicker.Columns>
+
+                                    <custom:CustomSfPicker.SelectedTextStyle>
+                                        <syncfusion:PickerTextStyle
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            TextColor="{StaticResource NeutralBlack}" />
+                                    </custom:CustomSfPicker.SelectedTextStyle>
+
+                                    <custom:CustomSfPicker.FooterView>
+
+                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+
+                                            <syncfusion:PickerFooterView.TextStyle>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
+                                            </syncfusion:PickerFooterView.TextStyle>
+
+                                        </syncfusion:PickerFooterView>
+
+                                    </custom:CustomSfPicker.FooterView>
+
+
+                                </custom:CustomSfPicker>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnBundleTypeClicked" />
+
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            <!--  End Of Type  -->
+
+                            <Label Style="{StaticResource CaptionLabelGrey}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <StackLayout>
+                                <inputLayout:SfTextInputLayout
+                                    x:Name="txtBundleNumber"
+                                    ContainerType="Outlined"
+                                    Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
+                                    HorizontalOptions="FillAndExpand"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="8"
+                                    Stroke="{StaticResource Primary}">
+
+                                    <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <inputLayout:LabelStyle TextColor="#B00020" />
+                                    </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                    <custom:GAZTBorderlessEntry
+                                        IsReadOnly="True"
+                                        InputTransparent="True"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding TxtFBnum}"
+                                        TextColor="{StaticResource NeutralBlack}"
+                                        VerticalTextAlignment="Center" />
+
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Source="arrowDropdown.png" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+
+                                <custom:CustomSfPicker
+                                    x:Name="BundleNumber"
+                                    Background="White"
+                                    IsOpen="False"
+                                    ItemHeight="40"
+                                    Mode="Dialog"
+                                    SelectionChanged="BundleNumber_SelectionChanged">
+
+                                    <custom:CustomSfPicker.HeaderView>
+
+                                        <syncfusion:PickerHeaderView
+                                            Height="55"
+                                            Background="{StaticResource Primary}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}">
+                                            <syncfusion:PickerHeaderView.TextStyle>
+                                                <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
+                                            </syncfusion:PickerHeaderView.TextStyle>
+                                        </syncfusion:PickerHeaderView>
+
+                                    </custom:CustomSfPicker.HeaderView>
+
+
+                                    <custom:CustomSfPicker.SelectionView>
+                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                    </custom:CustomSfPicker.SelectionView>
+
+                                    <custom:CustomSfPicker.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
+                                    </custom:CustomSfPicker.TextStyle>
+
+                                    <custom:CustomSfPicker.Columns>
+                                        <syncfusion:PickerColumn
+                                            Width="300"
+                                            DisplayMemberPath="Fbnum"
+                                            ItemsSource="{Binding FormBundleApplicatioNumberList}"
+                                            SelectedIndex="{Binding IDTypeIndex}" />
+                                    </custom:CustomSfPicker.Columns>
+
+                                    <custom:CustomSfPicker.SelectedTextStyle>
+                                        <syncfusion:PickerTextStyle
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            TextColor="{StaticResource NeutralBlack}" />
+                                    </custom:CustomSfPicker.SelectedTextStyle>
+
+                                    <custom:CustomSfPicker.FooterView>
+
+                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
+
+                                            <syncfusion:PickerFooterView.TextStyle>
+                                                <syncfusion:PickerTextStyle TextColor="White" />
+                                            </syncfusion:PickerFooterView.TextStyle>
+
+                                        </syncfusion:PickerFooterView>
+
+                                    </custom:CustomSfPicker.FooterView>
+
+                                </custom:CustomSfPicker>
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnBundleNumberClicked" />
+
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
+                            <ListView
+                                Margin="0,10,0,10"
+                                BackgroundColor="White"
+                                HasUnevenRows="True"
                                 HorizontalOptions="FillAndExpand"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="8"
-                                Stroke="{StaticResource Primary}">
-
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-
-                                <custom:GAZTBorderlessEntry
-                                    IsReadOnly="True"
-                                    InputTransparent="True"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TxtFBtype}"
-                                    TextColor="{StaticResource NeutralBlack}"
-                                    VerticalTextAlignment="Center" />
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Source="arrowDropdown.png" />
-                                </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
-
-                            <custom:CustomSfPicker
-                                x:Name="BundleType"
-                                Background="White"
-                                IsOpen="False"
-                                ItemHeight="40"
-                                Mode="Dialog"
-                                SelectionChanged="BundleType_SelectionChanged">
-
-                                <custom:CustomSfPicker.HeaderView>
-
-                                    <syncfusion:PickerHeaderView
-                                        Height="55"
-                                        Background="{StaticResource Primary}"
-                                        Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
-                                        <syncfusion:PickerHeaderView.TextStyle>
-                                            <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
-                                        </syncfusion:PickerHeaderView.TextStyle>
-                                    </syncfusion:PickerHeaderView>
-
-                                </custom:CustomSfPicker.HeaderView>
-
-
-                                <custom:CustomSfPicker.SelectionView>
-                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                </custom:CustomSfPicker.SelectionView>
-
-                                <custom:CustomSfPicker.TextStyle>
-                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                </custom:CustomSfPicker.TextStyle>
-
-                                <custom:CustomSfPicker.Columns>
-                                    <syncfusion:PickerColumn
-                                        Width="300"
-                                        DisplayMemberPath="Txt50"
-                                        ItemsSource="{Binding FormBundleList}"
-                                        SelectedIndex="{Binding IDTypeIndex}" />
-                                </custom:CustomSfPicker.Columns>
-
-                                <custom:CustomSfPicker.SelectedTextStyle>
-                                    <syncfusion:PickerTextStyle
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        TextColor="{StaticResource NeutralBlack}" />
-                                </custom:CustomSfPicker.SelectedTextStyle>
-
-                                <custom:CustomSfPicker.FooterView>
-
-                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
-
-                                        <syncfusion:PickerFooterView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                        </syncfusion:PickerFooterView.TextStyle>
-
-                                    </syncfusion:PickerFooterView>
-
-                                </custom:CustomSfPicker.FooterView>
-
-
-                            </custom:CustomSfPicker>
-
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnBundleTypeClicked" />
-
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                        <!--  End Of Type  -->
-
-                        <Label Style="{StaticResource CaptionLabelGrey}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}" />
-                                    <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-
-                        <StackLayout>
-                            <inputLayout:SfTextInputLayout
-                                x:Name="txtBundleNumber"
-                                ContainerType="Outlined"
-                                Hint="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
-                                HorizontalOptions="FillAndExpand"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="8"
-                                Stroke="{StaticResource Primary}">
-
-                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
-                                    <inputLayout:LabelStyle TextColor="#B00020" />
-                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
-
-                                <custom:GAZTBorderlessEntry
-                                    IsReadOnly="True"
-                                    InputTransparent="True"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TxtFBnum}"
-                                    TextColor="{StaticResource NeutralBlack}"
-                                    VerticalTextAlignment="Center" />
-
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Source="arrowDropdown.png" />
-                                </inputLayout:SfTextInputLayout.TrailingView>
-                            </inputLayout:SfTextInputLayout>
-
-                            <custom:CustomSfPicker
-                                x:Name="BundleNumber"
-                                Background="White"
-                                IsOpen="False"
-                                ItemHeight="40"
-                                Mode="Dialog"
-                                SelectionChanged="BundleNumber_SelectionChanged">
-
-                                <custom:CustomSfPicker.HeaderView>
-
-                                    <syncfusion:PickerHeaderView
-                                        Height="55"
-                                        Background="{StaticResource Primary}"
-                                        Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleNumber}">
-                                        <syncfusion:PickerHeaderView.TextStyle>
-                                            <syncfusion:PickerTextStyle FontSize="13" TextColor="White" />
-                                        </syncfusion:PickerHeaderView.TextStyle>
-                                    </syncfusion:PickerHeaderView>
-
-                                </custom:CustomSfPicker.HeaderView>
-
-
-                                <custom:CustomSfPicker.SelectionView>
-                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                </custom:CustomSfPicker.SelectionView>
-
-                                <custom:CustomSfPicker.TextStyle>
-                                    <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralBlack}" />
-                                </custom:CustomSfPicker.TextStyle>
-
-                                <custom:CustomSfPicker.Columns>
-                                    <syncfusion:PickerColumn
-                                        Width="300"
-                                        DisplayMemberPath="Fbnum"
-                                        ItemsSource="{Binding FormBundleApplicatioNumberList}"
-                                        SelectedIndex="{Binding IDTypeIndex}" />
-                                </custom:CustomSfPicker.Columns>
-
-                                <custom:CustomSfPicker.SelectedTextStyle>
-                                    <syncfusion:PickerTextStyle
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        TextColor="{StaticResource NeutralBlack}" />
-                                </custom:CustomSfPicker.SelectedTextStyle>
-
-                                <custom:CustomSfPicker.FooterView>
-
-                                    <syncfusion:PickerFooterView Height="46" Background="{StaticResource Primary}">
-
-                                        <syncfusion:PickerFooterView.TextStyle>
-                                            <syncfusion:PickerTextStyle TextColor="White" />
-                                        </syncfusion:PickerFooterView.TextStyle>
-
-                                    </syncfusion:PickerFooterView>
-
-                                </custom:CustomSfPicker.FooterView>
-
-                            </custom:CustomSfPicker>
-
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnBundleNumberClicked" />
-
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-
-                        <ListView
-                            Margin="0,10,0,10"
-                            BackgroundColor="White"
-                            HasUnevenRows="True"
-                            HorizontalOptions="FillAndExpand"
-                            ItemTapped="ListView_ItemTapped"
-                            ItemsSource="{Binding ListFormBudles}"
-                            SeparatorVisibility="None"
-                            VerticalOptions="Start">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                                            <StackLayout Padding="10">
-                                                <StackLayout Orientation="Horizontal">
-                                                    <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZStatus}" />
-                                                    <Label
-                                                        HorizontalOptions="EndAndExpand"
-                                                        Style="{StaticResource ValueLabelBlack}"
-                                                        Text="{Binding FbStatus}" />
+                                ItemTapped="ListView_ItemTapped"
+                                ItemsSource="{Binding ListFormBudles}"
+                                SeparatorVisibility="None"
+                                VerticalOptions="Start">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                <StackLayout Padding="10">
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZStatus}" />
+                                                        <Label
+                                                            HorizontalOptions="EndAndExpand"
+                                                            Style="{StaticResource ValueLabelBlack}"
+                                                            Text="{Binding FbStatus}" />
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </Border>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                            </Border>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
 
-                    </StackLayout>
+                        </StackLayout>
 
-                </ScrollView>
+                    </ScrollView>
+
+                </Grid>
             </Border>
 
             <!--  Loader  -->

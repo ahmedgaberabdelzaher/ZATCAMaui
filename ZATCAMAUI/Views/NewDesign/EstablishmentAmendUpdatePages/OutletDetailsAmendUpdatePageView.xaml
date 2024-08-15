@@ -19,12 +19,7 @@
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="180" />
-            </Style>
-            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                <Setter Property="Rotation" Value="0" />
-            </Style>
+           
             <converters:EstablishmentRegistrationOutletTabsEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
             <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
         </ResourceDictionary>
@@ -366,7 +361,6 @@
                             HorizontalOptions="StartAndExpand"
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource ValueLabelBlackBold}"
-                            Text="{x:Static ResourceManager:AppResources.ESTPhycicalAddress}"
                             VerticalOptions="StartAndExpand" />
                         <Grid
                             ColumnSpacing="20"
@@ -575,7 +569,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Start"
                                 IsSpellCheckEnabled="false"
-                                Keyboard="Numeric"
+                                Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                 MaxLength="6"
                                 PlaceholderColor="{StaticResource NeutralGreay}"
                                 Text="{Binding PostalCode}"
@@ -675,7 +669,7 @@
                             VerticalOptions="Center">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCity}" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
                                     <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
                                 </FormattedString>
                             </Label.FormattedText>
@@ -700,7 +694,6 @@
                             HorizontalOptions="StartAndExpand"
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource ValueLabelBlackBold}"
-                            Text="{x:Static ResourceManager:AppResources.ESTPostalAddress}"
                             VerticalOptions="StartAndExpand" />
                         <StackLayout
                             Padding="10,0"
@@ -926,7 +919,7 @@
                                     HorizontalOptions="FillAndExpand"
                                     HorizontalTextAlignment="Start"
                                     IsSpellCheckEnabled="false"
-                                    Keyboard="Numeric"
+                                    Keyboard="{OnPlatform Android=Numeric, iOS=Default}"
                                     MaxLength="6"
                                     PlaceholderColor="{StaticResource NeutralGreay}"
                                     Text="{Binding PostalCodeSame}"
@@ -1156,45 +1149,9 @@
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
-            <Grid
-                Grid.Row="0"
-                Grid.RowSpan="3"
-                Margin="0,-20,0,0"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsLoading}"
-                VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    Orientation="Vertical"
-                    VerticalOptions="FillAndExpand" />
-                <StackLayout
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Padding="15,15"
-                    BackgroundColor="Transparent"
-                    HorizontalOptions="Center"
-                    Opacity="0.8"
-                    Orientation="Vertical"
-                    VerticalOptions="Center">
-                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                        <busyindicator:SfBusyIndicator
-                            x:Name="busyindicatorForLanding"
-                            AnimationType="Cupertino"
-                            HeightRequest="70"
-                            HorizontalOptions="CenterAndExpand"
-                            IndicatorColor="{StaticResource Secondary}"
-                            IsRunning="True"
-                            SizeFactor="0.6"
-                            TitlePlacement="Bottom"
-                            VerticalOptions="CenterAndExpand"
-                            WidthRequest="70" />
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-
+            <custom:Loader  Grid.RowSpan="3"
+             IsVisible="{Binding IsLoading}"/>
+           
         </Grid>
     </ContentPage.Content>
 </ContentPage>

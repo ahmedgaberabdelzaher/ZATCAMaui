@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Windows.Input;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -9,7 +8,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
 {
     public class InternationalMobileNumberCodePagesViewModel : BaseViewModel
     {
-        public ICommand BackButtonClicked { get; set; }
         ObservableCollection<InternationalMobileData> mobileData = null;
 
         public ObservableCollection<InternationalMobileData> _mobileCodes;
@@ -68,25 +66,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
         #region Constructor
         public InternationalMobileNumberCodePagesViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            BackButtonClicked = new Command(() =>
-            {
-                _navigationService.GoBack();
-            });
-
         }
         #endregion
-        public void onPageLoad()
+        public async void onPageLoad()
         {
 
-            mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+            mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
             if (mobileData != null && mobileData.Count != 0)
             {
                 MobileCodes = mobileData;
                 MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodes.OrderBy(x => x.Telefto).ToList());
-
-            }
-            else
-            {
 
             }
         }

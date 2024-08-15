@@ -62,7 +62,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
 
                 }
 
-                ChangeAeroIcon();
                 clearDATA();
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
@@ -74,8 +73,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                 viewModel.SetDefaultDate();
-                //InitializeCalenderPopup();
-                SetLTR();
                 Task.Run(async () =>
                 {
                     try
@@ -143,31 +140,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
             EntryEmail.Text = string.Empty;
             EntryPhoneNumber.Text = string.Empty;
             EntryIDNo.Text = string.Empty;
-        }
-
-        private void SetLTR()
-        {
-            if (!App.IsArabic)
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.RightToLeft;
-
-            }
-
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-            }
         }
 
         private async void DpEStartDate_Closed(object sender, EventArgs e)
@@ -2196,7 +2168,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                 {
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
-                await MopupService.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData,WhichAttachment.VATAmendRegistration, isImporter));
+                await MopupService.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData, WhichAttachment.VATAmendRegistration, isImporter));
             }
             catch (Exception)
             {

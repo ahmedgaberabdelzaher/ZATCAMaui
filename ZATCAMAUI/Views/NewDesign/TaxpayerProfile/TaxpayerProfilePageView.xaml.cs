@@ -1,6 +1,4 @@
 ﻿
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using ZATCAMAUI.Core.Mangers;
@@ -10,7 +8,7 @@ using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
 namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 {
-   
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxpayerProfilePageView : ContentPage
     {
@@ -24,7 +22,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
             viewModel = App.Locator.TaxpayerProfilePageView;
             BindingContext = viewModel;
-            ChangeAeroIcon();
 
             TpProfileTaxpaayertypeRefresh();
             try
@@ -35,19 +32,6 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
             {
 
 
-            }
-        }
-        public void ChangeAeroIcon()
-        {
-            if (App.IsArabic)
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
-                MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.End;
-            }
-            else
-            {
-                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
-                MobileNumberCodeEntry.HorizontalTextAlignment = TextAlignment.Start;
             }
         }
 
@@ -111,20 +95,10 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
         {
             MopupService.Instance.PushAsync(new UpdateManagerDetailsPopUp());
         }
-        private void OnBackArrowBtnTapped(object sender, EventArgs e)
-        {
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                viewModel._navigationService.GoBack();
-            });
-        }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            Padding = safeInsets;
             try
             {
 
